@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -27,7 +32,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZoneLockdowns(args: GetZoneLockdownsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneLockdownsResult> {
+export function getZoneLockdowns(args?: GetZoneLockdownsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneLockdownsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneLockdowns:getZoneLockdowns", {
         "createdOn": args.createdOn,
@@ -91,7 +97,7 @@ export interface GetZoneLockdownsArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -149,9 +155,14 @@ export interface GetZoneLockdownsResult {
     /**
      * Defines an identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -172,7 +183,8 @@ export interface GetZoneLockdownsResult {
  * });
  * ```
  */
-export function getZoneLockdownsOutput(args: GetZoneLockdownsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneLockdownsResult> {
+export function getZoneLockdownsOutput(args?: GetZoneLockdownsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneLockdownsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneLockdowns:getZoneLockdowns", {
         "createdOn": args.createdOn,
@@ -236,5 +248,5 @@ export interface GetZoneLockdownsOutputArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -833,7 +833,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def description(self) -> pulumi.Output[_builtins.str]:
         """
         An optional description forthe IPsec tunnel.
         """

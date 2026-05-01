@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -37,9 +43,7 @@ import (
 //					Config: &cloudflare.WorkerVersionAssetsConfigArgs{
 //						HtmlHandling:     pulumi.String("auto-trailing-slash"),
 //						NotFoundHandling: pulumi.String("404-page"),
-//						RunWorkerFirst: pulumi.Any{
-//							"string",
-//						},
+//						RunWorkerFirst:   pulumi.Any{},
 //					},
 //					Jwt: pulumi.String("jwt"),
 //				},
@@ -54,8 +58,14 @@ import (
 //				CompatibilityFlags: pulumi.StringArray{
 //					pulumi.String("nodejs_compat"),
 //				},
+//				Containers: cloudflare.WorkerVersionContainerArray{
+//					&cloudflare.WorkerVersionContainerArgs{
+//						ClassName: pulumi.String("MyDurableObject"),
+//					},
+//				},
 //				Limits: &cloudflare.WorkerVersionLimitsArgs{
-//					CpuMs: pulumi.Int(50),
+//					CpuMs:       pulumi.Int(50),
+//					Subrequests: pulumi.Int(1000),
 //				},
 //				MainModule: pulumi.String("index.js"),
 //				Migrations: &cloudflare.WorkerVersionMigrationsArgs{
@@ -113,7 +123,7 @@ type WorkerVersion struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Metadata about the version.
 	Annotations WorkerVersionAnnotationsOutput `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
@@ -124,6 +134,8 @@ type WorkerVersion struct {
 	CompatibilityDate pulumi.StringPtrOutput `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags pulumi.StringArrayOutput `pulumi:"compatibilityFlags"`
+	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+	Containers WorkerVersionContainerArrayOutput `pulumi:"containers"`
 	// When the version was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Resource limits enforced at runtime.
@@ -132,6 +144,8 @@ type WorkerVersion struct {
 	MainModule pulumi.StringPtrOutput `pulumi:"mainModule"`
 	// The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
 	MainScriptBase64 pulumi.StringOutput `pulumi:"mainScriptBase64"`
+	// Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+	MigrationTag pulumi.StringOutput `pulumi:"migrationTag"`
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations WorkerVersionMigrationsPtrOutput `pulumi:"migrations"`
 	// Code, sourcemaps, and other content used at runtime.
@@ -149,6 +163,8 @@ type WorkerVersion struct {
 	Source pulumi.StringOutput `pulumi:"source"`
 	// Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
 	StartupTimeMs pulumi.IntOutput `pulumi:"startupTimeMs"`
+	// All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+	Urls pulumi.StringArrayOutput `pulumi:"urls"`
 	// Usage model for the version.
 	// Available values: "standard", "bundled", "unbound".
 	//
@@ -165,9 +181,6 @@ func NewWorkerVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.WorkerId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerId'")
 	}
@@ -206,6 +219,8 @@ type workerVersionState struct {
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
+	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+	Containers []WorkerVersionContainer `pulumi:"containers"`
 	// When the version was created.
 	CreatedOn *string `pulumi:"createdOn"`
 	// Resource limits enforced at runtime.
@@ -214,6 +229,8 @@ type workerVersionState struct {
 	MainModule *string `pulumi:"mainModule"`
 	// The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
 	MainScriptBase64 *string `pulumi:"mainScriptBase64"`
+	// Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+	MigrationTag *string `pulumi:"migrationTag"`
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations *WorkerVersionMigrations `pulumi:"migrations"`
 	// Code, sourcemaps, and other content used at runtime.
@@ -231,6 +248,8 @@ type workerVersionState struct {
 	Source *string `pulumi:"source"`
 	// Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
 	StartupTimeMs *int `pulumi:"startupTimeMs"`
+	// All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+	Urls []string `pulumi:"urls"`
 	// Usage model for the version.
 	// Available values: "standard", "bundled", "unbound".
 	//
@@ -253,6 +272,8 @@ type WorkerVersionState struct {
 	CompatibilityDate pulumi.StringPtrInput
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags pulumi.StringArrayInput
+	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+	Containers WorkerVersionContainerArrayInput
 	// When the version was created.
 	CreatedOn pulumi.StringPtrInput
 	// Resource limits enforced at runtime.
@@ -261,6 +282,8 @@ type WorkerVersionState struct {
 	MainModule pulumi.StringPtrInput
 	// The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
 	MainScriptBase64 pulumi.StringPtrInput
+	// Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+	MigrationTag pulumi.StringPtrInput
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations WorkerVersionMigrationsPtrInput
 	// Code, sourcemaps, and other content used at runtime.
@@ -278,6 +301,8 @@ type WorkerVersionState struct {
 	Source pulumi.StringPtrInput
 	// Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
 	StartupTimeMs pulumi.IntPtrInput
+	// All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+	Urls pulumi.StringArrayInput
 	// Usage model for the version.
 	// Available values: "standard", "bundled", "unbound".
 	//
@@ -293,7 +318,7 @@ func (WorkerVersionState) ElementType() reflect.Type {
 
 type workerVersionArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Metadata about the version.
 	Annotations *WorkerVersionAnnotations `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
@@ -304,6 +329,8 @@ type workerVersionArgs struct {
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
+	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+	Containers []WorkerVersionContainer `pulumi:"containers"`
 	// Resource limits enforced at runtime.
 	Limits *WorkerVersionLimits `pulumi:"limits"`
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -331,7 +358,7 @@ type workerVersionArgs struct {
 // The set of arguments for constructing a WorkerVersion resource.
 type WorkerVersionArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Metadata about the version.
 	Annotations WorkerVersionAnnotationsPtrInput
 	// Configuration for assets within a Worker.
@@ -342,6 +369,8 @@ type WorkerVersionArgs struct {
 	CompatibilityDate pulumi.StringPtrInput
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags pulumi.StringArrayInput
+	// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+	Containers WorkerVersionContainerArrayInput
 	// Resource limits enforced at runtime.
 	Limits WorkerVersionLimitsPtrInput
 	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
@@ -454,8 +483,8 @@ func (o WorkerVersionOutput) ToWorkerVersionOutputWithContext(ctx context.Contex
 }
 
 // Identifier.
-func (o WorkerVersionOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o WorkerVersionOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerVersion) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Metadata about the version.
@@ -483,6 +512,11 @@ func (o WorkerVersionOutput) CompatibilityFlags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.StringArrayOutput { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
 }
 
+// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+func (o WorkerVersionOutput) Containers() WorkerVersionContainerArrayOutput {
+	return o.ApplyT(func(v *WorkerVersion) WorkerVersionContainerArrayOutput { return v.Containers }).(WorkerVersionContainerArrayOutput)
+}
+
 // When the version was created.
 func (o WorkerVersionOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
@@ -501,6 +535,11 @@ func (o WorkerVersionOutput) MainModule() pulumi.StringPtrOutput {
 // The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
 func (o WorkerVersionOutput) MainScriptBase64() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.MainScriptBase64 }).(pulumi.StringOutput)
+}
+
+// Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+func (o WorkerVersionOutput) MigrationTag() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.MigrationTag }).(pulumi.StringOutput)
 }
 
 // Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
@@ -536,6 +575,11 @@ func (o WorkerVersionOutput) Source() pulumi.StringOutput {
 // Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
 func (o WorkerVersionOutput) StartupTimeMs() pulumi.IntOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.IntOutput { return v.StartupTimeMs }).(pulumi.IntOutput)
+}
+
+// All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+func (o WorkerVersionOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkerVersion) pulumi.StringArrayOutput { return v.Urls }).(pulumi.StringArrayOutput)
 }
 
 // Usage model for the version.

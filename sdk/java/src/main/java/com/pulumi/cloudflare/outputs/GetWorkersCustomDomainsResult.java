@@ -11,7 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersCustomDomainsResult {
     /**
-     * @return Worker environment associated with the zone and hostname.
+     * @return ID of the TLS certificate issued for the domain.
+     * 
+     */
+    private String certId;
+    /**
+     * @return Worker environment associated with the domain.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -20,34 +25,41 @@ public final class GetWorkersCustomDomainsResult {
     @Deprecated /* This attribute is deprecated. */
     private String environment;
     /**
-     * @return Hostname of the Worker Domain.
+     * @return Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      * 
      */
     private String hostname;
     /**
-     * @return Identifer of the Worker Domain.
+     * @return Immutable ID of the domain.
      * 
      */
     private String id;
     /**
-     * @return Worker service associated with the zone and hostname.
+     * @return Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      * 
      */
     private String service;
     /**
-     * @return Identifier of the zone.
+     * @return ID of the zone containing the domain hostname.
      * 
      */
     private String zoneId;
     /**
-     * @return Name of the zone.
+     * @return Name of the zone containing the domain hostname.
      * 
      */
     private String zoneName;
 
     private GetWorkersCustomDomainsResult() {}
     /**
-     * @return Worker environment associated with the zone and hostname.
+     * @return ID of the TLS certificate issued for the domain.
+     * 
+     */
+    public String certId() {
+        return this.certId;
+    }
+    /**
+     * @return Worker environment associated with the domain.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -58,35 +70,35 @@ public final class GetWorkersCustomDomainsResult {
         return this.environment;
     }
     /**
-     * @return Hostname of the Worker Domain.
+     * @return Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      * 
      */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return Identifer of the Worker Domain.
+     * @return Immutable ID of the domain.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Worker service associated with the zone and hostname.
+     * @return Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      * 
      */
     public String service() {
         return this.service;
     }
     /**
-     * @return Identifier of the zone.
+     * @return ID of the zone containing the domain hostname.
      * 
      */
     public String zoneId() {
         return this.zoneId;
     }
     /**
-     * @return Name of the zone.
+     * @return Name of the zone containing the domain hostname.
      * 
      */
     public String zoneName() {
@@ -102,6 +114,7 @@ public final class GetWorkersCustomDomainsResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String certId;
         private String environment;
         private String hostname;
         private String id;
@@ -111,6 +124,7 @@ public final class GetWorkersCustomDomainsResult {
         public Builder() {}
         public Builder(GetWorkersCustomDomainsResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.certId = defaults.certId;
     	      this.environment = defaults.environment;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
@@ -119,6 +133,14 @@ public final class GetWorkersCustomDomainsResult {
     	      this.zoneName = defaults.zoneName;
         }
 
+        @CustomType.Setter
+        public Builder certId(String certId) {
+            if (certId == null) {
+              throw new MissingRequiredPropertyException("GetWorkersCustomDomainsResult", "certId");
+            }
+            this.certId = certId;
+            return this;
+        }
         @CustomType.Setter
         public Builder environment(String environment) {
             if (environment == null) {
@@ -169,6 +191,7 @@ public final class GetWorkersCustomDomainsResult {
         }
         public GetWorkersCustomDomainsResult build() {
             final var _resultValue = new GetWorkersCustomDomainsResult();
+            _resultValue.certId = certId;
             _resultValue.environment = environment;
             _resultValue.hostname = hostname;
             _resultValue.id = id;

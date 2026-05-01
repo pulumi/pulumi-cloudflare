@@ -19,7 +19,7 @@ __all__ = ['CloudforceOneRequestArgs', 'CloudforceOneRequest']
 @pulumi.input_type
 class CloudforceOneRequestArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  content: Optional[pulumi.Input[_builtins.str]] = None,
                  priority: Optional[pulumi.Input[_builtins.str]] = None,
                  request_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -36,7 +36,8 @@ class CloudforceOneRequestArgs:
         :param pulumi.Input[_builtins.str] tlp: The CISA defined Traffic Light Protocol (TLP).
                Available values: "clear", "amber", "amber-strict", "green", "red".
         """
-        pulumi.set(__self__, "account_id", account_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if content is not None:
             pulumi.set(__self__, "content", content)
         if priority is not None:
@@ -50,14 +51,14 @@ class CloudforceOneRequestArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -361,6 +362,11 @@ class CloudforceOneRequest(pulumi.CustomResource):
                  tlp: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Cloudforce One Read`
+        - `Cloudforce One Write`
+
         ## Example Usage
 
         ```python
@@ -397,9 +403,14 @@ class CloudforceOneRequest(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CloudforceOneRequestArgs,
+                 args: Optional[CloudforceOneRequestArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Cloudforce One Read`
+        - `Cloudforce One Write`
+
         ## Example Usage
 
         ```python
@@ -452,8 +463,6 @@ class CloudforceOneRequest(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudforceOneRequestArgs.__new__(CloudforceOneRequestArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["content"] = content
             __props__.__dict__["priority"] = priority
@@ -535,7 +544,7 @@ class CloudforceOneRequest(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

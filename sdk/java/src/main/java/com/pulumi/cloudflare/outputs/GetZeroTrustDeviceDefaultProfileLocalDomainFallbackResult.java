@@ -8,10 +8,12 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return A description of the fallback domain, displayed in the client UI.
      * 
@@ -34,8 +36,8 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
     private String suffix;
 
     private GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return A description of the fallback domain, displayed in the client UI.
@@ -75,7 +77,7 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String description;
         private List<String> dnsServers;
         private String id;
@@ -91,10 +93,8 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

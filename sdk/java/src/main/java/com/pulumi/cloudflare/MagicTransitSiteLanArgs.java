@@ -26,15 +26,15 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
      * Identifier
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="bondId")
@@ -57,6 +57,36 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<Boolean>> haLink() {
         return Optional.ofNullable(this.haLink);
+    }
+
+    /**
+     * mark true to use this LAN for source-based breakout traffic
+     * 
+     */
+    @Import(name="isBreakout")
+    private @Nullable Output<Boolean> isBreakout;
+
+    /**
+     * @return mark true to use this LAN for source-based breakout traffic
+     * 
+     */
+    public Optional<Output<Boolean>> isBreakout() {
+        return Optional.ofNullable(this.isBreakout);
+    }
+
+    /**
+     * mark true to use this LAN for source-based prioritized traffic
+     * 
+     */
+    @Import(name="isPrioritized")
+    private @Nullable Output<Boolean> isPrioritized;
+
+    /**
+     * @return mark true to use this LAN for source-based prioritized traffic
+     * 
+     */
+    public Optional<Output<Boolean>> isPrioritized() {
+        return Optional.ofNullable(this.isPrioritized);
     }
 
     @Import(name="name")
@@ -138,6 +168,8 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
         this.accountId = $.accountId;
         this.bondId = $.bondId;
         this.haLink = $.haLink;
+        this.isBreakout = $.isBreakout;
+        this.isPrioritized = $.isPrioritized;
         this.name = $.name;
         this.nat = $.nat;
         this.physport = $.physport;
@@ -171,7 +203,7 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -214,6 +246,48 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
          */
         public Builder haLink(Boolean haLink) {
             return haLink(Output.of(haLink));
+        }
+
+        /**
+         * @param isBreakout mark true to use this LAN for source-based breakout traffic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isBreakout(@Nullable Output<Boolean> isBreakout) {
+            $.isBreakout = isBreakout;
+            return this;
+        }
+
+        /**
+         * @param isBreakout mark true to use this LAN for source-based breakout traffic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isBreakout(Boolean isBreakout) {
+            return isBreakout(Output.of(isBreakout));
+        }
+
+        /**
+         * @param isPrioritized mark true to use this LAN for source-based prioritized traffic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isPrioritized(@Nullable Output<Boolean> isPrioritized) {
+            $.isPrioritized = isPrioritized;
+            return this;
+        }
+
+        /**
+         * @param isPrioritized mark true to use this LAN for source-based prioritized traffic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isPrioritized(Boolean isPrioritized) {
+            return isPrioritized(Output.of(isPrioritized));
         }
 
         public Builder name(@Nullable Output<String> name) {
@@ -320,9 +394,6 @@ public final class MagicTransitSiteLanArgs extends com.pulumi.resources.Resource
         }
 
         public MagicTransitSiteLanArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("MagicTransitSiteLanArgs", "accountId");
-            }
             if ($.siteId == null) {
                 throw new MissingRequiredPropertyException("MagicTransitSiteLanArgs", "siteId");
             }

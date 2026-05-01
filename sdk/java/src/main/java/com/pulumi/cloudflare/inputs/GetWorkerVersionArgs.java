@@ -20,15 +20,15 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
      * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -49,14 +49,14 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+     * Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal &#34;latest&#34; to operate on the most recently created version.
      * 
      */
     @Import(name="versionId", required=true)
     private Output<String> versionId;
 
     /**
-     * @return Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+     * @return Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal &#34;latest&#34; to operate on the most recently created version.
      * 
      */
     public Output<String> versionId() {
@@ -111,7 +111,7 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -150,7 +150,7 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param versionId Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+         * @param versionId Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal &#34;latest&#34; to operate on the most recently created version.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param versionId Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+         * @param versionId Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal &#34;latest&#34; to operate on the most recently created version.
          * 
          * @return builder
          * 
@@ -192,9 +192,6 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetWorkerVersionArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetWorkerVersionArgs", "accountId");
-            }
             if ($.versionId == null) {
                 throw new MissingRequiredPropertyException("GetWorkerVersionArgs", "versionId");
             }

@@ -3,10 +3,11 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpPortalServerUpdatedTool;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -39,8 +40,8 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     private List<Map<String,String>> prompts;
     private String status;
     private List<Map<String,String>> tools;
-    private Object updatedPrompts;
-    private Object updatedTools;
+    private List<GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt> updatedPrompts;
+    private List<GetZeroTrustAccessAiControlsMcpPortalServerUpdatedTool> updatedTools;
 
     private GetZeroTrustAccessAiControlsMcpPortalServer() {}
     /**
@@ -102,10 +103,10 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     public List<Map<String,String>> tools() {
         return this.tools;
     }
-    public Object updatedPrompts() {
+    public List<GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt> updatedPrompts() {
         return this.updatedPrompts;
     }
-    public Object updatedTools() {
+    public List<GetZeroTrustAccessAiControlsMcpPortalServerUpdatedTool> updatedTools() {
         return this.updatedTools;
     }
 
@@ -135,8 +136,8 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
         private List<Map<String,String>> prompts;
         private String status;
         private List<Map<String,String>> tools;
-        private Object updatedPrompts;
-        private Object updatedTools;
+        private List<GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt> updatedPrompts;
+        private List<GetZeroTrustAccessAiControlsMcpPortalServerUpdatedTool> updatedTools;
         public Builder() {}
         public Builder(GetZeroTrustAccessAiControlsMcpPortalServer defaults) {
     	      Objects.requireNonNull(defaults);
@@ -298,20 +299,26 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
             return this;
         }
         @CustomType.Setter
-        public Builder updatedPrompts(Object updatedPrompts) {
+        public Builder updatedPrompts(List<GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt> updatedPrompts) {
             if (updatedPrompts == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalServer", "updatedPrompts");
             }
             this.updatedPrompts = updatedPrompts;
             return this;
         }
+        public Builder updatedPrompts(GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt... updatedPrompts) {
+            return updatedPrompts(List.of(updatedPrompts));
+        }
         @CustomType.Setter
-        public Builder updatedTools(Object updatedTools) {
+        public Builder updatedTools(List<GetZeroTrustAccessAiControlsMcpPortalServerUpdatedTool> updatedTools) {
             if (updatedTools == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalServer", "updatedTools");
             }
             this.updatedTools = updatedTools;
             return this;
+        }
+        public Builder updatedTools(GetZeroTrustAccessAiControlsMcpPortalServerUpdatedTool... updatedTools) {
+            return updatedTools(List.of(updatedTools));
         }
         public GetZeroTrustAccessAiControlsMcpPortalServer build() {
             final var _resultValue = new GetZeroTrustAccessAiControlsMcpPortalServer();

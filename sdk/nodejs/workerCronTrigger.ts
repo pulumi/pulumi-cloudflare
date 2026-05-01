@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -62,7 +67,7 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public readonly schedules: pulumi.Output<outputs.WorkerCronTriggerSchedule[]>;
     /**
      * Name of the script, used in URLs and route configuration.
@@ -90,9 +95,6 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
             resourceInputs["scriptName"] = state?.scriptName;
         } else {
             const args = argsOrState as WorkerCronTriggerArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.schedules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schedules'");
             }
@@ -132,7 +134,7 @@ export interface WorkerCronTriggerArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     schedules: pulumi.Input<pulumi.Input<inputs.WorkerCronTriggerSchedule>[]>;
     /**
      * Name of the script, used in URLs and route configuration.

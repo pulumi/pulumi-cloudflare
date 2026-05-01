@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetApiTokenPermissionGroupsList
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `API Tokens Read`
+        /// - `API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiTokenPermissionGroupsListResult>("cloudflare:index/getApiTokenPermissionGroupsList:getApiTokenPermissionGroupsList", args ?? new GetApiTokenPermissionGroupsListArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `API Tokens Read`
+        /// - `API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetApiTokenPermissionGroupsListResult>("cloudflare:index/getApiTokenPermissionGroupsList:getApiTokenPermissionGroupsList", args ?? new GetApiTokenPermissionGroupsListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `API Tokens Read`
+        /// - `API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

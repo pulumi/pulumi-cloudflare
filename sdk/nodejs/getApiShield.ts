@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getApiShield(args: GetApiShieldArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldResult> {
+export function getApiShield(args?: GetApiShieldArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShield:getApiShield", {
         "normalize": args.normalize,
@@ -38,7 +46,7 @@ export interface GetApiShieldArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -57,9 +65,16 @@ export interface GetApiShieldResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -72,7 +87,8 @@ export interface GetApiShieldResult {
  * });
  * ```
  */
-export function getApiShieldOutput(args: GetApiShieldOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldResult> {
+export function getApiShieldOutput(args?: GetApiShieldOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShield:getApiShield", {
         "normalize": args.normalize,
@@ -91,5 +107,5 @@ export interface GetApiShieldOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

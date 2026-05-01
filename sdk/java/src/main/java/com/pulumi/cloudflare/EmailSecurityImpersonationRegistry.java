@@ -13,9 +13,15 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -66,14 +72,14 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Account Identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     @Export(name="comments", refs={String.class}, tree="[0]")
     private Output<String> comments;

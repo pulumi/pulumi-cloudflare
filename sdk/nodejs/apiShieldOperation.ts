@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -77,7 +84,7 @@ export class ApiShieldOperation extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ApiShieldOperation resource with the given unique name, arguments, and options.
@@ -109,9 +116,6 @@ export class ApiShieldOperation extends pulumi.CustomResource {
             }
             if (args?.method === undefined && !opts.urn) {
                 throw new Error("Missing required property 'method'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["endpoint"] = args?.endpoint;
             resourceInputs["host"] = args?.host;
@@ -175,5 +179,5 @@ export interface ApiShieldOperationArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

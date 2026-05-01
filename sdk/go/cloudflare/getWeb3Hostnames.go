@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Web3 Hostnames Read`
+// - `Web3 Hostnames Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWeb3Hostnames(ctx, &cloudflare.LookupWeb3HostnamesArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +56,7 @@ type LookupWeb3HostnamesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Specify the identifier of the hostname.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getWeb3Hostnames.
@@ -63,7 +68,7 @@ type LookupWeb3HostnamesResult struct {
 	// The items returned by the data source
 	Results []GetWeb3HostnamesResult `pulumi:"results"`
 	// Specify the identifier of the hostname.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupWeb3HostnamesOutput(ctx *pulumi.Context, args LookupWeb3HostnamesOutputArgs, opts ...pulumi.InvokeOption) LookupWeb3HostnamesResultOutput {
@@ -80,7 +85,7 @@ type LookupWeb3HostnamesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Specify the identifier of the hostname.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupWeb3HostnamesOutputArgs) ElementType() reflect.Type {
@@ -118,8 +123,8 @@ func (o LookupWeb3HostnamesResultOutput) Results() GetWeb3HostnamesResultArrayOu
 }
 
 // Specify the identifier of the hostname.
-func (o LookupWeb3HostnamesResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWeb3HostnamesResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupWeb3HostnamesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWeb3HostnamesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -98,7 +98,7 @@ class GetLoadBalancerPoolResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -296,6 +296,11 @@ def get_load_balancer_pool(account_id: Optional[_builtins.str] = None,
                            pool_id: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerPoolResult:
     """
+    Accepted Permissions
+
+    - `Load Balancing: Monitors and Pools Read`
+    - `Load Balancing: Monitors and Pools Write`
+
     ## Example Usage
 
     ```python
@@ -339,11 +344,16 @@ def get_load_balancer_pool(account_id: Optional[_builtins.str] = None,
         origin_steering=pulumi.get(__ret__, 'origin_steering'),
         origins=pulumi.get(__ret__, 'origins'),
         pool_id=pulumi.get(__ret__, 'pool_id'))
-def get_load_balancer_pool_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_load_balancer_pool_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   filter: Optional[pulumi.Input[Optional[Union['GetLoadBalancerPoolFilterArgs', 'GetLoadBalancerPoolFilterArgsDict']]]] = None,
                                   pool_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerPoolResult]:
     """
+    Accepted Permissions
+
+    - `Load Balancing: Monitors and Pools Read`
+    - `Load Balancing: Monitors and Pools Write`
+
     ## Example Usage
 
     ```python

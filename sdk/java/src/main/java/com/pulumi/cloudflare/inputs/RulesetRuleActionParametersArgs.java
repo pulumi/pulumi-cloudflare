@@ -219,6 +219,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
+     * Whether to enable content conversion (e.g., HTML to Markdown).
+     * 
+     */
+    @Import(name="contentConverter")
+    private @Nullable Output<Boolean> contentConverter;
+
+    /**
+     * @return Whether to enable content conversion (e.g., HTML to Markdown).
+     * 
+     */
+    public Optional<Output<Boolean>> contentConverter() {
+        return Optional.ofNullable(this.contentConverter);
+    }
+
+    /**
      * The content type header to set with the error response.
      * Available values: &#34;application/json&#34;, &#34;text/html&#34;, &#34;text/plain&#34;, &#34;text/xml&#34;.
      * 
@@ -814,6 +829,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
+     * Whether to redirect verified AI training crawlers to canonical URLs.
+     * 
+     */
+    @Import(name="redirectsForAiTraining")
+    private @Nullable Output<Boolean> redirectsForAiTraining;
+
+    /**
+     * @return Whether to redirect verified AI training crawlers to canonical URLs.
+     * 
+     */
+    public Optional<Output<Boolean>> redirectsForAiTraining() {
+        return Optional.ofNullable(this.redirectsForAiTraining);
+    }
+
+    /**
      * The request body buffering mode to configure.
      * Available values: &#34;none&#34;, &#34;standard&#34;, &#34;full&#34;.
      * 
@@ -1227,6 +1257,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.cacheKey = $.cacheKey;
         this.cacheReserve = $.cacheReserve;
         this.content = $.content;
+        this.contentConverter = $.contentConverter;
         this.contentType = $.contentType;
         this.cookieFields = $.cookieFields;
         this.disableApps = $.disableApps;
@@ -1266,6 +1297,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.public_ = $.public_;
         this.rawResponseFields = $.rawResponseFields;
         this.readTimeout = $.readTimeout;
+        this.redirectsForAiTraining = $.redirectsForAiTraining;
         this.requestBodyBuffering = $.requestBodyBuffering;
         this.requestFields = $.requestFields;
         this.respectStrongEtags = $.respectStrongEtags;
@@ -1561,6 +1593,27 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder content(String content) {
             return content(Output.of(content));
+        }
+
+        /**
+         * @param contentConverter Whether to enable content conversion (e.g., HTML to Markdown).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentConverter(@Nullable Output<Boolean> contentConverter) {
+            $.contentConverter = contentConverter;
+            return this;
+        }
+
+        /**
+         * @param contentConverter Whether to enable content conversion (e.g., HTML to Markdown).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentConverter(Boolean contentConverter) {
+            return contentConverter(Output.of(contentConverter));
         }
 
         /**
@@ -2432,6 +2485,27 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder readTimeout(Integer readTimeout) {
             return readTimeout(Output.of(readTimeout));
+        }
+
+        /**
+         * @param redirectsForAiTraining Whether to redirect verified AI training crawlers to canonical URLs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectsForAiTraining(@Nullable Output<Boolean> redirectsForAiTraining) {
+            $.redirectsForAiTraining = redirectsForAiTraining;
+            return this;
+        }
+
+        /**
+         * @param redirectsForAiTraining Whether to redirect verified AI training crawlers to canonical URLs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectsForAiTraining(Boolean redirectsForAiTraining) {
+            return redirectsForAiTraining(Output.of(redirectsForAiTraining));
         }
 
         /**

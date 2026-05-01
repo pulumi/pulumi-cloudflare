@@ -49,7 +49,7 @@ class GetAccountPermissionGroupsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account identifier tag.
         """
@@ -117,6 +117,38 @@ def get_account_permission_groups(account_id: Optional[_builtins.str] = None,
                                   name: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountPermissionGroupsResult:
     """
+    Accepted Permissions
+
+    - `Account Firewall Access Rules Read`
+    - `Account Firewall Access Rules Write`
+    - `Account Settings Read`
+    - `Account Settings Write`
+    - `Billing Read`
+    - `Billing Write`
+    - `DDoS Botnet Feed Read`
+    - `DDoS Botnet Feed Write`
+    - `DDoS Protection Read`
+    - `DDoS Protection Write`
+    - `DNS Firewall Read`
+    - `DNS Firewall Write`
+    - `DNS View Read`
+    - `DNS View Write`
+    - `Load Balancers Account Read`
+    - `Load Balancers Account Write`
+    - `Load Balancing: Monitors and Pools Read`
+    - `Load Balancing: Monitors and Pools Write`
+    - `SCIM Provisioning`
+    - `Trust and Safety Read`
+    - `Trust and Safety Write`
+    - `Workers KV Storage Read`
+    - `Workers KV Storage Write`
+    - `Workers R2 Storage Read`
+    - `Workers R2 Storage Write`
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+    - `Zero Trust: PII Read`
+
     ## Example Usage
 
     ```python
@@ -152,13 +184,45 @@ def get_account_permission_groups(account_id: Optional[_builtins.str] = None,
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
         results=pulumi.get(__ret__, 'results'))
-def get_account_permission_groups_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_permission_groups_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          label: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                          name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountPermissionGroupsResult]:
     """
+    Accepted Permissions
+
+    - `Account Firewall Access Rules Read`
+    - `Account Firewall Access Rules Write`
+    - `Account Settings Read`
+    - `Account Settings Write`
+    - `Billing Read`
+    - `Billing Write`
+    - `DDoS Botnet Feed Read`
+    - `DDoS Botnet Feed Write`
+    - `DDoS Protection Read`
+    - `DDoS Protection Write`
+    - `DNS Firewall Read`
+    - `DNS Firewall Write`
+    - `DNS View Read`
+    - `DNS View Write`
+    - `Load Balancers Account Read`
+    - `Load Balancers Account Write`
+    - `Load Balancing: Monitors and Pools Read`
+    - `Load Balancing: Monitors and Pools Write`
+    - `SCIM Provisioning`
+    - `Trust and Safety Read`
+    - `Trust and Safety Write`
+    - `Workers KV Storage Read`
+    - `Workers KV Storage Write`
+    - `Workers R2 Storage Read`
+    - `Workers R2 Storage Write`
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+    - `Zero Trust: PII Read`
+
     ## Example Usage
 
     ```python

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -54,15 +59,14 @@ export class ObservatoryScheduledTest extends pulumi.CustomResource {
     }
 
     /**
-     * The frequency of the test.
-     * Available values: "DAILY", "WEEKLY".
+     * The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
      */
-    declare public /*out*/ readonly frequency: pulumi.Output<string>;
+    declare public readonly frequency: pulumi.Output<string>;
     /**
      * A test region.
      * Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
      */
-    declare public /*out*/ readonly region: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The test schedule.
      */
@@ -75,7 +79,7 @@ export class ObservatoryScheduledTest extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ObservatoryScheduledTest resource with the given unique name, arguments, and options.
@@ -101,13 +105,10 @@ export class ObservatoryScheduledTest extends pulumi.CustomResource {
             if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
-            }
+            resourceInputs["frequency"] = args?.frequency;
+            resourceInputs["region"] = args?.region;
             resourceInputs["url"] = args?.url;
             resourceInputs["zoneId"] = args?.zoneId;
-            resourceInputs["frequency"] = undefined /*out*/;
-            resourceInputs["region"] = undefined /*out*/;
             resourceInputs["schedule"] = undefined /*out*/;
             resourceInputs["test"] = undefined /*out*/;
         }
@@ -121,8 +122,7 @@ export class ObservatoryScheduledTest extends pulumi.CustomResource {
  */
 export interface ObservatoryScheduledTestState {
     /**
-     * The frequency of the test.
-     * Available values: "DAILY", "WEEKLY".
+     * The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
      */
     frequency?: pulumi.Input<string>;
     /**
@@ -150,11 +150,20 @@ export interface ObservatoryScheduledTestState {
  */
 export interface ObservatoryScheduledTestArgs {
     /**
+     * The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+     */
+    frequency?: pulumi.Input<string>;
+    /**
+     * A test region.
+     * Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+     */
+    region?: pulumi.Input<string>;
+    /**
      * A URL.
      */
     url: pulumi.Input<string>;
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

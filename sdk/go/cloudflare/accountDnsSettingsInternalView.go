@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS View Read`
+// - `DNS View Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -51,7 +56,7 @@ type AccountDnsSettingsInternalView struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// When the view was created.
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
 	// When the view was last modified.
@@ -69,9 +74,6 @@ func NewAccountDnsSettingsInternalView(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -132,7 +134,7 @@ func (AccountDnsSettingsInternalViewState) ElementType() reflect.Type {
 
 type accountDnsSettingsInternalViewArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The name of the view.
 	Name string `pulumi:"name"`
 	// The list of zones linked to this view.
@@ -142,7 +144,7 @@ type accountDnsSettingsInternalViewArgs struct {
 // The set of arguments for constructing a AccountDnsSettingsInternalView resource.
 type AccountDnsSettingsInternalViewArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// The name of the view.
 	Name pulumi.StringInput
 	// The list of zones linked to this view.
@@ -237,8 +239,8 @@ func (o AccountDnsSettingsInternalViewOutput) ToAccountDnsSettingsInternalViewOu
 }
 
 // Identifier.
-func (o AccountDnsSettingsInternalViewOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccountDnsSettingsInternalView) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o AccountDnsSettingsInternalViewOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountDnsSettingsInternalView) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // When the view was created.

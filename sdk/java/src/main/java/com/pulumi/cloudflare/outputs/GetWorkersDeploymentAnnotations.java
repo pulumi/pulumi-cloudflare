@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersDeploymentAnnotations {
     /**
-     * @return Human-readable message about the deployment. Truncated to 100 bytes.
+     * @return Human-readable message about the deployment. Truncated to 1000 bytes if longer.
      * 
      */
     private String workersMessage;
@@ -23,7 +23,7 @@ public final class GetWorkersDeploymentAnnotations {
 
     private GetWorkersDeploymentAnnotations() {}
     /**
-     * @return Human-readable message about the deployment. Truncated to 100 bytes.
+     * @return Human-readable message about the deployment. Truncated to 1000 bytes if longer.
      * 
      */
     public String workersMessage() {

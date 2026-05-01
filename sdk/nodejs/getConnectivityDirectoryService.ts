@@ -19,7 +19,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getConnectivityDirectoryService(args: GetConnectivityDirectoryServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectivityDirectoryServiceResult> {
+export function getConnectivityDirectoryService(args?: GetConnectivityDirectoryServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectivityDirectoryServiceResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getConnectivityDirectoryService:getConnectivityDirectoryService", {
         "accountId": args.accountId,
@@ -32,7 +33,7 @@ export function getConnectivityDirectoryService(args: GetConnectivityDirectorySe
  * A collection of arguments for invoking getConnectivityDirectoryService.
  */
 export interface GetConnectivityDirectoryServiceArgs {
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetConnectivityDirectoryServiceFilter;
     serviceId?: string;
 }
@@ -41,7 +42,11 @@ export interface GetConnectivityDirectoryServiceArgs {
  * A collection of values returned by getConnectivityDirectoryService.
  */
 export interface GetConnectivityDirectoryServiceResult {
-    readonly accountId: string;
+    readonly accountId?: string;
+    /**
+     * Available values: "postgresql", "mysql".
+     */
+    readonly appProtocol: string;
     readonly createdAt: string;
     readonly filter?: outputs.GetConnectivityDirectoryServiceFilter;
     readonly host: outputs.GetConnectivityDirectoryServiceHost;
@@ -53,9 +58,11 @@ export interface GetConnectivityDirectoryServiceResult {
     readonly id: string;
     readonly name: string;
     readonly serviceId: string;
+    readonly tcpPort: number;
     /**
-     * Available values: "http".
+     * TLS settings for a connectivity service.
      */
+    readonly tlsSettings: outputs.GetConnectivityDirectoryServiceTlsSettings;
     readonly type: string;
     readonly updatedAt: string;
 }
@@ -72,7 +79,8 @@ export interface GetConnectivityDirectoryServiceResult {
  * });
  * ```
  */
-export function getConnectivityDirectoryServiceOutput(args: GetConnectivityDirectoryServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectivityDirectoryServiceResult> {
+export function getConnectivityDirectoryServiceOutput(args?: GetConnectivityDirectoryServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectivityDirectoryServiceResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getConnectivityDirectoryService:getConnectivityDirectoryService", {
         "accountId": args.accountId,
@@ -85,7 +93,7 @@ export function getConnectivityDirectoryServiceOutput(args: GetConnectivityDirec
  * A collection of arguments for invoking getConnectivityDirectoryService.
  */
 export interface GetConnectivityDirectoryServiceOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetConnectivityDirectoryServiceFilterArgs>;
     serviceId?: pulumi.Input<string>;
 }

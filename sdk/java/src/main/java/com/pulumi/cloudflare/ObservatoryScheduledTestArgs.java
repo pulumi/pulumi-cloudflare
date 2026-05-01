@@ -8,11 +8,45 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ObservatoryScheduledTestArgs Empty = new ObservatoryScheduledTestArgs();
+
+    /**
+     * The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+     * 
+     */
+    @Import(name="frequency")
+    private @Nullable Output<String> frequency;
+
+    /**
+     * @return The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+     * 
+     */
+    public Optional<Output<String>> frequency() {
+        return Optional.ofNullable(this.frequency);
+    }
+
+    /**
+     * A test region.
+     * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return A test region.
+     * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
 
     /**
      * A URL.
@@ -33,20 +67,22 @@ public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.Res
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private ObservatoryScheduledTestArgs() {}
 
     private ObservatoryScheduledTestArgs(ObservatoryScheduledTestArgs $) {
+        this.frequency = $.frequency;
+        this.region = $.region;
         this.url = $.url;
         this.zoneId = $.zoneId;
     }
@@ -67,6 +103,50 @@ public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.Res
 
         public Builder(ObservatoryScheduledTestArgs defaults) {
             $ = new ObservatoryScheduledTestArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param frequency The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder frequency(@Nullable Output<String> frequency) {
+            $.frequency = frequency;
+            return this;
+        }
+
+        /**
+         * @param frequency The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder frequency(String frequency) {
+            return frequency(Output.of(frequency));
+        }
+
+        /**
+         * @param region A test region.
+         * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region A test region.
+         * Available values: &#34;asia-east1&#34;, &#34;asia-northeast1&#34;, &#34;asia-northeast2&#34;, &#34;asia-south1&#34;, &#34;asia-southeast1&#34;, &#34;australia-southeast1&#34;, &#34;europe-north1&#34;, &#34;europe-southwest1&#34;, &#34;europe-west1&#34;, &#34;europe-west2&#34;, &#34;europe-west3&#34;, &#34;europe-west4&#34;, &#34;europe-west8&#34;, &#34;europe-west9&#34;, &#34;me-west1&#34;, &#34;southamerica-east1&#34;, &#34;us-central1&#34;, &#34;us-east1&#34;, &#34;us-east4&#34;, &#34;us-south1&#34;, &#34;us-west1&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**
@@ -96,7 +176,7 @@ public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -114,9 +194,6 @@ public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.Res
         public ObservatoryScheduledTestArgs build() {
             if ($.url == null) {
                 throw new MissingRequiredPropertyException("ObservatoryScheduledTestArgs", "url");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("ObservatoryScheduledTestArgs", "zoneId");
             }
             return $;
         }

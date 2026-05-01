@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetWorker
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +37,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWorkerResult> InvokeAsync(GetWorkerArgs args, InvokeOptions? options = null)
+        public static Task<GetWorkerResult> InvokeAsync(GetWorkerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkerResult>("cloudflare:index/getWorker:getWorker", args ?? new GetWorkerArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +66,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWorkerResult> Invoke(GetWorkerInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetWorkerResult> Invoke(GetWorkerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkerResult>("cloudflare:index/getWorker:getWorker", args ?? new GetWorkerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,14 +105,17 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
+
+        [Input("filter")]
+        public Inputs.GetWorkerFilterArgs? Filter { get; set; }
 
         /// <summary>
         /// Identifier for the Worker, which can be ID or name.
         /// </summary>
-        [Input("workerId", required: true)]
-        public string WorkerId { get; set; } = null!;
+        [Input("workerId")]
+        public string? WorkerId { get; set; }
 
         public GetWorkerArgs()
         {
@@ -107,14 +128,17 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        [Input("filter")]
+        public Input<Inputs.GetWorkerFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
         /// Identifier for the Worker, which can be ID or name.
         /// </summary>
-        [Input("workerId", required: true)]
-        public Input<string> WorkerId { get; set; } = null!;
+        [Input("workerId")]
+        public Input<string>? WorkerId { get; set; }
 
         public GetWorkerInvokeArgs()
         {
@@ -129,11 +153,16 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// When the Worker was created.
         /// </summary>
         public readonly string CreatedOn;
+        /// <summary>
+        /// When the Worker's most recent deployment was created. `Null` if the Worker has never been deployed.
+        /// </summary>
+        public readonly string DeployedOn;
+        public readonly Outputs.GetWorkerFilterResult? Filter;
         /// <summary>
         /// Identifier for the Worker, which can be ID or name.
         /// </summary>
@@ -173,13 +202,17 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier for the Worker, which can be ID or name.
         /// </summary>
-        public readonly string WorkerId;
+        public readonly string? WorkerId;
 
         [OutputConstructor]
         private GetWorkerResult(
-            string accountId,
+            string? accountId,
 
             string createdOn,
+
+            string deployedOn,
+
+            Outputs.GetWorkerFilterResult? filter,
 
             string id,
 
@@ -199,10 +232,12 @@ namespace Pulumi.Cloudflare
 
             string updatedOn,
 
-            string workerId)
+            string? workerId)
         {
             AccountId = accountId;
             CreatedOn = createdOn;
+            DeployedOn = deployedOn;
+            Filter = filter;
             Id = id;
             Logpush = logpush;
             Name = name;

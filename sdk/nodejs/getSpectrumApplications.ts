@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getSpectrumApplications(args: GetSpectrumApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetSpectrumApplicationsResult> {
+export function getSpectrumApplications(args?: GetSpectrumApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetSpectrumApplicationsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSpectrumApplications:getSpectrumApplications", {
         "direction": args.direction,
@@ -49,7 +55,7 @@ export interface GetSpectrumApplicationsArgs {
     /**
      * Zone identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -81,9 +87,14 @@ export interface GetSpectrumApplicationsResult {
     /**
      * Zone identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -95,7 +106,8 @@ export interface GetSpectrumApplicationsResult {
  * });
  * ```
  */
-export function getSpectrumApplicationsOutput(args: GetSpectrumApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpectrumApplicationsResult> {
+export function getSpectrumApplicationsOutput(args?: GetSpectrumApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpectrumApplicationsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSpectrumApplications:getSpectrumApplications", {
         "direction": args.direction,
@@ -126,5 +138,5 @@ export interface GetSpectrumApplicationsOutputArgs {
     /**
      * Zone identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -182,6 +182,11 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Access: Mutual TLS Certificates Read`
+        - `Access: Mutual TLS Certificates Write`
+
         ## Example Usage
 
         ```python
@@ -214,6 +219,11 @@ class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
                  args: ZeroTrustAccessMtlsHostnameSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Access: Mutual TLS Certificates Read`
+        - `Access: Mutual TLS Certificates Write`
+
         ## Example Usage
 
         ```python

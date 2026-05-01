@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers KV Storage Read`
+// - `Workers KV Storage Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersKvNamespaces(ctx, &cloudflare.LookupWorkersKvNamespacesArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction: pulumi.StringRef("asc"),
 //				Order:     pulumi.StringRef("id"),
 //			}, nil)
@@ -51,7 +56,7 @@ func LookupWorkersKvNamespaces(ctx *pulumi.Context, args *LookupWorkersKvNamespa
 // A collection of arguments for invoking getWorkersKvNamespaces.
 type LookupWorkersKvNamespacesArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Direction to order namespaces.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
@@ -65,7 +70,7 @@ type LookupWorkersKvNamespacesArgs struct {
 // A collection of values returned by getWorkersKvNamespaces.
 type LookupWorkersKvNamespacesResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Direction to order namespaces.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
@@ -92,7 +97,7 @@ func LookupWorkersKvNamespacesOutput(ctx *pulumi.Context, args LookupWorkersKvNa
 // A collection of arguments for invoking getWorkersKvNamespaces.
 type LookupWorkersKvNamespacesOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Direction to order namespaces.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
@@ -123,8 +128,8 @@ func (o LookupWorkersKvNamespacesResultOutput) ToLookupWorkersKvNamespacesResult
 }
 
 // Identifier.
-func (o LookupWorkersKvNamespacesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersKvNamespacesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupWorkersKvNamespacesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersKvNamespacesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Direction to order namespaces.

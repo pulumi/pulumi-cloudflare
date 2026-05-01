@@ -27,13 +27,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewBotManagement(ctx, "example_bot_management", &cloudflare.BotManagementArgs{
-//				ZoneId:             pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				AiBotsProtection:   pulumi.String("block"),
-//				CfRobotsVariant:    pulumi.String("policy_only"),
-//				CrawlerProtection:  pulumi.String("enabled"),
-//				EnableJs:           pulumi.Bool(true),
-//				FightMode:          pulumi.Bool(true),
-//				IsRobotsTxtManaged: pulumi.Bool(false),
+//				ZoneId:                pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AiBotsProtection:      pulumi.String("block"),
+//				CfRobotsVariant:       pulumi.String("policy_only"),
+//				ContentBotsProtection: pulumi.String("disabled"),
+//				CrawlerProtection:     pulumi.String("enabled"),
+//				EnableJs:              pulumi.Bool(true),
+//				FightMode:             pulumi.Bool(true),
+//				IsRobotsTxtManaged:    pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -62,6 +63,9 @@ type BotManagement struct {
 	// Specifies the Robots Access Control License variant to use.
 	// Available values: "off", "policyOnly".
 	CfRobotsVariant pulumi.StringOutput `pulumi:"cfRobotsVariant"`
+	// Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+	// Available values: "block", "disabled".
+	ContentBotsProtection pulumi.StringOutput `pulumi:"contentBotsProtection"`
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection pulumi.StringOutput `pulumi:"crawlerProtection"`
@@ -139,6 +143,9 @@ type botManagementState struct {
 	// Specifies the Robots Access Control License variant to use.
 	// Available values: "off", "policyOnly".
 	CfRobotsVariant *string `pulumi:"cfRobotsVariant"`
+	// Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+	// Available values: "block", "disabled".
+	ContentBotsProtection *string `pulumi:"contentBotsProtection"`
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection *string `pulumi:"crawlerProtection"`
@@ -184,6 +191,9 @@ type BotManagementState struct {
 	// Specifies the Robots Access Control License variant to use.
 	// Available values: "off", "policyOnly".
 	CfRobotsVariant pulumi.StringPtrInput
+	// Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+	// Available values: "block", "disabled".
+	ContentBotsProtection pulumi.StringPtrInput
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection pulumi.StringPtrInput
@@ -233,6 +243,9 @@ type botManagementArgs struct {
 	// Specifies the Robots Access Control License variant to use.
 	// Available values: "off", "policyOnly".
 	CfRobotsVariant *string `pulumi:"cfRobotsVariant"`
+	// Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+	// Available values: "block", "disabled".
+	ContentBotsProtection *string `pulumi:"contentBotsProtection"`
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection *string `pulumi:"crawlerProtection"`
@@ -275,6 +288,9 @@ type BotManagementArgs struct {
 	// Specifies the Robots Access Control License variant to use.
 	// Available values: "off", "policyOnly".
 	CfRobotsVariant pulumi.StringPtrInput
+	// Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+	// Available values: "block", "disabled".
+	ContentBotsProtection pulumi.StringPtrInput
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection pulumi.StringPtrInput
@@ -412,6 +428,12 @@ func (o BotManagementOutput) BmCookieEnabled() pulumi.BoolOutput {
 // Available values: "off", "policyOnly".
 func (o BotManagementOutput) CfRobotsVariant() pulumi.StringOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.StringOutput { return v.CfRobotsVariant }).(pulumi.StringOutput)
+}
+
+// Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+// Available values: "block", "disabled".
+func (o BotManagementOutput) ContentBotsProtection() pulumi.StringOutput {
+	return o.ApplyT(func(v *BotManagement) pulumi.StringOutput { return v.ContentBotsProtection }).(pulumi.StringOutput)
 }
 
 // Enable rule to punish AI Scrapers and Crawlers via a link maze.

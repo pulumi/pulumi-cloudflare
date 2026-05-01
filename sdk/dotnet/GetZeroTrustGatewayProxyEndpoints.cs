@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustGatewayProxyEndpointsResult> InvokeAsync(GetZeroTrustGatewayProxyEndpointsArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustGatewayProxyEndpointsResult> InvokeAsync(GetZeroTrustGatewayProxyEndpointsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustGatewayProxyEndpointsResult>("cloudflare:index/getZeroTrustGatewayProxyEndpoints:getZeroTrustGatewayProxyEndpoints", args ?? new GetZeroTrustGatewayProxyEndpointsArgs(), options.WithDefaults());
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustGatewayProxyEndpointsResult> Invoke(GetZeroTrustGatewayProxyEndpointsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustGatewayProxyEndpointsResult> Invoke(GetZeroTrustGatewayProxyEndpointsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustGatewayProxyEndpointsResult>("cloudflare:index/getZeroTrustGatewayProxyEndpoints:getZeroTrustGatewayProxyEndpoints", args ?? new GetZeroTrustGatewayProxyEndpointsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayProxyEndpointsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -98,8 +98,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayProxyEndpointsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustGatewayProxyEndpointsResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustGatewayProxyEndpointsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

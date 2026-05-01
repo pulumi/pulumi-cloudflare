@@ -19,6 +19,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Access: Mutual TLS Certificates Read`
+ * - `Access: Mutual TLS Certificates Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

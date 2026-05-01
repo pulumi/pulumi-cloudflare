@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetArgoTieredCachingResult> InvokeAsync(GetArgoTieredCachingArgs args, InvokeOptions? options = null)
+        public static Task<GetArgoTieredCachingResult> InvokeAsync(GetArgoTieredCachingArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetArgoTieredCachingResult>("cloudflare:index/getArgoTieredCaching:getArgoTieredCaching", args ?? new GetArgoTieredCachingArgs(), options.WithDefaults());
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetArgoTieredCachingResult> Invoke(GetArgoTieredCachingInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetArgoTieredCachingResult> Invoke(GetArgoTieredCachingInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetArgoTieredCachingResult>("cloudflare:index/getArgoTieredCaching:getArgoTieredCaching", args ?? new GetArgoTieredCachingInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetArgoTieredCachingArgs()
         {
@@ -98,8 +98,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetArgoTieredCachingInvokeArgs()
         {
@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetArgoTieredCachingResult(
@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare
 
             string value,
 
-            string zoneId)
+            string? zoneId)
         {
             Editable = editable;
             Id = id;

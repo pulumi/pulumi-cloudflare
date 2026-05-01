@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCertificatePacks(ctx, &cloudflare.LookupCertificatePacksArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Deploy: pulumi.StringRef("staging"),
 //				Status: pulumi.StringRef("all"),
 //			}, nil)
@@ -59,7 +64,7 @@ type LookupCertificatePacksArgs struct {
 	// Available values: "all".
 	Status *string `pulumi:"status"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getCertificatePacks.
@@ -77,7 +82,7 @@ type LookupCertificatePacksResult struct {
 	// Available values: "all".
 	Status *string `pulumi:"status"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupCertificatePacksOutput(ctx *pulumi.Context, args LookupCertificatePacksOutputArgs, opts ...pulumi.InvokeOption) LookupCertificatePacksResultOutput {
@@ -100,7 +105,7 @@ type LookupCertificatePacksOutputArgs struct {
 	// Available values: "all".
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupCertificatePacksOutputArgs) ElementType() reflect.Type {
@@ -150,8 +155,8 @@ func (o LookupCertificatePacksResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Identifier.
-func (o LookupCertificatePacksResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificatePacksResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupCertificatePacksResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCertificatePacksResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

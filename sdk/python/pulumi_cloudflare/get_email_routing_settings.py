@@ -123,7 +123,7 @@ class GetEmailRoutingSettingsResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -150,6 +150,11 @@ class AwaitableGetEmailRoutingSettingsResult(GetEmailRoutingSettingsResult):
 def get_email_routing_settings(zone_id: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailRoutingSettingsResult:
     """
+    Accepted Permissions
+
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+
     ## Example Usage
 
     ```python
@@ -177,9 +182,14 @@ def get_email_routing_settings(zone_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         tag=pulumi.get(__ret__, 'tag'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_email_routing_settings_output(zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_email_routing_settings_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailRoutingSettingsResult]:
     """
+    Accepted Permissions
+
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+
     ## Example Usage
 
     ```python

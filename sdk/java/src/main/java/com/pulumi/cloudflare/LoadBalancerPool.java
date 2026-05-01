@@ -23,6 +23,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Load Balancing: Monitors and Pools Read`
+ * - `Load Balancing: Monitors and Pools Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -60,6 +65,7 @@ import javax.annotation.Nullable;
  *             .origins(LoadBalancerPoolOriginArgs.builder()
  *                 .address("0.0.0.0")
  *                 .enabled(true)
+ *                 .flattenCname(true)
  *                 .header(LoadBalancerPoolOriginHeaderArgs.builder()
  *                     .host(List.of("example.com"))
  *                     .build())
@@ -116,14 +122,14 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * A list of regions from which to run health checks. Null means every Cloudflare data center.
@@ -206,14 +212,14 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="loadShedding", refs={LoadBalancerPoolLoadShedding.class}, tree="[0]")
-    private Output</* @Nullable */ LoadBalancerPoolLoadShedding> loadShedding;
+    private Output<LoadBalancerPoolLoadShedding> loadShedding;
 
     /**
      * @return Configures load shedding policies and percentages for the pool.
      * 
      */
-    public Output<Optional<LoadBalancerPoolLoadShedding>> loadShedding() {
-        return Codegen.optional(this.loadShedding);
+    public Output<LoadBalancerPoolLoadShedding> loadShedding() {
+        return this.loadShedding;
     }
     /**
      * The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
@@ -324,28 +330,28 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="notificationFilter", refs={LoadBalancerPoolNotificationFilter.class}, tree="[0]")
-    private Output</* @Nullable */ LoadBalancerPoolNotificationFilter> notificationFilter;
+    private Output<LoadBalancerPoolNotificationFilter> notificationFilter;
 
     /**
      * @return Filter pool and origin health notifications by resource type or health status. Use null to reset.
      * 
      */
-    public Output<Optional<LoadBalancerPoolNotificationFilter>> notificationFilter() {
-        return Codegen.optional(this.notificationFilter);
+    public Output<LoadBalancerPoolNotificationFilter> notificationFilter() {
+        return this.notificationFilter;
     }
     /**
      * Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
      * 
      */
     @Export(name="originSteering", refs={LoadBalancerPoolOriginSteering.class}, tree="[0]")
-    private Output</* @Nullable */ LoadBalancerPoolOriginSteering> originSteering;
+    private Output<LoadBalancerPoolOriginSteering> originSteering;
 
     /**
      * @return Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
      * 
      */
-    public Output<Optional<LoadBalancerPoolOriginSteering>> originSteering() {
-        return Codegen.optional(this.originSteering);
+    public Output<LoadBalancerPoolOriginSteering> originSteering() {
+        return this.originSteering;
     }
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.

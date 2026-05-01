@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancers Read`
+ * - `Load Balancers Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getLoadBalancers(args: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
+export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLoadBalancers:getLoadBalancers", {
         "maxItems": args.maxItems,
@@ -34,7 +40,7 @@ export interface GetLoadBalancersArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -53,9 +59,14 @@ export interface GetLoadBalancersResult {
      * The items returned by the data source
      */
     readonly results: outputs.GetLoadBalancersResult[];
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancers Read`
+ * - `Load Balancers Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -67,7 +78,8 @@ export interface GetLoadBalancersResult {
  * });
  * ```
  */
-export function getLoadBalancersOutput(args: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancersResult> {
+export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLoadBalancers:getLoadBalancers", {
         "maxItems": args.maxItems,
@@ -83,5 +95,5 @@ export interface GetLoadBalancersOutputArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

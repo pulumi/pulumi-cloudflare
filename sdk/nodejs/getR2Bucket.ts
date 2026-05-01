@@ -32,7 +32,7 @@ export interface GetR2BucketArgs {
     /**
      * Account ID.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Name of the bucket.
      */
@@ -46,7 +46,7 @@ export interface GetR2BucketResult {
     /**
      * Account ID.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Name of the bucket.
      */
@@ -107,7 +107,7 @@ export interface GetR2BucketOutputArgs {
     /**
      * Account ID.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Name of the bucket.
      */

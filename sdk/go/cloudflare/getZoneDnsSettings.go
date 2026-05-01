@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS Read`
+// - `DNS Write`
+// - `Zone DNS Settings Read`
+// - `Zone DNS Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZoneDnsSettings(ctx, &cloudflare.LookupZoneDnsSettingsArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +56,7 @@ func LookupZoneDnsSettings(ctx *pulumi.Context, args *LookupZoneDnsSettingsArgs,
 // A collection of arguments for invoking getZoneDnsSettings.
 type LookupZoneDnsSettingsArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZoneDnsSettings.
@@ -73,7 +80,7 @@ type LookupZoneDnsSettingsResult struct {
 	// Components of the zone's SOA record.
 	Soa GetZoneDnsSettingsSoa `pulumi:"soa"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 	// Whether the zone mode is a regular or CDN/DNS only zone.
 	// Available values: "standard", "cdn*only", "dns*only".
 	ZoneMode string `pulumi:"zoneMode"`
@@ -91,7 +98,7 @@ func LookupZoneDnsSettingsOutput(ctx *pulumi.Context, args LookupZoneDnsSettings
 // A collection of arguments for invoking getZoneDnsSettings.
 type LookupZoneDnsSettingsOutputArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupZoneDnsSettingsOutputArgs) ElementType() reflect.Type {
@@ -159,8 +166,8 @@ func (o LookupZoneDnsSettingsResultOutput) Soa() GetZoneDnsSettingsSoaOutput {
 }
 
 // Identifier.
-func (o LookupZoneDnsSettingsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneDnsSettingsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupZoneDnsSettingsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZoneDnsSettingsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 // Whether the zone mode is a regular or CDN/DNS only zone.

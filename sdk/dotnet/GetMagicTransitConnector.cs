@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetMagicTransitConnector
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMagicTransitConnectorResult>("cloudflare:index/getMagicTransitConnector:getMagicTransitConnector", args ?? new GetMagicTransitConnectorArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicTransitConnectorResult>("cloudflare:index/getMagicTransitConnector:getMagicTransitConnector", args ?? new GetMagicTransitConnectorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("connectorId", required: true)]
         public string ConnectorId { get; set; } = null!;
@@ -104,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("connectorId", required: true)]
         public Input<string> ConnectorId { get; set; } = null!;
@@ -123,7 +138,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly bool Activated;
         public readonly string ConnectorId;
         public readonly Outputs.GetMagicTransitConnectorDeviceResult Device;
@@ -131,7 +146,15 @@ namespace Pulumi.Cloudflare
         /// The ID of this resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Allowed days of the week for upgrades. Default is all days.
+        /// </summary>
+        public readonly ImmutableArray<string> InterruptWindowDaysOfWeeks;
         public readonly double InterruptWindowDurationHours;
+        /// <summary>
+        /// List of dates (YYYY-MM-DD) when upgrades are blocked.
+        /// </summary>
+        public readonly ImmutableArray<string> InterruptWindowEmbargoDates;
         public readonly double InterruptWindowHourOfDay;
         public readonly string LastHeartbeat;
         public readonly string LastSeenVersion;
@@ -142,7 +165,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetMagicTransitConnectorResult(
-            string accountId,
+            string? accountId,
 
             bool activated,
 
@@ -152,7 +175,11 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            ImmutableArray<string> interruptWindowDaysOfWeeks,
+
             double interruptWindowDurationHours,
+
+            ImmutableArray<string> interruptWindowEmbargoDates,
 
             double interruptWindowHourOfDay,
 
@@ -173,7 +200,9 @@ namespace Pulumi.Cloudflare
             ConnectorId = connectorId;
             Device = device;
             Id = id;
+            InterruptWindowDaysOfWeeks = interruptWindowDaysOfWeeks;
             InterruptWindowDurationHours = interruptWindowDurationHours;
+            InterruptWindowEmbargoDates = interruptWindowEmbargoDates;
             InterruptWindowHourOfDay = interruptWindowHourOfDay;
             LastHeartbeat = lastHeartbeat;
             LastSeenVersion = lastSeenVersion;

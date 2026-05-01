@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account WAF Read`
+// - `Account WAF Write`
+// - `Zone WAF Read`
+// - `Zone WAF Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetContentScanning(ctx, &cloudflare.LookupContentScanningArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +56,7 @@ func LookupContentScanning(ctx *pulumi.Context, args *LookupContentScanningArgs,
 // A collection of arguments for invoking getContentScanning.
 type LookupContentScanningArgs struct {
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getContentScanning.
@@ -61,7 +68,7 @@ type LookupContentScanningResult struct {
 	// Defines the status of Content Scanning.
 	Value string `pulumi:"value"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupContentScanningOutput(ctx *pulumi.Context, args LookupContentScanningOutputArgs, opts ...pulumi.InvokeOption) LookupContentScanningResultOutput {
@@ -76,7 +83,7 @@ func LookupContentScanningOutput(ctx *pulumi.Context, args LookupContentScanning
 // A collection of arguments for invoking getContentScanning.
 type LookupContentScanningOutputArgs struct {
 	// Defines an identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupContentScanningOutputArgs) ElementType() reflect.Type {
@@ -114,8 +121,8 @@ func (o LookupContentScanningResultOutput) Value() pulumi.StringOutput {
 }
 
 // Defines an identifier.
-func (o LookupContentScanningResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupContentScanningResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupContentScanningResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupContentScanningResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

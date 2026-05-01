@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Connector: WARP Read`
+// - `Cloudflare One Connector: WARP Write`
+// - `Cloudflare One Connectors Read`
+// - `Cloudflare One Connectors Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustTunnelWarpConnector(ctx, &cloudflare.LookupZeroTrustTunnelWarpConnectorArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				TunnelId:  pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +57,7 @@ func LookupZeroTrustTunnelWarpConnector(ctx *pulumi.Context, args *LookupZeroTru
 // A collection of arguments for invoking getZeroTrustTunnelWarpConnector.
 type LookupZeroTrustTunnelWarpConnectorArgs struct {
 	// Cloudflare account ID
-	AccountId string                                 `pulumi:"accountId"`
+	AccountId *string                                `pulumi:"accountId"`
 	Filter    *GetZeroTrustTunnelWarpConnectorFilter `pulumi:"filter"`
 	// UUID of the tunnel.
 	TunnelId *string `pulumi:"tunnelId"`
@@ -59,7 +66,7 @@ type LookupZeroTrustTunnelWarpConnectorArgs struct {
 // A collection of values returned by getZeroTrustTunnelWarpConnector.
 type LookupZeroTrustTunnelWarpConnectorResult struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Cloudflare account ID
 	AccountTag string `pulumi:"accountTag"`
 	// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
@@ -103,7 +110,7 @@ func LookupZeroTrustTunnelWarpConnectorOutput(ctx *pulumi.Context, args LookupZe
 // A collection of arguments for invoking getZeroTrustTunnelWarpConnector.
 type LookupZeroTrustTunnelWarpConnectorOutputArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringInput                            `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput                         `pulumi:"accountId"`
 	Filter    GetZeroTrustTunnelWarpConnectorFilterPtrInput `pulumi:"filter"`
 	// UUID of the tunnel.
 	TunnelId pulumi.StringPtrInput `pulumi:"tunnelId"`
@@ -129,8 +136,8 @@ func (o LookupZeroTrustTunnelWarpConnectorResultOutput) ToLookupZeroTrustTunnelW
 }
 
 // Cloudflare account ID
-func (o LookupZeroTrustTunnelWarpConnectorResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustTunnelWarpConnectorResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustTunnelWarpConnectorResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelWarpConnectorResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Cloudflare account ID

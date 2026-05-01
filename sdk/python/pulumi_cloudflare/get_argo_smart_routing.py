@@ -78,7 +78,7 @@ class GetArgoSmartRoutingResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Specifies the zone associated with the API call.
         """
@@ -101,6 +101,11 @@ class AwaitableGetArgoSmartRoutingResult(GetArgoSmartRoutingResult):
 def get_argo_smart_routing(zone_id: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetArgoSmartRoutingResult:
     """
+    Accepted Permissions
+
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+
     ## Example Usage
 
     ```python
@@ -124,9 +129,14 @@ def get_argo_smart_routing(zone_id: Optional[_builtins.str] = None,
         modified_on=pulumi.get(__ret__, 'modified_on'),
         value=pulumi.get(__ret__, 'value'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_argo_smart_routing_output(zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_argo_smart_routing_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetArgoSmartRoutingResult]:
     """
+    Accepted Permissions
+
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+
     ## Example Usage
 
     ```python

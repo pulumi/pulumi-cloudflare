@@ -21,7 +21,7 @@ __all__ = ['EmailSecurityTrustedDomainsArgs', 'EmailSecurityTrustedDomains']
 @pulumi.input_type
 class EmailSecurityTrustedDomainsArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  bodies: Optional[pulumi.Input[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]] = None,
                  comments: Optional[pulumi.Input[_builtins.str]] = None,
                  is_recent: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -38,7 +38,8 @@ class EmailSecurityTrustedDomainsArgs:
                spelling to your connected domains. Prevents listed domains from
                triggering a Spoof disposition.
         """
-        pulumi.set(__self__, "account_id", account_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if bodies is not None:
             pulumi.set(__self__, "bodies", bodies)
         if comments is not None:
@@ -54,14 +55,14 @@ class EmailSecurityTrustedDomainsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Account Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -278,6 +279,11 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
                  pattern: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Cloud Email Security: Read`
+        - `Cloud Email Security: Write`
+
         ## Example Usage
 
         ```python
@@ -313,9 +319,14 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EmailSecurityTrustedDomainsArgs,
+                 args: Optional[EmailSecurityTrustedDomainsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Cloud Email Security: Read`
+        - `Cloud Email Security: Write`
+
         ## Example Usage
 
         ```python
@@ -369,8 +380,6 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EmailSecurityTrustedDomainsArgs.__new__(EmailSecurityTrustedDomainsArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["bodies"] = bodies
             __props__.__dict__["comments"] = comments
@@ -430,7 +439,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Account Identifier
         """

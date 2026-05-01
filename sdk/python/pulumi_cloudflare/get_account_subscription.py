@@ -58,7 +58,7 @@ class GetAccountSubscriptionResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier
         """
@@ -151,6 +151,11 @@ class AwaitableGetAccountSubscriptionResult(GetAccountSubscriptionResult):
 def get_account_subscription(account_id: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountSubscriptionResult:
     """
+    Accepted Permissions
+
+    - `Billing Read`
+    - `Billing Write`
+
     ## Example Usage
 
     ```python
@@ -178,9 +183,14 @@ def get_account_subscription(account_id: Optional[_builtins.str] = None,
         price=pulumi.get(__ret__, 'price'),
         rate_plan=pulumi.get(__ret__, 'rate_plan'),
         state=pulumi.get(__ret__, 'state'))
-def get_account_subscription_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_subscription_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountSubscriptionResult]:
     """
+    Accepted Permissions
+
+    - `Billing Read`
+    - `Billing Write`
+
     ## Example Usage
 
     ```python

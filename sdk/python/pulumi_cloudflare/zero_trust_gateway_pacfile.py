@@ -19,9 +19,9 @@ __all__ = ['ZeroTrustGatewayPacfileArgs', 'ZeroTrustGatewayPacfile']
 @pulumi.input_type
 class ZeroTrustGatewayPacfileArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  contents: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  slug: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -32,22 +32,14 @@ class ZeroTrustGatewayPacfileArgs:
         :param pulumi.Input[_builtins.str] description: Detailed description of the PAC file.
         :param pulumi.Input[_builtins.str] slug: URL-friendly version of the PAC file name. If not provided, it will be auto-generated
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "contents", contents)
         pulumi.set(__self__, "name", name)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if slug is not None:
             pulumi.set(__self__, "slug", slug)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -72,6 +64,15 @@ class ZeroTrustGatewayPacfileArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -236,6 +237,11 @@ class ZeroTrustGatewayPacfile(pulumi.CustomResource):
                  slug: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Read`
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -271,6 +277,11 @@ class ZeroTrustGatewayPacfile(pulumi.CustomResource):
                  args: ZeroTrustGatewayPacfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Read`
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -321,8 +332,6 @@ class ZeroTrustGatewayPacfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustGatewayPacfileArgs.__new__(ZeroTrustGatewayPacfileArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if contents is None and not opts.urn:
                 raise TypeError("Missing required property 'contents'")
@@ -382,7 +391,7 @@ class ZeroTrustGatewayPacfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

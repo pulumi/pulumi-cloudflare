@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -43,7 +48,7 @@ export interface GetObservatoryScheduledTestArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -71,9 +76,14 @@ export interface GetObservatoryScheduledTestResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -112,5 +122,5 @@ export interface GetObservatoryScheduledTestOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

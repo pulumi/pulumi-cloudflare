@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Connector: cloudflared Write`
+// - `Cloudflare One Connectors Write`
+// - `Cloudflare Tunnel Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustTunnelWarpConnectorToken(ctx, &cloudflare.GetZeroTrustTunnelWarpConnectorTokenArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				TunnelId:  "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +56,7 @@ func GetZeroTrustTunnelWarpConnectorToken(ctx *pulumi.Context, args *GetZeroTrus
 // A collection of arguments for invoking getZeroTrustTunnelWarpConnectorToken.
 type GetZeroTrustTunnelWarpConnectorTokenArgs struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// UUID of the tunnel.
 	TunnelId string `pulumi:"tunnelId"`
 }
@@ -58,7 +64,7 @@ type GetZeroTrustTunnelWarpConnectorTokenArgs struct {
 // A collection of values returned by getZeroTrustTunnelWarpConnectorToken.
 type GetZeroTrustTunnelWarpConnectorTokenResult struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
@@ -79,7 +85,7 @@ func GetZeroTrustTunnelWarpConnectorTokenOutput(ctx *pulumi.Context, args GetZer
 // A collection of arguments for invoking getZeroTrustTunnelWarpConnectorToken.
 type GetZeroTrustTunnelWarpConnectorTokenOutputArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// UUID of the tunnel.
 	TunnelId pulumi.StringInput `pulumi:"tunnelId"`
 }
@@ -104,8 +110,8 @@ func (o GetZeroTrustTunnelWarpConnectorTokenResultOutput) ToGetZeroTrustTunnelWa
 }
 
 // Cloudflare account ID
-func (o GetZeroTrustTunnelWarpConnectorTokenResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustTunnelWarpConnectorTokenResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o GetZeroTrustTunnelWarpConnectorTokenResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZeroTrustTunnelWarpConnectorTokenResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -35,15 +34,15 @@ public final class GetHealthchecksPlainArgs extends com.pulumi.resources.InvokeA
      * Identifier
      * 
      */
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
     /**
      * @return Identifier
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetHealthchecksPlainArgs() {}
@@ -88,15 +87,12 @@ public final class GetHealthchecksPlainArgs extends com.pulumi.resources.InvokeA
          * @return builder
          * 
          */
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         public GetHealthchecksPlainArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetHealthchecksPlainArgs", "zoneId");
-            }
             return $;
         }
     }

@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `D1 Read`
+// - `D1 Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetD1Databases(ctx, &cloudflare.LookupD1DatabasesArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.StringRef("name"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupD1Databases(ctx *pulumi.Context, args *LookupD1DatabasesArgs, opts ..
 // A collection of arguments for invoking getD1Databases.
 type LookupD1DatabasesArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// a database name to search for.
@@ -60,7 +65,7 @@ type LookupD1DatabasesArgs struct {
 // A collection of values returned by getD1Databases.
 type LookupD1DatabasesResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -83,7 +88,7 @@ func LookupD1DatabasesOutput(ctx *pulumi.Context, args LookupD1DatabasesOutputAr
 // A collection of arguments for invoking getD1Databases.
 type LookupD1DatabasesOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// a database name to search for.
@@ -110,8 +115,8 @@ func (o LookupD1DatabasesResultOutput) ToLookupD1DatabasesResultOutputWithContex
 }
 
 // Account identifier tag.
-func (o LookupD1DatabasesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupD1DatabasesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupD1DatabasesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupD1DatabasesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

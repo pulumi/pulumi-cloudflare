@@ -21,6 +21,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -73,10 +78,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry")
 public class ZeroTrustDlpCustomEntry extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Only applies to custom word lists.

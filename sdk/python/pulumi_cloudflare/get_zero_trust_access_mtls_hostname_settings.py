@@ -113,6 +113,11 @@ def get_zero_trust_access_mtls_hostname_settings(account_id: Optional[_builtins.
                                                  zone_id: Optional[_builtins.str] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessMtlsHostnameSettingsResult:
     """
+    Accepted Permissions
+
+    - `Access: Mutual TLS Certificates Read`
+    - `Access: Mutual TLS Certificates Write`
+
     ## Example Usage
 
     ```python
@@ -144,6 +149,11 @@ def get_zero_trust_access_mtls_hostname_settings_output(account_id: Optional[pul
                                                         zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessMtlsHostnameSettingsResult]:
     """
+    Accepted Permissions
+
+    - `Access: Mutual TLS Certificates Read`
+    - `Access: Mutual TLS Certificates Write`
+
     ## Example Usage
 
     ```python

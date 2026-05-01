@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Stream Read`
+// - `Stream Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -49,9 +54,11 @@ type StreamAudioTrack struct {
 	pulumi.CustomResourceState
 
 	// The account identifier tag.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The unique identifier for an additional audio track.
 	AudioIdentifier pulumi.StringPtrOutput `pulumi:"audioIdentifier"`
+	// Array of audio tracks for the video.
+	Audios StreamAudioTrackAudioArrayOutput `pulumi:"audios"`
 	// Denotes whether the audio track will be played by default in a player.
 	Default pulumi.BoolOutput `pulumi:"default"`
 	// A Cloudflare-generated unique identifier for a media item.
@@ -72,9 +79,6 @@ func NewStreamAudioTrack(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
@@ -105,6 +109,8 @@ type streamAudioTrackState struct {
 	AccountId *string `pulumi:"accountId"`
 	// The unique identifier for an additional audio track.
 	AudioIdentifier *string `pulumi:"audioIdentifier"`
+	// Array of audio tracks for the video.
+	Audios []StreamAudioTrackAudio `pulumi:"audios"`
 	// Denotes whether the audio track will be played by default in a player.
 	Default *bool `pulumi:"default"`
 	// A Cloudflare-generated unique identifier for a media item.
@@ -123,6 +129,8 @@ type StreamAudioTrackState struct {
 	AccountId pulumi.StringPtrInput
 	// The unique identifier for an additional audio track.
 	AudioIdentifier pulumi.StringPtrInput
+	// Array of audio tracks for the video.
+	Audios StreamAudioTrackAudioArrayInput
 	// Denotes whether the audio track will be played by default in a player.
 	Default pulumi.BoolPtrInput
 	// A Cloudflare-generated unique identifier for a media item.
@@ -142,7 +150,7 @@ func (StreamAudioTrackState) ElementType() reflect.Type {
 
 type streamAudioTrackArgs struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The unique identifier for an additional audio track.
 	AudioIdentifier *string `pulumi:"audioIdentifier"`
 	// Denotes whether the audio track will be played by default in a player.
@@ -156,7 +164,7 @@ type streamAudioTrackArgs struct {
 // The set of arguments for constructing a StreamAudioTrack resource.
 type StreamAudioTrackArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// The unique identifier for an additional audio track.
 	AudioIdentifier pulumi.StringPtrInput
 	// Denotes whether the audio track will be played by default in a player.
@@ -255,13 +263,18 @@ func (o StreamAudioTrackOutput) ToStreamAudioTrackOutputWithContext(ctx context.
 }
 
 // The account identifier tag.
-func (o StreamAudioTrackOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *StreamAudioTrack) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o StreamAudioTrackOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamAudioTrack) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The unique identifier for an additional audio track.
 func (o StreamAudioTrackOutput) AudioIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamAudioTrack) pulumi.StringPtrOutput { return v.AudioIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// Array of audio tracks for the video.
+func (o StreamAudioTrackOutput) Audios() StreamAudioTrackAudioArrayOutput {
+	return o.ApplyT(func(v *StreamAudioTrack) StreamAudioTrackAudioArrayOutput { return v.Audios }).(StreamAudioTrackAudioArrayOutput)
 }
 
 // Denotes whether the audio track will be played by default in a player.

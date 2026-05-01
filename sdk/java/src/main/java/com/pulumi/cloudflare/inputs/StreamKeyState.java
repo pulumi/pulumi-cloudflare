@@ -61,6 +61,21 @@ public final class StreamKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The unique identifier for the signing key.
+     * 
+     */
+    @Import(name="keyId")
+    private @Nullable Output<String> keyId;
+
+    /**
+     * @return The unique identifier for the signing key.
+     * 
+     */
+    public Optional<Output<String>> keyId() {
+        return Optional.ofNullable(this.keyId);
+    }
+
+    /**
      * The signing key in PEM format.
      * 
      */
@@ -81,6 +96,7 @@ public final class StreamKeyState extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.created = $.created;
         this.jwk = $.jwk;
+        this.keyId = $.keyId;
         this.pem = $.pem;
     }
 
@@ -163,6 +179,27 @@ public final class StreamKeyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder jwk(String jwk) {
             return jwk(Output.of(jwk));
+        }
+
+        /**
+         * @param keyId The unique identifier for the signing key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyId(@Nullable Output<String> keyId) {
+            $.keyId = keyId;
+            return this;
+        }
+
+        /**
+         * @param keyId The unique identifier for the signing key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyId(String keyId) {
+            return keyId(Output.of(keyId));
         }
 
         /**

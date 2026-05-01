@@ -74,7 +74,7 @@ class GetEmailSecurityImpersonationRegistryResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account Identifier
         """
@@ -177,6 +177,11 @@ def get_email_security_impersonation_registry(account_id: Optional[_builtins.str
                                               filter: Optional[Union['GetEmailSecurityImpersonationRegistryFilterArgs', 'GetEmailSecurityImpersonationRegistryFilterArgsDict']] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailSecurityImpersonationRegistryResult:
     """
+    Accepted Permissions
+
+    - `Cloud Email Security: Read`
+    - `Cloud Email Security: Write`
+
     ## Example Usage
 
     ```python
@@ -212,11 +217,16 @@ def get_email_security_impersonation_registry(account_id: Optional[_builtins.str
         last_modified=pulumi.get(__ret__, 'last_modified'),
         name=pulumi.get(__ret__, 'name'),
         provenance=pulumi.get(__ret__, 'provenance'))
-def get_email_security_impersonation_registry_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_email_security_impersonation_registry_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                      display_name_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                                      filter: Optional[pulumi.Input[Optional[Union['GetEmailSecurityImpersonationRegistryFilterArgs', 'GetEmailSecurityImpersonationRegistryFilterArgsDict']]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityImpersonationRegistryResult]:
     """
+    Accepted Permissions
+
+    - `Cloud Email Security: Read`
+    - `Cloud Email Security: Write`
+
     ## Example Usage
 
     ```python

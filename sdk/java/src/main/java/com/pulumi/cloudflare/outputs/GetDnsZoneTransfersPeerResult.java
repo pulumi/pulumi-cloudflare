@@ -9,10 +9,12 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDnsZoneTransfersPeerResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The ID of this resource.
      * 
@@ -46,8 +48,8 @@ public final class GetDnsZoneTransfersPeerResult {
     private String tsigId;
 
     private GetDnsZoneTransfersPeerResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The ID of this resource.
@@ -104,7 +106,7 @@ public final class GetDnsZoneTransfersPeerResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String id;
         private String ip;
         private Boolean ixfrEnable;
@@ -126,10 +128,8 @@ public final class GetDnsZoneTransfersPeerResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetDnsZoneTransfersPeerResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

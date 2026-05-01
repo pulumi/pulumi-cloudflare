@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Gateway`
+// - `Account API Gateway Read`
+// - `Domain API Gateway`
+// - `Domain API Gateway Read`
+//
 // ## Example Usage
 func LookupApiShieldOperation(ctx *pulumi.Context, args *LookupApiShieldOperationArgs, opts ...pulumi.InvokeOption) (*LookupApiShieldOperationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -30,7 +37,7 @@ type LookupApiShieldOperationArgs struct {
 	// UUID.
 	OperationId *string `pulumi:"operationId"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getApiShieldOperation.
@@ -52,7 +59,7 @@ type LookupApiShieldOperationResult struct {
 	// UUID.
 	OperationId string `pulumi:"operationId"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupApiShieldOperationOutput(ctx *pulumi.Context, args LookupApiShieldOperationOutputArgs, opts ...pulumi.InvokeOption) LookupApiShieldOperationResultOutput {
@@ -72,7 +79,7 @@ type LookupApiShieldOperationOutputArgs struct {
 	// UUID.
 	OperationId pulumi.StringPtrInput `pulumi:"operationId"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupApiShieldOperationOutputArgs) ElementType() reflect.Type {
@@ -138,8 +145,8 @@ func (o LookupApiShieldOperationResultOutput) OperationId() pulumi.StringOutput 
 }
 
 // Identifier.
-func (o LookupApiShieldOperationResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupApiShieldOperationResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupApiShieldOperationResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiShieldOperationResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

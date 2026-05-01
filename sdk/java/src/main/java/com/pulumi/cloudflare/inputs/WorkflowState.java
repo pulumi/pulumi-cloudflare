@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkflowInstancesArgs;
+import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
@@ -50,6 +51,13 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<Double>> isDeleted() {
         return Optional.ofNullable(this.isDeleted);
+    }
+
+    @Import(name="limits")
+    private @Nullable Output<WorkflowLimitsArgs> limits;
+
+    public Optional<Output<WorkflowLimitsArgs>> limits() {
+        return Optional.ofNullable(this.limits);
     }
 
     @Import(name="modifiedOn")
@@ -109,6 +117,7 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
         this.createdOn = $.createdOn;
         this.instances = $.instances;
         this.isDeleted = $.isDeleted;
+        this.limits = $.limits;
         this.modifiedOn = $.modifiedOn;
         this.name = $.name;
         this.scriptName = $.scriptName;
@@ -179,6 +188,15 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
 
         public Builder isDeleted(Double isDeleted) {
             return isDeleted(Output.of(isDeleted));
+        }
+
+        public Builder limits(@Nullable Output<WorkflowLimitsArgs> limits) {
+            $.limits = limits;
+            return this;
+        }
+
+        public Builder limits(WorkflowLimitsArgs limits) {
+            return limits(Output.of(limits));
         }
 
         public Builder modifiedOn(@Nullable Output<String> modifiedOn) {

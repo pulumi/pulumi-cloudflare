@@ -7,6 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Domain Page Shield`
+ * - `Domain Page Shield Read`
+ * - `Page Shield`
+ * - `Page Shield Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -38,7 +47,7 @@ export interface GetPageShieldScriptsArgs {
     /**
      * Identifier
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -51,7 +60,9 @@ export interface GetPageShieldScriptsResult {
      */
     readonly cryptominingScore: number;
     /**
-     * The dataflow score of the JavaScript content.
+     * The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     *
+     * @deprecated This attribute is deprecated.
      */
     readonly dataflowScore: number;
     readonly domainReportedMalicious: boolean;
@@ -86,7 +97,9 @@ export interface GetPageShieldScriptsResult {
      */
     readonly malwareScore: number;
     /**
-     * The obfuscation score of the JavaScript content.
+     * The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     *
+     * @deprecated This attribute is deprecated.
      */
     readonly obfuscationScore: number;
     readonly pageUrls: string[];
@@ -101,9 +114,18 @@ export interface GetPageShieldScriptsResult {
     /**
      * Identifier
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Domain Page Shield`
+ * - `Domain Page Shield Read`
+ * - `Page Shield`
+ * - `Page Shield Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -135,5 +157,5 @@ export interface GetPageShieldScriptsOutputArgs {
     /**
      * Identifier
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

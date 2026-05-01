@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS Read`
+// - `DNS Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetRegionalHostname(ctx, &cloudflare.LookupRegionalHostnameArgs{
-//				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Hostname: "foo.example.com",
 //			}, nil)
 //			if err != nil {
@@ -52,7 +57,7 @@ type LookupRegionalHostnameArgs struct {
 	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 	Hostname string `pulumi:"hostname"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getRegionalHostname.
@@ -68,7 +73,7 @@ type LookupRegionalHostnameResult struct {
 	// Configure which routing method to use for the regional hostname
 	Routing string `pulumi:"routing"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupRegionalHostnameOutput(ctx *pulumi.Context, args LookupRegionalHostnameOutputArgs, opts ...pulumi.InvokeOption) LookupRegionalHostnameResultOutput {
@@ -85,7 +90,7 @@ type LookupRegionalHostnameOutputArgs struct {
 	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupRegionalHostnameOutputArgs) ElementType() reflect.Type {
@@ -133,8 +138,8 @@ func (o LookupRegionalHostnameResultOutput) Routing() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupRegionalHostnameResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRegionalHostnameResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupRegionalHostnameResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRegionalHostnameResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

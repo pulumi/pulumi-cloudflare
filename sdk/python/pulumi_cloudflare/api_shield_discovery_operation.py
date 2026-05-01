@@ -20,22 +20,23 @@ __all__ = ['ApiShieldDiscoveryOperationArgs', 'ApiShieldDiscoveryOperation']
 class ApiShieldDiscoveryOperationArgs:
     def __init__(__self__, *,
                  operation_id: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str],
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldDiscoveryOperation resource.
 
         :param pulumi.Input[_builtins.str] operation_id: UUID.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] state: Mark state of operation in API Discovery
                  * `review` - Mark operation as for review
                  * `ignored` - Mark operation as ignored
                Available values: "review", "ignored".
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "operation_id", operation_id)
-        pulumi.set(__self__, "zone_id", zone_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter(name="operationId")
@@ -48,18 +49,6 @@ class ApiShieldDiscoveryOperationArgs:
     @operation_id.setter
     def operation_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "operation_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -75,6 +64,18 @@ class ApiShieldDiscoveryOperationArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -151,6 +152,11 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Account API Gateway`
+        - `Domain API Gateway`
+
         ## Example Usage
 
         ```python
@@ -184,6 +190,11 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
                  args: ApiShieldDiscoveryOperationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Account API Gateway`
+        - `Domain API Gateway`
+
         ## Example Usage
 
         ```python
@@ -232,8 +243,6 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'operation_id'")
             __props__.__dict__["operation_id"] = operation_id
             __props__.__dict__["state"] = state
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
         super(ApiShieldDiscoveryOperation, __self__).__init__(
             'cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation',
@@ -292,7 +301,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

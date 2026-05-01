@@ -13,21 +13,25 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetAiSearchInstanceSourceParamsWebCrawlerResult
     {
+        public readonly Outputs.GetAiSearchInstanceSourceParamsWebCrawlerCrawlOptionsResult CrawlOptions;
         public readonly Outputs.GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsResult ParseOptions;
         /// <summary>
-        /// Available values: "sitemap", "feed-rss".
+        /// Available values: "sitemap", "feed-rss", "crawl".
         /// </summary>
         public readonly string ParseType;
         public readonly Outputs.GetAiSearchInstanceSourceParamsWebCrawlerStoreOptionsResult StoreOptions;
 
         [OutputConstructor]
         private GetAiSearchInstanceSourceParamsWebCrawlerResult(
+            Outputs.GetAiSearchInstanceSourceParamsWebCrawlerCrawlOptionsResult crawlOptions,
+
             Outputs.GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsResult parseOptions,
 
             string parseType,
 
             Outputs.GetAiSearchInstanceSourceParamsWebCrawlerStoreOptionsResult storeOptions)
         {
+            CrawlOptions = crawlOptions;
             ParseOptions = parseOptions;
             ParseType = parseType;
             StoreOptions = storeOptions;

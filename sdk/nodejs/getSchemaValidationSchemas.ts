@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -20,7 +27,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getSchemaValidationSchemas(args: GetSchemaValidationSchemasArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemaValidationSchemasResult> {
+export function getSchemaValidationSchemas(args?: GetSchemaValidationSchemasArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemaValidationSchemasResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas", {
         "filter": args.filter,
@@ -46,7 +54,7 @@ export interface GetSchemaValidationSchemasArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -87,9 +95,16 @@ export interface GetSchemaValidationSchemasResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -103,7 +118,8 @@ export interface GetSchemaValidationSchemasResult {
  * });
  * ```
  */
-export function getSchemaValidationSchemasOutput(args: GetSchemaValidationSchemasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSchemaValidationSchemasResult> {
+export function getSchemaValidationSchemasOutput(args?: GetSchemaValidationSchemasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSchemaValidationSchemasResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas", {
         "filter": args.filter,
@@ -129,5 +145,5 @@ export interface GetSchemaValidationSchemasOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

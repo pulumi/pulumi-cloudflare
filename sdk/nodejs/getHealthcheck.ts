@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Health Checks Read`
+ * - `Health Checks Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -38,7 +43,7 @@ export interface GetHealthcheckArgs {
     /**
      * Identifier
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -119,9 +124,14 @@ export interface GetHealthcheckResult {
     /**
      * Identifier
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Health Checks Read`
+ * - `Health Checks Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -153,5 +163,5 @@ export interface GetHealthcheckOutputArgs {
     /**
      * Identifier
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

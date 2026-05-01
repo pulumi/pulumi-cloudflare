@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetRegionalTieredCache
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +37,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetRegionalTieredCacheResult> InvokeAsync(GetRegionalTieredCacheArgs args, InvokeOptions? options = null)
+        public static Task<GetRegionalTieredCacheResult> InvokeAsync(GetRegionalTieredCacheArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionalTieredCacheResult>("cloudflare:index/getRegionalTieredCache:getRegionalTieredCache", args ?? new GetRegionalTieredCacheArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +66,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetRegionalTieredCacheResult> Invoke(GetRegionalTieredCacheInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetRegionalTieredCacheResult> Invoke(GetRegionalTieredCacheInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionalTieredCacheResult>("cloudflare:index/getRegionalTieredCache:getRegionalTieredCache", args ?? new GetRegionalTieredCacheInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetRegionalTieredCacheArgs()
         {
@@ -98,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetRegionalTieredCacheInvokeArgs()
         {
@@ -131,7 +152,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetRegionalTieredCacheResult(
@@ -143,7 +164,7 @@ namespace Pulumi.Cloudflare
 
             string value,
 
-            string zoneId)
+            string? zoneId)
         {
             Editable = editable;
             Id = id;

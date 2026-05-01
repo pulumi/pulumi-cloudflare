@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PageShieldPolicyArgs extends com.pulumi.resources.ResourceArgs {
@@ -96,15 +98,15 @@ public final class PageShieldPolicyArgs extends com.pulumi.resources.ResourceArg
      * Identifier
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private PageShieldPolicyArgs() {}
@@ -249,7 +251,7 @@ public final class PageShieldPolicyArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -279,9 +281,6 @@ public final class PageShieldPolicyArgs extends com.pulumi.resources.ResourceArg
             }
             if ($.value == null) {
                 throw new MissingRequiredPropertyException("PageShieldPolicyArgs", "value");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("PageShieldPolicyArgs", "zoneId");
             }
             return $;
         }

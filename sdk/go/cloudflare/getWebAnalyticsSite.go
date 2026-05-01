@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWebAnalyticsSite(ctx, &cloudflare.LookupWebAnalyticsSiteArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SiteId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +54,7 @@ func LookupWebAnalyticsSite(ctx *pulumi.Context, args *LookupWebAnalyticsSiteArg
 // A collection of arguments for invoking getWebAnalyticsSite.
 type LookupWebAnalyticsSiteArgs struct {
 	// Identifier.
-	AccountId string                     `pulumi:"accountId"`
+	AccountId *string                    `pulumi:"accountId"`
 	Filter    *GetWebAnalyticsSiteFilter `pulumi:"filter"`
 	// Identifier.
 	SiteId *string `pulumi:"siteId"`
@@ -59,7 +63,7 @@ type LookupWebAnalyticsSiteArgs struct {
 // A collection of values returned by getWebAnalyticsSite.
 type LookupWebAnalyticsSiteResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall bool                       `pulumi:"autoInstall"`
 	Created     string                     `pulumi:"created"`
@@ -91,7 +95,7 @@ func LookupWebAnalyticsSiteOutput(ctx *pulumi.Context, args LookupWebAnalyticsSi
 // A collection of arguments for invoking getWebAnalyticsSite.
 type LookupWebAnalyticsSiteOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput                `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput             `pulumi:"accountId"`
 	Filter    GetWebAnalyticsSiteFilterPtrInput `pulumi:"filter"`
 	// Identifier.
 	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
@@ -117,8 +121,8 @@ func (o LookupWebAnalyticsSiteResultOutput) ToLookupWebAnalyticsSiteResultOutput
 }
 
 // Identifier.
-func (o LookupWebAnalyticsSiteResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWebAnalyticsSiteResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupWebAnalyticsSiteResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWebAnalyticsSiteResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.

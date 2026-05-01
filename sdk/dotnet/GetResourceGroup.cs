@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetResourceGroup
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `SCIM Provisioning`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +41,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupResult>("cloudflare:index/getResourceGroup:getResourceGroup", args ?? new GetResourceGroupArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `SCIM Provisioning`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +70,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceGroupResult>("cloudflare:index/getResourceGroup:getResourceGroup", args ?? new GetResourceGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `SCIM Provisioning`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Resource Group identifier tag.
@@ -107,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Resource Group identifier tag.
@@ -129,7 +147,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Identifier of the resource group.
         /// </summary>
@@ -153,7 +171,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetResourceGroupResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

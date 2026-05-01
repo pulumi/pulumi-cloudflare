@@ -163,6 +163,13 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Account API Gateway`
+        - `Account API Gateway Read`
+        - `Domain API Gateway`
+        - `Domain API Gateway Read`
+
         > `ApiShieldSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
           Instead, please utilize the SchemaValidationSettings resource instead.
 
@@ -204,6 +211,13 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
                  args: ApiShieldSchemaValidationSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Account API Gateway`
+        - `Account API Gateway Read`
+        - `Domain API Gateway`
+        - `Domain API Gateway Read`
+
         > `ApiShieldSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
           Instead, please utilize the SchemaValidationSettings resource instead.
 

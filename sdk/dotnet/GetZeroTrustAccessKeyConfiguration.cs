@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustAccessKeyConfiguration
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Organizations, Identity Providers, and Groups Read`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustAccessKeyConfigurationResult> InvokeAsync(GetZeroTrustAccessKeyConfigurationArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustAccessKeyConfigurationResult> InvokeAsync(GetZeroTrustAccessKeyConfigurationArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessKeyConfigurationResult>("cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration", args ?? new GetZeroTrustAccessKeyConfigurationArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Organizations, Identity Providers, and Groups Read`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustAccessKeyConfigurationResult> Invoke(GetZeroTrustAccessKeyConfigurationInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustAccessKeyConfigurationResult> Invoke(GetZeroTrustAccessKeyConfigurationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessKeyConfigurationResult>("cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration", args ?? new GetZeroTrustAccessKeyConfigurationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Organizations, Identity Providers, and Groups Read`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         public GetZeroTrustAccessKeyConfigurationArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         public GetZeroTrustAccessKeyConfigurationInvokeArgs()
         {
@@ -114,7 +129,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The number of days until the next key rotation.
         /// </summary>
@@ -134,7 +149,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustAccessKeyConfigurationResult(
-            string accountId,
+            string? accountId,
 
             double daysUntilNextRotation,
 

@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudforce One Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -53,7 +57,7 @@ export interface GetCloudforceOneRequestsArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Retrieve requests completed after this time.
      */
@@ -109,7 +113,7 @@ export interface GetCloudforceOneRequestsResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Retrieve requests completed after this time.
      */
@@ -166,6 +170,10 @@ export interface GetCloudforceOneRequestsResult {
     readonly status?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudforce One Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -212,7 +220,7 @@ export interface GetCloudforceOneRequestsOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Retrieve requests completed after this time.
      */

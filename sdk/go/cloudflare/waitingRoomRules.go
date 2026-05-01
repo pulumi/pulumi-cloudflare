@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Waiting Rooms Read`
+// - `Waiting Rooms Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -58,7 +63,7 @@ type WaitingRoomRules struct {
 	Rules         WaitingRoomRulesRuleArrayOutput `pulumi:"rules"`
 	WaitingRoomId pulumi.StringOutput             `pulumi:"waitingRoomId"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewWaitingRoomRules registers a new resource with the given unique name, arguments, and options.
@@ -73,9 +78,6 @@ func NewWaitingRoomRules(ctx *pulumi.Context,
 	}
 	if args.WaitingRoomId == nil {
 		return nil, errors.New("invalid value for required argument 'WaitingRoomId'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WaitingRoomRules
@@ -121,7 +123,7 @@ type waitingRoomRulesArgs struct {
 	Rules         []WaitingRoomRulesRule `pulumi:"rules"`
 	WaitingRoomId string                 `pulumi:"waitingRoomId"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a WaitingRoomRules resource.
@@ -129,7 +131,7 @@ type WaitingRoomRulesArgs struct {
 	Rules         WaitingRoomRulesRuleArrayInput
 	WaitingRoomId pulumi.StringInput
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (WaitingRoomRulesArgs) ElementType() reflect.Type {
@@ -228,8 +230,8 @@ func (o WaitingRoomRulesOutput) WaitingRoomId() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o WaitingRoomRulesOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o WaitingRoomRulesOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type WaitingRoomRulesArrayOutput struct{ *pulumi.OutputState }

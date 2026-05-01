@@ -28,15 +28,15 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
      * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -279,7 +279,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -610,9 +610,6 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
         }
 
         public ZeroTrustAccessPolicyArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustAccessPolicyArgs", "accountId");
-            }
             if ($.decision == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustAccessPolicyArgs", "decision");
             }

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * > Certificate packs are not able to be updated in place. If
  * you require a zero downtime rotation, you can create multiple
  * resources using a 2-phase change where you have both resources
@@ -127,7 +132,7 @@ export class CertificatePack extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a CertificatePack resource with the given unique name, arguments, and options.
@@ -168,9 +173,6 @@ export class CertificatePack extends pulumi.CustomResource {
             }
             if (args?.validityDays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'validityDays'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["certificateAuthority"] = args?.certificateAuthority;
             resourceInputs["cloudflareBranding"] = args?.cloudflareBranding;
@@ -289,5 +291,5 @@ export interface CertificatePackArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

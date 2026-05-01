@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetFirewallRule
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetFirewallRuleResult> InvokeAsync(GetFirewallRuleArgs args, InvokeOptions? options = null)
+        public static Task<GetFirewallRuleResult> InvokeAsync(GetFirewallRuleArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFirewallRuleResult>("cloudflare:index/getFirewallRule:getFirewallRule", args ?? new GetFirewallRuleArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetFirewallRuleResult> Invoke(GetFirewallRuleInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetFirewallRuleResult> Invoke(GetFirewallRuleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFirewallRuleResult>("cloudflare:index/getFirewallRule:getFirewallRule", args ?? new GetFirewallRuleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetFirewallRuleArgs()
         {
@@ -113,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetFirewallRuleInvokeArgs()
         {
@@ -159,7 +174,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetFirewallRuleResult(
@@ -179,7 +194,7 @@ namespace Pulumi.Cloudflare
 
             string? ruleId,
 
-            string zoneId)
+            string? zoneId)
         {
             Action = action;
             Description = description;

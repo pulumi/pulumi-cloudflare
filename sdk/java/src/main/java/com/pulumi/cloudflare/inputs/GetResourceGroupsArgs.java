@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -21,15 +20,15 @@ public final class GetResourceGroupsArgs extends com.pulumi.resources.InvokeArgs
      * Account identifier tag.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Account identifier tag.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -110,7 +109,7 @@ public final class GetResourceGroupsArgs extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -189,9 +188,6 @@ public final class GetResourceGroupsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetResourceGroupsArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetResourceGroupsArgs", "accountId");
-            }
             return $;
         }
     }

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Tokens Read`
+ * - `Account API Tokens Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getAccountToken(args: GetAccountTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTokenResult> {
+export function getAccountToken(args?: GetAccountTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTokenResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountToken:getAccountToken", {
         "accountId": args.accountId,
@@ -35,7 +41,7 @@ export interface GetAccountTokenArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetAccountTokenFilter;
     /**
      * Token identifier tag.
@@ -50,7 +56,7 @@ export interface GetAccountTokenResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly condition: outputs.GetAccountTokenCondition;
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
@@ -96,6 +102,11 @@ export interface GetAccountTokenResult {
     readonly tokenId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Tokens Read`
+ * - `Account API Tokens Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -108,7 +119,8 @@ export interface GetAccountTokenResult {
  * });
  * ```
  */
-export function getAccountTokenOutput(args: GetAccountTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountTokenResult> {
+export function getAccountTokenOutput(args?: GetAccountTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountTokenResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountToken:getAccountToken", {
         "accountId": args.accountId,
@@ -124,7 +136,7 @@ export interface GetAccountTokenOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetAccountTokenFilterArgs>;
     /**
      * Token identifier tag.

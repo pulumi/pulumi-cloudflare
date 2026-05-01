@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetAiSearchInstancesResultMetadataSearchForAgents;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -12,11 +13,15 @@ import java.util.Objects;
 @CustomType
 public final class GetAiSearchInstancesResultMetadata {
     private Boolean createdFromAisearchWizard;
+    private GetAiSearchInstancesResultMetadataSearchForAgents searchForAgents;
     private String workerDomain;
 
     private GetAiSearchInstancesResultMetadata() {}
     public Boolean createdFromAisearchWizard() {
         return this.createdFromAisearchWizard;
+    }
+    public GetAiSearchInstancesResultMetadataSearchForAgents searchForAgents() {
+        return this.searchForAgents;
     }
     public String workerDomain() {
         return this.workerDomain;
@@ -32,11 +37,13 @@ public final class GetAiSearchInstancesResultMetadata {
     @CustomType.Builder
     public static final class Builder {
         private Boolean createdFromAisearchWizard;
+        private GetAiSearchInstancesResultMetadataSearchForAgents searchForAgents;
         private String workerDomain;
         public Builder() {}
         public Builder(GetAiSearchInstancesResultMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdFromAisearchWizard = defaults.createdFromAisearchWizard;
+    	      this.searchForAgents = defaults.searchForAgents;
     	      this.workerDomain = defaults.workerDomain;
         }
 
@@ -46,6 +53,14 @@ public final class GetAiSearchInstancesResultMetadata {
               throw new MissingRequiredPropertyException("GetAiSearchInstancesResultMetadata", "createdFromAisearchWizard");
             }
             this.createdFromAisearchWizard = createdFromAisearchWizard;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder searchForAgents(GetAiSearchInstancesResultMetadataSearchForAgents searchForAgents) {
+            if (searchForAgents == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResultMetadata", "searchForAgents");
+            }
+            this.searchForAgents = searchForAgents;
             return this;
         }
         @CustomType.Setter
@@ -59,6 +74,7 @@ public final class GetAiSearchInstancesResultMetadata {
         public GetAiSearchInstancesResultMetadata build() {
             final var _resultValue = new GetAiSearchInstancesResultMetadata();
             _resultValue.createdFromAisearchWizard = createdFromAisearchWizard;
+            _resultValue.searchForAgents = searchForAgents;
             _resultValue.workerDomain = workerDomain;
             return _resultValue;
         }

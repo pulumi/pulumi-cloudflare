@@ -16,6 +16,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Notifications Read`
+ * - `Notifications Write`
+ * - `Zero Trust: PII Read`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -66,14 +74,14 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return The account id
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Timestamp of when the webhook destination was created.

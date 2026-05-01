@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -17,7 +22,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getFirewallRule(args: GetFirewallRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallRuleResult> {
+export function getFirewallRule(args?: GetFirewallRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallRuleResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getFirewallRule:getFirewallRule", {
         "ruleId": args.ruleId,
@@ -36,7 +42,7 @@ export interface GetFirewallRuleArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -76,9 +82,14 @@ export interface GetFirewallRuleResult {
     /**
      * Defines an identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -91,7 +102,8 @@ export interface GetFirewallRuleResult {
  * });
  * ```
  */
-export function getFirewallRuleOutput(args: GetFirewallRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallRuleResult> {
+export function getFirewallRuleOutput(args?: GetFirewallRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallRuleResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getFirewallRule:getFirewallRule", {
         "ruleId": args.ruleId,
@@ -110,5 +122,5 @@ export interface GetFirewallRuleOutputArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

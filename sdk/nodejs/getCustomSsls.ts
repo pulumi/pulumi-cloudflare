@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Mutual TLS Certificates Read`
+ * - `Access: Mutual TLS Certificates Write`
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getCustomSsls(args: GetCustomSslsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomSslsResult> {
+export function getCustomSsls(args?: GetCustomSslsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomSslsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomSsls:getCustomSsls", {
         "match": args.match,
@@ -50,7 +58,7 @@ export interface GetCustomSslsArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -82,9 +90,16 @@ export interface GetCustomSslsResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Mutual TLS Certificates Read`
+ * - `Access: Mutual TLS Certificates Write`
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -97,7 +112,8 @@ export interface GetCustomSslsResult {
  * });
  * ```
  */
-export function getCustomSslsOutput(args: GetCustomSslsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomSslsResult> {
+export function getCustomSslsOutput(args?: GetCustomSslsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomSslsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomSsls:getCustomSsls", {
         "match": args.match,
@@ -128,5 +144,5 @@ export interface GetCustomSslsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

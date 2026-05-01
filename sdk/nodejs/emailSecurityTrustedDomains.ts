@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -60,7 +65,7 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
     /**
      * Account Identifier
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public readonly bodies: pulumi.Output<outputs.EmailSecurityTrustedDomainsBody[] | undefined>;
     declare public readonly comments: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
@@ -86,7 +91,7 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: EmailSecurityTrustedDomainsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: EmailSecurityTrustedDomainsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EmailSecurityTrustedDomainsArgs | EmailSecurityTrustedDomainsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -103,9 +108,6 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
             resourceInputs["pattern"] = state?.pattern;
         } else {
             const args = argsOrState as EmailSecurityTrustedDomainsArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["bodies"] = args?.bodies;
             resourceInputs["comments"] = args?.comments;
@@ -155,7 +157,7 @@ export interface EmailSecurityTrustedDomainsArgs {
     /**
      * Account Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     bodies?: pulumi.Input<pulumi.Input<inputs.EmailSecurityTrustedDomainsBody>[]>;
     comments?: pulumi.Input<string>;
     /**

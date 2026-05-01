@@ -19,7 +19,7 @@ __all__ = ['CallsTurnAppArgs', 'CallsTurnApp']
 @pulumi.input_type
 class CallsTurnAppArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -29,7 +29,8 @@ class CallsTurnAppArgs:
         :param pulumi.Input[_builtins.str] key_id: A Cloudflare-generated unique identifier for a item.
         :param pulumi.Input[_builtins.str] name: A short description of a TURN key, not shown to end users.
         """
-        pulumi.set(__self__, "account_id", account_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
         if name is not None:
@@ -37,14 +38,14 @@ class CallsTurnAppArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -204,6 +205,11 @@ class CallsTurnApp(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Calls Read`
+        - `Calls Write`
+
         ## Example Usage
 
         ```python
@@ -230,9 +236,14 @@ class CallsTurnApp(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CallsTurnAppArgs,
+                 args: Optional[CallsTurnAppArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Calls Read`
+        - `Calls Write`
+
         ## Example Usage
 
         ```python
@@ -276,8 +287,6 @@ class CallsTurnApp(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CallsTurnAppArgs.__new__(CallsTurnAppArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["key_id"] = key_id
             __props__.__dict__["name"] = name
@@ -334,7 +343,7 @@ class CallsTurnApp(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The account identifier tag.
         """

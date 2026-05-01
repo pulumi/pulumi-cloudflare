@@ -16,14 +16,14 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
     public static final GetWorkersCustomDomainFilterArgs Empty = new GetWorkersCustomDomainFilterArgs();
 
     /**
-     * Worker environment associated with the zone and hostname.
+     * Worker environment associated with the domain.
      * 
      */
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
     /**
-     * @return Worker environment associated with the zone and hostname.
+     * @return Worker environment associated with the domain.
      * 
      */
     public Optional<Output<String>> environment() {
@@ -31,14 +31,14 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
     }
 
     /**
-     * Hostname of the Worker Domain.
+     * Hostname of the domain.
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return Hostname of the Worker Domain.
+     * @return Hostname of the domain.
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -46,14 +46,14 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
     }
 
     /**
-     * Worker service associated with the zone and hostname.
+     * Name of the Worker associated with the domain.
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return Worker service associated with the zone and hostname.
+     * @return Name of the Worker associated with the domain.
      * 
      */
     public Optional<Output<String>> service() {
@@ -61,14 +61,14 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
     }
 
     /**
-     * Identifier of the zone.
+     * ID of the zone containing the domain hostname.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier of the zone.
+     * @return ID of the zone containing the domain hostname.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -76,14 +76,14 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
     }
 
     /**
-     * Name of the zone.
+     * Name of the zone containing the domain hostname.
      * 
      */
     @Import(name="zoneName")
     private @Nullable Output<String> zoneName;
 
     /**
-     * @return Name of the zone.
+     * @return Name of the zone containing the domain hostname.
      * 
      */
     public Optional<Output<String>> zoneName() {
@@ -119,7 +119,7 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
         }
 
         /**
-         * @param environment Worker environment associated with the zone and hostname.
+         * @param environment Worker environment associated with the domain.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
         }
 
         /**
-         * @param environment Worker environment associated with the zone and hostname.
+         * @param environment Worker environment associated with the domain.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
         }
 
         /**
-         * @param hostname Hostname of the Worker Domain.
+         * @param hostname Hostname of the domain.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
         }
 
         /**
-         * @param hostname Hostname of the Worker Domain.
+         * @param hostname Hostname of the domain.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
         }
 
         /**
-         * @param service Worker service associated with the zone and hostname.
+         * @param service Name of the Worker associated with the domain.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
         }
 
         /**
-         * @param service Worker service associated with the zone and hostname.
+         * @param service Name of the Worker associated with the domain.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
         }
 
         /**
-         * @param zoneId Identifier of the zone.
+         * @param zoneId ID of the zone containing the domain hostname.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
         }
 
         /**
-         * @param zoneId Identifier of the zone.
+         * @param zoneId ID of the zone containing the domain hostname.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
         }
 
         /**
-         * @param zoneName Name of the zone.
+         * @param zoneName Name of the zone containing the domain hostname.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class GetWorkersCustomDomainFilterArgs extends com.pulumi.resources
         }
 
         /**
-         * @param zoneName Name of the zone.
+         * @param zoneName Name of the zone containing the domain hostname.
          * 
          * @return builder
          * 

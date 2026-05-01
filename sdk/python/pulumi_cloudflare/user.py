@@ -333,6 +333,11 @@ class User(pulumi.CustomResource):
                  zipcode: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `User Details Read`
+        - `User Details Write`
+
         ## Example Usage
 
         ```python
@@ -367,6 +372,11 @@ class User(pulumi.CustomResource):
                  args: Optional[UserArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `User Details Read`
+        - `User Details Write`
+
         ## Example Usage
 
         ```python

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustRiskBehavior
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustRiskBehaviorResult> InvokeAsync(GetZeroTrustRiskBehaviorArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustRiskBehaviorResult> InvokeAsync(GetZeroTrustRiskBehaviorArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustRiskBehaviorResult>("cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior", args ?? new GetZeroTrustRiskBehaviorArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustRiskBehaviorResult> Invoke(GetZeroTrustRiskBehaviorInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustRiskBehaviorResult> Invoke(GetZeroTrustRiskBehaviorInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustRiskBehaviorResult>("cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior", args ?? new GetZeroTrustRiskBehaviorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -81,8 +96,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustRiskBehaviorArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         public GetZeroTrustRiskBehaviorArgs()
         {
@@ -92,8 +107,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustRiskBehaviorInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         public GetZeroTrustRiskBehaviorInvokeArgs()
         {
@@ -105,7 +120,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustRiskBehaviorResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly ImmutableDictionary<string, Outputs.GetZeroTrustRiskBehaviorBehaviorsResult> Behaviors;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -114,7 +129,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustRiskBehaviorResult(
-            string accountId,
+            string? accountId,
 
             ImmutableDictionary<string, Outputs.GetZeroTrustRiskBehaviorBehaviorsResult> behaviors,
 

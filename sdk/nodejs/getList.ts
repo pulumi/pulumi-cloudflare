@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Filter Lists Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +40,7 @@ export interface GetListArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * The unique ID of the list.
      */
@@ -54,7 +58,7 @@ export interface GetListResult {
     /**
      * The Account ID for this resource.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The RFC 3339 timestamp of when the list was created.
      */
@@ -102,6 +106,10 @@ export interface GetListResult {
     readonly search?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Filter Lists Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -131,7 +139,7 @@ export interface GetListOutputArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The unique ID of the list.
      */

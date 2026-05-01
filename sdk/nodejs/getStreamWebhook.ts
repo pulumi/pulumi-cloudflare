@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getStreamWebhook(args: GetStreamWebhookArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamWebhookResult> {
+export function getStreamWebhook(args?: GetStreamWebhookArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamWebhookResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStreamWebhook:getStreamWebhook", {
         "accountId": args.accountId,
@@ -30,7 +36,7 @@ export interface GetStreamWebhookArgs {
     /**
      * The account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
 }
 
 /**
@@ -40,13 +46,30 @@ export interface GetStreamWebhookResult {
     /**
      * The account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The date and time the webhook was last modified.
+     */
+    readonly modified: string;
+    /**
+     * The URL where webhooks will be sent.
+     */
+    readonly notificationUrl: string;
+    /**
+     * The secret used to verify webhook signatures.
+     */
+    readonly secret: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -58,7 +81,8 @@ export interface GetStreamWebhookResult {
  * });
  * ```
  */
-export function getStreamWebhookOutput(args: GetStreamWebhookOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamWebhookResult> {
+export function getStreamWebhookOutput(args?: GetStreamWebhookOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamWebhookResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStreamWebhook:getStreamWebhook", {
         "accountId": args.accountId,
@@ -72,5 +96,5 @@ export interface GetStreamWebhookOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

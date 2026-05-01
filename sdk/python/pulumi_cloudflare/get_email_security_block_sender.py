@@ -62,7 +62,7 @@ class GetEmailSecurityBlockSenderResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account Identifier
         """
@@ -146,6 +146,11 @@ def get_email_security_block_sender(account_id: Optional[_builtins.str] = None,
                                     pattern_id: Optional[_builtins.int] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailSecurityBlockSenderResult:
     """
+    Accepted Permissions
+
+    - `Cloud Email Security: Read`
+    - `Cloud Email Security: Write`
+
     ## Example Usage
 
     ```python
@@ -178,11 +183,16 @@ def get_email_security_block_sender(account_id: Optional[_builtins.str] = None,
         pattern=pulumi.get(__ret__, 'pattern'),
         pattern_id=pulumi.get(__ret__, 'pattern_id'),
         pattern_type=pulumi.get(__ret__, 'pattern_type'))
-def get_email_security_block_sender_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_email_security_block_sender_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                            filter: Optional[pulumi.Input[Optional[Union['GetEmailSecurityBlockSenderFilterArgs', 'GetEmailSecurityBlockSenderFilterArgsDict']]]] = None,
                                            pattern_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityBlockSenderResult]:
     """
+    Accepted Permissions
+
+    - `Cloud Email Security: Read`
+    - `Cloud Email Security: Write`
+
     ## Example Usage
 
     ```python

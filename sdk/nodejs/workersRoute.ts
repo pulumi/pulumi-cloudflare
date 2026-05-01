@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Routes Read`
+ * - `Workers Routes Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -63,7 +68,7 @@ export class WorkersRoute extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a WorkersRoute resource with the given unique name, arguments, and options.
@@ -85,9 +90,6 @@ export class WorkersRoute extends pulumi.CustomResource {
             const args = argsOrState as WorkersRouteArgs | undefined;
             if (args?.pattern === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pattern'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["pattern"] = args?.pattern;
             resourceInputs["script"] = args?.script;
@@ -131,5 +133,5 @@ export interface WorkersRouteArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

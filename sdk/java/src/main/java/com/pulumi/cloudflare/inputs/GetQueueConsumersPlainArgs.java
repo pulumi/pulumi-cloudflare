@@ -20,15 +20,15 @@ public final class GetQueueConsumersPlainArgs extends com.pulumi.resources.Invok
      * A Resource identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return A Resource identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -93,7 +93,7 @@ public final class GetQueueConsumersPlainArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -121,9 +121,6 @@ public final class GetQueueConsumersPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetQueueConsumersPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetQueueConsumersPlainArgs", "accountId");
-            }
             if ($.queueId == null) {
                 throw new MissingRequiredPropertyException("GetQueueConsumersPlainArgs", "queueId");
             }

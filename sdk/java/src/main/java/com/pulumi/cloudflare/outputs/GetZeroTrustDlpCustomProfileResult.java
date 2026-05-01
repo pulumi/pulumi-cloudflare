@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomProfileContextAwareness;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomProfileEntry;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomProfileSensitivityLevel;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomProfileSharedEntry;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -13,10 +14,12 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDlpCustomProfileResult {
-    private String accountId;
+    private @Nullable String accountId;
     private Boolean aiContextEnabled;
     /**
      * @return Related DLP policies will trigger when the match count exceeds the number set.
@@ -42,6 +45,16 @@ public final class GetZeroTrustDlpCustomProfileResult {
      * 
      */
     private String createdAt;
+    /**
+     * @return Data classes associated with this profile.
+     * 
+     */
+    private List<String> dataClasses;
+    /**
+     * @return Data tags associated with this profile.
+     * 
+     */
+    private List<String> dataTags;
     /**
      * @return The description of the profile.
      * 
@@ -71,6 +84,11 @@ public final class GetZeroTrustDlpCustomProfileResult {
      */
     private Boolean openAccess;
     private String profileId;
+    /**
+     * @return Sensitivity levels associated with this profile.
+     * 
+     */
+    private List<GetZeroTrustDlpCustomProfileSensitivityLevel> sensitivityLevels;
     private List<GetZeroTrustDlpCustomProfileSharedEntry> sharedEntries;
     /**
      * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
@@ -84,8 +102,8 @@ public final class GetZeroTrustDlpCustomProfileResult {
     private String updatedAt;
 
     private GetZeroTrustDlpCustomProfileResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public Boolean aiContextEnabled() {
         return this.aiContextEnabled;
@@ -121,6 +139,20 @@ public final class GetZeroTrustDlpCustomProfileResult {
      */
     public String createdAt() {
         return this.createdAt;
+    }
+    /**
+     * @return Data classes associated with this profile.
+     * 
+     */
+    public List<String> dataClasses() {
+        return this.dataClasses;
+    }
+    /**
+     * @return Data tags associated with this profile.
+     * 
+     */
+    public List<String> dataTags() {
+        return this.dataTags;
     }
     /**
      * @return The description of the profile.
@@ -165,6 +197,13 @@ public final class GetZeroTrustDlpCustomProfileResult {
     public String profileId() {
         return this.profileId;
     }
+    /**
+     * @return Sensitivity levels associated with this profile.
+     * 
+     */
+    public List<GetZeroTrustDlpCustomProfileSensitivityLevel> sensitivityLevels() {
+        return this.sensitivityLevels;
+    }
     public List<GetZeroTrustDlpCustomProfileSharedEntry> sharedEntries() {
         return this.sharedEntries;
     }
@@ -192,12 +231,14 @@ public final class GetZeroTrustDlpCustomProfileResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Boolean aiContextEnabled;
         private Integer allowedMatchCount;
         private String confidenceThreshold;
         private GetZeroTrustDlpCustomProfileContextAwareness contextAwareness;
         private String createdAt;
+        private List<String> dataClasses;
+        private List<String> dataTags;
         private String description;
         private List<GetZeroTrustDlpCustomProfileEntry> entries;
         private String id;
@@ -205,6 +246,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
         private Boolean ocrEnabled;
         private Boolean openAccess;
         private String profileId;
+        private List<GetZeroTrustDlpCustomProfileSensitivityLevel> sensitivityLevels;
         private List<GetZeroTrustDlpCustomProfileSharedEntry> sharedEntries;
         private String type;
         private String updatedAt;
@@ -217,6 +259,8 @@ public final class GetZeroTrustDlpCustomProfileResult {
     	      this.confidenceThreshold = defaults.confidenceThreshold;
     	      this.contextAwareness = defaults.contextAwareness;
     	      this.createdAt = defaults.createdAt;
+    	      this.dataClasses = defaults.dataClasses;
+    	      this.dataTags = defaults.dataTags;
     	      this.description = defaults.description;
     	      this.entries = defaults.entries;
     	      this.id = defaults.id;
@@ -224,16 +268,15 @@ public final class GetZeroTrustDlpCustomProfileResult {
     	      this.ocrEnabled = defaults.ocrEnabled;
     	      this.openAccess = defaults.openAccess;
     	      this.profileId = defaults.profileId;
+    	      this.sensitivityLevels = defaults.sensitivityLevels;
     	      this.sharedEntries = defaults.sharedEntries;
     	      this.type = defaults.type;
     	      this.updatedAt = defaults.updatedAt;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -276,6 +319,28 @@ public final class GetZeroTrustDlpCustomProfileResult {
             }
             this.createdAt = createdAt;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dataClasses(List<String> dataClasses) {
+            if (dataClasses == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileResult", "dataClasses");
+            }
+            this.dataClasses = dataClasses;
+            return this;
+        }
+        public Builder dataClasses(String... dataClasses) {
+            return dataClasses(List.of(dataClasses));
+        }
+        @CustomType.Setter
+        public Builder dataTags(List<String> dataTags) {
+            if (dataTags == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileResult", "dataTags");
+            }
+            this.dataTags = dataTags;
+            return this;
+        }
+        public Builder dataTags(String... dataTags) {
+            return dataTags(List.of(dataTags));
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -337,6 +402,17 @@ public final class GetZeroTrustDlpCustomProfileResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sensitivityLevels(List<GetZeroTrustDlpCustomProfileSensitivityLevel> sensitivityLevels) {
+            if (sensitivityLevels == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileResult", "sensitivityLevels");
+            }
+            this.sensitivityLevels = sensitivityLevels;
+            return this;
+        }
+        public Builder sensitivityLevels(GetZeroTrustDlpCustomProfileSensitivityLevel... sensitivityLevels) {
+            return sensitivityLevels(List.of(sensitivityLevels));
+        }
+        @CustomType.Setter
         public Builder sharedEntries(List<GetZeroTrustDlpCustomProfileSharedEntry> sharedEntries) {
             if (sharedEntries == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpCustomProfileResult", "sharedEntries");
@@ -371,6 +447,8 @@ public final class GetZeroTrustDlpCustomProfileResult {
             _resultValue.confidenceThreshold = confidenceThreshold;
             _resultValue.contextAwareness = contextAwareness;
             _resultValue.createdAt = createdAt;
+            _resultValue.dataClasses = dataClasses;
+            _resultValue.dataTags = dataTags;
             _resultValue.description = description;
             _resultValue.entries = entries;
             _resultValue.id = id;
@@ -378,6 +456,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
             _resultValue.ocrEnabled = ocrEnabled;
             _resultValue.openAccess = openAccess;
             _resultValue.profileId = profileId;
+            _resultValue.sensitivityLevels = sensitivityLevels;
             _resultValue.sharedEntries = sharedEntries;
             _resultValue.type = type;
             _resultValue.updatedAt = updatedAt;

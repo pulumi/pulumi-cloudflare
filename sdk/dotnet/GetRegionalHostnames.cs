@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetRegionalHostnames
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetRegionalHostnamesResult> InvokeAsync(GetRegionalHostnamesArgs args, InvokeOptions? options = null)
+        public static Task<GetRegionalHostnamesResult> InvokeAsync(GetRegionalHostnamesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionalHostnamesResult>("cloudflare:index/getRegionalHostnames:getRegionalHostnames", args ?? new GetRegionalHostnamesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetRegionalHostnamesResult> Invoke(GetRegionalHostnamesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetRegionalHostnamesResult> Invoke(GetRegionalHostnamesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionalHostnamesResult>("cloudflare:index/getRegionalHostnames:getRegionalHostnames", args ?? new GetRegionalHostnamesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetRegionalHostnamesArgs()
         {
@@ -110,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetRegionalHostnamesInvokeArgs()
         {
@@ -138,7 +153,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetRegionalHostnamesResult(
@@ -148,7 +163,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetRegionalHostnamesResultResult> results,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             MaxItems = maxItems;

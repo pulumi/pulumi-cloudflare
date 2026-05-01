@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudforce One Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCloudforceOneRequests(ctx, &cloudflare.LookupCloudforceOneRequestsArgs{
-//				AccountId:       "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:       pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Page:            0,
 //				PerPage:         10,
 //				CompletedAfter:  pulumi.StringRef("2022-01-01T00:00:00Z"),
@@ -59,7 +63,7 @@ func LookupCloudforceOneRequests(ctx *pulumi.Context, args *LookupCloudforceOneR
 // A collection of arguments for invoking getCloudforceOneRequests.
 type LookupCloudforceOneRequestsArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Retrieve requests completed after this time.
 	CompletedAfter *string `pulumi:"completedAfter"`
 	// Retrieve requests completed before this time.
@@ -89,7 +93,7 @@ type LookupCloudforceOneRequestsArgs struct {
 // A collection of values returned by getCloudforceOneRequests.
 type LookupCloudforceOneRequestsResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Retrieve requests completed after this time.
 	CompletedAfter *string `pulumi:"completedAfter"`
 	// Retrieve requests completed before this time.
@@ -132,7 +136,7 @@ func LookupCloudforceOneRequestsOutput(ctx *pulumi.Context, args LookupCloudforc
 // A collection of arguments for invoking getCloudforceOneRequests.
 type LookupCloudforceOneRequestsOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Retrieve requests completed after this time.
 	CompletedAfter pulumi.StringPtrInput `pulumi:"completedAfter"`
 	// Retrieve requests completed before this time.
@@ -179,8 +183,8 @@ func (o LookupCloudforceOneRequestsResultOutput) ToLookupCloudforceOneRequestsRe
 }
 
 // Identifier.
-func (o LookupCloudforceOneRequestsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupCloudforceOneRequestsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Retrieve requests completed after this time.

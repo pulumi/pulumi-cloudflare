@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustRiskBehavior(args: GetZeroTrustRiskBehaviorArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustRiskBehaviorResult> {
+export function getZeroTrustRiskBehavior(args?: GetZeroTrustRiskBehaviorArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustRiskBehaviorResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior", {
         "accountId": args.accountId,
@@ -29,14 +35,14 @@ export function getZeroTrustRiskBehavior(args: GetZeroTrustRiskBehaviorArgs, opt
  * A collection of arguments for invoking getZeroTrustRiskBehavior.
  */
 export interface GetZeroTrustRiskBehaviorArgs {
-    accountId: string;
+    accountId?: string;
 }
 
 /**
  * A collection of values returned by getZeroTrustRiskBehavior.
  */
 export interface GetZeroTrustRiskBehaviorResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly behaviors: {[key: string]: outputs.GetZeroTrustRiskBehaviorBehaviors};
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -44,6 +50,11 @@ export interface GetZeroTrustRiskBehaviorResult {
     readonly id: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -55,7 +66,8 @@ export interface GetZeroTrustRiskBehaviorResult {
  * });
  * ```
  */
-export function getZeroTrustRiskBehaviorOutput(args: GetZeroTrustRiskBehaviorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustRiskBehaviorResult> {
+export function getZeroTrustRiskBehaviorOutput(args?: GetZeroTrustRiskBehaviorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustRiskBehaviorResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustRiskBehavior:getZeroTrustRiskBehavior", {
         "accountId": args.accountId,
@@ -66,5 +78,5 @@ export function getZeroTrustRiskBehaviorOutput(args: GetZeroTrustRiskBehaviorOut
  * A collection of arguments for invoking getZeroTrustRiskBehavior.
  */
 export interface GetZeroTrustRiskBehaviorOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

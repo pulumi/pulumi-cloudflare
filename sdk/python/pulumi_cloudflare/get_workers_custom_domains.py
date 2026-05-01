@@ -58,9 +58,9 @@ class GetWorkersCustomDomainsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
-        Identifer of the account.
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -68,7 +68,7 @@ class GetWorkersCustomDomainsResult:
     @pulumi.getter
     def environment(self) -> Optional[_builtins.str]:
         """
-        Worker environment associated with the zone and hostname.
+        Worker environment associated with the domain.
         """
         return pulumi.get(self, "environment")
 
@@ -76,7 +76,7 @@ class GetWorkersCustomDomainsResult:
     @pulumi.getter
     def hostname(self) -> Optional[_builtins.str]:
         """
-        Hostname of the Worker Domain.
+        Hostname of the domain.
         """
         return pulumi.get(self, "hostname")
 
@@ -108,7 +108,7 @@ class GetWorkersCustomDomainsResult:
     @pulumi.getter
     def service(self) -> Optional[_builtins.str]:
         """
-        Worker service associated with the zone and hostname.
+        Name of the Worker associated with the domain.
         """
         return pulumi.get(self, "service")
 
@@ -116,7 +116,7 @@ class GetWorkersCustomDomainsResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
         """
-        Identifier of the zone.
+        ID of the zone containing the domain hostname.
         """
         return pulumi.get(self, "zone_id")
 
@@ -124,7 +124,7 @@ class GetWorkersCustomDomainsResult:
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> Optional[_builtins.str]:
         """
-        Name of the zone.
+        Name of the zone containing the domain hostname.
         """
         return pulumi.get(self, "zone_name")
 
@@ -155,28 +155,33 @@ def get_workers_custom_domains(account_id: Optional[_builtins.str] = None,
                                zone_name: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersCustomDomainsResult:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_custom_domains = cloudflare.get_workers_custom_domains(account_id="9a7806061c88ada191ed06f989cc3dac",
+    example_workers_custom_domains = cloudflare.get_workers_custom_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         environment="production",
-        hostname="foo.example.com",
-        service="foo",
+        hostname="app.example.com",
+        service="my-worker",
         zone_id="593c9c94de529bbbfaac7c53ced0447d",
         zone_name="example.com")
     ```
 
 
-    :param _builtins.str account_id: Identifer of the account.
-    :param _builtins.str environment: Worker environment associated with the zone and hostname.
-    :param _builtins.str hostname: Hostname of the Worker Domain.
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str environment: Worker environment associated with the domain.
+    :param _builtins.str hostname: Hostname of the domain.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str service: Worker service associated with the zone and hostname.
-    :param _builtins.str zone_id: Identifier of the zone.
-    :param _builtins.str zone_name: Name of the zone.
+    :param _builtins.str service: Name of the Worker associated with the domain.
+    :param _builtins.str zone_id: ID of the zone containing the domain hostname.
+    :param _builtins.str zone_name: Name of the zone containing the domain hostname.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -199,7 +204,7 @@ def get_workers_custom_domains(account_id: Optional[_builtins.str] = None,
         service=pulumi.get(__ret__, 'service'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_name=pulumi.get(__ret__, 'zone_name'))
-def get_workers_custom_domains_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workers_custom_domains_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       environment: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       hostname: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
@@ -208,28 +213,33 @@ def get_workers_custom_domains_output(account_id: Optional[pulumi.Input[_builtin
                                       zone_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersCustomDomainsResult]:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_custom_domains = cloudflare.get_workers_custom_domains(account_id="9a7806061c88ada191ed06f989cc3dac",
+    example_workers_custom_domains = cloudflare.get_workers_custom_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         environment="production",
-        hostname="foo.example.com",
-        service="foo",
+        hostname="app.example.com",
+        service="my-worker",
         zone_id="593c9c94de529bbbfaac7c53ced0447d",
         zone_name="example.com")
     ```
 
 
-    :param _builtins.str account_id: Identifer of the account.
-    :param _builtins.str environment: Worker environment associated with the zone and hostname.
-    :param _builtins.str hostname: Hostname of the Worker Domain.
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str environment: Worker environment associated with the domain.
+    :param _builtins.str hostname: Hostname of the domain.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str service: Worker service associated with the zone and hostname.
-    :param _builtins.str zone_id: Identifier of the zone.
-    :param _builtins.str zone_name: Name of the zone.
+    :param _builtins.str service: Name of the Worker associated with the domain.
+    :param _builtins.str zone_id: ID of the zone containing the domain hostname.
+    :param _builtins.str zone_name: Name of the zone containing the domain hostname.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

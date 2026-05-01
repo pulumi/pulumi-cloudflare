@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetSchemaValidationSchemas
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -32,10 +39,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetSchemaValidationSchemasResult> InvokeAsync(GetSchemaValidationSchemasArgs args, InvokeOptions? options = null)
+        public static Task<GetSchemaValidationSchemasResult> InvokeAsync(GetSchemaValidationSchemasArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSchemaValidationSchemasResult>("cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas", args ?? new GetSchemaValidationSchemasArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,10 +70,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetSchemaValidationSchemasResult> Invoke(GetSchemaValidationSchemasInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetSchemaValidationSchemasResult> Invoke(GetSchemaValidationSchemasInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSchemaValidationSchemasResult>("cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas", args ?? new GetSchemaValidationSchemasInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -105,8 +126,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetSchemaValidationSchemasArgs()
         {
@@ -134,8 +155,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetSchemaValidationSchemasInvokeArgs()
         {
@@ -181,7 +202,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetSchemaValidationSchemasResult(
@@ -203,7 +224,7 @@ namespace Pulumi.Cloudflare
 
             bool validationEnabled,
 
-            string zoneId)
+            string? zoneId)
         {
             CreatedAt = createdAt;
             Filter = filter;

@@ -18,7 +18,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDeviceManagedNetworksList(args: GetZeroTrustDeviceManagedNetworksListArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceManagedNetworksListResult> {
+export function getZeroTrustDeviceManagedNetworksList(args?: GetZeroTrustDeviceManagedNetworksListArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceManagedNetworksListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList", {
         "accountId": args.accountId,
@@ -30,7 +31,7 @@ export function getZeroTrustDeviceManagedNetworksList(args: GetZeroTrustDeviceMa
  * A collection of arguments for invoking getZeroTrustDeviceManagedNetworksList.
  */
 export interface GetZeroTrustDeviceManagedNetworksListArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +42,7 @@ export interface GetZeroTrustDeviceManagedNetworksListArgs {
  * A collection of values returned by getZeroTrustDeviceManagedNetworksList.
  */
 export interface GetZeroTrustDeviceManagedNetworksListResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -67,7 +68,8 @@ export interface GetZeroTrustDeviceManagedNetworksListResult {
  * });
  * ```
  */
-export function getZeroTrustDeviceManagedNetworksListOutput(args: GetZeroTrustDeviceManagedNetworksListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceManagedNetworksListResult> {
+export function getZeroTrustDeviceManagedNetworksListOutput(args?: GetZeroTrustDeviceManagedNetworksListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceManagedNetworksListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList", {
         "accountId": args.accountId,
@@ -79,7 +81,7 @@ export function getZeroTrustDeviceManagedNetworksListOutput(args: GetZeroTrustDe
  * A collection of arguments for invoking getZeroTrustDeviceManagedNetworksList.
  */
 export interface GetZeroTrustDeviceManagedNetworksListOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

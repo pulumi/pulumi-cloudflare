@@ -9,10 +9,12 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDexRuleResult {
-    private String accountId;
+    private @Nullable String accountId;
     private String createdAt;
     private String description;
     /**
@@ -31,8 +33,8 @@ public final class GetZeroTrustDexRuleResult {
     private String updatedAt;
 
     private GetZeroTrustDexRuleResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public String createdAt() {
         return this.createdAt;
@@ -76,7 +78,7 @@ public final class GetZeroTrustDexRuleResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String createdAt;
         private String description;
         private String id;
@@ -100,10 +102,8 @@ public final class GetZeroTrustDexRuleResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDexRuleResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

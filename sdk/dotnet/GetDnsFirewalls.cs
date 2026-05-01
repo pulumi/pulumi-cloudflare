@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetDnsFirewalls
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Firewall Read`
+        /// - `DNS Firewall Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetDnsFirewallsResult> InvokeAsync(GetDnsFirewallsArgs args, InvokeOptions? options = null)
+        public static Task<GetDnsFirewallsResult> InvokeAsync(GetDnsFirewallsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDnsFirewallsResult>("cloudflare:index/getDnsFirewalls:getDnsFirewalls", args ?? new GetDnsFirewallsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Firewall Read`
+        /// - `DNS Firewall Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetDnsFirewallsResult> Invoke(GetDnsFirewallsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetDnsFirewallsResult> Invoke(GetDnsFirewallsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDnsFirewallsResult>("cloudflare:index/getDnsFirewalls:getDnsFirewalls", args ?? new GetDnsFirewallsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Firewall Read`
+        /// - `DNS Firewall Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -104,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -126,7 +141,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -142,7 +157,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetDnsFirewallsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Pages Read`
+ * - `Pages Write`
+ *
  * > If you are using a `source` block configuration, you must first have a
  *    connected GitHub or GitLab account connected to Cloudflare. See the
  *    [Getting Started with Pages](https://developers.cloudflare.com/pages/get-started/git-integration/)
@@ -256,7 +261,7 @@ export class PagesProject extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Configs for the project build process.
      */
@@ -349,9 +354,6 @@ export class PagesProject extends pulumi.CustomResource {
             resourceInputs["usesFunctions"] = state?.usesFunctions;
         } else {
             const args = argsOrState as PagesProjectArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -457,7 +459,7 @@ export interface PagesProjectArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Configs for the project build process.
      */

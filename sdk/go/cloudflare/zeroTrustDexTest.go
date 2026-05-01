@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare DEX Read`
+// - `Cloudflare DEX Write`
+// - `Zero Trust Read`
+// - `Zero Trust Report`
+//
 // ## Example Usage
 //
 // ```go
@@ -62,7 +69,7 @@ import (
 type ZeroTrustDexTest struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data ZeroTrustDexTestDataOutput `pulumi:"data"`
 	// Additional details about the test.
@@ -87,9 +94,6 @@ func NewZeroTrustDexTest(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Data == nil {
 		return nil, errors.New("invalid value for required argument 'Data'")
 	}
@@ -167,7 +171,7 @@ func (ZeroTrustDexTestState) ElementType() reflect.Type {
 }
 
 type zeroTrustDexTestArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data ZeroTrustDexTestData `pulumi:"data"`
 	// Additional details about the test.
@@ -184,7 +188,7 @@ type zeroTrustDexTestArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDexTest resource.
 type ZeroTrustDexTestArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// The configuration object which contains the details for the WARP client to conduct the test.
 	Data ZeroTrustDexTestDataInput
 	// Additional details about the test.
@@ -286,8 +290,8 @@ func (o ZeroTrustDexTestOutput) ToZeroTrustDexTestOutputWithContext(ctx context.
 	return o
 }
 
-func (o ZeroTrustDexTestOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustDexTestOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The configuration object which contains the details for the WARP client to conduct the test.

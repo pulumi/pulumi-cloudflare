@@ -27,7 +27,7 @@ class GetZeroTrustDlpCustomProfileResult:
     """
     A collection of values returned by getZeroTrustDlpCustomProfile.
     """
-    def __init__(__self__, account_id=None, ai_context_enabled=None, allowed_match_count=None, confidence_threshold=None, context_awareness=None, created_at=None, description=None, entries=None, id=None, name=None, ocr_enabled=None, open_access=None, profile_id=None, shared_entries=None, type=None, updated_at=None):
+    def __init__(__self__, account_id=None, ai_context_enabled=None, allowed_match_count=None, confidence_threshold=None, context_awareness=None, created_at=None, data_classes=None, data_tags=None, description=None, entries=None, id=None, name=None, ocr_enabled=None, open_access=None, profile_id=None, sensitivity_levels=None, shared_entries=None, type=None, updated_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -46,6 +46,12 @@ class GetZeroTrustDlpCustomProfileResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if data_classes and not isinstance(data_classes, list):
+            raise TypeError("Expected argument 'data_classes' to be a list")
+        pulumi.set(__self__, "data_classes", data_classes)
+        if data_tags and not isinstance(data_tags, list):
+            raise TypeError("Expected argument 'data_tags' to be a list")
+        pulumi.set(__self__, "data_tags", data_tags)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -67,6 +73,9 @@ class GetZeroTrustDlpCustomProfileResult:
         if profile_id and not isinstance(profile_id, str):
             raise TypeError("Expected argument 'profile_id' to be a str")
         pulumi.set(__self__, "profile_id", profile_id)
+        if sensitivity_levels and not isinstance(sensitivity_levels, list):
+            raise TypeError("Expected argument 'sensitivity_levels' to be a list")
+        pulumi.set(__self__, "sensitivity_levels", sensitivity_levels)
         if shared_entries and not isinstance(shared_entries, list):
             raise TypeError("Expected argument 'shared_entries' to be a list")
         pulumi.set(__self__, "shared_entries", shared_entries)
@@ -79,7 +88,7 @@ class GetZeroTrustDlpCustomProfileResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -119,6 +128,22 @@ class GetZeroTrustDlpCustomProfileResult:
         When the profile was created.
         """
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="dataClasses")
+    def data_classes(self) -> Sequence[_builtins.str]:
+        """
+        Data classes associated with this profile.
+        """
+        return pulumi.get(self, "data_classes")
+
+    @_builtins.property
+    @pulumi.getter(name="dataTags")
+    def data_tags(self) -> Sequence[_builtins.str]:
+        """
+        Data tags associated with this profile.
+        """
+        return pulumi.get(self, "data_tags")
 
     @_builtins.property
     @pulumi.getter
@@ -169,6 +194,14 @@ class GetZeroTrustDlpCustomProfileResult:
         return pulumi.get(self, "profile_id")
 
     @_builtins.property
+    @pulumi.getter(name="sensitivityLevels")
+    def sensitivity_levels(self) -> Sequence['outputs.GetZeroTrustDlpCustomProfileSensitivityLevelResult']:
+        """
+        Sensitivity levels associated with this profile.
+        """
+        return pulumi.get(self, "sensitivity_levels")
+
+    @_builtins.property
     @pulumi.getter(name="sharedEntries")
     def shared_entries(self) -> Sequence['outputs.GetZeroTrustDlpCustomProfileSharedEntryResult']:
         return pulumi.get(self, "shared_entries")
@@ -202,6 +235,8 @@ class AwaitableGetZeroTrustDlpCustomProfileResult(GetZeroTrustDlpCustomProfileRe
             confidence_threshold=self.confidence_threshold,
             context_awareness=self.context_awareness,
             created_at=self.created_at,
+            data_classes=self.data_classes,
+            data_tags=self.data_tags,
             description=self.description,
             entries=self.entries,
             id=self.id,
@@ -209,6 +244,7 @@ class AwaitableGetZeroTrustDlpCustomProfileResult(GetZeroTrustDlpCustomProfileRe
             ocr_enabled=self.ocr_enabled,
             open_access=self.open_access,
             profile_id=self.profile_id,
+            sensitivity_levels=self.sensitivity_levels,
             shared_entries=self.shared_entries,
             type=self.type,
             updated_at=self.updated_at)
@@ -218,6 +254,11 @@ def get_zero_trust_dlp_custom_profile(account_id: Optional[_builtins.str] = None
                                       profile_id: Optional[_builtins.str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustDlpCustomProfileResult:
     """
+    Accepted Permissions
+
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python
@@ -241,6 +282,8 @@ def get_zero_trust_dlp_custom_profile(account_id: Optional[_builtins.str] = None
         confidence_threshold=pulumi.get(__ret__, 'confidence_threshold'),
         context_awareness=pulumi.get(__ret__, 'context_awareness'),
         created_at=pulumi.get(__ret__, 'created_at'),
+        data_classes=pulumi.get(__ret__, 'data_classes'),
+        data_tags=pulumi.get(__ret__, 'data_tags'),
         description=pulumi.get(__ret__, 'description'),
         entries=pulumi.get(__ret__, 'entries'),
         id=pulumi.get(__ret__, 'id'),
@@ -248,13 +291,19 @@ def get_zero_trust_dlp_custom_profile(account_id: Optional[_builtins.str] = None
         ocr_enabled=pulumi.get(__ret__, 'ocr_enabled'),
         open_access=pulumi.get(__ret__, 'open_access'),
         profile_id=pulumi.get(__ret__, 'profile_id'),
+        sensitivity_levels=pulumi.get(__ret__, 'sensitivity_levels'),
         shared_entries=pulumi.get(__ret__, 'shared_entries'),
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_zero_trust_dlp_custom_profile_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_dlp_custom_profile_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                              profile_id: Optional[pulumi.Input[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDlpCustomProfileResult]:
     """
+    Accepted Permissions
+
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python
@@ -277,6 +326,8 @@ def get_zero_trust_dlp_custom_profile_output(account_id: Optional[pulumi.Input[_
         confidence_threshold=pulumi.get(__response__, 'confidence_threshold'),
         context_awareness=pulumi.get(__response__, 'context_awareness'),
         created_at=pulumi.get(__response__, 'created_at'),
+        data_classes=pulumi.get(__response__, 'data_classes'),
+        data_tags=pulumi.get(__response__, 'data_tags'),
         description=pulumi.get(__response__, 'description'),
         entries=pulumi.get(__response__, 'entries'),
         id=pulumi.get(__response__, 'id'),
@@ -284,6 +335,7 @@ def get_zero_trust_dlp_custom_profile_output(account_id: Optional[pulumi.Input[_
         ocr_enabled=pulumi.get(__response__, 'ocr_enabled'),
         open_access=pulumi.get(__response__, 'open_access'),
         profile_id=pulumi.get(__response__, 'profile_id'),
+        sensitivity_levels=pulumi.get(__response__, 'sensitivity_levels'),
         shared_entries=pulumi.get(__response__, 'shared_entries'),
         type=pulumi.get(__response__, 'type'),
         updated_at=pulumi.get(__response__, 'updated_at')))

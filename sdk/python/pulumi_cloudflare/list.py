@@ -21,40 +21,29 @@ __all__ = ['ListArgs', 'List']
 @pulumi.input_type
 class ListArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  kind: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  items: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]] = None):
         """
         The set of arguments for constructing a List resource.
 
-        :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
                Available values: "ip", "redirect", "hostname", "asn".
         :param pulumi.Input[_builtins.str] name: An informative name for the list. Use this name in filter and rule expressions.
+        :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] description: An informative summary of the list.
         :param pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]] items: The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if items is not None:
             pulumi.set(__self__, "items", items)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The Account ID for this resource.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -80,6 +69,18 @@ class ListArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Account ID for this resource.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -274,6 +275,11 @@ class List(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Account Filter Lists Edit`
+        - `Account Filter Lists Read`
+
         > The `List` resource supports defining list items in line with the
           `items` attribute. The provider also has a `ListItem` resource for
           managing items as independent resources. Using both in line `items` definitions
@@ -303,6 +309,11 @@ class List(pulumi.CustomResource):
                  args: ListArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Account Filter Lists Edit`
+        - `Account Filter Lists Read`
+
         > The `List` resource supports defining list items in line with the
           `items` attribute. The provider also has a `ListItem` resource for
           managing items as independent resources. Using both in line `items` definitions
@@ -345,8 +356,6 @@ class List(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ListArgs.__new__(ListArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             __props__.__dict__["items"] = items
@@ -414,7 +423,7 @@ class List(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The Account ID for this resource.
         """

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Domain API Gateway`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -64,7 +69,7 @@ export class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ApiShieldDiscoveryOperation resource with the given unique name, arguments, and options.
@@ -86,9 +91,6 @@ export class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
             const args = argsOrState as ApiShieldDiscoveryOperationArgs | undefined;
             if (args?.operationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'operationId'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["operationId"] = args?.operationId;
             resourceInputs["state"] = args?.state;
@@ -138,5 +140,5 @@ export interface ApiShieldDiscoveryOperationArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

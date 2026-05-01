@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDevicePostureIntegrations(ctx, &cloudflare.LookupZeroTrustDevicePostureIntegrationsArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,14 +48,14 @@ func LookupZeroTrustDevicePostureIntegrations(ctx *pulumi.Context, args *LookupZ
 
 // A collection of arguments for invoking getZeroTrustDevicePostureIntegrations.
 type LookupZeroTrustDevicePostureIntegrationsArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
 
 // A collection of values returned by getZeroTrustDevicePostureIntegrations.
 type LookupZeroTrustDevicePostureIntegrationsResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -75,7 +75,7 @@ func LookupZeroTrustDevicePostureIntegrationsOutput(ctx *pulumi.Context, args Lo
 
 // A collection of arguments for invoking getZeroTrustDevicePostureIntegrations.
 type LookupZeroTrustDevicePostureIntegrationsOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -99,8 +99,8 @@ func (o LookupZeroTrustDevicePostureIntegrationsResultOutput) ToLookupZeroTrustD
 	return o
 }
 
-func (o LookupZeroTrustDevicePostureIntegrationsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDevicePostureIntegrationsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDevicePostureIntegrationsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDevicePostureIntegrationsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

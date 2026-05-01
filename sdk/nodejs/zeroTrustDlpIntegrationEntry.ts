@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -55,7 +60,7 @@ export class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDlpIntegrationEntry.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
@@ -120,9 +125,6 @@ export class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
             resourceInputs["wordList"] = state?.wordList;
         } else {
             const args = argsOrState as ZeroTrustDlpIntegrationEntryArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
@@ -194,7 +196,7 @@ export interface ZeroTrustDlpIntegrationEntryState {
  * The set of arguments for constructing a ZeroTrustDlpIntegrationEntry resource.
  */
 export interface ZeroTrustDlpIntegrationEntryArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     enabled: pulumi.Input<boolean>;
     entryId: pulumi.Input<string>;
     /**

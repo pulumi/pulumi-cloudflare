@@ -41,7 +41,7 @@ public final class GetEmailRoutingDnsInvokeResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetEmailRoutingDnsInvokeResult() {}
     public List<GetEmailRoutingDnsError> errors() {
@@ -81,8 +81,8 @@ public final class GetEmailRoutingDnsInvokeResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -101,7 +101,7 @@ public final class GetEmailRoutingDnsInvokeResult {
         private GetEmailRoutingDnsResultInfo resultInfo;
         private @Nullable String subdomain;
         private Boolean success;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetEmailRoutingDnsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -176,10 +176,8 @@ public final class GetEmailRoutingDnsInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetEmailRoutingDnsInvokeResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

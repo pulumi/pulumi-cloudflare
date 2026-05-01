@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -53,7 +58,7 @@ export class ZeroTrustRiskScoringIntegration extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustRiskScoringIntegration.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The Cloudflare account tag.
      */
@@ -107,9 +112,6 @@ export class ZeroTrustRiskScoringIntegration extends pulumi.CustomResource {
             resourceInputs["wellKnownUrl"] = state?.wellKnownUrl;
         } else {
             const args = argsOrState as ZeroTrustRiskScoringIntegrationArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.integrationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'integrationType'");
             }
@@ -170,7 +172,7 @@ export interface ZeroTrustRiskScoringIntegrationState {
  * The set of arguments for constructing a ZeroTrustRiskScoringIntegration resource.
  */
 export interface ZeroTrustRiskScoringIntegrationArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
      */

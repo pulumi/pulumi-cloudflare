@@ -21,9 +21,9 @@ __all__ = ['ZeroTrustListArgs', 'ZeroTrustList']
 @pulumi.input_type
 class ZeroTrustListArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  items: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]]] = None):
         """
@@ -31,26 +31,18 @@ class ZeroTrustListArgs:
 
         :param pulumi.Input[_builtins.str] name: Specify the list name.
         :param pulumi.Input[_builtins.str] type: Specify the list type.
-               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
         :param pulumi.Input[_builtins.str] description: Provide the list description.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustListItemArgs']]] items: Add items to the list.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if items is not None:
             pulumi.set(__self__, "items", items)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -69,13 +61,22 @@ class ZeroTrustListArgs:
     def type(self) -> pulumi.Input[_builtins.str]:
         """
         Specify the list type.
-        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
         """
         return pulumi.get(self, "type")
 
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -121,7 +122,7 @@ class _ZeroTrustListState:
         :param pulumi.Input[_builtins.float] list_count: Indicate the number of items in the list.
         :param pulumi.Input[_builtins.str] name: Specify the list name.
         :param pulumi.Input[_builtins.str] type: Specify the list type.
-               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -211,7 +212,7 @@ class _ZeroTrustListState:
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specify the list type.
-        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
         """
         return pulumi.get(self, "type")
 
@@ -272,7 +273,7 @@ class ZeroTrustList(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustListItemArgs', 'ZeroTrustListItemArgsDict']]]] items: Add items to the list.
         :param pulumi.Input[_builtins.str] name: Specify the list name.
         :param pulumi.Input[_builtins.str] type: Specify the list type.
-               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
         """
         ...
     @overload
@@ -334,8 +335,6 @@ class ZeroTrustList(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustListArgs.__new__(ZeroTrustListArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             __props__.__dict__["items"] = items
@@ -380,7 +379,7 @@ class ZeroTrustList(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] list_count: Indicate the number of items in the list.
         :param pulumi.Input[_builtins.str] name: Specify the list name.
         :param pulumi.Input[_builtins.str] type: Specify the list type.
-               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+               Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -398,7 +397,7 @@ class ZeroTrustList(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -443,7 +442,7 @@ class ZeroTrustList(pulumi.CustomResource):
     def type(self) -> pulumi.Output[_builtins.str]:
         """
         Specify the list type.
-        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
         """
         return pulumi.get(self, "type")
 

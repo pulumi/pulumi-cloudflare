@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Stream Read`
+// - `Stream Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetStream(ctx, &cloudflare.LookupStreamArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Identifier: "ea95132c15732412d22c1476fa83f27a",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupStream(ctx *pulumi.Context, args *LookupStreamArgs, opts ...pulumi.In
 // A collection of arguments for invoking getStream.
 type LookupStreamArgs struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
 }
@@ -58,9 +63,11 @@ type LookupStreamArgs struct {
 // A collection of values returned by getStream.
 type LookupStreamResult struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// The unique identifier of the source video this video was clipped from.
+	ClippedFrom string `pulumi:"clippedFrom"`
 	// The date and time the media item was created.
 	Created string `pulumi:"created"`
 	// A user-defined identifier for the media creator.
@@ -76,6 +83,8 @@ type LookupStreamResult struct {
 	LiveInput string `pulumi:"liveInput"`
 	// The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
 	MaxDurationSeconds int `pulumi:"maxDurationSeconds"`
+	// The maximum size in bytes for the video upload.
+	MaxSizeBytes int `pulumi:"maxSizeBytes"`
 	// A user modifiable key-value store used to reference other systems of record for managing videos.
 	Meta string `pulumi:"meta"`
 	// The date and time the media item was last modified.
@@ -83,6 +92,8 @@ type LookupStreamResult struct {
 	Playback GetStreamPlayback `pulumi:"playback"`
 	// The video's preview page URI. This field is omitted until encoding is complete.
 	Preview string `pulumi:"preview"`
+	// Public details for the video including title, share link, channel link, and logo.
+	PublicDetails GetStreamPublicDetails `pulumi:"publicDetails"`
 	// Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
 	ReadyToStream bool `pulumi:"readyToStream"`
 	// Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
@@ -120,7 +131,7 @@ func LookupStreamOutput(ctx *pulumi.Context, args LookupStreamOutputArgs, opts .
 // A collection of arguments for invoking getStream.
 type LookupStreamOutputArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 }
@@ -145,13 +156,18 @@ func (o LookupStreamResultOutput) ToLookupStreamResultOutputWithContext(ctx cont
 }
 
 // The account identifier tag.
-func (o LookupStreamResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupStreamResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
 func (o LookupStreamResultOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupStreamResult) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// The unique identifier of the source video this video was clipped from.
+func (o LookupStreamResultOutput) ClippedFrom() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamResult) string { return v.ClippedFrom }).(pulumi.StringOutput)
 }
 
 // The date and time the media item was created.
@@ -193,6 +209,11 @@ func (o LookupStreamResultOutput) MaxDurationSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupStreamResult) int { return v.MaxDurationSeconds }).(pulumi.IntOutput)
 }
 
+// The maximum size in bytes for the video upload.
+func (o LookupStreamResultOutput) MaxSizeBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupStreamResult) int { return v.MaxSizeBytes }).(pulumi.IntOutput)
+}
+
 // A user modifiable key-value store used to reference other systems of record for managing videos.
 func (o LookupStreamResultOutput) Meta() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamResult) string { return v.Meta }).(pulumi.StringOutput)
@@ -210,6 +231,11 @@ func (o LookupStreamResultOutput) Playback() GetStreamPlaybackOutput {
 // The video's preview page URI. This field is omitted until encoding is complete.
 func (o LookupStreamResultOutput) Preview() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamResult) string { return v.Preview }).(pulumi.StringOutput)
+}
+
+// Public details for the video including title, share link, channel link, and logo.
+func (o LookupStreamResultOutput) PublicDetails() GetStreamPublicDetailsOutput {
+	return o.ApplyT(func(v LookupStreamResult) GetStreamPublicDetails { return v.PublicDetails }).(GetStreamPublicDetailsOutput)
 }
 
 // Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.

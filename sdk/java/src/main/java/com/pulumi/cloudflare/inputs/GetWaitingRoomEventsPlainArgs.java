@@ -42,15 +42,15 @@ public final class GetWaitingRoomEventsPlainArgs extends com.pulumi.resources.In
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetWaitingRoomEventsPlainArgs() {}
@@ -101,7 +101,7 @@ public final class GetWaitingRoomEventsPlainArgs extends com.pulumi.resources.In
          * @return builder
          * 
          */
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -109,9 +109,6 @@ public final class GetWaitingRoomEventsPlainArgs extends com.pulumi.resources.In
         public GetWaitingRoomEventsPlainArgs build() {
             if ($.waitingRoomId == null) {
                 throw new MissingRequiredPropertyException("GetWaitingRoomEventsPlainArgs", "waitingRoomId");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetWaitingRoomEventsPlainArgs", "zoneId");
             }
             return $;
         }

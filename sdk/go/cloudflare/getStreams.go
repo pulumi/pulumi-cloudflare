@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Stream Read`
+// - `Stream Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,14 +31,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetStreams(ctx, &cloudflare.LookupStreamsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				Creator:   pulumi.StringRef("creator-id_abcde12345"),
-//				End:       pulumi.StringRef("2014-01-02T02:20:00Z"),
-//				Search:    pulumi.StringRef("puppy.mp4"),
-//				Start:     pulumi.StringRef("2014-01-02T02:20:00Z"),
-//				Status:    pulumi.StringRef("inprogress"),
-//				Type:      pulumi.StringRef("live"),
-//				VideoName: pulumi.StringRef("puppy.mp4"),
+//				AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Id:          pulumi.StringRef("ea95132c15732412d22c1476fa83f27a"),
+//				After:       pulumi.StringRef("2019-12-27T18:11:19.117Z"),
+//				Before:      pulumi.StringRef("2019-12-27T18:11:19.117Z"),
+//				Creator:     pulumi.StringRef("creator-id_abcde12345"),
+//				End:         pulumi.StringRef("2014-01-02T02:20:00Z"),
+//				Limit:       pulumi.IntRef(1),
+//				LiveInputId: pulumi.StringRef("live_input_id"),
+//				Name:        pulumi.StringRef("name"),
+//				Search:      pulumi.StringRef("puppy.mp4"),
+//				Start:       pulumi.StringRef("2014-01-02T02:20:00Z"),
+//				Status:      pulumi.StringRef("inprogress"),
+//				Type:        pulumi.StringRef("live"),
+//				VideoName:   pulumi.StringRef("puppy.mp4"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -56,17 +67,29 @@ func LookupStreams(ctx *pulumi.Context, args *LookupStreamsArgs, opts ...pulumi.
 // A collection of arguments for invoking getStreams.
 type LookupStreamsArgs struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
+	// Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
+	After *string `pulumi:"after"`
 	// Lists videos in ascending order of creation.
 	Asc *bool `pulumi:"asc"`
+	// Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
+	Before *string `pulumi:"before"`
 	// A user-defined identifier for the media creator.
 	Creator *string `pulumi:"creator"`
 	// Lists videos created before the specified date.
 	End *string `pulumi:"end"`
+	// Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+	Id *string `pulumi:"id"`
 	// Includes the total number of videos associated with the submitted query parameters.
 	IncludeCounts *bool `pulumi:"includeCounts"`
+	// Maximum number of videos to return (default 1000, max 1000).
+	Limit *int `pulumi:"limit"`
+	// Filter by live input ID to find videos associated with a specific live stream.
+	LiveInputId *string `pulumi:"liveInputId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Filter by video name/UID(s). Can be a single name or a comma-separated list.
+	Name *string `pulumi:"name"`
 	// Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
 	Search *string `pulumi:"search"`
 	// Lists videos created after the specified date.
@@ -83,19 +106,29 @@ type LookupStreamsArgs struct {
 // A collection of values returned by getStreams.
 type LookupStreamsResult struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
+	// Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
+	After *string `pulumi:"after"`
 	// Lists videos in ascending order of creation.
 	Asc bool `pulumi:"asc"`
+	// Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
+	Before *string `pulumi:"before"`
 	// A user-defined identifier for the media creator.
 	Creator *string `pulumi:"creator"`
 	// Lists videos created before the specified date.
 	End *string `pulumi:"end"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	// Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+	Id *string `pulumi:"id"`
 	// Includes the total number of videos associated with the submitted query parameters.
 	IncludeCounts bool `pulumi:"includeCounts"`
+	// Maximum number of videos to return (default 1000, max 1000).
+	Limit *int `pulumi:"limit"`
+	// Filter by live input ID to find videos associated with a specific live stream.
+	LiveInputId *string `pulumi:"liveInputId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Filter by video name/UID(s). Can be a single name or a comma-separated list.
+	Name *string `pulumi:"name"`
 	// The items returned by the data source
 	Results []GetStreamsResult `pulumi:"results"`
 	// Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
@@ -123,17 +156,29 @@ func LookupStreamsOutput(ctx *pulumi.Context, args LookupStreamsOutputArgs, opts
 // A collection of arguments for invoking getStreams.
 type LookupStreamsOutputArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
+	After pulumi.StringPtrInput `pulumi:"after"`
 	// Lists videos in ascending order of creation.
 	Asc pulumi.BoolPtrInput `pulumi:"asc"`
+	// Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
+	Before pulumi.StringPtrInput `pulumi:"before"`
 	// A user-defined identifier for the media creator.
 	Creator pulumi.StringPtrInput `pulumi:"creator"`
 	// Lists videos created before the specified date.
 	End pulumi.StringPtrInput `pulumi:"end"`
+	// Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Includes the total number of videos associated with the submitted query parameters.
 	IncludeCounts pulumi.BoolPtrInput `pulumi:"includeCounts"`
+	// Maximum number of videos to return (default 1000, max 1000).
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
+	// Filter by live input ID to find videos associated with a specific live stream.
+	LiveInputId pulumi.StringPtrInput `pulumi:"liveInputId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Filter by video name/UID(s). Can be a single name or a comma-separated list.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
 	Search pulumi.StringPtrInput `pulumi:"search"`
 	// Lists videos created after the specified date.
@@ -167,13 +212,23 @@ func (o LookupStreamsResultOutput) ToLookupStreamsResultOutputWithContext(ctx co
 }
 
 // The account identifier tag.
-func (o LookupStreamsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupStreamsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
+func (o LookupStreamsResultOutput) After() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamsResult) *string { return v.After }).(pulumi.StringPtrOutput)
 }
 
 // Lists videos in ascending order of creation.
 func (o LookupStreamsResultOutput) Asc() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupStreamsResult) bool { return v.Asc }).(pulumi.BoolOutput)
+}
+
+// Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
+func (o LookupStreamsResultOutput) Before() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamsResult) *string { return v.Before }).(pulumi.StringPtrOutput)
 }
 
 // A user-defined identifier for the media creator.
@@ -186,9 +241,9 @@ func (o LookupStreamsResultOutput) End() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStreamsResult) *string { return v.End }).(pulumi.StringPtrOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
-func (o LookupStreamsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamsResult) string { return v.Id }).(pulumi.StringOutput)
+// Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+func (o LookupStreamsResultOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamsResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Includes the total number of videos associated with the submitted query parameters.
@@ -196,9 +251,24 @@ func (o LookupStreamsResultOutput) IncludeCounts() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupStreamsResult) bool { return v.IncludeCounts }).(pulumi.BoolOutput)
 }
 
+// Maximum number of videos to return (default 1000, max 1000).
+func (o LookupStreamsResultOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupStreamsResult) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+// Filter by live input ID to find videos associated with a specific live stream.
+func (o LookupStreamsResultOutput) LiveInputId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamsResult) *string { return v.LiveInputId }).(pulumi.StringPtrOutput)
+}
+
 // Max items to fetch, default: 1000
 func (o LookupStreamsResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupStreamsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+// Filter by video name/UID(s). Can be a single name or a comma-separated list.
+func (o LookupStreamsResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The items returned by the data source

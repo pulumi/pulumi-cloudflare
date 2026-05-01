@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetMagicWanStaticRoute
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +42,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMagicWanStaticRouteResult>("cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute", args ?? new GetMagicWanStaticRouteArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +72,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicWanStaticRouteResult>("cloudflare:index/getMagicWanStaticRoute:getMagicWanStaticRoute", args ?? new GetMagicWanStaticRouteInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Identifier
@@ -107,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Identifier
@@ -129,7 +150,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Identifier
         /// </summary>
@@ -142,7 +163,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetMagicWanStaticRouteResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

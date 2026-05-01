@@ -36,6 +36,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? CustomCertificate;
         /// <summary>
+        /// The identifier for the Custom CSR that was used.
+        /// </summary>
+        public readonly string? CustomCsrId;
+        /// <summary>
         /// The key for a custom uploaded certificate.
         /// </summary>
         public readonly string? CustomKey;
@@ -70,6 +74,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? customCertificate,
 
+            string? customCsrId,
+
             string? customKey,
 
             string? method,
@@ -85,6 +91,7 @@ namespace Pulumi.Cloudflare.Outputs
             CloudflareBranding = cloudflareBranding;
             CustomCertBundles = customCertBundles;
             CustomCertificate = customCertificate;
+            CustomCsrId = customCsrId;
             CustomKey = customKey;
             Method = method;
             Settings = settings;

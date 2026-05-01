@@ -19,9 +19,9 @@ __all__ = ['ZeroTrustRiskScoringIntegrationArgs', 'ZeroTrustRiskScoringIntegrati
 @pulumi.input_type
 class ZeroTrustRiskScoringIntegrationArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  integration_type: pulumi.Input[_builtins.str],
                  tenant_url: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  active: Optional[pulumi.Input[_builtins.bool]] = None,
                  reference_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -33,22 +33,14 @@ class ZeroTrustRiskScoringIntegrationArgs:
         :param pulumi.Input[_builtins.str] reference_id: A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
                https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "integration_type", integration_type)
         pulumi.set(__self__, "tenant_url", tenant_url)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if active is not None:
             pulumi.set(__self__, "active", active)
         if reference_id is not None:
             pulumi.set(__self__, "reference_id", reference_id)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationType")
@@ -73,6 +65,15 @@ class ZeroTrustRiskScoringIntegrationArgs:
     @tenant_url.setter
     def tenant_url(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "tenant_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -248,6 +249,11 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
                  tenant_url: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Read`
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -283,6 +289,11 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
                  args: ZeroTrustRiskScoringIntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Read`
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -332,8 +343,6 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustRiskScoringIntegrationArgs.__new__(ZeroTrustRiskScoringIntegrationArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["active"] = active
             if integration_type is None and not opts.urn:
@@ -396,7 +405,7 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

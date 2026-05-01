@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * > `cloudflare.ApiShieldSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
  *   Instead, please utilize the cloudflare.SchemaValidationSettings resource instead.
  *

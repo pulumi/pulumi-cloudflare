@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetCloudforceOneRequest
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudforce One Read`
+        /// - `Cloudforce One Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCloudforceOneRequestResult> InvokeAsync(GetCloudforceOneRequestArgs args, InvokeOptions? options = null)
+        public static Task<GetCloudforceOneRequestResult> InvokeAsync(GetCloudforceOneRequestArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudforceOneRequestResult>("cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest", args ?? new GetCloudforceOneRequestArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudforce One Read`
+        /// - `Cloudforce One Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCloudforceOneRequestResult> Invoke(GetCloudforceOneRequestInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetCloudforceOneRequestResult> Invoke(GetCloudforceOneRequestInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudforceOneRequestResult>("cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest", args ?? new GetCloudforceOneRequestInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudforce One Read`
+        /// - `Cloudforce One Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetCloudforceOneRequestFilterArgs? Filter { get; set; }
@@ -110,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetCloudforceOneRequestFilterInputArgs>? Filter { get; set; }
@@ -135,7 +150,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly string Completed;
         /// <summary>
         /// Request content.
@@ -186,7 +201,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetCloudforceOneRequestResult(
-            string accountId,
+            string? accountId,
 
             string completed,
 

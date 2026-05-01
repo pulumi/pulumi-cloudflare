@@ -22,6 +22,11 @@ public final class GetWorkersResult {
      */
     private String createdOn;
     /**
+     * @return When the Worker&#39;s most recent deployment was created. `null` if the Worker has never been deployed.
+     * 
+     */
+    private String deployedOn;
+    /**
      * @return Immutable ID of the Worker.
      * 
      */
@@ -74,6 +79,13 @@ public final class GetWorkersResult {
      */
     public String createdOn() {
         return this.createdOn;
+    }
+    /**
+     * @return When the Worker&#39;s most recent deployment was created. `null` if the Worker has never been deployed.
+     * 
+     */
+    public String deployedOn() {
+        return this.deployedOn;
     }
     /**
      * @return Immutable ID of the Worker.
@@ -149,6 +161,7 @@ public final class GetWorkersResult {
     @CustomType.Builder
     public static final class Builder {
         private String createdOn;
+        private String deployedOn;
         private String id;
         private Boolean logpush;
         private String name;
@@ -162,6 +175,7 @@ public final class GetWorkersResult {
         public Builder(GetWorkersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdOn = defaults.createdOn;
+    	      this.deployedOn = defaults.deployedOn;
     	      this.id = defaults.id;
     	      this.logpush = defaults.logpush;
     	      this.name = defaults.name;
@@ -179,6 +193,14 @@ public final class GetWorkersResult {
               throw new MissingRequiredPropertyException("GetWorkersResult", "createdOn");
             }
             this.createdOn = createdOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deployedOn(String deployedOn) {
+            if (deployedOn == null) {
+              throw new MissingRequiredPropertyException("GetWorkersResult", "deployedOn");
+            }
+            this.deployedOn = deployedOn;
             return this;
         }
         @CustomType.Setter
@@ -262,6 +284,7 @@ public final class GetWorkersResult {
         public GetWorkersResult build() {
             final var _resultValue = new GetWorkersResult();
             _resultValue.createdOn = createdOn;
+            _resultValue.deployedOn = deployedOn;
             _resultValue.id = id;
             _resultValue.logpush = logpush;
             _resultValue.name = name;

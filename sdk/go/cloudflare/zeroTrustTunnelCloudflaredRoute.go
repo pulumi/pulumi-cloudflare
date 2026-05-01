@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Networks Write`
+// - `Cloudflare Tunnel Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -51,7 +56,7 @@ type ZeroTrustTunnelCloudflaredRoute struct {
 	pulumi.CustomResourceState
 
 	// Cloudflare account ID
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Optional remark describing the route.
 	Comment pulumi.StringOutput `pulumi:"comment"`
 	// Timestamp of when the resource was created.
@@ -73,9 +78,6 @@ func NewZeroTrustTunnelCloudflaredRoute(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Network == nil {
 		return nil, errors.New("invalid value for required argument 'Network'")
 	}
@@ -150,7 +152,7 @@ func (ZeroTrustTunnelCloudflaredRouteState) ElementType() reflect.Type {
 
 type zeroTrustTunnelCloudflaredRouteArgs struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Optional remark describing the route.
 	Comment *string `pulumi:"comment"`
 	// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
@@ -164,7 +166,7 @@ type zeroTrustTunnelCloudflaredRouteArgs struct {
 // The set of arguments for constructing a ZeroTrustTunnelCloudflaredRoute resource.
 type ZeroTrustTunnelCloudflaredRouteArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Optional remark describing the route.
 	Comment pulumi.StringPtrInput
 	// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
@@ -263,8 +265,8 @@ func (o ZeroTrustTunnelCloudflaredRouteOutput) ToZeroTrustTunnelCloudflaredRoute
 }
 
 // Cloudflare account ID
-func (o ZeroTrustTunnelCloudflaredRouteOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustTunnelCloudflaredRoute) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustTunnelCloudflaredRouteOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflaredRoute) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Optional remark describing the route.

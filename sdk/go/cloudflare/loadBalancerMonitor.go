@@ -7,11 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Load Balancing: Monitors and Pools Read`
+// - `Load Balancing: Monitors and Pools Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -70,7 +74,7 @@ type LoadBalancerMonitor struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	AllowInsecure pulumi.BoolOutput `pulumi:"allowInsecure"`
 	// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
@@ -112,12 +116,9 @@ type LoadBalancerMonitor struct {
 func NewLoadBalancerMonitor(ctx *pulumi.Context,
 	name string, args *LoadBalancerMonitorArgs, opts ...pulumi.ResourceOption) (*LoadBalancerMonitor, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &LoadBalancerMonitorArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LoadBalancerMonitor
 	err := ctx.RegisterResource("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, args, &resource, opts...)
@@ -226,7 +227,7 @@ func (LoadBalancerMonitorState) ElementType() reflect.Type {
 
 type loadBalancerMonitorArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	AllowInsecure *bool `pulumi:"allowInsecure"`
 	// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
@@ -265,7 +266,7 @@ type loadBalancerMonitorArgs struct {
 // The set of arguments for constructing a LoadBalancerMonitor resource.
 type LoadBalancerMonitorArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	AllowInsecure pulumi.BoolPtrInput
 	// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
@@ -389,8 +390,8 @@ func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorOutputWithContext(ctx co
 }
 
 // Identifier.
-func (o LoadBalancerMonitorOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o LoadBalancerMonitorOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.

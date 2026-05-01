@@ -48,8 +48,8 @@ import (
 type ZeroTrustGatewayProxyEndpoint struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
 	// Specify the list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayOutput `pulumi:"ips"`
 	// The proxy endpoint kind
@@ -69,9 +69,6 @@ func NewZeroTrustGatewayProxyEndpoint(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -138,7 +135,7 @@ func (ZeroTrustGatewayProxyEndpointState) ElementType() reflect.Type {
 }
 
 type zeroTrustGatewayProxyEndpointArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Specify the list of CIDRs to restrict ingress connections.
 	Ips []string `pulumi:"ips"`
 	// The proxy endpoint kind
@@ -150,7 +147,7 @@ type zeroTrustGatewayProxyEndpointArgs struct {
 
 // The set of arguments for constructing a ZeroTrustGatewayProxyEndpoint resource.
 type ZeroTrustGatewayProxyEndpointArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Specify the list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayInput
 	// The proxy endpoint kind
@@ -247,8 +244,8 @@ func (o ZeroTrustGatewayProxyEndpointOutput) ToZeroTrustGatewayProxyEndpointOutp
 	return o
 }
 
-func (o ZeroTrustGatewayProxyEndpointOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayProxyEndpoint) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustGatewayProxyEndpointOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayProxyEndpoint) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o ZeroTrustGatewayProxyEndpointOutput) CreatedAt() pulumi.StringOutput {

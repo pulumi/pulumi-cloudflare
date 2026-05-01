@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -63,7 +68,7 @@ type CustomOriginTrustStore struct {
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewCustomOriginTrustStore registers a new resource with the given unique name, arguments, and options.
@@ -75,9 +80,6 @@ func NewCustomOriginTrustStore(ctx *pulumi.Context,
 
 	if args.Certificate == nil {
 		return nil, errors.New("invalid value for required argument 'Certificate'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CustomOriginTrustStore
@@ -149,7 +151,7 @@ type customOriginTrustStoreArgs struct {
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate string `pulumi:"certificate"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a CustomOriginTrustStore resource.
@@ -157,7 +159,7 @@ type CustomOriginTrustStoreArgs struct {
 	// The zone's SSL certificate or certificate and the intermediate(s).
 	Certificate pulumi.StringInput
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (CustomOriginTrustStoreArgs) ElementType() reflect.Type {
@@ -284,8 +286,8 @@ func (o CustomOriginTrustStoreOutput) UploadedOn() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o CustomOriginTrustStoreOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *CustomOriginTrustStore) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o CustomOriginTrustStoreOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomOriginTrustStore) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type CustomOriginTrustStoreArrayOutput struct{ *pulumi.OutputState }

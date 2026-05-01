@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetArgoSmartRouting
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetArgoSmartRoutingResult> InvokeAsync(GetArgoSmartRoutingArgs args, InvokeOptions? options = null)
+        public static Task<GetArgoSmartRoutingResult> InvokeAsync(GetArgoSmartRoutingArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetArgoSmartRoutingResult>("cloudflare:index/getArgoSmartRouting:getArgoSmartRouting", args ?? new GetArgoSmartRoutingArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetArgoSmartRoutingResult> Invoke(GetArgoSmartRoutingInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetArgoSmartRoutingResult> Invoke(GetArgoSmartRoutingInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetArgoSmartRoutingResult>("cloudflare:index/getArgoSmartRouting:getArgoSmartRouting", args ?? new GetArgoSmartRoutingInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specifies the zone associated with the API call.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetArgoSmartRoutingArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specifies the zone associated with the API call.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetArgoSmartRoutingInvokeArgs()
         {
@@ -131,7 +146,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specifies the zone associated with the API call.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetArgoSmartRoutingResult(
@@ -143,7 +158,7 @@ namespace Pulumi.Cloudflare
 
             string value,
 
-            string zoneId)
+            string? zoneId)
         {
             Editable = editable;
             Id = id;

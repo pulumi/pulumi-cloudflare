@@ -18,7 +18,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustGatewayCertificates(args: GetZeroTrustGatewayCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayCertificatesResult> {
+export function getZeroTrustGatewayCertificates(args?: GetZeroTrustGatewayCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayCertificatesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates", {
         "accountId": args.accountId,
@@ -30,7 +31,7 @@ export function getZeroTrustGatewayCertificates(args: GetZeroTrustGatewayCertifi
  * A collection of arguments for invoking getZeroTrustGatewayCertificates.
  */
 export interface GetZeroTrustGatewayCertificatesArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +42,7 @@ export interface GetZeroTrustGatewayCertificatesArgs {
  * A collection of values returned by getZeroTrustGatewayCertificates.
  */
 export interface GetZeroTrustGatewayCertificatesResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -67,7 +68,8 @@ export interface GetZeroTrustGatewayCertificatesResult {
  * });
  * ```
  */
-export function getZeroTrustGatewayCertificatesOutput(args: GetZeroTrustGatewayCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayCertificatesResult> {
+export function getZeroTrustGatewayCertificatesOutput(args?: GetZeroTrustGatewayCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayCertificatesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayCertificates:getZeroTrustGatewayCertificates", {
         "accountId": args.accountId,
@@ -79,7 +81,7 @@ export function getZeroTrustGatewayCertificatesOutput(args: GetZeroTrustGatewayC
  * A collection of arguments for invoking getZeroTrustGatewayCertificates.
  */
 export interface GetZeroTrustGatewayCertificatesOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

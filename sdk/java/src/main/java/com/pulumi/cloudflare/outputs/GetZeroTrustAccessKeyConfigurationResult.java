@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustAccessKeyConfigurationResult {
@@ -15,7 +17,7 @@ public final class GetZeroTrustAccessKeyConfigurationResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The number of days until the next key rotation.
      * 
@@ -42,8 +44,8 @@ public final class GetZeroTrustAccessKeyConfigurationResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The number of days until the next key rotation.
@@ -83,7 +85,7 @@ public final class GetZeroTrustAccessKeyConfigurationResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Double daysUntilNextRotation;
         private String id;
         private Double keyRotationIntervalDays;
@@ -99,10 +101,8 @@ public final class GetZeroTrustAccessKeyConfigurationResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessKeyConfigurationResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

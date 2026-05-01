@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetHealthcheck
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Health Checks Read`
+        /// - `Health Checks Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHealthcheckResult>("cloudflare:index/getHealthcheck:getHealthcheck", args ?? new GetHealthcheckArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Health Checks Read`
+        /// - `Health Checks Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetHealthcheckResult>("cloudflare:index/getHealthcheck:getHealthcheck", args ?? new GetHealthcheckInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Health Checks Read`
+        /// - `Health Checks Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetHealthcheckArgs()
         {
@@ -113,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetHealthcheckInvokeArgs()
         {
@@ -200,7 +215,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetHealthcheckResult(
@@ -242,7 +257,7 @@ namespace Pulumi.Cloudflare
 
             string type,
 
-            string zoneId)
+            string? zoneId)
         {
             Address = address;
             CheckRegions = checkRegions;

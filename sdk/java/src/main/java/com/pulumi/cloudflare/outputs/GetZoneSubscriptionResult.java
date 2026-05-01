@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZoneSubscriptionResult {
@@ -58,7 +60,7 @@ public final class GetZoneSubscriptionResult {
      * @return Identifier
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetZoneSubscriptionResult() {}
     /**
@@ -123,8 +125,8 @@ public final class GetZoneSubscriptionResult {
      * @return Identifier
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -144,7 +146,7 @@ public final class GetZoneSubscriptionResult {
         private Double price;
         private GetZoneSubscriptionRatePlan ratePlan;
         private String state;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZoneSubscriptionResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -224,10 +226,8 @@ public final class GetZoneSubscriptionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetZoneSubscriptionResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

@@ -66,15 +66,15 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
      * Defines the host (hostname or IP) of your origin database.
      * 
      */
-    @Import(name="host", required=true)
-    private Output<String> host;
+    @Import(name="host")
+    private @Nullable Output<String> host;
 
     /**
      * @return Defines the host (hostname or IP) of your origin database.
      * 
      */
-    public Output<String> host() {
-        return this.host;
+    public Optional<Output<String>> host() {
+        return Optional.ofNullable(this.host);
     }
 
     /**
@@ -125,6 +125,21 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.
+     * 
+     */
+    @Import(name="serviceId")
+    private @Nullable Output<String> serviceId;
+
+    /**
+     * @return The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.
+     * 
+     */
+    public Optional<Output<String>> serviceId() {
+        return Optional.ofNullable(this.serviceId);
+    }
+
+    /**
      * Set the user of your origin database.
      * 
      */
@@ -149,6 +164,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         this.password = $.password;
         this.port = $.port;
         this.scheme = $.scheme;
+        this.serviceId = $.serviceId;
         this.user = $.user;
     }
 
@@ -239,7 +255,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder host(Output<String> host) {
+        public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
@@ -320,6 +336,27 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param serviceId The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceId(@Nullable Output<String> serviceId) {
+            $.serviceId = serviceId;
+            return this;
+        }
+
+        /**
+         * @param serviceId The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceId(String serviceId) {
+            return serviceId(Output.of(serviceId));
+        }
+
+        /**
          * @param user Set the user of your origin database.
          * 
          * @return builder
@@ -343,9 +380,6 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         public HyperdriveConfigOriginArgs build() {
             if ($.database == null) {
                 throw new MissingRequiredPropertyException("HyperdriveConfigOriginArgs", "database");
-            }
-            if ($.host == null) {
-                throw new MissingRequiredPropertyException("HyperdriveConfigOriginArgs", "host");
             }
             if ($.password == null) {
                 throw new MissingRequiredPropertyException("HyperdriveConfigOriginArgs", "password");

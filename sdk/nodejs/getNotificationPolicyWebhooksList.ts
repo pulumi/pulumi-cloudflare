@@ -7,6 +7,14 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Notifications Read`
+ * - `Notifications Write`
+ * - `Zero Trust: PII Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getNotificationPolicyWebhooksList(args: GetNotificationPolicyWebhooksListArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationPolicyWebhooksListResult> {
+export function getNotificationPolicyWebhooksList(args?: GetNotificationPolicyWebhooksListArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationPolicyWebhooksListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getNotificationPolicyWebhooksList:getNotificationPolicyWebhooksList", {
         "accountId": args.accountId,
@@ -33,7 +42,7 @@ export interface GetNotificationPolicyWebhooksListArgs {
     /**
      * The account id
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +56,7 @@ export interface GetNotificationPolicyWebhooksListResult {
     /**
      * The account id
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +71,14 @@ export interface GetNotificationPolicyWebhooksListResult {
     readonly results: outputs.GetNotificationPolicyWebhooksListResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Notifications Read`
+ * - `Notifications Write`
+ * - `Zero Trust: PII Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +90,8 @@ export interface GetNotificationPolicyWebhooksListResult {
  * });
  * ```
  */
-export function getNotificationPolicyWebhooksListOutput(args: GetNotificationPolicyWebhooksListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotificationPolicyWebhooksListResult> {
+export function getNotificationPolicyWebhooksListOutput(args?: GetNotificationPolicyWebhooksListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotificationPolicyWebhooksListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getNotificationPolicyWebhooksList:getNotificationPolicyWebhooksList", {
         "accountId": args.accountId,
@@ -88,7 +106,7 @@ export interface GetNotificationPolicyWebhooksListOutputArgs {
     /**
      * The account id
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

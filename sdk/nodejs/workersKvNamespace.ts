@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers KV Storage Read`
+ * - `Workers KV Storage Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -54,7 +59,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
      */
@@ -82,9 +87,6 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
             resourceInputs["title"] = state?.title;
         } else {
             const args = argsOrState as WorkersKvNamespaceArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
@@ -122,7 +124,7 @@ export interface WorkersKvNamespaceArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A human-readable string name for a Namespace.
      */

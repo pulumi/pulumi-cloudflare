@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Gateway`
+// - `Account API Gateway Read`
+// - `Domain API Gateway`
+// - `Domain API Gateway Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetApiShieldSchema(ctx, &cloudflare.LookupApiShieldSchemaArgs{
-//				ZoneId:     "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SchemaId:   "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //				OmitSource: pulumi.BoolRef(true),
 //			}, nil)
@@ -54,7 +61,7 @@ type LookupApiShieldSchemaArgs struct {
 	OmitSource *bool  `pulumi:"omitSource"`
 	SchemaId   string `pulumi:"schemaId"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getApiShieldSchema.
@@ -75,7 +82,7 @@ type LookupApiShieldSchemaResult struct {
 	// Flag whether schema is enabled for validation.
 	ValidationEnabled bool `pulumi:"validationEnabled"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupApiShieldSchemaOutput(ctx *pulumi.Context, args LookupApiShieldSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupApiShieldSchemaResultOutput {
@@ -93,7 +100,7 @@ type LookupApiShieldSchemaOutputArgs struct {
 	OmitSource pulumi.BoolPtrInput `pulumi:"omitSource"`
 	SchemaId   pulumi.StringInput  `pulumi:"schemaId"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupApiShieldSchemaOutputArgs) ElementType() reflect.Type {
@@ -155,8 +162,8 @@ func (o LookupApiShieldSchemaResultOutput) ValidationEnabled() pulumi.BoolOutput
 }
 
 // Identifier.
-func (o LookupApiShieldSchemaResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupApiShieldSchemaResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupApiShieldSchemaResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiShieldSchemaResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

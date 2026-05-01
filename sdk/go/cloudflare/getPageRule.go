@@ -11,6 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Apps and Policies Read`
+// - `Access: Apps and Policies Revoke`
+// - `Access: Apps and Policies Write`
+// - `Access: Mutual TLS Certificates Write`
+// - `Access: Organizations, Identity Providers, and Groups Write`
+// - `Analytics Read`
+// - `Apps Write`
+// - `Cache Purge`
+// - `DNS Read`
+// - `DNS Write`
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+// - `Load Balancers Read`
+// - `Load Balancers Write`
+// - `Logs Read`
+// - `Logs Write`
+// - `Page Rules Read`
+// - `Page Rules Write`
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+// - `Stream Read`
+// - `Stream Write`
+// - `Trust and Safety Read`
+// - `Trust and Safety Write`
+// - `Workers Routes Read`
+// - `Workers Routes Write`
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Zaraz Admin`
+// - `Zaraz Edit`
+// - `Zaraz Read`
+// - `Zero Trust: PII Read`
+// - `Zone Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+// - `Zone Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +65,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetPageRule(ctx, &cloudflare.LookupPageRuleArgs{
-//				ZoneId:     "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				PageruleId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -52,7 +91,7 @@ type LookupPageRuleArgs struct {
 	// Identifier.
 	PageruleId string `pulumi:"pageruleId"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getPageRule.
@@ -75,7 +114,7 @@ type LookupPageRuleResult struct {
 	// Available values: "active", "disabled".
 	Status string `pulumi:"status"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupPageRuleOutput(ctx *pulumi.Context, args LookupPageRuleOutputArgs, opts ...pulumi.InvokeOption) LookupPageRuleResultOutput {
@@ -92,7 +131,7 @@ type LookupPageRuleOutputArgs struct {
 	// Identifier.
 	PageruleId pulumi.StringInput `pulumi:"pageruleId"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupPageRuleOutputArgs) ElementType() reflect.Type {
@@ -150,8 +189,8 @@ func (o LookupPageRuleResultOutput) Status() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupPageRuleResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPageRuleResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupPageRuleResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPageRuleResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -104,7 +104,7 @@ class GetPageRuleResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -130,6 +130,45 @@ def get_page_rule(pagerule_id: Optional[_builtins.str] = None,
                   zone_id: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPageRuleResult:
     """
+    Accepted Permissions
+
+    - `Access: Apps and Policies Read`
+    - `Access: Apps and Policies Revoke`
+    - `Access: Apps and Policies Write`
+    - `Access: Mutual TLS Certificates Write`
+    - `Access: Organizations, Identity Providers, and Groups Write`
+    - `Analytics Read`
+    - `Apps Write`
+    - `Cache Purge`
+    - `DNS Read`
+    - `DNS Write`
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+    - `Load Balancers Read`
+    - `Load Balancers Write`
+    - `Logs Read`
+    - `Logs Write`
+    - `Page Rules Read`
+    - `Page Rules Write`
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+    - `Stream Read`
+    - `Stream Write`
+    - `Trust and Safety Read`
+    - `Trust and Safety Write`
+    - `Workers Routes Read`
+    - `Workers Routes Write`
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Zaraz Admin`
+    - `Zaraz Edit`
+    - `Zaraz Read`
+    - `Zero Trust: PII Read`
+    - `Zone Read`
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+    - `Zone Write`
+
     ## Example Usage
 
     ```python
@@ -159,9 +198,48 @@ def get_page_rule(pagerule_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_page_rule_output(pagerule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                         zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPageRuleResult]:
     """
+    Accepted Permissions
+
+    - `Access: Apps and Policies Read`
+    - `Access: Apps and Policies Revoke`
+    - `Access: Apps and Policies Write`
+    - `Access: Mutual TLS Certificates Write`
+    - `Access: Organizations, Identity Providers, and Groups Write`
+    - `Analytics Read`
+    - `Apps Write`
+    - `Cache Purge`
+    - `DNS Read`
+    - `DNS Write`
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+    - `Load Balancers Read`
+    - `Load Balancers Write`
+    - `Logs Read`
+    - `Logs Write`
+    - `Page Rules Read`
+    - `Page Rules Write`
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+    - `Stream Read`
+    - `Stream Write`
+    - `Trust and Safety Read`
+    - `Trust and Safety Write`
+    - `Workers Routes Read`
+    - `Workers Routes Write`
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Zaraz Admin`
+    - `Zaraz Edit`
+    - `Zaraz Read`
+    - `Zero Trust: PII Read`
+    - `Zone Read`
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+    - `Zone Write`
+
     ## Example Usage
 
     ```python

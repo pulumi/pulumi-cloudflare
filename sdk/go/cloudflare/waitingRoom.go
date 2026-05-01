@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Waiting Rooms Read`
+// - `Waiting Rooms Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -82,8 +87,8 @@ type WaitingRoom struct {
 	// Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
 	CookieAttributes WaitingRoomCookieAttributesOutput `pulumi:"cookieAttributes"`
 	// Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookieSuffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
-	CookieSuffix pulumi.StringPtrOutput `pulumi:"cookieSuffix"`
-	CreatedOn    pulumi.StringOutput    `pulumi:"createdOn"`
+	CookieSuffix pulumi.StringOutput `pulumi:"cookieSuffix"`
+	CreatedOn    pulumi.StringOutput `pulumi:"createdOn"`
 	// Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
 	CustomPageHtml pulumi.StringOutput `pulumi:"customPageHtml"`
 	// The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
@@ -233,7 +238,7 @@ type WaitingRoom struct {
 	// Available values: "off", "invisible", "visibleNonInteractive", "visibleManaged".
 	TurnstileMode pulumi.StringOutput `pulumi:"turnstileMode"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewWaitingRoom registers a new resource with the given unique name, arguments, and options.
@@ -254,9 +259,6 @@ func NewWaitingRoom(ctx *pulumi.Context,
 	}
 	if args.TotalActiveUsers == nil {
 		return nil, errors.New("invalid value for required argument 'TotalActiveUsers'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WaitingRoom
@@ -755,7 +757,7 @@ type waitingRoomArgs struct {
 	// Available values: "off", "invisible", "visibleNonInteractive", "visibleManaged".
 	TurnstileMode *string `pulumi:"turnstileMode"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a WaitingRoom resource.
@@ -910,7 +912,7 @@ type WaitingRoomArgs struct {
 	// Available values: "off", "invisible", "visibleNonInteractive", "visibleManaged".
 	TurnstileMode pulumi.StringPtrInput
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (WaitingRoomArgs) ElementType() reflect.Type {
@@ -1011,8 +1013,8 @@ func (o WaitingRoomOutput) CookieAttributes() WaitingRoomCookieAttributesOutput 
 }
 
 // Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookieSuffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
-func (o WaitingRoomOutput) CookieSuffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.CookieSuffix }).(pulumi.StringPtrOutput)
+func (o WaitingRoomOutput) CookieSuffix() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.CookieSuffix }).(pulumi.StringOutput)
 }
 
 func (o WaitingRoomOutput) CreatedOn() pulumi.StringOutput {
@@ -1231,8 +1233,8 @@ func (o WaitingRoomOutput) TurnstileMode() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o WaitingRoomOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o WaitingRoomOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type WaitingRoomArrayOutput struct{ *pulumi.OutputState }

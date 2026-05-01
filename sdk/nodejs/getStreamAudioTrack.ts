@@ -2,9 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +39,7 @@ export interface GetStreamAudioTrackArgs {
     /**
      * The account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
@@ -46,11 +53,11 @@ export interface GetStreamAudioTrackResult {
     /**
      * The account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
-     * Denotes whether the audio track will be played by default in a player.
+     * Array of audio tracks for the video.
      */
-    readonly default: boolean;
+    readonly audios: outputs.GetStreamAudioTrackAudio[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -59,21 +66,13 @@ export interface GetStreamAudioTrackResult {
      * A Cloudflare-generated unique identifier for a media item.
      */
     readonly identifier: string;
-    /**
-     * A string to uniquely identify the track amongst other audio track labels for the specified video.
-     */
-    readonly label: string;
-    /**
-     * Specifies the processing status of the video.
-     * Available values: "queued", "ready", "error".
-     */
-    readonly status: string;
-    /**
-     * A Cloudflare-generated unique identifier for a media item.
-     */
-    readonly uid: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -101,7 +100,7 @@ export interface GetStreamAudioTrackOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Billing Read`
+ * - `Billing Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getAccountSubscription(args: GetAccountSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountSubscriptionResult> {
+export function getAccountSubscription(args?: GetAccountSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountSubscriptionResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountSubscription:getAccountSubscription", {
         "accountId": args.accountId,
@@ -32,7 +38,7 @@ export interface GetAccountSubscriptionArgs {
     /**
      * Identifier
      */
-    accountId: string;
+    accountId?: string;
 }
 
 /**
@@ -42,7 +48,7 @@ export interface GetAccountSubscriptionResult {
     /**
      * Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The monetary unit in which pricing information is displayed.
      */
@@ -79,6 +85,11 @@ export interface GetAccountSubscriptionResult {
     readonly state: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Billing Read`
+ * - `Billing Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -90,7 +101,8 @@ export interface GetAccountSubscriptionResult {
  * });
  * ```
  */
-export function getAccountSubscriptionOutput(args: GetAccountSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountSubscriptionResult> {
+export function getAccountSubscriptionOutput(args?: GetAccountSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountSubscriptionResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountSubscription:getAccountSubscription", {
         "accountId": args.accountId,
@@ -104,5 +116,5 @@ export interface GetAccountSubscriptionOutputArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

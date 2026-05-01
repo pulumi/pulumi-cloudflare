@@ -21,10 +21,11 @@ __all__ = ['ZeroTrustAccessAiControlsMcpPortalArgs', 'ZeroTrustAccessAiControlsM
 @pulumi.input_type
 class ZeroTrustAccessAiControlsMcpPortalArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  hostname: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_code_mode: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  secure_web_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]] = None):
@@ -32,27 +33,22 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
         The set of arguments for constructing a ZeroTrustAccessAiControlsMcpPortal resource.
 
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
+        :param pulumi.Input[_builtins.bool] allow_code_mode: Allow remote code execution in Dynamic Workers (beta)
         :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "zero_trust_access_ai_controls_mcp_portal_id", zero_trust_access_ai_controls_mcp_portal_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if allow_code_mode is not None:
+            pulumi.set(__self__, "allow_code_mode", allow_code_mode)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if secure_web_gateway is not None:
             pulumi.set(__self__, "secure_web_gateway", secure_web_gateway)
         if servers is not None:
             pulumi.set(__self__, "servers", servers)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -83,6 +79,27 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
     @zero_trust_access_ai_controls_mcp_portal_id.setter
     def zero_trust_access_ai_controls_mcp_portal_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zero_trust_access_ai_controls_mcp_portal_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowCodeMode")
+    def allow_code_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allow remote code execution in Dynamic Workers (beta)
+        """
+        return pulumi.get(self, "allow_code_mode")
+
+    @allow_code_mode.setter
+    def allow_code_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_code_mode", value)
 
     @_builtins.property
     @pulumi.getter
@@ -119,6 +136,7 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
 class _ZeroTrustAccessAiControlsMcpPortalState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_code_mode: Optional[pulumi.Input[_builtins.bool]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -132,11 +150,14 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
         """
         Input properties used for looking up and filtering ZeroTrustAccessAiControlsMcpPortal resources.
 
+        :param pulumi.Input[_builtins.bool] allow_code_mode: Allow remote code execution in Dynamic Workers (beta)
         :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if allow_code_mode is not None:
+            pulumi.set(__self__, "allow_code_mode", allow_code_mode)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
@@ -166,6 +187,18 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowCodeMode")
+    def allow_code_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allow remote code execution in Dynamic Workers (beta)
+        """
+        return pulumi.get(self, "allow_code_mode")
+
+    @allow_code_mode.setter
+    def allow_code_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_code_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -271,6 +304,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_code_mode: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -290,6 +324,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
             zero_trust_access_ai_controls_mcp_portal_id="my-mcp-portal",
             hostname="exmaple.com",
             name="My MCP Portal",
+            allow_code_mode=True,
             description="This is my custom MCP Portal",
             secure_web_gateway=False,
             servers=[{
@@ -298,11 +333,13 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                 "on_behalf": True,
                 "updated_prompts": [{
                     "name": "name",
+                    "alias": "my-custom-alias",
                     "description": "description",
                     "enabled": True,
                 }],
                 "updated_tools": [{
                     "name": "name",
+                    "alias": "my-custom-alias",
                     "description": "description",
                     "enabled": True,
                 }],
@@ -318,6 +355,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_code_mode: Allow remote code execution in Dynamic Workers (beta)
         :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
         """
@@ -339,6 +377,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
             zero_trust_access_ai_controls_mcp_portal_id="my-mcp-portal",
             hostname="exmaple.com",
             name="My MCP Portal",
+            allow_code_mode=True,
             description="This is my custom MCP Portal",
             secure_web_gateway=False,
             servers=[{
@@ -347,11 +386,13 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                 "on_behalf": True,
                 "updated_prompts": [{
                     "name": "name",
+                    "alias": "my-custom-alias",
                     "description": "description",
                     "enabled": True,
                 }],
                 "updated_tools": [{
                     "name": "name",
+                    "alias": "my-custom-alias",
                     "description": "description",
                     "enabled": True,
                 }],
@@ -381,6 +422,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_code_mode: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -396,9 +438,8 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustAccessAiControlsMcpPortalArgs.__new__(ZeroTrustAccessAiControlsMcpPortalArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["allow_code_mode"] = allow_code_mode
             __props__.__dict__["description"] = description
             if hostname is None and not opts.urn:
                 raise TypeError("Missing required property 'hostname'")
@@ -426,6 +467,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
+            allow_code_mode: Optional[pulumi.Input[_builtins.bool]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             created_by: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -443,6 +485,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_code_mode: Allow remote code execution in Dynamic Workers (beta)
         :param pulumi.Input[_builtins.bool] secure_web_gateway: Route outbound MCP traffic through Zero Trust Secure Web Gateway
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_portal_id: portal id
         """
@@ -451,6 +494,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
         __props__ = _ZeroTrustAccessAiControlsMcpPortalState.__new__(_ZeroTrustAccessAiControlsMcpPortalState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["allow_code_mode"] = allow_code_mode
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["description"] = description
@@ -465,8 +509,16 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="allowCodeMode")
+    def allow_code_mode(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Allow remote code execution in Dynamic Workers (beta)
+        """
+        return pulumi.get(self, "allow_code_mode")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -505,7 +557,7 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="secureWebGateway")
-    def secure_web_gateway(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def secure_web_gateway(self) -> pulumi.Output[_builtins.bool]:
         """
         Route outbound MCP traffic through Zero Trust Secure Web Gateway
         """

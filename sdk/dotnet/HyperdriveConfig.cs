@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Hyperdrive Read`
+    /// - `Hyperdrive Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -62,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// Define configurations using a unique string identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("caching")]
         public Output<Outputs.HyperdriveConfigCaching?> Caching { get; private set; } = null!;
@@ -79,6 +84,9 @@ namespace Pulumi.Cloudflare
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
 
+        /// <summary>
+        /// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+        /// </summary>
         [Output("mtls")]
         public Output<Outputs.HyperdriveConfigMtls?> Mtls { get; private set; } = null!;
 
@@ -146,12 +154,15 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Define configurations using a unique string identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("caching")]
         public Input<Inputs.HyperdriveConfigCachingArgs>? Caching { get; set; }
 
+        /// <summary>
+        /// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+        /// </summary>
         [Input("mtls")]
         public Input<Inputs.HyperdriveConfigMtlsArgs>? Mtls { get; set; }
 
@@ -199,6 +210,9 @@ namespace Pulumi.Cloudflare
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
 
+        /// <summary>
+        /// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+        /// </summary>
         [Input("mtls")]
         public Input<Inputs.HyperdriveConfigMtlsGetArgs>? Mtls { get; set; }
 

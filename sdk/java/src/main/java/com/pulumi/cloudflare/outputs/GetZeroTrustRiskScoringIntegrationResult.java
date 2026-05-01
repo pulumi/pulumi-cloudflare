@@ -8,10 +8,12 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustRiskScoringIntegrationResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The Cloudflare account tag.
      * 
@@ -57,8 +59,8 @@ public final class GetZeroTrustRiskScoringIntegrationResult {
     private String wellKnownUrl;
 
     private GetZeroTrustRiskScoringIntegrationResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The Cloudflare account tag.
@@ -131,7 +133,7 @@ public final class GetZeroTrustRiskScoringIntegrationResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String accountTag;
         private Boolean active;
         private String createdAt;
@@ -157,10 +159,8 @@ public final class GetZeroTrustRiskScoringIntegrationResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustRiskScoringIntegrationResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

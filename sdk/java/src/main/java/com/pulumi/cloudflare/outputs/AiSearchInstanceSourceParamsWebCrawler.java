@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.AiSearchInstanceSourceParamsWebCrawlerCrawlOptions;
 import com.pulumi.cloudflare.outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptions;
 import com.pulumi.cloudflare.outputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptions;
 import com.pulumi.core.annotations.CustomType;
@@ -13,20 +14,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AiSearchInstanceSourceParamsWebCrawler {
+    private @Nullable AiSearchInstanceSourceParamsWebCrawlerCrawlOptions crawlOptions;
     private @Nullable AiSearchInstanceSourceParamsWebCrawlerParseOptions parseOptions;
     /**
-     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;.
+     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
      * 
      */
     private @Nullable String parseType;
     private @Nullable AiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions;
 
     private AiSearchInstanceSourceParamsWebCrawler() {}
+    public Optional<AiSearchInstanceSourceParamsWebCrawlerCrawlOptions> crawlOptions() {
+        return Optional.ofNullable(this.crawlOptions);
+    }
     public Optional<AiSearchInstanceSourceParamsWebCrawlerParseOptions> parseOptions() {
         return Optional.ofNullable(this.parseOptions);
     }
     /**
-     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;.
+     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
      * 
      */
     public Optional<String> parseType() {
@@ -45,17 +50,25 @@ public final class AiSearchInstanceSourceParamsWebCrawler {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AiSearchInstanceSourceParamsWebCrawlerCrawlOptions crawlOptions;
         private @Nullable AiSearchInstanceSourceParamsWebCrawlerParseOptions parseOptions;
         private @Nullable String parseType;
         private @Nullable AiSearchInstanceSourceParamsWebCrawlerStoreOptions storeOptions;
         public Builder() {}
         public Builder(AiSearchInstanceSourceParamsWebCrawler defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.crawlOptions = defaults.crawlOptions;
     	      this.parseOptions = defaults.parseOptions;
     	      this.parseType = defaults.parseType;
     	      this.storeOptions = defaults.storeOptions;
         }
 
+        @CustomType.Setter
+        public Builder crawlOptions(@Nullable AiSearchInstanceSourceParamsWebCrawlerCrawlOptions crawlOptions) {
+
+            this.crawlOptions = crawlOptions;
+            return this;
+        }
         @CustomType.Setter
         public Builder parseOptions(@Nullable AiSearchInstanceSourceParamsWebCrawlerParseOptions parseOptions) {
 
@@ -76,6 +89,7 @@ public final class AiSearchInstanceSourceParamsWebCrawler {
         }
         public AiSearchInstanceSourceParamsWebCrawler build() {
             final var _resultValue = new AiSearchInstanceSourceParamsWebCrawler();
+            _resultValue.crawlOptions = crawlOptions;
             _resultValue.parseOptions = parseOptions;
             _resultValue.parseType = parseType;
             _resultValue.storeOptions = storeOptions;

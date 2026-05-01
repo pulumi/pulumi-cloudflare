@@ -182,7 +182,7 @@ class GetDnsRecordsResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -227,6 +227,11 @@ def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsR
                     zone_id: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDnsRecordsResult:
     """
+    Accepted Permissions
+
+    - `DNS Read`
+    - `DNS Write`
+
     ## Example Usage
 
     ```python
@@ -327,9 +332,14 @@ def get_dns_records_output(comment: Optional[pulumi.Input[Optional[Union['GetDns
                            tag: Optional[pulumi.Input[Optional[Union['GetDnsRecordsTagArgs', 'GetDnsRecordsTagArgsDict']]]] = None,
                            tag_match: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                           zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsRecordsResult]:
     """
+    Accepted Permissions
+
+    - `DNS Read`
+    - `DNS Write`
+
     ## Example Usage
 
     ```python

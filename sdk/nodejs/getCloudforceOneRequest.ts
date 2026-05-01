@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudforce One Read`
+ * - `Cloudforce One Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getCloudforceOneRequest(args: GetCloudforceOneRequestArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudforceOneRequestResult> {
+export function getCloudforceOneRequest(args?: GetCloudforceOneRequestArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudforceOneRequestResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest", {
         "accountId": args.accountId,
@@ -35,7 +41,7 @@ export interface GetCloudforceOneRequestArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetCloudforceOneRequestFilter;
     /**
      * UUID.
@@ -50,7 +56,7 @@ export interface GetCloudforceOneRequestResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly completed: string;
     /**
      * Request content.
@@ -100,6 +106,11 @@ export interface GetCloudforceOneRequestResult {
     readonly updated: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudforce One Read`
+ * - `Cloudforce One Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -112,7 +123,8 @@ export interface GetCloudforceOneRequestResult {
  * });
  * ```
  */
-export function getCloudforceOneRequestOutput(args: GetCloudforceOneRequestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudforceOneRequestResult> {
+export function getCloudforceOneRequestOutput(args?: GetCloudforceOneRequestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudforceOneRequestResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest", {
         "accountId": args.accountId,
@@ -128,7 +140,7 @@ export interface GetCloudforceOneRequestOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetCloudforceOneRequestFilterArgs>;
     /**
      * UUID.

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetImages
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Images Read`
+        /// - `Images Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetImagesResult> InvokeAsync(GetImagesArgs args, InvokeOptions? options = null)
+        public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("cloudflare:index/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Images Read`
+        /// - `Images Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("cloudflare:index/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Images Read`
+        /// - `Images Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
@@ -113,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
@@ -141,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
         /// </summary>
@@ -161,7 +176,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetImagesResult(
-            string accountId,
+            string? accountId,
 
             string? creator,
 

@@ -43,6 +43,12 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
+        /// ID of the Flagship app to bind to for feature flag evaluation.
+        /// </summary>
+        [Input("appId")]
+        public Input<string>? AppId { get; set; }
+
+        /// <summary>
         /// R2 bucket to bind to.
         /// </summary>
         [Input("bucketName")]
@@ -61,6 +67,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? ClassName { get; set; }
 
         /// <summary>
+        /// Identifier of the D1 database to bind to.
+        /// </summary>
+        [Input("databaseId")]
+        public Input<string>? DatabaseId { get; set; }
+
+        /// <summary>
         /// The name of the dataset to bind to.
         /// </summary>
         [Input("dataset")]
@@ -71,6 +83,18 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("destinationAddress")]
         public Input<string>? DestinationAddress { get; set; }
+
+        /// <summary>
+        /// The dispatch namespace the Durable Object script belongs to.
+        /// </summary>
+        [Input("dispatchNamespace")]
+        public Input<string>? DispatchNamespace { get; set; }
+
+        /// <summary>
+        /// Entrypoint to invoke on the target Worker.
+        /// </summary>
+        [Input("entrypoint")]
+        public Input<string>? Entrypoint { get; set; }
 
         /// <summary>
         /// The environment of the ScriptName to bind to.
@@ -98,6 +122,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? IndexName { get; set; }
 
         /// <summary>
+        /// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
+
+        /// <summary>
         /// JSON data to use.
         /// </summary>
         [Input("json")]
@@ -105,7 +135,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-        /// Available values: "eu", "fedramp".
+        /// Available values: "eu", "fedramp", "fedramp-high".
         /// </summary>
         [Input("jurisdiction")]
         public Input<string>? Jurisdiction { get; set; }
@@ -149,7 +179,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The name of the dispatch namespace.
+        /// The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
@@ -159,6 +189,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
+
+        /// <summary>
+        /// Identifier of the network to bind to. Only "cf1:network" is currently supported. Mutually exclusive with tunnel_id.
+        /// </summary>
+        [Input("networkId")]
+        public Input<string>? NetworkId { get; set; }
 
         /// <summary>
         /// The old name of the inherited binding. If set, the binding will be renamed from `OldName` to `Name` in the new version. If not set, the binding will keep the same name between versions.
@@ -209,6 +245,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Service { get; set; }
 
         /// <summary>
+        /// Identifier of the VPC service to bind to.
+        /// </summary>
+        [Input("serviceId")]
+        public Input<string>? ServiceId { get; set; }
+
+        /// <summary>
         /// A simple rate limit.
         /// </summary>
         [Input("simple")]
@@ -237,8 +279,14 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
+        /// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+        /// </summary>
+        [Input("tunnelId")]
+        public Input<string>? TunnelId { get; set; }
+
+        /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
+        /// Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

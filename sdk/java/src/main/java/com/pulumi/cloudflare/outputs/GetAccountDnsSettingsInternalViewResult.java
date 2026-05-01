@@ -18,7 +18,7 @@ public final class GetAccountDnsSettingsInternalViewResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return When the view was created.
      * 
@@ -56,8 +56,8 @@ public final class GetAccountDnsSettingsInternalViewResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return When the view was created.
@@ -114,7 +114,7 @@ public final class GetAccountDnsSettingsInternalViewResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String createdTime;
         private @Nullable GetAccountDnsSettingsInternalViewFilter filter;
         private String id;
@@ -136,10 +136,8 @@ public final class GetAccountDnsSettingsInternalViewResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAccountDnsSettingsInternalViewResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

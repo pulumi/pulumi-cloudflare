@@ -10,6 +10,8 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationCorsHeaders;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationDestination;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationFooterLink;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationLandingPageDesign;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationMfaConfig;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationOauthConfiguration;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicy;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationSaasApp;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationScimConfig;
@@ -338,6 +340,20 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.logoUrl);
     }
     /**
+     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * 
+     */
+    @Export(name="mfaConfig", refs={ZeroTrustAccessApplicationMfaConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ZeroTrustAccessApplicationMfaConfig> mfaConfig;
+
+    /**
+     * @return Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * 
+     */
+    public Output<Optional<ZeroTrustAccessApplicationMfaConfig>> mfaConfig() {
+        return Codegen.optional(this.mfaConfig);
+    }
+    /**
      * The name of the application.
      * 
      */
@@ -350,6 +366,20 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     * 
+     */
+    @Export(name="oauthConfiguration", refs={ZeroTrustAccessApplicationOauthConfiguration.class}, tree="[0]")
+    private Output</* @Nullable */ ZeroTrustAccessApplicationOauthConfiguration> oauthConfiguration;
+
+    /**
+     * @return Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     * 
+     */
+    public Output<Optional<ZeroTrustAccessApplicationOauthConfiguration>> oauthConfiguration() {
+        return Codegen.optional(this.oauthConfiguration);
     }
     /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.

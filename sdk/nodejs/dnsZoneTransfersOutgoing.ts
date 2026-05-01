@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * - `Zone Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -79,7 +87,7 @@ export class DnsZoneTransfersOutgoing extends pulumi.CustomResource {
      * The serial number of the SOA for the given zone.
      */
     declare public /*out*/ readonly soaSerial: pulumi.Output<number>;
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a DnsZoneTransfersOutgoing resource with the given unique name, arguments, and options.
@@ -108,9 +116,6 @@ export class DnsZoneTransfersOutgoing extends pulumi.CustomResource {
             }
             if (args?.peers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peers'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["name"] = args?.name;
             resourceInputs["peers"] = args?.peers;
@@ -168,5 +173,5 @@ export interface DnsZoneTransfersOutgoingArgs {
      * A list of peer tags.
      */
     peers: pulumi.Input<pulumi.Input<string>[]>;
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

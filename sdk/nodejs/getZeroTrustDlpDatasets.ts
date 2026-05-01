@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDlpDatasets(args: GetZeroTrustDlpDatasetsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpDatasetsResult> {
+export function getZeroTrustDlpDatasets(args?: GetZeroTrustDlpDatasetsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpDatasetsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpDatasets:getZeroTrustDlpDatasets", {
         "accountId": args.accountId,
@@ -30,7 +36,7 @@ export function getZeroTrustDlpDatasets(args: GetZeroTrustDlpDatasetsArgs, opts?
  * A collection of arguments for invoking getZeroTrustDlpDatasets.
  */
 export interface GetZeroTrustDlpDatasetsArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +47,7 @@ export interface GetZeroTrustDlpDatasetsArgs {
  * A collection of values returned by getZeroTrustDlpDatasets.
  */
 export interface GetZeroTrustDlpDatasetsResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -56,6 +62,11 @@ export interface GetZeroTrustDlpDatasetsResult {
     readonly results: outputs.GetZeroTrustDlpDatasetsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -67,7 +78,8 @@ export interface GetZeroTrustDlpDatasetsResult {
  * });
  * ```
  */
-export function getZeroTrustDlpDatasetsOutput(args: GetZeroTrustDlpDatasetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpDatasetsResult> {
+export function getZeroTrustDlpDatasetsOutput(args?: GetZeroTrustDlpDatasetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpDatasetsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpDatasets:getZeroTrustDlpDatasets", {
         "accountId": args.accountId,
@@ -79,7 +91,7 @@ export function getZeroTrustDlpDatasetsOutput(args: GetZeroTrustDlpDatasetsOutpu
  * A collection of arguments for invoking getZeroTrustDlpDatasets.
  */
 export interface GetZeroTrustDlpDatasetsOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloud Email Security: Read`
+// - `Cloud Email Security: Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailSecurityTrustedDomains(ctx, &cloudflare.LookupEmailSecurityTrustedDomainsArgs{
-//				AccountId:       "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:       pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				TrustedDomainId: pulumi.IntRef(2401),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupEmailSecurityTrustedDomains(ctx *pulumi.Context, args *LookupEmailSec
 // A collection of arguments for invoking getEmailSecurityTrustedDomains.
 type LookupEmailSecurityTrustedDomainsArgs struct {
 	// Account Identifier
-	AccountId string                                `pulumi:"accountId"`
+	AccountId *string                               `pulumi:"accountId"`
 	Filter    *GetEmailSecurityTrustedDomainsFilter `pulumi:"filter"`
 	// The unique identifier for the trusted domain.
 	TrustedDomainId *int `pulumi:"trustedDomainId"`
@@ -59,7 +64,7 @@ type LookupEmailSecurityTrustedDomainsArgs struct {
 // A collection of values returned by getEmailSecurityTrustedDomains.
 type LookupEmailSecurityTrustedDomainsResult struct {
 	// Account Identifier
-	AccountId string                                `pulumi:"accountId"`
+	AccountId *string                               `pulumi:"accountId"`
 	Comments  string                                `pulumi:"comments"`
 	CreatedAt string                                `pulumi:"createdAt"`
 	Filter    *GetEmailSecurityTrustedDomainsFilter `pulumi:"filter"`
@@ -91,7 +96,7 @@ func LookupEmailSecurityTrustedDomainsOutput(ctx *pulumi.Context, args LookupEma
 // A collection of arguments for invoking getEmailSecurityTrustedDomains.
 type LookupEmailSecurityTrustedDomainsOutputArgs struct {
 	// Account Identifier
-	AccountId pulumi.StringInput                           `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput                        `pulumi:"accountId"`
 	Filter    GetEmailSecurityTrustedDomainsFilterPtrInput `pulumi:"filter"`
 	// The unique identifier for the trusted domain.
 	TrustedDomainId pulumi.IntPtrInput `pulumi:"trustedDomainId"`
@@ -117,8 +122,8 @@ func (o LookupEmailSecurityTrustedDomainsResultOutput) ToLookupEmailSecurityTrus
 }
 
 // Account Identifier
-func (o LookupEmailSecurityTrustedDomainsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupEmailSecurityTrustedDomainsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupEmailSecurityTrustedDomainsResultOutput) Comments() pulumi.StringOutput {

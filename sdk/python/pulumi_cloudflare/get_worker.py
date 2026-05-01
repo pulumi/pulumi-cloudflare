@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetWorkerResult',
@@ -27,13 +28,19 @@ class GetWorkerResult:
     """
     A collection of values returned by getWorker.
     """
-    def __init__(__self__, account_id=None, created_on=None, id=None, logpush=None, name=None, observability=None, references=None, subdomain=None, tags=None, tail_consumers=None, updated_on=None, worker_id=None):
+    def __init__(__self__, account_id=None, created_on=None, deployed_on=None, filter=None, id=None, logpush=None, name=None, observability=None, references=None, subdomain=None, tags=None, tail_consumers=None, updated_on=None, worker_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if created_on and not isinstance(created_on, str):
             raise TypeError("Expected argument 'created_on' to be a str")
         pulumi.set(__self__, "created_on", created_on)
+        if deployed_on and not isinstance(deployed_on, str):
+            raise TypeError("Expected argument 'deployed_on' to be a str")
+        pulumi.set(__self__, "deployed_on", deployed_on)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -67,7 +74,7 @@ class GetWorkerResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -80,6 +87,19 @@ class GetWorkerResult:
         When the Worker was created.
         """
         return pulumi.get(self, "created_on")
+
+    @_builtins.property
+    @pulumi.getter(name="deployedOn")
+    def deployed_on(self) -> _builtins.str:
+        """
+        When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+        """
+        return pulumi.get(self, "deployed_on")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetWorkerFilterResult']:
+        return pulumi.get(self, "filter")
 
     @_builtins.property
     @pulumi.getter
@@ -155,7 +175,7 @@ class GetWorkerResult:
 
     @_builtins.property
     @pulumi.getter(name="workerId")
-    def worker_id(self) -> _builtins.str:
+    def worker_id(self) -> Optional[_builtins.str]:
         """
         Identifier for the Worker, which can be ID or name.
         """
@@ -170,6 +190,8 @@ class AwaitableGetWorkerResult(GetWorkerResult):
         return GetWorkerResult(
             account_id=self.account_id,
             created_on=self.created_on,
+            deployed_on=self.deployed_on,
+            filter=self.filter,
             id=self.id,
             logpush=self.logpush,
             name=self.name,
@@ -183,9 +205,16 @@ class AwaitableGetWorkerResult(GetWorkerResult):
 
 
 def get_worker(account_id: Optional[_builtins.str] = None,
+               filter: Optional[Union['GetWorkerFilterArgs', 'GetWorkerFilterArgsDict']] = None,
                worker_id: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkerResult:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+
     ## Example Usage
 
     ```python
@@ -202,6 +231,7 @@ def get_worker(account_id: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['workerId'] = worker_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getWorker:getWorker', __args__, opts=opts, typ=GetWorkerResult).value
@@ -209,6 +239,8 @@ def get_worker(account_id: Optional[_builtins.str] = None,
     return AwaitableGetWorkerResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         created_on=pulumi.get(__ret__, 'created_on'),
+        deployed_on=pulumi.get(__ret__, 'deployed_on'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         logpush=pulumi.get(__ret__, 'logpush'),
         name=pulumi.get(__ret__, 'name'),
@@ -219,10 +251,17 @@ def get_worker(account_id: Optional[_builtins.str] = None,
         tail_consumers=pulumi.get(__ret__, 'tail_consumers'),
         updated_on=pulumi.get(__ret__, 'updated_on'),
         worker_id=pulumi.get(__ret__, 'worker_id'))
-def get_worker_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                      worker_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_worker_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                      filter: Optional[pulumi.Input[Optional[Union['GetWorkerFilterArgs', 'GetWorkerFilterArgsDict']]]] = None,
+                      worker_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkerResult]:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+
     ## Example Usage
 
     ```python
@@ -239,12 +278,15 @@ def get_worker_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['workerId'] = worker_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getWorker:getWorker', __args__, opts=opts, typ=GetWorkerResult)
     return __ret__.apply(lambda __response__: GetWorkerResult(
         account_id=pulumi.get(__response__, 'account_id'),
         created_on=pulumi.get(__response__, 'created_on'),
+        deployed_on=pulumi.get(__response__, 'deployed_on'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         logpush=pulumi.get(__response__, 'logpush'),
         name=pulumi.get(__response__, 'name'),

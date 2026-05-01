@@ -90,6 +90,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("serviceToken")]
         public Input<Inputs.AccessPolicyIncludeServiceTokenArgs>? ServiceToken { get; set; }
 
+        [Input("userRiskScore")]
+        public Input<Inputs.AccessPolicyIncludeUserRiskScoreArgs>? UserRiskScore { get; set; }
+
         public AccessPolicyIncludeArgs()
         {
         }

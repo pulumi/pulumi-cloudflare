@@ -19,49 +19,10 @@ __all__ = ['StreamWebhookArgs', 'StreamWebhook']
 @pulumi.input_type
 class StreamWebhookArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
-                 notification_url: pulumi.Input[_builtins.str]):
-        """
-        The set of arguments for constructing a StreamWebhook resource.
-
-        :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
-        :param pulumi.Input[_builtins.str] notification_url: The URL where webhooks will be sent.
-        """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "notification_url", notification_url)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The account identifier tag.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="notificationUrl")
-    def notification_url(self) -> pulumi.Input[_builtins.str]:
-        """
-        The URL where webhooks will be sent.
-        """
-        return pulumi.get(self, "notification_url")
-
-    @notification_url.setter
-    def notification_url(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "notification_url", value)
-
-
-@pulumi.input_type
-class _StreamWebhookState:
-    def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  notification_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        Input properties used for looking up and filtering StreamWebhook resources.
+        The set of arguments for constructing a StreamWebhook resource.
 
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] notification_url: The URL where webhooks will be sent.
@@ -96,6 +57,79 @@ class _StreamWebhookState:
         pulumi.set(self, "notification_url", value)
 
 
+@pulumi.input_type
+class _StreamWebhookState:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 modified: Optional[pulumi.Input[_builtins.str]] = None,
+                 notification_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 secret: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        Input properties used for looking up and filtering StreamWebhook resources.
+
+        :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
+        :param pulumi.Input[_builtins.str] modified: The date and time the webhook was last modified.
+        :param pulumi.Input[_builtins.str] notification_url: The URL where webhooks will be sent.
+        :param pulumi.Input[_builtins.str] secret: The secret used to verify webhook signatures.
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if modified is not None:
+            pulumi.set(__self__, "modified", modified)
+        if notification_url is not None:
+            pulumi.set(__self__, "notification_url", notification_url)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The account identifier tag.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The date and time the webhook was last modified.
+        """
+        return pulumi.get(self, "modified")
+
+    @modified.setter
+    def modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "modified", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notificationUrl")
+    def notification_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The URL where webhooks will be sent.
+        """
+        return pulumi.get(self, "notification_url")
+
+    @notification_url.setter
+    def notification_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "notification_url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The secret used to verify webhook signatures.
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret", value)
+
+
 @pulumi.type_token("cloudflare:index/streamWebhook:StreamWebhook")
 class StreamWebhook(pulumi.CustomResource):
     @overload
@@ -106,6 +140,11 @@ class StreamWebhook(pulumi.CustomResource):
                  notification_url: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Stream Read`
+        - `Stream Write`
+
         ## Example Usage
 
         ```python
@@ -131,9 +170,14 @@ class StreamWebhook(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: StreamWebhookArgs,
+                 args: Optional[StreamWebhookArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Stream Read`
+        - `Stream Write`
+
         ## Example Usage
 
         ```python
@@ -176,12 +220,12 @@ class StreamWebhook(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StreamWebhookArgs.__new__(StreamWebhookArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if notification_url is None and not opts.urn:
-                raise TypeError("Missing required property 'notification_url'")
             __props__.__dict__["notification_url"] = notification_url
+            __props__.__dict__["modified"] = None
+            __props__.__dict__["secret"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(StreamWebhook, __self__).__init__(
             'cloudflare:index/streamWebhook:StreamWebhook',
             resource_name,
@@ -193,7 +237,9 @@ class StreamWebhook(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_url: Optional[pulumi.Input[_builtins.str]] = None) -> 'StreamWebhook':
+            modified: Optional[pulumi.Input[_builtins.str]] = None,
+            notification_url: Optional[pulumi.Input[_builtins.str]] = None,
+            secret: Optional[pulumi.Input[_builtins.str]] = None) -> 'StreamWebhook':
         """
         Get an existing StreamWebhook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -202,29 +248,49 @@ class StreamWebhook(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
+        :param pulumi.Input[_builtins.str] modified: The date and time the webhook was last modified.
         :param pulumi.Input[_builtins.str] notification_url: The URL where webhooks will be sent.
+        :param pulumi.Input[_builtins.str] secret: The secret used to verify webhook signatures.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _StreamWebhookState.__new__(_StreamWebhookState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["modified"] = modified
         __props__.__dict__["notification_url"] = notification_url
+        __props__.__dict__["secret"] = secret
         return StreamWebhook(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
+    @pulumi.getter
+    def modified(self) -> pulumi.Output[_builtins.str]:
+        """
+        The date and time the webhook was last modified.
+        """
+        return pulumi.get(self, "modified")
+
+    @_builtins.property
     @pulumi.getter(name="notificationUrl")
-    def notification_url(self) -> pulumi.Output[_builtins.str]:
+    def notification_url(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The URL where webhooks will be sent.
         """
         return pulumi.get(self, "notification_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> pulumi.Output[_builtins.str]:
+        """
+        The secret used to verify webhook signatures.
+        """
+        return pulumi.get(self, "secret")
 

@@ -12,9 +12,15 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Object;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -43,7 +49,9 @@ import javax.annotation.Nullable;
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("ciphers")
  *             .hostname("app.example.com")
- *             .value("1.0")
+ *             .value(            
+ *                 "ECDHE-RSA-AES128-GCM-SHA256",
+ *                 "AES128-GCM-SHA256")
  *             .build());
  * 
  *     }
@@ -149,14 +157,14 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

@@ -312,11 +312,11 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ttl);
     }
 
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private LoadBalancerArgs() {}
@@ -793,7 +793,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
             return ttl(Output.of(ttl));
         }
 
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -811,9 +811,6 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("LoadBalancerArgs", "name");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("LoadBalancerArgs", "zoneId");
             }
             return $;
         }

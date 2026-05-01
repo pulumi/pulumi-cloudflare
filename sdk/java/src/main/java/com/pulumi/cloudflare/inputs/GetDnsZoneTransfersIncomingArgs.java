@@ -5,20 +5,21 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetDnsZoneTransfersIncomingArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDnsZoneTransfersIncomingArgs Empty = new GetDnsZoneTransfersIncomingArgs();
 
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetDnsZoneTransfersIncomingArgs() {}
@@ -45,7 +46,7 @@ public final class GetDnsZoneTransfersIncomingArgs extends com.pulumi.resources.
             $ = new GetDnsZoneTransfersIncomingArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -55,9 +56,6 @@ public final class GetDnsZoneTransfersIncomingArgs extends com.pulumi.resources.
         }
 
         public GetDnsZoneTransfersIncomingArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetDnsZoneTransfersIncomingArgs", "zoneId");
-            }
             return $;
         }
     }

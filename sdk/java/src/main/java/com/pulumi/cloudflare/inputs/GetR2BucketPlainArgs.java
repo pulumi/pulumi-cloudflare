@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetR2BucketPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,15 +19,15 @@ public final class GetR2BucketPlainArgs extends com.pulumi.resources.InvokeArgs 
      * Account ID.
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Account ID.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -74,7 +76,7 @@ public final class GetR2BucketPlainArgs extends com.pulumi.resources.InvokeArgs 
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -91,9 +93,6 @@ public final class GetR2BucketPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetR2BucketPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetR2BucketPlainArgs", "accountId");
-            }
             if ($.bucketName == null) {
                 throw new MissingRequiredPropertyException("GetR2BucketPlainArgs", "bucketName");
             }

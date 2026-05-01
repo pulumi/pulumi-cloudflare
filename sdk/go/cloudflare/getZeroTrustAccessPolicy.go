@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Apps and Policies Read`
+// - `Access: Apps and Policies Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustAccessPolicy(ctx, &cloudflare.LookupZeroTrustAccessPolicyArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				PolicyId:  "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupZeroTrustAccessPolicy(ctx *pulumi.Context, args *LookupZeroTrustAcces
 // A collection of arguments for invoking getZeroTrustAccessPolicy.
 type LookupZeroTrustAccessPolicyArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The UUID of the policy
 	PolicyId string `pulumi:"policyId"`
 }
@@ -58,7 +63,7 @@ type LookupZeroTrustAccessPolicyArgs struct {
 // A collection of values returned by getZeroTrustAccessPolicy.
 type LookupZeroTrustAccessPolicyResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Number of access applications currently using this policy.
 	AppCount int `pulumi:"appCount"`
 	// Administrators who can approve a temporary authentication request.
@@ -109,7 +114,7 @@ func LookupZeroTrustAccessPolicyOutput(ctx *pulumi.Context, args LookupZeroTrust
 // A collection of arguments for invoking getZeroTrustAccessPolicy.
 type LookupZeroTrustAccessPolicyOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The UUID of the policy
 	PolicyId pulumi.StringInput `pulumi:"policyId"`
 }
@@ -134,8 +139,8 @@ func (o LookupZeroTrustAccessPolicyResultOutput) ToLookupZeroTrustAccessPolicyRe
 }
 
 // Identifier.
-func (o LookupZeroTrustAccessPolicyResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessPolicyResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustAccessPolicyResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessPolicyResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Number of access applications currently using this policy.

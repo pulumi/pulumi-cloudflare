@@ -17,6 +17,16 @@ public final class GetZeroTrustOrganizationMfaConfig {
      */
     private List<String> allowedAuthenticators;
     /**
+     * @return Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains &#34;mfa&#34;. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).
+     * 
+     */
+    private String amrMatchingSessionDuration;
+    /**
+     * @return Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.
+     * 
+     */
+    private String requiredAaguids;
+    /**
      * @return Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
      * 
      */
@@ -29,6 +39,20 @@ public final class GetZeroTrustOrganizationMfaConfig {
      */
     public List<String> allowedAuthenticators() {
         return this.allowedAuthenticators;
+    }
+    /**
+     * @return Allows a user to skip MFA via Authentication Method Reference (AMR) matching when the AMR claim provided by the IdP the user used to authenticate contains &#34;mfa&#34;. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days).
+     * 
+     */
+    public String amrMatchingSessionDuration() {
+        return this.amrMatchingSessionDuration;
+    }
+    /**
+     * @return Specifies a Cloudflare List of required FIDO2 authenticator device AAGUIDs.
+     * 
+     */
+    public String requiredAaguids() {
+        return this.requiredAaguids;
     }
     /**
      * @return Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
@@ -48,11 +72,15 @@ public final class GetZeroTrustOrganizationMfaConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<String> allowedAuthenticators;
+        private String amrMatchingSessionDuration;
+        private String requiredAaguids;
         private String sessionDuration;
         public Builder() {}
         public Builder(GetZeroTrustOrganizationMfaConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedAuthenticators = defaults.allowedAuthenticators;
+    	      this.amrMatchingSessionDuration = defaults.amrMatchingSessionDuration;
+    	      this.requiredAaguids = defaults.requiredAaguids;
     	      this.sessionDuration = defaults.sessionDuration;
         }
 
@@ -68,6 +96,22 @@ public final class GetZeroTrustOrganizationMfaConfig {
             return allowedAuthenticators(List.of(allowedAuthenticators));
         }
         @CustomType.Setter
+        public Builder amrMatchingSessionDuration(String amrMatchingSessionDuration) {
+            if (amrMatchingSessionDuration == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationMfaConfig", "amrMatchingSessionDuration");
+            }
+            this.amrMatchingSessionDuration = amrMatchingSessionDuration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder requiredAaguids(String requiredAaguids) {
+            if (requiredAaguids == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationMfaConfig", "requiredAaguids");
+            }
+            this.requiredAaguids = requiredAaguids;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sessionDuration(String sessionDuration) {
             if (sessionDuration == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustOrganizationMfaConfig", "sessionDuration");
@@ -78,6 +122,8 @@ public final class GetZeroTrustOrganizationMfaConfig {
         public GetZeroTrustOrganizationMfaConfig build() {
             final var _resultValue = new GetZeroTrustOrganizationMfaConfig();
             _resultValue.allowedAuthenticators = allowedAuthenticators;
+            _resultValue.amrMatchingSessionDuration = amrMatchingSessionDuration;
+            _resultValue.requiredAaguids = requiredAaguids;
             _resultValue.sessionDuration = sessionDuration;
             return _resultValue;
         }

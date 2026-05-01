@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSchemaValidationSettingsResult {
@@ -25,7 +27,7 @@ public final class GetSchemaValidationSettingsResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetSchemaValidationSettingsResult() {}
     /**
@@ -49,8 +51,8 @@ public final class GetSchemaValidationSettingsResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -65,7 +67,7 @@ public final class GetSchemaValidationSettingsResult {
         private String id;
         private String validationDefaultMitigationAction;
         private String validationOverrideMitigationAction;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetSchemaValidationSettingsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,10 +102,8 @@ public final class GetSchemaValidationSettingsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetSchemaValidationSettingsResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

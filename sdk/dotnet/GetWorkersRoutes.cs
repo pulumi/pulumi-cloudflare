@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetWorkersRoutes
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Routes Read`
+        /// - `Workers Routes Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWorkersRoutesResult> InvokeAsync(GetWorkersRoutesArgs args, InvokeOptions? options = null)
+        public static Task<GetWorkersRoutesResult> InvokeAsync(GetWorkersRoutesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkersRoutesResult>("cloudflare:index/getWorkersRoutes:getWorkersRoutes", args ?? new GetWorkersRoutesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Routes Read`
+        /// - `Workers Routes Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWorkersRoutesResult> Invoke(GetWorkersRoutesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetWorkersRoutesResult> Invoke(GetWorkersRoutesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkersRoutesResult>("cloudflare:index/getWorkersRoutes:getWorkersRoutes", args ?? new GetWorkersRoutesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Routes Read`
+        /// - `Workers Routes Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetWorkersRoutesArgs()
         {
@@ -110,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetWorkersRoutesInvokeArgs()
         {
@@ -138,7 +153,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetWorkersRoutesResult(
@@ -148,7 +163,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetWorkersRoutesResultResult> results,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             MaxItems = maxItems;

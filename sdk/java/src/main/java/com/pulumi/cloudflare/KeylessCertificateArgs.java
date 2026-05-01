@@ -138,15 +138,15 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private KeylessCertificateArgs() {}
@@ -343,7 +343,7 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -364,9 +364,6 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
             }
             if ($.host == null) {
                 throw new MissingRequiredPropertyException("KeylessCertificateArgs", "host");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("KeylessCertificateArgs", "zoneId");
             }
             return $;
         }

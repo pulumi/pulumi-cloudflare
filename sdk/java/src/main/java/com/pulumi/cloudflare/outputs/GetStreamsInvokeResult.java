@@ -20,12 +20,22 @@ public final class GetStreamsInvokeResult {
      * @return The account identifier tag.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
+    /**
+     * @return Alias for &#39;start&#39;. Returns videos created after this date/time (RFC 3339 format).
+     * 
+     */
+    private @Nullable String after;
     /**
      * @return Lists videos in ascending order of creation.
      * 
      */
     private Boolean asc;
+    /**
+     * @return Alias for &#39;end&#39;. Returns videos created before this date/time (RFC 3339 format).
+     * 
+     */
+    private @Nullable String before;
     /**
      * @return A user-defined identifier for the media creator.
      * 
@@ -37,20 +47,35 @@ public final class GetStreamsInvokeResult {
      */
     private @Nullable String end;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
      * 
      */
-    private String id;
+    private @Nullable String id;
     /**
      * @return Includes the total number of videos associated with the submitted query parameters.
      * 
      */
     private Boolean includeCounts;
     /**
+     * @return Maximum number of videos to return (default 1000, max 1000).
+     * 
+     */
+    private @Nullable Integer limit;
+    /**
+     * @return Filter by live input ID to find videos associated with a specific live stream.
+     * 
+     */
+    private @Nullable String liveInputId;
+    /**
      * @return Max items to fetch, default: 1000
      * 
      */
     private @Nullable Integer maxItems;
+    /**
+     * @return Filter by video name/UID(s). Can be a single name or a comma-separated list.
+     * 
+     */
+    private @Nullable String name;
     /**
      * @return The items returned by the data source
      * 
@@ -88,8 +113,15 @@ public final class GetStreamsInvokeResult {
      * @return The account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+    /**
+     * @return Alias for &#39;start&#39;. Returns videos created after this date/time (RFC 3339 format).
+     * 
+     */
+    public Optional<String> after() {
+        return Optional.ofNullable(this.after);
     }
     /**
      * @return Lists videos in ascending order of creation.
@@ -97,6 +129,13 @@ public final class GetStreamsInvokeResult {
      */
     public Boolean asc() {
         return this.asc;
+    }
+    /**
+     * @return Alias for &#39;end&#39;. Returns videos created before this date/time (RFC 3339 format).
+     * 
+     */
+    public Optional<String> before() {
+        return Optional.ofNullable(this.before);
     }
     /**
      * @return A user-defined identifier for the media creator.
@@ -113,11 +152,11 @@ public final class GetStreamsInvokeResult {
         return Optional.ofNullable(this.end);
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
      * 
      */
-    public String id() {
-        return this.id;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
     /**
      * @return Includes the total number of videos associated with the submitted query parameters.
@@ -127,11 +166,32 @@ public final class GetStreamsInvokeResult {
         return this.includeCounts;
     }
     /**
+     * @return Maximum number of videos to return (default 1000, max 1000).
+     * 
+     */
+    public Optional<Integer> limit() {
+        return Optional.ofNullable(this.limit);
+    }
+    /**
+     * @return Filter by live input ID to find videos associated with a specific live stream.
+     * 
+     */
+    public Optional<String> liveInputId() {
+        return Optional.ofNullable(this.liveInputId);
+    }
+    /**
      * @return Max items to fetch, default: 1000
      * 
      */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
+    }
+    /**
+     * @return Filter by video name/UID(s). Can be a single name or a comma-separated list.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return The items returned by the data source
@@ -186,13 +246,18 @@ public final class GetStreamsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
+        private @Nullable String after;
         private Boolean asc;
+        private @Nullable String before;
         private @Nullable String creator;
         private @Nullable String end;
-        private String id;
+        private @Nullable String id;
         private Boolean includeCounts;
+        private @Nullable Integer limit;
+        private @Nullable String liveInputId;
         private @Nullable Integer maxItems;
+        private @Nullable String name;
         private List<GetStreamsResult> results;
         private @Nullable String search;
         private @Nullable String start;
@@ -203,12 +268,17 @@ public final class GetStreamsInvokeResult {
         public Builder(GetStreamsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.after = defaults.after;
     	      this.asc = defaults.asc;
+    	      this.before = defaults.before;
     	      this.creator = defaults.creator;
     	      this.end = defaults.end;
     	      this.id = defaults.id;
     	      this.includeCounts = defaults.includeCounts;
+    	      this.limit = defaults.limit;
+    	      this.liveInputId = defaults.liveInputId;
     	      this.maxItems = defaults.maxItems;
+    	      this.name = defaults.name;
     	      this.results = defaults.results;
     	      this.search = defaults.search;
     	      this.start = defaults.start;
@@ -218,11 +288,15 @@ public final class GetStreamsInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetStreamsInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder after(@Nullable String after) {
+
+            this.after = after;
             return this;
         }
         @CustomType.Setter
@@ -231,6 +305,12 @@ public final class GetStreamsInvokeResult {
               throw new MissingRequiredPropertyException("GetStreamsInvokeResult", "asc");
             }
             this.asc = asc;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder before(@Nullable String before) {
+
+            this.before = before;
             return this;
         }
         @CustomType.Setter
@@ -246,10 +326,8 @@ public final class GetStreamsInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetStreamsInvokeResult", "id");
-            }
+        public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
@@ -262,9 +340,27 @@ public final class GetStreamsInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder limit(@Nullable Integer limit) {
+
+            this.limit = limit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder liveInputId(@Nullable String liveInputId) {
+
+            this.liveInputId = liveInputId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxItems(@Nullable Integer maxItems) {
 
             this.maxItems = maxItems;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(@Nullable String name) {
+
+            this.name = name;
             return this;
         }
         @CustomType.Setter
@@ -311,12 +407,17 @@ public final class GetStreamsInvokeResult {
         public GetStreamsInvokeResult build() {
             final var _resultValue = new GetStreamsInvokeResult();
             _resultValue.accountId = accountId;
+            _resultValue.after = after;
             _resultValue.asc = asc;
+            _resultValue.before = before;
             _resultValue.creator = creator;
             _resultValue.end = end;
             _resultValue.id = id;
             _resultValue.includeCounts = includeCounts;
+            _resultValue.limit = limit;
+            _resultValue.liveInputId = liveInputId;
             _resultValue.maxItems = maxItems;
+            _resultValue.name = name;
             _resultValue.results = results;
             _resultValue.search = search;
             _resultValue.start = start;

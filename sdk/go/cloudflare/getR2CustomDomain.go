@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers R2 Storage Read`
+// - `Workers R2 Storage Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetR2CustomDomain(ctx, &cloudflare.LookupR2CustomDomainArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				BucketName: "example-bucket",
 //				Domain:     "example-domain/custom-domain.com",
 //			}, nil)
@@ -51,7 +56,7 @@ func LookupR2CustomDomain(ctx *pulumi.Context, args *LookupR2CustomDomainArgs, o
 // A collection of arguments for invoking getR2CustomDomain.
 type LookupR2CustomDomainArgs struct {
 	// Account ID.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// Name of the custom domain.
@@ -61,7 +66,7 @@ type LookupR2CustomDomainArgs struct {
 // A collection of values returned by getR2CustomDomain.
 type LookupR2CustomDomainResult struct {
 	// Account ID.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
@@ -94,7 +99,7 @@ func LookupR2CustomDomainOutput(ctx *pulumi.Context, args LookupR2CustomDomainOu
 // A collection of arguments for invoking getR2CustomDomain.
 type LookupR2CustomDomainOutputArgs struct {
 	// Account ID.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// Name of the custom domain.
@@ -121,8 +126,8 @@ func (o LookupR2CustomDomainResultOutput) ToLookupR2CustomDomainResultOutputWith
 }
 
 // Account ID.
-func (o LookupR2CustomDomainResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupR2CustomDomainResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupR2CustomDomainResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupR2CustomDomainResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Name of the bucket.

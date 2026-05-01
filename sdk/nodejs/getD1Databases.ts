@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `D1 Read`
+ * - `D1 Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getD1Databases(args: GetD1DatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetD1DatabasesResult> {
+export function getD1Databases(args?: GetD1DatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetD1DatabasesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getD1Databases:getD1Databases", {
         "accountId": args.accountId,
@@ -35,7 +41,7 @@ export interface GetD1DatabasesArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -53,7 +59,7 @@ export interface GetD1DatabasesResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -72,6 +78,11 @@ export interface GetD1DatabasesResult {
     readonly results: outputs.GetD1DatabasesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `D1 Read`
+ * - `D1 Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -84,7 +95,8 @@ export interface GetD1DatabasesResult {
  * });
  * ```
  */
-export function getD1DatabasesOutput(args: GetD1DatabasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetD1DatabasesResult> {
+export function getD1DatabasesOutput(args?: GetD1DatabasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetD1DatabasesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getD1Databases:getD1Databases", {
         "accountId": args.accountId,
@@ -100,7 +112,7 @@ export interface GetD1DatabasesOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

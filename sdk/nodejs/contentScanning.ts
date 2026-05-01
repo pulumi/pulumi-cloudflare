@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -61,7 +68,7 @@ export class ContentScanning extends pulumi.CustomResource {
     /**
      * Defines an identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ContentScanning resource with the given unique name, arguments, and options.
@@ -83,9 +90,6 @@ export class ContentScanning extends pulumi.CustomResource {
             const args = argsOrState as ContentScanningArgs | undefined;
             if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["value"] = args?.value;
             resourceInputs["zoneId"] = args?.zoneId;
@@ -127,5 +131,5 @@ export interface ContentScanningArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

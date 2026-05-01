@@ -45,7 +45,7 @@ class GetZeroTrustAccessKeyConfigurationResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -100,6 +100,11 @@ class AwaitableGetZeroTrustAccessKeyConfigurationResult(GetZeroTrustAccessKeyCon
 def get_zero_trust_access_key_configuration(account_id: Optional[_builtins.str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessKeyConfigurationResult:
     """
+    Accepted Permissions
+
+    - `Access: Organizations, Identity Providers, and Groups Read`
+    - `Access: Organizations, Identity Providers, and Groups Write`
+
     ## Example Usage
 
     ```python
@@ -123,9 +128,14 @@ def get_zero_trust_access_key_configuration(account_id: Optional[_builtins.str] 
         id=pulumi.get(__ret__, 'id'),
         key_rotation_interval_days=pulumi.get(__ret__, 'key_rotation_interval_days'),
         last_key_rotation_at=pulumi.get(__ret__, 'last_key_rotation_at'))
-def get_zero_trust_access_key_configuration_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_access_key_configuration_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessKeyConfigurationResult]:
     """
+    Accepted Permissions
+
+    - `Access: Organizations, Identity Providers, and Groups Read`
+    - `Access: Organizations, Identity Providers, and Groups Write`
+
     ## Example Usage
 
     ```python

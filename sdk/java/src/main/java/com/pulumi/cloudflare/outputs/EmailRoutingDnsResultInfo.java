@@ -31,6 +31,11 @@ public final class EmailRoutingDnsResultInfo {
      * 
      */
     private @Nullable Double totalCount;
+    /**
+     * @return The number of total pages in the entire result set.
+     * 
+     */
+    private @Nullable Double totalPages;
 
     private EmailRoutingDnsResultInfo() {}
     /**
@@ -61,6 +66,13 @@ public final class EmailRoutingDnsResultInfo {
     public Optional<Double> totalCount() {
         return Optional.ofNullable(this.totalCount);
     }
+    /**
+     * @return The number of total pages in the entire result set.
+     * 
+     */
+    public Optional<Double> totalPages() {
+        return Optional.ofNullable(this.totalPages);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -75,6 +87,7 @@ public final class EmailRoutingDnsResultInfo {
         private @Nullable Double page;
         private @Nullable Double perPage;
         private @Nullable Double totalCount;
+        private @Nullable Double totalPages;
         public Builder() {}
         public Builder(EmailRoutingDnsResultInfo defaults) {
     	      Objects.requireNonNull(defaults);
@@ -82,6 +95,7 @@ public final class EmailRoutingDnsResultInfo {
     	      this.page = defaults.page;
     	      this.perPage = defaults.perPage;
     	      this.totalCount = defaults.totalCount;
+    	      this.totalPages = defaults.totalPages;
         }
 
         @CustomType.Setter
@@ -108,12 +122,19 @@ public final class EmailRoutingDnsResultInfo {
             this.totalCount = totalCount;
             return this;
         }
+        @CustomType.Setter
+        public Builder totalPages(@Nullable Double totalPages) {
+
+            this.totalPages = totalPages;
+            return this;
+        }
         public EmailRoutingDnsResultInfo build() {
             final var _resultValue = new EmailRoutingDnsResultInfo();
             _resultValue.emailRoutingDnsCount = emailRoutingDnsCount;
             _resultValue.page = page;
             _resultValue.perPage = perPage;
             _resultValue.totalCount = totalCount;
+            _resultValue.totalPages = totalPages;
             return _resultValue;
         }
     }

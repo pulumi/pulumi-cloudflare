@@ -20,7 +20,7 @@ public final class GetAccountTokenResult {
      * @return Account identifier tag.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     private GetAccountTokenCondition condition;
     /**
      * @return The expiration time on or after which the JWT MUST NOT be accepted for processing.
@@ -80,8 +80,8 @@ public final class GetAccountTokenResult {
      * @return Account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public GetAccountTokenCondition condition() {
         return this.condition;
@@ -170,7 +170,7 @@ public final class GetAccountTokenResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private GetAccountTokenCondition condition;
         private String expiresOn;
         private @Nullable GetAccountTokenFilter filter;
@@ -202,10 +202,8 @@ public final class GetAccountTokenResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAccountTokenResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

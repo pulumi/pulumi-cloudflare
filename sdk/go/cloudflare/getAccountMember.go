@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+// - `SCIM Provisioning`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountMember(ctx, &cloudflare.LookupAccountMemberArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				MemberId:  pulumi.StringRef("4536bcfad5faccb111b47003c79917fa"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +56,7 @@ func LookupAccountMember(ctx *pulumi.Context, args *LookupAccountMemberArgs, opt
 // A collection of arguments for invoking getAccountMember.
 type LookupAccountMemberArgs struct {
 	// Account identifier tag.
-	AccountId string                  `pulumi:"accountId"`
+	AccountId *string                 `pulumi:"accountId"`
 	Filter    *GetAccountMemberFilter `pulumi:"filter"`
 	// Membership identifier tag.
 	MemberId *string `pulumi:"memberId"`
@@ -59,7 +65,7 @@ type LookupAccountMemberArgs struct {
 // A collection of values returned by getAccountMember.
 type LookupAccountMemberResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The contact email address of the user.
 	Email  string                  `pulumi:"email"`
 	Filter *GetAccountMemberFilter `pulumi:"filter"`
@@ -90,7 +96,7 @@ func LookupAccountMemberOutput(ctx *pulumi.Context, args LookupAccountMemberOutp
 // A collection of arguments for invoking getAccountMember.
 type LookupAccountMemberOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput             `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput          `pulumi:"accountId"`
 	Filter    GetAccountMemberFilterPtrInput `pulumi:"filter"`
 	// Membership identifier tag.
 	MemberId pulumi.StringPtrInput `pulumi:"memberId"`
@@ -116,8 +122,8 @@ func (o LookupAccountMemberResultOutput) ToLookupAccountMemberResultOutputWithCo
 }
 
 // Account identifier tag.
-func (o LookupAccountMemberResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountMemberResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAccountMemberResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountMemberResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The contact email address of the user.

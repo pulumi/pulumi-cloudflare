@@ -50,6 +50,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("customCertificate")]
         public Input<string>? CustomCertificate { get; set; }
 
+        /// <summary>
+        /// The identifier for the Custom CSR that was used.
+        /// </summary>
+        [Input("customCsrId")]
+        public Input<string>? CustomCsrId { get; set; }
+
         [Input("customKey")]
         private Input<string>? _customKey;
 

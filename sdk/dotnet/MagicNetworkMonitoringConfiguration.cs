@@ -10,13 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// ## Example Usage
+    /// Accepted Permissions
+    /// 
+    /// - `Magic Network Monitoring Admin`
+    /// - `Magic Network Monitoring Config Read`
+    /// - `Magic Network Monitoring Config Write`
     /// </summary>
     [CloudflareResourceType("cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration")]
     public partial class MagicNetworkMonitoringConfiguration : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
@@ -82,8 +86,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class MagicNetworkMonitoringConfigurationArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.

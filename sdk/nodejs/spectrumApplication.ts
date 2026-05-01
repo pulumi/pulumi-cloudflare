@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -134,7 +139,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
     /**
      * Zone identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a SpectrumApplication resource with the given unique name, arguments, and options.
@@ -170,9 +175,6 @@ export class SpectrumApplication extends pulumi.CustomResource {
             }
             if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["argoSmartRouting"] = args?.argoSmartRouting;
             resourceInputs["dns"] = args?.dns;
@@ -319,5 +321,5 @@ export interface SpectrumApplicationArgs {
     /**
      * Zone identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

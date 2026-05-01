@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Logs Read`
+ * - `Logs Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getLogpullRetention(args: GetLogpullRetentionArgs, opts?: pulumi.InvokeOptions): Promise<GetLogpullRetentionResult> {
+export function getLogpullRetention(args?: GetLogpullRetentionArgs, opts?: pulumi.InvokeOptions): Promise<GetLogpullRetentionResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLogpullRetention:getLogpullRetention", {
         "zoneId": args.zoneId,
@@ -30,7 +36,7 @@ export interface GetLogpullRetentionArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -48,9 +54,14 @@ export interface GetLogpullRetentionResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Logs Read`
+ * - `Logs Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -62,7 +73,8 @@ export interface GetLogpullRetentionResult {
  * });
  * ```
  */
-export function getLogpullRetentionOutput(args: GetLogpullRetentionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogpullRetentionResult> {
+export function getLogpullRetentionOutput(args?: GetLogpullRetentionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogpullRetentionResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLogpullRetention:getLogpullRetention", {
         "zoneId": args.zoneId,
@@ -76,5 +88,5 @@ export interface GetLogpullRetentionOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

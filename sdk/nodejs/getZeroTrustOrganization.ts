@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Organizations, Identity Providers, and Groups Read`
+ * - `Access: Organizations, Identity Providers, and Groups Revoke`
+ * - `Access: Organizations, Identity Providers, and Groups Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -85,13 +91,13 @@ export interface GetZeroTrustOrganizationResult {
      */
     readonly mfaConfig: outputs.GetZeroTrustOrganizationMfaConfig;
     /**
-     * Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-     */
-    readonly mfaConfigurationAllowed: boolean;
-    /**
      * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
      */
     readonly mfaRequiredForAllApps: boolean;
+    /**
+     * Configures SSH PIV key requirements for MFA using hardware security keys.
+     */
+    readonly mfaSshPivKeyRequirements: outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirements;
     /**
      * The name of your Zero Trust organization.
      */
@@ -118,6 +124,12 @@ export interface GetZeroTrustOrganizationResult {
     readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Organizations, Identity Providers, and Groups Read`
+ * - `Access: Organizations, Identity Providers, and Groups Revoke`
+ * - `Access: Organizations, Identity Providers, and Groups Write`
+ *
  * ## Example Usage
  *
  * ```typescript

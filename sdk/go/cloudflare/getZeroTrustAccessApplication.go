@@ -109,6 +109,8 @@ type LookupZeroTrustAccessApplicationResult struct {
 	LandingPageDesign GetZeroTrustAccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
 	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl string `pulumi:"logoUrl"`
+	// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+	MfaConfig GetZeroTrustAccessApplicationMfaConfig `pulumi:"mfaConfig"`
 	// The name of the application.
 	Name string `pulumi:"name"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
@@ -319,6 +321,13 @@ func (o LookupZeroTrustAccessApplicationResultOutput) LandingPageDesign() GetZer
 // The image URL for the logo shown in the App Launcher dashboard.
 func (o LookupZeroTrustAccessApplicationResultOutput) LogoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.LogoUrl }).(pulumi.StringOutput)
+}
+
+// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+func (o LookupZeroTrustAccessApplicationResultOutput) MfaConfig() GetZeroTrustAccessApplicationMfaConfigOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) GetZeroTrustAccessApplicationMfaConfig {
+		return v.MfaConfig
+	}).(GetZeroTrustAccessApplicationMfaConfigOutput)
 }
 
 // The name of the application.

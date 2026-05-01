@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDlpDatasetsInvokeResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -33,8 +33,8 @@ public final class GetZeroTrustDlpDatasetsInvokeResult {
     private List<GetZeroTrustDlpDatasetsResult> results;
 
     private GetZeroTrustDlpDatasetsInvokeResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -67,7 +67,7 @@ public final class GetZeroTrustDlpDatasetsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String id;
         private @Nullable Integer maxItems;
         private List<GetZeroTrustDlpDatasetsResult> results;
@@ -81,10 +81,8 @@ public final class GetZeroTrustDlpDatasetsInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDlpDatasetsInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

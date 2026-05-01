@@ -23,15 +23,15 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
      * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="annotations")
@@ -112,7 +112,7 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -192,9 +192,6 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
         }
 
         public WorkersDeploymentArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("WorkersDeploymentArgs", "accountId");
-            }
             if ($.scriptName == null) {
                 throw new MissingRequiredPropertyException("WorkersDeploymentArgs", "scriptName");
             }

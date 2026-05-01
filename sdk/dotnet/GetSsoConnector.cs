@@ -12,6 +12,10 @@ namespace Pulumi.Cloudflare
     public static class GetSsoConnector
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSO Connector Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +39,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSsoConnectorResult>("cloudflare:index/getSsoConnector:getSsoConnector", args ?? new GetSsoConnectorArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSO Connector Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +66,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetSsoConnectorResult>("cloudflare:index/getSsoConnector:getSsoConnector", args ?? new GetSsoConnectorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSO Connector Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// SSO Connector identifier tag.
@@ -107,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// SSO Connector identifier tag.
@@ -129,7 +141,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Timestamp for the creation of the SSO connector
         /// </summary>
@@ -156,7 +168,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetSsoConnectorResult(
-            string accountId,
+            string? accountId,
 
             string createdOn,
 

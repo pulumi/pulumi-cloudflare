@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetAddressMap
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Address Maps Read`
+        /// - `Address Maps Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAddressMapResult>("cloudflare:index/getAddressMap:getAddressMap", args ?? new GetAddressMapArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Address Maps Read`
+        /// - `Address Maps Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetAddressMapResult>("cloudflare:index/getAddressMap:getAddressMap", args ?? new GetAddressMapInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Address Maps Read`
+        /// - `Address Maps Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of a Cloudflare account.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Identifier of an Address Map.
@@ -107,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of a Cloudflare account.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Identifier of an Address Map.
@@ -129,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of a Cloudflare account.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Identifier of an Address Map.
         /// </summary>
@@ -171,7 +186,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetAddressMapResult(
-            string accountId,
+            string? accountId,
 
             string addressMapId,
 

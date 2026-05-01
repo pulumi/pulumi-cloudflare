@@ -25,6 +25,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Log settings for the Worker.
         /// </summary>
         public readonly Outputs.WorkersScriptObservabilityLogs? Logs;
+        /// <summary>
+        /// Trace settings for the Worker.
+        /// </summary>
+        public readonly Outputs.WorkersScriptObservabilityTraces? Traces;
 
         [OutputConstructor]
         private WorkersScriptObservability(
@@ -32,11 +36,14 @@ namespace Pulumi.Cloudflare.Outputs
 
             double? headSamplingRate,
 
-            Outputs.WorkersScriptObservabilityLogs? logs)
+            Outputs.WorkersScriptObservabilityLogs? logs,
+
+            Outputs.WorkersScriptObservabilityTraces? traces)
         {
             Enabled = enabled;
             HeadSamplingRate = headSamplingRate;
             Logs = logs;
+            Traces = traces;
         }
     }
 }

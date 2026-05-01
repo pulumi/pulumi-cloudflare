@@ -34,6 +34,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> CompatibilityFlags;
         /// <summary>
+        /// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetWorkerVersionsResultContainerResult> Containers;
+        /// <summary>
         /// When the version was created.
         /// </summary>
         public readonly string CreatedOn;
@@ -53,6 +57,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules).
         /// </summary>
         public readonly string MainScriptBase64;
+        /// <summary>
+        /// Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+        /// </summary>
+        public readonly string MigrationTag;
         /// <summary>
         /// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         /// </summary>
@@ -83,6 +91,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int StartupTimeMs;
         /// <summary>
+        /// All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+        /// </summary>
+        public readonly ImmutableArray<string> Urls;
+        /// <summary>
         /// Usage model for the version.
         /// Available values: "standard", "bundled", "unbound".
         /// </summary>
@@ -100,6 +112,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> compatibilityFlags,
 
+            ImmutableArray<Outputs.GetWorkerVersionsResultContainerResult> containers,
+
             string createdOn,
 
             string id,
@@ -109,6 +123,8 @@ namespace Pulumi.Cloudflare.Outputs
             string mainModule,
 
             string mainScriptBase64,
+
+            string migrationTag,
 
             Outputs.GetWorkerVersionsResultMigrationsResult migrations,
 
@@ -122,6 +138,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             int startupTimeMs,
 
+            ImmutableArray<string> urls,
+
             string usageModel)
         {
             Annotations = annotations;
@@ -129,17 +147,20 @@ namespace Pulumi.Cloudflare.Outputs
             Bindings = bindings;
             CompatibilityDate = compatibilityDate;
             CompatibilityFlags = compatibilityFlags;
+            Containers = containers;
             CreatedOn = createdOn;
             Id = id;
             Limits = limits;
             MainModule = mainModule;
             MainScriptBase64 = mainScriptBase64;
+            MigrationTag = migrationTag;
             Migrations = migrations;
             Modules = modules;
             Number = number;
             Placement = placement;
             Source = source;
             StartupTimeMs = startupTimeMs;
+            Urls = urls;
             UsageModel = usageModel;
         }
     }

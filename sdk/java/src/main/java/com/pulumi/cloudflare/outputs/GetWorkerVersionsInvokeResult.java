@@ -19,7 +19,7 @@ public final class GetWorkerVersionsInvokeResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -46,8 +46,8 @@ public final class GetWorkerVersionsInvokeResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -87,7 +87,7 @@ public final class GetWorkerVersionsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String id;
         private @Nullable Integer maxItems;
         private List<GetWorkerVersionsResult> results;
@@ -103,10 +103,8 @@ public final class GetWorkerVersionsInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetWorkerVersionsInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

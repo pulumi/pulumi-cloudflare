@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetAiSearchInstanceFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,11 +15,11 @@ public final class GetAiSearchInstancePlainArgs extends com.pulumi.resources.Inv
 
     public static final GetAiSearchInstancePlainArgs Empty = new GetAiSearchInstancePlainArgs();
 
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="filter")
@@ -31,14 +30,14 @@ public final class GetAiSearchInstancePlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Use your AI Search ID.
+     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return Use your AI Search ID.
+     * @return AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      * 
      */
     public Optional<String> id() {
@@ -71,7 +70,7 @@ public final class GetAiSearchInstancePlainArgs extends com.pulumi.resources.Inv
             $ = new GetAiSearchInstancePlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -82,7 +81,7 @@ public final class GetAiSearchInstancePlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param id Use your AI Search ID.
+         * @param id AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
          * 
          * @return builder
          * 
@@ -93,9 +92,6 @@ public final class GetAiSearchInstancePlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetAiSearchInstancePlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetAiSearchInstancePlainArgs", "accountId");
-            }
             return $;
         }
     }

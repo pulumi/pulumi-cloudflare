@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCloudforceOneRequestPriorityResult {
@@ -15,7 +17,7 @@ public final class GetCloudforceOneRequestPriorityResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     private String completed;
     /**
      * @return Request content.
@@ -78,8 +80,8 @@ public final class GetCloudforceOneRequestPriorityResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public String completed() {
         return this.completed;
@@ -175,7 +177,7 @@ public final class GetCloudforceOneRequestPriorityResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String completed;
         private String content;
         private String created;
@@ -211,10 +213,8 @@ public final class GetCloudforceOneRequestPriorityResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetCloudforceOneRequestPriorityResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

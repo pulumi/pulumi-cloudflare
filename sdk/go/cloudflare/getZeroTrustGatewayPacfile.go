@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustGatewayPacfile(ctx, &cloudflare.LookupZeroTrustGatewayPacfileArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				PacfileId: "ed35569b41ce4d1facfe683550f54086",
 //			}, nil)
 //			if err != nil {
@@ -49,13 +54,13 @@ func LookupZeroTrustGatewayPacfile(ctx *pulumi.Context, args *LookupZeroTrustGat
 
 // A collection of arguments for invoking getZeroTrustGatewayPacfile.
 type LookupZeroTrustGatewayPacfileArgs struct {
-	AccountId string `pulumi:"accountId"`
-	PacfileId string `pulumi:"pacfileId"`
+	AccountId *string `pulumi:"accountId"`
+	PacfileId string  `pulumi:"pacfileId"`
 }
 
 // A collection of values returned by getZeroTrustGatewayPacfile.
 type LookupZeroTrustGatewayPacfileResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Actual contents of the PAC file
 	Contents  string `pulumi:"contents"`
 	CreatedAt string `pulumi:"createdAt"`
@@ -84,8 +89,8 @@ func LookupZeroTrustGatewayPacfileOutput(ctx *pulumi.Context, args LookupZeroTru
 
 // A collection of arguments for invoking getZeroTrustGatewayPacfile.
 type LookupZeroTrustGatewayPacfileOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	PacfileId pulumi.StringInput `pulumi:"pacfileId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	PacfileId pulumi.StringInput    `pulumi:"pacfileId"`
 }
 
 func (LookupZeroTrustGatewayPacfileOutputArgs) ElementType() reflect.Type {
@@ -107,8 +112,8 @@ func (o LookupZeroTrustGatewayPacfileResultOutput) ToLookupZeroTrustGatewayPacfi
 	return o
 }
 
-func (o LookupZeroTrustGatewayPacfileResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustGatewayPacfileResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustGatewayPacfileResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPacfileResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Actual contents of the PAC file

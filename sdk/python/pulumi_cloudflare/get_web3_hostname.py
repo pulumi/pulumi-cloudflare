@@ -128,7 +128,7 @@ class GetWeb3HostnameResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Specify the identifier of the hostname.
         """
@@ -157,6 +157,11 @@ def get_web3_hostname(identifier: Optional[_builtins.str] = None,
                       zone_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWeb3HostnameResult:
     """
+    Accepted Permissions
+
+    - `Web3 Hostnames Read`
+    - `Web3 Hostnames Write`
+
     ## Example Usage
 
     ```python
@@ -189,9 +194,14 @@ def get_web3_hostname(identifier: Optional[_builtins.str] = None,
         target=pulumi.get(__ret__, 'target'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_web3_hostname_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                             zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                             zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWeb3HostnameResult]:
     """
+    Accepted Permissions
+
+    - `Web3 Hostnames Read`
+    - `Web3 Hostnames Write`
+
     ## Example Usage
 
     ```python

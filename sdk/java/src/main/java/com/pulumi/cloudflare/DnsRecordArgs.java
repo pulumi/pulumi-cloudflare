@@ -97,6 +97,21 @@ public final class DnsRecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enables private network routing to the origin.
+     * 
+     */
+    @Import(name="privateRouting")
+    private @Nullable Output<Boolean> privateRouting;
+
+    /**
+     * @return Enables private network routing to the origin.
+     * 
+     */
+    public Optional<Output<Boolean>> privateRouting() {
+        return Optional.ofNullable(this.privateRouting);
+    }
+
+    /**
      * Whether the record is receiving the performance and security benefits of Cloudflare.
      * 
      */
@@ -177,15 +192,15 @@ public final class DnsRecordArgs extends com.pulumi.resources.ResourceArgs {
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private DnsRecordArgs() {}
@@ -196,6 +211,7 @@ public final class DnsRecordArgs extends com.pulumi.resources.ResourceArgs {
         this.data = $.data;
         this.name = $.name;
         this.priority = $.priority;
+        this.privateRouting = $.privateRouting;
         this.proxied = $.proxied;
         this.settings = $.settings;
         this.tags = $.tags;
@@ -328,6 +344,27 @@ public final class DnsRecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param privateRouting Enables private network routing to the origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateRouting(@Nullable Output<Boolean> privateRouting) {
+            $.privateRouting = privateRouting;
+            return this;
+        }
+
+        /**
+         * @param privateRouting Enables private network routing to the origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateRouting(Boolean privateRouting) {
+            return privateRouting(Output.of(privateRouting));
+        }
+
+        /**
          * @param proxied Whether the record is receiving the performance and security benefits of Cloudflare.
          * 
          * @return builder
@@ -450,7 +487,7 @@ public final class DnsRecordArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -474,9 +511,6 @@ public final class DnsRecordArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("DnsRecordArgs", "type");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("DnsRecordArgs", "zoneId");
             }
             return $;
         }

@@ -19,6 +19,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Load Balancing: Monitors and Pools Read`
+ * - `Load Balancing: Monitors and Pools Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -85,14 +90,14 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
@@ -345,7 +350,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LoadBalancerMonitor(java.lang.String name, LoadBalancerMonitorArgs args) {
+    public LoadBalancerMonitor(java.lang.String name, @Nullable LoadBalancerMonitorArgs args) {
         this(name, args, null);
     }
     /**
@@ -354,7 +359,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LoadBalancerMonitor(java.lang.String name, LoadBalancerMonitorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public LoadBalancerMonitor(java.lang.String name, @Nullable LoadBalancerMonitorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -362,7 +367,7 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static LoadBalancerMonitorArgs makeArgs(LoadBalancerMonitorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static LoadBalancerMonitorArgs makeArgs(@Nullable LoadBalancerMonitorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

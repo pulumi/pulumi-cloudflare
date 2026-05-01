@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersScript(ctx, &cloudflare.LookupWorkersScriptArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ScriptName: pulumi.StringRef("this-is_my_script-01"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +56,7 @@ func LookupWorkersScript(ctx *pulumi.Context, args *LookupWorkersScriptArgs, opt
 // A collection of arguments for invoking getWorkersScript.
 type LookupWorkersScriptArgs struct {
 	// Identifier.
-	AccountId string                  `pulumi:"accountId"`
+	AccountId *string                 `pulumi:"accountId"`
 	Filter    *GetWorkersScriptFilter `pulumi:"filter"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName *string `pulumi:"scriptName"`
@@ -59,7 +65,7 @@ type LookupWorkersScriptArgs struct {
 // A collection of values returned by getWorkersScript.
 type LookupWorkersScriptResult struct {
 	// Identifier.
-	AccountId string                  `pulumi:"accountId"`
+	AccountId *string                 `pulumi:"accountId"`
 	Filter    *GetWorkersScriptFilter `pulumi:"filter"`
 	// Name of the script, used in URLs and route configuration.
 	Id     string `pulumi:"id"`
@@ -80,7 +86,7 @@ func LookupWorkersScriptOutput(ctx *pulumi.Context, args LookupWorkersScriptOutp
 // A collection of arguments for invoking getWorkersScript.
 type LookupWorkersScriptOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput             `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput          `pulumi:"accountId"`
 	Filter    GetWorkersScriptFilterPtrInput `pulumi:"filter"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringPtrInput `pulumi:"scriptName"`
@@ -106,8 +112,8 @@ func (o LookupWorkersScriptResultOutput) ToLookupWorkersScriptResultOutputWithCo
 }
 
 // Identifier.
-func (o LookupWorkersScriptResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersScriptResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupWorkersScriptResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersScriptResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupWorkersScriptResultOutput) Filter() GetWorkersScriptFilterPtrOutput {

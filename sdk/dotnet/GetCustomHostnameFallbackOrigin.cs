@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetCustomHostnameFallbackOrigin
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCustomHostnameFallbackOriginResult> InvokeAsync(GetCustomHostnameFallbackOriginArgs args, InvokeOptions? options = null)
+        public static Task<GetCustomHostnameFallbackOriginResult> InvokeAsync(GetCustomHostnameFallbackOriginArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomHostnameFallbackOriginResult>("cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin", args ?? new GetCustomHostnameFallbackOriginArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCustomHostnameFallbackOriginResult> Invoke(GetCustomHostnameFallbackOriginInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetCustomHostnameFallbackOriginResult> Invoke(GetCustomHostnameFallbackOriginInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomHostnameFallbackOriginResult>("cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin", args ?? new GetCustomHostnameFallbackOriginInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetCustomHostnameFallbackOriginArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetCustomHostnameFallbackOriginInvokeArgs()
         {
@@ -139,7 +154,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetCustomHostnameFallbackOriginResult(
@@ -155,7 +170,7 @@ namespace Pulumi.Cloudflare
 
             string updatedAt,
 
-            string zoneId)
+            string? zoneId)
         {
             CreatedAt = createdAt;
             Errors = errors;

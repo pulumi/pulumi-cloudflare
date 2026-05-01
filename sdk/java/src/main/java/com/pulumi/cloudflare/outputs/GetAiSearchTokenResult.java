@@ -3,19 +3,23 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetAiSearchTokenFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAiSearchTokenResult {
-    private String accountId;
+    private @Nullable String accountId;
     private String cfApiId;
     private String createdAt;
     private String createdBy;
     private Boolean enabled;
+    private @Nullable GetAiSearchTokenFilter filter;
     /**
      * @return The ID of this resource.
      * 
@@ -27,8 +31,8 @@ public final class GetAiSearchTokenResult {
     private String name;
 
     private GetAiSearchTokenResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public String cfApiId() {
         return this.cfApiId;
@@ -41,6 +45,9 @@ public final class GetAiSearchTokenResult {
     }
     public Boolean enabled() {
         return this.enabled;
+    }
+    public Optional<GetAiSearchTokenFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
     /**
      * @return The ID of this resource.
@@ -71,11 +78,12 @@ public final class GetAiSearchTokenResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String cfApiId;
         private String createdAt;
         private String createdBy;
         private Boolean enabled;
+        private @Nullable GetAiSearchTokenFilter filter;
         private String id;
         private Boolean legacy;
         private String modifiedAt;
@@ -89,6 +97,7 @@ public final class GetAiSearchTokenResult {
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
     	      this.enabled = defaults.enabled;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.legacy = defaults.legacy;
     	      this.modifiedAt = defaults.modifiedAt;
@@ -97,10 +106,8 @@ public final class GetAiSearchTokenResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAiSearchTokenResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -134,6 +141,12 @@ public final class GetAiSearchTokenResult {
               throw new MissingRequiredPropertyException("GetAiSearchTokenResult", "enabled");
             }
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable GetAiSearchTokenFilter filter) {
+
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -183,6 +196,7 @@ public final class GetAiSearchTokenResult {
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
             _resultValue.enabled = enabled;
+            _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.legacy = legacy;
             _resultValue.modifiedAt = modifiedAt;

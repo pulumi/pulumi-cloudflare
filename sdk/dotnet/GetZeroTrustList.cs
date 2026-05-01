@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustListResult> InvokeAsync(GetZeroTrustListArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustListResult> InvokeAsync(GetZeroTrustListArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustListResult>("cloudflare:index/getZeroTrustList:getZeroTrustList", args ?? new GetZeroTrustListArgs(), options.WithDefaults());
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustListResult> Invoke(GetZeroTrustListInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustListResult> Invoke(GetZeroTrustListInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustListResult>("cloudflare:index/getZeroTrustList:getZeroTrustList", args ?? new GetZeroTrustListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustListArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetZeroTrustListFilterArgs? Filter { get; set; }
@@ -104,8 +104,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustListInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetZeroTrustListFilterInputArgs>? Filter { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustListResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly string CreatedAt;
         /// <summary>
         /// Provide the list description.
@@ -155,14 +155,14 @@ namespace Pulumi.Cloudflare
         public readonly string Name;
         /// <summary>
         /// Specify the list type.
-        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
 
         [OutputConstructor]
         private GetZeroTrustListResult(
-            string accountId,
+            string? accountId,
 
             string createdAt,
 

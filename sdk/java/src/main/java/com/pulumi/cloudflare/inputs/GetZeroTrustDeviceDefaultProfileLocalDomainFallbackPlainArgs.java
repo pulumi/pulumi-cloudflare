@@ -4,20 +4,21 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZeroTrustDeviceDefaultProfileLocalDomainFallbackPlainArgs Empty = new GetZeroTrustDeviceDefaultProfileLocalDomainFallbackPlainArgs();
 
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     private GetZeroTrustDeviceDefaultProfileLocalDomainFallbackPlainArgs() {}
@@ -44,15 +45,12 @@ public final class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackPlainArgs 
             $ = new GetZeroTrustDeviceDefaultProfileLocalDomainFallbackPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
 
         public GetZeroTrustDeviceDefaultProfileLocalDomainFallbackPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileLocalDomainFallbackPlainArgs", "accountId");
-            }
             return $;
         }
     }

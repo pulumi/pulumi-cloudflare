@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Organizations, Identity Providers, and Groups Read`
+// - `Access: Organizations, Identity Providers, and Groups Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustAccessKeyConfiguration(ctx, &cloudflare.LookupZeroTrustAccessKeyConfigurationArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,13 +54,13 @@ func LookupZeroTrustAccessKeyConfiguration(ctx *pulumi.Context, args *LookupZero
 // A collection of arguments for invoking getZeroTrustAccessKeyConfiguration.
 type LookupZeroTrustAccessKeyConfigurationArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getZeroTrustAccessKeyConfiguration.
 type LookupZeroTrustAccessKeyConfigurationResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The number of days until the next key rotation.
 	DaysUntilNextRotation float64 `pulumi:"daysUntilNextRotation"`
 	// Identifier.
@@ -78,7 +83,7 @@ func LookupZeroTrustAccessKeyConfigurationOutput(ctx *pulumi.Context, args Looku
 // A collection of arguments for invoking getZeroTrustAccessKeyConfiguration.
 type LookupZeroTrustAccessKeyConfigurationOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
 func (LookupZeroTrustAccessKeyConfigurationOutputArgs) ElementType() reflect.Type {
@@ -101,8 +106,8 @@ func (o LookupZeroTrustAccessKeyConfigurationResultOutput) ToLookupZeroTrustAcce
 }
 
 // Identifier.
-func (o LookupZeroTrustAccessKeyConfigurationResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessKeyConfigurationResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustAccessKeyConfigurationResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessKeyConfigurationResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The number of days until the next key rotation.

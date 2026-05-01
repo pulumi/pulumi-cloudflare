@@ -12,9 +12,15 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -71,10 +77,10 @@ public class ZeroTrustDeviceDefaultProfileCertificates extends com.pulumi.resour
         return this.enabled;
     }
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

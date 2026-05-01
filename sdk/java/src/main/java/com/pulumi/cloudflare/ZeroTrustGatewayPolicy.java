@@ -101,6 +101,7 @@ import javax.annotation.Nullable;
  *                     .printing("enabled")
  *                     .upload("enabled")
  *                     .version("v1")
+ *                     .wmId("475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a")
  *                     .build())
  *                 .blockPage(ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs.builder()
  *                     .targetUri("https://example.com")
@@ -201,10 +202,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy")
 public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
@@ -303,14 +304,14 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="filters", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> filters;
+    private Output<List<String>> filters;
 
     /**
      * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      * 
      */
-    public Output<Optional<List<String>>> filters() {
-        return Codegen.optional(this.filters);
+    public Output<List<String>> filters() {
+        return this.filters;
     }
     /**
      * Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.

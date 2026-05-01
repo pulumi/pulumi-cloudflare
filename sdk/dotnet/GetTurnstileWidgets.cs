@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetTurnstileWidgets
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Turnstile Sites Read`
+        /// - `Turnstile Sites Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -33,10 +40,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetTurnstileWidgetsResult> InvokeAsync(GetTurnstileWidgetsArgs args, InvokeOptions? options = null)
+        public static Task<GetTurnstileWidgetsResult> InvokeAsync(GetTurnstileWidgetsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTurnstileWidgetsResult>("cloudflare:index/getTurnstileWidgets:getTurnstileWidgets", args ?? new GetTurnstileWidgetsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Turnstile Sites Read`
+        /// - `Turnstile Sites Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,10 +72,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetTurnstileWidgetsResult> Invoke(GetTurnstileWidgetsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetTurnstileWidgetsResult> Invoke(GetTurnstileWidgetsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTurnstileWidgetsResult>("cloudflare:index/getTurnstileWidgets:getTurnstileWidgets", args ?? new GetTurnstileWidgetsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Turnstile Sites Read`
+        /// - `Turnstile Sites Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +114,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Direction to order widgets.
@@ -127,8 +148,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Direction to order widgets.
@@ -163,7 +184,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Direction to order widgets.
         /// Available values: "asc", "desc".
@@ -184,7 +205,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetTurnstileWidgetsResult(
-            string accountId,
+            string? accountId,
 
             string? direction,
 

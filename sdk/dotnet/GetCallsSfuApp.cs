@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetCallsSfuApp
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Calls Read`
+        /// - `Calls Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCallsSfuAppResult>("cloudflare:index/getCallsSfuApp:getCallsSfuApp", args ?? new GetCallsSfuAppArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Calls Read`
+        /// - `Calls Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetCallsSfuAppResult>("cloudflare:index/getCallsSfuApp:getCallsSfuApp", args ?? new GetCallsSfuAppInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Calls Read`
+        /// - `Calls Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a item.
@@ -107,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a item.
@@ -129,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// A Cloudflare-generated unique identifier for a item.
         /// </summary>
@@ -157,7 +172,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetCallsSfuAppResult(
-            string accountId,
+            string? accountId,
 
             string appId,
 

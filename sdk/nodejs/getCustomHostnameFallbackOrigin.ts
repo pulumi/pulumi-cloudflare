@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getCustomHostnameFallbackOrigin(args: GetCustomHostnameFallbackOriginArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomHostnameFallbackOriginResult> {
+export function getCustomHostnameFallbackOrigin(args?: GetCustomHostnameFallbackOriginArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomHostnameFallbackOriginResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin", {
         "zoneId": args.zoneId,
@@ -30,7 +36,7 @@ export interface GetCustomHostnameFallbackOriginArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -65,9 +71,14 @@ export interface GetCustomHostnameFallbackOriginResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -79,7 +90,8 @@ export interface GetCustomHostnameFallbackOriginResult {
  * });
  * ```
  */
-export function getCustomHostnameFallbackOriginOutput(args: GetCustomHostnameFallbackOriginOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomHostnameFallbackOriginResult> {
+export function getCustomHostnameFallbackOriginOutput(args?: GetCustomHostnameFallbackOriginOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomHostnameFallbackOriginResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomHostnameFallbackOrigin:getCustomHostnameFallbackOrigin", {
         "zoneId": args.zoneId,
@@ -93,5 +105,5 @@ export interface GetCustomHostnameFallbackOriginOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

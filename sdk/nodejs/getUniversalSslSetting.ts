@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getUniversalSslSetting(args: GetUniversalSslSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetUniversalSslSettingResult> {
+export function getUniversalSslSetting(args?: GetUniversalSslSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetUniversalSslSettingResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getUniversalSslSetting:getUniversalSslSetting", {
         "zoneId": args.zoneId,
@@ -30,7 +36,7 @@ export interface GetUniversalSslSettingArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -45,9 +51,14 @@ export interface GetUniversalSslSettingResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -59,7 +70,8 @@ export interface GetUniversalSslSettingResult {
  * });
  * ```
  */
-export function getUniversalSslSettingOutput(args: GetUniversalSslSettingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUniversalSslSettingResult> {
+export function getUniversalSslSettingOutput(args?: GetUniversalSslSettingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUniversalSslSettingResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getUniversalSslSetting:getUniversalSslSetting", {
         "zoneId": args.zoneId,
@@ -73,5 +85,5 @@ export interface GetUniversalSslSettingOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

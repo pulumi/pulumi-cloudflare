@@ -19,6 +19,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Email Routing Rules Read`
+ * - `Email Routing Rules Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

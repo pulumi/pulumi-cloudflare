@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.DlpCustomProfileContextAwarenessArgs;
 import com.pulumi.cloudflare.inputs.DlpCustomProfileEntryArgs;
+import com.pulumi.cloudflare.inputs.DlpCustomProfileSensitivityLevelArgs;
 import com.pulumi.cloudflare.inputs.DlpCustomProfileSharedEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -22,11 +23,11 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
 
     public static final DlpCustomProfileArgs Empty = new DlpCustomProfileArgs();
 
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="aiContextEnabled")
@@ -79,6 +80,36 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
     @Deprecated /* This attribute is deprecated. */
     public Optional<Output<DlpCustomProfileContextAwarenessArgs>> contextAwareness() {
         return Optional.ofNullable(this.contextAwareness);
+    }
+
+    /**
+     * Data class IDs to associate with the profile.
+     * 
+     */
+    @Import(name="dataClasses")
+    private @Nullable Output<List<String>> dataClasses;
+
+    /**
+     * @return Data class IDs to associate with the profile.
+     * 
+     */
+    public Optional<Output<List<String>>> dataClasses() {
+        return Optional.ofNullable(this.dataClasses);
+    }
+
+    /**
+     * Data tag IDs to associate with the profile.
+     * 
+     */
+    @Import(name="dataTags")
+    private @Nullable Output<List<String>> dataTags;
+
+    /**
+     * @return Data tag IDs to associate with the profile.
+     * 
+     */
+    public Optional<Output<List<String>>> dataTags() {
+        return Optional.ofNullable(this.dataTags);
     }
 
     /**
@@ -136,6 +167,21 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Sensitivity levels to associate with the profile.
+     * 
+     */
+    @Import(name="sensitivityLevels")
+    private @Nullable Output<List<DlpCustomProfileSensitivityLevelArgs>> sensitivityLevels;
+
+    /**
+     * @return Sensitivity levels to associate with the profile.
+     * 
+     */
+    public Optional<Output<List<DlpCustomProfileSensitivityLevelArgs>>> sensitivityLevels() {
+        return Optional.ofNullable(this.sensitivityLevels);
+    }
+
+    /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      * 
      */
@@ -158,10 +204,13 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
         this.allowedMatchCount = $.allowedMatchCount;
         this.confidenceThreshold = $.confidenceThreshold;
         this.contextAwareness = $.contextAwareness;
+        this.dataClasses = $.dataClasses;
+        this.dataTags = $.dataTags;
         this.description = $.description;
         this.entries = $.entries;
         this.name = $.name;
         this.ocrEnabled = $.ocrEnabled;
+        this.sensitivityLevels = $.sensitivityLevels;
         this.sharedEntries = $.sharedEntries;
     }
 
@@ -183,7 +232,7 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
             $ = new DlpCustomProfileArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -258,6 +307,68 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
         @Deprecated /* This attribute is deprecated. */
         public Builder contextAwareness(DlpCustomProfileContextAwarenessArgs contextAwareness) {
             return contextAwareness(Output.of(contextAwareness));
+        }
+
+        /**
+         * @param dataClasses Data class IDs to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataClasses(@Nullable Output<List<String>> dataClasses) {
+            $.dataClasses = dataClasses;
+            return this;
+        }
+
+        /**
+         * @param dataClasses Data class IDs to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataClasses(List<String> dataClasses) {
+            return dataClasses(Output.of(dataClasses));
+        }
+
+        /**
+         * @param dataClasses Data class IDs to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataClasses(String... dataClasses) {
+            return dataClasses(List.of(dataClasses));
+        }
+
+        /**
+         * @param dataTags Data tag IDs to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataTags(@Nullable Output<List<String>> dataTags) {
+            $.dataTags = dataTags;
+            return this;
+        }
+
+        /**
+         * @param dataTags Data tag IDs to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataTags(List<String> dataTags) {
+            return dataTags(Output.of(dataTags));
+        }
+
+        /**
+         * @param dataTags Data tag IDs to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataTags(String... dataTags) {
+            return dataTags(List.of(dataTags));
         }
 
         /**
@@ -346,6 +457,37 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param sensitivityLevels Sensitivity levels to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityLevels(@Nullable Output<List<DlpCustomProfileSensitivityLevelArgs>> sensitivityLevels) {
+            $.sensitivityLevels = sensitivityLevels;
+            return this;
+        }
+
+        /**
+         * @param sensitivityLevels Sensitivity levels to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityLevels(List<DlpCustomProfileSensitivityLevelArgs> sensitivityLevels) {
+            return sensitivityLevels(Output.of(sensitivityLevels));
+        }
+
+        /**
+         * @param sensitivityLevels Sensitivity levels to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityLevels(DlpCustomProfileSensitivityLevelArgs... sensitivityLevels) {
+            return sensitivityLevels(List.of(sensitivityLevels));
+        }
+
+        /**
          * @param sharedEntries Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
          * 
          * @return builder
@@ -377,9 +519,6 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
         }
 
         public DlpCustomProfileArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("DlpCustomProfileArgs", "accountId");
-            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("DlpCustomProfileArgs", "name");
             }

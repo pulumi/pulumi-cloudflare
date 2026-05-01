@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetMagicNetworkMonitoringRules
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Network Monitoring Admin`
+        /// - `Magic Network Monitoring Config Read`
+        /// - `Magic Network Monitoring Config Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +36,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetMagicNetworkMonitoringRulesResult> InvokeAsync(GetMagicNetworkMonitoringRulesArgs args, InvokeOptions? options = null)
+        public static Task<GetMagicNetworkMonitoringRulesResult> InvokeAsync(GetMagicNetworkMonitoringRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMagicNetworkMonitoringRulesResult>("cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules", args ?? new GetMagicNetworkMonitoringRulesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Network Monitoring Admin`
+        /// - `Magic Network Monitoring Config Read`
+        /// - `Magic Network Monitoring Config Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +64,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetMagicNetworkMonitoringRulesResult> Invoke(GetMagicNetworkMonitoringRulesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetMagicNetworkMonitoringRulesResult> Invoke(GetMagicNetworkMonitoringRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicNetworkMonitoringRulesResult>("cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules", args ?? new GetMagicNetworkMonitoringRulesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Network Monitoring Admin`
+        /// - `Magic Network Monitoring Config Read`
+        /// - `Magic Network Monitoring Config Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -81,8 +99,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetMagicNetworkMonitoringRulesArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -98,8 +116,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetMagicNetworkMonitoringRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -117,7 +135,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetMagicNetworkMonitoringRulesResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -133,7 +151,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetMagicNetworkMonitoringRulesResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

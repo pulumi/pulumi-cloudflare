@@ -19,47 +19,41 @@ __all__ = ['WorkersCustomDomainArgs', 'WorkersCustomDomain']
 @pulumi.input_type
 class WorkersCustomDomainArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  hostname: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str],
-                 environment: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 environment: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersCustomDomain resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifer of the account.
-        :param pulumi.Input[_builtins.str] hostname: Hostname of the Worker Domain.
-        :param pulumi.Input[_builtins.str] service: Worker service associated with the zone and hostname.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier of the zone.
-        :param pulumi.Input[_builtins.str] environment: Worker environment associated with the zone and hostname.
+        :param pulumi.Input[_builtins.str] hostname: Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
+        :param pulumi.Input[_builtins.str] service: Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] environment: Worker environment associated with the domain.
+        :param pulumi.Input[_builtins.str] zone_id: ID of the zone containing the domain hostname.
+        :param pulumi.Input[_builtins.str] zone_name: Name of the zone containing the domain hostname.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "service", service)
-        pulumi.set(__self__, "zone_id", zone_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if environment is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""environment is deprecated: This attribute is deprecated.""")
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifer of the account.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+        if zone_name is not None:
+            pulumi.set(__self__, "zone_name", zone_name)
 
     @_builtins.property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[_builtins.str]:
         """
-        Hostname of the Worker Domain.
+        Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
         """
         return pulumi.get(self, "hostname")
 
@@ -71,7 +65,7 @@ class WorkersCustomDomainArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[_builtins.str]:
         """
-        Worker service associated with the zone and hostname.
+        Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
         """
         return pulumi.get(self, "service")
 
@@ -80,23 +74,23 @@ class WorkersCustomDomainArgs:
         pulumi.set(self, "service", value)
 
     @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Identifier of the zone.
+        Identifier.
         """
-        return pulumi.get(self, "zone_id")
+        return pulumi.get(self, "account_id")
 
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Worker environment associated with the zone and hostname.
+        Worker environment associated with the domain.
         """
         return pulumi.get(self, "environment")
 
@@ -104,11 +98,36 @@ class WorkersCustomDomainArgs:
     def environment(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "environment", value)
 
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the zone containing the domain hostname.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the zone containing the domain hostname.
+        """
+        return pulumi.get(self, "zone_name")
+
+    @zone_name.setter
+    def zone_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_name", value)
+
 
 @pulumi.input_type
 class _WorkersCustomDomainState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  environment: Optional[pulumi.Input[_builtins.str]] = None,
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  service: Optional[pulumi.Input[_builtins.str]] = None,
@@ -117,15 +136,18 @@ class _WorkersCustomDomainState:
         """
         Input properties used for looking up and filtering WorkersCustomDomain resources.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifer of the account.
-        :param pulumi.Input[_builtins.str] environment: Worker environment associated with the zone and hostname.
-        :param pulumi.Input[_builtins.str] hostname: Hostname of the Worker Domain.
-        :param pulumi.Input[_builtins.str] service: Worker service associated with the zone and hostname.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier of the zone.
-        :param pulumi.Input[_builtins.str] zone_name: Name of the zone.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] cert_id: ID of the TLS certificate issued for the domain.
+        :param pulumi.Input[_builtins.str] environment: Worker environment associated with the domain.
+        :param pulumi.Input[_builtins.str] hostname: Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
+        :param pulumi.Input[_builtins.str] service: Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
+        :param pulumi.Input[_builtins.str] zone_id: ID of the zone containing the domain hostname.
+        :param pulumi.Input[_builtins.str] zone_name: Name of the zone containing the domain hostname.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if cert_id is not None:
+            pulumi.set(__self__, "cert_id", cert_id)
         if environment is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""environment is deprecated: This attribute is deprecated.""")
@@ -144,7 +166,7 @@ class _WorkersCustomDomainState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Identifer of the account.
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -153,11 +175,23 @@ class _WorkersCustomDomainState:
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the TLS certificate issued for the domain.
+        """
+        return pulumi.get(self, "cert_id")
+
+    @cert_id.setter
+    def cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cert_id", value)
+
+    @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Worker environment associated with the zone and hostname.
+        Worker environment associated with the domain.
         """
         return pulumi.get(self, "environment")
 
@@ -169,7 +203,7 @@ class _WorkersCustomDomainState:
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Hostname of the Worker Domain.
+        Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
         """
         return pulumi.get(self, "hostname")
 
@@ -181,7 +215,7 @@ class _WorkersCustomDomainState:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Worker service associated with the zone and hostname.
+        Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
         """
         return pulumi.get(self, "service")
 
@@ -193,7 +227,7 @@ class _WorkersCustomDomainState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Identifier of the zone.
+        ID of the zone containing the domain hostname.
         """
         return pulumi.get(self, "zone_id")
 
@@ -205,7 +239,7 @@ class _WorkersCustomDomainState:
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the zone.
+        Name of the zone containing the domain hostname.
         """
         return pulumi.get(self, "zone_name")
 
@@ -225,8 +259,14 @@ class WorkersCustomDomain(pulumi.CustomResource):
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  service: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+
         ## Example Usage
 
         ```python
@@ -234,11 +274,12 @@ class WorkersCustomDomain(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_workers_custom_domain = cloudflare.WorkersCustomDomain("example_workers_custom_domain",
-            account_id="9a7806061c88ada191ed06f989cc3dac",
-            hostname="foo.example.com",
-            service="foo",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            hostname="app.example.com",
+            service="my-worker",
+            environment="production",
             zone_id="593c9c94de529bbbfaac7c53ced0447d",
-            environment="production")
+            zone_name="example.com")
         ```
 
         ## Import
@@ -250,11 +291,12 @@ class WorkersCustomDomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifer of the account.
-        :param pulumi.Input[_builtins.str] environment: Worker environment associated with the zone and hostname.
-        :param pulumi.Input[_builtins.str] hostname: Hostname of the Worker Domain.
-        :param pulumi.Input[_builtins.str] service: Worker service associated with the zone and hostname.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier of the zone.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] environment: Worker environment associated with the domain.
+        :param pulumi.Input[_builtins.str] hostname: Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
+        :param pulumi.Input[_builtins.str] service: Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
+        :param pulumi.Input[_builtins.str] zone_id: ID of the zone containing the domain hostname.
+        :param pulumi.Input[_builtins.str] zone_name: Name of the zone containing the domain hostname.
         """
         ...
     @overload
@@ -263,6 +305,11 @@ class WorkersCustomDomain(pulumi.CustomResource):
                  args: WorkersCustomDomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+
         ## Example Usage
 
         ```python
@@ -270,11 +317,12 @@ class WorkersCustomDomain(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_workers_custom_domain = cloudflare.WorkersCustomDomain("example_workers_custom_domain",
-            account_id="9a7806061c88ada191ed06f989cc3dac",
-            hostname="foo.example.com",
-            service="foo",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            hostname="app.example.com",
+            service="my-worker",
+            environment="production",
             zone_id="593c9c94de529bbbfaac7c53ced0447d",
-            environment="production")
+            zone_name="example.com")
         ```
 
         ## Import
@@ -304,6 +352,7 @@ class WorkersCustomDomain(pulumi.CustomResource):
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  service: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -313,8 +362,6 @@ class WorkersCustomDomain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkersCustomDomainArgs.__new__(WorkersCustomDomainArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["environment"] = environment
             if hostname is None and not opts.urn:
@@ -323,10 +370,9 @@ class WorkersCustomDomain(pulumi.CustomResource):
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__.__dict__["service"] = service
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
-            __props__.__dict__["zone_name"] = None
+            __props__.__dict__["zone_name"] = zone_name
+            __props__.__dict__["cert_id"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workerDomain:WorkerDomain")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WorkersCustomDomain, __self__).__init__(
@@ -340,6 +386,7 @@ class WorkersCustomDomain(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
+            cert_id: Optional[pulumi.Input[_builtins.str]] = None,
             environment: Optional[pulumi.Input[_builtins.str]] = None,
             hostname: Optional[pulumi.Input[_builtins.str]] = None,
             service: Optional[pulumi.Input[_builtins.str]] = None,
@@ -352,18 +399,20 @@ class WorkersCustomDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifer of the account.
-        :param pulumi.Input[_builtins.str] environment: Worker environment associated with the zone and hostname.
-        :param pulumi.Input[_builtins.str] hostname: Hostname of the Worker Domain.
-        :param pulumi.Input[_builtins.str] service: Worker service associated with the zone and hostname.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier of the zone.
-        :param pulumi.Input[_builtins.str] zone_name: Name of the zone.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] cert_id: ID of the TLS certificate issued for the domain.
+        :param pulumi.Input[_builtins.str] environment: Worker environment associated with the domain.
+        :param pulumi.Input[_builtins.str] hostname: Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
+        :param pulumi.Input[_builtins.str] service: Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
+        :param pulumi.Input[_builtins.str] zone_id: ID of the zone containing the domain hostname.
+        :param pulumi.Input[_builtins.str] zone_name: Name of the zone containing the domain hostname.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _WorkersCustomDomainState.__new__(_WorkersCustomDomainState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["cert_id"] = cert_id
         __props__.__dict__["environment"] = environment
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["service"] = service
@@ -373,18 +422,26 @@ class WorkersCustomDomain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Identifer of the account.
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        ID of the TLS certificate issued for the domain.
+        """
+        return pulumi.get(self, "cert_id")
+
+    @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def environment(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def environment(self) -> pulumi.Output[_builtins.str]:
         """
-        Worker environment associated with the zone and hostname.
+        Worker environment associated with the domain.
         """
         return pulumi.get(self, "environment")
 
@@ -392,7 +449,7 @@ class WorkersCustomDomain(pulumi.CustomResource):
     @pulumi.getter
     def hostname(self) -> pulumi.Output[_builtins.str]:
         """
-        Hostname of the Worker Domain.
+        Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
         """
         return pulumi.get(self, "hostname")
 
@@ -400,7 +457,7 @@ class WorkersCustomDomain(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output[_builtins.str]:
         """
-        Worker service associated with the zone and hostname.
+        Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
         """
         return pulumi.get(self, "service")
 
@@ -408,7 +465,7 @@ class WorkersCustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier of the zone.
+        ID of the zone containing the domain hostname.
         """
         return pulumi.get(self, "zone_id")
 
@@ -416,7 +473,7 @@ class WorkersCustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the zone.
+        Name of the zone containing the domain hostname.
         """
         return pulumi.get(self, "zone_name")
 

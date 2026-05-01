@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetMagicTransitSiteWan
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +43,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMagicTransitSiteWanResult>("cloudflare:index/getMagicTransitSiteWan:getMagicTransitSiteWan", args ?? new GetMagicTransitSiteWanArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +74,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicTransitSiteWanResult>("cloudflare:index/getMagicTransitSiteWan:getMagicTransitSiteWan", args ?? new GetMagicTransitSiteWanInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Identifier
@@ -116,8 +137,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Identifier
@@ -144,7 +165,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Magic WAN health check rate for tunnels created on this link. The default value is `Mid`.
         /// Available values: "low", "mid", "high".
@@ -179,7 +200,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetMagicTransitSiteWanResult(
-            string accountId,
+            string? accountId,
 
             string healthCheckRate,
 

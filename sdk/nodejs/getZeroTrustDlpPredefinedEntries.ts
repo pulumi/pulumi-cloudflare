@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDlpPredefinedEntries(args: GetZeroTrustDlpPredefinedEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpPredefinedEntriesResult> {
+export function getZeroTrustDlpPredefinedEntries(args?: GetZeroTrustDlpPredefinedEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDlpPredefinedEntriesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDlpPredefinedEntries:getZeroTrustDlpPredefinedEntries", {
         "accountId": args.accountId,
@@ -30,7 +36,7 @@ export function getZeroTrustDlpPredefinedEntries(args: GetZeroTrustDlpPredefined
  * A collection of arguments for invoking getZeroTrustDlpPredefinedEntries.
  */
 export interface GetZeroTrustDlpPredefinedEntriesArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +47,7 @@ export interface GetZeroTrustDlpPredefinedEntriesArgs {
  * A collection of values returned by getZeroTrustDlpPredefinedEntries.
  */
 export interface GetZeroTrustDlpPredefinedEntriesResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -56,6 +62,11 @@ export interface GetZeroTrustDlpPredefinedEntriesResult {
     readonly results: outputs.GetZeroTrustDlpPredefinedEntriesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -67,7 +78,8 @@ export interface GetZeroTrustDlpPredefinedEntriesResult {
  * });
  * ```
  */
-export function getZeroTrustDlpPredefinedEntriesOutput(args: GetZeroTrustDlpPredefinedEntriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpPredefinedEntriesResult> {
+export function getZeroTrustDlpPredefinedEntriesOutput(args?: GetZeroTrustDlpPredefinedEntriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDlpPredefinedEntriesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDlpPredefinedEntries:getZeroTrustDlpPredefinedEntries", {
         "accountId": args.accountId,
@@ -79,7 +91,7 @@ export function getZeroTrustDlpPredefinedEntriesOutput(args: GetZeroTrustDlpPred
  * A collection of arguments for invoking getZeroTrustDlpPredefinedEntries.
  */
 export interface GetZeroTrustDlpPredefinedEntriesOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

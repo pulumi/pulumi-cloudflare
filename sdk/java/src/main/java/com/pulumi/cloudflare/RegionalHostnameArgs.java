@@ -65,15 +65,15 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private RegionalHostnameArgs() {}
@@ -172,7 +172,7 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -193,9 +193,6 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
             }
             if ($.regionKey == null) {
                 throw new MissingRequiredPropertyException("RegionalHostnameArgs", "regionKey");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("RegionalHostnameArgs", "zoneId");
             }
             return $;
         }

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -20,6 +25,7 @@ import * as utilities from "./utilities";
  *     type: "A",
  *     comment: "Domain verification record",
  *     content: "198.51.100.4",
+ *     privateRouting: true,
  *     proxied: true,
  *     settings: {
  *         ipv4Only: true,
@@ -100,6 +106,10 @@ export class DnsRecord extends pulumi.CustomResource {
      */
     declare public readonly priority: pulumi.Output<number | undefined>;
     /**
+     * Enables private network routing to the origin.
+     */
+    declare public readonly privateRouting: pulumi.Output<boolean | undefined>;
+    /**
      * Whether the record can be proxied by Cloudflare or not.
      */
     declare public /*out*/ readonly proxiable: pulumi.Output<boolean>;
@@ -131,7 +141,7 @@ export class DnsRecord extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a DnsRecord resource with the given unique name, arguments, and options.
@@ -155,6 +165,7 @@ export class DnsRecord extends pulumi.CustomResource {
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["name"] = state?.name;
             resourceInputs["priority"] = state?.priority;
+            resourceInputs["privateRouting"] = state?.privateRouting;
             resourceInputs["proxiable"] = state?.proxiable;
             resourceInputs["proxied"] = state?.proxied;
             resourceInputs["settings"] = state?.settings;
@@ -174,14 +185,12 @@ export class DnsRecord extends pulumi.CustomResource {
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
-            }
             resourceInputs["comment"] = args?.comment;
             resourceInputs["content"] = args?.content;
             resourceInputs["data"] = args?.data;
             resourceInputs["name"] = args?.name;
             resourceInputs["priority"] = args?.priority;
+            resourceInputs["privateRouting"] = args?.privateRouting;
             resourceInputs["proxied"] = args?.proxied;
             resourceInputs["settings"] = args?.settings;
             resourceInputs["tags"] = args?.tags;
@@ -243,6 +252,10 @@ export interface DnsRecordState {
      */
     priority?: pulumi.Input<number>;
     /**
+     * Enables private network routing to the origin.
+     */
+    privateRouting?: pulumi.Input<boolean>;
+    /**
      * Whether the record can be proxied by Cloudflare or not.
      */
     proxiable?: pulumi.Input<boolean>;
@@ -302,6 +315,10 @@ export interface DnsRecordArgs {
      */
     priority?: pulumi.Input<number>;
     /**
+     * Enables private network routing to the origin.
+     */
+    privateRouting?: pulumi.Input<boolean>;
+    /**
      * Whether the record is receiving the performance and security benefits of Cloudflare.
      */
     proxied?: pulumi.Input<boolean>;
@@ -325,5 +342,5 @@ export interface DnsRecordArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

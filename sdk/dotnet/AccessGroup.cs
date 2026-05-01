@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Access: Organizations, Identity Providers, and Groups Read`
+    /// - `Access: Organizations, Identity Providers, and Groups Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -26,10 +31,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustAccessGroupIncludeArgs
     ///             {
-    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessGroupIncludeGroupArgs
-    ///                 {
-    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-    ///                 },
+    ///                 Certificate = null,
     ///             },
     ///         },
     ///         Name = "Allow devs",
@@ -38,10 +40,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustAccessGroupExcludeArgs
     ///             {
-    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessGroupExcludeGroupArgs
-    ///                 {
-    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-    ///                 },
+    ///                 Certificate = null,
     ///             },
     ///         },
     ///         IsDefault = true,
@@ -49,10 +48,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustAccessGroupRequireArgs
     ///             {
-    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessGroupRequireGroupArgs
-    ///                 {
-    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-    ///                 },
+    ///                 Certificate = null,
     ///             },
     ///         },
     ///     });

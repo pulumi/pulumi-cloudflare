@@ -29,7 +29,7 @@ export function getZeroTrustDeviceCustomProfileLocalDomainFallback(args: GetZero
  * A collection of arguments for invoking getZeroTrustDeviceCustomProfileLocalDomainFallback.
  */
 export interface GetZeroTrustDeviceCustomProfileLocalDomainFallbackArgs {
-    accountId: string;
+    accountId?: string;
     policyId: string;
 }
 
@@ -37,7 +37,7 @@ export interface GetZeroTrustDeviceCustomProfileLocalDomainFallbackArgs {
  * A collection of values returned by getZeroTrustDeviceCustomProfileLocalDomainFallback.
  */
 export interface GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * A description of the fallback domain, displayed in the client UI.
      */
@@ -81,6 +81,6 @@ export function getZeroTrustDeviceCustomProfileLocalDomainFallbackOutput(args: G
  * A collection of arguments for invoking getZeroTrustDeviceCustomProfileLocalDomainFallback.
  */
 export interface GetZeroTrustDeviceCustomProfileLocalDomainFallbackOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     policyId: pulumi.Input<string>;
 }

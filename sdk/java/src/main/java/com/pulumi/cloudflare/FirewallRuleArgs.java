@@ -10,6 +10,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
@@ -42,15 +44,15 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
      * Defines an identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Defines an identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private FirewallRuleArgs() {}
@@ -115,7 +117,7 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -136,9 +138,6 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.filter == null) {
                 throw new MissingRequiredPropertyException("FirewallRuleArgs", "filter");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("FirewallRuleArgs", "zoneId");
             }
             return $;
         }

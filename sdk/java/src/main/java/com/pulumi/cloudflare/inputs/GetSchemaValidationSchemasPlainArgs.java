@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -58,15 +57,15 @@ public final class GetSchemaValidationSchemasPlainArgs extends com.pulumi.resour
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetSchemaValidationSchemasPlainArgs() {}
@@ -129,15 +128,12 @@ public final class GetSchemaValidationSchemasPlainArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         public GetSchemaValidationSchemasPlainArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetSchemaValidationSchemasPlainArgs", "zoneId");
-            }
             return $;
         }
     }

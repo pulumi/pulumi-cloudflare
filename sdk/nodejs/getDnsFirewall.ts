@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Firewall Read`
+ * - `DNS Firewall Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +39,7 @@ export interface GetDnsFirewallArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Identifier.
      */
@@ -48,7 +53,7 @@ export interface GetDnsFirewallResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Attack mitigation settings
      */
@@ -86,6 +91,11 @@ export interface GetDnsFirewallResult {
     readonly upstreamIps: string[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Firewall Read`
+ * - `DNS Firewall Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -113,7 +123,7 @@ export interface GetDnsFirewallOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Identifier.
      */

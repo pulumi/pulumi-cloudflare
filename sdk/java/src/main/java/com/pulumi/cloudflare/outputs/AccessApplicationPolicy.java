@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.AccessApplicationPolicyConnectionRules;
 import com.pulumi.cloudflare.outputs.AccessApplicationPolicyExclude;
 import com.pulumi.cloudflare.outputs.AccessApplicationPolicyInclude;
+import com.pulumi.cloudflare.outputs.AccessApplicationPolicyMfaConfig;
 import com.pulumi.cloudflare.outputs.AccessApplicationPolicyRequire;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
@@ -43,6 +44,11 @@ public final class AccessApplicationPolicy {
      * 
      */
     private @Nullable List<AccessApplicationPolicyInclude> includes;
+    /**
+     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * 
+     */
+    private @Nullable AccessApplicationPolicyMfaConfig mfaConfig;
     /**
      * @return The name of the Access policy.
      * 
@@ -97,6 +103,13 @@ public final class AccessApplicationPolicy {
         return this.includes == null ? List.of() : this.includes;
     }
     /**
+     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * 
+     */
+    public Optional<AccessApplicationPolicyMfaConfig> mfaConfig() {
+        return Optional.ofNullable(this.mfaConfig);
+    }
+    /**
      * @return The name of the Access policy.
      * 
      */
@@ -132,6 +145,7 @@ public final class AccessApplicationPolicy {
         private @Nullable List<AccessApplicationPolicyExclude> excludes;
         private @Nullable String id;
         private @Nullable List<AccessApplicationPolicyInclude> includes;
+        private @Nullable AccessApplicationPolicyMfaConfig mfaConfig;
         private @Nullable String name;
         private @Nullable Integer precedence;
         private @Nullable List<AccessApplicationPolicyRequire> requires;
@@ -143,6 +157,7 @@ public final class AccessApplicationPolicy {
     	      this.excludes = defaults.excludes;
     	      this.id = defaults.id;
     	      this.includes = defaults.includes;
+    	      this.mfaConfig = defaults.mfaConfig;
     	      this.name = defaults.name;
     	      this.precedence = defaults.precedence;
     	      this.requires = defaults.requires;
@@ -185,6 +200,12 @@ public final class AccessApplicationPolicy {
             return includes(List.of(includes));
         }
         @CustomType.Setter
+        public Builder mfaConfig(@Nullable AccessApplicationPolicyMfaConfig mfaConfig) {
+
+            this.mfaConfig = mfaConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
@@ -212,6 +233,7 @@ public final class AccessApplicationPolicy {
             _resultValue.excludes = excludes;
             _resultValue.id = id;
             _resultValue.includes = includes;
+            _resultValue.mfaConfig = mfaConfig;
             _resultValue.name = name;
             _resultValue.precedence = precedence;
             _resultValue.requires = requires;

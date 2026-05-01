@@ -3,11 +3,13 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetWorkerFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetWorkerArgs extends com.pulumi.resources.InvokeArgs {
@@ -18,36 +20,44 @@ public final class GetWorkerArgs extends com.pulumi.resources.InvokeArgs {
      * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    @Import(name="filter")
+    private @Nullable Output<GetWorkerFilterArgs> filter;
+
+    public Optional<Output<GetWorkerFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
      * Identifier for the Worker, which can be ID or name.
      * 
      */
-    @Import(name="workerId", required=true)
-    private Output<String> workerId;
+    @Import(name="workerId")
+    private @Nullable Output<String> workerId;
 
     /**
      * @return Identifier for the Worker, which can be ID or name.
      * 
      */
-    public Output<String> workerId() {
-        return this.workerId;
+    public Optional<Output<String>> workerId() {
+        return Optional.ofNullable(this.workerId);
     }
 
     private GetWorkerArgs() {}
 
     private GetWorkerArgs(GetWorkerArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.workerId = $.workerId;
     }
 
@@ -75,7 +85,7 @@ public final class GetWorkerArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -90,13 +100,22 @@ public final class GetWorkerArgs extends com.pulumi.resources.InvokeArgs {
             return accountId(Output.of(accountId));
         }
 
+        public Builder filter(@Nullable Output<GetWorkerFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetWorkerFilterArgs filter) {
+            return filter(Output.of(filter));
+        }
+
         /**
          * @param workerId Identifier for the Worker, which can be ID or name.
          * 
          * @return builder
          * 
          */
-        public Builder workerId(Output<String> workerId) {
+        public Builder workerId(@Nullable Output<String> workerId) {
             $.workerId = workerId;
             return this;
         }
@@ -112,12 +131,6 @@ public final class GetWorkerArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetWorkerArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetWorkerArgs", "accountId");
-            }
-            if ($.workerId == null) {
-                throw new MissingRequiredPropertyException("GetWorkerArgs", "workerId");
-            }
             return $;
         }
     }

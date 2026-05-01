@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Snippets Read`
+// - `Snippets Write`
 func LookupSnippetList(ctx *pulumi.Context, args *LookupSnippetListArgs, opts ...pulumi.InvokeOption) (*LookupSnippetListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnippetListResult
@@ -26,7 +30,7 @@ type LookupSnippetListArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Use this field to specify the unique ID of the zone.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getSnippetList.
@@ -38,7 +42,7 @@ type LookupSnippetListResult struct {
 	// The items returned by the data source
 	Results []GetSnippetListResult `pulumi:"results"`
 	// Use this field to specify the unique ID of the zone.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupSnippetListOutput(ctx *pulumi.Context, args LookupSnippetListOutputArgs, opts ...pulumi.InvokeOption) LookupSnippetListResultOutput {
@@ -55,7 +59,7 @@ type LookupSnippetListOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Use this field to specify the unique ID of the zone.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupSnippetListOutputArgs) ElementType() reflect.Type {
@@ -93,8 +97,8 @@ func (o LookupSnippetListResultOutput) Results() GetSnippetListResultArrayOutput
 }
 
 // Use this field to specify the unique ID of the zone.
-func (o LookupSnippetListResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSnippetListResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupSnippetListResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSnippetListResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

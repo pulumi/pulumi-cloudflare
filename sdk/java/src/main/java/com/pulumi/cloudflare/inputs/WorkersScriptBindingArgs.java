@@ -65,6 +65,21 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * ID of the Flagship app to bind to for feature flag evaluation.
+     * 
+     */
+    @Import(name="appId")
+    private @Nullable Output<String> appId;
+
+    /**
+     * @return ID of the Flagship app to bind to for feature flag evaluation.
+     * 
+     */
+    public Optional<Output<String>> appId() {
+        return Optional.ofNullable(this.appId);
+    }
+
+    /**
      * R2 bucket to bind to.
      * 
      */
@@ -110,6 +125,21 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Identifier of the D1 database to bind to.
+     * 
+     */
+    @Import(name="databaseId")
+    private @Nullable Output<String> databaseId;
+
+    /**
+     * @return Identifier of the D1 database to bind to.
+     * 
+     */
+    public Optional<Output<String>> databaseId() {
+        return Optional.ofNullable(this.databaseId);
+    }
+
+    /**
      * The name of the dataset to bind to.
      * 
      */
@@ -137,6 +167,36 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> destinationAddress() {
         return Optional.ofNullable(this.destinationAddress);
+    }
+
+    /**
+     * The dispatch namespace the Durable Object script belongs to.
+     * 
+     */
+    @Import(name="dispatchNamespace")
+    private @Nullable Output<String> dispatchNamespace;
+
+    /**
+     * @return The dispatch namespace the Durable Object script belongs to.
+     * 
+     */
+    public Optional<Output<String>> dispatchNamespace() {
+        return Optional.ofNullable(this.dispatchNamespace);
+    }
+
+    /**
+     * Entrypoint to invoke on the target Worker.
+     * 
+     */
+    @Import(name="entrypoint")
+    private @Nullable Output<String> entrypoint;
+
+    /**
+     * @return Entrypoint to invoke on the target Worker.
+     * 
+     */
+    public Optional<Output<String>> entrypoint() {
+        return Optional.ofNullable(this.entrypoint);
     }
 
     /**
@@ -202,6 +262,21 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+     * 
+     */
+    @Import(name="instanceName")
+    private @Nullable Output<String> instanceName;
+
+    /**
+     * @return The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+     * 
+     */
+    public Optional<Output<String>> instanceName() {
+        return Optional.ofNullable(this.instanceName);
+    }
+
+    /**
      * JSON data to use.
      * 
      */
@@ -218,7 +293,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
      * 
      */
     @Import(name="jurisdiction")
@@ -226,7 +301,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
      * 
      */
     public Optional<Output<String>> jurisdiction() {
@@ -279,14 +354,14 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name of the dispatch namespace.
+     * The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return The name of the dispatch namespace.
+     * @return The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -306,6 +381,21 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> namespaceId() {
         return Optional.ofNullable(this.namespaceId);
+    }
+
+    /**
+     * Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+     * 
+     */
+    @Import(name="networkId")
+    private @Nullable Output<String> networkId;
+
+    /**
+     * @return Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+     * 
+     */
+    public Optional<Output<String>> networkId() {
+        return Optional.ofNullable(this.networkId);
     }
 
     /**
@@ -429,6 +519,21 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Identifier of the VPC service to bind to.
+     * 
+     */
+    @Import(name="serviceId")
+    private @Nullable Output<String> serviceId;
+
+    /**
+     * @return Identifier of the VPC service to bind to.
+     * 
+     */
+    public Optional<Output<String>> serviceId() {
+        return Optional.ofNullable(this.serviceId);
+    }
+
+    /**
      * A simple rate limit.
      * 
      */
@@ -474,8 +579,23 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+     * 
+     */
+    @Import(name="tunnelId")
+    private @Nullable Output<String> tunnelId;
+
+    /**
+     * @return UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+     * 
+     */
+    public Optional<Output<String>> tunnelId() {
+        return Optional.ofNullable(this.tunnelId);
+    }
+
+    /**
      * The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;.
+     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -483,7 +603,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;.
+     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
      * 
      */
     public Output<String> type() {
@@ -541,15 +661,20 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         this.algorithm = $.algorithm;
         this.allowedDestinationAddresses = $.allowedDestinationAddresses;
         this.allowedSenderAddresses = $.allowedSenderAddresses;
+        this.appId = $.appId;
         this.bucketName = $.bucketName;
         this.certificateId = $.certificateId;
         this.className = $.className;
+        this.databaseId = $.databaseId;
         this.dataset = $.dataset;
         this.destinationAddress = $.destinationAddress;
+        this.dispatchNamespace = $.dispatchNamespace;
+        this.entrypoint = $.entrypoint;
         this.environment = $.environment;
         this.format = $.format;
         this.id = $.id;
         this.indexName = $.indexName;
+        this.instanceName = $.instanceName;
         this.json = $.json;
         this.jurisdiction = $.jurisdiction;
         this.keyBase64 = $.keyBase64;
@@ -557,6 +682,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         this.name = $.name;
         this.namespace = $.namespace;
         this.namespaceId = $.namespaceId;
+        this.networkId = $.networkId;
         this.oldName = $.oldName;
         this.outbound = $.outbound;
         this.part = $.part;
@@ -565,9 +691,11 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         this.scriptName = $.scriptName;
         this.secretName = $.secretName;
         this.service = $.service;
+        this.serviceId = $.serviceId;
         this.simple = $.simple;
         this.storeId = $.storeId;
         this.text = $.text;
+        this.tunnelId = $.tunnelId;
         this.type = $.type;
         this.usages = $.usages;
         this.versionId = $.versionId;
@@ -676,6 +804,27 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param appId ID of the Flagship app to bind to for feature flag evaluation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appId(@Nullable Output<String> appId) {
+            $.appId = appId;
+            return this;
+        }
+
+        /**
+         * @param appId ID of the Flagship app to bind to for feature flag evaluation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appId(String appId) {
+            return appId(Output.of(appId));
+        }
+
+        /**
          * @param bucketName R2 bucket to bind to.
          * 
          * @return builder
@@ -739,6 +888,27 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param databaseId Identifier of the D1 database to bind to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseId(@Nullable Output<String> databaseId) {
+            $.databaseId = databaseId;
+            return this;
+        }
+
+        /**
+         * @param databaseId Identifier of the D1 database to bind to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseId(String databaseId) {
+            return databaseId(Output.of(databaseId));
+        }
+
+        /**
          * @param dataset The name of the dataset to bind to.
          * 
          * @return builder
@@ -778,6 +948,48 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
          */
         public Builder destinationAddress(String destinationAddress) {
             return destinationAddress(Output.of(destinationAddress));
+        }
+
+        /**
+         * @param dispatchNamespace The dispatch namespace the Durable Object script belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dispatchNamespace(@Nullable Output<String> dispatchNamespace) {
+            $.dispatchNamespace = dispatchNamespace;
+            return this;
+        }
+
+        /**
+         * @param dispatchNamespace The dispatch namespace the Durable Object script belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dispatchNamespace(String dispatchNamespace) {
+            return dispatchNamespace(Output.of(dispatchNamespace));
+        }
+
+        /**
+         * @param entrypoint Entrypoint to invoke on the target Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entrypoint(@Nullable Output<String> entrypoint) {
+            $.entrypoint = entrypoint;
+            return this;
+        }
+
+        /**
+         * @param entrypoint Entrypoint to invoke on the target Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entrypoint(String entrypoint) {
+            return entrypoint(Output.of(entrypoint));
         }
 
         /**
@@ -867,6 +1079,27 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param instanceName The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceName(@Nullable Output<String> instanceName) {
+            $.instanceName = instanceName;
+            return this;
+        }
+
+        /**
+         * @param instanceName The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceName(String instanceName) {
+            return instanceName(Output.of(instanceName));
+        }
+
+        /**
          * @param json JSON data to use.
          * 
          * @return builder
@@ -889,7 +1122,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param jurisdiction The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-         * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
          * 
          * @return builder
          * 
@@ -901,7 +1134,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param jurisdiction The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-         * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
          * 
          * @return builder
          * 
@@ -974,7 +1207,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param namespace The name of the dispatch namespace.
+         * @param namespace The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
          * 
          * @return builder
          * 
@@ -985,7 +1218,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param namespace The name of the dispatch namespace.
+         * @param namespace The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
          * 
          * @return builder
          * 
@@ -1013,6 +1246,27 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
          */
         public Builder namespaceId(String namespaceId) {
             return namespaceId(Output.of(namespaceId));
+        }
+
+        /**
+         * @param networkId Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkId(@Nullable Output<String> networkId) {
+            $.networkId = networkId;
+            return this;
+        }
+
+        /**
+         * @param networkId Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkId(String networkId) {
+            return networkId(Output.of(networkId));
         }
 
         /**
@@ -1184,6 +1438,27 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param serviceId Identifier of the VPC service to bind to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceId(@Nullable Output<String> serviceId) {
+            $.serviceId = serviceId;
+            return this;
+        }
+
+        /**
+         * @param serviceId Identifier of the VPC service to bind to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceId(String serviceId) {
+            return serviceId(Output.of(serviceId));
+        }
+
+        /**
          * @param simple A simple rate limit.
          * 
          * @return builder
@@ -1247,8 +1522,29 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param tunnelId UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelId(@Nullable Output<String> tunnelId) {
+            $.tunnelId = tunnelId;
+            return this;
+        }
+
+        /**
+         * @param tunnelId UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelId(String tunnelId) {
+            return tunnelId(Output.of(tunnelId));
+        }
+
+        /**
          * @param type The kind of resource that the binding provides.
-         * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;.
+         * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
          * 
          * @return builder
          * 
@@ -1260,7 +1556,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param type The kind of resource that the binding provides.
-         * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;.
+         * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
          * 
          * @return builder
          * 

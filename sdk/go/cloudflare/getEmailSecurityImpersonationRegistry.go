@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloud Email Security: Read`
+// - `Cloud Email Security: Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailSecurityImpersonationRegistry(ctx, &cloudflare.LookupEmailSecurityImpersonationRegistryArgs{
-//				AccountId:     "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DisplayNameId: pulumi.IntRef(2403),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupEmailSecurityImpersonationRegistry(ctx *pulumi.Context, args *LookupE
 // A collection of arguments for invoking getEmailSecurityImpersonationRegistry.
 type LookupEmailSecurityImpersonationRegistryArgs struct {
 	// Account Identifier
-	AccountId     string                                       `pulumi:"accountId"`
+	AccountId     *string                                      `pulumi:"accountId"`
 	DisplayNameId *int                                         `pulumi:"displayNameId"`
 	Filter        *GetEmailSecurityImpersonationRegistryFilter `pulumi:"filter"`
 }
@@ -58,13 +63,13 @@ type LookupEmailSecurityImpersonationRegistryArgs struct {
 // A collection of values returned by getEmailSecurityImpersonationRegistry.
 type LookupEmailSecurityImpersonationRegistryResult struct {
 	// Account Identifier
-	AccountId       string `pulumi:"accountId"`
-	Comments        string `pulumi:"comments"`
-	CreatedAt       string `pulumi:"createdAt"`
-	DirectoryId     int    `pulumi:"directoryId"`
-	DirectoryNodeId int    `pulumi:"directoryNodeId"`
-	DisplayNameId   *int   `pulumi:"displayNameId"`
-	Email           string `pulumi:"email"`
+	AccountId       *string `pulumi:"accountId"`
+	Comments        string  `pulumi:"comments"`
+	CreatedAt       string  `pulumi:"createdAt"`
+	DirectoryId     int     `pulumi:"directoryId"`
+	DirectoryNodeId int     `pulumi:"directoryNodeId"`
+	DisplayNameId   *int    `pulumi:"displayNameId"`
+	Email           string  `pulumi:"email"`
 	// Deprecated: This attribute is deprecated.
 	ExternalDirectoryNodeId string                                       `pulumi:"externalDirectoryNodeId"`
 	Filter                  *GetEmailSecurityImpersonationRegistryFilter `pulumi:"filter"`
@@ -88,7 +93,7 @@ func LookupEmailSecurityImpersonationRegistryOutput(ctx *pulumi.Context, args Lo
 // A collection of arguments for invoking getEmailSecurityImpersonationRegistry.
 type LookupEmailSecurityImpersonationRegistryOutputArgs struct {
 	// Account Identifier
-	AccountId     pulumi.StringInput                                  `pulumi:"accountId"`
+	AccountId     pulumi.StringPtrInput                               `pulumi:"accountId"`
 	DisplayNameId pulumi.IntPtrInput                                  `pulumi:"displayNameId"`
 	Filter        GetEmailSecurityImpersonationRegistryFilterPtrInput `pulumi:"filter"`
 }
@@ -113,8 +118,8 @@ func (o LookupEmailSecurityImpersonationRegistryResultOutput) ToLookupEmailSecur
 }
 
 // Account Identifier
-func (o LookupEmailSecurityImpersonationRegistryResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupEmailSecurityImpersonationRegistryResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) Comments() pulumi.StringOutput {

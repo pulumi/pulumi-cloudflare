@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetHostnameTlsSetting(ctx, &cloudflare.LookupHostnameTlsSettingArgs{
-//				ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SettingId: "ciphers",
 //			}, nil)
 //			if err != nil {
@@ -52,7 +57,7 @@ type LookupHostnameTlsSettingArgs struct {
 	// The TLS Setting name. The value type depends on the setting:
 	SettingId string `pulumi:"settingId"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getHostnameTlsSetting.
@@ -72,7 +77,7 @@ type LookupHostnameTlsSettingResult struct {
 	// The TLS setting value. The type depends on the `settingId` used in the request path:
 	Value string `pulumi:"value"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupHostnameTlsSettingOutput(ctx *pulumi.Context, args LookupHostnameTlsSettingOutputArgs, opts ...pulumi.InvokeOption) LookupHostnameTlsSettingResultOutput {
@@ -89,7 +94,7 @@ type LookupHostnameTlsSettingOutputArgs struct {
 	// The TLS Setting name. The value type depends on the setting:
 	SettingId pulumi.StringInput `pulumi:"settingId"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupHostnameTlsSettingOutputArgs) ElementType() reflect.Type {
@@ -147,8 +152,8 @@ func (o LookupHostnameTlsSettingResultOutput) Value() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupHostnameTlsSettingResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHostnameTlsSettingResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupHostnameTlsSettingResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupHostnameTlsSettingResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +43,7 @@ export interface GetLeakedCredentialCheckRuleArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -62,9 +69,16 @@ export interface GetLeakedCredentialCheckRuleResult {
     /**
      * Defines an identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -96,5 +110,5 @@ export interface GetLeakedCredentialCheckRuleOutputArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

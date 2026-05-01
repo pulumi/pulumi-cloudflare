@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetStreamCaptionLanguage
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +41,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStreamCaptionLanguageResult>("cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage", args ?? new GetStreamCaptionLanguageArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +70,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetStreamCaptionLanguageResult>("cloudflare:index/getStreamCaptionLanguage:getStreamCaptionLanguage", args ?? new GetStreamCaptionLanguageInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
@@ -116,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
@@ -144,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Whether the caption was generated via AI.
         /// </summary>
@@ -173,7 +188,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetStreamCaptionLanguageResult(
-            string accountId,
+            string? accountId,
 
             bool generated,
 

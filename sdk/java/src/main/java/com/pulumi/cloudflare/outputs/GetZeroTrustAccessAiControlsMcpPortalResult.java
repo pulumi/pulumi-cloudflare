@@ -16,7 +16,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustAccessAiControlsMcpPortalResult {
-    private String accountId;
+    private @Nullable String accountId;
+    /**
+     * @return Allow remote code execution in Dynamic Workers (beta)
+     * 
+     */
+    private Boolean allowCodeMode;
     private String createdAt;
     private String createdBy;
     private String description;
@@ -38,8 +43,15 @@ public final class GetZeroTrustAccessAiControlsMcpPortalResult {
     private List<GetZeroTrustAccessAiControlsMcpPortalServer> servers;
 
     private GetZeroTrustAccessAiControlsMcpPortalResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+    /**
+     * @return Allow remote code execution in Dynamic Workers (beta)
+     * 
+     */
+    public Boolean allowCodeMode() {
+        return this.allowCodeMode;
     }
     public String createdAt() {
         return this.createdAt;
@@ -92,7 +104,8 @@ public final class GetZeroTrustAccessAiControlsMcpPortalResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
+        private Boolean allowCodeMode;
         private String createdAt;
         private String createdBy;
         private String description;
@@ -108,6 +121,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalResult {
         public Builder(GetZeroTrustAccessAiControlsMcpPortalResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.allowCodeMode = defaults.allowCodeMode;
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
     	      this.description = defaults.description;
@@ -122,11 +136,17 @@ public final class GetZeroTrustAccessAiControlsMcpPortalResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder allowCodeMode(Boolean allowCodeMode) {
+            if (allowCodeMode == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalResult", "allowCodeMode");
+            }
+            this.allowCodeMode = allowCodeMode;
             return this;
         }
         @CustomType.Setter
@@ -221,6 +241,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalResult {
         public GetZeroTrustAccessAiControlsMcpPortalResult build() {
             final var _resultValue = new GetZeroTrustAccessAiControlsMcpPortalResult();
             _resultValue.accountId = accountId;
+            _resultValue.allowCodeMode = allowCodeMode;
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
             _resultValue.description = description;

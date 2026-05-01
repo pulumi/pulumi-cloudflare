@@ -27,7 +27,7 @@ class GetMagicTransitSiteLanResult:
     """
     A collection of values returned by getMagicTransitSiteLan.
     """
-    def __init__(__self__, account_id=None, bond_id=None, ha_link=None, id=None, lan_id=None, name=None, nat=None, physport=None, routed_subnets=None, site_id=None, static_addressing=None, vlan_tag=None):
+    def __init__(__self__, account_id=None, bond_id=None, ha_link=None, id=None, is_breakout=None, is_prioritized=None, lan_id=None, name=None, nat=None, physport=None, routed_subnets=None, site_id=None, static_addressing=None, vlan_tag=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,6 +40,12 @@ class GetMagicTransitSiteLanResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if is_breakout and not isinstance(is_breakout, bool):
+            raise TypeError("Expected argument 'is_breakout' to be a bool")
+        pulumi.set(__self__, "is_breakout", is_breakout)
+        if is_prioritized and not isinstance(is_prioritized, bool):
+            raise TypeError("Expected argument 'is_prioritized' to be a bool")
+        pulumi.set(__self__, "is_prioritized", is_prioritized)
         if lan_id and not isinstance(lan_id, str):
             raise TypeError("Expected argument 'lan_id' to be a str")
         pulumi.set(__self__, "lan_id", lan_id)
@@ -67,7 +73,7 @@ class GetMagicTransitSiteLanResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier
         """
@@ -93,6 +99,22 @@ class GetMagicTransitSiteLanResult:
         Identifier
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isBreakout")
+    def is_breakout(self) -> _builtins.bool:
+        """
+        mark true to use this LAN for source-based breakout traffic
+        """
+        return pulumi.get(self, "is_breakout")
+
+    @_builtins.property
+    @pulumi.getter(name="isPrioritized")
+    def is_prioritized(self) -> _builtins.bool:
+        """
+        mark true to use this LAN for source-based prioritized traffic
+        """
+        return pulumi.get(self, "is_prioritized")
 
     @_builtins.property
     @pulumi.getter(name="lanId")
@@ -157,6 +179,8 @@ class AwaitableGetMagicTransitSiteLanResult(GetMagicTransitSiteLanResult):
             bond_id=self.bond_id,
             ha_link=self.ha_link,
             id=self.id,
+            is_breakout=self.is_breakout,
+            is_prioritized=self.is_prioritized,
             lan_id=self.lan_id,
             name=self.name,
             nat=self.nat,
@@ -172,6 +196,13 @@ def get_magic_transit_site_lan(account_id: Optional[_builtins.str] = None,
                                site_id: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMagicTransitSiteLanResult:
     """
+    Accepted Permissions
+
+    - `Magic Transit Read`
+    - `Magic Transit Write`
+    - `Magic WAN Read`
+    - `Magic WAN Write`
+
     ## Example Usage
 
     ```python
@@ -200,6 +231,8 @@ def get_magic_transit_site_lan(account_id: Optional[_builtins.str] = None,
         bond_id=pulumi.get(__ret__, 'bond_id'),
         ha_link=pulumi.get(__ret__, 'ha_link'),
         id=pulumi.get(__ret__, 'id'),
+        is_breakout=pulumi.get(__ret__, 'is_breakout'),
+        is_prioritized=pulumi.get(__ret__, 'is_prioritized'),
         lan_id=pulumi.get(__ret__, 'lan_id'),
         name=pulumi.get(__ret__, 'name'),
         nat=pulumi.get(__ret__, 'nat'),
@@ -208,11 +241,18 @@ def get_magic_transit_site_lan(account_id: Optional[_builtins.str] = None,
         site_id=pulumi.get(__ret__, 'site_id'),
         static_addressing=pulumi.get(__ret__, 'static_addressing'),
         vlan_tag=pulumi.get(__ret__, 'vlan_tag'))
-def get_magic_transit_site_lan_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_magic_transit_site_lan_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       lan_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       site_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitSiteLanResult]:
     """
+    Accepted Permissions
+
+    - `Magic Transit Read`
+    - `Magic Transit Write`
+    - `Magic WAN Read`
+    - `Magic WAN Write`
+
     ## Example Usage
 
     ```python
@@ -240,6 +280,8 @@ def get_magic_transit_site_lan_output(account_id: Optional[pulumi.Input[_builtin
         bond_id=pulumi.get(__response__, 'bond_id'),
         ha_link=pulumi.get(__response__, 'ha_link'),
         id=pulumi.get(__response__, 'id'),
+        is_breakout=pulumi.get(__response__, 'is_breakout'),
+        is_prioritized=pulumi.get(__response__, 'is_prioritized'),
         lan_id=pulumi.get(__response__, 'lan_id'),
         name=pulumi.get(__response__, 'name'),
         nat=pulumi.get(__response__, 'nat'),

@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetContentScanning
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account WAF Read`
+        /// - `Account WAF Write`
+        /// - `Zone WAF Read`
+        /// - `Zone WAF Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +37,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetContentScanningResult> InvokeAsync(GetContentScanningArgs args, InvokeOptions? options = null)
+        public static Task<GetContentScanningResult> InvokeAsync(GetContentScanningArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContentScanningResult>("cloudflare:index/getContentScanning:getContentScanning", args ?? new GetContentScanningArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account WAF Read`
+        /// - `Account WAF Write`
+        /// - `Zone WAF Read`
+        /// - `Zone WAF Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +66,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetContentScanningResult> Invoke(GetContentScanningInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetContentScanningResult> Invoke(GetContentScanningInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContentScanningResult>("cloudflare:index/getContentScanning:getContentScanning", args ?? new GetContentScanningInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account WAF Read`
+        /// - `Account WAF Write`
+        /// - `Zone WAF Read`
+        /// - `Zone WAF Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetContentScanningArgs()
         {
@@ -98,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetContentScanningInvokeArgs()
         {
@@ -126,7 +147,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetContentScanningResult(
@@ -136,7 +157,7 @@ namespace Pulumi.Cloudflare
 
             string value,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             Modified = modified;

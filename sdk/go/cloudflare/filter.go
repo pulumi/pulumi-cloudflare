@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+//
 // > `Filter` is in a deprecation phase until June 15th, 2025.
 //
 //	During this time period, this resource is still fully
@@ -71,7 +76,7 @@ type Filter struct {
 	// A short reference tag. Allows you to select related filters.
 	Ref pulumi.StringPtrOutput `pulumi:"ref"`
 	// Defines an identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewFilter registers a new resource with the given unique name, arguments, and options.
@@ -83,9 +88,6 @@ func NewFilter(ctx *pulumi.Context,
 
 	if args.Bodies == nil {
 		return nil, errors.New("invalid value for required argument 'Bodies'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Filter
@@ -152,7 +154,7 @@ type filterArgs struct {
 	// A short reference tag. Allows you to select related filters.
 	Ref *string `pulumi:"ref"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Filter resource.
@@ -167,7 +169,7 @@ type FilterArgs struct {
 	// A short reference tag. Allows you to select related filters.
 	Ref pulumi.StringPtrInput
 	// Defines an identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (FilterArgs) ElementType() reflect.Type {
@@ -282,8 +284,8 @@ func (o FilterOutput) Ref() pulumi.StringPtrOutput {
 }
 
 // Defines an identifier.
-func (o FilterOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o FilterOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Filter) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type FilterArrayOutput struct{ *pulumi.OutputState }

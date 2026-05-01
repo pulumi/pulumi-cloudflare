@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetWorkersKv
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers KV Storage Read`
+        /// - `Workers KV Storage Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +41,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkersKvResult>("cloudflare:index/getWorkersKv:getWorkersKv", args ?? new GetWorkersKvArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers KV Storage Read`
+        /// - `Workers KV Storage Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +70,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkersKvResult>("cloudflare:index/getWorkersKv:getWorkersKv", args ?? new GetWorkersKvInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers KV Storage Read`
+        /// - `Workers KV Storage Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
@@ -116,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
@@ -144,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         /// </summary>
@@ -161,7 +176,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWorkersKvResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

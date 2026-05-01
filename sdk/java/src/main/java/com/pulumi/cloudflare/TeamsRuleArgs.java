@@ -22,11 +22,11 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TeamsRuleArgs Empty = new TeamsRuleArgs();
 
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -247,7 +247,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
             $ = new TeamsRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -521,9 +521,6 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TeamsRuleArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("TeamsRuleArgs", "accountId");
-            }
             if ($.action == null) {
                 throw new MissingRequiredPropertyException("TeamsRuleArgs", "action");
             }

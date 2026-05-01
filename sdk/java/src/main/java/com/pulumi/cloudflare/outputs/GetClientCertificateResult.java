@@ -116,7 +116,7 @@ public final class GetClientCertificateResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetClientCertificateResult() {}
     /**
@@ -260,8 +260,8 @@ public final class GetClientCertificateResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -293,7 +293,7 @@ public final class GetClientCertificateResult {
         private String state;
         private String status;
         private Integer validityDays;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetClientCertificateResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -477,10 +477,8 @@ public final class GetClientCertificateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetClientCertificateResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

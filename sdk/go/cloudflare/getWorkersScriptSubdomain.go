@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersScriptSubdomain(ctx, &cloudflare.LookupWorkersScriptSubdomainArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ScriptName: "this-is_my_script-01",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +56,7 @@ func LookupWorkersScriptSubdomain(ctx *pulumi.Context, args *LookupWorkersScript
 // A collection of arguments for invoking getWorkersScriptSubdomain.
 type LookupWorkersScriptSubdomainArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
 }
@@ -58,7 +64,7 @@ type LookupWorkersScriptSubdomainArgs struct {
 // A collection of values returned by getWorkersScriptSubdomain.
 type LookupWorkersScriptSubdomainResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Whether the Worker is available on the workers.dev subdomain.
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
@@ -81,7 +87,7 @@ func LookupWorkersScriptSubdomainOutput(ctx *pulumi.Context, args LookupWorkersS
 // A collection of arguments for invoking getWorkersScriptSubdomain.
 type LookupWorkersScriptSubdomainOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
 }
@@ -106,8 +112,8 @@ func (o LookupWorkersScriptSubdomainResultOutput) ToLookupWorkersScriptSubdomain
 }
 
 // Identifier.
-func (o LookupWorkersScriptSubdomainResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersScriptSubdomainResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupWorkersScriptSubdomainResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersScriptSubdomainResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Whether the Worker is available on the workers.dev subdomain.

@@ -80,7 +80,7 @@ class GetZeroTrustTunnelCloudflaredResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Cloudflare account ID
         """
@@ -238,6 +238,15 @@ def get_zero_trust_tunnel_cloudflared(account_id: Optional[_builtins.str] = None
                                       tunnel_id: Optional[_builtins.str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustTunnelCloudflaredResult:
     """
+    Accepted Permissions
+
+    - `Cloudflare One Connector: cloudflared Read`
+    - `Cloudflare One Connector: cloudflared Write`
+    - `Cloudflare One Connectors Read`
+    - `Cloudflare One Connectors Write`
+    - `Cloudflare Tunnel Read`
+    - `Cloudflare Tunnel Write`
+
     ## Example Usage
 
     ```python
@@ -276,11 +285,20 @@ def get_zero_trust_tunnel_cloudflared(account_id: Optional[_builtins.str] = None
         status=pulumi.get(__ret__, 'status'),
         tun_type=pulumi.get(__ret__, 'tun_type'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'))
-def get_zero_trust_tunnel_cloudflared_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_tunnel_cloudflared_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                              filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustTunnelCloudflaredFilterArgs', 'GetZeroTrustTunnelCloudflaredFilterArgsDict']]]] = None,
                                              tunnel_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredResult]:
     """
+    Accepted Permissions
+
+    - `Cloudflare One Connector: cloudflared Read`
+    - `Cloudflare One Connector: cloudflared Write`
+    - `Cloudflare One Connectors Read`
+    - `Cloudflare One Connectors Write`
+    - `Cloudflare Tunnel Read`
+    - `Cloudflare Tunnel Write`
+
     ## Example Usage
 
     ```python

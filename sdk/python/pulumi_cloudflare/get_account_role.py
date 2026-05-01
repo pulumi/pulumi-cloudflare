@@ -49,7 +49,7 @@ class GetAccountRoleResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account identifier tag.
         """
@@ -111,6 +111,12 @@ def get_account_role(account_id: Optional[_builtins.str] = None,
                      role_id: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountRoleResult:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+    - `Account Settings Write`
+    - `SCIM Provisioning`
+
     ## Example Usage
 
     ```python
@@ -138,10 +144,16 @@ def get_account_role(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         permissions=pulumi.get(__ret__, 'permissions'),
         role_id=pulumi.get(__ret__, 'role_id'))
-def get_account_role_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_role_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             role_id: Optional[pulumi.Input[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountRoleResult]:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+    - `Account Settings Write`
+    - `SCIM Provisioning`
+
     ## Example Usage
 
     ```python

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetAccountSubscription
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Billing Read`
+        /// - `Billing Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetAccountSubscriptionResult> InvokeAsync(GetAccountSubscriptionArgs args, InvokeOptions? options = null)
+        public static Task<GetAccountSubscriptionResult> InvokeAsync(GetAccountSubscriptionArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountSubscriptionResult>("cloudflare:index/getAccountSubscription:getAccountSubscription", args ?? new GetAccountSubscriptionArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Billing Read`
+        /// - `Billing Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAccountSubscriptionResult> Invoke(GetAccountSubscriptionInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetAccountSubscriptionResult> Invoke(GetAccountSubscriptionInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountSubscriptionResult>("cloudflare:index/getAccountSubscription:getAccountSubscription", args ?? new GetAccountSubscriptionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Billing Read`
+        /// - `Billing Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         public GetAccountSubscriptionArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         public GetAccountSubscriptionInvokeArgs()
         {
@@ -114,7 +129,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The monetary unit in which pricing information is displayed.
         /// </summary>
@@ -152,7 +167,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetAccountSubscriptionResult(
-            string accountId,
+            string? accountId,
 
             string currency,
 

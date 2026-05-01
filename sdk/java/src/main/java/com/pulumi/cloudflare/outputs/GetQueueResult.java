@@ -12,6 +12,8 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetQueueResult {
@@ -19,7 +21,7 @@ public final class GetQueueResult {
      * @return A Resource identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     private List<GetQueueConsumer> consumers;
     private Double consumersTotalCount;
     private String createdOn;
@@ -44,8 +46,8 @@ public final class GetQueueResult {
      * @return A Resource identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public List<GetQueueConsumer> consumers() {
         return this.consumers;
@@ -95,7 +97,7 @@ public final class GetQueueResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private List<GetQueueConsumer> consumers;
         private Double consumersTotalCount;
         private String createdOn;
@@ -123,10 +125,8 @@ public final class GetQueueResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetQueueResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetLoadBalancerMonitor
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerMonitorResult>("cloudflare:index/getLoadBalancerMonitor:getLoadBalancerMonitor", args ?? new GetLoadBalancerMonitorArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerMonitorResult>("cloudflare:index/getLoadBalancerMonitor:getLoadBalancerMonitor", args ?? new GetLoadBalancerMonitorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("monitorId", required: true)]
         public string MonitorId { get; set; } = null!;
@@ -104,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("monitorId", required: true)]
         public Input<string> MonitorId { get; set; } = null!;
@@ -123,7 +138,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
         /// </summary>
@@ -199,7 +214,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetLoadBalancerMonitorResult(
-            string accountId,
+            string? accountId,
 
             bool allowInsecure,
 

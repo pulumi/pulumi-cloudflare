@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Email Routing Rules Read`
+// - `Email Routing Rules Write`
+//
 // ## Example Usage
 //
 // ```go

@@ -8,7 +8,6 @@ import com.pulumi.cloudflare.inputs.GetDnsRecordsContent;
 import com.pulumi.cloudflare.inputs.GetDnsRecordsName;
 import com.pulumi.cloudflare.inputs.GetDnsRecordsTag;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -183,15 +182,15 @@ public final class GetDnsRecordsPlainArgs extends com.pulumi.resources.InvokeArg
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetDnsRecordsPlainArgs() {}
@@ -349,15 +348,12 @@ public final class GetDnsRecordsPlainArgs extends com.pulumi.resources.InvokeArg
          * @return builder
          * 
          */
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         public GetDnsRecordsPlainArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetDnsRecordsPlainArgs", "zoneId");
-            }
             return $;
         }
     }

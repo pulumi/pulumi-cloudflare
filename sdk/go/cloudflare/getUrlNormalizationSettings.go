@@ -11,6 +11,49 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Rulesets Read`
+// - `Account Rulesets Write`
+// - `Account WAF Read`
+// - `Account WAF Write`
+// - `Bot Management Read`
+// - `Bot Management Write`
+// - `Cache Settings Read`
+// - `Cache Settings Write`
+// - `Config Settings Read`
+// - `Config Settings Write`
+// - `Custom Errors Read`
+// - `Custom Errors Write`
+// - `Dynamic URL Redirects Read`
+// - `Dynamic URL Redirects Write`
+// - `HTTP DDoS Managed Ruleset Read`
+// - `HTTP DDoS Managed Ruleset Write`
+// - `L4 DDoS Managed Ruleset Read`
+// - `L4 DDoS Managed Ruleset Write`
+// - `Logs Read`
+// - `Logs Write`
+// - `Magic Firewall Read`
+// - `Magic Firewall Write`
+// - `Managed headers Read`
+// - `Managed headers Write`
+// - `Mass URL Redirects Read`
+// - `Mass URL Redirects Write`
+// - `Origin Read`
+// - `Origin Write`
+// - `Response Compression Read`
+// - `Response Compression Write`
+// - `Sanitize Read`
+// - `Sanitize Write`
+// - `Select Configuration Read`
+// - `Select Configuration Write`
+// - `Transform Rules Read`
+// - `Transform Rules Write`
+// - `Zone Transform Rules Read`
+// - `Zone Transform Rules Write`
+// - `Zone WAF Read`
+// - `Zone WAF Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +69,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetUrlNormalizationSettings(ctx, &cloudflare.LookupUrlNormalizationSettingsArgs{
-//				ZoneId: "9f1839b6152d298aca64c4e906b6d074",
+//				ZoneId: pulumi.StringRef("9f1839b6152d298aca64c4e906b6d074"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +92,7 @@ func LookupUrlNormalizationSettings(ctx *pulumi.Context, args *LookupUrlNormaliz
 // A collection of arguments for invoking getUrlNormalizationSettings.
 type LookupUrlNormalizationSettingsArgs struct {
 	// The unique ID of the zone.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getUrlNormalizationSettings.
@@ -63,7 +106,7 @@ type LookupUrlNormalizationSettingsResult struct {
 	// Available values: "cloudflare", "rfc3986".
 	Type string `pulumi:"type"`
 	// The unique ID of the zone.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupUrlNormalizationSettingsOutput(ctx *pulumi.Context, args LookupUrlNormalizationSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupUrlNormalizationSettingsResultOutput {
@@ -78,7 +121,7 @@ func LookupUrlNormalizationSettingsOutput(ctx *pulumi.Context, args LookupUrlNor
 // A collection of arguments for invoking getUrlNormalizationSettings.
 type LookupUrlNormalizationSettingsOutputArgs struct {
 	// The unique ID of the zone.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupUrlNormalizationSettingsOutputArgs) ElementType() reflect.Type {
@@ -118,8 +161,8 @@ func (o LookupUrlNormalizationSettingsResultOutput) Type() pulumi.StringOutput {
 }
 
 // The unique ID of the zone.
-func (o LookupUrlNormalizationSettingsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupUrlNormalizationSettingsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupUrlNormalizationSettingsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupUrlNormalizationSettingsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

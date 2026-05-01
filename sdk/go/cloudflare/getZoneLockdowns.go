@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZoneLockdowns(ctx, &cloudflare.LookupZoneLockdownsArgs{
-//				ZoneId:            "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:            pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CreatedOn:         pulumi.StringRef("2014-01-01T05:20:00.12345Z"),
 //				Description:       pulumi.StringRef("endpoints"),
 //				DescriptionSearch: pulumi.StringRef("endpoints"),
@@ -78,7 +83,7 @@ type LookupZoneLockdownsArgs struct {
 	// A single URI to search for in the list of URLs of existing rules.
 	UriSearch *string `pulumi:"uriSearch"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZoneLockdowns.
@@ -108,7 +113,7 @@ type LookupZoneLockdownsResult struct {
 	// A single URI to search for in the list of URLs of existing rules.
 	UriSearch *string `pulumi:"uriSearch"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupZoneLockdownsOutput(ctx *pulumi.Context, args LookupZoneLockdownsOutputArgs, opts ...pulumi.InvokeOption) LookupZoneLockdownsResultOutput {
@@ -143,7 +148,7 @@ type LookupZoneLockdownsOutputArgs struct {
 	// A single URI to search for in the list of URLs of existing rules.
 	UriSearch pulumi.StringPtrInput `pulumi:"uriSearch"`
 	// Defines an identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupZoneLockdownsOutputArgs) ElementType() reflect.Type {
@@ -226,8 +231,8 @@ func (o LookupZoneLockdownsResultOutput) UriSearch() pulumi.StringPtrOutput {
 }
 
 // Defines an identifier.
-func (o LookupZoneLockdownsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneLockdownsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupZoneLockdownsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZoneLockdownsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

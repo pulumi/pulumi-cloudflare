@@ -238,6 +238,11 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Access: Mutual TLS Certificates Read`
+        - `Access: Mutual TLS Certificates Write`
+
         ## Example Usage
 
         ```python
@@ -279,6 +284,11 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
                  args: AccessMutualTlsCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Access: Mutual TLS Certificates Read`
+        - `Access: Mutual TLS Certificates Write`
+
         ## Example Usage
 
         ```python

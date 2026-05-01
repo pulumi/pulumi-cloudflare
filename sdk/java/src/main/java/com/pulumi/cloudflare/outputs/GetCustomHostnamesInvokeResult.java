@@ -3,9 +3,11 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetCustomHostnamesHostname;
 import com.pulumi.cloudflare.outputs.GetCustomHostnamesResult;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -17,16 +19,29 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCustomHostnamesInvokeResult {
     /**
+     * @return Filter by the certificate authority that issued the SSL certificate.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
+     * 
+     */
+    private @Nullable String certificateAuthority;
+    /**
+     * @return Filter by custom origin server name.
+     * 
+     */
+    private @Nullable String customOriginServer;
+    /**
      * @return Direction to order hostnames.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
+    private @Nullable GetCustomHostnamesHostname hostname;
     /**
-     * @return Fully qualified domain name to match against. This parameter cannot be used with the &#39;id&#39; parameter.
+     * @return Filter by the hostname&#39;s activation status.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;testFailed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
      * 
      */
-    private @Nullable String hostname;
+    private @Nullable String hostnameStatus;
     /**
      * @return Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
      * 
@@ -55,12 +70,38 @@ public final class GetCustomHostnamesInvokeResult {
      */
     private @Nullable Double ssl;
     /**
+     * @return Filter by SSL certificate status.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
+     * 
+     */
+    private @Nullable String sslStatus;
+    /**
+     * @return Filter by whether the custom hostname is a wildcard hostname.
+     * 
+     */
+    private @Nullable Boolean wildcard;
+    /**
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetCustomHostnamesInvokeResult() {}
+    /**
+     * @return Filter by the certificate authority that issued the SSL certificate.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
+     * 
+     */
+    public Optional<String> certificateAuthority() {
+        return Optional.ofNullable(this.certificateAuthority);
+    }
+    /**
+     * @return Filter by custom origin server name.
+     * 
+     */
+    public Optional<String> customOriginServer() {
+        return Optional.ofNullable(this.customOriginServer);
+    }
     /**
      * @return Direction to order hostnames.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
@@ -69,12 +110,16 @@ public final class GetCustomHostnamesInvokeResult {
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
     }
+    public Optional<GetCustomHostnamesHostname> hostname() {
+        return Optional.ofNullable(this.hostname);
+    }
     /**
-     * @return Fully qualified domain name to match against. This parameter cannot be used with the &#39;id&#39; parameter.
+     * @return Filter by the hostname&#39;s activation status.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;testFailed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
      * 
      */
-    public Optional<String> hostname() {
-        return Optional.ofNullable(this.hostname);
+    public Optional<String> hostnameStatus() {
+        return Optional.ofNullable(this.hostnameStatus);
     }
     /**
      * @return Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
@@ -114,11 +159,26 @@ public final class GetCustomHostnamesInvokeResult {
         return Optional.ofNullable(this.ssl);
     }
     /**
+     * @return Filter by SSL certificate status.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
+     * 
+     */
+    public Optional<String> sslStatus() {
+        return Optional.ofNullable(this.sslStatus);
+    }
+    /**
+     * @return Filter by whether the custom hostname is a wildcard hostname.
+     * 
+     */
+    public Optional<Boolean> wildcard() {
+        return Optional.ofNullable(this.wildcard);
+    }
+    /**
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -130,27 +190,49 @@ public final class GetCustomHostnamesInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String certificateAuthority;
+        private @Nullable String customOriginServer;
         private @Nullable String direction;
-        private @Nullable String hostname;
+        private @Nullable GetCustomHostnamesHostname hostname;
+        private @Nullable String hostnameStatus;
         private @Nullable String id;
         private @Nullable Integer maxItems;
         private String order;
         private List<GetCustomHostnamesResult> results;
         private @Nullable Double ssl;
-        private String zoneId;
+        private @Nullable String sslStatus;
+        private @Nullable Boolean wildcard;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetCustomHostnamesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.certificateAuthority = defaults.certificateAuthority;
+    	      this.customOriginServer = defaults.customOriginServer;
     	      this.direction = defaults.direction;
     	      this.hostname = defaults.hostname;
+    	      this.hostnameStatus = defaults.hostnameStatus;
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.order = defaults.order;
     	      this.results = defaults.results;
     	      this.ssl = defaults.ssl;
+    	      this.sslStatus = defaults.sslStatus;
+    	      this.wildcard = defaults.wildcard;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder certificateAuthority(@Nullable String certificateAuthority) {
+
+            this.certificateAuthority = certificateAuthority;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customOriginServer(@Nullable String customOriginServer) {
+
+            this.customOriginServer = customOriginServer;
+            return this;
+        }
         @CustomType.Setter
         public Builder direction(@Nullable String direction) {
 
@@ -158,9 +240,15 @@ public final class GetCustomHostnamesInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder hostname(@Nullable String hostname) {
+        public Builder hostname(@Nullable GetCustomHostnamesHostname hostname) {
 
             this.hostname = hostname;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostnameStatus(@Nullable String hostnameStatus) {
+
+            this.hostnameStatus = hostnameStatus;
             return this;
         }
         @CustomType.Setter
@@ -201,22 +289,37 @@ public final class GetCustomHostnamesInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetCustomHostnamesInvokeResult", "zoneId");
-            }
+        public Builder sslStatus(@Nullable String sslStatus) {
+
+            this.sslStatus = sslStatus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder wildcard(@Nullable Boolean wildcard) {
+
+            this.wildcard = wildcard;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }
         public GetCustomHostnamesInvokeResult build() {
             final var _resultValue = new GetCustomHostnamesInvokeResult();
+            _resultValue.certificateAuthority = certificateAuthority;
+            _resultValue.customOriginServer = customOriginServer;
             _resultValue.direction = direction;
             _resultValue.hostname = hostname;
+            _resultValue.hostnameStatus = hostnameStatus;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.order = order;
             _resultValue.results = results;
             _resultValue.ssl = ssl;
+            _resultValue.sslStatus = sslStatus;
+            _resultValue.wildcard = wildcard;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

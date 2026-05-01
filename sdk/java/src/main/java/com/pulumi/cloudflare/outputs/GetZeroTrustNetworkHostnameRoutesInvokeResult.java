@@ -20,7 +20,7 @@ public final class GetZeroTrustNetworkHostnameRoutesInvokeResult {
      * @return Cloudflare account ID
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return If set, only list hostname routes with the given comment.
      * 
@@ -67,8 +67,8 @@ public final class GetZeroTrustNetworkHostnameRoutesInvokeResult {
      * @return Cloudflare account ID
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return If set, only list hostname routes with the given comment.
@@ -136,7 +136,7 @@ public final class GetZeroTrustNetworkHostnameRoutesInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private @Nullable String comment;
         private @Nullable String existedAt;
         private @Nullable String hostname;
@@ -160,10 +160,8 @@ public final class GetZeroTrustNetworkHostnameRoutesInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustNetworkHostnameRoutesInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Networks Read`
+// - `Cloudflare One Networks Write`
+// - `Cloudflare Tunnel Read`
+// - `Cloudflare Tunnel Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustTunnelCloudflaredVirtualNetwork(ctx, &cloudflare.LookupZeroTrustTunnelCloudflaredVirtualNetworkArgs{
-//				AccountId:        "699d98642c564d2e855e9661899b7252",
+//				AccountId:        pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				VirtualNetworkId: pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +57,7 @@ func LookupZeroTrustTunnelCloudflaredVirtualNetwork(ctx *pulumi.Context, args *L
 // A collection of arguments for invoking getZeroTrustTunnelCloudflaredVirtualNetwork.
 type LookupZeroTrustTunnelCloudflaredVirtualNetworkArgs struct {
 	// Cloudflare account ID
-	AccountId string                                             `pulumi:"accountId"`
+	AccountId *string                                            `pulumi:"accountId"`
 	Filter    *GetZeroTrustTunnelCloudflaredVirtualNetworkFilter `pulumi:"filter"`
 	// UUID of the virtual network.
 	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
@@ -59,7 +66,7 @@ type LookupZeroTrustTunnelCloudflaredVirtualNetworkArgs struct {
 // A collection of values returned by getZeroTrustTunnelCloudflaredVirtualNetwork.
 type LookupZeroTrustTunnelCloudflaredVirtualNetworkResult struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Optional remark describing the virtual network.
 	Comment string `pulumi:"comment"`
 	// Timestamp of when the resource was created.
@@ -89,7 +96,7 @@ func LookupZeroTrustTunnelCloudflaredVirtualNetworkOutput(ctx *pulumi.Context, a
 // A collection of arguments for invoking getZeroTrustTunnelCloudflaredVirtualNetwork.
 type LookupZeroTrustTunnelCloudflaredVirtualNetworkOutputArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringInput                                        `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput                                     `pulumi:"accountId"`
 	Filter    GetZeroTrustTunnelCloudflaredVirtualNetworkFilterPtrInput `pulumi:"filter"`
 	// UUID of the virtual network.
 	VirtualNetworkId pulumi.StringPtrInput `pulumi:"virtualNetworkId"`
@@ -115,8 +122,8 @@ func (o LookupZeroTrustTunnelCloudflaredVirtualNetworkResultOutput) ToLookupZero
 }
 
 // Cloudflare account ID
-func (o LookupZeroTrustTunnelCloudflaredVirtualNetworkResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredVirtualNetworkResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustTunnelCloudflaredVirtualNetworkResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredVirtualNetworkResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Optional remark describing the virtual network.

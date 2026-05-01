@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Networks Read`
+// - `Cloudflare One Networks Write`
+// - `Cloudflare Tunnel Read`
+// - `Cloudflare Tunnel Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustNetworkHostnameRoutes(ctx, &cloudflare.LookupZeroTrustNetworkHostnameRoutesArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				Id:        pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
 //				Comment:   pulumi.StringRef("example%20comment"),
 //				ExistedAt: pulumi.StringRef("2019-10-12T07%3A20%3A50.52Z"),
@@ -54,7 +61,7 @@ func LookupZeroTrustNetworkHostnameRoutes(ctx *pulumi.Context, args *LookupZeroT
 // A collection of arguments for invoking getZeroTrustNetworkHostnameRoutes.
 type LookupZeroTrustNetworkHostnameRoutesArgs struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// If set, only list hostname routes with the given comment.
 	Comment *string `pulumi:"comment"`
 	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -74,7 +81,7 @@ type LookupZeroTrustNetworkHostnameRoutesArgs struct {
 // A collection of values returned by getZeroTrustNetworkHostnameRoutes.
 type LookupZeroTrustNetworkHostnameRoutesResult struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// If set, only list hostname routes with the given comment.
 	Comment *string `pulumi:"comment"`
 	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -105,7 +112,7 @@ func LookupZeroTrustNetworkHostnameRoutesOutput(ctx *pulumi.Context, args Lookup
 // A collection of arguments for invoking getZeroTrustNetworkHostnameRoutes.
 type LookupZeroTrustNetworkHostnameRoutesOutputArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// If set, only list hostname routes with the given comment.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
 	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -142,8 +149,8 @@ func (o LookupZeroTrustNetworkHostnameRoutesResultOutput) ToLookupZeroTrustNetwo
 }
 
 // Cloudflare account ID
-func (o LookupZeroTrustNetworkHostnameRoutesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustNetworkHostnameRoutesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustNetworkHostnameRoutesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustNetworkHostnameRoutesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // If set, only list hostname routes with the given comment.

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetHealthchecks
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Health Checks Read`
+        /// - `Health Checks Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetHealthchecksResult> InvokeAsync(GetHealthchecksArgs args, InvokeOptions? options = null)
+        public static Task<GetHealthchecksResult> InvokeAsync(GetHealthchecksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHealthchecksResult>("cloudflare:index/getHealthchecks:getHealthchecks", args ?? new GetHealthchecksArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Health Checks Read`
+        /// - `Health Checks Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetHealthchecksResult> Invoke(GetHealthchecksInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetHealthchecksResult> Invoke(GetHealthchecksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHealthchecksResult>("cloudflare:index/getHealthchecks:getHealthchecks", args ?? new GetHealthchecksInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Health Checks Read`
+        /// - `Health Checks Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetHealthchecksArgs()
         {
@@ -110,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetHealthchecksInvokeArgs()
         {
@@ -138,7 +153,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetHealthchecksResult(
@@ -148,7 +163,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetHealthchecksResultResult> results,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             MaxItems = maxItems;

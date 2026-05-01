@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getTokenValidationRules(args: GetTokenValidationRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetTokenValidationRulesResult> {
+export function getTokenValidationRules(args?: GetTokenValidationRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetTokenValidationRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getTokenValidationRules:getTokenValidationRules", {
         "filter": args.filter,
@@ -40,7 +48,7 @@ export interface GetTokenValidationRulesArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -77,9 +85,16 @@ export interface GetTokenValidationRulesResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -92,7 +107,8 @@ export interface GetTokenValidationRulesResult {
  * });
  * ```
  */
-export function getTokenValidationRulesOutput(args: GetTokenValidationRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTokenValidationRulesResult> {
+export function getTokenValidationRulesOutput(args?: GetTokenValidationRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTokenValidationRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getTokenValidationRules:getTokenValidationRules", {
         "filter": args.filter,
@@ -113,5 +129,5 @@ export interface GetTokenValidationRulesOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

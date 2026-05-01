@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -25,7 +32,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getTokenValidationRulesList(args: GetTokenValidationRulesListArgs, opts?: pulumi.InvokeOptions): Promise<GetTokenValidationRulesListResult> {
+export function getTokenValidationRulesList(args?: GetTokenValidationRulesListArgs, opts?: pulumi.InvokeOptions): Promise<GetTokenValidationRulesListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList", {
         "action": args.action,
@@ -80,7 +88,7 @@ export interface GetTokenValidationRulesListArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -127,9 +135,16 @@ export interface GetTokenValidationRulesListResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -148,7 +163,8 @@ export interface GetTokenValidationRulesListResult {
  * });
  * ```
  */
-export function getTokenValidationRulesListOutput(args: GetTokenValidationRulesListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTokenValidationRulesListResult> {
+export function getTokenValidationRulesListOutput(args?: GetTokenValidationRulesListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTokenValidationRulesListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getTokenValidationRulesList:getTokenValidationRulesList", {
         "action": args.action,
@@ -203,5 +219,5 @@ export interface GetTokenValidationRulesListOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

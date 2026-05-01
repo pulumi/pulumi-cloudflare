@@ -21,40 +21,30 @@ __all__ = ['HyperdriveConfigArgs', 'HyperdriveConfig']
 @pulumi.input_type
 class HyperdriveConfigArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  origin: pulumi.Input['HyperdriveConfigOriginArgs'],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  caching: Optional[pulumi.Input['HyperdriveConfigCachingArgs']] = None,
                  mtls: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']] = None,
                  origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HyperdriveConfig resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
+        :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
+        :param pulumi.Input['HyperdriveConfigMtlsArgs'] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "origin", origin)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if caching is not None:
             pulumi.set(__self__, "caching", caching)
         if mtls is not None:
             pulumi.set(__self__, "mtls", mtls)
         if origin_connection_limit is not None:
             pulumi.set(__self__, "origin_connection_limit", origin_connection_limit)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Define configurations using a unique string identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -78,6 +68,18 @@ class HyperdriveConfigArgs:
         pulumi.set(self, "origin", value)
 
     @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Define configurations using a unique string identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def caching(self) -> Optional[pulumi.Input['HyperdriveConfigCachingArgs']]:
         return pulumi.get(self, "caching")
@@ -89,6 +91,9 @@ class HyperdriveConfigArgs:
     @_builtins.property
     @pulumi.getter
     def mtls(self) -> Optional[pulumi.Input['HyperdriveConfigMtlsArgs']]:
+        """
+        mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+        """
         return pulumi.get(self, "mtls")
 
     @mtls.setter
@@ -125,6 +130,7 @@ class _HyperdriveConfigState:
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] created_on: Defines the creation time of the Hyperdrive configuration.
         :param pulumi.Input[_builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
+        :param pulumi.Input['HyperdriveConfigMtlsArgs'] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
@@ -193,6 +199,9 @@ class _HyperdriveConfigState:
     @_builtins.property
     @pulumi.getter
     def mtls(self) -> Optional[pulumi.Input['HyperdriveConfigMtlsArgs']]:
+        """
+        mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+        """
         return pulumi.get(self, "mtls")
 
     @mtls.setter
@@ -247,6 +256,11 @@ class HyperdriveConfig(pulumi.CustomResource):
                  origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Hyperdrive Read`
+        - `Hyperdrive Write`
+
         ## Example Usage
 
         ```python
@@ -285,6 +299,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
+        :param pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
@@ -295,6 +310,11 @@ class HyperdriveConfig(pulumi.CustomResource):
                  args: HyperdriveConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Hyperdrive Read`
+        - `Hyperdrive Write`
+
         ## Example Usage
 
         ```python
@@ -360,8 +380,6 @@ class HyperdriveConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HyperdriveConfigArgs.__new__(HyperdriveConfigArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["caching"] = caching
             __props__.__dict__["mtls"] = mtls
@@ -402,6 +420,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] created_on: Defines the creation time of the Hyperdrive configuration.
         :param pulumi.Input[_builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
+        :param pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
@@ -421,7 +440,7 @@ class HyperdriveConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Define configurations using a unique string identifier.
         """
@@ -451,6 +470,9 @@ class HyperdriveConfig(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def mtls(self) -> pulumi.Output[Optional['outputs.HyperdriveConfigMtls']]:
+        """
+        mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+        """
         return pulumi.get(self, "mtls")
 
     @_builtins.property

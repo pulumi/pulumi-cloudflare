@@ -64,8 +64,12 @@ type ZeroTrustAccessApplication struct {
 	LandingPageDesign ZeroTrustAccessApplicationLandingPageDesignPtrOutput `pulumi:"landingPageDesign"`
 	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl pulumi.StringPtrOutput `pulumi:"logoUrl"`
+	// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+	MfaConfig ZeroTrustAccessApplicationMfaConfigPtrOutput `pulumi:"mfaConfig"`
 	// The name of the application.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration ZeroTrustAccessApplicationOauthConfigurationPtrOutput `pulumi:"oauthConfiguration"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass pulumi.BoolPtrOutput `pulumi:"optionsPreflightBypass"`
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -186,8 +190,12 @@ type zeroTrustAccessApplicationState struct {
 	LandingPageDesign *ZeroTrustAccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
 	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
+	// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+	MfaConfig *ZeroTrustAccessApplicationMfaConfig `pulumi:"mfaConfig"`
 	// The name of the application.
 	Name *string `pulumi:"name"`
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration *ZeroTrustAccessApplicationOauthConfiguration `pulumi:"oauthConfiguration"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -273,8 +281,12 @@ type ZeroTrustAccessApplicationState struct {
 	LandingPageDesign ZeroTrustAccessApplicationLandingPageDesignPtrInput
 	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
+	// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+	MfaConfig ZeroTrustAccessApplicationMfaConfigPtrInput
 	// The name of the application.
 	Name pulumi.StringPtrInput
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration ZeroTrustAccessApplicationOauthConfigurationPtrInput
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass pulumi.BoolPtrInput
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -362,8 +374,12 @@ type zeroTrustAccessApplicationArgs struct {
 	LandingPageDesign *ZeroTrustAccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
 	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
+	// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+	MfaConfig *ZeroTrustAccessApplicationMfaConfig `pulumi:"mfaConfig"`
 	// The name of the application.
 	Name *string `pulumi:"name"`
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration *ZeroTrustAccessApplicationOauthConfiguration `pulumi:"oauthConfiguration"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -448,8 +464,12 @@ type ZeroTrustAccessApplicationArgs struct {
 	LandingPageDesign ZeroTrustAccessApplicationLandingPageDesignPtrInput
 	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
+	// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+	MfaConfig ZeroTrustAccessApplicationMfaConfigPtrInput
 	// The name of the application.
 	Name pulumi.StringPtrInput
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration ZeroTrustAccessApplicationOauthConfigurationPtrInput
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass pulumi.BoolPtrInput
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -695,9 +715,21 @@ func (o ZeroTrustAccessApplicationOutput) LogoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringPtrOutput { return v.LogoUrl }).(pulumi.StringPtrOutput)
 }
 
+// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+func (o ZeroTrustAccessApplicationOutput) MfaConfig() ZeroTrustAccessApplicationMfaConfigPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessApplication) ZeroTrustAccessApplicationMfaConfigPtrOutput { return v.MfaConfig }).(ZeroTrustAccessApplicationMfaConfigPtrOutput)
+}
+
 // The name of the application.
 func (o ZeroTrustAccessApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+func (o ZeroTrustAccessApplicationOutput) OauthConfiguration() ZeroTrustAccessApplicationOauthConfigurationPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessApplication) ZeroTrustAccessApplicationOauthConfigurationPtrOutput {
+		return v.OauthConfiguration
+	}).(ZeroTrustAccessApplicationOauthConfigurationPtrOutput)
 }
 
 // Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.

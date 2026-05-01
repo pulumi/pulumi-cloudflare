@@ -19,7 +19,7 @@ public final class GetZeroTrustGatewayAppTypesListInvokeResult {
      * @return Provide the identifier string.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -41,8 +41,8 @@ public final class GetZeroTrustGatewayAppTypesListInvokeResult {
      * @return Provide the identifier string.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -75,7 +75,7 @@ public final class GetZeroTrustGatewayAppTypesListInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String id;
         private @Nullable Integer maxItems;
         private List<GetZeroTrustGatewayAppTypesListResult> results;
@@ -89,10 +89,8 @@ public final class GetZeroTrustGatewayAppTypesListInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustGatewayAppTypesListInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

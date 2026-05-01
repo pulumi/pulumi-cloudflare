@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustAccessShortLivedCertificate
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Apps and Policies Read`
+        /// - `Access: Apps and Policies Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +41,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessShortLivedCertificateResult>("cloudflare:index/getZeroTrustAccessShortLivedCertificate:getZeroTrustAccessShortLivedCertificate", args ?? new GetZeroTrustAccessShortLivedCertificateArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Apps and Policies Read`
+        /// - `Access: Apps and Policies Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +70,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessShortLivedCertificateResult>("cloudflare:index/getZeroTrustAccessShortLivedCertificate:getZeroTrustAccessShortLivedCertificate", args ?? new GetZeroTrustAccessShortLivedCertificateInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Apps and Policies Read`
+        /// - `Access: Apps and Policies Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

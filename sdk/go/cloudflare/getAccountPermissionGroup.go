@@ -11,6 +11,38 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Firewall Access Rules Read`
+// - `Account Firewall Access Rules Write`
+// - `Account Settings Read`
+// - `Account Settings Write`
+// - `Billing Read`
+// - `Billing Write`
+// - `DDoS Botnet Feed Read`
+// - `DDoS Botnet Feed Write`
+// - `DDoS Protection Read`
+// - `DDoS Protection Write`
+// - `DNS Firewall Read`
+// - `DNS Firewall Write`
+// - `DNS View Read`
+// - `DNS View Write`
+// - `Load Balancers Account Read`
+// - `Load Balancers Account Write`
+// - `Load Balancing: Monitors and Pools Read`
+// - `Load Balancing: Monitors and Pools Write`
+// - `SCIM Provisioning`
+// - `Trust and Safety Read`
+// - `Trust and Safety Write`
+// - `Workers KV Storage Read`
+// - `Workers KV Storage Write`
+// - `Workers R2 Storage Read`
+// - `Workers R2 Storage Write`
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+// - `Zero Trust: PII Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +58,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountPermissionGroup(ctx, &cloudflare.GetAccountPermissionGroupArgs{
-//				AccountId:         "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:         pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				PermissionGroupId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +82,7 @@ func GetAccountPermissionGroup(ctx *pulumi.Context, args *GetAccountPermissionGr
 // A collection of arguments for invoking getAccountPermissionGroup.
 type GetAccountPermissionGroupArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Permission Group identifier tag.
 	PermissionGroupId string `pulumi:"permissionGroupId"`
 }
@@ -58,7 +90,7 @@ type GetAccountPermissionGroupArgs struct {
 // A collection of values returned by getAccountPermissionGroup.
 type GetAccountPermissionGroupResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Identifier of the permission group.
 	Id string `pulumi:"id"`
 	// Attributes associated to the permission group.
@@ -81,7 +113,7 @@ func GetAccountPermissionGroupOutput(ctx *pulumi.Context, args GetAccountPermiss
 // A collection of arguments for invoking getAccountPermissionGroup.
 type GetAccountPermissionGroupOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Permission Group identifier tag.
 	PermissionGroupId pulumi.StringInput `pulumi:"permissionGroupId"`
 }
@@ -106,8 +138,8 @@ func (o GetAccountPermissionGroupResultOutput) ToGetAccountPermissionGroupResult
 }
 
 // Account identifier tag.
-func (o GetAccountPermissionGroupResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountPermissionGroupResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o GetAccountPermissionGroupResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountPermissionGroupResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Identifier of the permission group.

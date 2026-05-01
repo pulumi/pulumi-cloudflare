@@ -5,6 +5,45 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Revoke`
+ * - `Access: Apps and Policies Write`
+ * - `Access: Mutual TLS Certificates Write`
+ * - `Access: Organizations, Identity Providers, and Groups Write`
+ * - `Analytics Read`
+ * - `Apps Write`
+ * - `Cache Purge`
+ * - `DNS Read`
+ * - `DNS Write`
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ * - `Load Balancers Read`
+ * - `Load Balancers Write`
+ * - `Logs Read`
+ * - `Logs Write`
+ * - `Page Rules Read`
+ * - `Page Rules Write`
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ * - `Stream Read`
+ * - `Stream Write`
+ * - `Trust and Safety Read`
+ * - `Trust and Safety Write`
+ * - `Workers Routes Read`
+ * - `Workers Routes Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Zaraz Admin`
+ * - `Zaraz Edit`
+ * - `Zaraz Read`
+ * - `Zero Trust: PII Read`
+ * - `Zone Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * - `Zone Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +75,7 @@ export interface GetPageRuleArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -75,9 +114,48 @@ export interface GetPageRuleResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Revoke`
+ * - `Access: Apps and Policies Write`
+ * - `Access: Mutual TLS Certificates Write`
+ * - `Access: Organizations, Identity Providers, and Groups Write`
+ * - `Analytics Read`
+ * - `Apps Write`
+ * - `Cache Purge`
+ * - `DNS Read`
+ * - `DNS Write`
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ * - `Load Balancers Read`
+ * - `Load Balancers Write`
+ * - `Logs Read`
+ * - `Logs Write`
+ * - `Page Rules Read`
+ * - `Page Rules Write`
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ * - `Stream Read`
+ * - `Stream Write`
+ * - `Trust and Safety Read`
+ * - `Trust and Safety Write`
+ * - `Workers Routes Read`
+ * - `Workers Routes Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Zaraz Admin`
+ * - `Zaraz Edit`
+ * - `Zaraz Read`
+ * - `Zero Trust: PII Read`
+ * - `Zone Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * - `Zone Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -109,5 +187,5 @@ export interface GetPageRuleOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

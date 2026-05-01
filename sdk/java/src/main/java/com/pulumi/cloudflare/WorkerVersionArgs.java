@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.WorkerVersionAnnotationsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionAssetsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionBindingArgs;
+import com.pulumi.cloudflare.inputs.WorkerVersionContainerArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionLimitsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionModuleArgs;
@@ -28,15 +29,15 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
      * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -112,6 +113,21 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> compatibilityFlags() {
         return Optional.ofNullable(this.compatibilityFlags);
+    }
+
+    /**
+     * List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+     * 
+     */
+    @Import(name="containers")
+    private @Nullable Output<List<WorkerVersionContainerArgs>> containers;
+
+    /**
+     * @return List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+     * 
+     */
+    public Optional<Output<List<WorkerVersionContainerArgs>>> containers() {
+        return Optional.ofNullable(this.containers);
     }
 
     /**
@@ -248,6 +264,7 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
         this.bindings = $.bindings;
         this.compatibilityDate = $.compatibilityDate;
         this.compatibilityFlags = $.compatibilityFlags;
+        this.containers = $.containers;
         this.limits = $.limits;
         this.mainModule = $.mainModule;
         this.migrations = $.migrations;
@@ -281,7 +298,7 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -419,6 +436,37 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder compatibilityFlags(String... compatibilityFlags) {
             return compatibilityFlags(List.of(compatibilityFlags));
+        }
+
+        /**
+         * @param containers List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containers(@Nullable Output<List<WorkerVersionContainerArgs>> containers) {
+            $.containers = containers;
+            return this;
+        }
+
+        /**
+         * @param containers List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containers(List<WorkerVersionContainerArgs> containers) {
+            return containers(Output.of(containers));
+        }
+
+        /**
+         * @param containers List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containers(WorkerVersionContainerArgs... containers) {
+            return containers(List.of(containers));
         }
 
         /**
@@ -604,9 +652,6 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WorkerVersionArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("WorkerVersionArgs", "accountId");
-            }
             if ($.workerId == null) {
                 throw new MissingRequiredPropertyException("WorkerVersionArgs", "workerId");
             }

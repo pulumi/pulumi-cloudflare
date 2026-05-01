@@ -49,7 +49,7 @@ class GetAccountApiTokenPermissionGroupsListResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account identifier tag.
         """
@@ -118,6 +118,11 @@ def get_account_api_token_permission_groups_list(account_id: Optional[_builtins.
                                                  scope: Optional[_builtins.str] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountApiTokenPermissionGroupsListResult:
     """
+    Accepted Permissions
+
+    - `Account API Tokens Read`
+    - `Account API Tokens Write`
+
     ## Example Usage
 
     ```python
@@ -152,12 +157,17 @@ def get_account_api_token_permission_groups_list(account_id: Optional[_builtins.
         name=pulumi.get(__ret__, 'name'),
         results=pulumi.get(__ret__, 'results'),
         scope=pulumi.get(__ret__, 'scope'))
-def get_account_api_token_permission_groups_list_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_api_token_permission_groups_list_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                         max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                                         name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                         scope: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountApiTokenPermissionGroupsListResult]:
     """
+    Accepted Permissions
+
+    - `Account API Tokens Read`
+    - `Account API Tokens Write`
+
     ## Example Usage
 
     ```python

@@ -129,6 +129,11 @@ def get_zero_trust_access_groups(account_id: Optional[_builtins.str] = None,
                                  zone_id: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessGroupsResult:
     """
+    Accepted Permissions
+
+    - `Access: Organizations, Identity Providers, and Groups Read`
+    - `Access: Organizations, Identity Providers, and Groups Write`
+
     ## Example Usage
 
     ```python
@@ -172,6 +177,11 @@ def get_zero_trust_access_groups_output(account_id: Optional[pulumi.Input[Option
                                         zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessGroupsResult]:
     """
+    Accepted Permissions
+
+    - `Access: Organizations, Identity Providers, and Groups Read`
+    - `Access: Organizations, Identity Providers, and Groups Write`
+
     ## Example Usage
 
     ```python

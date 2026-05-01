@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Address Maps Read`
+ * - `Address Maps Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -62,7 +67,7 @@ export class AddressMap extends pulumi.CustomResource {
     /**
      * Identifier of a Cloudflare account.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
      */
@@ -98,7 +103,7 @@ export class AddressMap extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AddressMapArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: AddressMapArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AddressMapArgs | AddressMapState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -116,9 +121,6 @@ export class AddressMap extends pulumi.CustomResource {
             resourceInputs["modifiedAt"] = state?.modifiedAt;
         } else {
             const args = argsOrState as AddressMapArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["defaultSni"] = args?.defaultSni;
             resourceInputs["description"] = args?.description;
@@ -179,7 +181,7 @@ export interface AddressMapArgs {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
      */

@@ -56,7 +56,7 @@ class GetAccountDnsSettingsInternalViewResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -137,6 +137,11 @@ def get_account_dns_settings_internal_view(account_id: Optional[_builtins.str] =
                                            view_id: Optional[_builtins.str] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountDnsSettingsInternalViewResult:
     """
+    Accepted Permissions
+
+    - `DNS View Read`
+    - `DNS View Write`
+
     ## Example Usage
 
     ```python
@@ -167,11 +172,16 @@ def get_account_dns_settings_internal_view(account_id: Optional[_builtins.str] =
         name=pulumi.get(__ret__, 'name'),
         view_id=pulumi.get(__ret__, 'view_id'),
         zones=pulumi.get(__ret__, 'zones'))
-def get_account_dns_settings_internal_view_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_dns_settings_internal_view_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                   filter: Optional[pulumi.Input[Optional[Union['GetAccountDnsSettingsInternalViewFilterArgs', 'GetAccountDnsSettingsInternalViewFilterArgsDict']]]] = None,
                                                   view_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountDnsSettingsInternalViewResult]:
     """
+    Accepted Permissions
+
+    - `DNS View Read`
+    - `DNS View Write`
+
     ## Example Usage
 
     ```python

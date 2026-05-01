@@ -13,34 +13,25 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['StreamDownloadArgs', 'StreamDownload']
 
 @pulumi.input_type
 class StreamDownloadArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
-                 identifier: pulumi.Input[_builtins.str]):
+                 identifier: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamDownload resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "identifier", identifier)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter
@@ -54,20 +45,40 @@ class StreamDownloadArgs:
     def identifier(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "identifier", value)
 
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
+
 
 @pulumi.input_type
 class _StreamDownloadState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 audio: Optional[pulumi.Input['StreamDownloadAudioArgs']] = None,
+                 default: Optional[pulumi.Input['StreamDownloadDefaultArgs']] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamDownload resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input['StreamDownloadAudioArgs'] audio: The audio-only download. Only present if this download type has been created.
+        :param pulumi.Input['StreamDownloadDefaultArgs'] default: The default video download. Only present if this download type has been created.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if audio is not None:
+            pulumi.set(__self__, "audio", audio)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
 
@@ -82,6 +93,30 @@ class _StreamDownloadState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def audio(self) -> Optional[pulumi.Input['StreamDownloadAudioArgs']]:
+        """
+        The audio-only download. Only present if this download type has been created.
+        """
+        return pulumi.get(self, "audio")
+
+    @audio.setter
+    def audio(self, value: Optional[pulumi.Input['StreamDownloadAudioArgs']]):
+        pulumi.set(self, "audio", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input['StreamDownloadDefaultArgs']]:
+        """
+        The default video download. Only present if this download type has been created.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input['StreamDownloadDefaultArgs']]):
+        pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter
@@ -106,6 +141,11 @@ class StreamDownload(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Stream Read`
+        - `Stream Write`
+
         ## Example Usage
 
         ```python
@@ -134,6 +174,11 @@ class StreamDownload(pulumi.CustomResource):
                  args: StreamDownloadArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Stream Read`
+        - `Stream Write`
+
         ## Example Usage
 
         ```python
@@ -176,12 +221,12 @@ class StreamDownload(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StreamDownloadArgs.__new__(StreamDownloadArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["audio"] = None
+            __props__.__dict__["default"] = None
         super(StreamDownload, __self__).__init__(
             'cloudflare:index/streamDownload:StreamDownload',
             resource_name,
@@ -193,6 +238,8 @@ class StreamDownload(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
+            audio: Optional[pulumi.Input[Union['StreamDownloadAudioArgs', 'StreamDownloadAudioArgsDict']]] = None,
+            default: Optional[pulumi.Input[Union['StreamDownloadDefaultArgs', 'StreamDownloadDefaultArgsDict']]] = None,
             identifier: Optional[pulumi.Input[_builtins.str]] = None) -> 'StreamDownload':
         """
         Get an existing StreamDownload resource's state with the given name, id, and optional extra
@@ -202,6 +249,8 @@ class StreamDownload(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[Union['StreamDownloadAudioArgs', 'StreamDownloadAudioArgsDict']] audio: The audio-only download. Only present if this download type has been created.
+        :param pulumi.Input[Union['StreamDownloadDefaultArgs', 'StreamDownloadDefaultArgsDict']] default: The default video download. Only present if this download type has been created.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -209,16 +258,34 @@ class StreamDownload(pulumi.CustomResource):
         __props__ = _StreamDownloadState.__new__(_StreamDownloadState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["audio"] = audio
+        __props__.__dict__["default"] = default
         __props__.__dict__["identifier"] = identifier
         return StreamDownload(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def audio(self) -> pulumi.Output['outputs.StreamDownloadAudio']:
+        """
+        The audio-only download. Only present if this download type has been created.
+        """
+        return pulumi.get(self, "audio")
+
+    @_builtins.property
+    @pulumi.getter
+    def default(self) -> pulumi.Output['outputs.StreamDownloadDefault']:
+        """
+        The default video download. Only present if this download type has been created.
+        """
+        return pulumi.get(self, "default")
 
     @_builtins.property
     @pulumi.getter

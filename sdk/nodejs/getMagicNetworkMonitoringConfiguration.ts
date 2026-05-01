@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Network Monitoring Admin`
+ * - `Magic Network Monitoring Config Read`
+ * - `Magic Network Monitoring Config Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getMagicNetworkMonitoringConfiguration(args: GetMagicNetworkMonitoringConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicNetworkMonitoringConfigurationResult> {
+export function getMagicNetworkMonitoringConfiguration(args?: GetMagicNetworkMonitoringConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicNetworkMonitoringConfigurationResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicNetworkMonitoringConfiguration:getMagicNetworkMonitoringConfiguration", {
         "accountId": args.accountId,
@@ -29,14 +36,14 @@ export function getMagicNetworkMonitoringConfiguration(args: GetMagicNetworkMoni
  * A collection of arguments for invoking getMagicNetworkMonitoringConfiguration.
  */
 export interface GetMagicNetworkMonitoringConfigurationArgs {
-    accountId: string;
+    accountId?: string;
 }
 
 /**
  * A collection of values returned by getMagicNetworkMonitoringConfiguration.
  */
 export interface GetMagicNetworkMonitoringConfigurationResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
      */
@@ -53,6 +60,12 @@ export interface GetMagicNetworkMonitoringConfigurationResult {
     readonly warpDevices: outputs.GetMagicNetworkMonitoringConfigurationWarpDevice[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Network Monitoring Admin`
+ * - `Magic Network Monitoring Config Read`
+ * - `Magic Network Monitoring Config Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -64,7 +77,8 @@ export interface GetMagicNetworkMonitoringConfigurationResult {
  * });
  * ```
  */
-export function getMagicNetworkMonitoringConfigurationOutput(args: GetMagicNetworkMonitoringConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicNetworkMonitoringConfigurationResult> {
+export function getMagicNetworkMonitoringConfigurationOutput(args?: GetMagicNetworkMonitoringConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicNetworkMonitoringConfigurationResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicNetworkMonitoringConfiguration:getMagicNetworkMonitoringConfiguration", {
         "accountId": args.accountId,
@@ -75,5 +89,5 @@ export function getMagicNetworkMonitoringConfigurationOutput(args: GetMagicNetwo
  * A collection of arguments for invoking getMagicNetworkMonitoringConfiguration.
  */
 export interface GetMagicNetworkMonitoringConfigurationOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

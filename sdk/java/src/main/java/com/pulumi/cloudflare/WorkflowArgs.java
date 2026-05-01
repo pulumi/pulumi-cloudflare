@@ -3,22 +3,25 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkflowArgs Empty = new WorkflowArgs();
 
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="className", required=true)
@@ -26,6 +29,13 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
 
     public Output<String> className() {
         return this.className;
+    }
+
+    @Import(name="limits")
+    private @Nullable Output<WorkflowLimitsArgs> limits;
+
+    public Optional<Output<WorkflowLimitsArgs>> limits() {
+        return Optional.ofNullable(this.limits);
     }
 
     @Import(name="scriptName", required=true)
@@ -47,6 +57,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
     private WorkflowArgs(WorkflowArgs $) {
         this.accountId = $.accountId;
         this.className = $.className;
+        this.limits = $.limits;
         this.scriptName = $.scriptName;
         this.workflowName = $.workflowName;
     }
@@ -69,7 +80,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
             $ = new WorkflowArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -85,6 +96,15 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder className(String className) {
             return className(Output.of(className));
+        }
+
+        public Builder limits(@Nullable Output<WorkflowLimitsArgs> limits) {
+            $.limits = limits;
+            return this;
+        }
+
+        public Builder limits(WorkflowLimitsArgs limits) {
+            return limits(Output.of(limits));
         }
 
         public Builder scriptName(Output<String> scriptName) {
@@ -106,9 +126,6 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WorkflowArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("WorkflowArgs", "accountId");
-            }
             if ($.className == null) {
                 throw new MissingRequiredPropertyException("WorkflowArgs", "className");
             }

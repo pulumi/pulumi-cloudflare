@@ -13,9 +13,15 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Workers R2 Storage Read`
+ * - `Workers R2 Storage Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -72,14 +78,14 @@ public class R2BucketEventNotification extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Account ID.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Name of the bucket.

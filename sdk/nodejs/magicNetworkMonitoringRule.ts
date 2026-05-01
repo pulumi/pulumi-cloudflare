@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Network Monitoring Admin`
+ * - `Magic Network Monitoring Config Read`
+ * - `Magic Network Monitoring Config Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -13,12 +19,16 @@ import * as utilities from "./utilities";
  *
  * const exampleMagicNetworkMonitoringRule = new cloudflare.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule", {
  *     accountId: "6f91088a406011ed95aed352566e8d4c",
- *     duration: "1m",
- *     name: "my_rule_1",
  *     automaticAdvertisement: true,
- *     bandwidth: 1000,
- *     packetThreshold: 10000,
+ *     name: "my_rule_1",
  *     prefixes: ["203.0.113.1/32"],
+ *     type: "zscore",
+ *     bandwidthThreshold: 1000,
+ *     duration: "1m",
+ *     packetThreshold: 10000,
+ *     prefixMatch: "exact",
+ *     zscoreSensitivity: "high",
+ *     zscoreTarget: "bits",
  * });
  * ```
  *
@@ -56,19 +66,15 @@ export class MagicNetworkMonitoringRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === MagicNetworkMonitoringRule.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      */
-    declare public readonly automaticAdvertisement: pulumi.Output<boolean | undefined>;
+    declare public readonly automaticAdvertisement: pulumi.Output<boolean>;
     /**
      * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      */
-    declare public readonly bandwidth: pulumi.Output<number | undefined>;
-    /**
-     * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-     */
-    declare public /*out*/ readonly bandwidthThreshold: pulumi.Output<number>;
+    declare public readonly bandwidthThreshold: pulumi.Output<number | undefined>;
     /**
      * The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
      * Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
@@ -86,23 +92,23 @@ export class MagicNetworkMonitoringRule extends pulumi.CustomResource {
      * Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
      * Available values: "exact", "subnet", "supernet".
      */
-    declare public /*out*/ readonly prefixMatch: pulumi.Output<string>;
-    declare public readonly prefixes: pulumi.Output<string[] | undefined>;
+    declare public readonly prefixMatch: pulumi.Output<string | undefined>;
+    declare public readonly prefixes: pulumi.Output<string[]>;
     /**
      * MNM rule type.
      * Available values: "threshold", "zscore", "advancedDdos".
      */
-    declare public /*out*/ readonly type: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Level of sensitivity set for zscore rules.
      * Available values: "low", "medium", "high".
      */
-    declare public /*out*/ readonly zscoreSensitivity: pulumi.Output<string>;
+    declare public readonly zscoreSensitivity: pulumi.Output<string | undefined>;
     /**
      * Target of the zscore rule analysis.
      * Available values: "bits", "packets".
      */
-    declare public /*out*/ readonly zscoreTarget: pulumi.Output<string>;
+    declare public readonly zscoreTarget: pulumi.Output<string | undefined>;
 
     /**
      * Create a MagicNetworkMonitoringRule resource with the given unique name, arguments, and options.
@@ -119,7 +125,6 @@ export class MagicNetworkMonitoringRule extends pulumi.CustomResource {
             const state = argsOrState as MagicNetworkMonitoringRuleState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["automaticAdvertisement"] = state?.automaticAdvertisement;
-            resourceInputs["bandwidth"] = state?.bandwidth;
             resourceInputs["bandwidthThreshold"] = state?.bandwidthThreshold;
             resourceInputs["duration"] = state?.duration;
             resourceInputs["name"] = state?.name;
@@ -131,24 +136,29 @@ export class MagicNetworkMonitoringRule extends pulumi.CustomResource {
             resourceInputs["zscoreTarget"] = state?.zscoreTarget;
         } else {
             const args = argsOrState as MagicNetworkMonitoringRuleArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
+            if (args?.automaticAdvertisement === undefined && !opts.urn) {
+                throw new Error("Missing required property 'automaticAdvertisement'");
             }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
+            if (args?.prefixes === undefined && !opts.urn) {
+                throw new Error("Missing required property 'prefixes'");
+            }
+            if (args?.type === undefined && !opts.urn) {
+                throw new Error("Missing required property 'type'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["automaticAdvertisement"] = args?.automaticAdvertisement;
-            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["bandwidthThreshold"] = args?.bandwidthThreshold;
             resourceInputs["duration"] = args?.duration;
             resourceInputs["name"] = args?.name;
             resourceInputs["packetThreshold"] = args?.packetThreshold;
+            resourceInputs["prefixMatch"] = args?.prefixMatch;
             resourceInputs["prefixes"] = args?.prefixes;
-            resourceInputs["bandwidthThreshold"] = undefined /*out*/;
-            resourceInputs["prefixMatch"] = undefined /*out*/;
-            resourceInputs["type"] = undefined /*out*/;
-            resourceInputs["zscoreSensitivity"] = undefined /*out*/;
-            resourceInputs["zscoreTarget"] = undefined /*out*/;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["zscoreSensitivity"] = args?.zscoreSensitivity;
+            resourceInputs["zscoreTarget"] = args?.zscoreTarget;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MagicNetworkMonitoringRule.__pulumiType, name, resourceInputs, opts);
@@ -164,10 +174,6 @@ export interface MagicNetworkMonitoringRuleState {
      * Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      */
     automaticAdvertisement?: pulumi.Input<boolean>;
-    /**
-     * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-     */
-    bandwidth?: pulumi.Input<number>;
     /**
      * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      */
@@ -212,15 +218,15 @@ export interface MagicNetworkMonitoringRuleState {
  * The set of arguments for constructing a MagicNetworkMonitoringRule resource.
  */
 export interface MagicNetworkMonitoringRuleArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      */
-    automaticAdvertisement?: pulumi.Input<boolean>;
+    automaticAdvertisement: pulumi.Input<boolean>;
     /**
      * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidthThreshold?: pulumi.Input<number>;
     /**
      * The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
      * Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
@@ -234,5 +240,25 @@ export interface MagicNetworkMonitoringRuleArgs {
      * The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      */
     packetThreshold?: pulumi.Input<number>;
-    prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
+     * Available values: "exact", "subnet", "supernet".
+     */
+    prefixMatch?: pulumi.Input<string>;
+    prefixes: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * MNM rule type.
+     * Available values: "threshold", "zscore", "advancedDdos".
+     */
+    type: pulumi.Input<string>;
+    /**
+     * Level of sensitivity set for zscore rules.
+     * Available values: "low", "medium", "high".
+     */
+    zscoreSensitivity?: pulumi.Input<string>;
+    /**
+     * Target of the zscore rule analysis.
+     * Available values: "bits", "packets".
+     */
+    zscoreTarget?: pulumi.Input<string>;
 }

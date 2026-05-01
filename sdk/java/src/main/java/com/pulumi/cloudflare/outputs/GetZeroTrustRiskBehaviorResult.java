@@ -9,10 +9,12 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustRiskBehaviorResult {
-    private String accountId;
+    private @Nullable String accountId;
     private Map<String,GetZeroTrustRiskBehaviorBehaviors> behaviors;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -21,8 +23,8 @@ public final class GetZeroTrustRiskBehaviorResult {
     private String id;
 
     private GetZeroTrustRiskBehaviorResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public Map<String,GetZeroTrustRiskBehaviorBehaviors> behaviors() {
         return this.behaviors;
@@ -44,7 +46,7 @@ public final class GetZeroTrustRiskBehaviorResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Map<String,GetZeroTrustRiskBehaviorBehaviors> behaviors;
         private String id;
         public Builder() {}
@@ -56,10 +58,8 @@ public final class GetZeroTrustRiskBehaviorResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustRiskBehaviorResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

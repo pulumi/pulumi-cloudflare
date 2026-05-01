@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -61,7 +65,7 @@ export class ZeroTrustDevicePostureIntegration extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDevicePostureIntegration.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The configuration object containing third-party integration information.
      */
@@ -100,9 +104,6 @@ export class ZeroTrustDevicePostureIntegration extends pulumi.CustomResource {
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ZeroTrustDevicePostureIntegrationArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
@@ -156,7 +157,7 @@ export interface ZeroTrustDevicePostureIntegrationState {
  * The set of arguments for constructing a ZeroTrustDevicePostureIntegration resource.
  */
 export interface ZeroTrustDevicePostureIntegrationArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The configuration object containing third-party integration information.
      */

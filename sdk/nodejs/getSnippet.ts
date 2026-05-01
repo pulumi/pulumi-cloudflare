@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Snippets Read`
+ * - `Snippets Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +41,7 @@ export interface GetSnippetArgs {
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -62,9 +67,14 @@ export interface GetSnippetResult {
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Snippets Read`
+ * - `Snippets Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -96,5 +106,5 @@ export interface GetSnippetOutputArgs {
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

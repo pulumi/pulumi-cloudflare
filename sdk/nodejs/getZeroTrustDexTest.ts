@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare DEX Read`
+ * - `Cloudflare DEX Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Report`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDexTest(args: GetZeroTrustDexTestArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDexTestResult> {
+export function getZeroTrustDexTest(args?: GetZeroTrustDexTestArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDexTestResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", {
         "accountId": args.accountId,
@@ -33,7 +41,7 @@ export function getZeroTrustDexTest(args: GetZeroTrustDexTestArgs, opts?: pulumi
  * A collection of arguments for invoking getZeroTrustDexTest.
  */
 export interface GetZeroTrustDexTestArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * The unique identifier for the test.
      */
@@ -49,7 +57,7 @@ export interface GetZeroTrustDexTestArgs {
  * A collection of values returned by getZeroTrustDexTest.
  */
 export interface GetZeroTrustDexTestResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The configuration object which contains the details for the WARP client to conduct the test.
      */
@@ -90,6 +98,13 @@ export interface GetZeroTrustDexTestResult {
     readonly testId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare DEX Read`
+ * - `Cloudflare DEX Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Report`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -102,7 +117,8 @@ export interface GetZeroTrustDexTestResult {
  * });
  * ```
  */
-export function getZeroTrustDexTestOutput(args: GetZeroTrustDexTestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDexTestResult> {
+export function getZeroTrustDexTestOutput(args?: GetZeroTrustDexTestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDexTestResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", {
         "accountId": args.accountId,
@@ -116,7 +132,7 @@ export function getZeroTrustDexTestOutput(args: GetZeroTrustDexTestOutputArgs, o
  * A collection of arguments for invoking getZeroTrustDexTest.
  */
 export interface GetZeroTrustDexTestOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The unique identifier for the test.
      */

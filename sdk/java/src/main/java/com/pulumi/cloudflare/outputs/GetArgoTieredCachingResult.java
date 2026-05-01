@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetArgoTieredCachingResult {
@@ -36,7 +38,7 @@ public final class GetArgoTieredCachingResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetArgoTieredCachingResult() {}
     /**
@@ -72,8 +74,8 @@ public final class GetArgoTieredCachingResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -89,7 +91,7 @@ public final class GetArgoTieredCachingResult {
         private String id;
         private String modifiedOn;
         private String value;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetArgoTieredCachingResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -133,10 +135,8 @@ public final class GetArgoTieredCachingResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetArgoTieredCachingResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

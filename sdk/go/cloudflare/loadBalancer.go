@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Load Balancers Read`
+// - `Load Balancers Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -239,9 +244,9 @@ type LoadBalancer struct {
 	// Steering Policy for this load balancer.
 	SteeringPolicy pulumi.StringOutput `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-	Ttl      pulumi.Float64Output `pulumi:"ttl"`
-	ZoneId   pulumi.StringOutput  `pulumi:"zoneId"`
-	ZoneName pulumi.StringOutput  `pulumi:"zoneName"`
+	Ttl      pulumi.Float64Output   `pulumi:"ttl"`
+	ZoneId   pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneName pulumi.StringOutput    `pulumi:"zoneName"`
 }
 
 // NewLoadBalancer registers a new resource with the given unique name, arguments, and options.
@@ -259,9 +264,6 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LoadBalancer
@@ -421,7 +423,7 @@ type loadBalancerArgs struct {
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
 	Ttl    *float64 `pulumi:"ttl"`
-	ZoneId string   `pulumi:"zoneId"`
+	ZoneId *string  `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a LoadBalancer resource.
@@ -465,7 +467,7 @@ type LoadBalancerArgs struct {
 	SteeringPolicy pulumi.StringPtrInput
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
 	Ttl    pulumi.Float64PtrInput
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (LoadBalancerArgs) ElementType() reflect.Type {
@@ -659,8 +661,8 @@ func (o LoadBalancerOutput) Ttl() pulumi.Float64Output {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.Float64Output { return v.Ttl }).(pulumi.Float64Output)
 }
 
-func (o LoadBalancerOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o LoadBalancerOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func (o LoadBalancerOutput) ZoneName() pulumi.StringOutput {

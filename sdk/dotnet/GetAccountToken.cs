@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetAccountToken
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Tokens Read`
+        /// - `Account API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetAccountTokenResult> InvokeAsync(GetAccountTokenArgs args, InvokeOptions? options = null)
+        public static Task<GetAccountTokenResult> InvokeAsync(GetAccountTokenArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountTokenResult>("cloudflare:index/getAccountToken:getAccountToken", args ?? new GetAccountTokenArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Tokens Read`
+        /// - `Account API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAccountTokenResult> Invoke(GetAccountTokenInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetAccountTokenResult> Invoke(GetAccountTokenInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountTokenResult>("cloudflare:index/getAccountToken:getAccountToken", args ?? new GetAccountTokenInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Tokens Read`
+        /// - `Account API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetAccountTokenFilterArgs? Filter { get; set; }
@@ -110,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetAccountTokenFilterInputArgs>? Filter { get; set; }
@@ -135,7 +150,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly Outputs.GetAccountTokenConditionResult Condition;
         /// <summary>
         /// The expiration time on or after which the JWT MUST NOT be accepted for processing.
@@ -182,7 +197,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetAccountTokenResult(
-            string accountId,
+            string? accountId,
 
             Outputs.GetAccountTokenConditionResult condition,
 

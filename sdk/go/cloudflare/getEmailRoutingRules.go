@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Email Routing Rules Read`
+// - `Email Routing Rules Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailRoutingRules(ctx, &cloudflare.LookupEmailRoutingRulesArgs{
-//				ZoneId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Enabled: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -54,7 +59,7 @@ type LookupEmailRoutingRulesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getEmailRoutingRules.
@@ -68,7 +73,7 @@ type LookupEmailRoutingRulesResult struct {
 	// The items returned by the data source
 	Results []GetEmailRoutingRulesResult `pulumi:"results"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupEmailRoutingRulesOutput(ctx *pulumi.Context, args LookupEmailRoutingRulesOutputArgs, opts ...pulumi.InvokeOption) LookupEmailRoutingRulesResultOutput {
@@ -87,7 +92,7 @@ type LookupEmailRoutingRulesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupEmailRoutingRulesOutputArgs) ElementType() reflect.Type {
@@ -130,8 +135,8 @@ func (o LookupEmailRoutingRulesResultOutput) Results() GetEmailRoutingRulesResul
 }
 
 // Identifier.
-func (o LookupEmailRoutingRulesResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailRoutingRulesResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupEmailRoutingRulesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailRoutingRulesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

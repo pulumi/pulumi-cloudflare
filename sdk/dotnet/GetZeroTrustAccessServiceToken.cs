@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustAccessServiceToken
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Service Tokens Read`
+        /// - `Access: Service Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +41,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessServiceTokenResult>("cloudflare:index/getZeroTrustAccessServiceToken:getZeroTrustAccessServiceToken", args ?? new GetZeroTrustAccessServiceTokenArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Service Tokens Read`
+        /// - `Access: Service Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +70,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessServiceTokenResult>("cloudflare:index/getZeroTrustAccessServiceToken:getZeroTrustAccessServiceToken", args ?? new GetZeroTrustAccessServiceTokenInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Service Tokens Read`
+        /// - `Access: Service Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

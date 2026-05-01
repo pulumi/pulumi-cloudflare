@@ -23,13 +23,12 @@ class PageRuleArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input['PageRuleActionsArgs'],
                  target: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str],
                  priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PageRule resource.
 
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.int] priority: The priority of the rule, used to define which Page Rule is processed
                over another. A higher number indicates a higher priority. For example,
                if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
@@ -37,14 +36,16 @@ class PageRuleArgs:
                specify a higher priority for rule B so it overrides rule A.
         :param pulumi.Input[_builtins.str] status: The status of the Page Rule.
                Available values: "active", "disabled".
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "target", target)
-        pulumi.set(__self__, "zone_id", zone_id)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -63,18 +64,6 @@ class PageRuleArgs:
     @target.setter
     def target(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "target", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -104,6 +93,18 @@ class PageRuleArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -242,6 +243,45 @@ class PageRule(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Access: Apps and Policies Read`
+        - `Access: Apps and Policies Revoke`
+        - `Access: Apps and Policies Write`
+        - `Access: Mutual TLS Certificates Write`
+        - `Access: Organizations, Identity Providers, and Groups Write`
+        - `Analytics Read`
+        - `Apps Write`
+        - `Cache Purge`
+        - `DNS Read`
+        - `DNS Write`
+        - `Firewall Services Read`
+        - `Firewall Services Write`
+        - `Load Balancers Read`
+        - `Load Balancers Write`
+        - `Logs Read`
+        - `Logs Write`
+        - `Page Rules Read`
+        - `Page Rules Write`
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+        - `Stream Read`
+        - `Stream Write`
+        - `Trust and Safety Read`
+        - `Trust and Safety Write`
+        - `Workers Routes Read`
+        - `Workers Routes Write`
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+        - `Zaraz Admin`
+        - `Zaraz Edit`
+        - `Zaraz Read`
+        - `Zero Trust: PII Read`
+        - `Zone Read`
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+        - `Zone Write`
+
         ## Example Usage
 
         ```python
@@ -286,6 +326,45 @@ class PageRule(pulumi.CustomResource):
                  args: PageRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Access: Apps and Policies Read`
+        - `Access: Apps and Policies Revoke`
+        - `Access: Apps and Policies Write`
+        - `Access: Mutual TLS Certificates Write`
+        - `Access: Organizations, Identity Providers, and Groups Write`
+        - `Analytics Read`
+        - `Apps Write`
+        - `Cache Purge`
+        - `DNS Read`
+        - `DNS Write`
+        - `Firewall Services Read`
+        - `Firewall Services Write`
+        - `Load Balancers Read`
+        - `Load Balancers Write`
+        - `Logs Read`
+        - `Logs Write`
+        - `Page Rules Read`
+        - `Page Rules Write`
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+        - `Stream Read`
+        - `Stream Write`
+        - `Trust and Safety Read`
+        - `Trust and Safety Write`
+        - `Workers Routes Read`
+        - `Workers Routes Write`
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+        - `Zaraz Admin`
+        - `Zaraz Edit`
+        - `Zaraz Read`
+        - `Zero Trust: PII Read`
+        - `Zone Read`
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+        - `Zone Write`
+
         ## Example Usage
 
         ```python
@@ -349,8 +428,6 @@ class PageRule(pulumi.CustomResource):
             if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
             __props__.__dict__["target"] = target
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_on"] = None
             __props__.__dict__["modified_on"] = None
@@ -451,7 +528,7 @@ class PageRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

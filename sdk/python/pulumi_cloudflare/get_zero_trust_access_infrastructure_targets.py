@@ -97,7 +97,7 @@ class GetZeroTrustAccessInfrastructureTargetsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account identifier
         """
@@ -440,7 +440,7 @@ def get_zero_trust_access_infrastructure_targets(account_id: Optional[_builtins.
         results=pulumi.get(__ret__, 'results'),
         target_ids=pulumi.get(__ret__, 'target_ids'),
         virtual_network_id=pulumi.get(__ret__, 'virtual_network_id'))
-def get_zero_trust_access_infrastructure_targets_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_access_infrastructure_targets_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                         created_after: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                         created_before: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                         direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,

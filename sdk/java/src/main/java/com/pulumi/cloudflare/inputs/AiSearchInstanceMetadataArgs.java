@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AiSearchInstanceMetadataSearchForAgentsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -23,6 +24,13 @@ public final class AiSearchInstanceMetadataArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.createdFromAisearchWizard);
     }
 
+    @Import(name="searchForAgents")
+    private @Nullable Output<AiSearchInstanceMetadataSearchForAgentsArgs> searchForAgents;
+
+    public Optional<Output<AiSearchInstanceMetadataSearchForAgentsArgs>> searchForAgents() {
+        return Optional.ofNullable(this.searchForAgents);
+    }
+
     @Import(name="workerDomain")
     private @Nullable Output<String> workerDomain;
 
@@ -34,6 +42,7 @@ public final class AiSearchInstanceMetadataArgs extends com.pulumi.resources.Res
 
     private AiSearchInstanceMetadataArgs(AiSearchInstanceMetadataArgs $) {
         this.createdFromAisearchWizard = $.createdFromAisearchWizard;
+        this.searchForAgents = $.searchForAgents;
         this.workerDomain = $.workerDomain;
     }
 
@@ -62,6 +71,15 @@ public final class AiSearchInstanceMetadataArgs extends com.pulumi.resources.Res
 
         public Builder createdFromAisearchWizard(Boolean createdFromAisearchWizard) {
             return createdFromAisearchWizard(Output.of(createdFromAisearchWizard));
+        }
+
+        public Builder searchForAgents(@Nullable Output<AiSearchInstanceMetadataSearchForAgentsArgs> searchForAgents) {
+            $.searchForAgents = searchForAgents;
+            return this;
+        }
+
+        public Builder searchForAgents(AiSearchInstanceMetadataSearchForAgentsArgs searchForAgents) {
+            return searchForAgents(Output.of(searchForAgents));
         }
 
         public Builder workerDomain(@Nullable Output<String> workerDomain) {

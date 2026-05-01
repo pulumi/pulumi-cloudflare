@@ -114,6 +114,11 @@ def get_zero_trust_access_short_lived_certificate(account_id: Optional[_builtins
                                                   zone_id: Optional[_builtins.str] = None,
                                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessShortLivedCertificateResult:
     """
+    Accepted Permissions
+
+    - `Access: Apps and Policies Read`
+    - `Access: Apps and Policies Write`
+
     ## Example Usage
 
     ```python
@@ -149,6 +154,11 @@ def get_zero_trust_access_short_lived_certificate_output(account_id: Optional[pu
                                                          zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessShortLivedCertificateResult]:
     """
+    Accepted Permissions
+
+    - `Access: Apps and Policies Read`
+    - `Access: Apps and Policies Write`
+
     ## Example Usage
 
     ```python

@@ -33,18 +33,18 @@ public final class AccessPolicyMfaConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+     * Indicates whether to disable MFA for this resource. This option is available at the application and policy level.
      * 
      */
-    @Import(name="mfaBypass")
-    private @Nullable Output<Boolean> mfaBypass;
+    @Import(name="mfaDisabled")
+    private @Nullable Output<Boolean> mfaDisabled;
 
     /**
-     * @return Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+     * @return Indicates whether to disable MFA for this resource. This option is available at the application and policy level.
      * 
      */
-    public Optional<Output<Boolean>> mfaBypass() {
-        return Optional.ofNullable(this.mfaBypass);
+    public Optional<Output<Boolean>> mfaDisabled() {
+        return Optional.ofNullable(this.mfaDisabled);
     }
 
     /**
@@ -66,7 +66,7 @@ public final class AccessPolicyMfaConfigArgs extends com.pulumi.resources.Resour
 
     private AccessPolicyMfaConfigArgs(AccessPolicyMfaConfigArgs $) {
         this.allowedAuthenticators = $.allowedAuthenticators;
-        this.mfaBypass = $.mfaBypass;
+        this.mfaDisabled = $.mfaDisabled;
         this.sessionDuration = $.sessionDuration;
     }
 
@@ -120,24 +120,24 @@ public final class AccessPolicyMfaConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param mfaBypass Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+         * @param mfaDisabled Indicates whether to disable MFA for this resource. This option is available at the application and policy level.
          * 
          * @return builder
          * 
          */
-        public Builder mfaBypass(@Nullable Output<Boolean> mfaBypass) {
-            $.mfaBypass = mfaBypass;
+        public Builder mfaDisabled(@Nullable Output<Boolean> mfaDisabled) {
+            $.mfaDisabled = mfaDisabled;
             return this;
         }
 
         /**
-         * @param mfaBypass Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+         * @param mfaDisabled Indicates whether to disable MFA for this resource. This option is available at the application and policy level.
          * 
          * @return builder
          * 
          */
-        public Builder mfaBypass(Boolean mfaBypass) {
-            return mfaBypass(Output.of(mfaBypass));
+        public Builder mfaDisabled(Boolean mfaDisabled) {
+            return mfaDisabled(Output.of(mfaDisabled));
         }
 
         /**

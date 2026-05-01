@@ -11,10 +11,10 @@ namespace Pulumi.Cloudflare
 {
     public static class GetAiSearchTokens
     {
-        public static Task<GetAiSearchTokensResult> InvokeAsync(GetAiSearchTokensArgs args, InvokeOptions? options = null)
+        public static Task<GetAiSearchTokensResult> InvokeAsync(GetAiSearchTokensArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiSearchTokensResult>("cloudflare:index/getAiSearchTokens:getAiSearchTokens", args ?? new GetAiSearchTokensArgs(), options.WithDefaults());
 
-        public static Output<GetAiSearchTokensResult> Invoke(GetAiSearchTokensInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetAiSearchTokensResult> Invoke(GetAiSearchTokensInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiSearchTokensResult>("cloudflare:index/getAiSearchTokens:getAiSearchTokens", args ?? new GetAiSearchTokensInvokeArgs(), options.WithDefaults());
 
         public static Output<GetAiSearchTokensResult> Invoke(GetAiSearchTokensInvokeArgs args, InvokeOutputOptions options)
@@ -24,14 +24,20 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAiSearchTokensArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public int? MaxItems { get; set; }
+
+        /// <summary>
+        /// Filter tokens whose name contains this string (case-insensitive).
+        /// </summary>
+        [Input("search")]
+        public string? Search { get; set; }
 
         public GetAiSearchTokensArgs()
         {
@@ -41,14 +47,20 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAiSearchTokensInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
+
+        /// <summary>
+        /// Filter tokens whose name contains this string (case-insensitive).
+        /// </summary>
+        [Input("search")]
+        public Input<string>? Search { get; set; }
 
         public GetAiSearchTokensInvokeArgs()
         {
@@ -60,7 +72,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetAiSearchTokensResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -73,21 +85,28 @@ namespace Pulumi.Cloudflare
         /// The items returned by the data source
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAiSearchTokensResultResult> Results;
+        /// <summary>
+        /// Filter tokens whose name contains this string (case-insensitive).
+        /// </summary>
+        public readonly string? Search;
 
         [OutputConstructor]
         private GetAiSearchTokensResult(
-            string accountId,
+            string? accountId,
 
             string id,
 
             int? maxItems,
 
-            ImmutableArray<Outputs.GetAiSearchTokensResultResult> results)
+            ImmutableArray<Outputs.GetAiSearchTokensResultResult> results,
+
+            string? search)
         {
             AccountId = accountId;
             Id = id;
             MaxItems = maxItems;
             Results = results;
+            Search = search;
         }
     }
 }

@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Notifications Read`
+ * - `Notifications Write`
+ * - `Zero Trust: PII Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +40,7 @@ export interface GetNotificationPolicyWebhooksArgs {
     /**
      * The account id
      */
-    accountId: string;
+    accountId?: string;
     /**
      * The unique identifier of a webhook
      */
@@ -46,7 +54,7 @@ export interface GetNotificationPolicyWebhooksResult {
     /**
      * The account id
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Timestamp of when the webhook destination was created.
      */
@@ -86,6 +94,14 @@ export interface GetNotificationPolicyWebhooksResult {
     readonly webhookId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Notifications Read`
+ * - `Notifications Write`
+ * - `Zero Trust: PII Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -113,7 +129,7 @@ export interface GetNotificationPolicyWebhooksOutputArgs {
     /**
      * The account id
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The unique identifier of a webhook
      */

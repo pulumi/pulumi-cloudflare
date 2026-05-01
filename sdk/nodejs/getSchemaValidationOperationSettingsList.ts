@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getSchemaValidationOperationSettingsList(args: GetSchemaValidationOperationSettingsListArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemaValidationOperationSettingsListResult> {
+export function getSchemaValidationOperationSettingsList(args?: GetSchemaValidationOperationSettingsListArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemaValidationOperationSettingsListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList", {
         "maxItems": args.maxItems,
@@ -31,7 +39,7 @@ export function getSchemaValidationOperationSettingsList(args: GetSchemaValidati
  */
 export interface GetSchemaValidationOperationSettingsListArgs {
     maxItems?: number;
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -44,9 +52,16 @@ export interface GetSchemaValidationOperationSettingsListResult {
     readonly id: string;
     readonly maxItems?: number;
     readonly results: outputs.GetSchemaValidationOperationSettingsListResult[];
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -58,7 +73,8 @@ export interface GetSchemaValidationOperationSettingsListResult {
  * });
  * ```
  */
-export function getSchemaValidationOperationSettingsListOutput(args: GetSchemaValidationOperationSettingsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSchemaValidationOperationSettingsListResult> {
+export function getSchemaValidationOperationSettingsListOutput(args?: GetSchemaValidationOperationSettingsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSchemaValidationOperationSettingsListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList", {
         "maxItems": args.maxItems,
@@ -71,5 +87,5 @@ export function getSchemaValidationOperationSettingsListOutput(args: GetSchemaVa
  */
 export interface GetSchemaValidationOperationSettingsListOutputArgs {
     maxItems?: pulumi.Input<number>;
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

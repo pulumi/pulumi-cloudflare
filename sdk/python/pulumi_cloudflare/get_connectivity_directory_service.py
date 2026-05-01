@@ -28,10 +28,13 @@ class GetConnectivityDirectoryServiceResult:
     """
     A collection of values returned by getConnectivityDirectoryService.
     """
-    def __init__(__self__, account_id=None, created_at=None, filter=None, host=None, http_port=None, https_port=None, id=None, name=None, service_id=None, type=None, updated_at=None):
+    def __init__(__self__, account_id=None, app_protocol=None, created_at=None, filter=None, host=None, http_port=None, https_port=None, id=None, name=None, service_id=None, tcp_port=None, tls_settings=None, type=None, updated_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if app_protocol and not isinstance(app_protocol, str):
+            raise TypeError("Expected argument 'app_protocol' to be a str")
+        pulumi.set(__self__, "app_protocol", app_protocol)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -56,6 +59,12 @@ class GetConnectivityDirectoryServiceResult:
         if service_id and not isinstance(service_id, str):
             raise TypeError("Expected argument 'service_id' to be a str")
         pulumi.set(__self__, "service_id", service_id)
+        if tcp_port and not isinstance(tcp_port, int):
+            raise TypeError("Expected argument 'tcp_port' to be a int")
+        pulumi.set(__self__, "tcp_port", tcp_port)
+        if tls_settings and not isinstance(tls_settings, dict):
+            raise TypeError("Expected argument 'tls_settings' to be a dict")
+        pulumi.set(__self__, "tls_settings", tls_settings)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -65,8 +74,16 @@ class GetConnectivityDirectoryServiceResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="appProtocol")
+    def app_protocol(self) -> _builtins.str:
+        """
+        Available values: "postgresql", "mysql".
+        """
+        return pulumi.get(self, "app_protocol")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -112,11 +129,21 @@ class GetConnectivityDirectoryServiceResult:
         return pulumi.get(self, "service_id")
 
     @_builtins.property
+    @pulumi.getter(name="tcpPort")
+    def tcp_port(self) -> _builtins.int:
+        return pulumi.get(self, "tcp_port")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsSettings")
+    def tls_settings(self) -> 'outputs.GetConnectivityDirectoryServiceTlsSettingsResult':
+        """
+        TLS settings for a connectivity service.
+        """
+        return pulumi.get(self, "tls_settings")
+
+    @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Available values: "http".
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
@@ -132,6 +159,7 @@ class AwaitableGetConnectivityDirectoryServiceResult(GetConnectivityDirectorySer
             yield self
         return GetConnectivityDirectoryServiceResult(
             account_id=self.account_id,
+            app_protocol=self.app_protocol,
             created_at=self.created_at,
             filter=self.filter,
             host=self.host,
@@ -140,6 +168,8 @@ class AwaitableGetConnectivityDirectoryServiceResult(GetConnectivityDirectorySer
             id=self.id,
             name=self.name,
             service_id=self.service_id,
+            tcp_port=self.tcp_port,
+            tls_settings=self.tls_settings,
             type=self.type,
             updated_at=self.updated_at)
 
@@ -168,6 +198,7 @@ def get_connectivity_directory_service(account_id: Optional[_builtins.str] = Non
 
     return AwaitableGetConnectivityDirectoryServiceResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        app_protocol=pulumi.get(__ret__, 'app_protocol'),
         created_at=pulumi.get(__ret__, 'created_at'),
         filter=pulumi.get(__ret__, 'filter'),
         host=pulumi.get(__ret__, 'host'),
@@ -176,9 +207,11 @@ def get_connectivity_directory_service(account_id: Optional[_builtins.str] = Non
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         service_id=pulumi.get(__ret__, 'service_id'),
+        tcp_port=pulumi.get(__ret__, 'tcp_port'),
+        tls_settings=pulumi.get(__ret__, 'tls_settings'),
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_connectivity_directory_service_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_connectivity_directory_service_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                               filter: Optional[pulumi.Input[Optional[Union['GetConnectivityDirectoryServiceFilterArgs', 'GetConnectivityDirectoryServiceFilterArgsDict']]]] = None,
                                               service_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectivityDirectoryServiceResult]:
@@ -201,6 +234,7 @@ def get_connectivity_directory_service_output(account_id: Optional[pulumi.Input[
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getConnectivityDirectoryService:getConnectivityDirectoryService', __args__, opts=opts, typ=GetConnectivityDirectoryServiceResult)
     return __ret__.apply(lambda __response__: GetConnectivityDirectoryServiceResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        app_protocol=pulumi.get(__response__, 'app_protocol'),
         created_at=pulumi.get(__response__, 'created_at'),
         filter=pulumi.get(__response__, 'filter'),
         host=pulumi.get(__response__, 'host'),
@@ -209,5 +243,7 @@ def get_connectivity_directory_service_output(account_id: Optional[pulumi.Input[
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         service_id=pulumi.get(__response__, 'service_id'),
+        tcp_port=pulumi.get(__response__, 'tcp_port'),
+        tls_settings=pulumi.get(__response__, 'tls_settings'),
         type=pulumi.get(__response__, 'type'),
         updated_at=pulumi.get(__response__, 'updated_at')))

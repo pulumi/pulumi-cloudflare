@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -105,6 +109,7 @@ type ZeroTrustDeviceDefaultProfile struct {
 	LanAllowMinutes pulumi.Float64PtrOutput `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrOutput `pulumi:"lanAllowSubnetSize"`
+	PolicyId           pulumi.StringOutput     `pulumi:"policyId"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns pulumi.BoolOutput `pulumi:"registerInterfaceIpWithDns"`
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -189,6 +194,7 @@ type zeroTrustDeviceDefaultProfileState struct {
 	LanAllowMinutes *float64 `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize *float64 `pulumi:"lanAllowSubnetSize"`
+	PolicyId           *string  `pulumi:"policyId"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns *bool `pulumi:"registerInterfaceIpWithDns"`
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -232,6 +238,7 @@ type ZeroTrustDeviceDefaultProfileState struct {
 	LanAllowMinutes pulumi.Float64PtrInput
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrInput
+	PolicyId           pulumi.StringPtrInput
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns pulumi.BoolPtrInput
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
@@ -492,6 +499,10 @@ func (o ZeroTrustDeviceDefaultProfileOutput) LanAllowMinutes() pulumi.Float64Ptr
 // The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 func (o ZeroTrustDeviceDefaultProfileOutput) LanAllowSubnetSize() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.Float64PtrOutput { return v.LanAllowSubnetSize }).(pulumi.Float64PtrOutput)
+}
+
+func (o ZeroTrustDeviceDefaultProfileOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
 }
 
 // Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.

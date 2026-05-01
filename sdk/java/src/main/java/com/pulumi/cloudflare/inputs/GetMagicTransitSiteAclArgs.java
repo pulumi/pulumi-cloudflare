@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetMagicTransitSiteAclArgs extends com.pulumi.resources.InvokeArgs {
@@ -18,15 +20,15 @@ public final class GetMagicTransitSiteAclArgs extends com.pulumi.resources.Invok
      * Identifier
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -91,7 +93,7 @@ public final class GetMagicTransitSiteAclArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -149,9 +151,6 @@ public final class GetMagicTransitSiteAclArgs extends com.pulumi.resources.Invok
         }
 
         public GetMagicTransitSiteAclArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetMagicTransitSiteAclArgs", "accountId");
-            }
             if ($.aclId == null) {
                 throw new MissingRequiredPropertyException("GetMagicTransitSiteAclArgs", "aclId");
             }

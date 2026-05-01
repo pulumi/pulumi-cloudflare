@@ -52,11 +52,21 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
+        [Input("clientKey")]
+        private Input<string>? _clientKey;
+
         /// <summary>
         /// The Uptycs client secret.
         /// </summary>
-        [Input("clientKey")]
-        public Input<string>? ClientKey { get; set; }
+        public Input<string>? ClientKey
+        {
+            get => _clientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("clientSecret")]
         private Input<string>? _clientSecret;

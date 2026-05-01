@@ -17,6 +17,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `IP Prefixes: BGP On Demand Read`
+ * - `IP Prefixes: BGP On Demand Write`
+ * - `IP Prefixes: Read`
+ * - `IP Prefixes: Write`
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -69,14 +78,14 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier of a Cloudflare account.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Prefix advertisement status to the Internet. This field is only not &#39;null&#39; if on demand is enabled.

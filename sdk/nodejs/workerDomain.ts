@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -12,11 +17,12 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleWorkersCustomDomain = new cloudflare.WorkersCustomDomain("example_workers_custom_domain", {
- *     accountId: "9a7806061c88ada191ed06f989cc3dac",
- *     hostname: "foo.example.com",
- *     service: "foo",
- *     zoneId: "593c9c94de529bbbfaac7c53ced0447d",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     hostname: "app.example.com",
+ *     service: "my-worker",
  *     environment: "production",
+ *     zoneId: "593c9c94de529bbbfaac7c53ced0447d",
+ *     zoneName: "example.com",
  * });
  * ```
  *
@@ -58,31 +64,35 @@ export class WorkerDomain extends pulumi.CustomResource {
     }
 
     /**
-     * Identifer of the account.
+     * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
-     * Worker environment associated with the zone and hostname.
+     * ID of the TLS certificate issued for the domain.
+     */
+    declare public /*out*/ readonly certId: pulumi.Output<string>;
+    /**
+     * Worker environment associated with the domain.
      *
      * @deprecated This attribute is deprecated.
      */
-    declare public readonly environment: pulumi.Output<string | undefined>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
-     * Hostname of the Worker Domain.
+     * Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      */
     declare public readonly hostname: pulumi.Output<string>;
     /**
-     * Worker service associated with the zone and hostname.
+     * Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      */
     declare public readonly service: pulumi.Output<string>;
     /**
-     * Identifier of the zone.
+     * ID of the zone containing the domain hostname.
      */
     declare public readonly zoneId: pulumi.Output<string>;
     /**
-     * Name of the zone.
+     * Name of the zone containing the domain hostname.
      */
-    declare public /*out*/ readonly zoneName: pulumi.Output<string>;
+    declare public readonly zoneName: pulumi.Output<string>;
 
     /**
      * Create a WorkerDomain resource with the given unique name, arguments, and options.
@@ -101,6 +111,7 @@ export class WorkerDomain extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkerDomainState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["certId"] = state?.certId;
             resourceInputs["environment"] = state?.environment;
             resourceInputs["hostname"] = state?.hostname;
             resourceInputs["service"] = state?.service;
@@ -108,24 +119,19 @@ export class WorkerDomain extends pulumi.CustomResource {
             resourceInputs["zoneName"] = state?.zoneName;
         } else {
             const args = argsOrState as WorkerDomainArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
             }
             if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["environment"] = args?.environment;
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["service"] = args?.service;
             resourceInputs["zoneId"] = args?.zoneId;
-            resourceInputs["zoneName"] = undefined /*out*/;
+            resourceInputs["zoneName"] = args?.zoneName;
+            resourceInputs["certId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/workerDomain:WorkerDomain" }] };
@@ -139,29 +145,33 @@ export class WorkerDomain extends pulumi.CustomResource {
  */
 export interface WorkerDomainState {
     /**
-     * Identifer of the account.
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Worker environment associated with the zone and hostname.
+     * ID of the TLS certificate issued for the domain.
+     */
+    certId?: pulumi.Input<string>;
+    /**
+     * Worker environment associated with the domain.
      *
      * @deprecated This attribute is deprecated.
      */
     environment?: pulumi.Input<string>;
     /**
-     * Hostname of the Worker Domain.
+     * Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      */
     hostname?: pulumi.Input<string>;
     /**
-     * Worker service associated with the zone and hostname.
+     * Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      */
     service?: pulumi.Input<string>;
     /**
-     * Identifier of the zone.
+     * ID of the zone containing the domain hostname.
      */
     zoneId?: pulumi.Input<string>;
     /**
-     * Name of the zone.
+     * Name of the zone containing the domain hostname.
      */
     zoneName?: pulumi.Input<string>;
 }
@@ -171,25 +181,29 @@ export interface WorkerDomainState {
  */
 export interface WorkerDomainArgs {
     /**
-     * Identifer of the account.
+     * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
-     * Worker environment associated with the zone and hostname.
+     * Worker environment associated with the domain.
      *
      * @deprecated This attribute is deprecated.
      */
     environment?: pulumi.Input<string>;
     /**
-     * Hostname of the Worker Domain.
+     * Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      */
     hostname: pulumi.Input<string>;
     /**
-     * Worker service associated with the zone and hostname.
+     * Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      */
     service: pulumi.Input<string>;
     /**
-     * Identifier of the zone.
+     * ID of the zone containing the domain hostname.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
+    /**
+     * Name of the zone containing the domain hostname.
+     */
+    zoneName?: pulumi.Input<string>;
 }

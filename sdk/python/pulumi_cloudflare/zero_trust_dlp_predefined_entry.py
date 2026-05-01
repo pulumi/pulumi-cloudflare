@@ -21,9 +21,9 @@ __all__ = ['ZeroTrustDlpPredefinedEntryArgs', 'ZeroTrustDlpPredefinedEntry']
 @pulumi.input_type
 class ZeroTrustDlpPredefinedEntryArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  enabled: pulumi.Input[_builtins.bool],
                  entry_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  profile_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpPredefinedEntry resource.
@@ -31,20 +31,12 @@ class ZeroTrustDlpPredefinedEntryArgs:
         :param pulumi.Input[_builtins.str] profile_id: This field is not used as the owning profile.
                For predefined entries it is already set to a predefined profile.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "entry_id", entry_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if profile_id is not None:
             pulumi.set(__self__, "profile_id", profile_id)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -63,6 +55,15 @@ class ZeroTrustDlpPredefinedEntryArgs:
     @entry_id.setter
     def entry_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "entry_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="profileId")
@@ -325,6 +326,11 @@ class ZeroTrustDlpPredefinedEntry(pulumi.CustomResource):
                  profile_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Read`
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -357,6 +363,11 @@ class ZeroTrustDlpPredefinedEntry(pulumi.CustomResource):
                  args: ZeroTrustDlpPredefinedEntryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Read`
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -405,8 +416,6 @@ class ZeroTrustDlpPredefinedEntry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustDlpPredefinedEntryArgs.__new__(ZeroTrustDlpPredefinedEntryArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
@@ -495,7 +504,7 @@ class ZeroTrustDlpPredefinedEntry(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

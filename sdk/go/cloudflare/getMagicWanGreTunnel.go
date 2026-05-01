@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic Transit Read`
+// - `Magic Transit Write`
+// - `Magic WAN Read`
+// - `Magic WAN Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicWanGreTunnel(ctx, &cloudflare.LookupMagicWanGreTunnelArgs{
-//				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				GreTunnelId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +57,7 @@ func LookupMagicWanGreTunnel(ctx *pulumi.Context, args *LookupMagicWanGreTunnelA
 // A collection of arguments for invoking getMagicWanGreTunnel.
 type LookupMagicWanGreTunnelArgs struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Identifier
 	GreTunnelId string `pulumi:"greTunnelId"`
 }
@@ -58,7 +65,7 @@ type LookupMagicWanGreTunnelArgs struct {
 // A collection of values returned by getMagicWanGreTunnel.
 type LookupMagicWanGreTunnelResult struct {
 	// Identifier
-	AccountId string                        `pulumi:"accountId"`
+	AccountId *string                       `pulumi:"accountId"`
 	GreTunnel GetMagicWanGreTunnelGreTunnel `pulumi:"greTunnel"`
 	// Identifier
 	GreTunnelId string `pulumi:"greTunnelId"`
@@ -78,7 +85,7 @@ func LookupMagicWanGreTunnelOutput(ctx *pulumi.Context, args LookupMagicWanGreTu
 // A collection of arguments for invoking getMagicWanGreTunnel.
 type LookupMagicWanGreTunnelOutputArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Identifier
 	GreTunnelId pulumi.StringInput `pulumi:"greTunnelId"`
 }
@@ -103,8 +110,8 @@ func (o LookupMagicWanGreTunnelResultOutput) ToLookupMagicWanGreTunnelResultOutp
 }
 
 // Identifier
-func (o LookupMagicWanGreTunnelResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicWanGreTunnelResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupMagicWanGreTunnelResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicWanGreTunnelResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupMagicWanGreTunnelResultOutput) GreTunnel() GetMagicWanGreTunnelGreTunnelOutput {

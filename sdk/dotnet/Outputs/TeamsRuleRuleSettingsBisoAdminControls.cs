@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Dk;
         /// <summary>
-        /// Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == "v2".
+        /// Configure download behavior. When set to remote*only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == "v2".
         /// Available values: "enabled", "disabled", "remote*only".
         /// </summary>
         public readonly string? Download;
@@ -68,6 +68,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "v1", "v2".
         /// </summary>
         public readonly string? Version;
+        /// <summary>
+        /// Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.
+        /// </summary>
+        public readonly string? WmId;
 
         [OutputConstructor]
         private TeamsRuleRuleSettingsBisoAdminControls(
@@ -93,7 +97,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? upload,
 
-            string? version)
+            string? version,
+
+            string? wmId)
         {
             Copy = copy;
             Dcp = dcp;
@@ -107,6 +113,7 @@ namespace Pulumi.Cloudflare.Outputs
             Printing = printing;
             Upload = upload;
             Version = version;
+            WmId = wmId;
         }
     }
 }

@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Workers Scripts Read`
+    /// - `Workers Scripts Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,11 +27,12 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var exampleWorkersCustomDomain = new Cloudflare.Index.WorkersCustomDomain("example_workers_custom_domain", new()
     ///     {
-    ///         AccountId = "9a7806061c88ada191ed06f989cc3dac",
-    ///         Hostname = "foo.example.com",
-    ///         Service = "foo",
-    ///         ZoneId = "593c9c94de529bbbfaac7c53ced0447d",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Hostname = "app.example.com",
+    ///         Service = "my-worker",
     ///         Environment = "production",
+    ///         ZoneId = "593c9c94de529bbbfaac7c53ced0447d",
+    ///         ZoneName = "example.com",
     ///     });
     /// 
     /// });
@@ -42,37 +48,43 @@ namespace Pulumi.Cloudflare
     public partial class WorkersCustomDomain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifer of the account.
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Worker environment associated with the zone and hostname.
+        /// ID of the TLS certificate issued for the domain.
+        /// </summary>
+        [Output("certId")]
+        public Output<string> CertId { get; private set; } = null!;
+
+        /// <summary>
+        /// Worker environment associated with the domain.
         /// </summary>
         [Output("environment")]
-        public Output<string?> Environment { get; private set; } = null!;
+        public Output<string> Environment { get; private set; } = null!;
 
         /// <summary>
-        /// Hostname of the Worker Domain.
+        /// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// Worker service associated with the zone and hostname.
+        /// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the zone.
+        /// ID of the zone containing the domain hostname.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the zone.
+        /// Name of the zone containing the domain hostname.
         /// </summary>
         [Output("zoneName")]
         public Output<string> ZoneName { get; private set; } = null!;
@@ -128,34 +140,40 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersCustomDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifer of the account.
+        /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Worker environment associated with the zone and hostname.
+        /// Worker environment associated with the domain.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
         /// <summary>
-        /// Hostname of the Worker Domain.
+        /// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
         /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
-        /// Worker service associated with the zone and hostname.
+        /// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the zone.
+        /// ID of the zone containing the domain hostname.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        /// <summary>
+        /// Name of the zone containing the domain hostname.
+        /// </summary>
+        [Input("zoneName")]
+        public Input<string>? ZoneName { get; set; }
 
         public WorkersCustomDomainArgs()
         {
@@ -166,37 +184,43 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersCustomDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifer of the account.
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Worker environment associated with the zone and hostname.
+        /// ID of the TLS certificate issued for the domain.
+        /// </summary>
+        [Input("certId")]
+        public Input<string>? CertId { get; set; }
+
+        /// <summary>
+        /// Worker environment associated with the domain.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
         /// <summary>
-        /// Hostname of the Worker Domain.
+        /// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// Worker service associated with the zone and hostname.
+        /// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// Identifier of the zone.
+        /// ID of the zone containing the domain hostname.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
         /// <summary>
-        /// Name of the zone.
+        /// Name of the zone containing the domain hostname.
         /// </summary>
         [Input("zoneName")]
         public Input<string>? ZoneName { get; set; }

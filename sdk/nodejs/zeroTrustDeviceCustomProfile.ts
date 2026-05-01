@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -83,7 +87,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDeviceCustomProfile.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Whether to allow the user to switch WARP between modes.
      */
@@ -221,9 +225,6 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
             resourceInputs["tunnelProtocol"] = state?.tunnelProtocol;
         } else {
             const args = argsOrState as ZeroTrustDeviceCustomProfileArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.match === undefined && !opts.urn) {
                 throw new Error("Missing required property 'match'");
             }
@@ -370,7 +371,7 @@ export interface ZeroTrustDeviceCustomProfileState {
  * The set of arguments for constructing a ZeroTrustDeviceCustomProfile resource.
  */
 export interface ZeroTrustDeviceCustomProfileArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Whether to allow the user to switch WARP between modes.
      */

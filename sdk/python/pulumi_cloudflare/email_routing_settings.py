@@ -19,24 +19,25 @@ __all__ = ['EmailRoutingSettingsArgs', 'EmailRoutingSettings']
 @pulumi.input_type
 class EmailRoutingSettingsArgs:
     def __init__(__self__, *,
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailRoutingSettings resource.
 
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -192,6 +193,11 @@ class EmailRoutingSettings(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+
         ## Example Usage
 
         ```python
@@ -216,9 +222,14 @@ class EmailRoutingSettings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EmailRoutingSettingsArgs,
+                 args: Optional[EmailRoutingSettingsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+
         ## Example Usage
 
         ```python
@@ -260,8 +271,6 @@ class EmailRoutingSettings(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EmailRoutingSettingsArgs.__new__(EmailRoutingSettingsArgs)
 
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created"] = None
             __props__.__dict__["enabled"] = None
@@ -379,7 +388,7 @@ class EmailRoutingSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Mutual TLS Certificates Read`
+ * - `Access: Mutual TLS Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript

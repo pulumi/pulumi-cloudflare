@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStreamKeyResult {
@@ -14,7 +16,7 @@ public final class GetStreamKeyResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The date and time a signing key was created.
      * 
@@ -25,14 +27,19 @@ public final class GetStreamKeyResult {
      * 
      */
     private String id;
+    /**
+     * @return The unique identifier for the signing key.
+     * 
+     */
+    private String keyId;
 
     private GetStreamKeyResult() {}
     /**
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The date and time a signing key was created.
@@ -48,6 +55,13 @@ public final class GetStreamKeyResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The unique identifier for the signing key.
+     * 
+     */
+    public String keyId() {
+        return this.keyId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -58,22 +72,22 @@ public final class GetStreamKeyResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String created;
         private String id;
+        private String keyId;
         public Builder() {}
         public Builder(GetStreamKeyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.created = defaults.created;
     	      this.id = defaults.id;
+    	      this.keyId = defaults.keyId;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetStreamKeyResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -93,11 +107,20 @@ public final class GetStreamKeyResult {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder keyId(String keyId) {
+            if (keyId == null) {
+              throw new MissingRequiredPropertyException("GetStreamKeyResult", "keyId");
+            }
+            this.keyId = keyId;
+            return this;
+        }
         public GetStreamKeyResult build() {
             final var _resultValue = new GetStreamKeyResult();
             _resultValue.accountId = accountId;
             _resultValue.created = created;
             _resultValue.id = id;
+            _resultValue.keyId = keyId;
             return _resultValue;
         }
     }

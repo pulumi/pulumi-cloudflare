@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * - `Zone Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getTieredCache(args: GetTieredCacheArgs, opts?: pulumi.InvokeOptions): Promise<GetTieredCacheResult> {
+export function getTieredCache(args?: GetTieredCacheArgs, opts?: pulumi.InvokeOptions): Promise<GetTieredCacheResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getTieredCache:getTieredCache", {
         "zoneId": args.zoneId,
@@ -30,7 +38,7 @@ export interface GetTieredCacheArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -57,9 +65,16 @@ export interface GetTieredCacheResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * - `Zone Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -71,7 +86,8 @@ export interface GetTieredCacheResult {
  * });
  * ```
  */
-export function getTieredCacheOutput(args: GetTieredCacheOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTieredCacheResult> {
+export function getTieredCacheOutput(args?: GetTieredCacheOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTieredCacheResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getTieredCache:getTieredCache", {
         "zoneId": args.zoneId,
@@ -85,5 +101,5 @@ export interface GetTieredCacheOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -23,8 +23,8 @@ class ClientCertificateArgs:
     def __init__(__self__, *,
                  csr: pulumi.Input[_builtins.str],
                  validity_days: pulumi.Input[_builtins.int],
-                 zone_id: pulumi.Input[_builtins.str],
-                 reactivate: Optional[pulumi.Input[_builtins.bool]] = None):
+                 reactivate: Optional[pulumi.Input[_builtins.bool]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientCertificate resource.
 
@@ -34,9 +34,10 @@ class ClientCertificateArgs:
         """
         pulumi.set(__self__, "csr", csr)
         pulumi.set(__self__, "validity_days", validity_days)
-        pulumi.set(__self__, "zone_id", zone_id)
         if reactivate is not None:
             pulumi.set(__self__, "reactivate", reactivate)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -63,18 +64,6 @@ class ClientCertificateArgs:
         pulumi.set(self, "validity_days", value)
 
     @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
-
-    @_builtins.property
     @pulumi.getter
     def reactivate(self) -> Optional[pulumi.Input[_builtins.bool]]:
         return pulumi.get(self, "reactivate")
@@ -82,6 +71,18 @@ class ClientCertificateArgs:
     @reactivate.setter
     def reactivate(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "reactivate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -407,6 +408,11 @@ class ClientCertificate(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         ## Example Usage
 
         ```python
@@ -442,6 +448,11 @@ class ClientCertificate(pulumi.CustomResource):
                  args: ClientCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         ## Example Usage
 
         ```python
@@ -499,8 +510,6 @@ class ClientCertificate(pulumi.CustomResource):
             if validity_days is None and not opts.urn:
                 raise TypeError("Missing required property 'validity_days'")
             __props__.__dict__["validity_days"] = validity_days
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["certificate"] = None
             __props__.__dict__["certificate_authority"] = None
@@ -742,7 +751,7 @@ class ClientCertificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

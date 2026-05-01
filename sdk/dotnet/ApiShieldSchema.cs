@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Account API Gateway`
+    /// - `Account API Gateway Read`
+    /// - `Domain API Gateway`
+    /// - `Domain API Gateway Read`
+    /// 
     /// &gt; `cloudflare.ApiShieldSchema` is in a deprecation phase and will be removed in the future.
     ///   Instead, please utilize the cloudflare.SchemaValidationSchemas resource instead.
     /// 
@@ -26,7 +33,7 @@ namespace Pulumi.Cloudflare
     ///     var exampleApiShieldSchema = new Cloudflare.Index.ApiShieldSchema("example_api_shield_schema", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         File = null,
+    ///         File = "Example data",
     ///         Kind = "openapi_v3",
     ///         Name = "petstore schema",
     ///         ValidationEnabled = "true",
@@ -86,7 +93,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -166,8 +173,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public ApiShieldSchemaArgs()
         {

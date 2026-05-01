@@ -138,6 +138,11 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
                  key_rotation_interval_days: Optional[pulumi.Input[_builtins.float]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Access: Organizations, Identity Providers, and Groups Read`
+        - `Access: Organizations, Identity Providers, and Groups Write`
+
         ## Example Usage
 
         ```python
@@ -168,6 +173,11 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
                  args: ZeroTrustAccessKeyConfigurationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Access: Organizations, Identity Providers, and Groups Read`
+        - `Access: Organizations, Identity Providers, and Groups Write`
+
         ## Example Usage
 
         ```python

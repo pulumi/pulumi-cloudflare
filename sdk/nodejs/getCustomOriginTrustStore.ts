@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getCustomOriginTrustStore(args: GetCustomOriginTrustStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomOriginTrustStoreResult> {
+export function getCustomOriginTrustStore(args?: GetCustomOriginTrustStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomOriginTrustStoreResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore", {
         "customOriginTrustStoreId": args.customOriginTrustStoreId,
@@ -40,7 +46,7 @@ export interface GetCustomOriginTrustStoreArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -88,9 +94,14 @@ export interface GetCustomOriginTrustStoreResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -103,7 +114,8 @@ export interface GetCustomOriginTrustStoreResult {
  * });
  * ```
  */
-export function getCustomOriginTrustStoreOutput(args: GetCustomOriginTrustStoreOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomOriginTrustStoreResult> {
+export function getCustomOriginTrustStoreOutput(args?: GetCustomOriginTrustStoreOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomOriginTrustStoreResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore", {
         "customOriginTrustStoreId": args.customOriginTrustStoreId,
@@ -124,5 +136,5 @@ export interface GetCustomOriginTrustStoreOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

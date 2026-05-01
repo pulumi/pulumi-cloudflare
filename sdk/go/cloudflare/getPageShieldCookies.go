@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Domain Page Shield`
+// - `Domain Page Shield Read`
+// - `Page Shield`
+// - `Page Shield Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetPageShieldCookies(ctx, &cloudflare.GetPageShieldCookiesArgs{
-//				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CookieId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -52,7 +61,7 @@ type GetPageShieldCookiesArgs struct {
 	// Identifier
 	CookieId string `pulumi:"cookieId"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getPageShieldCookies.
@@ -77,7 +86,7 @@ type GetPageShieldCookiesResult struct {
 	// Available values: "firstParty", "unknown".
 	Type string `pulumi:"type"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func GetPageShieldCookiesOutput(ctx *pulumi.Context, args GetPageShieldCookiesOutputArgs, opts ...pulumi.InvokeOption) GetPageShieldCookiesResultOutput {
@@ -94,7 +103,7 @@ type GetPageShieldCookiesOutputArgs struct {
 	// Identifier
 	CookieId pulumi.StringInput `pulumi:"cookieId"`
 	// Identifier
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (GetPageShieldCookiesOutputArgs) ElementType() reflect.Type {
@@ -181,8 +190,8 @@ func (o GetPageShieldCookiesResultOutput) Type() pulumi.StringOutput {
 }
 
 // Identifier
-func (o GetPageShieldCookiesResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPageShieldCookiesResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o GetPageShieldCookiesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPageShieldCookiesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

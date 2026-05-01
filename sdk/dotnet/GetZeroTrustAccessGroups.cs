@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustAccessGroups
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Organizations, Identity Providers, and Groups Read`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -37,6 +42,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessGroupsResult>("cloudflare:index/getZeroTrustAccessGroups:getZeroTrustAccessGroups", args ?? new GetZeroTrustAccessGroupsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Organizations, Identity Providers, and Groups Read`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -62,6 +72,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessGroupsResult>("cloudflare:index/getZeroTrustAccessGroups:getZeroTrustAccessGroups", args ?? new GetZeroTrustAccessGroupsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Organizations, Identity Providers, and Groups Read`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

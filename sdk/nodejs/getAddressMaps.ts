@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Address Maps Read`
+ * - `Address Maps Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getAddressMaps(args: GetAddressMapsArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressMapsResult> {
+export function getAddressMaps(args?: GetAddressMapsArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressMapsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAddressMaps:getAddressMaps", {
         "accountId": args.accountId,
@@ -33,7 +39,7 @@ export interface GetAddressMapsArgs {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +53,7 @@ export interface GetAddressMapsResult {
     /**
      * Identifier of a Cloudflare account.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +68,11 @@ export interface GetAddressMapsResult {
     readonly results: outputs.GetAddressMapsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Address Maps Read`
+ * - `Address Maps Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetAddressMapsResult {
  * });
  * ```
  */
-export function getAddressMapsOutput(args: GetAddressMapsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressMapsResult> {
+export function getAddressMapsOutput(args?: GetAddressMapsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressMapsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAddressMaps:getAddressMaps", {
         "accountId": args.accountId,
@@ -88,7 +100,7 @@ export interface GetAddressMapsOutputArgs {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

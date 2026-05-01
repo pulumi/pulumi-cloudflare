@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetDnsRecord
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetDnsRecordResult> InvokeAsync(GetDnsRecordArgs args, InvokeOptions? options = null)
+        public static Task<GetDnsRecordResult> InvokeAsync(GetDnsRecordArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDnsRecordResult>("cloudflare:index/getDnsRecord:getDnsRecord", args ?? new GetDnsRecordArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetDnsRecordResult> Invoke(GetDnsRecordInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetDnsRecordResult> Invoke(GetDnsRecordInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDnsRecordResult>("cloudflare:index/getDnsRecord:getDnsRecord", args ?? new GetDnsRecordInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -96,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetDnsRecordArgs()
         {
@@ -119,8 +134,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetDnsRecordInvokeArgs()
         {
@@ -174,9 +189,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+        /// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
         /// </summary>
         public readonly double Priority;
+        /// <summary>
+        /// Enables private network routing to the origin.
+        /// </summary>
+        public readonly bool PrivateRouting;
         /// <summary>
         /// Whether the record can be proxied by Cloudflare or not.
         /// </summary>
@@ -209,7 +228,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetDnsRecordResult(
@@ -237,6 +256,8 @@ namespace Pulumi.Cloudflare
 
             double priority,
 
+            bool privateRouting,
+
             bool proxiable,
 
             bool proxied,
@@ -251,7 +272,7 @@ namespace Pulumi.Cloudflare
 
             string type,
 
-            string zoneId)
+            string? zoneId)
         {
             Comment = comment;
             CommentModifiedOn = commentModifiedOn;
@@ -265,6 +286,7 @@ namespace Pulumi.Cloudflare
             ModifiedOn = modifiedOn;
             Name = name;
             Priority = priority;
+            PrivateRouting = privateRouting;
             Proxiable = proxiable;
             Proxied = proxied;
             Settings = settings;

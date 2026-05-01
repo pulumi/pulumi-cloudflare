@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare DEX Read`
+ * - `Cloudflare DEX Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Report`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -20,7 +27,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDexTests(args: GetZeroTrustDexTestsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDexTestsResult> {
+export function getZeroTrustDexTests(args?: GetZeroTrustDexTestsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDexTestsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests", {
         "accountId": args.accountId,
@@ -34,7 +42,7 @@ export function getZeroTrustDexTests(args: GetZeroTrustDexTestsArgs, opts?: pulu
  * A collection of arguments for invoking getZeroTrustDexTests.
  */
 export interface GetZeroTrustDexTestsArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Filter by test type
      * Available values: "http", "traceroute".
@@ -54,7 +62,7 @@ export interface GetZeroTrustDexTestsArgs {
  * A collection of values returned by getZeroTrustDexTests.
  */
 export interface GetZeroTrustDexTestsResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -78,6 +86,13 @@ export interface GetZeroTrustDexTestsResult {
     readonly testName?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare DEX Read`
+ * - `Cloudflare DEX Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Report`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -91,7 +106,8 @@ export interface GetZeroTrustDexTestsResult {
  * });
  * ```
  */
-export function getZeroTrustDexTestsOutput(args: GetZeroTrustDexTestsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDexTestsResult> {
+export function getZeroTrustDexTestsOutput(args?: GetZeroTrustDexTestsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDexTestsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests", {
         "accountId": args.accountId,
@@ -105,7 +121,7 @@ export function getZeroTrustDexTestsOutput(args: GetZeroTrustDexTestsOutputArgs,
  * A collection of arguments for invoking getZeroTrustDexTests.
  */
 export interface GetZeroTrustDexTestsOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Filter by test type
      * Available values: "http", "traceroute".

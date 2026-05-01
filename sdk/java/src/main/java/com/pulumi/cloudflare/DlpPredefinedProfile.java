@@ -20,6 +20,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -83,10 +88,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile")
 public class DlpPredefinedProfile extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     @Export(name="aiContextEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> aiContextEnabled;
@@ -114,10 +119,10 @@ public class DlpPredefinedProfile extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * This attribute is deprecated.
+     * This attribute is deprecated. Use enabledEntries instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* This attribute is deprecated. Use enabledEntries instead. */
     @Export(name="entries", refs={List.class,DlpPredefinedProfileEntry.class}, tree="[0,1]")
     private Output<List<DlpPredefinedProfileEntry>> entries;
 

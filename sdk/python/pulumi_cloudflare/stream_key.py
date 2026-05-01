@@ -19,24 +19,25 @@ __all__ = ['StreamKeyArgs', 'StreamKey']
 @pulumi.input_type
 class StreamKeyArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str]):
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamKey resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         """
-        pulumi.set(__self__, "account_id", account_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
 
@@ -46,6 +47,7 @@ class _StreamKeyState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  created: Optional[pulumi.Input[_builtins.str]] = None,
                  jwk: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  pem: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamKey resources.
@@ -53,6 +55,7 @@ class _StreamKeyState:
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created: The date and time a signing key was created.
         :param pulumi.Input[_builtins.str] jwk: The signing key in JWK format.
+        :param pulumi.Input[_builtins.str] key_id: The unique identifier for the signing key.
         :param pulumi.Input[_builtins.str] pem: The signing key in PEM format.
         """
         if account_id is not None:
@@ -61,6 +64,8 @@ class _StreamKeyState:
             pulumi.set(__self__, "created", created)
         if jwk is not None:
             pulumi.set(__self__, "jwk", jwk)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
         if pem is not None:
             pulumi.set(__self__, "pem", pem)
 
@@ -101,6 +106,18 @@ class _StreamKeyState:
         pulumi.set(self, "jwk", value)
 
     @_builtins.property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique identifier for the signing key.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def pem(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -122,6 +139,11 @@ class StreamKey(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Stream Read`
+        - `Stream Write`
+
         ## Example Usage
 
         ```python
@@ -146,9 +168,14 @@ class StreamKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: StreamKeyArgs,
+                 args: Optional[StreamKeyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Stream Read`
+        - `Stream Write`
+
         ## Example Usage
 
         ```python
@@ -190,11 +217,10 @@ class StreamKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StreamKeyArgs.__new__(StreamKeyArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["created"] = None
             __props__.__dict__["jwk"] = None
+            __props__.__dict__["key_id"] = None
             __props__.__dict__["pem"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["jwk", "pem"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -211,6 +237,7 @@ class StreamKey(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             created: Optional[pulumi.Input[_builtins.str]] = None,
             jwk: Optional[pulumi.Input[_builtins.str]] = None,
+            key_id: Optional[pulumi.Input[_builtins.str]] = None,
             pem: Optional[pulumi.Input[_builtins.str]] = None) -> 'StreamKey':
         """
         Get an existing StreamKey resource's state with the given name, id, and optional extra
@@ -222,6 +249,7 @@ class StreamKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created: The date and time a signing key was created.
         :param pulumi.Input[_builtins.str] jwk: The signing key in JWK format.
+        :param pulumi.Input[_builtins.str] key_id: The unique identifier for the signing key.
         :param pulumi.Input[_builtins.str] pem: The signing key in PEM format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -231,12 +259,13 @@ class StreamKey(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["created"] = created
         __props__.__dict__["jwk"] = jwk
+        __props__.__dict__["key_id"] = key_id
         __props__.__dict__["pem"] = pem
         return StreamKey(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """
@@ -257,6 +286,14 @@ class StreamKey(pulumi.CustomResource):
         The signing key in JWK format.
         """
         return pulumi.get(self, "jwk")
+
+    @_builtins.property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unique identifier for the signing key.
+        """
+        return pulumi.get(self, "key_id")
 
     @_builtins.property
     @pulumi.getter

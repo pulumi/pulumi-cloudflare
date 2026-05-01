@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Hyperdrive Read`
+// - `Hyperdrive Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetHyperdriveConfigs(ctx, &cloudflare.LookupHyperdriveConfigsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupHyperdriveConfigs(ctx *pulumi.Context, args *LookupHyperdriveConfigsA
 // A collection of arguments for invoking getHyperdriveConfigs.
 type LookupHyperdriveConfigsArgs struct {
 	// Define configurations using a unique string identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +62,7 @@ type LookupHyperdriveConfigsArgs struct {
 // A collection of values returned by getHyperdriveConfigs.
 type LookupHyperdriveConfigsResult struct {
 	// Define configurations using a unique string identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +83,7 @@ func LookupHyperdriveConfigsOutput(ctx *pulumi.Context, args LookupHyperdriveCon
 // A collection of arguments for invoking getHyperdriveConfigs.
 type LookupHyperdriveConfigsOutputArgs struct {
 	// Define configurations using a unique string identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +108,8 @@ func (o LookupHyperdriveConfigsResultOutput) ToLookupHyperdriveConfigsResultOutp
 }
 
 // Define configurations using a unique string identifier.
-func (o LookupHyperdriveConfigsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHyperdriveConfigsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupHyperdriveConfigsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupHyperdriveConfigsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

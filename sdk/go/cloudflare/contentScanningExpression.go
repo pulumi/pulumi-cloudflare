@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account WAF Write`
+// - `Zone WAF Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -51,7 +56,7 @@ type ContentScanningExpression struct {
 
 	Bodies ContentScanningExpressionBodyArrayOutput `pulumi:"bodies"`
 	// Defines an identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewContentScanningExpression registers a new resource with the given unique name, arguments, and options.
@@ -63,9 +68,6 @@ func NewContentScanningExpression(ctx *pulumi.Context,
 
 	if args.Bodies == nil {
 		return nil, errors.New("invalid value for required argument 'Bodies'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ContentScanningExpression
@@ -108,14 +110,14 @@ func (ContentScanningExpressionState) ElementType() reflect.Type {
 type contentScanningExpressionArgs struct {
 	Bodies []ContentScanningExpressionBody `pulumi:"bodies"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ContentScanningExpression resource.
 type ContentScanningExpressionArgs struct {
 	Bodies ContentScanningExpressionBodyArrayInput
 	// Defines an identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (ContentScanningExpressionArgs) ElementType() reflect.Type {
@@ -210,8 +212,8 @@ func (o ContentScanningExpressionOutput) Bodies() ContentScanningExpressionBodyA
 }
 
 // Defines an identifier.
-func (o ContentScanningExpressionOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ContentScanningExpression) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o ContentScanningExpressionOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentScanningExpression) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type ContentScanningExpressionArrayOutput struct{ *pulumi.OutputState }

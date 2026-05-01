@@ -15,11 +15,12 @@ import * as utilities from "./utilities";
  *
  * const exampleConnectivityDirectoryServices = cloudflare.getConnectivityDirectoryServices({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     type: "http",
+ *     type: "tcp",
  * });
  * ```
  */
-export function getConnectivityDirectoryServices(args: GetConnectivityDirectoryServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectivityDirectoryServicesResult> {
+export function getConnectivityDirectoryServices(args?: GetConnectivityDirectoryServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectivityDirectoryServicesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices", {
         "accountId": args.accountId,
@@ -35,13 +36,13 @@ export interface GetConnectivityDirectoryServicesArgs {
     /**
      * Account identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
     /**
-     * Available values: "http".
+     * Available values: "tcp", "http".
      */
     type?: string;
 }
@@ -53,7 +54,7 @@ export interface GetConnectivityDirectoryServicesResult {
     /**
      * Account identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -67,7 +68,7 @@ export interface GetConnectivityDirectoryServicesResult {
      */
     readonly results: outputs.GetConnectivityDirectoryServicesResult[];
     /**
-     * Available values: "http".
+     * Available values: "tcp", "http".
      */
     readonly type?: string;
 }
@@ -80,11 +81,12 @@ export interface GetConnectivityDirectoryServicesResult {
  *
  * const exampleConnectivityDirectoryServices = cloudflare.getConnectivityDirectoryServices({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     type: "http",
+ *     type: "tcp",
  * });
  * ```
  */
-export function getConnectivityDirectoryServicesOutput(args: GetConnectivityDirectoryServicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectivityDirectoryServicesResult> {
+export function getConnectivityDirectoryServicesOutput(args?: GetConnectivityDirectoryServicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectivityDirectoryServicesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices", {
         "accountId": args.accountId,
@@ -100,13 +102,13 @@ export interface GetConnectivityDirectoryServicesOutputArgs {
     /**
      * Account identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Available values: "http".
+     * Available values: "tcp", "http".
      */
     type?: pulumi.Input<string>;
 }

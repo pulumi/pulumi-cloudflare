@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetAccessRules
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Firewall Access Rules Read`
+        /// - `Account Firewall Access Rules Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -44,6 +49,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessRulesResult>("cloudflare:index/getAccessRules:getAccessRules", args ?? new GetAccessRulesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Firewall Access Rules Read`
+        /// - `Account Firewall Access Rules Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -76,6 +86,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessRulesResult>("cloudflare:index/getAccessRules:getAccessRules", args ?? new GetAccessRulesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Firewall Access Rules Read`
+        /// - `Account Firewall Access Rules Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

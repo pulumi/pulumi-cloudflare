@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getApiShieldSchemaValidationSettings(args: GetApiShieldSchemaValidationSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldSchemaValidationSettingsResult> {
+export function getApiShieldSchemaValidationSettings(args?: GetApiShieldSchemaValidationSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldSchemaValidationSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings", {
         "zoneId": args.zoneId,
@@ -30,7 +38,7 @@ export interface GetApiShieldSchemaValidationSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -49,9 +57,16 @@ export interface GetApiShieldSchemaValidationSettingsResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -63,7 +78,8 @@ export interface GetApiShieldSchemaValidationSettingsResult {
  * });
  * ```
  */
-export function getApiShieldSchemaValidationSettingsOutput(args: GetApiShieldSchemaValidationSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldSchemaValidationSettingsResult> {
+export function getApiShieldSchemaValidationSettingsOutput(args?: GetApiShieldSchemaValidationSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldSchemaValidationSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShieldSchemaValidationSettings:getApiShieldSchemaValidationSettings", {
         "zoneId": args.zoneId,
@@ -77,5 +93,5 @@ export interface GetApiShieldSchemaValidationSettingsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

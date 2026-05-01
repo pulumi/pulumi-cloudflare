@@ -19,7 +19,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustAccessAiControlsMcpServers(args: GetZeroTrustAccessAiControlsMcpServersArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessAiControlsMcpServersResult> {
+export function getZeroTrustAccessAiControlsMcpServers(args?: GetZeroTrustAccessAiControlsMcpServersArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessAiControlsMcpServersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessAiControlsMcpServers:getZeroTrustAccessAiControlsMcpServers", {
         "accountId": args.accountId,
@@ -32,7 +33,7 @@ export function getZeroTrustAccessAiControlsMcpServers(args: GetZeroTrustAccessA
  * A collection of arguments for invoking getZeroTrustAccessAiControlsMcpServers.
  */
 export interface GetZeroTrustAccessAiControlsMcpServersArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +48,7 @@ export interface GetZeroTrustAccessAiControlsMcpServersArgs {
  * A collection of values returned by getZeroTrustAccessAiControlsMcpServers.
  */
 export interface GetZeroTrustAccessAiControlsMcpServersResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -78,7 +79,8 @@ export interface GetZeroTrustAccessAiControlsMcpServersResult {
  * });
  * ```
  */
-export function getZeroTrustAccessAiControlsMcpServersOutput(args: GetZeroTrustAccessAiControlsMcpServersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessAiControlsMcpServersResult> {
+export function getZeroTrustAccessAiControlsMcpServersOutput(args?: GetZeroTrustAccessAiControlsMcpServersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessAiControlsMcpServersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessAiControlsMcpServers:getZeroTrustAccessAiControlsMcpServers", {
         "accountId": args.accountId,
@@ -91,7 +93,7 @@ export function getZeroTrustAccessAiControlsMcpServersOutput(args: GetZeroTrustA
  * A collection of arguments for invoking getZeroTrustAccessAiControlsMcpServers.
  */
 export interface GetZeroTrustAccessAiControlsMcpServersOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

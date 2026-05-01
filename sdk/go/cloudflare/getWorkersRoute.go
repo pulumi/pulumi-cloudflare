@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Routes Read`
+// - `Workers Routes Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersRoute(ctx, &cloudflare.LookupWorkersRouteArgs{
-//				ZoneId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RouteId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -52,7 +57,7 @@ type LookupWorkersRouteArgs struct {
 	// Identifier.
 	RouteId string `pulumi:"routeId"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getWorkersRoute.
@@ -66,7 +71,7 @@ type LookupWorkersRouteResult struct {
 	// Name of the script to run if the route matches.
 	Script string `pulumi:"script"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupWorkersRouteOutput(ctx *pulumi.Context, args LookupWorkersRouteOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersRouteResultOutput {
@@ -83,7 +88,7 @@ type LookupWorkersRouteOutputArgs struct {
 	// Identifier.
 	RouteId pulumi.StringInput `pulumi:"routeId"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupWorkersRouteOutputArgs) ElementType() reflect.Type {
@@ -126,8 +131,8 @@ func (o LookupWorkersRouteResultOutput) Script() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupWorkersRouteResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersRouteResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupWorkersRouteResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersRouteResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

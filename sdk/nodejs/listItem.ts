@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Filter Lists Edit`
+ * - `Account Filter Lists Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -23,14 +28,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
- * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
- * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
- * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
- * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
- * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
- * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
- * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
  * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
  * ```
  */
@@ -65,7 +62,7 @@ export class ListItem extends pulumi.CustomResource {
     /**
      * The Account ID for this resource.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * A non-negative 32 bit integer
      */
@@ -128,9 +125,6 @@ export class ListItem extends pulumi.CustomResource {
             resourceInputs["redirect"] = state?.redirect;
         } else {
             const args = argsOrState as ListItemArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.listId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listId'");
             }
@@ -203,7 +197,7 @@ export interface ListItemArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A non-negative 32 bit integer
      */

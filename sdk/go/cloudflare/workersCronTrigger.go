@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -53,7 +58,7 @@ type WorkersCronTrigger struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput                   `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput                `pulumi:"accountId"`
 	Schedules WorkersCronTriggerScheduleArrayOutput `pulumi:"schedules"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringOutput `pulumi:"scriptName"`
@@ -66,9 +71,6 @@ func NewWorkersCronTrigger(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Schedules == nil {
 		return nil, errors.New("invalid value for required argument 'Schedules'")
 	}
@@ -125,7 +127,7 @@ func (WorkersCronTriggerState) ElementType() reflect.Type {
 
 type workersCronTriggerArgs struct {
 	// Identifier.
-	AccountId string                       `pulumi:"accountId"`
+	AccountId *string                      `pulumi:"accountId"`
 	Schedules []WorkersCronTriggerSchedule `pulumi:"schedules"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
@@ -134,7 +136,7 @@ type workersCronTriggerArgs struct {
 // The set of arguments for constructing a WorkersCronTrigger resource.
 type WorkersCronTriggerArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	Schedules WorkersCronTriggerScheduleArrayInput
 	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringInput
@@ -228,8 +230,8 @@ func (o WorkersCronTriggerOutput) ToWorkersCronTriggerOutputWithContext(ctx cont
 }
 
 // Identifier.
-func (o WorkersCronTriggerOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkersCronTrigger) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o WorkersCronTriggerOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkersCronTrigger) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o WorkersCronTriggerOutput) Schedules() WorkersCronTriggerScheduleArrayOutput {

@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getLeakedCredentialCheckRules(args: GetLeakedCredentialCheckRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetLeakedCredentialCheckRulesResult> {
+export function getLeakedCredentialCheckRules(args?: GetLeakedCredentialCheckRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetLeakedCredentialCheckRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLeakedCredentialCheckRules:getLeakedCredentialCheckRules", {
         "maxItems": args.maxItems,
@@ -37,7 +45,7 @@ export interface GetLeakedCredentialCheckRulesArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -59,9 +67,16 @@ export interface GetLeakedCredentialCheckRulesResult {
     /**
      * Defines an identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +88,8 @@ export interface GetLeakedCredentialCheckRulesResult {
  * });
  * ```
  */
-export function getLeakedCredentialCheckRulesOutput(args: GetLeakedCredentialCheckRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLeakedCredentialCheckRulesResult> {
+export function getLeakedCredentialCheckRulesOutput(args?: GetLeakedCredentialCheckRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLeakedCredentialCheckRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLeakedCredentialCheckRules:getLeakedCredentialCheckRules", {
         "maxItems": args.maxItems,
@@ -92,5 +108,5 @@ export interface GetLeakedCredentialCheckRulesOutputArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

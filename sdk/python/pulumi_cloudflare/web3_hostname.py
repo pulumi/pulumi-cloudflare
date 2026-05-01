@@ -21,26 +21,27 @@ class Web3HostnameArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  target: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dnslink: Optional[pulumi.Input[_builtins.str]] = None):
+                 dnslink: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Web3Hostname resource.
 
         :param pulumi.Input[_builtins.str] name: Specify the hostname that points to the target gateway via CNAME.
         :param pulumi.Input[_builtins.str] target: Specify the target gateway of the hostname.
                Available values: "ethereum", "ipfs", "ipfs*universal*path".
-        :param pulumi.Input[_builtins.str] zone_id: Specify the identifier of the hostname.
         :param pulumi.Input[_builtins.str] description: Specify an optional description of the hostname.
         :param pulumi.Input[_builtins.str] dnslink: Specify the DNSLink value used if the target is ipfs.
+        :param pulumi.Input[_builtins.str] zone_id: Specify the identifier of the hostname.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "target", target)
-        pulumi.set(__self__, "zone_id", zone_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dnslink is not None:
             pulumi.set(__self__, "dnslink", dnslink)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -68,18 +69,6 @@ class Web3HostnameArgs:
         pulumi.set(self, "target", value)
 
     @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specify the identifier of the hostname.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
-
-    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -102,6 +91,18 @@ class Web3HostnameArgs:
     @dnslink.setter
     def dnslink(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "dnslink", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specify the identifier of the hostname.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -250,6 +251,11 @@ class Web3Hostname(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Web3 Hostnames Read`
+        - `Web3 Hostnames Write`
+
         ## Example Usage
 
         ```python
@@ -287,6 +293,11 @@ class Web3Hostname(pulumi.CustomResource):
                  args: Web3HostnameArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Web3 Hostnames Read`
+        - `Web3 Hostnames Write`
+
         ## Example Usage
 
         ```python
@@ -345,8 +356,6 @@ class Web3Hostname(pulumi.CustomResource):
             if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
             __props__.__dict__["target"] = target
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_on"] = None
             __props__.__dict__["modified_on"] = None
@@ -453,7 +462,7 @@ class Web3Hostname(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Specify the identifier of the hostname.
         """

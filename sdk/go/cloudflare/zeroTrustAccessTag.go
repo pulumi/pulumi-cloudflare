@@ -48,7 +48,7 @@ type ZeroTrustAccessTag struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The name of the tag
 	Name pulumi.StringOutput `pulumi:"name"`
 }
@@ -60,9 +60,6 @@ func NewZeroTrustAccessTag(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -114,7 +111,7 @@ func (ZeroTrustAccessTagState) ElementType() reflect.Type {
 
 type zeroTrustAccessTagArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The name of the tag
 	Name string `pulumi:"name"`
 }
@@ -122,7 +119,7 @@ type zeroTrustAccessTagArgs struct {
 // The set of arguments for constructing a ZeroTrustAccessTag resource.
 type ZeroTrustAccessTagArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// The name of the tag
 	Name pulumi.StringInput
 }
@@ -215,8 +212,8 @@ func (o ZeroTrustAccessTagOutput) ToZeroTrustAccessTagOutputWithContext(ctx cont
 }
 
 // Identifier.
-func (o ZeroTrustAccessTagOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessTag) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustAccessTagOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessTag) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the tag

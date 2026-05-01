@@ -35,6 +35,21 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
+     * The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.
+     * 
+     */
+    @Import(name="authStates")
+    private @Nullable Output<List<String>> authStates;
+
+    /**
+     * @return The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.
+     * 
+     */
+    public Optional<Output<List<String>>> authStates() {
+        return Optional.ofNullable(this.authStates);
+    }
+
+    /**
      * UUID of Cloudflare managed certificate.
      * 
      */
@@ -665,6 +680,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
 
     private ZeroTrustDevicePostureRuleInputArgs(ZeroTrustDevicePostureRuleInputArgs $) {
         this.activeThreats = $.activeThreats;
+        this.authStates = $.authStates;
         this.certificateId = $.certificateId;
         this.checkDisks = $.checkDisks;
         this.checkPrivateKey = $.checkPrivateKey;
@@ -745,6 +761,37 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
          */
         public Builder activeThreats(Double activeThreats) {
             return activeThreats(Output.of(activeThreats));
+        }
+
+        /**
+         * @param authStates The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authStates(@Nullable Output<List<String>> authStates) {
+            $.authStates = authStates;
+            return this;
+        }
+
+        /**
+         * @param authStates The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authStates(List<String> authStates) {
+            return authStates(Output.of(authStates));
+        }
+
+        /**
+         * @param authStates The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authStates(String... authStates) {
+            return authStates(List.of(authStates));
         }
 
         /**

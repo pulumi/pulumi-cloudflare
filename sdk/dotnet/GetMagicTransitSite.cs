@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetMagicTransitSite
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +38,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetMagicTransitSiteResult> InvokeAsync(GetMagicTransitSiteArgs args, InvokeOptions? options = null)
+        public static Task<GetMagicTransitSiteResult> InvokeAsync(GetMagicTransitSiteArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMagicTransitSiteResult>("cloudflare:index/getMagicTransitSite:getMagicTransitSite", args ?? new GetMagicTransitSiteArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +68,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetMagicTransitSiteResult> Invoke(GetMagicTransitSiteInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetMagicTransitSiteResult> Invoke(GetMagicTransitSiteInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicTransitSiteResult>("cloudflare:index/getMagicTransitSite:getMagicTransitSite", args ?? new GetMagicTransitSiteInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetMagicTransitSiteFilterArgs? Filter { get; set; }
@@ -110,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetMagicTransitSiteFilterInputArgs>? Filter { get; set; }
@@ -135,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Magic Connector identifier tag.
         /// </summary>
@@ -169,7 +190,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetMagicTransitSiteResult(
-            string accountId,
+            string? accountId,
 
             string connectorId,
 

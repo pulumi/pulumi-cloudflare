@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS Read`
+// - `DNS Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetDnsRecords(ctx, &cloudflare.LookupDnsRecordsArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Comment: cloudflare.GetDnsRecordsComment{
 //					Absent:     pulumi.StringRef("absent"),
 //					Contains:   pulumi.StringRef("ello, worl"),
@@ -104,7 +109,7 @@ type LookupDnsRecordsArgs struct {
 	// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
 	Type *string `pulumi:"type"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getDnsRecords.
@@ -139,7 +144,7 @@ type LookupDnsRecordsResult struct {
 	// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
 	Type *string `pulumi:"type"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupDnsRecordsOutput(ctx *pulumi.Context, args LookupDnsRecordsOutputArgs, opts ...pulumi.InvokeOption) LookupDnsRecordsResultOutput {
@@ -179,7 +184,7 @@ type LookupDnsRecordsOutputArgs struct {
 	// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupDnsRecordsOutputArgs) ElementType() reflect.Type {
@@ -273,8 +278,8 @@ func (o LookupDnsRecordsResultOutput) Type() pulumi.StringPtrOutput {
 }
 
 // Identifier.
-func (o LookupDnsRecordsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDnsRecordsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupDnsRecordsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDnsRecordsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

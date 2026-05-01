@@ -161,7 +161,9 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging example '<account_id>'
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -203,7 +205,9 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
 
         ## Import
 
-        > This resource does not currently support `pulumi import`.
+        ```sh
+        $ pulumi import cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging example '<account_id>'
+        ```
 
 
         :param str resource_name: The name of the resource.

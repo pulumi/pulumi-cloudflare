@@ -19,6 +19,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Access: Mutual TLS Certificates Read`
+ * - `Access: Mutual TLS Certificates Write`
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -102,6 +109,7 @@ import javax.annotation.Nullable;
  * 
  *             """)
  *             .bundleMethod("ubiquitous")
+ *             .customCsrId("7b163417-1d2b-4c84-a38a-2fb7a0cd7752")
  *             .deploy("staging")
  *             .geoRestrictions(CustomSslGeoRestrictionsArgs.builder()
  *                 .label("us")
@@ -153,6 +161,20 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
      */
     public Output<String> certificate() {
         return this.certificate;
+    }
+    /**
+     * The identifier for the Custom CSR that was used.
+     * 
+     */
+    @Export(name="customCsrId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> customCsrId;
+
+    /**
+     * @return The identifier for the Custom CSR that was used.
+     * 
+     */
+    public Output<Optional<String>> customCsrId() {
+        return Codegen.optional(this.customCsrId);
     }
     /**
      * The environment to deploy the certificate to.
@@ -365,14 +387,14 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

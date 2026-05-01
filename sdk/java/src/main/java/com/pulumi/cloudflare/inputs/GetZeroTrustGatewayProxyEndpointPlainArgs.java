@@ -7,17 +7,19 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustGatewayProxyEndpointPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZeroTrustGatewayProxyEndpointPlainArgs Empty = new GetZeroTrustGatewayProxyEndpointPlainArgs();
 
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="proxyEndpointId", required=true)
@@ -52,7 +54,7 @@ public final class GetZeroTrustGatewayProxyEndpointPlainArgs extends com.pulumi.
             $ = new GetZeroTrustGatewayProxyEndpointPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -63,9 +65,6 @@ public final class GetZeroTrustGatewayProxyEndpointPlainArgs extends com.pulumi.
         }
 
         public GetZeroTrustGatewayProxyEndpointPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustGatewayProxyEndpointPlainArgs", "accountId");
-            }
             if ($.proxyEndpointId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustGatewayProxyEndpointPlainArgs", "proxyEndpointId");
             }

@@ -21,7 +21,7 @@ __all__ = ['AddressMapArgs', 'AddressMap']
 @pulumi.input_type
 class AddressMapArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  default_sni: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -36,7 +36,8 @@ class AddressMapArgs:
         :param pulumi.Input[_builtins.bool] enabled: Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
         :param pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]] memberships: Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
         """
-        pulumi.set(__self__, "account_id", account_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if default_sni is not None:
             pulumi.set(__self__, "default_sni", default_sni)
         if description is not None:
@@ -50,14 +51,14 @@ class AddressMapArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Identifier of a Cloudflare account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -289,6 +290,11 @@ class AddressMap(pulumi.CustomResource):
                  memberships: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Address Maps Read`
+        - `Address Maps Write`
+
         ## Example Usage
 
         ```python
@@ -325,9 +331,14 @@ class AddressMap(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AddressMapArgs,
+                 args: Optional[AddressMapArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Address Maps Read`
+        - `Address Maps Write`
+
         ## Example Usage
 
         ```python
@@ -382,8 +393,6 @@ class AddressMap(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AddressMapArgs.__new__(AddressMapArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["default_sni"] = default_sni
             __props__.__dict__["description"] = description
@@ -447,7 +456,7 @@ class AddressMap(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier of a Cloudflare account.
         """

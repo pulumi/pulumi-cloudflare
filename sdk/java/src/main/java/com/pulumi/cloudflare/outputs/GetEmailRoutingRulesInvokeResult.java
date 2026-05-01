@@ -40,7 +40,7 @@ public final class GetEmailRoutingRulesInvokeResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetEmailRoutingRulesInvokeResult() {}
     /**
@@ -75,8 +75,8 @@ public final class GetEmailRoutingRulesInvokeResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -92,7 +92,7 @@ public final class GetEmailRoutingRulesInvokeResult {
         private String id;
         private @Nullable Integer maxItems;
         private List<GetEmailRoutingRulesResult> results;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetEmailRoutingRulesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -135,10 +135,8 @@ public final class GetEmailRoutingRulesInvokeResult {
             return results(List.of(results));
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetEmailRoutingRulesInvokeResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

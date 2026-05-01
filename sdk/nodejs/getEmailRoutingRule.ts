@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Email Routing Rules Read`
+ * - `Email Routing Rules Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getEmailRoutingRule(args: GetEmailRoutingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingRuleResult> {
+export function getEmailRoutingRule(args?: GetEmailRoutingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingRuleResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailRoutingRule:getEmailRoutingRule", {
         "filter": args.filter,
@@ -40,7 +46,7 @@ export interface GetEmailRoutingRuleArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -85,9 +91,14 @@ export interface GetEmailRoutingRuleResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Email Routing Rules Read`
+ * - `Email Routing Rules Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -100,7 +111,8 @@ export interface GetEmailRoutingRuleResult {
  * });
  * ```
  */
-export function getEmailRoutingRuleOutput(args: GetEmailRoutingRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingRuleResult> {
+export function getEmailRoutingRuleOutput(args?: GetEmailRoutingRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingRuleResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailRoutingRule:getEmailRoutingRule", {
         "filter": args.filter,
@@ -121,5 +133,5 @@ export interface GetEmailRoutingRuleOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

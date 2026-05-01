@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare Zero Trust Secure DNS Locations Write`
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -87,7 +93,7 @@ import (
 type TeamsLocation struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolOutput   `pulumi:"clientDefault"`
 	CreatedAt     pulumi.StringOutput `pulumi:"createdAt"`
@@ -121,9 +127,6 @@ func NewTeamsLocation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -216,7 +219,7 @@ func (TeamsLocationState) ElementType() reflect.Type {
 }
 
 type teamsLocationArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault *bool `pulumi:"clientDefault"`
 	// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
@@ -233,7 +236,7 @@ type teamsLocationArgs struct {
 
 // The set of arguments for constructing a TeamsLocation resource.
 type TeamsLocationArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolPtrInput
 	// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
@@ -335,8 +338,8 @@ func (o TeamsLocationOutput) ToTeamsLocationOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o TeamsLocationOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o TeamsLocationOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Indicate whether this location is the default location.

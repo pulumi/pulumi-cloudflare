@@ -21,6 +21,11 @@ public final class GetCustomSslsResult {
      */
     private String bundleMethod;
     /**
+     * @return The identifier for the Custom CSR that was used.
+     * 
+     */
+    private String customCsrId;
+    /**
      * @return When the certificate from the authority expires.
      * 
      */
@@ -89,6 +94,13 @@ public final class GetCustomSslsResult {
      */
     public String bundleMethod() {
         return this.bundleMethod;
+    }
+    /**
+     * @return The identifier for the Custom CSR that was used.
+     * 
+     */
+    public String customCsrId() {
+        return this.customCsrId;
     }
     /**
      * @return When the certificate from the authority expires.
@@ -187,6 +199,7 @@ public final class GetCustomSslsResult {
     @CustomType.Builder
     public static final class Builder {
         private String bundleMethod;
+        private String customCsrId;
         private String expiresOn;
         private GetCustomSslsResultGeoRestrictions geoRestrictions;
         private List<String> hosts;
@@ -204,6 +217,7 @@ public final class GetCustomSslsResult {
         public Builder(GetCustomSslsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bundleMethod = defaults.bundleMethod;
+    	      this.customCsrId = defaults.customCsrId;
     	      this.expiresOn = defaults.expiresOn;
     	      this.geoRestrictions = defaults.geoRestrictions;
     	      this.hosts = defaults.hosts;
@@ -225,6 +239,14 @@ public final class GetCustomSslsResult {
               throw new MissingRequiredPropertyException("GetCustomSslsResult", "bundleMethod");
             }
             this.bundleMethod = bundleMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customCsrId(String customCsrId) {
+            if (customCsrId == null) {
+              throw new MissingRequiredPropertyException("GetCustomSslsResult", "customCsrId");
+            }
+            this.customCsrId = customCsrId;
             return this;
         }
         @CustomType.Setter
@@ -337,6 +359,7 @@ public final class GetCustomSslsResult {
         public GetCustomSslsResult build() {
             final var _resultValue = new GetCustomSslsResult();
             _resultValue.bundleMethod = bundleMethod;
+            _resultValue.customCsrId = customCsrId;
             _resultValue.expiresOn = expiresOn;
             _resultValue.geoRestrictions = geoRestrictions;
             _resultValue.hosts = hosts;

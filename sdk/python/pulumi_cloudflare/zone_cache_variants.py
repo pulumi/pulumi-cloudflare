@@ -140,6 +140,13 @@ class ZoneCacheVariants(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zone Read`
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+        - `Zone Write`
+
         ## Example Usage
 
         ```python
@@ -215,6 +222,13 @@ class ZoneCacheVariants(pulumi.CustomResource):
                  args: ZoneCacheVariantsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zone Read`
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+        - `Zone Write`
+
         ## Example Usage
 
         ```python

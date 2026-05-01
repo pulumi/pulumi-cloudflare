@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -15,8 +20,14 @@ import * as utilities from "./utilities";
  *
  * const exampleStreams = cloudflare.getStreams({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     id: "ea95132c15732412d22c1476fa83f27a",
+ *     after: "2019-12-27T18:11:19.117Z",
+ *     before: "2019-12-27T18:11:19.117Z",
  *     creator: "creator-id_abcde12345",
  *     end: "2014-01-02T02:20:00Z",
+ *     limit: 1,
+ *     liveInputId: "live_input_id",
+ *     name: "name",
  *     search: "puppy.mp4",
  *     start: "2014-01-02T02:20:00Z",
  *     status: "inprogress",
@@ -25,15 +36,22 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getStreams(args: GetStreamsArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamsResult> {
+export function getStreams(args?: GetStreamsArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStreams:getStreams", {
         "accountId": args.accountId,
+        "after": args.after,
         "asc": args.asc,
+        "before": args.before,
         "creator": args.creator,
         "end": args.end,
+        "id": args.id,
         "includeCounts": args.includeCounts,
+        "limit": args.limit,
+        "liveInputId": args.liveInputId,
         "maxItems": args.maxItems,
+        "name": args.name,
         "search": args.search,
         "start": args.start,
         "status": args.status,
@@ -49,11 +67,19 @@ export interface GetStreamsArgs {
     /**
      * The account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
+    /**
+     * Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
+     */
+    after?: string;
     /**
      * Lists videos in ascending order of creation.
      */
     asc?: boolean;
+    /**
+     * Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
+     */
+    before?: string;
     /**
      * A user-defined identifier for the media creator.
      */
@@ -63,13 +89,29 @@ export interface GetStreamsArgs {
      */
     end?: string;
     /**
+     * Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+     */
+    id?: string;
+    /**
      * Includes the total number of videos associated with the submitted query parameters.
      */
     includeCounts?: boolean;
     /**
+     * Maximum number of videos to return (default 1000, max 1000).
+     */
+    limit?: number;
+    /**
+     * Filter by live input ID to find videos associated with a specific live stream.
+     */
+    liveInputId?: string;
+    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Filter by video name/UID(s). Can be a single name or a comma-separated list.
+     */
+    name?: string;
     /**
      * Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
      */
@@ -100,11 +142,19 @@ export interface GetStreamsResult {
     /**
      * The account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
+    /**
+     * Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
+     */
+    readonly after?: string;
     /**
      * Lists videos in ascending order of creation.
      */
     readonly asc: boolean;
+    /**
+     * Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
+     */
+    readonly before?: string;
     /**
      * A user-defined identifier for the media creator.
      */
@@ -114,17 +164,29 @@ export interface GetStreamsResult {
      */
     readonly end?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
      */
-    readonly id: string;
+    readonly id?: string;
     /**
      * Includes the total number of videos associated with the submitted query parameters.
      */
     readonly includeCounts: boolean;
     /**
+     * Maximum number of videos to return (default 1000, max 1000).
+     */
+    readonly limit?: number;
+    /**
+     * Filter by live input ID to find videos associated with a specific live stream.
+     */
+    readonly liveInputId?: string;
+    /**
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
+    /**
+     * Filter by video name/UID(s). Can be a single name or a comma-separated list.
+     */
+    readonly name?: string;
     /**
      * The items returned by the data source
      */
@@ -152,6 +214,11 @@ export interface GetStreamsResult {
     readonly videoName?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -160,8 +227,14 @@ export interface GetStreamsResult {
  *
  * const exampleStreams = cloudflare.getStreams({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     id: "ea95132c15732412d22c1476fa83f27a",
+ *     after: "2019-12-27T18:11:19.117Z",
+ *     before: "2019-12-27T18:11:19.117Z",
  *     creator: "creator-id_abcde12345",
  *     end: "2014-01-02T02:20:00Z",
+ *     limit: 1,
+ *     liveInputId: "live_input_id",
+ *     name: "name",
  *     search: "puppy.mp4",
  *     start: "2014-01-02T02:20:00Z",
  *     status: "inprogress",
@@ -170,15 +243,22 @@ export interface GetStreamsResult {
  * });
  * ```
  */
-export function getStreamsOutput(args: GetStreamsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamsResult> {
+export function getStreamsOutput(args?: GetStreamsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStreams:getStreams", {
         "accountId": args.accountId,
+        "after": args.after,
         "asc": args.asc,
+        "before": args.before,
         "creator": args.creator,
         "end": args.end,
+        "id": args.id,
         "includeCounts": args.includeCounts,
+        "limit": args.limit,
+        "liveInputId": args.liveInputId,
         "maxItems": args.maxItems,
+        "name": args.name,
         "search": args.search,
         "start": args.start,
         "status": args.status,
@@ -194,11 +274,19 @@ export interface GetStreamsOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
+    /**
+     * Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
+     */
+    after?: pulumi.Input<string>;
     /**
      * Lists videos in ascending order of creation.
      */
     asc?: pulumi.Input<boolean>;
+    /**
+     * Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
+     */
+    before?: pulumi.Input<string>;
     /**
      * A user-defined identifier for the media creator.
      */
@@ -208,13 +296,29 @@ export interface GetStreamsOutputArgs {
      */
     end?: pulumi.Input<string>;
     /**
+     * Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+     */
+    id?: pulumi.Input<string>;
+    /**
      * Includes the total number of videos associated with the submitted query parameters.
      */
     includeCounts?: pulumi.Input<boolean>;
     /**
+     * Maximum number of videos to return (default 1000, max 1000).
+     */
+    limit?: pulumi.Input<number>;
+    /**
+     * Filter by live input ID to find videos associated with a specific live stream.
+     */
+    liveInputId?: pulumi.Input<string>;
+    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
+    /**
+     * Filter by video name/UID(s). Can be a single name or a comma-separated list.
+     */
+    name?: pulumi.Input<string>;
     /**
      * Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
      */

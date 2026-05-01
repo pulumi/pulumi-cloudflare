@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZoneCacheVariantsResult {
@@ -36,7 +38,7 @@ public final class GetZoneCacheVariantsResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetZoneCacheVariantsResult() {}
     /**
@@ -71,8 +73,8 @@ public final class GetZoneCacheVariantsResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -88,7 +90,7 @@ public final class GetZoneCacheVariantsResult {
         private String id;
         private String modifiedOn;
         private GetZoneCacheVariantsValue value;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZoneCacheVariantsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -132,10 +134,8 @@ public final class GetZoneCacheVariantsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetZoneCacheVariantsResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

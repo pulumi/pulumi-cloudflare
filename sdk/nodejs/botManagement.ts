@@ -17,6 +17,7 @@ import * as utilities from "./utilities";
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     aiBotsProtection: "block",
  *     cfRobotsVariant: "policy_only",
+ *     contentBotsProtection: "disabled",
  *     crawlerProtection: "enabled",
  *     enableJs: true,
  *     fightMode: true,
@@ -76,6 +77,11 @@ export class BotManagement extends pulumi.CustomResource {
      * Available values: "off", "policyOnly".
      */
     declare public readonly cfRobotsVariant: pulumi.Output<string>;
+    /**
+     * Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+     * Available values: "block", "disabled".
+     */
+    declare public readonly contentBotsProtection: pulumi.Output<string>;
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".
@@ -152,6 +158,7 @@ export class BotManagement extends pulumi.CustomResource {
             resourceInputs["autoUpdateModel"] = state?.autoUpdateModel;
             resourceInputs["bmCookieEnabled"] = state?.bmCookieEnabled;
             resourceInputs["cfRobotsVariant"] = state?.cfRobotsVariant;
+            resourceInputs["contentBotsProtection"] = state?.contentBotsProtection;
             resourceInputs["crawlerProtection"] = state?.crawlerProtection;
             resourceInputs["enableJs"] = state?.enableJs;
             resourceInputs["fightMode"] = state?.fightMode;
@@ -174,6 +181,7 @@ export class BotManagement extends pulumi.CustomResource {
             resourceInputs["autoUpdateModel"] = args?.autoUpdateModel;
             resourceInputs["bmCookieEnabled"] = args?.bmCookieEnabled;
             resourceInputs["cfRobotsVariant"] = args?.cfRobotsVariant;
+            resourceInputs["contentBotsProtection"] = args?.contentBotsProtection;
             resourceInputs["crawlerProtection"] = args?.crawlerProtection;
             resourceInputs["enableJs"] = args?.enableJs;
             resourceInputs["fightMode"] = args?.fightMode;
@@ -215,6 +223,11 @@ export interface BotManagementState {
      * Available values: "off", "policyOnly".
      */
     cfRobotsVariant?: pulumi.Input<string>;
+    /**
+     * Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+     * Available values: "block", "disabled".
+     */
+    contentBotsProtection?: pulumi.Input<string>;
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".
@@ -297,6 +310,11 @@ export interface BotManagementArgs {
      * Available values: "off", "policyOnly".
      */
     cfRobotsVariant?: pulumi.Input<string>;
+    /**
+     * Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+     * Available values: "block", "disabled".
+     */
+    contentBotsProtection?: pulumi.Input<string>;
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".

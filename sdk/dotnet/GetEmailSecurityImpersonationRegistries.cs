@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetEmailSecurityImpersonationRegistries
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloud Email Security: Read`
+        /// - `Cloud Email Security: Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,10 +39,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetEmailSecurityImpersonationRegistriesResult> InvokeAsync(GetEmailSecurityImpersonationRegistriesArgs args, InvokeOptions? options = null)
+        public static Task<GetEmailSecurityImpersonationRegistriesResult> InvokeAsync(GetEmailSecurityImpersonationRegistriesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEmailSecurityImpersonationRegistriesResult>("cloudflare:index/getEmailSecurityImpersonationRegistries:getEmailSecurityImpersonationRegistries", args ?? new GetEmailSecurityImpersonationRegistriesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloud Email Security: Read`
+        /// - `Cloud Email Security: Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,10 +70,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetEmailSecurityImpersonationRegistriesResult> Invoke(GetEmailSecurityImpersonationRegistriesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetEmailSecurityImpersonationRegistriesResult> Invoke(GetEmailSecurityImpersonationRegistriesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEmailSecurityImpersonationRegistriesResult>("cloudflare:index/getEmailSecurityImpersonationRegistries:getEmailSecurityImpersonationRegistries", args ?? new GetEmailSecurityImpersonationRegistriesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloud Email Security: Read`
+        /// - `Cloud Email Security: Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -96,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// The sorting direction.
@@ -145,8 +160,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The sorting direction.
@@ -196,7 +211,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account Identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The sorting direction.
         /// Available values: "asc", "desc".
@@ -233,7 +248,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetEmailSecurityImpersonationRegistriesResult(
-            string accountId,
+            string? accountId,
 
             string? direction,
 

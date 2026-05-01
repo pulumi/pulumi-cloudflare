@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkersCronTriggerResult {
@@ -16,7 +18,7 @@ public final class GetWorkersCronTriggerResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Name of the script, used in URLs and route configuration.
      * 
@@ -34,8 +36,8 @@ public final class GetWorkersCronTriggerResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Name of the script, used in URLs and route configuration.
@@ -64,7 +66,7 @@ public final class GetWorkersCronTriggerResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String id;
         private List<GetWorkersCronTriggerSchedule> schedules;
         private String scriptName;
@@ -78,10 +80,8 @@ public final class GetWorkersCronTriggerResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetWorkersCronTriggerResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

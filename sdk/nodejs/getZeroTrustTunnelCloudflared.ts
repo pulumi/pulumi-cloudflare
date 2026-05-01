@@ -7,6 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: cloudflared Read`
+ * - `Cloudflare One Connector: cloudflared Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +28,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustTunnelCloudflared(args: GetZeroTrustTunnelCloudflaredArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredResult> {
+export function getZeroTrustTunnelCloudflared(args?: GetZeroTrustTunnelCloudflaredArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", {
         "accountId": args.accountId,
@@ -35,7 +45,7 @@ export interface GetZeroTrustTunnelCloudflaredArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetZeroTrustTunnelCloudflaredFilter;
     /**
      * UUID of the tunnel.
@@ -50,7 +60,7 @@ export interface GetZeroTrustTunnelCloudflaredResult {
     /**
      * Cloudflare account ID
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Cloudflare account ID
      */
@@ -117,6 +127,15 @@ export interface GetZeroTrustTunnelCloudflaredResult {
     readonly tunnelId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: cloudflared Read`
+ * - `Cloudflare One Connector: cloudflared Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -129,7 +148,8 @@ export interface GetZeroTrustTunnelCloudflaredResult {
  * });
  * ```
  */
-export function getZeroTrustTunnelCloudflaredOutput(args: GetZeroTrustTunnelCloudflaredOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredResult> {
+export function getZeroTrustTunnelCloudflaredOutput(args?: GetZeroTrustTunnelCloudflaredOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", {
         "accountId": args.accountId,
@@ -145,7 +165,7 @@ export interface GetZeroTrustTunnelCloudflaredOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetZeroTrustTunnelCloudflaredFilterArgs>;
     /**
      * UUID of the tunnel.

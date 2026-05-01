@@ -27,10 +27,13 @@ class GetAccountDnsSettingsResult:
     """
     A collection of values returned by getAccountDnsSettings.
     """
-    def __init__(__self__, account_id=None, id=None, zone_defaults=None):
+    def __init__(__self__, account_id=None, enforce_dns_only=None, id=None, zone_defaults=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if enforce_dns_only and not isinstance(enforce_dns_only, bool):
+            raise TypeError("Expected argument 'enforce_dns_only' to be a bool")
+        pulumi.set(__self__, "enforce_dns_only", enforce_dns_only)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -40,11 +43,19 @@ class GetAccountDnsSettingsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="enforceDnsOnly")
+    def enforce_dns_only(self) -> _builtins.bool:
+        """
+        When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+        """
+        return pulumi.get(self, "enforce_dns_only")
 
     @_builtins.property
     @pulumi.getter
@@ -67,6 +78,7 @@ class AwaitableGetAccountDnsSettingsResult(GetAccountDnsSettingsResult):
             yield self
         return GetAccountDnsSettingsResult(
             account_id=self.account_id,
+            enforce_dns_only=self.enforce_dns_only,
             id=self.id,
             zone_defaults=self.zone_defaults)
 
@@ -74,6 +86,11 @@ class AwaitableGetAccountDnsSettingsResult(GetAccountDnsSettingsResult):
 def get_account_dns_settings(account_id: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountDnsSettingsResult:
     """
+    Accepted Permissions
+
+    - `Account DNS Settings Read`
+    - `Account DNS Settings Write`
+
     ## Example Usage
 
     ```python
@@ -93,11 +110,17 @@ def get_account_dns_settings(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetAccountDnsSettingsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        enforce_dns_only=pulumi.get(__ret__, 'enforce_dns_only'),
         id=pulumi.get(__ret__, 'id'),
         zone_defaults=pulumi.get(__ret__, 'zone_defaults'))
-def get_account_dns_settings_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_dns_settings_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountDnsSettingsResult]:
     """
+    Accepted Permissions
+
+    - `Account DNS Settings Read`
+    - `Account DNS Settings Write`
+
     ## Example Usage
 
     ```python
@@ -116,5 +139,6 @@ def get_account_dns_settings_output(account_id: Optional[pulumi.Input[_builtins.
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAccountDnsSettings:getAccountDnsSettings', __args__, opts=opts, typ=GetAccountDnsSettingsResult)
     return __ret__.apply(lambda __response__: GetAccountDnsSettingsResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        enforce_dns_only=pulumi.get(__response__, 'enforce_dns_only'),
         id=pulumi.get(__response__, 'id'),
         zone_defaults=pulumi.get(__response__, 'zone_defaults')))

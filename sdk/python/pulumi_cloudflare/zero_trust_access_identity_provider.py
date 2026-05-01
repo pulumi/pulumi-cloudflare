@@ -243,6 +243,11 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Access: Organizations, Identity Providers, and Groups Read`
+        - `Access: Organizations, Identity Providers, and Groups Write`
+
         ## Example Usage
 
         ```python
@@ -299,6 +304,11 @@ class ZeroTrustAccessIdentityProvider(pulumi.CustomResource):
                  args: ZeroTrustAccessIdentityProviderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Access: Organizations, Identity Providers, and Groups Read`
+        - `Access: Organizations, Identity Providers, and Groups Write`
+
         ## Example Usage
 
         ```python

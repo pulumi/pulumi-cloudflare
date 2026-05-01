@@ -25,10 +25,10 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+        /// Indicates whether to disable MFA for this resource. This option is available at the application and policy level.
         /// </summary>
-        [Input("mfaBypass")]
-        public Input<bool>? MfaBypass { get; set; }
+        [Input("mfaDisabled")]
+        public Input<bool>? MfaDisabled { get; set; }
 
         /// <summary>
         /// Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.

@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Gateway`
+// - `Account API Gateway Read`
+// - `Domain API Gateway`
+// - `Domain API Gateway Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetSchemaValidationSettings(ctx, &cloudflare.LookupSchemaValidationSettingsArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +56,7 @@ func LookupSchemaValidationSettings(ctx *pulumi.Context, args *LookupSchemaValid
 // A collection of arguments for invoking getSchemaValidationSettings.
 type LookupSchemaValidationSettingsArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getSchemaValidationSettings.
@@ -60,7 +67,7 @@ type LookupSchemaValidationSettingsResult struct {
 	ValidationDefaultMitigationAction  string `pulumi:"validationDefaultMitigationAction"`
 	ValidationOverrideMitigationAction string `pulumi:"validationOverrideMitigationAction"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupSchemaValidationSettingsOutput(ctx *pulumi.Context, args LookupSchemaValidationSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupSchemaValidationSettingsResultOutput {
@@ -75,7 +82,7 @@ func LookupSchemaValidationSettingsOutput(ctx *pulumi.Context, args LookupSchema
 // A collection of arguments for invoking getSchemaValidationSettings.
 type LookupSchemaValidationSettingsOutputArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupSchemaValidationSettingsOutputArgs) ElementType() reflect.Type {
@@ -112,8 +119,8 @@ func (o LookupSchemaValidationSettingsResultOutput) ValidationOverrideMitigation
 }
 
 // Identifier.
-func (o LookupSchemaValidationSettingsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSchemaValidationSettingsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupSchemaValidationSettingsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSchemaValidationSettingsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -18,7 +18,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getRegistrarDomains(args: GetRegistrarDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrarDomainsResult> {
+export function getRegistrarDomains(args?: GetRegistrarDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrarDomainsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRegistrarDomains:getRegistrarDomains", {
         "accountId": args.accountId,
@@ -33,7 +34,7 @@ export interface GetRegistrarDomainsArgs {
     /**
      * Identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +48,7 @@ export interface GetRegistrarDomainsResult {
     /**
      * Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -73,7 +74,8 @@ export interface GetRegistrarDomainsResult {
  * });
  * ```
  */
-export function getRegistrarDomainsOutput(args: GetRegistrarDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistrarDomainsResult> {
+export function getRegistrarDomainsOutput(args?: GetRegistrarDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistrarDomainsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getRegistrarDomains:getRegistrarDomains", {
         "accountId": args.accountId,
@@ -88,7 +90,7 @@ export interface GetRegistrarDomainsOutputArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

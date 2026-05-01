@@ -3,6 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -137,6 +139,20 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
         return Optional.ofNullable(this.tools);
     }
 
+    @Import(name="updatedPrompts")
+    private @Nullable Output<List<ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs>> updatedPrompts;
+
+    public Optional<Output<List<ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs>>> updatedPrompts() {
+        return Optional.ofNullable(this.updatedPrompts);
+    }
+
+    @Import(name="updatedTools")
+    private @Nullable Output<List<ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs>> updatedTools;
+
+    public Optional<Output<List<ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs>>> updatedTools() {
+        return Optional.ofNullable(this.updatedTools);
+    }
+
     /**
      * server id
      * 
@@ -171,6 +187,8 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
         this.prompts = $.prompts;
         this.status = $.status;
         this.tools = $.tools;
+        this.updatedPrompts = $.updatedPrompts;
+        this.updatedTools = $.updatedTools;
         this.zeroTrustAccessAiControlsMcpServerId = $.zeroTrustAccessAiControlsMcpServerId;
     }
 
@@ -354,6 +372,32 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
 
         public Builder tools(Map<String,String>... tools) {
             return tools(List.of(tools));
+        }
+
+        public Builder updatedPrompts(@Nullable Output<List<ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs>> updatedPrompts) {
+            $.updatedPrompts = updatedPrompts;
+            return this;
+        }
+
+        public Builder updatedPrompts(List<ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs> updatedPrompts) {
+            return updatedPrompts(Output.of(updatedPrompts));
+        }
+
+        public Builder updatedPrompts(ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs... updatedPrompts) {
+            return updatedPrompts(List.of(updatedPrompts));
+        }
+
+        public Builder updatedTools(@Nullable Output<List<ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs>> updatedTools) {
+            $.updatedTools = updatedTools;
+            return this;
+        }
+
+        public Builder updatedTools(List<ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs> updatedTools) {
+            return updatedTools(Output.of(updatedTools));
+        }
+
+        public Builder updatedTools(ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs... updatedTools) {
+            return updatedTools(List.of(updatedTools));
         }
 
         /**

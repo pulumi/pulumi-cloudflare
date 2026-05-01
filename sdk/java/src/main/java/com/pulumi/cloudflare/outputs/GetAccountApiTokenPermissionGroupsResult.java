@@ -18,7 +18,7 @@ public final class GetAccountApiTokenPermissionGroupsResult {
      * @return Account identifier tag.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -43,8 +43,8 @@ public final class GetAccountApiTokenPermissionGroupsResult {
      * @return Account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -82,7 +82,7 @@ public final class GetAccountApiTokenPermissionGroupsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String id;
         private @Nullable String name;
         private List<GetAccountApiTokenPermissionGroupsPermissionGroup> permissionGroups;
@@ -98,10 +98,8 @@ public final class GetAccountApiTokenPermissionGroupsResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAccountApiTokenPermissionGroupsResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

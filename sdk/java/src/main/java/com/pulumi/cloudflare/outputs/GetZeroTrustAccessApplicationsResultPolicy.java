@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyA
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyConnectionRules;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyExclude;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyInclude;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyMfaConfig;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyRequire;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -60,6 +61,11 @@ public final class GetZeroTrustAccessApplicationsResultPolicy {
      * 
      */
     private Boolean isolationRequired;
+    /**
+     * @return Configures multi-factor authentication (MFA) settings for this policy.
+     * 
+     */
+    private GetZeroTrustAccessApplicationsResultPolicyMfaConfig mfaConfig;
     /**
      * @return The name of the Access policy.
      * 
@@ -154,6 +160,13 @@ public final class GetZeroTrustAccessApplicationsResultPolicy {
         return this.isolationRequired;
     }
     /**
+     * @return Configures multi-factor authentication (MFA) settings for this policy.
+     * 
+     */
+    public GetZeroTrustAccessApplicationsResultPolicyMfaConfig mfaConfig() {
+        return this.mfaConfig;
+    }
+    /**
      * @return The name of the Access policy.
      * 
      */
@@ -217,6 +230,7 @@ public final class GetZeroTrustAccessApplicationsResultPolicy {
         private String id;
         private List<GetZeroTrustAccessApplicationsResultPolicyInclude> includes;
         private Boolean isolationRequired;
+        private GetZeroTrustAccessApplicationsResultPolicyMfaConfig mfaConfig;
         private String name;
         private Integer precedence;
         private String purposeJustificationPrompt;
@@ -236,6 +250,7 @@ public final class GetZeroTrustAccessApplicationsResultPolicy {
     	      this.id = defaults.id;
     	      this.includes = defaults.includes;
     	      this.isolationRequired = defaults.isolationRequired;
+    	      this.mfaConfig = defaults.mfaConfig;
     	      this.name = defaults.name;
     	      this.precedence = defaults.precedence;
     	      this.purposeJustificationPrompt = defaults.purposeJustificationPrompt;
@@ -327,6 +342,14 @@ public final class GetZeroTrustAccessApplicationsResultPolicy {
             return this;
         }
         @CustomType.Setter
+        public Builder mfaConfig(GetZeroTrustAccessApplicationsResultPolicyMfaConfig mfaConfig) {
+            if (mfaConfig == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResultPolicy", "mfaConfig");
+            }
+            this.mfaConfig = mfaConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResultPolicy", "name");
@@ -396,6 +419,7 @@ public final class GetZeroTrustAccessApplicationsResultPolicy {
             _resultValue.id = id;
             _resultValue.includes = includes;
             _resultValue.isolationRequired = isolationRequired;
+            _resultValue.mfaConfig = mfaConfig;
             _resultValue.name = name;
             _resultValue.precedence = precedence;
             _resultValue.purposeJustificationPrompt = purposeJustificationPrompt;

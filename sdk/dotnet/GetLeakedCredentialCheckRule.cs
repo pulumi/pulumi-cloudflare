@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetLeakedCredentialCheckRule
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account WAF Read`
+        /// - `Account WAF Write`
+        /// - `Zone WAF Read`
+        /// - `Zone WAF Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +42,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLeakedCredentialCheckRuleResult>("cloudflare:index/getLeakedCredentialCheckRule:getLeakedCredentialCheckRule", args ?? new GetLeakedCredentialCheckRuleArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account WAF Read`
+        /// - `Account WAF Write`
+        /// - `Zone WAF Read`
+        /// - `Zone WAF Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +72,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetLeakedCredentialCheckRuleResult>("cloudflare:index/getLeakedCredentialCheckRule:getLeakedCredentialCheckRule", args ?? new GetLeakedCredentialCheckRuleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account WAF Read`
+        /// - `Account WAF Write`
+        /// - `Zone WAF Read`
+        /// - `Zone WAF Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +114,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetLeakedCredentialCheckRuleArgs()
         {
@@ -113,8 +134,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetLeakedCredentialCheckRuleInvokeArgs()
         {
@@ -145,7 +166,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetLeakedCredentialCheckRuleResult(
@@ -157,7 +178,7 @@ namespace Pulumi.Cloudflare
 
             string username,
 
-            string zoneId)
+            string? zoneId)
         {
             DetectionId = detectionId;
             Id = id;

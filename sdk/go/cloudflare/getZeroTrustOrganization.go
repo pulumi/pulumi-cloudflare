@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Organizations, Identity Providers, and Groups Read`
+// - `Access: Organizations, Identity Providers, and Groups Revoke`
+// - `Access: Organizations, Identity Providers, and Groups Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -77,10 +83,10 @@ type LookupZeroTrustOrganizationResult struct {
 	LoginDesign  GetZeroTrustOrganizationLoginDesign `pulumi:"loginDesign"`
 	// Configures multi-factor authentication (MFA) settings for an organization.
 	MfaConfig GetZeroTrustOrganizationMfaConfig `pulumi:"mfaConfig"`
-	// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-	MfaConfigurationAllowed bool `pulumi:"mfaConfigurationAllowed"`
 	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
 	MfaRequiredForAllApps bool `pulumi:"mfaRequiredForAllApps"`
+	// Configures SSH PIV key requirements for MFA using hardware security keys.
+	MfaSshPivKeyRequirements GetZeroTrustOrganizationMfaSshPivKeyRequirements `pulumi:"mfaSshPivKeyRequirements"`
 	// The name of your Zero Trust organization.
 	Name string `pulumi:"name"`
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -184,14 +190,16 @@ func (o LookupZeroTrustOrganizationResultOutput) MfaConfig() GetZeroTrustOrganiz
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationMfaConfig { return v.MfaConfig }).(GetZeroTrustOrganizationMfaConfigOutput)
 }
 
-// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-func (o LookupZeroTrustOrganizationResultOutput) MfaConfigurationAllowed() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.MfaConfigurationAllowed }).(pulumi.BoolOutput)
-}
-
 // Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
 func (o LookupZeroTrustOrganizationResultOutput) MfaRequiredForAllApps() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.MfaRequiredForAllApps }).(pulumi.BoolOutput)
+}
+
+// Configures SSH PIV key requirements for MFA using hardware security keys.
+func (o LookupZeroTrustOrganizationResultOutput) MfaSshPivKeyRequirements() GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput {
+	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationMfaSshPivKeyRequirements {
+		return v.MfaSshPivKeyRequirements
+	}).(GetZeroTrustOrganizationMfaSshPivKeyRequirementsOutput)
 }
 
 // The name of your Zero Trust organization.

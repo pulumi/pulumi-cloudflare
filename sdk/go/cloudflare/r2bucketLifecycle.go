@@ -76,7 +76,7 @@ type R2BucketLifecycle struct {
 	pulumi.CustomResourceState
 
 	// Account ID.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// Jurisdiction of the bucket
@@ -91,9 +91,6 @@ func NewR2BucketLifecycle(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.BucketName == nil {
 		return nil, errors.New("invalid value for required argument 'BucketName'")
 	}
@@ -145,7 +142,7 @@ func (R2BucketLifecycleState) ElementType() reflect.Type {
 
 type r2bucketLifecycleArgs struct {
 	// Account ID.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// Jurisdiction of the bucket
@@ -156,7 +153,7 @@ type r2bucketLifecycleArgs struct {
 // The set of arguments for constructing a R2BucketLifecycle resource.
 type R2BucketLifecycleArgs struct {
 	// Account ID.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Name of the bucket.
 	BucketName pulumi.StringInput
 	// Jurisdiction of the bucket
@@ -252,8 +249,8 @@ func (o R2BucketLifecycleOutput) ToR2BucketLifecycleOutputWithContext(ctx contex
 }
 
 // Account ID.
-func (o R2BucketLifecycleOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *R2BucketLifecycle) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o R2BucketLifecycleOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *R2BucketLifecycle) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Name of the bucket.

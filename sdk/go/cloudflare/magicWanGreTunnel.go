@@ -84,7 +84,7 @@ type MagicWanGreTunnel struct {
 	// The IP address assigned to the customer side of the GRE tunnel.
 	CustomerGreEndpoint pulumi.StringOutput `pulumi:"customerGreEndpoint"`
 	// An optional description of the GRE tunnel.
-	Description pulumi.StringPtrOutput             `pulumi:"description"`
+	Description pulumi.StringOutput                `pulumi:"description"`
 	HealthCheck MagicWanGreTunnelHealthCheckOutput `pulumi:"healthCheck"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress pulumi.StringOutput `pulumi:"interfaceAddress"`
@@ -386,8 +386,8 @@ func (o MagicWanGreTunnelOutput) CustomerGreEndpoint() pulumi.StringOutput {
 }
 
 // An optional description of the GRE tunnel.
-func (o MagicWanGreTunnelOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o MagicWanGreTunnelOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o MagicWanGreTunnelOutput) HealthCheck() MagicWanGreTunnelHealthCheckOutput {

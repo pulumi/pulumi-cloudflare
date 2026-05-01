@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare DEX Read`
+ * - `Cloudflare DEX Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Report`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -31,7 +38,7 @@ export function getZeroTrustDexRule(args: GetZeroTrustDexRuleArgs, opts?: pulumi
  * A collection of arguments for invoking getZeroTrustDexRule.
  */
 export interface GetZeroTrustDexRuleArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * API Resource UUID tag.
      */
@@ -42,7 +49,7 @@ export interface GetZeroTrustDexRuleArgs {
  * A collection of values returned by getZeroTrustDexRule.
  */
 export interface GetZeroTrustDexRuleResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly createdAt: string;
     readonly description: string;
     /**
@@ -59,6 +66,13 @@ export interface GetZeroTrustDexRuleResult {
     readonly updatedAt: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare DEX Read`
+ * - `Cloudflare DEX Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Report`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -83,7 +97,7 @@ export function getZeroTrustDexRuleOutput(args: GetZeroTrustDexRuleOutputArgs, o
  * A collection of arguments for invoking getZeroTrustDexRule.
  */
 export interface GetZeroTrustDexRuleOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * API Resource UUID tag.
      */

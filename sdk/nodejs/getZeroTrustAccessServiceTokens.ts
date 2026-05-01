@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Service Tokens Read`
+ * - `Access: Service Tokens Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -93,6 +98,11 @@ export interface GetZeroTrustAccessServiceTokensResult {
     readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Service Tokens Read`
+ * - `Access: Service Tokens Write`
+ *
  * ## Example Usage
  *
  * ```typescript

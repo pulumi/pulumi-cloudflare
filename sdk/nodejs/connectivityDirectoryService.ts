@@ -16,16 +16,18 @@ import * as utilities from "./utilities";
  * const exampleConnectivityDirectoryService = new cloudflare.ConnectivityDirectoryService("example_connectivity_directory_service", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     host: {
- *         hostname: "api.example.com",
- *         resolverNetwork: {
+ *         ipv4: "10.0.0.1",
+ *         network: {
  *             tunnelId: "0191dce4-9ab4-7fce-b660-8e5dec5172da",
- *             resolverIps: ["string"],
  *         },
  *     },
- *     name: "web-server",
+ *     name: "web-app",
  *     type: "http",
  *     httpPort: 8080,
  *     httpsPort: 8443,
+ *     tlsSettings: {
+ *         certVerificationMode: "verify_full",
+ *     },
  * });
  * ```
  *
@@ -66,15 +68,24 @@ export class ConnectivityDirectoryService extends pulumi.CustomResource {
     /**
      * Account identifier
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
+    /**
+     * Available values: "postgresql", "mysql".
+     */
+    declare public readonly appProtocol: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public readonly host: pulumi.Output<outputs.ConnectivityDirectoryServiceHost>;
     declare public readonly httpPort: pulumi.Output<number | undefined>;
     declare public readonly httpsPort: pulumi.Output<number | undefined>;
     declare public readonly name: pulumi.Output<string>;
     declare public /*out*/ readonly serviceId: pulumi.Output<string>;
+    declare public readonly tcpPort: pulumi.Output<number | undefined>;
     /**
-     * Available values: "http".
+     * TLS settings for a connectivity service.
+     */
+    declare public readonly tlsSettings: pulumi.Output<outputs.ConnectivityDirectoryServiceTlsSettings | undefined>;
+    /**
+     * Available values: "tcp", "http".
      */
     declare public readonly type: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
@@ -93,19 +104,19 @@ export class ConnectivityDirectoryService extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ConnectivityDirectoryServiceState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["appProtocol"] = state?.appProtocol;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["host"] = state?.host;
             resourceInputs["httpPort"] = state?.httpPort;
             resourceInputs["httpsPort"] = state?.httpsPort;
             resourceInputs["name"] = state?.name;
             resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["tcpPort"] = state?.tcpPort;
+            resourceInputs["tlsSettings"] = state?.tlsSettings;
             resourceInputs["type"] = state?.type;
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ConnectivityDirectoryServiceArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.host === undefined && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
@@ -116,10 +127,13 @@ export class ConnectivityDirectoryService extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["appProtocol"] = args?.appProtocol;
             resourceInputs["host"] = args?.host;
             resourceInputs["httpPort"] = args?.httpPort;
             resourceInputs["httpsPort"] = args?.httpsPort;
             resourceInputs["name"] = args?.name;
+            resourceInputs["tcpPort"] = args?.tcpPort;
+            resourceInputs["tlsSettings"] = args?.tlsSettings;
             resourceInputs["type"] = args?.type;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["serviceId"] = undefined /*out*/;
@@ -138,14 +152,23 @@ export interface ConnectivityDirectoryServiceState {
      * Account identifier
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Available values: "postgresql", "mysql".
+     */
+    appProtocol?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     host?: pulumi.Input<inputs.ConnectivityDirectoryServiceHost>;
     httpPort?: pulumi.Input<number>;
     httpsPort?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     serviceId?: pulumi.Input<string>;
+    tcpPort?: pulumi.Input<number>;
     /**
-     * Available values: "http".
+     * TLS settings for a connectivity service.
+     */
+    tlsSettings?: pulumi.Input<inputs.ConnectivityDirectoryServiceTlsSettings>;
+    /**
+     * Available values: "tcp", "http".
      */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
@@ -158,13 +181,22 @@ export interface ConnectivityDirectoryServiceArgs {
     /**
      * Account identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
+    /**
+     * Available values: "postgresql", "mysql".
+     */
+    appProtocol?: pulumi.Input<string>;
     host: pulumi.Input<inputs.ConnectivityDirectoryServiceHost>;
     httpPort?: pulumi.Input<number>;
     httpsPort?: pulumi.Input<number>;
     name: pulumi.Input<string>;
+    tcpPort?: pulumi.Input<number>;
     /**
-     * Available values: "http".
+     * TLS settings for a connectivity service.
+     */
+    tlsSettings?: pulumi.Input<inputs.ConnectivityDirectoryServiceTlsSettings>;
+    /**
+     * Available values: "tcp", "http".
      */
     type: pulumi.Input<string>;
 }

@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWeb3HostnameResult {
@@ -53,7 +55,7 @@ public final class GetWeb3HostnameResult {
      * @return Specify the identifier of the hostname.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetWeb3HostnameResult() {}
     public String createdOn() {
@@ -117,8 +119,8 @@ public final class GetWeb3HostnameResult {
      * @return Specify the identifier of the hostname.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -139,7 +141,7 @@ public final class GetWeb3HostnameResult {
         private String name;
         private String status;
         private String target;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetWeb3HostnameResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -228,10 +230,8 @@ public final class GetWeb3HostnameResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetWeb3HostnameResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

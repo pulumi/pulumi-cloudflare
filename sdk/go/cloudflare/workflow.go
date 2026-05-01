@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -31,6 +37,9 @@ import (
 //				WorkflowName: pulumi.String("x"),
 //				ClassName:    pulumi.String("x"),
 //				ScriptName:   pulumi.String("x"),
+//				Limits: &cloudflare.WorkflowLimitsArgs{
+//					Steps: pulumi.Int(1),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -49,11 +58,12 @@ import (
 type Workflow struct {
 	pulumi.CustomResourceState
 
-	AccountId         pulumi.StringOutput     `pulumi:"accountId"`
+	AccountId         pulumi.StringPtrOutput  `pulumi:"accountId"`
 	ClassName         pulumi.StringOutput     `pulumi:"className"`
 	CreatedOn         pulumi.StringOutput     `pulumi:"createdOn"`
 	Instances         WorkflowInstancesOutput `pulumi:"instances"`
 	IsDeleted         pulumi.Float64Output    `pulumi:"isDeleted"`
+	Limits            WorkflowLimitsPtrOutput `pulumi:"limits"`
 	ModifiedOn        pulumi.StringOutput     `pulumi:"modifiedOn"`
 	Name              pulumi.StringOutput     `pulumi:"name"`
 	ScriptName        pulumi.StringOutput     `pulumi:"scriptName"`
@@ -70,9 +80,6 @@ func NewWorkflow(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.ClassName == nil {
 		return nil, errors.New("invalid value for required argument 'ClassName'")
 	}
@@ -110,6 +117,7 @@ type workflowState struct {
 	CreatedOn         *string            `pulumi:"createdOn"`
 	Instances         *WorkflowInstances `pulumi:"instances"`
 	IsDeleted         *float64           `pulumi:"isDeleted"`
+	Limits            *WorkflowLimits    `pulumi:"limits"`
 	ModifiedOn        *string            `pulumi:"modifiedOn"`
 	Name              *string            `pulumi:"name"`
 	ScriptName        *string            `pulumi:"scriptName"`
@@ -125,6 +133,7 @@ type WorkflowState struct {
 	CreatedOn         pulumi.StringPtrInput
 	Instances         WorkflowInstancesPtrInput
 	IsDeleted         pulumi.Float64PtrInput
+	Limits            WorkflowLimitsPtrInput
 	ModifiedOn        pulumi.StringPtrInput
 	Name              pulumi.StringPtrInput
 	ScriptName        pulumi.StringPtrInput
@@ -139,16 +148,18 @@ func (WorkflowState) ElementType() reflect.Type {
 }
 
 type workflowArgs struct {
-	AccountId    string `pulumi:"accountId"`
-	ClassName    string `pulumi:"className"`
-	ScriptName   string `pulumi:"scriptName"`
-	WorkflowName string `pulumi:"workflowName"`
+	AccountId    *string         `pulumi:"accountId"`
+	ClassName    string          `pulumi:"className"`
+	Limits       *WorkflowLimits `pulumi:"limits"`
+	ScriptName   string          `pulumi:"scriptName"`
+	WorkflowName string          `pulumi:"workflowName"`
 }
 
 // The set of arguments for constructing a Workflow resource.
 type WorkflowArgs struct {
-	AccountId    pulumi.StringInput
+	AccountId    pulumi.StringPtrInput
 	ClassName    pulumi.StringInput
+	Limits       WorkflowLimitsPtrInput
 	ScriptName   pulumi.StringInput
 	WorkflowName pulumi.StringInput
 }
@@ -240,8 +251,8 @@ func (o WorkflowOutput) ToWorkflowOutputWithContext(ctx context.Context) Workflo
 	return o
 }
 
-func (o WorkflowOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o WorkflowOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o WorkflowOutput) ClassName() pulumi.StringOutput {
@@ -258,6 +269,10 @@ func (o WorkflowOutput) Instances() WorkflowInstancesOutput {
 
 func (o WorkflowOutput) IsDeleted() pulumi.Float64Output {
 	return o.ApplyT(func(v *Workflow) pulumi.Float64Output { return v.IsDeleted }).(pulumi.Float64Output)
+}
+
+func (o WorkflowOutput) Limits() WorkflowLimitsPtrOutput {
+	return o.ApplyT(func(v *Workflow) WorkflowLimitsPtrOutput { return v.Limits }).(WorkflowLimitsPtrOutput)
 }
 
 func (o WorkflowOutput) ModifiedOn() pulumi.StringOutput {

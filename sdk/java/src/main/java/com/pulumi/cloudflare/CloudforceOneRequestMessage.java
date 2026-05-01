@@ -16,6 +16,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Cloudforce One Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -65,14 +69,14 @@ public class CloudforceOneRequestMessage extends com.pulumi.resources.CustomReso
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Author of message.

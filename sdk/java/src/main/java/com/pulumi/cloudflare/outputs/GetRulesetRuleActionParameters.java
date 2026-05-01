@@ -104,6 +104,11 @@ public final class GetRulesetRuleActionParameters {
      */
     private String content;
     /**
+     * @return Whether to enable content conversion (e.g., HTML to Markdown).
+     * 
+     */
+    private Boolean contentConverter;
+    /**
      * @return The content type header to set with the error response.
      * Available values: &#34;application/json&#34;, &#34;text/html&#34;, &#34;text/plain&#34;, &#34;text/xml&#34;.
      * 
@@ -303,6 +308,11 @@ public final class GetRulesetRuleActionParameters {
      * 
      */
     private Integer readTimeout;
+    /**
+     * @return Whether to redirect verified AI training crawlers to canonical URLs.
+     * 
+     */
+    private Boolean redirectsForAiTraining;
     /**
      * @return The request body buffering mode to configure.
      * Available values: &#34;none&#34;, &#34;standard&#34;, &#34;full&#34;.
@@ -516,6 +526,13 @@ public final class GetRulesetRuleActionParameters {
      */
     public String content() {
         return this.content;
+    }
+    /**
+     * @return Whether to enable content conversion (e.g., HTML to Markdown).
+     * 
+     */
+    public Boolean contentConverter() {
+        return this.contentConverter;
     }
     /**
      * @return The content type header to set with the error response.
@@ -796,6 +813,13 @@ public final class GetRulesetRuleActionParameters {
         return this.readTimeout;
     }
     /**
+     * @return Whether to redirect verified AI training crawlers to canonical URLs.
+     * 
+     */
+    public Boolean redirectsForAiTraining() {
+        return this.redirectsForAiTraining;
+    }
+    /**
      * @return The request body buffering mode to configure.
      * Available values: &#34;none&#34;, &#34;standard&#34;, &#34;full&#34;.
      * 
@@ -1003,6 +1027,7 @@ public final class GetRulesetRuleActionParameters {
         private GetRulesetRuleActionParametersCacheKey cacheKey;
         private GetRulesetRuleActionParametersCacheReserve cacheReserve;
         private String content;
+        private Boolean contentConverter;
         private String contentType;
         private List<GetRulesetRuleActionParametersCookieField> cookieFields;
         private Boolean disableApps;
@@ -1042,6 +1067,7 @@ public final class GetRulesetRuleActionParameters {
         private GetRulesetRuleActionParametersPublic public_;
         private List<GetRulesetRuleActionParametersRawResponseField> rawResponseFields;
         private Integer readTimeout;
+        private Boolean redirectsForAiTraining;
         private String requestBodyBuffering;
         private List<GetRulesetRuleActionParametersRequestField> requestFields;
         private Boolean respectStrongEtags;
@@ -1082,6 +1108,7 @@ public final class GetRulesetRuleActionParameters {
     	      this.cacheKey = defaults.cacheKey;
     	      this.cacheReserve = defaults.cacheReserve;
     	      this.content = defaults.content;
+    	      this.contentConverter = defaults.contentConverter;
     	      this.contentType = defaults.contentType;
     	      this.cookieFields = defaults.cookieFields;
     	      this.disableApps = defaults.disableApps;
@@ -1121,6 +1148,7 @@ public final class GetRulesetRuleActionParameters {
     	      this.public_ = defaults.public_;
     	      this.rawResponseFields = defaults.rawResponseFields;
     	      this.readTimeout = defaults.readTimeout;
+    	      this.redirectsForAiTraining = defaults.redirectsForAiTraining;
     	      this.requestBodyBuffering = defaults.requestBodyBuffering;
     	      this.requestFields = defaults.requestFields;
     	      this.respectStrongEtags = defaults.respectStrongEtags;
@@ -1241,6 +1269,14 @@ public final class GetRulesetRuleActionParameters {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "content");
             }
             this.content = content;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder contentConverter(Boolean contentConverter) {
+            if (contentConverter == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "contentConverter");
+            }
+            this.contentConverter = contentConverter;
             return this;
         }
         @CustomType.Setter
@@ -1568,6 +1604,14 @@ public final class GetRulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder redirectsForAiTraining(Boolean redirectsForAiTraining) {
+            if (redirectsForAiTraining == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "redirectsForAiTraining");
+            }
+            this.redirectsForAiTraining = redirectsForAiTraining;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requestBodyBuffering(String requestBodyBuffering) {
             if (requestBodyBuffering == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "requestBodyBuffering");
@@ -1803,6 +1847,7 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.cacheKey = cacheKey;
             _resultValue.cacheReserve = cacheReserve;
             _resultValue.content = content;
+            _resultValue.contentConverter = contentConverter;
             _resultValue.contentType = contentType;
             _resultValue.cookieFields = cookieFields;
             _resultValue.disableApps = disableApps;
@@ -1842,6 +1887,7 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.public_ = public_;
             _resultValue.rawResponseFields = rawResponseFields;
             _resultValue.readTimeout = readTimeout;
+            _resultValue.redirectsForAiTraining = redirectsForAiTraining;
             _resultValue.requestBodyBuffering = requestBodyBuffering;
             _resultValue.requestFields = requestFields;
             _resultValue.respectStrongEtags = respectStrongEtags;

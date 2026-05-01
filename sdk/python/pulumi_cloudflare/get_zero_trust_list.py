@@ -65,7 +65,7 @@ class GetZeroTrustListResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -131,7 +131,7 @@ class GetZeroTrustListResult:
     def type(self) -> _builtins.str:
         """
         Specify the list type.
-        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
         """
         return pulumi.get(self, "type")
 
@@ -197,7 +197,7 @@ def get_zero_trust_list(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_zero_trust_list_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_list_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustListFilterArgs', 'GetZeroTrustListFilterArgsDict']]]] = None,
                                list_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustListResult]:

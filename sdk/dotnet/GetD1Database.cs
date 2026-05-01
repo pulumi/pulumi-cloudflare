@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetD1Database
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `D1 Read`
+        /// - `D1 Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetD1DatabaseResult> InvokeAsync(GetD1DatabaseArgs args, InvokeOptions? options = null)
+        public static Task<GetD1DatabaseResult> InvokeAsync(GetD1DatabaseArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetD1DatabaseResult>("cloudflare:index/getD1Database:getD1Database", args ?? new GetD1DatabaseArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `D1 Read`
+        /// - `D1 Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetD1DatabaseResult> Invoke(GetD1DatabaseInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetD1DatabaseResult> Invoke(GetD1DatabaseInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetD1DatabaseResult>("cloudflare:index/getD1Database:getD1Database", args ?? new GetD1DatabaseInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `D1 Read`
+        /// - `D1 Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// D1 database identifier (UUID).
@@ -110,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// D1 database identifier (UUID).
@@ -135,7 +150,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Specifies the timestamp the resource was created as an ISO8601 string.
         /// </summary>
@@ -154,6 +169,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+        /// Available values: "eu", "fedramp".
+        /// </summary>
+        public readonly string Jurisdiction;
+        /// <summary>
         /// D1 database name.
         /// </summary>
         public readonly string Name;
@@ -170,7 +190,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetD1DatabaseResult(
-            string accountId,
+            string? accountId,
 
             string createdAt,
 
@@ -181,6 +201,8 @@ namespace Pulumi.Cloudflare
             Outputs.GetD1DatabaseFilterResult? filter,
 
             string id,
+
+            string jurisdiction,
 
             string name,
 
@@ -198,6 +220,7 @@ namespace Pulumi.Cloudflare
             FileSize = fileSize;
             Filter = filter;
             Id = id;
+            Jurisdiction = jurisdiction;
             Name = name;
             NumTables = numTables;
             ReadReplication = readReplication;

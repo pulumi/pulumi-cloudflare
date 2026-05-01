@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `SCIM Provisioning`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getAccountMember(args: GetAccountMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountMemberResult> {
+export function getAccountMember(args?: GetAccountMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountMemberResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountMember:getAccountMember", {
         "accountId": args.accountId,
@@ -35,7 +42,7 @@ export interface GetAccountMemberArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetAccountMemberFilter;
     /**
      * Membership identifier tag.
@@ -50,7 +57,7 @@ export interface GetAccountMemberResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The contact email address of the user.
      */
@@ -83,6 +90,12 @@ export interface GetAccountMemberResult {
     readonly user: outputs.GetAccountMemberUser;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `SCIM Provisioning`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -95,7 +108,8 @@ export interface GetAccountMemberResult {
  * });
  * ```
  */
-export function getAccountMemberOutput(args: GetAccountMemberOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountMemberResult> {
+export function getAccountMemberOutput(args?: GetAccountMemberOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountMemberResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountMember:getAccountMember", {
         "accountId": args.accountId,
@@ -111,7 +125,7 @@ export interface GetAccountMemberOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetAccountMemberFilterArgs>;
     /**
      * Membership identifier tag.

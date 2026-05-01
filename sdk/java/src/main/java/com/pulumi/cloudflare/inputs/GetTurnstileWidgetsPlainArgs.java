@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -20,15 +19,15 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
      * Identifier
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -113,7 +112,7 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -153,9 +152,6 @@ public final class GetTurnstileWidgetsPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetTurnstileWidgetsPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetTurnstileWidgetsPlainArgs", "accountId");
-            }
             return $;
         }
     }

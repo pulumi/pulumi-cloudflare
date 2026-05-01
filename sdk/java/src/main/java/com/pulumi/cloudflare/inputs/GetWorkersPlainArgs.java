@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -20,15 +19,15 @@ public final class GetWorkersPlainArgs extends com.pulumi.resources.InvokeArgs {
      * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -46,11 +45,47 @@ public final class GetWorkersPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.maxItems);
     }
 
+    /**
+     * Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="order")
+    private @Nullable String order;
+
+    /**
+     * @return Sort direction.
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<String> order() {
+        return Optional.ofNullable(this.order);
+    }
+
+    /**
+     * Property to sort results by.
+     * Available values: &#34;deployed*on&#34;, &#34;updated*on&#34;, &#34;createdOn&#34;, &#34;name&#34;.
+     * 
+     */
+    @Import(name="orderBy")
+    private @Nullable String orderBy;
+
+    /**
+     * @return Property to sort results by.
+     * Available values: &#34;deployed*on&#34;, &#34;updated*on&#34;, &#34;createdOn&#34;, &#34;name&#34;.
+     * 
+     */
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
+
     private GetWorkersPlainArgs() {}
 
     private GetWorkersPlainArgs(GetWorkersPlainArgs $) {
         this.accountId = $.accountId;
         this.maxItems = $.maxItems;
+        this.order = $.order;
+        this.orderBy = $.orderBy;
     }
 
     public static Builder builder() {
@@ -77,7 +112,7 @@ public final class GetWorkersPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -93,10 +128,31 @@ public final class GetWorkersPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param order Sort direction.
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder order(@Nullable String order) {
+            $.order = order;
+            return this;
+        }
+
+        /**
+         * @param orderBy Property to sort results by.
+         * Available values: &#34;deployed*on&#34;, &#34;updated*on&#34;, &#34;createdOn&#34;, &#34;name&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(@Nullable String orderBy) {
+            $.orderBy = orderBy;
+            return this;
+        }
+
         public GetWorkersPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetWorkersPlainArgs", "accountId");
-            }
             return $;
         }
     }

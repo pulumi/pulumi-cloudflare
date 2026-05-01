@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  *     zeroTrustAccessAiControlsMcpPortalId: "my-mcp-portal",
  *     hostname: "exmaple.com",
  *     name: "My MCP Portal",
+ *     allowCodeMode: true,
  *     description: "This is my custom MCP Portal",
  *     secureWebGateway: false,
  *     servers: [{
@@ -26,11 +27,13 @@ import * as utilities from "./utilities";
  *         onBehalf: true,
  *         updatedPrompts: [{
  *             name: "name",
+ *             alias: "my-custom-alias",
  *             description: "description",
  *             enabled: true,
  *         }],
  *         updatedTools: [{
  *             name: "name",
+ *             alias: "my-custom-alias",
  *             description: "description",
  *             enabled: true,
  *         }],
@@ -72,7 +75,11 @@ export class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustAccessAiControlsMcpPortal.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
+    /**
+     * Allow remote code execution in Dynamic Workers (beta)
+     */
+    declare public readonly allowCodeMode: pulumi.Output<boolean>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -83,7 +90,7 @@ export class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
     /**
      * Route outbound MCP traffic through Zero Trust Secure Web Gateway
      */
-    declare public readonly secureWebGateway: pulumi.Output<boolean | undefined>;
+    declare public readonly secureWebGateway: pulumi.Output<boolean>;
     declare public readonly servers: pulumi.Output<outputs.ZeroTrustAccessAiControlsMcpPortalServer[]>;
     /**
      * portal id
@@ -104,6 +111,7 @@ export class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustAccessAiControlsMcpPortalState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["allowCodeMode"] = state?.allowCodeMode;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["createdBy"] = state?.createdBy;
             resourceInputs["description"] = state?.description;
@@ -116,9 +124,6 @@ export class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
             resourceInputs["zeroTrustAccessAiControlsMcpPortalId"] = state?.zeroTrustAccessAiControlsMcpPortalId;
         } else {
             const args = argsOrState as ZeroTrustAccessAiControlsMcpPortalArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
             }
@@ -129,6 +134,7 @@ export class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zeroTrustAccessAiControlsMcpPortalId'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["allowCodeMode"] = args?.allowCodeMode;
             resourceInputs["description"] = args?.description;
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["name"] = args?.name;
@@ -150,6 +156,10 @@ export class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
  */
 export interface ZeroTrustAccessAiControlsMcpPortalState {
     accountId?: pulumi.Input<string>;
+    /**
+     * Allow remote code execution in Dynamic Workers (beta)
+     */
+    allowCodeMode?: pulumi.Input<boolean>;
     createdAt?: pulumi.Input<string>;
     createdBy?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
@@ -172,7 +182,11 @@ export interface ZeroTrustAccessAiControlsMcpPortalState {
  * The set of arguments for constructing a ZeroTrustAccessAiControlsMcpPortal resource.
  */
 export interface ZeroTrustAccessAiControlsMcpPortalArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
+    /**
+     * Allow remote code execution in Dynamic Workers (beta)
+     */
+    allowCodeMode?: pulumi.Input<boolean>;
     description?: pulumi.Input<string>;
     hostname: pulumi.Input<string>;
     name: pulumi.Input<string>;

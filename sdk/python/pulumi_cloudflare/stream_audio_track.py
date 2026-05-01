@@ -13,46 +13,37 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['StreamAudioTrackArgs', 'StreamAudioTrack']
 
 @pulumi.input_type
 class StreamAudioTrackArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  identifier: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  audio_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  default: Optional[pulumi.Input[_builtins.bool]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamAudioTrack resource.
 
-        :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
+        :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] audio_identifier: The unique identifier for an additional audio track.
         :param pulumi.Input[_builtins.bool] default: Denotes whether the audio track will be played by default in a player.
         :param pulumi.Input[_builtins.str] label: A string to uniquely identify the track amongst other audio track labels for the specified video.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "identifier", identifier)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if audio_identifier is not None:
             pulumi.set(__self__, "audio_identifier", audio_identifier)
         if default is not None:
             pulumi.set(__self__, "default", default)
         if label is not None:
             pulumi.set(__self__, "label", label)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The account identifier tag.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -65,6 +56,18 @@ class StreamAudioTrackArgs:
     @identifier.setter
     def identifier(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The account identifier tag.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="audioIdentifier")
@@ -108,6 +111,7 @@ class _StreamAudioTrackState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  audio_identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 audios: Optional[pulumi.Input[Sequence[pulumi.Input['StreamAudioTrackAudioArgs']]]] = None,
                  default: Optional[pulumi.Input[_builtins.bool]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
@@ -118,6 +122,7 @@ class _StreamAudioTrackState:
 
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] audio_identifier: The unique identifier for an additional audio track.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamAudioTrackAudioArgs']]] audios: Array of audio tracks for the video.
         :param pulumi.Input[_builtins.bool] default: Denotes whether the audio track will be played by default in a player.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.str] label: A string to uniquely identify the track amongst other audio track labels for the specified video.
@@ -129,6 +134,8 @@ class _StreamAudioTrackState:
             pulumi.set(__self__, "account_id", account_id)
         if audio_identifier is not None:
             pulumi.set(__self__, "audio_identifier", audio_identifier)
+        if audios is not None:
+            pulumi.set(__self__, "audios", audios)
         if default is not None:
             pulumi.set(__self__, "default", default)
         if identifier is not None:
@@ -163,6 +170,18 @@ class _StreamAudioTrackState:
     @audio_identifier.setter
     def audio_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "audio_identifier", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def audios(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamAudioTrackAudioArgs']]]]:
+        """
+        Array of audio tracks for the video.
+        """
+        return pulumi.get(self, "audios")
+
+    @audios.setter
+    def audios(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamAudioTrackAudioArgs']]]]):
+        pulumi.set(self, "audios", value)
 
     @_builtins.property
     @pulumi.getter
@@ -239,6 +258,11 @@ class StreamAudioTrack(pulumi.CustomResource):
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Stream Read`
+        - `Stream Write`
+
         ## Example Usage
 
         ```python
@@ -273,6 +297,11 @@ class StreamAudioTrack(pulumi.CustomResource):
                  args: StreamAudioTrackArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Stream Read`
+        - `Stream Write`
+
         ## Example Usage
 
         ```python
@@ -321,8 +350,6 @@ class StreamAudioTrack(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StreamAudioTrackArgs.__new__(StreamAudioTrackArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["audio_identifier"] = audio_identifier
             __props__.__dict__["default"] = default
@@ -330,6 +357,7 @@ class StreamAudioTrack(pulumi.CustomResource):
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["label"] = label
+            __props__.__dict__["audios"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["uid"] = None
         super(StreamAudioTrack, __self__).__init__(
@@ -344,6 +372,7 @@ class StreamAudioTrack(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             audio_identifier: Optional[pulumi.Input[_builtins.str]] = None,
+            audios: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StreamAudioTrackAudioArgs', 'StreamAudioTrackAudioArgsDict']]]]] = None,
             default: Optional[pulumi.Input[_builtins.bool]] = None,
             identifier: Optional[pulumi.Input[_builtins.str]] = None,
             label: Optional[pulumi.Input[_builtins.str]] = None,
@@ -358,6 +387,7 @@ class StreamAudioTrack(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[_builtins.str] audio_identifier: The unique identifier for an additional audio track.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StreamAudioTrackAudioArgs', 'StreamAudioTrackAudioArgsDict']]]] audios: Array of audio tracks for the video.
         :param pulumi.Input[_builtins.bool] default: Denotes whether the audio track will be played by default in a player.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.str] label: A string to uniquely identify the track amongst other audio track labels for the specified video.
@@ -371,6 +401,7 @@ class StreamAudioTrack(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["audio_identifier"] = audio_identifier
+        __props__.__dict__["audios"] = audios
         __props__.__dict__["default"] = default
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["label"] = label
@@ -380,7 +411,7 @@ class StreamAudioTrack(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The account identifier tag.
         """
@@ -393,6 +424,14 @@ class StreamAudioTrack(pulumi.CustomResource):
         The unique identifier for an additional audio track.
         """
         return pulumi.get(self, "audio_identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def audios(self) -> pulumi.Output[Sequence['outputs.StreamAudioTrackAudio']]:
+        """
+        Array of audio tracks for the video.
+        """
+        return pulumi.get(self, "audios")
 
     @_builtins.property
     @pulumi.getter

@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getContentScanning(args: GetContentScanningArgs, opts?: pulumi.InvokeOptions): Promise<GetContentScanningResult> {
+export function getContentScanning(args?: GetContentScanningArgs, opts?: pulumi.InvokeOptions): Promise<GetContentScanningResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getContentScanning:getContentScanning", {
         "zoneId": args.zoneId,
@@ -30,7 +38,7 @@ export interface GetContentScanningArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -52,9 +60,16 @@ export interface GetContentScanningResult {
     /**
      * Defines an identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -66,7 +81,8 @@ export interface GetContentScanningResult {
  * });
  * ```
  */
-export function getContentScanningOutput(args: GetContentScanningOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContentScanningResult> {
+export function getContentScanningOutput(args?: GetContentScanningOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContentScanningResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getContentScanning:getContentScanning", {
         "zoneId": args.zoneId,
@@ -80,5 +96,5 @@ export interface GetContentScanningOutputArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

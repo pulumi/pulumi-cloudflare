@@ -23,7 +23,6 @@ class HealthcheckArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str],
                  check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  consecutive_fails: Optional[pulumi.Input[_builtins.int]] = None,
                  consecutive_successes: Optional[pulumi.Input[_builtins.int]] = None,
@@ -34,13 +33,13 @@ class HealthcheckArgs:
                  suspended: Optional[pulumi.Input[_builtins.bool]] = None,
                  tcp_config: Optional[pulumi.Input['HealthcheckTcpConfigArgs']] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Healthcheck resource.
 
         :param pulumi.Input[_builtins.str] address: The hostname or IP address of the origin server to run health checks on.
         :param pulumi.Input[_builtins.str] name: A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] check_regions: A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
         :param pulumi.Input[_builtins.int] consecutive_fails: The number of consecutive fails required from a health check before changing the health to unhealthy.
         :param pulumi.Input[_builtins.int] consecutive_successes: The number of consecutive successes required from a health check before changing the health to healthy.
@@ -52,10 +51,10 @@ class HealthcheckArgs:
         :param pulumi.Input['HealthcheckTcpConfigArgs'] tcp_config: Parameters specific to TCP health check.
         :param pulumi.Input[_builtins.int] timeout: The timeout (in seconds) before marking the health check as failed.
         :param pulumi.Input[_builtins.str] type: The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "zone_id", zone_id)
         if check_regions is not None:
             pulumi.set(__self__, "check_regions", check_regions)
         if consecutive_fails is not None:
@@ -78,6 +77,8 @@ class HealthcheckArgs:
             pulumi.set(__self__, "timeout", timeout)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -102,18 +103,6 @@ class HealthcheckArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="checkRegions")
@@ -246,6 +235,18 @@ class HealthcheckArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -561,6 +562,11 @@ class Healthcheck(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Health Checks Read`
+        - `Health Checks Write`
+
         ## Example Usage
 
         ```python
@@ -636,6 +642,11 @@ class Healthcheck(pulumi.CustomResource):
                  args: HealthcheckArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Health Checks Read`
+        - `Health Checks Write`
+
         ## Example Usage
 
         ```python
@@ -742,8 +753,6 @@ class Healthcheck(pulumi.CustomResource):
             __props__.__dict__["tcp_config"] = tcp_config
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["type"] = type
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_on"] = None
             __props__.__dict__["failure_reason"] = None
@@ -865,7 +874,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def description(self) -> pulumi.Output[_builtins.str]:
         """
         A human-readable description of the health check.
         """
@@ -959,7 +968,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier
         """

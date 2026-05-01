@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AiBotsProtection = "block",
     ///         CfRobotsVariant = "policy_only",
+    ///         ContentBotsProtection = "disabled",
     ///         CrawlerProtection = "enabled",
     ///         EnableJs = true,
     ///         FightMode = true,
@@ -68,6 +69,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("cfRobotsVariant")]
         public Output<string> CfRobotsVariant { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+        /// Available values: "block", "disabled".
+        /// </summary>
+        [Output("contentBotsProtection")]
+        public Output<string> ContentBotsProtection { get; private set; } = null!;
 
         /// <summary>
         /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
@@ -226,6 +234,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? CfRobotsVariant { get; set; }
 
         /// <summary>
+        /// Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+        /// Available values: "block", "disabled".
+        /// </summary>
+        [Input("contentBotsProtection")]
+        public Input<string>? ContentBotsProtection { get; set; }
+
+        /// <summary>
         /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
         /// Available values: "enabled", "disabled".
         /// </summary>
@@ -330,6 +345,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("cfRobotsVariant")]
         public Input<string>? CfRobotsVariant { get; set; }
+
+        /// <summary>
+        /// Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+        /// Available values: "block", "disabled".
+        /// </summary>
+        [Input("contentBotsProtection")]
+        public Input<string>? ContentBotsProtection { get; set; }
 
         /// <summary>
         /// Enable rule to punish AI Scrapers and Crawlers via a link maze.

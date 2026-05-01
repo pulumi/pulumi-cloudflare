@@ -12,11 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AiSearchInstanceSourceParamsWebCrawlerGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("crawlOptions")]
+        public Input<Inputs.AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsGetArgs>? CrawlOptions { get; set; }
+
         [Input("parseOptions")]
         public Input<Inputs.AiSearchInstanceSourceParamsWebCrawlerParseOptionsGetArgs>? ParseOptions { get; set; }
 
         /// <summary>
-        /// Available values: "sitemap", "feed-rss".
+        /// Available values: "sitemap", "feed-rss", "crawl".
         /// </summary>
         [Input("parseType")]
         public Input<string>? ParseType { get; set; }

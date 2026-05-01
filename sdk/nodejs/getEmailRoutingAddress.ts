@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Email Routing Addresses Read`
+ * - `Email Routing Addresses Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getEmailRoutingAddress(args: GetEmailRoutingAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingAddressResult> {
+export function getEmailRoutingAddress(args?: GetEmailRoutingAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingAddressResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailRoutingAddress:getEmailRoutingAddress", {
         "accountId": args.accountId,
@@ -35,7 +41,7 @@ export interface GetEmailRoutingAddressArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Destination address identifier.
      */
@@ -50,7 +56,7 @@ export interface GetEmailRoutingAddressResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The date and time the destination address has been created.
      */
@@ -84,6 +90,11 @@ export interface GetEmailRoutingAddressResult {
     readonly verified: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Email Routing Addresses Read`
+ * - `Email Routing Addresses Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -96,7 +107,8 @@ export interface GetEmailRoutingAddressResult {
  * });
  * ```
  */
-export function getEmailRoutingAddressOutput(args: GetEmailRoutingAddressOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingAddressResult> {
+export function getEmailRoutingAddressOutput(args?: GetEmailRoutingAddressOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingAddressResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailRoutingAddress:getEmailRoutingAddress", {
         "accountId": args.accountId,
@@ -112,7 +124,7 @@ export interface GetEmailRoutingAddressOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Destination address identifier.
      */

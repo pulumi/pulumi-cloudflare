@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetDnsZoneTransfersPeer
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneTransfersPeerResult>("cloudflare:index/getDnsZoneTransfersPeer:getDnsZoneTransfersPeer", args ?? new GetDnsZoneTransfersPeerArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetDnsZoneTransfersPeerResult>("cloudflare:index/getDnsZoneTransfersPeer:getDnsZoneTransfersPeer", args ?? new GetDnsZoneTransfersPeerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetDnsZoneTransfersPeerArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("peerId", required: true)]
         public string PeerId { get; set; } = null!;
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetDnsZoneTransfersPeerInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("peerId", required: true)]
         public Input<string> PeerId { get; set; } = null!;
@@ -114,7 +129,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetDnsZoneTransfersPeerResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The ID of this resource.
         /// </summary>
@@ -143,7 +158,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetDnsZoneTransfersPeerResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

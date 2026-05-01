@@ -70,10 +70,15 @@ public final class GetDnsRecordResult {
      */
     private String name;
     /**
-     * @return Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+     * @return Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      * 
      */
     private Double priority;
+    /**
+     * @return Enables private network routing to the origin.
+     * 
+     */
+    private Boolean privateRouting;
     /**
      * @return Whether the record can be proxied by Cloudflare or not.
      * 
@@ -114,7 +119,7 @@ public final class GetDnsRecordResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetDnsRecordResult() {}
     /**
@@ -191,11 +196,18 @@ public final class GetDnsRecordResult {
         return this.name;
     }
     /**
-     * @return Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+     * @return Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      * 
      */
     public Double priority() {
         return this.priority;
+    }
+    /**
+     * @return Enables private network routing to the origin.
+     * 
+     */
+    public Boolean privateRouting() {
+        return this.privateRouting;
     }
     /**
      * @return Whether the record can be proxied by Cloudflare or not.
@@ -251,8 +263,8 @@ public final class GetDnsRecordResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -276,6 +288,7 @@ public final class GetDnsRecordResult {
         private String modifiedOn;
         private String name;
         private Double priority;
+        private Boolean privateRouting;
         private Boolean proxiable;
         private Boolean proxied;
         private GetDnsRecordSettings settings;
@@ -283,7 +296,7 @@ public final class GetDnsRecordResult {
         private String tagsModifiedOn;
         private Double ttl;
         private String type;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetDnsRecordResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -299,6 +312,7 @@ public final class GetDnsRecordResult {
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.name = defaults.name;
     	      this.priority = defaults.priority;
+    	      this.privateRouting = defaults.privateRouting;
     	      this.proxiable = defaults.proxiable;
     	      this.proxied = defaults.proxied;
     	      this.settings = defaults.settings;
@@ -402,6 +416,14 @@ public final class GetDnsRecordResult {
             return this;
         }
         @CustomType.Setter
+        public Builder privateRouting(Boolean privateRouting) {
+            if (privateRouting == null) {
+              throw new MissingRequiredPropertyException("GetDnsRecordResult", "privateRouting");
+            }
+            this.privateRouting = privateRouting;
+            return this;
+        }
+        @CustomType.Setter
         public Builder proxiable(Boolean proxiable) {
             if (proxiable == null) {
               throw new MissingRequiredPropertyException("GetDnsRecordResult", "proxiable");
@@ -461,10 +483,8 @@ public final class GetDnsRecordResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetDnsRecordResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }
@@ -482,6 +502,7 @@ public final class GetDnsRecordResult {
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.name = name;
             _resultValue.priority = priority;
+            _resultValue.privateRouting = privateRouting;
             _resultValue.proxiable = proxiable;
             _resultValue.proxied = proxied;
             _resultValue.settings = settings;

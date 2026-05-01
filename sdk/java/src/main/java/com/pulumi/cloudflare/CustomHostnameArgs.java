@@ -82,30 +82,30 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
      * SSL properties used when creating the custom hostname.
      * 
      */
-    @Import(name="ssl", required=true)
-    private Output<CustomHostnameSslArgs> ssl;
+    @Import(name="ssl")
+    private @Nullable Output<CustomHostnameSslArgs> ssl;
 
     /**
      * @return SSL properties used when creating the custom hostname.
      * 
      */
-    public Output<CustomHostnameSslArgs> ssl() {
-        return this.ssl;
+    public Optional<Output<CustomHostnameSslArgs>> ssl() {
+        return Optional.ofNullable(this.ssl);
     }
 
     /**
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private CustomHostnameArgs() {}
@@ -227,7 +227,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder ssl(Output<CustomHostnameSslArgs> ssl) {
+        public Builder ssl(@Nullable Output<CustomHostnameSslArgs> ssl) {
             $.ssl = ssl;
             return this;
         }
@@ -248,7 +248,7 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -266,12 +266,6 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         public CustomHostnameArgs build() {
             if ($.hostname == null) {
                 throw new MissingRequiredPropertyException("CustomHostnameArgs", "hostname");
-            }
-            if ($.ssl == null) {
-                throw new MissingRequiredPropertyException("CustomHostnameArgs", "ssl");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("CustomHostnameArgs", "zoneId");
             }
             return $;
         }

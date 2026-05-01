@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -52,15 +51,15 @@ public final class GetEmailRoutingRulesArgs extends com.pulumi.resources.InvokeA
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetEmailRoutingRulesArgs() {}
@@ -137,7 +136,7 @@ public final class GetEmailRoutingRulesArgs extends com.pulumi.resources.InvokeA
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -153,9 +152,6 @@ public final class GetEmailRoutingRulesArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetEmailRoutingRulesArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetEmailRoutingRulesArgs", "zoneId");
-            }
             return $;
         }
     }

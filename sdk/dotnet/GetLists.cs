@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetLists
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Filter Lists Edit`
+        /// - `Account Filter Lists Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetListsResult> InvokeAsync(GetListsArgs args, InvokeOptions? options = null)
+        public static Task<GetListsResult> InvokeAsync(GetListsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetListsResult>("cloudflare:index/getLists:getLists", args ?? new GetListsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Filter Lists Edit`
+        /// - `Account Filter Lists Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetListsResult> Invoke(GetListsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetListsResult> Invoke(GetListsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetListsResult>("cloudflare:index/getLists:getLists", args ?? new GetListsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Filter Lists Edit`
+        /// - `Account Filter Lists Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Account ID for this resource.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -104,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Account ID for this resource.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -126,7 +141,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Account ID for this resource.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -142,7 +157,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetListsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

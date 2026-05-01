@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: WARP Read`
+ * - `Cloudflare One Connector: WARP Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustTunnelWarpConnector(args: GetZeroTrustTunnelWarpConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelWarpConnectorResult> {
+export function getZeroTrustTunnelWarpConnector(args?: GetZeroTrustTunnelWarpConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelWarpConnectorResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelWarpConnector:getZeroTrustTunnelWarpConnector", {
         "accountId": args.accountId,
@@ -35,7 +43,7 @@ export interface GetZeroTrustTunnelWarpConnectorArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetZeroTrustTunnelWarpConnectorFilter;
     /**
      * UUID of the tunnel.
@@ -50,7 +58,7 @@ export interface GetZeroTrustTunnelWarpConnectorResult {
     /**
      * Cloudflare account ID
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Cloudflare account ID
      */
@@ -106,6 +114,13 @@ export interface GetZeroTrustTunnelWarpConnectorResult {
     readonly tunnelId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: WARP Read`
+ * - `Cloudflare One Connector: WARP Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -118,7 +133,8 @@ export interface GetZeroTrustTunnelWarpConnectorResult {
  * });
  * ```
  */
-export function getZeroTrustTunnelWarpConnectorOutput(args: GetZeroTrustTunnelWarpConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelWarpConnectorResult> {
+export function getZeroTrustTunnelWarpConnectorOutput(args?: GetZeroTrustTunnelWarpConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelWarpConnectorResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelWarpConnector:getZeroTrustTunnelWarpConnector", {
         "accountId": args.accountId,
@@ -134,7 +150,7 @@ export interface GetZeroTrustTunnelWarpConnectorOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetZeroTrustTunnelWarpConnectorFilterArgs>;
     /**
      * UUID of the tunnel.

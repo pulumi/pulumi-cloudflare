@@ -12,6 +12,10 @@ namespace Pulumi.Cloudflare
     public static class GetLogpushDatasetField
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Logs Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +40,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogpushDatasetFieldResult>("cloudflare:index/getLogpushDatasetField:getLogpushDatasetField", args ?? new GetLogpushDatasetFieldArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Logs Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +68,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetLogpushDatasetFieldResult>("cloudflare:index/getLogpushDatasetField:getLogpushDatasetField", args ?? new GetLogpushDatasetFieldInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Logs Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -95,7 +107,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-        /// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+        /// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         /// </summary>
         [Input("datasetId")]
         public string? DatasetId { get; set; }
@@ -122,7 +134,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-        /// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+        /// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }
@@ -149,7 +161,7 @@ namespace Pulumi.Cloudflare
         public readonly string? AccountId;
         /// <summary>
         /// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-        /// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+        /// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         /// </summary>
         public readonly string DatasetId;
         /// <summary>

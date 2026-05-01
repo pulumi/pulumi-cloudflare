@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS View Read`
+ * - `DNS View Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -55,7 +60,7 @@ export class AccountDnsSettingsInternalView extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * When the view was created.
      */
@@ -93,9 +98,6 @@ export class AccountDnsSettingsInternalView extends pulumi.CustomResource {
             resourceInputs["zones"] = state?.zones;
         } else {
             const args = argsOrState as AccountDnsSettingsInternalViewArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -146,7 +148,7 @@ export interface AccountDnsSettingsInternalViewArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The name of the view.
      */

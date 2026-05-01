@@ -118,6 +118,11 @@ def get_organization(filter: Optional[Union['GetOrganizationFilterArgs', 'GetOrg
                      organization_id: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationResult:
     """
+    Accepted Permissions
+
+    - `User Details Read`
+    - `User Details Write`
+
     ## Example Usage
 
     ```python
@@ -146,6 +151,11 @@ def get_organization_output(filter: Optional[pulumi.Input[Optional[Union['GetOrg
                             organization_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationResult]:
     """
+    Accepted Permissions
+
+    - `User Details Read`
+    - `User Details Write`
+
     ## Example Usage
 
     ```python

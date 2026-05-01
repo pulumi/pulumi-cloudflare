@@ -12,6 +12,10 @@ namespace Pulumi.Cloudflare
     public static class GetCloudforceOneRequestMessage
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudforce One Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -41,6 +45,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudforceOneRequestMessageResult>("cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage", args ?? new GetCloudforceOneRequestMessageArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudforce One Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -70,6 +78,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudforceOneRequestMessageResult>("cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage", args ?? new GetCloudforceOneRequestMessageInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudforce One Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -105,8 +117,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Retrieve mes  ges created after this time.
@@ -162,8 +174,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Retrieve mes  ges created after this time.
@@ -221,7 +233,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Retrieve mes  ges created after this time.
         /// </summary>
@@ -278,7 +290,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetCloudforceOneRequestMessageResult(
-            string accountId,
+            string? accountId,
 
             string? after,
 

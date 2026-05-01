@@ -33,7 +33,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
      */
     private Boolean dk;
     /**
-     * @return Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == &#34;v2&#34;.
+     * @return Configure download behavior. When set to remote*only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
@@ -78,6 +78,11 @@ public final class GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
      * 
      */
     private String version;
+    /**
+     * @return Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.
+     * 
+     */
+    private String wmId;
 
     private GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls() {}
     /**
@@ -110,7 +115,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
         return this.dk;
     }
     /**
-     * @return Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == &#34;v2&#34;.
+     * @return Configure download behavior. When set to remote*only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
@@ -171,6 +176,13 @@ public final class GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     public String version() {
         return this.version;
     }
+    /**
+     * @return Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.
+     * 
+     */
+    public String wmId() {
+        return this.wmId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -193,6 +205,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
         private String printing;
         private String upload;
         private String version;
+        private String wmId;
         public Builder() {}
         public Builder(GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls defaults) {
     	      Objects.requireNonNull(defaults);
@@ -208,6 +221,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     	      this.printing = defaults.printing;
     	      this.upload = defaults.upload;
     	      this.version = defaults.version;
+    	      this.wmId = defaults.wmId;
         }
 
         @CustomType.Setter
@@ -306,6 +320,14 @@ public final class GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
             this.version = version;
             return this;
         }
+        @CustomType.Setter
+        public Builder wmId(String wmId) {
+            if (wmId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls", "wmId");
+            }
+            this.wmId = wmId;
+            return this;
+        }
         public GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls build() {
             final var _resultValue = new GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls();
             _resultValue.copy = copy;
@@ -320,6 +342,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
             _resultValue.printing = printing;
             _resultValue.upload = upload;
             _resultValue.version = version;
+            _resultValue.wmId = wmId;
             return _resultValue;
         }
     }

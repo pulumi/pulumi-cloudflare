@@ -79,7 +79,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
     }
 
     /**
-     * Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == &#34;v2&#34;.
+     * Configure download behavior. When set to remote*only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
@@ -87,7 +87,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
     private @Nullable Output<String> download;
 
     /**
-     * @return Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == &#34;v2&#34;.
+     * @return Configure download behavior. When set to remote*only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
@@ -210,6 +210,21 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
         return Optional.ofNullable(this.version);
     }
 
+    /**
+     * Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.
+     * 
+     */
+    @Import(name="wmId")
+    private @Nullable Output<String> wmId;
+
+    /**
+     * @return Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.
+     * 
+     */
+    public Optional<Output<String>> wmId() {
+        return Optional.ofNullable(this.wmId);
+    }
+
     private TeamsRuleRuleSettingsBisoAdminControlsArgs() {}
 
     private TeamsRuleRuleSettingsBisoAdminControlsArgs(TeamsRuleRuleSettingsBisoAdminControlsArgs $) {
@@ -225,6 +240,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
         this.printing = $.printing;
         this.upload = $.upload;
         this.version = $.version;
+        this.wmId = $.wmId;
     }
 
     public static Builder builder() {
@@ -332,7 +348,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
         }
 
         /**
-         * @param download Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == &#34;v2&#34;.
+         * @param download Configure download behavior. When set to remote*only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == &#34;v2&#34;.
          * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
          * 
          * @return builder
@@ -344,7 +360,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
         }
 
         /**
-         * @param download Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == &#34;v2&#34;.
+         * @param download Configure download behavior. When set to remote*only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == &#34;v2&#34;.
          * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
          * 
          * @return builder
@@ -509,6 +525,27 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
          */
         public Builder version(String version) {
             return version(Output.of(version));
+        }
+
+        /**
+         * @param wmId Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wmId(@Nullable Output<String> wmId) {
+            $.wmId = wmId;
+            return this;
+        }
+
+        /**
+         * @param wmId Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wmId(String wmId) {
+            return wmId(Output.of(wmId));
         }
 
         public TeamsRuleRuleSettingsBisoAdminControlsArgs build() {

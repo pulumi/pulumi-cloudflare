@@ -40,7 +40,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustGatewayProxyEndpoint : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -123,8 +123,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustGatewayProxyEndpointArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("ips")]
         private InputList<string>? _ips;

@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // > This resource is redundant with `Worker` and should not be used together. When using the `Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
 //
 // ## Example Usage
@@ -52,7 +58,7 @@ type WorkersScriptSubdomain struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
@@ -68,9 +74,6 @@ func NewWorkersScriptSubdomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Enabled == nil {
 		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
@@ -127,7 +130,7 @@ func (WorkersScriptSubdomainState) ElementType() reflect.Type {
 
 type workersScriptSubdomainArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled bool `pulumi:"enabled"`
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
@@ -139,7 +142,7 @@ type workersScriptSubdomainArgs struct {
 // The set of arguments for constructing a WorkersScriptSubdomain resource.
 type WorkersScriptSubdomainArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled pulumi.BoolInput
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
@@ -236,8 +239,8 @@ func (o WorkersScriptSubdomainOutput) ToWorkersScriptSubdomainOutputWithContext(
 }
 
 // Identifier.
-func (o WorkersScriptSubdomainOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkersScriptSubdomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o WorkersScriptSubdomainOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkersScriptSubdomain) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Whether the Worker should be available on the workers.dev subdomain.

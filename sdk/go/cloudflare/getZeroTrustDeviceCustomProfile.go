@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDeviceCustomProfile(ctx, &cloudflare.LookupZeroTrustDeviceCustomProfileArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				PolicyId:  "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
@@ -49,13 +49,13 @@ func LookupZeroTrustDeviceCustomProfile(ctx *pulumi.Context, args *LookupZeroTru
 
 // A collection of arguments for invoking getZeroTrustDeviceCustomProfile.
 type LookupZeroTrustDeviceCustomProfileArgs struct {
-	AccountId string `pulumi:"accountId"`
-	PolicyId  string `pulumi:"policyId"`
+	AccountId *string `pulumi:"accountId"`
+	PolicyId  string  `pulumi:"policyId"`
 }
 
 // A collection of values returned by getZeroTrustDeviceCustomProfile.
 type LookupZeroTrustDeviceCustomProfileResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Whether to allow the user to switch WARP between modes.
 	AllowModeSwitch bool `pulumi:"allowModeSwitch"`
 	// Whether to receive update notifications when a new version of the client is available.
@@ -120,8 +120,8 @@ func LookupZeroTrustDeviceCustomProfileOutput(ctx *pulumi.Context, args LookupZe
 
 // A collection of arguments for invoking getZeroTrustDeviceCustomProfile.
 type LookupZeroTrustDeviceCustomProfileOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	PolicyId  pulumi.StringInput `pulumi:"policyId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	PolicyId  pulumi.StringInput    `pulumi:"policyId"`
 }
 
 func (LookupZeroTrustDeviceCustomProfileOutputArgs) ElementType() reflect.Type {
@@ -143,8 +143,8 @@ func (o LookupZeroTrustDeviceCustomProfileResultOutput) ToLookupZeroTrustDeviceC
 	return o
 }
 
-func (o LookupZeroTrustDeviceCustomProfileResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDeviceCustomProfileResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Whether to allow the user to switch WARP between modes.

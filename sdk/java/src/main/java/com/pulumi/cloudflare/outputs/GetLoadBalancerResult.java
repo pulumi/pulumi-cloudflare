@@ -16,6 +16,8 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLoadBalancerResult {
@@ -123,7 +125,7 @@ public final class GetLoadBalancerResult {
      * 
      */
     private Double ttl;
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetLoadBalancerResult() {}
     /**
@@ -276,8 +278,8 @@ public final class GetLoadBalancerResult {
     public Double ttl() {
         return this.ttl;
     }
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -312,7 +314,7 @@ public final class GetLoadBalancerResult {
         private Double sessionAffinityTtl;
         private String steeringPolicy;
         private Double ttl;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetLoadBalancerResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -536,10 +538,8 @@ public final class GetLoadBalancerResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

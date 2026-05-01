@@ -129,9 +129,17 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      */
     declare public readonly logoUrl: pulumi.Output<string | undefined>;
     /**
+     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     */
+    declare public readonly mfaConfig: pulumi.Output<outputs.ZeroTrustAccessApplicationMfaConfig | undefined>;
+    /**
      * The name of the application.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     */
+    declare public readonly oauthConfiguration: pulumi.Output<outputs.ZeroTrustAccessApplicationOauthConfiguration | undefined>;
     /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      */
@@ -235,7 +243,9 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
             resourceInputs["httpOnlyCookieAttribute"] = state?.httpOnlyCookieAttribute;
             resourceInputs["landingPageDesign"] = state?.landingPageDesign;
             resourceInputs["logoUrl"] = state?.logoUrl;
+            resourceInputs["mfaConfig"] = state?.mfaConfig;
             resourceInputs["name"] = state?.name;
+            resourceInputs["oauthConfiguration"] = state?.oauthConfiguration;
             resourceInputs["optionsPreflightBypass"] = state?.optionsPreflightBypass;
             resourceInputs["pathCookieAttribute"] = state?.pathCookieAttribute;
             resourceInputs["policies"] = state?.policies;
@@ -275,7 +285,9 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
             resourceInputs["httpOnlyCookieAttribute"] = args?.httpOnlyCookieAttribute;
             resourceInputs["landingPageDesign"] = args?.landingPageDesign;
             resourceInputs["logoUrl"] = args?.logoUrl;
+            resourceInputs["mfaConfig"] = args?.mfaConfig;
             resourceInputs["name"] = args?.name;
+            resourceInputs["oauthConfiguration"] = args?.oauthConfiguration;
             resourceInputs["optionsPreflightBypass"] = args?.optionsPreflightBypass;
             resourceInputs["pathCookieAttribute"] = args?.pathCookieAttribute;
             resourceInputs["policies"] = args?.policies;
@@ -391,9 +403,17 @@ export interface ZeroTrustAccessApplicationState {
      */
     logoUrl?: pulumi.Input<string>;
     /**
+     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     */
+    mfaConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationMfaConfig>;
+    /**
      * The name of the application.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     */
+    oauthConfiguration?: pulumi.Input<inputs.ZeroTrustAccessApplicationOauthConfiguration>;
     /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      */
@@ -549,9 +569,17 @@ export interface ZeroTrustAccessApplicationArgs {
      */
     logoUrl?: pulumi.Input<string>;
     /**
+     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     */
+    mfaConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationMfaConfig>;
+    /**
      * The name of the application.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     */
+    oauthConfiguration?: pulumi.Input<inputs.ZeroTrustAccessApplicationOauthConfiguration>;
     /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      */

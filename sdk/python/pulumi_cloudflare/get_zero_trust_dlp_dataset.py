@@ -73,7 +73,7 @@ class GetZeroTrustDlpDatasetResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -180,6 +180,11 @@ def get_zero_trust_dlp_dataset(account_id: Optional[_builtins.str] = None,
                                dataset_id: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustDlpDatasetResult:
     """
+    Accepted Permissions
+
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python
@@ -211,10 +216,15 @@ def get_zero_trust_dlp_dataset(account_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         uploads=pulumi.get(__ret__, 'uploads'))
-def get_zero_trust_dlp_dataset_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_dlp_dataset_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDlpDatasetResult]:
     """
+    Accepted Permissions
+
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python

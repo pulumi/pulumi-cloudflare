@@ -20,6 +20,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Waiting Rooms Read`
+ * - `Waiting Rooms Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -124,14 +129,14 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="cookieSuffix", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> cookieSuffix;
+    private Output<String> cookieSuffix;
 
     /**
      * @return Appends a &#39;_&#39; + a custom suffix to the end of Cloudflare Waiting Room&#39;s cookie name(_*cf*waitingroom). If `cookieSuffix` is &#34;abcd&#34;, the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
      * 
      */
-    public Output<Optional<String>> cookieSuffix() {
-        return Codegen.optional(this.cookieSuffix);
+    public Output<String> cookieSuffix() {
+        return this.cookieSuffix;
     }
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
@@ -644,14 +649,14 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

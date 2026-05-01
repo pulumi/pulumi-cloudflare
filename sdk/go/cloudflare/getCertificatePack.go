@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCertificatePack(ctx, &cloudflare.LookupCertificatePackArgs{
-//				ZoneId:            "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:            pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CertificatePackId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -53,7 +58,7 @@ type LookupCertificatePackArgs struct {
 	CertificatePackId *string                   `pulumi:"certificatePackId"`
 	Filter            *GetCertificatePackFilter `pulumi:"filter"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getCertificatePack.
@@ -93,7 +98,7 @@ type LookupCertificatePackResult struct {
 	// Available values: 14, 30, 90, 365.
 	ValidityDays int `pulumi:"validityDays"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupCertificatePackOutput(ctx *pulumi.Context, args LookupCertificatePackOutputArgs, opts ...pulumi.InvokeOption) LookupCertificatePackResultOutput {
@@ -111,7 +116,7 @@ type LookupCertificatePackOutputArgs struct {
 	CertificatePackId pulumi.StringPtrInput            `pulumi:"certificatePackId"`
 	Filter            GetCertificatePackFilterPtrInput `pulumi:"filter"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupCertificatePackOutputArgs) ElementType() reflect.Type {
@@ -215,8 +220,8 @@ func (o LookupCertificatePackResultOutput) ValidityDays() pulumi.IntOutput {
 }
 
 // Identifier.
-func (o LookupCertificatePackResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupCertificatePackResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCertificatePackResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

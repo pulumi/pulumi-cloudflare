@@ -10,6 +10,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotificationPolicyResult {
@@ -17,7 +19,7 @@ public final class GetNotificationPolicyResult {
      * @return The account id
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Optional specification of how often to re-alert from the same incident, not support on all alert types.
      * 
@@ -25,7 +27,7 @@ public final class GetNotificationPolicyResult {
     private String alertInterval;
     /**
      * @return Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
-     * Available values: &#34;abuse*report*alert&#34;, &#34;access*custom*certificate*expiration*type&#34;, &#34;advanced*ddos*attack*l4*alert&#34;, &#34;advanced*ddos*attack*l7*alert&#34;, &#34;advanced*http*alert*error&#34;, &#34;bgp*hijack*notification&#34;, &#34;billing*usage*alert&#34;, &#34;block*notification*block*removed&#34;, &#34;block*notification*new*block&#34;, &#34;block*notification*review*rejected&#34;, &#34;bot*traffic*basic*alert&#34;, &#34;brand*protection*alert&#34;, &#34;brand*protection*digest&#34;, &#34;clickhouse*alert*fw*anomaly&#34;, &#34;clickhouse*alert*fw*ent*anomaly&#34;, &#34;cloudforce*one*request*notification&#34;, &#34;custom*analytics&#34;, &#34;custom*bot*detection*alert&#34;, &#34;custom*ssl*certificate*event*type&#34;, &#34;dedicated*ssl*certificate*event*type&#34;, &#34;device*connectivity*anomaly*alert&#34;, &#34;dos*attack*l4&#34;, &#34;dos*attack*l7&#34;, &#34;expiring*service*token*alert&#34;, &#34;failing*logpush*job*disabled*alert&#34;, &#34;fbm*auto*advertisement&#34;, &#34;fbm*dosd*attack&#34;, &#34;fbm*volumetric*attack&#34;, &#34;health*check*status*notification&#34;, &#34;hostname*aop*custom*certificate*expiration*type&#34;, &#34;http*alert*edge*error&#34;, &#34;http*alert*origin*error&#34;, &#34;image*notification&#34;, &#34;image*resizing*notification&#34;, &#34;incident*alert&#34;, &#34;load*balancing*health*alert&#34;, &#34;load*balancing*pool*enablement*alert&#34;, &#34;logo*match*alert&#34;, &#34;magic*tunnel*health*check*event&#34;, &#34;magic*wan*tunnel*health&#34;, &#34;maintenance*event*notification&#34;, &#34;mtls*certificate*store*certificate*expiration*type&#34;, &#34;pages*event*alert&#34;, &#34;radar*notification&#34;, &#34;real*origin*monitoring&#34;, &#34;scriptmonitor*alert*new*code*change*detections&#34;, &#34;scriptmonitor*alert*new*hosts&#34;, &#34;scriptmonitor*alert*new*malicious*hosts&#34;, &#34;scriptmonitor*alert*new*malicious*scripts&#34;, &#34;scriptmonitor*alert*new*malicious*url&#34;, &#34;scriptmonitor*alert*new*max*length*resource*url&#34;, &#34;scriptmonitor*alert*new*resources&#34;, &#34;secondary*dns*all*primaries*failing&#34;, &#34;secondary*dns*primaries*failing&#34;, &#34;secondary*dns*warning&#34;, &#34;secondary*dns*zone*successfully*updated&#34;, &#34;secondary*dns*zone*validation*warning&#34;, &#34;security*insights*alert&#34;, &#34;sentinel*alert&#34;, &#34;stream*live*notifications&#34;, &#34;synthetic*test*latency*alert&#34;, &#34;synthetic*test*low*availability*alert&#34;, &#34;traffic*anomalies*alert&#34;, &#34;tunnel*health*event&#34;, &#34;tunnel*update*event&#34;, &#34;universal*ssl*event*type&#34;, &#34;web*analytics*metrics*update&#34;, &#34;zone*aop*custom*certificate*expiration*type&#34;.
+     * Available values: &#34;abuse*report*alert&#34;, &#34;access*custom*certificate*expiration*type&#34;, &#34;advanced*ddos*attack*l4*alert&#34;, &#34;advanced*ddos*attack*l7*alert&#34;, &#34;advanced*http*alert*error&#34;, &#34;bgp*hijack*notification&#34;, &#34;billing*usage*alert&#34;, &#34;block*notification*block*removed&#34;, &#34;block*notification*new*block&#34;, &#34;block*notification*review*rejected&#34;, &#34;bot*traffic*basic*alert&#34;, &#34;brand*protection*alert&#34;, &#34;brand*protection*digest&#34;, &#34;clickhouse*alert*fw*anomaly&#34;, &#34;clickhouse*alert*fw*ent*anomaly&#34;, &#34;cloudforce*one*request*notification&#34;, &#34;cni*maintenance*notification&#34;, &#34;custom*analytics&#34;, &#34;custom*bot*detection*alert&#34;, &#34;custom*ssl*certificate*event*type&#34;, &#34;dedicated*ssl*certificate*event*type&#34;, &#34;device*connectivity*anomaly*alert&#34;, &#34;dos*attack*l4&#34;, &#34;dos*attack*l7&#34;, &#34;expiring*service*token*alert&#34;, &#34;failing*logpush*job*disabled*alert&#34;, &#34;fbm*auto*advertisement&#34;, &#34;fbm*dosd*attack&#34;, &#34;fbm*volumetric*attack&#34;, &#34;health*check*status*notification&#34;, &#34;hostname*aop*custom*certificate*expiration*type&#34;, &#34;http*alert*edge*error&#34;, &#34;http*alert*origin*error&#34;, &#34;image*notification&#34;, &#34;image*resizing*notification&#34;, &#34;incident*alert&#34;, &#34;load*balancing*health*alert&#34;, &#34;load*balancing*pool*enablement*alert&#34;, &#34;logo*match*alert&#34;, &#34;magic*tunnel*health*check*event&#34;, &#34;magic*wan*tunnel*health&#34;, &#34;maintenance*event*notification&#34;, &#34;mtls*certificate*store*certificate*expiration*type&#34;, &#34;pages*event*alert&#34;, &#34;radar*notification&#34;, &#34;real*origin*monitoring&#34;, &#34;scriptmonitor*alert*new*code*change*detections&#34;, &#34;scriptmonitor*alert*new*hosts&#34;, &#34;scriptmonitor*alert*new*malicious*hosts&#34;, &#34;scriptmonitor*alert*new*malicious*scripts&#34;, &#34;scriptmonitor*alert*new*malicious*url&#34;, &#34;scriptmonitor*alert*new*max*length*resource*url&#34;, &#34;scriptmonitor*alert*new*resources&#34;, &#34;secondary*dns*all*primaries*failing&#34;, &#34;secondary*dns*primaries*failing&#34;, &#34;secondary*dns*warning&#34;, &#34;secondary*dns*zone*successfully*updated&#34;, &#34;secondary*dns*zone*validation*warning&#34;, &#34;security*insights*alert&#34;, &#34;sentinel*alert&#34;, &#34;stream*live*notifications&#34;, &#34;synthetic*test*latency*alert&#34;, &#34;synthetic*test*low*availability*alert&#34;, &#34;traffic*anomalies*alert&#34;, &#34;tunnel*health*event&#34;, &#34;tunnel*update*event&#34;, &#34;universal*ssl*event*type&#34;, &#34;web*analytics*metrics*update&#34;, &#34;zone*aop*custom*certificate*expiration*type&#34;.
      * 
      */
     private String alertType;
@@ -72,8 +74,8 @@ public final class GetNotificationPolicyResult {
      * @return The account id
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Optional specification of how often to re-alert from the same incident, not support on all alert types.
@@ -84,7 +86,7 @@ public final class GetNotificationPolicyResult {
     }
     /**
      * @return Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
-     * Available values: &#34;abuse*report*alert&#34;, &#34;access*custom*certificate*expiration*type&#34;, &#34;advanced*ddos*attack*l4*alert&#34;, &#34;advanced*ddos*attack*l7*alert&#34;, &#34;advanced*http*alert*error&#34;, &#34;bgp*hijack*notification&#34;, &#34;billing*usage*alert&#34;, &#34;block*notification*block*removed&#34;, &#34;block*notification*new*block&#34;, &#34;block*notification*review*rejected&#34;, &#34;bot*traffic*basic*alert&#34;, &#34;brand*protection*alert&#34;, &#34;brand*protection*digest&#34;, &#34;clickhouse*alert*fw*anomaly&#34;, &#34;clickhouse*alert*fw*ent*anomaly&#34;, &#34;cloudforce*one*request*notification&#34;, &#34;custom*analytics&#34;, &#34;custom*bot*detection*alert&#34;, &#34;custom*ssl*certificate*event*type&#34;, &#34;dedicated*ssl*certificate*event*type&#34;, &#34;device*connectivity*anomaly*alert&#34;, &#34;dos*attack*l4&#34;, &#34;dos*attack*l7&#34;, &#34;expiring*service*token*alert&#34;, &#34;failing*logpush*job*disabled*alert&#34;, &#34;fbm*auto*advertisement&#34;, &#34;fbm*dosd*attack&#34;, &#34;fbm*volumetric*attack&#34;, &#34;health*check*status*notification&#34;, &#34;hostname*aop*custom*certificate*expiration*type&#34;, &#34;http*alert*edge*error&#34;, &#34;http*alert*origin*error&#34;, &#34;image*notification&#34;, &#34;image*resizing*notification&#34;, &#34;incident*alert&#34;, &#34;load*balancing*health*alert&#34;, &#34;load*balancing*pool*enablement*alert&#34;, &#34;logo*match*alert&#34;, &#34;magic*tunnel*health*check*event&#34;, &#34;magic*wan*tunnel*health&#34;, &#34;maintenance*event*notification&#34;, &#34;mtls*certificate*store*certificate*expiration*type&#34;, &#34;pages*event*alert&#34;, &#34;radar*notification&#34;, &#34;real*origin*monitoring&#34;, &#34;scriptmonitor*alert*new*code*change*detections&#34;, &#34;scriptmonitor*alert*new*hosts&#34;, &#34;scriptmonitor*alert*new*malicious*hosts&#34;, &#34;scriptmonitor*alert*new*malicious*scripts&#34;, &#34;scriptmonitor*alert*new*malicious*url&#34;, &#34;scriptmonitor*alert*new*max*length*resource*url&#34;, &#34;scriptmonitor*alert*new*resources&#34;, &#34;secondary*dns*all*primaries*failing&#34;, &#34;secondary*dns*primaries*failing&#34;, &#34;secondary*dns*warning&#34;, &#34;secondary*dns*zone*successfully*updated&#34;, &#34;secondary*dns*zone*validation*warning&#34;, &#34;security*insights*alert&#34;, &#34;sentinel*alert&#34;, &#34;stream*live*notifications&#34;, &#34;synthetic*test*latency*alert&#34;, &#34;synthetic*test*low*availability*alert&#34;, &#34;traffic*anomalies*alert&#34;, &#34;tunnel*health*event&#34;, &#34;tunnel*update*event&#34;, &#34;universal*ssl*event*type&#34;, &#34;web*analytics*metrics*update&#34;, &#34;zone*aop*custom*certificate*expiration*type&#34;.
+     * Available values: &#34;abuse*report*alert&#34;, &#34;access*custom*certificate*expiration*type&#34;, &#34;advanced*ddos*attack*l4*alert&#34;, &#34;advanced*ddos*attack*l7*alert&#34;, &#34;advanced*http*alert*error&#34;, &#34;bgp*hijack*notification&#34;, &#34;billing*usage*alert&#34;, &#34;block*notification*block*removed&#34;, &#34;block*notification*new*block&#34;, &#34;block*notification*review*rejected&#34;, &#34;bot*traffic*basic*alert&#34;, &#34;brand*protection*alert&#34;, &#34;brand*protection*digest&#34;, &#34;clickhouse*alert*fw*anomaly&#34;, &#34;clickhouse*alert*fw*ent*anomaly&#34;, &#34;cloudforce*one*request*notification&#34;, &#34;cni*maintenance*notification&#34;, &#34;custom*analytics&#34;, &#34;custom*bot*detection*alert&#34;, &#34;custom*ssl*certificate*event*type&#34;, &#34;dedicated*ssl*certificate*event*type&#34;, &#34;device*connectivity*anomaly*alert&#34;, &#34;dos*attack*l4&#34;, &#34;dos*attack*l7&#34;, &#34;expiring*service*token*alert&#34;, &#34;failing*logpush*job*disabled*alert&#34;, &#34;fbm*auto*advertisement&#34;, &#34;fbm*dosd*attack&#34;, &#34;fbm*volumetric*attack&#34;, &#34;health*check*status*notification&#34;, &#34;hostname*aop*custom*certificate*expiration*type&#34;, &#34;http*alert*edge*error&#34;, &#34;http*alert*origin*error&#34;, &#34;image*notification&#34;, &#34;image*resizing*notification&#34;, &#34;incident*alert&#34;, &#34;load*balancing*health*alert&#34;, &#34;load*balancing*pool*enablement*alert&#34;, &#34;logo*match*alert&#34;, &#34;magic*tunnel*health*check*event&#34;, &#34;magic*wan*tunnel*health&#34;, &#34;maintenance*event*notification&#34;, &#34;mtls*certificate*store*certificate*expiration*type&#34;, &#34;pages*event*alert&#34;, &#34;radar*notification&#34;, &#34;real*origin*monitoring&#34;, &#34;scriptmonitor*alert*new*code*change*detections&#34;, &#34;scriptmonitor*alert*new*hosts&#34;, &#34;scriptmonitor*alert*new*malicious*hosts&#34;, &#34;scriptmonitor*alert*new*malicious*scripts&#34;, &#34;scriptmonitor*alert*new*malicious*url&#34;, &#34;scriptmonitor*alert*new*max*length*resource*url&#34;, &#34;scriptmonitor*alert*new*resources&#34;, &#34;secondary*dns*all*primaries*failing&#34;, &#34;secondary*dns*primaries*failing&#34;, &#34;secondary*dns*warning&#34;, &#34;secondary*dns*zone*successfully*updated&#34;, &#34;secondary*dns*zone*validation*warning&#34;, &#34;security*insights*alert&#34;, &#34;sentinel*alert&#34;, &#34;stream*live*notifications&#34;, &#34;synthetic*test*latency*alert&#34;, &#34;synthetic*test*low*availability*alert&#34;, &#34;traffic*anomalies*alert&#34;, &#34;tunnel*health*event&#34;, &#34;tunnel*update*event&#34;, &#34;universal*ssl*event*type&#34;, &#34;web*analytics*metrics*update&#34;, &#34;zone*aop*custom*certificate*expiration*type&#34;.
      * 
      */
     public String alertType() {
@@ -155,7 +157,7 @@ public final class GetNotificationPolicyResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String alertInterval;
         private String alertType;
         private String created;
@@ -185,10 +187,8 @@ public final class GetNotificationPolicyResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetNotificationPolicyResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Images Read`
+ * - `Images Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +39,7 @@ export interface GetImageVariantArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     variantId: string;
 }
 
@@ -45,7 +50,7 @@ export interface GetImageVariantResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The ID of this resource.
      */
@@ -54,6 +59,11 @@ export interface GetImageVariantResult {
     readonly variantId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Images Read`
+ * - `Images Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -81,6 +91,6 @@ export interface GetImageVariantOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     variantId: pulumi.Input<string>;
 }

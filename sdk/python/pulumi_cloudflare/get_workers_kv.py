@@ -45,7 +45,7 @@ class GetWorkersKvResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -99,6 +99,11 @@ def get_workers_kv(account_id: Optional[_builtins.str] = None,
                    namespace_id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersKvResult:
     """
+    Accepted Permissions
+
+    - `Workers KV Storage Read`
+    - `Workers KV Storage Write`
+
     ## Example Usage
 
     ```python
@@ -128,11 +133,16 @@ def get_workers_kv(account_id: Optional[_builtins.str] = None,
         key_name=pulumi.get(__ret__, 'key_name'),
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         value=pulumi.get(__ret__, 'value'))
-def get_workers_kv_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workers_kv_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           key_name: Optional[pulumi.Input[_builtins.str]] = None,
                           namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersKvResult]:
     """
+    Accepted Permissions
+
+    - `Workers KV Storage Read`
+    - `Workers KV Storage Write`
+
     ## Example Usage
 
     ```python

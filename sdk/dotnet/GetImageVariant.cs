@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetImageVariant
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Images Read`
+        /// - `Images Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageVariantResult>("cloudflare:index/getImageVariant:getImageVariant", args ?? new GetImageVariantArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Images Read`
+        /// - `Images Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetImageVariantResult>("cloudflare:index/getImageVariant:getImageVariant", args ?? new GetImageVariantInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Images Read`
+        /// - `Images Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("variantId", required: true)]
         public string VariantId { get; set; } = null!;
@@ -104,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("variantId", required: true)]
         public Input<string> VariantId { get; set; } = null!;
@@ -123,7 +138,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The ID of this resource.
         /// </summary>
@@ -133,7 +148,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetImageVariantResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

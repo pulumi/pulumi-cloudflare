@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Tokens Read`
+// - `Account API Tokens Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountTokens(ctx, &cloudflare.LookupAccountTokensArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction: pulumi.StringRef("desc"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupAccountTokens(ctx *pulumi.Context, args *LookupAccountTokensArgs, opt
 // A collection of arguments for invoking getAccountTokens.
 type LookupAccountTokensArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Direction to order results.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
@@ -61,7 +66,7 @@ type LookupAccountTokensArgs struct {
 // A collection of values returned by getAccountTokens.
 type LookupAccountTokensResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Direction to order results.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
@@ -85,7 +90,7 @@ func LookupAccountTokensOutput(ctx *pulumi.Context, args LookupAccountTokensOutp
 // A collection of arguments for invoking getAccountTokens.
 type LookupAccountTokensOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Direction to order results.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
@@ -113,8 +118,8 @@ func (o LookupAccountTokensResultOutput) ToLookupAccountTokensResultOutputWithCo
 }
 
 // Account identifier tag.
-func (o LookupAccountTokensResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountTokensResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAccountTokensResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountTokensResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Direction to order results.

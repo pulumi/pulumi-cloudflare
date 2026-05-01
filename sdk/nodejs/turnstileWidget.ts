@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Turnstile Sites Read`
+ * - `Turnstile Sites Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -65,7 +72,7 @@ export class TurnstileWidget extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * If bot*fight*mode is set to `true`, Cloudflare issues computationally
      * expensive challenges in response to malicious bots (ENT only).
@@ -147,9 +154,6 @@ export class TurnstileWidget extends pulumi.CustomResource {
             resourceInputs["sitekey"] = state?.sitekey;
         } else {
             const args = argsOrState as TurnstileWidgetArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.domains === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domains'");
             }
@@ -249,7 +253,7 @@ export interface TurnstileWidgetArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * If bot*fight*mode is set to `true`, Cloudflare issues computationally
      * expensive challenges in response to malicious bots (ENT only).

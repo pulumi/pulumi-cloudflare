@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetBotnetFeedConfigAsn
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DDoS Botnet Feed Read`
+        /// - `DDoS Botnet Feed Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetBotnetFeedConfigAsnResult> InvokeAsync(GetBotnetFeedConfigAsnArgs args, InvokeOptions? options = null)
+        public static Task<GetBotnetFeedConfigAsnResult> InvokeAsync(GetBotnetFeedConfigAsnArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBotnetFeedConfigAsnResult>("cloudflare:index/getBotnetFeedConfigAsn:getBotnetFeedConfigAsn", args ?? new GetBotnetFeedConfigAsnArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DDoS Botnet Feed Read`
+        /// - `DDoS Botnet Feed Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetBotnetFeedConfigAsnResult> Invoke(GetBotnetFeedConfigAsnInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetBotnetFeedConfigAsnResult> Invoke(GetBotnetFeedConfigAsnInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBotnetFeedConfigAsnResult>("cloudflare:index/getBotnetFeedConfigAsn:getBotnetFeedConfigAsn", args ?? new GetBotnetFeedConfigAsnInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DDoS Botnet Feed Read`
+        /// - `DDoS Botnet Feed Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         public GetBotnetFeedConfigAsnArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         public GetBotnetFeedConfigAsnInvokeArgs()
         {
@@ -114,7 +129,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly int Asn;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -123,7 +138,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetBotnetFeedConfigAsnResult(
-            string accountId,
+            string? accountId,
 
             int asn,
 

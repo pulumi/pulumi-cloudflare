@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare DEX Read`
+// - `Cloudflare DEX Write`
+// - `Zero Trust Read`
+// - `Zero Trust Report`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDexTests(ctx, &cloudflare.LookupZeroTrustDexTestsArgs{
-//				AccountId: "01a7362d577a6c3019a474fd6f485823",
+//				AccountId: pulumi.StringRef("01a7362d577a6c3019a474fd6f485823"),
 //				Kind:      pulumi.StringRef("http"),
 //				TestName:  pulumi.StringRef("testName"),
 //			}, nil)
@@ -50,7 +57,7 @@ func LookupZeroTrustDexTests(ctx *pulumi.Context, args *LookupZeroTrustDexTestsA
 
 // A collection of arguments for invoking getZeroTrustDexTests.
 type LookupZeroTrustDexTestsArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Filter by test type
 	// Available values: "http", "traceroute".
 	Kind *string `pulumi:"kind"`
@@ -62,7 +69,7 @@ type LookupZeroTrustDexTestsArgs struct {
 
 // A collection of values returned by getZeroTrustDexTests.
 type LookupZeroTrustDexTestsResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Filter by test type
@@ -87,7 +94,7 @@ func LookupZeroTrustDexTestsOutput(ctx *pulumi.Context, args LookupZeroTrustDexT
 
 // A collection of arguments for invoking getZeroTrustDexTests.
 type LookupZeroTrustDexTestsOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Filter by test type
 	// Available values: "http", "traceroute".
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
@@ -116,8 +123,8 @@ func (o LookupZeroTrustDexTestsResultOutput) ToLookupZeroTrustDexTestsResultOutp
 	return o
 }
 
-func (o LookupZeroTrustDexTestsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDexTestsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDexTestsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

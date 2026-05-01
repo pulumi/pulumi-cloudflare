@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic Transit Read`
+// - `Magic Transit Write`
+// - `Magic WAN Read`
+// - `Magic WAN Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicWanStaticRoute(ctx, &cloudflare.LookupMagicWanStaticRouteArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RouteId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +57,7 @@ func LookupMagicWanStaticRoute(ctx *pulumi.Context, args *LookupMagicWanStaticRo
 // A collection of arguments for invoking getMagicWanStaticRoute.
 type LookupMagicWanStaticRouteArgs struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Identifier
 	RouteId string `pulumi:"routeId"`
 }
@@ -58,7 +65,7 @@ type LookupMagicWanStaticRouteArgs struct {
 // A collection of values returned by getMagicWanStaticRoute.
 type LookupMagicWanStaticRouteResult struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Identifier
 	Id    string                      `pulumi:"id"`
 	Route GetMagicWanStaticRouteRoute `pulumi:"route"`
@@ -78,7 +85,7 @@ func LookupMagicWanStaticRouteOutput(ctx *pulumi.Context, args LookupMagicWanSta
 // A collection of arguments for invoking getMagicWanStaticRoute.
 type LookupMagicWanStaticRouteOutputArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Identifier
 	RouteId pulumi.StringInput `pulumi:"routeId"`
 }
@@ -103,8 +110,8 @@ func (o LookupMagicWanStaticRouteResultOutput) ToLookupMagicWanStaticRouteResult
 }
 
 // Identifier
-func (o LookupMagicWanStaticRouteResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicWanStaticRouteResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupMagicWanStaticRouteResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicWanStaticRouteResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Identifier

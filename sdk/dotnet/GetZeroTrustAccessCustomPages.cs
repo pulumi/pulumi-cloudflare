@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustAccessCustomPages
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Custom Pages Read`
+        /// - `Access: Custom Pages Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustAccessCustomPagesResult> InvokeAsync(GetZeroTrustAccessCustomPagesArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustAccessCustomPagesResult> InvokeAsync(GetZeroTrustAccessCustomPagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessCustomPagesResult>("cloudflare:index/getZeroTrustAccessCustomPages:getZeroTrustAccessCustomPages", args ?? new GetZeroTrustAccessCustomPagesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Custom Pages Read`
+        /// - `Access: Custom Pages Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustAccessCustomPagesResult> Invoke(GetZeroTrustAccessCustomPagesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustAccessCustomPagesResult> Invoke(GetZeroTrustAccessCustomPagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessCustomPagesResult>("cloudflare:index/getZeroTrustAccessCustomPages:getZeroTrustAccessCustomPages", args ?? new GetZeroTrustAccessCustomPagesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Custom Pages Read`
+        /// - `Access: Custom Pages Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -104,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -126,7 +141,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -142,7 +157,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustAccessCustomPagesResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

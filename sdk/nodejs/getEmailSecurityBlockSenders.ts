@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -23,7 +28,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getEmailSecurityBlockSenders(args: GetEmailSecurityBlockSendersArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityBlockSendersResult> {
+export function getEmailSecurityBlockSenders(args?: GetEmailSecurityBlockSendersArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityBlockSendersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders", {
         "accountId": args.accountId,
@@ -43,7 +49,7 @@ export interface GetEmailSecurityBlockSendersArgs {
     /**
      * Account Identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
      * The sorting direction.
      * Available values: "asc", "desc".
@@ -79,7 +85,7 @@ export interface GetEmailSecurityBlockSendersResult {
     /**
      * Account Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The sorting direction.
      * Available values: "asc", "desc".
@@ -116,6 +122,11 @@ export interface GetEmailSecurityBlockSendersResult {
     readonly search?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -132,7 +143,8 @@ export interface GetEmailSecurityBlockSendersResult {
  * });
  * ```
  */
-export function getEmailSecurityBlockSendersOutput(args: GetEmailSecurityBlockSendersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityBlockSendersResult> {
+export function getEmailSecurityBlockSendersOutput(args?: GetEmailSecurityBlockSendersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityBlockSendersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailSecurityBlockSenders:getEmailSecurityBlockSenders", {
         "accountId": args.accountId,
@@ -152,7 +164,7 @@ export interface GetEmailSecurityBlockSendersOutputArgs {
     /**
      * Account Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The sorting direction.
      * Available values: "asc", "desc".

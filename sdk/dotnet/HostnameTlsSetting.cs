@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `SSL and Certificates Read`
+    /// - `SSL and Certificates Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -25,7 +30,11 @@ namespace Pulumi.Cloudflare
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "ciphers",
     ///         Hostname = "app.example.com",
-    ///         Value = "1.0",
+    ///         Value = new[]
+    ///         {
+    ///             "ECDHE-RSA-AES128-GCM-SHA256",
+    ///             "AES128-GCM-SHA256",
+    ///         },
     ///     });
     /// 
     /// });
@@ -80,7 +89,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -149,8 +158,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public HostnameTlsSettingArgs()
         {

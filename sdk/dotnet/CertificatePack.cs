@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `SSL and Certificates Read`
+    /// - `SSL and Certificates Write`
+    /// 
     /// &gt; Certificate packs are not able to be updated in place. If
     /// you require a zero downtime rotation, you can create multiple
     /// resources using a 2-phase change where you have both resources
@@ -138,7 +143,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -235,8 +240,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public CertificatePackArgs()
         {

@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetWorkersCustomDomainFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,29 +16,29 @@ public final class GetWorkersCustomDomainPlainArgs extends com.pulumi.resources.
     public static final GetWorkersCustomDomainPlainArgs Empty = new GetWorkersCustomDomainPlainArgs();
 
     /**
-     * Identifer of the account.
+     * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
-     * @return Identifer of the account.
+     * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Identifer of the Worker Domain.
+     * ID of the domain.
      * 
      */
     @Import(name="domainId")
     private @Nullable String domainId;
 
     /**
-     * @return Identifer of the Worker Domain.
+     * @return ID of the domain.
      * 
      */
     public Optional<String> domainId() {
@@ -80,18 +79,18 @@ public final class GetWorkersCustomDomainPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId Identifer of the account.
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param domainId Identifer of the Worker Domain.
+         * @param domainId ID of the domain.
          * 
          * @return builder
          * 
@@ -107,9 +106,6 @@ public final class GetWorkersCustomDomainPlainArgs extends com.pulumi.resources.
         }
 
         public GetWorkersCustomDomainPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetWorkersCustomDomainPlainArgs", "accountId");
-            }
             return $;
         }
     }

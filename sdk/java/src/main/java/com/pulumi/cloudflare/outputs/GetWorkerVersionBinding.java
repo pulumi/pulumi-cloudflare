@@ -29,6 +29,11 @@ public final class GetWorkerVersionBinding {
      */
     private List<String> allowedSenderAddresses;
     /**
+     * @return ID of the Flagship app to bind to for feature flag evaluation.
+     * 
+     */
+    private String appId;
+    /**
      * @return R2 bucket to bind to.
      * 
      */
@@ -44,6 +49,11 @@ public final class GetWorkerVersionBinding {
      */
     private String className;
     /**
+     * @return Identifier of the D1 database to bind to.
+     * 
+     */
+    private String databaseId;
+    /**
      * @return The name of the dataset to bind to.
      * 
      */
@@ -53,6 +63,16 @@ public final class GetWorkerVersionBinding {
      * 
      */
     private String destinationAddress;
+    /**
+     * @return The dispatch namespace the Durable Object script belongs to.
+     * 
+     */
+    private String dispatchNamespace;
+    /**
+     * @return Entrypoint to invoke on the target Worker.
+     * 
+     */
+    private String entrypoint;
     /**
      * @return The environment of the scriptName to bind to.
      * 
@@ -75,13 +95,18 @@ public final class GetWorkerVersionBinding {
      */
     private String indexName;
     /**
+     * @return The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+     * 
+     */
+    private String instanceName;
+    /**
      * @return JSON data to use.
      * 
      */
     private String json;
     /**
      * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
      * 
      */
     private String jurisdiction;
@@ -101,7 +126,7 @@ public final class GetWorkerVersionBinding {
      */
     private String name;
     /**
-     * @return The name of the dispatch namespace.
+     * @return The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
      * 
      */
     private String namespace;
@@ -110,6 +135,11 @@ public final class GetWorkerVersionBinding {
      * 
      */
     private String namespaceId;
+    /**
+     * @return Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+     * 
+     */
+    private String networkId;
     /**
      * @return The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
      * 
@@ -151,6 +181,11 @@ public final class GetWorkerVersionBinding {
      */
     private String service;
     /**
+     * @return Identifier of the VPC service to bind to.
+     * 
+     */
+    private String serviceId;
+    /**
      * @return The rate limit configuration.
      * 
      */
@@ -166,8 +201,13 @@ public final class GetWorkerVersionBinding {
      */
     private String text;
     /**
+     * @return UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+     * 
+     */
+    private String tunnelId;
+    /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasmModule&#34;.
+     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
      * 
      */
     private String type;
@@ -210,6 +250,13 @@ public final class GetWorkerVersionBinding {
         return this.allowedSenderAddresses;
     }
     /**
+     * @return ID of the Flagship app to bind to for feature flag evaluation.
+     * 
+     */
+    public String appId() {
+        return this.appId;
+    }
+    /**
      * @return R2 bucket to bind to.
      * 
      */
@@ -231,6 +278,13 @@ public final class GetWorkerVersionBinding {
         return this.className;
     }
     /**
+     * @return Identifier of the D1 database to bind to.
+     * 
+     */
+    public String databaseId() {
+        return this.databaseId;
+    }
+    /**
      * @return The name of the dataset to bind to.
      * 
      */
@@ -243,6 +297,20 @@ public final class GetWorkerVersionBinding {
      */
     public String destinationAddress() {
         return this.destinationAddress;
+    }
+    /**
+     * @return The dispatch namespace the Durable Object script belongs to.
+     * 
+     */
+    public String dispatchNamespace() {
+        return this.dispatchNamespace;
+    }
+    /**
+     * @return Entrypoint to invoke on the target Worker.
+     * 
+     */
+    public String entrypoint() {
+        return this.entrypoint;
     }
     /**
      * @return The environment of the scriptName to bind to.
@@ -274,6 +342,13 @@ public final class GetWorkerVersionBinding {
         return this.indexName;
     }
     /**
+     * @return The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+     * 
+     */
+    public String instanceName() {
+        return this.instanceName;
+    }
+    /**
      * @return JSON data to use.
      * 
      */
@@ -282,7 +357,7 @@ public final class GetWorkerVersionBinding {
     }
     /**
      * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
      * 
      */
     public String jurisdiction() {
@@ -310,7 +385,7 @@ public final class GetWorkerVersionBinding {
         return this.name;
     }
     /**
-     * @return The name of the dispatch namespace.
+     * @return The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
      * 
      */
     public String namespace() {
@@ -322,6 +397,13 @@ public final class GetWorkerVersionBinding {
      */
     public String namespaceId() {
         return this.namespaceId;
+    }
+    /**
+     * @return Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+     * 
+     */
+    public String networkId() {
+        return this.networkId;
     }
     /**
      * @return The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
@@ -380,6 +462,13 @@ public final class GetWorkerVersionBinding {
         return this.service;
     }
     /**
+     * @return Identifier of the VPC service to bind to.
+     * 
+     */
+    public String serviceId() {
+        return this.serviceId;
+    }
+    /**
      * @return The rate limit configuration.
      * 
      */
@@ -401,8 +490,15 @@ public final class GetWorkerVersionBinding {
         return this.text;
     }
     /**
+     * @return UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+     * 
+     */
+    public String tunnelId() {
+        return this.tunnelId;
+    }
+    /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasmModule&#34;.
+     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;flagship&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
      * 
      */
     public String type() {
@@ -442,15 +538,20 @@ public final class GetWorkerVersionBinding {
         private String algorithm;
         private List<String> allowedDestinationAddresses;
         private List<String> allowedSenderAddresses;
+        private String appId;
         private String bucketName;
         private String certificateId;
         private String className;
+        private String databaseId;
         private String dataset;
         private String destinationAddress;
+        private String dispatchNamespace;
+        private String entrypoint;
         private String environment;
         private String format;
         private String id;
         private String indexName;
+        private String instanceName;
         private String json;
         private String jurisdiction;
         private String keyBase64;
@@ -458,6 +559,7 @@ public final class GetWorkerVersionBinding {
         private String name;
         private String namespace;
         private String namespaceId;
+        private String networkId;
         private String oldName;
         private GetWorkerVersionBindingOutbound outbound;
         private String part;
@@ -466,9 +568,11 @@ public final class GetWorkerVersionBinding {
         private String scriptName;
         private String secretName;
         private String service;
+        private String serviceId;
         private GetWorkerVersionBindingSimple simple;
         private String storeId;
         private String text;
+        private String tunnelId;
         private String type;
         private List<String> usages;
         private String versionId;
@@ -479,15 +583,20 @@ public final class GetWorkerVersionBinding {
     	      this.algorithm = defaults.algorithm;
     	      this.allowedDestinationAddresses = defaults.allowedDestinationAddresses;
     	      this.allowedSenderAddresses = defaults.allowedSenderAddresses;
+    	      this.appId = defaults.appId;
     	      this.bucketName = defaults.bucketName;
     	      this.certificateId = defaults.certificateId;
     	      this.className = defaults.className;
+    	      this.databaseId = defaults.databaseId;
     	      this.dataset = defaults.dataset;
     	      this.destinationAddress = defaults.destinationAddress;
+    	      this.dispatchNamespace = defaults.dispatchNamespace;
+    	      this.entrypoint = defaults.entrypoint;
     	      this.environment = defaults.environment;
     	      this.format = defaults.format;
     	      this.id = defaults.id;
     	      this.indexName = defaults.indexName;
+    	      this.instanceName = defaults.instanceName;
     	      this.json = defaults.json;
     	      this.jurisdiction = defaults.jurisdiction;
     	      this.keyBase64 = defaults.keyBase64;
@@ -495,6 +604,7 @@ public final class GetWorkerVersionBinding {
     	      this.name = defaults.name;
     	      this.namespace = defaults.namespace;
     	      this.namespaceId = defaults.namespaceId;
+    	      this.networkId = defaults.networkId;
     	      this.oldName = defaults.oldName;
     	      this.outbound = defaults.outbound;
     	      this.part = defaults.part;
@@ -503,9 +613,11 @@ public final class GetWorkerVersionBinding {
     	      this.scriptName = defaults.scriptName;
     	      this.secretName = defaults.secretName;
     	      this.service = defaults.service;
+    	      this.serviceId = defaults.serviceId;
     	      this.simple = defaults.simple;
     	      this.storeId = defaults.storeId;
     	      this.text = defaults.text;
+    	      this.tunnelId = defaults.tunnelId;
     	      this.type = defaults.type;
     	      this.usages = defaults.usages;
     	      this.versionId = defaults.versionId;
@@ -543,6 +655,14 @@ public final class GetWorkerVersionBinding {
             return allowedSenderAddresses(List.of(allowedSenderAddresses));
         }
         @CustomType.Setter
+        public Builder appId(String appId) {
+            if (appId == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "appId");
+            }
+            this.appId = appId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder bucketName(String bucketName) {
             if (bucketName == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "bucketName");
@@ -567,6 +687,14 @@ public final class GetWorkerVersionBinding {
             return this;
         }
         @CustomType.Setter
+        public Builder databaseId(String databaseId) {
+            if (databaseId == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "databaseId");
+            }
+            this.databaseId = databaseId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder dataset(String dataset) {
             if (dataset == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "dataset");
@@ -580,6 +708,22 @@ public final class GetWorkerVersionBinding {
               throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "destinationAddress");
             }
             this.destinationAddress = destinationAddress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dispatchNamespace(String dispatchNamespace) {
+            if (dispatchNamespace == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "dispatchNamespace");
+            }
+            this.dispatchNamespace = dispatchNamespace;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder entrypoint(String entrypoint) {
+            if (entrypoint == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "entrypoint");
+            }
+            this.entrypoint = entrypoint;
             return this;
         }
         @CustomType.Setter
@@ -612,6 +756,14 @@ public final class GetWorkerVersionBinding {
               throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "indexName");
             }
             this.indexName = indexName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceName(String instanceName) {
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "instanceName");
+            }
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
@@ -668,6 +820,14 @@ public final class GetWorkerVersionBinding {
               throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "namespaceId");
             }
             this.namespaceId = namespaceId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder networkId(String networkId) {
+            if (networkId == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "networkId");
+            }
+            this.networkId = networkId;
             return this;
         }
         @CustomType.Setter
@@ -735,6 +895,14 @@ public final class GetWorkerVersionBinding {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceId(String serviceId) {
+            if (serviceId == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "serviceId");
+            }
+            this.serviceId = serviceId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder simple(GetWorkerVersionBindingSimple simple) {
             if (simple == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "simple");
@@ -756,6 +924,14 @@ public final class GetWorkerVersionBinding {
               throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "text");
             }
             this.text = text;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tunnelId(String tunnelId) {
+            if (tunnelId == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionBinding", "tunnelId");
+            }
+            this.tunnelId = tunnelId;
             return this;
         }
         @CustomType.Setter
@@ -798,15 +974,20 @@ public final class GetWorkerVersionBinding {
             _resultValue.algorithm = algorithm;
             _resultValue.allowedDestinationAddresses = allowedDestinationAddresses;
             _resultValue.allowedSenderAddresses = allowedSenderAddresses;
+            _resultValue.appId = appId;
             _resultValue.bucketName = bucketName;
             _resultValue.certificateId = certificateId;
             _resultValue.className = className;
+            _resultValue.databaseId = databaseId;
             _resultValue.dataset = dataset;
             _resultValue.destinationAddress = destinationAddress;
+            _resultValue.dispatchNamespace = dispatchNamespace;
+            _resultValue.entrypoint = entrypoint;
             _resultValue.environment = environment;
             _resultValue.format = format;
             _resultValue.id = id;
             _resultValue.indexName = indexName;
+            _resultValue.instanceName = instanceName;
             _resultValue.json = json;
             _resultValue.jurisdiction = jurisdiction;
             _resultValue.keyBase64 = keyBase64;
@@ -814,6 +995,7 @@ public final class GetWorkerVersionBinding {
             _resultValue.name = name;
             _resultValue.namespace = namespace;
             _resultValue.namespaceId = namespaceId;
+            _resultValue.networkId = networkId;
             _resultValue.oldName = oldName;
             _resultValue.outbound = outbound;
             _resultValue.part = part;
@@ -822,9 +1004,11 @@ public final class GetWorkerVersionBinding {
             _resultValue.scriptName = scriptName;
             _resultValue.secretName = secretName;
             _resultValue.service = service;
+            _resultValue.serviceId = serviceId;
             _resultValue.simple = simple;
             _resultValue.storeId = storeId;
             _resultValue.text = text;
+            _resultValue.tunnelId = tunnelId;
             _resultValue.type = type;
             _resultValue.usages = usages;
             _resultValue.versionId = versionId;

@@ -63,21 +63,6 @@ public final class StreamWatermarkState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The image file to upload.
-     * 
-     */
-    @Import(name="file")
-    private @Nullable Output<String> file;
-
-    /**
-     * @return The image file to upload.
-     * 
-     */
-    public Optional<Output<String>> file() {
-        return Optional.ofNullable(this.file);
-    }
-
-    /**
      * The height of the image in pixels.
      * 
      */
@@ -213,6 +198,21 @@ public final class StreamWatermarkState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * URL of the watermark image to copy.
+     * 
+     */
+    @Import(name="url")
+    private @Nullable Output<String> url;
+
+    /**
+     * @return URL of the watermark image to copy.
+     * 
+     */
+    public Optional<Output<String>> url() {
+        return Optional.ofNullable(this.url);
+    }
+
+    /**
      * The width of the image in pixels.
      * 
      */
@@ -233,7 +233,6 @@ public final class StreamWatermarkState extends com.pulumi.resources.ResourceArg
         this.accountId = $.accountId;
         this.created = $.created;
         this.downloadedFrom = $.downloadedFrom;
-        this.file = $.file;
         this.height = $.height;
         this.identifier = $.identifier;
         this.name = $.name;
@@ -243,6 +242,7 @@ public final class StreamWatermarkState extends com.pulumi.resources.ResourceArg
         this.scale = $.scale;
         this.size = $.size;
         this.uid = $.uid;
+        this.url = $.url;
         this.width = $.width;
     }
 
@@ -325,27 +325,6 @@ public final class StreamWatermarkState extends com.pulumi.resources.ResourceArg
          */
         public Builder downloadedFrom(String downloadedFrom) {
             return downloadedFrom(Output.of(downloadedFrom));
-        }
-
-        /**
-         * @param file The image file to upload.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder file(@Nullable Output<String> file) {
-            $.file = file;
-            return this;
-        }
-
-        /**
-         * @param file The image file to upload.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder file(String file) {
-            return file(Output.of(file));
         }
 
         /**
@@ -535,6 +514,27 @@ public final class StreamWatermarkState extends com.pulumi.resources.ResourceArg
          */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
+        }
+
+        /**
+         * @param url URL of the watermark image to copy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(@Nullable Output<String> url) {
+            $.url = url;
+            return this;
+        }
+
+        /**
+         * @param url URL of the watermark image to copy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(String url) {
+            return url(Output.of(url));
         }
 
         /**

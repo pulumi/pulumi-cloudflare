@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetApiTokens
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `API Tokens Read`
+        /// - `API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +39,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiTokensResult>("cloudflare:index/getApiTokens:getApiTokens", args ?? new GetApiTokensArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `API Tokens Read`
+        /// - `API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +66,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetApiTokensResult>("cloudflare:index/getApiTokens:getApiTokens", args ?? new GetApiTokensInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `API Tokens Read`
+        /// - `API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

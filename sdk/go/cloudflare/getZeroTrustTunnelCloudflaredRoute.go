@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Networks Read`
+// - `Cloudflare One Networks Write`
+// - `Cloudflare Tunnel Read`
+// - `Cloudflare Tunnel Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustTunnelCloudflaredRoute(ctx, &cloudflare.LookupZeroTrustTunnelCloudflaredRouteArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				RouteId:   pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +57,7 @@ func LookupZeroTrustTunnelCloudflaredRoute(ctx *pulumi.Context, args *LookupZero
 // A collection of arguments for invoking getZeroTrustTunnelCloudflaredRoute.
 type LookupZeroTrustTunnelCloudflaredRouteArgs struct {
 	// Cloudflare account ID
-	AccountId string                                    `pulumi:"accountId"`
+	AccountId *string                                   `pulumi:"accountId"`
 	Filter    *GetZeroTrustTunnelCloudflaredRouteFilter `pulumi:"filter"`
 	// UUID of the route.
 	RouteId *string `pulumi:"routeId"`
@@ -59,7 +66,7 @@ type LookupZeroTrustTunnelCloudflaredRouteArgs struct {
 // A collection of values returned by getZeroTrustTunnelCloudflaredRoute.
 type LookupZeroTrustTunnelCloudflaredRouteResult struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Optional remark describing the route.
 	Comment string `pulumi:"comment"`
 	// Timestamp of when the resource was created.
@@ -91,7 +98,7 @@ func LookupZeroTrustTunnelCloudflaredRouteOutput(ctx *pulumi.Context, args Looku
 // A collection of arguments for invoking getZeroTrustTunnelCloudflaredRoute.
 type LookupZeroTrustTunnelCloudflaredRouteOutputArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringInput                               `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput                            `pulumi:"accountId"`
 	Filter    GetZeroTrustTunnelCloudflaredRouteFilterPtrInput `pulumi:"filter"`
 	// UUID of the route.
 	RouteId pulumi.StringPtrInput `pulumi:"routeId"`
@@ -117,8 +124,8 @@ func (o LookupZeroTrustTunnelCloudflaredRouteResultOutput) ToLookupZeroTrustTunn
 }
 
 // Cloudflare account ID
-func (o LookupZeroTrustTunnelCloudflaredRouteResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredRouteResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustTunnelCloudflaredRouteResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredRouteResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Optional remark describing the route.

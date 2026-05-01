@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -24,7 +30,7 @@ import * as utilities from "./utilities";
  *         config: {
  *             htmlHandling: "auto-trailing-slash",
  *             notFoundHandling: "404-page",
- *             runWorkerFirst: ["string"],
+ *             runWorkerFirst: [],
  *         },
  *         jwt: "jwt",
  *     },
@@ -35,8 +41,12 @@ import * as utilities from "./utilities";
  *     }],
  *     compatibilityDate: "2021-01-01",
  *     compatibilityFlags: ["nodejs_compat"],
+ *     containers: [{
+ *         className: "MyDurableObject",
+ *     }],
  *     limits: {
  *         cpuMs: 50,
+ *         subrequests: 1000,
  *     },
  *     mainModule: "index.js",
  *     migrations: {
@@ -103,7 +113,7 @@ export class WorkerVersion extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Metadata about the version.
      */
@@ -125,6 +135,10 @@ export class WorkerVersion extends pulumi.CustomResource {
      */
     declare public readonly compatibilityFlags: pulumi.Output<string[]>;
     /**
+     * List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+     */
+    declare public readonly containers: pulumi.Output<outputs.WorkerVersionContainer[] | undefined>;
+    /**
      * When the version was created.
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
@@ -140,6 +154,10 @@ export class WorkerVersion extends pulumi.CustomResource {
      * The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
      */
     declare public /*out*/ readonly mainScriptBase64: pulumi.Output<string>;
+    /**
+     * Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+     */
+    declare public /*out*/ readonly migrationTag: pulumi.Output<string>;
     /**
      * Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
      */
@@ -169,6 +187,10 @@ export class WorkerVersion extends pulumi.CustomResource {
      * Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
      */
     declare public /*out*/ readonly startupTimeMs: pulumi.Output<number>;
+    /**
+     * All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+     */
+    declare public /*out*/ readonly urls: pulumi.Output<string[]>;
     /**
      * Usage model for the version.
      * Available values: "standard", "bundled", "unbound".
@@ -200,23 +222,23 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["bindings"] = state?.bindings;
             resourceInputs["compatibilityDate"] = state?.compatibilityDate;
             resourceInputs["compatibilityFlags"] = state?.compatibilityFlags;
+            resourceInputs["containers"] = state?.containers;
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["limits"] = state?.limits;
             resourceInputs["mainModule"] = state?.mainModule;
             resourceInputs["mainScriptBase64"] = state?.mainScriptBase64;
+            resourceInputs["migrationTag"] = state?.migrationTag;
             resourceInputs["migrations"] = state?.migrations;
             resourceInputs["modules"] = state?.modules;
             resourceInputs["number"] = state?.number;
             resourceInputs["placement"] = state?.placement;
             resourceInputs["source"] = state?.source;
             resourceInputs["startupTimeMs"] = state?.startupTimeMs;
+            resourceInputs["urls"] = state?.urls;
             resourceInputs["usageModel"] = state?.usageModel;
             resourceInputs["workerId"] = state?.workerId;
         } else {
             const args = argsOrState as WorkerVersionArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.workerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workerId'");
             }
@@ -226,6 +248,7 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["bindings"] = args?.bindings;
             resourceInputs["compatibilityDate"] = args?.compatibilityDate;
             resourceInputs["compatibilityFlags"] = args?.compatibilityFlags;
+            resourceInputs["containers"] = args?.containers;
             resourceInputs["limits"] = args?.limits;
             resourceInputs["mainModule"] = args?.mainModule;
             resourceInputs["migrations"] = args?.migrations;
@@ -235,9 +258,11 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["workerId"] = args?.workerId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["mainScriptBase64"] = undefined /*out*/;
+            resourceInputs["migrationTag"] = undefined /*out*/;
             resourceInputs["number"] = undefined /*out*/;
             resourceInputs["source"] = undefined /*out*/;
             resourceInputs["startupTimeMs"] = undefined /*out*/;
+            resourceInputs["urls"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkerVersion.__pulumiType, name, resourceInputs, opts);
@@ -273,6 +298,10 @@ export interface WorkerVersionState {
      */
     compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+     */
+    containers?: pulumi.Input<pulumi.Input<inputs.WorkerVersionContainer>[]>;
+    /**
      * When the version was created.
      */
     createdOn?: pulumi.Input<string>;
@@ -288,6 +317,10 @@ export interface WorkerVersionState {
      * The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
      */
     mainScriptBase64?: pulumi.Input<string>;
+    /**
+     * Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+     */
+    migrationTag?: pulumi.Input<string>;
     /**
      * Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
      */
@@ -318,6 +351,10 @@ export interface WorkerVersionState {
      */
     startupTimeMs?: pulumi.Input<number>;
     /**
+     * All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+     */
+    urls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Usage model for the version.
      * Available values: "standard", "bundled", "unbound".
      *
@@ -337,7 +374,7 @@ export interface WorkerVersionArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Metadata about the version.
      */
@@ -358,6 +395,10 @@ export interface WorkerVersionArgs {
      * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      */
     compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+     */
+    containers?: pulumi.Input<pulumi.Input<inputs.WorkerVersionContainer>[]>;
     /**
      * Resource limits enforced at runtime.
      */

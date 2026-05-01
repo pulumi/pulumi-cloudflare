@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +37,7 @@ export interface GetStreamWatermarkArgs {
     /**
      * The account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * The unique identifier for a watermark profile.
      */
@@ -46,7 +51,7 @@ export interface GetStreamWatermarkResult {
     /**
      * The account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The date and a time a watermark profile was created.
      */
@@ -101,6 +106,11 @@ export interface GetStreamWatermarkResult {
     readonly width: number;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -128,7 +138,7 @@ export interface GetStreamWatermarkOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The unique identifier for a watermark profile.
      */

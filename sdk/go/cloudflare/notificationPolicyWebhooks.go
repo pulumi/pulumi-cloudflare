@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+// - `Notifications Read`
+// - `Notifications Write`
+// - `Zero Trust: PII Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -50,7 +58,7 @@ type NotificationPolicyWebhooks struct {
 	pulumi.CustomResourceState
 
 	// The account id
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Timestamp of when the webhook destination was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
@@ -75,9 +83,6 @@ func NewNotificationPolicyWebhooks(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -159,7 +164,7 @@ func (NotificationPolicyWebhooksState) ElementType() reflect.Type {
 
 type notificationPolicyWebhooksArgs struct {
 	// The account id
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
 	Name string `pulumi:"name"`
 	// Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
@@ -171,7 +176,7 @@ type notificationPolicyWebhooksArgs struct {
 // The set of arguments for constructing a NotificationPolicyWebhooks resource.
 type NotificationPolicyWebhooksArgs struct {
 	// The account id
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
 	Name pulumi.StringInput
 	// Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
@@ -268,8 +273,8 @@ func (o NotificationPolicyWebhooksOutput) ToNotificationPolicyWebhooksOutputWith
 }
 
 // The account id
-func (o NotificationPolicyWebhooksOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o NotificationPolicyWebhooksOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Timestamp of when the webhook destination was created.

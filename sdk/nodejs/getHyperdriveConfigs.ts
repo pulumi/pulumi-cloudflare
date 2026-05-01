@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Hyperdrive Read`
+ * - `Hyperdrive Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getHyperdriveConfigs(args: GetHyperdriveConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetHyperdriveConfigsResult> {
+export function getHyperdriveConfigs(args?: GetHyperdriveConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetHyperdriveConfigsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getHyperdriveConfigs:getHyperdriveConfigs", {
         "accountId": args.accountId,
@@ -33,7 +39,7 @@ export interface GetHyperdriveConfigsArgs {
     /**
      * Define configurations using a unique string identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +53,7 @@ export interface GetHyperdriveConfigsResult {
     /**
      * Define configurations using a unique string identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +68,11 @@ export interface GetHyperdriveConfigsResult {
     readonly results: outputs.GetHyperdriveConfigsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Hyperdrive Read`
+ * - `Hyperdrive Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetHyperdriveConfigsResult {
  * });
  * ```
  */
-export function getHyperdriveConfigsOutput(args: GetHyperdriveConfigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHyperdriveConfigsResult> {
+export function getHyperdriveConfigsOutput(args?: GetHyperdriveConfigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHyperdriveConfigsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getHyperdriveConfigs:getHyperdriveConfigs", {
         "accountId": args.accountId,
@@ -88,7 +100,7 @@ export interface GetHyperdriveConfigsOutputArgs {
     /**
      * Define configurations using a unique string identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

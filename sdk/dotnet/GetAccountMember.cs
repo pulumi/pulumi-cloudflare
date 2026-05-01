@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetAccountMember
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `SCIM Provisioning`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +37,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetAccountMemberResult> InvokeAsync(GetAccountMemberArgs args, InvokeOptions? options = null)
+        public static Task<GetAccountMemberResult> InvokeAsync(GetAccountMemberArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountMemberResult>("cloudflare:index/getAccountMember:getAccountMember", args ?? new GetAccountMemberArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `SCIM Provisioning`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +66,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAccountMemberResult> Invoke(GetAccountMemberInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetAccountMemberResult> Invoke(GetAccountMemberInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountMemberResult>("cloudflare:index/getAccountMember:getAccountMember", args ?? new GetAccountMemberInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `SCIM Provisioning`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetAccountMemberFilterArgs? Filter { get; set; }
@@ -110,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetAccountMemberFilterInputArgs>? Filter { get; set; }
@@ -135,7 +153,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The contact email address of the user.
         /// </summary>
@@ -169,7 +187,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetAccountMemberResult(
-            string accountId,
+            string? accountId,
 
             string email,
 

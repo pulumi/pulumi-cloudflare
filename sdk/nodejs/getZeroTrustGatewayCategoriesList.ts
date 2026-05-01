@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustGatewayCategoriesList(args: GetZeroTrustGatewayCategoriesListArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayCategoriesListResult> {
+export function getZeroTrustGatewayCategoriesList(args?: GetZeroTrustGatewayCategoriesListArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayCategoriesListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayCategoriesList:getZeroTrustGatewayCategoriesList", {
         "accountId": args.accountId,
@@ -33,7 +39,7 @@ export interface GetZeroTrustGatewayCategoriesListArgs {
     /**
      * Provide the identifier string.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +53,7 @@ export interface GetZeroTrustGatewayCategoriesListResult {
     /**
      * Provide the identifier string.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +68,11 @@ export interface GetZeroTrustGatewayCategoriesListResult {
     readonly results: outputs.GetZeroTrustGatewayCategoriesListResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetZeroTrustGatewayCategoriesListResult {
  * });
  * ```
  */
-export function getZeroTrustGatewayCategoriesListOutput(args: GetZeroTrustGatewayCategoriesListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayCategoriesListResult> {
+export function getZeroTrustGatewayCategoriesListOutput(args?: GetZeroTrustGatewayCategoriesListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayCategoriesListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayCategoriesList:getZeroTrustGatewayCategoriesList", {
         "accountId": args.accountId,
@@ -88,7 +100,7 @@ export interface GetZeroTrustGatewayCategoriesListOutputArgs {
     /**
      * Provide the identifier string.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

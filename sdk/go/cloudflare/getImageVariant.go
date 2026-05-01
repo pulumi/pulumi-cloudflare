@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Images Read`
+// - `Images Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetImageVariant(ctx, &cloudflare.LookupImageVariantArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				VariantId: "hero",
 //			}, nil)
 //			if err != nil {
@@ -50,14 +55,14 @@ func LookupImageVariant(ctx *pulumi.Context, args *LookupImageVariantArgs, opts 
 // A collection of arguments for invoking getImageVariant.
 type LookupImageVariantArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
-	VariantId string `pulumi:"variantId"`
+	AccountId *string `pulumi:"accountId"`
+	VariantId string  `pulumi:"variantId"`
 }
 
 // A collection of values returned by getImageVariant.
 type LookupImageVariantResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The ID of this resource.
 	Id        string                 `pulumi:"id"`
 	Variant   GetImageVariantVariant `pulumi:"variant"`
@@ -76,8 +81,8 @@ func LookupImageVariantOutput(ctx *pulumi.Context, args LookupImageVariantOutput
 // A collection of arguments for invoking getImageVariant.
 type LookupImageVariantOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	VariantId pulumi.StringInput `pulumi:"variantId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	VariantId pulumi.StringInput    `pulumi:"variantId"`
 }
 
 func (LookupImageVariantOutputArgs) ElementType() reflect.Type {
@@ -100,8 +105,8 @@ func (o LookupImageVariantResultOutput) ToLookupImageVariantResultOutputWithCont
 }
 
 // Account identifier tag.
-func (o LookupImageVariantResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupImageVariantResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupImageVariantResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupImageVariantResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The ID of this resource.

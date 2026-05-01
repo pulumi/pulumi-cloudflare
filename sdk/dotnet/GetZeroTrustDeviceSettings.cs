@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustDeviceSettingsResult> InvokeAsync(GetZeroTrustDeviceSettingsArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustDeviceSettingsResult> InvokeAsync(GetZeroTrustDeviceSettingsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDeviceSettingsResult>("cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings", args ?? new GetZeroTrustDeviceSettingsArgs(), options.WithDefaults());
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustDeviceSettingsResult> Invoke(GetZeroTrustDeviceSettingsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustDeviceSettingsResult> Invoke(GetZeroTrustDeviceSettingsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDeviceSettingsResult>("cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings", args ?? new GetZeroTrustDeviceSettingsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDeviceSettingsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         public GetZeroTrustDeviceSettingsArgs()
         {
@@ -92,8 +92,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDeviceSettingsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         public GetZeroTrustDeviceSettingsInvokeArgs()
         {
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDeviceSettingsResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
         /// </summary>
@@ -149,7 +149,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDeviceSettingsResult(
-            string accountId,
+            string? accountId,
 
             double disableForTime,
 

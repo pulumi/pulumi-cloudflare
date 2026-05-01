@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudforce One Read`
+// - `Cloudforce One Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCloudforceOneRequestPriority(ctx, &cloudflare.LookupCloudforceOneRequestPriorityArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				PriorityId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupCloudforceOneRequestPriority(ctx *pulumi.Context, args *LookupCloudfo
 // A collection of arguments for invoking getCloudforceOneRequestPriority.
 type LookupCloudforceOneRequestPriorityArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// UUID.
 	PriorityId string `pulumi:"priorityId"`
 }
@@ -58,8 +63,8 @@ type LookupCloudforceOneRequestPriorityArgs struct {
 // A collection of values returned by getCloudforceOneRequestPriority.
 type LookupCloudforceOneRequestPriorityResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
-	Completed string `pulumi:"completed"`
+	AccountId *string `pulumi:"accountId"`
+	Completed string  `pulumi:"completed"`
 	// Request content.
 	Content string `pulumi:"content"`
 	Created string `pulumi:"created"`
@@ -99,7 +104,7 @@ func LookupCloudforceOneRequestPriorityOutput(ctx *pulumi.Context, args LookupCl
 // A collection of arguments for invoking getCloudforceOneRequestPriority.
 type LookupCloudforceOneRequestPriorityOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// UUID.
 	PriorityId pulumi.StringInput `pulumi:"priorityId"`
 }
@@ -124,8 +129,8 @@ func (o LookupCloudforceOneRequestPriorityResultOutput) ToLookupCloudforceOneReq
 }
 
 // Identifier.
-func (o LookupCloudforceOneRequestPriorityResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestPriorityResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupCloudforceOneRequestPriorityResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestPriorityResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupCloudforceOneRequestPriorityResultOutput) Completed() pulumi.StringOutput {

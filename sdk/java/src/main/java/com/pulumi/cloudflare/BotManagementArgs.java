@@ -82,6 +82,23 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;.
+     * 
+     */
+    @Import(name="contentBotsProtection")
+    private @Nullable Output<String> contentBotsProtection;
+
+    /**
+     * @return Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;.
+     * 
+     */
+    public Optional<Output<String>> contentBotsProtection() {
+        return Optional.ofNullable(this.contentBotsProtection);
+    }
+
+    /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
@@ -265,6 +282,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         this.autoUpdateModel = $.autoUpdateModel;
         this.bmCookieEnabled = $.bmCookieEnabled;
         this.cfRobotsVariant = $.cfRobotsVariant;
+        this.contentBotsProtection = $.contentBotsProtection;
         this.crawlerProtection = $.crawlerProtection;
         this.enableJs = $.enableJs;
         this.fightMode = $.fightMode;
@@ -382,6 +400,29 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder cfRobotsVariant(String cfRobotsVariant) {
             return cfRobotsVariant(Output.of(cfRobotsVariant));
+        }
+
+        /**
+         * @param contentBotsProtection Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+         * Available values: &#34;block&#34;, &#34;disabled&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentBotsProtection(@Nullable Output<String> contentBotsProtection) {
+            $.contentBotsProtection = contentBotsProtection;
+            return this;
+        }
+
+        /**
+         * @param contentBotsProtection Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+         * Available values: &#34;block&#34;, &#34;disabled&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentBotsProtection(String contentBotsProtection) {
+            return contentBotsProtection(Output.of(contentBotsProtection));
         }
 
         /**

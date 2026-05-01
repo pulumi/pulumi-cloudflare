@@ -6,14 +6,22 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.StreamDownloadArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.StreamDownloadState;
+import com.pulumi.cloudflare.outputs.StreamDownloadAudio;
+import com.pulumi.cloudflare.outputs.StreamDownloadDefault;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Stream Read`
+ * - `Stream Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -60,14 +68,42 @@ public class StreamDownload extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
+    }
+    /**
+     * The audio-only download. Only present if this download type has been created.
+     * 
+     */
+    @Export(name="audio", refs={StreamDownloadAudio.class}, tree="[0]")
+    private Output<StreamDownloadAudio> audio;
+
+    /**
+     * @return The audio-only download. Only present if this download type has been created.
+     * 
+     */
+    public Output<StreamDownloadAudio> audio() {
+        return this.audio;
+    }
+    /**
+     * The default video download. Only present if this download type has been created.
+     * 
+     */
+    @Export(name="default", refs={StreamDownloadDefault.class}, tree="[0]")
+    private Output<StreamDownloadDefault> default_;
+
+    /**
+     * @return The default video download. Only present if this download type has been created.
+     * 
+     */
+    public Output<StreamDownloadDefault> default_() {
+        return this.default_;
     }
     /**
      * A Cloudflare-generated unique identifier for a media item.

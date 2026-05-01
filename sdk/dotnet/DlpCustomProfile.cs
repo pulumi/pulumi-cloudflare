@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Zero Trust Read`
+    /// - `Zero Trust Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -63,7 +68,7 @@ namespace Pulumi.Cloudflare
     public partial class DlpCustomProfile : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("aiContextEnabled")]
         public Output<bool> AiContextEnabled { get; private set; } = null!;
@@ -90,6 +95,18 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
+        /// Data class IDs to associate with the profile.
+        /// </summary>
+        [Output("dataClasses")]
+        public Output<ImmutableArray<string>> DataClasses { get; private set; } = null!;
+
+        /// <summary>
+        /// Data tag IDs to associate with the profile.
+        /// </summary>
+        [Output("dataTags")]
+        public Output<ImmutableArray<string>> DataTags { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the profile.
         /// </summary>
         [Output("description")]
@@ -113,6 +130,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("openAccess")]
         public Output<bool> OpenAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// Sensitivity levels to associate with the profile.
+        /// </summary>
+        [Output("sensitivityLevels")]
+        public Output<ImmutableArray<Outputs.DlpCustomProfileSensitivityLevel>> SensitivityLevels { get; private set; } = null!;
 
         /// <summary>
         /// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
@@ -182,8 +205,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class DlpCustomProfileArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("aiContextEnabled")]
         public Input<bool>? AiContextEnabled { get; set; }
@@ -202,6 +225,30 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("contextAwareness")]
         public Input<Inputs.DlpCustomProfileContextAwarenessArgs>? ContextAwareness { get; set; }
+
+        [Input("dataClasses")]
+        private InputList<string>? _dataClasses;
+
+        /// <summary>
+        /// Data class IDs to associate with the profile.
+        /// </summary>
+        public InputList<string> DataClasses
+        {
+            get => _dataClasses ?? (_dataClasses = new InputList<string>());
+            set => _dataClasses = value;
+        }
+
+        [Input("dataTags")]
+        private InputList<string>? _dataTags;
+
+        /// <summary>
+        /// Data tag IDs to associate with the profile.
+        /// </summary>
+        public InputList<string> DataTags
+        {
+            get => _dataTags ?? (_dataTags = new InputList<string>());
+            set => _dataTags = value;
+        }
 
         /// <summary>
         /// The description of the profile.
@@ -228,6 +275,18 @@ namespace Pulumi.Cloudflare
 
         [Input("ocrEnabled")]
         public Input<bool>? OcrEnabled { get; set; }
+
+        [Input("sensitivityLevels")]
+        private InputList<Inputs.DlpCustomProfileSensitivityLevelArgs>? _sensitivityLevels;
+
+        /// <summary>
+        /// Sensitivity levels to associate with the profile.
+        /// </summary>
+        public InputList<Inputs.DlpCustomProfileSensitivityLevelArgs> SensitivityLevels
+        {
+            get => _sensitivityLevels ?? (_sensitivityLevels = new InputList<Inputs.DlpCustomProfileSensitivityLevelArgs>());
+            set => _sensitivityLevels = value;
+        }
 
         [Input("sharedEntries")]
         private InputList<Inputs.DlpCustomProfileSharedEntryArgs>? _sharedEntries;
@@ -276,6 +335,30 @@ namespace Pulumi.Cloudflare
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        [Input("dataClasses")]
+        private InputList<string>? _dataClasses;
+
+        /// <summary>
+        /// Data class IDs to associate with the profile.
+        /// </summary>
+        public InputList<string> DataClasses
+        {
+            get => _dataClasses ?? (_dataClasses = new InputList<string>());
+            set => _dataClasses = value;
+        }
+
+        [Input("dataTags")]
+        private InputList<string>? _dataTags;
+
+        /// <summary>
+        /// Data tag IDs to associate with the profile.
+        /// </summary>
+        public InputList<string> DataTags
+        {
+            get => _dataTags ?? (_dataTags = new InputList<string>());
+            set => _dataTags = value;
+        }
+
         /// <summary>
         /// The description of the profile.
         /// </summary>
@@ -307,6 +390,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("openAccess")]
         public Input<bool>? OpenAccess { get; set; }
+
+        [Input("sensitivityLevels")]
+        private InputList<Inputs.DlpCustomProfileSensitivityLevelGetArgs>? _sensitivityLevels;
+
+        /// <summary>
+        /// Sensitivity levels to associate with the profile.
+        /// </summary>
+        public InputList<Inputs.DlpCustomProfileSensitivityLevelGetArgs> SensitivityLevels
+        {
+            get => _sensitivityLevels ?? (_sensitivityLevels = new InputList<Inputs.DlpCustomProfileSensitivityLevelGetArgs>());
+            set => _sensitivityLevels = value;
+        }
 
         [Input("sharedEntries")]
         private InputList<Inputs.DlpCustomProfileSharedEntryGetArgs>? _sharedEntries;

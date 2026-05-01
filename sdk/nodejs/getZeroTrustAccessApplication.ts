@@ -149,6 +149,10 @@ export interface GetZeroTrustAccessApplicationResult {
      */
     readonly logoUrl: string;
     /**
+     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     */
+    readonly mfaConfig: outputs.GetZeroTrustAccessApplicationMfaConfig;
+    /**
      * The name of the application.
      */
     readonly name: string;

@@ -19,7 +19,7 @@ __all__ = ['CallsSfuAppArgs', 'CallsSfuApp']
 @pulumi.input_type
 class CallsSfuAppArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  app_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -29,7 +29,8 @@ class CallsSfuAppArgs:
         :param pulumi.Input[_builtins.str] app_id: A Cloudflare-generated unique identifier for a item.
         :param pulumi.Input[_builtins.str] name: A short description of Calls app, not shown to end users.
         """
-        pulumi.set(__self__, "account_id", account_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
         if name is not None:
@@ -37,14 +38,14 @@ class CallsSfuAppArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -204,6 +205,11 @@ class CallsSfuApp(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Calls Read`
+        - `Calls Write`
+
         ## Example Usage
 
         ```python
@@ -230,9 +236,14 @@ class CallsSfuApp(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CallsSfuAppArgs,
+                 args: Optional[CallsSfuAppArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Calls Read`
+        - `Calls Write`
+
         ## Example Usage
 
         ```python
@@ -276,8 +287,6 @@ class CallsSfuApp(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CallsSfuAppArgs.__new__(CallsSfuAppArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["app_id"] = app_id
             __props__.__dict__["name"] = name
@@ -334,7 +343,7 @@ class CallsSfuApp(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The account identifier tag.
         """

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getEmailRoutingSettings(args: GetEmailRoutingSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingSettingsResult> {
+export function getEmailRoutingSettings(args?: GetEmailRoutingSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailRoutingSettings:getEmailRoutingSettings", {
         "zoneId": args.zoneId,
@@ -30,7 +36,7 @@ export interface GetEmailRoutingSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -75,9 +81,14 @@ export interface GetEmailRoutingSettingsResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -89,7 +100,8 @@ export interface GetEmailRoutingSettingsResult {
  * });
  * ```
  */
-export function getEmailRoutingSettingsOutput(args: GetEmailRoutingSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingSettingsResult> {
+export function getEmailRoutingSettingsOutput(args?: GetEmailRoutingSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailRoutingSettings:getEmailRoutingSettings", {
         "zoneId": args.zoneId,
@@ -103,5 +115,5 @@ export interface GetEmailRoutingSettingsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

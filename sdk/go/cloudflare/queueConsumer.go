@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Queues Read`
+// - `Queues Write`
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -56,7 +63,7 @@ type QueueConsumer struct {
 	pulumi.CustomResourceState
 
 	// A Resource identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// A Resource identifier.
 	ConsumerId      pulumi.StringOutput    `pulumi:"consumerId"`
 	CreatedOn       pulumi.StringOutput    `pulumi:"createdOn"`
@@ -65,8 +72,8 @@ type QueueConsumer struct {
 	QueueId   pulumi.StringOutput `pulumi:"queueId"`
 	QueueName pulumi.StringOutput `pulumi:"queueName"`
 	// Name of a Worker
-	ScriptName pulumi.StringPtrOutput         `pulumi:"scriptName"`
-	Settings   QueueConsumerSettingsPtrOutput `pulumi:"settings"`
+	ScriptName pulumi.StringOutput         `pulumi:"scriptName"`
+	Settings   QueueConsumerSettingsOutput `pulumi:"settings"`
 	// Available values: "worker", "httpPull".
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -78,9 +85,6 @@ func NewQueueConsumer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.QueueId == nil {
 		return nil, errors.New("invalid value for required argument 'QueueId'")
 	}
@@ -149,7 +153,7 @@ func (QueueConsumerState) ElementType() reflect.Type {
 
 type queueConsumerArgs struct {
 	// A Resource identifier.
-	AccountId       string  `pulumi:"accountId"`
+	AccountId       *string `pulumi:"accountId"`
 	DeadLetterQueue *string `pulumi:"deadLetterQueue"`
 	// A Resource identifier.
 	QueueId string `pulumi:"queueId"`
@@ -163,7 +167,7 @@ type queueConsumerArgs struct {
 // The set of arguments for constructing a QueueConsumer resource.
 type QueueConsumerArgs struct {
 	// A Resource identifier.
-	AccountId       pulumi.StringInput
+	AccountId       pulumi.StringPtrInput
 	DeadLetterQueue pulumi.StringPtrInput
 	// A Resource identifier.
 	QueueId pulumi.StringInput
@@ -262,8 +266,8 @@ func (o QueueConsumerOutput) ToQueueConsumerOutputWithContext(ctx context.Contex
 }
 
 // A Resource identifier.
-func (o QueueConsumerOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *QueueConsumer) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o QueueConsumerOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueConsumer) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // A Resource identifier.
@@ -289,12 +293,12 @@ func (o QueueConsumerOutput) QueueName() pulumi.StringOutput {
 }
 
 // Name of a Worker
-func (o QueueConsumerOutput) ScriptName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QueueConsumer) pulumi.StringPtrOutput { return v.ScriptName }).(pulumi.StringPtrOutput)
+func (o QueueConsumerOutput) ScriptName() pulumi.StringOutput {
+	return o.ApplyT(func(v *QueueConsumer) pulumi.StringOutput { return v.ScriptName }).(pulumi.StringOutput)
 }
 
-func (o QueueConsumerOutput) Settings() QueueConsumerSettingsPtrOutput {
-	return o.ApplyT(func(v *QueueConsumer) QueueConsumerSettingsPtrOutput { return v.Settings }).(QueueConsumerSettingsPtrOutput)
+func (o QueueConsumerOutput) Settings() QueueConsumerSettingsOutput {
+	return o.ApplyT(func(v *QueueConsumer) QueueConsumerSettingsOutput { return v.Settings }).(QueueConsumerSettingsOutput)
 }
 
 // Available values: "worker", "httpPull".

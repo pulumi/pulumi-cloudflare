@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetCustomHostnames
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -26,18 +31,31 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+        ///         CertificateAuthority = "google",
+        ///         CustomOriginServer = "origin2.example.com",
         ///         Direction = "desc",
-        ///         Hostname = "app.example.com",
+        ///         Hostname = new Cloudflare.Inputs.GetCustomHostnamesHostnameInputArgs
+        ///         {
+        ///             Contain = "example.com",
+        ///         },
+        ///         HostnameStatus = "provisioned",
         ///         Ssl = 0,
+        ///         SslStatus = "active",
+        ///         Wildcard = false,
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCustomHostnamesResult> InvokeAsync(GetCustomHostnamesArgs args, InvokeOptions? options = null)
+        public static Task<GetCustomHostnamesResult> InvokeAsync(GetCustomHostnamesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomHostnamesResult>("cloudflare:index/getCustomHostnames:getCustomHostnames", args ?? new GetCustomHostnamesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,18 +70,31 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+        ///         CertificateAuthority = "google",
+        ///         CustomOriginServer = "origin2.example.com",
         ///         Direction = "desc",
-        ///         Hostname = "app.example.com",
+        ///         Hostname = new Cloudflare.Inputs.GetCustomHostnamesHostnameInputArgs
+        ///         {
+        ///             Contain = "example.com",
+        ///         },
+        ///         HostnameStatus = "provisioned",
         ///         Ssl = 0,
+        ///         SslStatus = "active",
+        ///         Wildcard = false,
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCustomHostnamesResult> Invoke(GetCustomHostnamesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetCustomHostnamesResult> Invoke(GetCustomHostnamesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomHostnamesResult>("cloudflare:index/getCustomHostnames:getCustomHostnames", args ?? new GetCustomHostnamesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -78,9 +109,17 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+        ///         CertificateAuthority = "google",
+        ///         CustomOriginServer = "origin2.example.com",
         ///         Direction = "desc",
-        ///         Hostname = "app.example.com",
+        ///         Hostname = new Cloudflare.Inputs.GetCustomHostnamesHostnameInputArgs
+        ///         {
+        ///             Contain = "example.com",
+        ///         },
+        ///         HostnameStatus = "provisioned",
         ///         Ssl = 0,
+        ///         SslStatus = "active",
+        ///         Wildcard = false,
         ///     });
         /// 
         /// });
@@ -94,17 +133,34 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomHostnamesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Filter by the certificate authority that issued the SSL certificate.
+        /// Available values: "google", "lets*encrypt", "ssl*com".
+        /// </summary>
+        [Input("certificateAuthority")]
+        public string? CertificateAuthority { get; set; }
+
+        /// <summary>
+        /// Filter by custom origin server name.
+        /// </summary>
+        [Input("customOriginServer")]
+        public string? CustomOriginServer { get; set; }
+
+        /// <summary>
         /// Direction to order hostnames.
         /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
 
-        /// <summary>
-        /// Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
-        /// </summary>
         [Input("hostname")]
-        public string? Hostname { get; set; }
+        public Inputs.GetCustomHostnamesHostnameArgs? Hostname { get; set; }
+
+        /// <summary>
+        /// Filter by the hostname's activation status.
+        /// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "TestFailed", "provisioned", "blocked".
+        /// </summary>
+        [Input("hostnameStatus")]
+        public string? HostnameStatus { get; set; }
 
         /// <summary>
         /// Hostname ID to match against. This ID was generated and returned during the initial CustomHostname creation. This parameter cannot be used with the 'hostname' parameter.
@@ -133,10 +189,23 @@ namespace Pulumi.Cloudflare
         public double? Ssl { get; set; }
 
         /// <summary>
+        /// Filter by SSL certificate status.
+        /// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+        /// </summary>
+        [Input("sslStatus")]
+        public string? SslStatus { get; set; }
+
+        /// <summary>
+        /// Filter by whether the custom hostname is a wildcard hostname.
+        /// </summary>
+        [Input("wildcard")]
+        public bool? Wildcard { get; set; }
+
+        /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetCustomHostnamesArgs()
         {
@@ -147,17 +216,34 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomHostnamesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Filter by the certificate authority that issued the SSL certificate.
+        /// Available values: "google", "lets*encrypt", "ssl*com".
+        /// </summary>
+        [Input("certificateAuthority")]
+        public Input<string>? CertificateAuthority { get; set; }
+
+        /// <summary>
+        /// Filter by custom origin server name.
+        /// </summary>
+        [Input("customOriginServer")]
+        public Input<string>? CustomOriginServer { get; set; }
+
+        /// <summary>
         /// Direction to order hostnames.
         /// Available values: "asc", "desc".
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
-        /// <summary>
-        /// Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
-        /// </summary>
         [Input("hostname")]
-        public Input<string>? Hostname { get; set; }
+        public Input<Inputs.GetCustomHostnamesHostnameInputArgs>? Hostname { get; set; }
+
+        /// <summary>
+        /// Filter by the hostname's activation status.
+        /// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "TestFailed", "provisioned", "blocked".
+        /// </summary>
+        [Input("hostnameStatus")]
+        public Input<string>? HostnameStatus { get; set; }
 
         /// <summary>
         /// Hostname ID to match against. This ID was generated and returned during the initial CustomHostname creation. This parameter cannot be used with the 'hostname' parameter.
@@ -186,10 +272,23 @@ namespace Pulumi.Cloudflare
         public Input<double>? Ssl { get; set; }
 
         /// <summary>
+        /// Filter by SSL certificate status.
+        /// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+        /// </summary>
+        [Input("sslStatus")]
+        public Input<string>? SslStatus { get; set; }
+
+        /// <summary>
+        /// Filter by whether the custom hostname is a wildcard hostname.
+        /// </summary>
+        [Input("wildcard")]
+        public Input<bool>? Wildcard { get; set; }
+
+        /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetCustomHostnamesInvokeArgs()
         {
@@ -202,14 +301,25 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomHostnamesResult
     {
         /// <summary>
+        /// Filter by the certificate authority that issued the SSL certificate.
+        /// Available values: "google", "lets*encrypt", "ssl*com".
+        /// </summary>
+        public readonly string? CertificateAuthority;
+        /// <summary>
+        /// Filter by custom origin server name.
+        /// </summary>
+        public readonly string? CustomOriginServer;
+        /// <summary>
         /// Direction to order hostnames.
         /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
+        public readonly Outputs.GetCustomHostnamesHostnameResult? Hostname;
         /// <summary>
-        /// Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
+        /// Filter by the hostname's activation status.
+        /// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "TestFailed", "provisioned", "blocked".
         /// </summary>
-        public readonly string? Hostname;
+        public readonly string? HostnameStatus;
         /// <summary>
         /// Hostname ID to match against. This ID was generated and returned during the initial CustomHostname creation. This parameter cannot be used with the 'hostname' parameter.
         /// </summary>
@@ -233,15 +343,30 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double? Ssl;
         /// <summary>
+        /// Filter by SSL certificate status.
+        /// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+        /// </summary>
+        public readonly string? SslStatus;
+        /// <summary>
+        /// Filter by whether the custom hostname is a wildcard hostname.
+        /// </summary>
+        public readonly bool? Wildcard;
+        /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetCustomHostnamesResult(
+            string? certificateAuthority,
+
+            string? customOriginServer,
+
             string? direction,
 
-            string? hostname,
+            Outputs.GetCustomHostnamesHostnameResult? hostname,
+
+            string? hostnameStatus,
 
             string? id,
 
@@ -253,15 +378,24 @@ namespace Pulumi.Cloudflare
 
             double? ssl,
 
-            string zoneId)
+            string? sslStatus,
+
+            bool? wildcard,
+
+            string? zoneId)
         {
+            CertificateAuthority = certificateAuthority;
+            CustomOriginServer = customOriginServer;
             Direction = direction;
             Hostname = hostname;
+            HostnameStatus = hostnameStatus;
             Id = id;
             MaxItems = maxItems;
             Order = order;
             Results = results;
             Ssl = ssl;
+            SslStatus = sslStatus;
+            Wildcard = wildcard;
             ZoneId = zoneId;
         }
     }

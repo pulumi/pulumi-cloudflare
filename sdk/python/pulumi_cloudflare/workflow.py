@@ -21,26 +21,21 @@ __all__ = ['WorkflowArgs', 'Workflow']
 @pulumi.input_type
 class WorkflowArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  class_name: pulumi.Input[_builtins.str],
                  script_name: pulumi.Input[_builtins.str],
-                 workflow_name: pulumi.Input[_builtins.str]):
+                 workflow_name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 limits: Optional[pulumi.Input['WorkflowLimitsArgs']] = None):
         """
         The set of arguments for constructing a Workflow resource.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "class_name", class_name)
         pulumi.set(__self__, "script_name", script_name)
         pulumi.set(__self__, "workflow_name", workflow_name)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
 
     @_builtins.property
     @pulumi.getter(name="className")
@@ -69,6 +64,24 @@ class WorkflowArgs:
     def workflow_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "workflow_name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> Optional[pulumi.Input['WorkflowLimitsArgs']]:
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: Optional[pulumi.Input['WorkflowLimitsArgs']]):
+        pulumi.set(self, "limits", value)
+
 
 @pulumi.input_type
 class _WorkflowState:
@@ -78,6 +91,7 @@ class _WorkflowState:
                  created_on: Optional[pulumi.Input[_builtins.str]] = None,
                  instances: Optional[pulumi.Input['WorkflowInstancesArgs']] = None,
                  is_deleted: Optional[pulumi.Input[_builtins.float]] = None,
+                 limits: Optional[pulumi.Input['WorkflowLimitsArgs']] = None,
                  modified_on: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  script_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -98,6 +112,8 @@ class _WorkflowState:
             pulumi.set(__self__, "instances", instances)
         if is_deleted is not None:
             pulumi.set(__self__, "is_deleted", is_deleted)
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
         if modified_on is not None:
             pulumi.set(__self__, "modified_on", modified_on)
         if name is not None:
@@ -157,6 +173,15 @@ class _WorkflowState:
     @is_deleted.setter
     def is_deleted(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "is_deleted", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> Optional[pulumi.Input['WorkflowLimitsArgs']]:
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: Optional[pulumi.Input['WorkflowLimitsArgs']]):
+        pulumi.set(self, "limits", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
@@ -230,10 +255,17 @@ class Workflow(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  class_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 limits: Optional[pulumi.Input[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
                  script_name: Optional[pulumi.Input[_builtins.str]] = None,
                  workflow_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+        - `Workers Tail Read`
+
         ## Example Usage
 
         ```python
@@ -244,7 +276,10 @@ class Workflow(pulumi.CustomResource):
             account_id="account_id",
             workflow_name="x",
             class_name="x",
-            script_name="x")
+            script_name="x",
+            limits={
+                "steps": 1,
+            })
         ```
 
         ## Import
@@ -264,6 +299,12 @@ class Workflow(pulumi.CustomResource):
                  args: WorkflowArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+        - `Workers Tail Read`
+
         ## Example Usage
 
         ```python
@@ -274,7 +315,10 @@ class Workflow(pulumi.CustomResource):
             account_id="account_id",
             workflow_name="x",
             class_name="x",
-            script_name="x")
+            script_name="x",
+            limits={
+                "steps": 1,
+            })
         ```
 
         ## Import
@@ -301,6 +345,7 @@ class Workflow(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  class_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 limits: Optional[pulumi.Input[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
                  script_name: Optional[pulumi.Input[_builtins.str]] = None,
                  workflow_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -312,12 +357,11 @@ class Workflow(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkflowArgs.__new__(WorkflowArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if class_name is None and not opts.urn:
                 raise TypeError("Missing required property 'class_name'")
             __props__.__dict__["class_name"] = class_name
+            __props__.__dict__["limits"] = limits
             if script_name is None and not opts.urn:
                 raise TypeError("Missing required property 'script_name'")
             __props__.__dict__["script_name"] = script_name
@@ -347,6 +391,7 @@ class Workflow(pulumi.CustomResource):
             created_on: Optional[pulumi.Input[_builtins.str]] = None,
             instances: Optional[pulumi.Input[Union['WorkflowInstancesArgs', 'WorkflowInstancesArgsDict']]] = None,
             is_deleted: Optional[pulumi.Input[_builtins.float]] = None,
+            limits: Optional[pulumi.Input[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
             modified_on: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             script_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -371,6 +416,7 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["instances"] = instances
         __props__.__dict__["is_deleted"] = is_deleted
+        __props__.__dict__["limits"] = limits
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
         __props__.__dict__["script_name"] = script_name
@@ -382,7 +428,7 @@ class Workflow(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -404,6 +450,11 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter(name="isDeleted")
     def is_deleted(self) -> pulumi.Output[_builtins.float]:
         return pulumi.get(self, "is_deleted")
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> pulumi.Output[Optional['outputs.WorkflowLimits']]:
+        return pulumi.get(self, "limits")
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")

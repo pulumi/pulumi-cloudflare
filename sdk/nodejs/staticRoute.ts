@@ -75,7 +75,7 @@ export class StaticRoute extends pulumi.CustomResource {
     /**
      * An optional human provided description of the static route.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * When the route was last modified.
      */

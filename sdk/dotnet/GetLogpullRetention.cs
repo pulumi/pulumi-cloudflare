@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetLogpullRetention
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Logs Read`
+        /// - `Logs Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetLogpullRetentionResult> InvokeAsync(GetLogpullRetentionArgs args, InvokeOptions? options = null)
+        public static Task<GetLogpullRetentionResult> InvokeAsync(GetLogpullRetentionArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogpullRetentionResult>("cloudflare:index/getLogpullRetention:getLogpullRetention", args ?? new GetLogpullRetentionArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Logs Read`
+        /// - `Logs Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetLogpullRetentionResult> Invoke(GetLogpullRetentionInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetLogpullRetentionResult> Invoke(GetLogpullRetentionInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogpullRetentionResult>("cloudflare:index/getLogpullRetention:getLogpullRetention", args ?? new GetLogpullRetentionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Logs Read`
+        /// - `Logs Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetLogpullRetentionArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetLogpullRetentionInvokeArgs()
         {
@@ -122,7 +137,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetLogpullRetentionResult(
@@ -130,7 +145,7 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string zoneId)
+            string? zoneId)
         {
             Flag = flag;
             Id = id;

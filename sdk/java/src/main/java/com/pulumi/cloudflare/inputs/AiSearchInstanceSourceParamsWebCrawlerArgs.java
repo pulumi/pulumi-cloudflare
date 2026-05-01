@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsArgs;
 import com.pulumi.cloudflare.inputs.AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs;
 import com.pulumi.cloudflare.inputs.AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs;
 import com.pulumi.core.Output;
@@ -17,6 +18,13 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
 
     public static final AiSearchInstanceSourceParamsWebCrawlerArgs Empty = new AiSearchInstanceSourceParamsWebCrawlerArgs();
 
+    @Import(name="crawlOptions")
+    private @Nullable Output<AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsArgs> crawlOptions;
+
+    public Optional<Output<AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsArgs>> crawlOptions() {
+        return Optional.ofNullable(this.crawlOptions);
+    }
+
     @Import(name="parseOptions")
     private @Nullable Output<AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs> parseOptions;
 
@@ -25,14 +33,14 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
     }
 
     /**
-     * Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;.
+     * Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
      * 
      */
     @Import(name="parseType")
     private @Nullable Output<String> parseType;
 
     /**
-     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;.
+     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
      * 
      */
     public Optional<Output<String>> parseType() {
@@ -49,6 +57,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
     private AiSearchInstanceSourceParamsWebCrawlerArgs() {}
 
     private AiSearchInstanceSourceParamsWebCrawlerArgs(AiSearchInstanceSourceParamsWebCrawlerArgs $) {
+        this.crawlOptions = $.crawlOptions;
         this.parseOptions = $.parseOptions;
         this.parseType = $.parseType;
         this.storeOptions = $.storeOptions;
@@ -72,6 +81,15 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
             $ = new AiSearchInstanceSourceParamsWebCrawlerArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder crawlOptions(@Nullable Output<AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsArgs> crawlOptions) {
+            $.crawlOptions = crawlOptions;
+            return this;
+        }
+
+        public Builder crawlOptions(AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsArgs crawlOptions) {
+            return crawlOptions(Output.of(crawlOptions));
+        }
+
         public Builder parseOptions(@Nullable Output<AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs> parseOptions) {
             $.parseOptions = parseOptions;
             return this;
@@ -82,7 +100,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
         }
 
         /**
-         * @param parseType Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;.
+         * @param parseType Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
          * 
          * @return builder
          * 
@@ -93,7 +111,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerArgs extends com.pulumi
         }
 
         /**
-         * @param parseType Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;.
+         * @param parseType Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
          * 
          * @return builder
          * 

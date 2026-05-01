@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Snippets Read`
+// - `Snippets Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -72,7 +77,7 @@ type Snippet struct {
 	// Identify the snippet.
 	SnippetName pulumi.StringOutput `pulumi:"snippetName"`
 	// Use this field to specify the unique ID of the zone.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewSnippet registers a new resource with the given unique name, arguments, and options.
@@ -90,9 +95,6 @@ func NewSnippet(ctx *pulumi.Context,
 	}
 	if args.SnippetName == nil {
 		return nil, errors.New("invalid value for required argument 'SnippetName'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Snippet
@@ -158,7 +160,7 @@ type snippetArgs struct {
 	// Identify the snippet.
 	SnippetName string `pulumi:"snippetName"`
 	// Use this field to specify the unique ID of the zone.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Snippet resource.
@@ -170,7 +172,7 @@ type SnippetArgs struct {
 	// Identify the snippet.
 	SnippetName pulumi.StringInput
 	// Use this field to specify the unique ID of the zone.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (SnippetArgs) ElementType() reflect.Type {
@@ -286,8 +288,8 @@ func (o SnippetOutput) SnippetName() pulumi.StringOutput {
 }
 
 // Use this field to specify the unique ID of the zone.
-func (o SnippetOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Snippet) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o SnippetOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snippet) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type SnippetArrayOutput struct{ *pulumi.OutputState }

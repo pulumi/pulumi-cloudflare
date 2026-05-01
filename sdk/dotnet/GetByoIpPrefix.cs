@@ -12,6 +12,15 @@ namespace Pulumi.Cloudflare
     public static class GetByoIpPrefix
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `IP Prefixes: BGP On Demand Read`
+        /// - `IP Prefixes: BGP On Demand Write`
+        /// - `IP Prefixes: Read`
+        /// - `IP Prefixes: Write`
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +44,15 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetByoIpPrefixResult>("cloudflare:index/getByoIpPrefix:getByoIpPrefix", args ?? new GetByoIpPrefixArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `IP Prefixes: BGP On Demand Read`
+        /// - `IP Prefixes: BGP On Demand Write`
+        /// - `IP Prefixes: Read`
+        /// - `IP Prefixes: Write`
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +76,15 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetByoIpPrefixResult>("cloudflare:index/getByoIpPrefix:getByoIpPrefix", args ?? new GetByoIpPrefixInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `IP Prefixes: BGP On Demand Read`
+        /// - `IP Prefixes: BGP On Demand Write`
+        /// - `IP Prefixes: Read`
+        /// - `IP Prefixes: Write`
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +114,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of a Cloudflare account.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Identifier of an IP Prefix.
@@ -107,8 +134,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of a Cloudflare account.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Identifier of an IP Prefix.
@@ -129,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of a Cloudflare account.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
         /// </summary>
@@ -199,7 +226,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetByoIpPrefixResult(
-            string accountId,
+            string? accountId,
 
             bool advertised,
 

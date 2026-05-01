@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +43,7 @@ export interface GetMagicTransitSiteLanArgs {
     /**
      * Identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Identifier
      */
@@ -54,7 +61,7 @@ export interface GetMagicTransitSiteLanResult {
     /**
      * Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly bondId: number;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
@@ -64,6 +71,14 @@ export interface GetMagicTransitSiteLanResult {
      * Identifier
      */
     readonly id: string;
+    /**
+     * mark true to use this LAN for source-based breakout traffic
+     */
+    readonly isBreakout: boolean;
+    /**
+     * mark true to use this LAN for source-based prioritized traffic
+     */
+    readonly isPrioritized: boolean;
     /**
      * Identifier
      */
@@ -86,6 +101,13 @@ export interface GetMagicTransitSiteLanResult {
     readonly vlanTag: number;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -115,7 +137,7 @@ export interface GetMagicTransitSiteLanOutputArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Identifier
      */

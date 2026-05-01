@@ -19,7 +19,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustAccessAiControlsMcpPortal(args: GetZeroTrustAccessAiControlsMcpPortalArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessAiControlsMcpPortalResult> {
+export function getZeroTrustAccessAiControlsMcpPortal(args?: GetZeroTrustAccessAiControlsMcpPortalArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessAiControlsMcpPortalResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal", {
         "accountId": args.accountId,
@@ -32,7 +33,7 @@ export function getZeroTrustAccessAiControlsMcpPortal(args: GetZeroTrustAccessAi
  * A collection of arguments for invoking getZeroTrustAccessAiControlsMcpPortal.
  */
 export interface GetZeroTrustAccessAiControlsMcpPortalArgs {
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetZeroTrustAccessAiControlsMcpPortalFilter;
     /**
      * portal id
@@ -44,7 +45,11 @@ export interface GetZeroTrustAccessAiControlsMcpPortalArgs {
  * A collection of values returned by getZeroTrustAccessAiControlsMcpPortal.
  */
 export interface GetZeroTrustAccessAiControlsMcpPortalResult {
-    readonly accountId: string;
+    readonly accountId?: string;
+    /**
+     * Allow remote code execution in Dynamic Workers (beta)
+     */
+    readonly allowCodeMode: boolean;
     readonly createdAt: string;
     readonly createdBy: string;
     readonly description: string;
@@ -76,7 +81,8 @@ export interface GetZeroTrustAccessAiControlsMcpPortalResult {
  * });
  * ```
  */
-export function getZeroTrustAccessAiControlsMcpPortalOutput(args: GetZeroTrustAccessAiControlsMcpPortalOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessAiControlsMcpPortalResult> {
+export function getZeroTrustAccessAiControlsMcpPortalOutput(args?: GetZeroTrustAccessAiControlsMcpPortalOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessAiControlsMcpPortalResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal", {
         "accountId": args.accountId,
@@ -89,7 +95,7 @@ export function getZeroTrustAccessAiControlsMcpPortalOutput(args: GetZeroTrustAc
  * A collection of arguments for invoking getZeroTrustAccessAiControlsMcpPortal.
  */
 export interface GetZeroTrustAccessAiControlsMcpPortalOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetZeroTrustAccessAiControlsMcpPortalFilterArgs>;
     /**
      * portal id

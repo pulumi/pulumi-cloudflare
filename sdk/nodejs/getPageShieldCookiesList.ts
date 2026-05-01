@@ -7,6 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Domain Page Shield`
+ * - `Domain Page Shield Read`
+ * - `Page Shield`
+ * - `Page Shield Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +41,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getPageShieldCookiesList(args: GetPageShieldCookiesListArgs, opts?: pulumi.InvokeOptions): Promise<GetPageShieldCookiesListResult> {
+export function getPageShieldCookiesList(args?: GetPageShieldCookiesListArgs, opts?: pulumi.InvokeOptions): Promise<GetPageShieldCookiesListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPageShieldCookiesList:getPageShieldCookiesList", {
         "direction": args.direction,
@@ -87,10 +97,7 @@ export interface GetPageShieldCookiesListArgs {
     sameSite?: string;
     secure?: boolean;
     type?: string;
-    /**
-     * Identifier
-     */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -131,12 +138,18 @@ export interface GetPageShieldCookiesListResult {
     readonly sameSite?: string;
     readonly secure?: boolean;
     readonly type?: string;
-    /**
-     * Identifier
-     */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Domain Page Shield`
+ * - `Domain Page Shield Read`
+ * - `Page Shield`
+ * - `Page Shield Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -162,7 +175,8 @@ export interface GetPageShieldCookiesListResult {
  * });
  * ```
  */
-export function getPageShieldCookiesListOutput(args: GetPageShieldCookiesListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPageShieldCookiesListResult> {
+export function getPageShieldCookiesListOutput(args?: GetPageShieldCookiesListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPageShieldCookiesListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPageShieldCookiesList:getPageShieldCookiesList", {
         "direction": args.direction,
@@ -217,8 +231,5 @@ export interface GetPageShieldCookiesListOutputArgs {
     sameSite?: pulumi.Input<string>;
     secure?: pulumi.Input<boolean>;
     type?: pulumi.Input<string>;
-    /**
-     * Identifier
-     */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -31,7 +31,7 @@ export function getZeroTrustDeviceManagedNetworks(args: GetZeroTrustDeviceManage
  * A collection of arguments for invoking getZeroTrustDeviceManagedNetworks.
  */
 export interface GetZeroTrustDeviceManagedNetworksArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * API UUID.
      */
@@ -42,7 +42,7 @@ export interface GetZeroTrustDeviceManagedNetworksArgs {
  * A collection of values returned by getZeroTrustDeviceManagedNetworks.
  */
 export interface GetZeroTrustDeviceManagedNetworksResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The configuration object containing information for the WARP client to detect the managed network.
      */
@@ -90,7 +90,7 @@ export function getZeroTrustDeviceManagedNetworksOutput(args: GetZeroTrustDevice
  * A collection of arguments for invoking getZeroTrustDeviceManagedNetworks.
  */
 export interface GetZeroTrustDeviceManagedNetworksOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * API UUID.
      */

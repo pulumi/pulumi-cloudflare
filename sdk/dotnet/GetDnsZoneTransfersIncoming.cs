@@ -12,6 +12,14 @@ namespace Pulumi.Cloudflare
     public static class GetDnsZoneTransfersIncoming
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +38,18 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetDnsZoneTransfersIncomingResult> InvokeAsync(GetDnsZoneTransfersIncomingArgs args, InvokeOptions? options = null)
+        public static Task<GetDnsZoneTransfersIncomingResult> InvokeAsync(GetDnsZoneTransfersIncomingArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneTransfersIncomingResult>("cloudflare:index/getDnsZoneTransfersIncoming:getDnsZoneTransfersIncoming", args ?? new GetDnsZoneTransfersIncomingArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +68,18 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetDnsZoneTransfersIncomingResult> Invoke(GetDnsZoneTransfersIncomingInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetDnsZoneTransfersIncomingResult> Invoke(GetDnsZoneTransfersIncomingInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDnsZoneTransfersIncomingResult>("cloudflare:index/getDnsZoneTransfersIncoming:getDnsZoneTransfersIncoming", args ?? new GetDnsZoneTransfersIncomingInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -81,8 +105,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetDnsZoneTransfersIncomingArgs : global::Pulumi.InvokeArgs
     {
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetDnsZoneTransfersIncomingArgs()
         {
@@ -92,8 +116,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetDnsZoneTransfersIncomingInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetDnsZoneTransfersIncomingInvokeArgs()
         {
@@ -138,7 +162,7 @@ namespace Pulumi.Cloudflare
         /// The serial number of the SOA for the given zone.
         /// </summary>
         public readonly double SoaSerial;
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetDnsZoneTransfersIncomingResult(
@@ -158,7 +182,7 @@ namespace Pulumi.Cloudflare
 
             double soaSerial,
 
-            string zoneId)
+            string? zoneId)
         {
             AutoRefreshSeconds = autoRefreshSeconds;
             CheckedTime = checkedTime;

@@ -12,6 +12,45 @@ namespace Pulumi.Cloudflare
     public static class GetKeylessCertificate
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Apps and Policies Read`
+        /// - `Access: Apps and Policies Revoke`
+        /// - `Access: Apps and Policies Write`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// - `Analytics Read`
+        /// - `Apps Write`
+        /// - `Cache Purge`
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// - `Load Balancers Read`
+        /// - `Load Balancers Write`
+        /// - `Logs Read`
+        /// - `Logs Write`
+        /// - `Page Rules Read`
+        /// - `Page Rules Write`
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// - `Trust and Safety Read`
+        /// - `Trust and Safety Write`
+        /// - `Workers Routes Read`
+        /// - `Workers Routes Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Zaraz Admin`
+        /// - `Zaraz Edit`
+        /// - `Zaraz Read`
+        /// - `Zero Trust: PII Read`
+        /// - `Zone Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +74,45 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeylessCertificateResult>("cloudflare:index/getKeylessCertificate:getKeylessCertificate", args ?? new GetKeylessCertificateArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Apps and Policies Read`
+        /// - `Access: Apps and Policies Revoke`
+        /// - `Access: Apps and Policies Write`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// - `Analytics Read`
+        /// - `Apps Write`
+        /// - `Cache Purge`
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// - `Load Balancers Read`
+        /// - `Load Balancers Write`
+        /// - `Logs Read`
+        /// - `Logs Write`
+        /// - `Page Rules Read`
+        /// - `Page Rules Write`
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// - `Trust and Safety Read`
+        /// - `Trust and Safety Write`
+        /// - `Workers Routes Read`
+        /// - `Workers Routes Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Zaraz Admin`
+        /// - `Zaraz Edit`
+        /// - `Zaraz Read`
+        /// - `Zero Trust: PII Read`
+        /// - `Zone Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +136,45 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetKeylessCertificateResult>("cloudflare:index/getKeylessCertificate:getKeylessCertificate", args ?? new GetKeylessCertificateInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Apps and Policies Read`
+        /// - `Access: Apps and Policies Revoke`
+        /// - `Access: Apps and Policies Write`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// - `Analytics Read`
+        /// - `Apps Write`
+        /// - `Cache Purge`
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// - `Load Balancers Read`
+        /// - `Load Balancers Write`
+        /// - `Logs Read`
+        /// - `Logs Write`
+        /// - `Page Rules Read`
+        /// - `Page Rules Write`
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// - `Trust and Safety Read`
+        /// - `Trust and Safety Write`
+        /// - `Workers Routes Read`
+        /// - `Workers Routes Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Zaraz Admin`
+        /// - `Zaraz Edit`
+        /// - `Zaraz Read`
+        /// - `Zero Trust: PII Read`
+        /// - `Zone Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +210,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetKeylessCertificateArgs()
         {
@@ -113,8 +230,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetKeylessCertificateInvokeArgs()
         {
@@ -174,7 +291,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetKeylessCertificateResult(
@@ -200,7 +317,7 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetKeylessCertificateTunnelResult tunnel,
 
-            string zoneId)
+            string? zoneId)
         {
             CreatedOn = createdOn;
             Enabled = enabled;

@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustAccessAiControlsMcpPortalResult> InvokeAsync(GetZeroTrustAccessAiControlsMcpPortalArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustAccessAiControlsMcpPortalResult> InvokeAsync(GetZeroTrustAccessAiControlsMcpPortalArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessAiControlsMcpPortalResult>("cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal", args ?? new GetZeroTrustAccessAiControlsMcpPortalArgs(), options.WithDefaults());
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustAccessAiControlsMcpPortalResult> Invoke(GetZeroTrustAccessAiControlsMcpPortalInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustAccessAiControlsMcpPortalResult> Invoke(GetZeroTrustAccessAiControlsMcpPortalInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessAiControlsMcpPortalResult>("cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal", args ?? new GetZeroTrustAccessAiControlsMcpPortalInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustAccessAiControlsMcpPortalArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetZeroTrustAccessAiControlsMcpPortalFilterArgs? Filter { get; set; }
@@ -104,8 +104,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustAccessAiControlsMcpPortalInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetZeroTrustAccessAiControlsMcpPortalFilterInputArgs>? Filter { get; set; }
@@ -126,7 +126,11 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustAccessAiControlsMcpPortalResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
+        /// <summary>
+        /// Allow remote code execution in Dynamic Workers (beta)
+        /// </summary>
+        public readonly bool AllowCodeMode;
         public readonly string CreatedAt;
         public readonly string CreatedBy;
         public readonly string Description;
@@ -147,7 +151,9 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustAccessAiControlsMcpPortalResult(
-            string accountId,
+            string? accountId,
+
+            bool allowCodeMode,
 
             string createdAt,
 
@@ -172,6 +178,7 @@ namespace Pulumi.Cloudflare
             ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpPortalServerResult> servers)
         {
             AccountId = accountId;
+            AllowCodeMode = allowCodeMode;
             CreatedAt = createdAt;
             CreatedBy = createdBy;
             Description = description;

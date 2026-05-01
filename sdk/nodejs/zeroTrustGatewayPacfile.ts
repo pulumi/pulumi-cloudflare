@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -54,7 +59,7 @@ export class ZeroTrustGatewayPacfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewayPacfile.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Actual contents of the PAC file
      */
@@ -101,9 +106,6 @@ export class ZeroTrustGatewayPacfile extends pulumi.CustomResource {
             resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as ZeroTrustGatewayPacfileArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.contents === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contents'");
             }
@@ -157,7 +159,7 @@ export interface ZeroTrustGatewayPacfileState {
  * The set of arguments for constructing a ZeroTrustGatewayPacfile resource.
  */
 export interface ZeroTrustGatewayPacfileArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Actual contents of the PAC file
      */

@@ -8,10 +8,12 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDeviceManagedNetworksResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The configuration object containing information for the WARP client to detect the managed network.
      * 
@@ -40,8 +42,8 @@ public final class GetZeroTrustDeviceManagedNetworksResult {
     private String type;
 
     private GetZeroTrustDeviceManagedNetworksResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The configuration object containing information for the WARP client to detect the managed network.
@@ -89,7 +91,7 @@ public final class GetZeroTrustDeviceManagedNetworksResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private GetZeroTrustDeviceManagedNetworksConfig config;
         private String id;
         private String name;
@@ -107,10 +109,8 @@ public final class GetZeroTrustDeviceManagedNetworksResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDeviceManagedNetworksResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

@@ -17,22 +17,22 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
     public static final WorkersCustomDomainArgs Empty = new WorkersCustomDomainArgs();
 
     /**
-     * Identifer of the account.
+     * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifer of the account.
+     * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Worker environment associated with the zone and hostname.
+     * Worker environment associated with the domain.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -43,7 +43,7 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> environment;
 
     /**
-     * @return Worker environment associated with the zone and hostname.
+     * @return Worker environment associated with the domain.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -55,14 +55,14 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Hostname of the Worker Domain.
+     * Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      * 
      */
     @Import(name="hostname", required=true)
     private Output<String> hostname;
 
     /**
-     * @return Hostname of the Worker Domain.
+     * @return Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      * 
      */
     public Output<String> hostname() {
@@ -70,14 +70,14 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Worker service associated with the zone and hostname.
+     * Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      * 
      */
     @Import(name="service", required=true)
     private Output<String> service;
 
     /**
-     * @return Worker service associated with the zone and hostname.
+     * @return Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      * 
      */
     public Output<String> service() {
@@ -85,18 +85,33 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Identifier of the zone.
+     * ID of the zone containing the domain hostname.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier of the zone.
+     * @return ID of the zone containing the domain hostname.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
+
+    /**
+     * Name of the zone containing the domain hostname.
+     * 
+     */
+    @Import(name="zoneName")
+    private @Nullable Output<String> zoneName;
+
+    /**
+     * @return Name of the zone containing the domain hostname.
+     * 
+     */
+    public Optional<Output<String>> zoneName() {
+        return Optional.ofNullable(this.zoneName);
     }
 
     private WorkersCustomDomainArgs() {}
@@ -107,6 +122,7 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
         this.hostname = $.hostname;
         this.service = $.service;
         this.zoneId = $.zoneId;
+        this.zoneName = $.zoneName;
     }
 
     public static Builder builder() {
@@ -128,18 +144,18 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId Identifer of the account.
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId Identifer of the account.
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -149,7 +165,7 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param environment Worker environment associated with the zone and hostname.
+         * @param environment Worker environment associated with the domain.
          * 
          * @return builder
          * 
@@ -164,7 +180,7 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param environment Worker environment associated with the zone and hostname.
+         * @param environment Worker environment associated with the domain.
          * 
          * @return builder
          * 
@@ -178,7 +194,7 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hostname Hostname of the Worker Domain.
+         * @param hostname Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
          * 
          * @return builder
          * 
@@ -189,7 +205,7 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hostname Hostname of the Worker Domain.
+         * @param hostname Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
          * 
          * @return builder
          * 
@@ -199,7 +215,7 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param service Worker service associated with the zone and hostname.
+         * @param service Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
          * 
          * @return builder
          * 
@@ -210,7 +226,7 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param service Worker service associated with the zone and hostname.
+         * @param service Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
          * 
          * @return builder
          * 
@@ -220,18 +236,18 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId Identifier of the zone.
+         * @param zoneId ID of the zone containing the domain hostname.
          * 
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         /**
-         * @param zoneId Identifier of the zone.
+         * @param zoneId ID of the zone containing the domain hostname.
          * 
          * @return builder
          * 
@@ -240,18 +256,33 @@ public final class WorkersCustomDomainArgs extends com.pulumi.resources.Resource
             return zoneId(Output.of(zoneId));
         }
 
+        /**
+         * @param zoneName Name of the zone containing the domain hostname.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneName(@Nullable Output<String> zoneName) {
+            $.zoneName = zoneName;
+            return this;
+        }
+
+        /**
+         * @param zoneName Name of the zone containing the domain hostname.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneName(String zoneName) {
+            return zoneName(Output.of(zoneName));
+        }
+
         public WorkersCustomDomainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("WorkersCustomDomainArgs", "accountId");
-            }
             if ($.hostname == null) {
                 throw new MissingRequiredPropertyException("WorkersCustomDomainArgs", "hostname");
             }
             if ($.service == null) {
                 throw new MissingRequiredPropertyException("WorkersCustomDomainArgs", "service");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("WorkersCustomDomainArgs", "zoneId");
             }
             return $;
         }

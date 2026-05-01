@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetEmailRoutingRule
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Email Routing Rules Read`
+        /// - `Email Routing Rules Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetEmailRoutingRuleResult> InvokeAsync(GetEmailRoutingRuleArgs args, InvokeOptions? options = null)
+        public static Task<GetEmailRoutingRuleResult> InvokeAsync(GetEmailRoutingRuleArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEmailRoutingRuleResult>("cloudflare:index/getEmailRoutingRule:getEmailRoutingRule", args ?? new GetEmailRoutingRuleArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Email Routing Rules Read`
+        /// - `Email Routing Rules Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetEmailRoutingRuleResult> Invoke(GetEmailRoutingRuleInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetEmailRoutingRuleResult> Invoke(GetEmailRoutingRuleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEmailRoutingRuleResult>("cloudflare:index/getEmailRoutingRule:getEmailRoutingRule", args ?? new GetEmailRoutingRuleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Email Routing Rules Read`
+        /// - `Email Routing Rules Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -96,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetEmailRoutingRuleArgs()
         {
@@ -119,8 +134,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetEmailRoutingRuleInvokeArgs()
         {
@@ -168,7 +183,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetEmailRoutingRuleResult(
@@ -190,7 +205,7 @@ namespace Pulumi.Cloudflare
 
             string tag,
 
-            string zoneId)
+            string? zoneId)
         {
             Actions = actions;
             Enabled = enabled;

@@ -62,7 +62,7 @@ class GetAccountDnsSettingsInternalViewsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -169,6 +169,11 @@ def get_account_dns_settings_internal_views(account_id: Optional[_builtins.str] 
                                             zone_name: Optional[_builtins.str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountDnsSettingsInternalViewsResult:
     """
+    Accepted Permissions
+
+    - `DNS View Read`
+    - `DNS View Write`
+
     ## Example Usage
 
     ```python
@@ -222,7 +227,7 @@ def get_account_dns_settings_internal_views(account_id: Optional[_builtins.str] 
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_name=pulumi.get(__ret__, 'zone_name'))
-def get_account_dns_settings_internal_views_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_dns_settings_internal_views_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                    direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                    match: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                    max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
@@ -232,6 +237,11 @@ def get_account_dns_settings_internal_views_output(account_id: Optional[pulumi.I
                                                    zone_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountDnsSettingsInternalViewsResult]:
     """
+    Accepted Permissions
+
+    - `DNS View Read`
+    - `DNS View Write`
+
     ## Example Usage
 
     ```python

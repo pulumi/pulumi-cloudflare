@@ -11,6 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Apps and Policies Read`
+// - `Access: Apps and Policies Revoke`
+// - `Access: Apps and Policies Write`
+// - `Access: Mutual TLS Certificates Write`
+// - `Access: Organizations, Identity Providers, and Groups Write`
+// - `Analytics Read`
+// - `Apps Write`
+// - `Cache Purge`
+// - `DNS Read`
+// - `DNS Write`
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+// - `Load Balancers Read`
+// - `Load Balancers Write`
+// - `Logs Read`
+// - `Logs Write`
+// - `Page Rules Read`
+// - `Page Rules Write`
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+// - `Stream Read`
+// - `Stream Write`
+// - `Trust and Safety Read`
+// - `Trust and Safety Write`
+// - `Workers Routes Read`
+// - `Workers Routes Write`
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Zaraz Admin`
+// - `Zaraz Edit`
+// - `Zaraz Read`
+// - `Zero Trust: PII Read`
+// - `Zone Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+// - `Zone Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +65,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZoneHold(ctx, &cloudflare.LookupZoneHoldArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +88,7 @@ func LookupZoneHold(ctx *pulumi.Context, args *LookupZoneHoldArgs, opts ...pulum
 // A collection of arguments for invoking getZoneHold.
 type LookupZoneHoldArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZoneHold.
@@ -60,7 +99,7 @@ type LookupZoneHoldResult struct {
 	Id                string `pulumi:"id"`
 	IncludeSubdomains string `pulumi:"includeSubdomains"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupZoneHoldOutput(ctx *pulumi.Context, args LookupZoneHoldOutputArgs, opts ...pulumi.InvokeOption) LookupZoneHoldResultOutput {
@@ -75,7 +114,7 @@ func LookupZoneHoldOutput(ctx *pulumi.Context, args LookupZoneHoldOutputArgs, op
 // A collection of arguments for invoking getZoneHold.
 type LookupZoneHoldOutputArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupZoneHoldOutputArgs) ElementType() reflect.Type {
@@ -115,8 +154,8 @@ func (o LookupZoneHoldResultOutput) IncludeSubdomains() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupZoneHoldResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneHoldResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupZoneHoldResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZoneHoldResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

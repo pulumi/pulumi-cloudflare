@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.ConnectivityDirectoryServiceHostArgs;
+import com.pulumi.cloudflare.inputs.ConnectivityDirectoryServiceTlsSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -22,15 +23,30 @@ public final class ConnectivityDirectoryServiceArgs extends com.pulumi.resources
      * Account identifier
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Account identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * Available values: &#34;postgresql&#34;, &#34;mysql&#34;.
+     * 
+     */
+    @Import(name="appProtocol")
+    private @Nullable Output<String> appProtocol;
+
+    /**
+     * @return Available values: &#34;postgresql&#34;, &#34;mysql&#34;.
+     * 
+     */
+    public Optional<Output<String>> appProtocol() {
+        return Optional.ofNullable(this.appProtocol);
     }
 
     @Import(name="host", required=true)
@@ -61,15 +77,37 @@ public final class ConnectivityDirectoryServiceArgs extends com.pulumi.resources
         return this.name;
     }
 
+    @Import(name="tcpPort")
+    private @Nullable Output<Integer> tcpPort;
+
+    public Optional<Output<Integer>> tcpPort() {
+        return Optional.ofNullable(this.tcpPort);
+    }
+
     /**
-     * Available values: &#34;http&#34;.
+     * TLS settings for a connectivity service.
+     * 
+     */
+    @Import(name="tlsSettings")
+    private @Nullable Output<ConnectivityDirectoryServiceTlsSettingsArgs> tlsSettings;
+
+    /**
+     * @return TLS settings for a connectivity service.
+     * 
+     */
+    public Optional<Output<ConnectivityDirectoryServiceTlsSettingsArgs>> tlsSettings() {
+        return Optional.ofNullable(this.tlsSettings);
+    }
+
+    /**
+     * Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Available values: &#34;http&#34;.
+     * @return Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     public Output<String> type() {
@@ -80,10 +118,13 @@ public final class ConnectivityDirectoryServiceArgs extends com.pulumi.resources
 
     private ConnectivityDirectoryServiceArgs(ConnectivityDirectoryServiceArgs $) {
         this.accountId = $.accountId;
+        this.appProtocol = $.appProtocol;
         this.host = $.host;
         this.httpPort = $.httpPort;
         this.httpsPort = $.httpsPort;
         this.name = $.name;
+        this.tcpPort = $.tcpPort;
+        this.tlsSettings = $.tlsSettings;
         this.type = $.type;
     }
 
@@ -111,7 +152,7 @@ public final class ConnectivityDirectoryServiceArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -124,6 +165,27 @@ public final class ConnectivityDirectoryServiceArgs extends com.pulumi.resources
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param appProtocol Available values: &#34;postgresql&#34;, &#34;mysql&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appProtocol(@Nullable Output<String> appProtocol) {
+            $.appProtocol = appProtocol;
+            return this;
+        }
+
+        /**
+         * @param appProtocol Available values: &#34;postgresql&#34;, &#34;mysql&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appProtocol(String appProtocol) {
+            return appProtocol(Output.of(appProtocol));
         }
 
         public Builder host(Output<ConnectivityDirectoryServiceHostArgs> host) {
@@ -162,8 +224,38 @@ public final class ConnectivityDirectoryServiceArgs extends com.pulumi.resources
             return name(Output.of(name));
         }
 
+        public Builder tcpPort(@Nullable Output<Integer> tcpPort) {
+            $.tcpPort = tcpPort;
+            return this;
+        }
+
+        public Builder tcpPort(Integer tcpPort) {
+            return tcpPort(Output.of(tcpPort));
+        }
+
         /**
-         * @param type Available values: &#34;http&#34;.
+         * @param tlsSettings TLS settings for a connectivity service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsSettings(@Nullable Output<ConnectivityDirectoryServiceTlsSettingsArgs> tlsSettings) {
+            $.tlsSettings = tlsSettings;
+            return this;
+        }
+
+        /**
+         * @param tlsSettings TLS settings for a connectivity service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsSettings(ConnectivityDirectoryServiceTlsSettingsArgs tlsSettings) {
+            return tlsSettings(Output.of(tlsSettings));
+        }
+
+        /**
+         * @param type Available values: &#34;tcp&#34;, &#34;http&#34;.
          * 
          * @return builder
          * 
@@ -174,7 +266,7 @@ public final class ConnectivityDirectoryServiceArgs extends com.pulumi.resources
         }
 
         /**
-         * @param type Available values: &#34;http&#34;.
+         * @param type Available values: &#34;tcp&#34;, &#34;http&#34;.
          * 
          * @return builder
          * 
@@ -184,9 +276,6 @@ public final class ConnectivityDirectoryServiceArgs extends com.pulumi.resources
         }
 
         public ConnectivityDirectoryServiceArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("ConnectivityDirectoryServiceArgs", "accountId");
-            }
             if ($.host == null) {
                 throw new MissingRequiredPropertyException("ConnectivityDirectoryServiceArgs", "host");
             }

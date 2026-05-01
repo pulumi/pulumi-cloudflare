@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers KV Storage Read`
+// - `Workers KV Storage Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -51,7 +56,7 @@ type WorkersKv struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName pulumi.StringOutput `pulumi:"keyName"`
 	// Associates arbitrary JSON data with a key/value pair.
@@ -69,9 +74,6 @@ func NewWorkersKv(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.KeyName == nil {
 		return nil, errors.New("invalid value for required argument 'KeyName'")
 	}
@@ -135,7 +137,7 @@ func (WorkersKvState) ElementType() reflect.Type {
 
 type workersKvArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName string `pulumi:"keyName"`
 	// Associates arbitrary JSON data with a key/value pair.
@@ -149,7 +151,7 @@ type workersKvArgs struct {
 // The set of arguments for constructing a WorkersKv resource.
 type WorkersKvArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName pulumi.StringInput
 	// Associates arbitrary JSON data with a key/value pair.
@@ -248,8 +250,8 @@ func (o WorkersKvOutput) ToWorkersKvOutputWithContext(ctx context.Context) Worke
 }
 
 // Identifier.
-func (o WorkersKvOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o WorkersKvOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkersKv) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.

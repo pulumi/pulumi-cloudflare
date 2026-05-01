@@ -11,11 +11,17 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Account DNS Settings Read`
+ * - `Account DNS Settings Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -46,6 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleAccountDnsSettings = new AccountDnsSettings("exampleAccountDnsSettings", AccountDnsSettingsArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .enforceDnsOnly(false)
  *             .zoneDefaults(AccountDnsSettingsZoneDefaultsArgs.builder()
  *                 .flattenAllCnames(false)
  *                 .foundationDns(false)
@@ -88,14 +95,28 @@ public class AccountDnsSettings extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
+    }
+    /**
+     * When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record&#39;s individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+     * 
+     */
+    @Export(name="enforceDnsOnly", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enforceDnsOnly;
+
+    /**
+     * @return When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record&#39;s individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+     * 
+     */
+    public Output<Optional<Boolean>> enforceDnsOnly() {
+        return Codegen.optional(this.enforceDnsOnly);
     }
     @Export(name="zoneDefaults", refs={AccountDnsSettingsZoneDefaults.class}, tree="[0]")
     private Output</* @Nullable */ AccountDnsSettingsZoneDefaults> zoneDefaults;
@@ -116,7 +137,7 @@ public class AccountDnsSettings extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccountDnsSettings(java.lang.String name, AccountDnsSettingsArgs args) {
+    public AccountDnsSettings(java.lang.String name, @Nullable AccountDnsSettingsArgs args) {
         this(name, args, null);
     }
     /**
@@ -125,7 +146,7 @@ public class AccountDnsSettings extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccountDnsSettings(java.lang.String name, AccountDnsSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public AccountDnsSettings(java.lang.String name, @Nullable AccountDnsSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/accountDnsSettings:AccountDnsSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -133,7 +154,7 @@ public class AccountDnsSettings extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/accountDnsSettings:AccountDnsSettings", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static AccountDnsSettingsArgs makeArgs(AccountDnsSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static AccountDnsSettingsArgs makeArgs(@Nullable AccountDnsSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

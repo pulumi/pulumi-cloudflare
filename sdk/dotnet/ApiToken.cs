@@ -10,33 +10,69 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `API Tokens Read`
+    /// - `API Tokens Write`
+    /// 
     /// ## Example Usage
     /// 
-    /// resource "cloudflare.ApiToken" "ExampleApiToken" {
-    ///   name       = "workers read-only token"
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    ///   policies = [{
-    ///     effect = "allow"
-    ///     PermissionGroups = [{
-    ///       id = "1a71c399035b4950a1bd1466bbe4f420"
-    ///       }, {
-    ///       id = "8b47d2786a534c08a1f94ee8f9f599ef"
-    ///     }]
-    ///     resources = jsonencode({
-    ///       "com.cloudflare.api.account.b67e14daa5f8dceeb91fe5449ba496eb" = "*"
-    ///     })
-    ///   }]
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleApiToken = new Cloudflare.Index.ApiToken("example_api_token", new()
+    ///     {
+    ///         Name = "workers read-only token",
+    ///         Policies = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ApiTokenPolicyArgs
+    ///             {
+    ///                 Effect = "allow",
+    ///                 PermissionGroups = new[]
+    ///                 {
+    ///                     new Cloudflare.Inputs.ApiTokenPolicyPermissionGroupArgs
+    ///                     {
+    ///                         Id = "1a71c399035b4950a1bd1466bbe4f420",
+    ///                     },
+    ///                     new Cloudflare.Inputs.ApiTokenPolicyPermissionGroupArgs
+    ///                     {
+    ///                         Id = "8b47d2786a534c08a1f94ee8f9f599ef",
+    ///                     },
+    ///                 },
+    ///                 Resources = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["com.cloudflare.api.account.b67e14daa5f8dceeb91fe5449ba496eb"] = "*",
+    ///                 }),
+    ///             },
+    ///         },
+    ///         Condition = new Cloudflare.Inputs.ApiTokenConditionArgs
+    ///         {
+    ///             RequestIp = new Cloudflare.Inputs.ApiTokenConditionRequestIpArgs
+    ///             {
+    ///                 Ins = new[]
+    ///                 {
+    ///                     "123.123.123.0/24",
+    ///                     "2606:4700::/32",
+    ///                 },
+    ///                 NotIns = new[]
+    ///                 {
+    ///                     "123.123.123.0/28",
+    ///                     "2606:4700:4700::/48",
+    ///                 },
+    ///             },
+    ///         },
+    ///         ExpiresOn = "2027-10-01T00:00:00Z",
+    ///         NotBefore = "2025-10-01T00:00:00Z",
+    ///     });
     /// 
-    ///   condition = {
-    ///     RequestIp = {
-    ///       in     = ["123.123.123.0/24", "2606:4700::/32"]
-    ///       NotIn = ["123.123.123.0/28", "2606:4700:4700::/48"]
-    ///     }
-    ///   }
-    /// 
-    ///   ExpiresOn = "2027-10-01T00:00:00Z"
-    ///   NotBefore = "2025-10-01T00:00:00Z"
-    /// }
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetCustomSsls
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Mutual TLS Certificates Read`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +38,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCustomSslsResult> InvokeAsync(GetCustomSslsArgs args, InvokeOptions? options = null)
+        public static Task<GetCustomSslsResult> InvokeAsync(GetCustomSslsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomSslsResult>("cloudflare:index/getCustomSsls:getCustomSsls", args ?? new GetCustomSslsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Mutual TLS Certificates Read`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +68,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCustomSslsResult> Invoke(GetCustomSslsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetCustomSslsResult> Invoke(GetCustomSslsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomSslsResult>("cloudflare:index/getCustomSsls:getCustomSsls", args ?? new GetCustomSslsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Mutual TLS Certificates Read`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -107,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetCustomSslsArgs()
         {
@@ -141,8 +162,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetCustomSslsInvokeArgs()
         {
@@ -179,7 +200,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetCustomSslsResult(
@@ -193,7 +214,7 @@ namespace Pulumi.Cloudflare
 
             string? status,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             Match = match;

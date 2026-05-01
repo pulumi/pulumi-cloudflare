@@ -18,16 +18,20 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
+ * Accepted Permissions
+ * 
+ * - `Magic Network Monitoring Admin`
+ * - `Magic Network Monitoring Config Read`
+ * - `Magic Network Monitoring Config Write`
  * 
  */
 @ResourceType(type="cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration")
 public class MagicNetworkMonitoringConfiguration extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.

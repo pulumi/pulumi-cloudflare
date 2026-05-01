@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Workers Scripts Read`
+    /// - `Workers Scripts Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -49,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("schedules")]
         public Output<ImmutableArray<Outputs.WorkersCronTriggerSchedule>> Schedules { get; private set; } = null!;
@@ -113,8 +118,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("schedules", required: true)]
         private InputList<Inputs.WorkersCronTriggerScheduleArgs>? _schedules;

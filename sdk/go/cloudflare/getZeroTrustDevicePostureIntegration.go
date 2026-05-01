@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDevicePostureIntegration(ctx, &cloudflare.LookupZeroTrustDevicePostureIntegrationArgs{
-//				AccountId:     "699d98642c564d2e855e9661899b7252",
+//				AccountId:     pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				IntegrationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
@@ -49,14 +49,14 @@ func LookupZeroTrustDevicePostureIntegration(ctx *pulumi.Context, args *LookupZe
 
 // A collection of arguments for invoking getZeroTrustDevicePostureIntegration.
 type LookupZeroTrustDevicePostureIntegrationArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// API UUID.
 	IntegrationId string `pulumi:"integrationId"`
 }
 
 // A collection of values returned by getZeroTrustDevicePostureIntegration.
 type LookupZeroTrustDevicePostureIntegrationResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The configuration object containing third-party integration information.
 	Config GetZeroTrustDevicePostureIntegrationConfig `pulumi:"config"`
 	// API UUID.
@@ -83,7 +83,7 @@ func LookupZeroTrustDevicePostureIntegrationOutput(ctx *pulumi.Context, args Loo
 
 // A collection of arguments for invoking getZeroTrustDevicePostureIntegration.
 type LookupZeroTrustDevicePostureIntegrationOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// API UUID.
 	IntegrationId pulumi.StringInput `pulumi:"integrationId"`
 }
@@ -107,8 +107,8 @@ func (o LookupZeroTrustDevicePostureIntegrationResultOutput) ToLookupZeroTrustDe
 	return o
 }
 
-func (o LookupZeroTrustDevicePostureIntegrationResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDevicePostureIntegrationResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDevicePostureIntegrationResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDevicePostureIntegrationResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The configuration object containing third-party integration information.

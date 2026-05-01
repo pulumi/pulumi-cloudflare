@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int CryptominingScore;
         /// <summary>
-        /// The dataflow score of the JavaScript content.
+        /// The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
         /// </summary>
         public readonly int DataflowScore;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int MalwareScore;
         /// <summary>
-        /// The obfuscation score of the JavaScript content.
+        /// The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
         /// </summary>
         public readonly int ObfuscationScore;
 

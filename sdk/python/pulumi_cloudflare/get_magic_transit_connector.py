@@ -27,7 +27,7 @@ class GetMagicTransitConnectorResult:
     """
     A collection of values returned by getMagicTransitConnector.
     """
-    def __init__(__self__, account_id=None, activated=None, connector_id=None, device=None, id=None, interrupt_window_duration_hours=None, interrupt_window_hour_of_day=None, last_heartbeat=None, last_seen_version=None, last_updated=None, license_key=None, notes=None, timezone=None):
+    def __init__(__self__, account_id=None, activated=None, connector_id=None, device=None, id=None, interrupt_window_days_of_weeks=None, interrupt_window_duration_hours=None, interrupt_window_embargo_dates=None, interrupt_window_hour_of_day=None, last_heartbeat=None, last_seen_version=None, last_updated=None, license_key=None, notes=None, timezone=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -43,9 +43,15 @@ class GetMagicTransitConnectorResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if interrupt_window_days_of_weeks and not isinstance(interrupt_window_days_of_weeks, list):
+            raise TypeError("Expected argument 'interrupt_window_days_of_weeks' to be a list")
+        pulumi.set(__self__, "interrupt_window_days_of_weeks", interrupt_window_days_of_weeks)
         if interrupt_window_duration_hours and not isinstance(interrupt_window_duration_hours, float):
             raise TypeError("Expected argument 'interrupt_window_duration_hours' to be a float")
         pulumi.set(__self__, "interrupt_window_duration_hours", interrupt_window_duration_hours)
+        if interrupt_window_embargo_dates and not isinstance(interrupt_window_embargo_dates, list):
+            raise TypeError("Expected argument 'interrupt_window_embargo_dates' to be a list")
+        pulumi.set(__self__, "interrupt_window_embargo_dates", interrupt_window_embargo_dates)
         if interrupt_window_hour_of_day and not isinstance(interrupt_window_hour_of_day, float):
             raise TypeError("Expected argument 'interrupt_window_hour_of_day' to be a float")
         pulumi.set(__self__, "interrupt_window_hour_of_day", interrupt_window_hour_of_day)
@@ -70,7 +76,7 @@ class GetMagicTransitConnectorResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account identifier
         """
@@ -100,9 +106,25 @@ class GetMagicTransitConnectorResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="interruptWindowDaysOfWeeks")
+    def interrupt_window_days_of_weeks(self) -> Sequence[_builtins.str]:
+        """
+        Allowed days of the week for upgrades. Default is all days.
+        """
+        return pulumi.get(self, "interrupt_window_days_of_weeks")
+
+    @_builtins.property
     @pulumi.getter(name="interruptWindowDurationHours")
     def interrupt_window_duration_hours(self) -> _builtins.float:
         return pulumi.get(self, "interrupt_window_duration_hours")
+
+    @_builtins.property
+    @pulumi.getter(name="interruptWindowEmbargoDates")
+    def interrupt_window_embargo_dates(self) -> Sequence[_builtins.str]:
+        """
+        List of dates (YYYY-MM-DD) when upgrades are blocked.
+        """
+        return pulumi.get(self, "interrupt_window_embargo_dates")
 
     @_builtins.property
     @pulumi.getter(name="interruptWindowHourOfDay")
@@ -151,7 +173,9 @@ class AwaitableGetMagicTransitConnectorResult(GetMagicTransitConnectorResult):
             connector_id=self.connector_id,
             device=self.device,
             id=self.id,
+            interrupt_window_days_of_weeks=self.interrupt_window_days_of_weeks,
             interrupt_window_duration_hours=self.interrupt_window_duration_hours,
+            interrupt_window_embargo_dates=self.interrupt_window_embargo_dates,
             interrupt_window_hour_of_day=self.interrupt_window_hour_of_day,
             last_heartbeat=self.last_heartbeat,
             last_seen_version=self.last_seen_version,
@@ -165,6 +189,11 @@ def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
                                 connector_id: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMagicTransitConnectorResult:
     """
+    Accepted Permissions
+
+    - `Magic WAN Read`
+    - `Magic WAN Write`
+
     ## Example Usage
 
     ```python
@@ -190,7 +219,9 @@ def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
         connector_id=pulumi.get(__ret__, 'connector_id'),
         device=pulumi.get(__ret__, 'device'),
         id=pulumi.get(__ret__, 'id'),
+        interrupt_window_days_of_weeks=pulumi.get(__ret__, 'interrupt_window_days_of_weeks'),
         interrupt_window_duration_hours=pulumi.get(__ret__, 'interrupt_window_duration_hours'),
+        interrupt_window_embargo_dates=pulumi.get(__ret__, 'interrupt_window_embargo_dates'),
         interrupt_window_hour_of_day=pulumi.get(__ret__, 'interrupt_window_hour_of_day'),
         last_heartbeat=pulumi.get(__ret__, 'last_heartbeat'),
         last_seen_version=pulumi.get(__ret__, 'last_seen_version'),
@@ -198,10 +229,15 @@ def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
         license_key=pulumi.get(__ret__, 'license_key'),
         notes=pulumi.get(__ret__, 'notes'),
         timezone=pulumi.get(__ret__, 'timezone'))
-def get_magic_transit_connector_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_magic_transit_connector_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        connector_id: Optional[pulumi.Input[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitConnectorResult]:
     """
+    Accepted Permissions
+
+    - `Magic WAN Read`
+    - `Magic WAN Write`
+
     ## Example Usage
 
     ```python
@@ -226,7 +262,9 @@ def get_magic_transit_connector_output(account_id: Optional[pulumi.Input[_builti
         connector_id=pulumi.get(__response__, 'connector_id'),
         device=pulumi.get(__response__, 'device'),
         id=pulumi.get(__response__, 'id'),
+        interrupt_window_days_of_weeks=pulumi.get(__response__, 'interrupt_window_days_of_weeks'),
         interrupt_window_duration_hours=pulumi.get(__response__, 'interrupt_window_duration_hours'),
+        interrupt_window_embargo_dates=pulumi.get(__response__, 'interrupt_window_embargo_dates'),
         interrupt_window_hour_of_day=pulumi.get(__response__, 'interrupt_window_hour_of_day'),
         last_heartbeat=pulumi.get(__response__, 'last_heartbeat'),
         last_seen_version=pulumi.get(__response__, 'last_seen_version'),

@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getWorkersScripts(args: GetWorkersScriptsArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersScriptsResult> {
+export function getWorkersScripts(args?: GetWorkersScriptsArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersScriptsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersScripts:getWorkersScripts", {
         "accountId": args.accountId,
@@ -35,7 +42,7 @@ export interface GetWorkersScriptsArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -53,7 +60,7 @@ export interface GetWorkersScriptsResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -72,6 +79,12 @@ export interface GetWorkersScriptsResult {
     readonly tags?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -84,7 +97,8 @@ export interface GetWorkersScriptsResult {
  * });
  * ```
  */
-export function getWorkersScriptsOutput(args: GetWorkersScriptsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersScriptsResult> {
+export function getWorkersScriptsOutput(args?: GetWorkersScriptsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersScriptsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersScripts:getWorkersScripts", {
         "accountId": args.accountId,
@@ -100,7 +114,7 @@ export interface GetWorkersScriptsOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

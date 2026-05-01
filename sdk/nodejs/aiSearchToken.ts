@@ -37,13 +37,13 @@ export class AiSearchToken extends pulumi.CustomResource {
         return obj['__pulumiType'] === AiSearchToken.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public readonly cfApiId: pulumi.Output<string>;
     declare public readonly cfApiKey: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
-    declare public /*out*/ readonly legacy: pulumi.Output<boolean>;
+    declare public readonly legacy: pulumi.Output<boolean>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     declare public /*out*/ readonly modifiedBy: pulumi.Output<string>;
     declare public readonly name: pulumi.Output<string>;
@@ -73,9 +73,6 @@ export class AiSearchToken extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as AiSearchTokenArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.cfApiId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cfApiId'");
             }
@@ -88,11 +85,11 @@ export class AiSearchToken extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["cfApiId"] = args?.cfApiId;
             resourceInputs["cfApiKey"] = args?.cfApiKey ? pulumi.secret(args.cfApiKey) : undefined;
+            resourceInputs["legacy"] = args?.legacy;
             resourceInputs["name"] = args?.name;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
-            resourceInputs["legacy"] = undefined /*out*/;
             resourceInputs["modifiedAt"] = undefined /*out*/;
             resourceInputs["modifiedBy"] = undefined /*out*/;
         }
@@ -123,8 +120,9 @@ export interface AiSearchTokenState {
  * The set of arguments for constructing a AiSearchToken resource.
  */
 export interface AiSearchTokenArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     cfApiId: pulumi.Input<string>;
     cfApiKey: pulumi.Input<string>;
+    legacy?: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
 }

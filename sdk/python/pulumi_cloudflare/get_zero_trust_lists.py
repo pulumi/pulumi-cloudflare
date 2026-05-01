@@ -46,7 +46,7 @@ class GetZeroTrustListsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -78,7 +78,7 @@ class GetZeroTrustListsResult:
     def type(self) -> Optional[_builtins.str]:
         """
         Specify the list type.
-        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+        Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
         """
         return pulumi.get(self, "type")
 
@@ -114,7 +114,7 @@ def get_zero_trust_lists(account_id: Optional[_builtins.str] = None,
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str type: Specify the list type.
-           Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+           Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -129,7 +129,7 @@ def get_zero_trust_lists(account_id: Optional[_builtins.str] = None,
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         type=pulumi.get(__ret__, 'type'))
-def get_zero_trust_lists_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_lists_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                 type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustListsResult]:
@@ -147,7 +147,7 @@ def get_zero_trust_lists_output(account_id: Optional[pulumi.Input[_builtins.str]
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str type: Specify the list type.
-           Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+           Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
     """
     __args__ = dict()
     __args__['accountId'] = account_id

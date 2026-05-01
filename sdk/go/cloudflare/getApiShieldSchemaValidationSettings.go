@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Gateway`
+// - `Account API Gateway Read`
+// - `Domain API Gateway`
+// - `Domain API Gateway Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetApiShieldSchemaValidationSettings(ctx, &cloudflare.LookupApiShieldSchemaValidationSettingsArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +56,7 @@ func LookupApiShieldSchemaValidationSettings(ctx *pulumi.Context, args *LookupAp
 // A collection of arguments for invoking getApiShieldSchemaValidationSettings.
 type LookupApiShieldSchemaValidationSettingsArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getApiShieldSchemaValidationSettings.
@@ -60,7 +67,7 @@ type LookupApiShieldSchemaValidationSettingsResult struct {
 	ValidationDefaultMitigationAction  string `pulumi:"validationDefaultMitigationAction"`
 	ValidationOverrideMitigationAction string `pulumi:"validationOverrideMitigationAction"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupApiShieldSchemaValidationSettingsOutput(ctx *pulumi.Context, args LookupApiShieldSchemaValidationSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupApiShieldSchemaValidationSettingsResultOutput {
@@ -75,7 +82,7 @@ func LookupApiShieldSchemaValidationSettingsOutput(ctx *pulumi.Context, args Loo
 // A collection of arguments for invoking getApiShieldSchemaValidationSettings.
 type LookupApiShieldSchemaValidationSettingsOutputArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupApiShieldSchemaValidationSettingsOutputArgs) ElementType() reflect.Type {
@@ -116,8 +123,8 @@ func (o LookupApiShieldSchemaValidationSettingsResultOutput) ValidationOverrideM
 }
 
 // Identifier.
-func (o LookupApiShieldSchemaValidationSettingsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupApiShieldSchemaValidationSettingsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupApiShieldSchemaValidationSettingsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiShieldSchemaValidationSettingsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

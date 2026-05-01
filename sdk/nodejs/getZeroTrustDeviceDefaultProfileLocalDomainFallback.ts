@@ -16,7 +16,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDeviceDefaultProfileLocalDomainFallback(args: GetZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult> {
+export function getZeroTrustDeviceDefaultProfileLocalDomainFallback(args?: GetZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceDefaultProfileLocalDomainFallback:getZeroTrustDeviceDefaultProfileLocalDomainFallback", {
         "accountId": args.accountId,
@@ -27,14 +28,14 @@ export function getZeroTrustDeviceDefaultProfileLocalDomainFallback(args: GetZer
  * A collection of arguments for invoking getZeroTrustDeviceDefaultProfileLocalDomainFallback.
  */
 export interface GetZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs {
-    accountId: string;
+    accountId?: string;
 }
 
 /**
  * A collection of values returned by getZeroTrustDeviceDefaultProfileLocalDomainFallback.
  */
 export interface GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * A description of the fallback domain, displayed in the client UI.
      */
@@ -64,7 +65,8 @@ export interface GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult {
  * });
  * ```
  */
-export function getZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput(args: GetZeroTrustDeviceDefaultProfileLocalDomainFallbackOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult> {
+export function getZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput(args?: GetZeroTrustDeviceDefaultProfileLocalDomainFallbackOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceDefaultProfileLocalDomainFallback:getZeroTrustDeviceDefaultProfileLocalDomainFallback", {
         "accountId": args.accountId,
@@ -75,5 +77,5 @@ export function getZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput(args: 
  * A collection of arguments for invoking getZeroTrustDeviceDefaultProfileLocalDomainFallback.
  */
 export interface GetZeroTrustDeviceDefaultProfileLocalDomainFallbackOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

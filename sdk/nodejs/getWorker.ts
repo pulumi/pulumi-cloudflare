@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,10 +25,12 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getWorker(args: GetWorkerArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkerResult> {
+export function getWorker(args?: GetWorkerArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkerResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorker:getWorker", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "workerId": args.workerId,
     }, opts);
 }
@@ -34,11 +42,12 @@ export interface GetWorkerArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
+    filter?: inputs.GetWorkerFilter;
     /**
      * Identifier for the Worker, which can be ID or name.
      */
-    workerId: string;
+    workerId?: string;
 }
 
 /**
@@ -48,11 +57,16 @@ export interface GetWorkerResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * When the Worker was created.
      */
     readonly createdOn: string;
+    /**
+     * When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+     */
+    readonly deployedOn: string;
+    readonly filter?: outputs.GetWorkerFilter;
     /**
      * Identifier for the Worker, which can be ID or name.
      */
@@ -92,9 +106,15 @@ export interface GetWorkerResult {
     /**
      * Identifier for the Worker, which can be ID or name.
      */
-    readonly workerId: string;
+    readonly workerId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -107,10 +127,12 @@ export interface GetWorkerResult {
  * });
  * ```
  */
-export function getWorkerOutput(args: GetWorkerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkerResult> {
+export function getWorkerOutput(args?: GetWorkerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkerResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorker:getWorker", {
         "accountId": args.accountId,
+        "filter": args.filter,
         "workerId": args.workerId,
     }, opts);
 }
@@ -122,9 +144,10 @@ export interface GetWorkerOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetWorkerFilterArgs>;
     /**
      * Identifier for the Worker, which can be ID or name.
      */
-    workerId: pulumi.Input<string>;
+    workerId?: pulumi.Input<string>;
 }

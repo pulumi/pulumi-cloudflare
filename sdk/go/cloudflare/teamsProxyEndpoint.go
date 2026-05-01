@@ -50,8 +50,8 @@ import (
 type TeamsProxyEndpoint struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
 	// Specify the list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayOutput `pulumi:"ips"`
 	// The proxy endpoint kind
@@ -71,9 +71,6 @@ func NewTeamsProxyEndpoint(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -140,7 +137,7 @@ func (TeamsProxyEndpointState) ElementType() reflect.Type {
 }
 
 type teamsProxyEndpointArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Specify the list of CIDRs to restrict ingress connections.
 	Ips []string `pulumi:"ips"`
 	// The proxy endpoint kind
@@ -152,7 +149,7 @@ type teamsProxyEndpointArgs struct {
 
 // The set of arguments for constructing a TeamsProxyEndpoint resource.
 type TeamsProxyEndpointArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Specify the list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayInput
 	// The proxy endpoint kind
@@ -249,8 +246,8 @@ func (o TeamsProxyEndpointOutput) ToTeamsProxyEndpointOutputWithContext(ctx cont
 	return o
 }
 
-func (o TeamsProxyEndpointOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o TeamsProxyEndpointOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o TeamsProxyEndpointOutput) CreatedAt() pulumi.StringOutput {

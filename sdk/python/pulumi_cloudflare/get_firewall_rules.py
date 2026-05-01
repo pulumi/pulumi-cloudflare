@@ -100,7 +100,7 @@ class GetFirewallRulesResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Defines an identifier.
         """
@@ -130,6 +130,11 @@ def get_firewall_rules(action: Optional[_builtins.str] = None,
                        zone_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallRulesResult:
     """
+    Accepted Permissions
+
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+
     ## Example Usage
 
     ```python
@@ -174,9 +179,14 @@ def get_firewall_rules_output(action: Optional[pulumi.Input[Optional[_builtins.s
                               id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                               paused: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                              zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                              zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallRulesResult]:
     """
+    Accepted Permissions
+
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+
     ## Example Usage
 
     ```python

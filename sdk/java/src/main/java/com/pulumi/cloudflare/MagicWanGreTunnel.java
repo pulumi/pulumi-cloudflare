@@ -177,14 +177,14 @@ public class MagicWanGreTunnel extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return An optional description of the GRE tunnel.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     @Export(name="healthCheck", refs={MagicWanGreTunnelHealthCheck.class}, tree="[0]")
     private Output<MagicWanGreTunnelHealthCheck> healthCheck;

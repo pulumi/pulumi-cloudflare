@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloud Email Security: Read`
+// - `Cloud Email Security: Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailSecurityImpersonationRegistries(ctx, &cloudflare.LookupEmailSecurityImpersonationRegistriesArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction:  pulumi.StringRef("asc"),
 //				Order:      pulumi.StringRef("name"),
 //				Provenance: pulumi.StringRef("A1S_INTERNAL"),
@@ -53,7 +58,7 @@ func LookupEmailSecurityImpersonationRegistries(ctx *pulumi.Context, args *Looku
 // A collection of arguments for invoking getEmailSecurityImpersonationRegistries.
 type LookupEmailSecurityImpersonationRegistriesArgs struct {
 	// Account Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
@@ -74,7 +79,7 @@ type LookupEmailSecurityImpersonationRegistriesArgs struct {
 // A collection of values returned by getEmailSecurityImpersonationRegistries.
 type LookupEmailSecurityImpersonationRegistriesResult struct {
 	// Account Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
@@ -108,7 +113,7 @@ func LookupEmailSecurityImpersonationRegistriesOutput(ctx *pulumi.Context, args 
 // A collection of arguments for invoking getEmailSecurityImpersonationRegistries.
 type LookupEmailSecurityImpersonationRegistriesOutputArgs struct {
 	// Account Identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
@@ -146,8 +151,8 @@ func (o LookupEmailSecurityImpersonationRegistriesResultOutput) ToLookupEmailSec
 }
 
 // Account Identifier
-func (o LookupEmailSecurityImpersonationRegistriesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistriesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupEmailSecurityImpersonationRegistriesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistriesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The sorting direction.

@@ -106,6 +106,11 @@ class AuthenticatedOriginPullsSettings(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         ## Example Usage
 
         ```python
@@ -136,6 +141,11 @@ class AuthenticatedOriginPullsSettings(pulumi.CustomResource):
                  args: AuthenticatedOriginPullsSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         ## Example Usage
 
         ```python

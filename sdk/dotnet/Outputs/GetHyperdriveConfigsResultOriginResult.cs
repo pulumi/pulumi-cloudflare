@@ -43,6 +43,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Scheme;
         /// <summary>
+        /// The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.
+        /// </summary>
+        public readonly string ServiceId;
+        /// <summary>
         /// Set the user of your origin database.
         /// </summary>
         public readonly string User;
@@ -63,6 +67,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string scheme,
 
+            string serviceId,
+
             string user)
         {
             AccessClientId = accessClientId;
@@ -72,6 +78,7 @@ namespace Pulumi.Cloudflare.Outputs
             Password = password;
             Port = port;
             Scheme = scheme;
+            ServiceId = serviceId;
             User = user;
         }
     }

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `D1 Read`
+ * - `D1 Write`
+ *
  * !> When a D1 Database is replaced all the data is lost. Please ensure you have a
  *    backup of your data before replacing a D1 Database.
  *
@@ -61,7 +66,7 @@ export class D1Database extends pulumi.CustomResource {
     /**
      * Account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Specifies the timestamp the resource was created as an ISO8601 string.
      */
@@ -120,9 +125,6 @@ export class D1Database extends pulumi.CustomResource {
             resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as D1DatabaseArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -191,7 +193,7 @@ export interface D1DatabaseArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
      * Available values: "eu", "fedramp".

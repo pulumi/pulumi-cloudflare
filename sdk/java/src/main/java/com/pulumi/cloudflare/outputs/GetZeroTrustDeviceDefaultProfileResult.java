@@ -14,10 +14,12 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDeviceDefaultProfileResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Whether to allow the user to switch WARP between modes.
      * 
@@ -80,6 +82,7 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
      * 
      */
     private List<GetZeroTrustDeviceDefaultProfileInclude> includes;
+    private String policyId;
     /**
      * @return Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
      * 
@@ -108,8 +111,8 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
     private String tunnelProtocol;
 
     private GetZeroTrustDeviceDefaultProfileResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Whether to allow the user to switch WARP between modes.
@@ -201,6 +204,9 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
     public List<GetZeroTrustDeviceDefaultProfileInclude> includes() {
         return this.includes;
     }
+    public String policyId() {
+        return this.policyId;
+    }
     /**
      * @return Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
      * 
@@ -249,7 +255,7 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Boolean allowModeSwitch;
         private Boolean allowUpdates;
         private Boolean allowedToLeave;
@@ -264,6 +270,7 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
         private String gatewayUniqueId;
         private String id;
         private List<GetZeroTrustDeviceDefaultProfileInclude> includes;
+        private String policyId;
         private Boolean registerInterfaceIpWithDns;
         private Boolean sccmVpnBoundarySupport;
         private GetZeroTrustDeviceDefaultProfileServiceModeV2 serviceModeV2;
@@ -288,6 +295,7 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
     	      this.gatewayUniqueId = defaults.gatewayUniqueId;
     	      this.id = defaults.id;
     	      this.includes = defaults.includes;
+    	      this.policyId = defaults.policyId;
     	      this.registerInterfaceIpWithDns = defaults.registerInterfaceIpWithDns;
     	      this.sccmVpnBoundarySupport = defaults.sccmVpnBoundarySupport;
     	      this.serviceModeV2 = defaults.serviceModeV2;
@@ -297,10 +305,8 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -426,6 +432,14 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
             return includes(List.of(includes));
         }
         @CustomType.Setter
+        public Builder policyId(String policyId) {
+            if (policyId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileResult", "policyId");
+            }
+            this.policyId = policyId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder registerInterfaceIpWithDns(Boolean registerInterfaceIpWithDns) {
             if (registerInterfaceIpWithDns == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileResult", "registerInterfaceIpWithDns");
@@ -490,6 +504,7 @@ public final class GetZeroTrustDeviceDefaultProfileResult {
             _resultValue.gatewayUniqueId = gatewayUniqueId;
             _resultValue.id = id;
             _resultValue.includes = includes;
+            _resultValue.policyId = policyId;
             _resultValue.registerInterfaceIpWithDns = registerInterfaceIpWithDns;
             _resultValue.sccmVpnBoundarySupport = sccmVpnBoundarySupport;
             _resultValue.serviceModeV2 = serviceModeV2;

@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Queues Read`
+ * - `Queues Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +41,7 @@ export interface GetQueueArgs {
     /**
      * A Resource identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * A Resource identifier.
      */
@@ -48,7 +55,7 @@ export interface GetQueueResult {
     /**
      * A Resource identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly consumers: outputs.GetQueueConsumer[];
     readonly consumersTotalCount: number;
     readonly createdOn: string;
@@ -67,6 +74,13 @@ export interface GetQueueResult {
     readonly settings: outputs.GetQueueSettings;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Queues Read`
+ * - `Queues Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -94,7 +108,7 @@ export interface GetQueueOutputArgs {
     /**
      * A Resource identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A Resource identifier.
      */

@@ -19,41 +19,41 @@ public final class MagicNetworkMonitoringRuleArgs extends com.pulumi.resources.R
 
     public static final MagicNetworkMonitoringRuleArgs Empty = new MagicNetworkMonitoringRuleArgs();
 
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
      * Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      * 
      */
-    @Import(name="automaticAdvertisement")
-    private @Nullable Output<Boolean> automaticAdvertisement;
+    @Import(name="automaticAdvertisement", required=true)
+    private Output<Boolean> automaticAdvertisement;
 
     /**
      * @return Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      * 
      */
-    public Optional<Output<Boolean>> automaticAdvertisement() {
-        return Optional.ofNullable(this.automaticAdvertisement);
+    public Output<Boolean> automaticAdvertisement() {
+        return this.automaticAdvertisement;
     }
 
     /**
      * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      * 
      */
-    @Import(name="bandwidth")
-    private @Nullable Output<Double> bandwidth;
+    @Import(name="bandwidthThreshold")
+    private @Nullable Output<Double> bandwidthThreshold;
 
     /**
      * @return The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      * 
      */
-    public Optional<Output<Double>> bandwidth() {
-        return Optional.ofNullable(this.bandwidth);
+    public Optional<Output<Double>> bandwidthThreshold() {
+        return Optional.ofNullable(this.bandwidthThreshold);
     }
 
     /**
@@ -103,11 +103,79 @@ public final class MagicNetworkMonitoringRuleArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.packetThreshold);
     }
 
-    @Import(name="prefixes")
-    private @Nullable Output<List<String>> prefixes;
+    /**
+     * Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
+     * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
+     * 
+     */
+    @Import(name="prefixMatch")
+    private @Nullable Output<String> prefixMatch;
 
-    public Optional<Output<List<String>>> prefixes() {
-        return Optional.ofNullable(this.prefixes);
+    /**
+     * @return Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
+     * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
+     * 
+     */
+    public Optional<Output<String>> prefixMatch() {
+        return Optional.ofNullable(this.prefixMatch);
+    }
+
+    @Import(name="prefixes", required=true)
+    private Output<List<String>> prefixes;
+
+    public Output<List<String>> prefixes() {
+        return this.prefixes;
+    }
+
+    /**
+     * MNM rule type.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advancedDdos&#34;.
+     * 
+     */
+    @Import(name="type", required=true)
+    private Output<String> type;
+
+    /**
+     * @return MNM rule type.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advancedDdos&#34;.
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
+    }
+
+    /**
+     * Level of sensitivity set for zscore rules.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * 
+     */
+    @Import(name="zscoreSensitivity")
+    private @Nullable Output<String> zscoreSensitivity;
+
+    /**
+     * @return Level of sensitivity set for zscore rules.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+     * 
+     */
+    public Optional<Output<String>> zscoreSensitivity() {
+        return Optional.ofNullable(this.zscoreSensitivity);
+    }
+
+    /**
+     * Target of the zscore rule analysis.
+     * Available values: &#34;bits&#34;, &#34;packets&#34;.
+     * 
+     */
+    @Import(name="zscoreTarget")
+    private @Nullable Output<String> zscoreTarget;
+
+    /**
+     * @return Target of the zscore rule analysis.
+     * Available values: &#34;bits&#34;, &#34;packets&#34;.
+     * 
+     */
+    public Optional<Output<String>> zscoreTarget() {
+        return Optional.ofNullable(this.zscoreTarget);
     }
 
     private MagicNetworkMonitoringRuleArgs() {}
@@ -115,11 +183,15 @@ public final class MagicNetworkMonitoringRuleArgs extends com.pulumi.resources.R
     private MagicNetworkMonitoringRuleArgs(MagicNetworkMonitoringRuleArgs $) {
         this.accountId = $.accountId;
         this.automaticAdvertisement = $.automaticAdvertisement;
-        this.bandwidth = $.bandwidth;
+        this.bandwidthThreshold = $.bandwidthThreshold;
         this.duration = $.duration;
         this.name = $.name;
         this.packetThreshold = $.packetThreshold;
+        this.prefixMatch = $.prefixMatch;
         this.prefixes = $.prefixes;
+        this.type = $.type;
+        this.zscoreSensitivity = $.zscoreSensitivity;
+        this.zscoreTarget = $.zscoreTarget;
     }
 
     public static Builder builder() {
@@ -140,7 +212,7 @@ public final class MagicNetworkMonitoringRuleArgs extends com.pulumi.resources.R
             $ = new MagicNetworkMonitoringRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -155,7 +227,7 @@ public final class MagicNetworkMonitoringRuleArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder automaticAdvertisement(@Nullable Output<Boolean> automaticAdvertisement) {
+        public Builder automaticAdvertisement(Output<Boolean> automaticAdvertisement) {
             $.automaticAdvertisement = automaticAdvertisement;
             return this;
         }
@@ -171,24 +243,24 @@ public final class MagicNetworkMonitoringRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param bandwidth The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
+         * @param bandwidthThreshold The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
          * 
          * @return builder
          * 
          */
-        public Builder bandwidth(@Nullable Output<Double> bandwidth) {
-            $.bandwidth = bandwidth;
+        public Builder bandwidthThreshold(@Nullable Output<Double> bandwidthThreshold) {
+            $.bandwidthThreshold = bandwidthThreshold;
             return this;
         }
 
         /**
-         * @param bandwidth The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
+         * @param bandwidthThreshold The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
          * 
          * @return builder
          * 
          */
-        public Builder bandwidth(Double bandwidth) {
-            return bandwidth(Output.of(bandwidth));
+        public Builder bandwidthThreshold(Double bandwidthThreshold) {
+            return bandwidthThreshold(Output.of(bandwidthThreshold));
         }
 
         /**
@@ -256,7 +328,30 @@ public final class MagicNetworkMonitoringRuleArgs extends com.pulumi.resources.R
             return packetThreshold(Output.of(packetThreshold));
         }
 
-        public Builder prefixes(@Nullable Output<List<String>> prefixes) {
+        /**
+         * @param prefixMatch Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
+         * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefixMatch(@Nullable Output<String> prefixMatch) {
+            $.prefixMatch = prefixMatch;
+            return this;
+        }
+
+        /**
+         * @param prefixMatch Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
+         * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefixMatch(String prefixMatch) {
+            return prefixMatch(Output.of(prefixMatch));
+        }
+
+        public Builder prefixes(Output<List<String>> prefixes) {
             $.prefixes = prefixes;
             return this;
         }
@@ -269,12 +364,87 @@ public final class MagicNetworkMonitoringRuleArgs extends com.pulumi.resources.R
             return prefixes(List.of(prefixes));
         }
 
+        /**
+         * @param type MNM rule type.
+         * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advancedDdos&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type MNM rule type.
+         * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advancedDdos&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
+        /**
+         * @param zscoreSensitivity Level of sensitivity set for zscore rules.
+         * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zscoreSensitivity(@Nullable Output<String> zscoreSensitivity) {
+            $.zscoreSensitivity = zscoreSensitivity;
+            return this;
+        }
+
+        /**
+         * @param zscoreSensitivity Level of sensitivity set for zscore rules.
+         * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zscoreSensitivity(String zscoreSensitivity) {
+            return zscoreSensitivity(Output.of(zscoreSensitivity));
+        }
+
+        /**
+         * @param zscoreTarget Target of the zscore rule analysis.
+         * Available values: &#34;bits&#34;, &#34;packets&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zscoreTarget(@Nullable Output<String> zscoreTarget) {
+            $.zscoreTarget = zscoreTarget;
+            return this;
+        }
+
+        /**
+         * @param zscoreTarget Target of the zscore rule analysis.
+         * Available values: &#34;bits&#34;, &#34;packets&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zscoreTarget(String zscoreTarget) {
+            return zscoreTarget(Output.of(zscoreTarget));
+        }
+
         public MagicNetworkMonitoringRuleArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("MagicNetworkMonitoringRuleArgs", "accountId");
+            if ($.automaticAdvertisement == null) {
+                throw new MissingRequiredPropertyException("MagicNetworkMonitoringRuleArgs", "automaticAdvertisement");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("MagicNetworkMonitoringRuleArgs", "name");
+            }
+            if ($.prefixes == null) {
+                throw new MissingRequiredPropertyException("MagicNetworkMonitoringRuleArgs", "prefixes");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("MagicNetworkMonitoringRuleArgs", "type");
             }
             return $;
         }

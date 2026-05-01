@@ -18,7 +18,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustGatewayProxyEndpoints(args: GetZeroTrustGatewayProxyEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayProxyEndpointsResult> {
+export function getZeroTrustGatewayProxyEndpoints(args?: GetZeroTrustGatewayProxyEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayProxyEndpointsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayProxyEndpoints:getZeroTrustGatewayProxyEndpoints", {
         "accountId": args.accountId,
@@ -30,7 +31,7 @@ export function getZeroTrustGatewayProxyEndpoints(args: GetZeroTrustGatewayProxy
  * A collection of arguments for invoking getZeroTrustGatewayProxyEndpoints.
  */
 export interface GetZeroTrustGatewayProxyEndpointsArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +42,7 @@ export interface GetZeroTrustGatewayProxyEndpointsArgs {
  * A collection of values returned by getZeroTrustGatewayProxyEndpoints.
  */
 export interface GetZeroTrustGatewayProxyEndpointsResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -67,7 +68,8 @@ export interface GetZeroTrustGatewayProxyEndpointsResult {
  * });
  * ```
  */
-export function getZeroTrustGatewayProxyEndpointsOutput(args: GetZeroTrustGatewayProxyEndpointsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayProxyEndpointsResult> {
+export function getZeroTrustGatewayProxyEndpointsOutput(args?: GetZeroTrustGatewayProxyEndpointsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayProxyEndpointsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayProxyEndpoints:getZeroTrustGatewayProxyEndpoints", {
         "accountId": args.accountId,
@@ -79,7 +81,7 @@ export function getZeroTrustGatewayProxyEndpointsOutput(args: GetZeroTrustGatewa
  * A collection of arguments for invoking getZeroTrustGatewayProxyEndpoints.
  */
 export interface GetZeroTrustGatewayProxyEndpointsOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

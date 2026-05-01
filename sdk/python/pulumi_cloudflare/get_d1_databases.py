@@ -46,7 +46,7 @@ class GetD1DatabasesResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account identifier tag.
         """
@@ -103,6 +103,11 @@ def get_d1_databases(account_id: Optional[_builtins.str] = None,
                      name: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetD1DatabasesResult:
     """
+    Accepted Permissions
+
+    - `D1 Read`
+    - `D1 Write`
+
     ## Example Usage
 
     ```python
@@ -131,11 +136,16 @@ def get_d1_databases(account_id: Optional[_builtins.str] = None,
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
         results=pulumi.get(__ret__, 'results'))
-def get_d1_databases_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_d1_databases_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                             name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetD1DatabasesResult]:
     """
+    Accepted Permissions
+
+    - `D1 Read`
+    - `D1 Write`
+
     ## Example Usage
 
     ```python

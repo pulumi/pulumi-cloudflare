@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustAccessAiControlsMcpServerResult> InvokeAsync(GetZeroTrustAccessAiControlsMcpServerArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustAccessAiControlsMcpServerResult> InvokeAsync(GetZeroTrustAccessAiControlsMcpServerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessAiControlsMcpServerResult>("cloudflare:index/getZeroTrustAccessAiControlsMcpServer:getZeroTrustAccessAiControlsMcpServer", args ?? new GetZeroTrustAccessAiControlsMcpServerArgs(), options.WithDefaults());
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustAccessAiControlsMcpServerResult> Invoke(GetZeroTrustAccessAiControlsMcpServerInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustAccessAiControlsMcpServerResult> Invoke(GetZeroTrustAccessAiControlsMcpServerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessAiControlsMcpServerResult>("cloudflare:index/getZeroTrustAccessAiControlsMcpServer:getZeroTrustAccessAiControlsMcpServer", args ?? new GetZeroTrustAccessAiControlsMcpServerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustAccessAiControlsMcpServerArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetZeroTrustAccessAiControlsMcpServerFilterArgs? Filter { get; set; }
@@ -104,8 +104,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustAccessAiControlsMcpServerInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetZeroTrustAccessAiControlsMcpServerFilterInputArgs>? Filter { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustAccessAiControlsMcpServerResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Available values: "oauth", "bearer", "unauthenticated".
         /// </summary>
@@ -149,10 +149,12 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Prompts;
         public readonly string Status;
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Tools;
+        public readonly ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedPromptResult> UpdatedPrompts;
+        public readonly ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedToolResult> UpdatedTools;
 
         [OutputConstructor]
         private GetZeroTrustAccessAiControlsMcpServerResult(
-            string accountId,
+            string? accountId,
 
             string authType,
 
@@ -184,7 +186,11 @@ namespace Pulumi.Cloudflare
 
             string status,
 
-            ImmutableArray<ImmutableDictionary<string, string>> tools)
+            ImmutableArray<ImmutableDictionary<string, string>> tools,
+
+            ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedPromptResult> updatedPrompts,
+
+            ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedToolResult> updatedTools)
         {
             AccountId = accountId;
             AuthType = authType;
@@ -203,6 +209,8 @@ namespace Pulumi.Cloudflare
             Prompts = prompts;
             Status = status;
             Tools = tools;
+            UpdatedPrompts = updatedPrompts;
+            UpdatedTools = updatedTools;
         }
     }
 }

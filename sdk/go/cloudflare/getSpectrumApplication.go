@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetSpectrumApplication(ctx, &cloudflare.LookupSpectrumApplicationArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				AppId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -53,7 +58,7 @@ type LookupSpectrumApplicationArgs struct {
 	AppId  *string                       `pulumi:"appId"`
 	Filter *GetSpectrumApplicationFilter `pulumi:"filter"`
 	// Zone identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getSpectrumApplication.
@@ -96,7 +101,7 @@ type LookupSpectrumApplicationResult struct {
 	// Available values: "direct", "http", "https".
 	TrafficType string `pulumi:"trafficType"`
 	// Zone identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupSpectrumApplicationOutput(ctx *pulumi.Context, args LookupSpectrumApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupSpectrumApplicationResultOutput {
@@ -114,7 +119,7 @@ type LookupSpectrumApplicationOutputArgs struct {
 	AppId  pulumi.StringPtrInput                `pulumi:"appId"`
 	Filter GetSpectrumApplicationFilterPtrInput `pulumi:"filter"`
 	// Zone identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupSpectrumApplicationOutputArgs) ElementType() reflect.Type {
@@ -222,8 +227,8 @@ func (o LookupSpectrumApplicationResultOutput) TrafficType() pulumi.StringOutput
 }
 
 // Zone identifier.
-func (o LookupSpectrumApplicationResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSpectrumApplicationResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupSpectrumApplicationResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSpectrumApplicationResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

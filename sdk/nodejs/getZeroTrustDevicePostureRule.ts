@@ -31,7 +31,7 @@ export function getZeroTrustDevicePostureRule(args: GetZeroTrustDevicePostureRul
  * A collection of arguments for invoking getZeroTrustDevicePostureRule.
  */
 export interface GetZeroTrustDevicePostureRuleArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * API UUID.
      */
@@ -42,7 +42,7 @@ export interface GetZeroTrustDevicePostureRuleArgs {
  * A collection of values returned by getZeroTrustDevicePostureRule.
  */
 export interface GetZeroTrustDevicePostureRuleResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The description of the device posture rule.
      */
@@ -106,7 +106,7 @@ export function getZeroTrustDevicePostureRuleOutput(args: GetZeroTrustDevicePost
  * A collection of arguments for invoking getZeroTrustDevicePostureRule.
  */
 export interface GetZeroTrustDevicePostureRuleOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * API UUID.
      */

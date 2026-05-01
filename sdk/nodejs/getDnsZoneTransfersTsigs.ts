@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getDnsZoneTransfersTsigs(args: GetDnsZoneTransfersTsigsArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneTransfersTsigsResult> {
+export function getDnsZoneTransfersTsigs(args?: GetDnsZoneTransfersTsigsArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneTransfersTsigsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsZoneTransfersTsigs:getDnsZoneTransfersTsigs", {
         "accountId": args.accountId,
@@ -30,7 +36,7 @@ export function getDnsZoneTransfersTsigs(args: GetDnsZoneTransfersTsigsArgs, opt
  * A collection of arguments for invoking getDnsZoneTransfersTsigs.
  */
 export interface GetDnsZoneTransfersTsigsArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +47,7 @@ export interface GetDnsZoneTransfersTsigsArgs {
  * A collection of values returned by getDnsZoneTransfersTsigs.
  */
 export interface GetDnsZoneTransfersTsigsResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -56,6 +62,11 @@ export interface GetDnsZoneTransfersTsigsResult {
     readonly results: outputs.GetDnsZoneTransfersTsigsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -67,7 +78,8 @@ export interface GetDnsZoneTransfersTsigsResult {
  * });
  * ```
  */
-export function getDnsZoneTransfersTsigsOutput(args: GetDnsZoneTransfersTsigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsZoneTransfersTsigsResult> {
+export function getDnsZoneTransfersTsigsOutput(args?: GetDnsZoneTransfersTsigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsZoneTransfersTsigsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsZoneTransfersTsigs:getDnsZoneTransfersTsigs", {
         "accountId": args.accountId,
@@ -79,7 +91,7 @@ export function getDnsZoneTransfersTsigsOutput(args: GetDnsZoneTransfersTsigsOut
  * A collection of arguments for invoking getDnsZoneTransfersTsigs.
  */
 export interface GetDnsZoneTransfersTsigsOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

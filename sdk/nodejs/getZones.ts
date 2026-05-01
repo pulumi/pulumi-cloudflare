@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Zone Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -70,6 +74,10 @@ export interface GetZonesResult {
     readonly status?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Zone Read`
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -8,7 +8,6 @@ import com.pulumi.cloudflare.inputs.ZoneDnsSettingsNameserversArgs;
 import com.pulumi.cloudflare.inputs.ZoneDnsSettingsSoaArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -145,15 +144,15 @@ public final class ZoneDnsSettingsArgs extends com.pulumi.resources.ResourceArgs
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     /**
@@ -380,7 +379,7 @@ public final class ZoneDnsSettingsArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -419,9 +418,6 @@ public final class ZoneDnsSettingsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ZoneDnsSettingsArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("ZoneDnsSettingsArgs", "zoneId");
-            }
             return $;
         }
     }

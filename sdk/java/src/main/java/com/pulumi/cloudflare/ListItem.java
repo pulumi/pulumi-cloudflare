@@ -18,6 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Account Filter Lists Edit`
+ * - `Account Filter Lists Read`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -57,14 +62,6 @@ import javax.annotation.Nullable;
  * 
  * ```sh
  * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
- * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
- * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
- * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
- * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
- * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
- * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
- * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
- * $ pulumi import cloudflare:index/listItem:ListItem example &#39;&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;&#39;
  * ```
  * 
  */
@@ -75,14 +72,14 @@ public class ListItem extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return The Account ID for this resource.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * A non-negative 32 bit integer

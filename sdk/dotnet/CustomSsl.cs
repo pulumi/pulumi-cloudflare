@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Access: Mutual TLS Certificates Read`
+    /// - `Access: Mutual TLS Certificates Write`
+    /// - `SSL and Certificates Read`
+    /// - `SSL and Certificates Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -77,6 +84,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ",
     ///         BundleMethod = "ubiquitous",
+    ///         CustomCsrId = "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
     ///         Deploy = "staging",
     ///         GeoRestrictions = new Cloudflare.Inputs.CustomSslGeoRestrictionsArgs
     ///         {
@@ -110,6 +118,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("certificate")]
         public Output<string> Certificate { get; private set; } = null!;
+
+        /// <summary>
+        /// The identifier for the Custom CSR that was used.
+        /// </summary>
+        [Output("customCsrId")]
+        public Output<string?> CustomCsrId { get; private set; } = null!;
 
         /// <summary>
         /// The environment to deploy the certificate to.
@@ -205,7 +219,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -271,6 +285,12 @@ namespace Pulumi.Cloudflare
         public Input<string> Certificate { get; set; } = null!;
 
         /// <summary>
+        /// The identifier for the Custom CSR that was used.
+        /// </summary>
+        [Input("customCsrId")]
+        public Input<string>? CustomCsrId { get; set; }
+
+        /// <summary>
         /// The environment to deploy the certificate to.
         /// Available values: "staging", "production".
         /// </summary>
@@ -316,8 +336,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public CustomSslArgs()
         {
@@ -339,6 +359,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
+
+        /// <summary>
+        /// The identifier for the Custom CSR that was used.
+        /// </summary>
+        [Input("customCsrId")]
+        public Input<string>? CustomCsrId { get; set; }
 
         /// <summary>
         /// The environment to deploy the certificate to.

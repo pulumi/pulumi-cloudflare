@@ -78,7 +78,7 @@ class GetTieredCacheResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -101,6 +101,13 @@ class AwaitableGetTieredCacheResult(GetTieredCacheResult):
 def get_tiered_cache(zone_id: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTieredCacheResult:
     """
+    Accepted Permissions
+
+    - `Zone Read`
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+    - `Zone Write`
+
     ## Example Usage
 
     ```python
@@ -124,9 +131,16 @@ def get_tiered_cache(zone_id: Optional[_builtins.str] = None,
         modified_on=pulumi.get(__ret__, 'modified_on'),
         value=pulumi.get(__ret__, 'value'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_tiered_cache_output(zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_tiered_cache_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTieredCacheResult]:
     """
+    Accepted Permissions
+
+    - `Zone Read`
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+    - `Zone Write`
+
     ## Example Usage
 
     ```python

@@ -7,17 +7,19 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetZeroTrustDexRulePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZeroTrustDexRulePlainArgs Empty = new GetZeroTrustDexRulePlainArgs();
 
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -60,7 +62,7 @@ public final class GetZeroTrustDexRulePlainArgs extends com.pulumi.resources.Inv
             $ = new GetZeroTrustDexRulePlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -77,9 +79,6 @@ public final class GetZeroTrustDexRulePlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetZeroTrustDexRulePlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetZeroTrustDexRulePlainArgs", "accountId");
-            }
             if ($.ruleId == null) {
                 throw new MissingRequiredPropertyException("GetZeroTrustDexRulePlainArgs", "ruleId");
             }

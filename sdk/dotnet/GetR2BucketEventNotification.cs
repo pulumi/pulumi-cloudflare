@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetR2BucketEventNotification
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers R2 Storage Read`
+        /// - `Workers R2 Storage Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +41,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetR2BucketEventNotificationResult>("cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification", args ?? new GetR2BucketEventNotificationArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers R2 Storage Read`
+        /// - `Workers R2 Storage Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +70,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetR2BucketEventNotificationResult>("cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification", args ?? new GetR2BucketEventNotificationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers R2 Storage Read`
+        /// - `Workers R2 Storage Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account ID.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Name of the bucket.
@@ -116,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account ID.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Name of the bucket.
@@ -144,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account ID.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Name of the bucket.
         /// </summary>
@@ -165,7 +180,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetR2BucketEventNotificationResult(
-            string accountId,
+            string? accountId,
 
             string bucketName,
 

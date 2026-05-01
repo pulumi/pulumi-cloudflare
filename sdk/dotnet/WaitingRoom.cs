@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Waiting Rooms Read`
+    /// - `Waiting Rooms Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -88,7 +93,7 @@ namespace Pulumi.Cloudflare
         /// Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `CookieSuffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `AdditionalRoutes`.
         /// </summary>
         [Output("cookieSuffix")]
-        public Output<string?> CookieSuffix { get; private set; } = null!;
+        public Output<string> CookieSuffix { get; private set; } = null!;
 
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
@@ -327,7 +332,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -623,8 +628,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public WaitingRoomArgs()
         {

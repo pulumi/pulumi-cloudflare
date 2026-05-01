@@ -17,11 +17,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// The amount of CPU time this Worker can use in milliseconds.
         /// </summary>
         public readonly int? CpuMs;
+        /// <summary>
+        /// The number of subrequests this Worker can make per request.
+        /// </summary>
+        public readonly int? Subrequests;
 
         [OutputConstructor]
-        private WorkersScriptLimits(int? cpuMs)
+        private WorkersScriptLimits(
+            int? cpuMs,
+
+            int? subrequests)
         {
             CpuMs = cpuMs;
+            Subrequests = subrequests;
         }
     }
 }

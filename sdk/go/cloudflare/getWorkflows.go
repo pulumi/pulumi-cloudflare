@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkflows(ctx, &cloudflare.LookupWorkflowsArgs{
-//				AccountId: "account_id",
+//				AccountId: pulumi.StringRef("account_id"),
 //				Search:    pulumi.StringRef("x"),
 //			}, nil)
 //			if err != nil {
@@ -49,7 +55,7 @@ func LookupWorkflows(ctx *pulumi.Context, args *LookupWorkflowsArgs, opts ...pul
 
 // A collection of arguments for invoking getWorkflows.
 type LookupWorkflowsArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Allows filtering workflows` name.
@@ -58,7 +64,7 @@ type LookupWorkflowsArgs struct {
 
 // A collection of values returned by getWorkflows.
 type LookupWorkflowsResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -80,7 +86,7 @@ func LookupWorkflowsOutput(ctx *pulumi.Context, args LookupWorkflowsOutputArgs, 
 
 // A collection of arguments for invoking getWorkflows.
 type LookupWorkflowsOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Allows filtering workflows` name.
@@ -106,8 +112,8 @@ func (o LookupWorkflowsResultOutput) ToLookupWorkflowsResultOutputWithContext(ct
 	return o
 }
 
-func (o LookupWorkflowsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkflowsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupWorkflowsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic Transit Read`
+// - `Magic Transit Write`
+// - `Magic WAN Read`
+// - `Magic WAN Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicTransitSiteLans(ctx, &cloudflare.LookupMagicTransitSiteLansArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SiteId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +57,7 @@ func LookupMagicTransitSiteLans(ctx *pulumi.Context, args *LookupMagicTransitSit
 // A collection of arguments for invoking getMagicTransitSiteLans.
 type LookupMagicTransitSiteLansArgs struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Identifier
@@ -60,7 +67,7 @@ type LookupMagicTransitSiteLansArgs struct {
 // A collection of values returned by getMagicTransitSiteLans.
 type LookupMagicTransitSiteLansResult struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -83,7 +90,7 @@ func LookupMagicTransitSiteLansOutput(ctx *pulumi.Context, args LookupMagicTrans
 // A collection of arguments for invoking getMagicTransitSiteLans.
 type LookupMagicTransitSiteLansOutputArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Identifier
@@ -110,8 +117,8 @@ func (o LookupMagicTransitSiteLansResultOutput) ToLookupMagicTransitSiteLansResu
 }
 
 // Identifier
-func (o LookupMagicTransitSiteLansResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicTransitSiteLansResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupMagicTransitSiteLansResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteLansResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

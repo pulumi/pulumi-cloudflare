@@ -22,6 +22,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Pages Read`
+ * - `Pages Write`
+ * 
  * &gt; If you are using a `source` block configuration, you must first have a
  *    connected GitHub or GitLab account connected to Cloudflare. See the
  *    [Getting Started with Pages](https://developers.cloudflare.com/pages/get-started/git-integration/)
@@ -230,14 +235,14 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Configs for the project build process.

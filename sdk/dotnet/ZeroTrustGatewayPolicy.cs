@@ -72,6 +72,7 @@ namespace Pulumi.Cloudflare
     ///                 Printing = "enabled",
     ///                 Upload = "enabled",
     ///                 Version = "v1",
+    ///                 WmId = "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
     ///             },
     ///             BlockPage = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs
     ///             {
@@ -196,7 +197,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustGatewayPolicy : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
@@ -363,8 +364,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustGatewayPolicyArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.

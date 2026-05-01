@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Account API Gateway`
+    /// - `Account API Gateway Read`
+    /// - `Domain API Gateway`
+    /// - `Domain API Gateway Read`
+    /// 
     /// &gt; `cloudflare.ApiShieldSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
     ///   Instead, please utilize the cloudflare.SchemaValidationSettings resource instead.
     /// 

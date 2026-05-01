@@ -18,7 +18,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDeviceCustomProfiles(args: GetZeroTrustDeviceCustomProfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceCustomProfilesResult> {
+export function getZeroTrustDeviceCustomProfiles(args?: GetZeroTrustDeviceCustomProfilesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDeviceCustomProfilesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDeviceCustomProfiles:getZeroTrustDeviceCustomProfiles", {
         "accountId": args.accountId,
@@ -30,7 +31,7 @@ export function getZeroTrustDeviceCustomProfiles(args: GetZeroTrustDeviceCustomP
  * A collection of arguments for invoking getZeroTrustDeviceCustomProfiles.
  */
 export interface GetZeroTrustDeviceCustomProfilesArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +42,7 @@ export interface GetZeroTrustDeviceCustomProfilesArgs {
  * A collection of values returned by getZeroTrustDeviceCustomProfiles.
  */
 export interface GetZeroTrustDeviceCustomProfilesResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -67,7 +68,8 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
  * });
  * ```
  */
-export function getZeroTrustDeviceCustomProfilesOutput(args: GetZeroTrustDeviceCustomProfilesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceCustomProfilesResult> {
+export function getZeroTrustDeviceCustomProfilesOutput(args?: GetZeroTrustDeviceCustomProfilesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDeviceCustomProfilesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDeviceCustomProfiles:getZeroTrustDeviceCustomProfiles", {
         "accountId": args.accountId,
@@ -79,7 +81,7 @@ export function getZeroTrustDeviceCustomProfilesOutput(args: GetZeroTrustDeviceC
  * A collection of arguments for invoking getZeroTrustDeviceCustomProfiles.
  */
 export interface GetZeroTrustDeviceCustomProfilesOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

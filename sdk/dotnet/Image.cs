@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Images Read`
+    /// - `Images Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -25,7 +30,7 @@ namespace Pulumi.Cloudflare
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ImageId = "id",
     ///         Creator = "creator",
-    ///         File = null,
+    ///         File = "Example data",
     ///         Metadata = null,
     ///         RequireSignedUrls = true,
     ///         Url = "https://example.com/path/to/logo.png",
@@ -47,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// Account identifier tag.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Can set the creator field with an internal user ID.
@@ -158,8 +163,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Can set the creator field with an internal user ID.

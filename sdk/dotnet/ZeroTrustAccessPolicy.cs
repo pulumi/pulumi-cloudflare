@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Access: Apps and Policies Read`
+    /// - `Access: Apps and Policies Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -28,10 +33,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyIncludeArgs
     ///             {
-    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessPolicyIncludeGroupArgs
-    ///                 {
-    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-    ///                 },
+    ///                 Certificate = null,
     ///             },
     ///         },
     ///         Name = "Allow devs",
@@ -77,10 +79,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyExcludeArgs
     ///             {
-    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessPolicyExcludeGroupArgs
-    ///                 {
-    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-    ///                 },
+    ///                 Certificate = null,
     ///             },
     ///         },
     ///         IsolationRequired = false,
@@ -92,7 +91,7 @@ namespace Pulumi.Cloudflare
     ///                 "biometrics",
     ///                 "security_key",
     ///             },
-    ///             MfaBypass = false,
+    ///             MfaDisabled = false,
     ///             SessionDuration = "24h",
     ///         },
     ///         PurposeJustificationPrompt = "Please enter a justification for entering this protected domain.",
@@ -101,10 +100,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyRequireArgs
     ///             {
-    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessPolicyRequireGroupArgs
-    ///                 {
-    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-    ///                 },
+    ///                 Certificate = null,
     ///             },
     ///         },
     ///         SessionDuration = "24h",
@@ -126,7 +122,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Administrators who can approve a temporary authentication request.
@@ -260,8 +256,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("approvalGroups")]
         private InputList<Inputs.ZeroTrustAccessPolicyApprovalGroupArgs>? _approvalGroups;

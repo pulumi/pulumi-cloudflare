@@ -13,18 +13,22 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt
     {
+        public readonly string? Alias;
         public readonly string? Description;
         public readonly bool? Enabled;
         public readonly string Name;
 
         [OutputConstructor]
         private ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt(
+            string? alias,
+
             string? description,
 
             bool? enabled,
 
             string name)
         {
+            Alias = alias;
             Description = description;
             Enabled = enabled;
             Name = name;

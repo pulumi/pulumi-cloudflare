@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetSpectrumApplications
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetSpectrumApplicationsResult> InvokeAsync(GetSpectrumApplicationsArgs args, InvokeOptions? options = null)
+        public static Task<GetSpectrumApplicationsResult> InvokeAsync(GetSpectrumApplicationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpectrumApplicationsResult>("cloudflare:index/getSpectrumApplications:getSpectrumApplications", args ?? new GetSpectrumApplicationsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetSpectrumApplicationsResult> Invoke(GetSpectrumApplicationsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetSpectrumApplicationsResult> Invoke(GetSpectrumApplicationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSpectrumApplicationsResult>("cloudflare:index/getSpectrumApplications:getSpectrumApplications", args ?? new GetSpectrumApplicationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -104,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Zone identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetSpectrumApplicationsArgs()
         {
@@ -138,8 +153,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Zone identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetSpectrumApplicationsInvokeArgs()
         {
@@ -176,7 +191,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Zone identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetSpectrumApplicationsResult(
@@ -190,7 +205,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetSpectrumApplicationsResultResult> results,
 
-            string zoneId)
+            string? zoneId)
         {
             Direction = direction;
             Id = id;

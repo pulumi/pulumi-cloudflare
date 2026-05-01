@@ -23,17 +23,17 @@ func LookupAiSearchInstance(ctx *pulumi.Context, args *LookupAiSearchInstanceArg
 
 // A collection of arguments for invoking getAiSearchInstance.
 type LookupAiSearchInstanceArgs struct {
-	AccountId string                     `pulumi:"accountId"`
+	AccountId *string                    `pulumi:"accountId"`
 	Filter    *GetAiSearchInstanceFilter `pulumi:"filter"`
-	// Use your AI Search ID.
+	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
 	Id *string `pulumi:"id"`
 }
 
 // A collection of values returned by getAiSearchInstance.
 type LookupAiSearchInstanceResult struct {
-	AccountId   string `pulumi:"accountId"`
-	AiGatewayId string `pulumi:"aiGatewayId"`
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+	AccountId   *string `pulumi:"accountId"`
+	AiGatewayId string  `pulumi:"aiGatewayId"`
+	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
 	AisearchModel string `pulumi:"aisearchModel"`
 	Cache         bool   `pulumi:"cache"`
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
@@ -43,20 +43,28 @@ type LookupAiSearchInstanceResult struct {
 	CreatedAt       string                              `pulumi:"createdAt"`
 	CreatedBy       string                              `pulumi:"createdBy"`
 	CustomMetadatas []GetAiSearchInstanceCustomMetadata `pulumi:"customMetadatas"`
-	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+	// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 	EmbeddingModel string                     `pulumi:"embeddingModel"`
 	Enable         bool                       `pulumi:"enable"`
+	EngineVersion  float64                    `pulumi:"engineVersion"`
 	Filter         *GetAiSearchInstanceFilter `pulumi:"filter"`
 	// Available values: "max", "rrf".
-	FusionMethod        string `pulumi:"fusionMethod"`
-	HybridSearchEnabled bool   `pulumi:"hybridSearchEnabled"`
-	// Use your AI Search ID.
-	Id                   string                                  `pulumi:"id"`
+	FusionMethod string `pulumi:"fusionMethod"`
+	// Deprecated — use indexMethod instead.
+	//
+	// Deprecated: This attribute is deprecated.
+	HybridSearchEnabled bool `pulumi:"hybridSearchEnabled"`
+	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+	Id string `pulumi:"id"`
+	// Controls which storage backends are used during indexing. Defaults to vector-only.
+	IndexMethod          GetAiSearchInstanceIndexMethod          `pulumi:"indexMethod"`
+	IndexingOptions      GetAiSearchInstanceIndexingOptions      `pulumi:"indexingOptions"`
 	LastActivity         string                                  `pulumi:"lastActivity"`
 	MaxNumResults        int                                     `pulumi:"maxNumResults"`
 	Metadata             GetAiSearchInstanceMetadata             `pulumi:"metadata"`
 	ModifiedAt           string                                  `pulumi:"modifiedAt"`
 	ModifiedBy           string                                  `pulumi:"modifiedBy"`
+	Namespace            string                                  `pulumi:"namespace"`
 	Paused               bool                                    `pulumi:"paused"`
 	PublicEndpointId     string                                  `pulumi:"publicEndpointId"`
 	PublicEndpointParams GetAiSearchInstancePublicEndpointParams `pulumi:"publicEndpointParams"`
@@ -64,17 +72,19 @@ type LookupAiSearchInstanceResult struct {
 	// Available values: "@cf/baai/bge-reranker-base", "".
 	RerankingModel   string                              `pulumi:"rerankingModel"`
 	RetrievalOptions GetAiSearchInstanceRetrievalOptions `pulumi:"retrievalOptions"`
-	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+	// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
 	RewriteModel   string                          `pulumi:"rewriteModel"`
 	RewriteQuery   bool                            `pulumi:"rewriteQuery"`
 	ScoreThreshold float64                         `pulumi:"scoreThreshold"`
 	Source         string                          `pulumi:"source"`
 	SourceParams   GetAiSearchInstanceSourceParams `pulumi:"sourceParams"`
 	Status         string                          `pulumi:"status"`
-	TokenId        string                          `pulumi:"tokenId"`
+	// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+	// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+	SyncInterval float64 `pulumi:"syncInterval"`
+	TokenId      string  `pulumi:"tokenId"`
 	// Available values: "r2", "web-crawler".
-	Type          string `pulumi:"type"`
-	VectorizeName string `pulumi:"vectorizeName"`
+	Type string `pulumi:"type"`
 }
 
 func LookupAiSearchInstanceOutput(ctx *pulumi.Context, args LookupAiSearchInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupAiSearchInstanceResultOutput {
@@ -88,9 +98,9 @@ func LookupAiSearchInstanceOutput(ctx *pulumi.Context, args LookupAiSearchInstan
 
 // A collection of arguments for invoking getAiSearchInstance.
 type LookupAiSearchInstanceOutputArgs struct {
-	AccountId pulumi.StringInput                `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput             `pulumi:"accountId"`
 	Filter    GetAiSearchInstanceFilterPtrInput `pulumi:"filter"`
-	// Use your AI Search ID.
+	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -113,15 +123,15 @@ func (o LookupAiSearchInstanceResultOutput) ToLookupAiSearchInstanceResultOutput
 	return o
 }
 
-func (o LookupAiSearchInstanceResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAiSearchInstanceResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAiSearchInstanceResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupAiSearchInstanceResultOutput) AiGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.AiGatewayId }).(pulumi.StringOutput)
 }
 
-// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
 func (o LookupAiSearchInstanceResultOutput) AisearchModel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.AisearchModel }).(pulumi.StringOutput)
 }
@@ -155,13 +165,17 @@ func (o LookupAiSearchInstanceResultOutput) CustomMetadatas() GetAiSearchInstanc
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) []GetAiSearchInstanceCustomMetadata { return v.CustomMetadatas }).(GetAiSearchInstanceCustomMetadataArrayOutput)
 }
 
-// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
 func (o LookupAiSearchInstanceResultOutput) EmbeddingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.EmbeddingModel }).(pulumi.StringOutput)
 }
 
 func (o LookupAiSearchInstanceResultOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+func (o LookupAiSearchInstanceResultOutput) EngineVersion() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupAiSearchInstanceResult) float64 { return v.EngineVersion }).(pulumi.Float64Output)
 }
 
 func (o LookupAiSearchInstanceResultOutput) Filter() GetAiSearchInstanceFilterPtrOutput {
@@ -173,13 +187,25 @@ func (o LookupAiSearchInstanceResultOutput) FusionMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.FusionMethod }).(pulumi.StringOutput)
 }
 
+// Deprecated — use indexMethod instead.
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupAiSearchInstanceResultOutput) HybridSearchEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) bool { return v.HybridSearchEnabled }).(pulumi.BoolOutput)
 }
 
-// Use your AI Search ID.
+// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
 func (o LookupAiSearchInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Controls which storage backends are used during indexing. Defaults to vector-only.
+func (o LookupAiSearchInstanceResultOutput) IndexMethod() GetAiSearchInstanceIndexMethodOutput {
+	return o.ApplyT(func(v LookupAiSearchInstanceResult) GetAiSearchInstanceIndexMethod { return v.IndexMethod }).(GetAiSearchInstanceIndexMethodOutput)
+}
+
+func (o LookupAiSearchInstanceResultOutput) IndexingOptions() GetAiSearchInstanceIndexingOptionsOutput {
+	return o.ApplyT(func(v LookupAiSearchInstanceResult) GetAiSearchInstanceIndexingOptions { return v.IndexingOptions }).(GetAiSearchInstanceIndexingOptionsOutput)
 }
 
 func (o LookupAiSearchInstanceResultOutput) LastActivity() pulumi.StringOutput {
@@ -200,6 +226,10 @@ func (o LookupAiSearchInstanceResultOutput) ModifiedAt() pulumi.StringOutput {
 
 func (o LookupAiSearchInstanceResultOutput) ModifiedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
+}
+
+func (o LookupAiSearchInstanceResultOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
 func (o LookupAiSearchInstanceResultOutput) Paused() pulumi.BoolOutput {
@@ -229,7 +259,7 @@ func (o LookupAiSearchInstanceResultOutput) RetrievalOptions() GetAiSearchInstan
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) GetAiSearchInstanceRetrievalOptions { return v.RetrievalOptions }).(GetAiSearchInstanceRetrievalOptionsOutput)
 }
 
-// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
 func (o LookupAiSearchInstanceResultOutput) RewriteModel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.RewriteModel }).(pulumi.StringOutput)
 }
@@ -254,6 +284,12 @@ func (o LookupAiSearchInstanceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+func (o LookupAiSearchInstanceResultOutput) SyncInterval() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupAiSearchInstanceResult) float64 { return v.SyncInterval }).(pulumi.Float64Output)
+}
+
 func (o LookupAiSearchInstanceResultOutput) TokenId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.TokenId }).(pulumi.StringOutput)
 }
@@ -261,10 +297,6 @@ func (o LookupAiSearchInstanceResultOutput) TokenId() pulumi.StringOutput {
 // Available values: "r2", "web-crawler".
 func (o LookupAiSearchInstanceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-func (o LookupAiSearchInstanceResultOutput) VectorizeName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.VectorizeName }).(pulumi.StringOutput)
 }
 
 func init() {

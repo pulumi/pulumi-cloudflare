@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetR2BucketSippy(ctx, &cloudflare.LookupR2BucketSippyArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				BucketName: "example-bucket",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +50,7 @@ func LookupR2BucketSippy(ctx *pulumi.Context, args *LookupR2BucketSippyArgs, opt
 // A collection of arguments for invoking getR2BucketSippy.
 type LookupR2BucketSippyArgs struct {
 	// Account ID.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 }
@@ -58,7 +58,7 @@ type LookupR2BucketSippyArgs struct {
 // A collection of values returned by getR2BucketSippy.
 type LookupR2BucketSippyResult struct {
 	// Account ID.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// Details about the configured destination bucket.
@@ -83,7 +83,7 @@ func LookupR2BucketSippyOutput(ctx *pulumi.Context, args LookupR2BucketSippyOutp
 // A collection of arguments for invoking getR2BucketSippy.
 type LookupR2BucketSippyOutputArgs struct {
 	// Account ID.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 }
@@ -108,8 +108,8 @@ func (o LookupR2BucketSippyResultOutput) ToLookupR2BucketSippyResultOutputWithCo
 }
 
 // Account ID.
-func (o LookupR2BucketSippyResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupR2BucketSippyResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupR2BucketSippyResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupR2BucketSippyResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Name of the bucket.

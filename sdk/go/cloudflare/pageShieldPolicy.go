@@ -12,7 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
+// Accepted Permissions
+//
+// - `Domain Page Shield`
+// - `Domain Page Shield Read`
+// - `Page Shield`
+// - `Page Shield Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
 //
 // ## Import
 //
@@ -34,7 +41,7 @@ type PageShieldPolicy struct {
 	// The policy which will be applied
 	Value pulumi.StringOutput `pulumi:"value"`
 	// Identifier
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewPageShieldPolicy registers a new resource with the given unique name, arguments, and options.
@@ -58,9 +65,6 @@ func NewPageShieldPolicy(ctx *pulumi.Context,
 	}
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PageShieldPolicy
@@ -133,7 +137,7 @@ type pageShieldPolicyArgs struct {
 	// The policy which will be applied
 	Value string `pulumi:"value"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a PageShieldPolicy resource.
@@ -150,7 +154,7 @@ type PageShieldPolicyArgs struct {
 	// The policy which will be applied
 	Value pulumi.StringInput
 	// Identifier
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (PageShieldPolicyArgs) ElementType() reflect.Type {
@@ -267,8 +271,8 @@ func (o PageShieldPolicyOutput) Value() pulumi.StringOutput {
 }
 
 // Identifier
-func (o PageShieldPolicyOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *PageShieldPolicy) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o PageShieldPolicyOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PageShieldPolicy) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type PageShieldPolicyArrayOutput struct{ *pulumi.OutputState }

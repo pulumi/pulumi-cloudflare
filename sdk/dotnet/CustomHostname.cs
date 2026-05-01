@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `SSL and Certificates Read`
+    /// - `SSL and Certificates Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -52,6 +57,7 @@ namespace Pulumi.Cloudflare
     ///     -----END CERTIFICATE-----
     /// 
     /// ",
+    ///             CustomCsrId = "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
     ///             CustomKey = @"    -----BEGIN RSA PRIVATE KEY-----
     ///     MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
     ///     dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -161,7 +167,7 @@ namespace Pulumi.Cloudflare
         /// SSL properties used when creating the custom hostname.
         /// </summary>
         [Output("ssl")]
-        public Output<Outputs.CustomHostnameSsl> Ssl { get; private set; } = null!;
+        public Output<Outputs.CustomHostnameSsl?> Ssl { get; private set; } = null!;
 
         /// <summary>
         /// Status of the hostname's activation.
@@ -180,7 +186,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -261,14 +267,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// SSL properties used when creating the custom hostname.
         /// </summary>
-        [Input("ssl", required: true)]
-        public Input<Inputs.CustomHostnameSslArgs> Ssl { get; set; } = null!;
+        [Input("ssl")]
+        public Input<Inputs.CustomHostnameSslArgs>? Ssl { get; set; }
 
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public CustomHostnameArgs()
         {

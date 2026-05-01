@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetStreamLiveInput
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStreamLiveInputResult>("cloudflare:index/getStreamLiveInput:getStreamLiveInput", args ?? new GetStreamLiveInputArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetStreamLiveInputResult>("cloudflare:index/getStreamLiveInput:getStreamLiveInput", args ?? new GetStreamLiveInputInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// A unique identifier for a live input.
@@ -107,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// A unique identifier for a live input.
@@ -129,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The date and time the live input was created.
         /// </summary>
@@ -198,7 +213,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetStreamLiveInputResult(
-            string accountId,
+            string? accountId,
 
             string created,
 

@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getMagicTransitSites(args: GetMagicTransitSitesArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitSitesResult> {
+export function getMagicTransitSites(args?: GetMagicTransitSitesArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitSitesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitSites:getMagicTransitSites", {
         "accountId": args.accountId,
@@ -35,7 +43,7 @@ export interface GetMagicTransitSitesArgs {
     /**
      * Identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Identifier
      */
@@ -53,7 +61,7 @@ export interface GetMagicTransitSitesResult {
     /**
      * Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Identifier
      */
@@ -72,6 +80,13 @@ export interface GetMagicTransitSitesResult {
     readonly results: outputs.GetMagicTransitSitesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -84,7 +99,8 @@ export interface GetMagicTransitSitesResult {
  * });
  * ```
  */
-export function getMagicTransitSitesOutput(args: GetMagicTransitSitesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitSitesResult> {
+export function getMagicTransitSitesOutput(args?: GetMagicTransitSitesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitSitesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitSites:getMagicTransitSites", {
         "accountId": args.accountId,
@@ -100,7 +116,7 @@ export interface GetMagicTransitSitesOutputArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Identifier
      */

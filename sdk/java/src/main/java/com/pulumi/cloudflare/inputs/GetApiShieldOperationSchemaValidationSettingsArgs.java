@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetApiShieldOperationSchemaValidationSettingsArgs extends com.pulumi.resources.InvokeArgs {
@@ -21,11 +23,11 @@ public final class GetApiShieldOperationSchemaValidationSettingsArgs extends com
         return this.operationId;
     }
 
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetApiShieldOperationSchemaValidationSettingsArgs() {}
@@ -62,7 +64,7 @@ public final class GetApiShieldOperationSchemaValidationSettingsArgs extends com
             return operationId(Output.of(operationId));
         }
 
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -74,9 +76,6 @@ public final class GetApiShieldOperationSchemaValidationSettingsArgs extends com
         public GetApiShieldOperationSchemaValidationSettingsArgs build() {
             if ($.operationId == null) {
                 throw new MissingRequiredPropertyException("GetApiShieldOperationSchemaValidationSettingsArgs", "operationId");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetApiShieldOperationSchemaValidationSettingsArgs", "zoneId");
             }
             return $;
         }

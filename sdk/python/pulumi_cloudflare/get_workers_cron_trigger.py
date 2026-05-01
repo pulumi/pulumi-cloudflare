@@ -43,7 +43,7 @@ class GetWorkersCronTriggerResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -87,6 +87,11 @@ def get_workers_cron_trigger(account_id: Optional[_builtins.str] = None,
                              script_name: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersCronTriggerResult:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+
     ## Example Usage
 
     ```python
@@ -112,10 +117,15 @@ def get_workers_cron_trigger(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         schedules=pulumi.get(__ret__, 'schedules'),
         script_name=pulumi.get(__ret__, 'script_name'))
-def get_workers_cron_trigger_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workers_cron_trigger_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                     script_name: Optional[pulumi.Input[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersCronTriggerResult]:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+
     ## Example Usage
 
     ```python

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Waiting Rooms Read`
+ * - `Waiting Rooms Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getWaitingRoomSettings(args: GetWaitingRoomSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetWaitingRoomSettingsResult> {
+export function getWaitingRoomSettings(args?: GetWaitingRoomSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetWaitingRoomSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWaitingRoomSettings:getWaitingRoomSettings", {
         "zoneId": args.zoneId,
@@ -30,7 +36,7 @@ export interface GetWaitingRoomSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -50,9 +56,14 @@ export interface GetWaitingRoomSettingsResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Waiting Rooms Read`
+ * - `Waiting Rooms Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -64,7 +75,8 @@ export interface GetWaitingRoomSettingsResult {
  * });
  * ```
  */
-export function getWaitingRoomSettingsOutput(args: GetWaitingRoomSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWaitingRoomSettingsResult> {
+export function getWaitingRoomSettingsOutput(args?: GetWaitingRoomSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWaitingRoomSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWaitingRoomSettings:getWaitingRoomSettings", {
         "zoneId": args.zoneId,
@@ -78,5 +90,5 @@ export interface GetWaitingRoomSettingsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getRegionalHostnames(args: GetRegionalHostnamesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionalHostnamesResult> {
+export function getRegionalHostnames(args?: GetRegionalHostnamesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionalHostnamesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRegionalHostnames:getRegionalHostnames", {
         "maxItems": args.maxItems,
@@ -37,7 +43,7 @@ export interface GetRegionalHostnamesArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -59,9 +65,14 @@ export interface GetRegionalHostnamesResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetRegionalHostnamesResult {
  * });
  * ```
  */
-export function getRegionalHostnamesOutput(args: GetRegionalHostnamesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionalHostnamesResult> {
+export function getRegionalHostnamesOutput(args?: GetRegionalHostnamesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionalHostnamesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getRegionalHostnames:getRegionalHostnames", {
         "maxItems": args.maxItems,
@@ -92,5 +104,5 @@ export interface GetRegionalHostnamesOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

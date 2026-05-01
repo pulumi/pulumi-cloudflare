@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.WorkersScriptObservabilityLogs;
+import com.pulumi.cloudflare.outputs.WorkersScriptObservabilityTraces;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -29,6 +30,11 @@ public final class WorkersScriptObservability {
      * 
      */
     private @Nullable WorkersScriptObservabilityLogs logs;
+    /**
+     * @return Trace settings for the Worker.
+     * 
+     */
+    private @Nullable WorkersScriptObservabilityTraces traces;
 
     private WorkersScriptObservability() {}
     /**
@@ -52,6 +58,13 @@ public final class WorkersScriptObservability {
     public Optional<WorkersScriptObservabilityLogs> logs() {
         return Optional.ofNullable(this.logs);
     }
+    /**
+     * @return Trace settings for the Worker.
+     * 
+     */
+    public Optional<WorkersScriptObservabilityTraces> traces() {
+        return Optional.ofNullable(this.traces);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -65,12 +78,14 @@ public final class WorkersScriptObservability {
         private Boolean enabled;
         private @Nullable Double headSamplingRate;
         private @Nullable WorkersScriptObservabilityLogs logs;
+        private @Nullable WorkersScriptObservabilityTraces traces;
         public Builder() {}
         public Builder(WorkersScriptObservability defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
     	      this.logs = defaults.logs;
+    	      this.traces = defaults.traces;
         }
 
         @CustomType.Setter
@@ -93,11 +108,18 @@ public final class WorkersScriptObservability {
             this.logs = logs;
             return this;
         }
+        @CustomType.Setter
+        public Builder traces(@Nullable WorkersScriptObservabilityTraces traces) {
+
+            this.traces = traces;
+            return this;
+        }
         public WorkersScriptObservability build() {
             final var _resultValue = new WorkersScriptObservability();
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
             _resultValue.logs = logs;
+            _resultValue.traces = traces;
             return _resultValue;
         }
     }

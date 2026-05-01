@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Mutual TLS Certificates Read`
+// - `Access: Mutual TLS Certificates Write`
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCustomSsl(ctx, &cloudflare.LookupCustomSslArgs{
-//				ZoneId:              "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:              pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CustomCertificateId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -53,7 +60,7 @@ type LookupCustomSslArgs struct {
 	CustomCertificateId *string             `pulumi:"customCertificateId"`
 	Filter              *GetCustomSslFilter `pulumi:"filter"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getCustomSsl.
@@ -63,6 +70,8 @@ type LookupCustomSslResult struct {
 	BundleMethod string `pulumi:"bundleMethod"`
 	// Identifier.
 	CustomCertificateId *string `pulumi:"customCertificateId"`
+	// The identifier for the Custom CSR that was used.
+	CustomCsrId string `pulumi:"customCsrId"`
 	// When the certificate from the authority expires.
 	ExpiresOn string              `pulumi:"expiresOn"`
 	Filter    *GetCustomSslFilter `pulumi:"filter"`
@@ -85,7 +94,7 @@ type LookupCustomSslResult struct {
 	Status             string  `pulumi:"status"`
 	UploadedOn         string  `pulumi:"uploadedOn"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupCustomSslOutput(ctx *pulumi.Context, args LookupCustomSslOutputArgs, opts ...pulumi.InvokeOption) LookupCustomSslResultOutput {
@@ -103,7 +112,7 @@ type LookupCustomSslOutputArgs struct {
 	CustomCertificateId pulumi.StringPtrInput      `pulumi:"customCertificateId"`
 	Filter              GetCustomSslFilterPtrInput `pulumi:"filter"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupCustomSslOutputArgs) ElementType() reflect.Type {
@@ -134,6 +143,11 @@ func (o LookupCustomSslResultOutput) BundleMethod() pulumi.StringOutput {
 // Identifier.
 func (o LookupCustomSslResultOutput) CustomCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) *string { return v.CustomCertificateId }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for the Custom CSR that was used.
+func (o LookupCustomSslResultOutput) CustomCsrId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomSslResult) string { return v.CustomCsrId }).(pulumi.StringOutput)
 }
 
 // When the certificate from the authority expires.
@@ -197,8 +211,8 @@ func (o LookupCustomSslResultOutput) UploadedOn() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupCustomSslResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomSslResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupCustomSslResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCustomSslResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

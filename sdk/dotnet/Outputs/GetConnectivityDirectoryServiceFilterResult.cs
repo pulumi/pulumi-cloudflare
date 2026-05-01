@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetConnectivityDirectoryServiceFilterResult
     {
         /// <summary>
-        /// Available values: "http".
+        /// Available values: "tcp", "http".
         /// </summary>
         public readonly string? Type;
 

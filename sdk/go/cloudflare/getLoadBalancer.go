@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Load Balancers Read`
+// - `Load Balancers Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetLoadBalancer(ctx, &cloudflare.LookupLoadBalancerArgs{
-//				ZoneId:         "699d98642c564d2e855e9661899b7252",
+//				ZoneId:         pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				LoadBalancerId: "699d98642c564d2e855e9661899b7252",
 //			}, nil)
 //			if err != nil {
@@ -54,7 +59,7 @@ type LookupLoadBalancerArgs struct {
 	PopPools map[string][]string `pulumi:"popPools"`
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	RegionPools map[string][]string `pulumi:"regionPools"`
-	ZoneId      string              `pulumi:"zoneId"`
+	ZoneId      *string             `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getLoadBalancer.
@@ -103,7 +108,7 @@ type LookupLoadBalancerResult struct {
 	SteeringPolicy string `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
 	Ttl    float64 `pulumi:"ttl"`
-	ZoneId string  `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupLoadBalancerOutput(ctx *pulumi.Context, args LookupLoadBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerResultOutput {
@@ -122,7 +127,7 @@ type LookupLoadBalancerOutputArgs struct {
 	PopPools pulumi.StringArrayMapInput `pulumi:"popPools"`
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	RegionPools pulumi.StringArrayMapInput `pulumi:"regionPools"`
-	ZoneId      pulumi.StringInput         `pulumi:"zoneId"`
+	ZoneId      pulumi.StringPtrInput      `pulumi:"zoneId"`
 }
 
 func (LookupLoadBalancerOutputArgs) ElementType() reflect.Type {
@@ -259,8 +264,8 @@ func (o LookupLoadBalancerResultOutput) Ttl() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupLoadBalancerResult) float64 { return v.Ttl }).(pulumi.Float64Output)
 }
 
-func (o LookupLoadBalancerResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupLoadBalancerResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

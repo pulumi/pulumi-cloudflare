@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationCustomPagesArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationLoginDesignArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaConfigArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -185,6 +186,21 @@ public final class ZeroTrustOrganizationArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Configures SSH PIV key requirements for MFA using hardware security keys.
+     * 
+     */
+    @Import(name="mfaSshPivKeyRequirements")
+    private @Nullable Output<ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs> mfaSshPivKeyRequirements;
+
+    /**
+     * @return Configures SSH PIV key requirements for MFA using hardware security keys.
+     * 
+     */
+    public Optional<Output<ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs>> mfaSshPivKeyRequirements() {
+        return Optional.ofNullable(this.mfaSshPivKeyRequirements);
+    }
+
+    /**
      * The name of your Zero Trust organization.
      * 
      */
@@ -289,6 +305,7 @@ public final class ZeroTrustOrganizationArgs extends com.pulumi.resources.Resour
         this.mfaConfig = $.mfaConfig;
         this.mfaConfigurationAllowed = $.mfaConfigurationAllowed;
         this.mfaRequiredForAllApps = $.mfaRequiredForAllApps;
+        this.mfaSshPivKeyRequirements = $.mfaSshPivKeyRequirements;
         this.name = $.name;
         this.sessionDuration = $.sessionDuration;
         this.uiReadOnlyToggleReason = $.uiReadOnlyToggleReason;
@@ -551,6 +568,27 @@ public final class ZeroTrustOrganizationArgs extends com.pulumi.resources.Resour
          */
         public Builder mfaRequiredForAllApps(Boolean mfaRequiredForAllApps) {
             return mfaRequiredForAllApps(Output.of(mfaRequiredForAllApps));
+        }
+
+        /**
+         * @param mfaSshPivKeyRequirements Configures SSH PIV key requirements for MFA using hardware security keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaSshPivKeyRequirements(@Nullable Output<ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs> mfaSshPivKeyRequirements) {
+            $.mfaSshPivKeyRequirements = mfaSshPivKeyRequirements;
+            return this;
+        }
+
+        /**
+         * @param mfaSshPivKeyRequirements Configures SSH PIV key requirements for MFA using hardware security keys.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaSshPivKeyRequirements(ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs mfaSshPivKeyRequirements) {
+            return mfaSshPivKeyRequirements(Output.of(mfaSshPivKeyRequirements));
         }
 
         /**

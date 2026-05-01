@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `SCIM Provisioning`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +40,7 @@ export interface GetResourceGroupArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Resource Group identifier tag.
      */
@@ -48,7 +54,7 @@ export interface GetResourceGroupResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Identifier of the resource group.
      */
@@ -71,6 +77,12 @@ export interface GetResourceGroupResult {
     readonly scopes: outputs.GetResourceGroupScope[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `SCIM Provisioning`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -98,7 +110,7 @@ export interface GetResourceGroupOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Resource Group identifier tag.
      */

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -24,7 +29,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getEmailSecurityTrustedDomainsList(args: GetEmailSecurityTrustedDomainsListArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityTrustedDomainsListResult> {
+export function getEmailSecurityTrustedDomainsList(args?: GetEmailSecurityTrustedDomainsListArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityTrustedDomainsListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList", {
         "accountId": args.accountId,
@@ -45,7 +51,7 @@ export interface GetEmailSecurityTrustedDomainsListArgs {
     /**
      * Account Identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
      * The sorting direction.
      * Available values: "asc", "desc".
@@ -79,7 +85,7 @@ export interface GetEmailSecurityTrustedDomainsListResult {
     /**
      * Account Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The sorting direction.
      * Available values: "asc", "desc".
@@ -114,6 +120,11 @@ export interface GetEmailSecurityTrustedDomainsListResult {
     readonly search?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -131,7 +142,8 @@ export interface GetEmailSecurityTrustedDomainsListResult {
  * });
  * ```
  */
-export function getEmailSecurityTrustedDomainsListOutput(args: GetEmailSecurityTrustedDomainsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityTrustedDomainsListResult> {
+export function getEmailSecurityTrustedDomainsListOutput(args?: GetEmailSecurityTrustedDomainsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityTrustedDomainsListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList", {
         "accountId": args.accountId,
@@ -152,7 +164,7 @@ export interface GetEmailSecurityTrustedDomainsListOutputArgs {
     /**
      * Account Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The sorting direction.
      * Available values: "asc", "desc".

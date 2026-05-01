@@ -16,17 +16,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkersCustomDomainsInvokeResult {
     /**
-     * @return Identifer of the account.
+     * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
-     * @return Worker environment associated with the zone and hostname.
+     * @return Worker environment associated with the domain.
      * 
      */
     private @Nullable String environment;
     /**
-     * @return Hostname of the Worker Domain.
+     * @return Hostname of the domain.
      * 
      */
     private @Nullable String hostname;
@@ -46,38 +46,38 @@ public final class GetWorkersCustomDomainsInvokeResult {
      */
     private List<GetWorkersCustomDomainsResult> results;
     /**
-     * @return Worker service associated with the zone and hostname.
+     * @return Name of the Worker associated with the domain.
      * 
      */
     private @Nullable String service;
     /**
-     * @return Identifier of the zone.
+     * @return ID of the zone containing the domain hostname.
      * 
      */
     private @Nullable String zoneId;
     /**
-     * @return Name of the zone.
+     * @return Name of the zone containing the domain hostname.
      * 
      */
     private @Nullable String zoneName;
 
     private GetWorkersCustomDomainsInvokeResult() {}
     /**
-     * @return Identifer of the account.
+     * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return Worker environment associated with the zone and hostname.
+     * @return Worker environment associated with the domain.
      * 
      */
     public Optional<String> environment() {
         return Optional.ofNullable(this.environment);
     }
     /**
-     * @return Hostname of the Worker Domain.
+     * @return Hostname of the domain.
      * 
      */
     public Optional<String> hostname() {
@@ -105,21 +105,21 @@ public final class GetWorkersCustomDomainsInvokeResult {
         return this.results;
     }
     /**
-     * @return Worker service associated with the zone and hostname.
+     * @return Name of the Worker associated with the domain.
      * 
      */
     public Optional<String> service() {
         return Optional.ofNullable(this.service);
     }
     /**
-     * @return Identifier of the zone.
+     * @return ID of the zone containing the domain hostname.
      * 
      */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
     /**
-     * @return Name of the zone.
+     * @return Name of the zone containing the domain hostname.
      * 
      */
     public Optional<String> zoneName() {
@@ -135,7 +135,7 @@ public final class GetWorkersCustomDomainsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private @Nullable String environment;
         private @Nullable String hostname;
         private String id;
@@ -159,10 +159,8 @@ public final class GetWorkersCustomDomainsInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetWorkersCustomDomainsInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

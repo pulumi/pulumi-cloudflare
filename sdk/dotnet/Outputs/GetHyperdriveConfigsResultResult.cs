@@ -26,6 +26,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Defines the last modified time of the Hyperdrive configuration.
         /// </summary>
         public readonly string ModifiedOn;
+        /// <summary>
+        /// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+        /// </summary>
         public readonly Outputs.GetHyperdriveConfigsResultMtlsResult Mtls;
         /// <summary>
         /// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.

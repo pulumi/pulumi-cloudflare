@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Cloudflare One Connector: WARP Read`
+    /// - `Cloudflare One Connector: WARP Write`
+    /// - `Cloudflare One Connectors Read`
+    /// - `Cloudflare One Connectors Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -24,6 +31,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "blog",
+    ///         Ha = true,
     ///     });
     /// 
     /// });
@@ -42,7 +50,7 @@ namespace Pulumi.Cloudflare
         /// Cloudflare account ID
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Cloudflare account ID
@@ -79,6 +87,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("deletedAt")]
         public Output<string> DeletedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+        /// </summary>
+        [Output("ha")]
+        public Output<bool> Ha { get; private set; } = null!;
 
         /// <summary>
         /// Metadata associated with the tunnel.
@@ -165,8 +179,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+        /// </summary>
+        [Input("ha")]
+        public Input<bool>? Ha { get; set; }
 
         /// <summary>
         /// A user-friendly name for a tunnel.
@@ -246,6 +266,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("deletedAt")]
         public Input<string>? DeletedAt { get; set; }
+
+        /// <summary>
+        /// Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+        /// </summary>
+        [Input("ha")]
+        public Input<bool>? Ha { get; set; }
 
         /// <summary>
         /// Metadata associated with the tunnel.

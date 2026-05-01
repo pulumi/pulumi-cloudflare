@@ -17,7 +17,7 @@ public final class GetWorkersScriptResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     private @Nullable GetWorkersScriptFilter filter;
     /**
      * @return Name of the script, used in URLs and route configuration.
@@ -36,8 +36,8 @@ public final class GetWorkersScriptResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public Optional<GetWorkersScriptFilter> filter() {
         return Optional.ofNullable(this.filter);
@@ -69,7 +69,7 @@ public final class GetWorkersScriptResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private @Nullable GetWorkersScriptFilter filter;
         private String id;
         private String script;
@@ -85,10 +85,8 @@ public final class GetWorkersScriptResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetWorkersScriptResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

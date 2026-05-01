@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustRiskScoringIntegrations(ctx, &cloudflare.LookupZeroTrustRiskScoringIntegrationsArgs{
-//				AccountId: "account_id",
+//				AccountId: pulumi.StringRef("account_id"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,14 +53,14 @@ func LookupZeroTrustRiskScoringIntegrations(ctx *pulumi.Context, args *LookupZer
 
 // A collection of arguments for invoking getZeroTrustRiskScoringIntegrations.
 type LookupZeroTrustRiskScoringIntegrationsArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
 
 // A collection of values returned by getZeroTrustRiskScoringIntegrations.
 type LookupZeroTrustRiskScoringIntegrationsResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -75,7 +80,7 @@ func LookupZeroTrustRiskScoringIntegrationsOutput(ctx *pulumi.Context, args Look
 
 // A collection of arguments for invoking getZeroTrustRiskScoringIntegrations.
 type LookupZeroTrustRiskScoringIntegrationsOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -99,8 +104,8 @@ func (o LookupZeroTrustRiskScoringIntegrationsResultOutput) ToLookupZeroTrustRis
 	return o
 }
 
-func (o LookupZeroTrustRiskScoringIntegrationsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustRiskScoringIntegrationsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustRiskScoringIntegrationsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustRiskScoringIntegrationsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

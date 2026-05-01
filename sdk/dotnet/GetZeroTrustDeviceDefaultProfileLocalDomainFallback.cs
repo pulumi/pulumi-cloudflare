@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult> InvokeAsync(GetZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult> InvokeAsync(GetZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult>("cloudflare:index/getZeroTrustDeviceDefaultProfileLocalDomainFallback:getZeroTrustDeviceDefaultProfileLocalDomainFallback", args ?? new GetZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs(), options.WithDefaults());
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult> Invoke(GetZeroTrustDeviceDefaultProfileLocalDomainFallbackInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult> Invoke(GetZeroTrustDeviceDefaultProfileLocalDomainFallbackInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult>("cloudflare:index/getZeroTrustDeviceDefaultProfileLocalDomainFallback:getZeroTrustDeviceDefaultProfileLocalDomainFallback", args ?? new GetZeroTrustDeviceDefaultProfileLocalDomainFallbackInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         public GetZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs()
         {
@@ -92,8 +92,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         public GetZeroTrustDeviceDefaultProfileLocalDomainFallbackInvokeArgs()
         {
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// A description of the fallback domain, displayed in the client UI.
         /// </summary>
@@ -125,7 +125,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult(
-            string accountId,
+            string? accountId,
 
             string description,
 

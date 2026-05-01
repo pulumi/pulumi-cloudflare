@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetWorkersKvNamespace
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers KV Storage Read`
+        /// - `Workers KV Storage Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWorkersKvNamespaceResult> InvokeAsync(GetWorkersKvNamespaceArgs args, InvokeOptions? options = null)
+        public static Task<GetWorkersKvNamespaceResult> InvokeAsync(GetWorkersKvNamespaceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkersKvNamespaceResult>("cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace", args ?? new GetWorkersKvNamespaceArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers KV Storage Read`
+        /// - `Workers KV Storage Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWorkersKvNamespaceResult> Invoke(GetWorkersKvNamespaceInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetWorkersKvNamespaceResult> Invoke(GetWorkersKvNamespaceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkersKvNamespaceResult>("cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace", args ?? new GetWorkersKvNamespaceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers KV Storage Read`
+        /// - `Workers KV Storage Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetWorkersKvNamespaceFilterArgs? Filter { get; set; }
@@ -110,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetWorkersKvNamespaceFilterInputArgs>? Filter { get; set; }
@@ -135,7 +150,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly Outputs.GetWorkersKvNamespaceFilterResult? Filter;
         /// <summary>
         /// Namespace identifier tag.
@@ -156,7 +171,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWorkersKvNamespaceResult(
-            string accountId,
+            string? accountId,
 
             Outputs.GetWorkersKvNamespaceFilterResult? filter,
 

@@ -2,9 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -55,11 +62,15 @@ export class StreamAudioTrack extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The unique identifier for an additional audio track.
      */
     declare public readonly audioIdentifier: pulumi.Output<string | undefined>;
+    /**
+     * Array of audio tracks for the video.
+     */
+    declare public /*out*/ readonly audios: pulumi.Output<outputs.StreamAudioTrackAudio[]>;
     /**
      * Denotes whether the audio track will be played by default in a player.
      */
@@ -97,6 +108,7 @@ export class StreamAudioTrack extends pulumi.CustomResource {
             const state = argsOrState as StreamAudioTrackState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["audioIdentifier"] = state?.audioIdentifier;
+            resourceInputs["audios"] = state?.audios;
             resourceInputs["default"] = state?.default;
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["label"] = state?.label;
@@ -104,9 +116,6 @@ export class StreamAudioTrack extends pulumi.CustomResource {
             resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as StreamAudioTrackArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
@@ -115,6 +124,7 @@ export class StreamAudioTrack extends pulumi.CustomResource {
             resourceInputs["default"] = args?.default;
             resourceInputs["identifier"] = args?.identifier;
             resourceInputs["label"] = args?.label;
+            resourceInputs["audios"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
@@ -135,6 +145,10 @@ export interface StreamAudioTrackState {
      * The unique identifier for an additional audio track.
      */
     audioIdentifier?: pulumi.Input<string>;
+    /**
+     * Array of audio tracks for the video.
+     */
+    audios?: pulumi.Input<pulumi.Input<inputs.StreamAudioTrackAudio>[]>;
     /**
      * Denotes whether the audio track will be played by default in a player.
      */
@@ -165,7 +179,7 @@ export interface StreamAudioTrackArgs {
     /**
      * The account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The unique identifier for an additional audio track.
      */

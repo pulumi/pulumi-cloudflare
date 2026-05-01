@@ -66,8 +66,12 @@ type AccessApplication struct {
 	LandingPageDesign AccessApplicationLandingPageDesignPtrOutput `pulumi:"landingPageDesign"`
 	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl pulumi.StringPtrOutput `pulumi:"logoUrl"`
+	// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+	MfaConfig AccessApplicationMfaConfigPtrOutput `pulumi:"mfaConfig"`
 	// The name of the application.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration AccessApplicationOauthConfigurationPtrOutput `pulumi:"oauthConfiguration"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass pulumi.BoolPtrOutput `pulumi:"optionsPreflightBypass"`
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -188,8 +192,12 @@ type accessApplicationState struct {
 	LandingPageDesign *AccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
 	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
+	// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+	MfaConfig *AccessApplicationMfaConfig `pulumi:"mfaConfig"`
 	// The name of the application.
 	Name *string `pulumi:"name"`
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration *AccessApplicationOauthConfiguration `pulumi:"oauthConfiguration"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -275,8 +283,12 @@ type AccessApplicationState struct {
 	LandingPageDesign AccessApplicationLandingPageDesignPtrInput
 	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
+	// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+	MfaConfig AccessApplicationMfaConfigPtrInput
 	// The name of the application.
 	Name pulumi.StringPtrInput
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration AccessApplicationOauthConfigurationPtrInput
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass pulumi.BoolPtrInput
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -364,8 +376,12 @@ type accessApplicationArgs struct {
 	LandingPageDesign *AccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
 	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
+	// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+	MfaConfig *AccessApplicationMfaConfig `pulumi:"mfaConfig"`
 	// The name of the application.
 	Name *string `pulumi:"name"`
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration *AccessApplicationOauthConfiguration `pulumi:"oauthConfiguration"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -450,8 +466,12 @@ type AccessApplicationArgs struct {
 	LandingPageDesign AccessApplicationLandingPageDesignPtrInput
 	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
+	// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+	MfaConfig AccessApplicationMfaConfigPtrInput
 	// The name of the application.
 	Name pulumi.StringPtrInput
+	// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+	OauthConfiguration AccessApplicationOauthConfigurationPtrInput
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass pulumi.BoolPtrInput
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
@@ -689,9 +709,19 @@ func (o AccessApplicationOutput) LogoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.LogoUrl }).(pulumi.StringPtrOutput)
 }
 
+// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+func (o AccessApplicationOutput) MfaConfig() AccessApplicationMfaConfigPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationMfaConfigPtrOutput { return v.MfaConfig }).(AccessApplicationMfaConfigPtrOutput)
+}
+
 // The name of the application.
 func (o AccessApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+func (o AccessApplicationOutput) OauthConfiguration() AccessApplicationOauthConfigurationPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationOauthConfigurationPtrOutput { return v.OauthConfiguration }).(AccessApplicationOauthConfigurationPtrOutput)
 }
 
 // Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.

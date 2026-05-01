@@ -15,6 +15,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -92,14 +99,14 @@ public class LeakedCredentialCheckRule extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Defines an identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**
@@ -114,7 +121,7 @@ public class LeakedCredentialCheckRule extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LeakedCredentialCheckRule(java.lang.String name, LeakedCredentialCheckRuleArgs args) {
+    public LeakedCredentialCheckRule(java.lang.String name, @Nullable LeakedCredentialCheckRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -123,7 +130,7 @@ public class LeakedCredentialCheckRule extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LeakedCredentialCheckRule(java.lang.String name, LeakedCredentialCheckRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public LeakedCredentialCheckRule(java.lang.String name, @Nullable LeakedCredentialCheckRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -131,7 +138,7 @@ public class LeakedCredentialCheckRule extends com.pulumi.resources.CustomResour
         super("cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static LeakedCredentialCheckRuleArgs makeArgs(LeakedCredentialCheckRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static LeakedCredentialCheckRuleArgs makeArgs(@Nullable LeakedCredentialCheckRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

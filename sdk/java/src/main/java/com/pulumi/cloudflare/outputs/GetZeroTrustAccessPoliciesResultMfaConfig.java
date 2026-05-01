@@ -18,10 +18,10 @@ public final class GetZeroTrustAccessPoliciesResultMfaConfig {
      */
     private List<String> allowedAuthenticators;
     /**
-     * @return Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+     * @return Indicates whether to disable MFA for this resource. This option is available at the application and policy level.
      * 
      */
-    private Boolean mfaBypass;
+    private Boolean mfaDisabled;
     /**
      * @return Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
      * 
@@ -37,11 +37,11 @@ public final class GetZeroTrustAccessPoliciesResultMfaConfig {
         return this.allowedAuthenticators;
     }
     /**
-     * @return Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+     * @return Indicates whether to disable MFA for this resource. This option is available at the application and policy level.
      * 
      */
-    public Boolean mfaBypass() {
-        return this.mfaBypass;
+    public Boolean mfaDisabled() {
+        return this.mfaDisabled;
     }
     /**
      * @return Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
@@ -61,13 +61,13 @@ public final class GetZeroTrustAccessPoliciesResultMfaConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<String> allowedAuthenticators;
-        private Boolean mfaBypass;
+        private Boolean mfaDisabled;
         private String sessionDuration;
         public Builder() {}
         public Builder(GetZeroTrustAccessPoliciesResultMfaConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedAuthenticators = defaults.allowedAuthenticators;
-    	      this.mfaBypass = defaults.mfaBypass;
+    	      this.mfaDisabled = defaults.mfaDisabled;
     	      this.sessionDuration = defaults.sessionDuration;
         }
 
@@ -83,11 +83,11 @@ public final class GetZeroTrustAccessPoliciesResultMfaConfig {
             return allowedAuthenticators(List.of(allowedAuthenticators));
         }
         @CustomType.Setter
-        public Builder mfaBypass(Boolean mfaBypass) {
-            if (mfaBypass == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResultMfaConfig", "mfaBypass");
+        public Builder mfaDisabled(Boolean mfaDisabled) {
+            if (mfaDisabled == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResultMfaConfig", "mfaDisabled");
             }
-            this.mfaBypass = mfaBypass;
+            this.mfaDisabled = mfaDisabled;
             return this;
         }
         @CustomType.Setter
@@ -101,7 +101,7 @@ public final class GetZeroTrustAccessPoliciesResultMfaConfig {
         public GetZeroTrustAccessPoliciesResultMfaConfig build() {
             final var _resultValue = new GetZeroTrustAccessPoliciesResultMfaConfig();
             _resultValue.allowedAuthenticators = allowedAuthenticators;
-            _resultValue.mfaBypass = mfaBypass;
+            _resultValue.mfaDisabled = mfaDisabled;
             _resultValue.sessionDuration = sessionDuration;
             return _resultValue;
         }

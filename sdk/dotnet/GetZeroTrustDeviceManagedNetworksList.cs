@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustDeviceManagedNetworksListResult> InvokeAsync(GetZeroTrustDeviceManagedNetworksListArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustDeviceManagedNetworksListResult> InvokeAsync(GetZeroTrustDeviceManagedNetworksListArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDeviceManagedNetworksListResult>("cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList", args ?? new GetZeroTrustDeviceManagedNetworksListArgs(), options.WithDefaults());
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustDeviceManagedNetworksListResult> Invoke(GetZeroTrustDeviceManagedNetworksListInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustDeviceManagedNetworksListResult> Invoke(GetZeroTrustDeviceManagedNetworksListInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDeviceManagedNetworksListResult>("cloudflare:index/getZeroTrustDeviceManagedNetworksList:getZeroTrustDeviceManagedNetworksList", args ?? new GetZeroTrustDeviceManagedNetworksListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDeviceManagedNetworksListArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -98,8 +98,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDeviceManagedNetworksListInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDeviceManagedNetworksListResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDeviceManagedNetworksListResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

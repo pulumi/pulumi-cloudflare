@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Stream Read`
+// - `Stream Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetStreamLiveInput(ctx, &cloudflare.LookupStreamLiveInputArgs{
-//				AccountId:           "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:           pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				LiveInputIdentifier: "66be4bf738797e01e1fca35a7bdecdcd",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupStreamLiveInput(ctx *pulumi.Context, args *LookupStreamLiveInputArgs,
 // A collection of arguments for invoking getStreamLiveInput.
 type LookupStreamLiveInputArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// A unique identifier for a live input.
 	LiveInputIdentifier string `pulumi:"liveInputIdentifier"`
 }
@@ -58,7 +63,7 @@ type LookupStreamLiveInputArgs struct {
 // A collection of values returned by getStreamLiveInput.
 type LookupStreamLiveInputResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The date and time the live input was created.
 	Created string `pulumi:"created"`
 	// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
@@ -106,7 +111,7 @@ func LookupStreamLiveInputOutput(ctx *pulumi.Context, args LookupStreamLiveInput
 // A collection of arguments for invoking getStreamLiveInput.
 type LookupStreamLiveInputOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// A unique identifier for a live input.
 	LiveInputIdentifier pulumi.StringInput `pulumi:"liveInputIdentifier"`
 }
@@ -131,8 +136,8 @@ func (o LookupStreamLiveInputResultOutput) ToLookupStreamLiveInputResultOutputWi
 }
 
 // Identifier.
-func (o LookupStreamLiveInputResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamLiveInputResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupStreamLiveInputResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamLiveInputResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The date and time the live input was created.

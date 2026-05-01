@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AiSearchInstanceCustomMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Available values: "text", "number", "boolean".
+        /// Available values: "text", "number", "boolean", "datetime".
         /// </summary>
         [Input("dataType", required: true)]
         public Input<string> DataType { get; set; } = null!;

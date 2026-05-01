@@ -426,6 +426,11 @@ class ZoneDnssec(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `DNS Read`
+        - `DNS Write`
+
         ## Example Usage
 
         ```python
@@ -477,6 +482,11 @@ class ZoneDnssec(pulumi.CustomResource):
                  args: ZoneDnssecArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `DNS Read`
+        - `DNS Write`
+
         ## Example Usage
 
         ```python

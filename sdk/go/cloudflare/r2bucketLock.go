@@ -57,7 +57,7 @@ type R2BucketLock struct {
 	pulumi.CustomResourceState
 
 	// Account ID.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// Jurisdiction of the bucket
@@ -72,9 +72,6 @@ func NewR2BucketLock(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.BucketName == nil {
 		return nil, errors.New("invalid value for required argument 'BucketName'")
 	}
@@ -126,7 +123,7 @@ func (R2BucketLockState) ElementType() reflect.Type {
 
 type r2bucketLockArgs struct {
 	// Account ID.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// Jurisdiction of the bucket
@@ -137,7 +134,7 @@ type r2bucketLockArgs struct {
 // The set of arguments for constructing a R2BucketLock resource.
 type R2BucketLockArgs struct {
 	// Account ID.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Name of the bucket.
 	BucketName pulumi.StringInput
 	// Jurisdiction of the bucket
@@ -233,8 +230,8 @@ func (o R2BucketLockOutput) ToR2BucketLockOutputWithContext(ctx context.Context)
 }
 
 // Account ID.
-func (o R2BucketLockOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *R2BucketLock) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o R2BucketLockOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *R2BucketLock) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Name of the bucket.

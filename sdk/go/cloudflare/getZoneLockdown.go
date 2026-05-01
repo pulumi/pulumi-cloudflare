@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZoneLockdown(ctx, &cloudflare.LookupZoneLockdownArgs{
-//				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:      pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				LockDownsId: pulumi.StringRef("372e67954025e0ba6aaa6d586b9e0b59"),
 //			}, nil)
 //			if err != nil {
@@ -53,7 +58,7 @@ type LookupZoneLockdownArgs struct {
 	// The unique identifier of the Zone Lockdown rule.
 	LockDownsId *string `pulumi:"lockDownsId"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZoneLockdown.
@@ -76,7 +81,7 @@ type LookupZoneLockdownResult struct {
 	// The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls []string `pulumi:"urls"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupZoneLockdownOutput(ctx *pulumi.Context, args LookupZoneLockdownOutputArgs, opts ...pulumi.InvokeOption) LookupZoneLockdownResultOutput {
@@ -94,7 +99,7 @@ type LookupZoneLockdownOutputArgs struct {
 	// The unique identifier of the Zone Lockdown rule.
 	LockDownsId pulumi.StringPtrInput `pulumi:"lockDownsId"`
 	// Defines an identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupZoneLockdownOutputArgs) ElementType() reflect.Type {
@@ -161,8 +166,8 @@ func (o LookupZoneLockdownResultOutput) Urls() pulumi.StringArrayOutput {
 }
 
 // Defines an identifier.
-func (o LookupZoneLockdownResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneLockdownResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupZoneLockdownResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZoneLockdownResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Firewall Access Rules Read`
+ * - `Account Firewall Access Rules Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -139,6 +144,11 @@ export interface GetAccessRulesResult {
     readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Firewall Access Rules Read`
+ * - `Account Firewall Access Rules Write`
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +39,7 @@ export interface GetWorkersCronTriggerArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Name of the script, used in URLs and route configuration.
      */
@@ -48,7 +53,7 @@ export interface GetWorkersCronTriggerResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Name of the script, used in URLs and route configuration.
      */
@@ -60,6 +65,11 @@ export interface GetWorkersCronTriggerResult {
     readonly scriptName: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -87,7 +97,7 @@ export interface GetWorkersCronTriggerOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Name of the script, used in URLs and route configuration.
      */

@@ -15,6 +15,11 @@ public final class GetWorkerVersionLimits {
      * 
      */
     private Integer cpuMs;
+    /**
+     * @return Subrequest limit per request.
+     * 
+     */
+    private Integer subrequests;
 
     private GetWorkerVersionLimits() {}
     /**
@@ -23,6 +28,13 @@ public final class GetWorkerVersionLimits {
      */
     public Integer cpuMs() {
         return this.cpuMs;
+    }
+    /**
+     * @return Subrequest limit per request.
+     * 
+     */
+    public Integer subrequests() {
+        return this.subrequests;
     }
 
     public static Builder builder() {
@@ -35,10 +47,12 @@ public final class GetWorkerVersionLimits {
     @CustomType.Builder
     public static final class Builder {
         private Integer cpuMs;
+        private Integer subrequests;
         public Builder() {}
         public Builder(GetWorkerVersionLimits defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuMs = defaults.cpuMs;
+    	      this.subrequests = defaults.subrequests;
         }
 
         @CustomType.Setter
@@ -49,9 +63,18 @@ public final class GetWorkerVersionLimits {
             this.cpuMs = cpuMs;
             return this;
         }
+        @CustomType.Setter
+        public Builder subrequests(Integer subrequests) {
+            if (subrequests == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionLimits", "subrequests");
+            }
+            this.subrequests = subrequests;
+            return this;
+        }
         public GetWorkerVersionLimits build() {
             final var _resultValue = new GetWorkerVersionLimits();
             _resultValue.cpuMs = cpuMs;
+            _resultValue.subrequests = subrequests;
             return _resultValue;
         }
     }

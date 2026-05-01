@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare Zero Trust Secure DNS Locations Write`
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDnsLocation(ctx, &cloudflare.LookupZeroTrustDnsLocationArgs{
-//				AccountId:  "699d98642c564d2e855e9661899b7252",
+//				AccountId:  pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				LocationId: "ed35569b41ce4d1facfe683550f54086",
 //			}, nil)
 //			if err != nil {
@@ -49,13 +55,13 @@ func LookupZeroTrustDnsLocation(ctx *pulumi.Context, args *LookupZeroTrustDnsLoc
 
 // A collection of arguments for invoking getZeroTrustDnsLocation.
 type LookupZeroTrustDnsLocationArgs struct {
-	AccountId  string `pulumi:"accountId"`
-	LocationId string `pulumi:"locationId"`
+	AccountId  *string `pulumi:"accountId"`
+	LocationId string  `pulumi:"locationId"`
 }
 
 // A collection of values returned by getZeroTrustDnsLocation.
 type LookupZeroTrustDnsLocationResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault bool   `pulumi:"clientDefault"`
 	CreatedAt     string `pulumi:"createdAt"`
@@ -96,8 +102,8 @@ func LookupZeroTrustDnsLocationOutput(ctx *pulumi.Context, args LookupZeroTrustD
 
 // A collection of arguments for invoking getZeroTrustDnsLocation.
 type LookupZeroTrustDnsLocationOutputArgs struct {
-	AccountId  pulumi.StringInput `pulumi:"accountId"`
-	LocationId pulumi.StringInput `pulumi:"locationId"`
+	AccountId  pulumi.StringPtrInput `pulumi:"accountId"`
+	LocationId pulumi.StringInput    `pulumi:"locationId"`
 }
 
 func (LookupZeroTrustDnsLocationOutputArgs) ElementType() reflect.Type {
@@ -119,8 +125,8 @@ func (o LookupZeroTrustDnsLocationResultOutput) ToLookupZeroTrustDnsLocationResu
 	return o
 }
 
-func (o LookupZeroTrustDnsLocationResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDnsLocationResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDnsLocationResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Indicate whether this location is the default location.

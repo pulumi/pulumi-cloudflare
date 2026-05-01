@@ -3,6 +3,8 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpServersResultUpdatedPrompt;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpServersResultUpdatedTool;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -35,6 +37,8 @@ public final class GetZeroTrustAccessAiControlsMcpServersResult {
     private List<Map<String,String>> prompts;
     private String status;
     private List<Map<String,String>> tools;
+    private List<GetZeroTrustAccessAiControlsMcpServersResultUpdatedPrompt> updatedPrompts;
+    private List<GetZeroTrustAccessAiControlsMcpServersResultUpdatedTool> updatedTools;
 
     private GetZeroTrustAccessAiControlsMcpServersResult() {}
     /**
@@ -90,6 +94,12 @@ public final class GetZeroTrustAccessAiControlsMcpServersResult {
     public List<Map<String,String>> tools() {
         return this.tools;
     }
+    public List<GetZeroTrustAccessAiControlsMcpServersResultUpdatedPrompt> updatedPrompts() {
+        return this.updatedPrompts;
+    }
+    public List<GetZeroTrustAccessAiControlsMcpServersResultUpdatedTool> updatedTools() {
+        return this.updatedTools;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -115,6 +125,8 @@ public final class GetZeroTrustAccessAiControlsMcpServersResult {
         private List<Map<String,String>> prompts;
         private String status;
         private List<Map<String,String>> tools;
+        private List<GetZeroTrustAccessAiControlsMcpServersResultUpdatedPrompt> updatedPrompts;
+        private List<GetZeroTrustAccessAiControlsMcpServersResultUpdatedTool> updatedTools;
         public Builder() {}
         public Builder(GetZeroTrustAccessAiControlsMcpServersResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -133,6 +145,8 @@ public final class GetZeroTrustAccessAiControlsMcpServersResult {
     	      this.prompts = defaults.prompts;
     	      this.status = defaults.status;
     	      this.tools = defaults.tools;
+    	      this.updatedPrompts = defaults.updatedPrompts;
+    	      this.updatedTools = defaults.updatedTools;
         }
 
         @CustomType.Setter
@@ -255,6 +269,28 @@ public final class GetZeroTrustAccessAiControlsMcpServersResult {
             this.tools = tools;
             return this;
         }
+        @CustomType.Setter
+        public Builder updatedPrompts(List<GetZeroTrustAccessAiControlsMcpServersResultUpdatedPrompt> updatedPrompts) {
+            if (updatedPrompts == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServersResult", "updatedPrompts");
+            }
+            this.updatedPrompts = updatedPrompts;
+            return this;
+        }
+        public Builder updatedPrompts(GetZeroTrustAccessAiControlsMcpServersResultUpdatedPrompt... updatedPrompts) {
+            return updatedPrompts(List.of(updatedPrompts));
+        }
+        @CustomType.Setter
+        public Builder updatedTools(List<GetZeroTrustAccessAiControlsMcpServersResultUpdatedTool> updatedTools) {
+            if (updatedTools == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServersResult", "updatedTools");
+            }
+            this.updatedTools = updatedTools;
+            return this;
+        }
+        public Builder updatedTools(GetZeroTrustAccessAiControlsMcpServersResultUpdatedTool... updatedTools) {
+            return updatedTools(List.of(updatedTools));
+        }
         public GetZeroTrustAccessAiControlsMcpServersResult build() {
             final var _resultValue = new GetZeroTrustAccessAiControlsMcpServersResult();
             _resultValue.authType = authType;
@@ -272,6 +308,8 @@ public final class GetZeroTrustAccessAiControlsMcpServersResult {
             _resultValue.prompts = prompts;
             _resultValue.status = status;
             _resultValue.tools = tools;
+            _resultValue.updatedPrompts = updatedPrompts;
+            _resultValue.updatedTools = updatedTools;
             return _resultValue;
         }
     }

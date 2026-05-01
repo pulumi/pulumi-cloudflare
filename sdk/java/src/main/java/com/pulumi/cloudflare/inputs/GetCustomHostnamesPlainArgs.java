@@ -3,8 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetCustomHostnamesHostname;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -16,6 +17,38 @@ import javax.annotation.Nullable;
 public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetCustomHostnamesPlainArgs Empty = new GetCustomHostnamesPlainArgs();
+
+    /**
+     * Filter by the certificate authority that issued the SSL certificate.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
+     * 
+     */
+    @Import(name="certificateAuthority")
+    private @Nullable String certificateAuthority;
+
+    /**
+     * @return Filter by the certificate authority that issued the SSL certificate.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
+     * 
+     */
+    public Optional<String> certificateAuthority() {
+        return Optional.ofNullable(this.certificateAuthority);
+    }
+
+    /**
+     * Filter by custom origin server name.
+     * 
+     */
+    @Import(name="customOriginServer")
+    private @Nullable String customOriginServer;
+
+    /**
+     * @return Filter by custom origin server name.
+     * 
+     */
+    public Optional<String> customOriginServer() {
+        return Optional.ofNullable(this.customOriginServer);
+    }
 
     /**
      * Direction to order hostnames.
@@ -34,19 +67,28 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.direction);
     }
 
-    /**
-     * Fully qualified domain name to match against. This parameter cannot be used with the &#39;id&#39; parameter.
-     * 
-     */
     @Import(name="hostname")
-    private @Nullable String hostname;
+    private @Nullable GetCustomHostnamesHostname hostname;
+
+    public Optional<GetCustomHostnamesHostname> hostname() {
+        return Optional.ofNullable(this.hostname);
+    }
 
     /**
-     * @return Fully qualified domain name to match against. This parameter cannot be used with the &#39;id&#39; parameter.
+     * Filter by the hostname&#39;s activation status.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;testFailed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
      * 
      */
-    public Optional<String> hostname() {
-        return Optional.ofNullable(this.hostname);
+    @Import(name="hostnameStatus")
+    private @Nullable String hostnameStatus;
+
+    /**
+     * @return Filter by the hostname&#39;s activation status.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;testFailed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
+     * 
+     */
+    public Optional<String> hostnameStatus() {
+        return Optional.ofNullable(this.hostnameStatus);
     }
 
     /**
@@ -114,29 +156,66 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
+     * Filter by SSL certificate status.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
+     * 
+     */
+    @Import(name="sslStatus")
+    private @Nullable String sslStatus;
+
+    /**
+     * @return Filter by SSL certificate status.
+     * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
+     * 
+     */
+    public Optional<String> sslStatus() {
+        return Optional.ofNullable(this.sslStatus);
+    }
+
+    /**
+     * Filter by whether the custom hostname is a wildcard hostname.
+     * 
+     */
+    @Import(name="wildcard")
+    private @Nullable Boolean wildcard;
+
+    /**
+     * @return Filter by whether the custom hostname is a wildcard hostname.
+     * 
+     */
+    public Optional<Boolean> wildcard() {
+        return Optional.ofNullable(this.wildcard);
+    }
+
+    /**
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetCustomHostnamesPlainArgs() {}
 
     private GetCustomHostnamesPlainArgs(GetCustomHostnamesPlainArgs $) {
+        this.certificateAuthority = $.certificateAuthority;
+        this.customOriginServer = $.customOriginServer;
         this.direction = $.direction;
         this.hostname = $.hostname;
+        this.hostnameStatus = $.hostnameStatus;
         this.id = $.id;
         this.maxItems = $.maxItems;
         this.order = $.order;
         this.ssl = $.ssl;
+        this.sslStatus = $.sslStatus;
+        this.wildcard = $.wildcard;
         this.zoneId = $.zoneId;
     }
 
@@ -159,6 +238,29 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
+         * @param certificateAuthority Filter by the certificate authority that issued the SSL certificate.
+         * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateAuthority(@Nullable String certificateAuthority) {
+            $.certificateAuthority = certificateAuthority;
+            return this;
+        }
+
+        /**
+         * @param customOriginServer Filter by custom origin server name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customOriginServer(@Nullable String customOriginServer) {
+            $.customOriginServer = customOriginServer;
+            return this;
+        }
+
+        /**
          * @param direction Direction to order hostnames.
          * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
@@ -170,14 +272,20 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
             return this;
         }
 
+        public Builder hostname(@Nullable GetCustomHostnamesHostname hostname) {
+            $.hostname = hostname;
+            return this;
+        }
+
         /**
-         * @param hostname Fully qualified domain name to match against. This parameter cannot be used with the &#39;id&#39; parameter.
+         * @param hostnameStatus Filter by the hostname&#39;s activation status.
+         * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;testFailed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder hostname(@Nullable String hostname) {
-            $.hostname = hostname;
+        public Builder hostnameStatus(@Nullable String hostnameStatus) {
+            $.hostnameStatus = hostnameStatus;
             return this;
         }
 
@@ -228,20 +336,40 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
+         * @param sslStatus Filter by SSL certificate status.
+         * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslStatus(@Nullable String sslStatus) {
+            $.sslStatus = sslStatus;
+            return this;
+        }
+
+        /**
+         * @param wildcard Filter by whether the custom hostname is a wildcard hostname.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wildcard(@Nullable Boolean wildcard) {
+            $.wildcard = wildcard;
+            return this;
+        }
+
+        /**
          * @param zoneId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         public GetCustomHostnamesPlainArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetCustomHostnamesPlainArgs", "zoneId");
-            }
             return $;
         }
     }

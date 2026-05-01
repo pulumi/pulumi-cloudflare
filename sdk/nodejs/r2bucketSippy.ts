@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers R2 Storage Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -66,7 +70,7 @@ export class R2BucketSippy extends pulumi.CustomResource {
     /**
      * Account ID.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Name of the bucket.
      */
@@ -109,9 +113,6 @@ export class R2BucketSippy extends pulumi.CustomResource {
             resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as R2BucketSippyArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
@@ -164,7 +165,7 @@ export interface R2BucketSippyArgs {
     /**
      * Account ID.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Name of the bucket.
      */

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustDlpCustomProfile
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDlpCustomProfileResult>("cloudflare:index/getZeroTrustDlpCustomProfile:getZeroTrustDlpCustomProfile", args ?? new GetZeroTrustDlpCustomProfileArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDlpCustomProfileResult>("cloudflare:index/getZeroTrustDlpCustomProfile:getZeroTrustDlpCustomProfile", args ?? new GetZeroTrustDlpCustomProfileInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDlpCustomProfileArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("profileId", required: true)]
         public string ProfileId { get; set; } = null!;
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDlpCustomProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("profileId", required: true)]
         public Input<string> ProfileId { get; set; } = null!;
@@ -114,7 +129,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDlpCustomProfileResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly bool AiContextEnabled;
         /// <summary>
         /// Related DLP policies will trigger when the match count exceeds the number set.
@@ -132,6 +147,14 @@ namespace Pulumi.Cloudflare
         /// When the profile was created.
         /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Data classes associated with this profile.
+        /// </summary>
+        public readonly ImmutableArray<string> DataClasses;
+        /// <summary>
+        /// Data tags associated with this profile.
+        /// </summary>
+        public readonly ImmutableArray<string> DataTags;
         /// <summary>
         /// The description of the profile.
         /// </summary>
@@ -151,6 +174,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool OpenAccess;
         public readonly string ProfileId;
+        /// <summary>
+        /// Sensitivity levels associated with this profile.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetZeroTrustDlpCustomProfileSensitivityLevelResult> SensitivityLevels;
         public readonly ImmutableArray<Outputs.GetZeroTrustDlpCustomProfileSharedEntryResult> SharedEntries;
         /// <summary>
         /// Available values: "custom", "predefined", "integration".
@@ -163,7 +190,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDlpCustomProfileResult(
-            string accountId,
+            string? accountId,
 
             bool aiContextEnabled,
 
@@ -174,6 +201,10 @@ namespace Pulumi.Cloudflare
             Outputs.GetZeroTrustDlpCustomProfileContextAwarenessResult contextAwareness,
 
             string createdAt,
+
+            ImmutableArray<string> dataClasses,
+
+            ImmutableArray<string> dataTags,
 
             string description,
 
@@ -189,6 +220,8 @@ namespace Pulumi.Cloudflare
 
             string profileId,
 
+            ImmutableArray<Outputs.GetZeroTrustDlpCustomProfileSensitivityLevelResult> sensitivityLevels,
+
             ImmutableArray<Outputs.GetZeroTrustDlpCustomProfileSharedEntryResult> sharedEntries,
 
             string type,
@@ -201,6 +234,8 @@ namespace Pulumi.Cloudflare
             ConfidenceThreshold = confidenceThreshold;
             ContextAwareness = contextAwareness;
             CreatedAt = createdAt;
+            DataClasses = dataClasses;
+            DataTags = dataTags;
             Description = description;
             Entries = entries;
             Id = id;
@@ -208,6 +243,7 @@ namespace Pulumi.Cloudflare
             OcrEnabled = ocrEnabled;
             OpenAccess = openAccess;
             ProfileId = profileId;
+            SensitivityLevels = sensitivityLevels;
             SharedEntries = sharedEntries;
             Type = type;
             UpdatedAt = updatedAt;

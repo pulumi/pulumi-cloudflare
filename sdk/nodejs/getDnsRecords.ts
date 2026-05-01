@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -48,7 +53,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getDnsRecords(args: GetDnsRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsRecordsResult> {
+export function getDnsRecords(args?: GetDnsRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsRecordsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsRecords:getDnsRecords", {
         "comment": args.comment,
@@ -115,7 +121,7 @@ export interface GetDnsRecordsArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -174,9 +180,14 @@ export interface GetDnsRecordsResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -218,7 +229,8 @@ export interface GetDnsRecordsResult {
  * });
  * ```
  */
-export function getDnsRecordsOutput(args: GetDnsRecordsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsRecordsResult> {
+export function getDnsRecordsOutput(args?: GetDnsRecordsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsRecordsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsRecords:getDnsRecords", {
         "comment": args.comment,
@@ -285,5 +297,5 @@ export interface GetDnsRecordsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

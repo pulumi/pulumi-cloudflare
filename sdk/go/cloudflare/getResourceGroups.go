@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+// - `SCIM Provisioning`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetResourceGroups(ctx, &cloudflare.LookupResourceGroupsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Id:        pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:      pulumi.StringRef("NameOfTheResourceGroup"),
 //			}, nil)
@@ -51,7 +57,7 @@ func LookupResourceGroups(ctx *pulumi.Context, args *LookupResourceGroupsArgs, o
 // A collection of arguments for invoking getResourceGroups.
 type LookupResourceGroupsArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// ID of the resource group to be fetched.
 	Id *string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -63,7 +69,7 @@ type LookupResourceGroupsArgs struct {
 // A collection of values returned by getResourceGroups.
 type LookupResourceGroupsResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// ID of the resource group to be fetched.
 	Id *string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -86,7 +92,7 @@ func LookupResourceGroupsOutput(ctx *pulumi.Context, args LookupResourceGroupsOu
 // A collection of arguments for invoking getResourceGroups.
 type LookupResourceGroupsOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// ID of the resource group to be fetched.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -115,8 +121,8 @@ func (o LookupResourceGroupsResultOutput) ToLookupResourceGroupsResultOutputWith
 }
 
 // Account identifier tag.
-func (o LookupResourceGroupsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupResourceGroupsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupResourceGroupsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupResourceGroupsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the resource group to be fetched.

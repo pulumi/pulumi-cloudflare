@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS View Read`
+// - `DNS View Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountDnsSettingsInternalViews(ctx, &cloudflare.LookupAccountDnsSettingsInternalViewsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name: cloudflare.GetAccountDnsSettingsInternalViewsName{
 //					Contains:   pulumi.StringRef("view"),
 //					Endswith:   pulumi.StringRef("ew"),
@@ -58,7 +63,7 @@ func LookupAccountDnsSettingsInternalViews(ctx *pulumi.Context, args *LookupAcco
 // A collection of arguments for invoking getAccountDnsSettingsInternalViews.
 type LookupAccountDnsSettingsInternalViewsArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Direction to order DNS views in.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
@@ -80,7 +85,7 @@ type LookupAccountDnsSettingsInternalViewsArgs struct {
 // A collection of values returned by getAccountDnsSettingsInternalViews.
 type LookupAccountDnsSettingsInternalViewsResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Direction to order DNS views in.
 	// Available values: "asc", "desc".
 	Direction string `pulumi:"direction"`
@@ -115,7 +120,7 @@ func LookupAccountDnsSettingsInternalViewsOutput(ctx *pulumi.Context, args Looku
 // A collection of arguments for invoking getAccountDnsSettingsInternalViews.
 type LookupAccountDnsSettingsInternalViewsOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Direction to order DNS views in.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
@@ -154,8 +159,8 @@ func (o LookupAccountDnsSettingsInternalViewsResultOutput) ToLookupAccountDnsSet
 }
 
 // Identifier.
-func (o LookupAccountDnsSettingsInternalViewsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountDnsSettingsInternalViewsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAccountDnsSettingsInternalViewsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountDnsSettingsInternalViewsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Direction to order DNS views in.

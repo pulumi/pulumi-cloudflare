@@ -6,7 +6,8 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getAiSearchInstance(args: GetAiSearchInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetAiSearchInstanceResult> {
+export function getAiSearchInstance(args?: GetAiSearchInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetAiSearchInstanceResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAiSearchInstance:getAiSearchInstance", {
         "accountId": args.accountId,
@@ -19,10 +20,10 @@ export function getAiSearchInstance(args: GetAiSearchInstanceArgs, opts?: pulumi
  * A collection of arguments for invoking getAiSearchInstance.
  */
 export interface GetAiSearchInstanceArgs {
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetAiSearchInstanceFilter;
     /**
-     * Use your AI Search ID.
+     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      */
     id?: string;
 }
@@ -31,10 +32,10 @@ export interface GetAiSearchInstanceArgs {
  * A collection of values returned by getAiSearchInstance.
  */
 export interface GetAiSearchInstanceResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly aiGatewayId: string;
     /**
-     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
     readonly aisearchModel: string;
     readonly cache: boolean;
@@ -48,25 +49,37 @@ export interface GetAiSearchInstanceResult {
     readonly createdBy: string;
     readonly customMetadatas: outputs.GetAiSearchInstanceCustomMetadata[];
     /**
-     * Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+     * Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
      */
     readonly embeddingModel: string;
     readonly enable: boolean;
+    readonly engineVersion: number;
     readonly filter?: outputs.GetAiSearchInstanceFilter;
     /**
      * Available values: "max", "rrf".
      */
     readonly fusionMethod: string;
+    /**
+     * Deprecated — use indexMethod instead.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     readonly hybridSearchEnabled: boolean;
     /**
-     * Use your AI Search ID.
+     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      */
     readonly id: string;
+    /**
+     * Controls which storage backends are used during indexing. Defaults to vector-only.
+     */
+    readonly indexMethod: outputs.GetAiSearchInstanceIndexMethod;
+    readonly indexingOptions: outputs.GetAiSearchInstanceIndexingOptions;
     readonly lastActivity: string;
     readonly maxNumResults: number;
     readonly metadata: outputs.GetAiSearchInstanceMetadata;
     readonly modifiedAt: string;
     readonly modifiedBy: string;
+    readonly namespace: string;
     readonly paused: boolean;
     readonly publicEndpointId: string;
     readonly publicEndpointParams: outputs.GetAiSearchInstancePublicEndpointParams;
@@ -77,7 +90,7 @@ export interface GetAiSearchInstanceResult {
     readonly rerankingModel: string;
     readonly retrievalOptions: outputs.GetAiSearchInstanceRetrievalOptions;
     /**
-     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+     * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
     readonly rewriteModel: string;
     readonly rewriteQuery: boolean;
@@ -85,14 +98,19 @@ export interface GetAiSearchInstanceResult {
     readonly source: string;
     readonly sourceParams: outputs.GetAiSearchInstanceSourceParams;
     readonly status: string;
+    /**
+     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+     */
+    readonly syncInterval: number;
     readonly tokenId: string;
     /**
      * Available values: "r2", "web-crawler".
      */
     readonly type: string;
-    readonly vectorizeName: string;
 }
-export function getAiSearchInstanceOutput(args: GetAiSearchInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiSearchInstanceResult> {
+export function getAiSearchInstanceOutput(args?: GetAiSearchInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiSearchInstanceResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAiSearchInstance:getAiSearchInstance", {
         "accountId": args.accountId,
@@ -105,10 +123,10 @@ export function getAiSearchInstanceOutput(args: GetAiSearchInstanceOutputArgs, o
  * A collection of arguments for invoking getAiSearchInstance.
  */
 export interface GetAiSearchInstanceOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetAiSearchInstanceFilterArgs>;
     /**
-     * Use your AI Search ID.
+     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      */
     id?: pulumi.Input<string>;
 }

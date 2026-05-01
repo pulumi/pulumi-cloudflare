@@ -4,6 +4,8 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpServerFilter;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedTool;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -15,7 +17,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustAccessAiControlsMcpServerResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
      * 
@@ -40,10 +42,12 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     private List<Map<String,String>> prompts;
     private String status;
     private List<Map<String,String>> tools;
+    private List<GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt> updatedPrompts;
+    private List<GetZeroTrustAccessAiControlsMcpServerUpdatedTool> updatedTools;
 
     private GetZeroTrustAccessAiControlsMcpServerResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Available values: &#34;oauth&#34;, &#34;bearer&#34;, &#34;unauthenticated&#34;.
@@ -101,6 +105,12 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     public List<Map<String,String>> tools() {
         return this.tools;
     }
+    public List<GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt> updatedPrompts() {
+        return this.updatedPrompts;
+    }
+    public List<GetZeroTrustAccessAiControlsMcpServerUpdatedTool> updatedTools() {
+        return this.updatedTools;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -111,7 +121,7 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String authType;
         private String createdAt;
         private String createdBy;
@@ -128,6 +138,8 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
         private List<Map<String,String>> prompts;
         private String status;
         private List<Map<String,String>> tools;
+        private List<GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt> updatedPrompts;
+        private List<GetZeroTrustAccessAiControlsMcpServerUpdatedTool> updatedTools;
         public Builder() {}
         public Builder(GetZeroTrustAccessAiControlsMcpServerResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -148,13 +160,13 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
     	      this.prompts = defaults.prompts;
     	      this.status = defaults.status;
     	      this.tools = defaults.tools;
+    	      this.updatedPrompts = defaults.updatedPrompts;
+    	      this.updatedTools = defaults.updatedTools;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServerResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -284,6 +296,28 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
             this.tools = tools;
             return this;
         }
+        @CustomType.Setter
+        public Builder updatedPrompts(List<GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt> updatedPrompts) {
+            if (updatedPrompts == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServerResult", "updatedPrompts");
+            }
+            this.updatedPrompts = updatedPrompts;
+            return this;
+        }
+        public Builder updatedPrompts(GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt... updatedPrompts) {
+            return updatedPrompts(List.of(updatedPrompts));
+        }
+        @CustomType.Setter
+        public Builder updatedTools(List<GetZeroTrustAccessAiControlsMcpServerUpdatedTool> updatedTools) {
+            if (updatedTools == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpServerResult", "updatedTools");
+            }
+            this.updatedTools = updatedTools;
+            return this;
+        }
+        public Builder updatedTools(GetZeroTrustAccessAiControlsMcpServerUpdatedTool... updatedTools) {
+            return updatedTools(List.of(updatedTools));
+        }
         public GetZeroTrustAccessAiControlsMcpServerResult build() {
             final var _resultValue = new GetZeroTrustAccessAiControlsMcpServerResult();
             _resultValue.accountId = accountId;
@@ -303,6 +337,8 @@ public final class GetZeroTrustAccessAiControlsMcpServerResult {
             _resultValue.prompts = prompts;
             _resultValue.status = status;
             _resultValue.tools = tools;
+            _resultValue.updatedPrompts = updatedPrompts;
+            _resultValue.updatedTools = updatedTools;
             return _resultValue;
         }
     }

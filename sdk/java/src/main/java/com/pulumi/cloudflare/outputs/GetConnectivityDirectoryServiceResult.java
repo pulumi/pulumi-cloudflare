@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetConnectivityDirectoryServiceFilter;
 import com.pulumi.cloudflare.outputs.GetConnectivityDirectoryServiceHost;
+import com.pulumi.cloudflare.outputs.GetConnectivityDirectoryServiceTlsSettings;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -15,7 +16,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectivityDirectoryServiceResult {
-    private String accountId;
+    private @Nullable String accountId;
+    /**
+     * @return Available values: &#34;postgresql&#34;, &#34;mysql&#34;.
+     * 
+     */
+    private String appProtocol;
     private String createdAt;
     private @Nullable GetConnectivityDirectoryServiceFilter filter;
     private GetConnectivityDirectoryServiceHost host;
@@ -28,16 +34,25 @@ public final class GetConnectivityDirectoryServiceResult {
     private String id;
     private String name;
     private String serviceId;
+    private Integer tcpPort;
     /**
-     * @return Available values: &#34;http&#34;.
+     * @return TLS settings for a connectivity service.
      * 
      */
+    private GetConnectivityDirectoryServiceTlsSettings tlsSettings;
     private String type;
     private String updatedAt;
 
     private GetConnectivityDirectoryServiceResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+    /**
+     * @return Available values: &#34;postgresql&#34;, &#34;mysql&#34;.
+     * 
+     */
+    public String appProtocol() {
+        return this.appProtocol;
     }
     public String createdAt() {
         return this.createdAt;
@@ -67,10 +82,16 @@ public final class GetConnectivityDirectoryServiceResult {
     public String serviceId() {
         return this.serviceId;
     }
+    public Integer tcpPort() {
+        return this.tcpPort;
+    }
     /**
-     * @return Available values: &#34;http&#34;.
+     * @return TLS settings for a connectivity service.
      * 
      */
+    public GetConnectivityDirectoryServiceTlsSettings tlsSettings() {
+        return this.tlsSettings;
+    }
     public String type() {
         return this.type;
     }
@@ -87,7 +108,8 @@ public final class GetConnectivityDirectoryServiceResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
+        private String appProtocol;
         private String createdAt;
         private @Nullable GetConnectivityDirectoryServiceFilter filter;
         private GetConnectivityDirectoryServiceHost host;
@@ -96,12 +118,15 @@ public final class GetConnectivityDirectoryServiceResult {
         private String id;
         private String name;
         private String serviceId;
+        private Integer tcpPort;
+        private GetConnectivityDirectoryServiceTlsSettings tlsSettings;
         private String type;
         private String updatedAt;
         public Builder() {}
         public Builder(GetConnectivityDirectoryServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.appProtocol = defaults.appProtocol;
     	      this.createdAt = defaults.createdAt;
     	      this.filter = defaults.filter;
     	      this.host = defaults.host;
@@ -110,16 +135,24 @@ public final class GetConnectivityDirectoryServiceResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.serviceId = defaults.serviceId;
+    	      this.tcpPort = defaults.tcpPort;
+    	      this.tlsSettings = defaults.tlsSettings;
     	      this.type = defaults.type;
     	      this.updatedAt = defaults.updatedAt;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetConnectivityDirectoryServiceResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder appProtocol(String appProtocol) {
+            if (appProtocol == null) {
+              throw new MissingRequiredPropertyException("GetConnectivityDirectoryServiceResult", "appProtocol");
+            }
+            this.appProtocol = appProtocol;
             return this;
         }
         @CustomType.Setter
@@ -185,6 +218,22 @@ public final class GetConnectivityDirectoryServiceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tcpPort(Integer tcpPort) {
+            if (tcpPort == null) {
+              throw new MissingRequiredPropertyException("GetConnectivityDirectoryServiceResult", "tcpPort");
+            }
+            this.tcpPort = tcpPort;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tlsSettings(GetConnectivityDirectoryServiceTlsSettings tlsSettings) {
+            if (tlsSettings == null) {
+              throw new MissingRequiredPropertyException("GetConnectivityDirectoryServiceResult", "tlsSettings");
+            }
+            this.tlsSettings = tlsSettings;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetConnectivityDirectoryServiceResult", "type");
@@ -203,6 +252,7 @@ public final class GetConnectivityDirectoryServiceResult {
         public GetConnectivityDirectoryServiceResult build() {
             final var _resultValue = new GetConnectivityDirectoryServiceResult();
             _resultValue.accountId = accountId;
+            _resultValue.appProtocol = appProtocol;
             _resultValue.createdAt = createdAt;
             _resultValue.filter = filter;
             _resultValue.host = host;
@@ -211,6 +261,8 @@ public final class GetConnectivityDirectoryServiceResult {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.serviceId = serviceId;
+            _resultValue.tcpPort = tcpPort;
+            _resultValue.tlsSettings = tlsSettings;
             _resultValue.type = type;
             _resultValue.updatedAt = updatedAt;
             return _resultValue;

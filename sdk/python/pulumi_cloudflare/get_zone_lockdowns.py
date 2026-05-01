@@ -166,7 +166,7 @@ class GetZoneLockdownsResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Defines an identifier.
         """
@@ -207,6 +207,11 @@ def get_zone_lockdowns(created_on: Optional[_builtins.str] = None,
                        zone_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneLockdownsResult:
     """
+    Accepted Permissions
+
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+
     ## Example Usage
 
     ```python
@@ -277,9 +282,14 @@ def get_zone_lockdowns_output(created_on: Optional[pulumi.Input[Optional[_builti
                               modified_on: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               priority: Optional[pulumi.Input[Optional[_builtins.float]]] = None,
                               uri_search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                              zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneLockdownsResult]:
     """
+    Accepted Permissions
+
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+
     ## Example Usage
 
     ```python

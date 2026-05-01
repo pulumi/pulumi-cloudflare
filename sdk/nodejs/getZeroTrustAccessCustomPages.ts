@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Custom Pages Read`
+ * - `Access: Custom Pages Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustAccessCustomPages(args: GetZeroTrustAccessCustomPagesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessCustomPagesResult> {
+export function getZeroTrustAccessCustomPages(args?: GetZeroTrustAccessCustomPagesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessCustomPagesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessCustomPages:getZeroTrustAccessCustomPages", {
         "accountId": args.accountId,
@@ -33,7 +39,7 @@ export interface GetZeroTrustAccessCustomPagesArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +53,7 @@ export interface GetZeroTrustAccessCustomPagesResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +68,11 @@ export interface GetZeroTrustAccessCustomPagesResult {
     readonly results: outputs.GetZeroTrustAccessCustomPagesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Custom Pages Read`
+ * - `Access: Custom Pages Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetZeroTrustAccessCustomPagesResult {
  * });
  * ```
  */
-export function getZeroTrustAccessCustomPagesOutput(args: GetZeroTrustAccessCustomPagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessCustomPagesResult> {
+export function getZeroTrustAccessCustomPagesOutput(args?: GetZeroTrustAccessCustomPagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessCustomPagesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessCustomPages:getZeroTrustAccessCustomPages", {
         "accountId": args.accountId,
@@ -88,7 +100,7 @@ export interface GetZeroTrustAccessCustomPagesOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

@@ -17,6 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

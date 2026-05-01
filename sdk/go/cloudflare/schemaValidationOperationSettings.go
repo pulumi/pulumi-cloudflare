@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Gateway`
+// - `Account API Gateway Read`
+// - `Domain API Gateway`
+// - `Domain API Gateway Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -57,7 +64,7 @@ type SchemaValidationOperationSettings struct {
 	// UUID.
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewSchemaValidationOperationSettings registers a new resource with the given unique name, arguments, and options.
@@ -72,9 +79,6 @@ func NewSchemaValidationOperationSettings(ctx *pulumi.Context,
 	}
 	if args.OperationId == nil {
 		return nil, errors.New("invalid value for required argument 'OperationId'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SchemaValidationOperationSettings
@@ -144,7 +148,7 @@ type schemaValidationOperationSettingsArgs struct {
 	// UUID.
 	OperationId string `pulumi:"operationId"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a SchemaValidationOperationSettings resource.
@@ -160,7 +164,7 @@ type SchemaValidationOperationSettingsArgs struct {
 	// UUID.
 	OperationId pulumi.StringInput
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (SchemaValidationOperationSettingsArgs) ElementType() reflect.Type {
@@ -267,8 +271,8 @@ func (o SchemaValidationOperationSettingsOutput) OperationId() pulumi.StringOutp
 }
 
 // Identifier.
-func (o SchemaValidationOperationSettingsOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *SchemaValidationOperationSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o SchemaValidationOperationSettingsOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaValidationOperationSettings) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type SchemaValidationOperationSettingsArrayOutput struct{ *pulumi.OutputState }

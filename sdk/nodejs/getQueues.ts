@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Queues Read`
+ * - `Queues Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getQueues(args: GetQueuesArgs, opts?: pulumi.InvokeOptions): Promise<GetQueuesResult> {
+export function getQueues(args?: GetQueuesArgs, opts?: pulumi.InvokeOptions): Promise<GetQueuesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getQueues:getQueues", {
         "accountId": args.accountId,
@@ -33,7 +41,7 @@ export interface GetQueuesArgs {
     /**
      * A Resource identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +55,7 @@ export interface GetQueuesResult {
     /**
      * A Resource identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +70,13 @@ export interface GetQueuesResult {
     readonly results: outputs.GetQueuesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Queues Read`
+ * - `Queues Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +88,8 @@ export interface GetQueuesResult {
  * });
  * ```
  */
-export function getQueuesOutput(args: GetQueuesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueuesResult> {
+export function getQueuesOutput(args?: GetQueuesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueuesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getQueues:getQueues", {
         "accountId": args.accountId,
@@ -88,7 +104,7 @@ export interface GetQueuesOutputArgs {
     /**
      * A Resource identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

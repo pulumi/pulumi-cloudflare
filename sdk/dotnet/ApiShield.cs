@@ -10,7 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Manages API Shield configuration properties for a zone, specifically auth ID characteristics.
+    /// Accepted Permissions
+    /// 
+    /// - `Account API Gateway`
+    /// - `Account API Gateway Read`
+    /// - `Domain API Gateway`
+    /// - `Domain API Gateway Read`
     /// 
     /// When using `type = "jwt"` for auth ID characteristics, the `Name` field must be a claim location expressed as `$(token_config_id):$(json_path)`, where:
     /// - `TokenConfigId` is the ID of the token configuration used in validating the JWT

@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Queues Read`
+// - `Queues Write`
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+//
 // ## Example Usage
 func LookupQueueConsumer(ctx *pulumi.Context, args *LookupQueueConsumerArgs, opts ...pulumi.InvokeOption) (*LookupQueueConsumerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -25,7 +32,7 @@ func LookupQueueConsumer(ctx *pulumi.Context, args *LookupQueueConsumerArgs, opt
 // A collection of arguments for invoking getQueueConsumer.
 type LookupQueueConsumerArgs struct {
 	// A Resource identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// A Resource identifier.
 	QueueId string `pulumi:"queueId"`
 }
@@ -33,7 +40,7 @@ type LookupQueueConsumerArgs struct {
 // A collection of values returned by getQueueConsumer.
 type LookupQueueConsumerResult struct {
 	// A Resource identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// A Resource identifier.
 	ConsumerId string `pulumi:"consumerId"`
 	CreatedOn  string `pulumi:"createdOn"`
@@ -63,7 +70,7 @@ func LookupQueueConsumerOutput(ctx *pulumi.Context, args LookupQueueConsumerOutp
 // A collection of arguments for invoking getQueueConsumer.
 type LookupQueueConsumerOutputArgs struct {
 	// A Resource identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// A Resource identifier.
 	QueueId pulumi.StringInput `pulumi:"queueId"`
 }
@@ -88,8 +95,8 @@ func (o LookupQueueConsumerResultOutput) ToLookupQueueConsumerResultOutputWithCo
 }
 
 // A Resource identifier.
-func (o LookupQueueConsumerResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupQueueConsumerResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupQueueConsumerResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // A Resource identifier.

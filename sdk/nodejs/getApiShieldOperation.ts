@@ -7,9 +7,17 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  */
-export function getApiShieldOperation(args: GetApiShieldOperationArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldOperationResult> {
+export function getApiShieldOperation(args?: GetApiShieldOperationArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldOperationResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShieldOperation:getApiShieldOperation", {
         "feature": args.feature,
@@ -35,7 +43,7 @@ export interface GetApiShieldOperationArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -73,12 +81,20 @@ export interface GetApiShieldOperationResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  */
-export function getApiShieldOperationOutput(args: GetApiShieldOperationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldOperationResult> {
+export function getApiShieldOperationOutput(args?: GetApiShieldOperationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldOperationResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShieldOperation:getApiShieldOperation", {
         "feature": args.feature,
@@ -104,5 +120,5 @@ export interface GetApiShieldOperationOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

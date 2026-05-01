@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustRiskBehavior(ctx, &cloudflare.LookupZeroTrustRiskBehaviorArgs{
-//				AccountId: "account_id",
+//				AccountId: pulumi.StringRef("account_id"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,12 +53,12 @@ func LookupZeroTrustRiskBehavior(ctx *pulumi.Context, args *LookupZeroTrustRiskB
 
 // A collection of arguments for invoking getZeroTrustRiskBehavior.
 type LookupZeroTrustRiskBehaviorArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getZeroTrustRiskBehavior.
 type LookupZeroTrustRiskBehaviorResult struct {
-	AccountId string                                       `pulumi:"accountId"`
+	AccountId *string                                      `pulumi:"accountId"`
 	Behaviors map[string]GetZeroTrustRiskBehaviorBehaviors `pulumi:"behaviors"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -70,7 +75,7 @@ func LookupZeroTrustRiskBehaviorOutput(ctx *pulumi.Context, args LookupZeroTrust
 
 // A collection of arguments for invoking getZeroTrustRiskBehavior.
 type LookupZeroTrustRiskBehaviorOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
 func (LookupZeroTrustRiskBehaviorOutputArgs) ElementType() reflect.Type {
@@ -92,8 +97,8 @@ func (o LookupZeroTrustRiskBehaviorResultOutput) ToLookupZeroTrustRiskBehaviorRe
 	return o
 }
 
-func (o LookupZeroTrustRiskBehaviorResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustRiskBehaviorResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustRiskBehaviorResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustRiskBehaviorResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupZeroTrustRiskBehaviorResultOutput) Behaviors() GetZeroTrustRiskBehaviorBehaviorsMapOutput {

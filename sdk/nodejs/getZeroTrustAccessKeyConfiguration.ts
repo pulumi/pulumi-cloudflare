@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Organizations, Identity Providers, and Groups Read`
+ * - `Access: Organizations, Identity Providers, and Groups Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustAccessKeyConfiguration(args: GetZeroTrustAccessKeyConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessKeyConfigurationResult> {
+export function getZeroTrustAccessKeyConfiguration(args?: GetZeroTrustAccessKeyConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessKeyConfigurationResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration", {
         "accountId": args.accountId,
@@ -30,7 +36,7 @@ export interface GetZeroTrustAccessKeyConfigurationArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
 }
 
 /**
@@ -40,7 +46,7 @@ export interface GetZeroTrustAccessKeyConfigurationResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The number of days until the next key rotation.
      */
@@ -59,6 +65,11 @@ export interface GetZeroTrustAccessKeyConfigurationResult {
     readonly lastKeyRotationAt: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Organizations, Identity Providers, and Groups Read`
+ * - `Access: Organizations, Identity Providers, and Groups Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -70,7 +81,8 @@ export interface GetZeroTrustAccessKeyConfigurationResult {
  * });
  * ```
  */
-export function getZeroTrustAccessKeyConfigurationOutput(args: GetZeroTrustAccessKeyConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessKeyConfigurationResult> {
+export function getZeroTrustAccessKeyConfigurationOutput(args?: GetZeroTrustAccessKeyConfigurationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessKeyConfigurationResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessKeyConfiguration:getZeroTrustAccessKeyConfiguration", {
         "accountId": args.accountId,
@@ -84,5 +96,5 @@ export interface GetZeroTrustAccessKeyConfigurationOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

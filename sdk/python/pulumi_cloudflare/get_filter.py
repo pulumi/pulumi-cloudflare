@@ -109,7 +109,7 @@ class GetFilterResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Defines an identifier.
         """
@@ -137,6 +137,11 @@ def get_filter(filter: Optional[Union['GetFilterFilterArgs', 'GetFilterFilterArg
                zone_id: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFilterResult:
     """
+    Accepted Permissions
+
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+
     ## Example Usage
 
     ```python
@@ -169,9 +174,14 @@ def get_filter(filter: Optional[Union['GetFilterFilterArgs', 'GetFilterFilterArg
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_filter_output(filter: Optional[pulumi.Input[Optional[Union['GetFilterFilterArgs', 'GetFilterFilterArgsDict']]]] = None,
                       filter_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                      zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFilterResult]:
     """
+    Accepted Permissions
+
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+
     ## Example Usage
 
     ```python

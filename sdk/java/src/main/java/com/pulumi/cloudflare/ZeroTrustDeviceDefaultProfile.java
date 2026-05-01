@@ -23,6 +23,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Zero Trust Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -293,6 +297,12 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      */
     public Output<Optional<Double>> lanAllowSubnetSize() {
         return Codegen.optional(this.lanAllowSubnetSize);
+    }
+    @Export(name="policyId", refs={String.class}, tree="[0]")
+    private Output<String> policyId;
+
+    public Output<String> policyId() {
+        return this.policyId;
     }
     /**
      * Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.

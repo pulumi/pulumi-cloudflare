@@ -17,6 +17,13 @@ public final class ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs exten
 
     public static final ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs Empty = new ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs();
 
+    @Import(name="alias")
+    private @Nullable Output<String> alias;
+
+    public Optional<Output<String>> alias() {
+        return Optional.ofNullable(this.alias);
+    }
+
     @Import(name="description")
     private @Nullable Output<String> description;
 
@@ -41,6 +48,7 @@ public final class ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs exten
     private ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs() {}
 
     private ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs(ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs $) {
+        this.alias = $.alias;
         this.description = $.description;
         this.enabled = $.enabled;
         this.name = $.name;
@@ -62,6 +70,15 @@ public final class ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs exten
 
         public Builder(ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs defaults) {
             $ = new ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder alias(@Nullable Output<String> alias) {
+            $.alias = alias;
+            return this;
+        }
+
+        public Builder alias(String alias) {
+            return alias(Output.of(alias));
         }
 
         public Builder description(@Nullable Output<String> description) {

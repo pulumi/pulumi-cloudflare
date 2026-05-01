@@ -18,7 +18,7 @@ public final class GetCloudforceOneRequestMessageResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Retrieve mes  ges created after this time.
      * 
@@ -91,8 +91,8 @@ public final class GetCloudforceOneRequestMessageResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Retrieve mes  ges created after this time.
@@ -196,7 +196,7 @@ public final class GetCloudforceOneRequestMessageResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private @Nullable String after;
         private String author;
         private @Nullable String before;
@@ -230,10 +230,8 @@ public final class GetCloudforceOneRequestMessageResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

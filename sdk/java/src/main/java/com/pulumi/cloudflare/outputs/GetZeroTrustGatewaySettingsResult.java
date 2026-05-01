@@ -8,10 +8,12 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustGatewaySettingsResult {
-    private String accountId;
+    private @Nullable String accountId;
     private String createdAt;
     /**
      * @return The ID of this resource.
@@ -26,8 +28,8 @@ public final class GetZeroTrustGatewaySettingsResult {
     private String updatedAt;
 
     private GetZeroTrustGatewaySettingsResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public String createdAt() {
         return this.createdAt;
@@ -59,7 +61,7 @@ public final class GetZeroTrustGatewaySettingsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String createdAt;
         private String id;
         private GetZeroTrustGatewaySettingsSettings settings;
@@ -75,10 +77,8 @@ public final class GetZeroTrustGatewaySettingsResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

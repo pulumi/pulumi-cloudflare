@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Account WAF Read`
+    /// - `Account WAF Write`
+    /// - `Zone WAF Read`
+    /// - `Zone WAF Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -55,7 +62,7 @@ namespace Pulumi.Cloudflare
         /// Defines an identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -65,7 +72,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public LeakedCredentialCheckRule(string name, LeakedCredentialCheckRuleArgs args, CustomResourceOptions? options = null)
+        public LeakedCredentialCheckRule(string name, LeakedCredentialCheckRuleArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule", name, args ?? new LeakedCredentialCheckRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -118,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public LeakedCredentialCheckRuleArgs()
         {

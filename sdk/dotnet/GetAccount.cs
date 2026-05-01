@@ -12,6 +12,38 @@ namespace Pulumi.Cloudflare
     public static class GetAccount
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Firewall Access Rules Read`
+        /// - `Account Firewall Access Rules Write`
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Billing Read`
+        /// - `Billing Write`
+        /// - `DDoS Botnet Feed Read`
+        /// - `DDoS Botnet Feed Write`
+        /// - `DDoS Protection Read`
+        /// - `DDoS Protection Write`
+        /// - `DNS Firewall Read`
+        /// - `DNS Firewall Write`
+        /// - `DNS View Read`
+        /// - `DNS View Write`
+        /// - `Load Balancers Account Read`
+        /// - `Load Balancers Account Write`
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// - `SCIM Provisioning`
+        /// - `Trust and Safety Read`
+        /// - `Trust and Safety Write`
+        /// - `Workers KV Storage Read`
+        /// - `Workers KV Storage Write`
+        /// - `Workers R2 Storage Read`
+        /// - `Workers R2 Storage Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +66,38 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("cloudflare:index/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Firewall Access Rules Read`
+        /// - `Account Firewall Access Rules Write`
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Billing Read`
+        /// - `Billing Write`
+        /// - `DDoS Botnet Feed Read`
+        /// - `DDoS Botnet Feed Write`
+        /// - `DDoS Protection Read`
+        /// - `DDoS Protection Write`
+        /// - `DNS Firewall Read`
+        /// - `DNS Firewall Write`
+        /// - `DNS View Read`
+        /// - `DNS View Write`
+        /// - `Load Balancers Account Read`
+        /// - `Load Balancers Account Write`
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// - `SCIM Provisioning`
+        /// - `Trust and Safety Read`
+        /// - `Trust and Safety Write`
+        /// - `Workers KV Storage Read`
+        /// - `Workers KV Storage Write`
+        /// - `Workers R2 Storage Read`
+        /// - `Workers R2 Storage Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +120,38 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("cloudflare:index/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Firewall Access Rules Read`
+        /// - `Account Firewall Access Rules Write`
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Billing Read`
+        /// - `Billing Write`
+        /// - `DDoS Botnet Feed Read`
+        /// - `DDoS Botnet Feed Write`
+        /// - `DDoS Protection Read`
+        /// - `DDoS Protection Write`
+        /// - `DNS Firewall Read`
+        /// - `DNS Firewall Write`
+        /// - `DNS View Read`
+        /// - `DNS View Write`
+        /// - `Load Balancers Account Read`
+        /// - `Load Balancers Account Write`
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// - `SCIM Provisioning`
+        /// - `Trust and Safety Read`
+        /// - `Trust and Safety Write`
+        /// - `Workers KV Storage Read`
+        /// - `Workers KV Storage Write`
+        /// - `Workers R2 Storage Read`
+        /// - `Workers R2 Storage Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

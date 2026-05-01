@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustDnsLocation
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare Zero Trust Secure DNS Locations Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +41,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDnsLocationResult>("cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation", args ?? new GetZeroTrustDnsLocationArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare Zero Trust Secure DNS Locations Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +70,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDnsLocationResult>("cloudflare:index/getZeroTrustDnsLocation:getZeroTrustDnsLocation", args ?? new GetZeroTrustDnsLocationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare Zero Trust Secure DNS Locations Write`
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +102,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDnsLocationArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("locationId", required: true)]
         public string LocationId { get; set; } = null!;
@@ -98,8 +116,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDnsLocationInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("locationId", required: true)]
         public Input<string> LocationId { get; set; } = null!;
@@ -114,7 +132,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDnsLocationResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Indicate whether this location is the default location.
         /// </summary>
@@ -169,7 +187,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDnsLocationResult(
-            string accountId,
+            string? accountId,
 
             bool clientDefault,
 

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Pages Read`
+ * - `Pages Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +39,7 @@ export interface GetPagesProjectArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Name of the project.
      */
@@ -48,7 +53,7 @@ export interface GetPagesProjectResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Configs for the project build process.
      */
@@ -119,6 +124,11 @@ export interface GetPagesProjectResult {
     readonly usesFunctions: boolean;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Pages Read`
+ * - `Pages Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -146,7 +156,7 @@ export interface GetPagesProjectOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Name of the project.
      */

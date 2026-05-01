@@ -11,10 +11,10 @@ namespace Pulumi.Cloudflare
 {
     public static class GetAiSearchToken
     {
-        public static Task<GetAiSearchTokenResult> InvokeAsync(GetAiSearchTokenArgs args, InvokeOptions? options = null)
+        public static Task<GetAiSearchTokenResult> InvokeAsync(GetAiSearchTokenArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiSearchTokenResult>("cloudflare:index/getAiSearchToken:getAiSearchToken", args ?? new GetAiSearchTokenArgs(), options.WithDefaults());
 
-        public static Output<GetAiSearchTokenResult> Invoke(GetAiSearchTokenInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetAiSearchTokenResult> Invoke(GetAiSearchTokenInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiSearchTokenResult>("cloudflare:index/getAiSearchToken:getAiSearchToken", args ?? new GetAiSearchTokenInvokeArgs(), options.WithDefaults());
 
         public static Output<GetAiSearchTokenResult> Invoke(GetAiSearchTokenInvokeArgs args, InvokeOutputOptions options)
@@ -24,14 +24,17 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAiSearchTokenArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
+
+        [Input("filter")]
+        public Inputs.GetAiSearchTokenFilterArgs? Filter { get; set; }
 
         /// <summary>
         /// The ID of this resource.
         /// </summary>
-        [Input("id", required: true)]
-        public string Id { get; set; } = null!;
+        [Input("id")]
+        public string? Id { get; set; }
 
         public GetAiSearchTokenArgs()
         {
@@ -41,14 +44,17 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAiSearchTokenInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        [Input("filter")]
+        public Input<Inputs.GetAiSearchTokenFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
         /// The ID of this resource.
         /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        [Input("id")]
+        public Input<string>? Id { get; set; }
 
         public GetAiSearchTokenInvokeArgs()
         {
@@ -60,11 +66,12 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetAiSearchTokenResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly string CfApiId;
         public readonly string CreatedAt;
         public readonly string CreatedBy;
         public readonly bool Enabled;
+        public readonly Outputs.GetAiSearchTokenFilterResult? Filter;
         /// <summary>
         /// The ID of this resource.
         /// </summary>
@@ -76,7 +83,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetAiSearchTokenResult(
-            string accountId,
+            string? accountId,
 
             string cfApiId,
 
@@ -85,6 +92,8 @@ namespace Pulumi.Cloudflare
             string createdBy,
 
             bool enabled,
+
+            Outputs.GetAiSearchTokenFilterResult? filter,
 
             string id,
 
@@ -101,6 +110,7 @@ namespace Pulumi.Cloudflare
             CreatedAt = createdAt;
             CreatedBy = createdBy;
             Enabled = enabled;
+            Filter = filter;
             Id = id;
             Legacy = legacy;
             ModifiedAt = modifiedAt;

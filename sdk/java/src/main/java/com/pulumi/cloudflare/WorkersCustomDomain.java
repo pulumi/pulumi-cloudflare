@@ -17,6 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -42,11 +47,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleWorkersCustomDomain = new WorkersCustomDomain("exampleWorkersCustomDomain", WorkersCustomDomainArgs.builder()
- *             .accountId("9a7806061c88ada191ed06f989cc3dac")
- *             .hostname("foo.example.com")
- *             .service("foo")
- *             .zoneId("593c9c94de529bbbfaac7c53ced0447d")
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .hostname("app.example.com")
+ *             .service("my-worker")
  *             .environment("production")
+ *             .zoneId("593c9c94de529bbbfaac7c53ced0447d")
+ *             .zoneName("example.com")
  *             .build());
  * 
  *     }
@@ -64,21 +70,35 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/workersCustomDomain:WorkersCustomDomain")
 public class WorkersCustomDomain extends com.pulumi.resources.CustomResource {
     /**
-     * Identifer of the account.
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return Identifer of the account.
+     * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
-     * Worker environment associated with the zone and hostname.
+     * ID of the TLS certificate issued for the domain.
+     * 
+     */
+    @Export(name="certId", refs={String.class}, tree="[0]")
+    private Output<String> certId;
+
+    /**
+     * @return ID of the TLS certificate issued for the domain.
+     * 
+     */
+    public Output<String> certId() {
+        return this.certId;
+    }
+    /**
+     * Worker environment associated with the domain.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -86,66 +106,66 @@ public class WorkersCustomDomain extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* This attribute is deprecated. */
     @Export(name="environment", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> environment;
+    private Output<String> environment;
 
     /**
-     * @return Worker environment associated with the zone and hostname.
+     * @return Worker environment associated with the domain.
      * 
      */
-    public Output<Optional<String>> environment() {
-        return Codegen.optional(this.environment);
+    public Output<String> environment() {
+        return this.environment;
     }
     /**
-     * Hostname of the Worker Domain.
+     * Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      * 
      */
     @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
-     * @return Hostname of the Worker Domain.
+     * @return Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      * 
      */
     public Output<String> hostname() {
         return this.hostname;
     }
     /**
-     * Worker service associated with the zone and hostname.
+     * Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      * 
      */
     @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**
-     * @return Worker service associated with the zone and hostname.
+     * @return Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      * 
      */
     public Output<String> service() {
         return this.service;
     }
     /**
-     * Identifier of the zone.
+     * ID of the zone containing the domain hostname.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier of the zone.
+     * @return ID of the zone containing the domain hostname.
      * 
      */
     public Output<String> zoneId() {
         return this.zoneId;
     }
     /**
-     * Name of the zone.
+     * Name of the zone containing the domain hostname.
      * 
      */
     @Export(name="zoneName", refs={String.class}, tree="[0]")
     private Output<String> zoneName;
 
     /**
-     * @return Name of the zone.
+     * @return Name of the zone containing the domain hostname.
      * 
      */
     public Output<String> zoneName() {

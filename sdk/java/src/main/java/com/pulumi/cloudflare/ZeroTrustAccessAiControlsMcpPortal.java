@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  *             .zeroTrustAccessAiControlsMcpPortalId("my-mcp-portal")
  *             .hostname("exmaple.com")
  *             .name("My MCP Portal")
+ *             .allowCodeMode(true)
  *             .description("This is my custom MCP Portal")
  *             .secureWebGateway(false)
  *             .servers(ZeroTrustAccessAiControlsMcpPortalServerArgs.builder()
@@ -56,11 +57,13 @@ import javax.annotation.Nullable;
  *                 .onBehalf(true)
  *                 .updatedPrompts(ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs.builder()
  *                     .name("name")
+ *                     .alias("my-custom-alias")
  *                     .description("description")
  *                     .enabled(true)
  *                     .build())
  *                 .updatedTools(ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs.builder()
  *                     .name("name")
+ *                     .alias("my-custom-alias")
  *                     .description("description")
  *                     .enabled(true)
  *                     .build())
@@ -82,10 +85,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal")
 public class ZeroTrustAccessAiControlsMcpPortal extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
+    }
+    /**
+     * Allow remote code execution in Dynamic Workers (beta)
+     * 
+     */
+    @Export(name="allowCodeMode", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> allowCodeMode;
+
+    /**
+     * @return Allow remote code execution in Dynamic Workers (beta)
+     * 
+     */
+    public Output<Boolean> allowCodeMode() {
+        return this.allowCodeMode;
     }
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
@@ -134,14 +151,14 @@ public class ZeroTrustAccessAiControlsMcpPortal extends com.pulumi.resources.Cus
      * 
      */
     @Export(name="secureWebGateway", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> secureWebGateway;
+    private Output<Boolean> secureWebGateway;
 
     /**
      * @return Route outbound MCP traffic through Zero Trust Secure Web Gateway
      * 
      */
-    public Output<Optional<Boolean>> secureWebGateway() {
-        return Codegen.optional(this.secureWebGateway);
+    public Output<Boolean> secureWebGateway() {
+        return this.secureWebGateway;
     }
     @Export(name="servers", refs={List.class,ZeroTrustAccessAiControlsMcpPortalServer.class}, tree="[0,1]")
     private Output<List<ZeroTrustAccessAiControlsMcpPortalServer>> servers;

@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -22,15 +21,30 @@ public final class GetStreamsArgs extends com.pulumi.resources.InvokeArgs {
      * The account identifier tag.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return The account identifier tag.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * Alias for &#39;start&#39;. Returns videos created after this date/time (RFC 3339 format).
+     * 
+     */
+    @Import(name="after")
+    private @Nullable Output<String> after;
+
+    /**
+     * @return Alias for &#39;start&#39;. Returns videos created after this date/time (RFC 3339 format).
+     * 
+     */
+    public Optional<Output<String>> after() {
+        return Optional.ofNullable(this.after);
     }
 
     /**
@@ -46,6 +60,21 @@ public final class GetStreamsArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Optional<Output<Boolean>> asc() {
         return Optional.ofNullable(this.asc);
+    }
+
+    /**
+     * Alias for &#39;end&#39;. Returns videos created before this date/time (RFC 3339 format).
+     * 
+     */
+    @Import(name="before")
+    private @Nullable Output<String> before;
+
+    /**
+     * @return Alias for &#39;end&#39;. Returns videos created before this date/time (RFC 3339 format).
+     * 
+     */
+    public Optional<Output<String>> before() {
+        return Optional.ofNullable(this.before);
     }
 
     /**
@@ -79,6 +108,21 @@ public final class GetStreamsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    /**
+     * @return Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+     * 
+     */
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
      * Includes the total number of videos associated with the submitted query parameters.
      * 
      */
@@ -94,6 +138,36 @@ public final class GetStreamsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Maximum number of videos to return (default 1000, max 1000).
+     * 
+     */
+    @Import(name="limit")
+    private @Nullable Output<Integer> limit;
+
+    /**
+     * @return Maximum number of videos to return (default 1000, max 1000).
+     * 
+     */
+    public Optional<Output<Integer>> limit() {
+        return Optional.ofNullable(this.limit);
+    }
+
+    /**
+     * Filter by live input ID to find videos associated with a specific live stream.
+     * 
+     */
+    @Import(name="liveInputId")
+    private @Nullable Output<String> liveInputId;
+
+    /**
+     * @return Filter by live input ID to find videos associated with a specific live stream.
+     * 
+     */
+    public Optional<Output<String>> liveInputId() {
+        return Optional.ofNullable(this.liveInputId);
+    }
+
+    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -106,6 +180,21 @@ public final class GetStreamsArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Optional<Output<Integer>> maxItems() {
         return Optional.ofNullable(this.maxItems);
+    }
+
+    /**
+     * Filter by video name/UID(s). Can be a single name or a comma-separated list.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Filter by video name/UID(s). Can be a single name or a comma-separated list.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -189,11 +278,17 @@ public final class GetStreamsArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetStreamsArgs(GetStreamsArgs $) {
         this.accountId = $.accountId;
+        this.after = $.after;
         this.asc = $.asc;
+        this.before = $.before;
         this.creator = $.creator;
         this.end = $.end;
+        this.id = $.id;
         this.includeCounts = $.includeCounts;
+        this.limit = $.limit;
+        this.liveInputId = $.liveInputId;
         this.maxItems = $.maxItems;
+        this.name = $.name;
         this.search = $.search;
         this.start = $.start;
         this.status = $.status;
@@ -225,7 +320,7 @@ public final class GetStreamsArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -238,6 +333,27 @@ public final class GetStreamsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param after Alias for &#39;start&#39;. Returns videos created after this date/time (RFC 3339 format).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder after(@Nullable Output<String> after) {
+            $.after = after;
+            return this;
+        }
+
+        /**
+         * @param after Alias for &#39;start&#39;. Returns videos created after this date/time (RFC 3339 format).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder after(String after) {
+            return after(Output.of(after));
         }
 
         /**
@@ -259,6 +375,27 @@ public final class GetStreamsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder asc(Boolean asc) {
             return asc(Output.of(asc));
+        }
+
+        /**
+         * @param before Alias for &#39;end&#39;. Returns videos created before this date/time (RFC 3339 format).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder before(@Nullable Output<String> before) {
+            $.before = before;
+            return this;
+        }
+
+        /**
+         * @param before Alias for &#39;end&#39;. Returns videos created before this date/time (RFC 3339 format).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder before(String before) {
+            return before(Output.of(before));
         }
 
         /**
@@ -304,6 +441,27 @@ public final class GetStreamsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param id Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
+        }
+
+        /**
          * @param includeCounts Includes the total number of videos associated with the submitted query parameters.
          * 
          * @return builder
@@ -325,6 +483,48 @@ public final class GetStreamsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param limit Maximum number of videos to return (default 1000, max 1000).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder limit(@Nullable Output<Integer> limit) {
+            $.limit = limit;
+            return this;
+        }
+
+        /**
+         * @param limit Maximum number of videos to return (default 1000, max 1000).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder limit(Integer limit) {
+            return limit(Output.of(limit));
+        }
+
+        /**
+         * @param liveInputId Filter by live input ID to find videos associated with a specific live stream.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder liveInputId(@Nullable Output<String> liveInputId) {
+            $.liveInputId = liveInputId;
+            return this;
+        }
+
+        /**
+         * @param liveInputId Filter by live input ID to find videos associated with a specific live stream.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder liveInputId(String liveInputId) {
+            return liveInputId(Output.of(liveInputId));
+        }
+
+        /**
          * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
@@ -343,6 +543,27 @@ public final class GetStreamsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder maxItems(Integer maxItems) {
             return maxItems(Output.of(maxItems));
+        }
+
+        /**
+         * @param name Filter by video name/UID(s). Can be a single name or a comma-separated list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Filter by video name/UID(s). Can be a single name or a comma-separated list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**
@@ -453,9 +674,6 @@ public final class GetStreamsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetStreamsArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetStreamsArgs", "accountId");
-            }
             return $;
         }
     }

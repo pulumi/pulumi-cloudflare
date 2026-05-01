@@ -7,11 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -50,7 +54,7 @@ type WebAnalyticsSite struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall pulumi.BoolPtrOutput `pulumi:"autoInstall"`
 	Created     pulumi.StringOutput  `pulumi:"created"`
@@ -77,12 +81,9 @@ type WebAnalyticsSite struct {
 func NewWebAnalyticsSite(ctx *pulumi.Context,
 	name string, args *WebAnalyticsSiteArgs, opts ...pulumi.ResourceOption) (*WebAnalyticsSite, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &WebAnalyticsSiteArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WebAnalyticsSite
 	err := ctx.RegisterResource("cloudflare:index/webAnalyticsSite:WebAnalyticsSite", name, args, &resource, opts...)
@@ -161,7 +162,7 @@ func (WebAnalyticsSiteState) ElementType() reflect.Type {
 
 type webAnalyticsSiteArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall *bool `pulumi:"autoInstall"`
 	// Enables or disables RUM. This option can be used only when autoInstall is set to true.
@@ -177,7 +178,7 @@ type webAnalyticsSiteArgs struct {
 // The set of arguments for constructing a WebAnalyticsSite resource.
 type WebAnalyticsSiteArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall pulumi.BoolPtrInput
 	// Enables or disables RUM. This option can be used only when autoInstall is set to true.
@@ -278,8 +279,8 @@ func (o WebAnalyticsSiteOutput) ToWebAnalyticsSiteOutputWithContext(ctx context.
 }
 
 // Identifier.
-func (o WebAnalyticsSiteOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o WebAnalyticsSiteOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.

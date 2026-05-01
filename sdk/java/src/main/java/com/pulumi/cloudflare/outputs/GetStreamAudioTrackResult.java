@@ -3,11 +3,14 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetStreamAudioTrackAudio;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStreamAudioTrackResult {
@@ -15,12 +18,12 @@ public final class GetStreamAudioTrackResult {
      * @return The account identifier tag.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
-     * @return Denotes whether the audio track will be played by default in a player.
+     * @return Array of audio tracks for the video.
      * 
      */
-    private Boolean default_;
+    private List<GetStreamAudioTrackAudio> audios;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -31,37 +34,21 @@ public final class GetStreamAudioTrackResult {
      * 
      */
     private String identifier;
-    /**
-     * @return A string to uniquely identify the track amongst other audio track labels for the specified video.
-     * 
-     */
-    private String label;
-    /**
-     * @return Specifies the processing status of the video.
-     * Available values: &#34;queued&#34;, &#34;ready&#34;, &#34;error&#34;.
-     * 
-     */
-    private String status;
-    /**
-     * @return A Cloudflare-generated unique identifier for a media item.
-     * 
-     */
-    private String uid;
 
     private GetStreamAudioTrackResult() {}
     /**
      * @return The account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return Denotes whether the audio track will be played by default in a player.
+     * @return Array of audio tracks for the video.
      * 
      */
-    public Boolean default_() {
-        return this.default_;
+    public List<GetStreamAudioTrackAudio> audios() {
+        return this.audios;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -77,28 +64,6 @@ public final class GetStreamAudioTrackResult {
     public String identifier() {
         return this.identifier;
     }
-    /**
-     * @return A string to uniquely identify the track amongst other audio track labels for the specified video.
-     * 
-     */
-    public String label() {
-        return this.label;
-    }
-    /**
-     * @return Specifies the processing status of the video.
-     * Available values: &#34;queued&#34;, &#34;ready&#34;, &#34;error&#34;.
-     * 
-     */
-    public String status() {
-        return this.status;
-    }
-    /**
-     * @return A Cloudflare-generated unique identifier for a media item.
-     * 
-     */
-    public String uid() {
-        return this.uid;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -109,40 +74,35 @@ public final class GetStreamAudioTrackResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
-        private Boolean default_;
+        private @Nullable String accountId;
+        private List<GetStreamAudioTrackAudio> audios;
         private String id;
         private String identifier;
-        private String label;
-        private String status;
-        private String uid;
         public Builder() {}
         public Builder(GetStreamAudioTrackResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.default_ = defaults.default_;
+    	      this.audios = defaults.audios;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
-    	      this.label = defaults.label;
-    	      this.status = defaults.status;
-    	      this.uid = defaults.uid;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
-        @CustomType.Setter("default")
-        public Builder default_(Boolean default_) {
-            if (default_ == null) {
-              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "default_");
+        @CustomType.Setter
+        public Builder audios(List<GetStreamAudioTrackAudio> audios) {
+            if (audios == null) {
+              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "audios");
             }
-            this.default_ = default_;
+            this.audios = audios;
             return this;
+        }
+        public Builder audios(GetStreamAudioTrackAudio... audios) {
+            return audios(List.of(audios));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -160,39 +120,12 @@ public final class GetStreamAudioTrackResult {
             this.identifier = identifier;
             return this;
         }
-        @CustomType.Setter
-        public Builder label(String label) {
-            if (label == null) {
-              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "label");
-            }
-            this.label = label;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder status(String status) {
-            if (status == null) {
-              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "status");
-            }
-            this.status = status;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder uid(String uid) {
-            if (uid == null) {
-              throw new MissingRequiredPropertyException("GetStreamAudioTrackResult", "uid");
-            }
-            this.uid = uid;
-            return this;
-        }
         public GetStreamAudioTrackResult build() {
             final var _resultValue = new GetStreamAudioTrackResult();
             _resultValue.accountId = accountId;
-            _resultValue.default_ = default_;
+            _resultValue.audios = audios;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
-            _resultValue.label = label;
-            _resultValue.status = status;
-            _resultValue.uid = uid;
             return _resultValue;
         }
     }

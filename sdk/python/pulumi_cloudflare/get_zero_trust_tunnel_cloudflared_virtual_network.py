@@ -59,7 +59,7 @@ class GetZeroTrustTunnelCloudflaredVirtualNetworkResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Cloudflare account ID
         """
@@ -149,6 +149,13 @@ def get_zero_trust_tunnel_cloudflared_virtual_network(account_id: Optional[_buil
                                                       virtual_network_id: Optional[_builtins.str] = None,
                                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustTunnelCloudflaredVirtualNetworkResult:
     """
+    Accepted Permissions
+
+    - `Cloudflare One Networks Read`
+    - `Cloudflare One Networks Write`
+    - `Cloudflare Tunnel Read`
+    - `Cloudflare Tunnel Write`
+
     ## Example Usage
 
     ```python
@@ -180,11 +187,18 @@ def get_zero_trust_tunnel_cloudflared_virtual_network(account_id: Optional[_buil
         is_default_network=pulumi.get(__ret__, 'is_default_network'),
         name=pulumi.get(__ret__, 'name'),
         virtual_network_id=pulumi.get(__ret__, 'virtual_network_id'))
-def get_zero_trust_tunnel_cloudflared_virtual_network_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_tunnel_cloudflared_virtual_network_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                              filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs', 'GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgsDict']]]] = None,
                                                              virtual_network_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredVirtualNetworkResult]:
     """
+    Accepted Permissions
+
+    - `Cloudflare One Networks Read`
+    - `Cloudflare One Networks Write`
+    - `Cloudflare Tunnel Read`
+    - `Cloudflare Tunnel Write`
+
     ## Example Usage
 
     ```python

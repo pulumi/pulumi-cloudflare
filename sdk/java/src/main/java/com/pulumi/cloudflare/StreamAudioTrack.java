@@ -6,16 +6,23 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.StreamAudioTrackArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.StreamAudioTrackState;
+import com.pulumi.cloudflare.outputs.StreamAudioTrackAudio;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Stream Read`
+ * - `Stream Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -65,14 +72,14 @@ public class StreamAudioTrack extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return The account identifier tag.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * The unique identifier for an additional audio track.
@@ -87,6 +94,20 @@ public class StreamAudioTrack extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> audioIdentifier() {
         return Codegen.optional(this.audioIdentifier);
+    }
+    /**
+     * Array of audio tracks for the video.
+     * 
+     */
+    @Export(name="audios", refs={List.class,StreamAudioTrackAudio.class}, tree="[0,1]")
+    private Output<List<StreamAudioTrackAudio>> audios;
+
+    /**
+     * @return Array of audio tracks for the video.
+     * 
+     */
+    public Output<List<StreamAudioTrackAudio>> audios() {
+        return this.audios;
     }
     /**
      * Denotes whether the audio track will be played by default in a player.

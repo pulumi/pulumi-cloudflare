@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetUserAgentBlockingRules(ctx, &cloudflare.LookupUserAgentBlockingRulesArgs{
-//				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:      pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Description: pulumi.StringRef("abusive"),
 //				Paused:      pulumi.BoolRef(false),
 //				UserAgent:   pulumi.StringRef("Safari"),
@@ -60,7 +65,7 @@ type LookupUserAgentBlockingRulesArgs struct {
 	// A string to search for in the user agent values of existing rules.
 	UserAgent *string `pulumi:"userAgent"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getUserAgentBlockingRules.
@@ -78,7 +83,7 @@ type LookupUserAgentBlockingRulesResult struct {
 	// A string to search for in the user agent values of existing rules.
 	UserAgent *string `pulumi:"userAgent"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupUserAgentBlockingRulesOutput(ctx *pulumi.Context, args LookupUserAgentBlockingRulesOutputArgs, opts ...pulumi.InvokeOption) LookupUserAgentBlockingRulesResultOutput {
@@ -101,7 +106,7 @@ type LookupUserAgentBlockingRulesOutputArgs struct {
 	// A string to search for in the user agent values of existing rules.
 	UserAgent pulumi.StringPtrInput `pulumi:"userAgent"`
 	// Defines an identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupUserAgentBlockingRulesOutputArgs) ElementType() reflect.Type {
@@ -154,8 +159,8 @@ func (o LookupUserAgentBlockingRulesResultOutput) UserAgent() pulumi.StringPtrOu
 }
 
 // Defines an identifier.
-func (o LookupUserAgentBlockingRulesResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupUserAgentBlockingRulesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

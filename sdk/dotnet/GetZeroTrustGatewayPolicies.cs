@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustGatewayPoliciesResult> InvokeAsync(GetZeroTrustGatewayPoliciesArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustGatewayPoliciesResult> InvokeAsync(GetZeroTrustGatewayPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustGatewayPoliciesResult>("cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies", args ?? new GetZeroTrustGatewayPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustGatewayPoliciesResult> Invoke(GetZeroTrustGatewayPoliciesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustGatewayPoliciesResult> Invoke(GetZeroTrustGatewayPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustGatewayPoliciesResult>("cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies", args ?? new GetZeroTrustGatewayPoliciesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayPoliciesArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -98,8 +98,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustGatewayPoliciesResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustGatewayPoliciesResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

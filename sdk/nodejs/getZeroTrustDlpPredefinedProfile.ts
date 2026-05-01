@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -31,7 +36,7 @@ export function getZeroTrustDlpPredefinedProfile(args: GetZeroTrustDlpPredefined
  * A collection of arguments for invoking getZeroTrustDlpPredefinedProfile.
  */
 export interface GetZeroTrustDlpPredefinedProfileArgs {
-    accountId: string;
+    accountId?: string;
     profileId: string;
 }
 
@@ -39,7 +44,7 @@ export interface GetZeroTrustDlpPredefinedProfileArgs {
  * A collection of values returned by getZeroTrustDlpPredefinedProfile.
  */
 export interface GetZeroTrustDlpPredefinedProfileResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly aiContextEnabled: boolean;
     readonly allowedMatchCount: number;
     readonly confidenceThreshold: string;
@@ -69,6 +74,11 @@ export interface GetZeroTrustDlpPredefinedProfileResult {
     readonly profileId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -93,6 +103,6 @@ export function getZeroTrustDlpPredefinedProfileOutput(args: GetZeroTrustDlpPred
  * A collection of arguments for invoking getZeroTrustDlpPredefinedProfile.
  */
 export interface GetZeroTrustDlpPredefinedProfileOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     profileId: pulumi.Input<string>;
 }

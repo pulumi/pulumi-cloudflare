@@ -99,6 +99,21 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The identifier for the Custom CSR that was used.
+     * 
+     */
+    @Import(name="customCsrId")
+    private @Nullable Output<String> customCsrId;
+
+    /**
+     * @return The identifier for the Custom CSR that was used.
+     * 
+     */
+    public Optional<Output<String>> customCsrId() {
+        return Optional.ofNullable(this.customCsrId);
+    }
+
+    /**
      * The key for a custom uploaded certificate.
      * 
      */
@@ -185,6 +200,7 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         this.cloudflareBranding = $.cloudflareBranding;
         this.customCertBundles = $.customCertBundles;
         this.customCertificate = $.customCertificate;
+        this.customCsrId = $.customCsrId;
         this.customKey = $.customKey;
         this.method = $.method;
         this.settings = $.settings;
@@ -327,6 +343,27 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder customCertificate(String customCertificate) {
             return customCertificate(Output.of(customCertificate));
+        }
+
+        /**
+         * @param customCsrId The identifier for the Custom CSR that was used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCsrId(@Nullable Output<String> customCsrId) {
+            $.customCsrId = customCsrId;
+            return this;
+        }
+
+        /**
+         * @param customCsrId The identifier for the Custom CSR that was used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCsrId(String customCsrId) {
+            return customCsrId(Output.of(customCsrId));
         }
 
         /**

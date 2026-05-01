@@ -7,11 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Calls Read`
+// - `Calls Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -46,7 +50,7 @@ type CallsSfuApp struct {
 	pulumi.CustomResourceState
 
 	// The account identifier tag.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a item.
 	AppId pulumi.StringPtrOutput `pulumi:"appId"`
 	// The date and time the item was created.
@@ -65,12 +69,9 @@ type CallsSfuApp struct {
 func NewCallsSfuApp(ctx *pulumi.Context,
 	name string, args *CallsSfuAppArgs, opts ...pulumi.ResourceOption) (*CallsSfuApp, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &CallsSfuAppArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"secret",
 	})
@@ -137,7 +138,7 @@ func (CallsSfuAppState) ElementType() reflect.Type {
 
 type callsSfuAppArgs struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a item.
 	AppId *string `pulumi:"appId"`
 	// A short description of Calls app, not shown to end users.
@@ -147,7 +148,7 @@ type callsSfuAppArgs struct {
 // The set of arguments for constructing a CallsSfuApp resource.
 type CallsSfuAppArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// A Cloudflare-generated unique identifier for a item.
 	AppId pulumi.StringPtrInput
 	// A short description of Calls app, not shown to end users.
@@ -242,8 +243,8 @@ func (o CallsSfuAppOutput) ToCallsSfuAppOutputWithContext(ctx context.Context) C
 }
 
 // The account identifier tag.
-func (o CallsSfuAppOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *CallsSfuApp) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o CallsSfuAppOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CallsSfuApp) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // A Cloudflare-generated unique identifier for a item.

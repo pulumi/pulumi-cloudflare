@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -24,7 +31,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getApiShieldOperations(args: GetApiShieldOperationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldOperationsResult> {
+export function getApiShieldOperations(args?: GetApiShieldOperationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApiShieldOperationsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiShieldOperations:getApiShieldOperations", {
         "direction": args.direction,
@@ -75,7 +83,7 @@ export interface GetApiShieldOperationsArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -123,9 +131,16 @@ export interface GetApiShieldOperationsResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -143,7 +158,8 @@ export interface GetApiShieldOperationsResult {
  * });
  * ```
  */
-export function getApiShieldOperationsOutput(args: GetApiShieldOperationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldOperationsResult> {
+export function getApiShieldOperationsOutput(args?: GetApiShieldOperationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiShieldOperationsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiShieldOperations:getApiShieldOperations", {
         "direction": args.direction,
@@ -194,5 +210,5 @@ export interface GetApiShieldOperationsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

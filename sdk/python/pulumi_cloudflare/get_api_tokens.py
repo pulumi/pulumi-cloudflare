@@ -91,6 +91,11 @@ def get_api_tokens(direction: Optional[_builtins.str] = None,
                    max_items: Optional[_builtins.int] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiTokensResult:
     """
+    Accepted Permissions
+
+    - `API Tokens Read`
+    - `API Tokens Write`
+
     ## Example Usage
 
     ```python
@@ -120,6 +125,11 @@ def get_api_tokens_output(direction: Optional[pulumi.Input[Optional[_builtins.st
                           max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiTokensResult]:
     """
+    Accepted Permissions
+
+    - `API Tokens Read`
+    - `API Tokens Write`
+
     ## Example Usage
 
     ```python

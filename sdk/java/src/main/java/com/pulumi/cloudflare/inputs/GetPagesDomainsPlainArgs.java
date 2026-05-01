@@ -20,15 +20,15 @@ public final class GetPagesDomainsPlainArgs extends com.pulumi.resources.InvokeA
      * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -93,7 +93,7 @@ public final class GetPagesDomainsPlainArgs extends com.pulumi.resources.InvokeA
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -121,9 +121,6 @@ public final class GetPagesDomainsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetPagesDomainsPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetPagesDomainsPlainArgs", "accountId");
-            }
             if ($.projectName == null) {
                 throw new MissingRequiredPropertyException("GetPagesDomainsPlainArgs", "projectName");
             }

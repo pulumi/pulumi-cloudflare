@@ -27,7 +27,7 @@ class GetBotManagementResult:
     """
     A collection of values returned by getBotManagement.
     """
-    def __init__(__self__, ai_bots_protection=None, auto_update_model=None, bm_cookie_enabled=None, cf_robots_variant=None, crawler_protection=None, enable_js=None, fight_mode=None, id=None, is_robots_txt_managed=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
+    def __init__(__self__, ai_bots_protection=None, auto_update_model=None, bm_cookie_enabled=None, cf_robots_variant=None, content_bots_protection=None, crawler_protection=None, enable_js=None, fight_mode=None, id=None, is_robots_txt_managed=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
         if ai_bots_protection and not isinstance(ai_bots_protection, str):
             raise TypeError("Expected argument 'ai_bots_protection' to be a str")
         pulumi.set(__self__, "ai_bots_protection", ai_bots_protection)
@@ -40,6 +40,9 @@ class GetBotManagementResult:
         if cf_robots_variant and not isinstance(cf_robots_variant, str):
             raise TypeError("Expected argument 'cf_robots_variant' to be a str")
         pulumi.set(__self__, "cf_robots_variant", cf_robots_variant)
+        if content_bots_protection and not isinstance(content_bots_protection, str):
+            raise TypeError("Expected argument 'content_bots_protection' to be a str")
+        pulumi.set(__self__, "content_bots_protection", content_bots_protection)
         if crawler_protection and not isinstance(crawler_protection, str):
             raise TypeError("Expected argument 'crawler_protection' to be a str")
         pulumi.set(__self__, "crawler_protection", crawler_protection)
@@ -116,6 +119,15 @@ class GetBotManagementResult:
         Available values: "off", "policy_only".
         """
         return pulumi.get(self, "cf_robots_variant")
+
+    @_builtins.property
+    @pulumi.getter(name="contentBotsProtection")
+    def content_bots_protection(self) -> _builtins.str:
+        """
+        Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+        Available values: "block", "disabled".
+        """
+        return pulumi.get(self, "content_bots_protection")
 
     @_builtins.property
     @pulumi.getter(name="crawlerProtection")
@@ -229,7 +241,7 @@ class GetBotManagementResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -246,6 +258,7 @@ class AwaitableGetBotManagementResult(GetBotManagementResult):
             auto_update_model=self.auto_update_model,
             bm_cookie_enabled=self.bm_cookie_enabled,
             cf_robots_variant=self.cf_robots_variant,
+            content_bots_protection=self.content_bots_protection,
             crawler_protection=self.crawler_protection,
             enable_js=self.enable_js,
             fight_mode=self.fight_mode,
@@ -265,6 +278,11 @@ class AwaitableGetBotManagementResult(GetBotManagementResult):
 def get_bot_management(zone_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBotManagementResult:
     """
+    Accepted Permissions
+
+    - `Bot Management Read`
+    - `Bot Management Write`
+
     ## Example Usage
 
     ```python
@@ -287,6 +305,7 @@ def get_bot_management(zone_id: Optional[_builtins.str] = None,
         auto_update_model=pulumi.get(__ret__, 'auto_update_model'),
         bm_cookie_enabled=pulumi.get(__ret__, 'bm_cookie_enabled'),
         cf_robots_variant=pulumi.get(__ret__, 'cf_robots_variant'),
+        content_bots_protection=pulumi.get(__ret__, 'content_bots_protection'),
         crawler_protection=pulumi.get(__ret__, 'crawler_protection'),
         enable_js=pulumi.get(__ret__, 'enable_js'),
         fight_mode=pulumi.get(__ret__, 'fight_mode'),
@@ -301,9 +320,14 @@ def get_bot_management(zone_id: Optional[_builtins.str] = None,
         suppress_session_score=pulumi.get(__ret__, 'suppress_session_score'),
         using_latest_model=pulumi.get(__ret__, 'using_latest_model'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_bot_management_output(zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_bot_management_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBotManagementResult]:
     """
+    Accepted Permissions
+
+    - `Bot Management Read`
+    - `Bot Management Write`
+
     ## Example Usage
 
     ```python
@@ -325,6 +349,7 @@ def get_bot_management_output(zone_id: Optional[pulumi.Input[_builtins.str]] = N
         auto_update_model=pulumi.get(__response__, 'auto_update_model'),
         bm_cookie_enabled=pulumi.get(__response__, 'bm_cookie_enabled'),
         cf_robots_variant=pulumi.get(__response__, 'cf_robots_variant'),
+        content_bots_protection=pulumi.get(__response__, 'content_bots_protection'),
         crawler_protection=pulumi.get(__response__, 'crawler_protection'),
         enable_js=pulumi.get(__response__, 'enable_js'),
         fight_mode=pulumi.get(__response__, 'fight_mode'),

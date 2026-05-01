@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+// - `Notifications Read`
+// - `Notifications Write`
+// - `Zero Trust: PII Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetNotificationPolicies(ctx, &cloudflare.LookupNotificationPoliciesArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +57,7 @@ func LookupNotificationPolicies(ctx *pulumi.Context, args *LookupNotificationPol
 // A collection of arguments for invoking getNotificationPolicies.
 type LookupNotificationPoliciesArgs struct {
 	// The account id
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +65,7 @@ type LookupNotificationPoliciesArgs struct {
 // A collection of values returned by getNotificationPolicies.
 type LookupNotificationPoliciesResult struct {
 	// The account id
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +86,7 @@ func LookupNotificationPoliciesOutput(ctx *pulumi.Context, args LookupNotificati
 // A collection of arguments for invoking getNotificationPolicies.
 type LookupNotificationPoliciesOutputArgs struct {
 	// The account id
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +111,8 @@ func (o LookupNotificationPoliciesResultOutput) ToLookupNotificationPoliciesResu
 }
 
 // The account id
-func (o LookupNotificationPoliciesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNotificationPoliciesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupNotificationPoliciesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNotificationPoliciesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

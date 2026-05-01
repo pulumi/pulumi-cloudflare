@@ -27,6 +27,16 @@ public final class GetMagicTransitSiteLansResult {
      * 
      */
     private String id;
+    /**
+     * @return mark true to use this LAN for source-based breakout traffic
+     * 
+     */
+    private Boolean isBreakout;
+    /**
+     * @return mark true to use this LAN for source-based prioritized traffic
+     * 
+     */
+    private Boolean isPrioritized;
     private String name;
     private GetMagicTransitSiteLansResultNat nat;
     private Integer physport;
@@ -64,6 +74,20 @@ public final class GetMagicTransitSiteLansResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return mark true to use this LAN for source-based breakout traffic
+     * 
+     */
+    public Boolean isBreakout() {
+        return this.isBreakout;
+    }
+    /**
+     * @return mark true to use this LAN for source-based prioritized traffic
+     * 
+     */
+    public Boolean isPrioritized() {
+        return this.isPrioritized;
     }
     public String name() {
         return this.name;
@@ -111,6 +135,8 @@ public final class GetMagicTransitSiteLansResult {
         private Integer bondId;
         private Boolean haLink;
         private String id;
+        private Boolean isBreakout;
+        private Boolean isPrioritized;
         private String name;
         private GetMagicTransitSiteLansResultNat nat;
         private Integer physport;
@@ -124,6 +150,8 @@ public final class GetMagicTransitSiteLansResult {
     	      this.bondId = defaults.bondId;
     	      this.haLink = defaults.haLink;
     	      this.id = defaults.id;
+    	      this.isBreakout = defaults.isBreakout;
+    	      this.isPrioritized = defaults.isPrioritized;
     	      this.name = defaults.name;
     	      this.nat = defaults.nat;
     	      this.physport = defaults.physport;
@@ -155,6 +183,22 @@ public final class GetMagicTransitSiteLansResult {
               throw new MissingRequiredPropertyException("GetMagicTransitSiteLansResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isBreakout(Boolean isBreakout) {
+            if (isBreakout == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteLansResult", "isBreakout");
+            }
+            this.isBreakout = isBreakout;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isPrioritized(Boolean isPrioritized) {
+            if (isPrioritized == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteLansResult", "isPrioritized");
+            }
+            this.isPrioritized = isPrioritized;
             return this;
         }
         @CustomType.Setter
@@ -221,6 +265,8 @@ public final class GetMagicTransitSiteLansResult {
             _resultValue.bondId = bondId;
             _resultValue.haLink = haLink;
             _resultValue.id = id;
+            _resultValue.isBreakout = isBreakout;
+            _resultValue.isPrioritized = isPrioritized;
             _resultValue.name = name;
             _resultValue.nat = nat;
             _resultValue.physport = physport;

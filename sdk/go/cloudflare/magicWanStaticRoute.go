@@ -64,7 +64,7 @@ type MagicWanStaticRoute struct {
 	// When the route was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// An optional human provided description of the static route.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// When the route was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// The next-hop IP Address for the static route.
@@ -305,8 +305,8 @@ func (o MagicWanStaticRouteOutput) CreatedOn() pulumi.StringOutput {
 }
 
 // An optional human provided description of the static route.
-func (o MagicWanStaticRouteOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o MagicWanStaticRouteOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // When the route was last modified.

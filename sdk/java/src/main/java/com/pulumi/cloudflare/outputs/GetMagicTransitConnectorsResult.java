@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -16,7 +17,17 @@ public final class GetMagicTransitConnectorsResult {
     private Boolean activated;
     private GetMagicTransitConnectorsResultDevice device;
     private String id;
+    /**
+     * @return Allowed days of the week for upgrades. Default is all days.
+     * 
+     */
+    private List<String> interruptWindowDaysOfWeeks;
     private Double interruptWindowDurationHours;
+    /**
+     * @return List of dates (YYYY-MM-DD) when upgrades are blocked.
+     * 
+     */
+    private List<String> interruptWindowEmbargoDates;
     private Double interruptWindowHourOfDay;
     private String lastHeartbeat;
     private String lastSeenVersion;
@@ -35,8 +46,22 @@ public final class GetMagicTransitConnectorsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Allowed days of the week for upgrades. Default is all days.
+     * 
+     */
+    public List<String> interruptWindowDaysOfWeeks() {
+        return this.interruptWindowDaysOfWeeks;
+    }
     public Double interruptWindowDurationHours() {
         return this.interruptWindowDurationHours;
+    }
+    /**
+     * @return List of dates (YYYY-MM-DD) when upgrades are blocked.
+     * 
+     */
+    public List<String> interruptWindowEmbargoDates() {
+        return this.interruptWindowEmbargoDates;
     }
     public Double interruptWindowHourOfDay() {
         return this.interruptWindowHourOfDay;
@@ -72,7 +97,9 @@ public final class GetMagicTransitConnectorsResult {
         private Boolean activated;
         private GetMagicTransitConnectorsResultDevice device;
         private String id;
+        private List<String> interruptWindowDaysOfWeeks;
         private Double interruptWindowDurationHours;
+        private List<String> interruptWindowEmbargoDates;
         private Double interruptWindowHourOfDay;
         private String lastHeartbeat;
         private String lastSeenVersion;
@@ -86,7 +113,9 @@ public final class GetMagicTransitConnectorsResult {
     	      this.activated = defaults.activated;
     	      this.device = defaults.device;
     	      this.id = defaults.id;
+    	      this.interruptWindowDaysOfWeeks = defaults.interruptWindowDaysOfWeeks;
     	      this.interruptWindowDurationHours = defaults.interruptWindowDurationHours;
+    	      this.interruptWindowEmbargoDates = defaults.interruptWindowEmbargoDates;
     	      this.interruptWindowHourOfDay = defaults.interruptWindowHourOfDay;
     	      this.lastHeartbeat = defaults.lastHeartbeat;
     	      this.lastSeenVersion = defaults.lastSeenVersion;
@@ -121,12 +150,34 @@ public final class GetMagicTransitConnectorsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder interruptWindowDaysOfWeeks(List<String> interruptWindowDaysOfWeeks) {
+            if (interruptWindowDaysOfWeeks == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitConnectorsResult", "interruptWindowDaysOfWeeks");
+            }
+            this.interruptWindowDaysOfWeeks = interruptWindowDaysOfWeeks;
+            return this;
+        }
+        public Builder interruptWindowDaysOfWeeks(String... interruptWindowDaysOfWeeks) {
+            return interruptWindowDaysOfWeeks(List.of(interruptWindowDaysOfWeeks));
+        }
+        @CustomType.Setter
         public Builder interruptWindowDurationHours(Double interruptWindowDurationHours) {
             if (interruptWindowDurationHours == null) {
               throw new MissingRequiredPropertyException("GetMagicTransitConnectorsResult", "interruptWindowDurationHours");
             }
             this.interruptWindowDurationHours = interruptWindowDurationHours;
             return this;
+        }
+        @CustomType.Setter
+        public Builder interruptWindowEmbargoDates(List<String> interruptWindowEmbargoDates) {
+            if (interruptWindowEmbargoDates == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitConnectorsResult", "interruptWindowEmbargoDates");
+            }
+            this.interruptWindowEmbargoDates = interruptWindowEmbargoDates;
+            return this;
+        }
+        public Builder interruptWindowEmbargoDates(String... interruptWindowEmbargoDates) {
+            return interruptWindowEmbargoDates(List.of(interruptWindowEmbargoDates));
         }
         @CustomType.Setter
         public Builder interruptWindowHourOfDay(Double interruptWindowHourOfDay) {
@@ -189,7 +240,9 @@ public final class GetMagicTransitConnectorsResult {
             _resultValue.activated = activated;
             _resultValue.device = device;
             _resultValue.id = id;
+            _resultValue.interruptWindowDaysOfWeeks = interruptWindowDaysOfWeeks;
             _resultValue.interruptWindowDurationHours = interruptWindowDurationHours;
+            _resultValue.interruptWindowEmbargoDates = interruptWindowEmbargoDates;
             _resultValue.interruptWindowHourOfDay = interruptWindowHourOfDay;
             _resultValue.lastHeartbeat = lastHeartbeat;
             _resultValue.lastSeenVersion = lastSeenVersion;

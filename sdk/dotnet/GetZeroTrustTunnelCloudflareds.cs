@@ -12,6 +12,15 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustTunnelCloudflareds
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: cloudflared Read`
+        /// - `Cloudflare One Connector: cloudflared Write`
+        /// - `Cloudflare One Connectors Read`
+        /// - `Cloudflare One Connectors Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -39,10 +48,19 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustTunnelCloudflaredsResult> InvokeAsync(GetZeroTrustTunnelCloudflaredsArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustTunnelCloudflaredsResult> InvokeAsync(GetZeroTrustTunnelCloudflaredsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustTunnelCloudflaredsResult>("cloudflare:index/getZeroTrustTunnelCloudflareds:getZeroTrustTunnelCloudflareds", args ?? new GetZeroTrustTunnelCloudflaredsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: cloudflared Read`
+        /// - `Cloudflare One Connector: cloudflared Write`
+        /// - `Cloudflare One Connectors Read`
+        /// - `Cloudflare One Connectors Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -70,10 +88,19 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustTunnelCloudflaredsResult> Invoke(GetZeroTrustTunnelCloudflaredsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustTunnelCloudflaredsResult> Invoke(GetZeroTrustTunnelCloudflaredsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelCloudflaredsResult>("cloudflare:index/getZeroTrustTunnelCloudflareds:getZeroTrustTunnelCloudflareds", args ?? new GetZeroTrustTunnelCloudflaredsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: cloudflared Read`
+        /// - `Cloudflare One Connector: cloudflared Write`
+        /// - `Cloudflare One Connectors Read`
+        /// - `Cloudflare One Connectors Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -111,8 +138,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("excludePrefix")]
         public string? ExcludePrefix { get; set; }
@@ -174,8 +201,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("excludePrefix")]
         public Input<string>? ExcludePrefix { get; set; }
@@ -239,7 +266,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly string? ExcludePrefix;
         /// <summary>
         /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -280,7 +307,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustTunnelCloudflaredsResult(
-            string accountId,
+            string? accountId,
 
             string? excludePrefix,
 

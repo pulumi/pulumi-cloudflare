@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.WorkerVersionAnnotationsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionAssetsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionBindingArgs;
+import com.pulumi.cloudflare.inputs.WorkerVersionContainerArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionLimitsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsArgs;
 import com.pulumi.cloudflare.inputs.WorkerVersionModuleArgs;
@@ -115,6 +116,21 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+     * 
+     */
+    @Import(name="containers")
+    private @Nullable Output<List<WorkerVersionContainerArgs>> containers;
+
+    /**
+     * @return List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+     * 
+     */
+    public Optional<Output<List<WorkerVersionContainerArgs>>> containers() {
+        return Optional.ofNullable(this.containers);
+    }
+
+    /**
      * When the version was created.
      * 
      */
@@ -172,6 +188,21 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> mainScriptBase64() {
         return Optional.ofNullable(this.mainScriptBase64);
+    }
+
+    /**
+     * Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+     * 
+     */
+    @Import(name="migrationTag")
+    private @Nullable Output<String> migrationTag;
+
+    /**
+     * @return Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+     * 
+     */
+    public Optional<Output<String>> migrationTag() {
+        return Optional.ofNullable(this.migrationTag);
     }
 
     /**
@@ -275,6 +306,21 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+     * 
+     */
+    @Import(name="urls")
+    private @Nullable Output<List<String>> urls;
+
+    /**
+     * @return All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+     * 
+     */
+    public Optional<Output<List<String>>> urls() {
+        return Optional.ofNullable(this.urls);
+    }
+
+    /**
      * Usage model for the version.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
@@ -323,16 +369,19 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
         this.bindings = $.bindings;
         this.compatibilityDate = $.compatibilityDate;
         this.compatibilityFlags = $.compatibilityFlags;
+        this.containers = $.containers;
         this.createdOn = $.createdOn;
         this.limits = $.limits;
         this.mainModule = $.mainModule;
         this.mainScriptBase64 = $.mainScriptBase64;
+        this.migrationTag = $.migrationTag;
         this.migrations = $.migrations;
         this.modules = $.modules;
         this.number = $.number;
         this.placement = $.placement;
         this.source = $.source;
         this.startupTimeMs = $.startupTimeMs;
+        this.urls = $.urls;
         this.usageModel = $.usageModel;
         this.workerId = $.workerId;
     }
@@ -502,6 +551,37 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param containers List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containers(@Nullable Output<List<WorkerVersionContainerArgs>> containers) {
+            $.containers = containers;
+            return this;
+        }
+
+        /**
+         * @param containers List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containers(List<WorkerVersionContainerArgs> containers) {
+            return containers(Output.of(containers));
+        }
+
+        /**
+         * @param containers List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containers(WorkerVersionContainerArgs... containers) {
+            return containers(List.of(containers));
+        }
+
+        /**
          * @param createdOn When the version was created.
          * 
          * @return builder
@@ -583,6 +663,27 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder mainScriptBase64(String mainScriptBase64) {
             return mainScriptBase64(Output.of(mainScriptBase64));
+        }
+
+        /**
+         * @param migrationTag Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrationTag(@Nullable Output<String> migrationTag) {
+            $.migrationTag = migrationTag;
+            return this;
+        }
+
+        /**
+         * @param migrationTag Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrationTag(String migrationTag) {
+            return migrationTag(Output.of(migrationTag));
         }
 
         /**
@@ -734,6 +835,37 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder startupTimeMs(Integer startupTimeMs) {
             return startupTimeMs(Output.of(startupTimeMs));
+        }
+
+        /**
+         * @param urls All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urls(@Nullable Output<List<String>> urls) {
+            $.urls = urls;
+            return this;
+        }
+
+        /**
+         * @param urls All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urls(List<String> urls) {
+            return urls(Output.of(urls));
+        }
+
+        /**
+         * @param urls All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urls(String... urls) {
+            return urls(List.of(urls));
         }
 
         /**

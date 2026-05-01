@@ -46,7 +46,7 @@ class GetWorkerVersionsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -103,6 +103,12 @@ def get_worker_versions(account_id: Optional[_builtins.str] = None,
                         worker_id: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkerVersionsResult:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+
     ## Example Usage
 
     ```python
@@ -131,11 +137,17 @@ def get_worker_versions(account_id: Optional[_builtins.str] = None,
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         worker_id=pulumi.get(__ret__, 'worker_id'))
-def get_worker_versions_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_worker_versions_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                worker_id: Optional[pulumi.Input[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkerVersionsResult]:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+
     ## Example Usage
 
     ```python

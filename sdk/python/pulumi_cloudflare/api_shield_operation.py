@@ -24,7 +24,7 @@ class ApiShieldOperationArgs:
                  endpoint: pulumi.Input[_builtins.str],
                  host: pulumi.Input[_builtins.str],
                  method: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldOperation resource.
 
@@ -37,7 +37,8 @@ class ApiShieldOperationArgs:
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "zone_id", zone_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -78,14 +79,14 @@ class ApiShieldOperationArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -216,6 +217,13 @@ class ApiShieldOperation(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Account API Gateway`
+        - `Account API Gateway Read`
+        - `Domain API Gateway`
+        - `Domain API Gateway Read`
+
         ## Example Usage
 
         ```python
@@ -251,6 +259,13 @@ class ApiShieldOperation(pulumi.CustomResource):
                  args: ApiShieldOperationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Account API Gateway`
+        - `Account API Gateway Read`
+        - `Domain API Gateway`
+        - `Domain API Gateway Read`
+
         ## Example Usage
 
         ```python
@@ -308,8 +323,6 @@ class ApiShieldOperation(pulumi.CustomResource):
             if method is None and not opts.urn:
                 raise TypeError("Missing required property 'method'")
             __props__.__dict__["method"] = method
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["features"] = None
             __props__.__dict__["last_updated"] = None
@@ -403,7 +416,7 @@ class ApiShieldOperation(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -81,11 +80,11 @@ public final class GetApiShieldDiscoveryOperationsPlainArgs extends com.pulumi.r
         return Optional.ofNullable(this.state);
     }
 
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetApiShieldDiscoveryOperationsPlainArgs() {}
@@ -174,15 +173,12 @@ public final class GetApiShieldDiscoveryOperationsPlainArgs extends com.pulumi.r
             return this;
         }
 
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         public GetApiShieldDiscoveryOperationsPlainArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetApiShieldDiscoveryOperationsPlainArgs", "zoneId");
-            }
             return $;
         }
     }

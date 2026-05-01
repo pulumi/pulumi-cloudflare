@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Notifications Read`
+ * - `Notifications Write`
+ * - `Zero Trust: PII Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -56,7 +64,7 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
     /**
      * The account id
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Timestamp of when the webhook destination was created.
      */
@@ -110,9 +118,6 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
             resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as NotificationPolicyWebhooksArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -181,7 +186,7 @@ export interface NotificationPolicyWebhooksArgs {
     /**
      * The account id
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
      */

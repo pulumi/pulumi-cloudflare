@@ -7,6 +7,8 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationCorsHeadersArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationDestinationArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationFooterLinkArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationLandingPageDesignArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationMfaConfigArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationOauthConfigurationArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationSaasAppArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationScimConfigArgs;
@@ -333,6 +335,21 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * 
+     */
+    @Import(name="mfaConfig")
+    private @Nullable Output<ZeroTrustAccessApplicationMfaConfigArgs> mfaConfig;
+
+    /**
+     * @return Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * 
+     */
+    public Optional<Output<ZeroTrustAccessApplicationMfaConfigArgs>> mfaConfig() {
+        return Optional.ofNullable(this.mfaConfig);
+    }
+
+    /**
      * The name of the application.
      * 
      */
@@ -345,6 +362,21 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     * 
+     */
+    @Import(name="oauthConfiguration")
+    private @Nullable Output<ZeroTrustAccessApplicationOauthConfigurationArgs> oauthConfiguration;
+
+    /**
+     * @return Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+     * 
+     */
+    public Optional<Output<ZeroTrustAccessApplicationOauthConfigurationArgs>> oauthConfiguration() {
+        return Optional.ofNullable(this.oauthConfiguration);
     }
 
     /**
@@ -617,7 +649,9 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
         this.httpOnlyCookieAttribute = $.httpOnlyCookieAttribute;
         this.landingPageDesign = $.landingPageDesign;
         this.logoUrl = $.logoUrl;
+        this.mfaConfig = $.mfaConfig;
         this.name = $.name;
+        this.oauthConfiguration = $.oauthConfiguration;
         this.optionsPreflightBypass = $.optionsPreflightBypass;
         this.pathCookieAttribute = $.pathCookieAttribute;
         this.policies = $.policies;
@@ -1124,6 +1158,27 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaConfig(@Nullable Output<ZeroTrustAccessApplicationMfaConfigArgs> mfaConfig) {
+            $.mfaConfig = mfaConfig;
+            return this;
+        }
+
+        /**
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaConfig(ZeroTrustAccessApplicationMfaConfigArgs mfaConfig) {
+            return mfaConfig(Output.of(mfaConfig));
+        }
+
+        /**
          * @param name The name of the application.
          * 
          * @return builder
@@ -1142,6 +1197,27 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param oauthConfiguration Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauthConfiguration(@Nullable Output<ZeroTrustAccessApplicationOauthConfigurationArgs> oauthConfiguration) {
+            $.oauthConfiguration = oauthConfiguration;
+            return this;
+        }
+
+        /**
+         * @param oauthConfiguration Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauthConfiguration(ZeroTrustAccessApplicationOauthConfigurationArgs oauthConfiguration) {
+            return oauthConfiguration(Output.of(oauthConfiguration));
         }
 
         /**

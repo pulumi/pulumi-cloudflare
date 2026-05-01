@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -30,7 +35,10 @@ import (
 //				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SettingId: pulumi.String("ciphers"),
 //				Hostname:  pulumi.String("app.example.com"),
-//				Value:     pulumi.Any("1.0"),
+//				Value: pulumi.Any{
+//					"ECDHE-RSA-AES128-GCM-SHA256",
+//					"AES128-GCM-SHA256",
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -62,7 +70,7 @@ type HostnameTlsSetting struct {
 	// The TLS setting value. The type depends on the `settingId` used in the request path:
 	Value pulumi.AnyOutput `pulumi:"value"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewHostnameTlsSetting registers a new resource with the given unique name, arguments, and options.
@@ -80,9 +88,6 @@ func NewHostnameTlsSetting(ctx *pulumi.Context,
 	}
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HostnameTlsSetting
@@ -152,7 +157,7 @@ type hostnameTlsSettingArgs struct {
 	// The TLS setting value. The type depends on the `settingId` used in the request path:
 	Value interface{} `pulumi:"value"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a HostnameTlsSetting resource.
@@ -164,7 +169,7 @@ type HostnameTlsSettingArgs struct {
 	// The TLS setting value. The type depends on the `settingId` used in the request path:
 	Value pulumi.Input
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (HostnameTlsSettingArgs) ElementType() reflect.Type {
@@ -285,8 +290,8 @@ func (o HostnameTlsSettingOutput) Value() pulumi.AnyOutput {
 }
 
 // Identifier.
-func (o HostnameTlsSettingOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o HostnameTlsSettingOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type HostnameTlsSettingArrayOutput struct{ *pulumi.OutputState }

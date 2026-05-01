@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Email Routing Rules Read`
+ * - `Email Routing Rules Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getEmailRoutingCatchAll(args: GetEmailRoutingCatchAllArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingCatchAllResult> {
+export function getEmailRoutingCatchAll(args?: GetEmailRoutingCatchAllArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingCatchAllResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailRoutingCatchAll:getEmailRoutingCatchAll", {
         "zoneId": args.zoneId,
@@ -32,7 +38,7 @@ export interface GetEmailRoutingCatchAllArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -68,9 +74,14 @@ export interface GetEmailRoutingCatchAllResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Email Routing Rules Read`
+ * - `Email Routing Rules Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -82,7 +93,8 @@ export interface GetEmailRoutingCatchAllResult {
  * });
  * ```
  */
-export function getEmailRoutingCatchAllOutput(args: GetEmailRoutingCatchAllOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingCatchAllResult> {
+export function getEmailRoutingCatchAllOutput(args?: GetEmailRoutingCatchAllOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingCatchAllResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailRoutingCatchAll:getEmailRoutingCatchAll", {
         "zoneId": args.zoneId,
@@ -96,5 +108,5 @@ export interface GetEmailRoutingCatchAllOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

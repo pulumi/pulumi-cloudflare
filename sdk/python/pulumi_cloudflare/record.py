@@ -24,14 +24,15 @@ class RecordArgs:
                  name: pulumi.Input[_builtins.str],
                  ttl: pulumi.Input[_builtins.float],
                  type: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str],
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  content: Optional[pulumi.Input[_builtins.str]] = None,
                  data: Optional[pulumi.Input['RecordDataArgs']] = None,
                  priority: Optional[pulumi.Input[_builtins.float]] = None,
+                 private_routing: Optional[pulumi.Input[_builtins.bool]] = None,
                  proxied: Optional[pulumi.Input[_builtins.bool]] = None,
                  settings: Optional[pulumi.Input['RecordSettingsArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Record resource.
 
@@ -39,19 +40,19 @@ class RecordArgs:
         :param pulumi.Input[_builtins.float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[_builtins.str] type: Record type.
                Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[_builtins.str] content: A valid IPv4 address.
         :param pulumi.Input['RecordDataArgs'] data: Components of a CAA record.
         :param pulumi.Input[_builtins.float] priority: Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+        :param pulumi.Input[_builtins.bool] private_routing: Enables private network routing to the origin.
         :param pulumi.Input[_builtins.bool] proxied: Whether the record is receiving the performance and security benefits of Cloudflare.
         :param pulumi.Input['RecordSettingsArgs'] settings: Settings for the DNS record.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Custom tags for the DNS record. This field has no effect on DNS responses.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ttl", ttl)
         pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "zone_id", zone_id)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if content is not None:
@@ -60,12 +61,16 @@ class RecordArgs:
             pulumi.set(__self__, "data", data)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if private_routing is not None:
+            pulumi.set(__self__, "private_routing", private_routing)
         if proxied is not None:
             pulumi.set(__self__, "proxied", proxied)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -103,18 +108,6 @@ class RecordArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -165,6 +158,18 @@ class RecordArgs:
         pulumi.set(self, "priority", value)
 
     @_builtins.property
+    @pulumi.getter(name="privateRouting")
+    def private_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables private network routing to the origin.
+        """
+        return pulumi.get(self, "private_routing")
+
+    @private_routing.setter
+    def private_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "private_routing", value)
+
+    @_builtins.property
     @pulumi.getter
     def proxied(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -200,6 +205,18 @@ class RecordArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 @pulumi.input_type
 class _RecordState:
@@ -213,6 +230,7 @@ class _RecordState:
                  modified_on: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  priority: Optional[pulumi.Input[_builtins.float]] = None,
+                 private_routing: Optional[pulumi.Input[_builtins.bool]] = None,
                  proxiable: Optional[pulumi.Input[_builtins.bool]] = None,
                  proxied: Optional[pulumi.Input[_builtins.bool]] = None,
                  settings: Optional[pulumi.Input['RecordSettingsArgs']] = None,
@@ -233,6 +251,7 @@ class _RecordState:
         :param pulumi.Input[_builtins.str] modified_on: When the record was last modified.
         :param pulumi.Input[_builtins.str] name: DNS record name (or @ for the zone apex) in Punycode.
         :param pulumi.Input[_builtins.float] priority: Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+        :param pulumi.Input[_builtins.bool] private_routing: Enables private network routing to the origin.
         :param pulumi.Input[_builtins.bool] proxiable: Whether the record can be proxied by Cloudflare or not.
         :param pulumi.Input[_builtins.bool] proxied: Whether the record is receiving the performance and security benefits of Cloudflare.
         :param pulumi.Input['RecordSettingsArgs'] settings: Settings for the DNS record.
@@ -261,6 +280,8 @@ class _RecordState:
             pulumi.set(__self__, "name", name)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if private_routing is not None:
+            pulumi.set(__self__, "private_routing", private_routing)
         if proxiable is not None:
             pulumi.set(__self__, "proxiable", proxiable)
         if proxied is not None:
@@ -387,6 +408,18 @@ class _RecordState:
         pulumi.set(self, "priority", value)
 
     @_builtins.property
+    @pulumi.getter(name="privateRouting")
+    def private_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables private network routing to the origin.
+        """
+        return pulumi.get(self, "private_routing")
+
+    @private_routing.setter
+    def private_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "private_routing", value)
+
+    @_builtins.property
     @pulumi.getter
     def proxiable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -500,6 +533,7 @@ class Record(pulumi.CustomResource):
                  data: Optional[pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  priority: Optional[pulumi.Input[_builtins.float]] = None,
+                 private_routing: Optional[pulumi.Input[_builtins.bool]] = None,
                  proxied: Optional[pulumi.Input[_builtins.bool]] = None,
                  settings: Optional[pulumi.Input[Union['RecordSettingsArgs', 'RecordSettingsArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -508,6 +542,11 @@ class Record(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `DNS Read`
+        - `DNS Write`
+
         ## Example Usage
 
         ```python
@@ -521,6 +560,7 @@ class Record(pulumi.CustomResource):
             type="A",
             comment="Domain verification record",
             content="198.51.100.4",
+            private_routing=True,
             proxied=True,
             settings={
                 "ipv4_only": True,
@@ -543,6 +583,7 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: Components of a CAA record.
         :param pulumi.Input[_builtins.str] name: DNS record name (or @ for the zone apex) in Punycode.
         :param pulumi.Input[_builtins.float] priority: Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+        :param pulumi.Input[_builtins.bool] private_routing: Enables private network routing to the origin.
         :param pulumi.Input[_builtins.bool] proxied: Whether the record is receiving the performance and security benefits of Cloudflare.
         :param pulumi.Input[Union['RecordSettingsArgs', 'RecordSettingsArgsDict']] settings: Settings for the DNS record.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Custom tags for the DNS record. This field has no effect on DNS responses.
@@ -558,6 +599,11 @@ class Record(pulumi.CustomResource):
                  args: RecordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `DNS Read`
+        - `DNS Write`
+
         ## Example Usage
 
         ```python
@@ -571,6 +617,7 @@ class Record(pulumi.CustomResource):
             type="A",
             comment="Domain verification record",
             content="198.51.100.4",
+            private_routing=True,
             proxied=True,
             settings={
                 "ipv4_only": True,
@@ -606,6 +653,7 @@ class Record(pulumi.CustomResource):
                  data: Optional[pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  priority: Optional[pulumi.Input[_builtins.float]] = None,
+                 private_routing: Optional[pulumi.Input[_builtins.bool]] = None,
                  proxied: Optional[pulumi.Input[_builtins.bool]] = None,
                  settings: Optional[pulumi.Input[Union['RecordSettingsArgs', 'RecordSettingsArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -629,6 +677,7 @@ class Record(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["priority"] = priority
+            __props__.__dict__["private_routing"] = private_routing
             __props__.__dict__["proxied"] = proxied
             __props__.__dict__["settings"] = settings
             __props__.__dict__["tags"] = tags
@@ -638,8 +687,6 @@ class Record(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["comment_modified_on"] = None
             __props__.__dict__["created_on"] = None
@@ -668,6 +715,7 @@ class Record(pulumi.CustomResource):
             modified_on: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             priority: Optional[pulumi.Input[_builtins.float]] = None,
+            private_routing: Optional[pulumi.Input[_builtins.bool]] = None,
             proxiable: Optional[pulumi.Input[_builtins.bool]] = None,
             proxied: Optional[pulumi.Input[_builtins.bool]] = None,
             settings: Optional[pulumi.Input[Union['RecordSettingsArgs', 'RecordSettingsArgsDict']]] = None,
@@ -692,6 +740,7 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modified_on: When the record was last modified.
         :param pulumi.Input[_builtins.str] name: DNS record name (or @ for the zone apex) in Punycode.
         :param pulumi.Input[_builtins.float] priority: Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+        :param pulumi.Input[_builtins.bool] private_routing: Enables private network routing to the origin.
         :param pulumi.Input[_builtins.bool] proxiable: Whether the record can be proxied by Cloudflare or not.
         :param pulumi.Input[_builtins.bool] proxied: Whether the record is receiving the performance and security benefits of Cloudflare.
         :param pulumi.Input[Union['RecordSettingsArgs', 'RecordSettingsArgsDict']] settings: Settings for the DNS record.
@@ -715,6 +764,7 @@ class Record(pulumi.CustomResource):
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
         __props__.__dict__["priority"] = priority
+        __props__.__dict__["private_routing"] = private_routing
         __props__.__dict__["proxiable"] = proxiable
         __props__.__dict__["proxied"] = proxied
         __props__.__dict__["settings"] = settings
@@ -798,6 +848,14 @@ class Record(pulumi.CustomResource):
         return pulumi.get(self, "priority")
 
     @_builtins.property
+    @pulumi.getter(name="privateRouting")
+    def private_routing(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enables private network routing to the origin.
+        """
+        return pulumi.get(self, "private_routing")
+
+    @_builtins.property
     @pulumi.getter
     def proxiable(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -856,7 +914,7 @@ class Record(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

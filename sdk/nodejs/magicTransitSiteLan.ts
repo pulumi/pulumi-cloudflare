@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,6 +25,8 @@ import * as utilities from "./utilities";
  *     siteId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bondId: 2,
  *     haLink: true,
+ *     isBreakout: true,
+ *     isPrioritized: true,
  *     name: "name",
  *     nat: {
  *         staticPrefix: "192.0.2.0/24",
@@ -89,12 +98,20 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public readonly bondId: pulumi.Output<number | undefined>;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
     declare public readonly haLink: pulumi.Output<boolean | undefined>;
+    /**
+     * mark true to use this LAN for source-based breakout traffic
+     */
+    declare public readonly isBreakout: pulumi.Output<boolean | undefined>;
+    /**
+     * mark true to use this LAN for source-based prioritized traffic
+     */
+    declare public readonly isPrioritized: pulumi.Output<boolean | undefined>;
     declare public readonly name: pulumi.Output<string | undefined>;
     declare public readonly nat: pulumi.Output<outputs.MagicTransitSiteLanNat | undefined>;
     declare public readonly physport: pulumi.Output<number | undefined>;
@@ -128,6 +145,8 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["bondId"] = state?.bondId;
             resourceInputs["haLink"] = state?.haLink;
+            resourceInputs["isBreakout"] = state?.isBreakout;
+            resourceInputs["isPrioritized"] = state?.isPrioritized;
             resourceInputs["name"] = state?.name;
             resourceInputs["nat"] = state?.nat;
             resourceInputs["physport"] = state?.physport;
@@ -137,15 +156,14 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
             resourceInputs["vlanTag"] = state?.vlanTag;
         } else {
             const args = argsOrState as MagicTransitSiteLanArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["bondId"] = args?.bondId;
             resourceInputs["haLink"] = args?.haLink;
+            resourceInputs["isBreakout"] = args?.isBreakout;
+            resourceInputs["isPrioritized"] = args?.isPrioritized;
             resourceInputs["name"] = args?.name;
             resourceInputs["nat"] = args?.nat;
             resourceInputs["physport"] = args?.physport;
@@ -172,6 +190,14 @@ export interface MagicTransitSiteLanState {
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
     haLink?: pulumi.Input<boolean>;
+    /**
+     * mark true to use this LAN for source-based breakout traffic
+     */
+    isBreakout?: pulumi.Input<boolean>;
+    /**
+     * mark true to use this LAN for source-based prioritized traffic
+     */
+    isPrioritized?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     nat?: pulumi.Input<inputs.MagicTransitSiteLanNat>;
     physport?: pulumi.Input<number>;
@@ -197,12 +223,20 @@ export interface MagicTransitSiteLanArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     bondId?: pulumi.Input<number>;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
     haLink?: pulumi.Input<boolean>;
+    /**
+     * mark true to use this LAN for source-based breakout traffic
+     */
+    isBreakout?: pulumi.Input<boolean>;
+    /**
+     * mark true to use this LAN for source-based prioritized traffic
+     */
+    isPrioritized?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     nat?: pulumi.Input<inputs.MagicTransitSiteLanNat>;
     physport?: pulumi.Input<number>;
