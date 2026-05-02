@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetPagesDomains
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Pages Read`
+        /// - `Pages Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPagesDomainsResult>("cloudflare:index/getPagesDomains:getPagesDomains", args ?? new GetPagesDomainsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Pages Read`
+        /// - `Pages Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetPagesDomainsResult>("cloudflare:index/getPagesDomains:getPagesDomains", args ?? new GetPagesDomainsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Pages Read`
+        /// - `Pages Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -113,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -141,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -161,7 +176,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetPagesDomainsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

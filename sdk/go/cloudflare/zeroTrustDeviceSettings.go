@@ -7,11 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -53,7 +56,7 @@ import (
 type ZeroTrustDeviceSettings struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
 	DisableForTime pulumi.Float64PtrOutput `pulumi:"disableForTime"`
 	// Controls whether the external emergency disconnect feature is enabled.
@@ -78,12 +81,9 @@ type ZeroTrustDeviceSettings struct {
 func NewZeroTrustDeviceSettings(ctx *pulumi.Context,
 	name string, args *ZeroTrustDeviceSettingsArgs, opts ...pulumi.ResourceOption) (*ZeroTrustDeviceSettings, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ZeroTrustDeviceSettingsArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustDeviceSettings
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings", name, args, &resource, opts...)
@@ -155,7 +155,7 @@ func (ZeroTrustDeviceSettingsState) ElementType() reflect.Type {
 }
 
 type zeroTrustDeviceSettingsArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
 	DisableForTime *float64 `pulumi:"disableForTime"`
 	// Controls whether the external emergency disconnect feature is enabled.
@@ -178,7 +178,7 @@ type zeroTrustDeviceSettingsArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDeviceSettings resource.
 type ZeroTrustDeviceSettingsArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
 	DisableForTime pulumi.Float64PtrInput
 	// Controls whether the external emergency disconnect feature is enabled.
@@ -286,8 +286,8 @@ func (o ZeroTrustDeviceSettingsOutput) ToZeroTrustDeviceSettingsOutputWithContex
 	return o
 }
 
-func (o ZeroTrustDeviceSettingsOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustDeviceSettingsOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceSettings) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Sets the time limit, in seconds, that a user can use an override code to bypass WARP.

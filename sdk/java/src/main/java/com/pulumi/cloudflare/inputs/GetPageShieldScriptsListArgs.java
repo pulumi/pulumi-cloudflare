@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -173,19 +172,11 @@ public final class GetPageShieldScriptsListArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.urls);
     }
 
-    /**
-     * Identifier
-     * 
-     */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
-    /**
-     * @return Identifier
-     * 
-     */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetPageShieldScriptsListArgs() {}
@@ -432,31 +423,16 @@ public final class GetPageShieldScriptsListArgs extends com.pulumi.resources.Inv
             return urls(Output.of(urls));
         }
 
-        /**
-         * @param zoneId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
-        /**
-         * @param zoneId Identifier
-         * 
-         * @return builder
-         * 
-         */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
         }
 
         public GetPageShieldScriptsListArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetPageShieldScriptsListArgs", "zoneId");
-            }
             return $;
         }
     }

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetAccountTokens
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Tokens Read`
+        /// - `Account API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetAccountTokensResult> InvokeAsync(GetAccountTokensArgs args, InvokeOptions? options = null)
+        public static Task<GetAccountTokensResult> InvokeAsync(GetAccountTokensArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountTokensResult>("cloudflare:index/getAccountTokens:getAccountTokens", args ?? new GetAccountTokensArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Tokens Read`
+        /// - `Account API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAccountTokensResult> Invoke(GetAccountTokensInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetAccountTokensResult> Invoke(GetAccountTokensInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountTokensResult>("cloudflare:index/getAccountTokens:getAccountTokens", args ?? new GetAccountTokensInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Tokens Read`
+        /// - `Account API Tokens Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Direction to order results.
@@ -114,8 +129,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Direction to order results.
@@ -143,7 +158,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Direction to order results.
         /// Available values: "asc", "desc".
@@ -164,7 +179,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetAccountTokensResult(
-            string accountId,
+            string? accountId,
 
             string? direction,
 

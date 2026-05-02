@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Domain Page Shield`
+// - `Domain Page Shield Read`
+// - `Page Shield`
+// - `Page Shield Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetPageShieldScriptsList(ctx, &cloudflare.LookupPageShieldScriptsListArgs{
-//				ZoneId:              "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:              pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction:           pulumi.StringRef("asc"),
 //				ExcludeUrls:         pulumi.StringRef("blog.cloudflare.com,www.example"),
 //				Export:              pulumi.StringRef("csv"),
@@ -83,8 +92,7 @@ type LookupPageShieldScriptsListArgs struct {
 	PrioritizeMalicious *bool    `pulumi:"prioritizeMalicious"`
 	Status              *string  `pulumi:"status"`
 	Urls                *string  `pulumi:"urls"`
-	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId              *string  `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getPageShieldScriptsList.
@@ -116,8 +124,7 @@ type LookupPageShieldScriptsListResult struct {
 	Results             []GetPageShieldScriptsListResult `pulumi:"results"`
 	Status              *string                          `pulumi:"status"`
 	Urls                *string                          `pulumi:"urls"`
-	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId              *string                          `pulumi:"zoneId"`
 }
 
 func LookupPageShieldScriptsListOutput(ctx *pulumi.Context, args LookupPageShieldScriptsListOutputArgs, opts ...pulumi.InvokeOption) LookupPageShieldScriptsListResultOutput {
@@ -155,8 +162,7 @@ type LookupPageShieldScriptsListOutputArgs struct {
 	PrioritizeMalicious pulumi.BoolPtrInput    `pulumi:"prioritizeMalicious"`
 	Status              pulumi.StringPtrInput  `pulumi:"status"`
 	Urls                pulumi.StringPtrInput  `pulumi:"urls"`
-	// Identifier
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId              pulumi.StringPtrInput  `pulumi:"zoneId"`
 }
 
 func (LookupPageShieldScriptsListOutputArgs) ElementType() reflect.Type {
@@ -253,9 +259,8 @@ func (o LookupPageShieldScriptsListResultOutput) Urls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldScriptsListResult) *string { return v.Urls }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
-func (o LookupPageShieldScriptsListResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPageShieldScriptsListResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupPageShieldScriptsListResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPageShieldScriptsListResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

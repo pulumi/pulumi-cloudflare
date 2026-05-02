@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,10 +17,22 @@ import * as utilities from "./utilities";
  *     accountId: "a86a8f5c339544d7bdc89926de14fb8c",
  *     zeroTrustAccessAiControlsMcpServerId: "my-mcp-server",
  *     authType: "unauthenticated",
- *     hostname: "https://exmaple.com/mcp",
+ *     hostname: "https://example.com/mcp",
  *     name: "My MCP Server",
  *     authCredentials: "auth_credentials",
  *     description: "This is one remote mcp server",
+ *     updatedPrompts: [{
+ *         name: "name",
+ *         alias: "my-custom-alias",
+ *         description: "description",
+ *         enabled: true,
+ *     }],
+ *     updatedTools: [{
+ *         name: "name",
+ *         alias: "my-custom-alias",
+ *         description: "description",
+ *         enabled: true,
+ *     }],
  * });
  * ```
  *
@@ -56,7 +70,7 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustAccessAiControlsMcpServer.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public readonly authCredentials: pulumi.Output<string | undefined>;
     /**
      * Available values: "oauth", "bearer", "unauthenticated".
@@ -75,6 +89,8 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
     declare public /*out*/ readonly prompts: pulumi.Output<{[key: string]: string}[]>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public /*out*/ readonly tools: pulumi.Output<{[key: string]: string}[]>;
+    declare public readonly updatedPrompts: pulumi.Output<outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt[] | undefined>;
+    declare public readonly updatedTools: pulumi.Output<outputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool[] | undefined>;
     /**
      * server id
      */
@@ -109,12 +125,11 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
             resourceInputs["prompts"] = state?.prompts;
             resourceInputs["status"] = state?.status;
             resourceInputs["tools"] = state?.tools;
+            resourceInputs["updatedPrompts"] = state?.updatedPrompts;
+            resourceInputs["updatedTools"] = state?.updatedTools;
             resourceInputs["zeroTrustAccessAiControlsMcpServerId"] = state?.zeroTrustAccessAiControlsMcpServerId;
         } else {
             const args = argsOrState as ZeroTrustAccessAiControlsMcpServerArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.authType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authType'");
             }
@@ -128,11 +143,13 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zeroTrustAccessAiControlsMcpServerId'");
             }
             resourceInputs["accountId"] = args?.accountId;
-            resourceInputs["authCredentials"] = args?.authCredentials;
+            resourceInputs["authCredentials"] = args?.authCredentials ? pulumi.secret(args.authCredentials) : undefined;
             resourceInputs["authType"] = args?.authType;
             resourceInputs["description"] = args?.description;
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["name"] = args?.name;
+            resourceInputs["updatedPrompts"] = args?.updatedPrompts;
+            resourceInputs["updatedTools"] = args?.updatedTools;
             resourceInputs["zeroTrustAccessAiControlsMcpServerId"] = args?.zeroTrustAccessAiControlsMcpServerId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
@@ -146,6 +163,8 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
             resourceInputs["tools"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["authCredentials"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ZeroTrustAccessAiControlsMcpServer.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -173,6 +192,8 @@ export interface ZeroTrustAccessAiControlsMcpServerState {
     prompts?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     status?: pulumi.Input<string>;
     tools?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    updatedPrompts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>[]>;
+    updatedTools?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool>[]>;
     /**
      * server id
      */
@@ -183,7 +204,7 @@ export interface ZeroTrustAccessAiControlsMcpServerState {
  * The set of arguments for constructing a ZeroTrustAccessAiControlsMcpServer resource.
  */
 export interface ZeroTrustAccessAiControlsMcpServerArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     authCredentials?: pulumi.Input<string>;
     /**
      * Available values: "oauth", "bearer", "unauthenticated".
@@ -192,6 +213,8 @@ export interface ZeroTrustAccessAiControlsMcpServerArgs {
     description?: pulumi.Input<string>;
     hostname: pulumi.Input<string>;
     name: pulumi.Input<string>;
+    updatedPrompts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>[]>;
+    updatedTools?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool>[]>;
     /**
      * server id
      */

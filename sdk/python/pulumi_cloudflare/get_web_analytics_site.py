@@ -65,7 +65,7 @@ class GetWebAnalyticsSiteResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -167,6 +167,10 @@ def get_web_analytics_site(account_id: Optional[_builtins.str] = None,
                            site_id: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWebAnalyticsSiteResult:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+
     ## Example Usage
 
     ```python
@@ -200,11 +204,15 @@ def get_web_analytics_site(account_id: Optional[_builtins.str] = None,
         site_tag=pulumi.get(__ret__, 'site_tag'),
         site_token=pulumi.get(__ret__, 'site_token'),
         snippet=pulumi.get(__ret__, 'snippet'))
-def get_web_analytics_site_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_web_analytics_site_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   filter: Optional[pulumi.Input[Optional[Union['GetWebAnalyticsSiteFilterArgs', 'GetWebAnalyticsSiteFilterArgsDict']]]] = None,
                                   site_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebAnalyticsSiteResult]:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+
     ## Example Usage
 
     ```python

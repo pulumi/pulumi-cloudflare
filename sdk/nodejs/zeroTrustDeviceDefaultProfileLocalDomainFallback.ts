@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript

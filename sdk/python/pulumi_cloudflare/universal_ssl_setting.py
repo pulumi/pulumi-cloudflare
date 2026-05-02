@@ -107,6 +107,11 @@ class UniversalSslSetting(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         ## Example Usage
 
         ```python
@@ -137,6 +142,11 @@ class UniversalSslSetting(pulumi.CustomResource):
                  args: UniversalSslSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         ## Example Usage
 
         ```python

@@ -16,6 +16,11 @@ public final class WorkerScriptLimits {
      * 
      */
     private @Nullable Integer cpuMs;
+    /**
+     * @return The number of subrequests this Worker can make per request.
+     * 
+     */
+    private @Nullable Integer subrequests;
 
     private WorkerScriptLimits() {}
     /**
@@ -24,6 +29,13 @@ public final class WorkerScriptLimits {
      */
     public Optional<Integer> cpuMs() {
         return Optional.ofNullable(this.cpuMs);
+    }
+    /**
+     * @return The number of subrequests this Worker can make per request.
+     * 
+     */
+    public Optional<Integer> subrequests() {
+        return Optional.ofNullable(this.subrequests);
     }
 
     public static Builder builder() {
@@ -36,10 +48,12 @@ public final class WorkerScriptLimits {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer cpuMs;
+        private @Nullable Integer subrequests;
         public Builder() {}
         public Builder(WorkerScriptLimits defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuMs = defaults.cpuMs;
+    	      this.subrequests = defaults.subrequests;
         }
 
         @CustomType.Setter
@@ -48,9 +62,16 @@ public final class WorkerScriptLimits {
             this.cpuMs = cpuMs;
             return this;
         }
+        @CustomType.Setter
+        public Builder subrequests(@Nullable Integer subrequests) {
+
+            this.subrequests = subrequests;
+            return this;
+        }
         public WorkerScriptLimits build() {
             final var _resultValue = new WorkerScriptLimits();
             _resultValue.cpuMs = cpuMs;
+            _resultValue.subrequests = subrequests;
             return _resultValue;
         }
     }

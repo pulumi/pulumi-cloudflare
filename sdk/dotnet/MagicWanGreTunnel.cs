@@ -106,7 +106,7 @@ namespace Pulumi.Cloudflare
         /// An optional description of the GRE tunnel.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         [Output("healthCheck")]
         public Output<Outputs.MagicWanGreTunnelHealthCheck> HealthCheck { get; private set; } = null!;

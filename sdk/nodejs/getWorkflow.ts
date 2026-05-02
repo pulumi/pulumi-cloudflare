@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getWorkflow(args: GetWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowResult> {
+export function getWorkflow(args?: GetWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkflow:getWorkflow", {
         "accountId": args.accountId,
@@ -32,7 +39,7 @@ export function getWorkflow(args: GetWorkflowArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getWorkflow.
  */
 export interface GetWorkflowArgs {
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetWorkflowFilter;
     workflowName?: string;
 }
@@ -41,7 +48,7 @@ export interface GetWorkflowArgs {
  * A collection of values returned by getWorkflow.
  */
 export interface GetWorkflowResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly className: string;
     readonly createdOn: string;
     readonly filter?: outputs.GetWorkflowFilter;
@@ -57,6 +64,12 @@ export interface GetWorkflowResult {
     readonly workflowName?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -69,7 +82,8 @@ export interface GetWorkflowResult {
  * });
  * ```
  */
-export function getWorkflowOutput(args: GetWorkflowOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkflowResult> {
+export function getWorkflowOutput(args?: GetWorkflowOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkflowResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkflow:getWorkflow", {
         "accountId": args.accountId,
@@ -82,7 +96,7 @@ export function getWorkflowOutput(args: GetWorkflowOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getWorkflow.
  */
 export interface GetWorkflowOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetWorkflowFilterArgs>;
     workflowName?: pulumi.Input<string>;
 }

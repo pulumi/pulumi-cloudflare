@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetZeroTrustAccessPolicyIncludeOktaResult Okta;
         public readonly Outputs.GetZeroTrustAccessPolicyIncludeSamlResult Saml;
         public readonly Outputs.GetZeroTrustAccessPolicyIncludeServiceTokenResult ServiceToken;
+        public readonly Outputs.GetZeroTrustAccessPolicyIncludeUserRiskScoreResult UserRiskScore;
 
         [OutputConstructor]
         private GetZeroTrustAccessPolicyIncludeResult(
@@ -92,7 +93,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.GetZeroTrustAccessPolicyIncludeSamlResult saml,
 
-            Outputs.GetZeroTrustAccessPolicyIncludeServiceTokenResult serviceToken)
+            Outputs.GetZeroTrustAccessPolicyIncludeServiceTokenResult serviceToken,
+
+            Outputs.GetZeroTrustAccessPolicyIncludeUserRiskScoreResult userRiskScore)
         {
             AnyValidServiceToken = anyValidServiceToken;
             AuthContext = authContext;
@@ -118,6 +121,7 @@ namespace Pulumi.Cloudflare.Outputs
             Okta = okta;
             Saml = saml;
             ServiceToken = serviceToken;
+            UserRiskScore = userRiskScore;
         }
     }
 }

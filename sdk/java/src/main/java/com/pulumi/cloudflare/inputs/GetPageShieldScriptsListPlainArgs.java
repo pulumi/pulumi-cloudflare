@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -172,19 +171,11 @@ public final class GetPageShieldScriptsListPlainArgs extends com.pulumi.resource
         return Optional.ofNullable(this.urls);
     }
 
-    /**
-     * Identifier
-     * 
-     */
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
-    /**
-     * @return Identifier
-     * 
-     */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetPageShieldScriptsListPlainArgs() {}
@@ -335,21 +326,12 @@ public final class GetPageShieldScriptsListPlainArgs extends com.pulumi.resource
             return this;
         }
 
-        /**
-         * @param zoneId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
         public GetPageShieldScriptsListPlainArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetPageShieldScriptsListPlainArgs", "zoneId");
-            }
             return $;
         }
     }

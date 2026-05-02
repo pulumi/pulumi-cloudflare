@@ -20,15 +20,15 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
      * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -125,7 +125,7 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -225,9 +225,6 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WorkersKvArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("WorkersKvArgs", "accountId");
-            }
             if ($.keyName == null) {
                 throw new MissingRequiredPropertyException("WorkersKvArgs", "keyName");
             }

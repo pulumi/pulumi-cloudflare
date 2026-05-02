@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: cloudflared Write`
+ * - `Cloudflare One Connectors Write`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +38,7 @@ export interface GetZeroTrustTunnelCloudflaredTokenArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: string;
+    accountId?: string;
     /**
      * UUID of the tunnel.
      */
@@ -46,7 +52,7 @@ export interface GetZeroTrustTunnelCloudflaredTokenResult {
     /**
      * Cloudflare account ID
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -61,6 +67,12 @@ export interface GetZeroTrustTunnelCloudflaredTokenResult {
     readonly tunnelId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: cloudflared Write`
+ * - `Cloudflare One Connectors Write`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -88,7 +100,7 @@ export interface GetZeroTrustTunnelCloudflaredTokenOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * UUID of the tunnel.
      */

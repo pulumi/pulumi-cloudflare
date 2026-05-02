@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Workers Scripts Read`
+    /// - `Workers Scripts Write`
+    /// - `Workers Tail Read`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -31,9 +37,24 @@ namespace Pulumi.Cloudflare
     ///             HeadSamplingRate = 1,
     ///             Logs = new Cloudflare.Inputs.WorkerObservabilityLogsArgs
     ///             {
+    ///                 Destinations = new[]
+    ///                 {
+    ///                     "string",
+    ///                 },
     ///                 Enabled = true,
     ///                 HeadSamplingRate = 1,
     ///                 InvocationLogs = true,
+    ///                 Persist = true,
+    ///             },
+    ///             Traces = new Cloudflare.Inputs.WorkerObservabilityTracesArgs
+    ///             {
+    ///                 Destinations = new[]
+    ///                 {
+    ///                     "string",
+    ///                 },
+    ///                 Enabled = true,
+    ///                 HeadSamplingRate = 1,
+    ///                 Persist = true,
     ///             },
     ///         },
     ///         Subdomain = new Cloudflare.Inputs.WorkerSubdomainArgs
@@ -71,13 +92,19 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// When the Worker was created.
         /// </summary>
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// When the Worker's most recent deployment was created. `Null` if the Worker has never been deployed.
+        /// </summary>
+        [Output("deployedOn")]
+        public Output<string> DeployedOn { get; private set; } = null!;
 
         /// <summary>
         /// Whether logpush is enabled for the Worker.
@@ -176,8 +203,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Whether logpush is enabled for the Worker.
@@ -246,6 +273,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
+        /// When the Worker's most recent deployment was created. `Null` if the Worker has never been deployed.
+        /// </summary>
+        [Input("deployedOn")]
+        public Input<string>? DeployedOn { get; set; }
 
         /// <summary>
         /// Whether logpush is enabled for the Worker.

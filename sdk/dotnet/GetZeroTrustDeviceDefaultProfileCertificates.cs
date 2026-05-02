@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustDeviceDefaultProfileCertificates
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustDeviceDefaultProfileCertificatesResult> InvokeAsync(GetZeroTrustDeviceDefaultProfileCertificatesArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustDeviceDefaultProfileCertificatesResult> InvokeAsync(GetZeroTrustDeviceDefaultProfileCertificatesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDeviceDefaultProfileCertificatesResult>("cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates", args ?? new GetZeroTrustDeviceDefaultProfileCertificatesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustDeviceDefaultProfileCertificatesResult> Invoke(GetZeroTrustDeviceDefaultProfileCertificatesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustDeviceDefaultProfileCertificatesResult> Invoke(GetZeroTrustDeviceDefaultProfileCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDeviceDefaultProfileCertificatesResult>("cloudflare:index/getZeroTrustDeviceDefaultProfileCertificates:getZeroTrustDeviceDefaultProfileCertificates", args ?? new GetZeroTrustDeviceDefaultProfileCertificatesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -81,8 +96,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDeviceDefaultProfileCertificatesArgs : global::Pulumi.InvokeArgs
     {
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetZeroTrustDeviceDefaultProfileCertificatesArgs()
         {
@@ -92,8 +107,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDeviceDefaultProfileCertificatesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetZeroTrustDeviceDefaultProfileCertificatesInvokeArgs()
         {
@@ -113,7 +128,7 @@ namespace Pulumi.Cloudflare
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetZeroTrustDeviceDefaultProfileCertificatesResult(
@@ -121,7 +136,7 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string zoneId)
+            string? zoneId)
         {
             Enabled = enabled;
             Id = id;

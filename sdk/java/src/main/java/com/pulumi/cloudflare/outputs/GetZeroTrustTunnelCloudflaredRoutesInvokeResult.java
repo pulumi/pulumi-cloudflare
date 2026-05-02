@@ -20,7 +20,7 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
      * @return Cloudflare account ID
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Optional remark describing the route.
      * 
@@ -87,8 +87,8 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
      * @return Cloudflare account ID
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Optional remark describing the route.
@@ -184,7 +184,7 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String comment;
         private @Nullable String existedAt;
         private String id;
@@ -216,10 +216,8 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredRoutesInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

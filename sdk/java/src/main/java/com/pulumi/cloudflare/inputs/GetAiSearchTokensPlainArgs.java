@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -16,11 +15,11 @@ public final class GetAiSearchTokensPlainArgs extends com.pulumi.resources.Invok
 
     public static final GetAiSearchTokensPlainArgs Empty = new GetAiSearchTokensPlainArgs();
 
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -38,11 +37,27 @@ public final class GetAiSearchTokensPlainArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.maxItems);
     }
 
+    /**
+     * Filter tokens whose name contains this string (case-insensitive).
+     * 
+     */
+    @Import(name="search")
+    private @Nullable String search;
+
+    /**
+     * @return Filter tokens whose name contains this string (case-insensitive).
+     * 
+     */
+    public Optional<String> search() {
+        return Optional.ofNullable(this.search);
+    }
+
     private GetAiSearchTokensPlainArgs() {}
 
     private GetAiSearchTokensPlainArgs(GetAiSearchTokensPlainArgs $) {
         this.accountId = $.accountId;
         this.maxItems = $.maxItems;
+        this.search = $.search;
     }
 
     public static Builder builder() {
@@ -63,7 +78,7 @@ public final class GetAiSearchTokensPlainArgs extends com.pulumi.resources.Invok
             $ = new GetAiSearchTokensPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -79,10 +94,18 @@ public final class GetAiSearchTokensPlainArgs extends com.pulumi.resources.Invok
             return this;
         }
 
+        /**
+         * @param search Filter tokens whose name contains this string (case-insensitive).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder search(@Nullable String search) {
+            $.search = search;
+            return this;
+        }
+
         public GetAiSearchTokensPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetAiSearchTokensPlainArgs", "accountId");
-            }
             return $;
         }
     }

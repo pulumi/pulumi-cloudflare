@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetWorkerVersionAnnotationsResult
     {
         /// <summary>
-        /// Human-readable message about the version.
+        /// Human-readable message about the version. Truncated to 1000 bytes if longer.
         /// </summary>
         public readonly string WorkersMessage;
         /// <summary>
-        /// User-provided identifier for the version.
+        /// User-provided identifier for the version. Maximum 100 bytes.
         /// </summary>
         public readonly string WorkersTag;
         /// <summary>

@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetQueues
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Queues Read`
+        /// - `Queues Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +37,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetQueuesResult> InvokeAsync(GetQueuesArgs args, InvokeOptions? options = null)
+        public static Task<GetQueuesResult> InvokeAsync(GetQueuesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQueuesResult>("cloudflare:index/getQueues:getQueues", args ?? new GetQueuesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Queues Read`
+        /// - `Queues Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +66,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetQueuesResult> Invoke(GetQueuesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetQueuesResult> Invoke(GetQueuesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQueuesResult>("cloudflare:index/getQueues:getQueues", args ?? new GetQueuesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Queues Read`
+        /// - `Queues Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -104,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -126,7 +147,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -142,7 +163,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetQueuesResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

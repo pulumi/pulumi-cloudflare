@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustGatewayPacfile
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustGatewayPacfileResult>("cloudflare:index/getZeroTrustGatewayPacfile:getZeroTrustGatewayPacfile", args ?? new GetZeroTrustGatewayPacfileArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustGatewayPacfileResult>("cloudflare:index/getZeroTrustGatewayPacfile:getZeroTrustGatewayPacfile", args ?? new GetZeroTrustGatewayPacfileInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayPacfileArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("pacfileId", required: true)]
         public string PacfileId { get; set; } = null!;
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayPacfileInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("pacfileId", required: true)]
         public Input<string> PacfileId { get; set; } = null!;
@@ -114,7 +129,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustGatewayPacfileResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Actual contents of the PAC file
         /// </summary>
@@ -145,7 +160,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustGatewayPacfileResult(
-            string accountId,
+            string? accountId,
 
             string contents,
 

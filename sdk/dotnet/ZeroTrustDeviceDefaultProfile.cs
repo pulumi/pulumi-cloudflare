@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Zero Trust Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -158,6 +162,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("lanAllowSubnetSize")]
         public Output<double?> LanAllowSubnetSize { get; private set; } = null!;
+
+        [Output("policyId")]
+        public Output<string> PolicyId { get; private set; } = null!;
 
         /// <summary>
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
@@ -468,6 +475,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("lanAllowSubnetSize")]
         public Input<double>? LanAllowSubnetSize { get; set; }
+
+        [Input("policyId")]
+        public Input<string>? PolicyId { get; set; }
 
         /// <summary>
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.

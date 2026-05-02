@@ -12,6 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("contentSelectors")]
+        private InputList<Inputs.AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs>? _contentSelectors;
+
+        /// <summary>
+        /// List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+        /// </summary>
+        public InputList<Inputs.AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs> ContentSelectors
+        {
+            get => _contentSelectors ?? (_contentSelectors = new InputList<Inputs.AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs>());
+            set => _contentSelectors = value;
+        }
+
         [Input("includeHeaders")]
         private InputMap<string>? _includeHeaders;
         public InputMap<string> IncludeHeaders

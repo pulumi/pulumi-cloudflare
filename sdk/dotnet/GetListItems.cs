@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetListItems
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Filter Lists Edit`
+        /// - `Account Filter Lists Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -37,6 +42,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetListItemsResult>("cloudflare:index/getListItems:getListItems", args ?? new GetListItemsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Filter Lists Edit`
+        /// - `Account Filter Lists Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -62,6 +72,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetListItemsResult>("cloudflare:index/getListItems:getListItems", args ?? new GetListItemsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Filter Lists Edit`
+        /// - `Account Filter Lists Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Account ID for this resource.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// The unique ID of the list.
@@ -131,8 +146,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Account ID for this resource.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The unique ID of the list.
@@ -171,7 +186,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Account ID for this resource.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -199,7 +214,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetListItemsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

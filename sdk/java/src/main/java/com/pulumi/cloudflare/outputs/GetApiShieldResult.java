@@ -30,7 +30,7 @@ public final class GetApiShieldResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetApiShieldResult() {}
     public List<GetApiShieldAuthIdCharacteristic> authIdCharacteristics() {
@@ -54,8 +54,8 @@ public final class GetApiShieldResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -70,7 +70,7 @@ public final class GetApiShieldResult {
         private List<GetApiShieldAuthIdCharacteristic> authIdCharacteristics;
         private String id;
         private @Nullable Boolean normalize;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetApiShieldResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -106,10 +106,8 @@ public final class GetApiShieldResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetApiShieldResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

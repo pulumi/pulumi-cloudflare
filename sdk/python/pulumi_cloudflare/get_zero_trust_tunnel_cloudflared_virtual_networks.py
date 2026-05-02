@@ -55,7 +55,7 @@ class GetZeroTrustTunnelCloudflaredVirtualNetworksResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Cloudflare account ID
         """
@@ -143,6 +143,13 @@ def get_zero_trust_tunnel_cloudflared_virtual_networks(account_id: Optional[_bui
                                                        name: Optional[_builtins.str] = None,
                                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustTunnelCloudflaredVirtualNetworksResult:
     """
+    Accepted Permissions
+
+    - `Cloudflare One Networks Read`
+    - `Cloudflare One Networks Write`
+    - `Cloudflare Tunnel Read`
+    - `Cloudflare Tunnel Write`
+
     ## Example Usage
 
     ```python
@@ -186,7 +193,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_networks(account_id: Optional[_bui
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
         results=pulumi.get(__ret__, 'results'))
-def get_zero_trust_tunnel_cloudflared_virtual_networks_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_tunnel_cloudflared_virtual_networks_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                               id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                               is_default: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                                               is_default_network: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
@@ -195,6 +202,13 @@ def get_zero_trust_tunnel_cloudflared_virtual_networks_output(account_id: Option
                                                               name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredVirtualNetworksResult]:
     """
+    Accepted Permissions
+
+    - `Cloudflare One Networks Read`
+    - `Cloudflare One Networks Write`
+    - `Cloudflare Tunnel Read`
+    - `Cloudflare Tunnel Write`
+
     ## Example Usage
 
     ```python

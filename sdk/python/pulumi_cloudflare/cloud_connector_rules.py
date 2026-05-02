@@ -101,6 +101,11 @@ class CloudConnectorRules(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Cloud Connector Read`
+        - `Cloud Connector Write`
+
         ## Example Usage
 
         ```python
@@ -139,6 +144,11 @@ class CloudConnectorRules(pulumi.CustomResource):
                  args: CloudConnectorRulesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Cloud Connector Read`
+        - `Cloud Connector Write`
+
         ## Example Usage
 
         ```python

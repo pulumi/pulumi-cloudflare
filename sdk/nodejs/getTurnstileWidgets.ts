@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Turnstile Sites Read`
+ * - `Turnstile Sites Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -21,7 +28,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getTurnstileWidgets(args: GetTurnstileWidgetsArgs, opts?: pulumi.InvokeOptions): Promise<GetTurnstileWidgetsResult> {
+export function getTurnstileWidgets(args?: GetTurnstileWidgetsArgs, opts?: pulumi.InvokeOptions): Promise<GetTurnstileWidgetsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getTurnstileWidgets:getTurnstileWidgets", {
         "accountId": args.accountId,
@@ -39,7 +47,7 @@ export interface GetTurnstileWidgetsArgs {
     /**
      * Identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Direction to order widgets.
      * Available values: "asc", "desc".
@@ -61,7 +69,7 @@ export interface GetTurnstileWidgetsResult {
     /**
      * Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Direction to order widgets.
      * Available values: "asc", "desc".
@@ -81,6 +89,13 @@ export interface GetTurnstileWidgetsResult {
     readonly results: outputs.GetTurnstileWidgetsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Turnstile Sites Read`
+ * - `Turnstile Sites Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -95,7 +110,8 @@ export interface GetTurnstileWidgetsResult {
  * });
  * ```
  */
-export function getTurnstileWidgetsOutput(args: GetTurnstileWidgetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTurnstileWidgetsResult> {
+export function getTurnstileWidgetsOutput(args?: GetTurnstileWidgetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTurnstileWidgetsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getTurnstileWidgets:getTurnstileWidgets", {
         "accountId": args.accountId,
@@ -113,7 +129,7 @@ export interface GetTurnstileWidgetsOutputArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Direction to order widgets.
      * Available values: "asc", "desc".

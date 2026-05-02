@@ -325,6 +325,7 @@ class _ZeroTrustDeviceDefaultProfileState:
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]] = None,
                  lan_allow_minutes: Optional[pulumi.Input[_builtins.float]] = None,
                  lan_allow_subnet_size: Optional[pulumi.Input[_builtins.float]] = None,
+                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  register_interface_ip_with_dns: Optional[pulumi.Input[_builtins.bool]] = None,
                  sccm_vpn_boundary_support: Optional[pulumi.Input[_builtins.bool]] = None,
                  service_mode_v2: Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']] = None,
@@ -385,6 +386,8 @@ class _ZeroTrustDeviceDefaultProfileState:
             pulumi.set(__self__, "lan_allow_minutes", lan_allow_minutes)
         if lan_allow_subnet_size is not None:
             pulumi.set(__self__, "lan_allow_subnet_size", lan_allow_subnet_size)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
         if register_interface_ip_with_dns is not None:
             pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
         if sccm_vpn_boundary_support is not None:
@@ -582,6 +585,15 @@ class _ZeroTrustDeviceDefaultProfileState:
         pulumi.set(self, "lan_allow_subnet_size", value)
 
     @_builtins.property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="registerInterfaceIpWithDns")
     def register_interface_ip_with_dns(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -677,6 +689,10 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  tunnel_protocol: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -746,6 +762,10 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  args: ZeroTrustDeviceDefaultProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -855,6 +875,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             __props__.__dict__["enabled"] = None
             __props__.__dict__["fallback_domains"] = None
             __props__.__dict__["gateway_unique_id"] = None
+            __props__.__dict__["policy_id"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy"), pulumi.Alias(type_="cloudflare:index/splitTunnel:SplitTunnel")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustDeviceDefaultProfile, __self__).__init__(
@@ -883,6 +904,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]]] = None,
             lan_allow_minutes: Optional[pulumi.Input[_builtins.float]] = None,
             lan_allow_subnet_size: Optional[pulumi.Input[_builtins.float]] = None,
+            policy_id: Optional[pulumi.Input[_builtins.str]] = None,
             register_interface_ip_with_dns: Optional[pulumi.Input[_builtins.bool]] = None,
             sccm_vpn_boundary_support: Optional[pulumi.Input[_builtins.bool]] = None,
             service_mode_v2: Optional[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
@@ -935,6 +957,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         __props__.__dict__["includes"] = includes
         __props__.__dict__["lan_allow_minutes"] = lan_allow_minutes
         __props__.__dict__["lan_allow_subnet_size"] = lan_allow_subnet_size
+        __props__.__dict__["policy_id"] = policy_id
         __props__.__dict__["register_interface_ip_with_dns"] = register_interface_ip_with_dns
         __props__.__dict__["sccm_vpn_boundary_support"] = sccm_vpn_boundary_support
         __props__.__dict__["service_mode_v2"] = service_mode_v2
@@ -1061,6 +1084,11 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
         """
         return pulumi.get(self, "lan_allow_subnet_size")
+
+    @_builtins.property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "policy_id")
 
     @_builtins.property
     @pulumi.getter(name="registerInterfaceIpWithDns")

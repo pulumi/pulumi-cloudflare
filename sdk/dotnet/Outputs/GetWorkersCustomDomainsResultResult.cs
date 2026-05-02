@@ -14,32 +14,38 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetWorkersCustomDomainsResultResult
     {
         /// <summary>
-        /// Worker environment associated with the zone and hostname.
+        /// ID of the TLS certificate issued for the domain.
+        /// </summary>
+        public readonly string CertId;
+        /// <summary>
+        /// Worker environment associated with the domain.
         /// </summary>
         public readonly string Environment;
         /// <summary>
-        /// Hostname of the Worker Domain.
+        /// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// Identifer of the Worker Domain.
+        /// Immutable ID of the domain.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Worker service associated with the zone and hostname.
+        /// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
         /// </summary>
         public readonly string Service;
         /// <summary>
-        /// Identifier of the zone.
+        /// ID of the zone containing the domain hostname.
         /// </summary>
         public readonly string ZoneId;
         /// <summary>
-        /// Name of the zone.
+        /// Name of the zone containing the domain hostname.
         /// </summary>
         public readonly string ZoneName;
 
         [OutputConstructor]
         private GetWorkersCustomDomainsResultResult(
+            string certId,
+
             string environment,
 
             string hostname,
@@ -52,6 +58,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string zoneName)
         {
+            CertId = certId;
             Environment = environment;
             Hostname = hostname;
             Id = id;

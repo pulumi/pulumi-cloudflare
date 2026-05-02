@@ -65,6 +65,21 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flattenCname setting.
+     * 
+     */
+    @Import(name="flattenCname")
+    private @Nullable Output<Boolean> flattenCname;
+
+    /**
+     * @return Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flattenCname setting.
+     * 
+     */
+    public Optional<Output<Boolean>> flattenCname() {
+        return Optional.ofNullable(this.flattenCname);
+    }
+
+    /**
      * The request header is used to pass additional information with an HTTP request. Currently supported header is &#39;Host&#39;.
      * 
      */
@@ -145,6 +160,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         this.address = $.address;
         this.disabledAt = $.disabledAt;
         this.enabled = $.enabled;
+        this.flattenCname = $.flattenCname;
         this.header = $.header;
         this.name = $.name;
         this.port = $.port;
@@ -231,6 +247,27 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param flattenCname Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flattenCname setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flattenCname(@Nullable Output<Boolean> flattenCname) {
+            $.flattenCname = flattenCname;
+            return this;
+        }
+
+        /**
+         * @param flattenCname Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flattenCname setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flattenCname(Boolean flattenCname) {
+            return flattenCname(Output.of(flattenCname));
         }
 
         /**

@@ -28,7 +28,7 @@ class GetAiSearchInstanceResult:
     """
     A collection of values returned by getAiSearchInstance.
     """
-    def __init__(__self__, account_id=None, ai_gateway_id=None, aisearch_model=None, cache=None, cache_threshold=None, chunk_overlap=None, chunk_size=None, created_at=None, created_by=None, custom_metadatas=None, embedding_model=None, enable=None, filter=None, fusion_method=None, hybrid_search_enabled=None, id=None, last_activity=None, max_num_results=None, metadata=None, modified_at=None, modified_by=None, paused=None, public_endpoint_id=None, public_endpoint_params=None, reranking=None, reranking_model=None, retrieval_options=None, rewrite_model=None, rewrite_query=None, score_threshold=None, source=None, source_params=None, status=None, token_id=None, type=None, vectorize_name=None):
+    def __init__(__self__, account_id=None, ai_gateway_id=None, aisearch_model=None, cache=None, cache_threshold=None, chunk_overlap=None, chunk_size=None, created_at=None, created_by=None, custom_metadatas=None, embedding_model=None, enable=None, engine_version=None, filter=None, fusion_method=None, hybrid_search_enabled=None, id=None, index_method=None, indexing_options=None, last_activity=None, max_num_results=None, metadata=None, modified_at=None, modified_by=None, namespace=None, paused=None, public_endpoint_id=None, public_endpoint_params=None, reranking=None, reranking_model=None, retrieval_options=None, rewrite_model=None, rewrite_query=None, score_threshold=None, source=None, source_params=None, status=None, sync_interval=None, token_id=None, type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -65,6 +65,9 @@ class GetAiSearchInstanceResult:
         if enable and not isinstance(enable, bool):
             raise TypeError("Expected argument 'enable' to be a bool")
         pulumi.set(__self__, "enable", enable)
+        if engine_version and not isinstance(engine_version, float):
+            raise TypeError("Expected argument 'engine_version' to be a float")
+        pulumi.set(__self__, "engine_version", engine_version)
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
@@ -77,6 +80,12 @@ class GetAiSearchInstanceResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if index_method and not isinstance(index_method, dict):
+            raise TypeError("Expected argument 'index_method' to be a dict")
+        pulumi.set(__self__, "index_method", index_method)
+        if indexing_options and not isinstance(indexing_options, dict):
+            raise TypeError("Expected argument 'indexing_options' to be a dict")
+        pulumi.set(__self__, "indexing_options", indexing_options)
         if last_activity and not isinstance(last_activity, str):
             raise TypeError("Expected argument 'last_activity' to be a str")
         pulumi.set(__self__, "last_activity", last_activity)
@@ -92,6 +101,9 @@ class GetAiSearchInstanceResult:
         if modified_by and not isinstance(modified_by, str):
             raise TypeError("Expected argument 'modified_by' to be a str")
         pulumi.set(__self__, "modified_by", modified_by)
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        pulumi.set(__self__, "namespace", namespace)
         if paused and not isinstance(paused, bool):
             raise TypeError("Expected argument 'paused' to be a bool")
         pulumi.set(__self__, "paused", paused)
@@ -128,19 +140,19 @@ class GetAiSearchInstanceResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if sync_interval and not isinstance(sync_interval, float):
+            raise TypeError("Expected argument 'sync_interval' to be a float")
+        pulumi.set(__self__, "sync_interval", sync_interval)
         if token_id and not isinstance(token_id, str):
             raise TypeError("Expected argument 'token_id' to be a str")
         pulumi.set(__self__, "token_id", token_id)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
-        if vectorize_name and not isinstance(vectorize_name, str):
-            raise TypeError("Expected argument 'vectorize_name' to be a str")
-        pulumi.set(__self__, "vectorize_name", vectorize_name)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -152,7 +164,7 @@ class GetAiSearchInstanceResult:
     @pulumi.getter(name="aisearchModel")
     def aisearch_model(self) -> _builtins.str:
         """
-        Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+        Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         """
         return pulumi.get(self, "aisearch_model")
 
@@ -198,7 +210,7 @@ class GetAiSearchInstanceResult:
     @pulumi.getter(name="embeddingModel")
     def embedding_model(self) -> _builtins.str:
         """
-        Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+        Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
         """
         return pulumi.get(self, "embedding_model")
 
@@ -206,6 +218,11 @@ class GetAiSearchInstanceResult:
     @pulumi.getter
     def enable(self) -> _builtins.bool:
         return pulumi.get(self, "enable")
+
+    @_builtins.property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> _builtins.float:
+        return pulumi.get(self, "engine_version")
 
     @_builtins.property
     @pulumi.getter
@@ -222,16 +239,33 @@ class GetAiSearchInstanceResult:
 
     @_builtins.property
     @pulumi.getter(name="hybridSearchEnabled")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def hybrid_search_enabled(self) -> _builtins.bool:
+        """
+        Deprecated — use index_method instead.
+        """
         return pulumi.get(self, "hybrid_search_enabled")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Use your AI Search ID.
+        AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="indexMethod")
+    def index_method(self) -> 'outputs.GetAiSearchInstanceIndexMethodResult':
+        """
+        Controls which storage backends are used during indexing. Defaults to vector-only.
+        """
+        return pulumi.get(self, "index_method")
+
+    @_builtins.property
+    @pulumi.getter(name="indexingOptions")
+    def indexing_options(self) -> 'outputs.GetAiSearchInstanceIndexingOptionsResult':
+        return pulumi.get(self, "indexing_options")
 
     @_builtins.property
     @pulumi.getter(name="lastActivity")
@@ -257,6 +291,11 @@ class GetAiSearchInstanceResult:
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> _builtins.str:
         return pulumi.get(self, "modified_by")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        return pulumi.get(self, "namespace")
 
     @_builtins.property
     @pulumi.getter
@@ -295,7 +334,7 @@ class GetAiSearchInstanceResult:
     @pulumi.getter(name="rewriteModel")
     def rewrite_model(self) -> _builtins.str:
         """
-        Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+        Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         """
         return pulumi.get(self, "rewrite_model")
 
@@ -325,6 +364,15 @@ class GetAiSearchInstanceResult:
         return pulumi.get(self, "status")
 
     @_builtins.property
+    @pulumi.getter(name="syncInterval")
+    def sync_interval(self) -> _builtins.float:
+        """
+        Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+        Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+        """
+        return pulumi.get(self, "sync_interval")
+
+    @_builtins.property
     @pulumi.getter(name="tokenId")
     def token_id(self) -> _builtins.str:
         return pulumi.get(self, "token_id")
@@ -336,11 +384,6 @@ class GetAiSearchInstanceResult:
         Available values: "r2", "web-crawler".
         """
         return pulumi.get(self, "type")
-
-    @_builtins.property
-    @pulumi.getter(name="vectorizeName")
-    def vectorize_name(self) -> _builtins.str:
-        return pulumi.get(self, "vectorize_name")
 
 
 class AwaitableGetAiSearchInstanceResult(GetAiSearchInstanceResult):
@@ -361,15 +404,19 @@ class AwaitableGetAiSearchInstanceResult(GetAiSearchInstanceResult):
             custom_metadatas=self.custom_metadatas,
             embedding_model=self.embedding_model,
             enable=self.enable,
+            engine_version=self.engine_version,
             filter=self.filter,
             fusion_method=self.fusion_method,
             hybrid_search_enabled=self.hybrid_search_enabled,
             id=self.id,
+            index_method=self.index_method,
+            indexing_options=self.indexing_options,
             last_activity=self.last_activity,
             max_num_results=self.max_num_results,
             metadata=self.metadata,
             modified_at=self.modified_at,
             modified_by=self.modified_by,
+            namespace=self.namespace,
             paused=self.paused,
             public_endpoint_id=self.public_endpoint_id,
             public_endpoint_params=self.public_endpoint_params,
@@ -382,9 +429,9 @@ class AwaitableGetAiSearchInstanceResult(GetAiSearchInstanceResult):
             source=self.source,
             source_params=self.source_params,
             status=self.status,
+            sync_interval=self.sync_interval,
             token_id=self.token_id,
-            type=self.type,
-            vectorize_name=self.vectorize_name)
+            type=self.type)
 
 
 def get_ai_search_instance(account_id: Optional[_builtins.str] = None,
@@ -394,7 +441,7 @@ def get_ai_search_instance(account_id: Optional[_builtins.str] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param _builtins.str id: Use your AI Search ID.
+    :param _builtins.str id: AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -416,15 +463,19 @@ def get_ai_search_instance(account_id: Optional[_builtins.str] = None,
         custom_metadatas=pulumi.get(__ret__, 'custom_metadatas'),
         embedding_model=pulumi.get(__ret__, 'embedding_model'),
         enable=pulumi.get(__ret__, 'enable'),
+        engine_version=pulumi.get(__ret__, 'engine_version'),
         filter=pulumi.get(__ret__, 'filter'),
         fusion_method=pulumi.get(__ret__, 'fusion_method'),
         hybrid_search_enabled=pulumi.get(__ret__, 'hybrid_search_enabled'),
         id=pulumi.get(__ret__, 'id'),
+        index_method=pulumi.get(__ret__, 'index_method'),
+        indexing_options=pulumi.get(__ret__, 'indexing_options'),
         last_activity=pulumi.get(__ret__, 'last_activity'),
         max_num_results=pulumi.get(__ret__, 'max_num_results'),
         metadata=pulumi.get(__ret__, 'metadata'),
         modified_at=pulumi.get(__ret__, 'modified_at'),
         modified_by=pulumi.get(__ret__, 'modified_by'),
+        namespace=pulumi.get(__ret__, 'namespace'),
         paused=pulumi.get(__ret__, 'paused'),
         public_endpoint_id=pulumi.get(__ret__, 'public_endpoint_id'),
         public_endpoint_params=pulumi.get(__ret__, 'public_endpoint_params'),
@@ -437,17 +488,17 @@ def get_ai_search_instance(account_id: Optional[_builtins.str] = None,
         source=pulumi.get(__ret__, 'source'),
         source_params=pulumi.get(__ret__, 'source_params'),
         status=pulumi.get(__ret__, 'status'),
+        sync_interval=pulumi.get(__ret__, 'sync_interval'),
         token_id=pulumi.get(__ret__, 'token_id'),
-        type=pulumi.get(__ret__, 'type'),
-        vectorize_name=pulumi.get(__ret__, 'vectorize_name'))
-def get_ai_search_instance_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+        type=pulumi.get(__ret__, 'type'))
+def get_ai_search_instance_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   filter: Optional[pulumi.Input[Optional[Union['GetAiSearchInstanceFilterArgs', 'GetAiSearchInstanceFilterArgsDict']]]] = None,
                                   id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchInstanceResult]:
     """
     Use this data source to access information about an existing resource.
 
-    :param _builtins.str id: Use your AI Search ID.
+    :param _builtins.str id: AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -468,15 +519,19 @@ def get_ai_search_instance_output(account_id: Optional[pulumi.Input[_builtins.st
         custom_metadatas=pulumi.get(__response__, 'custom_metadatas'),
         embedding_model=pulumi.get(__response__, 'embedding_model'),
         enable=pulumi.get(__response__, 'enable'),
+        engine_version=pulumi.get(__response__, 'engine_version'),
         filter=pulumi.get(__response__, 'filter'),
         fusion_method=pulumi.get(__response__, 'fusion_method'),
         hybrid_search_enabled=pulumi.get(__response__, 'hybrid_search_enabled'),
         id=pulumi.get(__response__, 'id'),
+        index_method=pulumi.get(__response__, 'index_method'),
+        indexing_options=pulumi.get(__response__, 'indexing_options'),
         last_activity=pulumi.get(__response__, 'last_activity'),
         max_num_results=pulumi.get(__response__, 'max_num_results'),
         metadata=pulumi.get(__response__, 'metadata'),
         modified_at=pulumi.get(__response__, 'modified_at'),
         modified_by=pulumi.get(__response__, 'modified_by'),
+        namespace=pulumi.get(__response__, 'namespace'),
         paused=pulumi.get(__response__, 'paused'),
         public_endpoint_id=pulumi.get(__response__, 'public_endpoint_id'),
         public_endpoint_params=pulumi.get(__response__, 'public_endpoint_params'),
@@ -489,6 +544,6 @@ def get_ai_search_instance_output(account_id: Optional[pulumi.Input[_builtins.st
         source=pulumi.get(__response__, 'source'),
         source_params=pulumi.get(__response__, 'source_params'),
         status=pulumi.get(__response__, 'status'),
+        sync_interval=pulumi.get(__response__, 'sync_interval'),
         token_id=pulumi.get(__response__, 'token_id'),
-        type=pulumi.get(__response__, 'type'),
-        vectorize_name=pulumi.get(__response__, 'vectorize_name')))
+        type=pulumi.get(__response__, 'type')))

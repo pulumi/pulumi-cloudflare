@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Gateway`
+// - `Account API Gateway Read`
+// - `Domain API Gateway`
+// - `Domain API Gateway Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetApiShieldOperations(ctx, &cloudflare.LookupApiShieldOperationsArgs{
-//				ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction: pulumi.StringRef("desc"),
 //				Endpoint:  pulumi.StringRef("/api/v1"),
 //				Features: []string{
@@ -77,7 +84,7 @@ type LookupApiShieldOperationsArgs struct {
 	// Available values: "method", "host", "endpoint", "thresholds.$key".
 	Order *string `pulumi:"order"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getApiShieldOperations.
@@ -103,7 +110,7 @@ type LookupApiShieldOperationsResult struct {
 	// The items returned by the data source
 	Results []GetApiShieldOperationsResult `pulumi:"results"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupApiShieldOperationsOutput(ctx *pulumi.Context, args LookupApiShieldOperationsOutputArgs, opts ...pulumi.InvokeOption) LookupApiShieldOperationsResultOutput {
@@ -134,7 +141,7 @@ type LookupApiShieldOperationsOutputArgs struct {
 	// Available values: "method", "host", "endpoint", "thresholds.$key".
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupApiShieldOperationsOutputArgs) ElementType() reflect.Type {
@@ -204,8 +211,8 @@ func (o LookupApiShieldOperationsResultOutput) Results() GetApiShieldOperationsR
 }
 
 // Identifier.
-func (o LookupApiShieldOperationsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupApiShieldOperationsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupApiShieldOperationsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiShieldOperationsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -4,9 +4,10 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAccountDnsSettingsPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,15 +18,15 @@ public final class GetAccountDnsSettingsPlainArgs extends com.pulumi.resources.I
      * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     private GetAccountDnsSettingsPlainArgs() {}
@@ -58,15 +59,12 @@ public final class GetAccountDnsSettingsPlainArgs extends com.pulumi.resources.I
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
 
         public GetAccountDnsSettingsPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetAccountDnsSettingsPlainArgs", "accountId");
-            }
             return $;
         }
     }

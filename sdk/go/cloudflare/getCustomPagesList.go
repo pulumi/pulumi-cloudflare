@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Custom Pages Read`
+// - `Account Custom Pages Write`
+// - `Account Settings Read`
+// - `Account Settings Write`
+// - `Zero Trust: PII Read`
+//
 // ## Example Usage
 //
 // ```go

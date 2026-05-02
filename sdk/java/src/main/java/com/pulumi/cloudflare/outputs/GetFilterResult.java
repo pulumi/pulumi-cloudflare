@@ -49,7 +49,7 @@ public final class GetFilterResult {
      * @return Defines an identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetFilterResult() {}
     /**
@@ -101,8 +101,8 @@ public final class GetFilterResult {
      * @return Defines an identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -121,7 +121,7 @@ public final class GetFilterResult {
         private String id;
         private Boolean paused;
         private String ref;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetFilterResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -188,10 +188,8 @@ public final class GetFilterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetFilterResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

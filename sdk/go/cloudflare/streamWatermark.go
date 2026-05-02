@@ -7,11 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Stream Read`
+// - `Stream Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -28,12 +32,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewStreamWatermark(ctx, "example_stream_watermark", &cloudflare.StreamWatermarkArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				File:      pulumi.String("@/Users/rchen/Downloads/watermark.png"),
 //				Name:      pulumi.String("Marketing Videos"),
 //				Opacity:   pulumi.Float64(0.75),
 //				Padding:   pulumi.Float64(0.1),
 //				Position:  pulumi.String("center"),
 //				Scale:     pulumi.Float64(0.1),
+//				Url:       pulumi.String("https://example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -51,13 +55,11 @@ type StreamWatermark struct {
 	pulumi.CustomResourceState
 
 	// The account identifier tag.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The date and a time a watermark profile was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
 	DownloadedFrom pulumi.StringOutput `pulumi:"downloadedFrom"`
-	// The image file to upload.
-	File pulumi.StringOutput `pulumi:"file"`
 	// The height of the image in pixels.
 	Height pulumi.IntOutput `pulumi:"height"`
 	// The unique identifier for a watermark profile.
@@ -76,6 +78,8 @@ type StreamWatermark struct {
 	Size pulumi.Float64Output `pulumi:"size"`
 	// The unique identifier for a watermark profile.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// URL of the watermark image to copy.
+	Url pulumi.StringPtrOutput `pulumi:"url"`
 	// The width of the image in pixels.
 	Width pulumi.IntOutput `pulumi:"width"`
 }
@@ -84,15 +88,9 @@ type StreamWatermark struct {
 func NewStreamWatermark(ctx *pulumi.Context,
 	name string, args *StreamWatermarkArgs, opts ...pulumi.ResourceOption) (*StreamWatermark, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &StreamWatermarkArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
-	if args.File == nil {
-		return nil, errors.New("invalid value for required argument 'File'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StreamWatermark
 	err := ctx.RegisterResource("cloudflare:index/streamWatermark:StreamWatermark", name, args, &resource, opts...)
@@ -122,8 +120,6 @@ type streamWatermarkState struct {
 	Created *string `pulumi:"created"`
 	// The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
 	DownloadedFrom *string `pulumi:"downloadedFrom"`
-	// The image file to upload.
-	File *string `pulumi:"file"`
 	// The height of the image in pixels.
 	Height *int `pulumi:"height"`
 	// The unique identifier for a watermark profile.
@@ -142,6 +138,8 @@ type streamWatermarkState struct {
 	Size *float64 `pulumi:"size"`
 	// The unique identifier for a watermark profile.
 	Uid *string `pulumi:"uid"`
+	// URL of the watermark image to copy.
+	Url *string `pulumi:"url"`
 	// The width of the image in pixels.
 	Width *int `pulumi:"width"`
 }
@@ -153,8 +151,6 @@ type StreamWatermarkState struct {
 	Created pulumi.StringPtrInput
 	// The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
 	DownloadedFrom pulumi.StringPtrInput
-	// The image file to upload.
-	File pulumi.StringPtrInput
 	// The height of the image in pixels.
 	Height pulumi.IntPtrInput
 	// The unique identifier for a watermark profile.
@@ -173,6 +169,8 @@ type StreamWatermarkState struct {
 	Size pulumi.Float64PtrInput
 	// The unique identifier for a watermark profile.
 	Uid pulumi.StringPtrInput
+	// URL of the watermark image to copy.
+	Url pulumi.StringPtrInput
 	// The width of the image in pixels.
 	Width pulumi.IntPtrInput
 }
@@ -183,9 +181,7 @@ func (StreamWatermarkState) ElementType() reflect.Type {
 
 type streamWatermarkArgs struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
-	// The image file to upload.
-	File string `pulumi:"file"`
+	AccountId *string `pulumi:"accountId"`
 	// The unique identifier for a watermark profile.
 	Identifier *string `pulumi:"identifier"`
 	// A short description of the watermark profile.
@@ -198,14 +194,14 @@ type streamWatermarkArgs struct {
 	Position *string `pulumi:"position"`
 	// The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video.
 	Scale *float64 `pulumi:"scale"`
+	// URL of the watermark image to copy.
+	Url *string `pulumi:"url"`
 }
 
 // The set of arguments for constructing a StreamWatermark resource.
 type StreamWatermarkArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringInput
-	// The image file to upload.
-	File pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// The unique identifier for a watermark profile.
 	Identifier pulumi.StringPtrInput
 	// A short description of the watermark profile.
@@ -218,6 +214,8 @@ type StreamWatermarkArgs struct {
 	Position pulumi.StringPtrInput
 	// The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video.
 	Scale pulumi.Float64PtrInput
+	// URL of the watermark image to copy.
+	Url pulumi.StringPtrInput
 }
 
 func (StreamWatermarkArgs) ElementType() reflect.Type {
@@ -308,8 +306,8 @@ func (o StreamWatermarkOutput) ToStreamWatermarkOutputWithContext(ctx context.Co
 }
 
 // The account identifier tag.
-func (o StreamWatermarkOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *StreamWatermark) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o StreamWatermarkOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamWatermark) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The date and a time a watermark profile was created.
@@ -320,11 +318,6 @@ func (o StreamWatermarkOutput) Created() pulumi.StringOutput {
 // The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
 func (o StreamWatermarkOutput) DownloadedFrom() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamWatermark) pulumi.StringOutput { return v.DownloadedFrom }).(pulumi.StringOutput)
-}
-
-// The image file to upload.
-func (o StreamWatermarkOutput) File() pulumi.StringOutput {
-	return o.ApplyT(func(v *StreamWatermark) pulumi.StringOutput { return v.File }).(pulumi.StringOutput)
 }
 
 // The height of the image in pixels.
@@ -370,6 +363,11 @@ func (o StreamWatermarkOutput) Size() pulumi.Float64Output {
 // The unique identifier for a watermark profile.
 func (o StreamWatermarkOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamWatermark) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// URL of the watermark image to copy.
+func (o StreamWatermarkOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamWatermark) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 // The width of the image in pixels.

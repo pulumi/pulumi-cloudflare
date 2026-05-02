@@ -21,9 +21,9 @@ __all__ = ['MagicTransitSiteWanArgs', 'MagicTransitSiteWan']
 @pulumi.input_type
 class MagicTransitSiteWanArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  physport: pulumi.Input[_builtins.int],
                  site_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  priority: Optional[pulumi.Input[_builtins.int]] = None,
                  static_addressing: Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']] = None,
@@ -31,14 +31,15 @@ class MagicTransitSiteWanArgs:
         """
         The set of arguments for constructing a MagicTransitSiteWan resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] site_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input['MagicTransitSiteWanStaticAddressingArgs'] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "physport", physport)
         pulumi.set(__self__, "site_id", site_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if priority is not None:
@@ -47,18 +48,6 @@ class MagicTransitSiteWanArgs:
             pulumi.set(__self__, "static_addressing", static_addressing)
         if vlan_tag is not None:
             pulumi.set(__self__, "vlan_tag", vlan_tag)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -80,6 +69,18 @@ class MagicTransitSiteWanArgs:
     @site_id.setter
     def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -266,6 +267,13 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                  vlan_tag: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Magic Transit Read`
+        - `Magic Transit Write`
+        - `Magic WAN Read`
+        - `Magic WAN Write`
+
         ## Example Usage
 
         ```python
@@ -307,6 +315,13 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                  args: MagicTransitSiteWanArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Magic Transit Read`
+        - `Magic Transit Write`
+        - `Magic WAN Read`
+        - `Magic WAN Write`
+
         ## Example Usage
 
         ```python
@@ -365,8 +380,6 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MagicTransitSiteWanArgs.__new__(MagicTransitSiteWanArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["name"] = name
             if physport is None and not opts.urn:
@@ -427,7 +440,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier
         """

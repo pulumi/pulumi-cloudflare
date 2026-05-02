@@ -43,15 +43,15 @@ public final class GetWaitingRoomEventsArgs extends com.pulumi.resources.InvokeA
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetWaitingRoomEventsArgs() {}
@@ -116,7 +116,7 @@ public final class GetWaitingRoomEventsArgs extends com.pulumi.resources.InvokeA
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -134,9 +134,6 @@ public final class GetWaitingRoomEventsArgs extends com.pulumi.resources.InvokeA
         public GetWaitingRoomEventsArgs build() {
             if ($.waitingRoomId == null) {
                 throw new MissingRequiredPropertyException("GetWaitingRoomEventsArgs", "waitingRoomId");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetWaitingRoomEventsArgs", "zoneId");
             }
             return $;
         }

@@ -7,11 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account WAF Read`
+// - `Account WAF Write`
+// - `Zone WAF Read`
+// - `Zone WAF Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -53,19 +59,16 @@ type LeakedCredentialCheckRule struct {
 	// Defines the ruleset expression to use in matching the username in a request.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
 	// Defines an identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewLeakedCredentialCheckRule registers a new resource with the given unique name, arguments, and options.
 func NewLeakedCredentialCheckRule(ctx *pulumi.Context,
 	name string, args *LeakedCredentialCheckRuleArgs, opts ...pulumi.ResourceOption) (*LeakedCredentialCheckRule, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &LeakedCredentialCheckRuleArgs{}
 	}
 
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LeakedCredentialCheckRule
 	err := ctx.RegisterResource("cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule", name, args, &resource, opts...)
@@ -116,7 +119,7 @@ type leakedCredentialCheckRuleArgs struct {
 	// Defines the ruleset expression to use in matching the username in a request.
 	Username *string `pulumi:"username"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a LeakedCredentialCheckRule resource.
@@ -126,7 +129,7 @@ type LeakedCredentialCheckRuleArgs struct {
 	// Defines the ruleset expression to use in matching the username in a request.
 	Username pulumi.StringPtrInput
 	// Defines an identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (LeakedCredentialCheckRuleArgs) ElementType() reflect.Type {
@@ -227,8 +230,8 @@ func (o LeakedCredentialCheckRuleOutput) Username() pulumi.StringPtrOutput {
 }
 
 // Defines an identifier.
-func (o LeakedCredentialCheckRuleOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *LeakedCredentialCheckRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o LeakedCredentialCheckRuleOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LeakedCredentialCheckRule) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type LeakedCredentialCheckRuleArrayOutput struct{ *pulumi.OutputState }

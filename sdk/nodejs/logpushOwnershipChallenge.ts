@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Logs Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -90,13 +94,15 @@ export class LogpushOwnershipChallenge extends pulumi.CustomResource {
                 throw new Error("Missing required property 'destinationConf'");
             }
             resourceInputs["accountId"] = args?.accountId;
-            resourceInputs["destinationConf"] = args?.destinationConf;
+            resourceInputs["destinationConf"] = args?.destinationConf ? pulumi.secret(args.destinationConf) : undefined;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["filename"] = undefined /*out*/;
             resourceInputs["message"] = undefined /*out*/;
             resourceInputs["valid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["destinationConf"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(LogpushOwnershipChallenge.__pulumiType, name, resourceInputs, opts);
     }
 }

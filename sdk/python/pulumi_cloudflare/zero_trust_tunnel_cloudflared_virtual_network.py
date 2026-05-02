@@ -19,22 +19,23 @@ __all__ = ['ZeroTrustTunnelCloudflaredVirtualNetworkArgs', 'ZeroTrustTunnelCloud
 @pulumi.input_type
 class ZeroTrustTunnelCloudflaredVirtualNetworkArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  is_default: Optional[pulumi.Input[_builtins.bool]] = None,
                  is_default_network: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ZeroTrustTunnelCloudflaredVirtualNetwork resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] name: A user-friendly name for the virtual network.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] comment: Optional remark describing the virtual network.
         :param pulumi.Input[_builtins.bool] is_default: If `true`, this virtual network is the default for the account.
         :param pulumi.Input[_builtins.bool] is_default_network: If `true`, this virtual network is the default for the account.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if is_default is not None:
@@ -44,18 +45,6 @@ class ZeroTrustTunnelCloudflaredVirtualNetworkArgs:
             pulumi.set(__self__, "is_default", is_default)
         if is_default_network is not None:
             pulumi.set(__self__, "is_default_network", is_default_network)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Cloudflare account ID
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -68,6 +57,18 @@ class ZeroTrustTunnelCloudflaredVirtualNetworkArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cloudflare account ID
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -245,6 +246,11 @@ class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Cloudflare One Networks Write`
+        - `Cloudflare Tunnel Write`
+
         ## Example Usage
 
         ```python
@@ -281,6 +287,11 @@ class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
                  args: ZeroTrustTunnelCloudflaredVirtualNetworkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Cloudflare One Networks Write`
+        - `Cloudflare Tunnel Write`
+
         ## Example Usage
 
         ```python
@@ -331,8 +342,6 @@ class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustTunnelCloudflaredVirtualNetworkArgs.__new__(ZeroTrustTunnelCloudflaredVirtualNetworkArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["comment"] = comment
             __props__.__dict__["is_default"] = is_default
@@ -391,7 +400,7 @@ class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Cloudflare account ID
         """

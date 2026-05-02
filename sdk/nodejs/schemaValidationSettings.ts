@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -71,7 +78,7 @@ export class SchemaValidationSettings extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a SchemaValidationSettings resource with the given unique name, arguments, and options.
@@ -93,9 +100,6 @@ export class SchemaValidationSettings extends pulumi.CustomResource {
             const args = argsOrState as SchemaValidationSettingsArgs | undefined;
             if (args?.validationDefaultMitigationAction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'validationDefaultMitigationAction'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["validationDefaultMitigationAction"] = args?.validationDefaultMitigationAction;
             resourceInputs["validationOverrideMitigationAction"] = args?.validationOverrideMitigationAction;
@@ -159,5 +163,5 @@ export interface SchemaValidationSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

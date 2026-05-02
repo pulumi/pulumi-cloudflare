@@ -12,6 +12,10 @@ namespace Pulumi.Cloudflare
     public static class GetZones
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Zone Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -42,6 +46,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Zone Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -72,6 +80,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zone Zone Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Images Read`
+// - `Images Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -55,7 +60,7 @@ type ImageVariant struct {
 	pulumi.CustomResourceState
 
 	// Account identifier tag.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The ID of this resource.
 	ImageVariantId pulumi.StringOutput `pulumi:"imageVariantId"`
 	// Indicates whether the variant can access an image without a signature, regardless of image access control.
@@ -72,9 +77,6 @@ func NewImageVariant(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.ImageVariantId == nil {
 		return nil, errors.New("invalid value for required argument 'ImageVariantId'")
 	}
@@ -133,7 +135,7 @@ func (ImageVariantState) ElementType() reflect.Type {
 
 type imageVariantArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The ID of this resource.
 	ImageVariantId string `pulumi:"imageVariantId"`
 	// Indicates whether the variant can access an image without a signature, regardless of image access control.
@@ -145,7 +147,7 @@ type imageVariantArgs struct {
 // The set of arguments for constructing a ImageVariant resource.
 type ImageVariantArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// The ID of this resource.
 	ImageVariantId pulumi.StringInput
 	// Indicates whether the variant can access an image without a signature, regardless of image access control.
@@ -242,8 +244,8 @@ func (o ImageVariantOutput) ToImageVariantOutputWithContext(ctx context.Context)
 }
 
 // Account identifier tag.
-func (o ImageVariantOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ImageVariant) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ImageVariantOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageVariant) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The ID of this resource.

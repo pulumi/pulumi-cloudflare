@@ -28,10 +28,13 @@ class GetWorkersCustomDomainResult:
     """
     A collection of values returned by getWorkersCustomDomain.
     """
-    def __init__(__self__, account_id=None, domain_id=None, environment=None, filter=None, hostname=None, id=None, service=None, zone_id=None, zone_name=None):
+    def __init__(__self__, account_id=None, cert_id=None, domain_id=None, environment=None, filter=None, hostname=None, id=None, service=None, zone_id=None, zone_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if cert_id and not isinstance(cert_id, str):
+            raise TypeError("Expected argument 'cert_id' to be a str")
+        pulumi.set(__self__, "cert_id", cert_id)
         if domain_id and not isinstance(domain_id, str):
             raise TypeError("Expected argument 'domain_id' to be a str")
         pulumi.set(__self__, "domain_id", domain_id)
@@ -59,17 +62,25 @@ class GetWorkersCustomDomainResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
-        Identifer of the account.
+        Identifier.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> _builtins.str:
+        """
+        ID of the TLS certificate issued for the domain.
+        """
+        return pulumi.get(self, "cert_id")
 
     @_builtins.property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[_builtins.str]:
         """
-        Identifer of the Worker Domain.
+        ID of the domain.
         """
         return pulumi.get(self, "domain_id")
 
@@ -78,7 +89,7 @@ class GetWorkersCustomDomainResult:
     @_utilities.deprecated("""This attribute is deprecated.""")
     def environment(self) -> _builtins.str:
         """
-        Worker environment associated with the zone and hostname.
+        Worker environment associated with the domain.
         """
         return pulumi.get(self, "environment")
 
@@ -91,7 +102,7 @@ class GetWorkersCustomDomainResult:
     @pulumi.getter
     def hostname(self) -> _builtins.str:
         """
-        Hostname of the Worker Domain.
+        Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
         """
         return pulumi.get(self, "hostname")
 
@@ -99,7 +110,7 @@ class GetWorkersCustomDomainResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Identifer of the Worker Domain.
+        ID of the domain.
         """
         return pulumi.get(self, "id")
 
@@ -107,7 +118,7 @@ class GetWorkersCustomDomainResult:
     @pulumi.getter
     def service(self) -> _builtins.str:
         """
-        Worker service associated with the zone and hostname.
+        Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
         """
         return pulumi.get(self, "service")
 
@@ -115,7 +126,7 @@ class GetWorkersCustomDomainResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> _builtins.str:
         """
-        Identifier of the zone.
+        ID of the zone containing the domain hostname.
         """
         return pulumi.get(self, "zone_id")
 
@@ -123,7 +134,7 @@ class GetWorkersCustomDomainResult:
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> _builtins.str:
         """
-        Name of the zone.
+        Name of the zone containing the domain hostname.
         """
         return pulumi.get(self, "zone_name")
 
@@ -135,6 +146,7 @@ class AwaitableGetWorkersCustomDomainResult(GetWorkersCustomDomainResult):
             yield self
         return GetWorkersCustomDomainResult(
             account_id=self.account_id,
+            cert_id=self.cert_id,
             domain_id=self.domain_id,
             environment=self.environment,
             filter=self.filter,
@@ -150,19 +162,24 @@ def get_workers_custom_domain(account_id: Optional[_builtins.str] = None,
                               filter: Optional[Union['GetWorkersCustomDomainFilterArgs', 'GetWorkersCustomDomainFilterArgsDict']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersCustomDomainResult:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_custom_domain = cloudflare.get_workers_custom_domain(account_id="9a7806061c88ada191ed06f989cc3dac",
+    example_workers_custom_domain = cloudflare.get_workers_custom_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         domain_id="dbe10b4bc17c295377eabd600e1787fd")
     ```
 
 
-    :param _builtins.str account_id: Identifer of the account.
-    :param _builtins.str domain_id: Identifer of the Worker Domain.
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str domain_id: ID of the domain.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -173,6 +190,7 @@ def get_workers_custom_domain(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetWorkersCustomDomainResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        cert_id=pulumi.get(__ret__, 'cert_id'),
         domain_id=pulumi.get(__ret__, 'domain_id'),
         environment=pulumi.get(__ret__, 'environment'),
         filter=pulumi.get(__ret__, 'filter'),
@@ -181,24 +199,29 @@ def get_workers_custom_domain(account_id: Optional[_builtins.str] = None,
         service=pulumi.get(__ret__, 'service'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_name=pulumi.get(__ret__, 'zone_name'))
-def get_workers_custom_domain_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workers_custom_domain_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                      domain_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                      filter: Optional[pulumi.Input[Optional[Union['GetWorkersCustomDomainFilterArgs', 'GetWorkersCustomDomainFilterArgsDict']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersCustomDomainResult]:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_custom_domain = cloudflare.get_workers_custom_domain(account_id="9a7806061c88ada191ed06f989cc3dac",
+    example_workers_custom_domain = cloudflare.get_workers_custom_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         domain_id="dbe10b4bc17c295377eabd600e1787fd")
     ```
 
 
-    :param _builtins.str account_id: Identifer of the account.
-    :param _builtins.str domain_id: Identifer of the Worker Domain.
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str domain_id: ID of the domain.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -208,6 +231,7 @@ def get_workers_custom_domain_output(account_id: Optional[pulumi.Input[_builtins
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getWorkersCustomDomain:getWorkersCustomDomain', __args__, opts=opts, typ=GetWorkersCustomDomainResult)
     return __ret__.apply(lambda __response__: GetWorkersCustomDomainResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        cert_id=pulumi.get(__response__, 'cert_id'),
         domain_id=pulumi.get(__response__, 'domain_id'),
         environment=pulumi.get(__response__, 'environment'),
         filter=pulumi.get(__response__, 'filter'),

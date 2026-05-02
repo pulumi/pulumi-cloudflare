@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Stream Read`
+// - `Stream Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetStreamKey(ctx, &cloudflare.LookupStreamKeyArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,17 +54,19 @@ func LookupStreamKey(ctx *pulumi.Context, args *LookupStreamKeyArgs, opts ...pul
 // A collection of arguments for invoking getStreamKey.
 type LookupStreamKeyArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getStreamKey.
 type LookupStreamKeyResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The date and time a signing key was created.
 	Created string `pulumi:"created"`
 	// Identifier.
 	Id string `pulumi:"id"`
+	// The unique identifier for the signing key.
+	KeyId string `pulumi:"keyId"`
 }
 
 func LookupStreamKeyOutput(ctx *pulumi.Context, args LookupStreamKeyOutputArgs, opts ...pulumi.InvokeOption) LookupStreamKeyResultOutput {
@@ -74,7 +81,7 @@ func LookupStreamKeyOutput(ctx *pulumi.Context, args LookupStreamKeyOutputArgs, 
 // A collection of arguments for invoking getStreamKey.
 type LookupStreamKeyOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
 func (LookupStreamKeyOutputArgs) ElementType() reflect.Type {
@@ -97,8 +104,8 @@ func (o LookupStreamKeyResultOutput) ToLookupStreamKeyResultOutputWithContext(ct
 }
 
 // Identifier.
-func (o LookupStreamKeyResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamKeyResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupStreamKeyResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamKeyResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The date and time a signing key was created.
@@ -109,6 +116,11 @@ func (o LookupStreamKeyResultOutput) Created() pulumi.StringOutput {
 // Identifier.
 func (o LookupStreamKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamKeyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the signing key.
+func (o LookupStreamKeyResultOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamKeyResult) string { return v.KeyId }).(pulumi.StringOutput)
 }
 
 func init() {

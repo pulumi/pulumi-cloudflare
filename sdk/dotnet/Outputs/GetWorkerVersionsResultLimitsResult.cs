@@ -17,11 +17,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// CPU time limit in milliseconds.
         /// </summary>
         public readonly int CpuMs;
+        /// <summary>
+        /// Subrequest limit per request.
+        /// </summary>
+        public readonly int Subrequests;
 
         [OutputConstructor]
-        private GetWorkerVersionsResultLimitsResult(int cpuMs)
+        private GetWorkerVersionsResultLimitsResult(
+            int cpuMs,
+
+            int subrequests)
         {
             CpuMs = cpuMs;
+            Subrequests = subrequests;
         }
     }
 }

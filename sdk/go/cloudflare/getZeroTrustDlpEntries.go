@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDlpEntries(ctx, &cloudflare.LookupZeroTrustDlpEntriesArgs{
-//				AccountId: "account_id",
+//				AccountId: pulumi.StringRef("account_id"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,14 +53,14 @@ func LookupZeroTrustDlpEntries(ctx *pulumi.Context, args *LookupZeroTrustDlpEntr
 
 // A collection of arguments for invoking getZeroTrustDlpEntries.
 type LookupZeroTrustDlpEntriesArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
 
 // A collection of values returned by getZeroTrustDlpEntries.
 type LookupZeroTrustDlpEntriesResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -75,7 +80,7 @@ func LookupZeroTrustDlpEntriesOutput(ctx *pulumi.Context, args LookupZeroTrustDl
 
 // A collection of arguments for invoking getZeroTrustDlpEntries.
 type LookupZeroTrustDlpEntriesOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -99,8 +104,8 @@ func (o LookupZeroTrustDlpEntriesResultOutput) ToLookupZeroTrustDlpEntriesResult
 	return o
 }
 
-func (o LookupZeroTrustDlpEntriesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpEntriesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDlpEntriesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpEntriesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

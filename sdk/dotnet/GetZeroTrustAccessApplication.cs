@@ -242,6 +242,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string LogoUrl;
         /// <summary>
+        /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustAccessApplicationMfaConfigResult MfaConfig;
+        /// <summary>
         /// The name of the application.
         /// </summary>
         public readonly string Name;
@@ -360,6 +364,8 @@ namespace Pulumi.Cloudflare
 
             string logoUrl,
 
+            Outputs.GetZeroTrustAccessApplicationMfaConfigResult mfaConfig,
+
             string name,
 
             bool optionsPreflightBypass,
@@ -419,6 +425,7 @@ namespace Pulumi.Cloudflare
             Id = id;
             LandingPageDesign = landingPageDesign;
             LogoUrl = logoUrl;
+            MfaConfig = mfaConfig;
             Name = name;
             OptionsPreflightBypass = optionsPreflightBypass;
             PathCookieAttribute = pathCookieAttribute;

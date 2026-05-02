@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Gateway`
+// - `Account API Gateway Read`
+// - `Domain API Gateway`
+// - `Domain API Gateway Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetSchemaValidationOperationSettings(ctx, &cloudflare.LookupSchemaValidationOperationSettingsArgs{
-//				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:      pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				OperationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
@@ -49,17 +56,17 @@ func LookupSchemaValidationOperationSettings(ctx *pulumi.Context, args *LookupSc
 
 // A collection of arguments for invoking getSchemaValidationOperationSettings.
 type LookupSchemaValidationOperationSettingsArgs struct {
-	OperationId string `pulumi:"operationId"`
-	ZoneId      string `pulumi:"zoneId"`
+	OperationId string  `pulumi:"operationId"`
+	ZoneId      *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getSchemaValidationOperationSettings.
 type LookupSchemaValidationOperationSettingsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id               string `pulumi:"id"`
-	MitigationAction string `pulumi:"mitigationAction"`
-	OperationId      string `pulumi:"operationId"`
-	ZoneId           string `pulumi:"zoneId"`
+	Id               string  `pulumi:"id"`
+	MitigationAction string  `pulumi:"mitigationAction"`
+	OperationId      string  `pulumi:"operationId"`
+	ZoneId           *string `pulumi:"zoneId"`
 }
 
 func LookupSchemaValidationOperationSettingsOutput(ctx *pulumi.Context, args LookupSchemaValidationOperationSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupSchemaValidationOperationSettingsResultOutput {
@@ -73,8 +80,8 @@ func LookupSchemaValidationOperationSettingsOutput(ctx *pulumi.Context, args Loo
 
 // A collection of arguments for invoking getSchemaValidationOperationSettings.
 type LookupSchemaValidationOperationSettingsOutputArgs struct {
-	OperationId pulumi.StringInput `pulumi:"operationId"`
-	ZoneId      pulumi.StringInput `pulumi:"zoneId"`
+	OperationId pulumi.StringInput    `pulumi:"operationId"`
+	ZoneId      pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupSchemaValidationOperationSettingsOutputArgs) ElementType() reflect.Type {
@@ -109,8 +116,8 @@ func (o LookupSchemaValidationOperationSettingsResultOutput) OperationId() pulum
 	return o.ApplyT(func(v LookupSchemaValidationOperationSettingsResult) string { return v.OperationId }).(pulumi.StringOutput)
 }
 
-func (o LookupSchemaValidationOperationSettingsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSchemaValidationOperationSettingsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupSchemaValidationOperationSettingsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSchemaValidationOperationSettingsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

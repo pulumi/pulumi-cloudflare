@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Cloudflare One Networks Read`
+    /// - `Cloudflare One Networks Write`
+    /// - `Cloudflare Tunnel Read`
+    /// - `Cloudflare Tunnel Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -44,7 +51,7 @@ namespace Pulumi.Cloudflare
         /// Cloudflare account ID
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of the hostname route.
@@ -90,7 +97,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ZeroTrustNetworkHostnameRoute(string name, ZeroTrustNetworkHostnameRouteArgs args, CustomResourceOptions? options = null)
+        public ZeroTrustNetworkHostnameRoute(string name, ZeroTrustNetworkHostnameRouteArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute", name, args ?? new ZeroTrustNetworkHostnameRouteArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -131,8 +138,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// An optional description of the hostname route.

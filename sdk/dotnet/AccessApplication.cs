@@ -152,10 +152,22 @@ namespace Pulumi.Cloudflare
         public Output<string?> LogoUrl { get; private set; } = null!;
 
         /// <summary>
+        /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        /// </summary>
+        [Output("mfaConfig")]
+        public Output<Outputs.AccessApplicationMfaConfig?> MfaConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the application.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        /// </summary>
+        [Output("oauthConfiguration")]
+        public Output<Outputs.AccessApplicationOauthConfiguration?> OauthConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if CorsHeaders is set.
@@ -452,10 +464,22 @@ namespace Pulumi.Cloudflare
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
+        /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        /// </summary>
+        [Input("mfaConfig")]
+        public Input<Inputs.AccessApplicationMfaConfigArgs>? MfaConfig { get; set; }
+
+        /// <summary>
         /// The name of the application.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        /// </summary>
+        [Input("oauthConfiguration")]
+        public Input<Inputs.AccessApplicationOauthConfigurationArgs>? OauthConfiguration { get; set; }
 
         /// <summary>
         /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if CorsHeaders is set.
@@ -740,10 +764,22 @@ namespace Pulumi.Cloudflare
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
+        /// Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        /// </summary>
+        [Input("mfaConfig")]
+        public Input<Inputs.AccessApplicationMfaConfigGetArgs>? MfaConfig { get; set; }
+
+        /// <summary>
         /// The name of the application.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        /// </summary>
+        [Input("oauthConfiguration")]
+        public Input<Inputs.AccessApplicationOauthConfigurationGetArgs>? OauthConfiguration { get; set; }
 
         /// <summary>
         /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if CorsHeaders is set.

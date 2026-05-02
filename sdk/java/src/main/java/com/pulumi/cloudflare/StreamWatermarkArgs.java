@@ -5,7 +5,6 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -21,30 +20,15 @@ public final class StreamWatermarkArgs extends com.pulumi.resources.ResourceArgs
      * The account identifier tag.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return The account identifier tag.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
-    }
-
-    /**
-     * The image file to upload.
-     * 
-     */
-    @Import(name="file", required=true)
-    private Output<String> file;
-
-    /**
-     * @return The image file to upload.
-     * 
-     */
-    public Output<String> file() {
-        return this.file;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -137,17 +121,32 @@ public final class StreamWatermarkArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.scale);
     }
 
+    /**
+     * URL of the watermark image to copy.
+     * 
+     */
+    @Import(name="url")
+    private @Nullable Output<String> url;
+
+    /**
+     * @return URL of the watermark image to copy.
+     * 
+     */
+    public Optional<Output<String>> url() {
+        return Optional.ofNullable(this.url);
+    }
+
     private StreamWatermarkArgs() {}
 
     private StreamWatermarkArgs(StreamWatermarkArgs $) {
         this.accountId = $.accountId;
-        this.file = $.file;
         this.identifier = $.identifier;
         this.name = $.name;
         this.opacity = $.opacity;
         this.padding = $.padding;
         this.position = $.position;
         this.scale = $.scale;
+        this.url = $.url;
     }
 
     public static Builder builder() {
@@ -174,7 +173,7 @@ public final class StreamWatermarkArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -187,27 +186,6 @@ public final class StreamWatermarkArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
-        }
-
-        /**
-         * @param file The image file to upload.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder file(Output<String> file) {
-            $.file = file;
-            return this;
-        }
-
-        /**
-         * @param file The image file to upload.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder file(String file) {
-            return file(Output.of(file));
         }
 
         /**
@@ -336,13 +314,28 @@ public final class StreamWatermarkArgs extends com.pulumi.resources.ResourceArgs
             return scale(Output.of(scale));
         }
 
+        /**
+         * @param url URL of the watermark image to copy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(@Nullable Output<String> url) {
+            $.url = url;
+            return this;
+        }
+
+        /**
+         * @param url URL of the watermark image to copy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(String url) {
+            return url(Output.of(url));
+        }
+
         public StreamWatermarkArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("StreamWatermarkArgs", "accountId");
-            }
-            if ($.file == null) {
-                throw new MissingRequiredPropertyException("StreamWatermarkArgs", "file");
-            }
             return $;
         }
     }

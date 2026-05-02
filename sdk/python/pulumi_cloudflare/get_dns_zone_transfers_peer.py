@@ -54,7 +54,7 @@ class GetDnsZoneTransfersPeerResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -131,6 +131,11 @@ def get_dns_zone_transfers_peer(account_id: Optional[_builtins.str] = None,
                                 peer_id: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDnsZoneTransfersPeerResult:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+    - `Account Settings Write`
+
     ## Example Usage
 
     ```python
@@ -156,10 +161,15 @@ def get_dns_zone_transfers_peer(account_id: Optional[_builtins.str] = None,
         peer_id=pulumi.get(__ret__, 'peer_id'),
         port=pulumi.get(__ret__, 'port'),
         tsig_id=pulumi.get(__ret__, 'tsig_id'))
-def get_dns_zone_transfers_peer_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_dns_zone_transfers_peer_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        peer_id: Optional[pulumi.Input[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsZoneTransfersPeerResult]:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+    - `Account Settings Write`
+
     ## Example Usage
 
     ```python

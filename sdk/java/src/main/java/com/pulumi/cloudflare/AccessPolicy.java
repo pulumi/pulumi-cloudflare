@@ -24,6 +24,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -36,15 +41,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.ZeroTrustAccessPolicy;
  * import com.pulumi.cloudflare.ZeroTrustAccessPolicyArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeCertificateArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyApprovalGroupArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyConnectionRulesArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyConnectionRulesRdpArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeCertificateArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyMfaConfigArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireCertificateArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,8 +67,7 @@ import javax.annotation.Nullable;
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .decision("allow")
  *             .includes(ZeroTrustAccessPolicyIncludeArgs.builder()
- *                 .group(ZeroTrustAccessPolicyIncludeGroupArgs.builder()
- *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                 .certificate(ZeroTrustAccessPolicyIncludeCertificateArgs.builder()
  *                     .build())
  *                 .build())
  *             .name("Allow devs")
@@ -90,8 +94,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .excludes(ZeroTrustAccessPolicyExcludeArgs.builder()
- *                 .group(ZeroTrustAccessPolicyExcludeGroupArgs.builder()
- *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                 .certificate(ZeroTrustAccessPolicyExcludeCertificateArgs.builder()
  *                     .build())
  *                 .build())
  *             .isolationRequired(false)
@@ -100,14 +103,13 @@ import javax.annotation.Nullable;
  *                     "totp",
  *                     "biometrics",
  *                     "security_key")
- *                 .mfaBypass(false)
+ *                 .mfaDisabled(false)
  *                 .sessionDuration("24h")
  *                 .build())
  *             .purposeJustificationPrompt("Please enter a justification for entering this protected domain.")
  *             .purposeJustificationRequired(true)
  *             .requires(ZeroTrustAccessPolicyRequireArgs.builder()
- *                 .group(ZeroTrustAccessPolicyRequireGroupArgs.builder()
- *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                 .certificate(ZeroTrustAccessPolicyRequireCertificateArgs.builder()
  *                     .build())
  *                 .build())
  *             .sessionDuration("24h")
@@ -136,14 +138,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Administrators who can approve a temporary authentication request.

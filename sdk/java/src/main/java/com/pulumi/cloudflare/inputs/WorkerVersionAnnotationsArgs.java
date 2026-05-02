@@ -16,14 +16,14 @@ public final class WorkerVersionAnnotationsArgs extends com.pulumi.resources.Res
     public static final WorkerVersionAnnotationsArgs Empty = new WorkerVersionAnnotationsArgs();
 
     /**
-     * Human-readable message about the version.
+     * Human-readable message about the version. Truncated to 1000 bytes if longer.
      * 
      */
     @Import(name="workersMessage")
     private @Nullable Output<String> workersMessage;
 
     /**
-     * @return Human-readable message about the version.
+     * @return Human-readable message about the version. Truncated to 1000 bytes if longer.
      * 
      */
     public Optional<Output<String>> workersMessage() {
@@ -31,14 +31,14 @@ public final class WorkerVersionAnnotationsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * User-provided identifier for the version.
+     * User-provided identifier for the version. Maximum 100 bytes.
      * 
      */
     @Import(name="workersTag")
     private @Nullable Output<String> workersTag;
 
     /**
-     * @return User-provided identifier for the version.
+     * @return User-provided identifier for the version. Maximum 100 bytes.
      * 
      */
     public Optional<Output<String>> workersTag() {
@@ -87,7 +87,7 @@ public final class WorkerVersionAnnotationsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param workersMessage Human-readable message about the version.
+         * @param workersMessage Human-readable message about the version. Truncated to 1000 bytes if longer.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class WorkerVersionAnnotationsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param workersMessage Human-readable message about the version.
+         * @param workersMessage Human-readable message about the version. Truncated to 1000 bytes if longer.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class WorkerVersionAnnotationsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param workersTag User-provided identifier for the version.
+         * @param workersTag User-provided identifier for the version. Maximum 100 bytes.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class WorkerVersionAnnotationsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param workersTag User-provided identifier for the version.
+         * @param workersTag User-provided identifier for the version. Maximum 100 bytes.
          * 
          * @return builder
          * 

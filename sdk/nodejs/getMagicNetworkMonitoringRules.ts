@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Network Monitoring Admin`
+ * - `Magic Network Monitoring Config Read`
+ * - `Magic Network Monitoring Config Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getMagicNetworkMonitoringRules(args: GetMagicNetworkMonitoringRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicNetworkMonitoringRulesResult> {
+export function getMagicNetworkMonitoringRules(args?: GetMagicNetworkMonitoringRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicNetworkMonitoringRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules", {
         "accountId": args.accountId,
@@ -30,7 +37,7 @@ export function getMagicNetworkMonitoringRules(args: GetMagicNetworkMonitoringRu
  * A collection of arguments for invoking getMagicNetworkMonitoringRules.
  */
 export interface GetMagicNetworkMonitoringRulesArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +48,7 @@ export interface GetMagicNetworkMonitoringRulesArgs {
  * A collection of values returned by getMagicNetworkMonitoringRules.
  */
 export interface GetMagicNetworkMonitoringRulesResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -56,6 +63,12 @@ export interface GetMagicNetworkMonitoringRulesResult {
     readonly results: outputs.GetMagicNetworkMonitoringRulesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Network Monitoring Admin`
+ * - `Magic Network Monitoring Config Read`
+ * - `Magic Network Monitoring Config Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -67,7 +80,8 @@ export interface GetMagicNetworkMonitoringRulesResult {
  * });
  * ```
  */
-export function getMagicNetworkMonitoringRulesOutput(args: GetMagicNetworkMonitoringRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicNetworkMonitoringRulesResult> {
+export function getMagicNetworkMonitoringRulesOutput(args?: GetMagicNetworkMonitoringRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicNetworkMonitoringRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicNetworkMonitoringRules:getMagicNetworkMonitoringRules", {
         "accountId": args.accountId,
@@ -79,7 +93,7 @@ export function getMagicNetworkMonitoringRulesOutput(args: GetMagicNetworkMonito
  * A collection of arguments for invoking getMagicNetworkMonitoringRules.
  */
 export interface GetMagicNetworkMonitoringRulesOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

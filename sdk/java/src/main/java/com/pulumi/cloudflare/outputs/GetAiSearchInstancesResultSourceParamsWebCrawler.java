@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerCrawlOptions;
 import com.pulumi.cloudflare.outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions;
 import com.pulumi.cloudflare.outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions;
 import com.pulumi.core.annotations.CustomType;
@@ -12,20 +13,24 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAiSearchInstancesResultSourceParamsWebCrawler {
+    private GetAiSearchInstancesResultSourceParamsWebCrawlerCrawlOptions crawlOptions;
     private GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions parseOptions;
     /**
-     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;.
+     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
      * 
      */
     private String parseType;
     private GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions storeOptions;
 
     private GetAiSearchInstancesResultSourceParamsWebCrawler() {}
+    public GetAiSearchInstancesResultSourceParamsWebCrawlerCrawlOptions crawlOptions() {
+        return this.crawlOptions;
+    }
     public GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions parseOptions() {
         return this.parseOptions;
     }
     /**
-     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;.
+     * @return Available values: &#34;sitemap&#34;, &#34;feed-rss&#34;, &#34;crawl&#34;.
      * 
      */
     public String parseType() {
@@ -44,17 +49,27 @@ public final class GetAiSearchInstancesResultSourceParamsWebCrawler {
     }
     @CustomType.Builder
     public static final class Builder {
+        private GetAiSearchInstancesResultSourceParamsWebCrawlerCrawlOptions crawlOptions;
         private GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions parseOptions;
         private String parseType;
         private GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions storeOptions;
         public Builder() {}
         public Builder(GetAiSearchInstancesResultSourceParamsWebCrawler defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.crawlOptions = defaults.crawlOptions;
     	      this.parseOptions = defaults.parseOptions;
     	      this.parseType = defaults.parseType;
     	      this.storeOptions = defaults.storeOptions;
         }
 
+        @CustomType.Setter
+        public Builder crawlOptions(GetAiSearchInstancesResultSourceParamsWebCrawlerCrawlOptions crawlOptions) {
+            if (crawlOptions == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResultSourceParamsWebCrawler", "crawlOptions");
+            }
+            this.crawlOptions = crawlOptions;
+            return this;
+        }
         @CustomType.Setter
         public Builder parseOptions(GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions parseOptions) {
             if (parseOptions == null) {
@@ -81,6 +96,7 @@ public final class GetAiSearchInstancesResultSourceParamsWebCrawler {
         }
         public GetAiSearchInstancesResultSourceParamsWebCrawler build() {
             final var _resultValue = new GetAiSearchInstancesResultSourceParamsWebCrawler();
+            _resultValue.crawlOptions = crawlOptions;
             _resultValue.parseOptions = parseOptions;
             _resultValue.parseType = parseType;
             _resultValue.storeOptions = storeOptions;

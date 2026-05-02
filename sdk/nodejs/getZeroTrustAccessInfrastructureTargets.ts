@@ -36,7 +36,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustAccessInfrastructureTargets(args: GetZeroTrustAccessInfrastructureTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessInfrastructureTargetsResult> {
+export function getZeroTrustAccessInfrastructureTargets(args?: GetZeroTrustAccessInfrastructureTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessInfrastructureTargetsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessInfrastructureTargets:getZeroTrustAccessInfrastructureTargets", {
         "accountId": args.accountId,
@@ -69,7 +70,7 @@ export interface GetZeroTrustAccessInfrastructureTargetsArgs {
     /**
      * Account identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Date and time at which the target was created after (inclusive)
      */
@@ -165,7 +166,7 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
     /**
      * Account identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Date and time at which the target was created after (inclusive)
      */
@@ -291,7 +292,8 @@ export interface GetZeroTrustAccessInfrastructureTargetsResult {
  * });
  * ```
  */
-export function getZeroTrustAccessInfrastructureTargetsOutput(args: GetZeroTrustAccessInfrastructureTargetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessInfrastructureTargetsResult> {
+export function getZeroTrustAccessInfrastructureTargetsOutput(args?: GetZeroTrustAccessInfrastructureTargetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessInfrastructureTargetsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessInfrastructureTargets:getZeroTrustAccessInfrastructureTargets", {
         "accountId": args.accountId,
@@ -324,7 +326,7 @@ export interface GetZeroTrustAccessInfrastructureTargetsOutputArgs {
     /**
      * Account identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Date and time at which the target was created after (inclusive)
      */

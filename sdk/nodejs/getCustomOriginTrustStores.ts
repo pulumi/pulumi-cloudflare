@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -20,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getCustomOriginTrustStores(args: GetCustomOriginTrustStoresArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomOriginTrustStoresResult> {
+export function getCustomOriginTrustStores(args?: GetCustomOriginTrustStoresArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomOriginTrustStoresResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomOriginTrustStores:getCustomOriginTrustStores", {
         "limit": args.limit,
@@ -49,7 +55,7 @@ export interface GetCustomOriginTrustStoresArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -79,9 +85,14 @@ export interface GetCustomOriginTrustStoresResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -95,7 +106,8 @@ export interface GetCustomOriginTrustStoresResult {
  * });
  * ```
  */
-export function getCustomOriginTrustStoresOutput(args: GetCustomOriginTrustStoresOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomOriginTrustStoresResult> {
+export function getCustomOriginTrustStoresOutput(args?: GetCustomOriginTrustStoresOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomOriginTrustStoresResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomOriginTrustStores:getCustomOriginTrustStores", {
         "limit": args.limit,
@@ -124,5 +136,5 @@ export interface GetCustomOriginTrustStoresOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

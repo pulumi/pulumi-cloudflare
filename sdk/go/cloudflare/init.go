@@ -61,6 +61,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountToken{}
 	case "cloudflare:index/addressMap:AddressMap":
 		r = &AddressMap{}
+	case "cloudflare:index/aiGateway:AiGateway":
+		r = &AiGateway{}
+	case "cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting":
+		r = &AiGatewayDynamicRouting{}
 	case "cloudflare:index/aiSearchInstance:AiSearchInstance":
 		r = &AiSearchInstance{}
 	case "cloudflare:index/aiSearchToken:AiSearchToken":
@@ -99,6 +103,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CallsSfuApp{}
 	case "cloudflare:index/callsTurnApp:CallsTurnApp":
 		r = &CallsTurnApp{}
+	case "cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations":
+		r = &CertificateAuthoritiesHostnameAssociations{}
 	case "cloudflare:index/certificatePack:CertificatePack":
 		r = &CertificatePack{}
 	case "cloudflare:index/clientCertificate:ClientCertificate":
@@ -125,6 +131,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomHostnameFallbackOrigin{}
 	case "cloudflare:index/customOriginTrustStore:CustomOriginTrustStore":
 		r = &CustomOriginTrustStore{}
+	case "cloudflare:index/customPageAsset:CustomPageAsset":
+		r = &CustomPageAsset{}
 	case "cloudflare:index/customPages:CustomPages":
 		r = &CustomPages{}
 	case "cloudflare:index/customSsl:CustomSsl":
@@ -253,6 +261,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PagesDomain{}
 	case "cloudflare:index/pagesProject:PagesProject":
 		r = &PagesProject{}
+	case "cloudflare:index/pipeline:Pipeline":
+		r = &Pipeline{}
+	case "cloudflare:index/pipelineSink:PipelineSink":
+		r = &PipelineSink{}
+	case "cloudflare:index/pipelineStream:PipelineStream":
+		r = &PipelineStream{}
 	case "cloudflare:index/queue:Queue":
 		r = &Queue{}
 	case "cloudflare:index/queueConsumer:QueueConsumer":
@@ -271,6 +285,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &R2BucketSippy{}
 	case "cloudflare:index/r2CustomDomain:R2CustomDomain":
 		r = &R2CustomDomain{}
+	case "cloudflare:index/r2DataCatalog:R2DataCatalog":
+		r = &R2DataCatalog{}
 	case "cloudflare:index/r2ManagedDomain:R2ManagedDomain":
 		r = &R2ManagedDomain{}
 	case "cloudflare:index/rateLimit:RateLimit":
@@ -357,6 +373,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &User{}
 	case "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule":
 		r = &UserAgentBlockingRule{}
+	case "cloudflare:index/userGroup:UserGroup":
+		r = &UserGroup{}
+	case "cloudflare:index/userGroupMembers:UserGroupMembers":
+		r = &UserGroupMembers{}
+	case "cloudflare:index/vulnerabilityScannerCredential:VulnerabilityScannerCredential":
+		r = &VulnerabilityScannerCredential{}
+	case "cloudflare:index/vulnerabilityScannerCredentialSet:VulnerabilityScannerCredentialSet":
+		r = &VulnerabilityScannerCredentialSet{}
+	case "cloudflare:index/vulnerabilityScannerTargetEnvironment:VulnerabilityScannerTargetEnvironment":
+		r = &VulnerabilityScannerTargetEnvironment{}
 	case "cloudflare:index/waitingRoom:WaitingRoom":
 		r = &WaitingRoom{}
 	case "cloudflare:index/waitingRoomEvent:WaitingRoomEvent":
@@ -441,6 +467,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDeviceDefaultProfileCertificates{}
 	case "cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback":
 		r = &ZeroTrustDeviceDefaultProfileLocalDomainFallback{}
+	case "cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile":
+		r = &ZeroTrustDeviceIpProfile{}
 	case "cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks":
 		r = &ZeroTrustDeviceManagedNetworks{}
 	case "cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration":
@@ -449,6 +477,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDevicePostureRule{}
 	case "cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings":
 		r = &ZeroTrustDeviceSettings{}
+	case "cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet":
+		r = &ZeroTrustDeviceSubnet{}
 	case "cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule":
 		r = &ZeroTrustDexRule{}
 	case "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest":
@@ -467,6 +497,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDlpPredefinedEntry{}
 	case "cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile":
 		r = &ZeroTrustDlpPredefinedProfile{}
+	case "cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings":
+		r = &ZeroTrustDlpSettings{}
 	case "cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation":
 		r = &ZeroTrustDnsLocation{}
 	case "cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate":
@@ -654,6 +686,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/aiGateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/aiGatewayDynamicRouting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/aiSearchInstance",
 		&module{version},
 	)
@@ -749,6 +791,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/certificateAuthoritiesHostnameAssociations",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/certificatePack",
 		&module{version},
 	)
@@ -810,6 +857,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/customOriginTrustStore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/customPageAsset",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1134,6 +1186,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/pipeline",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/pipelineSink",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/pipelineStream",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/queue",
 		&module{version},
 	)
@@ -1175,6 +1242,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/r2CustomDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/r2DataCatalog",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1394,6 +1466,31 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/userGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/userGroupMembers",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/vulnerabilityScannerCredential",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/vulnerabilityScannerCredentialSet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/vulnerabilityScannerTargetEnvironment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/waitingRoom",
 		&module{version},
 	)
@@ -1604,6 +1701,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/zeroTrustDeviceIpProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/zeroTrustDeviceManagedNetworks",
 		&module{version},
 	)
@@ -1620,6 +1722,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustDeviceSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDeviceSubnet",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1665,6 +1772,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustDlpPredefinedProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDlpSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

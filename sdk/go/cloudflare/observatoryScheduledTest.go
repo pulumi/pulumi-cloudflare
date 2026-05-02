@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -47,8 +52,7 @@ import (
 type ObservatoryScheduledTest struct {
 	pulumi.CustomResourceState
 
-	// The frequency of the test.
-	// Available values: "DAILY", "WEEKLY".
+	// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
 	Frequency pulumi.StringOutput `pulumi:"frequency"`
 	// A test region.
 	// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
@@ -59,7 +63,7 @@ type ObservatoryScheduledTest struct {
 	// A URL.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewObservatoryScheduledTest registers a new resource with the given unique name, arguments, and options.
@@ -71,9 +75,6 @@ func NewObservatoryScheduledTest(ctx *pulumi.Context,
 
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ObservatoryScheduledTest
@@ -98,8 +99,7 @@ func GetObservatoryScheduledTest(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ObservatoryScheduledTest resources.
 type observatoryScheduledTestState struct {
-	// The frequency of the test.
-	// Available values: "DAILY", "WEEKLY".
+	// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
 	Frequency *string `pulumi:"frequency"`
 	// A test region.
 	// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
@@ -114,8 +114,7 @@ type observatoryScheduledTestState struct {
 }
 
 type ObservatoryScheduledTestState struct {
-	// The frequency of the test.
-	// Available values: "DAILY", "WEEKLY".
+	// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
 	Frequency pulumi.StringPtrInput
 	// A test region.
 	// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
@@ -134,18 +133,28 @@ func (ObservatoryScheduledTestState) ElementType() reflect.Type {
 }
 
 type observatoryScheduledTestArgs struct {
+	// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+	Frequency *string `pulumi:"frequency"`
+	// A test region.
+	// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+	Region *string `pulumi:"region"`
 	// A URL.
 	Url string `pulumi:"url"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ObservatoryScheduledTest resource.
 type ObservatoryScheduledTestArgs struct {
+	// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+	Frequency pulumi.StringPtrInput
+	// A test region.
+	// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+	Region pulumi.StringPtrInput
 	// A URL.
 	Url pulumi.StringInput
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (ObservatoryScheduledTestArgs) ElementType() reflect.Type {
@@ -235,8 +244,7 @@ func (o ObservatoryScheduledTestOutput) ToObservatoryScheduledTestOutputWithCont
 	return o
 }
 
-// The frequency of the test.
-// Available values: "DAILY", "WEEKLY".
+// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
 func (o ObservatoryScheduledTestOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObservatoryScheduledTest) pulumi.StringOutput { return v.Frequency }).(pulumi.StringOutput)
 }
@@ -262,8 +270,8 @@ func (o ObservatoryScheduledTestOutput) Url() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o ObservatoryScheduledTestOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ObservatoryScheduledTest) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o ObservatoryScheduledTestOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObservatoryScheduledTest) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type ObservatoryScheduledTestArrayOutput struct{ *pulumi.OutputState }

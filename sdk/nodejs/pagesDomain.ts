@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Pages Read`
+ * - `Pages Write`
+ *
  * > A DNS record for the domain is not automatically created. You need to create
  *    a `cloudflareRecord` resource for the domain you want to use.
  *
@@ -60,7 +65,7 @@ export class PagesDomain extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Available values: "google", "letsEncrypt".
      */
@@ -108,9 +113,6 @@ export class PagesDomain extends pulumi.CustomResource {
             resourceInputs["zoneTag"] = state?.zoneTag;
         } else {
             const args = argsOrState as PagesDomainArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -171,7 +173,7 @@ export interface PagesDomainArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The domain name.
      */

@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloud Email Security: Read`
+// - `Cloud Email Security: Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailSecurityBlockSender(ctx, &cloudflare.LookupEmailSecurityBlockSenderArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				PatternId: pulumi.IntRef(2402),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupEmailSecurityBlockSender(ctx *pulumi.Context, args *LookupEmailSecuri
 // A collection of arguments for invoking getEmailSecurityBlockSender.
 type LookupEmailSecurityBlockSenderArgs struct {
 	// Account Identifier
-	AccountId string                             `pulumi:"accountId"`
+	AccountId *string                            `pulumi:"accountId"`
 	Filter    *GetEmailSecurityBlockSenderFilter `pulumi:"filter"`
 	// The unique identifier for the allow policy.
 	PatternId *int `pulumi:"patternId"`
@@ -59,7 +64,7 @@ type LookupEmailSecurityBlockSenderArgs struct {
 // A collection of values returned by getEmailSecurityBlockSender.
 type LookupEmailSecurityBlockSenderResult struct {
 	// Account Identifier
-	AccountId string                             `pulumi:"accountId"`
+	AccountId *string                            `pulumi:"accountId"`
 	Comments  string                             `pulumi:"comments"`
 	CreatedAt string                             `pulumi:"createdAt"`
 	Filter    *GetEmailSecurityBlockSenderFilter `pulumi:"filter"`
@@ -86,7 +91,7 @@ func LookupEmailSecurityBlockSenderOutput(ctx *pulumi.Context, args LookupEmailS
 // A collection of arguments for invoking getEmailSecurityBlockSender.
 type LookupEmailSecurityBlockSenderOutputArgs struct {
 	// Account Identifier
-	AccountId pulumi.StringInput                        `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput                     `pulumi:"accountId"`
 	Filter    GetEmailSecurityBlockSenderFilterPtrInput `pulumi:"filter"`
 	// The unique identifier for the allow policy.
 	PatternId pulumi.IntPtrInput `pulumi:"patternId"`
@@ -112,8 +117,8 @@ func (o LookupEmailSecurityBlockSenderResultOutput) ToLookupEmailSecurityBlockSe
 }
 
 // Account Identifier
-func (o LookupEmailSecurityBlockSenderResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupEmailSecurityBlockSenderResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupEmailSecurityBlockSenderResultOutput) Comments() pulumi.StringOutput {

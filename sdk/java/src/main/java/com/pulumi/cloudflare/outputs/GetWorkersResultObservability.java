@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetWorkersResultObservabilityLogs;
+import com.pulumi.cloudflare.outputs.GetWorkersResultObservabilityTraces;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -27,6 +28,11 @@ public final class GetWorkersResultObservability {
      * 
      */
     private GetWorkersResultObservabilityLogs logs;
+    /**
+     * @return Trace settings for the Worker.
+     * 
+     */
+    private GetWorkersResultObservabilityTraces traces;
 
     private GetWorkersResultObservability() {}
     /**
@@ -50,6 +56,13 @@ public final class GetWorkersResultObservability {
     public GetWorkersResultObservabilityLogs logs() {
         return this.logs;
     }
+    /**
+     * @return Trace settings for the Worker.
+     * 
+     */
+    public GetWorkersResultObservabilityTraces traces() {
+        return this.traces;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,12 +76,14 @@ public final class GetWorkersResultObservability {
         private Boolean enabled;
         private Double headSamplingRate;
         private GetWorkersResultObservabilityLogs logs;
+        private GetWorkersResultObservabilityTraces traces;
         public Builder() {}
         public Builder(GetWorkersResultObservability defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
     	      this.logs = defaults.logs;
+    	      this.traces = defaults.traces;
         }
 
         @CustomType.Setter
@@ -95,11 +110,20 @@ public final class GetWorkersResultObservability {
             this.logs = logs;
             return this;
         }
+        @CustomType.Setter
+        public Builder traces(GetWorkersResultObservabilityTraces traces) {
+            if (traces == null) {
+              throw new MissingRequiredPropertyException("GetWorkersResultObservability", "traces");
+            }
+            this.traces = traces;
+            return this;
+        }
         public GetWorkersResultObservability build() {
             final var _resultValue = new GetWorkersResultObservability();
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
             _resultValue.logs = logs;
+            _resultValue.traces = traces;
             return _resultValue;
         }
     }

@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetTokenValidationConfig
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +42,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTokenValidationConfigResult>("cloudflare:index/getTokenValidationConfig:getTokenValidationConfig", args ?? new GetTokenValidationConfigArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +72,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetTokenValidationConfigResult>("cloudflare:index/getTokenValidationConfig:getTokenValidationConfig", args ?? new GetTokenValidationConfigInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +114,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetTokenValidationConfigArgs()
         {
@@ -113,8 +134,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetTokenValidationConfigInvokeArgs()
         {
@@ -147,7 +168,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetTokenValidationConfigResult(
@@ -169,7 +190,7 @@ namespace Pulumi.Cloudflare
 
             string tokenType,
 
-            string zoneId)
+            string? zoneId)
         {
             ConfigId = configId;
             CreatedAt = createdAt;

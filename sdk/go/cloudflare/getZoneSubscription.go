@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Billing Read`
+// - `Billing Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZoneSubscription(ctx, &cloudflare.LookupZoneSubscriptionArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupZoneSubscription(ctx *pulumi.Context, args *LookupZoneSubscriptionArg
 // A collection of arguments for invoking getZoneSubscription.
 type LookupZoneSubscriptionArgs struct {
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZoneSubscription.
@@ -73,7 +78,7 @@ type LookupZoneSubscriptionResult struct {
 	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 	State string `pulumi:"state"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupZoneSubscriptionOutput(ctx *pulumi.Context, args LookupZoneSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupZoneSubscriptionResultOutput {
@@ -88,7 +93,7 @@ func LookupZoneSubscriptionOutput(ctx *pulumi.Context, args LookupZoneSubscripti
 // A collection of arguments for invoking getZoneSubscription.
 type LookupZoneSubscriptionOutputArgs struct {
 	// Identifier
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupZoneSubscriptionOutputArgs) ElementType() reflect.Type {
@@ -153,8 +158,8 @@ func (o LookupZoneSubscriptionResultOutput) State() pulumi.StringOutput {
 }
 
 // Identifier
-func (o LookupZoneSubscriptionResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneSubscriptionResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupZoneSubscriptionResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZoneSubscriptionResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

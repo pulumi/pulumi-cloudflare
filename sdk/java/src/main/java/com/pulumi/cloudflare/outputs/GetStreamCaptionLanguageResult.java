@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStreamCaptionLanguageResult {
@@ -15,7 +17,7 @@ public final class GetStreamCaptionLanguageResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Whether the caption was generated via AI.
      * 
@@ -53,8 +55,8 @@ public final class GetStreamCaptionLanguageResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Whether the caption was generated via AI.
@@ -109,7 +111,7 @@ public final class GetStreamCaptionLanguageResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Boolean generated;
         private String id;
         private String identifier;
@@ -129,10 +131,8 @@ public final class GetStreamCaptionLanguageResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetStreamCaptionLanguageResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

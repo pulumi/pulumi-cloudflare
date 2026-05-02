@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Pages Read`
+// - `Pages Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetPagesProject(ctx, &cloudflare.LookupPagesProjectArgs{
-//				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ProjectName: "this-is-my-project-01",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupPagesProject(ctx *pulumi.Context, args *LookupPagesProjectArgs, opts 
 // A collection of arguments for invoking getPagesProject.
 type LookupPagesProjectArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the project.
 	ProjectName string `pulumi:"projectName"`
 }
@@ -58,7 +63,7 @@ type LookupPagesProjectArgs struct {
 // A collection of values returned by getPagesProject.
 type LookupPagesProjectResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Configs for the project build process.
 	BuildConfig GetPagesProjectBuildConfig `pulumi:"buildConfig"`
 	// Most recent production deployment of the project.
@@ -107,7 +112,7 @@ func LookupPagesProjectOutput(ctx *pulumi.Context, args LookupPagesProjectOutput
 // A collection of arguments for invoking getPagesProject.
 type LookupPagesProjectOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Name of the project.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 }
@@ -132,8 +137,8 @@ func (o LookupPagesProjectResultOutput) ToLookupPagesProjectResultOutputWithCont
 }
 
 // Identifier.
-func (o LookupPagesProjectResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPagesProjectResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupPagesProjectResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPagesProjectResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Configs for the project build process.

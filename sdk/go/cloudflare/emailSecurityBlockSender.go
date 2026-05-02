@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloud Email Security: Read`
+// - `Cloud Email Security: Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -51,7 +56,7 @@ type EmailSecurityBlockSender struct {
 	pulumi.CustomResourceState
 
 	// Account Identifier
-	AccountId    pulumi.StringOutput    `pulumi:"accountId"`
+	AccountId    pulumi.StringPtrOutput `pulumi:"accountId"`
 	Comments     pulumi.StringPtrOutput `pulumi:"comments"`
 	CreatedAt    pulumi.StringOutput    `pulumi:"createdAt"`
 	IsRegex      pulumi.BoolOutput      `pulumi:"isRegex"`
@@ -68,9 +73,6 @@ func NewEmailSecurityBlockSender(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.IsRegex == nil {
 		return nil, errors.New("invalid value for required argument 'IsRegex'")
 	}
@@ -132,7 +134,7 @@ func (EmailSecurityBlockSenderState) ElementType() reflect.Type {
 
 type emailSecurityBlockSenderArgs struct {
 	// Account Identifier
-	AccountId string  `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	Comments  *string `pulumi:"comments"`
 	IsRegex   bool    `pulumi:"isRegex"`
 	Pattern   string  `pulumi:"pattern"`
@@ -143,7 +145,7 @@ type emailSecurityBlockSenderArgs struct {
 // The set of arguments for constructing a EmailSecurityBlockSender resource.
 type EmailSecurityBlockSenderArgs struct {
 	// Account Identifier
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	Comments  pulumi.StringPtrInput
 	IsRegex   pulumi.BoolInput
 	Pattern   pulumi.StringInput
@@ -239,8 +241,8 @@ func (o EmailSecurityBlockSenderOutput) ToEmailSecurityBlockSenderOutputWithCont
 }
 
 // Account Identifier
-func (o EmailSecurityBlockSenderOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o EmailSecurityBlockSenderOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o EmailSecurityBlockSenderOutput) Comments() pulumi.StringPtrOutput {

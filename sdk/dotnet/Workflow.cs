@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Workers Scripts Read`
+    /// - `Workers Scripts Write`
+    /// - `Workers Tail Read`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -26,6 +32,10 @@ namespace Pulumi.Cloudflare
     ///         WorkflowName = "x",
     ///         ClassName = "x",
     ///         ScriptName = "x",
+    ///         Limits = new Cloudflare.Inputs.WorkflowLimitsArgs
+    ///         {
+    ///             Steps = 1,
+    ///         },
     ///     });
     /// 
     /// });
@@ -41,7 +51,7 @@ namespace Pulumi.Cloudflare
     public partial class Workflow : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("className")]
         public Output<string> ClassName { get; private set; } = null!;
@@ -54,6 +64,9 @@ namespace Pulumi.Cloudflare
 
         [Output("isDeleted")]
         public Output<double> IsDeleted { get; private set; } = null!;
+
+        [Output("limits")]
+        public Output<Outputs.WorkflowLimits?> Limits { get; private set; } = null!;
 
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
@@ -122,11 +135,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class WorkflowArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("className", required: true)]
         public Input<string> ClassName { get; set; } = null!;
+
+        [Input("limits")]
+        public Input<Inputs.WorkflowLimitsArgs>? Limits { get; set; }
 
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
@@ -156,6 +172,9 @@ namespace Pulumi.Cloudflare
 
         [Input("isDeleted")]
         public Input<double>? IsDeleted { get; set; }
+
+        [Input("limits")]
+        public Input<Inputs.WorkflowLimitsGetArgs>? Limits { get; set; }
 
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }

@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Tokens Read`
+// - `Account API Tokens Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountToken(ctx, &cloudflare.LookupAccountTokenArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				TokenId:   pulumi.StringRef("ed17574386854bf78a67040be0a770b0"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupAccountToken(ctx *pulumi.Context, args *LookupAccountTokenArgs, opts 
 // A collection of arguments for invoking getAccountToken.
 type LookupAccountTokenArgs struct {
 	// Account identifier tag.
-	AccountId string                 `pulumi:"accountId"`
+	AccountId *string                `pulumi:"accountId"`
 	Filter    *GetAccountTokenFilter `pulumi:"filter"`
 	// Token identifier tag.
 	TokenId *string `pulumi:"tokenId"`
@@ -59,7 +64,7 @@ type LookupAccountTokenArgs struct {
 // A collection of values returned by getAccountToken.
 type LookupAccountTokenResult struct {
 	// Account identifier tag.
-	AccountId string                   `pulumi:"accountId"`
+	AccountId *string                  `pulumi:"accountId"`
 	Condition GetAccountTokenCondition `pulumi:"condition"`
 	// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 	ExpiresOn string                 `pulumi:"expiresOn"`
@@ -97,7 +102,7 @@ func LookupAccountTokenOutput(ctx *pulumi.Context, args LookupAccountTokenOutput
 // A collection of arguments for invoking getAccountToken.
 type LookupAccountTokenOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput            `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput         `pulumi:"accountId"`
 	Filter    GetAccountTokenFilterPtrInput `pulumi:"filter"`
 	// Token identifier tag.
 	TokenId pulumi.StringPtrInput `pulumi:"tokenId"`
@@ -123,8 +128,8 @@ func (o LookupAccountTokenResultOutput) ToLookupAccountTokenResultOutputWithCont
 }
 
 // Account identifier tag.
-func (o LookupAccountTokenResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountTokenResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAccountTokenResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountTokenResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupAccountTokenResultOutput) Condition() GetAccountTokenConditionOutput {

@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Pages Read`
+    /// - `Pages Write`
+    /// 
     /// &gt; If you are using a `Source` block configuration, you must first have a
     ///    connected GitHub or GitLab account connected to Cloudflare. See the
     ///    [Getting Started with Pages](https://developers.cloudflare.com/pages/get-started/git-integration/)
@@ -320,7 +325,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Configs for the project build process.
@@ -461,8 +466,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Configs for the project build process.

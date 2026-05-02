@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetImage
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Images Read`
+        /// - `Images Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("cloudflare:index/getImage:getImage", args ?? new GetImageArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Images Read`
+        /// - `Images Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("cloudflare:index/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Images Read`
+        /// - `Images Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Image unique identifier.
@@ -107,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Image unique identifier.
@@ -129,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Can set the creator field with an internal user ID.
         /// </summary>
@@ -165,7 +180,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetImageResult(
-            string accountId,
+            string? accountId,
 
             string creator,
 

@@ -226,6 +226,11 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Email Routing Rules Read`
+        - `Email Routing Rules Write`
+
         ## Example Usage
 
         ```python
@@ -267,6 +272,11 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
                  args: EmailRoutingCatchAllArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Email Routing Rules Read`
+        - `Email Routing Rules Write`
+
         ## Example Usage
 
         ```python

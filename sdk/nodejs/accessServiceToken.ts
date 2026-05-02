@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Service Tokens Read`
+ * - `Access: Service Tokens Write`
+ *
  * ## Example Usage
  *
  * ```typescript

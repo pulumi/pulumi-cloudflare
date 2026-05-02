@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ * - `Zone DNS Settings Read`
+ * - `Zone DNS Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZoneDnsSettings(args: GetZoneDnsSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneDnsSettingsResult> {
+export function getZoneDnsSettings(args?: GetZoneDnsSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneDnsSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneDnsSettings:getZoneDnsSettings", {
         "zoneId": args.zoneId,
@@ -32,7 +40,7 @@ export interface GetZoneDnsSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -78,7 +86,7 @@ export interface GetZoneDnsSettingsResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
     /**
      * Whether the zone mode is a regular or CDN/DNS only zone.
      * Available values: "standard", "cdn*only", "dns*only".
@@ -86,6 +94,13 @@ export interface GetZoneDnsSettingsResult {
     readonly zoneMode: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ * - `Zone DNS Settings Read`
+ * - `Zone DNS Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -97,7 +112,8 @@ export interface GetZoneDnsSettingsResult {
  * });
  * ```
  */
-export function getZoneDnsSettingsOutput(args: GetZoneDnsSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneDnsSettingsResult> {
+export function getZoneDnsSettingsOutput(args?: GetZoneDnsSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneDnsSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneDnsSettings:getZoneDnsSettings", {
         "zoneId": args.zoneId,
@@ -111,5 +127,5 @@ export interface GetZoneDnsSettingsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

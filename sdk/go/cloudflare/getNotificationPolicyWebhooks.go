@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+// - `Notifications Read`
+// - `Notifications Write`
+// - `Zero Trust: PII Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetNotificationPolicyWebhooks(ctx, &cloudflare.LookupNotificationPolicyWebhooksArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				WebhookId: "b115d5ec15c641ee8b7692c449b5227b",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +58,7 @@ func LookupNotificationPolicyWebhooks(ctx *pulumi.Context, args *LookupNotificat
 // A collection of arguments for invoking getNotificationPolicyWebhooks.
 type LookupNotificationPolicyWebhooksArgs struct {
 	// The account id
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The unique identifier of a webhook
 	WebhookId string `pulumi:"webhookId"`
 }
@@ -58,7 +66,7 @@ type LookupNotificationPolicyWebhooksArgs struct {
 // A collection of values returned by getNotificationPolicyWebhooks.
 type LookupNotificationPolicyWebhooksResult struct {
 	// The account id
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Timestamp of when the webhook destination was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// The unique identifier of a webhook
@@ -92,7 +100,7 @@ func LookupNotificationPolicyWebhooksOutput(ctx *pulumi.Context, args LookupNoti
 // A collection of arguments for invoking getNotificationPolicyWebhooks.
 type LookupNotificationPolicyWebhooksOutputArgs struct {
 	// The account id
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The unique identifier of a webhook
 	WebhookId pulumi.StringInput `pulumi:"webhookId"`
 }
@@ -117,8 +125,8 @@ func (o LookupNotificationPolicyWebhooksResultOutput) ToLookupNotificationPolicy
 }
 
 // The account id
-func (o LookupNotificationPolicyWebhooksResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNotificationPolicyWebhooksResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupNotificationPolicyWebhooksResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNotificationPolicyWebhooksResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Timestamp of when the webhook destination was created.

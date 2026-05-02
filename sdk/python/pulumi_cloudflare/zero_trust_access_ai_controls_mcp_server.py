@@ -13,43 +13,43 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ZeroTrustAccessAiControlsMcpServerArgs', 'ZeroTrustAccessAiControlsMcpServer']
 
 @pulumi.input_type
 class ZeroTrustAccessAiControlsMcpServerArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  auth_type: pulumi.Input[_builtins.str],
                  hostname: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  zero_trust_access_ai_controls_mcp_server_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  auth_credentials: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_prompts: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]] = None,
+                 updated_tools: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessAiControlsMcpServer resource.
 
         :param pulumi.Input[_builtins.str] auth_type: Available values: "oauth", "bearer", "unauthenticated".
         :param pulumi.Input[_builtins.str] zero_trust_access_ai_controls_mcp_server_id: server id
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "auth_type", auth_type)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "zero_trust_access_ai_controls_mcp_server_id", zero_trust_access_ai_controls_mcp_server_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if auth_credentials is not None:
             pulumi.set(__self__, "auth_credentials", auth_credentials)
         if description is not None:
             pulumi.set(__self__, "description", description)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
+        if updated_prompts is not None:
+            pulumi.set(__self__, "updated_prompts", updated_prompts)
+        if updated_tools is not None:
+            pulumi.set(__self__, "updated_tools", updated_tools)
 
     @_builtins.property
     @pulumi.getter(name="authType")
@@ -94,6 +94,15 @@ class ZeroTrustAccessAiControlsMcpServerArgs:
         pulumi.set(self, "zero_trust_access_ai_controls_mcp_server_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="authCredentials")
     def auth_credentials(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "auth_credentials")
@@ -110,6 +119,24 @@ class ZeroTrustAccessAiControlsMcpServerArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedPrompts")
+    def updated_prompts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]]:
+        return pulumi.get(self, "updated_prompts")
+
+    @updated_prompts.setter
+    def updated_prompts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]]):
+        pulumi.set(self, "updated_prompts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedTools")
+    def updated_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]]:
+        return pulumi.get(self, "updated_tools")
+
+    @updated_tools.setter
+    def updated_tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]]):
+        pulumi.set(self, "updated_tools", value)
 
 
 @pulumi.input_type
@@ -131,6 +158,8 @@ class _ZeroTrustAccessAiControlsMcpServerState:
                  prompts: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  tools: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 updated_prompts: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]] = None,
+                 updated_tools: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]] = None,
                  zero_trust_access_ai_controls_mcp_server_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessAiControlsMcpServer resources.
@@ -170,6 +199,10 @@ class _ZeroTrustAccessAiControlsMcpServerState:
             pulumi.set(__self__, "status", status)
         if tools is not None:
             pulumi.set(__self__, "tools", tools)
+        if updated_prompts is not None:
+            pulumi.set(__self__, "updated_prompts", updated_prompts)
+        if updated_tools is not None:
+            pulumi.set(__self__, "updated_tools", updated_tools)
         if zero_trust_access_ai_controls_mcp_server_id is not None:
             pulumi.set(__self__, "zero_trust_access_ai_controls_mcp_server_id", zero_trust_access_ai_controls_mcp_server_id)
 
@@ -321,6 +354,24 @@ class _ZeroTrustAccessAiControlsMcpServerState:
         pulumi.set(self, "tools", value)
 
     @_builtins.property
+    @pulumi.getter(name="updatedPrompts")
+    def updated_prompts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]]:
+        return pulumi.get(self, "updated_prompts")
+
+    @updated_prompts.setter
+    def updated_prompts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]]):
+        pulumi.set(self, "updated_prompts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedTools")
+    def updated_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]]:
+        return pulumi.get(self, "updated_tools")
+
+    @updated_tools.setter
+    def updated_tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]]):
+        pulumi.set(self, "updated_tools", value)
+
+    @_builtins.property
     @pulumi.getter(name="zeroTrustAccessAiControlsMcpServerId")
     def zero_trust_access_ai_controls_mcp_server_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -345,6 +396,8 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_prompts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]]] = None,
+                 updated_tools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]]] = None,
                  zero_trust_access_ai_controls_mcp_server_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -358,10 +411,22 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
             account_id="a86a8f5c339544d7bdc89926de14fb8c",
             zero_trust_access_ai_controls_mcp_server_id="my-mcp-server",
             auth_type="unauthenticated",
-            hostname="https://exmaple.com/mcp",
+            hostname="https://example.com/mcp",
             name="My MCP Server",
             auth_credentials="auth_credentials",
-            description="This is one remote mcp server")
+            description="This is one remote mcp server",
+            updated_prompts=[{
+                "name": "name",
+                "alias": "my-custom-alias",
+                "description": "description",
+                "enabled": True,
+            }],
+            updated_tools=[{
+                "name": "name",
+                "alias": "my-custom-alias",
+                "description": "description",
+                "enabled": True,
+            }])
         ```
 
         ## Import
@@ -393,10 +458,22 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
             account_id="a86a8f5c339544d7bdc89926de14fb8c",
             zero_trust_access_ai_controls_mcp_server_id="my-mcp-server",
             auth_type="unauthenticated",
-            hostname="https://exmaple.com/mcp",
+            hostname="https://example.com/mcp",
             name="My MCP Server",
             auth_credentials="auth_credentials",
-            description="This is one remote mcp server")
+            description="This is one remote mcp server",
+            updated_prompts=[{
+                "name": "name",
+                "alias": "my-custom-alias",
+                "description": "description",
+                "enabled": True,
+            }],
+            updated_tools=[{
+                "name": "name",
+                "alias": "my-custom-alias",
+                "description": "description",
+                "enabled": True,
+            }])
         ```
 
         ## Import
@@ -427,6 +504,8 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_prompts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]]] = None,
+                 updated_tools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]]] = None,
                  zero_trust_access_ai_controls_mcp_server_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -437,10 +516,8 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustAccessAiControlsMcpServerArgs.__new__(ZeroTrustAccessAiControlsMcpServerArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            __props__.__dict__["auth_credentials"] = auth_credentials
+            __props__.__dict__["auth_credentials"] = None if auth_credentials is None else pulumi.Output.secret(auth_credentials)
             if auth_type is None and not opts.urn:
                 raise TypeError("Missing required property 'auth_type'")
             __props__.__dict__["auth_type"] = auth_type
@@ -451,6 +528,8 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["updated_prompts"] = updated_prompts
+            __props__.__dict__["updated_tools"] = updated_tools
             if zero_trust_access_ai_controls_mcp_server_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zero_trust_access_ai_controls_mcp_server_id'")
             __props__.__dict__["zero_trust_access_ai_controls_mcp_server_id"] = zero_trust_access_ai_controls_mcp_server_id
@@ -464,6 +543,8 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
             __props__.__dict__["prompts"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["tools"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["authCredentials"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ZeroTrustAccessAiControlsMcpServer, __self__).__init__(
             'cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer',
             resource_name,
@@ -490,6 +571,8 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
             prompts: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             tools: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            updated_prompts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]]] = None,
+            updated_tools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]]] = None,
             zero_trust_access_ai_controls_mcp_server_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustAccessAiControlsMcpServer':
         """
         Get an existing ZeroTrustAccessAiControlsMcpServer resource's state with the given name, id, and optional extra
@@ -521,12 +604,14 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
         __props__.__dict__["prompts"] = prompts
         __props__.__dict__["status"] = status
         __props__.__dict__["tools"] = tools
+        __props__.__dict__["updated_prompts"] = updated_prompts
+        __props__.__dict__["updated_tools"] = updated_tools
         __props__.__dict__["zero_trust_access_ai_controls_mcp_server_id"] = zero_trust_access_ai_controls_mcp_server_id
         return ZeroTrustAccessAiControlsMcpServer(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -606,6 +691,16 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
     @pulumi.getter
     def tools(self) -> pulumi.Output[Sequence[Mapping[str, _builtins.str]]]:
         return pulumi.get(self, "tools")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedPrompts")
+    def updated_prompts(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt']]]:
+        return pulumi.get(self, "updated_prompts")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedTools")
+    def updated_tools(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool']]]:
+        return pulumi.get(self, "updated_tools")
 
     @_builtins.property
     @pulumi.getter(name="zeroTrustAccessAiControlsMcpServerId")

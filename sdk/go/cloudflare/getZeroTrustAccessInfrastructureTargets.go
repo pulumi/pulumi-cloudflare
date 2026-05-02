@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustAccessInfrastructureTargets(ctx, &cloudflare.LookupZeroTrustAccessInfrastructureTargetsArgs{
-//				AccountId:        "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:        pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				CreatedAfter:     pulumi.StringRef("2019-12-27T18:11:19.117Z"),
 //				CreatedBefore:    pulumi.StringRef("2019-12-27T18:11:19.117Z"),
 //				Direction:        pulumi.StringRef("asc"),
@@ -71,7 +71,7 @@ func LookupZeroTrustAccessInfrastructureTargets(ctx *pulumi.Context, args *Looku
 // A collection of arguments for invoking getZeroTrustAccessInfrastructureTargets.
 type LookupZeroTrustAccessInfrastructureTargetsArgs struct {
 	// Account identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Date and time at which the target was created after (inclusive)
 	CreatedAfter *string `pulumi:"createdAfter"`
 	// Date and time at which the target was created before (inclusive)
@@ -125,7 +125,7 @@ type LookupZeroTrustAccessInfrastructureTargetsArgs struct {
 // A collection of values returned by getZeroTrustAccessInfrastructureTargets.
 type LookupZeroTrustAccessInfrastructureTargetsResult struct {
 	// Account identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Date and time at which the target was created after (inclusive)
 	CreatedAfter *string `pulumi:"createdAfter"`
 	// Date and time at which the target was created before (inclusive)
@@ -192,7 +192,7 @@ func LookupZeroTrustAccessInfrastructureTargetsOutput(ctx *pulumi.Context, args 
 // A collection of arguments for invoking getZeroTrustAccessInfrastructureTargets.
 type LookupZeroTrustAccessInfrastructureTargetsOutputArgs struct {
 	// Account identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Date and time at which the target was created after (inclusive)
 	CreatedAfter pulumi.StringPtrInput `pulumi:"createdAfter"`
 	// Date and time at which the target was created before (inclusive)
@@ -263,8 +263,8 @@ func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) ToLookupZeroTrus
 }
 
 // Account identifier
-func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustAccessInfrastructureTargetsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Date and time at which the target was created after (inclusive)

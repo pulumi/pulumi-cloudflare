@@ -32,7 +32,7 @@ public final class HyperdriveConfigOrigin {
      * @return Defines the host (hostname or IP) of your origin database.
      * 
      */
-    private String host;
+    private @Nullable String host;
     /**
      * @return Set the password needed to access your origin database. The API never returns this write-only value.
      * 
@@ -49,6 +49,11 @@ public final class HyperdriveConfigOrigin {
      * 
      */
     private String scheme;
+    /**
+     * @return The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.
+     * 
+     */
+    private @Nullable String serviceId;
     /**
      * @return Set the user of your origin database.
      * 
@@ -81,8 +86,8 @@ public final class HyperdriveConfigOrigin {
      * @return Defines the host (hostname or IP) of your origin database.
      * 
      */
-    public String host() {
-        return this.host;
+    public Optional<String> host() {
+        return Optional.ofNullable(this.host);
     }
     /**
      * @return Set the password needed to access your origin database. The API never returns this write-only value.
@@ -107,6 +112,13 @@ public final class HyperdriveConfigOrigin {
         return this.scheme;
     }
     /**
+     * @return The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.
+     * 
+     */
+    public Optional<String> serviceId() {
+        return Optional.ofNullable(this.serviceId);
+    }
+    /**
      * @return Set the user of your origin database.
      * 
      */
@@ -126,10 +138,11 @@ public final class HyperdriveConfigOrigin {
         private @Nullable String accessClientId;
         private @Nullable String accessClientSecret;
         private String database;
-        private String host;
+        private @Nullable String host;
         private String password;
         private @Nullable Integer port;
         private String scheme;
+        private @Nullable String serviceId;
         private String user;
         public Builder() {}
         public Builder(HyperdriveConfigOrigin defaults) {
@@ -141,6 +154,7 @@ public final class HyperdriveConfigOrigin {
     	      this.password = defaults.password;
     	      this.port = defaults.port;
     	      this.scheme = defaults.scheme;
+    	      this.serviceId = defaults.serviceId;
     	      this.user = defaults.user;
         }
 
@@ -165,10 +179,8 @@ public final class HyperdriveConfigOrigin {
             return this;
         }
         @CustomType.Setter
-        public Builder host(String host) {
-            if (host == null) {
-              throw new MissingRequiredPropertyException("HyperdriveConfigOrigin", "host");
-            }
+        public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }
@@ -195,6 +207,12 @@ public final class HyperdriveConfigOrigin {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceId(@Nullable String serviceId) {
+
+            this.serviceId = serviceId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder user(String user) {
             if (user == null) {
               throw new MissingRequiredPropertyException("HyperdriveConfigOrigin", "user");
@@ -211,6 +229,7 @@ public final class HyperdriveConfigOrigin {
             _resultValue.password = password;
             _resultValue.port = port;
             _resultValue.scheme = scheme;
+            _resultValue.serviceId = serviceId;
             _resultValue.user = user;
             return _resultValue;
         }

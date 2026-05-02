@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // > Certificate packs are not able to be updated in place. If
 // you require a zero downtime rotation, you can create multiple
 // resources using a 2-phase change where you have both resources
@@ -95,7 +100,7 @@ type CertificatePack struct {
 	// Available values: 14, 30, 90, 365.
 	ValidityDays pulumi.IntOutput `pulumi:"validityDays"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewCertificatePack registers a new resource with the given unique name, arguments, and options.
@@ -116,9 +121,6 @@ func NewCertificatePack(ctx *pulumi.Context,
 	}
 	if args.ValidityDays == nil {
 		return nil, errors.New("invalid value for required argument 'ValidityDays'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CertificatePack
@@ -232,7 +234,7 @@ type certificatePackArgs struct {
 	// Available values: 14, 30, 90, 365.
 	ValidityDays int `pulumi:"validityDays"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a CertificatePack resource.
@@ -254,7 +256,7 @@ type CertificatePackArgs struct {
 	// Available values: 14, 30, 90, 365.
 	ValidityDays pulumi.IntInput
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (CertificatePackArgs) ElementType() reflect.Type {
@@ -410,8 +412,8 @@ func (o CertificatePackOutput) ValidityDays() pulumi.IntOutput {
 }
 
 // Identifier.
-func (o CertificatePackOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o CertificatePackOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificatePack) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type CertificatePackArrayOutput struct{ *pulumi.OutputState }

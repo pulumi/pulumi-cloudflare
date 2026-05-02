@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getWebAnalyticsSites(args: GetWebAnalyticsSitesArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAnalyticsSitesResult> {
+export function getWebAnalyticsSites(args?: GetWebAnalyticsSitesArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAnalyticsSitesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWebAnalyticsSites:getWebAnalyticsSites", {
         "accountId": args.accountId,
@@ -35,7 +40,7 @@ export interface GetWebAnalyticsSitesArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -54,7 +59,7 @@ export interface GetWebAnalyticsSitesResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -74,6 +79,10 @@ export interface GetWebAnalyticsSitesResult {
     readonly results: outputs.GetWebAnalyticsSitesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -86,7 +95,8 @@ export interface GetWebAnalyticsSitesResult {
  * });
  * ```
  */
-export function getWebAnalyticsSitesOutput(args: GetWebAnalyticsSitesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebAnalyticsSitesResult> {
+export function getWebAnalyticsSitesOutput(args?: GetWebAnalyticsSitesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebAnalyticsSitesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWebAnalyticsSites:getWebAnalyticsSites", {
         "accountId": args.accountId,
@@ -102,7 +112,7 @@ export interface GetWebAnalyticsSitesOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

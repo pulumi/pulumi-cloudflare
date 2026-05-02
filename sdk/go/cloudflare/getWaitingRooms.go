@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Waiting Rooms Read`
+//
 // ## Example Usage
 //
 // ```go

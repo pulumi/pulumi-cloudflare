@@ -18,6 +18,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Magic Network Monitoring Admin`
+ * - `Magic Network Monitoring Config Read`
+ * - `Magic Network Monitoring Config Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -44,12 +50,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleMagicNetworkMonitoringRule = new MagicNetworkMonitoringRule("exampleMagicNetworkMonitoringRule", MagicNetworkMonitoringRuleArgs.builder()
  *             .accountId("6f91088a406011ed95aed352566e8d4c")
- *             .duration("1m")
- *             .name("my_rule_1")
  *             .automaticAdvertisement(true)
- *             .bandwidth(1000.0)
- *             .packetThreshold(10000.0)
+ *             .name("my_rule_1")
  *             .prefixes("203.0.113.1/32")
+ *             .type("zscore")
+ *             .bandwidthThreshold(1000.0)
+ *             .duration("1m")
+ *             .packetThreshold(10000.0)
+ *             .prefixMatch("exact")
+ *             .zscoreSensitivity("high")
+ *             .zscoreTarget("bits")
  *             .build());
  * 
  *     }
@@ -67,52 +77,38 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule")
 public class MagicNetworkMonitoringRule extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      * 
      */
     @Export(name="automaticAdvertisement", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> automaticAdvertisement;
+    private Output<Boolean> automaticAdvertisement;
 
     /**
      * @return Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      * 
      */
-    public Output<Optional<Boolean>> automaticAdvertisement() {
-        return Codegen.optional(this.automaticAdvertisement);
-    }
-    /**
-     * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-     * 
-     */
-    @Export(name="bandwidth", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> bandwidth;
-
-    /**
-     * @return The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-     * 
-     */
-    public Output<Optional<Double>> bandwidth() {
-        return Codegen.optional(this.bandwidth);
+    public Output<Boolean> automaticAdvertisement() {
+        return this.automaticAdvertisement;
     }
     /**
      * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      * 
      */
     @Export(name="bandwidthThreshold", refs={Double.class}, tree="[0]")
-    private Output<Double> bandwidthThreshold;
+    private Output</* @Nullable */ Double> bandwidthThreshold;
 
     /**
      * @return The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      * 
      */
-    public Output<Double> bandwidthThreshold() {
-        return this.bandwidthThreshold;
+    public Output<Optional<Double>> bandwidthThreshold() {
+        return Codegen.optional(this.bandwidthThreshold);
     }
     /**
      * The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [&#34;1m&#34;,&#34;5m&#34;,&#34;10m&#34;,&#34;15m&#34;,&#34;20m&#34;,&#34;30m&#34;,&#34;45m&#34;,&#34;60m&#34;].
@@ -164,21 +160,21 @@ public class MagicNetworkMonitoringRule extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="prefixMatch", refs={String.class}, tree="[0]")
-    private Output<String> prefixMatch;
+    private Output</* @Nullable */ String> prefixMatch;
 
     /**
      * @return Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
      * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
      * 
      */
-    public Output<String> prefixMatch() {
-        return this.prefixMatch;
+    public Output<Optional<String>> prefixMatch() {
+        return Codegen.optional(this.prefixMatch);
     }
     @Export(name="prefixes", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> prefixes;
+    private Output<List<String>> prefixes;
 
-    public Output<Optional<List<String>>> prefixes() {
-        return Codegen.optional(this.prefixes);
+    public Output<List<String>> prefixes() {
+        return this.prefixes;
     }
     /**
      * MNM rule type.
@@ -202,15 +198,15 @@ public class MagicNetworkMonitoringRule extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="zscoreSensitivity", refs={String.class}, tree="[0]")
-    private Output<String> zscoreSensitivity;
+    private Output</* @Nullable */ String> zscoreSensitivity;
 
     /**
      * @return Level of sensitivity set for zscore rules.
      * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;.
      * 
      */
-    public Output<String> zscoreSensitivity() {
-        return this.zscoreSensitivity;
+    public Output<Optional<String>> zscoreSensitivity() {
+        return Codegen.optional(this.zscoreSensitivity);
     }
     /**
      * Target of the zscore rule analysis.
@@ -218,15 +214,15 @@ public class MagicNetworkMonitoringRule extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="zscoreTarget", refs={String.class}, tree="[0]")
-    private Output<String> zscoreTarget;
+    private Output</* @Nullable */ String> zscoreTarget;
 
     /**
      * @return Target of the zscore rule analysis.
      * Available values: &#34;bits&#34;, &#34;packets&#34;.
      * 
      */
-    public Output<String> zscoreTarget() {
-        return this.zscoreTarget;
+    public Output<Optional<String>> zscoreTarget() {
+        return Codegen.optional(this.zscoreTarget);
     }
 
     /**

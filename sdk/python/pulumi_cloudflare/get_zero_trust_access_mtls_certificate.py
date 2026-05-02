@@ -135,6 +135,11 @@ def get_zero_trust_access_mtls_certificate(account_id: Optional[_builtins.str] =
                                            zone_id: Optional[_builtins.str] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessMtlsCertificateResult:
     """
+    Accepted Permissions
+
+    - `Access: Mutual TLS Certificates Read`
+    - `Access: Mutual TLS Certificates Write`
+
     ## Example Usage
 
     ```python
@@ -172,6 +177,11 @@ def get_zero_trust_access_mtls_certificate_output(account_id: Optional[pulumi.In
                                                   zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessMtlsCertificateResult]:
     """
+    Accepted Permissions
+
+    - `Access: Mutual TLS Certificates Read`
+    - `Access: Mutual TLS Certificates Write`
+
     ## Example Usage
 
     ```python

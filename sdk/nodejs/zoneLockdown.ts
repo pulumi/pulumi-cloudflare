@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -91,7 +96,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
     /**
      * Defines an identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ZoneLockdown resource with the given unique name, arguments, and options.
@@ -121,9 +126,6 @@ export class ZoneLockdown extends pulumi.CustomResource {
             }
             if (args?.urls === undefined && !opts.urn) {
                 throw new Error("Missing required property 'urls'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["configurations"] = args?.configurations;
             resourceInputs["description"] = args?.description;
@@ -204,5 +206,5 @@ export interface ZoneLockdownArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

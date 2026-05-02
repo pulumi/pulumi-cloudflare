@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancers Read`
+ * - `Load Balancers Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -42,7 +47,7 @@ export interface GetLoadBalancerArgs {
      * A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
      */
     regionPools?: {[key: string]: string[]};
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -133,9 +138,14 @@ export interface GetLoadBalancerResult {
      * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
      */
     readonly ttl: number;
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancers Read`
+ * - `Load Balancers Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -171,5 +181,5 @@ export interface GetLoadBalancerOutputArgs {
      * A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
      */
     regionPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

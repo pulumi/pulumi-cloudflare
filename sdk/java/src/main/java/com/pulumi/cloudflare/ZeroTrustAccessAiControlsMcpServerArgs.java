@@ -3,10 +3,13 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,11 +19,11 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
 
     public static final ZeroTrustAccessAiControlsMcpServerArgs Empty = new ZeroTrustAccessAiControlsMcpServerArgs();
 
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="authCredentials")
@@ -66,6 +69,20 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
         return this.name;
     }
 
+    @Import(name="updatedPrompts")
+    private @Nullable Output<List<ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs>> updatedPrompts;
+
+    public Optional<Output<List<ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs>>> updatedPrompts() {
+        return Optional.ofNullable(this.updatedPrompts);
+    }
+
+    @Import(name="updatedTools")
+    private @Nullable Output<List<ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs>> updatedTools;
+
+    public Optional<Output<List<ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs>>> updatedTools() {
+        return Optional.ofNullable(this.updatedTools);
+    }
+
     /**
      * server id
      * 
@@ -90,6 +107,8 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
         this.description = $.description;
         this.hostname = $.hostname;
         this.name = $.name;
+        this.updatedPrompts = $.updatedPrompts;
+        this.updatedTools = $.updatedTools;
         this.zeroTrustAccessAiControlsMcpServerId = $.zeroTrustAccessAiControlsMcpServerId;
     }
 
@@ -111,7 +130,7 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
             $ = new ZeroTrustAccessAiControlsMcpServerArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -177,6 +196,32 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
             return name(Output.of(name));
         }
 
+        public Builder updatedPrompts(@Nullable Output<List<ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs>> updatedPrompts) {
+            $.updatedPrompts = updatedPrompts;
+            return this;
+        }
+
+        public Builder updatedPrompts(List<ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs> updatedPrompts) {
+            return updatedPrompts(Output.of(updatedPrompts));
+        }
+
+        public Builder updatedPrompts(ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs... updatedPrompts) {
+            return updatedPrompts(List.of(updatedPrompts));
+        }
+
+        public Builder updatedTools(@Nullable Output<List<ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs>> updatedTools) {
+            $.updatedTools = updatedTools;
+            return this;
+        }
+
+        public Builder updatedTools(List<ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs> updatedTools) {
+            return updatedTools(Output.of(updatedTools));
+        }
+
+        public Builder updatedTools(ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs... updatedTools) {
+            return updatedTools(List.of(updatedTools));
+        }
+
         /**
          * @param zeroTrustAccessAiControlsMcpServerId server id
          * 
@@ -199,9 +244,6 @@ public final class ZeroTrustAccessAiControlsMcpServerArgs extends com.pulumi.res
         }
 
         public ZeroTrustAccessAiControlsMcpServerArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustAccessAiControlsMcpServerArgs", "accountId");
-            }
             if ($.authType == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustAccessAiControlsMcpServerArgs", "authType");
             }

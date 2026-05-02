@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ZeroTrustTunnelWarpConnectorConnectionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -131,6 +132,21 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
     }
 
     /**
+     * Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+     * 
+     */
+    @Import(name="ha")
+    private @Nullable Output<Boolean> ha;
+
+    /**
+     * @return Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> ha() {
+        return Optional.ofNullable(this.ha);
+    }
+
+    /**
      * Metadata associated with the tunnel.
      * 
      */
@@ -219,6 +235,7 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
         this.connsInactiveAt = $.connsInactiveAt;
         this.createdAt = $.createdAt;
         this.deletedAt = $.deletedAt;
+        this.ha = $.ha;
         this.metadata = $.metadata;
         this.name = $.name;
         this.status = $.status;
@@ -411,6 +428,27 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
          */
         public Builder deletedAt(String deletedAt) {
             return deletedAt(Output.of(deletedAt));
+        }
+
+        /**
+         * @param ha Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ha(@Nullable Output<Boolean> ha) {
+            $.ha = ha;
+            return this;
+        }
+
+        /**
+         * @param ha Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ha(Boolean ha) {
+            return ha(Output.of(ha));
         }
 
         /**

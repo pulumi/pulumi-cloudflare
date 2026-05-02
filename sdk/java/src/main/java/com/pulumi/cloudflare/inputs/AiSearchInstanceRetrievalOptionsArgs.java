@@ -3,9 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AiSearchInstanceRetrievalOptionsBoostByArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,16 +18,31 @@ public final class AiSearchInstanceRetrievalOptionsArgs extends com.pulumi.resou
     public static final AiSearchInstanceRetrievalOptionsArgs Empty = new AiSearchInstanceRetrievalOptionsArgs();
 
     /**
-     * Controls how keyword search terms are matched. exact*match requires all terms to appear (AND); fuzzy*match returns results containing any term (OR). Defaults to exact*match.
-     * Available values: &#34;exact*match&#34;, &#34;fuzzyMatch&#34;.
+     * Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+     * 
+     */
+    @Import(name="boostBies")
+    private @Nullable Output<List<AiSearchInstanceRetrievalOptionsBoostByArgs>> boostBies;
+
+    /**
+     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+     * 
+     */
+    public Optional<Output<List<AiSearchInstanceRetrievalOptionsBoostByArgs>>> boostBies() {
+        return Optional.ofNullable(this.boostBies);
+    }
+
+    /**
+     * Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. Defaults to &#39;and&#39;.
+     * Available values: &#34;and&#34;, &#34;or&#34;.
      * 
      */
     @Import(name="keywordMatchMode")
     private @Nullable Output<String> keywordMatchMode;
 
     /**
-     * @return Controls how keyword search terms are matched. exact*match requires all terms to appear (AND); fuzzy*match returns results containing any term (OR). Defaults to exact*match.
-     * Available values: &#34;exact*match&#34;, &#34;fuzzyMatch&#34;.
+     * @return Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. Defaults to &#39;and&#39;.
+     * Available values: &#34;and&#34;, &#34;or&#34;.
      * 
      */
     public Optional<Output<String>> keywordMatchMode() {
@@ -35,6 +52,7 @@ public final class AiSearchInstanceRetrievalOptionsArgs extends com.pulumi.resou
     private AiSearchInstanceRetrievalOptionsArgs() {}
 
     private AiSearchInstanceRetrievalOptionsArgs(AiSearchInstanceRetrievalOptionsArgs $) {
+        this.boostBies = $.boostBies;
         this.keywordMatchMode = $.keywordMatchMode;
     }
 
@@ -57,8 +75,39 @@ public final class AiSearchInstanceRetrievalOptionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param keywordMatchMode Controls how keyword search terms are matched. exact*match requires all terms to appear (AND); fuzzy*match returns results containing any term (OR). Defaults to exact*match.
-         * Available values: &#34;exact*match&#34;, &#34;fuzzyMatch&#34;.
+         * @param boostBies Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder boostBies(@Nullable Output<List<AiSearchInstanceRetrievalOptionsBoostByArgs>> boostBies) {
+            $.boostBies = boostBies;
+            return this;
+        }
+
+        /**
+         * @param boostBies Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder boostBies(List<AiSearchInstanceRetrievalOptionsBoostByArgs> boostBies) {
+            return boostBies(Output.of(boostBies));
+        }
+
+        /**
+         * @param boostBies Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder boostBies(AiSearchInstanceRetrievalOptionsBoostByArgs... boostBies) {
+            return boostBies(List.of(boostBies));
+        }
+
+        /**
+         * @param keywordMatchMode Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. Defaults to &#39;and&#39;.
+         * Available values: &#34;and&#34;, &#34;or&#34;.
          * 
          * @return builder
          * 
@@ -69,8 +118,8 @@ public final class AiSearchInstanceRetrievalOptionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param keywordMatchMode Controls how keyword search terms are matched. exact*match requires all terms to appear (AND); fuzzy*match returns results containing any term (OR). Defaults to exact*match.
-         * Available values: &#34;exact*match&#34;, &#34;fuzzyMatch&#34;.
+         * @param keywordMatchMode Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. Defaults to &#39;and&#39;.
+         * Available values: &#34;and&#34;, &#34;or&#34;.
          * 
          * @return builder
          * 

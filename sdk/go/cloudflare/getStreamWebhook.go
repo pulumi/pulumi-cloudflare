@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Stream Read`
+// - `Stream Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetStreamWebhook(ctx, &cloudflare.LookupStreamWebhookArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,15 +54,21 @@ func LookupStreamWebhook(ctx *pulumi.Context, args *LookupStreamWebhookArgs, opt
 // A collection of arguments for invoking getStreamWebhook.
 type LookupStreamWebhookArgs struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getStreamWebhook.
 type LookupStreamWebhookResult struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// The date and time the webhook was last modified.
+	Modified string `pulumi:"modified"`
+	// The URL where webhooks will be sent.
+	NotificationUrl string `pulumi:"notificationUrl"`
+	// The secret used to verify webhook signatures.
+	Secret string `pulumi:"secret"`
 }
 
 func LookupStreamWebhookOutput(ctx *pulumi.Context, args LookupStreamWebhookOutputArgs, opts ...pulumi.InvokeOption) LookupStreamWebhookResultOutput {
@@ -72,7 +83,7 @@ func LookupStreamWebhookOutput(ctx *pulumi.Context, args LookupStreamWebhookOutp
 // A collection of arguments for invoking getStreamWebhook.
 type LookupStreamWebhookOutputArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
 func (LookupStreamWebhookOutputArgs) ElementType() reflect.Type {
@@ -95,13 +106,28 @@ func (o LookupStreamWebhookResultOutput) ToLookupStreamWebhookResultOutputWithCo
 }
 
 // The account identifier tag.
-func (o LookupStreamWebhookResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamWebhookResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupStreamWebhookResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamWebhookResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
 func (o LookupStreamWebhookResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamWebhookResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The date and time the webhook was last modified.
+func (o LookupStreamWebhookResultOutput) Modified() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamWebhookResult) string { return v.Modified }).(pulumi.StringOutput)
+}
+
+// The URL where webhooks will be sent.
+func (o LookupStreamWebhookResultOutput) NotificationUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamWebhookResult) string { return v.NotificationUrl }).(pulumi.StringOutput)
+}
+
+// The secret used to verify webhook signatures.
+func (o LookupStreamWebhookResultOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamWebhookResult) string { return v.Secret }).(pulumi.StringOutput)
 }
 
 func init() {

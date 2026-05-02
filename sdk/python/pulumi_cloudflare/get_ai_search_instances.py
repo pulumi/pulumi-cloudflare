@@ -27,7 +27,7 @@ class GetAiSearchInstancesResult:
     """
     A collection of values returned by getAiSearchInstances.
     """
-    def __init__(__self__, account_id=None, id=None, max_items=None, results=None, search=None):
+    def __init__(__self__, account_id=None, id=None, max_items=None, namespace=None, order_by=None, order_by_direction=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,6 +37,15 @@ class GetAiSearchInstancesResult:
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        pulumi.set(__self__, "namespace", namespace)
+        if order_by and not isinstance(order_by, str):
+            raise TypeError("Expected argument 'order_by' to be a str")
+        pulumi.set(__self__, "order_by", order_by)
+        if order_by_direction and not isinstance(order_by_direction, str):
+            raise TypeError("Expected argument 'order_by_direction' to be a str")
+        pulumi.set(__self__, "order_by_direction", order_by_direction)
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
@@ -46,7 +55,7 @@ class GetAiSearchInstancesResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -64,6 +73,29 @@ class GetAiSearchInstancesResult:
         Max items to fetch, default: 1000
         """
         return pulumi.get(self, "max_items")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="orderBy")
+    def order_by(self) -> _builtins.str:
+        """
+        Order By Column Name
+        Available values: "created_at".
+        """
+        return pulumi.get(self, "order_by")
+
+    @_builtins.property
+    @pulumi.getter(name="orderByDirection")
+    def order_by_direction(self) -> _builtins.str:
+        """
+        Order By Direction
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "order_by_direction")
 
     @_builtins.property
     @pulumi.getter
@@ -91,23 +123,36 @@ class AwaitableGetAiSearchInstancesResult(GetAiSearchInstancesResult):
             account_id=self.account_id,
             id=self.id,
             max_items=self.max_items,
+            namespace=self.namespace,
+            order_by=self.order_by,
+            order_by_direction=self.order_by_direction,
             results=self.results,
             search=self.search)
 
 
 def get_ai_search_instances(account_id: Optional[_builtins.str] = None,
                             max_items: Optional[_builtins.int] = None,
+                            namespace: Optional[_builtins.str] = None,
+                            order_by: Optional[_builtins.str] = None,
+                            order_by_direction: Optional[_builtins.str] = None,
                             search: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchInstancesResult:
     """
     Use this data source to access information about an existing resource.
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str order_by: Order By Column Name
+           Available values: "created_at".
+    :param _builtins.str order_by_direction: Order By Direction
+           Available values: "asc", "desc".
     :param _builtins.str search: Search by id
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
+    __args__['namespace'] = namespace
+    __args__['orderBy'] = order_by
+    __args__['orderByDirection'] = order_by_direction
     __args__['search'] = search
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getAiSearchInstances:getAiSearchInstances', __args__, opts=opts, typ=GetAiSearchInstancesResult).value
@@ -116,21 +161,34 @@ def get_ai_search_instances(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
+        namespace=pulumi.get(__ret__, 'namespace'),
+        order_by=pulumi.get(__ret__, 'order_by'),
+        order_by_direction=pulumi.get(__ret__, 'order_by_direction'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
-def get_ai_search_instances_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ai_search_instances_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                    max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                   namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                   order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                   order_by_direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                    search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchInstancesResult]:
     """
     Use this data source to access information about an existing resource.
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str order_by: Order By Column Name
+           Available values: "created_at".
+    :param _builtins.str order_by_direction: Order By Direction
+           Available values: "asc", "desc".
     :param _builtins.str search: Search by id
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
+    __args__['namespace'] = namespace
+    __args__['orderBy'] = order_by
+    __args__['orderByDirection'] = order_by_direction
     __args__['search'] = search
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAiSearchInstances:getAiSearchInstances', __args__, opts=opts, typ=GetAiSearchInstancesResult)
@@ -138,5 +196,8 @@ def get_ai_search_instances_output(account_id: Optional[pulumi.Input[_builtins.s
         account_id=pulumi.get(__response__, 'account_id'),
         id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
+        namespace=pulumi.get(__response__, 'namespace'),
+        order_by=pulumi.get(__response__, 'order_by'),
+        order_by_direction=pulumi.get(__response__, 'order_by_direction'),
         results=pulumi.get(__response__, 'results'),
         search=pulumi.get(__response__, 'search')))

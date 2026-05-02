@@ -13,9 +13,14 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Snippets Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -82,14 +87,14 @@ public class SnippetRules extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Use this field to specify the unique ID of the zone.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

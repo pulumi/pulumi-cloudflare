@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ConnectivityDirectoryServiceHostArgs;
+import com.pulumi.cloudflare.inputs.ConnectivityDirectoryServiceTlsSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -30,6 +31,21 @@ public final class ConnectivityDirectoryServiceState extends com.pulumi.resource
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * Available values: &#34;postgresql&#34;, &#34;mysql&#34;.
+     * 
+     */
+    @Import(name="appProtocol")
+    private @Nullable Output<String> appProtocol;
+
+    /**
+     * @return Available values: &#34;postgresql&#34;, &#34;mysql&#34;.
+     * 
+     */
+    public Optional<Output<String>> appProtocol() {
+        return Optional.ofNullable(this.appProtocol);
     }
 
     @Import(name="createdAt")
@@ -74,15 +90,37 @@ public final class ConnectivityDirectoryServiceState extends com.pulumi.resource
         return Optional.ofNullable(this.serviceId);
     }
 
+    @Import(name="tcpPort")
+    private @Nullable Output<Integer> tcpPort;
+
+    public Optional<Output<Integer>> tcpPort() {
+        return Optional.ofNullable(this.tcpPort);
+    }
+
     /**
-     * Available values: &#34;http&#34;.
+     * TLS settings for a connectivity service.
+     * 
+     */
+    @Import(name="tlsSettings")
+    private @Nullable Output<ConnectivityDirectoryServiceTlsSettingsArgs> tlsSettings;
+
+    /**
+     * @return TLS settings for a connectivity service.
+     * 
+     */
+    public Optional<Output<ConnectivityDirectoryServiceTlsSettingsArgs>> tlsSettings() {
+        return Optional.ofNullable(this.tlsSettings);
+    }
+
+    /**
+     * Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;http&#34;.
+     * @return Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -100,12 +138,15 @@ public final class ConnectivityDirectoryServiceState extends com.pulumi.resource
 
     private ConnectivityDirectoryServiceState(ConnectivityDirectoryServiceState $) {
         this.accountId = $.accountId;
+        this.appProtocol = $.appProtocol;
         this.createdAt = $.createdAt;
         this.host = $.host;
         this.httpPort = $.httpPort;
         this.httpsPort = $.httpsPort;
         this.name = $.name;
         this.serviceId = $.serviceId;
+        this.tcpPort = $.tcpPort;
+        this.tlsSettings = $.tlsSettings;
         this.type = $.type;
         this.updatedAt = $.updatedAt;
     }
@@ -147,6 +188,27 @@ public final class ConnectivityDirectoryServiceState extends com.pulumi.resource
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param appProtocol Available values: &#34;postgresql&#34;, &#34;mysql&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appProtocol(@Nullable Output<String> appProtocol) {
+            $.appProtocol = appProtocol;
+            return this;
+        }
+
+        /**
+         * @param appProtocol Available values: &#34;postgresql&#34;, &#34;mysql&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appProtocol(String appProtocol) {
+            return appProtocol(Output.of(appProtocol));
         }
 
         public Builder createdAt(@Nullable Output<String> createdAt) {
@@ -203,8 +265,38 @@ public final class ConnectivityDirectoryServiceState extends com.pulumi.resource
             return serviceId(Output.of(serviceId));
         }
 
+        public Builder tcpPort(@Nullable Output<Integer> tcpPort) {
+            $.tcpPort = tcpPort;
+            return this;
+        }
+
+        public Builder tcpPort(Integer tcpPort) {
+            return tcpPort(Output.of(tcpPort));
+        }
+
         /**
-         * @param type Available values: &#34;http&#34;.
+         * @param tlsSettings TLS settings for a connectivity service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsSettings(@Nullable Output<ConnectivityDirectoryServiceTlsSettingsArgs> tlsSettings) {
+            $.tlsSettings = tlsSettings;
+            return this;
+        }
+
+        /**
+         * @param tlsSettings TLS settings for a connectivity service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsSettings(ConnectivityDirectoryServiceTlsSettingsArgs tlsSettings) {
+            return tlsSettings(Output.of(tlsSettings));
+        }
+
+        /**
+         * @param type Available values: &#34;tcp&#34;, &#34;http&#34;.
          * 
          * @return builder
          * 
@@ -215,7 +307,7 @@ public final class ConnectivityDirectoryServiceState extends com.pulumi.resource
         }
 
         /**
-         * @param type Available values: &#34;http&#34;.
+         * @param type Available values: &#34;tcp&#34;, &#34;http&#34;.
          * 
          * @return builder
          * 

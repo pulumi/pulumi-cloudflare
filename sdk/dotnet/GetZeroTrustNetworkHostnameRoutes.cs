@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustNetworkHostnameRoutes
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Networks Read`
+        /// - `Cloudflare One Networks Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,10 +42,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustNetworkHostnameRoutesResult> InvokeAsync(GetZeroTrustNetworkHostnameRoutesArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustNetworkHostnameRoutesResult> InvokeAsync(GetZeroTrustNetworkHostnameRoutesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustNetworkHostnameRoutesResult>("cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes", args ?? new GetZeroTrustNetworkHostnameRoutesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Networks Read`
+        /// - `Cloudflare One Networks Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -62,10 +76,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustNetworkHostnameRoutesResult> Invoke(GetZeroTrustNetworkHostnameRoutesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustNetworkHostnameRoutesResult> Invoke(GetZeroTrustNetworkHostnameRoutesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustNetworkHostnameRoutesResult>("cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes", args ?? new GetZeroTrustNetworkHostnameRoutesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Networks Read`
+        /// - `Cloudflare One Networks Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -99,8 +120,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// If set, only list hostname routes with the given comment.
@@ -155,8 +176,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// If set, only list hostname routes with the given comment.
@@ -213,7 +234,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// If set, only list hostname routes with the given comment.
         /// </summary>
@@ -249,7 +270,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustNetworkHostnameRoutesResult(
-            string accountId,
+            string? accountId,
 
             string? comment,
 

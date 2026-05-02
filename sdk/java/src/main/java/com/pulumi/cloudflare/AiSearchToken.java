@@ -13,6 +13,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -24,10 +25,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/aiSearchToken:AiSearchToken")
 public class AiSearchToken extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     @Export(name="cfApiId", refs={String.class}, tree="[0]")
     private Output<String> cfApiId;

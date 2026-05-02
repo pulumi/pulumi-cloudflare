@@ -4,6 +4,8 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetAiSearchInstancesResultCustomMetadata;
+import com.pulumi.cloudflare.outputs.GetAiSearchInstancesResultIndexMethod;
+import com.pulumi.cloudflare.outputs.GetAiSearchInstancesResultIndexingOptions;
 import com.pulumi.cloudflare.outputs.GetAiSearchInstancesResultMetadata;
 import com.pulumi.cloudflare.outputs.GetAiSearchInstancesResultPublicEndpointParams;
 import com.pulumi.cloudflare.outputs.GetAiSearchInstancesResultRetrievalOptions;
@@ -21,7 +23,7 @@ import java.util.Objects;
 public final class GetAiSearchInstancesResult {
     private String aiGatewayId;
     /**
-     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
      * 
      */
     private String aisearchModel;
@@ -37,27 +39,43 @@ public final class GetAiSearchInstancesResult {
     private String createdBy;
     private List<GetAiSearchInstancesResultCustomMetadata> customMetadatas;
     /**
-     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
+     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
      * 
      */
     private String embeddingModel;
     private Boolean enable;
+    private Double engineVersion;
     /**
      * @return Available values: &#34;max&#34;, &#34;rrf&#34;.
      * 
      */
     private String fusionMethod;
+    /**
+     * @return Deprecated — use indexMethod instead.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     private Boolean hybridSearchEnabled;
     /**
-     * @return Use your AI Search ID.
+     * @return AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      * 
      */
     private String id;
+    /**
+     * @return Controls which storage backends are used during indexing. Defaults to vector-only.
+     * 
+     */
+    private GetAiSearchInstancesResultIndexMethod indexMethod;
+    private GetAiSearchInstancesResultIndexingOptions indexingOptions;
     private String lastActivity;
     private Integer maxNumResults;
     private GetAiSearchInstancesResultMetadata metadata;
     private String modifiedAt;
     private String modifiedBy;
+    private String namespace;
     private Boolean paused;
     private String publicEndpointId;
     private GetAiSearchInstancesResultPublicEndpointParams publicEndpointParams;
@@ -69,7 +87,7 @@ public final class GetAiSearchInstancesResult {
     private String rerankingModel;
     private GetAiSearchInstancesResultRetrievalOptions retrievalOptions;
     /**
-     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
      * 
      */
     private String rewriteModel;
@@ -78,20 +96,25 @@ public final class GetAiSearchInstancesResult {
     private String source;
     private GetAiSearchInstancesResultSourceParams sourceParams;
     private String status;
+    /**
+     * @return Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+     * 
+     */
+    private Double syncInterval;
     private String tokenId;
     /**
      * @return Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
      * 
      */
     private String type;
-    private String vectorizeName;
 
     private GetAiSearchInstancesResult() {}
     public String aiGatewayId() {
         return this.aiGatewayId;
     }
     /**
-     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
      * 
      */
     public String aisearchModel() {
@@ -123,7 +146,7 @@ public final class GetAiSearchInstancesResult {
         return this.customMetadatas;
     }
     /**
-     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
+     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
      * 
      */
     public String embeddingModel() {
@@ -132,6 +155,9 @@ public final class GetAiSearchInstancesResult {
     public Boolean enable() {
         return this.enable;
     }
+    public Double engineVersion() {
+        return this.engineVersion;
+    }
     /**
      * @return Available values: &#34;max&#34;, &#34;rrf&#34;.
      * 
@@ -139,15 +165,33 @@ public final class GetAiSearchInstancesResult {
     public String fusionMethod() {
         return this.fusionMethod;
     }
+    /**
+     * @return Deprecated — use indexMethod instead.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Boolean hybridSearchEnabled() {
         return this.hybridSearchEnabled;
     }
     /**
-     * @return Use your AI Search ID.
+     * @return AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      * 
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Controls which storage backends are used during indexing. Defaults to vector-only.
+     * 
+     */
+    public GetAiSearchInstancesResultIndexMethod indexMethod() {
+        return this.indexMethod;
+    }
+    public GetAiSearchInstancesResultIndexingOptions indexingOptions() {
+        return this.indexingOptions;
     }
     public String lastActivity() {
         return this.lastActivity;
@@ -163,6 +207,9 @@ public final class GetAiSearchInstancesResult {
     }
     public String modifiedBy() {
         return this.modifiedBy;
+    }
+    public String namespace() {
+        return this.namespace;
     }
     public Boolean paused() {
         return this.paused;
@@ -187,7 +234,7 @@ public final class GetAiSearchInstancesResult {
         return this.retrievalOptions;
     }
     /**
-     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
      * 
      */
     public String rewriteModel() {
@@ -208,6 +255,14 @@ public final class GetAiSearchInstancesResult {
     public String status() {
         return this.status;
     }
+    /**
+     * @return Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+     * 
+     */
+    public Double syncInterval() {
+        return this.syncInterval;
+    }
     public String tokenId() {
         return this.tokenId;
     }
@@ -217,9 +272,6 @@ public final class GetAiSearchInstancesResult {
      */
     public String type() {
         return this.type;
-    }
-    public String vectorizeName() {
-        return this.vectorizeName;
     }
 
     public static Builder builder() {
@@ -242,14 +294,18 @@ public final class GetAiSearchInstancesResult {
         private List<GetAiSearchInstancesResultCustomMetadata> customMetadatas;
         private String embeddingModel;
         private Boolean enable;
+        private Double engineVersion;
         private String fusionMethod;
         private Boolean hybridSearchEnabled;
         private String id;
+        private GetAiSearchInstancesResultIndexMethod indexMethod;
+        private GetAiSearchInstancesResultIndexingOptions indexingOptions;
         private String lastActivity;
         private Integer maxNumResults;
         private GetAiSearchInstancesResultMetadata metadata;
         private String modifiedAt;
         private String modifiedBy;
+        private String namespace;
         private Boolean paused;
         private String publicEndpointId;
         private GetAiSearchInstancesResultPublicEndpointParams publicEndpointParams;
@@ -262,9 +318,9 @@ public final class GetAiSearchInstancesResult {
         private String source;
         private GetAiSearchInstancesResultSourceParams sourceParams;
         private String status;
+        private Double syncInterval;
         private String tokenId;
         private String type;
-        private String vectorizeName;
         public Builder() {}
         public Builder(GetAiSearchInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -279,14 +335,18 @@ public final class GetAiSearchInstancesResult {
     	      this.customMetadatas = defaults.customMetadatas;
     	      this.embeddingModel = defaults.embeddingModel;
     	      this.enable = defaults.enable;
+    	      this.engineVersion = defaults.engineVersion;
     	      this.fusionMethod = defaults.fusionMethod;
     	      this.hybridSearchEnabled = defaults.hybridSearchEnabled;
     	      this.id = defaults.id;
+    	      this.indexMethod = defaults.indexMethod;
+    	      this.indexingOptions = defaults.indexingOptions;
     	      this.lastActivity = defaults.lastActivity;
     	      this.maxNumResults = defaults.maxNumResults;
     	      this.metadata = defaults.metadata;
     	      this.modifiedAt = defaults.modifiedAt;
     	      this.modifiedBy = defaults.modifiedBy;
+    	      this.namespace = defaults.namespace;
     	      this.paused = defaults.paused;
     	      this.publicEndpointId = defaults.publicEndpointId;
     	      this.publicEndpointParams = defaults.publicEndpointParams;
@@ -299,9 +359,9 @@ public final class GetAiSearchInstancesResult {
     	      this.source = defaults.source;
     	      this.sourceParams = defaults.sourceParams;
     	      this.status = defaults.status;
+    	      this.syncInterval = defaults.syncInterval;
     	      this.tokenId = defaults.tokenId;
     	      this.type = defaults.type;
-    	      this.vectorizeName = defaults.vectorizeName;
         }
 
         @CustomType.Setter
@@ -396,6 +456,14 @@ public final class GetAiSearchInstancesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder engineVersion(Double engineVersion) {
+            if (engineVersion == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "engineVersion");
+            }
+            this.engineVersion = engineVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder fusionMethod(String fusionMethod) {
             if (fusionMethod == null) {
               throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "fusionMethod");
@@ -417,6 +485,22 @@ public final class GetAiSearchInstancesResult {
               throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder indexMethod(GetAiSearchInstancesResultIndexMethod indexMethod) {
+            if (indexMethod == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "indexMethod");
+            }
+            this.indexMethod = indexMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder indexingOptions(GetAiSearchInstancesResultIndexingOptions indexingOptions) {
+            if (indexingOptions == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "indexingOptions");
+            }
+            this.indexingOptions = indexingOptions;
             return this;
         }
         @CustomType.Setter
@@ -457,6 +541,14 @@ public final class GetAiSearchInstancesResult {
               throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "modifiedBy");
             }
             this.modifiedBy = modifiedBy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder namespace(String namespace) {
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
@@ -556,6 +648,14 @@ public final class GetAiSearchInstancesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder syncInterval(Double syncInterval) {
+            if (syncInterval == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "syncInterval");
+            }
+            this.syncInterval = syncInterval;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tokenId(String tokenId) {
             if (tokenId == null) {
               throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "tokenId");
@@ -571,14 +671,6 @@ public final class GetAiSearchInstancesResult {
             this.type = type;
             return this;
         }
-        @CustomType.Setter
-        public Builder vectorizeName(String vectorizeName) {
-            if (vectorizeName == null) {
-              throw new MissingRequiredPropertyException("GetAiSearchInstancesResult", "vectorizeName");
-            }
-            this.vectorizeName = vectorizeName;
-            return this;
-        }
         public GetAiSearchInstancesResult build() {
             final var _resultValue = new GetAiSearchInstancesResult();
             _resultValue.aiGatewayId = aiGatewayId;
@@ -592,14 +684,18 @@ public final class GetAiSearchInstancesResult {
             _resultValue.customMetadatas = customMetadatas;
             _resultValue.embeddingModel = embeddingModel;
             _resultValue.enable = enable;
+            _resultValue.engineVersion = engineVersion;
             _resultValue.fusionMethod = fusionMethod;
             _resultValue.hybridSearchEnabled = hybridSearchEnabled;
             _resultValue.id = id;
+            _resultValue.indexMethod = indexMethod;
+            _resultValue.indexingOptions = indexingOptions;
             _resultValue.lastActivity = lastActivity;
             _resultValue.maxNumResults = maxNumResults;
             _resultValue.metadata = metadata;
             _resultValue.modifiedAt = modifiedAt;
             _resultValue.modifiedBy = modifiedBy;
+            _resultValue.namespace = namespace;
             _resultValue.paused = paused;
             _resultValue.publicEndpointId = publicEndpointId;
             _resultValue.publicEndpointParams = publicEndpointParams;
@@ -612,9 +708,9 @@ public final class GetAiSearchInstancesResult {
             _resultValue.source = source;
             _resultValue.sourceParams = sourceParams;
             _resultValue.status = status;
+            _resultValue.syncInterval = syncInterval;
             _resultValue.tokenId = tokenId;
             _resultValue.type = type;
-            _resultValue.vectorizeName = vectorizeName;
             return _resultValue;
         }
     }

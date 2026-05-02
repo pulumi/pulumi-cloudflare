@@ -20,15 +20,15 @@ public final class GetMagicTransitSiteLansPlainArgs extends com.pulumi.resources
      * Identifier
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -93,7 +93,7 @@ public final class GetMagicTransitSiteLansPlainArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -121,9 +121,6 @@ public final class GetMagicTransitSiteLansPlainArgs extends com.pulumi.resources
         }
 
         public GetMagicTransitSiteLansPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetMagicTransitSiteLansPlainArgs", "accountId");
-            }
             if ($.siteId == null) {
                 throw new MissingRequiredPropertyException("GetMagicTransitSiteLansPlainArgs", "siteId");
             }

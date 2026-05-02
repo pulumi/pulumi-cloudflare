@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -31,7 +36,7 @@ export function getZeroTrustDlpDataset(args: GetZeroTrustDlpDatasetArgs, opts?: 
  * A collection of arguments for invoking getZeroTrustDlpDataset.
  */
 export interface GetZeroTrustDlpDatasetArgs {
-    accountId: string;
+    accountId?: string;
     datasetId: string;
 }
 
@@ -39,7 +44,7 @@ export interface GetZeroTrustDlpDatasetArgs {
  * A collection of values returned by getZeroTrustDlpDataset.
  */
 export interface GetZeroTrustDlpDatasetResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly caseSensitive: boolean;
     readonly columns: outputs.GetZeroTrustDlpDatasetColumn[];
     readonly createdAt: string;
@@ -67,6 +72,11 @@ export interface GetZeroTrustDlpDatasetResult {
     readonly uploads: outputs.GetZeroTrustDlpDatasetUpload[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -91,6 +101,6 @@ export function getZeroTrustDlpDatasetOutput(args: GetZeroTrustDlpDatasetOutputA
  * A collection of arguments for invoking getZeroTrustDlpDataset.
  */
 export interface GetZeroTrustDlpDatasetOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     datasetId: pulumi.Input<string>;
 }

@@ -52,7 +52,7 @@ class GetTurnstileWidgetsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier
         """
@@ -122,6 +122,13 @@ def get_turnstile_widgets(account_id: Optional[_builtins.str] = None,
                           order: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTurnstileWidgetsResult:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+    - `Account Settings Write`
+    - `Turnstile Sites Read`
+    - `Turnstile Sites Write`
+
     ## Example Usage
 
     ```python
@@ -158,13 +165,20 @@ def get_turnstile_widgets(account_id: Optional[_builtins.str] = None,
         max_items=pulumi.get(__ret__, 'max_items'),
         order=pulumi.get(__ret__, 'order'),
         results=pulumi.get(__ret__, 'results'))
-def get_turnstile_widgets_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_turnstile_widgets_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                  order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTurnstileWidgetsResult]:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+    - `Account Settings Write`
+    - `Turnstile Sites Read`
+    - `Turnstile Sites Write`
+
     ## Example Usage
 
     ```python

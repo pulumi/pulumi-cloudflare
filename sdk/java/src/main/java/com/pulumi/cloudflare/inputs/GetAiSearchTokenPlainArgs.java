@@ -3,42 +3,52 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetAiSearchTokenFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAiSearchTokenPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetAiSearchTokenPlainArgs Empty = new GetAiSearchTokenPlainArgs();
 
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    @Import(name="filter")
+    private @Nullable GetAiSearchTokenFilter filter;
+
+    public Optional<GetAiSearchTokenFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
      * The ID of this resource.
      * 
      */
-    @Import(name="id", required=true)
-    private String id;
+    @Import(name="id")
+    private @Nullable String id;
 
     /**
      * @return The ID of this resource.
      * 
      */
-    public String id() {
-        return this.id;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
 
     private GetAiSearchTokenPlainArgs() {}
 
     private GetAiSearchTokenPlainArgs(GetAiSearchTokenPlainArgs $) {
         this.accountId = $.accountId;
+        this.filter = $.filter;
         this.id = $.id;
     }
 
@@ -60,8 +70,13 @@ public final class GetAiSearchTokenPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetAiSearchTokenPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
+            return this;
+        }
+
+        public Builder filter(@Nullable GetAiSearchTokenFilter filter) {
+            $.filter = filter;
             return this;
         }
 
@@ -71,18 +86,12 @@ public final class GetAiSearchTokenPlainArgs extends com.pulumi.resources.Invoke
          * @return builder
          * 
          */
-        public Builder id(String id) {
+        public Builder id(@Nullable String id) {
             $.id = id;
             return this;
         }
 
         public GetAiSearchTokenPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetAiSearchTokenPlainArgs", "accountId");
-            }
-            if ($.id == null) {
-                throw new MissingRequiredPropertyException("GetAiSearchTokenPlainArgs", "id");
-            }
             return $;
         }
     }

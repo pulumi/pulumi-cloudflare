@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getAuthenticatedOriginPullsSettings(args: GetAuthenticatedOriginPullsSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthenticatedOriginPullsSettingsResult> {
+export function getAuthenticatedOriginPullsSettings(args?: GetAuthenticatedOriginPullsSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthenticatedOriginPullsSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings", {
         "zoneId": args.zoneId,
@@ -30,7 +36,7 @@ export interface GetAuthenticatedOriginPullsSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -48,9 +54,14 @@ export interface GetAuthenticatedOriginPullsSettingsResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -62,7 +73,8 @@ export interface GetAuthenticatedOriginPullsSettingsResult {
  * });
  * ```
  */
-export function getAuthenticatedOriginPullsSettingsOutput(args: GetAuthenticatedOriginPullsSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthenticatedOriginPullsSettingsResult> {
+export function getAuthenticatedOriginPullsSettingsOutput(args?: GetAuthenticatedOriginPullsSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthenticatedOriginPullsSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAuthenticatedOriginPullsSettings:getAuthenticatedOriginPullsSettings", {
         "zoneId": args.zoneId,
@@ -76,5 +88,5 @@ export interface GetAuthenticatedOriginPullsSettingsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

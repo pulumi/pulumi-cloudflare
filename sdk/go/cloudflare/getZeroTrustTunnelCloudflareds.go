@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Connector: cloudflared Read`
+// - `Cloudflare One Connector: cloudflared Write`
+// - `Cloudflare One Connectors Read`
+// - `Cloudflare One Connectors Write`
+// - `Cloudflare Tunnel Read`
+// - `Cloudflare Tunnel Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustTunnelCloudflareds(ctx, &cloudflare.LookupZeroTrustTunnelCloudflaredsArgs{
-//				AccountId:     "699d98642c564d2e855e9661899b7252",
+//				AccountId:     pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				ExcludePrefix: pulumi.StringRef("vpc1-"),
 //				ExistedAt:     pulumi.StringRef("2019-10-12T07%3A20%3A50.52Z"),
 //				IncludePrefix: pulumi.StringRef("vpc1-"),
@@ -58,7 +67,7 @@ func LookupZeroTrustTunnelCloudflareds(ctx *pulumi.Context, args *LookupZeroTrus
 // A collection of arguments for invoking getZeroTrustTunnelCloudflareds.
 type LookupZeroTrustTunnelCloudflaredsArgs struct {
 	// Cloudflare account ID
-	AccountId     string  `pulumi:"accountId"`
+	AccountId     *string `pulumi:"accountId"`
 	ExcludePrefix *string `pulumi:"excludePrefix"`
 	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 	ExistedAt     *string `pulumi:"existedAt"`
@@ -81,7 +90,7 @@ type LookupZeroTrustTunnelCloudflaredsArgs struct {
 // A collection of values returned by getZeroTrustTunnelCloudflareds.
 type LookupZeroTrustTunnelCloudflaredsResult struct {
 	// Cloudflare account ID
-	AccountId     string  `pulumi:"accountId"`
+	AccountId     *string `pulumi:"accountId"`
 	ExcludePrefix *string `pulumi:"excludePrefix"`
 	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 	ExistedAt *string `pulumi:"existedAt"`
@@ -117,7 +126,7 @@ func LookupZeroTrustTunnelCloudflaredsOutput(ctx *pulumi.Context, args LookupZer
 // A collection of arguments for invoking getZeroTrustTunnelCloudflareds.
 type LookupZeroTrustTunnelCloudflaredsOutputArgs struct {
 	// Cloudflare account ID
-	AccountId     pulumi.StringInput    `pulumi:"accountId"`
+	AccountId     pulumi.StringPtrInput `pulumi:"accountId"`
 	ExcludePrefix pulumi.StringPtrInput `pulumi:"excludePrefix"`
 	// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
 	ExistedAt     pulumi.StringPtrInput `pulumi:"existedAt"`
@@ -157,8 +166,8 @@ func (o LookupZeroTrustTunnelCloudflaredsResultOutput) ToLookupZeroTrustTunnelCl
 }
 
 // Cloudflare account ID
-func (o LookupZeroTrustTunnelCloudflaredsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustTunnelCloudflaredsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupZeroTrustTunnelCloudflaredsResultOutput) ExcludePrefix() pulumi.StringPtrOutput {

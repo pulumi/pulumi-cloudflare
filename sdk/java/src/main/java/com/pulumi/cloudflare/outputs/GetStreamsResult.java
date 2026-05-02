@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetStreamsResultInput;
 import com.pulumi.cloudflare.outputs.GetStreamsResultPlayback;
+import com.pulumi.cloudflare.outputs.GetStreamsResultPublicDetails;
 import com.pulumi.cloudflare.outputs.GetStreamsResultStatus;
 import com.pulumi.cloudflare.outputs.GetStreamsResultWatermark;
 import com.pulumi.core.annotations.CustomType;
@@ -23,6 +24,11 @@ public final class GetStreamsResult {
      * 
      */
     private List<String> allowedOrigins;
+    /**
+     * @return The unique identifier of the source video this video was clipped from.
+     * 
+     */
+    private String clippedFrom;
     /**
      * @return The date and time the media item was created.
      * 
@@ -50,6 +56,11 @@ public final class GetStreamsResult {
      */
     private Integer maxDurationSeconds;
     /**
+     * @return The maximum size in bytes for the video upload.
+     * 
+     */
+    private Integer maxSizeBytes;
+    /**
      * @return A user modifiable key-value store used to reference other systems of record for managing videos.
      * 
      */
@@ -65,6 +76,11 @@ public final class GetStreamsResult {
      * 
      */
     private String preview;
+    /**
+     * @return Public details for the video including title, share link, channel link, and logo.
+     * 
+     */
+    private GetStreamsResultPublicDetails publicDetails;
     /**
      * @return Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
      * 
@@ -131,6 +147,13 @@ public final class GetStreamsResult {
         return this.allowedOrigins;
     }
     /**
+     * @return The unique identifier of the source video this video was clipped from.
+     * 
+     */
+    public String clippedFrom() {
+        return this.clippedFrom;
+    }
+    /**
      * @return The date and time the media item was created.
      * 
      */
@@ -169,6 +192,13 @@ public final class GetStreamsResult {
         return this.maxDurationSeconds;
     }
     /**
+     * @return The maximum size in bytes for the video upload.
+     * 
+     */
+    public Integer maxSizeBytes() {
+        return this.maxSizeBytes;
+    }
+    /**
      * @return A user modifiable key-value store used to reference other systems of record for managing videos.
      * 
      */
@@ -191,6 +221,13 @@ public final class GetStreamsResult {
      */
     public String preview() {
         return this.preview;
+    }
+    /**
+     * @return Public details for the video including title, share link, channel link, and logo.
+     * 
+     */
+    public GetStreamsResultPublicDetails publicDetails() {
+        return this.publicDetails;
     }
     /**
      * @return Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
@@ -283,16 +320,19 @@ public final class GetStreamsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> allowedOrigins;
+        private String clippedFrom;
         private String created;
         private String creator;
         private Double duration;
         private GetStreamsResultInput input;
         private String liveInput;
         private Integer maxDurationSeconds;
+        private Integer maxSizeBytes;
         private String meta;
         private String modified;
         private GetStreamsResultPlayback playback;
         private String preview;
+        private GetStreamsResultPublicDetails publicDetails;
         private Boolean readyToStream;
         private String readyToStreamAt;
         private Boolean requireSignedUrls;
@@ -309,16 +349,19 @@ public final class GetStreamsResult {
         public Builder(GetStreamsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedOrigins = defaults.allowedOrigins;
+    	      this.clippedFrom = defaults.clippedFrom;
     	      this.created = defaults.created;
     	      this.creator = defaults.creator;
     	      this.duration = defaults.duration;
     	      this.input = defaults.input;
     	      this.liveInput = defaults.liveInput;
     	      this.maxDurationSeconds = defaults.maxDurationSeconds;
+    	      this.maxSizeBytes = defaults.maxSizeBytes;
     	      this.meta = defaults.meta;
     	      this.modified = defaults.modified;
     	      this.playback = defaults.playback;
     	      this.preview = defaults.preview;
+    	      this.publicDetails = defaults.publicDetails;
     	      this.readyToStream = defaults.readyToStream;
     	      this.readyToStreamAt = defaults.readyToStreamAt;
     	      this.requireSignedUrls = defaults.requireSignedUrls;
@@ -343,6 +386,14 @@ public final class GetStreamsResult {
         }
         public Builder allowedOrigins(String... allowedOrigins) {
             return allowedOrigins(List.of(allowedOrigins));
+        }
+        @CustomType.Setter
+        public Builder clippedFrom(String clippedFrom) {
+            if (clippedFrom == null) {
+              throw new MissingRequiredPropertyException("GetStreamsResult", "clippedFrom");
+            }
+            this.clippedFrom = clippedFrom;
+            return this;
         }
         @CustomType.Setter
         public Builder created(String created) {
@@ -393,6 +444,14 @@ public final class GetStreamsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder maxSizeBytes(Integer maxSizeBytes) {
+            if (maxSizeBytes == null) {
+              throw new MissingRequiredPropertyException("GetStreamsResult", "maxSizeBytes");
+            }
+            this.maxSizeBytes = maxSizeBytes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder meta(String meta) {
             if (meta == null) {
               throw new MissingRequiredPropertyException("GetStreamsResult", "meta");
@@ -422,6 +481,14 @@ public final class GetStreamsResult {
               throw new MissingRequiredPropertyException("GetStreamsResult", "preview");
             }
             this.preview = preview;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder publicDetails(GetStreamsResultPublicDetails publicDetails) {
+            if (publicDetails == null) {
+              throw new MissingRequiredPropertyException("GetStreamsResult", "publicDetails");
+            }
+            this.publicDetails = publicDetails;
             return this;
         }
         @CustomType.Setter
@@ -523,16 +590,19 @@ public final class GetStreamsResult {
         public GetStreamsResult build() {
             final var _resultValue = new GetStreamsResult();
             _resultValue.allowedOrigins = allowedOrigins;
+            _resultValue.clippedFrom = clippedFrom;
             _resultValue.created = created;
             _resultValue.creator = creator;
             _resultValue.duration = duration;
             _resultValue.input = input;
             _resultValue.liveInput = liveInput;
             _resultValue.maxDurationSeconds = maxDurationSeconds;
+            _resultValue.maxSizeBytes = maxSizeBytes;
             _resultValue.meta = meta;
             _resultValue.modified = modified;
             _resultValue.playback = playback;
             _resultValue.preview = preview;
+            _resultValue.publicDetails = publicDetails;
             _resultValue.readyToStream = readyToStream;
             _resultValue.readyToStreamAt = readyToStreamAt;
             _resultValue.requireSignedUrls = requireSignedUrls;

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetStreamKey
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetStreamKeyResult> InvokeAsync(GetStreamKeyArgs args, InvokeOptions? options = null)
+        public static Task<GetStreamKeyResult> InvokeAsync(GetStreamKeyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStreamKeyResult>("cloudflare:index/getStreamKey:getStreamKey", args ?? new GetStreamKeyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetStreamKeyResult> Invoke(GetStreamKeyInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetStreamKeyResult> Invoke(GetStreamKeyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStreamKeyResult>("cloudflare:index/getStreamKey:getStreamKey", args ?? new GetStreamKeyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         public GetStreamKeyArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         public GetStreamKeyInvokeArgs()
         {
@@ -114,7 +129,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The date and time a signing key was created.
         /// </summary>
@@ -123,18 +138,25 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The unique identifier for the signing key.
+        /// </summary>
+        public readonly string KeyId;
 
         [OutputConstructor]
         private GetStreamKeyResult(
-            string accountId,
+            string? accountId,
 
             string created,
 
-            string id)
+            string id,
+
+            string keyId)
         {
             AccountId = accountId;
             Created = created;
             Id = id;
+            KeyId = keyId;
         }
     }
 }

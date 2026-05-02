@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Web3 Hostnames Read`
+// - `Web3 Hostnames Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -65,7 +70,7 @@ type Web3Hostname struct {
 	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target pulumi.StringOutput `pulumi:"target"`
 	// Specify the identifier of the hostname.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewWeb3Hostname registers a new resource with the given unique name, arguments, and options.
@@ -80,9 +85,6 @@ func NewWeb3Hostname(ctx *pulumi.Context,
 	}
 	if args.Target == nil {
 		return nil, errors.New("invalid value for required argument 'Target'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Web3Hostname
@@ -159,7 +161,7 @@ type web3HostnameArgs struct {
 	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target string `pulumi:"target"`
 	// Specify the identifier of the hostname.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Web3Hostname resource.
@@ -174,7 +176,7 @@ type Web3HostnameArgs struct {
 	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target pulumi.StringInput
 	// Specify the identifier of the hostname.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (Web3HostnameArgs) ElementType() reflect.Type {
@@ -300,8 +302,8 @@ func (o Web3HostnameOutput) Target() pulumi.StringOutput {
 }
 
 // Specify the identifier of the hostname.
-func (o Web3HostnameOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Web3Hostname) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o Web3HostnameOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Web3Hostname) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type Web3HostnameArrayOutput struct{ *pulumi.OutputState }

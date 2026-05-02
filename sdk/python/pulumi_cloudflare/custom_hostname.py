@@ -22,30 +22,32 @@ __all__ = ['CustomHostnameArgs', 'CustomHostname']
 class CustomHostnameArgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[_builtins.str],
-                 ssl: pulumi.Input['CustomHostnameSslArgs'],
-                 zone_id: pulumi.Input[_builtins.str],
                  custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  custom_origin_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_origin_sni: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_origin_sni: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssl: Optional[pulumi.Input['CustomHostnameSslArgs']] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomHostname resource.
 
         :param pulumi.Input[_builtins.str] hostname: The custom hostname that will point to your hostname via CNAME.
-        :param pulumi.Input['CustomHostnameSslArgs'] ssl: SSL properties used when creating the custom hostname.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_metadata: Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
         :param pulumi.Input[_builtins.str] custom_origin_server: a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
         :param pulumi.Input[_builtins.str] custom_origin_sni: A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
+        :param pulumi.Input['CustomHostnameSslArgs'] ssl: SSL properties used when creating the custom hostname.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "ssl", ssl)
-        pulumi.set(__self__, "zone_id", zone_id)
         if custom_metadata is not None:
             pulumi.set(__self__, "custom_metadata", custom_metadata)
         if custom_origin_server is not None:
             pulumi.set(__self__, "custom_origin_server", custom_origin_server)
         if custom_origin_sni is not None:
             pulumi.set(__self__, "custom_origin_sni", custom_origin_sni)
+        if ssl is not None:
+            pulumi.set(__self__, "ssl", ssl)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -58,30 +60,6 @@ class CustomHostnameArgs:
     @hostname.setter
     def hostname(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "hostname", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def ssl(self) -> pulumi.Input['CustomHostnameSslArgs']:
-        """
-        SSL properties used when creating the custom hostname.
-        """
-        return pulumi.get(self, "ssl")
-
-    @ssl.setter
-    def ssl(self, value: pulumi.Input['CustomHostnameSslArgs']):
-        pulumi.set(self, "ssl", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="customMetadata")
@@ -118,6 +96,30 @@ class CustomHostnameArgs:
     @custom_origin_sni.setter
     def custom_origin_sni(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "custom_origin_sni", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ssl(self) -> Optional[pulumi.Input['CustomHostnameSslArgs']]:
+        """
+        SSL properties used when creating the custom hostname.
+        """
+        return pulumi.get(self, "ssl")
+
+    @ssl.setter
+    def ssl(self, value: Optional[pulumi.Input['CustomHostnameSslArgs']]):
+        pulumi.set(self, "ssl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -321,6 +323,11 @@ class CustomHostname(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         ## Example Usage
 
         ```python
@@ -353,6 +360,7 @@ class CustomHostname(pulumi.CustomResource):
             -----END CERTIFICATE-----
 
         \"\"\",
+                "custom_csr_id": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
                 "custom_key": \"\"\"    -----BEGIN RSA PRIVATE KEY-----
             MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
             dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -424,6 +432,11 @@ class CustomHostname(pulumi.CustomResource):
                  args: CustomHostnameArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         ## Example Usage
 
         ```python
@@ -456,6 +469,7 @@ class CustomHostname(pulumi.CustomResource):
             -----END CERTIFICATE-----
 
         \"\"\",
+                "custom_csr_id": "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
                 "custom_key": \"\"\"    -----BEGIN RSA PRIVATE KEY-----
             MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
             dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -547,11 +561,7 @@ class CustomHostname(pulumi.CustomResource):
             if hostname is None and not opts.urn:
                 raise TypeError("Missing required property 'hostname'")
             __props__.__dict__["hostname"] = hostname
-            if ssl is None and not opts.urn:
-                raise TypeError("Missing required property 'ssl'")
             __props__.__dict__["ssl"] = ssl
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["ownership_verification"] = None
@@ -674,7 +684,7 @@ class CustomHostname(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def ssl(self) -> pulumi.Output['outputs.CustomHostnameSsl']:
+    def ssl(self) -> pulumi.Output[Optional['outputs.CustomHostnameSsl']]:
         """
         SSL properties used when creating the custom hostname.
         """
@@ -699,7 +709,7 @@ class CustomHostname(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

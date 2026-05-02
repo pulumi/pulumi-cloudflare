@@ -25,20 +25,20 @@ namespace Pulumi.Cloudflare
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Host = new Cloudflare.Inputs.ConnectivityDirectoryServiceHostArgs
     ///         {
-    ///             Hostname = "api.example.com",
-    ///             ResolverNetwork = new Cloudflare.Inputs.ConnectivityDirectoryServiceHostResolverNetworkArgs
+    ///             Ipv4 = "10.0.0.1",
+    ///             Network = new Cloudflare.Inputs.ConnectivityDirectoryServiceHostNetworkArgs
     ///             {
     ///                 TunnelId = "0191dce4-9ab4-7fce-b660-8e5dec5172da",
-    ///                 ResolverIps = new[]
-    ///                 {
-    ///                     "string",
-    ///                 },
     ///             },
     ///         },
-    ///         Name = "web-server",
+    ///         Name = "web-app",
     ///         Type = "http",
     ///         HttpPort = 8080,
     ///         HttpsPort = 8443,
+    ///         TlsSettings = new Cloudflare.Inputs.ConnectivityDirectoryServiceTlsSettingsArgs
+    ///         {
+    ///             CertVerificationMode = "verify_full",
+    ///         },
     ///     });
     /// 
     /// });
@@ -57,7 +57,13 @@ namespace Pulumi.Cloudflare
         /// Account identifier
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// Available values: "postgresql", "mysql".
+        /// </summary>
+        [Output("appProtocol")]
+        public Output<string?> AppProtocol { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -77,8 +83,17 @@ namespace Pulumi.Cloudflare
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
 
+        [Output("tcpPort")]
+        public Output<int?> TcpPort { get; private set; } = null!;
+
         /// <summary>
-        /// Available values: "http".
+        /// TLS settings for a connectivity service.
+        /// </summary>
+        [Output("tlsSettings")]
+        public Output<Outputs.ConnectivityDirectoryServiceTlsSettings?> TlsSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// Available values: "tcp", "http".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -135,8 +150,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Available values: "postgresql", "mysql".
+        /// </summary>
+        [Input("appProtocol")]
+        public Input<string>? AppProtocol { get; set; }
 
         [Input("host", required: true)]
         public Input<Inputs.ConnectivityDirectoryServiceHostArgs> Host { get; set; } = null!;
@@ -150,8 +171,17 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("tcpPort")]
+        public Input<int>? TcpPort { get; set; }
+
         /// <summary>
-        /// Available values: "http".
+        /// TLS settings for a connectivity service.
+        /// </summary>
+        [Input("tlsSettings")]
+        public Input<Inputs.ConnectivityDirectoryServiceTlsSettingsArgs>? TlsSettings { get; set; }
+
+        /// <summary>
+        /// Available values: "tcp", "http".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -169,6 +199,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Available values: "postgresql", "mysql".
+        /// </summary>
+        [Input("appProtocol")]
+        public Input<string>? AppProtocol { get; set; }
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -188,8 +224,17 @@ namespace Pulumi.Cloudflare
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
 
+        [Input("tcpPort")]
+        public Input<int>? TcpPort { get; set; }
+
         /// <summary>
-        /// Available values: "http".
+        /// TLS settings for a connectivity service.
+        /// </summary>
+        [Input("tlsSettings")]
+        public Input<Inputs.ConnectivityDirectoryServiceTlsSettingsGetArgs>? TlsSettings { get; set; }
+
+        /// <summary>
+        /// Available values: "tcp", "http".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

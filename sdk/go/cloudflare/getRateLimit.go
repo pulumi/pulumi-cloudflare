@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetRateLimit(ctx, &cloudflare.LookupRateLimitArgs{
-//				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:      pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RateLimitId: "372e67954025e0ba6aaa6d586b9e0b59",
 //			}, nil)
 //			if err != nil {
@@ -52,7 +57,7 @@ type LookupRateLimitArgs struct {
 	// Defines the unique identifier of the rate limit.
 	RateLimitId string `pulumi:"rateLimitId"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getRateLimit.
@@ -76,7 +81,7 @@ type LookupRateLimitResult struct {
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold float64 `pulumi:"threshold"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupRateLimitOutput(ctx *pulumi.Context, args LookupRateLimitOutputArgs, opts ...pulumi.InvokeOption) LookupRateLimitResultOutput {
@@ -93,7 +98,7 @@ type LookupRateLimitOutputArgs struct {
 	// Defines the unique identifier of the rate limit.
 	RateLimitId pulumi.StringInput `pulumi:"rateLimitId"`
 	// Defines an identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupRateLimitOutputArgs) ElementType() reflect.Type {
@@ -161,8 +166,8 @@ func (o LookupRateLimitResultOutput) Threshold() pulumi.Float64Output {
 }
 
 // Defines an identifier.
-func (o LookupRateLimitResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRateLimitResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupRateLimitResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRateLimitResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

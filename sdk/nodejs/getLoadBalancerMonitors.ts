@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancing: Monitors and Pools Read`
+ * - `Load Balancing: Monitors and Pools Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getLoadBalancerMonitors(args: GetLoadBalancerMonitorsArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerMonitorsResult> {
+export function getLoadBalancerMonitors(args?: GetLoadBalancerMonitorsArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerMonitorsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLoadBalancerMonitors:getLoadBalancerMonitors", {
         "accountId": args.accountId,
@@ -33,7 +39,7 @@ export interface GetLoadBalancerMonitorsArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +53,7 @@ export interface GetLoadBalancerMonitorsResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +68,11 @@ export interface GetLoadBalancerMonitorsResult {
     readonly results: outputs.GetLoadBalancerMonitorsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancing: Monitors and Pools Read`
+ * - `Load Balancing: Monitors and Pools Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetLoadBalancerMonitorsResult {
  * });
  * ```
  */
-export function getLoadBalancerMonitorsOutput(args: GetLoadBalancerMonitorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerMonitorsResult> {
+export function getLoadBalancerMonitorsOutput(args?: GetLoadBalancerMonitorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerMonitorsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLoadBalancerMonitors:getLoadBalancerMonitors", {
         "accountId": args.accountId,
@@ -88,7 +100,7 @@ export interface GetLoadBalancerMonitorsOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

@@ -12,9 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AiSearchInstanceRetrievalOptionsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("boostBies")]
+        private InputList<Inputs.AiSearchInstanceRetrievalOptionsBoostByGetArgs>? _boostBies;
+
         /// <summary>
-        /// Controls how keyword search terms are matched. exact*match requires all terms to appear (AND); fuzzy*match returns results containing any term (OR). Defaults to exact*match.
-        /// Available values: "exact*match", "FuzzyMatch".
+        /// Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
+        /// </summary>
+        public InputList<Inputs.AiSearchInstanceRetrievalOptionsBoostByGetArgs> BoostBies
+        {
+            get => _boostBies ?? (_boostBies = new InputList<Inputs.AiSearchInstanceRetrievalOptionsBoostByGetArgs>());
+            set => _boostBies = value;
+        }
+
+        /// <summary>
+        /// Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+        /// Available values: "and", "or".
         /// </summary>
         [Input("keywordMatchMode")]
         public Input<string>? KeywordMatchMode { get; set; }

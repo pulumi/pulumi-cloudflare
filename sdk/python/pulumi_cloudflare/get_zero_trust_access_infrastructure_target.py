@@ -56,7 +56,7 @@ class GetZeroTrustAccessInfrastructureTargetResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account identifier
         """
@@ -167,7 +167,7 @@ def get_zero_trust_access_infrastructure_target(account_id: Optional[_builtins.s
         ip=pulumi.get(__ret__, 'ip'),
         modified_at=pulumi.get(__ret__, 'modified_at'),
         target_id=pulumi.get(__ret__, 'target_id'))
-def get_zero_trust_access_infrastructure_target_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_access_infrastructure_target_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                        filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustAccessInfrastructureTargetFilterArgs', 'GetZeroTrustAccessInfrastructureTargetFilterArgsDict']]]] = None,
                                                        target_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessInfrastructureTargetResult]:

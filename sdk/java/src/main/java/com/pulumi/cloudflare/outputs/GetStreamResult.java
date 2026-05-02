@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetStreamInput;
 import com.pulumi.cloudflare.outputs.GetStreamPlayback;
+import com.pulumi.cloudflare.outputs.GetStreamPublicDetails;
 import com.pulumi.cloudflare.outputs.GetStreamStatus;
 import com.pulumi.cloudflare.outputs.GetStreamWatermark;
 import com.pulumi.core.annotations.CustomType;
@@ -15,6 +16,8 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStreamResult {
@@ -22,12 +25,17 @@ public final class GetStreamResult {
      * @return The account identifier tag.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
      * 
      */
     private List<String> allowedOrigins;
+    /**
+     * @return The unique identifier of the source video this video was clipped from.
+     * 
+     */
+    private String clippedFrom;
     /**
      * @return The date and time the media item was created.
      * 
@@ -65,6 +73,11 @@ public final class GetStreamResult {
      */
     private Integer maxDurationSeconds;
     /**
+     * @return The maximum size in bytes for the video upload.
+     * 
+     */
+    private Integer maxSizeBytes;
+    /**
      * @return A user modifiable key-value store used to reference other systems of record for managing videos.
      * 
      */
@@ -80,6 +93,11 @@ public final class GetStreamResult {
      * 
      */
     private String preview;
+    /**
+     * @return Public details for the video including title, share link, channel link, and logo.
+     * 
+     */
+    private GetStreamPublicDetails publicDetails;
     /**
      * @return Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
      * 
@@ -142,8 +160,8 @@ public final class GetStreamResult {
      * @return The account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
@@ -151,6 +169,13 @@ public final class GetStreamResult {
      */
     public List<String> allowedOrigins() {
         return this.allowedOrigins;
+    }
+    /**
+     * @return The unique identifier of the source video this video was clipped from.
+     * 
+     */
+    public String clippedFrom() {
+        return this.clippedFrom;
     }
     /**
      * @return The date and time the media item was created.
@@ -205,6 +230,13 @@ public final class GetStreamResult {
         return this.maxDurationSeconds;
     }
     /**
+     * @return The maximum size in bytes for the video upload.
+     * 
+     */
+    public Integer maxSizeBytes() {
+        return this.maxSizeBytes;
+    }
+    /**
      * @return A user modifiable key-value store used to reference other systems of record for managing videos.
      * 
      */
@@ -227,6 +259,13 @@ public final class GetStreamResult {
      */
     public String preview() {
         return this.preview;
+    }
+    /**
+     * @return Public details for the video including title, share link, channel link, and logo.
+     * 
+     */
+    public GetStreamPublicDetails publicDetails() {
+        return this.publicDetails;
     }
     /**
      * @return Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
@@ -318,8 +357,9 @@ public final class GetStreamResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private List<String> allowedOrigins;
+        private String clippedFrom;
         private String created;
         private String creator;
         private Double duration;
@@ -328,10 +368,12 @@ public final class GetStreamResult {
         private GetStreamInput input;
         private String liveInput;
         private Integer maxDurationSeconds;
+        private Integer maxSizeBytes;
         private String meta;
         private String modified;
         private GetStreamPlayback playback;
         private String preview;
+        private GetStreamPublicDetails publicDetails;
         private Boolean readyToStream;
         private String readyToStreamAt;
         private Boolean requireSignedUrls;
@@ -349,6 +391,7 @@ public final class GetStreamResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.allowedOrigins = defaults.allowedOrigins;
+    	      this.clippedFrom = defaults.clippedFrom;
     	      this.created = defaults.created;
     	      this.creator = defaults.creator;
     	      this.duration = defaults.duration;
@@ -357,10 +400,12 @@ public final class GetStreamResult {
     	      this.input = defaults.input;
     	      this.liveInput = defaults.liveInput;
     	      this.maxDurationSeconds = defaults.maxDurationSeconds;
+    	      this.maxSizeBytes = defaults.maxSizeBytes;
     	      this.meta = defaults.meta;
     	      this.modified = defaults.modified;
     	      this.playback = defaults.playback;
     	      this.preview = defaults.preview;
+    	      this.publicDetails = defaults.publicDetails;
     	      this.readyToStream = defaults.readyToStream;
     	      this.readyToStreamAt = defaults.readyToStreamAt;
     	      this.requireSignedUrls = defaults.requireSignedUrls;
@@ -376,10 +421,8 @@ public final class GetStreamResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetStreamResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -393,6 +436,14 @@ public final class GetStreamResult {
         }
         public Builder allowedOrigins(String... allowedOrigins) {
             return allowedOrigins(List.of(allowedOrigins));
+        }
+        @CustomType.Setter
+        public Builder clippedFrom(String clippedFrom) {
+            if (clippedFrom == null) {
+              throw new MissingRequiredPropertyException("GetStreamResult", "clippedFrom");
+            }
+            this.clippedFrom = clippedFrom;
+            return this;
         }
         @CustomType.Setter
         public Builder created(String created) {
@@ -459,6 +510,14 @@ public final class GetStreamResult {
             return this;
         }
         @CustomType.Setter
+        public Builder maxSizeBytes(Integer maxSizeBytes) {
+            if (maxSizeBytes == null) {
+              throw new MissingRequiredPropertyException("GetStreamResult", "maxSizeBytes");
+            }
+            this.maxSizeBytes = maxSizeBytes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder meta(String meta) {
             if (meta == null) {
               throw new MissingRequiredPropertyException("GetStreamResult", "meta");
@@ -488,6 +547,14 @@ public final class GetStreamResult {
               throw new MissingRequiredPropertyException("GetStreamResult", "preview");
             }
             this.preview = preview;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder publicDetails(GetStreamPublicDetails publicDetails) {
+            if (publicDetails == null) {
+              throw new MissingRequiredPropertyException("GetStreamResult", "publicDetails");
+            }
+            this.publicDetails = publicDetails;
             return this;
         }
         @CustomType.Setter
@@ -590,6 +657,7 @@ public final class GetStreamResult {
             final var _resultValue = new GetStreamResult();
             _resultValue.accountId = accountId;
             _resultValue.allowedOrigins = allowedOrigins;
+            _resultValue.clippedFrom = clippedFrom;
             _resultValue.created = created;
             _resultValue.creator = creator;
             _resultValue.duration = duration;
@@ -598,10 +666,12 @@ public final class GetStreamResult {
             _resultValue.input = input;
             _resultValue.liveInput = liveInput;
             _resultValue.maxDurationSeconds = maxDurationSeconds;
+            _resultValue.maxSizeBytes = maxSizeBytes;
             _resultValue.meta = meta;
             _resultValue.modified = modified;
             _resultValue.playback = playback;
             _resultValue.preview = preview;
+            _resultValue.publicDetails = publicDetails;
             _resultValue.readyToStream = readyToStream;
             _resultValue.readyToStreamAt = readyToStreamAt;
             _resultValue.requireSignedUrls = requireSignedUrls;

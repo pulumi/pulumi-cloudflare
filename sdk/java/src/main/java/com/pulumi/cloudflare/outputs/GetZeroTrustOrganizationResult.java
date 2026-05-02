@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationCustomPages;
 import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationLoginDesign;
 import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationMfaConfig;
+import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationMfaSshPivKeyRequirements;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -65,15 +66,15 @@ public final class GetZeroTrustOrganizationResult {
      */
     private GetZeroTrustOrganizationMfaConfig mfaConfig;
     /**
-     * @return Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-     * 
-     */
-    private Boolean mfaConfigurationAllowed;
-    /**
      * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
      * 
      */
     private Boolean mfaRequiredForAllApps;
+    /**
+     * @return Configures SSH PIV key requirements for MFA using hardware security keys.
+     * 
+     */
+    private GetZeroTrustOrganizationMfaSshPivKeyRequirements mfaSshPivKeyRequirements;
     /**
      * @return The name of your Zero Trust organization.
      * 
@@ -176,18 +177,18 @@ public final class GetZeroTrustOrganizationResult {
         return this.mfaConfig;
     }
     /**
-     * @return Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-     * 
-     */
-    public Boolean mfaConfigurationAllowed() {
-        return this.mfaConfigurationAllowed;
-    }
-    /**
      * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
      * 
      */
     public Boolean mfaRequiredForAllApps() {
         return this.mfaRequiredForAllApps;
+    }
+    /**
+     * @return Configures SSH PIV key requirements for MFA using hardware security keys.
+     * 
+     */
+    public GetZeroTrustOrganizationMfaSshPivKeyRequirements mfaSshPivKeyRequirements() {
+        return this.mfaSshPivKeyRequirements;
     }
     /**
      * @return The name of your Zero Trust organization.
@@ -252,8 +253,8 @@ public final class GetZeroTrustOrganizationResult {
         private Boolean isUiReadOnly;
         private GetZeroTrustOrganizationLoginDesign loginDesign;
         private GetZeroTrustOrganizationMfaConfig mfaConfig;
-        private Boolean mfaConfigurationAllowed;
         private Boolean mfaRequiredForAllApps;
+        private GetZeroTrustOrganizationMfaSshPivKeyRequirements mfaSshPivKeyRequirements;
         private String name;
         private String sessionDuration;
         private String uiReadOnlyToggleReason;
@@ -274,8 +275,8 @@ public final class GetZeroTrustOrganizationResult {
     	      this.isUiReadOnly = defaults.isUiReadOnly;
     	      this.loginDesign = defaults.loginDesign;
     	      this.mfaConfig = defaults.mfaConfig;
-    	      this.mfaConfigurationAllowed = defaults.mfaConfigurationAllowed;
     	      this.mfaRequiredForAllApps = defaults.mfaRequiredForAllApps;
+    	      this.mfaSshPivKeyRequirements = defaults.mfaSshPivKeyRequirements;
     	      this.name = defaults.name;
     	      this.sessionDuration = defaults.sessionDuration;
     	      this.uiReadOnlyToggleReason = defaults.uiReadOnlyToggleReason;
@@ -374,19 +375,19 @@ public final class GetZeroTrustOrganizationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder mfaConfigurationAllowed(Boolean mfaConfigurationAllowed) {
-            if (mfaConfigurationAllowed == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "mfaConfigurationAllowed");
-            }
-            this.mfaConfigurationAllowed = mfaConfigurationAllowed;
-            return this;
-        }
-        @CustomType.Setter
         public Builder mfaRequiredForAllApps(Boolean mfaRequiredForAllApps) {
             if (mfaRequiredForAllApps == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "mfaRequiredForAllApps");
             }
             this.mfaRequiredForAllApps = mfaRequiredForAllApps;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mfaSshPivKeyRequirements(GetZeroTrustOrganizationMfaSshPivKeyRequirements mfaSshPivKeyRequirements) {
+            if (mfaSshPivKeyRequirements == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "mfaSshPivKeyRequirements");
+            }
+            this.mfaSshPivKeyRequirements = mfaSshPivKeyRequirements;
             return this;
         }
         @CustomType.Setter
@@ -448,8 +449,8 @@ public final class GetZeroTrustOrganizationResult {
             _resultValue.isUiReadOnly = isUiReadOnly;
             _resultValue.loginDesign = loginDesign;
             _resultValue.mfaConfig = mfaConfig;
-            _resultValue.mfaConfigurationAllowed = mfaConfigurationAllowed;
             _resultValue.mfaRequiredForAllApps = mfaRequiredForAllApps;
+            _resultValue.mfaSshPivKeyRequirements = mfaSshPivKeyRequirements;
             _resultValue.name = name;
             _resultValue.sessionDuration = sessionDuration;
             _resultValue.uiReadOnlyToggleReason = uiReadOnlyToggleReason;

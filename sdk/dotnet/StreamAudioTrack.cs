@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Stream Read`
+    /// - `Stream Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -43,13 +48,19 @@ namespace Pulumi.Cloudflare
         /// The account identifier tag.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier for an additional audio track.
         /// </summary>
         [Output("audioIdentifier")]
         public Output<string?> AudioIdentifier { get; private set; } = null!;
+
+        /// <summary>
+        /// Array of audio tracks for the video.
+        /// </summary>
+        [Output("audios")]
+        public Output<ImmutableArray<Outputs.StreamAudioTrackAudio>> Audios { get; private set; } = null!;
 
         /// <summary>
         /// Denotes whether the audio track will be played by default in a player.
@@ -131,8 +142,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The unique identifier for an additional audio track.
@@ -177,6 +188,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("audioIdentifier")]
         public Input<string>? AudioIdentifier { get; set; }
+
+        [Input("audios")]
+        private InputList<Inputs.StreamAudioTrackAudioGetArgs>? _audios;
+
+        /// <summary>
+        /// Array of audio tracks for the video.
+        /// </summary>
+        public InputList<Inputs.StreamAudioTrackAudioGetArgs> Audios
+        {
+            get => _audios ?? (_audios = new InputList<Inputs.StreamAudioTrackAudioGetArgs>());
+            set => _audios = value;
+        }
 
         /// <summary>
         /// Denotes whether the audio track will be played by default in a player.

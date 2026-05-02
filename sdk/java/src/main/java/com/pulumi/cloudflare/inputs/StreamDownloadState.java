@@ -3,6 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.StreamDownloadAudioArgs;
+import com.pulumi.cloudflare.inputs.StreamDownloadDefaultArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -31,6 +33,36 @@ public final class StreamDownloadState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The audio-only download. Only present if this download type has been created.
+     * 
+     */
+    @Import(name="audio")
+    private @Nullable Output<StreamDownloadAudioArgs> audio;
+
+    /**
+     * @return The audio-only download. Only present if this download type has been created.
+     * 
+     */
+    public Optional<Output<StreamDownloadAudioArgs>> audio() {
+        return Optional.ofNullable(this.audio);
+    }
+
+    /**
+     * The default video download. Only present if this download type has been created.
+     * 
+     */
+    @Import(name="default")
+    private @Nullable Output<StreamDownloadDefaultArgs> default_;
+
+    /**
+     * @return The default video download. Only present if this download type has been created.
+     * 
+     */
+    public Optional<Output<StreamDownloadDefaultArgs>> default_() {
+        return Optional.ofNullable(this.default_);
+    }
+
+    /**
      * A Cloudflare-generated unique identifier for a media item.
      * 
      */
@@ -49,6 +81,8 @@ public final class StreamDownloadState extends com.pulumi.resources.ResourceArgs
 
     private StreamDownloadState(StreamDownloadState $) {
         this.accountId = $.accountId;
+        this.audio = $.audio;
+        this.default_ = $.default_;
         this.identifier = $.identifier;
     }
 
@@ -89,6 +123,48 @@ public final class StreamDownloadState extends com.pulumi.resources.ResourceArgs
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param audio The audio-only download. Only present if this download type has been created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder audio(@Nullable Output<StreamDownloadAudioArgs> audio) {
+            $.audio = audio;
+            return this;
+        }
+
+        /**
+         * @param audio The audio-only download. Only present if this download type has been created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder audio(StreamDownloadAudioArgs audio) {
+            return audio(Output.of(audio));
+        }
+
+        /**
+         * @param default_ The default video download. Only present if this download type has been created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder default_(@Nullable Output<StreamDownloadDefaultArgs> default_) {
+            $.default_ = default_;
+            return this;
+        }
+
+        /**
+         * @param default_ The default video download. Only present if this download type has been created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder default_(StreamDownloadDefaultArgs default_) {
+            return default_(Output.of(default_));
         }
 
         /**

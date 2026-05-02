@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetD1Databases
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `D1 Read`
+        /// - `D1 Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetD1DatabasesResult> InvokeAsync(GetD1DatabasesArgs args, InvokeOptions? options = null)
+        public static Task<GetD1DatabasesResult> InvokeAsync(GetD1DatabasesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetD1DatabasesResult>("cloudflare:index/getD1Databases:getD1Databases", args ?? new GetD1DatabasesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `D1 Read`
+        /// - `D1 Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetD1DatabasesResult> Invoke(GetD1DatabasesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetD1DatabasesResult> Invoke(GetD1DatabasesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetD1DatabasesResult>("cloudflare:index/getD1Databases:getD1Databases", args ?? new GetD1DatabasesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `D1 Read`
+        /// - `D1 Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -113,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -141,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -161,7 +176,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetD1DatabasesResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

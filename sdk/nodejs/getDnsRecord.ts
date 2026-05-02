@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getDnsRecord(args: GetDnsRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsRecordResult> {
+export function getDnsRecord(args?: GetDnsRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsRecordResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getDnsRecord:getDnsRecord", {
         "dnsRecordId": args.dnsRecordId,
@@ -40,7 +46,7 @@ export interface GetDnsRecordArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -89,9 +95,13 @@ export interface GetDnsRecordResult {
      */
     readonly name: string;
     /**
-     * Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+     * Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      */
     readonly priority: number;
+    /**
+     * Enables private network routing to the origin.
+     */
+    readonly privateRouting: boolean;
     /**
      * Whether the record can be proxied by Cloudflare or not.
      */
@@ -124,9 +134,14 @@ export interface GetDnsRecordResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -139,7 +154,8 @@ export interface GetDnsRecordResult {
  * });
  * ```
  */
-export function getDnsRecordOutput(args: GetDnsRecordOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsRecordResult> {
+export function getDnsRecordOutput(args?: GetDnsRecordOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsRecordResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getDnsRecord:getDnsRecord", {
         "dnsRecordId": args.dnsRecordId,
@@ -160,5 +176,5 @@ export interface GetDnsRecordOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

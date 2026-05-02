@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +41,7 @@ export interface GetRegionalHostnameArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -66,9 +71,14 @@ export interface GetRegionalHostnameResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -100,5 +110,5 @@ export interface GetRegionalHostnameOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

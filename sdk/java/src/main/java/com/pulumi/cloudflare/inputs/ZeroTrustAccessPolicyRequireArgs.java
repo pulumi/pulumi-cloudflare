@@ -27,6 +27,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireOidcArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireOktaArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireSamlArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireServiceTokenArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireUserRiskScoreArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.util.Objects;
@@ -222,6 +223,13 @@ public final class ZeroTrustAccessPolicyRequireArgs extends com.pulumi.resources
         return Optional.ofNullable(this.serviceToken);
     }
 
+    @Import(name="userRiskScore")
+    private @Nullable Output<ZeroTrustAccessPolicyRequireUserRiskScoreArgs> userRiskScore;
+
+    public Optional<Output<ZeroTrustAccessPolicyRequireUserRiskScoreArgs>> userRiskScore() {
+        return Optional.ofNullable(this.userRiskScore);
+    }
+
     private ZeroTrustAccessPolicyRequireArgs() {}
 
     private ZeroTrustAccessPolicyRequireArgs(ZeroTrustAccessPolicyRequireArgs $) {
@@ -249,6 +257,7 @@ public final class ZeroTrustAccessPolicyRequireArgs extends com.pulumi.resources
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
+        this.userRiskScore = $.userRiskScore;
     }
 
     public static Builder builder() {
@@ -507,6 +516,15 @@ public final class ZeroTrustAccessPolicyRequireArgs extends com.pulumi.resources
 
         public Builder serviceToken(ZeroTrustAccessPolicyRequireServiceTokenArgs serviceToken) {
             return serviceToken(Output.of(serviceToken));
+        }
+
+        public Builder userRiskScore(@Nullable Output<ZeroTrustAccessPolicyRequireUserRiskScoreArgs> userRiskScore) {
+            $.userRiskScore = userRiskScore;
+            return this;
+        }
+
+        public Builder userRiskScore(ZeroTrustAccessPolicyRequireUserRiskScoreArgs userRiskScore) {
+            return userRiskScore(Output.of(userRiskScore));
         }
 
         public ZeroTrustAccessPolicyRequireArgs build() {

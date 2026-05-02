@@ -19,38 +19,27 @@ __all__ = ['WorkersKvArgs', 'WorkersKv']
 @pulumi.input_type
 class WorkersKvArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  key_name: pulumi.Input[_builtins.str],
                  namespace_id: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  metadata: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersKv resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         :param pulumi.Input[_builtins.str] namespace_id: Namespace identifier tag.
         :param pulumi.Input[_builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] metadata: Associates arbitrary JSON data with a key/value pair.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "key_name", key_name)
         pulumi.set(__self__, "namespace_id", namespace_id)
         pulumi.set(__self__, "value", value)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="keyName")
@@ -87,6 +76,18 @@ class WorkersKvArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -203,6 +204,11 @@ class WorkersKv(pulumi.CustomResource):
                  value: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Workers KV Storage Read`
+        - `Workers KV Storage Write`
+
         ## Example Usage
 
         ```python
@@ -239,6 +245,11 @@ class WorkersKv(pulumi.CustomResource):
                  args: WorkersKvArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Workers KV Storage Read`
+        - `Workers KV Storage Write`
+
         ## Example Usage
 
         ```python
@@ -289,8 +300,6 @@ class WorkersKv(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkersKvArgs.__new__(WorkersKvArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if key_name is None and not opts.urn:
                 raise TypeError("Missing required property 'key_name'")
@@ -343,7 +352,7 @@ class WorkersKv(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

@@ -136,7 +136,7 @@ class GetZoneDnsSettingsResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -174,6 +174,13 @@ class AwaitableGetZoneDnsSettingsResult(GetZoneDnsSettingsResult):
 def get_zone_dns_settings(zone_id: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneDnsSettingsResult:
     """
+    Accepted Permissions
+
+    - `DNS Read`
+    - `DNS Write`
+    - `Zone DNS Settings Read`
+    - `Zone DNS Settings Write`
+
     ## Example Usage
 
     ```python
@@ -203,9 +210,16 @@ def get_zone_dns_settings(zone_id: Optional[_builtins.str] = None,
         soa=pulumi.get(__ret__, 'soa'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_mode=pulumi.get(__ret__, 'zone_mode'))
-def get_zone_dns_settings_output(zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zone_dns_settings_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneDnsSettingsResult]:
     """
+    Accepted Permissions
+
+    - `DNS Read`
+    - `DNS Write`
+    - `Zone DNS Settings Read`
+    - `Zone DNS Settings Write`
+
     ## Example Usage
 
     ```python

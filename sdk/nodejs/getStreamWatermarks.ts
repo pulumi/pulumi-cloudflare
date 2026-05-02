@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getStreamWatermarks(args: GetStreamWatermarksArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamWatermarksResult> {
+export function getStreamWatermarks(args?: GetStreamWatermarksArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamWatermarksResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStreamWatermarks:getStreamWatermarks", {
         "accountId": args.accountId,
@@ -33,7 +39,7 @@ export interface GetStreamWatermarksArgs {
     /**
      * The account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +53,7 @@ export interface GetStreamWatermarksResult {
     /**
      * The account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +68,11 @@ export interface GetStreamWatermarksResult {
     readonly results: outputs.GetStreamWatermarksResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetStreamWatermarksResult {
  * });
  * ```
  */
-export function getStreamWatermarksOutput(args: GetStreamWatermarksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamWatermarksResult> {
+export function getStreamWatermarksOutput(args?: GetStreamWatermarksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamWatermarksResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStreamWatermarks:getStreamWatermarks", {
         "accountId": args.accountId,
@@ -88,7 +100,7 @@ export interface GetStreamWatermarksOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

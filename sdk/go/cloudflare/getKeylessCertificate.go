@@ -11,6 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Apps and Policies Read`
+// - `Access: Apps and Policies Revoke`
+// - `Access: Apps and Policies Write`
+// - `Access: Mutual TLS Certificates Write`
+// - `Access: Organizations, Identity Providers, and Groups Write`
+// - `Analytics Read`
+// - `Apps Write`
+// - `Cache Purge`
+// - `DNS Read`
+// - `DNS Write`
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+// - `Load Balancers Read`
+// - `Load Balancers Write`
+// - `Logs Read`
+// - `Logs Write`
+// - `Page Rules Read`
+// - `Page Rules Write`
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+// - `Stream Read`
+// - `Stream Write`
+// - `Trust and Safety Read`
+// - `Trust and Safety Write`
+// - `Workers Routes Read`
+// - `Workers Routes Write`
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Zaraz Admin`
+// - `Zaraz Edit`
+// - `Zaraz Read`
+// - `Zero Trust: PII Read`
+// - `Zone Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+// - `Zone Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +65,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetKeylessCertificate(ctx, &cloudflare.LookupKeylessCertificateArgs{
-//				ZoneId:               "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:               pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				KeylessCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -52,7 +91,7 @@ type LookupKeylessCertificateArgs struct {
 	// Identifier.
 	KeylessCertificateId string `pulumi:"keylessCertificateId"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getKeylessCertificate.
@@ -81,7 +120,7 @@ type LookupKeylessCertificateResult struct {
 	// Configuration for using Keyless SSL through a Cloudflare Tunnel
 	Tunnel GetKeylessCertificateTunnel `pulumi:"tunnel"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupKeylessCertificateOutput(ctx *pulumi.Context, args LookupKeylessCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupKeylessCertificateResultOutput {
@@ -98,7 +137,7 @@ type LookupKeylessCertificateOutputArgs struct {
 	// Identifier.
 	KeylessCertificateId pulumi.StringInput `pulumi:"keylessCertificateId"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupKeylessCertificateOutputArgs) ElementType() reflect.Type {
@@ -177,8 +216,8 @@ func (o LookupKeylessCertificateResultOutput) Tunnel() GetKeylessCertificateTunn
 }
 
 // Identifier.
-func (o LookupKeylessCertificateResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKeylessCertificateResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupKeylessCertificateResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKeylessCertificateResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

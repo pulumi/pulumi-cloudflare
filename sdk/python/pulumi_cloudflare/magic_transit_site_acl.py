@@ -21,11 +21,11 @@ __all__ = ['MagicTransitSiteAclArgs', 'MagicTransitSiteAcl']
 @pulumi.input_type
 class MagicTransitSiteAclArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  lan1: pulumi.Input['MagicTransitSiteAclLan1Args'],
                  lan2: pulumi.Input['MagicTransitSiteAclLan2Args'],
                  name: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  forward_locally: Optional[pulumi.Input[_builtins.bool]] = None,
                  protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -33,18 +33,19 @@ class MagicTransitSiteAclArgs:
         """
         The set of arguments for constructing a MagicTransitSiteAcl resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] name: The name of the ACL.
         :param pulumi.Input[_builtins.str] site_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] description: Description for the ACL.
         :param pulumi.Input[_builtins.bool] forward_locally: The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
         :param pulumi.Input[_builtins.bool] unidirectional: The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "lan1", lan1)
         pulumi.set(__self__, "lan2", lan2)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "site_id", site_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if forward_locally is not None:
@@ -53,18 +54,6 @@ class MagicTransitSiteAclArgs:
             pulumi.set(__self__, "protocols", protocols)
         if unidirectional is not None:
             pulumi.set(__self__, "unidirectional", unidirectional)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -107,6 +96,18 @@ class MagicTransitSiteAclArgs:
     @site_id.setter
     def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -312,6 +313,13 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
                  unidirectional: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Magic Transit Read`
+        - `Magic Transit Write`
+        - `Magic WAN Read`
+        - `Magic WAN Write`
+
         ## Example Usage
 
         ```python
@@ -365,6 +373,13 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
                  args: MagicTransitSiteAclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Magic Transit Read`
+        - `Magic Transit Write`
+        - `Magic WAN Read`
+        - `Magic WAN Write`
+
         ## Example Usage
 
         ```python
@@ -435,8 +450,6 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MagicTransitSiteAclArgs.__new__(MagicTransitSiteAclArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             __props__.__dict__["forward_locally"] = forward_locally
@@ -504,7 +517,7 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier
         """

@@ -50,9 +50,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+        /// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
         /// </summary>
         public readonly double Priority;
+        /// <summary>
+        /// Enables private network routing to the origin.
+        /// </summary>
+        public readonly bool PrivateRouting;
         /// <summary>
         /// Whether the record can be proxied by Cloudflare or not.
         /// </summary>
@@ -105,6 +109,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             double priority,
 
+            bool privateRouting,
+
             bool proxiable,
 
             bool proxied,
@@ -129,6 +135,7 @@ namespace Pulumi.Cloudflare.Outputs
             ModifiedOn = modifiedOn;
             Name = name;
             Priority = priority;
+            PrivateRouting = privateRouting;
             Proxiable = proxiable;
             Proxied = proxied;
             Settings = settings;

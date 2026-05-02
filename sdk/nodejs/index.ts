@@ -105,6 +105,16 @@ export type AddressMap = import("./addressMap").AddressMap;
 export const AddressMap: typeof import("./addressMap").AddressMap = null as any;
 utilities.lazyLoad(exports, ["AddressMap"], () => require("./addressMap"));
 
+export { AiGatewayArgs, AiGatewayState } from "./aiGateway";
+export type AiGateway = import("./aiGateway").AiGateway;
+export const AiGateway: typeof import("./aiGateway").AiGateway = null as any;
+utilities.lazyLoad(exports, ["AiGateway"], () => require("./aiGateway"));
+
+export { AiGatewayDynamicRoutingArgs, AiGatewayDynamicRoutingState } from "./aiGatewayDynamicRouting";
+export type AiGatewayDynamicRouting = import("./aiGatewayDynamicRouting").AiGatewayDynamicRouting;
+export const AiGatewayDynamicRouting: typeof import("./aiGatewayDynamicRouting").AiGatewayDynamicRouting = null as any;
+utilities.lazyLoad(exports, ["AiGatewayDynamicRouting"], () => require("./aiGatewayDynamicRouting"));
+
 export { AiSearchInstanceArgs, AiSearchInstanceState } from "./aiSearchInstance";
 export type AiSearchInstance = import("./aiSearchInstance").AiSearchInstance;
 export const AiSearchInstance: typeof import("./aiSearchInstance").AiSearchInstance = null as any;
@@ -200,6 +210,11 @@ export type CallsTurnApp = import("./callsTurnApp").CallsTurnApp;
 export const CallsTurnApp: typeof import("./callsTurnApp").CallsTurnApp = null as any;
 utilities.lazyLoad(exports, ["CallsTurnApp"], () => require("./callsTurnApp"));
 
+export { CertificateAuthoritiesHostnameAssociationsArgs, CertificateAuthoritiesHostnameAssociationsState } from "./certificateAuthoritiesHostnameAssociations";
+export type CertificateAuthoritiesHostnameAssociations = import("./certificateAuthoritiesHostnameAssociations").CertificateAuthoritiesHostnameAssociations;
+export const CertificateAuthoritiesHostnameAssociations: typeof import("./certificateAuthoritiesHostnameAssociations").CertificateAuthoritiesHostnameAssociations = null as any;
+utilities.lazyLoad(exports, ["CertificateAuthoritiesHostnameAssociations"], () => require("./certificateAuthoritiesHostnameAssociations"));
+
 export { CertificatePackArgs, CertificatePackState } from "./certificatePack";
 export type CertificatePack = import("./certificatePack").CertificatePack;
 export const CertificatePack: typeof import("./certificatePack").CertificatePack = null as any;
@@ -264,6 +279,11 @@ export { CustomOriginTrustStoreArgs, CustomOriginTrustStoreState } from "./custo
 export type CustomOriginTrustStore = import("./customOriginTrustStore").CustomOriginTrustStore;
 export const CustomOriginTrustStore: typeof import("./customOriginTrustStore").CustomOriginTrustStore = null as any;
 utilities.lazyLoad(exports, ["CustomOriginTrustStore"], () => require("./customOriginTrustStore"));
+
+export { CustomPageAssetArgs, CustomPageAssetState } from "./customPageAsset";
+export type CustomPageAsset = import("./customPageAsset").CustomPageAsset;
+export const CustomPageAsset: typeof import("./customPageAsset").CustomPageAsset = null as any;
+utilities.lazyLoad(exports, ["CustomPageAsset"], () => require("./customPageAsset"));
 
 export { CustomPagesArgs, CustomPagesState } from "./customPages";
 export type CustomPages = import("./customPages").CustomPages;
@@ -490,6 +510,21 @@ export const getAddressMaps: typeof import("./getAddressMaps").getAddressMaps = 
 export const getAddressMapsOutput: typeof import("./getAddressMaps").getAddressMapsOutput = null as any;
 utilities.lazyLoad(exports, ["getAddressMaps","getAddressMapsOutput"], () => require("./getAddressMaps"));
 
+export { GetAiGatewayArgs, GetAiGatewayResult, GetAiGatewayOutputArgs } from "./getAiGateway";
+export const getAiGateway: typeof import("./getAiGateway").getAiGateway = null as any;
+export const getAiGatewayOutput: typeof import("./getAiGateway").getAiGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getAiGateway","getAiGatewayOutput"], () => require("./getAiGateway"));
+
+export { GetAiGatewayDynamicRoutingArgs, GetAiGatewayDynamicRoutingResult, GetAiGatewayDynamicRoutingOutputArgs } from "./getAiGatewayDynamicRouting";
+export const getAiGatewayDynamicRouting: typeof import("./getAiGatewayDynamicRouting").getAiGatewayDynamicRouting = null as any;
+export const getAiGatewayDynamicRoutingOutput: typeof import("./getAiGatewayDynamicRouting").getAiGatewayDynamicRoutingOutput = null as any;
+utilities.lazyLoad(exports, ["getAiGatewayDynamicRouting","getAiGatewayDynamicRoutingOutput"], () => require("./getAiGatewayDynamicRouting"));
+
+export { GetAiGatewaysArgs, GetAiGatewaysResult, GetAiGatewaysOutputArgs } from "./getAiGateways";
+export const getAiGateways: typeof import("./getAiGateways").getAiGateways = null as any;
+export const getAiGatewaysOutput: typeof import("./getAiGateways").getAiGatewaysOutput = null as any;
+utilities.lazyLoad(exports, ["getAiGateways","getAiGatewaysOutput"], () => require("./getAiGateways"));
+
 export { GetAiSearchInstanceArgs, GetAiSearchInstanceResult, GetAiSearchInstanceOutputArgs } from "./getAiSearchInstance";
 export const getAiSearchInstance: typeof import("./getAiSearchInstance").getAiSearchInstance = null as any;
 export const getAiSearchInstanceOutput: typeof import("./getAiSearchInstance").getAiSearchInstanceOutput = null as any;
@@ -645,6 +680,11 @@ export const getCallsTurnApps: typeof import("./getCallsTurnApps").getCallsTurnA
 export const getCallsTurnAppsOutput: typeof import("./getCallsTurnApps").getCallsTurnAppsOutput = null as any;
 utilities.lazyLoad(exports, ["getCallsTurnApps","getCallsTurnAppsOutput"], () => require("./getCallsTurnApps"));
 
+export { GetCertificateAuthoritiesHostnameAssociationsArgs, GetCertificateAuthoritiesHostnameAssociationsResult, GetCertificateAuthoritiesHostnameAssociationsOutputArgs } from "./getCertificateAuthoritiesHostnameAssociations";
+export const getCertificateAuthoritiesHostnameAssociations: typeof import("./getCertificateAuthoritiesHostnameAssociations").getCertificateAuthoritiesHostnameAssociations = null as any;
+export const getCertificateAuthoritiesHostnameAssociationsOutput: typeof import("./getCertificateAuthoritiesHostnameAssociations").getCertificateAuthoritiesHostnameAssociationsOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificateAuthoritiesHostnameAssociations","getCertificateAuthoritiesHostnameAssociationsOutput"], () => require("./getCertificateAuthoritiesHostnameAssociations"));
+
 export { GetCertificatePackArgs, GetCertificatePackResult, GetCertificatePackOutputArgs } from "./getCertificatePack";
 export const getCertificatePack: typeof import("./getCertificatePack").getCertificatePack = null as any;
 export const getCertificatePackOutput: typeof import("./getCertificatePack").getCertificatePackOutput = null as any;
@@ -739,6 +779,16 @@ export { GetCustomOriginTrustStoresArgs, GetCustomOriginTrustStoresResult, GetCu
 export const getCustomOriginTrustStores: typeof import("./getCustomOriginTrustStores").getCustomOriginTrustStores = null as any;
 export const getCustomOriginTrustStoresOutput: typeof import("./getCustomOriginTrustStores").getCustomOriginTrustStoresOutput = null as any;
 utilities.lazyLoad(exports, ["getCustomOriginTrustStores","getCustomOriginTrustStoresOutput"], () => require("./getCustomOriginTrustStores"));
+
+export { GetCustomPageAssetArgs, GetCustomPageAssetResult, GetCustomPageAssetOutputArgs } from "./getCustomPageAsset";
+export const getCustomPageAsset: typeof import("./getCustomPageAsset").getCustomPageAsset = null as any;
+export const getCustomPageAssetOutput: typeof import("./getCustomPageAsset").getCustomPageAssetOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomPageAsset","getCustomPageAssetOutput"], () => require("./getCustomPageAsset"));
+
+export { GetCustomPageAssetsArgs, GetCustomPageAssetsResult, GetCustomPageAssetsOutputArgs } from "./getCustomPageAssets";
+export const getCustomPageAssets: typeof import("./getCustomPageAssets").getCustomPageAssets = null as any;
+export const getCustomPageAssetsOutput: typeof import("./getCustomPageAssets").getCustomPageAssetsOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomPageAssets","getCustomPageAssetsOutput"], () => require("./getCustomPageAssets"));
 
 export { GetCustomPagesArgs, GetCustomPagesResult, GetCustomPagesOutputArgs } from "./getCustomPages";
 export const getCustomPages: typeof import("./getCustomPages").getCustomPages = null as any;
@@ -1155,6 +1205,11 @@ export const getMtlsCertificate: typeof import("./getMtlsCertificate").getMtlsCe
 export const getMtlsCertificateOutput: typeof import("./getMtlsCertificate").getMtlsCertificateOutput = null as any;
 utilities.lazyLoad(exports, ["getMtlsCertificate","getMtlsCertificateOutput"], () => require("./getMtlsCertificate"));
 
+export { GetMtlsCertificateAssociationsArgs, GetMtlsCertificateAssociationsResult, GetMtlsCertificateAssociationsOutputArgs } from "./getMtlsCertificateAssociations";
+export const getMtlsCertificateAssociations: typeof import("./getMtlsCertificateAssociations").getMtlsCertificateAssociations = null as any;
+export const getMtlsCertificateAssociationsOutput: typeof import("./getMtlsCertificateAssociations").getMtlsCertificateAssociationsOutput = null as any;
+utilities.lazyLoad(exports, ["getMtlsCertificateAssociations","getMtlsCertificateAssociationsOutput"], () => require("./getMtlsCertificateAssociations"));
+
 export { GetMtlsCertificatesArgs, GetMtlsCertificatesResult, GetMtlsCertificatesOutputArgs } from "./getMtlsCertificates";
 export const getMtlsCertificates: typeof import("./getMtlsCertificates").getMtlsCertificates = null as any;
 export const getMtlsCertificatesOutput: typeof import("./getMtlsCertificates").getMtlsCertificatesOutput = null as any;
@@ -1275,6 +1330,31 @@ export const getPagesProjects: typeof import("./getPagesProjects").getPagesProje
 export const getPagesProjectsOutput: typeof import("./getPagesProjects").getPagesProjectsOutput = null as any;
 utilities.lazyLoad(exports, ["getPagesProjects","getPagesProjectsOutput"], () => require("./getPagesProjects"));
 
+export { GetPipelineArgs, GetPipelineResult, GetPipelineOutputArgs } from "./getPipeline";
+export const getPipeline: typeof import("./getPipeline").getPipeline = null as any;
+export const getPipelineOutput: typeof import("./getPipeline").getPipelineOutput = null as any;
+utilities.lazyLoad(exports, ["getPipeline","getPipelineOutput"], () => require("./getPipeline"));
+
+export { GetPipelineSinkArgs, GetPipelineSinkResult, GetPipelineSinkOutputArgs } from "./getPipelineSink";
+export const getPipelineSink: typeof import("./getPipelineSink").getPipelineSink = null as any;
+export const getPipelineSinkOutput: typeof import("./getPipelineSink").getPipelineSinkOutput = null as any;
+utilities.lazyLoad(exports, ["getPipelineSink","getPipelineSinkOutput"], () => require("./getPipelineSink"));
+
+export { GetPipelineSinksArgs, GetPipelineSinksResult, GetPipelineSinksOutputArgs } from "./getPipelineSinks";
+export const getPipelineSinks: typeof import("./getPipelineSinks").getPipelineSinks = null as any;
+export const getPipelineSinksOutput: typeof import("./getPipelineSinks").getPipelineSinksOutput = null as any;
+utilities.lazyLoad(exports, ["getPipelineSinks","getPipelineSinksOutput"], () => require("./getPipelineSinks"));
+
+export { GetPipelineStreamArgs, GetPipelineStreamResult, GetPipelineStreamOutputArgs } from "./getPipelineStream";
+export const getPipelineStream: typeof import("./getPipelineStream").getPipelineStream = null as any;
+export const getPipelineStreamOutput: typeof import("./getPipelineStream").getPipelineStreamOutput = null as any;
+utilities.lazyLoad(exports, ["getPipelineStream","getPipelineStreamOutput"], () => require("./getPipelineStream"));
+
+export { GetPipelineStreamsArgs, GetPipelineStreamsResult, GetPipelineStreamsOutputArgs } from "./getPipelineStreams";
+export const getPipelineStreams: typeof import("./getPipelineStreams").getPipelineStreams = null as any;
+export const getPipelineStreamsOutput: typeof import("./getPipelineStreams").getPipelineStreamsOutput = null as any;
+utilities.lazyLoad(exports, ["getPipelineStreams","getPipelineStreamsOutput"], () => require("./getPipelineStreams"));
+
 export { GetQueueArgs, GetQueueResult, GetQueueOutputArgs } from "./getQueue";
 export const getQueue: typeof import("./getQueue").getQueue = null as any;
 export const getQueueOutput: typeof import("./getQueue").getQueueOutput = null as any;
@@ -1329,6 +1409,11 @@ export { GetR2CustomDomainArgs, GetR2CustomDomainResult, GetR2CustomDomainOutput
 export const getR2CustomDomain: typeof import("./getR2CustomDomain").getR2CustomDomain = null as any;
 export const getR2CustomDomainOutput: typeof import("./getR2CustomDomain").getR2CustomDomainOutput = null as any;
 utilities.lazyLoad(exports, ["getR2CustomDomain","getR2CustomDomainOutput"], () => require("./getR2CustomDomain"));
+
+export { GetR2DataCatalogArgs, GetR2DataCatalogResult, GetR2DataCatalogOutputArgs } from "./getR2DataCatalog";
+export const getR2DataCatalog: typeof import("./getR2DataCatalog").getR2DataCatalog = null as any;
+export const getR2DataCatalogOutput: typeof import("./getR2DataCatalog").getR2DataCatalogOutput = null as any;
+utilities.lazyLoad(exports, ["getR2DataCatalog","getR2DataCatalogOutput"], () => require("./getR2DataCatalog"));
 
 export { GetRateLimitArgs, GetRateLimitResult, GetRateLimitOutputArgs } from "./getRateLimit";
 export const getRateLimit: typeof import("./getRateLimit").getRateLimit = null as any;
@@ -1569,6 +1654,51 @@ export { GetUserAgentBlockingRulesArgs, GetUserAgentBlockingRulesResult, GetUser
 export const getUserAgentBlockingRules: typeof import("./getUserAgentBlockingRules").getUserAgentBlockingRules = null as any;
 export const getUserAgentBlockingRulesOutput: typeof import("./getUserAgentBlockingRules").getUserAgentBlockingRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getUserAgentBlockingRules","getUserAgentBlockingRulesOutput"], () => require("./getUserAgentBlockingRules"));
+
+export { GetUserGroupArgs, GetUserGroupResult, GetUserGroupOutputArgs } from "./getUserGroup";
+export const getUserGroup: typeof import("./getUserGroup").getUserGroup = null as any;
+export const getUserGroupOutput: typeof import("./getUserGroup").getUserGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getUserGroup","getUserGroupOutput"], () => require("./getUserGroup"));
+
+export { GetUserGroupMembersArgs, GetUserGroupMembersResult, GetUserGroupMembersOutputArgs } from "./getUserGroupMembers";
+export const getUserGroupMembers: typeof import("./getUserGroupMembers").getUserGroupMembers = null as any;
+export const getUserGroupMembersOutput: typeof import("./getUserGroupMembers").getUserGroupMembersOutput = null as any;
+utilities.lazyLoad(exports, ["getUserGroupMembers","getUserGroupMembersOutput"], () => require("./getUserGroupMembers"));
+
+export { GetUserGroupsArgs, GetUserGroupsResult, GetUserGroupsOutputArgs } from "./getUserGroups";
+export const getUserGroups: typeof import("./getUserGroups").getUserGroups = null as any;
+export const getUserGroupsOutput: typeof import("./getUserGroups").getUserGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getUserGroups","getUserGroupsOutput"], () => require("./getUserGroups"));
+
+export { GetVulnerabilityScannerCredentialArgs, GetVulnerabilityScannerCredentialResult, GetVulnerabilityScannerCredentialOutputArgs } from "./getVulnerabilityScannerCredential";
+export const getVulnerabilityScannerCredential: typeof import("./getVulnerabilityScannerCredential").getVulnerabilityScannerCredential = null as any;
+export const getVulnerabilityScannerCredentialOutput: typeof import("./getVulnerabilityScannerCredential").getVulnerabilityScannerCredentialOutput = null as any;
+utilities.lazyLoad(exports, ["getVulnerabilityScannerCredential","getVulnerabilityScannerCredentialOutput"], () => require("./getVulnerabilityScannerCredential"));
+
+export { GetVulnerabilityScannerCredentialSetArgs, GetVulnerabilityScannerCredentialSetResult, GetVulnerabilityScannerCredentialSetOutputArgs } from "./getVulnerabilityScannerCredentialSet";
+export const getVulnerabilityScannerCredentialSet: typeof import("./getVulnerabilityScannerCredentialSet").getVulnerabilityScannerCredentialSet = null as any;
+export const getVulnerabilityScannerCredentialSetOutput: typeof import("./getVulnerabilityScannerCredentialSet").getVulnerabilityScannerCredentialSetOutput = null as any;
+utilities.lazyLoad(exports, ["getVulnerabilityScannerCredentialSet","getVulnerabilityScannerCredentialSetOutput"], () => require("./getVulnerabilityScannerCredentialSet"));
+
+export { GetVulnerabilityScannerCredentialSetsArgs, GetVulnerabilityScannerCredentialSetsResult, GetVulnerabilityScannerCredentialSetsOutputArgs } from "./getVulnerabilityScannerCredentialSets";
+export const getVulnerabilityScannerCredentialSets: typeof import("./getVulnerabilityScannerCredentialSets").getVulnerabilityScannerCredentialSets = null as any;
+export const getVulnerabilityScannerCredentialSetsOutput: typeof import("./getVulnerabilityScannerCredentialSets").getVulnerabilityScannerCredentialSetsOutput = null as any;
+utilities.lazyLoad(exports, ["getVulnerabilityScannerCredentialSets","getVulnerabilityScannerCredentialSetsOutput"], () => require("./getVulnerabilityScannerCredentialSets"));
+
+export { GetVulnerabilityScannerCredentialsArgs, GetVulnerabilityScannerCredentialsResult, GetVulnerabilityScannerCredentialsOutputArgs } from "./getVulnerabilityScannerCredentials";
+export const getVulnerabilityScannerCredentials: typeof import("./getVulnerabilityScannerCredentials").getVulnerabilityScannerCredentials = null as any;
+export const getVulnerabilityScannerCredentialsOutput: typeof import("./getVulnerabilityScannerCredentials").getVulnerabilityScannerCredentialsOutput = null as any;
+utilities.lazyLoad(exports, ["getVulnerabilityScannerCredentials","getVulnerabilityScannerCredentialsOutput"], () => require("./getVulnerabilityScannerCredentials"));
+
+export { GetVulnerabilityScannerTargetEnvironmentArgs, GetVulnerabilityScannerTargetEnvironmentResult, GetVulnerabilityScannerTargetEnvironmentOutputArgs } from "./getVulnerabilityScannerTargetEnvironment";
+export const getVulnerabilityScannerTargetEnvironment: typeof import("./getVulnerabilityScannerTargetEnvironment").getVulnerabilityScannerTargetEnvironment = null as any;
+export const getVulnerabilityScannerTargetEnvironmentOutput: typeof import("./getVulnerabilityScannerTargetEnvironment").getVulnerabilityScannerTargetEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getVulnerabilityScannerTargetEnvironment","getVulnerabilityScannerTargetEnvironmentOutput"], () => require("./getVulnerabilityScannerTargetEnvironment"));
+
+export { GetVulnerabilityScannerTargetEnvironmentsArgs, GetVulnerabilityScannerTargetEnvironmentsResult, GetVulnerabilityScannerTargetEnvironmentsOutputArgs } from "./getVulnerabilityScannerTargetEnvironments";
+export const getVulnerabilityScannerTargetEnvironments: typeof import("./getVulnerabilityScannerTargetEnvironments").getVulnerabilityScannerTargetEnvironments = null as any;
+export const getVulnerabilityScannerTargetEnvironmentsOutput: typeof import("./getVulnerabilityScannerTargetEnvironments").getVulnerabilityScannerTargetEnvironmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getVulnerabilityScannerTargetEnvironments","getVulnerabilityScannerTargetEnvironmentsOutput"], () => require("./getVulnerabilityScannerTargetEnvironments"));
 
 export { GetWaitingRoomArgs, GetWaitingRoomResult, GetWaitingRoomOutputArgs } from "./getWaitingRoom";
 export const getWaitingRoom: typeof import("./getWaitingRoom").getWaitingRoom = null as any;
@@ -1880,6 +2010,16 @@ export const getZeroTrustDeviceDefaultProfileLocalDomainFallback: typeof import(
 export const getZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput: typeof import("./getZeroTrustDeviceDefaultProfileLocalDomainFallback").getZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustDeviceDefaultProfileLocalDomainFallback","getZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput"], () => require("./getZeroTrustDeviceDefaultProfileLocalDomainFallback"));
 
+export { GetZeroTrustDeviceIpProfileArgs, GetZeroTrustDeviceIpProfileResult, GetZeroTrustDeviceIpProfileOutputArgs } from "./getZeroTrustDeviceIpProfile";
+export const getZeroTrustDeviceIpProfile: typeof import("./getZeroTrustDeviceIpProfile").getZeroTrustDeviceIpProfile = null as any;
+export const getZeroTrustDeviceIpProfileOutput: typeof import("./getZeroTrustDeviceIpProfile").getZeroTrustDeviceIpProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDeviceIpProfile","getZeroTrustDeviceIpProfileOutput"], () => require("./getZeroTrustDeviceIpProfile"));
+
+export { GetZeroTrustDeviceIpProfilesArgs, GetZeroTrustDeviceIpProfilesResult, GetZeroTrustDeviceIpProfilesOutputArgs } from "./getZeroTrustDeviceIpProfiles";
+export const getZeroTrustDeviceIpProfiles: typeof import("./getZeroTrustDeviceIpProfiles").getZeroTrustDeviceIpProfiles = null as any;
+export const getZeroTrustDeviceIpProfilesOutput: typeof import("./getZeroTrustDeviceIpProfiles").getZeroTrustDeviceIpProfilesOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDeviceIpProfiles","getZeroTrustDeviceIpProfilesOutput"], () => require("./getZeroTrustDeviceIpProfiles"));
+
 export { GetZeroTrustDeviceManagedNetworksArgs, GetZeroTrustDeviceManagedNetworksResult, GetZeroTrustDeviceManagedNetworksOutputArgs } from "./getZeroTrustDeviceManagedNetworks";
 export const getZeroTrustDeviceManagedNetworks: typeof import("./getZeroTrustDeviceManagedNetworks").getZeroTrustDeviceManagedNetworks = null as any;
 export const getZeroTrustDeviceManagedNetworksOutput: typeof import("./getZeroTrustDeviceManagedNetworks").getZeroTrustDeviceManagedNetworksOutput = null as any;
@@ -1914,6 +2054,11 @@ export { GetZeroTrustDeviceSettingsArgs, GetZeroTrustDeviceSettingsResult, GetZe
 export const getZeroTrustDeviceSettings: typeof import("./getZeroTrustDeviceSettings").getZeroTrustDeviceSettings = null as any;
 export const getZeroTrustDeviceSettingsOutput: typeof import("./getZeroTrustDeviceSettings").getZeroTrustDeviceSettingsOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustDeviceSettings","getZeroTrustDeviceSettingsOutput"], () => require("./getZeroTrustDeviceSettings"));
+
+export { GetZeroTrustDeviceSubnetArgs, GetZeroTrustDeviceSubnetResult, GetZeroTrustDeviceSubnetOutputArgs } from "./getZeroTrustDeviceSubnet";
+export const getZeroTrustDeviceSubnet: typeof import("./getZeroTrustDeviceSubnet").getZeroTrustDeviceSubnet = null as any;
+export const getZeroTrustDeviceSubnetOutput: typeof import("./getZeroTrustDeviceSubnet").getZeroTrustDeviceSubnetOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDeviceSubnet","getZeroTrustDeviceSubnetOutput"], () => require("./getZeroTrustDeviceSubnet"));
 
 export { GetZeroTrustDexRuleArgs, GetZeroTrustDexRuleResult, GetZeroTrustDexRuleOutputArgs } from "./getZeroTrustDexRule";
 export const getZeroTrustDexRule: typeof import("./getZeroTrustDexRule").getZeroTrustDexRule = null as any;
@@ -1994,6 +2139,11 @@ export { GetZeroTrustDlpPredefinedProfileArgs, GetZeroTrustDlpPredefinedProfileR
 export const getZeroTrustDlpPredefinedProfile: typeof import("./getZeroTrustDlpPredefinedProfile").getZeroTrustDlpPredefinedProfile = null as any;
 export const getZeroTrustDlpPredefinedProfileOutput: typeof import("./getZeroTrustDlpPredefinedProfile").getZeroTrustDlpPredefinedProfileOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustDlpPredefinedProfile","getZeroTrustDlpPredefinedProfileOutput"], () => require("./getZeroTrustDlpPredefinedProfile"));
+
+export { GetZeroTrustDlpSettingsArgs, GetZeroTrustDlpSettingsResult, GetZeroTrustDlpSettingsOutputArgs } from "./getZeroTrustDlpSettings";
+export const getZeroTrustDlpSettings: typeof import("./getZeroTrustDlpSettings").getZeroTrustDlpSettings = null as any;
+export const getZeroTrustDlpSettingsOutput: typeof import("./getZeroTrustDlpSettings").getZeroTrustDlpSettingsOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDlpSettings","getZeroTrustDlpSettingsOutput"], () => require("./getZeroTrustDlpSettings"));
 
 export { GetZeroTrustDnsLocationArgs, GetZeroTrustDnsLocationResult, GetZeroTrustDnsLocationOutputArgs } from "./getZeroTrustDnsLocation";
 export const getZeroTrustDnsLocation: typeof import("./getZeroTrustDnsLocation").getZeroTrustDnsLocation = null as any;
@@ -2410,6 +2560,21 @@ export type PagesProject = import("./pagesProject").PagesProject;
 export const PagesProject: typeof import("./pagesProject").PagesProject = null as any;
 utilities.lazyLoad(exports, ["PagesProject"], () => require("./pagesProject"));
 
+export { PipelineArgs, PipelineState } from "./pipeline";
+export type Pipeline = import("./pipeline").Pipeline;
+export const Pipeline: typeof import("./pipeline").Pipeline = null as any;
+utilities.lazyLoad(exports, ["Pipeline"], () => require("./pipeline"));
+
+export { PipelineSinkArgs, PipelineSinkState } from "./pipelineSink";
+export type PipelineSink = import("./pipelineSink").PipelineSink;
+export const PipelineSink: typeof import("./pipelineSink").PipelineSink = null as any;
+utilities.lazyLoad(exports, ["PipelineSink"], () => require("./pipelineSink"));
+
+export { PipelineStreamArgs, PipelineStreamState } from "./pipelineStream";
+export type PipelineStream = import("./pipelineStream").PipelineStream;
+export const PipelineStream: typeof import("./pipelineStream").PipelineStream = null as any;
+utilities.lazyLoad(exports, ["PipelineStream"], () => require("./pipelineStream"));
+
 export * from "./provider";
 import { Provider } from "./provider";
 
@@ -2457,6 +2622,11 @@ export { R2CustomDomainArgs, R2CustomDomainState } from "./r2customDomain";
 export type R2CustomDomain = import("./r2customDomain").R2CustomDomain;
 export const R2CustomDomain: typeof import("./r2customDomain").R2CustomDomain = null as any;
 utilities.lazyLoad(exports, ["R2CustomDomain"], () => require("./r2customDomain"));
+
+export { R2DataCatalogArgs, R2DataCatalogState } from "./r2dataCatalog";
+export type R2DataCatalog = import("./r2dataCatalog").R2DataCatalog;
+export const R2DataCatalog: typeof import("./r2dataCatalog").R2DataCatalog = null as any;
+utilities.lazyLoad(exports, ["R2DataCatalog"], () => require("./r2dataCatalog"));
 
 export { R2ManagedDomainArgs, R2ManagedDomainState } from "./r2managedDomain";
 export type R2ManagedDomain = import("./r2managedDomain").R2ManagedDomain;
@@ -2673,6 +2843,31 @@ export type UserAgentBlockingRule = import("./userAgentBlockingRule").UserAgentB
 export const UserAgentBlockingRule: typeof import("./userAgentBlockingRule").UserAgentBlockingRule = null as any;
 utilities.lazyLoad(exports, ["UserAgentBlockingRule"], () => require("./userAgentBlockingRule"));
 
+export { UserGroupArgs, UserGroupState } from "./userGroup";
+export type UserGroup = import("./userGroup").UserGroup;
+export const UserGroup: typeof import("./userGroup").UserGroup = null as any;
+utilities.lazyLoad(exports, ["UserGroup"], () => require("./userGroup"));
+
+export { UserGroupMembersArgs, UserGroupMembersState } from "./userGroupMembers";
+export type UserGroupMembers = import("./userGroupMembers").UserGroupMembers;
+export const UserGroupMembers: typeof import("./userGroupMembers").UserGroupMembers = null as any;
+utilities.lazyLoad(exports, ["UserGroupMembers"], () => require("./userGroupMembers"));
+
+export { VulnerabilityScannerCredentialArgs, VulnerabilityScannerCredentialState } from "./vulnerabilityScannerCredential";
+export type VulnerabilityScannerCredential = import("./vulnerabilityScannerCredential").VulnerabilityScannerCredential;
+export const VulnerabilityScannerCredential: typeof import("./vulnerabilityScannerCredential").VulnerabilityScannerCredential = null as any;
+utilities.lazyLoad(exports, ["VulnerabilityScannerCredential"], () => require("./vulnerabilityScannerCredential"));
+
+export { VulnerabilityScannerCredentialSetArgs, VulnerabilityScannerCredentialSetState } from "./vulnerabilityScannerCredentialSet";
+export type VulnerabilityScannerCredentialSet = import("./vulnerabilityScannerCredentialSet").VulnerabilityScannerCredentialSet;
+export const VulnerabilityScannerCredentialSet: typeof import("./vulnerabilityScannerCredentialSet").VulnerabilityScannerCredentialSet = null as any;
+utilities.lazyLoad(exports, ["VulnerabilityScannerCredentialSet"], () => require("./vulnerabilityScannerCredentialSet"));
+
+export { VulnerabilityScannerTargetEnvironmentArgs, VulnerabilityScannerTargetEnvironmentState } from "./vulnerabilityScannerTargetEnvironment";
+export type VulnerabilityScannerTargetEnvironment = import("./vulnerabilityScannerTargetEnvironment").VulnerabilityScannerTargetEnvironment;
+export const VulnerabilityScannerTargetEnvironment: typeof import("./vulnerabilityScannerTargetEnvironment").VulnerabilityScannerTargetEnvironment = null as any;
+utilities.lazyLoad(exports, ["VulnerabilityScannerTargetEnvironment"], () => require("./vulnerabilityScannerTargetEnvironment"));
+
 export { WaitingRoomArgs, WaitingRoomState } from "./waitingRoom";
 export type WaitingRoom = import("./waitingRoom").WaitingRoom;
 export const WaitingRoom: typeof import("./waitingRoom").WaitingRoom = null as any;
@@ -2883,6 +3078,11 @@ export type ZeroTrustDeviceDefaultProfileLocalDomainFallback = import("./zeroTru
 export const ZeroTrustDeviceDefaultProfileLocalDomainFallback: typeof import("./zeroTrustDeviceDefaultProfileLocalDomainFallback").ZeroTrustDeviceDefaultProfileLocalDomainFallback = null as any;
 utilities.lazyLoad(exports, ["ZeroTrustDeviceDefaultProfileLocalDomainFallback"], () => require("./zeroTrustDeviceDefaultProfileLocalDomainFallback"));
 
+export { ZeroTrustDeviceIpProfileArgs, ZeroTrustDeviceIpProfileState } from "./zeroTrustDeviceIpProfile";
+export type ZeroTrustDeviceIpProfile = import("./zeroTrustDeviceIpProfile").ZeroTrustDeviceIpProfile;
+export const ZeroTrustDeviceIpProfile: typeof import("./zeroTrustDeviceIpProfile").ZeroTrustDeviceIpProfile = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustDeviceIpProfile"], () => require("./zeroTrustDeviceIpProfile"));
+
 export { ZeroTrustDeviceManagedNetworksArgs, ZeroTrustDeviceManagedNetworksState } from "./zeroTrustDeviceManagedNetworks";
 export type ZeroTrustDeviceManagedNetworks = import("./zeroTrustDeviceManagedNetworks").ZeroTrustDeviceManagedNetworks;
 export const ZeroTrustDeviceManagedNetworks: typeof import("./zeroTrustDeviceManagedNetworks").ZeroTrustDeviceManagedNetworks = null as any;
@@ -2902,6 +3102,11 @@ export { ZeroTrustDeviceSettingsArgs, ZeroTrustDeviceSettingsState } from "./zer
 export type ZeroTrustDeviceSettings = import("./zeroTrustDeviceSettings").ZeroTrustDeviceSettings;
 export const ZeroTrustDeviceSettings: typeof import("./zeroTrustDeviceSettings").ZeroTrustDeviceSettings = null as any;
 utilities.lazyLoad(exports, ["ZeroTrustDeviceSettings"], () => require("./zeroTrustDeviceSettings"));
+
+export { ZeroTrustDeviceSubnetArgs, ZeroTrustDeviceSubnetState } from "./zeroTrustDeviceSubnet";
+export type ZeroTrustDeviceSubnet = import("./zeroTrustDeviceSubnet").ZeroTrustDeviceSubnet;
+export const ZeroTrustDeviceSubnet: typeof import("./zeroTrustDeviceSubnet").ZeroTrustDeviceSubnet = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustDeviceSubnet"], () => require("./zeroTrustDeviceSubnet"));
 
 export { ZeroTrustDexRuleArgs, ZeroTrustDexRuleState } from "./zeroTrustDexRule";
 export type ZeroTrustDexRule = import("./zeroTrustDexRule").ZeroTrustDexRule;
@@ -2947,6 +3152,11 @@ export { ZeroTrustDlpPredefinedProfileArgs, ZeroTrustDlpPredefinedProfileState }
 export type ZeroTrustDlpPredefinedProfile = import("./zeroTrustDlpPredefinedProfile").ZeroTrustDlpPredefinedProfile;
 export const ZeroTrustDlpPredefinedProfile: typeof import("./zeroTrustDlpPredefinedProfile").ZeroTrustDlpPredefinedProfile = null as any;
 utilities.lazyLoad(exports, ["ZeroTrustDlpPredefinedProfile"], () => require("./zeroTrustDlpPredefinedProfile"));
+
+export { ZeroTrustDlpSettingsArgs, ZeroTrustDlpSettingsState } from "./zeroTrustDlpSettings";
+export type ZeroTrustDlpSettings = import("./zeroTrustDlpSettings").ZeroTrustDlpSettings;
+export const ZeroTrustDlpSettings: typeof import("./zeroTrustDlpSettings").ZeroTrustDlpSettings = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustDlpSettings"], () => require("./zeroTrustDlpSettings"));
 
 export { ZeroTrustDnsLocationArgs, ZeroTrustDnsLocationState } from "./zeroTrustDnsLocation";
 export type ZeroTrustDnsLocation = import("./zeroTrustDnsLocation").ZeroTrustDnsLocation;
@@ -3137,6 +3347,10 @@ const _module = {
                 return new AccountToken(name, <any>undefined, { urn })
             case "cloudflare:index/addressMap:AddressMap":
                 return new AddressMap(name, <any>undefined, { urn })
+            case "cloudflare:index/aiGateway:AiGateway":
+                return new AiGateway(name, <any>undefined, { urn })
+            case "cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting":
+                return new AiGatewayDynamicRouting(name, <any>undefined, { urn })
             case "cloudflare:index/aiSearchInstance:AiSearchInstance":
                 return new AiSearchInstance(name, <any>undefined, { urn })
             case "cloudflare:index/aiSearchToken:AiSearchToken":
@@ -3175,6 +3389,8 @@ const _module = {
                 return new CallsSfuApp(name, <any>undefined, { urn })
             case "cloudflare:index/callsTurnApp:CallsTurnApp":
                 return new CallsTurnApp(name, <any>undefined, { urn })
+            case "cloudflare:index/certificateAuthoritiesHostnameAssociations:CertificateAuthoritiesHostnameAssociations":
+                return new CertificateAuthoritiesHostnameAssociations(name, <any>undefined, { urn })
             case "cloudflare:index/certificatePack:CertificatePack":
                 return new CertificatePack(name, <any>undefined, { urn })
             case "cloudflare:index/clientCertificate:ClientCertificate":
@@ -3201,6 +3417,8 @@ const _module = {
                 return new CustomHostnameFallbackOrigin(name, <any>undefined, { urn })
             case "cloudflare:index/customOriginTrustStore:CustomOriginTrustStore":
                 return new CustomOriginTrustStore(name, <any>undefined, { urn })
+            case "cloudflare:index/customPageAsset:CustomPageAsset":
+                return new CustomPageAsset(name, <any>undefined, { urn })
             case "cloudflare:index/customPages:CustomPages":
                 return new CustomPages(name, <any>undefined, { urn })
             case "cloudflare:index/customSsl:CustomSsl":
@@ -3329,6 +3547,12 @@ const _module = {
                 return new PagesDomain(name, <any>undefined, { urn })
             case "cloudflare:index/pagesProject:PagesProject":
                 return new PagesProject(name, <any>undefined, { urn })
+            case "cloudflare:index/pipeline:Pipeline":
+                return new Pipeline(name, <any>undefined, { urn })
+            case "cloudflare:index/pipelineSink:PipelineSink":
+                return new PipelineSink(name, <any>undefined, { urn })
+            case "cloudflare:index/pipelineStream:PipelineStream":
+                return new PipelineStream(name, <any>undefined, { urn })
             case "cloudflare:index/queue:Queue":
                 return new Queue(name, <any>undefined, { urn })
             case "cloudflare:index/queueConsumer:QueueConsumer":
@@ -3347,6 +3571,8 @@ const _module = {
                 return new R2BucketSippy(name, <any>undefined, { urn })
             case "cloudflare:index/r2CustomDomain:R2CustomDomain":
                 return new R2CustomDomain(name, <any>undefined, { urn })
+            case "cloudflare:index/r2DataCatalog:R2DataCatalog":
+                return new R2DataCatalog(name, <any>undefined, { urn })
             case "cloudflare:index/r2ManagedDomain:R2ManagedDomain":
                 return new R2ManagedDomain(name, <any>undefined, { urn })
             case "cloudflare:index/rateLimit:RateLimit":
@@ -3433,6 +3659,16 @@ const _module = {
                 return new User(name, <any>undefined, { urn })
             case "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule":
                 return new UserAgentBlockingRule(name, <any>undefined, { urn })
+            case "cloudflare:index/userGroup:UserGroup":
+                return new UserGroup(name, <any>undefined, { urn })
+            case "cloudflare:index/userGroupMembers:UserGroupMembers":
+                return new UserGroupMembers(name, <any>undefined, { urn })
+            case "cloudflare:index/vulnerabilityScannerCredential:VulnerabilityScannerCredential":
+                return new VulnerabilityScannerCredential(name, <any>undefined, { urn })
+            case "cloudflare:index/vulnerabilityScannerCredentialSet:VulnerabilityScannerCredentialSet":
+                return new VulnerabilityScannerCredentialSet(name, <any>undefined, { urn })
+            case "cloudflare:index/vulnerabilityScannerTargetEnvironment:VulnerabilityScannerTargetEnvironment":
+                return new VulnerabilityScannerTargetEnvironment(name, <any>undefined, { urn })
             case "cloudflare:index/waitingRoom:WaitingRoom":
                 return new WaitingRoom(name, <any>undefined, { urn })
             case "cloudflare:index/waitingRoomEvent:WaitingRoomEvent":
@@ -3517,6 +3753,8 @@ const _module = {
                 return new ZeroTrustDeviceDefaultProfileCertificates(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback":
                 return new ZeroTrustDeviceDefaultProfileLocalDomainFallback(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile":
+                return new ZeroTrustDeviceIpProfile(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks":
                 return new ZeroTrustDeviceManagedNetworks(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration":
@@ -3525,6 +3763,8 @@ const _module = {
                 return new ZeroTrustDevicePostureRule(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings":
                 return new ZeroTrustDeviceSettings(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet":
+                return new ZeroTrustDeviceSubnet(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDexRule:ZeroTrustDexRule":
                 return new ZeroTrustDexRule(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest":
@@ -3543,6 +3783,8 @@ const _module = {
                 return new ZeroTrustDlpPredefinedEntry(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile":
                 return new ZeroTrustDlpPredefinedProfile(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings":
+                return new ZeroTrustDlpSettings(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation":
                 return new ZeroTrustDnsLocation(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate":
@@ -3622,6 +3864,8 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/accountMember", _modu
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountSubscription", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/addressMap", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/aiGateway", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/aiGatewayDynamicRouting", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/aiSearchInstance", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/aiSearchToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShield", _module)
@@ -3641,6 +3885,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/botManagement", _modu
 pulumi.runtime.registerResourceModule("cloudflare", "index/byoIpPrefix", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/callsSfuApp", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/callsTurnApp", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/certificateAuthoritiesHostnameAssociations", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/certificatePack", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/clientCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/cloudConnectorRules", _module)
@@ -3654,6 +3899,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/contentScanningExpres
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbackOrigin", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customOriginTrustStore", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/customPageAsset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customPages", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customSsl", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/d1Database", _module)
@@ -3718,6 +3964,9 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/pageRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pageShieldPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pagesDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pagesProject", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/pipeline", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/pipelineSink", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/pipelineStream", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/queue", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/queueConsumer", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/r2Bucket", _module)
@@ -3727,6 +3976,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/r2BucketLifecycle", _
 pulumi.runtime.registerResourceModule("cloudflare", "index/r2BucketLock", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/r2BucketSippy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/r2CustomDomain", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/r2DataCatalog", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/r2ManagedDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
@@ -3770,6 +4020,11 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/universalSslSetting",
 pulumi.runtime.registerResourceModule("cloudflare", "index/urlNormalizationSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/user", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/userAgentBlockingRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/userGroup", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/userGroupMembers", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/vulnerabilityScannerCredential", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/vulnerabilityScannerCredentialSet", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/vulnerabilityScannerTargetEnvironment", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoom", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomEvent", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomRules", _module)
@@ -3812,10 +4067,12 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceCustom
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceDefaultProfile", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceDefaultProfileCertificates", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceDefaultProfileLocalDomainFallback", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceIpProfile", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceManagedNetworks", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDevicePostureIntegration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDevicePostureRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceSettings", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceSubnet", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDexRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDexTest", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpCustomEntry", _module)
@@ -3825,6 +4082,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpEntry", _
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpIntegrationEntry", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpPredefinedEntry", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpPredefinedProfile", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDnsLocation", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayLogging", _module)

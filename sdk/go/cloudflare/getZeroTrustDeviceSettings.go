@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDeviceSettings(ctx, &cloudflare.LookupZeroTrustDeviceSettingsArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,12 +48,12 @@ func LookupZeroTrustDeviceSettings(ctx *pulumi.Context, args *LookupZeroTrustDev
 
 // A collection of arguments for invoking getZeroTrustDeviceSettings.
 type LookupZeroTrustDeviceSettingsArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getZeroTrustDeviceSettings.
 type LookupZeroTrustDeviceSettingsResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
 	DisableForTime float64 `pulumi:"disableForTime"`
 	// Controls whether the external emergency disconnect feature is enabled.
@@ -87,7 +87,7 @@ func LookupZeroTrustDeviceSettingsOutput(ctx *pulumi.Context, args LookupZeroTru
 
 // A collection of arguments for invoking getZeroTrustDeviceSettings.
 type LookupZeroTrustDeviceSettingsOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
 func (LookupZeroTrustDeviceSettingsOutputArgs) ElementType() reflect.Type {
@@ -109,8 +109,8 @@ func (o LookupZeroTrustDeviceSettingsResultOutput) ToLookupZeroTrustDeviceSettin
 	return o
 }
 
-func (o LookupZeroTrustDeviceSettingsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDeviceSettingsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDeviceSettingsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceSettingsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Sets the time limit, in seconds, that a user can use an override code to bypass WARP.

@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Gateway`
+// - `Account API Gateway Read`
+// - `Domain API Gateway`
+// - `Domain API Gateway Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetSchemaValidationSchemasList(ctx, &cloudflare.LookupSchemaValidationSchemasListArgs{
-//				ZoneId:            "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:            pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ValidationEnabled: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -56,7 +63,7 @@ type LookupSchemaValidationSchemasListArgs struct {
 	// Filter for enabled schemas
 	ValidationEnabled *bool `pulumi:"validationEnabled"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getSchemaValidationSchemasList.
@@ -72,7 +79,7 @@ type LookupSchemaValidationSchemasListResult struct {
 	// Filter for enabled schemas
 	ValidationEnabled *bool `pulumi:"validationEnabled"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupSchemaValidationSchemasListOutput(ctx *pulumi.Context, args LookupSchemaValidationSchemasListOutputArgs, opts ...pulumi.InvokeOption) LookupSchemaValidationSchemasListResultOutput {
@@ -93,7 +100,7 @@ type LookupSchemaValidationSchemasListOutputArgs struct {
 	// Filter for enabled schemas
 	ValidationEnabled pulumi.BoolPtrInput `pulumi:"validationEnabled"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupSchemaValidationSchemasListOutputArgs) ElementType() reflect.Type {
@@ -143,8 +150,8 @@ func (o LookupSchemaValidationSchemasListResultOutput) ValidationEnabled() pulum
 }
 
 // Identifier.
-func (o LookupSchemaValidationSchemasListResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSchemaValidationSchemasListResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupSchemaValidationSchemasListResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSchemaValidationSchemasListResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

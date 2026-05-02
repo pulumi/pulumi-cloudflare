@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -17,29 +16,29 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
     public static final GetWorkersCustomDomainsPlainArgs Empty = new GetWorkersCustomDomainsPlainArgs();
 
     /**
-     * Identifer of the account.
+     * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
-     * @return Identifer of the account.
+     * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Worker environment associated with the zone and hostname.
+     * Worker environment associated with the domain.
      * 
      */
     @Import(name="environment")
     private @Nullable String environment;
 
     /**
-     * @return Worker environment associated with the zone and hostname.
+     * @return Worker environment associated with the domain.
      * 
      */
     public Optional<String> environment() {
@@ -47,14 +46,14 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * Hostname of the Worker Domain.
+     * Hostname of the domain.
      * 
      */
     @Import(name="hostname")
     private @Nullable String hostname;
 
     /**
-     * @return Hostname of the Worker Domain.
+     * @return Hostname of the domain.
      * 
      */
     public Optional<String> hostname() {
@@ -77,14 +76,14 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * Worker service associated with the zone and hostname.
+     * Name of the Worker associated with the domain.
      * 
      */
     @Import(name="service")
     private @Nullable String service;
 
     /**
-     * @return Worker service associated with the zone and hostname.
+     * @return Name of the Worker associated with the domain.
      * 
      */
     public Optional<String> service() {
@@ -92,14 +91,14 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * Identifier of the zone.
+     * ID of the zone containing the domain hostname.
      * 
      */
     @Import(name="zoneId")
     private @Nullable String zoneId;
 
     /**
-     * @return Identifier of the zone.
+     * @return ID of the zone containing the domain hostname.
      * 
      */
     public Optional<String> zoneId() {
@@ -107,14 +106,14 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * Name of the zone.
+     * Name of the zone containing the domain hostname.
      * 
      */
     @Import(name="zoneName")
     private @Nullable String zoneName;
 
     /**
-     * @return Name of the zone.
+     * @return Name of the zone containing the domain hostname.
      * 
      */
     public Optional<String> zoneName() {
@@ -152,18 +151,18 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accountId Identifer of the account.
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param environment Worker environment associated with the zone and hostname.
+         * @param environment Worker environment associated with the domain.
          * 
          * @return builder
          * 
@@ -174,7 +173,7 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param hostname Hostname of the Worker Domain.
+         * @param hostname Hostname of the domain.
          * 
          * @return builder
          * 
@@ -196,7 +195,7 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param service Worker service associated with the zone and hostname.
+         * @param service Name of the Worker associated with the domain.
          * 
          * @return builder
          * 
@@ -207,7 +206,7 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param zoneId Identifier of the zone.
+         * @param zoneId ID of the zone containing the domain hostname.
          * 
          * @return builder
          * 
@@ -218,7 +217,7 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param zoneName Name of the zone.
+         * @param zoneName Name of the zone containing the domain hostname.
          * 
          * @return builder
          * 
@@ -229,9 +228,6 @@ public final class GetWorkersCustomDomainsPlainArgs extends com.pulumi.resources
         }
 
         public GetWorkersCustomDomainsPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetWorkersCustomDomainsPlainArgs", "accountId");
-            }
             return $;
         }
     }

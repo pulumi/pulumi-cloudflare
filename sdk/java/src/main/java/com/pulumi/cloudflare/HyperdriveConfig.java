@@ -19,6 +19,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Hyperdrive Read`
+ * - `Hyperdrive Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -87,14 +92,14 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Define configurations using a unique string identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     @Export(name="caching", refs={HyperdriveConfigCaching.class}, tree="[0]")
     private Output</* @Nullable */ HyperdriveConfigCaching> caching;
@@ -130,9 +135,17 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
+    /**
+     * mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+     * 
+     */
     @Export(name="mtls", refs={HyperdriveConfigMtls.class}, tree="[0]")
     private Output</* @Nullable */ HyperdriveConfigMtls> mtls;
 
+    /**
+     * @return mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+     * 
+     */
     public Output<Optional<HyperdriveConfigMtls>> mtls() {
         return Codegen.optional(this.mtls);
     }

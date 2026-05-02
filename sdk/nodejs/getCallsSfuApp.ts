@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Calls Read`
+ * - `Calls Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +37,7 @@ export interface GetCallsSfuAppArgs {
     /**
      * The account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * A Cloudflare-generated unique identifier for a item.
      */
@@ -46,7 +51,7 @@ export interface GetCallsSfuAppResult {
     /**
      * The account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * A Cloudflare-generated unique identifier for a item.
      */
@@ -73,6 +78,11 @@ export interface GetCallsSfuAppResult {
     readonly uid: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Calls Read`
+ * - `Calls Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -100,7 +110,7 @@ export interface GetCallsSfuAppOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A Cloudflare-generated unique identifier for a item.
      */

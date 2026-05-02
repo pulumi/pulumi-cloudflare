@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetTotalTls
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetTotalTlsResult> InvokeAsync(GetTotalTlsArgs args, InvokeOptions? options = null)
+        public static Task<GetTotalTlsResult> InvokeAsync(GetTotalTlsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTotalTlsResult>("cloudflare:index/getTotalTls:getTotalTls", args ?? new GetTotalTlsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetTotalTlsResult> Invoke(GetTotalTlsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetTotalTlsResult> Invoke(GetTotalTlsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTotalTlsResult>("cloudflare:index/getTotalTls:getTotalTls", args ?? new GetTotalTlsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetTotalTlsArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetTotalTlsInvokeArgs()
         {
@@ -132,7 +147,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetTotalTlsResult(
@@ -144,7 +159,7 @@ namespace Pulumi.Cloudflare
 
             int validityPeriod,
 
-            string zoneId)
+            string? zoneId)
         {
             CertificateAuthority = certificateAuthority;
             Enabled = enabled;

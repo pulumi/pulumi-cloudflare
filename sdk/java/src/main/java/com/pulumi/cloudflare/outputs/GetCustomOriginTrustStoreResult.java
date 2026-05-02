@@ -64,7 +64,7 @@ public final class GetCustomOriginTrustStoreResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetCustomOriginTrustStoreResult() {}
     /**
@@ -138,8 +138,8 @@ public final class GetCustomOriginTrustStoreResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -161,7 +161,7 @@ public final class GetCustomOriginTrustStoreResult {
         private String status;
         private String updatedAt;
         private String uploadedOn;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetCustomOriginTrustStoreResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -255,10 +255,8 @@ public final class GetCustomOriginTrustStoreResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetCustomOriginTrustStoreResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Stream Read`
+// - `Stream Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -46,7 +51,11 @@ type StreamDownload struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// The audio-only download. Only present if this download type has been created.
+	Audio StreamDownloadAudioOutput `pulumi:"audio"`
+	// The default video download. Only present if this download type has been created.
+	Default StreamDownloadDefaultOutput `pulumi:"default"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 }
@@ -58,9 +67,6 @@ func NewStreamDownload(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
@@ -89,6 +95,10 @@ func GetStreamDownload(ctx *pulumi.Context,
 type streamDownloadState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
+	// The audio-only download. Only present if this download type has been created.
+	Audio *StreamDownloadAudio `pulumi:"audio"`
+	// The default video download. Only present if this download type has been created.
+	Default *StreamDownloadDefault `pulumi:"default"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier *string `pulumi:"identifier"`
 }
@@ -96,6 +106,10 @@ type streamDownloadState struct {
 type StreamDownloadState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
+	// The audio-only download. Only present if this download type has been created.
+	Audio StreamDownloadAudioPtrInput
+	// The default video download. Only present if this download type has been created.
+	Default StreamDownloadDefaultPtrInput
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringPtrInput
 }
@@ -106,7 +120,7 @@ func (StreamDownloadState) ElementType() reflect.Type {
 
 type streamDownloadArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
 }
@@ -114,7 +128,7 @@ type streamDownloadArgs struct {
 // The set of arguments for constructing a StreamDownload resource.
 type StreamDownloadArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringInput
 }
@@ -207,8 +221,18 @@ func (o StreamDownloadOutput) ToStreamDownloadOutputWithContext(ctx context.Cont
 }
 
 // Identifier.
-func (o StreamDownloadOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *StreamDownload) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o StreamDownloadOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamDownload) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// The audio-only download. Only present if this download type has been created.
+func (o StreamDownloadOutput) Audio() StreamDownloadAudioOutput {
+	return o.ApplyT(func(v *StreamDownload) StreamDownloadAudioOutput { return v.Audio }).(StreamDownloadAudioOutput)
+}
+
+// The default video download. Only present if this download type has been created.
+func (o StreamDownloadOutput) Default() StreamDownloadDefaultOutput {
+	return o.ApplyT(func(v *StreamDownload) StreamDownloadDefaultOutput { return v.Default }).(StreamDownloadDefaultOutput)
 }
 
 // A Cloudflare-generated unique identifier for a media item.

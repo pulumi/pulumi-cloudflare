@@ -238,6 +238,13 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
         return Optional.ofNullable(this.lanAllowSubnetSize);
     }
 
+    @Import(name="policyId")
+    private @Nullable Output<String> policyId;
+
+    public Optional<Output<String>> policyId() {
+        return Optional.ofNullable(this.policyId);
+    }
+
     /**
      * Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
      * 
@@ -339,6 +346,7 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
         this.includes = $.includes;
         this.lanAllowMinutes = $.lanAllowMinutes;
         this.lanAllowSubnetSize = $.lanAllowSubnetSize;
+        this.policyId = $.policyId;
         this.registerInterfaceIpWithDns = $.registerInterfaceIpWithDns;
         this.sccmVpnBoundarySupport = $.sccmVpnBoundarySupport;
         this.serviceModeV2 = $.serviceModeV2;
@@ -687,6 +695,15 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
          */
         public Builder lanAllowSubnetSize(Double lanAllowSubnetSize) {
             return lanAllowSubnetSize(Output.of(lanAllowSubnetSize));
+        }
+
+        public Builder policyId(@Nullable Output<String> policyId) {
+            $.policyId = policyId;
+            return this;
+        }
+
+        public Builder policyId(String policyId) {
+            return policyId(Output.of(policyId));
         }
 
         /**

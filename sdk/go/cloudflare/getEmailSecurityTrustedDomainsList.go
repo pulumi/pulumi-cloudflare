@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloud Email Security: Read`
+// - `Cloud Email Security: Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailSecurityTrustedDomainsList(ctx, &cloudflare.LookupEmailSecurityTrustedDomainsListArgs{
-//				AccountId:    "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction:    pulumi.StringRef("asc"),
 //				IsRecent:     pulumi.BoolRef(true),
 //				IsSimilarity: pulumi.BoolRef(true),
@@ -55,7 +60,7 @@ func LookupEmailSecurityTrustedDomainsList(ctx *pulumi.Context, args *LookupEmai
 // A collection of arguments for invoking getEmailSecurityTrustedDomainsList.
 type LookupEmailSecurityTrustedDomainsListArgs struct {
 	// Account Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction    *string `pulumi:"direction"`
@@ -77,7 +82,7 @@ type LookupEmailSecurityTrustedDomainsListArgs struct {
 // A collection of values returned by getEmailSecurityTrustedDomainsList.
 type LookupEmailSecurityTrustedDomainsListResult struct {
 	// Account Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
@@ -112,7 +117,7 @@ func LookupEmailSecurityTrustedDomainsListOutput(ctx *pulumi.Context, args Looku
 // A collection of arguments for invoking getEmailSecurityTrustedDomainsList.
 type LookupEmailSecurityTrustedDomainsListOutputArgs struct {
 	// Account Identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction    pulumi.StringPtrInput `pulumi:"direction"`
@@ -151,8 +156,8 @@ func (o LookupEmailSecurityTrustedDomainsListResultOutput) ToLookupEmailSecurity
 }
 
 // Account Identifier
-func (o LookupEmailSecurityTrustedDomainsListResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupEmailSecurityTrustedDomainsListResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The sorting direction.

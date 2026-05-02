@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Tokens Read`
+ * - `Account API Tokens Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getAccountTokens(args: GetAccountTokensArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTokensResult> {
+export function getAccountTokens(args?: GetAccountTokensArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountTokensResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountTokens:getAccountTokens", {
         "accountId": args.accountId,
@@ -35,7 +41,7 @@ export interface GetAccountTokensArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Direction to order results.
      * Available values: "asc", "desc".
@@ -54,7 +60,7 @@ export interface GetAccountTokensResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Direction to order results.
      * Available values: "asc", "desc".
@@ -74,6 +80,11 @@ export interface GetAccountTokensResult {
     readonly results: outputs.GetAccountTokensResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Tokens Read`
+ * - `Account API Tokens Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -86,7 +97,8 @@ export interface GetAccountTokensResult {
  * });
  * ```
  */
-export function getAccountTokensOutput(args: GetAccountTokensOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountTokensResult> {
+export function getAccountTokensOutput(args?: GetAccountTokensOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountTokensResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountTokens:getAccountTokens", {
         "accountId": args.accountId,
@@ -102,7 +114,7 @@ export interface GetAccountTokensOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Direction to order results.
      * Available values: "asc", "desc".

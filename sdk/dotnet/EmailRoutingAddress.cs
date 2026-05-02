@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Email Routing Addresses Read`
+    /// - `Email Routing Addresses Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -42,7 +47,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The date and time the destination address has been created.
@@ -123,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The contact email address of the user.

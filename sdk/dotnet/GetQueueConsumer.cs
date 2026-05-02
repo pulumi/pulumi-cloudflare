@@ -12,18 +12,39 @@ namespace Pulumi.Cloudflare
     public static class GetQueueConsumer
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Queues Read`
+        /// - `Queues Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// 
         /// ## Example Usage
         /// </summary>
         public static Task<GetQueueConsumerResult> InvokeAsync(GetQueueConsumerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQueueConsumerResult>("cloudflare:index/getQueueConsumer:getQueueConsumer", args ?? new GetQueueConsumerArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Queues Read`
+        /// - `Queues Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// 
         /// ## Example Usage
         /// </summary>
         public static Output<GetQueueConsumerResult> Invoke(GetQueueConsumerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQueueConsumerResult>("cloudflare:index/getQueueConsumer:getQueueConsumer", args ?? new GetQueueConsumerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Queues Read`
+        /// - `Queues Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// 
         /// ## Example Usage
         /// </summary>
         public static Output<GetQueueConsumerResult> Invoke(GetQueueConsumerInvokeArgs args, InvokeOutputOptions options)
@@ -36,8 +57,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// A Resource identifier.
@@ -56,8 +77,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// A Resource identifier.
@@ -78,7 +99,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// A Resource identifier.
         /// </summary>
@@ -109,7 +130,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetQueueConsumerResult(
-            string accountId,
+            string? accountId,
 
             string consumerId,
 

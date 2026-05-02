@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Account Settings Read`
+    /// - `Account Settings Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -41,7 +46,7 @@ namespace Pulumi.Cloudflare
     public partial class DnsZoneTransfersTsig : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// TSIG algorithm.
@@ -111,8 +116,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class DnsZoneTransfersTsigArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// TSIG algorithm.

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -72,7 +77,7 @@ export class DlpCustomProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === DlpCustomProfile.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public readonly aiContextEnabled: pulumi.Output<boolean>;
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
@@ -90,6 +95,14 @@ export class DlpCustomProfile extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
+     * Data class IDs to associate with the profile.
+     */
+    declare public readonly dataClasses: pulumi.Output<string[] | undefined>;
+    /**
+     * Data tag IDs to associate with the profile.
+     */
+    declare public readonly dataTags: pulumi.Output<string[] | undefined>;
+    /**
      * The description of the profile.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -106,6 +119,10 @@ export class DlpCustomProfile extends pulumi.CustomResource {
      * Whether this profile can be accessed by anyone.
      */
     declare public /*out*/ readonly openAccess: pulumi.Output<boolean>;
+    /**
+     * Sensitivity levels to associate with the profile.
+     */
+    declare public readonly sensitivityLevels: pulumi.Output<outputs.DlpCustomProfileSensitivityLevel[] | undefined>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
@@ -141,19 +158,19 @@ export class DlpCustomProfile extends pulumi.CustomResource {
             resourceInputs["confidenceThreshold"] = state?.confidenceThreshold;
             resourceInputs["contextAwareness"] = state?.contextAwareness;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dataClasses"] = state?.dataClasses;
+            resourceInputs["dataTags"] = state?.dataTags;
             resourceInputs["description"] = state?.description;
             resourceInputs["entries"] = state?.entries;
             resourceInputs["name"] = state?.name;
             resourceInputs["ocrEnabled"] = state?.ocrEnabled;
             resourceInputs["openAccess"] = state?.openAccess;
+            resourceInputs["sensitivityLevels"] = state?.sensitivityLevels;
             resourceInputs["sharedEntries"] = state?.sharedEntries;
             resourceInputs["type"] = state?.type;
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as DlpCustomProfileArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -162,10 +179,13 @@ export class DlpCustomProfile extends pulumi.CustomResource {
             resourceInputs["allowedMatchCount"] = args?.allowedMatchCount;
             resourceInputs["confidenceThreshold"] = args?.confidenceThreshold;
             resourceInputs["contextAwareness"] = args?.contextAwareness;
+            resourceInputs["dataClasses"] = args?.dataClasses;
+            resourceInputs["dataTags"] = args?.dataTags;
             resourceInputs["description"] = args?.description;
             resourceInputs["entries"] = args?.entries;
             resourceInputs["name"] = args?.name;
             resourceInputs["ocrEnabled"] = args?.ocrEnabled;
+            resourceInputs["sensitivityLevels"] = args?.sensitivityLevels;
             resourceInputs["sharedEntries"] = args?.sharedEntries;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["openAccess"] = undefined /*out*/;
@@ -201,6 +221,14 @@ export interface DlpCustomProfileState {
      */
     createdAt?: pulumi.Input<string>;
     /**
+     * Data class IDs to associate with the profile.
+     */
+    dataClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Data tag IDs to associate with the profile.
+     */
+    dataTags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The description of the profile.
      */
     description?: pulumi.Input<string>;
@@ -217,6 +245,10 @@ export interface DlpCustomProfileState {
      * Whether this profile can be accessed by anyone.
      */
     openAccess?: pulumi.Input<boolean>;
+    /**
+     * Sensitivity levels to associate with the profile.
+     */
+    sensitivityLevels?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileSensitivityLevel>[]>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
@@ -235,7 +267,7 @@ export interface DlpCustomProfileState {
  * The set of arguments for constructing a DlpCustomProfile resource.
  */
 export interface DlpCustomProfileArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     aiContextEnabled?: pulumi.Input<boolean>;
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
@@ -249,6 +281,14 @@ export interface DlpCustomProfileArgs {
      */
     contextAwareness?: pulumi.Input<inputs.DlpCustomProfileContextAwareness>;
     /**
+     * Data class IDs to associate with the profile.
+     */
+    dataClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Data tag IDs to associate with the profile.
+     */
+    dataTags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The description of the profile.
      */
     description?: pulumi.Input<string>;
@@ -261,6 +301,10 @@ export interface DlpCustomProfileArgs {
     entries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileEntry>[]>;
     name: pulumi.Input<string>;
     ocrEnabled?: pulumi.Input<boolean>;
+    /**
+     * Sensitivity levels to associate with the profile.
+     */
+    sensitivityLevels?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileSensitivityLevel>[]>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */

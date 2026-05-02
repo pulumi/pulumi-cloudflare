@@ -12,6 +12,10 @@ namespace Pulumi.Cloudflare
     public static class GetSsoConnectors
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSO Connector Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +34,14 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetSsoConnectorsResult> InvokeAsync(GetSsoConnectorsArgs args, InvokeOptions? options = null)
+        public static Task<GetSsoConnectorsResult> InvokeAsync(GetSsoConnectorsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSsoConnectorsResult>("cloudflare:index/getSsoConnectors:getSsoConnectors", args ?? new GetSsoConnectorsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSO Connector Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +60,14 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetSsoConnectorsResult> Invoke(GetSsoConnectorsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetSsoConnectorsResult> Invoke(GetSsoConnectorsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSsoConnectorsResult>("cloudflare:index/getSsoConnectors:getSsoConnectors", args ?? new GetSsoConnectorsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSO Connector Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +96,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -104,8 +116,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -126,7 +138,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -142,7 +154,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetSsoConnectorsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

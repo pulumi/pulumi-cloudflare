@@ -105,6 +105,11 @@ def get_api_token_permission_groups_list(max_items: Optional[_builtins.int] = No
                                          scope: Optional[_builtins.str] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiTokenPermissionGroupsListResult:
     """
+    Accepted Permissions
+
+    - `API Tokens Read`
+    - `API Tokens Write`
+
     ## Example Usage
 
     ```python
@@ -140,6 +145,11 @@ def get_api_token_permission_groups_list_output(max_items: Optional[pulumi.Input
                                                 scope: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiTokenPermissionGroupsListResult]:
     """
+    Accepted Permissions
+
+    - `API Tokens Read`
+    - `API Tokens Write`
+
     ## Example Usage
 
     ```python

@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -21,9 +27,17 @@ import * as utilities from "./utilities";
  *         enabled: true,
  *         headSamplingRate: 1,
  *         logs: {
+ *             destinations: ["string"],
  *             enabled: true,
  *             headSamplingRate: 1,
  *             invocationLogs: true,
+ *             persist: true,
+ *         },
+ *         traces: {
+ *             destinations: ["string"],
+ *             enabled: true,
+ *             headSamplingRate: 1,
+ *             persist: true,
  *         },
  *     },
  *     subdomain: {
@@ -77,11 +91,15 @@ export class Worker extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * When the Worker was created.
      */
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
+    /**
+     * When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+     */
+    declare public /*out*/ readonly deployedOn: pulumi.Output<string>;
     /**
      * Whether logpush is enabled for the Worker.
      */
@@ -130,6 +148,7 @@ export class Worker extends pulumi.CustomResource {
             const state = argsOrState as WorkerState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["deployedOn"] = state?.deployedOn;
             resourceInputs["logpush"] = state?.logpush;
             resourceInputs["name"] = state?.name;
             resourceInputs["observability"] = state?.observability;
@@ -140,9 +159,6 @@ export class Worker extends pulumi.CustomResource {
             resourceInputs["updatedOn"] = state?.updatedOn;
         } else {
             const args = argsOrState as WorkerArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -154,6 +170,7 @@ export class Worker extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["tailConsumers"] = args?.tailConsumers;
             resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["deployedOn"] = undefined /*out*/;
             resourceInputs["references"] = undefined /*out*/;
             resourceInputs["updatedOn"] = undefined /*out*/;
         }
@@ -174,6 +191,10 @@ export interface WorkerState {
      * When the Worker was created.
      */
     createdOn?: pulumi.Input<string>;
+    /**
+     * When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+     */
+    deployedOn?: pulumi.Input<string>;
     /**
      * Whether logpush is enabled for the Worker.
      */
@@ -215,7 +236,7 @@ export interface WorkerArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Whether logpush is enabled for the Worker.
      */

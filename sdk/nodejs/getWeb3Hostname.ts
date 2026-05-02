@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Web3 Hostnames Read`
+ * - `Web3 Hostnames Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +41,7 @@ export interface GetWeb3HostnameArgs {
     /**
      * Specify the identifier of the hostname.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -78,9 +83,14 @@ export interface GetWeb3HostnameResult {
     /**
      * Specify the identifier of the hostname.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Web3 Hostnames Read`
+ * - `Web3 Hostnames Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -112,5 +122,5 @@ export interface GetWeb3HostnameOutputArgs {
     /**
      * Specify the identifier of the hostname.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

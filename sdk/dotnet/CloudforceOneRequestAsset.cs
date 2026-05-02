@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Cloudforce One Read`
+    /// - `Cloudforce One Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -44,7 +49,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Defines the asset creation time.
@@ -143,8 +148,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Page number of results.

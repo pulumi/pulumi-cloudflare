@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Hyperdrive Read`
+ * - `Hyperdrive Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +39,7 @@ export interface GetHyperdriveConfigArgs {
     /**
      * Define configurations using a unique string identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Define configurations using a unique string identifier.
      */
@@ -48,7 +53,7 @@ export interface GetHyperdriveConfigResult {
     /**
      * Define configurations using a unique string identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly caching: outputs.GetHyperdriveConfigCaching;
     /**
      * Defines the creation time of the Hyperdrive configuration.
@@ -66,6 +71,9 @@ export interface GetHyperdriveConfigResult {
      * Defines the last modified time of the Hyperdrive configuration.
      */
     readonly modifiedOn: string;
+    /**
+     * mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+     */
     readonly mtls: outputs.GetHyperdriveConfigMtls;
     /**
      * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
@@ -78,6 +86,11 @@ export interface GetHyperdriveConfigResult {
     readonly originConnectionLimit: number;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Hyperdrive Read`
+ * - `Hyperdrive Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -105,7 +118,7 @@ export interface GetHyperdriveConfigOutputArgs {
     /**
      * Define configurations using a unique string identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Define configurations using a unique string identifier.
      */

@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustDevicePostureRulesResult> InvokeAsync(GetZeroTrustDevicePostureRulesArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustDevicePostureRulesResult> InvokeAsync(GetZeroTrustDevicePostureRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDevicePostureRulesResult>("cloudflare:index/getZeroTrustDevicePostureRules:getZeroTrustDevicePostureRules", args ?? new GetZeroTrustDevicePostureRulesArgs(), options.WithDefaults());
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustDevicePostureRulesResult> Invoke(GetZeroTrustDevicePostureRulesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustDevicePostureRulesResult> Invoke(GetZeroTrustDevicePostureRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDevicePostureRulesResult>("cloudflare:index/getZeroTrustDevicePostureRules:getZeroTrustDevicePostureRules", args ?? new GetZeroTrustDevicePostureRulesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDevicePostureRulesArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -98,8 +98,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDevicePostureRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDevicePostureRulesResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDevicePostureRulesResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

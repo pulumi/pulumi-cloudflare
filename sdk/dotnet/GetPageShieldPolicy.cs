@@ -12,6 +12,15 @@ namespace Pulumi.Cloudflare
     public static class GetPageShieldPolicy
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +44,15 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPageShieldPolicyResult>("cloudflare:index/getPageShieldPolicy:getPageShieldPolicy", args ?? new GetPageShieldPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +76,15 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetPageShieldPolicyResult>("cloudflare:index/getPageShieldPolicy:getPageShieldPolicy", args ?? new GetPageShieldPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +120,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetPageShieldPolicyArgs()
         {
@@ -113,8 +140,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetPageShieldPolicyInvokeArgs()
         {
@@ -158,7 +185,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetPageShieldPolicyResult(
@@ -176,7 +203,7 @@ namespace Pulumi.Cloudflare
 
             string value,
 
-            string zoneId)
+            string? zoneId)
         {
             Action = action;
             Description = description;

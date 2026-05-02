@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -63,7 +70,7 @@ export class LeakedCredentialCheckRule extends pulumi.CustomResource {
     /**
      * Defines an identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a LeakedCredentialCheckRule resource with the given unique name, arguments, and options.
@@ -72,7 +79,7 @@ export class LeakedCredentialCheckRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: LeakedCredentialCheckRuleArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: LeakedCredentialCheckRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LeakedCredentialCheckRuleArgs | LeakedCredentialCheckRuleState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -83,9 +90,6 @@ export class LeakedCredentialCheckRule extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as LeakedCredentialCheckRuleArgs | undefined;
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
-            }
             resourceInputs["password"] = args?.password;
             resourceInputs["username"] = args?.username;
             resourceInputs["zoneId"] = args?.zoneId;
@@ -128,5 +132,5 @@ export interface LeakedCredentialCheckRuleArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

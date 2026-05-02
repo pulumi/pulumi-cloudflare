@@ -43,8 +43,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Defines the host (hostname or IP) of your origin database.
         /// </summary>
-        [Input("host", required: true)]
-        public Input<string> Host { get; set; } = null!;
+        [Input("host")]
+        public Input<string>? Host { get; set; }
 
         [Input("password", required: true)]
         private Input<string>? _password;
@@ -74,6 +74,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("scheme", required: true)]
         public Input<string> Scheme { get; set; } = null!;
+
+        /// <summary>
+        /// The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database.
+        /// </summary>
+        [Input("serviceId")]
+        public Input<string>? ServiceId { get; set; }
 
         /// <summary>
         /// Set the user of your origin database.

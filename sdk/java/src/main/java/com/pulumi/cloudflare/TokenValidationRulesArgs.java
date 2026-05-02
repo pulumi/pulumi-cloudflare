@@ -134,15 +134,15 @@ public final class TokenValidationRulesArgs extends com.pulumi.resources.Resourc
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private TokenValidationRulesArgs() {}
@@ -335,7 +335,7 @@ public final class TokenValidationRulesArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -368,9 +368,6 @@ public final class TokenValidationRulesArgs extends com.pulumi.resources.Resourc
             }
             if ($.title == null) {
                 throw new MissingRequiredPropertyException("TokenValidationRulesArgs", "title");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("TokenValidationRulesArgs", "zoneId");
             }
             return $;
         }

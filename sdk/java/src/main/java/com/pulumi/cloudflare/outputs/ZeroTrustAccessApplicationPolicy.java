@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyConnectionRules;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyExclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyInclude;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyMfaConfig;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicyRequire;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
@@ -43,6 +44,11 @@ public final class ZeroTrustAccessApplicationPolicy {
      * 
      */
     private @Nullable List<ZeroTrustAccessApplicationPolicyInclude> includes;
+    /**
+     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * 
+     */
+    private @Nullable ZeroTrustAccessApplicationPolicyMfaConfig mfaConfig;
     /**
      * @return The name of the Access policy.
      * 
@@ -97,6 +103,13 @@ public final class ZeroTrustAccessApplicationPolicy {
         return this.includes == null ? List.of() : this.includes;
     }
     /**
+     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * 
+     */
+    public Optional<ZeroTrustAccessApplicationPolicyMfaConfig> mfaConfig() {
+        return Optional.ofNullable(this.mfaConfig);
+    }
+    /**
      * @return The name of the Access policy.
      * 
      */
@@ -132,6 +145,7 @@ public final class ZeroTrustAccessApplicationPolicy {
         private @Nullable List<ZeroTrustAccessApplicationPolicyExclude> excludes;
         private @Nullable String id;
         private @Nullable List<ZeroTrustAccessApplicationPolicyInclude> includes;
+        private @Nullable ZeroTrustAccessApplicationPolicyMfaConfig mfaConfig;
         private @Nullable String name;
         private @Nullable Integer precedence;
         private @Nullable List<ZeroTrustAccessApplicationPolicyRequire> requires;
@@ -143,6 +157,7 @@ public final class ZeroTrustAccessApplicationPolicy {
     	      this.excludes = defaults.excludes;
     	      this.id = defaults.id;
     	      this.includes = defaults.includes;
+    	      this.mfaConfig = defaults.mfaConfig;
     	      this.name = defaults.name;
     	      this.precedence = defaults.precedence;
     	      this.requires = defaults.requires;
@@ -185,6 +200,12 @@ public final class ZeroTrustAccessApplicationPolicy {
             return includes(List.of(includes));
         }
         @CustomType.Setter
+        public Builder mfaConfig(@Nullable ZeroTrustAccessApplicationPolicyMfaConfig mfaConfig) {
+
+            this.mfaConfig = mfaConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
@@ -212,6 +233,7 @@ public final class ZeroTrustAccessApplicationPolicy {
             _resultValue.excludes = excludes;
             _resultValue.id = id;
             _resultValue.includes = includes;
+            _resultValue.mfaConfig = mfaConfig;
             _resultValue.name = name;
             _resultValue.precedence = precedence;
             _resultValue.requires = requires;

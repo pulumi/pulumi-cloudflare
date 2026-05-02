@@ -6,7 +6,6 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.EmailSecurityTrustedDomainsBodyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -23,15 +22,15 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
      * Account Identifier
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Account Identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="bodies")
@@ -134,7 +133,7 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -238,9 +237,6 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
         }
 
         public EmailSecurityTrustedDomainsArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("EmailSecurityTrustedDomainsArgs", "accountId");
-            }
             return $;
         }
     }

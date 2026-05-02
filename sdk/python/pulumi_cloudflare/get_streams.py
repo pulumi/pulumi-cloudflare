@@ -27,13 +27,19 @@ class GetStreamsResult:
     """
     A collection of values returned by getStreams.
     """
-    def __init__(__self__, account_id=None, asc=None, creator=None, end=None, id=None, include_counts=None, max_items=None, results=None, search=None, start=None, status=None, type=None, video_name=None):
+    def __init__(__self__, account_id=None, after=None, asc=None, before=None, creator=None, end=None, id=None, include_counts=None, limit=None, live_input_id=None, max_items=None, name=None, results=None, search=None, start=None, status=None, type=None, video_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if after and not isinstance(after, str):
+            raise TypeError("Expected argument 'after' to be a str")
+        pulumi.set(__self__, "after", after)
         if asc and not isinstance(asc, bool):
             raise TypeError("Expected argument 'asc' to be a bool")
         pulumi.set(__self__, "asc", asc)
+        if before and not isinstance(before, str):
+            raise TypeError("Expected argument 'before' to be a str")
+        pulumi.set(__self__, "before", before)
         if creator and not isinstance(creator, str):
             raise TypeError("Expected argument 'creator' to be a str")
         pulumi.set(__self__, "creator", creator)
@@ -46,9 +52,18 @@ class GetStreamsResult:
         if include_counts and not isinstance(include_counts, bool):
             raise TypeError("Expected argument 'include_counts' to be a bool")
         pulumi.set(__self__, "include_counts", include_counts)
+        if limit and not isinstance(limit, int):
+            raise TypeError("Expected argument 'limit' to be a int")
+        pulumi.set(__self__, "limit", limit)
+        if live_input_id and not isinstance(live_input_id, str):
+            raise TypeError("Expected argument 'live_input_id' to be a str")
+        pulumi.set(__self__, "live_input_id", live_input_id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
@@ -70,11 +85,19 @@ class GetStreamsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def after(self) -> Optional[_builtins.str]:
+        """
+        Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
+        """
+        return pulumi.get(self, "after")
 
     @_builtins.property
     @pulumi.getter
@@ -83,6 +106,14 @@ class GetStreamsResult:
         Lists videos in ascending order of creation.
         """
         return pulumi.get(self, "asc")
+
+    @_builtins.property
+    @pulumi.getter
+    def before(self) -> Optional[_builtins.str]:
+        """
+        Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
+        """
+        return pulumi.get(self, "before")
 
     @_builtins.property
     @pulumi.getter
@@ -102,9 +133,9 @@ class GetStreamsResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
+    def id(self) -> Optional[_builtins.str]:
         """
-        The provider-assigned unique ID for this managed resource.
+        Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
         """
         return pulumi.get(self, "id")
 
@@ -117,12 +148,36 @@ class GetStreamsResult:
         return pulumi.get(self, "include_counts")
 
     @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        """
+        Maximum number of videos to return (default 1000, max 1000).
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter(name="liveInputId")
+    def live_input_id(self) -> Optional[_builtins.str]:
+        """
+        Filter by live input ID to find videos associated with a specific live stream.
+        """
+        return pulumi.get(self, "live_input_id")
+
+    @_builtins.property
     @pulumi.getter(name="maxItems")
     def max_items(self) -> Optional[_builtins.int]:
         """
         Max items to fetch, default: 1000
         """
         return pulumi.get(self, "max_items")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Filter by video name/UID(s). Can be a single name or a comma-separated list.
+        """
+        return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
@@ -181,12 +236,17 @@ class AwaitableGetStreamsResult(GetStreamsResult):
             yield self
         return GetStreamsResult(
             account_id=self.account_id,
+            after=self.after,
             asc=self.asc,
+            before=self.before,
             creator=self.creator,
             end=self.end,
             id=self.id,
             include_counts=self.include_counts,
+            limit=self.limit,
+            live_input_id=self.live_input_id,
             max_items=self.max_items,
+            name=self.name,
             results=self.results,
             search=self.search,
             start=self.start,
@@ -196,11 +256,17 @@ class AwaitableGetStreamsResult(GetStreamsResult):
 
 
 def get_streams(account_id: Optional[_builtins.str] = None,
+                after: Optional[_builtins.str] = None,
                 asc: Optional[_builtins.bool] = None,
+                before: Optional[_builtins.str] = None,
                 creator: Optional[_builtins.str] = None,
                 end: Optional[_builtins.str] = None,
+                id: Optional[_builtins.str] = None,
                 include_counts: Optional[_builtins.bool] = None,
+                limit: Optional[_builtins.int] = None,
+                live_input_id: Optional[_builtins.str] = None,
                 max_items: Optional[_builtins.int] = None,
+                name: Optional[_builtins.str] = None,
                 search: Optional[_builtins.str] = None,
                 start: Optional[_builtins.str] = None,
                 status: Optional[_builtins.str] = None,
@@ -208,6 +274,11 @@ def get_streams(account_id: Optional[_builtins.str] = None,
                 video_name: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStreamsResult:
     """
+    Accepted Permissions
+
+    - `Stream Read`
+    - `Stream Write`
+
     ## Example Usage
 
     ```python
@@ -215,8 +286,14 @@ def get_streams(account_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_streams = cloudflare.get_streams(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        id="ea95132c15732412d22c1476fa83f27a",
+        after="2019-12-27T18:11:19.117Z",
+        before="2019-12-27T18:11:19.117Z",
         creator="creator-id_abcde12345",
         end="2014-01-02T02:20:00Z",
+        limit=1,
+        live_input_id="live_input_id",
+        name="name",
         search="puppy.mp4",
         start="2014-01-02T02:20:00Z",
         status="inprogress",
@@ -226,11 +303,17 @@ def get_streams(account_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str account_id: The account identifier tag.
+    :param _builtins.str after: Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
     :param _builtins.bool asc: Lists videos in ascending order of creation.
+    :param _builtins.str before: Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
     :param _builtins.str creator: A user-defined identifier for the media creator.
     :param _builtins.str end: Lists videos created before the specified date.
+    :param _builtins.str id: Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
     :param _builtins.bool include_counts: Includes the total number of videos associated with the submitted query parameters.
+    :param _builtins.int limit: Maximum number of videos to return (default 1000, max 1000).
+    :param _builtins.str live_input_id: Filter by live input ID to find videos associated with a specific live stream.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str name: Filter by video name/UID(s). Can be a single name or a comma-separated list.
     :param _builtins.str search: Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
     :param _builtins.str start: Lists videos created after the specified date.
     :param _builtins.str status: Specifies the processing status for all quality levels for a video.
@@ -240,11 +323,17 @@ def get_streams(account_id: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['after'] = after
     __args__['asc'] = asc
+    __args__['before'] = before
     __args__['creator'] = creator
     __args__['end'] = end
+    __args__['id'] = id
     __args__['includeCounts'] = include_counts
+    __args__['limit'] = limit
+    __args__['liveInputId'] = live_input_id
     __args__['maxItems'] = max_items
+    __args__['name'] = name
     __args__['search'] = search
     __args__['start'] = start
     __args__['status'] = status
@@ -255,24 +344,35 @@ def get_streams(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetStreamsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        after=pulumi.get(__ret__, 'after'),
         asc=pulumi.get(__ret__, 'asc'),
+        before=pulumi.get(__ret__, 'before'),
         creator=pulumi.get(__ret__, 'creator'),
         end=pulumi.get(__ret__, 'end'),
         id=pulumi.get(__ret__, 'id'),
         include_counts=pulumi.get(__ret__, 'include_counts'),
+        limit=pulumi.get(__ret__, 'limit'),
+        live_input_id=pulumi.get(__ret__, 'live_input_id'),
         max_items=pulumi.get(__ret__, 'max_items'),
+        name=pulumi.get(__ret__, 'name'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'),
         start=pulumi.get(__ret__, 'start'),
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'),
         video_name=pulumi.get(__ret__, 'video_name'))
-def get_streams_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_streams_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                       after: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        asc: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                       before: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        creator: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        end: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                       id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        include_counts: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                       limit: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                       live_input_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                       name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        start: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -280,6 +380,11 @@ def get_streams_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                        video_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamsResult]:
     """
+    Accepted Permissions
+
+    - `Stream Read`
+    - `Stream Write`
+
     ## Example Usage
 
     ```python
@@ -287,8 +392,14 @@ def get_streams_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
     import pulumi_cloudflare as cloudflare
 
     example_streams = cloudflare.get_streams(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        id="ea95132c15732412d22c1476fa83f27a",
+        after="2019-12-27T18:11:19.117Z",
+        before="2019-12-27T18:11:19.117Z",
         creator="creator-id_abcde12345",
         end="2014-01-02T02:20:00Z",
+        limit=1,
+        live_input_id="live_input_id",
+        name="name",
         search="puppy.mp4",
         start="2014-01-02T02:20:00Z",
         status="inprogress",
@@ -298,11 +409,17 @@ def get_streams_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
 
 
     :param _builtins.str account_id: The account identifier tag.
+    :param _builtins.str after: Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
     :param _builtins.bool asc: Lists videos in ascending order of creation.
+    :param _builtins.str before: Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
     :param _builtins.str creator: A user-defined identifier for the media creator.
     :param _builtins.str end: Lists videos created before the specified date.
+    :param _builtins.str id: Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
     :param _builtins.bool include_counts: Includes the total number of videos associated with the submitted query parameters.
+    :param _builtins.int limit: Maximum number of videos to return (default 1000, max 1000).
+    :param _builtins.str live_input_id: Filter by live input ID to find videos associated with a specific live stream.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str name: Filter by video name/UID(s). Can be a single name or a comma-separated list.
     :param _builtins.str search: Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
     :param _builtins.str start: Lists videos created after the specified date.
     :param _builtins.str status: Specifies the processing status for all quality levels for a video.
@@ -312,11 +429,17 @@ def get_streams_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['after'] = after
     __args__['asc'] = asc
+    __args__['before'] = before
     __args__['creator'] = creator
     __args__['end'] = end
+    __args__['id'] = id
     __args__['includeCounts'] = include_counts
+    __args__['limit'] = limit
+    __args__['liveInputId'] = live_input_id
     __args__['maxItems'] = max_items
+    __args__['name'] = name
     __args__['search'] = search
     __args__['start'] = start
     __args__['status'] = status
@@ -326,12 +449,17 @@ def get_streams_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getStreams:getStreams', __args__, opts=opts, typ=GetStreamsResult)
     return __ret__.apply(lambda __response__: GetStreamsResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        after=pulumi.get(__response__, 'after'),
         asc=pulumi.get(__response__, 'asc'),
+        before=pulumi.get(__response__, 'before'),
         creator=pulumi.get(__response__, 'creator'),
         end=pulumi.get(__response__, 'end'),
         id=pulumi.get(__response__, 'id'),
         include_counts=pulumi.get(__response__, 'include_counts'),
+        limit=pulumi.get(__response__, 'limit'),
+        live_input_id=pulumi.get(__response__, 'live_input_id'),
         max_items=pulumi.get(__response__, 'max_items'),
+        name=pulumi.get(__response__, 'name'),
         results=pulumi.get(__response__, 'results'),
         search=pulumi.get(__response__, 'search'),
         start=pulumi.get(__response__, 'start'),

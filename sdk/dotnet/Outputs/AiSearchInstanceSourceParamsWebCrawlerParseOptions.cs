@@ -13,6 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AiSearchInstanceSourceParamsWebCrawlerParseOptions
     {
+        /// <summary>
+        /// List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector> ContentSelectors;
         public readonly ImmutableDictionary<string, string>? IncludeHeaders;
         public readonly bool? IncludeImages;
         /// <summary>
@@ -23,6 +27,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private AiSearchInstanceSourceParamsWebCrawlerParseOptions(
+            ImmutableArray<Outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector> contentSelectors,
+
             ImmutableDictionary<string, string>? includeHeaders,
 
             bool? includeImages,
@@ -31,6 +37,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? useBrowserRendering)
         {
+            ContentSelectors = contentSelectors;
             IncludeHeaders = includeHeaders;
             IncludeImages = includeImages;
             SpecificSitemaps = specificSitemaps;

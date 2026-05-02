@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedOrigins;
         /// <summary>
+        /// The unique identifier of the source video this video was clipped from.
+        /// </summary>
+        public readonly string ClippedFrom;
+        /// <summary>
         /// The date and time the media item was created.
         /// </summary>
         public readonly string Created;
@@ -39,6 +43,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int MaxDurationSeconds;
         /// <summary>
+        /// The maximum size in bytes for the video upload.
+        /// </summary>
+        public readonly int MaxSizeBytes;
+        /// <summary>
         /// A user modifiable key-value store used to reference other systems of record for managing videos.
         /// </summary>
         public readonly string Meta;
@@ -51,6 +59,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The video's preview page URI. This field is omitted until encoding is complete.
         /// </summary>
         public readonly string Preview;
+        /// <summary>
+        /// Public details for the video including title, share link, channel link, and logo.
+        /// </summary>
+        public readonly Outputs.GetStreamsResultPublicDetailsResult PublicDetails;
         /// <summary>
         /// Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
         /// </summary>
@@ -101,6 +113,8 @@ namespace Pulumi.Cloudflare.Outputs
         private GetStreamsResultResult(
             ImmutableArray<string> allowedOrigins,
 
+            string clippedFrom,
+
             string created,
 
             string creator,
@@ -113,6 +127,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             int maxDurationSeconds,
 
+            int maxSizeBytes,
+
             string meta,
 
             string modified,
@@ -120,6 +136,8 @@ namespace Pulumi.Cloudflare.Outputs
             Outputs.GetStreamsResultPlaybackResult playback,
 
             string preview,
+
+            Outputs.GetStreamsResultPublicDetailsResult publicDetails,
 
             bool readyToStream,
 
@@ -146,16 +164,19 @@ namespace Pulumi.Cloudflare.Outputs
             Outputs.GetStreamsResultWatermarkResult watermark)
         {
             AllowedOrigins = allowedOrigins;
+            ClippedFrom = clippedFrom;
             Created = created;
             Creator = creator;
             Duration = duration;
             Input = input;
             LiveInput = liveInput;
             MaxDurationSeconds = maxDurationSeconds;
+            MaxSizeBytes = maxSizeBytes;
             Meta = meta;
             Modified = modified;
             Playback = playback;
             Preview = preview;
+            PublicDetails = publicDetails;
             ReadyToStream = readyToStream;
             ReadyToStreamAt = readyToStreamAt;
             RequireSignedUrls = requireSignedUrls;

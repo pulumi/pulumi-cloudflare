@@ -4,9 +4,10 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkerVersionLimits {
@@ -14,15 +15,27 @@ public final class WorkerVersionLimits {
      * @return CPU time limit in milliseconds.
      * 
      */
-    private Integer cpuMs;
+    private @Nullable Integer cpuMs;
+    /**
+     * @return Subrequest limit per request.
+     * 
+     */
+    private @Nullable Integer subrequests;
 
     private WorkerVersionLimits() {}
     /**
      * @return CPU time limit in milliseconds.
      * 
      */
-    public Integer cpuMs() {
-        return this.cpuMs;
+    public Optional<Integer> cpuMs() {
+        return Optional.ofNullable(this.cpuMs);
+    }
+    /**
+     * @return Subrequest limit per request.
+     * 
+     */
+    public Optional<Integer> subrequests() {
+        return Optional.ofNullable(this.subrequests);
     }
 
     public static Builder builder() {
@@ -34,24 +47,31 @@ public final class WorkerVersionLimits {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer cpuMs;
+        private @Nullable Integer cpuMs;
+        private @Nullable Integer subrequests;
         public Builder() {}
         public Builder(WorkerVersionLimits defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuMs = defaults.cpuMs;
+    	      this.subrequests = defaults.subrequests;
         }
 
         @CustomType.Setter
-        public Builder cpuMs(Integer cpuMs) {
-            if (cpuMs == null) {
-              throw new MissingRequiredPropertyException("WorkerVersionLimits", "cpuMs");
-            }
+        public Builder cpuMs(@Nullable Integer cpuMs) {
+
             this.cpuMs = cpuMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder subrequests(@Nullable Integer subrequests) {
+
+            this.subrequests = subrequests;
             return this;
         }
         public WorkerVersionLimits build() {
             final var _resultValue = new WorkerVersionLimits();
             _resultValue.cpuMs = cpuMs;
+            _resultValue.subrequests = subrequests;
             return _resultValue;
         }
     }

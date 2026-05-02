@@ -15,6 +15,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Web3 Hostnames Read`
+ * - `Web3 Hostnames Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -152,14 +157,14 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Specify the identifier of the hostname.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

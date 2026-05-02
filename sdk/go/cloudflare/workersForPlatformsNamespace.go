@@ -7,11 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -50,7 +55,7 @@ type WorkersForPlatformsNamespace struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Identifier.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// When the script was created.
@@ -75,12 +80,9 @@ type WorkersForPlatformsNamespace struct {
 func NewWorkersForPlatformsNamespace(ctx *pulumi.Context,
 	name string, args *WorkersForPlatformsNamespaceArgs, opts ...pulumi.ResourceOption) (*WorkersForPlatformsNamespace, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &WorkersForPlatformsNamespaceArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace"),
@@ -161,7 +163,7 @@ func (WorkersForPlatformsNamespaceState) ElementType() reflect.Type {
 
 type workersForPlatformsNamespaceArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The name of the dispatch namespace.
 	Name *string `pulumi:"name"`
 }
@@ -169,7 +171,7 @@ type workersForPlatformsNamespaceArgs struct {
 // The set of arguments for constructing a WorkersForPlatformsNamespace resource.
 type WorkersForPlatformsNamespaceArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// The name of the dispatch namespace.
 	Name pulumi.StringPtrInput
 }
@@ -262,8 +264,8 @@ func (o WorkersForPlatformsNamespaceOutput) ToWorkersForPlatformsNamespaceOutput
 }
 
 // Identifier.
-func (o WorkersForPlatformsNamespaceOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o WorkersForPlatformsNamespaceOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Identifier.

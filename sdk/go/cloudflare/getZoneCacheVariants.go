@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zone Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+// - `Zone Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZoneCacheVariants(ctx, &cloudflare.LookupZoneCacheVariantsArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +56,7 @@ func LookupZoneCacheVariants(ctx *pulumi.Context, args *LookupZoneCacheVariantsA
 // A collection of arguments for invoking getZoneCacheVariants.
 type LookupZoneCacheVariantsArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZoneCacheVariants.
@@ -63,7 +70,7 @@ type LookupZoneCacheVariantsResult struct {
 	// Value of the zone setting.
 	Value GetZoneCacheVariantsValue `pulumi:"value"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupZoneCacheVariantsOutput(ctx *pulumi.Context, args LookupZoneCacheVariantsOutputArgs, opts ...pulumi.InvokeOption) LookupZoneCacheVariantsResultOutput {
@@ -78,7 +85,7 @@ func LookupZoneCacheVariantsOutput(ctx *pulumi.Context, args LookupZoneCacheVari
 // A collection of arguments for invoking getZoneCacheVariants.
 type LookupZoneCacheVariantsOutputArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupZoneCacheVariantsOutputArgs) ElementType() reflect.Type {
@@ -121,8 +128,8 @@ func (o LookupZoneCacheVariantsResultOutput) Value() GetZoneCacheVariantsValueOu
 }
 
 // Identifier.
-func (o LookupZoneCacheVariantsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneCacheVariantsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupZoneCacheVariantsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZoneCacheVariantsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

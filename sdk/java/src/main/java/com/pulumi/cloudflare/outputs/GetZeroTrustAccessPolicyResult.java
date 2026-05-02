@@ -16,6 +16,8 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustAccessPolicyResult {
@@ -23,7 +25,7 @@ public final class GetZeroTrustAccessPolicyResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Number of access applications currently using this policy.
      * 
@@ -114,8 +116,8 @@ public final class GetZeroTrustAccessPolicyResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Number of access applications currently using this policy.
@@ -249,7 +251,7 @@ public final class GetZeroTrustAccessPolicyResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Integer appCount;
         private List<GetZeroTrustAccessPolicyApprovalGroup> approvalGroups;
         private Boolean approvalRequired;
@@ -295,10 +297,8 @@ public final class GetZeroTrustAccessPolicyResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessPolicyResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

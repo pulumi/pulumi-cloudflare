@@ -12,6 +12,15 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustTunnelCloudflared
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: cloudflared Read`
+        /// - `Cloudflare One Connector: cloudflared Write`
+        /// - `Cloudflare One Connectors Read`
+        /// - `Cloudflare One Connectors Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +40,19 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustTunnelCloudflaredResult> InvokeAsync(GetZeroTrustTunnelCloudflaredArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustTunnelCloudflaredResult> InvokeAsync(GetZeroTrustTunnelCloudflaredArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustTunnelCloudflaredResult>("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", args ?? new GetZeroTrustTunnelCloudflaredArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: cloudflared Read`
+        /// - `Cloudflare One Connector: cloudflared Write`
+        /// - `Cloudflare One Connectors Read`
+        /// - `Cloudflare One Connectors Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +72,19 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustTunnelCloudflaredResult> Invoke(GetZeroTrustTunnelCloudflaredInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustTunnelCloudflaredResult> Invoke(GetZeroTrustTunnelCloudflaredInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelCloudflaredResult>("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", args ?? new GetZeroTrustTunnelCloudflaredInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: cloudflared Read`
+        /// - `Cloudflare One Connector: cloudflared Write`
+        /// - `Cloudflare One Connectors Read`
+        /// - `Cloudflare One Connectors Write`
+        /// - `Cloudflare Tunnel Read`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +114,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetZeroTrustTunnelCloudflaredFilterArgs? Filter { get; set; }
@@ -110,8 +137,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetZeroTrustTunnelCloudflaredFilterInputArgs>? Filter { get; set; }
@@ -135,7 +162,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
@@ -199,7 +226,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustTunnelCloudflaredResult(
-            string accountId,
+            string? accountId,
 
             string accountTag,
 

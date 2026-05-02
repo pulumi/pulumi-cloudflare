@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Connector: WARP Read`
+// - `Cloudflare One Connector: WARP Write`
+// - `Cloudflare One Connectors Read`
+// - `Cloudflare One Connectors Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -29,6 +36,7 @@ import (
 //			_, err := cloudflare.NewZeroTrustTunnelWarpConnector(ctx, "example_zero_trust_tunnel_warp_connector", &cloudflare.ZeroTrustTunnelWarpConnectorArgs{
 //				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Name:      pulumi.String("blog"),
+//				Ha:        pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -48,7 +56,7 @@ type ZeroTrustTunnelWarpConnector struct {
 	pulumi.CustomResourceState
 
 	// Cloudflare account ID
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Cloudflare account ID
 	AccountTag pulumi.StringOutput `pulumi:"accountTag"`
 	// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
@@ -63,6 +71,8 @@ type ZeroTrustTunnelWarpConnector struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
 	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
+	// Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+	Ha pulumi.BoolOutput `pulumi:"ha"`
 	// Metadata associated with the tunnel.
 	Metadata pulumi.StringOutput `pulumi:"metadata"`
 	// A user-friendly name for a tunnel.
@@ -84,9 +94,6 @@ func NewZeroTrustTunnelWarpConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -136,6 +143,8 @@ type zeroTrustTunnelWarpConnectorState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
 	DeletedAt *string `pulumi:"deletedAt"`
+	// Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+	Ha *bool `pulumi:"ha"`
 	// Metadata associated with the tunnel.
 	Metadata *string `pulumi:"metadata"`
 	// A user-friendly name for a tunnel.
@@ -167,6 +176,8 @@ type ZeroTrustTunnelWarpConnectorState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
 	DeletedAt pulumi.StringPtrInput
+	// Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+	Ha pulumi.BoolPtrInput
 	// Metadata associated with the tunnel.
 	Metadata pulumi.StringPtrInput
 	// A user-friendly name for a tunnel.
@@ -187,7 +198,9 @@ func (ZeroTrustTunnelWarpConnectorState) ElementType() reflect.Type {
 
 type zeroTrustTunnelWarpConnectorArgs struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
+	// Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+	Ha *bool `pulumi:"ha"`
 	// A user-friendly name for a tunnel.
 	Name string `pulumi:"name"`
 	// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
@@ -197,7 +210,9 @@ type zeroTrustTunnelWarpConnectorArgs struct {
 // The set of arguments for constructing a ZeroTrustTunnelWarpConnector resource.
 type ZeroTrustTunnelWarpConnectorArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
+	// Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+	Ha pulumi.BoolPtrInput
 	// A user-friendly name for a tunnel.
 	Name pulumi.StringInput
 	// Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
@@ -292,8 +307,8 @@ func (o ZeroTrustTunnelWarpConnectorOutput) ToZeroTrustTunnelWarpConnectorOutput
 }
 
 // Cloudflare account ID
-func (o ZeroTrustTunnelWarpConnectorOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustTunnelWarpConnector) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustTunnelWarpConnectorOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelWarpConnector) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Cloudflare account ID
@@ -328,6 +343,11 @@ func (o ZeroTrustTunnelWarpConnectorOutput) CreatedAt() pulumi.StringOutput {
 // Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
 func (o ZeroTrustTunnelWarpConnectorOutput) DeletedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustTunnelWarpConnector) pulumi.StringOutput { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+// Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+func (o ZeroTrustTunnelWarpConnectorOutput) Ha() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelWarpConnector) pulumi.BoolOutput { return v.Ha }).(pulumi.BoolOutput)
 }
 
 // Metadata associated with the tunnel.

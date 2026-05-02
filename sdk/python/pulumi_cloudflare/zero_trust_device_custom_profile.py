@@ -21,9 +21,9 @@ __all__ = ['ZeroTrustDeviceCustomProfileArgs', 'ZeroTrustDeviceCustomProfile']
 @pulumi.input_type
 class ZeroTrustDeviceCustomProfileArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  match: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  allow_mode_switch: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_updates: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_to_leave: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -69,9 +69,10 @@ class ZeroTrustDeviceCustomProfileArgs:
         :param pulumi.Input[_builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[_builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "match", match)
         pulumi.set(__self__, "name", name)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if allow_mode_switch is not None:
             pulumi.set(__self__, "allow_mode_switch", allow_mode_switch)
         if allow_updates is not None:
@@ -114,15 +115,6 @@ class ZeroTrustDeviceCustomProfileArgs:
             pulumi.set(__self__, "tunnel_protocol", tunnel_protocol)
 
     @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
-
-    @_builtins.property
     @pulumi.getter
     def match(self) -> pulumi.Input[_builtins.str]:
         """
@@ -145,6 +137,15 @@ class ZeroTrustDeviceCustomProfileArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowModeSwitch")
@@ -848,6 +849,10 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
                  tunnel_protocol: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -927,6 +932,10 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
                  args: ZeroTrustDeviceCustomProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -1022,8 +1031,6 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustDeviceCustomProfileArgs.__new__(ZeroTrustDeviceCustomProfileArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["allow_mode_switch"] = allow_mode_switch
             __props__.__dict__["allow_updates"] = allow_updates
@@ -1162,7 +1169,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

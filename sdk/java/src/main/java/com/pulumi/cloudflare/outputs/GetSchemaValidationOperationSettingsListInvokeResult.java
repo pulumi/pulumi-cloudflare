@@ -22,7 +22,7 @@ public final class GetSchemaValidationOperationSettingsListInvokeResult {
     private String id;
     private @Nullable Integer maxItems;
     private List<GetSchemaValidationOperationSettingsListResult> results;
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetSchemaValidationOperationSettingsListInvokeResult() {}
     /**
@@ -38,8 +38,8 @@ public final class GetSchemaValidationOperationSettingsListInvokeResult {
     public List<GetSchemaValidationOperationSettingsListResult> results() {
         return this.results;
     }
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -54,7 +54,7 @@ public final class GetSchemaValidationOperationSettingsListInvokeResult {
         private String id;
         private @Nullable Integer maxItems;
         private List<GetSchemaValidationOperationSettingsListResult> results;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetSchemaValidationOperationSettingsListInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -90,10 +90,8 @@ public final class GetSchemaValidationOperationSettingsListInvokeResult {
             return results(List.of(results));
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetSchemaValidationOperationSettingsListInvokeResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

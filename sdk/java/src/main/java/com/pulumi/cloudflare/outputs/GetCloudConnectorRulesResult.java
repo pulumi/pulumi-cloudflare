@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCloudConnectorRulesResult {
@@ -22,7 +24,7 @@ public final class GetCloudConnectorRulesResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetCloudConnectorRulesResult() {}
     /**
@@ -39,8 +41,8 @@ public final class GetCloudConnectorRulesResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -54,7 +56,7 @@ public final class GetCloudConnectorRulesResult {
     public static final class Builder {
         private String id;
         private List<GetCloudConnectorRulesRule> rules;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetCloudConnectorRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,10 +85,8 @@ public final class GetCloudConnectorRulesResult {
             return rules(List.of(rules));
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetCloudConnectorRulesResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

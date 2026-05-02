@@ -20,7 +20,7 @@ public final class GetEmailRoutingAddressesInvokeResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Sorts results in an ascending or descending order.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
@@ -53,8 +53,8 @@ public final class GetEmailRoutingAddressesInvokeResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Sorts results in an ascending or descending order.
@@ -102,7 +102,7 @@ public final class GetEmailRoutingAddressesInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String direction;
         private String id;
         private @Nullable Integer maxItems;
@@ -120,10 +120,8 @@ public final class GetEmailRoutingAddressesInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetEmailRoutingAddressesInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

@@ -20,15 +20,15 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
      * Cloudflare account ID
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Cloudflare account ID
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -111,7 +111,7 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -192,9 +192,6 @@ public final class ZeroTrustTunnelCloudflaredArgs extends com.pulumi.resources.R
         }
 
         public ZeroTrustTunnelCloudflaredArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustTunnelCloudflaredArgs", "accountId");
-            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustTunnelCloudflaredArgs", "name");
             }

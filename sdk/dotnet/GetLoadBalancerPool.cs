@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetLoadBalancerPool
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetLoadBalancerPoolResult> InvokeAsync(GetLoadBalancerPoolArgs args, InvokeOptions? options = null)
+        public static Task<GetLoadBalancerPoolResult> InvokeAsync(GetLoadBalancerPoolArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerPoolResult>("cloudflare:index/getLoadBalancerPool:getLoadBalancerPool", args ?? new GetLoadBalancerPoolArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetLoadBalancerPoolResult> Invoke(GetLoadBalancerPoolInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetLoadBalancerPoolResult> Invoke(GetLoadBalancerPoolInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerPoolResult>("cloudflare:index/getLoadBalancerPool:getLoadBalancerPool", args ?? new GetLoadBalancerPoolInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Load Balancing: Monitors and Pools Read`
+        /// - `Load Balancing: Monitors and Pools Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetLoadBalancerPoolFilterArgs? Filter { get; set; }
@@ -107,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetLoadBalancerPoolFilterInputArgs>? Filter { get; set; }
@@ -129,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// A list of regions from which to run health checks. Null means every Cloudflare data center.
         /// </summary>
@@ -205,7 +220,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetLoadBalancerPoolResult(
-            string accountId,
+            string? accountId,
 
             ImmutableArray<string> checkRegions,
 

@@ -52,6 +52,21 @@ public final class WorkerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * When the Worker&#39;s most recent deployment was created. `null` if the Worker has never been deployed.
+     * 
+     */
+    @Import(name="deployedOn")
+    private @Nullable Output<String> deployedOn;
+
+    /**
+     * @return When the Worker&#39;s most recent deployment was created. `null` if the Worker has never been deployed.
+     * 
+     */
+    public Optional<Output<String>> deployedOn() {
+        return Optional.ofNullable(this.deployedOn);
+    }
+
+    /**
      * Whether logpush is enabled for the Worker.
      * 
      */
@@ -176,6 +191,7 @@ public final class WorkerState extends com.pulumi.resources.ResourceArgs {
     private WorkerState(WorkerState $) {
         this.accountId = $.accountId;
         this.createdOn = $.createdOn;
+        this.deployedOn = $.deployedOn;
         this.logpush = $.logpush;
         this.name = $.name;
         this.observability = $.observability;
@@ -244,6 +260,27 @@ public final class WorkerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createdOn(String createdOn) {
             return createdOn(Output.of(createdOn));
+        }
+
+        /**
+         * @param deployedOn When the Worker&#39;s most recent deployment was created. `null` if the Worker has never been deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployedOn(@Nullable Output<String> deployedOn) {
+            $.deployedOn = deployedOn;
+            return this;
+        }
+
+        /**
+         * @param deployedOn When the Worker&#39;s most recent deployment was created. `null` if the Worker has never been deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployedOn(String deployedOn) {
+            return deployedOn(Output.of(deployedOn));
         }
 
         /**

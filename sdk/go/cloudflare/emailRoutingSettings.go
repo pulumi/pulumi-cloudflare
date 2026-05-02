@@ -7,11 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -64,19 +68,16 @@ type EmailRoutingSettings struct {
 	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringOutput `pulumi:"tag"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewEmailRoutingSettings registers a new resource with the given unique name, arguments, and options.
 func NewEmailRoutingSettings(ctx *pulumi.Context,
 	name string, args *EmailRoutingSettingsArgs, opts ...pulumi.ResourceOption) (*EmailRoutingSettings, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &EmailRoutingSettingsArgs{}
 	}
 
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EmailRoutingSettings
 	err := ctx.RegisterResource("cloudflare:index/emailRoutingSettings:EmailRoutingSettings", name, args, &resource, opts...)
@@ -149,13 +150,13 @@ func (EmailRoutingSettingsState) ElementType() reflect.Type {
 
 type emailRoutingSettingsArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a EmailRoutingSettings resource.
 type EmailRoutingSettingsArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (EmailRoutingSettingsArgs) ElementType() reflect.Type {
@@ -284,8 +285,8 @@ func (o EmailRoutingSettingsOutput) Tag() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o EmailRoutingSettingsOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o EmailRoutingSettingsOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type EmailRoutingSettingsArrayOutput struct{ *pulumi.OutputState }

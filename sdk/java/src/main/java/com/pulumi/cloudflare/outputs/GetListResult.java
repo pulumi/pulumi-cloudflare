@@ -19,7 +19,7 @@ public final class GetListResult {
      * @return The Account ID for this resource.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The RFC 3339 timestamp of when the list was created.
      * 
@@ -82,8 +82,8 @@ public final class GetListResult {
      * @return The Account ID for this resource.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The RFC 3339 timestamp of when the list was created.
@@ -173,7 +173,7 @@ public final class GetListResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String createdOn;
         private String description;
         private String id;
@@ -203,10 +203,8 @@ public final class GetListResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetListResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

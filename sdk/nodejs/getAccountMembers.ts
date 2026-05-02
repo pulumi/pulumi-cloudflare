@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `SCIM Provisioning`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -21,7 +27,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getAccountMembers(args: GetAccountMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountMembersResult> {
+export function getAccountMembers(args?: GetAccountMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountMembersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountMembers:getAccountMembers", {
         "accountId": args.accountId,
@@ -39,7 +46,7 @@ export interface GetAccountMembersArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Direction to order results.
      * Available values: "asc", "desc".
@@ -68,7 +75,7 @@ export interface GetAccountMembersResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Direction to order results.
      * Available values: "asc", "desc".
@@ -98,6 +105,12 @@ export interface GetAccountMembersResult {
     readonly status?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `SCIM Provisioning`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -112,7 +125,8 @@ export interface GetAccountMembersResult {
  * });
  * ```
  */
-export function getAccountMembersOutput(args: GetAccountMembersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountMembersResult> {
+export function getAccountMembersOutput(args?: GetAccountMembersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountMembersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountMembers:getAccountMembers", {
         "accountId": args.accountId,
@@ -130,7 +144,7 @@ export interface GetAccountMembersOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Direction to order results.
      * Available values: "asc", "desc".

@@ -29,18 +29,18 @@ import (
 //			_, err := cloudflare.NewConnectivityDirectoryService(ctx, "example_connectivity_directory_service", &cloudflare.ConnectivityDirectoryServiceArgs{
 //				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Host: &cloudflare.ConnectivityDirectoryServiceHostArgs{
-//					Hostname: pulumi.String("api.example.com"),
-//					ResolverNetwork: &cloudflare.ConnectivityDirectoryServiceHostResolverNetworkArgs{
+//					Ipv4: pulumi.String("10.0.0.1"),
+//					Network: &cloudflare.ConnectivityDirectoryServiceHostNetworkArgs{
 //						TunnelId: pulumi.String("0191dce4-9ab4-7fce-b660-8e5dec5172da"),
-//						ResolverIps: pulumi.StringArray{
-//							pulumi.String("string"),
-//						},
 //					},
 //				},
-//				Name:      pulumi.String("web-server"),
+//				Name:      pulumi.String("web-app"),
 //				Type:      pulumi.String("http"),
 //				HttpPort:  pulumi.Int(8080),
 //				HttpsPort: pulumi.Int(8443),
+//				TlsSettings: &cloudflare.ConnectivityDirectoryServiceTlsSettingsArgs{
+//					CertVerificationMode: pulumi.String("verify_full"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -60,14 +60,19 @@ type ConnectivityDirectoryService struct {
 	pulumi.CustomResourceState
 
 	// Account identifier
-	AccountId pulumi.StringOutput                    `pulumi:"accountId"`
-	CreatedAt pulumi.StringOutput                    `pulumi:"createdAt"`
-	Host      ConnectivityDirectoryServiceHostOutput `pulumi:"host"`
-	HttpPort  pulumi.IntPtrOutput                    `pulumi:"httpPort"`
-	HttpsPort pulumi.IntPtrOutput                    `pulumi:"httpsPort"`
-	Name      pulumi.StringOutput                    `pulumi:"name"`
-	ServiceId pulumi.StringOutput                    `pulumi:"serviceId"`
-	// Available values: "http".
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// Available values: "postgresql", "mysql".
+	AppProtocol pulumi.StringPtrOutput                 `pulumi:"appProtocol"`
+	CreatedAt   pulumi.StringOutput                    `pulumi:"createdAt"`
+	Host        ConnectivityDirectoryServiceHostOutput `pulumi:"host"`
+	HttpPort    pulumi.IntPtrOutput                    `pulumi:"httpPort"`
+	HttpsPort   pulumi.IntPtrOutput                    `pulumi:"httpsPort"`
+	Name        pulumi.StringOutput                    `pulumi:"name"`
+	ServiceId   pulumi.StringOutput                    `pulumi:"serviceId"`
+	TcpPort     pulumi.IntPtrOutput                    `pulumi:"tcpPort"`
+	// TLS settings for a connectivity service.
+	TlsSettings ConnectivityDirectoryServiceTlsSettingsPtrOutput `pulumi:"tlsSettings"`
+	// Available values: "tcp", "http".
 	Type      pulumi.StringOutput `pulumi:"type"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -79,9 +84,6 @@ func NewConnectivityDirectoryService(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Host == nil {
 		return nil, errors.New("invalid value for required argument 'Host'")
 	}
@@ -115,14 +117,19 @@ func GetConnectivityDirectoryService(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ConnectivityDirectoryService resources.
 type connectivityDirectoryServiceState struct {
 	// Account identifier
-	AccountId *string                           `pulumi:"accountId"`
-	CreatedAt *string                           `pulumi:"createdAt"`
-	Host      *ConnectivityDirectoryServiceHost `pulumi:"host"`
-	HttpPort  *int                              `pulumi:"httpPort"`
-	HttpsPort *int                              `pulumi:"httpsPort"`
-	Name      *string                           `pulumi:"name"`
-	ServiceId *string                           `pulumi:"serviceId"`
-	// Available values: "http".
+	AccountId *string `pulumi:"accountId"`
+	// Available values: "postgresql", "mysql".
+	AppProtocol *string                           `pulumi:"appProtocol"`
+	CreatedAt   *string                           `pulumi:"createdAt"`
+	Host        *ConnectivityDirectoryServiceHost `pulumi:"host"`
+	HttpPort    *int                              `pulumi:"httpPort"`
+	HttpsPort   *int                              `pulumi:"httpsPort"`
+	Name        *string                           `pulumi:"name"`
+	ServiceId   *string                           `pulumi:"serviceId"`
+	TcpPort     *int                              `pulumi:"tcpPort"`
+	// TLS settings for a connectivity service.
+	TlsSettings *ConnectivityDirectoryServiceTlsSettings `pulumi:"tlsSettings"`
+	// Available values: "tcp", "http".
 	Type      *string `pulumi:"type"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
@@ -130,13 +137,18 @@ type connectivityDirectoryServiceState struct {
 type ConnectivityDirectoryServiceState struct {
 	// Account identifier
 	AccountId pulumi.StringPtrInput
-	CreatedAt pulumi.StringPtrInput
-	Host      ConnectivityDirectoryServiceHostPtrInput
-	HttpPort  pulumi.IntPtrInput
-	HttpsPort pulumi.IntPtrInput
-	Name      pulumi.StringPtrInput
-	ServiceId pulumi.StringPtrInput
-	// Available values: "http".
+	// Available values: "postgresql", "mysql".
+	AppProtocol pulumi.StringPtrInput
+	CreatedAt   pulumi.StringPtrInput
+	Host        ConnectivityDirectoryServiceHostPtrInput
+	HttpPort    pulumi.IntPtrInput
+	HttpsPort   pulumi.IntPtrInput
+	Name        pulumi.StringPtrInput
+	ServiceId   pulumi.StringPtrInput
+	TcpPort     pulumi.IntPtrInput
+	// TLS settings for a connectivity service.
+	TlsSettings ConnectivityDirectoryServiceTlsSettingsPtrInput
+	// Available values: "tcp", "http".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -147,24 +159,34 @@ func (ConnectivityDirectoryServiceState) ElementType() reflect.Type {
 
 type connectivityDirectoryServiceArgs struct {
 	// Account identifier
-	AccountId string                           `pulumi:"accountId"`
-	Host      ConnectivityDirectoryServiceHost `pulumi:"host"`
-	HttpPort  *int                             `pulumi:"httpPort"`
-	HttpsPort *int                             `pulumi:"httpsPort"`
-	Name      string                           `pulumi:"name"`
-	// Available values: "http".
+	AccountId *string `pulumi:"accountId"`
+	// Available values: "postgresql", "mysql".
+	AppProtocol *string                          `pulumi:"appProtocol"`
+	Host        ConnectivityDirectoryServiceHost `pulumi:"host"`
+	HttpPort    *int                             `pulumi:"httpPort"`
+	HttpsPort   *int                             `pulumi:"httpsPort"`
+	Name        string                           `pulumi:"name"`
+	TcpPort     *int                             `pulumi:"tcpPort"`
+	// TLS settings for a connectivity service.
+	TlsSettings *ConnectivityDirectoryServiceTlsSettings `pulumi:"tlsSettings"`
+	// Available values: "tcp", "http".
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a ConnectivityDirectoryService resource.
 type ConnectivityDirectoryServiceArgs struct {
 	// Account identifier
-	AccountId pulumi.StringInput
-	Host      ConnectivityDirectoryServiceHostInput
-	HttpPort  pulumi.IntPtrInput
-	HttpsPort pulumi.IntPtrInput
-	Name      pulumi.StringInput
-	// Available values: "http".
+	AccountId pulumi.StringPtrInput
+	// Available values: "postgresql", "mysql".
+	AppProtocol pulumi.StringPtrInput
+	Host        ConnectivityDirectoryServiceHostInput
+	HttpPort    pulumi.IntPtrInput
+	HttpsPort   pulumi.IntPtrInput
+	Name        pulumi.StringInput
+	TcpPort     pulumi.IntPtrInput
+	// TLS settings for a connectivity service.
+	TlsSettings ConnectivityDirectoryServiceTlsSettingsPtrInput
+	// Available values: "tcp", "http".
 	Type pulumi.StringInput
 }
 
@@ -256,8 +278,13 @@ func (o ConnectivityDirectoryServiceOutput) ToConnectivityDirectoryServiceOutput
 }
 
 // Account identifier
-func (o ConnectivityDirectoryServiceOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConnectivityDirectoryService) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ConnectivityDirectoryServiceOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityDirectoryService) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Available values: "postgresql", "mysql".
+func (o ConnectivityDirectoryServiceOutput) AppProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectivityDirectoryService) pulumi.StringPtrOutput { return v.AppProtocol }).(pulumi.StringPtrOutput)
 }
 
 func (o ConnectivityDirectoryServiceOutput) CreatedAt() pulumi.StringOutput {
@@ -284,7 +311,18 @@ func (o ConnectivityDirectoryServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectivityDirectoryService) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }
 
-// Available values: "http".
+func (o ConnectivityDirectoryServiceOutput) TcpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectivityDirectoryService) pulumi.IntPtrOutput { return v.TcpPort }).(pulumi.IntPtrOutput)
+}
+
+// TLS settings for a connectivity service.
+func (o ConnectivityDirectoryServiceOutput) TlsSettings() ConnectivityDirectoryServiceTlsSettingsPtrOutput {
+	return o.ApplyT(func(v *ConnectivityDirectoryService) ConnectivityDirectoryServiceTlsSettingsPtrOutput {
+		return v.TlsSettings
+	}).(ConnectivityDirectoryServiceTlsSettingsPtrOutput)
+}
+
+// Available values: "tcp", "http".
 func (o ConnectivityDirectoryServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectivityDirectoryService) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

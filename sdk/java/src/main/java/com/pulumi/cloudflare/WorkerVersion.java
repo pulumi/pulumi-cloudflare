@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.WorkerVersionState;
 import com.pulumi.cloudflare.outputs.WorkerVersionAnnotations;
 import com.pulumi.cloudflare.outputs.WorkerVersionAssets;
 import com.pulumi.cloudflare.outputs.WorkerVersionBinding;
+import com.pulumi.cloudflare.outputs.WorkerVersionContainer;
 import com.pulumi.cloudflare.outputs.WorkerVersionLimits;
 import com.pulumi.cloudflare.outputs.WorkerVersionMigrations;
 import com.pulumi.cloudflare.outputs.WorkerVersionModule;
@@ -24,6 +25,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -39,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.WorkerVersionAssetsArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionAssetsConfigArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionBindingArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionContainerArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionLimitsArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionModuleArgs;
@@ -67,7 +75,7 @@ import javax.annotation.Nullable;
  *                 .config(WorkerVersionAssetsConfigArgs.builder()
  *                     .htmlHandling("auto-trailing-slash")
  *                     .notFoundHandling("404-page")
- *                     .runWorkerFirst("string")
+ *                     .runWorkerFirst()
  *                     .build())
  *                 .jwt("jwt")
  *                 .build())
@@ -78,8 +86,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .compatibilityDate("2021-01-01")
  *             .compatibilityFlags("nodejs_compat")
+ *             .containers(WorkerVersionContainerArgs.builder()
+ *                 .className("MyDurableObject")
+ *                 .build())
  *             .limits(WorkerVersionLimitsArgs.builder()
  *                 .cpuMs(50)
+ *                 .subrequests(1000)
  *                 .build())
  *             .mainModule("index.js")
  *             .migrations(WorkerVersionMigrationsArgs.builder()
@@ -127,14 +139,14 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Metadata about the version.
@@ -207,6 +219,20 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
         return this.compatibilityFlags;
     }
     /**
+     * List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+     * 
+     */
+    @Export(name="containers", refs={List.class,WorkerVersionContainer.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<WorkerVersionContainer>> containers;
+
+    /**
+     * @return List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+     * 
+     */
+    public Output<Optional<List<WorkerVersionContainer>>> containers() {
+        return Codegen.optional(this.containers);
+    }
+    /**
      * When the version was created.
      * 
      */
@@ -261,6 +287,20 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<String> mainScriptBase64() {
         return this.mainScriptBase64;
+    }
+    /**
+     * Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+     * 
+     */
+    @Export(name="migrationTag", refs={String.class}, tree="[0]")
+    private Output<String> migrationTag;
+
+    /**
+     * @return Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+     * 
+     */
+    public Output<String> migrationTag() {
+        return this.migrationTag;
     }
     /**
      * Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
@@ -355,6 +395,20 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> startupTimeMs() {
         return this.startupTimeMs;
+    }
+    /**
+     * All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+     * 
+     */
+    @Export(name="urls", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> urls;
+
+    /**
+     * @return All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+     * 
+     */
+    public Output<List<String>> urls() {
+        return this.urls;
     }
     /**
      * Usage model for the version.

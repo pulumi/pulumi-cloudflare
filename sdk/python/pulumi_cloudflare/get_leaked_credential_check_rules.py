@@ -67,7 +67,7 @@ class GetLeakedCredentialCheckRulesResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Defines an identifier.
         """
@@ -90,6 +90,13 @@ def get_leaked_credential_check_rules(max_items: Optional[_builtins.int] = None,
                                       zone_id: Optional[_builtins.str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLeakedCredentialCheckRulesResult:
     """
+    Accepted Permissions
+
+    - `Account WAF Read`
+    - `Account WAF Write`
+    - `Zone WAF Read`
+    - `Zone WAF Write`
+
     ## Example Usage
 
     ```python
@@ -115,9 +122,16 @@ def get_leaked_credential_check_rules(max_items: Optional[_builtins.int] = None,
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_leaked_credential_check_rules_output(max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                             zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                             zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLeakedCredentialCheckRulesResult]:
     """
+    Accepted Permissions
+
+    - `Account WAF Read`
+    - `Account WAF Write`
+    - `Zone WAF Read`
+    - `Zone WAF Write`
+
     ## Example Usage
 
     ```python

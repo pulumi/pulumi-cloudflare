@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `D1 Read`
+ * - `D1 Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getD1Database(args: GetD1DatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetD1DatabaseResult> {
+export function getD1Database(args?: GetD1DatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetD1DatabaseResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getD1Database:getD1Database", {
         "accountId": args.accountId,
@@ -35,7 +41,7 @@ export interface GetD1DatabaseArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * D1 database identifier (UUID).
      */
@@ -50,7 +56,7 @@ export interface GetD1DatabaseResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Specifies the timestamp the resource was created as an ISO8601 string.
      */
@@ -69,6 +75,11 @@ export interface GetD1DatabaseResult {
      */
     readonly id: string;
     /**
+     * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+     * Available values: "eu", "fedramp".
+     */
+    readonly jurisdiction: string;
+    /**
      * D1 database name.
      */
     readonly name: string;
@@ -84,6 +95,11 @@ export interface GetD1DatabaseResult {
     readonly version: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `D1 Read`
+ * - `D1 Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -96,7 +112,8 @@ export interface GetD1DatabaseResult {
  * });
  * ```
  */
-export function getD1DatabaseOutput(args: GetD1DatabaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetD1DatabaseResult> {
+export function getD1DatabaseOutput(args?: GetD1DatabaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetD1DatabaseResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getD1Database:getD1Database", {
         "accountId": args.accountId,
@@ -112,7 +129,7 @@ export interface GetD1DatabaseOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * D1 database identifier (UUID).
      */

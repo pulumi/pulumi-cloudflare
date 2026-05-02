@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `SCIM Provisioning`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -58,7 +64,7 @@ export class AccountMember extends pulumi.CustomResource {
     /**
      * Account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The contact email address of the user.
      */
@@ -103,9 +109,6 @@ export class AccountMember extends pulumi.CustomResource {
             resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as AccountMemberArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
@@ -160,7 +163,7 @@ export interface AccountMemberArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The contact email address of the user.
      */

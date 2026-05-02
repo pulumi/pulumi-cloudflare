@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkerScriptObservabilityLogsArgs;
+import com.pulumi.cloudflare.inputs.WorkerScriptObservabilityTracesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -63,12 +64,28 @@ public final class WorkerScriptObservabilityArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.logs);
     }
 
+    /**
+     * Trace settings for the Worker.
+     * 
+     */
+    @Import(name="traces")
+    private @Nullable Output<WorkerScriptObservabilityTracesArgs> traces;
+
+    /**
+     * @return Trace settings for the Worker.
+     * 
+     */
+    public Optional<Output<WorkerScriptObservabilityTracesArgs>> traces() {
+        return Optional.ofNullable(this.traces);
+    }
+
     private WorkerScriptObservabilityArgs() {}
 
     private WorkerScriptObservabilityArgs(WorkerScriptObservabilityArgs $) {
         this.enabled = $.enabled;
         this.headSamplingRate = $.headSamplingRate;
         this.logs = $.logs;
+        this.traces = $.traces;
     }
 
     public static Builder builder() {
@@ -150,6 +167,27 @@ public final class WorkerScriptObservabilityArgs extends com.pulumi.resources.Re
          */
         public Builder logs(WorkerScriptObservabilityLogsArgs logs) {
             return logs(Output.of(logs));
+        }
+
+        /**
+         * @param traces Trace settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder traces(@Nullable Output<WorkerScriptObservabilityTracesArgs> traces) {
+            $.traces = traces;
+            return this;
+        }
+
+        /**
+         * @param traces Trace settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder traces(WorkerScriptObservabilityTracesArgs traces) {
+            return traces(Output.of(traces));
         }
 
         public WorkerScriptObservabilityArgs build() {

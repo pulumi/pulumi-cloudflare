@@ -19,6 +19,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Zero Trust Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -83,10 +87,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/devicePostureRule:DevicePostureRule")
 public class DevicePostureRule extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * The description of the device posture rule.

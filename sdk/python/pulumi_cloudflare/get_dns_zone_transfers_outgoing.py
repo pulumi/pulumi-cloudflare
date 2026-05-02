@@ -110,7 +110,7 @@ class GetDnsZoneTransfersOutgoingResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "zone_id")
 
 
@@ -133,6 +133,14 @@ class AwaitableGetDnsZoneTransfersOutgoingResult(GetDnsZoneTransfersOutgoingResu
 def get_dns_zone_transfers_outgoing(zone_id: Optional[_builtins.str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDnsZoneTransfersOutgoingResult:
     """
+    Accepted Permissions
+
+    - `DNS Read`
+    - `DNS Write`
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+    - `Zone Write`
+
     ## Example Usage
 
     ```python
@@ -156,9 +164,17 @@ def get_dns_zone_transfers_outgoing(zone_id: Optional[_builtins.str] = None,
         peers=pulumi.get(__ret__, 'peers'),
         soa_serial=pulumi.get(__ret__, 'soa_serial'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_dns_zone_transfers_outgoing_output(zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_dns_zone_transfers_outgoing_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsZoneTransfersOutgoingResult]:
     """
+    Accepted Permissions
+
+    - `DNS Read`
+    - `DNS Write`
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+    - `Zone Write`
+
     ## Example Usage
 
     ```python

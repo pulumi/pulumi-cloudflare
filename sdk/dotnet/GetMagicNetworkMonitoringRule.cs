@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetMagicNetworkMonitoringRule
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Network Monitoring Admin`
+        /// - `Magic Network Monitoring Config Read`
+        /// - `Magic Network Monitoring Config Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +41,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMagicNetworkMonitoringRuleResult>("cloudflare:index/getMagicNetworkMonitoringRule:getMagicNetworkMonitoringRule", args ?? new GetMagicNetworkMonitoringRuleArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Network Monitoring Admin`
+        /// - `Magic Network Monitoring Config Read`
+        /// - `Magic Network Monitoring Config Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +70,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicNetworkMonitoringRuleResult>("cloudflare:index/getMagicNetworkMonitoringRule:getMagicNetworkMonitoringRule", args ?? new GetMagicNetworkMonitoringRuleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Network Monitoring Admin`
+        /// - `Magic Network Monitoring Config Read`
+        /// - `Magic Network Monitoring Config Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +102,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetMagicNetworkMonitoringRuleArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// The id of the rule. Must be unique.
@@ -101,8 +119,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetMagicNetworkMonitoringRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The id of the rule. Must be unique.
@@ -120,7 +138,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetMagicNetworkMonitoringRuleResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
         /// </summary>
@@ -174,7 +192,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetMagicNetworkMonitoringRuleResult(
-            string accountId,
+            string? accountId,
 
             bool automaticAdvertisement,
 

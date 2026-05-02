@@ -13,9 +13,15 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -60,16 +66,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest")
 public class ObservatoryScheduledTest extends com.pulumi.resources.CustomResource {
     /**
-     * The frequency of the test.
-     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
+     * The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
      * 
      */
     @Export(name="frequency", refs={String.class}, tree="[0]")
     private Output<String> frequency;
 
     /**
-     * @return The frequency of the test.
-     * Available values: &#34;DAILY&#34;, &#34;WEEKLY&#34;.
+     * @return The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
      * 
      */
     public Output<String> frequency() {
@@ -130,14 +134,14 @@ public class ObservatoryScheduledTest extends com.pulumi.resources.CustomResourc
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

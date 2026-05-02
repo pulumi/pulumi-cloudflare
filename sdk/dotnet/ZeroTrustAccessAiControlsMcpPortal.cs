@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare
     ///         ZeroTrustAccessAiControlsMcpPortalId = "my-mcp-portal",
     ///         Hostname = "exmaple.com",
     ///         Name = "My MCP Portal",
+    ///         AllowCodeMode = true,
     ///         Description = "This is my custom MCP Portal",
     ///         SecureWebGateway = false,
     ///         Servers = new[]
@@ -40,6 +41,7 @@ namespace Pulumi.Cloudflare
     ///                     new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs
     ///                     {
     ///                         Name = "name",
+    ///                         Alias = "my-custom-alias",
     ///                         Description = "description",
     ///                         Enabled = true,
     ///                     },
@@ -49,6 +51,7 @@ namespace Pulumi.Cloudflare
     ///                     new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs
     ///                     {
     ///                         Name = "name",
+    ///                         Alias = "my-custom-alias",
     ///                         Description = "description",
     ///                         Enabled = true,
     ///                     },
@@ -70,7 +73,13 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustAccessAiControlsMcpPortal : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// Allow remote code execution in Dynamic Workers (beta)
+        /// </summary>
+        [Output("allowCodeMode")]
+        public Output<bool> AllowCodeMode { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -97,7 +106,7 @@ namespace Pulumi.Cloudflare
         /// Route outbound MCP traffic through Zero Trust Secure Web Gateway
         /// </summary>
         [Output("secureWebGateway")]
-        public Output<bool?> SecureWebGateway { get; private set; } = null!;
+        public Output<bool> SecureWebGateway { get; private set; } = null!;
 
         [Output("servers")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessAiControlsMcpPortalServer>> Servers { get; private set; } = null!;
@@ -154,8 +163,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustAccessAiControlsMcpPortalArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Allow remote code execution in Dynamic Workers (beta)
+        /// </summary>
+        [Input("allowCodeMode")]
+        public Input<bool>? AllowCodeMode { get; set; }
 
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -196,6 +211,12 @@ namespace Pulumi.Cloudflare
     {
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Allow remote code execution in Dynamic Workers (beta)
+        /// </summary>
+        [Input("allowCodeMode")]
+        public Input<bool>? AllowCodeMode { get; set; }
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }

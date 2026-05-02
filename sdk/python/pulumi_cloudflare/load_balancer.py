@@ -24,7 +24,6 @@ class LoadBalancerArgs:
                  default_pools: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  fallback_pool: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str],
                  adaptive_routing: Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']] = None,
                  country_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -40,7 +39,8 @@ class LoadBalancerArgs:
                  session_affinity_attributes: Optional[pulumi.Input['LoadBalancerSessionAffinityAttributesArgs']] = None,
                  session_affinity_ttl: Optional[pulumi.Input[_builtins.float]] = None,
                  steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.float]] = None):
+                 ttl: Optional[pulumi.Input[_builtins.float]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
 
@@ -68,7 +68,6 @@ class LoadBalancerArgs:
         pulumi.set(__self__, "default_pools", default_pools)
         pulumi.set(__self__, "fallback_pool", fallback_pool)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "zone_id", zone_id)
         if adaptive_routing is not None:
             pulumi.set(__self__, "adaptive_routing", adaptive_routing)
         if country_pools is not None:
@@ -101,6 +100,8 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "steering_policy", steering_policy)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter(name="defaultPools")
@@ -137,15 +138,6 @@ class LoadBalancerArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="adaptiveRouting")
@@ -339,6 +331,15 @@ class LoadBalancerArgs:
     @ttl.setter
     def ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "ttl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -732,6 +733,11 @@ class LoadBalancer(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Load Balancers Read`
+        - `Load Balancers Write`
+
         ## Example Usage
 
         ```python
@@ -912,6 +918,11 @@ class LoadBalancer(pulumi.CustomResource):
                  args: LoadBalancerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Load Balancers Read`
+        - `Load Balancers Write`
+
         ## Example Usage
 
         ```python
@@ -1131,8 +1142,6 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["session_affinity_ttl"] = session_affinity_ttl
             __props__.__dict__["steering_policy"] = steering_policy
             __props__.__dict__["ttl"] = ttl
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_on"] = None
             __props__.__dict__["modified_on"] = None
@@ -1392,7 +1401,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "zone_id")
 
     @_builtins.property

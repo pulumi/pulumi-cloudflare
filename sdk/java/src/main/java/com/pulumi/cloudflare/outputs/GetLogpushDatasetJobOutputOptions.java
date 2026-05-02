@@ -39,6 +39,11 @@ public final class GetLogpushDatasetJobOutputOptions {
      */
     private List<String> fieldNames;
     /**
+     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+     * 
+     */
+    private Boolean mergeSubrequests;
+    /**
      * @return Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
      * Available values: &#34;ndjson&#34;, &#34;csv&#34;.
      * 
@@ -70,8 +75,8 @@ public final class GetLogpushDatasetJobOutputOptions {
      */
     private Double sampleRate;
     /**
-     * @return String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
-     * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
+     * @return String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
+     * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;, &#34;rfc3339ms&#34;, &#34;rfc3339ns&#34;.
      * 
      */
     private String timestampFormat;
@@ -111,6 +116,13 @@ public final class GetLogpushDatasetJobOutputOptions {
      */
     public List<String> fieldNames() {
         return this.fieldNames;
+    }
+    /**
+     * @return If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+     * 
+     */
+    public Boolean mergeSubrequests() {
+        return this.mergeSubrequests;
     }
     /**
      * @return Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
@@ -156,8 +168,8 @@ public final class GetLogpushDatasetJobOutputOptions {
         return this.sampleRate;
     }
     /**
-     * @return String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
-     * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
+     * @return String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
+     * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;, &#34;rfc3339ms&#34;, &#34;rfc3339ns&#34;.
      * 
      */
     public String timestampFormat() {
@@ -178,6 +190,7 @@ public final class GetLogpushDatasetJobOutputOptions {
         private Boolean cve202144228;
         private String fieldDelimiter;
         private List<String> fieldNames;
+        private Boolean mergeSubrequests;
         private String outputType;
         private String recordDelimiter;
         private String recordPrefix;
@@ -193,6 +206,7 @@ public final class GetLogpushDatasetJobOutputOptions {
     	      this.cve202144228 = defaults.cve202144228;
     	      this.fieldDelimiter = defaults.fieldDelimiter;
     	      this.fieldNames = defaults.fieldNames;
+    	      this.mergeSubrequests = defaults.mergeSubrequests;
     	      this.outputType = defaults.outputType;
     	      this.recordDelimiter = defaults.recordDelimiter;
     	      this.recordPrefix = defaults.recordPrefix;
@@ -244,6 +258,14 @@ public final class GetLogpushDatasetJobOutputOptions {
         }
         public Builder fieldNames(String... fieldNames) {
             return fieldNames(List.of(fieldNames));
+        }
+        @CustomType.Setter
+        public Builder mergeSubrequests(Boolean mergeSubrequests) {
+            if (mergeSubrequests == null) {
+              throw new MissingRequiredPropertyException("GetLogpushDatasetJobOutputOptions", "mergeSubrequests");
+            }
+            this.mergeSubrequests = mergeSubrequests;
+            return this;
         }
         @CustomType.Setter
         public Builder outputType(String outputType) {
@@ -308,6 +330,7 @@ public final class GetLogpushDatasetJobOutputOptions {
             _resultValue.cve202144228 = cve202144228;
             _resultValue.fieldDelimiter = fieldDelimiter;
             _resultValue.fieldNames = fieldNames;
+            _resultValue.mergeSubrequests = mergeSubrequests;
             _resultValue.outputType = outputType;
             _resultValue.recordDelimiter = recordDelimiter;
             _resultValue.recordPrefix = recordPrefix;

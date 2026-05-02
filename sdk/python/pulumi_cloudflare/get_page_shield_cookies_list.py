@@ -187,10 +187,7 @@ class GetPageShieldCookiesListResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
-        """
-        Identifier
-        """
+    def zone_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "zone_id")
 
 
@@ -238,6 +235,15 @@ def get_page_shield_cookies_list(direction: Optional[_builtins.str] = None,
                                  zone_id: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPageShieldCookiesListResult:
     """
+    Accepted Permissions
+
+    - `Domain Page Shield`
+    - `Domain Page Shield Read`
+    - `Page Shield`
+    - `Page Shield Read`
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+
     ## Example Usage
 
     ```python
@@ -268,7 +274,6 @@ def get_page_shield_cookies_list(direction: Optional[_builtins.str] = None,
     :param _builtins.str export: Export the list of cookies as a file, limited to 50000 entries.
            Available values: "csv".
     :param _builtins.str hosts: Includes cookies that match one or more URL-encoded hostnames separated by commas.
-    :param _builtins.str zone_id: Identifier
     """
     __args__ = dict()
     __args__['direction'] = direction
@@ -324,9 +329,18 @@ def get_page_shield_cookies_list_output(direction: Optional[pulumi.Input[Optiona
                                         same_site: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                         secure: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                         type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                        zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPageShieldCookiesListResult]:
     """
+    Accepted Permissions
+
+    - `Domain Page Shield`
+    - `Domain Page Shield Read`
+    - `Page Shield`
+    - `Page Shield Read`
+    - `Zone Settings Read`
+    - `Zone Settings Write`
+
     ## Example Usage
 
     ```python
@@ -357,7 +371,6 @@ def get_page_shield_cookies_list_output(direction: Optional[pulumi.Input[Optiona
     :param _builtins.str export: Export the list of cookies as a file, limited to 50000 entries.
            Available values: "csv".
     :param _builtins.str hosts: Includes cookies that match one or more URL-encoded hostnames separated by commas.
-    :param _builtins.str zone_id: Identifier
     """
     __args__ = dict()
     __args__['direction'] = direction

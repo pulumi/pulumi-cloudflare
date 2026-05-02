@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountSubscriptionResult {
@@ -16,7 +18,7 @@ public final class GetAccountSubscriptionResult {
      * @return Identifier
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The monetary unit in which pricing information is displayed.
      * 
@@ -65,8 +67,8 @@ public final class GetAccountSubscriptionResult {
      * @return Identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The monetary unit in which pricing information is displayed.
@@ -136,7 +138,7 @@ public final class GetAccountSubscriptionResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String currency;
         private String currentPeriodEnd;
         private String currentPeriodStart;
@@ -160,10 +162,8 @@ public final class GetAccountSubscriptionResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAccountSubscriptionResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

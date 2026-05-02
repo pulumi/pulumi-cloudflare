@@ -29,6 +29,11 @@ public final class GetCustomSslResult {
      */
     private @Nullable String customCertificateId;
     /**
+     * @return The identifier for the Custom CSR that was used.
+     * 
+     */
+    private String customCsrId;
+    /**
      * @return When the certificate from the authority expires.
      * 
      */
@@ -71,7 +76,7 @@ public final class GetCustomSslResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetCustomSslResult() {}
     /**
@@ -88,6 +93,13 @@ public final class GetCustomSslResult {
      */
     public Optional<String> customCertificateId() {
         return Optional.ofNullable(this.customCertificateId);
+    }
+    /**
+     * @return The identifier for the Custom CSR that was used.
+     * 
+     */
+    public String customCsrId() {
+        return this.customCsrId;
     }
     /**
      * @return When the certificate from the authority expires.
@@ -158,8 +170,8 @@ public final class GetCustomSslResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -173,6 +185,7 @@ public final class GetCustomSslResult {
     public static final class Builder {
         private String bundleMethod;
         private @Nullable String customCertificateId;
+        private String customCsrId;
         private String expiresOn;
         private @Nullable GetCustomSslFilter filter;
         private GetCustomSslGeoRestrictions geoRestrictions;
@@ -186,12 +199,13 @@ public final class GetCustomSslResult {
         private String signature;
         private String status;
         private String uploadedOn;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetCustomSslResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bundleMethod = defaults.bundleMethod;
     	      this.customCertificateId = defaults.customCertificateId;
+    	      this.customCsrId = defaults.customCsrId;
     	      this.expiresOn = defaults.expiresOn;
     	      this.filter = defaults.filter;
     	      this.geoRestrictions = defaults.geoRestrictions;
@@ -220,6 +234,14 @@ public final class GetCustomSslResult {
         public Builder customCertificateId(@Nullable String customCertificateId) {
 
             this.customCertificateId = customCertificateId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customCsrId(String customCsrId) {
+            if (customCsrId == null) {
+              throw new MissingRequiredPropertyException("GetCustomSslResult", "customCsrId");
+            }
+            this.customCsrId = customCsrId;
             return this;
         }
         @CustomType.Setter
@@ -328,10 +350,8 @@ public final class GetCustomSslResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetCustomSslResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }
@@ -339,6 +359,7 @@ public final class GetCustomSslResult {
             final var _resultValue = new GetCustomSslResult();
             _resultValue.bundleMethod = bundleMethod;
             _resultValue.customCertificateId = customCertificateId;
+            _resultValue.customCsrId = customCsrId;
             _resultValue.expiresOn = expiresOn;
             _resultValue.filter = filter;
             _resultValue.geoRestrictions = geoRestrictions;

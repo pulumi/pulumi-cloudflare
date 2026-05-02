@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +39,7 @@ export interface GetStreamLiveInputArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * A unique identifier for a live input.
      */
@@ -48,7 +53,7 @@ export interface GetStreamLiveInputResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The date and time the live input was created.
      */
@@ -116,6 +121,11 @@ export interface GetStreamLiveInputResult {
     readonly webRtcPlayback: outputs.GetStreamLiveInputWebRtcPlayback;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -143,7 +153,7 @@ export interface GetStreamLiveInputOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A unique identifier for a live input.
      */

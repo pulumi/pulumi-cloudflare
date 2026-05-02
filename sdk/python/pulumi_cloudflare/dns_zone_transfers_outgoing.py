@@ -21,7 +21,7 @@ class DnsZoneTransfersOutgoingArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  peers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DnsZoneTransfersOutgoing resource.
 
@@ -30,7 +30,8 @@ class DnsZoneTransfersOutgoingArgs:
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "peers", peers)
-        pulumi.set(__self__, "zone_id", zone_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -58,11 +59,11 @@ class DnsZoneTransfersOutgoingArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -194,6 +195,14 @@ class DnsZoneTransfersOutgoing(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `DNS Read`
+        - `DNS Write`
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+        - `Zone Write`
+
         ## Example Usage
 
         ```python
@@ -228,6 +237,14 @@ class DnsZoneTransfersOutgoing(pulumi.CustomResource):
                  args: DnsZoneTransfersOutgoingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `DNS Read`
+        - `DNS Write`
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+        - `Zone Write`
+
         ## Example Usage
 
         ```python
@@ -283,8 +300,6 @@ class DnsZoneTransfersOutgoing(pulumi.CustomResource):
             if peers is None and not opts.urn:
                 raise TypeError("Missing required property 'peers'")
             __props__.__dict__["peers"] = peers
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["checked_time"] = None
             __props__.__dict__["created_time"] = None
@@ -384,6 +399,6 @@ class DnsZoneTransfersOutgoing(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "zone_id")
 

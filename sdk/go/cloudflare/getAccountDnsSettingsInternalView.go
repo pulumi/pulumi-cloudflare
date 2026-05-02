@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS View Read`
+// - `DNS View Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountDnsSettingsInternalView(ctx, &cloudflare.LookupAccountDnsSettingsInternalViewArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ViewId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupAccountDnsSettingsInternalView(ctx *pulumi.Context, args *LookupAccou
 // A collection of arguments for invoking getAccountDnsSettingsInternalView.
 type LookupAccountDnsSettingsInternalViewArgs struct {
 	// Identifier.
-	AccountId string                                   `pulumi:"accountId"`
+	AccountId *string                                  `pulumi:"accountId"`
 	Filter    *GetAccountDnsSettingsInternalViewFilter `pulumi:"filter"`
 	// Identifier.
 	ViewId *string `pulumi:"viewId"`
@@ -59,7 +64,7 @@ type LookupAccountDnsSettingsInternalViewArgs struct {
 // A collection of values returned by getAccountDnsSettingsInternalView.
 type LookupAccountDnsSettingsInternalViewResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// When the view was created.
 	CreatedTime string                                   `pulumi:"createdTime"`
 	Filter      *GetAccountDnsSettingsInternalViewFilter `pulumi:"filter"`
@@ -87,7 +92,7 @@ func LookupAccountDnsSettingsInternalViewOutput(ctx *pulumi.Context, args Lookup
 // A collection of arguments for invoking getAccountDnsSettingsInternalView.
 type LookupAccountDnsSettingsInternalViewOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput                              `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput                           `pulumi:"accountId"`
 	Filter    GetAccountDnsSettingsInternalViewFilterPtrInput `pulumi:"filter"`
 	// Identifier.
 	ViewId pulumi.StringPtrInput `pulumi:"viewId"`
@@ -113,8 +118,8 @@ func (o LookupAccountDnsSettingsInternalViewResultOutput) ToLookupAccountDnsSett
 }
 
 // Identifier.
-func (o LookupAccountDnsSettingsInternalViewResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountDnsSettingsInternalViewResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAccountDnsSettingsInternalViewResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountDnsSettingsInternalViewResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // When the view was created.

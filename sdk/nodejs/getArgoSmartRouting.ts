@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getArgoSmartRouting(args: GetArgoSmartRoutingArgs, opts?: pulumi.InvokeOptions): Promise<GetArgoSmartRoutingResult> {
+export function getArgoSmartRouting(args?: GetArgoSmartRoutingArgs, opts?: pulumi.InvokeOptions): Promise<GetArgoSmartRoutingResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getArgoSmartRouting:getArgoSmartRouting", {
         "zoneId": args.zoneId,
@@ -30,7 +36,7 @@ export interface GetArgoSmartRoutingArgs {
     /**
      * Specifies the zone associated with the API call.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -57,9 +63,14 @@ export interface GetArgoSmartRoutingResult {
     /**
      * Specifies the zone associated with the API call.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -71,7 +82,8 @@ export interface GetArgoSmartRoutingResult {
  * });
  * ```
  */
-export function getArgoSmartRoutingOutput(args: GetArgoSmartRoutingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetArgoSmartRoutingResult> {
+export function getArgoSmartRoutingOutput(args?: GetArgoSmartRoutingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetArgoSmartRoutingResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getArgoSmartRouting:getArgoSmartRouting", {
         "zoneId": args.zoneId,
@@ -85,5 +97,5 @@ export interface GetArgoSmartRoutingOutputArgs {
     /**
      * Specifies the zone associated with the API call.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

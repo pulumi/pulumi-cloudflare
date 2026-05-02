@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAuthenticatedOriginPullsSettings(ctx, &cloudflare.LookupAuthenticatedOriginPullsSettingsArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupAuthenticatedOriginPullsSettings(ctx *pulumi.Context, args *LookupAut
 // A collection of arguments for invoking getAuthenticatedOriginPullsSettings.
 type LookupAuthenticatedOriginPullsSettingsArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getAuthenticatedOriginPullsSettings.
@@ -59,7 +64,7 @@ type LookupAuthenticatedOriginPullsSettingsResult struct {
 	// Identifier.
 	Id string `pulumi:"id"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupAuthenticatedOriginPullsSettingsOutput(ctx *pulumi.Context, args LookupAuthenticatedOriginPullsSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupAuthenticatedOriginPullsSettingsResultOutput {
@@ -74,7 +79,7 @@ func LookupAuthenticatedOriginPullsSettingsOutput(ctx *pulumi.Context, args Look
 // A collection of arguments for invoking getAuthenticatedOriginPullsSettings.
 type LookupAuthenticatedOriginPullsSettingsOutputArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupAuthenticatedOriginPullsSettingsOutputArgs) ElementType() reflect.Type {
@@ -107,8 +112,8 @@ func (o LookupAuthenticatedOriginPullsSettingsResultOutput) Id() pulumi.StringOu
 }
 
 // Identifier.
-func (o LookupAuthenticatedOriginPullsSettingsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAuthenticatedOriginPullsSettingsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupAuthenticatedOriginPullsSettingsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAuthenticatedOriginPullsSettingsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

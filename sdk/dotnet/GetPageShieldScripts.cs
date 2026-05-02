@@ -12,6 +12,15 @@ namespace Pulumi.Cloudflare
     public static class GetPageShieldScripts
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +44,15 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPageShieldScriptsResult>("cloudflare:index/getPageShieldScripts:getPageShieldScripts", args ?? new GetPageShieldScriptsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +76,15 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetPageShieldScriptsResult>("cloudflare:index/getPageShieldScripts:getPageShieldScripts", args ?? new GetPageShieldScriptsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +120,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetPageShieldScriptsArgs()
         {
@@ -113,8 +140,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetPageShieldScriptsInvokeArgs()
         {
@@ -132,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int CryptominingScore;
         /// <summary>
-        /// The dataflow score of the JavaScript content.
+        /// The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
         /// </summary>
         public readonly int DataflowScore;
         public readonly bool DomainReportedMalicious;
@@ -167,7 +194,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int MalwareScore;
         /// <summary>
-        /// The obfuscation score of the JavaScript content.
+        /// The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
         /// </summary>
         public readonly int ObfuscationScore;
         public readonly ImmutableArray<string> PageUrls;
@@ -182,7 +209,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetPageShieldScriptsResult(
@@ -232,7 +259,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetPageShieldScriptsVersionResult> versions,
 
-            string zoneId)
+            string? zoneId)
         {
             AddedAt = addedAt;
             CryptominingScore = cryptominingScore;

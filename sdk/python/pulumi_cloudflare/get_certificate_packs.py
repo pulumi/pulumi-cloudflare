@@ -91,7 +91,7 @@ class GetCertificatePacksResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -118,6 +118,11 @@ def get_certificate_packs(deploy: Optional[_builtins.str] = None,
                           zone_id: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificatePacksResult:
     """
+    Accepted Permissions
+
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+
     ## Example Usage
 
     ```python
@@ -155,9 +160,14 @@ def get_certificate_packs(deploy: Optional[_builtins.str] = None,
 def get_certificate_packs_output(deploy: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                  status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                 zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificatePacksResult]:
     """
+    Accepted Permissions
+
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+
     ## Example Usage
 
     ```python

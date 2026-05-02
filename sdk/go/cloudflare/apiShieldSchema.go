@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Gateway`
+// - `Account API Gateway Read`
+// - `Domain API Gateway`
+// - `Domain API Gateway Read`
+//
 // > `ApiShieldSchema` is in a deprecation phase and will be removed in the future.
 //
 //	Instead, please utilize the SchemaValidationSchemas resource instead.
@@ -32,7 +39,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewApiShieldSchema(ctx, "example_api_shield_schema", &cloudflare.ApiShieldSchemaArgs{
 //				ZoneId:            pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				File:              nil,
+//				File:              pulumi.String("Example data"),
 //				Kind:              pulumi.String("openapi_v3"),
 //				Name:              pulumi.String("petstore schema"),
 //				ValidationEnabled: pulumi.String("true"),
@@ -65,7 +72,7 @@ type ApiShieldSchema struct {
 	// Available values: "true", "false".
 	ValidationEnabled pulumi.StringPtrOutput `pulumi:"validationEnabled"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewApiShieldSchema registers a new resource with the given unique name, arguments, and options.
@@ -80,9 +87,6 @@ func NewApiShieldSchema(ctx *pulumi.Context,
 	}
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApiShieldSchema
@@ -165,7 +169,7 @@ type apiShieldSchemaArgs struct {
 	// Available values: "true", "false".
 	ValidationEnabled *string `pulumi:"validationEnabled"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ApiShieldSchema resource.
@@ -182,7 +186,7 @@ type ApiShieldSchemaArgs struct {
 	// Available values: "true", "false".
 	ValidationEnabled pulumi.StringPtrInput
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (ApiShieldSchemaArgs) ElementType() reflect.Type {
@@ -316,8 +320,8 @@ func (o ApiShieldSchemaOutput) ValidationEnabled() pulumi.StringPtrOutput {
 }
 
 // Identifier.
-func (o ApiShieldSchemaOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o ApiShieldSchemaOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiShieldSchema) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type ApiShieldSchemaArrayOutput struct{ *pulumi.OutputState }

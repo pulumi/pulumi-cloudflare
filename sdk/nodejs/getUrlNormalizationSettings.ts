@@ -5,6 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Rulesets Read`
+ * - `Account Rulesets Write`
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Bot Management Read`
+ * - `Bot Management Write`
+ * - `Cache Settings Read`
+ * - `Cache Settings Write`
+ * - `Config Settings Read`
+ * - `Config Settings Write`
+ * - `Custom Errors Read`
+ * - `Custom Errors Write`
+ * - `Dynamic URL Redirects Read`
+ * - `Dynamic URL Redirects Write`
+ * - `HTTP DDoS Managed Ruleset Read`
+ * - `HTTP DDoS Managed Ruleset Write`
+ * - `L4 DDoS Managed Ruleset Read`
+ * - `L4 DDoS Managed Ruleset Write`
+ * - `Logs Read`
+ * - `Logs Write`
+ * - `Magic Firewall Read`
+ * - `Magic Firewall Write`
+ * - `Managed headers Read`
+ * - `Managed headers Write`
+ * - `Mass URL Redirects Read`
+ * - `Mass URL Redirects Write`
+ * - `Origin Read`
+ * - `Origin Write`
+ * - `Response Compression Read`
+ * - `Response Compression Write`
+ * - `Sanitize Read`
+ * - `Sanitize Write`
+ * - `Select Configuration Read`
+ * - `Select Configuration Write`
+ * - `Transform Rules Read`
+ * - `Transform Rules Write`
+ * - `Zone Transform Rules Read`
+ * - `Zone Transform Rules Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +59,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getUrlNormalizationSettings(args: GetUrlNormalizationSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetUrlNormalizationSettingsResult> {
+export function getUrlNormalizationSettings(args?: GetUrlNormalizationSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetUrlNormalizationSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getUrlNormalizationSettings:getUrlNormalizationSettings", {
         "zoneId": args.zoneId,
@@ -30,7 +74,7 @@ export interface GetUrlNormalizationSettingsArgs {
     /**
      * The unique ID of the zone.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -54,9 +98,52 @@ export interface GetUrlNormalizationSettingsResult {
     /**
      * The unique ID of the zone.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Rulesets Read`
+ * - `Account Rulesets Write`
+ * - `Account WAF Read`
+ * - `Account WAF Write`
+ * - `Bot Management Read`
+ * - `Bot Management Write`
+ * - `Cache Settings Read`
+ * - `Cache Settings Write`
+ * - `Config Settings Read`
+ * - `Config Settings Write`
+ * - `Custom Errors Read`
+ * - `Custom Errors Write`
+ * - `Dynamic URL Redirects Read`
+ * - `Dynamic URL Redirects Write`
+ * - `HTTP DDoS Managed Ruleset Read`
+ * - `HTTP DDoS Managed Ruleset Write`
+ * - `L4 DDoS Managed Ruleset Read`
+ * - `L4 DDoS Managed Ruleset Write`
+ * - `Logs Read`
+ * - `Logs Write`
+ * - `Magic Firewall Read`
+ * - `Magic Firewall Write`
+ * - `Managed headers Read`
+ * - `Managed headers Write`
+ * - `Mass URL Redirects Read`
+ * - `Mass URL Redirects Write`
+ * - `Origin Read`
+ * - `Origin Write`
+ * - `Response Compression Read`
+ * - `Response Compression Write`
+ * - `Sanitize Read`
+ * - `Sanitize Write`
+ * - `Select Configuration Read`
+ * - `Select Configuration Write`
+ * - `Transform Rules Read`
+ * - `Transform Rules Write`
+ * - `Zone Transform Rules Read`
+ * - `Zone Transform Rules Write`
+ * - `Zone WAF Read`
+ * - `Zone WAF Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -68,7 +155,8 @@ export interface GetUrlNormalizationSettingsResult {
  * });
  * ```
  */
-export function getUrlNormalizationSettingsOutput(args: GetUrlNormalizationSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUrlNormalizationSettingsResult> {
+export function getUrlNormalizationSettingsOutput(args?: GetUrlNormalizationSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUrlNormalizationSettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getUrlNormalizationSettings:getUrlNormalizationSettings", {
         "zoneId": args.zoneId,
@@ -82,5 +170,5 @@ export interface GetUrlNormalizationSettingsOutputArgs {
     /**
      * The unique ID of the zone.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -61,7 +61,7 @@ class GetHyperdriveConfigResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Define configurations using a unique string identifier.
         """
@@ -107,6 +107,9 @@ class GetHyperdriveConfigResult:
     @_builtins.property
     @pulumi.getter
     def mtls(self) -> 'outputs.GetHyperdriveConfigMtlsResult':
+        """
+        mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+        """
         return pulumi.get(self, "mtls")
 
     @_builtins.property
@@ -153,6 +156,11 @@ def get_hyperdrive_config(account_id: Optional[_builtins.str] = None,
                           hyperdrive_id: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHyperdriveConfigResult:
     """
+    Accepted Permissions
+
+    - `Hyperdrive Read`
+    - `Hyperdrive Write`
+
     ## Example Usage
 
     ```python
@@ -184,10 +192,15 @@ def get_hyperdrive_config(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         origin=pulumi.get(__ret__, 'origin'),
         origin_connection_limit=pulumi.get(__ret__, 'origin_connection_limit'))
-def get_hyperdrive_config_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_hyperdrive_config_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  hyperdrive_id: Optional[pulumi.Input[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHyperdriveConfigResult]:
     """
+    Accepted Permissions
+
+    - `Hyperdrive Read`
+    - `Hyperdrive Write`
+
     ## Example Usage
 
     ```python

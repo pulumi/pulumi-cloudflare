@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
         /// An optional human provided description of the static route.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// When the route was last modified.

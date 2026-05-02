@@ -52,6 +52,7 @@ import * as utilities from "./utilities";
  *             printing: "enabled",
  *             upload: "enabled",
  *             version: "v1",
+ *             wmId: "475345dc-5299-4b6e-8f6a-3d3e4c8e9f1a",
  *         },
  *         blockPage: {
  *             targetUri: "https://example.com",
@@ -173,7 +174,7 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewayPolicy.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -203,7 +204,7 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
     /**
      * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
      */
-    declare public readonly filters: pulumi.Output<string[] | undefined>;
+    declare public readonly filters: pulumi.Output<string[]>;
     /**
      * Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
      */
@@ -286,9 +287,6 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
             resourceInputs["warningStatus"] = state?.warningStatus;
         } else {
             const args = argsOrState as ZeroTrustGatewayPolicyArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
@@ -410,7 +408,7 @@ export interface ZeroTrustGatewayPolicyState {
  * The set of arguments for constructing a ZeroTrustGatewayPolicy resource.
  */
 export interface ZeroTrustGatewayPolicyArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".

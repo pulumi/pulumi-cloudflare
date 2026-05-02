@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetDnsZoneTransfersAcls
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetDnsZoneTransfersAclsResult> InvokeAsync(GetDnsZoneTransfersAclsArgs args, InvokeOptions? options = null)
+        public static Task<GetDnsZoneTransfersAclsResult> InvokeAsync(GetDnsZoneTransfersAclsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneTransfersAclsResult>("cloudflare:index/getDnsZoneTransfersAcls:getDnsZoneTransfersAcls", args ?? new GetDnsZoneTransfersAclsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetDnsZoneTransfersAclsResult> Invoke(GetDnsZoneTransfersAclsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetDnsZoneTransfersAclsResult> Invoke(GetDnsZoneTransfersAclsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDnsZoneTransfersAclsResult>("cloudflare:index/getDnsZoneTransfersAcls:getDnsZoneTransfersAcls", args ?? new GetDnsZoneTransfersAclsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -81,8 +96,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetDnsZoneTransfersAclsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetDnsZoneTransfersAclsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -117,7 +132,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetDnsZoneTransfersAclsResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -133,7 +148,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetDnsZoneTransfersAclsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

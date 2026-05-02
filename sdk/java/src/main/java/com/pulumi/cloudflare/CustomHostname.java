@@ -20,6 +20,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -75,6 +80,7 @@ import javax.annotation.Nullable;
  *     -----END CERTIFICATE-----
  * 
  *                 """)
+ *                 .customCsrId("7b163417-1d2b-4c84-a38a-2fb7a0cd7752")
  *                 .customKey("""
  *     -----BEGIN RSA PRIVATE KEY-----
  *     MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
@@ -238,14 +244,14 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ssl", refs={CustomHostnameSsl.class}, tree="[0]")
-    private Output<CustomHostnameSsl> ssl;
+    private Output</* @Nullable */ CustomHostnameSsl> ssl;
 
     /**
      * @return SSL properties used when creating the custom hostname.
      * 
      */
-    public Output<CustomHostnameSsl> ssl() {
-        return this.ssl;
+    public Output<Optional<CustomHostnameSsl>> ssl() {
+        return Codegen.optional(this.ssl);
     }
     /**
      * Status of the hostname&#39;s activation.
@@ -282,14 +288,14 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

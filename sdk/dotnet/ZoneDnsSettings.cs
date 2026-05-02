@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `DNS Read`
+    /// - `DNS Write`
+    /// - `Zone DNS Settings Read`
+    /// - `Zone DNS Settings Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -112,7 +119,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
         /// <summary>
         /// Whether the zone mode is a regular or CDN/DNS only zone.
@@ -129,7 +136,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ZoneDnsSettings(string name, ZoneDnsSettingsArgs args, CustomResourceOptions? options = null)
+        public ZoneDnsSettings(string name, ZoneDnsSettingsArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/zoneDnsSettings:ZoneDnsSettings", name, args ?? new ZoneDnsSettingsArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -218,8 +225,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         /// <summary>
         /// Whether the zone mode is a regular or CDN/DNS only zone.

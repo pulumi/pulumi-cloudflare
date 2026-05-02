@@ -46,7 +46,7 @@ public final class GetSpectrumApplicationsInvokeResult {
      * @return Zone identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetSpectrumApplicationsInvokeResult() {}
     /**
@@ -90,8 +90,8 @@ public final class GetSpectrumApplicationsInvokeResult {
      * @return Zone identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -108,7 +108,7 @@ public final class GetSpectrumApplicationsInvokeResult {
         private @Nullable Integer maxItems;
         private String order;
         private List<GetSpectrumApplicationsResult> results;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetSpectrumApplicationsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -162,10 +162,8 @@ public final class GetSpectrumApplicationsInvokeResult {
             return results(List.of(results));
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetSpectrumApplicationsInvokeResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS View Read`
+ * - `DNS View Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -27,7 +32,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getAccountDnsSettingsInternalViews(args: GetAccountDnsSettingsInternalViewsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountDnsSettingsInternalViewsResult> {
+export function getAccountDnsSettingsInternalViews(args?: GetAccountDnsSettingsInternalViewsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountDnsSettingsInternalViewsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews", {
         "accountId": args.accountId,
@@ -48,7 +54,7 @@ export interface GetAccountDnsSettingsInternalViewsArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Direction to order DNS views in.
      * Available values: "asc", "desc".
@@ -86,7 +92,7 @@ export interface GetAccountDnsSettingsInternalViewsResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Direction to order DNS views in.
      * Available values: "asc", "desc".
@@ -125,6 +131,11 @@ export interface GetAccountDnsSettingsInternalViewsResult {
     readonly zoneName?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `DNS View Read`
+ * - `DNS View Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -145,7 +156,8 @@ export interface GetAccountDnsSettingsInternalViewsResult {
  * });
  * ```
  */
-export function getAccountDnsSettingsInternalViewsOutput(args: GetAccountDnsSettingsInternalViewsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountDnsSettingsInternalViewsResult> {
+export function getAccountDnsSettingsInternalViewsOutput(args?: GetAccountDnsSettingsInternalViewsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountDnsSettingsInternalViewsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountDnsSettingsInternalViews:getAccountDnsSettingsInternalViews", {
         "accountId": args.accountId,
@@ -166,7 +178,7 @@ export interface GetAccountDnsSettingsInternalViewsOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Direction to order DNS views in.
      * Available values: "asc", "desc".

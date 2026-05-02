@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustGatewaySettingsResult> InvokeAsync(GetZeroTrustGatewaySettingsArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustGatewaySettingsResult> InvokeAsync(GetZeroTrustGatewaySettingsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustGatewaySettingsResult>("cloudflare:index/getZeroTrustGatewaySettings:getZeroTrustGatewaySettings", args ?? new GetZeroTrustGatewaySettingsArgs(), options.WithDefaults());
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustGatewaySettingsResult> Invoke(GetZeroTrustGatewaySettingsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustGatewaySettingsResult> Invoke(GetZeroTrustGatewaySettingsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustGatewaySettingsResult>("cloudflare:index/getZeroTrustGatewaySettings:getZeroTrustGatewaySettings", args ?? new GetZeroTrustGatewaySettingsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewaySettingsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         public GetZeroTrustGatewaySettingsArgs()
         {
@@ -92,8 +92,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewaySettingsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         public GetZeroTrustGatewaySettingsInvokeArgs()
         {
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustGatewaySettingsResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly string CreatedAt;
         /// <summary>
         /// The ID of this resource.
@@ -119,7 +119,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustGatewaySettingsResult(
-            string accountId,
+            string? accountId,
 
             string createdAt,
 

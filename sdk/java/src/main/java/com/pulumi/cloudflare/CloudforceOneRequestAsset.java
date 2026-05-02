@@ -16,6 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Cloudforce One Read`
+ * - `Cloudforce One Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -66,14 +71,14 @@ public class CloudforceOneRequestAsset extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Defines the asset creation time.

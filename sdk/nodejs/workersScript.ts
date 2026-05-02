@@ -7,90 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * > For more direct control over Workers resources, we recommend the beta `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * import * as std from "@pulumi/std";
- *
- * const exampleWorkersScript = new cloudflare.WorkersScript("example_workers_script", {
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     scriptName: "this-is_my_script-01",
- *     assets: {
- *         config: {
- *             headers: `        /dashboard/*
- *         X-Frame-Options: DENY
- *
- *         /static/*
- *         Access-Control-Allow-Origin: *
- * `,
- *             redirects: `        /foo /bar 301
- *         /news/* /blog/:splat
- * `,
- *             htmlHandling: "auto-trailing-slash",
- *             notFoundHandling: "none",
- *             runWorkerFirst: false,
- *         },
- *         jwt: "jwt",
- *     },
- *     bindings: [{
- *         name: "MY_ENV_VAR",
- *         text: "my_data",
- *         type: "plain_text",
- *     }],
- *     compatibilityDate: "2021-01-01",
- *     compatibilityFlags: ["nodejs_compat"],
- *     contentFile: "worker.js",
- *     contentSha256: std.filesha256({
- *         input: "worker.js",
- *     }).then(invoke => invoke.result),
- *     keepAssets: false,
- *     keepBindings: ["kv_namespace"],
- *     limits: {
- *         cpuMs: 50,
- *     },
- *     logpush: false,
- *     mainModule: "worker.js",
- *     migrations: {
- *         deletedClasses: ["string"],
- *         newClasses: ["string"],
- *         newSqliteClasses: ["string"],
- *         newTag: "v2",
- *         oldTag: "v1",
- *         renamedClasses: [{
- *             from: "from",
- *             to: "to",
- *         }],
- *         transferredClasses: [{
- *             from: "from",
- *             fromScript: "from_script",
- *             to: "to",
- *         }],
- *     },
- *     observability: {
- *         enabled: true,
- *         headSamplingRate: 0.1,
- *         logs: {
- *             enabled: true,
- *             invocationLogs: true,
- *             destinations: ["cloudflare"],
- *             headSamplingRate: 0.1,
- *             persist: true,
- *         },
- *     },
- *     placement: {
- *         mode: "smart",
- *     },
- *     tailConsumers: [{
- *         service: "my-log-consumer",
- *         environment: "production",
- *         namespace: "my-namespace",
- *     }],
- * });
- * ```
  *
  * ## Import
  *
@@ -129,7 +52,11 @@ export class WorkersScript extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
+    /**
+     * Annotations for the version created by this upload.
+     */
+    declare public readonly annotations: pulumi.Output<outputs.WorkersScriptAnnotations>;
     /**
      * Configuration for assets within a Worker.
      */
@@ -275,6 +202,7 @@ export class WorkersScript extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkersScriptState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["annotations"] = state?.annotations;
             resourceInputs["assets"] = state?.assets;
             resourceInputs["bindings"] = state?.bindings;
             resourceInputs["bodyPart"] = state?.bodyPart;
@@ -309,13 +237,11 @@ export class WorkersScript extends pulumi.CustomResource {
             resourceInputs["usageModel"] = state?.usageModel;
         } else {
             const args = argsOrState as WorkersScriptArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.scriptName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scriptName'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["annotations"] = args?.annotations;
             resourceInputs["assets"] = args?.assets;
             resourceInputs["bindings"] = args?.bindings;
             resourceInputs["bodyPart"] = args?.bodyPart;
@@ -364,6 +290,10 @@ export interface WorkersScriptState {
      * Identifier.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Annotations for the version created by this upload.
+     */
+    annotations?: pulumi.Input<inputs.WorkersScriptAnnotations>;
     /**
      * Configuration for assets within a Worker.
      */
@@ -503,7 +433,11 @@ export interface WorkersScriptArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
+    /**
+     * Annotations for the version created by this upload.
+     */
+    annotations?: pulumi.Input<inputs.WorkersScriptAnnotations>;
     /**
      * Configuration for assets within a Worker.
      */

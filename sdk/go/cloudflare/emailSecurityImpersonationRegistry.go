@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloud Email Security: Read`
+// - `Cloud Email Security: Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -50,12 +55,12 @@ type EmailSecurityImpersonationRegistry struct {
 	pulumi.CustomResourceState
 
 	// Account Identifier
-	AccountId       pulumi.StringOutput `pulumi:"accountId"`
-	Comments        pulumi.StringOutput `pulumi:"comments"`
-	CreatedAt       pulumi.StringOutput `pulumi:"createdAt"`
-	DirectoryId     pulumi.IntOutput    `pulumi:"directoryId"`
-	DirectoryNodeId pulumi.IntOutput    `pulumi:"directoryNodeId"`
-	Email           pulumi.StringOutput `pulumi:"email"`
+	AccountId       pulumi.StringPtrOutput `pulumi:"accountId"`
+	Comments        pulumi.StringOutput    `pulumi:"comments"`
+	CreatedAt       pulumi.StringOutput    `pulumi:"createdAt"`
+	DirectoryId     pulumi.IntOutput       `pulumi:"directoryId"`
+	DirectoryNodeId pulumi.IntOutput       `pulumi:"directoryNodeId"`
+	Email           pulumi.StringOutput    `pulumi:"email"`
 	// Deprecated: This attribute is deprecated.
 	ExternalDirectoryNodeId pulumi.StringOutput `pulumi:"externalDirectoryNodeId"`
 	IsEmailRegex            pulumi.BoolOutput   `pulumi:"isEmailRegex"`
@@ -71,9 +76,6 @@ func NewEmailSecurityImpersonationRegistry(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Email == nil {
 		return nil, errors.New("invalid value for required argument 'Email'")
 	}
@@ -143,16 +145,16 @@ func (EmailSecurityImpersonationRegistryState) ElementType() reflect.Type {
 
 type emailSecurityImpersonationRegistryArgs struct {
 	// Account Identifier
-	AccountId    string `pulumi:"accountId"`
-	Email        string `pulumi:"email"`
-	IsEmailRegex bool   `pulumi:"isEmailRegex"`
-	Name         string `pulumi:"name"`
+	AccountId    *string `pulumi:"accountId"`
+	Email        string  `pulumi:"email"`
+	IsEmailRegex bool    `pulumi:"isEmailRegex"`
+	Name         string  `pulumi:"name"`
 }
 
 // The set of arguments for constructing a EmailSecurityImpersonationRegistry resource.
 type EmailSecurityImpersonationRegistryArgs struct {
 	// Account Identifier
-	AccountId    pulumi.StringInput
+	AccountId    pulumi.StringPtrInput
 	Email        pulumi.StringInput
 	IsEmailRegex pulumi.BoolInput
 	Name         pulumi.StringInput
@@ -246,8 +248,8 @@ func (o EmailSecurityImpersonationRegistryOutput) ToEmailSecurityImpersonationRe
 }
 
 // Account Identifier
-func (o EmailSecurityImpersonationRegistryOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *EmailSecurityImpersonationRegistry) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o EmailSecurityImpersonationRegistryOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailSecurityImpersonationRegistry) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o EmailSecurityImpersonationRegistryOutput) Comments() pulumi.StringOutput {

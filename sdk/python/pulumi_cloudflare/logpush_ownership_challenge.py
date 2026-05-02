@@ -176,6 +176,10 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Logs Write`
+
         ## Example Usage
 
         ```python
@@ -205,6 +209,10 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
                  args: LogpushOwnershipChallengeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Logs Write`
+
         ## Example Usage
 
         ```python
@@ -251,11 +259,13 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             if destination_conf is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_conf'")
-            __props__.__dict__["destination_conf"] = destination_conf
+            __props__.__dict__["destination_conf"] = None if destination_conf is None else pulumi.Output.secret(destination_conf)
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["filename"] = None
             __props__.__dict__["message"] = None
             __props__.__dict__["valid"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["destinationConf"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(LogpushOwnershipChallenge, __self__).__init__(
             'cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge',
             resource_name,

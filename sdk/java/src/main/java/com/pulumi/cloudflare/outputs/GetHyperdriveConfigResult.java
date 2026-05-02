@@ -11,6 +11,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHyperdriveConfigResult {
@@ -18,7 +20,7 @@ public final class GetHyperdriveConfigResult {
      * @return Define configurations using a unique string identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     private GetHyperdriveConfigCaching caching;
     /**
      * @return Defines the creation time of the Hyperdrive configuration.
@@ -40,6 +42,10 @@ public final class GetHyperdriveConfigResult {
      * 
      */
     private String modifiedOn;
+    /**
+     * @return mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+     * 
+     */
     private GetHyperdriveConfigMtls mtls;
     /**
      * @return The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
@@ -58,8 +64,8 @@ public final class GetHyperdriveConfigResult {
      * @return Define configurations using a unique string identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public GetHyperdriveConfigCaching caching() {
         return this.caching;
@@ -92,6 +98,10 @@ public final class GetHyperdriveConfigResult {
     public String modifiedOn() {
         return this.modifiedOn;
     }
+    /**
+     * @return mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+     * 
+     */
     public GetHyperdriveConfigMtls mtls() {
         return this.mtls;
     }
@@ -122,7 +132,7 @@ public final class GetHyperdriveConfigResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private GetHyperdriveConfigCaching caching;
         private String createdOn;
         private String hyperdriveId;
@@ -148,10 +158,8 @@ public final class GetHyperdriveConfigResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetHyperdriveConfigResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

@@ -21,9 +21,9 @@ __all__ = ['DnsFirewallArgs', 'DnsFirewall']
 @pulumi.input_type
 class DnsFirewallArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  upstream_ips: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  attack_mitigation: Optional[pulumi.Input['DnsFirewallAttackMitigationArgs']] = None,
                  deprecate_any_requests: Optional[pulumi.Input[_builtins.bool]] = None,
                  ecs_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -35,8 +35,8 @@ class DnsFirewallArgs:
         """
         The set of arguments for constructing a DnsFirewall resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: DNS Firewall cluster name
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['DnsFirewallAttackMitigationArgs'] attack_mitigation: Attack mitigation settings
         :param pulumi.Input[_builtins.bool] deprecate_any_requests: Whether to refuse to answer queries for the ANY type
         :param pulumi.Input[_builtins.bool] ecs_fallback: Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
@@ -66,9 +66,10 @@ class DnsFirewallArgs:
         :param pulumi.Input[_builtins.float] ratelimit: Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
         :param pulumi.Input[_builtins.float] retries: Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "upstream_ips", upstream_ips)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if attack_mitigation is not None:
             pulumi.set(__self__, "attack_mitigation", attack_mitigation)
         if deprecate_any_requests is not None:
@@ -85,18 +86,6 @@ class DnsFirewallArgs:
             pulumi.set(__self__, "ratelimit", ratelimit)
         if retries is not None:
             pulumi.set(__self__, "retries", retries)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -118,6 +107,18 @@ class DnsFirewallArgs:
     @upstream_ips.setter
     def upstream_ips(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "upstream_ips", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="attackMitigation")
@@ -504,6 +505,11 @@ class DnsFirewall(pulumi.CustomResource):
                  upstream_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `DNS Firewall Read`
+        - `DNS Firewall Write`
+
         ## Example Usage
 
         ```python
@@ -578,6 +584,11 @@ class DnsFirewall(pulumi.CustomResource):
                  args: DnsFirewallArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `DNS Firewall Read`
+        - `DNS Firewall Write`
+
         ## Example Usage
 
         ```python
@@ -647,8 +658,6 @@ class DnsFirewall(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DnsFirewallArgs.__new__(DnsFirewallArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["attack_mitigation"] = attack_mitigation
             __props__.__dict__["deprecate_any_requests"] = deprecate_any_requests
@@ -749,7 +758,7 @@ class DnsFirewall(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

@@ -7,11 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Stream Read`
+// - `Stream Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -46,24 +50,26 @@ type StreamWebhook struct {
 	pulumi.CustomResourceState
 
 	// The account identifier tag.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// The date and time the webhook was last modified.
+	Modified pulumi.StringOutput `pulumi:"modified"`
 	// The URL where webhooks will be sent.
-	NotificationUrl pulumi.StringOutput `pulumi:"notificationUrl"`
+	NotificationUrl pulumi.StringPtrOutput `pulumi:"notificationUrl"`
+	// The secret used to verify webhook signatures.
+	Secret pulumi.StringOutput `pulumi:"secret"`
 }
 
 // NewStreamWebhook registers a new resource with the given unique name, arguments, and options.
 func NewStreamWebhook(ctx *pulumi.Context,
 	name string, args *StreamWebhookArgs, opts ...pulumi.ResourceOption) (*StreamWebhook, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &StreamWebhookArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
-	if args.NotificationUrl == nil {
-		return nil, errors.New("invalid value for required argument 'NotificationUrl'")
-	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secret",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StreamWebhook
 	err := ctx.RegisterResource("cloudflare:index/streamWebhook:StreamWebhook", name, args, &resource, opts...)
@@ -89,15 +95,23 @@ func GetStreamWebhook(ctx *pulumi.Context,
 type streamWebhookState struct {
 	// The account identifier tag.
 	AccountId *string `pulumi:"accountId"`
+	// The date and time the webhook was last modified.
+	Modified *string `pulumi:"modified"`
 	// The URL where webhooks will be sent.
 	NotificationUrl *string `pulumi:"notificationUrl"`
+	// The secret used to verify webhook signatures.
+	Secret *string `pulumi:"secret"`
 }
 
 type StreamWebhookState struct {
 	// The account identifier tag.
 	AccountId pulumi.StringPtrInput
+	// The date and time the webhook was last modified.
+	Modified pulumi.StringPtrInput
 	// The URL where webhooks will be sent.
 	NotificationUrl pulumi.StringPtrInput
+	// The secret used to verify webhook signatures.
+	Secret pulumi.StringPtrInput
 }
 
 func (StreamWebhookState) ElementType() reflect.Type {
@@ -106,17 +120,17 @@ func (StreamWebhookState) ElementType() reflect.Type {
 
 type streamWebhookArgs struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The URL where webhooks will be sent.
-	NotificationUrl string `pulumi:"notificationUrl"`
+	NotificationUrl *string `pulumi:"notificationUrl"`
 }
 
 // The set of arguments for constructing a StreamWebhook resource.
 type StreamWebhookArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// The URL where webhooks will be sent.
-	NotificationUrl pulumi.StringInput
+	NotificationUrl pulumi.StringPtrInput
 }
 
 func (StreamWebhookArgs) ElementType() reflect.Type {
@@ -207,13 +221,23 @@ func (o StreamWebhookOutput) ToStreamWebhookOutputWithContext(ctx context.Contex
 }
 
 // The account identifier tag.
-func (o StreamWebhookOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *StreamWebhook) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o StreamWebhookOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamWebhook) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// The date and time the webhook was last modified.
+func (o StreamWebhookOutput) Modified() pulumi.StringOutput {
+	return o.ApplyT(func(v *StreamWebhook) pulumi.StringOutput { return v.Modified }).(pulumi.StringOutput)
 }
 
 // The URL where webhooks will be sent.
-func (o StreamWebhookOutput) NotificationUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v *StreamWebhook) pulumi.StringOutput { return v.NotificationUrl }).(pulumi.StringOutput)
+func (o StreamWebhookOutput) NotificationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamWebhook) pulumi.StringPtrOutput { return v.NotificationUrl }).(pulumi.StringPtrOutput)
+}
+
+// The secret used to verify webhook signatures.
+func (o StreamWebhookOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v *StreamWebhook) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }
 
 type StreamWebhookArrayOutput struct{ *pulumi.OutputState }

@@ -18,6 +18,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("activeThreats")]
         public Input<double>? ActiveThreats { get; set; }
 
+        [Input("authStates")]
+        private InputList<string>? _authStates;
+
+        /// <summary>
+        /// The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.
+        /// </summary>
+        public InputList<string> AuthStates
+        {
+            get => _authStates ?? (_authStates = new InputList<string>());
+            set => _authStates = value;
+        }
+
         /// <summary>
         /// UUID of Cloudflare managed certificate.
         /// </summary>

@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -64,7 +70,7 @@ export class WorkersDeployment extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public readonly annotations: pulumi.Output<outputs.WorkersDeploymentAnnotations>;
     declare public /*out*/ readonly authorEmail: pulumi.Output<string>;
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
@@ -102,9 +108,6 @@ export class WorkersDeployment extends pulumi.CustomResource {
             resourceInputs["versions"] = state?.versions;
         } else {
             const args = argsOrState as WorkersDeploymentArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.scriptName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scriptName'");
             }
@@ -158,7 +161,7 @@ export interface WorkersDeploymentArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     annotations?: pulumi.Input<inputs.WorkersDeploymentAnnotations>;
     /**
      * Name of the script, used in URLs and route configuration.

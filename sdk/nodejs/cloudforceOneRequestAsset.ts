@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudforce One Read`
+ * - `Cloudforce One Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -56,7 +61,7 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Defines the asset creation time.
      */
@@ -114,9 +119,6 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
             resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as CloudforceOneRequestAssetArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.page === undefined && !opts.urn) {
                 throw new Error("Missing required property 'page'");
             }
@@ -190,7 +192,7 @@ export interface CloudforceOneRequestAssetArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Page number of results.
      */

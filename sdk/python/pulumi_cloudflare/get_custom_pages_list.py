@@ -103,6 +103,14 @@ def get_custom_pages_list(account_id: Optional[_builtins.str] = None,
                           zone_id: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomPagesListResult:
     """
+    Accepted Permissions
+
+    - `Account Custom Pages Read`
+    - `Account Custom Pages Write`
+    - `Account Settings Read`
+    - `Account Settings Write`
+    - `Zero Trust: PII Read`
+
     ## Example Usage
 
     ```python
@@ -136,6 +144,14 @@ def get_custom_pages_list_output(account_id: Optional[pulumi.Input[Optional[_bui
                                  zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomPagesListResult]:
     """
+    Accepted Permissions
+
+    - `Account Custom Pages Read`
+    - `Account Custom Pages Write`
+    - `Account Settings Read`
+    - `Account Settings Write`
+    - `Zero Trust: PII Read`
+
     ## Example Usage
 
     ```python

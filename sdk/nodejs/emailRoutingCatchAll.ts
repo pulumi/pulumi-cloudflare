@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Email Routing Rules Read`
+ * - `Email Routing Rules Write`
+ *
  * ## Example Usage
  *
  * ```typescript

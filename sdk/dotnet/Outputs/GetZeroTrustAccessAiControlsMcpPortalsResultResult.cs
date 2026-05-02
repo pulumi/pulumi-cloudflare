@@ -13,6 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetZeroTrustAccessAiControlsMcpPortalsResultResult
     {
+        /// <summary>
+        /// Allow remote code execution in Dynamic Workers (beta)
+        /// </summary>
+        public readonly bool AllowCodeMode;
         public readonly string CreatedAt;
         public readonly string CreatedBy;
         public readonly string Description;
@@ -28,9 +32,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// Route outbound MCP traffic through Zero Trust Secure Web Gateway
         /// </summary>
         public readonly bool SecureWebGateway;
+        public readonly ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServerResult> Servers;
 
         [OutputConstructor]
         private GetZeroTrustAccessAiControlsMcpPortalsResultResult(
+            bool allowCodeMode,
+
             string createdAt,
 
             string createdBy,
@@ -47,8 +54,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             string name,
 
-            bool secureWebGateway)
+            bool secureWebGateway,
+
+            ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServerResult> servers)
         {
+            AllowCodeMode = allowCodeMode;
             CreatedAt = createdAt;
             CreatedBy = createdBy;
             Description = description;
@@ -58,6 +68,7 @@ namespace Pulumi.Cloudflare.Outputs
             ModifiedBy = modifiedBy;
             Name = name;
             SecureWebGateway = secureWebGateway;
+            Servers = servers;
         }
     }
 }

@@ -11,6 +11,8 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDnsFirewallResult {
@@ -18,7 +20,7 @@ public final class GetDnsFirewallResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Attack mitigation settings
      * 
@@ -66,8 +68,8 @@ public final class GetDnsFirewallResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Attack mitigation settings
@@ -148,7 +150,7 @@ public final class GetDnsFirewallResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private GetDnsFirewallAttackMitigation attackMitigation;
         private Boolean deprecateAnyRequests;
         private String dnsFirewallId;
@@ -184,10 +186,8 @@ public final class GetDnsFirewallResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetDnsFirewallResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

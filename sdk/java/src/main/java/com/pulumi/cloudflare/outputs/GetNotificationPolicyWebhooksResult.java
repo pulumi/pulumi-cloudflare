@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotificationPolicyWebhooksResult {
@@ -14,7 +16,7 @@ public final class GetNotificationPolicyWebhooksResult {
      * @return The account id
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Timestamp of when the webhook destination was created.
      * 
@@ -67,8 +69,8 @@ public final class GetNotificationPolicyWebhooksResult {
      * @return The account id
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Timestamp of when the webhook destination was created.
@@ -144,7 +146,7 @@ public final class GetNotificationPolicyWebhooksResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String createdAt;
         private String id;
         private String lastFailure;
@@ -170,10 +172,8 @@ public final class GetNotificationPolicyWebhooksResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetNotificationPolicyWebhooksResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

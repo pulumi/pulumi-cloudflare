@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Waiting Rooms Read`
+// - `Waiting Rooms Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWaitingRoomEvent(ctx, &cloudflare.LookupWaitingRoomEventArgs{
-//				ZoneId:        "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:        pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				WaitingRoomId: "699d98642c564d2e855e9661899b7252",
 //				EventId:       "25756b2dfe6e378a06b033b670413757",
 //			}, nil)
@@ -53,7 +58,7 @@ type LookupWaitingRoomEventArgs struct {
 	EventId       string `pulumi:"eventId"`
 	WaitingRoomId string `pulumi:"waitingRoomId"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getWaitingRoomEvent.
@@ -97,7 +102,7 @@ type LookupWaitingRoomEventResult struct {
 	TurnstileMode string `pulumi:"turnstileMode"`
 	WaitingRoomId string `pulumi:"waitingRoomId"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupWaitingRoomEventOutput(ctx *pulumi.Context, args LookupWaitingRoomEventOutputArgs, opts ...pulumi.InvokeOption) LookupWaitingRoomEventResultOutput {
@@ -114,7 +119,7 @@ type LookupWaitingRoomEventOutputArgs struct {
 	EventId       pulumi.StringInput `pulumi:"eventId"`
 	WaitingRoomId pulumi.StringInput `pulumi:"waitingRoomId"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupWaitingRoomEventOutputArgs) ElementType() reflect.Type {
@@ -235,8 +240,8 @@ func (o LookupWaitingRoomEventResultOutput) WaitingRoomId() pulumi.StringOutput 
 }
 
 // Identifier.
-func (o LookupWaitingRoomEventResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWaitingRoomEventResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupWaitingRoomEventResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWaitingRoomEventResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

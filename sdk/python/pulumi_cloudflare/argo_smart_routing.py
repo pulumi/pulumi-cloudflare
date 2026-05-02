@@ -142,6 +142,11 @@ class ArgoSmartRouting(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+
         ## Example Usage
 
         ```python
@@ -173,6 +178,11 @@ class ArgoSmartRouting(pulumi.CustomResource):
                  args: ArgoSmartRoutingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zone Settings Read`
+        - `Zone Settings Write`
+
         ## Example Usage
 
         ```python

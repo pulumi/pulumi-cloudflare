@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getEmailRoutingDns(args: GetEmailRoutingDnsArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingDnsResult> {
+export function getEmailRoutingDns(args?: GetEmailRoutingDnsArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailRoutingDnsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", {
         "subdomain": args.subdomain,
@@ -38,7 +44,7 @@ export interface GetEmailRoutingDnsArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -64,9 +70,14 @@ export interface GetEmailRoutingDnsResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -79,7 +90,8 @@ export interface GetEmailRoutingDnsResult {
  * });
  * ```
  */
-export function getEmailRoutingDnsOutput(args: GetEmailRoutingDnsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingDnsResult> {
+export function getEmailRoutingDnsOutput(args?: GetEmailRoutingDnsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailRoutingDnsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailRoutingDns:getEmailRoutingDns", {
         "subdomain": args.subdomain,
@@ -98,5 +110,5 @@ export interface GetEmailRoutingDnsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloud Email Security: Read`
+// - `Cloud Email Security: Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailSecurityBlockSenders(ctx, &cloudflare.LookupEmailSecurityBlockSendersArgs{
-//				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction:   pulumi.StringRef("asc"),
 //				Order:       pulumi.StringRef("pattern"),
 //				Pattern:     pulumi.StringRef("pattern"),
@@ -54,7 +59,7 @@ func LookupEmailSecurityBlockSenders(ctx *pulumi.Context, args *LookupEmailSecur
 // A collection of arguments for invoking getEmailSecurityBlockSenders.
 type LookupEmailSecurityBlockSendersArgs struct {
 	// Account Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
@@ -76,7 +81,7 @@ type LookupEmailSecurityBlockSendersArgs struct {
 // A collection of values returned by getEmailSecurityBlockSenders.
 type LookupEmailSecurityBlockSendersResult struct {
 	// Account Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
@@ -111,7 +116,7 @@ func LookupEmailSecurityBlockSendersOutput(ctx *pulumi.Context, args LookupEmail
 // A collection of arguments for invoking getEmailSecurityBlockSenders.
 type LookupEmailSecurityBlockSendersOutputArgs struct {
 	// Account Identifier
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
@@ -150,8 +155,8 @@ func (o LookupEmailSecurityBlockSendersResultOutput) ToLookupEmailSecurityBlockS
 }
 
 // Account Identifier
-func (o LookupEmailSecurityBlockSendersResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupEmailSecurityBlockSendersResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The sorting direction.

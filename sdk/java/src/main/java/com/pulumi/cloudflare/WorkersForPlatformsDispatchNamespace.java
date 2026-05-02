@@ -19,6 +19,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -67,14 +73,14 @@ public class WorkersForPlatformsDispatchNamespace extends com.pulumi.resources.C
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Identifier.
@@ -215,7 +221,7 @@ public class WorkersForPlatformsDispatchNamespace extends com.pulumi.resources.C
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkersForPlatformsDispatchNamespace(java.lang.String name, WorkersForPlatformsDispatchNamespaceArgs args) {
+    public WorkersForPlatformsDispatchNamespace(java.lang.String name, @Nullable WorkersForPlatformsDispatchNamespaceArgs args) {
         this(name, args, null);
     }
     /**
@@ -224,7 +230,7 @@ public class WorkersForPlatformsDispatchNamespace extends com.pulumi.resources.C
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkersForPlatformsDispatchNamespace(java.lang.String name, WorkersForPlatformsDispatchNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public WorkersForPlatformsDispatchNamespace(java.lang.String name, @Nullable WorkersForPlatformsDispatchNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -232,7 +238,7 @@ public class WorkersForPlatformsDispatchNamespace extends com.pulumi.resources.C
         super("cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static WorkersForPlatformsDispatchNamespaceArgs makeArgs(WorkersForPlatformsDispatchNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static WorkersForPlatformsDispatchNamespaceArgs makeArgs(@Nullable WorkersForPlatformsDispatchNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

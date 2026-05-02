@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetEmailRoutingCatchAll
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Email Routing Rules Read`
+        /// - `Email Routing Rules Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetEmailRoutingCatchAllResult> InvokeAsync(GetEmailRoutingCatchAllArgs args, InvokeOptions? options = null)
+        public static Task<GetEmailRoutingCatchAllResult> InvokeAsync(GetEmailRoutingCatchAllArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEmailRoutingCatchAllResult>("cloudflare:index/getEmailRoutingCatchAll:getEmailRoutingCatchAll", args ?? new GetEmailRoutingCatchAllArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Email Routing Rules Read`
+        /// - `Email Routing Rules Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetEmailRoutingCatchAllResult> Invoke(GetEmailRoutingCatchAllInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetEmailRoutingCatchAllResult> Invoke(GetEmailRoutingCatchAllInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEmailRoutingCatchAllResult>("cloudflare:index/getEmailRoutingCatchAll:getEmailRoutingCatchAll", args ?? new GetEmailRoutingCatchAllInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Email Routing Rules Read`
+        /// - `Email Routing Rules Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetEmailRoutingCatchAllArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetEmailRoutingCatchAllInvokeArgs()
         {
@@ -138,7 +153,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetEmailRoutingCatchAllResult(
@@ -154,7 +169,7 @@ namespace Pulumi.Cloudflare
 
             string tag,
 
-            string zoneId)
+            string? zoneId)
         {
             Actions = actions;
             Enabled = enabled;

@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.GetSpectrumApplicationFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -43,15 +42,15 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
      * Zone identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Zone identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetSpectrumApplicationArgs() {}
@@ -116,7 +115,7 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -132,9 +131,6 @@ public final class GetSpectrumApplicationArgs extends com.pulumi.resources.Invok
         }
 
         public GetSpectrumApplicationArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetSpectrumApplicationArgs", "zoneId");
-            }
             return $;
         }
     }

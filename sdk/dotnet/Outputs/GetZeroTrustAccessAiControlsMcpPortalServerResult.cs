@@ -36,8 +36,8 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Prompts;
         public readonly string Status;
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Tools;
-        public readonly object UpdatedPrompts;
-        public readonly object UpdatedTools;
+        public readonly ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptResult> UpdatedPrompts;
+        public readonly ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpPortalServerUpdatedToolResult> UpdatedTools;
 
         [OutputConstructor]
         private GetZeroTrustAccessAiControlsMcpPortalServerResult(
@@ -75,9 +75,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<ImmutableDictionary<string, string>> tools,
 
-            object updatedPrompts,
+            ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptResult> updatedPrompts,
 
-            object updatedTools)
+            ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpPortalServerUpdatedToolResult> updatedTools)
         {
             AuthType = authType;
             CreatedAt = createdAt;

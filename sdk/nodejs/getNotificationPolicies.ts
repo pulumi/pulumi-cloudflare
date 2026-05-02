@@ -7,6 +7,14 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Notifications Read`
+ * - `Notifications Write`
+ * - `Zero Trust: PII Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +26,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getNotificationPolicies(args: GetNotificationPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationPoliciesResult> {
+export function getNotificationPolicies(args?: GetNotificationPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getNotificationPolicies:getNotificationPolicies", {
         "accountId": args.accountId,
@@ -33,7 +42,7 @@ export interface GetNotificationPoliciesArgs {
     /**
      * The account id
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +56,7 @@ export interface GetNotificationPoliciesResult {
     /**
      * The account id
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +71,14 @@ export interface GetNotificationPoliciesResult {
     readonly results: outputs.GetNotificationPoliciesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Notifications Read`
+ * - `Notifications Write`
+ * - `Zero Trust: PII Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +90,8 @@ export interface GetNotificationPoliciesResult {
  * });
  * ```
  */
-export function getNotificationPoliciesOutput(args: GetNotificationPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotificationPoliciesResult> {
+export function getNotificationPoliciesOutput(args?: GetNotificationPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotificationPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getNotificationPolicies:getNotificationPolicies", {
         "accountId": args.accountId,
@@ -88,7 +106,7 @@ export interface GetNotificationPoliciesOutputArgs {
     /**
      * The account id
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

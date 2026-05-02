@@ -3,14 +3,21 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServer;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
+    /**
+     * @return Allow remote code execution in Dynamic Workers (beta)
+     * 
+     */
+    private Boolean allowCodeMode;
     private String createdAt;
     private String createdBy;
     private String description;
@@ -28,8 +35,16 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
      * 
      */
     private Boolean secureWebGateway;
+    private List<GetZeroTrustAccessAiControlsMcpPortalsResultServer> servers;
 
     private GetZeroTrustAccessAiControlsMcpPortalsResult() {}
+    /**
+     * @return Allow remote code execution in Dynamic Workers (beta)
+     * 
+     */
+    public Boolean allowCodeMode() {
+        return this.allowCodeMode;
+    }
     public String createdAt() {
         return this.createdAt;
     }
@@ -65,6 +80,9 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
     public Boolean secureWebGateway() {
         return this.secureWebGateway;
     }
+    public List<GetZeroTrustAccessAiControlsMcpPortalsResultServer> servers() {
+        return this.servers;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -75,6 +93,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean allowCodeMode;
         private String createdAt;
         private String createdBy;
         private String description;
@@ -84,9 +103,11 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
         private String modifiedBy;
         private String name;
         private Boolean secureWebGateway;
+        private List<GetZeroTrustAccessAiControlsMcpPortalsResultServer> servers;
         public Builder() {}
         public Builder(GetZeroTrustAccessAiControlsMcpPortalsResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowCodeMode = defaults.allowCodeMode;
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
     	      this.description = defaults.description;
@@ -96,8 +117,17 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
     	      this.modifiedBy = defaults.modifiedBy;
     	      this.name = defaults.name;
     	      this.secureWebGateway = defaults.secureWebGateway;
+    	      this.servers = defaults.servers;
         }
 
+        @CustomType.Setter
+        public Builder allowCodeMode(Boolean allowCodeMode) {
+            if (allowCodeMode == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalsResult", "allowCodeMode");
+            }
+            this.allowCodeMode = allowCodeMode;
+            return this;
+        }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
             if (createdAt == null) {
@@ -170,8 +200,20 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
             this.secureWebGateway = secureWebGateway;
             return this;
         }
+        @CustomType.Setter
+        public Builder servers(List<GetZeroTrustAccessAiControlsMcpPortalsResultServer> servers) {
+            if (servers == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalsResult", "servers");
+            }
+            this.servers = servers;
+            return this;
+        }
+        public Builder servers(GetZeroTrustAccessAiControlsMcpPortalsResultServer... servers) {
+            return servers(List.of(servers));
+        }
         public GetZeroTrustAccessAiControlsMcpPortalsResult build() {
             final var _resultValue = new GetZeroTrustAccessAiControlsMcpPortalsResult();
+            _resultValue.allowCodeMode = allowCodeMode;
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
             _resultValue.description = description;
@@ -181,6 +223,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResult {
             _resultValue.modifiedBy = modifiedBy;
             _resultValue.name = name;
             _resultValue.secureWebGateway = secureWebGateway;
+            _resultValue.servers = servers;
             return _resultValue;
         }
     }

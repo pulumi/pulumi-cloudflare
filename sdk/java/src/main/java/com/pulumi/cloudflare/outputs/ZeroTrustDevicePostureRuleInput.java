@@ -21,6 +21,11 @@ public final class ZeroTrustDevicePostureRuleInput {
      */
     private @Nullable Double activeThreats;
     /**
+     * @return The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.
+     * 
+     */
+    private @Nullable List<String> authStates;
+    /**
      * @return UUID of Cloudflare managed certificate.
      * 
      */
@@ -239,6 +244,13 @@ public final class ZeroTrustDevicePostureRuleInput {
      */
     public Optional<Double> activeThreats() {
         return Optional.ofNullable(this.activeThreats);
+    }
+    /**
+     * @return The set of Kolide device authentication states that pass the posture check. Device must match one of the specified states.
+     * 
+     */
+    public List<String> authStates() {
+        return this.authStates == null ? List.of() : this.authStates;
     }
     /**
      * @return UUID of Cloudflare managed certificate.
@@ -544,6 +556,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Double activeThreats;
+        private @Nullable List<String> authStates;
         private @Nullable String certificateId;
         private @Nullable List<String> checkDisks;
         private @Nullable Boolean checkPrivateKey;
@@ -589,6 +602,7 @@ public final class ZeroTrustDevicePostureRuleInput {
         public Builder(ZeroTrustDevicePostureRuleInput defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeThreats = defaults.activeThreats;
+    	      this.authStates = defaults.authStates;
     	      this.certificateId = defaults.certificateId;
     	      this.checkDisks = defaults.checkDisks;
     	      this.checkPrivateKey = defaults.checkPrivateKey;
@@ -637,6 +651,15 @@ public final class ZeroTrustDevicePostureRuleInput {
 
             this.activeThreats = activeThreats;
             return this;
+        }
+        @CustomType.Setter
+        public Builder authStates(@Nullable List<String> authStates) {
+
+            this.authStates = authStates;
+            return this;
+        }
+        public Builder authStates(String... authStates) {
+            return authStates(List.of(authStates));
         }
         @CustomType.Setter
         public Builder certificateId(@Nullable String certificateId) {
@@ -896,6 +919,7 @@ public final class ZeroTrustDevicePostureRuleInput {
         public ZeroTrustDevicePostureRuleInput build() {
             final var _resultValue = new ZeroTrustDevicePostureRuleInput();
             _resultValue.activeThreats = activeThreats;
+            _resultValue.authStates = authStates;
             _resultValue.certificateId = certificateId;
             _resultValue.checkDisks = checkDisks;
             _resultValue.checkPrivateKey = checkPrivateKey;

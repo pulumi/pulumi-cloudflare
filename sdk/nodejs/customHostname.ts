@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -39,6 +44,7 @@ import * as utilities from "./utilities";
  *     -----END CERTIFICATE-----
  *
  * `,
+ *         customCsrId: "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
  *         customKey: `    -----BEGIN RSA PRIVATE KEY-----
  *     MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
  *     dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -153,7 +159,7 @@ export class CustomHostname extends pulumi.CustomResource {
     /**
      * SSL properties used when creating the custom hostname.
      */
-    declare public readonly ssl: pulumi.Output<outputs.CustomHostnameSsl>;
+    declare public readonly ssl: pulumi.Output<outputs.CustomHostnameSsl | undefined>;
     /**
      * Status of the hostname's activation.
      * Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
@@ -166,7 +172,7 @@ export class CustomHostname extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a CustomHostname resource with the given unique name, arguments, and options.
@@ -196,12 +202,6 @@ export class CustomHostname extends pulumi.CustomResource {
             const args = argsOrState as CustomHostnameArgs | undefined;
             if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
-            }
-            if (args?.ssl === undefined && !opts.urn) {
-                throw new Error("Missing required property 'ssl'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["customMetadata"] = args?.customMetadata;
             resourceInputs["customOriginServer"] = args?.customOriginServer;
@@ -294,9 +294,9 @@ export interface CustomHostnameArgs {
     /**
      * SSL properties used when creating the custom hostname.
      */
-    ssl: pulumi.Input<inputs.CustomHostnameSsl>;
+    ssl?: pulumi.Input<inputs.CustomHostnameSsl>;
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

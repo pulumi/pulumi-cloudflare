@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudforce One Read`
+ * - `Cloudforce One Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +37,7 @@ export interface GetCloudforceOneRequestPriorityArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * UUID.
      */
@@ -46,7 +51,7 @@ export interface GetCloudforceOneRequestPriorityResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly completed: string;
     /**
      * Request content.
@@ -95,6 +100,11 @@ export interface GetCloudforceOneRequestPriorityResult {
     readonly updated: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudforce One Read`
+ * - `Cloudforce One Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -122,7 +132,7 @@ export interface GetCloudforceOneRequestPriorityOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * UUID.
      */

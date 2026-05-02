@@ -84,8 +84,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayPolicyArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Identify the API resource with a UUID.
@@ -101,8 +101,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Identify the API resource with a UUID.
@@ -120,7 +120,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustGatewayPolicyResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
         /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect".
@@ -207,7 +207,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustGatewayPolicyResult(
-            string accountId,
+            string? accountId,
 
             string action,
 

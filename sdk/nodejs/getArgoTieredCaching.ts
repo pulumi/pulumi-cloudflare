@@ -16,7 +16,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getArgoTieredCaching(args: GetArgoTieredCachingArgs, opts?: pulumi.InvokeOptions): Promise<GetArgoTieredCachingResult> {
+export function getArgoTieredCaching(args?: GetArgoTieredCachingArgs, opts?: pulumi.InvokeOptions): Promise<GetArgoTieredCachingResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getArgoTieredCaching:getArgoTieredCaching", {
         "zoneId": args.zoneId,
@@ -30,7 +31,7 @@ export interface GetArgoTieredCachingArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -57,7 +58,7 @@ export interface GetArgoTieredCachingResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
  * ## Example Usage
@@ -71,7 +72,8 @@ export interface GetArgoTieredCachingResult {
  * });
  * ```
  */
-export function getArgoTieredCachingOutput(args: GetArgoTieredCachingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetArgoTieredCachingResult> {
+export function getArgoTieredCachingOutput(args?: GetArgoTieredCachingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetArgoTieredCachingResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getArgoTieredCaching:getArgoTieredCaching", {
         "zoneId": args.zoneId,
@@ -85,5 +87,5 @@ export interface GetArgoTieredCachingOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

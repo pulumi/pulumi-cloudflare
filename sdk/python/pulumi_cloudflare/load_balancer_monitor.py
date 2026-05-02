@@ -19,7 +19,7 @@ __all__ = ['LoadBalancerMonitorArgs', 'LoadBalancerMonitor']
 @pulumi.input_type
 class LoadBalancerMonitorArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  allow_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
                  consecutive_down: Optional[pulumi.Input[_builtins.int]] = None,
                  consecutive_up: Optional[pulumi.Input[_builtins.int]] = None,
@@ -58,7 +58,8 @@ class LoadBalancerMonitorArgs:
         :param pulumi.Input[_builtins.str] type: The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
                Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         """
-        pulumi.set(__self__, "account_id", account_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if allow_insecure is not None:
             pulumi.set(__self__, "allow_insecure", allow_insecure)
         if consecutive_down is not None:
@@ -94,14 +95,14 @@ class LoadBalancerMonitorArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -630,6 +631,11 @@ class LoadBalancerMonitor(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Load Balancing: Monitors and Pools Read`
+        - `Load Balancing: Monitors and Pools Write`
+
         ## Example Usage
 
         ```python
@@ -691,9 +697,14 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LoadBalancerMonitorArgs,
+                 args: Optional[LoadBalancerMonitorArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Load Balancing: Monitors and Pools Read`
+        - `Load Balancing: Monitors and Pools Write`
+
         ## Example Usage
 
         ```python
@@ -771,8 +782,6 @@ class LoadBalancerMonitor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LoadBalancerMonitorArgs.__new__(LoadBalancerMonitorArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["allow_insecure"] = allow_insecure
             __props__.__dict__["consecutive_down"] = consecutive_down
@@ -874,7 +883,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

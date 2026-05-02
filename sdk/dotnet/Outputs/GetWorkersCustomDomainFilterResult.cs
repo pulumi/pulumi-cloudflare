@@ -14,23 +14,23 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetWorkersCustomDomainFilterResult
     {
         /// <summary>
-        /// Worker environment associated with the zone and hostname.
+        /// Worker environment associated with the domain.
         /// </summary>
         public readonly string? Environment;
         /// <summary>
-        /// Hostname of the Worker Domain.
+        /// Hostname of the domain.
         /// </summary>
         public readonly string? Hostname;
         /// <summary>
-        /// Worker service associated with the zone and hostname.
+        /// Name of the Worker associated with the domain.
         /// </summary>
         public readonly string? Service;
         /// <summary>
-        /// Identifier of the zone.
+        /// ID of the zone containing the domain hostname.
         /// </summary>
         public readonly string? ZoneId;
         /// <summary>
-        /// Name of the zone.
+        /// Name of the zone containing the domain hostname.
         /// </summary>
         public readonly string? ZoneName;
 

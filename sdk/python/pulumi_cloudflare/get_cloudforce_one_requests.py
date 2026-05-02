@@ -73,7 +73,7 @@ class GetCloudforceOneRequestsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -222,6 +222,10 @@ def get_cloudforce_one_requests(account_id: Optional[_builtins.str] = None,
                                 status: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudforceOneRequestsResult:
     """
+    Accepted Permissions
+
+    - `Cloudforce One Write`
+
     ## Example Usage
 
     ```python
@@ -288,7 +292,7 @@ def get_cloudforce_one_requests(account_id: Optional[_builtins.str] = None,
         sort_by=pulumi.get(__ret__, 'sort_by'),
         sort_order=pulumi.get(__ret__, 'sort_order'),
         status=pulumi.get(__ret__, 'status'))
-def get_cloudforce_one_requests_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cloudforce_one_requests_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        completed_after: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        completed_before: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        created_after: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -302,6 +306,10 @@ def get_cloudforce_one_requests_output(account_id: Optional[pulumi.Input[_builti
                                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudforceOneRequestsResult]:
     """
+    Accepted Permissions
+
+    - `Cloudforce One Write`
+
     ## Example Usage
 
     ```python

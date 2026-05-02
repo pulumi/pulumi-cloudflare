@@ -28,7 +28,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewRegistrarDomain(ctx, "example_registrar_domain", &cloudflare.RegistrarDomainArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				DomainName: pulumi.String("cloudflare.com"),
+//				DomainName: pulumi.String("example.com"),
 //				AutoRenew:  pulumi.Bool(true),
 //				Locked:     pulumi.Bool(false),
 //				Privacy:    pulumi.Bool(true),
@@ -49,10 +49,13 @@ type RegistrarDomain struct {
 	pulumi.CustomResourceState
 
 	// Identifier
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
-	// Domain name.
+	// Fully qualified domain name (FQDN) including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+	// identifies a registration — the same domain cannot be registered
+	// twice, making it a natural idempotency key for registration requests.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// Shows whether a registrar lock is in place for a domain.
 	Locked pulumi.BoolPtrOutput `pulumi:"locked"`
@@ -67,9 +70,6 @@ func NewRegistrarDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.DomainName == nil {
 		return nil, errors.New("invalid value for required argument 'DomainName'")
 	}
@@ -100,7 +100,10 @@ type registrarDomainState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// Domain name.
+	// Fully qualified domain name (FQDN) including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+	// identifies a registration — the same domain cannot be registered
+	// twice, making it a natural idempotency key for registration requests.
 	DomainName *string `pulumi:"domainName"`
 	// Shows whether a registrar lock is in place for a domain.
 	Locked *bool `pulumi:"locked"`
@@ -113,7 +116,10 @@ type RegistrarDomainState struct {
 	AccountId pulumi.StringPtrInput
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew pulumi.BoolPtrInput
-	// Domain name.
+	// Fully qualified domain name (FQDN) including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+	// identifies a registration — the same domain cannot be registered
+	// twice, making it a natural idempotency key for registration requests.
 	DomainName pulumi.StringPtrInput
 	// Shows whether a registrar lock is in place for a domain.
 	Locked pulumi.BoolPtrInput
@@ -127,10 +133,13 @@ func (RegistrarDomainState) ElementType() reflect.Type {
 
 type registrarDomainArgs struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// Domain name.
+	// Fully qualified domain name (FQDN) including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+	// identifies a registration — the same domain cannot be registered
+	// twice, making it a natural idempotency key for registration requests.
 	DomainName string `pulumi:"domainName"`
 	// Shows whether a registrar lock is in place for a domain.
 	Locked *bool `pulumi:"locked"`
@@ -141,10 +150,13 @@ type registrarDomainArgs struct {
 // The set of arguments for constructing a RegistrarDomain resource.
 type RegistrarDomainArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
 	AutoRenew pulumi.BoolPtrInput
-	// Domain name.
+	// Fully qualified domain name (FQDN) including the extension
+	// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+	// identifies a registration — the same domain cannot be registered
+	// twice, making it a natural idempotency key for registration requests.
 	DomainName pulumi.StringInput
 	// Shows whether a registrar lock is in place for a domain.
 	Locked pulumi.BoolPtrInput
@@ -240,8 +252,8 @@ func (o RegistrarDomainOutput) ToRegistrarDomainOutputWithContext(ctx context.Co
 }
 
 // Identifier
-func (o RegistrarDomainOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *RegistrarDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o RegistrarDomainOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistrarDomain) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Auto-renew controls whether subscription is automatically renewed upon domain expiration.
@@ -249,7 +261,10 @@ func (o RegistrarDomainOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RegistrarDomain) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
-// Domain name.
+// Fully qualified domain name (FQDN) including the extension
+// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+// identifies a registration — the same domain cannot be registered
+// twice, making it a natural idempotency key for registration requests.
 func (o RegistrarDomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistrarDomain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }

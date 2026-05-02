@@ -67,7 +67,7 @@ class GetRateLimitsResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Defines an identifier.
         """
@@ -90,6 +90,11 @@ def get_rate_limits(max_items: Optional[_builtins.int] = None,
                     zone_id: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRateLimitsResult:
     """
+    Accepted Permissions
+
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+
     ## Example Usage
 
     ```python
@@ -115,9 +120,14 @@ def get_rate_limits(max_items: Optional[_builtins.int] = None,
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_rate_limits_output(max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                           zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                           zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRateLimitsResult]:
     """
+    Accepted Permissions
+
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+
     ## Example Usage
 
     ```python

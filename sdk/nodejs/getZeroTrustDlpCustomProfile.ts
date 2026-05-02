@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -31,7 +36,7 @@ export function getZeroTrustDlpCustomProfile(args: GetZeroTrustDlpCustomProfileA
  * A collection of arguments for invoking getZeroTrustDlpCustomProfile.
  */
 export interface GetZeroTrustDlpCustomProfileArgs {
-    accountId: string;
+    accountId?: string;
     profileId: string;
 }
 
@@ -39,7 +44,7 @@ export interface GetZeroTrustDlpCustomProfileArgs {
  * A collection of values returned by getZeroTrustDlpCustomProfile.
  */
 export interface GetZeroTrustDlpCustomProfileResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly aiContextEnabled: boolean;
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
@@ -59,6 +64,14 @@ export interface GetZeroTrustDlpCustomProfileResult {
      * When the profile was created.
      */
     readonly createdAt: string;
+    /**
+     * Data classes associated with this profile.
+     */
+    readonly dataClasses: string[];
+    /**
+     * Data tags associated with this profile.
+     */
+    readonly dataTags: string[];
     /**
      * The description of the profile.
      */
@@ -81,6 +94,10 @@ export interface GetZeroTrustDlpCustomProfileResult {
      */
     readonly openAccess: boolean;
     readonly profileId: string;
+    /**
+     * Sensitivity levels associated with this profile.
+     */
+    readonly sensitivityLevels: outputs.GetZeroTrustDlpCustomProfileSensitivityLevel[];
     readonly sharedEntries: outputs.GetZeroTrustDlpCustomProfileSharedEntry[];
     /**
      * Available values: "custom", "predefined", "integration".
@@ -92,6 +109,11 @@ export interface GetZeroTrustDlpCustomProfileResult {
     readonly updatedAt: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -116,6 +138,6 @@ export function getZeroTrustDlpCustomProfileOutput(args: GetZeroTrustDlpCustomPr
  * A collection of arguments for invoking getZeroTrustDlpCustomProfile.
  */
 export interface GetZeroTrustDlpCustomProfileOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     profileId: pulumi.Input<string>;
 }

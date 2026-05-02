@@ -18,9 +18,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedAuthenticators;
         /// <summary>
-        /// Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.
+        /// Indicates whether to disable MFA for this resource. This option is available at the application and policy level.
         /// </summary>
-        public readonly bool MfaBypass;
+        public readonly bool MfaDisabled;
         /// <summary>
         /// Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
         /// </summary>
@@ -30,12 +30,12 @@ namespace Pulumi.Cloudflare.Outputs
         private GetZeroTrustAccessPolicyMfaConfigResult(
             ImmutableArray<string> allowedAuthenticators,
 
-            bool mfaBypass,
+            bool mfaDisabled,
 
             string sessionDuration)
         {
             AllowedAuthenticators = allowedAuthenticators;
-            MfaBypass = mfaBypass;
+            MfaDisabled = mfaDisabled;
             SessionDuration = sessionDuration;
         }
     }

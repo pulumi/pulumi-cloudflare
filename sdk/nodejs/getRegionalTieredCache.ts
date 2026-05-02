@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * - `Zone Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getRegionalTieredCache(args: GetRegionalTieredCacheArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionalTieredCacheResult> {
+export function getRegionalTieredCache(args?: GetRegionalTieredCacheArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionalTieredCacheResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRegionalTieredCache:getRegionalTieredCache", {
         "zoneId": args.zoneId,
@@ -30,7 +38,7 @@ export interface GetRegionalTieredCacheArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -57,9 +65,16 @@ export interface GetRegionalTieredCacheResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * - `Zone Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -71,7 +86,8 @@ export interface GetRegionalTieredCacheResult {
  * });
  * ```
  */
-export function getRegionalTieredCacheOutput(args: GetRegionalTieredCacheOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionalTieredCacheResult> {
+export function getRegionalTieredCacheOutput(args?: GetRegionalTieredCacheOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionalTieredCacheResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getRegionalTieredCache:getRegionalTieredCache", {
         "zoneId": args.zoneId,
@@ -85,5 +101,5 @@ export interface GetRegionalTieredCacheOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

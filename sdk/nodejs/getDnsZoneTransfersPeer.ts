@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -29,7 +34,7 @@ export function getDnsZoneTransfersPeer(args: GetDnsZoneTransfersPeerArgs, opts?
  * A collection of arguments for invoking getDnsZoneTransfersPeer.
  */
 export interface GetDnsZoneTransfersPeerArgs {
-    accountId: string;
+    accountId?: string;
     peerId: string;
 }
 
@@ -37,7 +42,7 @@ export interface GetDnsZoneTransfersPeerArgs {
  * A collection of values returned by getDnsZoneTransfersPeer.
  */
 export interface GetDnsZoneTransfersPeerResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The ID of this resource.
      */
@@ -65,6 +70,11 @@ export interface GetDnsZoneTransfersPeerResult {
     readonly tsigId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -89,6 +99,6 @@ export function getDnsZoneTransfersPeerOutput(args: GetDnsZoneTransfersPeerOutpu
  * A collection of arguments for invoking getDnsZoneTransfersPeer.
  */
 export interface GetDnsZoneTransfersPeerOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     peerId: pulumi.Input<string>;
 }

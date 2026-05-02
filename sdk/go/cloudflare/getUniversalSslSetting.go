@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetUniversalSslSetting(ctx, &cloudflare.LookupUniversalSslSettingArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupUniversalSslSetting(ctx *pulumi.Context, args *LookupUniversalSslSett
 // A collection of arguments for invoking getUniversalSslSetting.
 type LookupUniversalSslSettingArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getUniversalSslSetting.
@@ -58,7 +63,7 @@ type LookupUniversalSslSettingResult struct {
 	Enabled bool   `pulumi:"enabled"`
 	Id      string `pulumi:"id"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupUniversalSslSettingOutput(ctx *pulumi.Context, args LookupUniversalSslSettingOutputArgs, opts ...pulumi.InvokeOption) LookupUniversalSslSettingResultOutput {
@@ -73,7 +78,7 @@ func LookupUniversalSslSettingOutput(ctx *pulumi.Context, args LookupUniversalSs
 // A collection of arguments for invoking getUniversalSslSetting.
 type LookupUniversalSslSettingOutputArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupUniversalSslSettingOutputArgs) ElementType() reflect.Type {
@@ -105,8 +110,8 @@ func (o LookupUniversalSslSettingResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupUniversalSslSettingResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupUniversalSslSettingResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupUniversalSslSettingResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupUniversalSslSettingResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

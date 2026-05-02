@@ -34,7 +34,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
      */
     private @Nullable Boolean dk;
     /**
-     * @return Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == &#34;v2&#34;.
+     * @return Configure download behavior. When set to remote*only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
@@ -79,6 +79,11 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
      * 
      */
     private @Nullable String version;
+    /**
+     * @return Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.
+     * 
+     */
+    private @Nullable String wmId;
 
     private ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls() {}
     /**
@@ -111,7 +116,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
         return Optional.ofNullable(this.dk);
     }
     /**
-     * @return Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == &#34;v2&#34;.
+     * @return Configure download behavior. When set to remote*only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
@@ -172,6 +177,13 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }
+    /**
+     * @return Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.
+     * 
+     */
+    public Optional<String> wmId() {
+        return Optional.ofNullable(this.wmId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -194,6 +206,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
         private @Nullable String printing;
         private @Nullable String upload;
         private @Nullable String version;
+        private @Nullable String wmId;
         public Builder() {}
         public Builder(ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls defaults) {
     	      Objects.requireNonNull(defaults);
@@ -209,6 +222,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     	      this.printing = defaults.printing;
     	      this.upload = defaults.upload;
     	      this.version = defaults.version;
+    	      this.wmId = defaults.wmId;
         }
 
         @CustomType.Setter
@@ -283,6 +297,12 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
             this.version = version;
             return this;
         }
+        @CustomType.Setter
+        public Builder wmId(@Nullable String wmId) {
+
+            this.wmId = wmId;
+            return this;
+        }
         public ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls build() {
             final var _resultValue = new ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls();
             _resultValue.copy = copy;
@@ -297,6 +317,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
             _resultValue.printing = printing;
             _resultValue.upload = upload;
             _resultValue.version = version;
+            _resultValue.wmId = wmId;
             return _resultValue;
         }
     }

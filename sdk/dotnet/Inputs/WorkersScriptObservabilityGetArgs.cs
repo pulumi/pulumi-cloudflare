@@ -30,6 +30,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("logs")]
         public Input<Inputs.WorkersScriptObservabilityLogsGetArgs>? Logs { get; set; }
 
+        /// <summary>
+        /// Trace settings for the Worker.
+        /// </summary>
+        [Input("traces")]
+        public Input<Inputs.WorkersScriptObservabilityTracesGetArgs>? Traces { get; set; }
+
         public WorkersScriptObservabilityGetArgs()
         {
         }

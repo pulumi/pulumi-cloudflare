@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Address Maps Read`
+// - `Address Maps Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAddressMaps(ctx, &cloudflare.LookupAddressMapsArgs{
-//				AccountId: "258def64c72dae45f3e4c8516e2111f2",
+//				AccountId: pulumi.StringRef("258def64c72dae45f3e4c8516e2111f2"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupAddressMaps(ctx *pulumi.Context, args *LookupAddressMapsArgs, opts ..
 // A collection of arguments for invoking getAddressMaps.
 type LookupAddressMapsArgs struct {
 	// Identifier of a Cloudflare account.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +62,7 @@ type LookupAddressMapsArgs struct {
 // A collection of values returned by getAddressMaps.
 type LookupAddressMapsResult struct {
 	// Identifier of a Cloudflare account.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +83,7 @@ func LookupAddressMapsOutput(ctx *pulumi.Context, args LookupAddressMapsOutputAr
 // A collection of arguments for invoking getAddressMaps.
 type LookupAddressMapsOutputArgs struct {
 	// Identifier of a Cloudflare account.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +108,8 @@ func (o LookupAddressMapsResultOutput) ToLookupAddressMapsResultOutputWithContex
 }
 
 // Identifier of a Cloudflare account.
-func (o LookupAddressMapsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAddressMapsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAddressMapsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAddressMapsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

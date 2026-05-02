@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetFilters(ctx, &cloudflare.LookupFiltersArgs{
-//				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:      pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Id:          pulumi.StringRef("372e67954025e0ba6aaa6d586b9e0b61"),
 //				Description: pulumi.StringRef("browsers"),
 //				Expression:  pulumi.StringRef("php"),
@@ -66,7 +71,7 @@ type LookupFiltersArgs struct {
 	// The filter ref (a short reference tag) to search for. Must be an exact match.
 	Ref *string `pulumi:"ref"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getFilters.
@@ -86,7 +91,7 @@ type LookupFiltersResult struct {
 	// The items returned by the data source
 	Results []GetFiltersResult `pulumi:"results"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupFiltersOutput(ctx *pulumi.Context, args LookupFiltersOutputArgs, opts ...pulumi.InvokeOption) LookupFiltersResultOutput {
@@ -113,7 +118,7 @@ type LookupFiltersOutputArgs struct {
 	// The filter ref (a short reference tag) to search for. Must be an exact match.
 	Ref pulumi.StringPtrInput `pulumi:"ref"`
 	// Defines an identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupFiltersOutputArgs) ElementType() reflect.Type {
@@ -171,8 +176,8 @@ func (o LookupFiltersResultOutput) Results() GetFiltersResultArrayOutput {
 }
 
 // Defines an identifier.
-func (o LookupFiltersResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFiltersResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupFiltersResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupFiltersResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

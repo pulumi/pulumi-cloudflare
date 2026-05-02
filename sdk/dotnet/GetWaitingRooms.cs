@@ -12,6 +12,10 @@ namespace Pulumi.Cloudflare
     public static class GetWaitingRooms
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Waiting Rooms Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +39,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWaitingRoomsResult>("cloudflare:index/getWaitingRooms:getWaitingRooms", args ?? new GetWaitingRoomsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Waiting Rooms Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +66,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetWaitingRoomsResult>("cloudflare:index/getWaitingRooms:getWaitingRooms", args ?? new GetWaitingRoomsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Waiting Rooms Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

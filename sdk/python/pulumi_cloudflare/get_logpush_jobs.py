@@ -103,6 +103,10 @@ def get_logpush_jobs(account_id: Optional[_builtins.str] = None,
                      zone_id: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLogpushJobsResult:
     """
+    Accepted Permissions
+
+    - `Logs Write`
+
     ## Example Usage
 
     ```python
@@ -136,6 +140,10 @@ def get_logpush_jobs_output(account_id: Optional[pulumi.Input[Optional[_builtins
                             zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogpushJobsResult]:
     """
+    Accepted Permissions
+
+    - `Logs Write`
+
     ## Example Usage
 
     ```python

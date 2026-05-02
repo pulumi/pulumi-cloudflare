@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDeviceManagedNetworksList(ctx, &cloudflare.LookupZeroTrustDeviceManagedNetworksListArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,14 +48,14 @@ func LookupZeroTrustDeviceManagedNetworksList(ctx *pulumi.Context, args *LookupZ
 
 // A collection of arguments for invoking getZeroTrustDeviceManagedNetworksList.
 type LookupZeroTrustDeviceManagedNetworksListArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
 
 // A collection of values returned by getZeroTrustDeviceManagedNetworksList.
 type LookupZeroTrustDeviceManagedNetworksListResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -75,7 +75,7 @@ func LookupZeroTrustDeviceManagedNetworksListOutput(ctx *pulumi.Context, args Lo
 
 // A collection of arguments for invoking getZeroTrustDeviceManagedNetworksList.
 type LookupZeroTrustDeviceManagedNetworksListOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -99,8 +99,8 @@ func (o LookupZeroTrustDeviceManagedNetworksListResultOutput) ToLookupZeroTrustD
 	return o
 }
 
-func (o LookupZeroTrustDeviceManagedNetworksListResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDeviceManagedNetworksListResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDeviceManagedNetworksListResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceManagedNetworksListResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

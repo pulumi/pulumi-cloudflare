@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.DlpCustomProfileContextAwarenessArgs;
 import com.pulumi.cloudflare.inputs.DlpCustomProfileEntryArgs;
+import com.pulumi.cloudflare.inputs.DlpCustomProfileSensitivityLevelArgs;
 import com.pulumi.cloudflare.inputs.DlpCustomProfileSharedEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -96,6 +97,36 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Data class IDs to associate with the profile.
+     * 
+     */
+    @Import(name="dataClasses")
+    private @Nullable Output<List<String>> dataClasses;
+
+    /**
+     * @return Data class IDs to associate with the profile.
+     * 
+     */
+    public Optional<Output<List<String>>> dataClasses() {
+        return Optional.ofNullable(this.dataClasses);
+    }
+
+    /**
+     * Data tag IDs to associate with the profile.
+     * 
+     */
+    @Import(name="dataTags")
+    private @Nullable Output<List<String>> dataTags;
+
+    /**
+     * @return Data tag IDs to associate with the profile.
+     * 
+     */
+    public Optional<Output<List<String>>> dataTags() {
+        return Optional.ofNullable(this.dataTags);
+    }
+
+    /**
      * The description of the profile.
      * 
      */
@@ -165,6 +196,21 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Sensitivity levels to associate with the profile.
+     * 
+     */
+    @Import(name="sensitivityLevels")
+    private @Nullable Output<List<DlpCustomProfileSensitivityLevelArgs>> sensitivityLevels;
+
+    /**
+     * @return Sensitivity levels to associate with the profile.
+     * 
+     */
+    public Optional<Output<List<DlpCustomProfileSensitivityLevelArgs>>> sensitivityLevels() {
+        return Optional.ofNullable(this.sensitivityLevels);
+    }
+
+    /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      * 
      */
@@ -218,11 +264,14 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         this.confidenceThreshold = $.confidenceThreshold;
         this.contextAwareness = $.contextAwareness;
         this.createdAt = $.createdAt;
+        this.dataClasses = $.dataClasses;
+        this.dataTags = $.dataTags;
         this.description = $.description;
         this.entries = $.entries;
         this.name = $.name;
         this.ocrEnabled = $.ocrEnabled;
         this.openAccess = $.openAccess;
+        this.sensitivityLevels = $.sensitivityLevels;
         this.sharedEntries = $.sharedEntries;
         this.type = $.type;
         this.updatedAt = $.updatedAt;
@@ -345,6 +394,68 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param dataClasses Data class IDs to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataClasses(@Nullable Output<List<String>> dataClasses) {
+            $.dataClasses = dataClasses;
+            return this;
+        }
+
+        /**
+         * @param dataClasses Data class IDs to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataClasses(List<String> dataClasses) {
+            return dataClasses(Output.of(dataClasses));
+        }
+
+        /**
+         * @param dataClasses Data class IDs to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataClasses(String... dataClasses) {
+            return dataClasses(List.of(dataClasses));
+        }
+
+        /**
+         * @param dataTags Data tag IDs to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataTags(@Nullable Output<List<String>> dataTags) {
+            $.dataTags = dataTags;
+            return this;
+        }
+
+        /**
+         * @param dataTags Data tag IDs to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataTags(List<String> dataTags) {
+            return dataTags(Output.of(dataTags));
+        }
+
+        /**
+         * @param dataTags Data tag IDs to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataTags(String... dataTags) {
+            return dataTags(List.of(dataTags));
+        }
+
+        /**
          * @param description The description of the profile.
          * 
          * @return builder
@@ -448,6 +559,37 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
          */
         public Builder openAccess(Boolean openAccess) {
             return openAccess(Output.of(openAccess));
+        }
+
+        /**
+         * @param sensitivityLevels Sensitivity levels to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityLevels(@Nullable Output<List<DlpCustomProfileSensitivityLevelArgs>> sensitivityLevels) {
+            $.sensitivityLevels = sensitivityLevels;
+            return this;
+        }
+
+        /**
+         * @param sensitivityLevels Sensitivity levels to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityLevels(List<DlpCustomProfileSensitivityLevelArgs> sensitivityLevels) {
+            return sensitivityLevels(Output.of(sensitivityLevels));
+        }
+
+        /**
+         * @param sensitivityLevels Sensitivity levels to associate with the profile.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityLevels(DlpCustomProfileSensitivityLevelArgs... sensitivityLevels) {
+            return sensitivityLevels(List.of(sensitivityLevels));
         }
 
         /**

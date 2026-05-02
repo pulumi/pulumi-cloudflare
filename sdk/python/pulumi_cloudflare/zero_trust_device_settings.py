@@ -19,7 +19,7 @@ __all__ = ['ZeroTrustDeviceSettingsArgs', 'ZeroTrustDeviceSettings']
 @pulumi.input_type
 class ZeroTrustDeviceSettingsArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  disable_for_time: Optional[pulumi.Input[_builtins.float]] = None,
                  external_emergency_signal_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  external_emergency_signal_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -42,7 +42,8 @@ class ZeroTrustDeviceSettingsArgs:
         :param pulumi.Input[_builtins.bool] root_certificate_installation_enabled: Enable installation of cloudflare managed root certificate.
         :param pulumi.Input[_builtins.bool] use_zt_virtual_ip: Enable using CGNAT virtual IPv4.
         """
-        pulumi.set(__self__, "account_id", account_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if disable_for_time is not None:
             pulumi.set(__self__, "disable_for_time", disable_for_time)
         if external_emergency_signal_enabled is not None:
@@ -64,11 +65,11 @@ class ZeroTrustDeviceSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -363,6 +364,10 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
                  use_zt_virtual_ip: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -403,9 +408,13 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ZeroTrustDeviceSettingsArgs,
+                 args: Optional[ZeroTrustDeviceSettingsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -464,8 +473,6 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustDeviceSettingsArgs.__new__(ZeroTrustDeviceSettingsArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["disable_for_time"] = disable_for_time
             __props__.__dict__["external_emergency_signal_enabled"] = external_emergency_signal_enabled
@@ -531,7 +538,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

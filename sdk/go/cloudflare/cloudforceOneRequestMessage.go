@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudforce One Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -49,7 +53,7 @@ type CloudforceOneRequestMessage struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Author of message.
 	Author pulumi.StringOutput `pulumi:"author"`
 	// Content of message.
@@ -71,9 +75,6 @@ func NewCloudforceOneRequestMessage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.RequestId == nil {
 		return nil, errors.New("invalid value for required argument 'RequestId'")
 	}
@@ -139,7 +140,7 @@ func (CloudforceOneRequestMessageState) ElementType() reflect.Type {
 
 type cloudforceOneRequestMessageArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Content of message.
 	Content *string `pulumi:"content"`
 	// UUID.
@@ -149,7 +150,7 @@ type cloudforceOneRequestMessageArgs struct {
 // The set of arguments for constructing a CloudforceOneRequestMessage resource.
 type CloudforceOneRequestMessageArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Content of message.
 	Content pulumi.StringPtrInput
 	// UUID.
@@ -244,8 +245,8 @@ func (o CloudforceOneRequestMessageOutput) ToCloudforceOneRequestMessageOutputWi
 }
 
 // Identifier.
-func (o CloudforceOneRequestMessageOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudforceOneRequestMessage) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o CloudforceOneRequestMessageOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudforceOneRequestMessage) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Author of message.

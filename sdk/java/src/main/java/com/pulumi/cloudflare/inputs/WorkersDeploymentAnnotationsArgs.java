@@ -16,14 +16,14 @@ public final class WorkersDeploymentAnnotationsArgs extends com.pulumi.resources
     public static final WorkersDeploymentAnnotationsArgs Empty = new WorkersDeploymentAnnotationsArgs();
 
     /**
-     * Human-readable message about the deployment. Truncated to 100 bytes.
+     * Human-readable message about the deployment. Truncated to 1000 bytes if longer.
      * 
      */
     @Import(name="workersMessage")
     private @Nullable Output<String> workersMessage;
 
     /**
-     * @return Human-readable message about the deployment. Truncated to 100 bytes.
+     * @return Human-readable message about the deployment. Truncated to 1000 bytes if longer.
      * 
      */
     public Optional<Output<String>> workersMessage() {
@@ -71,7 +71,7 @@ public final class WorkersDeploymentAnnotationsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param workersMessage Human-readable message about the deployment. Truncated to 100 bytes.
+         * @param workersMessage Human-readable message about the deployment. Truncated to 1000 bytes if longer.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class WorkersDeploymentAnnotationsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param workersMessage Human-readable message about the deployment. Truncated to 100 bytes.
+         * @param workersMessage Human-readable message about the deployment. Truncated to 1000 bytes if longer.
          * 
          * @return builder
          * 

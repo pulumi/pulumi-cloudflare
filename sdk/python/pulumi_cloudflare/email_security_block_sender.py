@@ -19,35 +19,24 @@ __all__ = ['EmailSecurityBlockSenderArgs', 'EmailSecurityBlockSender']
 @pulumi.input_type
 class EmailSecurityBlockSenderArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  is_regex: pulumi.Input[_builtins.bool],
                  pattern: pulumi.Input[_builtins.str],
                  pattern_type: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  comments: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailSecurityBlockSender resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
         :param pulumi.Input[_builtins.str] pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        :param pulumi.Input[_builtins.str] account_id: Account Identifier
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "is_regex", is_regex)
         pulumi.set(__self__, "pattern", pattern)
         pulumi.set(__self__, "pattern_type", pattern_type)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Account Identifier
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isRegex")
@@ -78,6 +67,18 @@ class EmailSecurityBlockSenderArgs:
     @pattern_type.setter
     def pattern_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "pattern_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Account Identifier
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -203,6 +204,11 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
                  pattern_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Cloud Email Security: Read`
+        - `Cloud Email Security: Write`
+
         ## Example Usage
 
         ```python
@@ -236,6 +242,11 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
                  args: EmailSecurityBlockSenderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Cloud Email Security: Read`
+        - `Cloud Email Security: Write`
+
         ## Example Usage
 
         ```python
@@ -286,8 +297,6 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EmailSecurityBlockSenderArgs.__new__(EmailSecurityBlockSenderArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["comments"] = comments
             if is_regex is None and not opts.urn:
@@ -343,7 +352,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Account Identifier
         """

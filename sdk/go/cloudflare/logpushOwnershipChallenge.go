@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Logs Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -66,6 +70,13 @@ func NewLogpushOwnershipChallenge(ctx *pulumi.Context,
 	if args.DestinationConf == nil {
 		return nil, errors.New("invalid value for required argument 'DestinationConf'")
 	}
+	if args.DestinationConf != nil {
+		args.DestinationConf = pulumi.ToSecret(args.DestinationConf).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"destinationConf",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LogpushOwnershipChallenge
 	err := ctx.RegisterResource("cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge", name, args, &resource, opts...)

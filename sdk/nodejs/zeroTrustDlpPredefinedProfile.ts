@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -69,13 +74,13 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDlpPredefinedProfile.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public readonly aiContextEnabled: pulumi.Output<boolean>;
     declare public readonly allowedMatchCount: pulumi.Output<number>;
     declare public readonly confidenceThreshold: pulumi.Output<string>;
     declare public readonly enabledEntries: pulumi.Output<string[] | undefined>;
     /**
-     * @deprecated This attribute is deprecated.
+     * @deprecated This attribute is deprecated. Use enabledEntries instead.
      */
     declare public readonly entries: pulumi.Output<outputs.ZeroTrustDlpPredefinedProfileEntry[]>;
     /**
@@ -114,9 +119,6 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
             resourceInputs["profileId"] = state?.profileId;
         } else {
             const args = argsOrState as ZeroTrustDlpPredefinedProfileArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.profileId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'profileId'");
             }
@@ -148,7 +150,7 @@ export interface ZeroTrustDlpPredefinedProfileState {
     confidenceThreshold?: pulumi.Input<string>;
     enabledEntries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated This attribute is deprecated.
+     * @deprecated This attribute is deprecated. Use enabledEntries instead.
      */
     entries?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpPredefinedProfileEntry>[]>;
     /**
@@ -167,13 +169,13 @@ export interface ZeroTrustDlpPredefinedProfileState {
  * The set of arguments for constructing a ZeroTrustDlpPredefinedProfile resource.
  */
 export interface ZeroTrustDlpPredefinedProfileArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     aiContextEnabled?: pulumi.Input<boolean>;
     allowedMatchCount?: pulumi.Input<number>;
     confidenceThreshold?: pulumi.Input<string>;
     enabledEntries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated This attribute is deprecated.
+     * @deprecated This attribute is deprecated. Use enabledEntries instead.
      */
     entries?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpPredefinedProfileEntry>[]>;
     ocrEnabled?: pulumi.Input<boolean>;

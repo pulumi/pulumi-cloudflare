@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Cloudflare DEX Read`
+    /// - `Cloudflare DEX Write`
+    /// - `Zero Trust Read`
+    /// - `Zero Trust Report`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -57,7 +64,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDexTest : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The configuration object which contains the details for the WARP client to conduct the test.
@@ -150,8 +157,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDexTestArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The configuration object which contains the details for the WARP client to conduct the test.

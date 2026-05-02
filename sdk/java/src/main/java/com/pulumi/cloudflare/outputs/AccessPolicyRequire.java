@@ -27,6 +27,7 @@ import com.pulumi.cloudflare.outputs.AccessPolicyRequireOidc;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireOkta;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireSaml;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireServiceToken;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireUserRiskScore;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
 import java.util.Optional;
@@ -66,6 +67,7 @@ public final class AccessPolicyRequire {
     private @Nullable AccessPolicyRequireOkta okta;
     private @Nullable AccessPolicyRequireSaml saml;
     private @Nullable AccessPolicyRequireServiceToken serviceToken;
+    private @Nullable AccessPolicyRequireUserRiskScore userRiskScore;
 
     private AccessPolicyRequire() {}
     /**
@@ -148,6 +150,9 @@ public final class AccessPolicyRequire {
     public Optional<AccessPolicyRequireServiceToken> serviceToken() {
         return Optional.ofNullable(this.serviceToken);
     }
+    public Optional<AccessPolicyRequireUserRiskScore> userRiskScore() {
+        return Optional.ofNullable(this.userRiskScore);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -182,6 +187,7 @@ public final class AccessPolicyRequire {
         private @Nullable AccessPolicyRequireOkta okta;
         private @Nullable AccessPolicyRequireSaml saml;
         private @Nullable AccessPolicyRequireServiceToken serviceToken;
+        private @Nullable AccessPolicyRequireUserRiskScore userRiskScore;
         public Builder() {}
         public Builder(AccessPolicyRequire defaults) {
     	      Objects.requireNonNull(defaults);
@@ -209,6 +215,7 @@ public final class AccessPolicyRequire {
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
+    	      this.userRiskScore = defaults.userRiskScore;
         }
 
         @CustomType.Setter
@@ -355,6 +362,12 @@ public final class AccessPolicyRequire {
             this.serviceToken = serviceToken;
             return this;
         }
+        @CustomType.Setter
+        public Builder userRiskScore(@Nullable AccessPolicyRequireUserRiskScore userRiskScore) {
+
+            this.userRiskScore = userRiskScore;
+            return this;
+        }
         public AccessPolicyRequire build() {
             final var _resultValue = new AccessPolicyRequire();
             _resultValue.anyValidServiceToken = anyValidServiceToken;
@@ -381,6 +394,7 @@ public final class AccessPolicyRequire {
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;
+            _resultValue.userRiskScore = userRiskScore;
             return _resultValue;
         }
     }

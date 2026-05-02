@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Images Read`
+ * - `Images Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getImages(args: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
+export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getImages:getImages", {
         "accountId": args.accountId,
@@ -35,7 +41,7 @@ export interface GetImagesArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
      */
@@ -53,7 +59,7 @@ export interface GetImagesResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
      */
@@ -72,6 +78,11 @@ export interface GetImagesResult {
     readonly results: outputs.GetImagesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Images Read`
+ * - `Images Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -84,7 +95,8 @@ export interface GetImagesResult {
  * });
  * ```
  */
-export function getImagesOutput(args: GetImagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImagesResult> {
+export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImagesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getImages:getImages", {
         "accountId": args.accountId,
@@ -100,7 +112,7 @@ export interface GetImagesOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
      */

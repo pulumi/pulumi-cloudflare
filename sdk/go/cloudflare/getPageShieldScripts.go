@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Domain Page Shield`
+// - `Domain Page Shield Read`
+// - `Page Shield`
+// - `Page Shield Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetPageShieldScripts(ctx, &cloudflare.GetPageShieldScriptsArgs{
-//				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ScriptId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -52,7 +61,7 @@ type GetPageShieldScriptsArgs struct {
 	// Identifier
 	ScriptId string `pulumi:"scriptId"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getPageShieldScripts.
@@ -60,7 +69,9 @@ type GetPageShieldScriptsResult struct {
 	AddedAt string `pulumi:"addedAt"`
 	// The cryptomining score of the JavaScript content.
 	CryptominingScore int `pulumi:"cryptominingScore"`
-	// The dataflow score of the JavaScript content.
+	// The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+	//
+	// Deprecated: This attribute is deprecated.
 	DataflowScore           int  `pulumi:"dataflowScore"`
 	DomainReportedMalicious bool `pulumi:"domainReportedMalicious"`
 	// The timestamp of when the script was last fetched.
@@ -81,7 +92,9 @@ type GetPageShieldScriptsResult struct {
 	MaliciousUrlCategories    []string `pulumi:"maliciousUrlCategories"`
 	// The malware score of the JavaScript content.
 	MalwareScore int `pulumi:"malwareScore"`
-	// The obfuscation score of the JavaScript content.
+	// The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+	//
+	// Deprecated: This attribute is deprecated.
 	ObfuscationScore int      `pulumi:"obfuscationScore"`
 	PageUrls         []string `pulumi:"pageUrls"`
 	// Identifier
@@ -91,7 +104,7 @@ type GetPageShieldScriptsResult struct {
 	UrlReportedMalicious  bool                          `pulumi:"urlReportedMalicious"`
 	Versions              []GetPageShieldScriptsVersion `pulumi:"versions"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func GetPageShieldScriptsOutput(ctx *pulumi.Context, args GetPageShieldScriptsOutputArgs, opts ...pulumi.InvokeOption) GetPageShieldScriptsResultOutput {
@@ -108,7 +121,7 @@ type GetPageShieldScriptsOutputArgs struct {
 	// Identifier
 	ScriptId pulumi.StringInput `pulumi:"scriptId"`
 	// Identifier
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (GetPageShieldScriptsOutputArgs) ElementType() reflect.Type {
@@ -139,7 +152,9 @@ func (o GetPageShieldScriptsResultOutput) CryptominingScore() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPageShieldScriptsResult) int { return v.CryptominingScore }).(pulumi.IntOutput)
 }
 
-// The dataflow score of the JavaScript content.
+// The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+//
+// Deprecated: This attribute is deprecated.
 func (o GetPageShieldScriptsResultOutput) DataflowScore() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPageShieldScriptsResult) int { return v.DataflowScore }).(pulumi.IntOutput)
 }
@@ -202,7 +217,9 @@ func (o GetPageShieldScriptsResultOutput) MalwareScore() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPageShieldScriptsResult) int { return v.MalwareScore }).(pulumi.IntOutput)
 }
 
-// The obfuscation score of the JavaScript content.
+// The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+//
+// Deprecated: This attribute is deprecated.
 func (o GetPageShieldScriptsResultOutput) ObfuscationScore() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPageShieldScriptsResult) int { return v.ObfuscationScore }).(pulumi.IntOutput)
 }
@@ -233,8 +250,8 @@ func (o GetPageShieldScriptsResultOutput) Versions() GetPageShieldScriptsVersion
 }
 
 // Identifier
-func (o GetPageShieldScriptsResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPageShieldScriptsResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o GetPageShieldScriptsResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPageShieldScriptsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

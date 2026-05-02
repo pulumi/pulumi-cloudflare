@@ -19,7 +19,7 @@ public final class GetTurnstileWidgetResult {
      * @return Identifier
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return If bot*fight*mode is set to `true`, Cloudflare issues computationally
      * expensive challenges in response to malicious bots (ENT only).
@@ -95,8 +95,8 @@ public final class GetTurnstileWidgetResult {
      * @return Identifier
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return If bot*fight*mode is set to `true`, Cloudflare issues computationally
@@ -205,7 +205,7 @@ public final class GetTurnstileWidgetResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Boolean botFightMode;
         private String clearanceLevel;
         private String createdOn;
@@ -241,10 +241,8 @@ public final class GetTurnstileWidgetResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetTurnstileWidgetResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

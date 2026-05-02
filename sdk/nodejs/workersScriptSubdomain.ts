@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * > This resource is redundant with `cloudflare.Worker` and should not be used together. When using the `cloudflare.Worker` resource, use the nested `subdomain` attribute to control subdomain settings instead.
  *
  * ## Example Usage
@@ -58,7 +64,7 @@ export class WorkersScriptSubdomain extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Whether the Worker should be available on the workers.dev subdomain.
      */
@@ -91,9 +97,6 @@ export class WorkersScriptSubdomain extends pulumi.CustomResource {
             resourceInputs["scriptName"] = state?.scriptName;
         } else {
             const args = argsOrState as WorkersScriptSubdomainArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
@@ -139,7 +142,7 @@ export interface WorkersScriptSubdomainArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Whether the Worker should be available on the workers.dev subdomain.
      */

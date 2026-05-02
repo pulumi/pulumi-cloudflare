@@ -21,32 +21,25 @@ __all__ = ['ZeroTrustTunnelWarpConnectorArgs', 'ZeroTrustTunnelWarpConnector']
 @pulumi.input_type
 class ZeroTrustTunnelWarpConnectorArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
                  tunnel_secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustTunnelWarpConnector resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] name: A user-friendly name for a tunnel.
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
+        :param pulumi.Input[_builtins.bool] ha: Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
         :param pulumi.Input[_builtins.str] tunnel_secret: Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if ha is not None:
+            pulumi.set(__self__, "ha", ha)
         if tunnel_secret is not None:
             pulumi.set(__self__, "tunnel_secret", tunnel_secret)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Cloudflare account ID
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -59,6 +52,30 @@ class ZeroTrustTunnelWarpConnectorArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cloudflare account ID
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ha(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+        """
+        return pulumi.get(self, "ha")
+
+    @ha.setter
+    def ha(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ha", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelSecret")
@@ -83,6 +100,7 @@ class _ZeroTrustTunnelWarpConnectorState:
                  conns_inactive_at: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
                  metadata: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -98,6 +116,7 @@ class _ZeroTrustTunnelWarpConnectorState:
         :param pulumi.Input[_builtins.str] conns_inactive_at: Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.
         :param pulumi.Input[_builtins.str] deleted_at: Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        :param pulumi.Input[_builtins.bool] ha: Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
         :param pulumi.Input[_builtins.str] metadata: Metadata associated with the tunnel.
         :param pulumi.Input[_builtins.str] name: A user-friendly name for a tunnel.
         :param pulumi.Input[_builtins.str] status: The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
@@ -123,6 +142,8 @@ class _ZeroTrustTunnelWarpConnectorState:
             pulumi.set(__self__, "created_at", created_at)
         if deleted_at is not None:
             pulumi.set(__self__, "deleted_at", deleted_at)
+        if ha is not None:
+            pulumi.set(__self__, "ha", ha)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
@@ -221,6 +242,18 @@ class _ZeroTrustTunnelWarpConnectorState:
 
     @_builtins.property
     @pulumi.getter
+    def ha(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+        """
+        return pulumi.get(self, "ha")
+
+    @ha.setter
+    def ha(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ha", value)
+
+    @_builtins.property
+    @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Metadata associated with the tunnel.
@@ -289,10 +322,18 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  tunnel_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Cloudflare One Connector: WARP Read`
+        - `Cloudflare One Connector: WARP Write`
+        - `Cloudflare One Connectors Read`
+        - `Cloudflare One Connectors Write`
+
         ## Example Usage
 
         ```python
@@ -301,7 +342,8 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
 
         example_zero_trust_tunnel_warp_connector = cloudflare.ZeroTrustTunnelWarpConnector("example_zero_trust_tunnel_warp_connector",
             account_id="699d98642c564d2e855e9661899b7252",
-            name="blog")
+            name="blog",
+            ha=True)
         ```
 
         ## Import
@@ -314,6 +356,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
+        :param pulumi.Input[_builtins.bool] ha: Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
         :param pulumi.Input[_builtins.str] name: A user-friendly name for a tunnel.
         :param pulumi.Input[_builtins.str] tunnel_secret: Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
         """
@@ -324,6 +367,13 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
                  args: ZeroTrustTunnelWarpConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Cloudflare One Connector: WARP Read`
+        - `Cloudflare One Connector: WARP Write`
+        - `Cloudflare One Connectors Read`
+        - `Cloudflare One Connectors Write`
+
         ## Example Usage
 
         ```python
@@ -332,7 +382,8 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
 
         example_zero_trust_tunnel_warp_connector = cloudflare.ZeroTrustTunnelWarpConnector("example_zero_trust_tunnel_warp_connector",
             account_id="699d98642c564d2e855e9661899b7252",
-            name="blog")
+            name="blog",
+            ha=True)
         ```
 
         ## Import
@@ -358,6 +409,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  tunnel_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -369,9 +421,8 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustTunnelWarpConnectorArgs.__new__(ZeroTrustTunnelWarpConnectorArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["ha"] = ha
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -404,6 +455,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
             conns_inactive_at: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
+            ha: Optional[pulumi.Input[_builtins.bool]] = None,
             metadata: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -423,6 +475,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] conns_inactive_at: Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.
         :param pulumi.Input[_builtins.str] deleted_at: Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        :param pulumi.Input[_builtins.bool] ha: Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
         :param pulumi.Input[_builtins.str] metadata: Metadata associated with the tunnel.
         :param pulumi.Input[_builtins.str] name: A user-friendly name for a tunnel.
         :param pulumi.Input[_builtins.str] status: The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
@@ -442,6 +495,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
         __props__.__dict__["conns_inactive_at"] = conns_inactive_at
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["deleted_at"] = deleted_at
+        __props__.__dict__["ha"] = ha
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
         __props__.__dict__["status"] = status
@@ -451,7 +505,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Cloudflare account ID
         """
@@ -505,6 +559,14 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
         Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
         """
         return pulumi.get(self, "deleted_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def ha(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
+        """
+        return pulumi.get(self, "ha")
 
     @_builtins.property
     @pulumi.getter

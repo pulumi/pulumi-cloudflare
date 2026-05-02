@@ -21,7 +21,7 @@ public final class GetAccountMemberResult {
      * @return Account identifier tag.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The contact email address of the user.
      * 
@@ -65,8 +65,8 @@ public final class GetAccountMemberResult {
      * @return Account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The contact email address of the user.
@@ -131,7 +131,7 @@ public final class GetAccountMemberResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String email;
         private @Nullable GetAccountMemberFilter filter;
         private String id;
@@ -155,10 +155,8 @@ public final class GetAccountMemberResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAccountMemberResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

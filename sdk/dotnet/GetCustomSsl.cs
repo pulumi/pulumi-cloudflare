@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetCustomSsl
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Mutual TLS Certificates Read`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +38,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCustomSslResult> InvokeAsync(GetCustomSslArgs args, InvokeOptions? options = null)
+        public static Task<GetCustomSslResult> InvokeAsync(GetCustomSslArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomSslResult>("cloudflare:index/getCustomSsl:getCustomSsl", args ?? new GetCustomSslArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Mutual TLS Certificates Read`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +68,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCustomSslResult> Invoke(GetCustomSslInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetCustomSslResult> Invoke(GetCustomSslInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomSslResult>("cloudflare:index/getCustomSsl:getCustomSsl", args ?? new GetCustomSslInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Mutual TLS Certificates Read`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -96,8 +117,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetCustomSslArgs()
         {
@@ -119,8 +140,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetCustomSslInvokeArgs()
         {
@@ -141,6 +162,10 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         public readonly string? CustomCertificateId;
+        /// <summary>
+        /// The identifier for the Custom CSR that was used.
+        /// </summary>
+        public readonly string CustomCsrId;
         /// <summary>
         /// When the certificate from the authority expires.
         /// </summary>
@@ -177,13 +202,15 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetCustomSslResult(
             string bundleMethod,
 
             string? customCertificateId,
+
+            string customCsrId,
 
             string expiresOn,
 
@@ -211,10 +238,11 @@ namespace Pulumi.Cloudflare
 
             string uploadedOn,
 
-            string zoneId)
+            string? zoneId)
         {
             BundleMethod = bundleMethod;
             CustomCertificateId = customCertificateId;
+            CustomCsrId = customCsrId;
             ExpiresOn = expiresOn;
             Filter = filter;
             GeoRestrictions = geoRestrictions;

@@ -66,7 +66,7 @@ public final class GetTokenValidationRulesListInvokeResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetTokenValidationRulesListInvokeResult() {}
     /**
@@ -137,8 +137,8 @@ public final class GetTokenValidationRulesListInvokeResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -159,7 +159,7 @@ public final class GetTokenValidationRulesListInvokeResult {
         private List<GetTokenValidationRulesListResult> results;
         private @Nullable String ruleId;
         private @Nullable List<String> tokenConfigurations;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetTokenValidationRulesListInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -238,10 +238,8 @@ public final class GetTokenValidationRulesListInvokeResult {
             return tokenConfigurations(List.of(tokenConfigurations));
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetTokenValidationRulesListInvokeResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

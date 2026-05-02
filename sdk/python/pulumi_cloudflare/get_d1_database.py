@@ -28,7 +28,7 @@ class GetD1DatabaseResult:
     """
     A collection of values returned by getD1Database.
     """
-    def __init__(__self__, account_id=None, created_at=None, database_id=None, file_size=None, filter=None, id=None, name=None, num_tables=None, read_replication=None, uuid=None, version=None):
+    def __init__(__self__, account_id=None, created_at=None, database_id=None, file_size=None, filter=None, id=None, jurisdiction=None, name=None, num_tables=None, read_replication=None, uuid=None, version=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -47,6 +47,9 @@ class GetD1DatabaseResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if jurisdiction and not isinstance(jurisdiction, str):
+            raise TypeError("Expected argument 'jurisdiction' to be a str")
+        pulumi.set(__self__, "jurisdiction", jurisdiction)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -65,7 +68,7 @@ class GetD1DatabaseResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account identifier tag.
         """
@@ -107,6 +110,15 @@ class GetD1DatabaseResult:
         D1 database identifier (UUID).
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def jurisdiction(self) -> _builtins.str:
+        """
+        Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+        Available values: "eu", "fedramp".
+        """
+        return pulumi.get(self, "jurisdiction")
 
     @_builtins.property
     @pulumi.getter
@@ -155,6 +167,7 @@ class AwaitableGetD1DatabaseResult(GetD1DatabaseResult):
             file_size=self.file_size,
             filter=self.filter,
             id=self.id,
+            jurisdiction=self.jurisdiction,
             name=self.name,
             num_tables=self.num_tables,
             read_replication=self.read_replication,
@@ -167,6 +180,11 @@ def get_d1_database(account_id: Optional[_builtins.str] = None,
                     filter: Optional[Union['GetD1DatabaseFilterArgs', 'GetD1DatabaseFilterArgsDict']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetD1DatabaseResult:
     """
+    Accepted Permissions
+
+    - `D1 Read`
+    - `D1 Write`
+
     ## Example Usage
 
     ```python
@@ -195,16 +213,22 @@ def get_d1_database(account_id: Optional[_builtins.str] = None,
         file_size=pulumi.get(__ret__, 'file_size'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        jurisdiction=pulumi.get(__ret__, 'jurisdiction'),
         name=pulumi.get(__ret__, 'name'),
         num_tables=pulumi.get(__ret__, 'num_tables'),
         read_replication=pulumi.get(__ret__, 'read_replication'),
         uuid=pulumi.get(__ret__, 'uuid'),
         version=pulumi.get(__ret__, 'version'))
-def get_d1_database_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_d1_database_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            database_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            filter: Optional[pulumi.Input[Optional[Union['GetD1DatabaseFilterArgs', 'GetD1DatabaseFilterArgsDict']]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetD1DatabaseResult]:
     """
+    Accepted Permissions
+
+    - `D1 Read`
+    - `D1 Write`
+
     ## Example Usage
 
     ```python
@@ -232,6 +256,7 @@ def get_d1_database_output(account_id: Optional[pulumi.Input[_builtins.str]] = N
         file_size=pulumi.get(__response__, 'file_size'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        jurisdiction=pulumi.get(__response__, 'jurisdiction'),
         name=pulumi.get(__response__, 'name'),
         num_tables=pulumi.get(__response__, 'num_tables'),
         read_replication=pulumi.get(__response__, 'read_replication'),

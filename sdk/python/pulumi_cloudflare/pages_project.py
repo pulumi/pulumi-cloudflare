@@ -21,43 +21,32 @@ __all__ = ['PagesProjectArgs', 'PagesProject']
 @pulumi.input_type
 class PagesProjectArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  production_branch: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  build_config: Optional[pulumi.Input['PagesProjectBuildConfigArgs']] = None,
                  deployment_configs: Optional[pulumi.Input['PagesProjectDeploymentConfigsArgs']] = None,
                  source: Optional[pulumi.Input['PagesProjectSourceArgs']] = None):
         """
         The set of arguments for constructing a PagesProject resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: Name of the project.
         :param pulumi.Input[_builtins.str] production_branch: Production branch of the project. Used to identify production deployments.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['PagesProjectBuildConfigArgs'] build_config: Configs for the project build process.
         :param pulumi.Input['PagesProjectDeploymentConfigsArgs'] deployment_configs: Configs for deployments in a project.
         :param pulumi.Input['PagesProjectSourceArgs'] source: Configs for the project source control.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "production_branch", production_branch)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if build_config is not None:
             pulumi.set(__self__, "build_config", build_config)
         if deployment_configs is not None:
             pulumi.set(__self__, "deployment_configs", deployment_configs)
         if source is not None:
             pulumi.set(__self__, "source", source)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -82,6 +71,18 @@ class PagesProjectArgs:
     @production_branch.setter
     def production_branch(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "production_branch", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="buildConfig")
@@ -399,6 +400,11 @@ class PagesProject(pulumi.CustomResource):
                  source: Optional[pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Pages Read`
+        - `Pages Write`
+
         > If you are using a `source` block configuration, you must first have a
            connected GitHub or GitLab account connected to Cloudflare. See the
            [Getting Started with Pages](https://developers.cloudflare.com/pages/get-started/git-integration/)
@@ -633,6 +639,11 @@ class PagesProject(pulumi.CustomResource):
                  args: PagesProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Pages Read`
+        - `Pages Write`
+
         > If you are using a `source` block configuration, you must first have a
            connected GitHub or GitLab account connected to Cloudflare. See the
            [Getting Started with Pages](https://developers.cloudflare.com/pages/get-started/git-integration/)
@@ -881,8 +892,6 @@ class PagesProject(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PagesProjectArgs.__new__(PagesProjectArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["build_config"] = build_config
             __props__.__dict__["deployment_configs"] = deployment_configs
@@ -977,7 +986,7 @@ class PagesProject(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

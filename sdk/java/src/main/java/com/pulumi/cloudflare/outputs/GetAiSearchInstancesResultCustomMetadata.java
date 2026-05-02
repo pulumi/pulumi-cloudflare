@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAiSearchInstancesResultCustomMetadata {
     /**
-     * @return Available values: &#34;text&#34;, &#34;number&#34;, &#34;boolean&#34;.
+     * @return Available values: &#34;text&#34;, &#34;number&#34;, &#34;boolean&#34;, &#34;datetime&#34;.
      * 
      */
     private String dataType;
@@ -19,7 +19,7 @@ public final class GetAiSearchInstancesResultCustomMetadata {
 
     private GetAiSearchInstancesResultCustomMetadata() {}
     /**
-     * @return Available values: &#34;text&#34;, &#34;number&#34;, &#34;boolean&#34;.
+     * @return Available values: &#34;text&#34;, &#34;number&#34;, &#34;boolean&#34;, &#34;datetime&#34;.
      * 
      */
     public String dataType() {

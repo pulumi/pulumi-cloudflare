@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Networks Read`
+// - `Cloudflare One Networks Write`
+// - `Cloudflare Tunnel Read`
+// - `Cloudflare Tunnel Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustNetworkHostnameRoute(ctx, &cloudflare.LookupZeroTrustNetworkHostnameRouteArgs{
-//				AccountId:       "699d98642c564d2e855e9661899b7252",
+//				AccountId:       pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				HostnameRouteId: pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +57,7 @@ func LookupZeroTrustNetworkHostnameRoute(ctx *pulumi.Context, args *LookupZeroTr
 // A collection of arguments for invoking getZeroTrustNetworkHostnameRoute.
 type LookupZeroTrustNetworkHostnameRouteArgs struct {
 	// Cloudflare account ID
-	AccountId string                                  `pulumi:"accountId"`
+	AccountId *string                                 `pulumi:"accountId"`
 	Filter    *GetZeroTrustNetworkHostnameRouteFilter `pulumi:"filter"`
 	// The hostname route ID.
 	HostnameRouteId *string `pulumi:"hostnameRouteId"`
@@ -59,7 +66,7 @@ type LookupZeroTrustNetworkHostnameRouteArgs struct {
 // A collection of values returned by getZeroTrustNetworkHostnameRoute.
 type LookupZeroTrustNetworkHostnameRouteResult struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// An optional description of the hostname route.
 	Comment string `pulumi:"comment"`
 	// Timestamp of when the resource was created.
@@ -91,7 +98,7 @@ func LookupZeroTrustNetworkHostnameRouteOutput(ctx *pulumi.Context, args LookupZ
 // A collection of arguments for invoking getZeroTrustNetworkHostnameRoute.
 type LookupZeroTrustNetworkHostnameRouteOutputArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringInput                             `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput                          `pulumi:"accountId"`
 	Filter    GetZeroTrustNetworkHostnameRouteFilterPtrInput `pulumi:"filter"`
 	// The hostname route ID.
 	HostnameRouteId pulumi.StringPtrInput `pulumi:"hostnameRouteId"`
@@ -117,8 +124,8 @@ func (o LookupZeroTrustNetworkHostnameRouteResultOutput) ToLookupZeroTrustNetwor
 }
 
 // Cloudflare account ID
-func (o LookupZeroTrustNetworkHostnameRouteResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustNetworkHostnameRouteResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustNetworkHostnameRouteResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustNetworkHostnameRouteResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // An optional description of the hostname route.

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustDlpIntegrationEntry
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDlpIntegrationEntryResult>("cloudflare:index/getZeroTrustDlpIntegrationEntry:getZeroTrustDlpIntegrationEntry", args ?? new GetZeroTrustDlpIntegrationEntryArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDlpIntegrationEntryResult>("cloudflare:index/getZeroTrustDlpIntegrationEntry:getZeroTrustDlpIntegrationEntry", args ?? new GetZeroTrustDlpIntegrationEntryInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDlpIntegrationEntryArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("entryId", required: true)]
         public string EntryId { get; set; } = null!;
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDlpIntegrationEntryInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("entryId", required: true)]
         public Input<string> EntryId { get; set; } = null!;
@@ -114,7 +129,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDlpIntegrationEntryResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Only applies to custom word lists.
         /// Determines if the words should be matched in a case-sensitive manner
@@ -149,7 +164,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDlpIntegrationEntryResult(
-            string accountId,
+            string? accountId,
 
             bool caseSensitive,
 

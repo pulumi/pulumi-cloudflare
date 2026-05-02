@@ -47,7 +47,7 @@ type R2ManagedDomain struct {
 	pulumi.CustomResourceState
 
 	// Account ID.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Bucket ID.
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
 	// Name of the bucket.
@@ -67,9 +67,6 @@ func NewR2ManagedDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.BucketName == nil {
 		return nil, errors.New("invalid value for required argument 'BucketName'")
 	}
@@ -134,7 +131,7 @@ func (R2ManagedDomainState) ElementType() reflect.Type {
 
 type r2managedDomainArgs struct {
 	// Account ID.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// Whether to enable public bucket access at the r2.dev domain.
@@ -146,7 +143,7 @@ type r2managedDomainArgs struct {
 // The set of arguments for constructing a R2ManagedDomain resource.
 type R2ManagedDomainArgs struct {
 	// Account ID.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Name of the bucket.
 	BucketName pulumi.StringInput
 	// Whether to enable public bucket access at the r2.dev domain.
@@ -243,8 +240,8 @@ func (o R2ManagedDomainOutput) ToR2ManagedDomainOutputWithContext(ctx context.Co
 }
 
 // Account ID.
-func (o R2ManagedDomainOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *R2ManagedDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o R2ManagedDomainOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *R2ManagedDomain) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Bucket ID.

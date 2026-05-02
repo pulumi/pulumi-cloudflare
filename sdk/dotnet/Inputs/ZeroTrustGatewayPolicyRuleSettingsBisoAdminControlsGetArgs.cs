@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Dk { get; set; }
 
         /// <summary>
-        /// Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == "v2".
+        /// Configure download behavior. When set to remote*only, users can view downloads but cannot save them. If this field is absent, downloading remains enabled. Applies only when version == "v2".
         /// Available values: "enabled", "disabled", "remote*only".
         /// </summary>
         [Input("download")]
@@ -90,6 +90,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
+
+        /// <summary>
+        /// Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser.
+        /// </summary>
+        [Input("wmId")]
+        public Input<string>? WmId { get; set; }
 
         public ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsGetArgs()
         {

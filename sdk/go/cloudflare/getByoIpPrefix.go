@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `IP Prefixes: BGP On Demand Read`
+// - `IP Prefixes: BGP On Demand Write`
+// - `IP Prefixes: Read`
+// - `IP Prefixes: Write`
+// - `Magic Transit Read`
+// - `Magic Transit Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetByoIpPrefix(ctx, &cloudflare.LookupByoIpPrefixArgs{
-//				AccountId: "258def64c72dae45f3e4c8516e2111f2",
+//				AccountId: pulumi.StringRef("258def64c72dae45f3e4c8516e2111f2"),
 //				PrefixId:  "2af39739cc4e3b5910c918468bb89828",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +59,7 @@ func LookupByoIpPrefix(ctx *pulumi.Context, args *LookupByoIpPrefixArgs, opts ..
 // A collection of arguments for invoking getByoIpPrefix.
 type LookupByoIpPrefixArgs struct {
 	// Identifier of a Cloudflare account.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Identifier of an IP Prefix.
 	PrefixId string `pulumi:"prefixId"`
 }
@@ -58,7 +67,7 @@ type LookupByoIpPrefixArgs struct {
 // A collection of values returned by getByoIpPrefix.
 type LookupByoIpPrefixResult struct {
 	// Identifier of a Cloudflare account.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
 	//
 	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
@@ -115,7 +124,7 @@ func LookupByoIpPrefixOutput(ctx *pulumi.Context, args LookupByoIpPrefixOutputAr
 // A collection of arguments for invoking getByoIpPrefix.
 type LookupByoIpPrefixOutputArgs struct {
 	// Identifier of a Cloudflare account.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Identifier of an IP Prefix.
 	PrefixId pulumi.StringInput `pulumi:"prefixId"`
 }
@@ -140,8 +149,8 @@ func (o LookupByoIpPrefixResultOutput) ToLookupByoIpPrefixResultOutputWithContex
 }
 
 // Identifier of a Cloudflare account.
-func (o LookupByoIpPrefixResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupByoIpPrefixResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupByoIpPrefixResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupByoIpPrefixResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.

@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Magic Transit Read`
+    /// - `Magic Transit Write`
+    /// - `Magic WAN Read`
+    /// - `Magic WAN Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -26,6 +33,8 @@ namespace Pulumi.Cloudflare
     ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BondId = 2,
     ///         HaLink = true,
+    ///         IsBreakout = true,
+    ///         IsPrioritized = true,
     ///         Name = "name",
     ///         Nat = new Cloudflare.Inputs.MagicTransitSiteLanNatArgs
     ///         {
@@ -91,7 +100,7 @@ namespace Pulumi.Cloudflare
         /// Identifier
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("bondId")]
         public Output<int?> BondId { get; private set; } = null!;
@@ -101,6 +110,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("haLink")]
         public Output<bool?> HaLink { get; private set; } = null!;
+
+        /// <summary>
+        /// mark true to use this LAN for source-based breakout traffic
+        /// </summary>
+        [Output("isBreakout")]
+        public Output<bool?> IsBreakout { get; private set; } = null!;
+
+        /// <summary>
+        /// mark true to use this LAN for source-based prioritized traffic
+        /// </summary>
+        [Output("isPrioritized")]
+        public Output<bool?> IsPrioritized { get; private set; } = null!;
 
         [Output("name")]
         public Output<string?> Name { get; private set; } = null!;
@@ -181,8 +202,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("bondId")]
         public Input<int>? BondId { get; set; }
@@ -192,6 +213,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("haLink")]
         public Input<bool>? HaLink { get; set; }
+
+        /// <summary>
+        /// mark true to use this LAN for source-based breakout traffic
+        /// </summary>
+        [Input("isBreakout")]
+        public Input<bool>? IsBreakout { get; set; }
+
+        /// <summary>
+        /// mark true to use this LAN for source-based prioritized traffic
+        /// </summary>
+        [Input("isPrioritized")]
+        public Input<bool>? IsPrioritized { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -250,6 +283,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("haLink")]
         public Input<bool>? HaLink { get; set; }
+
+        /// <summary>
+        /// mark true to use this LAN for source-based breakout traffic
+        /// </summary>
+        [Input("isBreakout")]
+        public Input<bool>? IsBreakout { get; set; }
+
+        /// <summary>
+        /// mark true to use this LAN for source-based prioritized traffic
+        /// </summary>
+        [Input("isPrioritized")]
+        public Input<bool>? IsPrioritized { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustGatewayProxyEndpoint(ctx, &cloudflare.LookupZeroTrustGatewayProxyEndpointArgs{
-//				AccountId:       "699d98642c564d2e855e9661899b7252",
+//				AccountId:       pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //				ProxyEndpointId: "ed35569b41ce4d1facfe683550f54086",
 //			}, nil)
 //			if err != nil {
@@ -49,14 +49,14 @@ func LookupZeroTrustGatewayProxyEndpoint(ctx *pulumi.Context, args *LookupZeroTr
 
 // A collection of arguments for invoking getZeroTrustGatewayProxyEndpoint.
 type LookupZeroTrustGatewayProxyEndpointArgs struct {
-	AccountId       string `pulumi:"accountId"`
-	ProxyEndpointId string `pulumi:"proxyEndpointId"`
+	AccountId       *string `pulumi:"accountId"`
+	ProxyEndpointId string  `pulumi:"proxyEndpointId"`
 }
 
 // A collection of values returned by getZeroTrustGatewayProxyEndpoint.
 type LookupZeroTrustGatewayProxyEndpointResult struct {
-	AccountId string `pulumi:"accountId"`
-	CreatedAt string `pulumi:"createdAt"`
+	AccountId *string `pulumi:"accountId"`
+	CreatedAt string  `pulumi:"createdAt"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// Specify the list of CIDRs to restrict ingress connections.
@@ -83,8 +83,8 @@ func LookupZeroTrustGatewayProxyEndpointOutput(ctx *pulumi.Context, args LookupZ
 
 // A collection of arguments for invoking getZeroTrustGatewayProxyEndpoint.
 type LookupZeroTrustGatewayProxyEndpointOutputArgs struct {
-	AccountId       pulumi.StringInput `pulumi:"accountId"`
-	ProxyEndpointId pulumi.StringInput `pulumi:"proxyEndpointId"`
+	AccountId       pulumi.StringPtrInput `pulumi:"accountId"`
+	ProxyEndpointId pulumi.StringInput    `pulumi:"proxyEndpointId"`
 }
 
 func (LookupZeroTrustGatewayProxyEndpointOutputArgs) ElementType() reflect.Type {
@@ -106,8 +106,8 @@ func (o LookupZeroTrustGatewayProxyEndpointResultOutput) ToLookupZeroTrustGatewa
 	return o
 }
 
-func (o LookupZeroTrustGatewayProxyEndpointResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustGatewayProxyEndpointResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupZeroTrustGatewayProxyEndpointResultOutput) CreatedAt() pulumi.StringOutput {

@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Apps and Policies Read`
+// - `Access: Apps and Policies Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustAccessPolicies(ctx, &cloudflare.LookupZeroTrustAccessPoliciesArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupZeroTrustAccessPolicies(ctx *pulumi.Context, args *LookupZeroTrustAcc
 // A collection of arguments for invoking getZeroTrustAccessPolicies.
 type LookupZeroTrustAccessPoliciesArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +62,7 @@ type LookupZeroTrustAccessPoliciesArgs struct {
 // A collection of values returned by getZeroTrustAccessPolicies.
 type LookupZeroTrustAccessPoliciesResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +83,7 @@ func LookupZeroTrustAccessPoliciesOutput(ctx *pulumi.Context, args LookupZeroTru
 // A collection of arguments for invoking getZeroTrustAccessPolicies.
 type LookupZeroTrustAccessPoliciesOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +108,8 @@ func (o LookupZeroTrustAccessPoliciesResultOutput) ToLookupZeroTrustAccessPolici
 }
 
 // Identifier.
-func (o LookupZeroTrustAccessPoliciesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessPoliciesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustAccessPoliciesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessPoliciesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

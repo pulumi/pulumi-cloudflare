@@ -19,6 +19,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string BundleMethod;
         /// <summary>
+        /// The identifier for the Custom CSR that was used.
+        /// </summary>
+        public readonly string CustomCsrId;
+        /// <summary>
         /// When the certificate from the authority expires.
         /// </summary>
         public readonly string ExpiresOn;
@@ -72,6 +76,8 @@ namespace Pulumi.Cloudflare.Outputs
         private GetCustomSslsResultResult(
             string bundleMethod,
 
+            string customCsrId,
+
             string expiresOn,
 
             Outputs.GetCustomSslsResultGeoRestrictionsResult geoRestrictions,
@@ -99,6 +105,7 @@ namespace Pulumi.Cloudflare.Outputs
             string zoneId)
         {
             BundleMethod = bundleMethod;
+            CustomCsrId = customCsrId;
             ExpiresOn = expiresOn;
             GeoRestrictions = geoRestrictions;
             Hosts = hosts;

@@ -13,10 +13,12 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustGatewayPolicyResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4Override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
@@ -122,8 +124,8 @@ public final class GetZeroTrustGatewayPolicyResult {
     private String warningStatus;
 
     private GetZeroTrustGatewayPolicyResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
@@ -282,7 +284,7 @@ public final class GetZeroTrustGatewayPolicyResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String action;
         private String createdAt;
         private String deletedAt;
@@ -334,10 +336,8 @@ public final class GetZeroTrustGatewayPolicyResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

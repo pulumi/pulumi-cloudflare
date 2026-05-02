@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zone Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+// - `Zone Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZoneCacheReserve(ctx, &cloudflare.LookupZoneCacheReserveArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +56,7 @@ func LookupZoneCacheReserve(ctx *pulumi.Context, args *LookupZoneCacheReserveArg
 // A collection of arguments for invoking getZoneCacheReserve.
 type LookupZoneCacheReserveArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZoneCacheReserve.
@@ -64,7 +71,7 @@ type LookupZoneCacheReserveResult struct {
 	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupZoneCacheReserveOutput(ctx *pulumi.Context, args LookupZoneCacheReserveOutputArgs, opts ...pulumi.InvokeOption) LookupZoneCacheReserveResultOutput {
@@ -79,7 +86,7 @@ func LookupZoneCacheReserveOutput(ctx *pulumi.Context, args LookupZoneCacheReser
 // A collection of arguments for invoking getZoneCacheReserve.
 type LookupZoneCacheReserveOutputArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupZoneCacheReserveOutputArgs) ElementType() reflect.Type {
@@ -123,8 +130,8 @@ func (o LookupZoneCacheReserveResultOutput) Value() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupZoneCacheReserveResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneCacheReserveResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupZoneCacheReserveResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZoneCacheReserveResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

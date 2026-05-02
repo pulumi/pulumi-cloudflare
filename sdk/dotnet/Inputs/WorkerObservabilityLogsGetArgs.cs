@@ -12,6 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class WorkerObservabilityLogsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("destinations")]
+        private InputList<string>? _destinations;
+
+        /// <summary>
+        /// A list of destinations where logs will be exported to.
+        /// </summary>
+        public InputList<string> Destinations
+        {
+            get => _destinations ?? (_destinations = new InputList<string>());
+            set => _destinations = value;
+        }
+
         /// <summary>
         /// Whether logs are enabled for the Worker.
         /// </summary>
@@ -29,6 +41,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("invocationLogs")]
         public Input<bool>? InvocationLogs { get; set; }
+
+        /// <summary>
+        /// Whether log persistence is enabled for the Worker.
+        /// </summary>
+        [Input("persist")]
+        public Input<bool>? Persist { get; set; }
 
         public WorkerObservabilityLogsGetArgs()
         {

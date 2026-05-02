@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -21,15 +20,30 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
      * The account identifier tag.
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return The account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * Alias for &#39;start&#39;. Returns videos created after this date/time (RFC 3339 format).
+     * 
+     */
+    @Import(name="after")
+    private @Nullable String after;
+
+    /**
+     * @return Alias for &#39;start&#39;. Returns videos created after this date/time (RFC 3339 format).
+     * 
+     */
+    public Optional<String> after() {
+        return Optional.ofNullable(this.after);
     }
 
     /**
@@ -45,6 +59,21 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Optional<Boolean> asc() {
         return Optional.ofNullable(this.asc);
+    }
+
+    /**
+     * Alias for &#39;end&#39;. Returns videos created before this date/time (RFC 3339 format).
+     * 
+     */
+    @Import(name="before")
+    private @Nullable String before;
+
+    /**
+     * @return Alias for &#39;end&#39;. Returns videos created before this date/time (RFC 3339 format).
+     * 
+     */
+    public Optional<String> before() {
+        return Optional.ofNullable(this.before);
     }
 
     /**
@@ -78,6 +107,21 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable String id;
+
+    /**
+     * @return Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
      * Includes the total number of videos associated with the submitted query parameters.
      * 
      */
@@ -93,6 +137,36 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Maximum number of videos to return (default 1000, max 1000).
+     * 
+     */
+    @Import(name="limit")
+    private @Nullable Integer limit;
+
+    /**
+     * @return Maximum number of videos to return (default 1000, max 1000).
+     * 
+     */
+    public Optional<Integer> limit() {
+        return Optional.ofNullable(this.limit);
+    }
+
+    /**
+     * Filter by live input ID to find videos associated with a specific live stream.
+     * 
+     */
+    @Import(name="liveInputId")
+    private @Nullable String liveInputId;
+
+    /**
+     * @return Filter by live input ID to find videos associated with a specific live stream.
+     * 
+     */
+    public Optional<String> liveInputId() {
+        return Optional.ofNullable(this.liveInputId);
+    }
+
+    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -105,6 +179,21 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
+    }
+
+    /**
+     * Filter by video name/UID(s). Can be a single name or a comma-separated list.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable String name;
+
+    /**
+     * @return Filter by video name/UID(s). Can be a single name or a comma-separated list.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -188,11 +277,17 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetStreamsPlainArgs(GetStreamsPlainArgs $) {
         this.accountId = $.accountId;
+        this.after = $.after;
         this.asc = $.asc;
+        this.before = $.before;
         this.creator = $.creator;
         this.end = $.end;
+        this.id = $.id;
         this.includeCounts = $.includeCounts;
+        this.limit = $.limit;
+        this.liveInputId = $.liveInputId;
         this.maxItems = $.maxItems;
+        this.name = $.name;
         this.search = $.search;
         this.start = $.start;
         this.status = $.status;
@@ -224,8 +319,19 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param after Alias for &#39;start&#39;. Returns videos created after this date/time (RFC 3339 format).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder after(@Nullable String after) {
+            $.after = after;
             return this;
         }
 
@@ -237,6 +343,17 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder asc(@Nullable Boolean asc) {
             $.asc = asc;
+            return this;
+        }
+
+        /**
+         * @param before Alias for &#39;end&#39;. Returns videos created before this date/time (RFC 3339 format).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder before(@Nullable String before) {
+            $.before = before;
             return this;
         }
 
@@ -263,6 +380,17 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param id Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable String id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
          * @param includeCounts Includes the total number of videos associated with the submitted query parameters.
          * 
          * @return builder
@@ -274,6 +402,28 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param limit Maximum number of videos to return (default 1000, max 1000).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder limit(@Nullable Integer limit) {
+            $.limit = limit;
+            return this;
+        }
+
+        /**
+         * @param liveInputId Filter by live input ID to find videos associated with a specific live stream.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder liveInputId(@Nullable String liveInputId) {
+            $.liveInputId = liveInputId;
+            return this;
+        }
+
+        /**
          * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
@@ -281,6 +431,17 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder maxItems(@Nullable Integer maxItems) {
             $.maxItems = maxItems;
+            return this;
+        }
+
+        /**
+         * @param name Filter by video name/UID(s). Can be a single name or a comma-separated list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable String name) {
+            $.name = name;
             return this;
         }
 
@@ -341,9 +502,6 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetStreamsPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetStreamsPlainArgs", "accountId");
-            }
             return $;
         }
     }

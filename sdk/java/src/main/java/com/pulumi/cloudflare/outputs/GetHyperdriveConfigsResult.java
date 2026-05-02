@@ -30,6 +30,10 @@ public final class GetHyperdriveConfigsResult {
      * 
      */
     private String modifiedOn;
+    /**
+     * @return mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+     * 
+     */
     private GetHyperdriveConfigsResultMtls mtls;
     /**
      * @return The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
@@ -68,6 +72,10 @@ public final class GetHyperdriveConfigsResult {
     public String modifiedOn() {
         return this.modifiedOn;
     }
+    /**
+     * @return mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+     * 
+     */
     public GetHyperdriveConfigsResultMtls mtls() {
         return this.mtls;
     }

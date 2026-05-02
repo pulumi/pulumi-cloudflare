@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetCloudConnectorRules
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloud Connector Read`
+        /// - `Cloud Connector Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCloudConnectorRulesResult> InvokeAsync(GetCloudConnectorRulesArgs args, InvokeOptions? options = null)
+        public static Task<GetCloudConnectorRulesResult> InvokeAsync(GetCloudConnectorRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudConnectorRulesResult>("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", args ?? new GetCloudConnectorRulesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloud Connector Read`
+        /// - `Cloud Connector Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCloudConnectorRulesResult> Invoke(GetCloudConnectorRulesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetCloudConnectorRulesResult> Invoke(GetCloudConnectorRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudConnectorRulesResult>("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", args ?? new GetCloudConnectorRulesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloud Connector Read`
+        /// - `Cloud Connector Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetCloudConnectorRulesArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetCloudConnectorRulesInvokeArgs()
         {
@@ -119,7 +134,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetCloudConnectorRulesResult(
@@ -127,7 +142,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetCloudConnectorRulesRuleResult> rules,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             Rules = rules;

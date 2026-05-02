@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Gateway`
+// - `Account API Gateway Read`
+// - `Domain API Gateway`
+// - `Domain API Gateway Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -61,7 +68,7 @@ type ApiShieldOperation struct {
 	// UUID.
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewApiShieldOperation registers a new resource with the given unique name, arguments, and options.
@@ -79,9 +86,6 @@ func NewApiShieldOperation(ctx *pulumi.Context,
 	}
 	if args.Method == nil {
 		return nil, errors.New("invalid value for required argument 'Method'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApiShieldOperation
@@ -150,7 +154,7 @@ type apiShieldOperationArgs struct {
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method string `pulumi:"method"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ApiShieldOperation resource.
@@ -163,7 +167,7 @@ type ApiShieldOperationArgs struct {
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method pulumi.StringInput
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (ApiShieldOperationArgs) ElementType() reflect.Type {
@@ -283,8 +287,8 @@ func (o ApiShieldOperationOutput) OperationId() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o ApiShieldOperationOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o ApiShieldOperationOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type ApiShieldOperationArrayOutput struct{ *pulumi.OutputState }

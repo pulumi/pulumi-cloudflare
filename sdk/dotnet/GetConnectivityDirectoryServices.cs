@@ -25,13 +25,13 @@ namespace Pulumi.Cloudflare
         ///     var exampleConnectivityDirectoryServices = Cloudflare.Index.GetConnectivityDirectoryServices.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Type = "http",
+        ///         Type = "tcp",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Task<GetConnectivityDirectoryServicesResult> InvokeAsync(GetConnectivityDirectoryServicesArgs args, InvokeOptions? options = null)
+        public static Task<GetConnectivityDirectoryServicesResult> InvokeAsync(GetConnectivityDirectoryServicesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectivityDirectoryServicesResult>("cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices", args ?? new GetConnectivityDirectoryServicesArgs(), options.WithDefaults());
 
         /// <summary>
@@ -48,13 +48,13 @@ namespace Pulumi.Cloudflare
         ///     var exampleConnectivityDirectoryServices = Cloudflare.Index.GetConnectivityDirectoryServices.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Type = "http",
+        ///         Type = "tcp",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetConnectivityDirectoryServicesResult> Invoke(GetConnectivityDirectoryServicesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetConnectivityDirectoryServicesResult> Invoke(GetConnectivityDirectoryServicesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectivityDirectoryServicesResult>("cloudflare:index/getConnectivityDirectoryServices:getConnectivityDirectoryServices", args ?? new GetConnectivityDirectoryServicesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleConnectivityDirectoryServices = Cloudflare.Index.GetConnectivityDirectoryServices.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Type = "http",
+        ///         Type = "tcp",
         ///     });
         /// 
         /// });
@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -97,7 +97,7 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Available values: "http".
+        /// Available values: "tcp", "http".
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Available values: "http".
+        /// Available values: "tcp", "http".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -141,7 +141,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -155,13 +155,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectivityDirectoryServicesResultResult> Results;
         /// <summary>
-        /// Available values: "http".
+        /// Available values: "tcp", "http".
         /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]
         private GetConnectivityDirectoryServicesResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

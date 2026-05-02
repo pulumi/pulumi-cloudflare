@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Workers Scripts Read`
+    /// - `Workers Scripts Write`
+    /// - `Workers Tail Read`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -55,7 +61,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("annotations")]
         public Output<Outputs.WorkersDeploymentAnnotations> Annotations { get; private set; } = null!;
@@ -133,8 +139,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("annotations")]
         public Input<Inputs.WorkersDeploymentAnnotationsArgs>? Annotations { get; set; }

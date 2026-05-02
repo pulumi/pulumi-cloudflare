@@ -3,8 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.AiSearchInstanceRetrievalOptionsBoostBy;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,16 +14,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiSearchInstanceRetrievalOptions {
     /**
-     * @return Controls how keyword search terms are matched. exact*match requires all terms to appear (AND); fuzzy*match returns results containing any term (OR). Defaults to exact*match.
-     * Available values: &#34;exact*match&#34;, &#34;fuzzyMatch&#34;.
+     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+     * 
+     */
+    private @Nullable List<AiSearchInstanceRetrievalOptionsBoostBy> boostBies;
+    /**
+     * @return Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. Defaults to &#39;and&#39;.
+     * Available values: &#34;and&#34;, &#34;or&#34;.
      * 
      */
     private @Nullable String keywordMatchMode;
 
     private AiSearchInstanceRetrievalOptions() {}
     /**
-     * @return Controls how keyword search terms are matched. exact*match requires all terms to appear (AND); fuzzy*match returns results containing any term (OR). Defaults to exact*match.
-     * Available values: &#34;exact*match&#34;, &#34;fuzzyMatch&#34;.
+     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+     * 
+     */
+    public List<AiSearchInstanceRetrievalOptionsBoostBy> boostBies() {
+        return this.boostBies == null ? List.of() : this.boostBies;
+    }
+    /**
+     * @return Controls which documents are candidates for BM25 scoring. &#39;and&#39; restricts candidates to documents containing all query terms; &#39;or&#39; includes any document containing at least one term, ranked by BM25 relevance. Defaults to &#39;and&#39;.
+     * Available values: &#34;and&#34;, &#34;or&#34;.
      * 
      */
     public Optional<String> keywordMatchMode() {
@@ -37,13 +51,24 @@ public final class AiSearchInstanceRetrievalOptions {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<AiSearchInstanceRetrievalOptionsBoostBy> boostBies;
         private @Nullable String keywordMatchMode;
         public Builder() {}
         public Builder(AiSearchInstanceRetrievalOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.boostBies = defaults.boostBies;
     	      this.keywordMatchMode = defaults.keywordMatchMode;
         }
 
+        @CustomType.Setter
+        public Builder boostBies(@Nullable List<AiSearchInstanceRetrievalOptionsBoostBy> boostBies) {
+
+            this.boostBies = boostBies;
+            return this;
+        }
+        public Builder boostBies(AiSearchInstanceRetrievalOptionsBoostBy... boostBies) {
+            return boostBies(List.of(boostBies));
+        }
         @CustomType.Setter
         public Builder keywordMatchMode(@Nullable String keywordMatchMode) {
 
@@ -52,6 +77,7 @@ public final class AiSearchInstanceRetrievalOptions {
         }
         public AiSearchInstanceRetrievalOptions build() {
             final var _resultValue = new AiSearchInstanceRetrievalOptions();
+            _resultValue.boostBies = boostBies;
             _resultValue.keywordMatchMode = keywordMatchMode;
             return _resultValue;
         }

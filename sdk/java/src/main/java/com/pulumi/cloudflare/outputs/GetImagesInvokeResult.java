@@ -19,7 +19,7 @@ public final class GetImagesInvokeResult {
      * @return Account identifier tag.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Internal user ID set within the creator field. Setting to empty string &#34;&#34; will return images where creator field is not set
      * 
@@ -46,8 +46,8 @@ public final class GetImagesInvokeResult {
      * @return Account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Internal user ID set within the creator field. Setting to empty string &#34;&#34; will return images where creator field is not set
@@ -87,7 +87,7 @@ public final class GetImagesInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private @Nullable String creator;
         private String id;
         private @Nullable Integer maxItems;
@@ -103,10 +103,8 @@ public final class GetImagesInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetImagesInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

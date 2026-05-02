@@ -64,7 +64,7 @@ class GetZeroTrustDlpPredefinedProfileResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -157,6 +157,11 @@ def get_zero_trust_dlp_predefined_profile(account_id: Optional[_builtins.str] = 
                                           profile_id: Optional[_builtins.str] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustDlpPredefinedProfileResult:
     """
+    Accepted Permissions
+
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python
@@ -185,10 +190,15 @@ def get_zero_trust_dlp_predefined_profile(account_id: Optional[_builtins.str] = 
         ocr_enabled=pulumi.get(__ret__, 'ocr_enabled'),
         open_access=pulumi.get(__ret__, 'open_access'),
         profile_id=pulumi.get(__ret__, 'profile_id'))
-def get_zero_trust_dlp_predefined_profile_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_dlp_predefined_profile_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                  profile_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDlpPredefinedProfileResult]:
     """
+    Accepted Permissions
+
+    - `Zero Trust Read`
+    - `Zero Trust Write`
+
     ## Example Usage
 
     ```python

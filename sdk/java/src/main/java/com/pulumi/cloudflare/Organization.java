@@ -18,6 +18,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `User Details Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

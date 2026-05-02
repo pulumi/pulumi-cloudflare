@@ -12,6 +12,14 @@ namespace Pulumi.Cloudflare
     public static class GetCustomPagesList
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Custom Pages Read`
+        /// - `Account Custom Pages Write`
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +43,14 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomPagesListResult>("cloudflare:index/getCustomPagesList:getCustomPagesList", args ?? new GetCustomPagesListArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Custom Pages Read`
+        /// - `Account Custom Pages Write`
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +74,14 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomPagesListResult>("cloudflare:index/getCustomPagesList:getCustomPagesList", args ?? new GetCustomPagesListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Custom Pages Read`
+        /// - `Account Custom Pages Write`
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `Zero Trust: PII Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

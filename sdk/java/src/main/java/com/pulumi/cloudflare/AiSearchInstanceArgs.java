@@ -4,6 +4,8 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.AiSearchInstanceCustomMetadataArgs;
+import com.pulumi.cloudflare.inputs.AiSearchInstanceIndexMethodArgs;
+import com.pulumi.cloudflare.inputs.AiSearchInstanceIndexingOptionsArgs;
 import com.pulumi.cloudflare.inputs.AiSearchInstanceMetadataArgs;
 import com.pulumi.cloudflare.inputs.AiSearchInstancePublicEndpointParamsArgs;
 import com.pulumi.cloudflare.inputs.AiSearchInstanceRetrievalOptionsArgs;
@@ -40,14 +42,14 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Use your AI Search ID.
+     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      * 
      */
     @Import(name="aiSearchInstanceId", required=true)
     private Output<String> aiSearchInstanceId;
 
     /**
-     * @return Use your AI Search ID.
+     * @return AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      * 
      */
     public Output<String> aiSearchInstanceId() {
@@ -55,14 +57,14 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+     * Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
      * 
      */
     @Import(name="aisearchModel")
     private @Nullable Output<String> aisearchModel;
 
     /**
-     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
      * 
      */
     public Optional<Output<String>> aisearchModel() {
@@ -120,14 +122,14 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
+     * Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
      * 
      */
     @Import(name="embeddingModel")
     private @Nullable Output<String> embeddingModel;
 
     /**
-     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
+     * @return Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
      * 
      */
     public Optional<Output<String>> embeddingModel() {
@@ -149,11 +151,49 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.fusionMethod);
     }
 
+    /**
+     * Deprecated — use indexMethod instead.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="hybridSearchEnabled")
     private @Nullable Output<Boolean> hybridSearchEnabled;
 
+    /**
+     * @return Deprecated — use indexMethod instead.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<Boolean>> hybridSearchEnabled() {
         return Optional.ofNullable(this.hybridSearchEnabled);
+    }
+
+    /**
+     * Controls which storage backends are used during indexing. Defaults to vector-only.
+     * 
+     */
+    @Import(name="indexMethod")
+    private @Nullable Output<AiSearchInstanceIndexMethodArgs> indexMethod;
+
+    /**
+     * @return Controls which storage backends are used during indexing. Defaults to vector-only.
+     * 
+     */
+    public Optional<Output<AiSearchInstanceIndexMethodArgs>> indexMethod() {
+        return Optional.ofNullable(this.indexMethod);
+    }
+
+    @Import(name="indexingOptions")
+    private @Nullable Output<AiSearchInstanceIndexingOptionsArgs> indexingOptions;
+
+    public Optional<Output<AiSearchInstanceIndexingOptionsArgs>> indexingOptions() {
+        return Optional.ofNullable(this.indexingOptions);
     }
 
     @Import(name="maxNumResults")
@@ -214,14 +254,14 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+     * Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
      * 
      */
     @Import(name="rewriteModel")
     private @Nullable Output<String> rewriteModel;
 
     /**
-     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
      * 
      */
     public Optional<Output<String>> rewriteModel() {
@@ -242,11 +282,11 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.scoreThreshold);
     }
 
-    @Import(name="source", required=true)
-    private Output<String> source;
+    @Import(name="source")
+    private @Nullable Output<String> source;
 
-    public Output<String> source() {
-        return this.source;
+    public Optional<Output<String>> source() {
+        return Optional.ofNullable(this.source);
     }
 
     @Import(name="sourceParams")
@@ -264,18 +304,35 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+     * Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
      * 
      */
     @Import(name="summarizationModel")
     private @Nullable Output<String> summarizationModel;
 
     /**
-     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+     * @return Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
      * 
      */
     public Optional<Output<String>> summarizationModel() {
         return Optional.ofNullable(this.summarizationModel);
+    }
+
+    /**
+     * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+     * 
+     */
+    @Import(name="syncInterval")
+    private @Nullable Output<Double> syncInterval;
+
+    /**
+     * @return Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+     * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+     * 
+     */
+    public Optional<Output<Double>> syncInterval() {
+        return Optional.ofNullable(this.syncInterval);
     }
 
     @Import(name="systemPromptAisearch")
@@ -310,15 +367,15 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
      * Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
      * @return Available values: &#34;r2&#34;, &#34;web-crawler&#34;.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private AiSearchInstanceArgs() {}
@@ -337,6 +394,8 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         this.embeddingModel = $.embeddingModel;
         this.fusionMethod = $.fusionMethod;
         this.hybridSearchEnabled = $.hybridSearchEnabled;
+        this.indexMethod = $.indexMethod;
+        this.indexingOptions = $.indexingOptions;
         this.maxNumResults = $.maxNumResults;
         this.metadata = $.metadata;
         this.paused = $.paused;
@@ -351,6 +410,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         this.sourceParams = $.sourceParams;
         this.summarization = $.summarization;
         this.summarizationModel = $.summarizationModel;
+        this.syncInterval = $.syncInterval;
         this.systemPromptAisearch = $.systemPromptAisearch;
         this.systemPromptIndexSummarization = $.systemPromptIndexSummarization;
         this.systemPromptRewriteQuery = $.systemPromptRewriteQuery;
@@ -395,7 +455,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param aiSearchInstanceId Use your AI Search ID.
+         * @param aiSearchInstanceId AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
          * 
          * @return builder
          * 
@@ -406,7 +466,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param aiSearchInstanceId Use your AI Search ID.
+         * @param aiSearchInstanceId AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
          * 
          * @return builder
          * 
@@ -416,7 +476,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param aisearchModel Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+         * @param aisearchModel Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
          * 
          * @return builder
          * 
@@ -427,7 +487,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param aisearchModel Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+         * @param aisearchModel Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
          * 
          * @return builder
          * 
@@ -507,7 +567,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param embeddingModel Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
+         * @param embeddingModel Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
          * 
          * @return builder
          * 
@@ -518,7 +578,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param embeddingModel Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
+         * @param embeddingModel Available values: &#34;{@literal @}cf/qwen/qwen3-embedding-0.6b&#34;, &#34;{@literal @}cf/baai/bge-m3&#34;, &#34;{@literal @}cf/baai/bge-large-en-v1.5&#34;, &#34;{@literal @}cf/google/embeddinggemma-300m&#34;, &#34;google-ai-studio/gemini-embedding-001&#34;, &#34;google-ai-studio/gemini-embedding-2-preview&#34;, &#34;openai/text-embedding-3-small&#34;, &#34;openai/text-embedding-3-large&#34;, &#34;&#34;.
          * 
          * @return builder
          * 
@@ -548,13 +608,63 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
             return fusionMethod(Output.of(fusionMethod));
         }
 
+        /**
+         * @param hybridSearchEnabled Deprecated — use indexMethod instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder hybridSearchEnabled(@Nullable Output<Boolean> hybridSearchEnabled) {
             $.hybridSearchEnabled = hybridSearchEnabled;
             return this;
         }
 
+        /**
+         * @param hybridSearchEnabled Deprecated — use indexMethod instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder hybridSearchEnabled(Boolean hybridSearchEnabled) {
             return hybridSearchEnabled(Output.of(hybridSearchEnabled));
+        }
+
+        /**
+         * @param indexMethod Controls which storage backends are used during indexing. Defaults to vector-only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexMethod(@Nullable Output<AiSearchInstanceIndexMethodArgs> indexMethod) {
+            $.indexMethod = indexMethod;
+            return this;
+        }
+
+        /**
+         * @param indexMethod Controls which storage backends are used during indexing. Defaults to vector-only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexMethod(AiSearchInstanceIndexMethodArgs indexMethod) {
+            return indexMethod(Output.of(indexMethod));
+        }
+
+        public Builder indexingOptions(@Nullable Output<AiSearchInstanceIndexingOptionsArgs> indexingOptions) {
+            $.indexingOptions = indexingOptions;
+            return this;
+        }
+
+        public Builder indexingOptions(AiSearchInstanceIndexingOptionsArgs indexingOptions) {
+            return indexingOptions(Output.of(indexingOptions));
         }
 
         public Builder maxNumResults(@Nullable Output<Integer> maxNumResults) {
@@ -633,7 +743,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rewriteModel Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+         * @param rewriteModel Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
          * 
          * @return builder
          * 
@@ -644,7 +754,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rewriteModel Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+         * @param rewriteModel Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
          * 
          * @return builder
          * 
@@ -671,7 +781,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
             return scoreThreshold(Output.of(scoreThreshold));
         }
 
-        public Builder source(Output<String> source) {
+        public Builder source(@Nullable Output<String> source) {
             $.source = source;
             return this;
         }
@@ -699,7 +809,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param summarizationModel Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+         * @param summarizationModel Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
          * 
          * @return builder
          * 
@@ -710,13 +820,36 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param summarizationModel Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
+         * @param summarizationModel Available values: &#34;{@literal @}cf/meta/llama-3.3-70b-instruct-fp8-fast&#34;, &#34;{@literal @}cf/zai-org/glm-4.7-flash&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fast&#34;, &#34;{@literal @}cf/meta/llama-3.1-8b-instruct-fp8&#34;, &#34;{@literal @}cf/meta/llama-4-scout-17b-16e-instruct&#34;, &#34;{@literal @}cf/qwen/qwen3-30b-a3b-fp8&#34;, &#34;{@literal @}cf/deepseek-ai/deepseek-r1-distill-qwen-32b&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2-instruct&#34;, &#34;{@literal @}cf/google/gemma-3-12b-it&#34;, &#34;{@literal @}cf/google/gemma-4-26b-a4b-it&#34;, &#34;{@literal @}cf/moonshotai/kimi-k2.5&#34;, &#34;anthropic/claude-3-7-sonnet&#34;, &#34;anthropic/claude-sonnet-4&#34;, &#34;anthropic/claude-opus-4&#34;, &#34;anthropic/claude-3-5-haiku&#34;, &#34;cerebras/qwen-3-235b-a22b-instruct&#34;, &#34;cerebras/qwen-3-235b-a22b-thinking&#34;, &#34;cerebras/llama-3.3-70b&#34;, &#34;cerebras/llama-4-maverick-17b-128e-instruct&#34;, &#34;cerebras/llama-4-scout-17b-16e-instruct&#34;, &#34;cerebras/gpt-oss-120b&#34;, &#34;google-ai-studio/gemini-2.5-flash&#34;, &#34;google-ai-studio/gemini-2.5-pro&#34;, &#34;grok/grok-4&#34;, &#34;groq/llama-3.3-70b-versatile&#34;, &#34;groq/llama-3.1-8b-instant&#34;, &#34;openai/gpt-5&#34;, &#34;openai/gpt-5-mini&#34;, &#34;openai/gpt-5-nano&#34;, &#34;&#34;.
          * 
          * @return builder
          * 
          */
         public Builder summarizationModel(String summarizationModel) {
             return summarizationModel(Output.of(summarizationModel));
+        }
+
+        /**
+         * @param syncInterval Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+         * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syncInterval(@Nullable Output<Double> syncInterval) {
+            $.syncInterval = syncInterval;
+            return this;
+        }
+
+        /**
+         * @param syncInterval Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
+         * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syncInterval(Double syncInterval) {
+            return syncInterval(Output.of(syncInterval));
         }
 
         public Builder systemPromptAisearch(@Nullable Output<String> systemPromptAisearch) {
@@ -761,7 +894,7 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
@@ -782,12 +915,6 @@ public final class AiSearchInstanceArgs extends com.pulumi.resources.ResourceArg
             }
             if ($.aiSearchInstanceId == null) {
                 throw new MissingRequiredPropertyException("AiSearchInstanceArgs", "aiSearchInstanceId");
-            }
-            if ($.source == null) {
-                throw new MissingRequiredPropertyException("AiSearchInstanceArgs", "source");
-            }
-            if ($.type == null) {
-                throw new MissingRequiredPropertyException("AiSearchInstanceArgs", "type");
             }
             return $;
         }

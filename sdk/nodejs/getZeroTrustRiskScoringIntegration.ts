@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -29,7 +34,7 @@ export function getZeroTrustRiskScoringIntegration(args: GetZeroTrustRiskScoring
  * A collection of arguments for invoking getZeroTrustRiskScoringIntegration.
  */
 export interface GetZeroTrustRiskScoringIntegrationArgs {
-    accountId: string;
+    accountId?: string;
     integrationId: string;
 }
 
@@ -37,7 +42,7 @@ export interface GetZeroTrustRiskScoringIntegrationArgs {
  * A collection of values returned by getZeroTrustRiskScoringIntegration.
  */
 export interface GetZeroTrustRiskScoringIntegrationResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The Cloudflare account tag.
      */
@@ -75,6 +80,11 @@ export interface GetZeroTrustRiskScoringIntegrationResult {
     readonly wellKnownUrl: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -99,6 +109,6 @@ export function getZeroTrustRiskScoringIntegrationOutput(args: GetZeroTrustRiskS
  * A collection of arguments for invoking getZeroTrustRiskScoringIntegration.
  */
 export interface GetZeroTrustRiskScoringIntegrationOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     integrationId: pulumi.Input<string>;
 }

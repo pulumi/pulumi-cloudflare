@@ -635,8 +635,6 @@ var skipGettingStartedSection = info.DocsEdit{
 
 var resourcesWhichNeedSchemaVersionReset = []string{
 	"cloudflare_cloud_connector_rules",
-	"cloudflare_custom_ssl",
-	"cloudflare_dns_record",
 }
 
 // resetMigratedResourcesSchemaVersion resets the schema version of resources that were migrated

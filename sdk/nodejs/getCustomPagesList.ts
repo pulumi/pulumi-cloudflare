@@ -7,6 +7,14 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Custom Pages Read`
+ * - `Account Custom Pages Write`
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Zero Trust: PII Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,6 +81,14 @@ export interface GetCustomPagesListResult {
     readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Custom Pages Read`
+ * - `Account Custom Pages Write`
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Zero Trust: PII Read`
+ *
  * ## Example Usage
  *
  * ```typescript

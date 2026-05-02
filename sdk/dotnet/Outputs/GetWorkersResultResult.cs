@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
+        /// When the Worker's most recent deployment was created. `Null` if the Worker has never been deployed.
+        /// </summary>
+        public readonly string DeployedOn;
+        /// <summary>
         /// Immutable ID of the Worker.
         /// </summary>
         public readonly string Id;
@@ -58,6 +62,8 @@ namespace Pulumi.Cloudflare.Outputs
         private GetWorkersResultResult(
             string createdOn,
 
+            string deployedOn,
+
             string id,
 
             bool logpush,
@@ -77,6 +83,7 @@ namespace Pulumi.Cloudflare.Outputs
             string updatedOn)
         {
             CreatedOn = createdOn;
+            DeployedOn = deployedOn;
             Id = id;
             Logpush = logpush;
             Name = name;

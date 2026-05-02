@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,21 +21,34 @@ import * as utilities from "./utilities";
  * const exampleCustomHostnames = cloudflare.getCustomHostnames({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+ *     certificateAuthority: "google",
+ *     customOriginServer: "origin2.example.com",
  *     direction: "desc",
- *     hostname: "app.example.com",
+ *     hostname: {
+ *         contain: "example.com",
+ *     },
+ *     hostnameStatus: "provisioned",
  *     ssl: 0,
+ *     sslStatus: "active",
+ *     wildcard: false,
  * });
  * ```
  */
-export function getCustomHostnames(args: GetCustomHostnamesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomHostnamesResult> {
+export function getCustomHostnames(args?: GetCustomHostnamesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomHostnamesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCustomHostnames:getCustomHostnames", {
+        "certificateAuthority": args.certificateAuthority,
+        "customOriginServer": args.customOriginServer,
         "direction": args.direction,
         "hostname": args.hostname,
+        "hostnameStatus": args.hostnameStatus,
         "id": args.id,
         "maxItems": args.maxItems,
         "order": args.order,
         "ssl": args.ssl,
+        "sslStatus": args.sslStatus,
+        "wildcard": args.wildcard,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -40,14 +58,25 @@ export function getCustomHostnames(args: GetCustomHostnamesArgs, opts?: pulumi.I
  */
 export interface GetCustomHostnamesArgs {
     /**
+     * Filter by the certificate authority that issued the SSL certificate.
+     * Available values: "google", "lets*encrypt", "ssl*com".
+     */
+    certificateAuthority?: string;
+    /**
+     * Filter by custom origin server name.
+     */
+    customOriginServer?: string;
+    /**
      * Direction to order hostnames.
      * Available values: "asc", "desc".
      */
     direction?: string;
+    hostname?: inputs.GetCustomHostnamesHostname;
     /**
-     * Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
+     * Filter by the hostname's activation status.
+     * Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
      */
-    hostname?: string;
+    hostnameStatus?: string;
     /**
      * Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
      */
@@ -67,9 +96,18 @@ export interface GetCustomHostnamesArgs {
      */
     ssl?: number;
     /**
+     * Filter by SSL certificate status.
+     * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+     */
+    sslStatus?: string;
+    /**
+     * Filter by whether the custom hostname is a wildcard hostname.
+     */
+    wildcard?: boolean;
+    /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -77,14 +115,25 @@ export interface GetCustomHostnamesArgs {
  */
 export interface GetCustomHostnamesResult {
     /**
+     * Filter by the certificate authority that issued the SSL certificate.
+     * Available values: "google", "lets*encrypt", "ssl*com".
+     */
+    readonly certificateAuthority?: string;
+    /**
+     * Filter by custom origin server name.
+     */
+    readonly customOriginServer?: string;
+    /**
      * Direction to order hostnames.
      * Available values: "asc", "desc".
      */
     readonly direction?: string;
+    readonly hostname?: outputs.GetCustomHostnamesHostname;
     /**
-     * Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
+     * Filter by the hostname's activation status.
+     * Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
      */
-    readonly hostname?: string;
+    readonly hostnameStatus?: string;
     /**
      * Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
      */
@@ -108,11 +157,25 @@ export interface GetCustomHostnamesResult {
      */
     readonly ssl?: number;
     /**
+     * Filter by SSL certificate status.
+     * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+     */
+    readonly sslStatus?: string;
+    /**
+     * Filter by whether the custom hostname is a wildcard hostname.
+     */
+    readonly wildcard?: boolean;
+    /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -122,21 +185,34 @@ export interface GetCustomHostnamesResult {
  * const exampleCustomHostnames = cloudflare.getCustomHostnames({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+ *     certificateAuthority: "google",
+ *     customOriginServer: "origin2.example.com",
  *     direction: "desc",
- *     hostname: "app.example.com",
+ *     hostname: {
+ *         contain: "example.com",
+ *     },
+ *     hostnameStatus: "provisioned",
  *     ssl: 0,
+ *     sslStatus: "active",
+ *     wildcard: false,
  * });
  * ```
  */
-export function getCustomHostnamesOutput(args: GetCustomHostnamesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomHostnamesResult> {
+export function getCustomHostnamesOutput(args?: GetCustomHostnamesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomHostnamesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCustomHostnames:getCustomHostnames", {
+        "certificateAuthority": args.certificateAuthority,
+        "customOriginServer": args.customOriginServer,
         "direction": args.direction,
         "hostname": args.hostname,
+        "hostnameStatus": args.hostnameStatus,
         "id": args.id,
         "maxItems": args.maxItems,
         "order": args.order,
         "ssl": args.ssl,
+        "sslStatus": args.sslStatus,
+        "wildcard": args.wildcard,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -146,14 +222,25 @@ export function getCustomHostnamesOutput(args: GetCustomHostnamesOutputArgs, opt
  */
 export interface GetCustomHostnamesOutputArgs {
     /**
+     * Filter by the certificate authority that issued the SSL certificate.
+     * Available values: "google", "lets*encrypt", "ssl*com".
+     */
+    certificateAuthority?: pulumi.Input<string>;
+    /**
+     * Filter by custom origin server name.
+     */
+    customOriginServer?: pulumi.Input<string>;
+    /**
      * Direction to order hostnames.
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
+    hostname?: pulumi.Input<inputs.GetCustomHostnamesHostnameArgs>;
     /**
-     * Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
+     * Filter by the hostname's activation status.
+     * Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
      */
-    hostname?: pulumi.Input<string>;
+    hostnameStatus?: pulumi.Input<string>;
     /**
      * Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
      */
@@ -173,7 +260,16 @@ export interface GetCustomHostnamesOutputArgs {
      */
     ssl?: pulumi.Input<number>;
     /**
+     * Filter by SSL certificate status.
+     * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+     */
+    sslStatus?: pulumi.Input<string>;
+    /**
+     * Filter by whether the custom hostname is a wildcard hostname.
+     */
+    wildcard?: pulumi.Input<boolean>;
+    /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

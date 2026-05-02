@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetWorkflows
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +37,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWorkflowsResult> InvokeAsync(GetWorkflowsArgs args, InvokeOptions? options = null)
+        public static Task<GetWorkflowsResult> InvokeAsync(GetWorkflowsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowsResult>("cloudflare:index/getWorkflows:getWorkflows", args ?? new GetWorkflowsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +66,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWorkflowsResult> Invoke(GetWorkflowsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetWorkflowsResult> Invoke(GetWorkflowsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowsResult>("cloudflare:index/getWorkflows:getWorkflows", args ?? new GetWorkflowsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +102,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetWorkflowsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -107,8 +125,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetWorkflowsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -132,7 +150,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetWorkflowsResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -152,7 +170,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWorkflowsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

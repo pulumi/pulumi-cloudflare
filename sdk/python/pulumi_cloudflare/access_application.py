@@ -42,7 +42,9 @@ class AccessApplicationArgs:
                  http_only_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
                  landing_page_design: Optional[pulumi.Input['AccessApplicationLandingPageDesignArgs']] = None,
                  logo_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 mfa_config: Optional[pulumi.Input['AccessApplicationMfaConfigArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_configuration: Optional[pulumi.Input['AccessApplicationOauthConfigurationArgs']] = None,
                  options_preflight_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
                  path_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyArgs']]]] = None,
@@ -82,7 +84,9 @@ class AccessApplicationArgs:
         :param pulumi.Input[_builtins.bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         :param pulumi.Input['AccessApplicationLandingPageDesignArgs'] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
+        :param pulumi.Input['AccessApplicationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
         :param pulumi.Input[_builtins.str] name: The name of the application.
+        :param pulumi.Input['AccessApplicationOauthConfigurationArgs'] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[_builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyArgs']]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
@@ -147,8 +151,12 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "landing_page_design", landing_page_design)
         if logo_url is not None:
             pulumi.set(__self__, "logo_url", logo_url)
+        if mfa_config is not None:
+            pulumi.set(__self__, "mfa_config", mfa_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if oauth_configuration is not None:
+            pulumi.set(__self__, "oauth_configuration", oauth_configuration)
         if options_preflight_bypass is not None:
             pulumi.set(__self__, "options_preflight_bypass", options_preflight_bypass)
         if path_cookie_attribute is not None:
@@ -435,6 +443,18 @@ class AccessApplicationArgs:
         pulumi.set(self, "logo_url", value)
 
     @_builtins.property
+    @pulumi.getter(name="mfaConfig")
+    def mfa_config(self) -> Optional[pulumi.Input['AccessApplicationMfaConfigArgs']]:
+        """
+        Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        """
+        return pulumi.get(self, "mfa_config")
+
+    @mfa_config.setter
+    def mfa_config(self, value: Optional[pulumi.Input['AccessApplicationMfaConfigArgs']]):
+        pulumi.set(self, "mfa_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -445,6 +465,18 @@ class AccessApplicationArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthConfiguration")
+    def oauth_configuration(self) -> Optional[pulumi.Input['AccessApplicationOauthConfigurationArgs']]:
+        """
+        Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        """
+        return pulumi.get(self, "oauth_configuration")
+
+    @oauth_configuration.setter
+    def oauth_configuration(self, value: Optional[pulumi.Input['AccessApplicationOauthConfigurationArgs']]):
+        pulumi.set(self, "oauth_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="optionsPreflightBypass")
@@ -666,7 +698,9 @@ class _AccessApplicationState:
                  http_only_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
                  landing_page_design: Optional[pulumi.Input['AccessApplicationLandingPageDesignArgs']] = None,
                  logo_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 mfa_config: Optional[pulumi.Input['AccessApplicationMfaConfigArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_configuration: Optional[pulumi.Input['AccessApplicationOauthConfigurationArgs']] = None,
                  options_preflight_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
                  path_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyArgs']]]] = None,
@@ -707,7 +741,9 @@ class _AccessApplicationState:
         :param pulumi.Input[_builtins.bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         :param pulumi.Input['AccessApplicationLandingPageDesignArgs'] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
+        :param pulumi.Input['AccessApplicationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
         :param pulumi.Input[_builtins.str] name: The name of the application.
+        :param pulumi.Input['AccessApplicationOauthConfigurationArgs'] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[_builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationPolicyArgs']]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
@@ -774,8 +810,12 @@ class _AccessApplicationState:
             pulumi.set(__self__, "landing_page_design", landing_page_design)
         if logo_url is not None:
             pulumi.set(__self__, "logo_url", logo_url)
+        if mfa_config is not None:
+            pulumi.set(__self__, "mfa_config", mfa_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if oauth_configuration is not None:
+            pulumi.set(__self__, "oauth_configuration", oauth_configuration)
         if options_preflight_bypass is not None:
             pulumi.set(__self__, "options_preflight_bypass", options_preflight_bypass)
         if path_cookie_attribute is not None:
@@ -1074,6 +1114,18 @@ class _AccessApplicationState:
         pulumi.set(self, "logo_url", value)
 
     @_builtins.property
+    @pulumi.getter(name="mfaConfig")
+    def mfa_config(self) -> Optional[pulumi.Input['AccessApplicationMfaConfigArgs']]:
+        """
+        Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        """
+        return pulumi.get(self, "mfa_config")
+
+    @mfa_config.setter
+    def mfa_config(self, value: Optional[pulumi.Input['AccessApplicationMfaConfigArgs']]):
+        pulumi.set(self, "mfa_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1084,6 +1136,18 @@ class _AccessApplicationState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthConfiguration")
+    def oauth_configuration(self) -> Optional[pulumi.Input['AccessApplicationOauthConfigurationArgs']]:
+        """
+        Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        """
+        return pulumi.get(self, "oauth_configuration")
+
+    @oauth_configuration.setter
+    def oauth_configuration(self, value: Optional[pulumi.Input['AccessApplicationOauthConfigurationArgs']]):
+        pulumi.set(self, "oauth_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="optionsPreflightBypass")
@@ -1312,7 +1376,9 @@ class AccessApplication(pulumi.CustomResource):
                  http_only_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
                  landing_page_design: Optional[pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']]] = None,
                  logo_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 mfa_config: Optional[pulumi.Input[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_configuration: Optional[pulumi.Input[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict']]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
                  path_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict']]]]] = None,
@@ -1362,7 +1428,9 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         :param pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
+        :param pulumi.Input[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
         :param pulumi.Input[_builtins.str] name: The name of the application.
+        :param pulumi.Input[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict']] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[_builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict']]]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
@@ -1437,7 +1505,9 @@ class AccessApplication(pulumi.CustomResource):
                  http_only_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
                  landing_page_design: Optional[pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']]] = None,
                  logo_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 mfa_config: Optional[pulumi.Input[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_configuration: Optional[pulumi.Input[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict']]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
                  path_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict']]]]] = None,
@@ -1485,7 +1555,9 @@ class AccessApplication(pulumi.CustomResource):
             __props__.__dict__["http_only_cookie_attribute"] = http_only_cookie_attribute
             __props__.__dict__["landing_page_design"] = landing_page_design
             __props__.__dict__["logo_url"] = logo_url
+            __props__.__dict__["mfa_config"] = mfa_config
             __props__.__dict__["name"] = name
+            __props__.__dict__["oauth_configuration"] = oauth_configuration
             __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
             __props__.__dict__["path_cookie_attribute"] = path_cookie_attribute
             __props__.__dict__["policies"] = policies
@@ -1537,7 +1609,9 @@ class AccessApplication(pulumi.CustomResource):
             http_only_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
             landing_page_design: Optional[pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']]] = None,
             logo_url: Optional[pulumi.Input[_builtins.str]] = None,
+            mfa_config: Optional[pulumi.Input[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            oauth_configuration: Optional[pulumi.Input[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict']]] = None,
             options_preflight_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
             path_cookie_attribute: Optional[pulumi.Input[_builtins.bool]] = None,
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict']]]]] = None,
@@ -1582,7 +1656,9 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] http_only_cookie_attribute: Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         :param pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']] landing_page_design: The design of the App Launcher landing page shown to users when they log in.
         :param pulumi.Input[_builtins.str] logo_url: The image URL for the logo shown in the App Launcher dashboard.
+        :param pulumi.Input[Union['AccessApplicationMfaConfigArgs', 'AccessApplicationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
         :param pulumi.Input[_builtins.str] name: The name of the application.
+        :param pulumi.Input[Union['AccessApplicationOauthConfigurationArgs', 'AccessApplicationOauthConfigurationArgsDict']] oauth_configuration: Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
         :param pulumi.Input[_builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[_builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationPolicyArgs', 'AccessApplicationPolicyArgsDict']]]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
@@ -1631,7 +1707,9 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["http_only_cookie_attribute"] = http_only_cookie_attribute
         __props__.__dict__["landing_page_design"] = landing_page_design
         __props__.__dict__["logo_url"] = logo_url
+        __props__.__dict__["mfa_config"] = mfa_config
         __props__.__dict__["name"] = name
+        __props__.__dict__["oauth_configuration"] = oauth_configuration
         __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
         __props__.__dict__["path_cookie_attribute"] = path_cookie_attribute
         __props__.__dict__["policies"] = policies
@@ -1824,12 +1902,28 @@ class AccessApplication(pulumi.CustomResource):
         return pulumi.get(self, "logo_url")
 
     @_builtins.property
+    @pulumi.getter(name="mfaConfig")
+    def mfa_config(self) -> pulumi.Output[Optional['outputs.AccessApplicationMfaConfig']]:
+        """
+        Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        """
+        return pulumi.get(self, "mfa_config")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the application.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="oauthConfiguration")
+    def oauth_configuration(self) -> pulumi.Output[Optional['outputs.AccessApplicationOauthConfiguration']]:
+        """
+        Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
+        """
+        return pulumi.get(self, "oauth_configuration")
 
     @_builtins.property
     @pulumi.getter(name="optionsPreflightBypass")

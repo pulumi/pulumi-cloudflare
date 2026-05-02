@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS Read`
+// - `DNS Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetDnsRecord(ctx, &cloudflare.LookupDnsRecordArgs{
-//				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:      pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DnsRecordId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
@@ -53,7 +58,7 @@ type LookupDnsRecordArgs struct {
 	DnsRecordId *string             `pulumi:"dnsRecordId"`
 	Filter      *GetDnsRecordFilter `pulumi:"filter"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getDnsRecord.
@@ -79,8 +84,10 @@ type LookupDnsRecordResult struct {
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// Complete DNS record name, including the zone name, in Punycode.
 	Name string `pulumi:"name"`
-	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+	// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
 	Priority float64 `pulumi:"priority"`
+	// Enables private network routing to the origin.
+	PrivateRouting bool `pulumi:"privateRouting"`
 	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable bool `pulumi:"proxiable"`
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
@@ -97,7 +104,7 @@ type LookupDnsRecordResult struct {
 	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type string `pulumi:"type"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupDnsRecordOutput(ctx *pulumi.Context, args LookupDnsRecordOutputArgs, opts ...pulumi.InvokeOption) LookupDnsRecordResultOutput {
@@ -115,7 +122,7 @@ type LookupDnsRecordOutputArgs struct {
 	DnsRecordId pulumi.StringPtrInput      `pulumi:"dnsRecordId"`
 	Filter      GetDnsRecordFilterPtrInput `pulumi:"filter"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupDnsRecordOutputArgs) ElementType() reflect.Type {
@@ -191,9 +198,14 @@ func (o LookupDnsRecordResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+// Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
 func (o LookupDnsRecordResultOutput) Priority() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupDnsRecordResult) float64 { return v.Priority }).(pulumi.Float64Output)
+}
+
+// Enables private network routing to the origin.
+func (o LookupDnsRecordResultOutput) PrivateRouting() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDnsRecordResult) bool { return v.PrivateRouting }).(pulumi.BoolOutput)
 }
 
 // Whether the record can be proxied by Cloudflare or not.
@@ -233,8 +245,8 @@ func (o LookupDnsRecordResultOutput) Type() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupDnsRecordResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupDnsRecordResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDnsRecordResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

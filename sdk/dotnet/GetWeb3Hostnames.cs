@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetWeb3Hostnames
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Web3 Hostnames Read`
+        /// - `Web3 Hostnames Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWeb3HostnamesResult> InvokeAsync(GetWeb3HostnamesArgs args, InvokeOptions? options = null)
+        public static Task<GetWeb3HostnamesResult> InvokeAsync(GetWeb3HostnamesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWeb3HostnamesResult>("cloudflare:index/getWeb3Hostnames:getWeb3Hostnames", args ?? new GetWeb3HostnamesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Web3 Hostnames Read`
+        /// - `Web3 Hostnames Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWeb3HostnamesResult> Invoke(GetWeb3HostnamesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetWeb3HostnamesResult> Invoke(GetWeb3HostnamesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWeb3HostnamesResult>("cloudflare:index/getWeb3Hostnames:getWeb3Hostnames", args ?? new GetWeb3HostnamesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Web3 Hostnames Read`
+        /// - `Web3 Hostnames Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specify the identifier of the hostname.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetWeb3HostnamesArgs()
         {
@@ -110,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specify the identifier of the hostname.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetWeb3HostnamesInvokeArgs()
         {
@@ -138,7 +153,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specify the identifier of the hostname.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetWeb3HostnamesResult(
@@ -148,7 +163,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetWeb3HostnamesResultResult> results,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             MaxItems = maxItems;

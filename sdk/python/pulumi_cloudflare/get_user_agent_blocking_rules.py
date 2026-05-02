@@ -100,7 +100,7 @@ class GetUserAgentBlockingRulesResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Defines an identifier.
         """
@@ -129,6 +129,11 @@ def get_user_agent_blocking_rules(description: Optional[_builtins.str] = None,
                                   zone_id: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserAgentBlockingRulesResult:
     """
+    Accepted Permissions
+
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+
     ## Example Usage
 
     ```python
@@ -169,9 +174,14 @@ def get_user_agent_blocking_rules_output(description: Optional[pulumi.Input[Opti
                                          max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                          paused: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                          user_agent: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                         zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserAgentBlockingRulesResult]:
     """
+    Accepted Permissions
+
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+
     ## Example Usage
 
     ```python

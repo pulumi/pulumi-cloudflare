@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Magic Network Monitoring Admin`
+    /// - `Magic Network Monitoring Config Read`
+    /// - `Magic Network Monitoring Config Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -23,15 +29,19 @@ namespace Pulumi.Cloudflare
     ///     var exampleMagicNetworkMonitoringRule = new Cloudflare.Index.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule", new()
     ///     {
     ///         AccountId = "6f91088a406011ed95aed352566e8d4c",
-    ///         Duration = "1m",
-    ///         Name = "my_rule_1",
     ///         AutomaticAdvertisement = true,
-    ///         Bandwidth = 1000,
-    ///         PacketThreshold = 10000,
+    ///         Name = "my_rule_1",
     ///         Prefixes = new[]
     ///         {
     ///             "203.0.113.1/32",
     ///         },
+    ///         Type = "zscore",
+    ///         BandwidthThreshold = 1000,
+    ///         Duration = "1m",
+    ///         PacketThreshold = 10000,
+    ///         PrefixMatch = "exact",
+    ///         ZscoreSensitivity = "high",
+    ///         ZscoreTarget = "bits",
     ///     });
     /// 
     /// });
@@ -47,25 +57,19 @@ namespace Pulumi.Cloudflare
     public partial class MagicNetworkMonitoringRule : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
         /// </summary>
         [Output("automaticAdvertisement")]
-        public Output<bool?> AutomaticAdvertisement { get; private set; } = null!;
-
-        /// <summary>
-        /// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-        /// </summary>
-        [Output("bandwidth")]
-        public Output<double?> Bandwidth { get; private set; } = null!;
+        public Output<bool> AutomaticAdvertisement { get; private set; } = null!;
 
         /// <summary>
         /// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         /// </summary>
         [Output("bandwidthThreshold")]
-        public Output<double> BandwidthThreshold { get; private set; } = null!;
+        public Output<double?> BandwidthThreshold { get; private set; } = null!;
 
         /// <summary>
         /// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
@@ -91,7 +95,7 @@ namespace Pulumi.Cloudflare
         /// Available values: "exact", "subnet", "supernet".
         /// </summary>
         [Output("prefixMatch")]
-        public Output<string> PrefixMatch { get; private set; } = null!;
+        public Output<string?> PrefixMatch { get; private set; } = null!;
 
         [Output("prefixes")]
         public Output<ImmutableArray<string>> Prefixes { get; private set; } = null!;
@@ -108,14 +112,14 @@ namespace Pulumi.Cloudflare
         /// Available values: "low", "medium", "high".
         /// </summary>
         [Output("zscoreSensitivity")]
-        public Output<string> ZscoreSensitivity { get; private set; } = null!;
+        public Output<string?> ZscoreSensitivity { get; private set; } = null!;
 
         /// <summary>
         /// Target of the zscore rule analysis.
         /// Available values: "bits", "packets".
         /// </summary>
         [Output("zscoreTarget")]
-        public Output<string> ZscoreTarget { get; private set; } = null!;
+        public Output<string?> ZscoreTarget { get; private set; } = null!;
 
 
         /// <summary>
@@ -163,20 +167,20 @@ namespace Pulumi.Cloudflare
 
     public sealed class MagicNetworkMonitoringRuleArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
         /// </summary>
-        [Input("automaticAdvertisement")]
-        public Input<bool>? AutomaticAdvertisement { get; set; }
+        [Input("automaticAdvertisement", required: true)]
+        public Input<bool> AutomaticAdvertisement { get; set; } = null!;
 
         /// <summary>
         /// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         /// </summary>
-        [Input("bandwidth")]
-        public Input<double>? Bandwidth { get; set; }
+        [Input("bandwidthThreshold")]
+        public Input<double>? BandwidthThreshold { get; set; }
 
         /// <summary>
         /// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
@@ -197,13 +201,41 @@ namespace Pulumi.Cloudflare
         [Input("packetThreshold")]
         public Input<double>? PacketThreshold { get; set; }
 
-        [Input("prefixes")]
+        /// <summary>
+        /// Prefix match type to be applied for a prefix auto advertisement when using an AdvancedDdos rule.
+        /// Available values: "exact", "subnet", "supernet".
+        /// </summary>
+        [Input("prefixMatch")]
+        public Input<string>? PrefixMatch { get; set; }
+
+        [Input("prefixes", required: true)]
         private InputList<string>? _prefixes;
         public InputList<string> Prefixes
         {
             get => _prefixes ?? (_prefixes = new InputList<string>());
             set => _prefixes = value;
         }
+
+        /// <summary>
+        /// MNM rule type.
+        /// Available values: "threshold", "zscore", "AdvancedDdos".
+        /// </summary>
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
+
+        /// <summary>
+        /// Level of sensitivity set for zscore rules.
+        /// Available values: "low", "medium", "high".
+        /// </summary>
+        [Input("zscoreSensitivity")]
+        public Input<string>? ZscoreSensitivity { get; set; }
+
+        /// <summary>
+        /// Target of the zscore rule analysis.
+        /// Available values: "bits", "packets".
+        /// </summary>
+        [Input("zscoreTarget")]
+        public Input<string>? ZscoreTarget { get; set; }
 
         public MagicNetworkMonitoringRuleArgs()
         {
@@ -221,12 +253,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("automaticAdvertisement")]
         public Input<bool>? AutomaticAdvertisement { get; set; }
-
-        /// <summary>
-        /// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-        /// </summary>
-        [Input("bandwidth")]
-        public Input<double>? Bandwidth { get; set; }
 
         /// <summary>
         /// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.

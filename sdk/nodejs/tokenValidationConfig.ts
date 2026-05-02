@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -82,7 +89,7 @@ export class TokenValidationConfig extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a TokenValidationConfig resource with the given unique name, arguments, and options.
@@ -121,9 +128,6 @@ export class TokenValidationConfig extends pulumi.CustomResource {
             }
             if (args?.tokenType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tokenType'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["credentials"] = args?.credentials;
             resourceInputs["description"] = args?.description;
@@ -174,5 +178,5 @@ export interface TokenValidationConfigArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

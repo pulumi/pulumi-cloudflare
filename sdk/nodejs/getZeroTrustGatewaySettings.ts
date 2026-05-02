@@ -18,7 +18,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustGatewaySettings(args: GetZeroTrustGatewaySettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewaySettingsResult> {
+export function getZeroTrustGatewaySettings(args?: GetZeroTrustGatewaySettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewaySettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewaySettings:getZeroTrustGatewaySettings", {
         "accountId": args.accountId,
@@ -29,14 +30,14 @@ export function getZeroTrustGatewaySettings(args: GetZeroTrustGatewaySettingsArg
  * A collection of arguments for invoking getZeroTrustGatewaySettings.
  */
 export interface GetZeroTrustGatewaySettingsArgs {
-    accountId: string;
+    accountId?: string;
 }
 
 /**
  * A collection of values returned by getZeroTrustGatewaySettings.
  */
 export interface GetZeroTrustGatewaySettingsResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly createdAt: string;
     /**
      * The ID of this resource.
@@ -60,7 +61,8 @@ export interface GetZeroTrustGatewaySettingsResult {
  * });
  * ```
  */
-export function getZeroTrustGatewaySettingsOutput(args: GetZeroTrustGatewaySettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewaySettingsResult> {
+export function getZeroTrustGatewaySettingsOutput(args?: GetZeroTrustGatewaySettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewaySettingsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewaySettings:getZeroTrustGatewaySettings", {
         "accountId": args.accountId,
@@ -71,5 +73,5 @@ export function getZeroTrustGatewaySettingsOutput(args: GetZeroTrustGatewaySetti
  * A collection of arguments for invoking getZeroTrustGatewaySettings.
  */
 export interface GetZeroTrustGatewaySettingsOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

@@ -15,6 +15,11 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Waiting Rooms Read`
+ * - `Waiting Rooms Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

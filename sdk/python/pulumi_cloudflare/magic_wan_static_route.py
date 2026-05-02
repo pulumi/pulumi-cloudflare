@@ -491,7 +491,7 @@ class MagicWanStaticRoute(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def description(self) -> pulumi.Output[_builtins.str]:
         """
         An optional human provided description of the static route.
         """

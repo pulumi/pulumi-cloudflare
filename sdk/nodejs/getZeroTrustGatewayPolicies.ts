@@ -18,7 +18,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustGatewayPolicies(args: GetZeroTrustGatewayPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayPoliciesResult> {
+export function getZeroTrustGatewayPolicies(args?: GetZeroTrustGatewayPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustGatewayPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies", {
         "accountId": args.accountId,
@@ -30,7 +31,7 @@ export function getZeroTrustGatewayPolicies(args: GetZeroTrustGatewayPoliciesArg
  * A collection of arguments for invoking getZeroTrustGatewayPolicies.
  */
 export interface GetZeroTrustGatewayPoliciesArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +42,7 @@ export interface GetZeroTrustGatewayPoliciesArgs {
  * A collection of values returned by getZeroTrustGatewayPolicies.
  */
 export interface GetZeroTrustGatewayPoliciesResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -67,7 +68,8 @@ export interface GetZeroTrustGatewayPoliciesResult {
  * });
  * ```
  */
-export function getZeroTrustGatewayPoliciesOutput(args: GetZeroTrustGatewayPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayPoliciesResult> {
+export function getZeroTrustGatewayPoliciesOutput(args?: GetZeroTrustGatewayPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustGatewayPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustGatewayPolicies:getZeroTrustGatewayPolicies", {
         "accountId": args.accountId,
@@ -79,7 +81,7 @@ export function getZeroTrustGatewayPoliciesOutput(args: GetZeroTrustGatewayPolic
  * A collection of arguments for invoking getZeroTrustGatewayPolicies.
  */
 export interface GetZeroTrustGatewayPoliciesOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

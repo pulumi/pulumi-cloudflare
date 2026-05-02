@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Email Routing Rules Read`
+ * - `Email Routing Rules Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -93,7 +98,7 @@ export class EmailRoutingRule extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a EmailRoutingRule resource with the given unique name, arguments, and options.
@@ -122,9 +127,6 @@ export class EmailRoutingRule extends pulumi.CustomResource {
             }
             if (args?.matchers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'matchers'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["actions"] = args?.actions;
             resourceInputs["enabled"] = args?.enabled;
@@ -202,5 +204,5 @@ export interface EmailRoutingRuleArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

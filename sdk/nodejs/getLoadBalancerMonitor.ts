@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancing: Monitors and Pools Read`
+ * - `Load Balancing: Monitors and Pools Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +37,7 @@ export interface GetLoadBalancerMonitorArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     monitorId: string;
 }
 
@@ -43,7 +48,7 @@ export interface GetLoadBalancerMonitorResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
      */
@@ -118,6 +123,11 @@ export interface GetLoadBalancerMonitorResult {
     readonly type: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Load Balancing: Monitors and Pools Read`
+ * - `Load Balancing: Monitors and Pools Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -145,6 +155,6 @@ export interface GetLoadBalancerMonitorOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     monitorId: pulumi.Input<string>;
 }

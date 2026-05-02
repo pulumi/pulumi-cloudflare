@@ -65,7 +65,7 @@ class GetWorkflowResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -146,6 +146,12 @@ def get_workflow(account_id: Optional[_builtins.str] = None,
                  workflow_name: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkflowResult:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+
     ## Example Usage
 
     ```python
@@ -175,11 +181,17 @@ def get_workflow(account_id: Optional[_builtins.str] = None,
         script_name=pulumi.get(__ret__, 'script_name'),
         triggered_on=pulumi.get(__ret__, 'triggered_on'),
         workflow_name=pulumi.get(__ret__, 'workflow_name'))
-def get_workflow_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workflow_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         filter: Optional[pulumi.Input[Optional[Union['GetWorkflowFilterArgs', 'GetWorkflowFilterArgsDict']]]] = None,
                         workflow_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkflowResult]:
     """
+    Accepted Permissions
+
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+    - `Workers Tail Read`
+
     ## Example Usage
 
     ```python

@@ -62,7 +62,7 @@ export class TeamsList extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsList.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Provide the list description.
@@ -82,7 +82,7 @@ export class TeamsList extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
      */
     declare public readonly type: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
@@ -113,9 +113,6 @@ export class TeamsList extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as TeamsListArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -162,7 +159,7 @@ export interface TeamsListState {
     name?: pulumi.Input<string>;
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
      */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
@@ -172,7 +169,7 @@ export interface TeamsListState {
  * The set of arguments for constructing a TeamsList resource.
  */
 export interface TeamsListArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Provide the list description.
      */
@@ -187,7 +184,7 @@ export interface TeamsListArgs {
     name: pulumi.Input<string>;
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
      */
     type: pulumi.Input<string>;
 }

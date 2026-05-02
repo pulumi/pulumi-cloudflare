@@ -104,14 +104,14 @@ public class MagicWanStaticRoute extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return An optional human provided description of the static route.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * When the route was last modified.

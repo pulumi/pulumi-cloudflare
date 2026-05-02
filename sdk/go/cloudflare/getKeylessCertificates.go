@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetKeylessCertificates(ctx, &cloudflare.LookupKeylessCertificatesArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +56,7 @@ type LookupKeylessCertificatesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getKeylessCertificates.
@@ -63,7 +68,7 @@ type LookupKeylessCertificatesResult struct {
 	// The items returned by the data source
 	Results []GetKeylessCertificatesResult `pulumi:"results"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupKeylessCertificatesOutput(ctx *pulumi.Context, args LookupKeylessCertificatesOutputArgs, opts ...pulumi.InvokeOption) LookupKeylessCertificatesResultOutput {
@@ -80,7 +85,7 @@ type LookupKeylessCertificatesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupKeylessCertificatesOutputArgs) ElementType() reflect.Type {
@@ -118,8 +123,8 @@ func (o LookupKeylessCertificatesResultOutput) Results() GetKeylessCertificatesR
 }
 
 // Identifier.
-func (o LookupKeylessCertificatesResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupKeylessCertificatesResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupKeylessCertificatesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKeylessCertificatesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

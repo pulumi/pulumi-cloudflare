@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare Zero Trust Secure DNS Locations Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDnsLocations(args: GetZeroTrustDnsLocationsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDnsLocationsResult> {
+export function getZeroTrustDnsLocations(args?: GetZeroTrustDnsLocationsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDnsLocationsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations", {
         "accountId": args.accountId,
@@ -30,7 +37,7 @@ export function getZeroTrustDnsLocations(args: GetZeroTrustDnsLocationsArgs, opt
  * A collection of arguments for invoking getZeroTrustDnsLocations.
  */
 export interface GetZeroTrustDnsLocationsArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +48,7 @@ export interface GetZeroTrustDnsLocationsArgs {
  * A collection of values returned by getZeroTrustDnsLocations.
  */
 export interface GetZeroTrustDnsLocationsResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -56,6 +63,12 @@ export interface GetZeroTrustDnsLocationsResult {
     readonly results: outputs.GetZeroTrustDnsLocationsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare Zero Trust Secure DNS Locations Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -67,7 +80,8 @@ export interface GetZeroTrustDnsLocationsResult {
  * });
  * ```
  */
-export function getZeroTrustDnsLocationsOutput(args: GetZeroTrustDnsLocationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDnsLocationsResult> {
+export function getZeroTrustDnsLocationsOutput(args?: GetZeroTrustDnsLocationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDnsLocationsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDnsLocations:getZeroTrustDnsLocations", {
         "accountId": args.accountId,
@@ -79,7 +93,7 @@ export function getZeroTrustDnsLocationsOutput(args: GetZeroTrustDnsLocationsOut
  * A collection of arguments for invoking getZeroTrustDnsLocations.
  */
 export interface GetZeroTrustDnsLocationsOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

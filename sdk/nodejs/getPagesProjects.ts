@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Pages Read`
+ * - `Pages Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getPagesProjects(args: GetPagesProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetPagesProjectsResult> {
+export function getPagesProjects(args?: GetPagesProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetPagesProjectsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getPagesProjects:getPagesProjects", {
         "accountId": args.accountId,
@@ -33,7 +39,7 @@ export interface GetPagesProjectsArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +53,7 @@ export interface GetPagesProjectsResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +68,11 @@ export interface GetPagesProjectsResult {
     readonly results: outputs.GetPagesProjectsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Pages Read`
+ * - `Pages Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetPagesProjectsResult {
  * });
  * ```
  */
-export function getPagesProjectsOutput(args: GetPagesProjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPagesProjectsResult> {
+export function getPagesProjectsOutput(args?: GetPagesProjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPagesProjectsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getPagesProjects:getPagesProjects", {
         "accountId": args.accountId,
@@ -88,7 +100,7 @@ export interface GetPagesProjectsOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

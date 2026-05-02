@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Images Read`
+// - `Images Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetImage(ctx, &cloudflare.LookupImageArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ImageId:   "image_id",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.Invo
 // A collection of arguments for invoking getImage.
 type LookupImageArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Image unique identifier.
 	ImageId string `pulumi:"imageId"`
 }
@@ -58,7 +63,7 @@ type LookupImageArgs struct {
 // A collection of values returned by getImage.
 type LookupImageResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Can set the creator field with an internal user ID.
 	Creator string `pulumi:"creator"`
 	// Image file name.
@@ -89,7 +94,7 @@ func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...
 // A collection of arguments for invoking getImage.
 type LookupImageOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Image unique identifier.
 	ImageId pulumi.StringInput `pulumi:"imageId"`
 }
@@ -114,8 +119,8 @@ func (o LookupImageResultOutput) ToLookupImageResultOutputWithContext(ctx contex
 }
 
 // Account identifier tag.
-func (o LookupImageResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupImageResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupImageResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupImageResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Can set the creator field with an internal user ID.

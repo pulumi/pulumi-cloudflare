@@ -12,6 +12,10 @@ namespace Pulumi.Cloudflare
     public static class GetLogpushJobs
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Logs Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +39,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogpushJobsResult>("cloudflare:index/getLogpushJobs:getLogpushJobs", args ?? new GetLogpushJobsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Logs Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +66,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetLogpushJobsResult>("cloudflare:index/getLogpushJobs:getLogpushJobs", args ?? new GetLogpushJobsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Logs Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

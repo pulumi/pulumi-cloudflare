@@ -205,6 +205,11 @@ class AwaitableGetUserResult(GetUserResult):
 
 def get_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
+    Accepted Permissions
+
+    - `User Details Read`
+    - `User Details Write`
+
     ## Example Usage
 
     ```python
@@ -235,6 +240,11 @@ def get_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserRes
         zipcode=pulumi.get(__ret__, 'zipcode'))
 def get_user_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
+    Accepted Permissions
+
+    - `User Details Read`
+    - `User Details Write`
+
     ## Example Usage
 
     ```python

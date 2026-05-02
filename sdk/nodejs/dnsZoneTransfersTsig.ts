@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -53,7 +58,7 @@ export class DnsZoneTransfersTsig extends pulumi.CustomResource {
         return obj['__pulumiType'] === DnsZoneTransfersTsig.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * TSIG algorithm.
      */
@@ -86,9 +91,6 @@ export class DnsZoneTransfersTsig extends pulumi.CustomResource {
             resourceInputs["secret"] = state?.secret;
         } else {
             const args = argsOrState as DnsZoneTransfersTsigArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.algo === undefined && !opts.urn) {
                 throw new Error("Missing required property 'algo'");
             }
@@ -133,7 +135,7 @@ export interface DnsZoneTransfersTsigState {
  * The set of arguments for constructing a DnsZoneTransfersTsig resource.
  */
 export interface DnsZoneTransfersTsigArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * TSIG algorithm.
      */

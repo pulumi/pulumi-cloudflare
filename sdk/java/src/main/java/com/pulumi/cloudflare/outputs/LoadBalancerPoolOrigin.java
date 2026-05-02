@@ -31,6 +31,11 @@ public final class LoadBalancerPoolOrigin {
      */
     private @Nullable Boolean enabled;
     /**
+     * @return Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flattenCname setting.
+     * 
+     */
+    private @Nullable Boolean flattenCname;
+    /**
      * @return The request header is used to pass additional information with an HTTP request. Currently supported header is &#39;Host&#39;.
      * 
      */
@@ -77,6 +82,13 @@ public final class LoadBalancerPoolOrigin {
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+    /**
+     * @return Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flattenCname setting.
+     * 
+     */
+    public Optional<Boolean> flattenCname() {
+        return Optional.ofNullable(this.flattenCname);
     }
     /**
      * @return The request header is used to pass additional information with an HTTP request. Currently supported header is &#39;Host&#39;.
@@ -126,6 +138,7 @@ public final class LoadBalancerPoolOrigin {
         private @Nullable String address;
         private @Nullable String disabledAt;
         private @Nullable Boolean enabled;
+        private @Nullable Boolean flattenCname;
         private @Nullable LoadBalancerPoolOriginHeader header;
         private @Nullable String name;
         private @Nullable Integer port;
@@ -137,6 +150,7 @@ public final class LoadBalancerPoolOrigin {
     	      this.address = defaults.address;
     	      this.disabledAt = defaults.disabledAt;
     	      this.enabled = defaults.enabled;
+    	      this.flattenCname = defaults.flattenCname;
     	      this.header = defaults.header;
     	      this.name = defaults.name;
     	      this.port = defaults.port;
@@ -160,6 +174,12 @@ public final class LoadBalancerPoolOrigin {
         public Builder enabled(@Nullable Boolean enabled) {
 
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder flattenCname(@Nullable Boolean flattenCname) {
+
+            this.flattenCname = flattenCname;
             return this;
         }
         @CustomType.Setter
@@ -197,6 +217,7 @@ public final class LoadBalancerPoolOrigin {
             _resultValue.address = address;
             _resultValue.disabledAt = disabledAt;
             _resultValue.enabled = enabled;
+            _resultValue.flattenCname = flattenCname;
             _resultValue.header = header;
             _resultValue.name = name;
             _resultValue.port = port;

@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetRateLimitArgs extends com.pulumi.resources.InvokeArgs {
@@ -33,15 +35,15 @@ public final class GetRateLimitArgs extends com.pulumi.resources.InvokeArgs {
      * Defines an identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Defines an identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetRateLimitArgs() {}
@@ -96,7 +98,7 @@ public final class GetRateLimitArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -114,9 +116,6 @@ public final class GetRateLimitArgs extends com.pulumi.resources.InvokeArgs {
         public GetRateLimitArgs build() {
             if ($.rateLimitId == null) {
                 throw new MissingRequiredPropertyException("GetRateLimitArgs", "rateLimitId");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetRateLimitArgs", "zoneId");
             }
             return $;
         }

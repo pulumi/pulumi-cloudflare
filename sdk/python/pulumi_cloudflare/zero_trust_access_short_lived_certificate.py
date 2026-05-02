@@ -172,6 +172,11 @@ class ZeroTrustAccessShortLivedCertificate(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Access: Apps and Policies Read`
+        - `Access: Apps and Policies Write`
+
         ## Example Usage
 
         ```python
@@ -203,6 +208,11 @@ class ZeroTrustAccessShortLivedCertificate(pulumi.CustomResource):
                  args: ZeroTrustAccessShortLivedCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Access: Apps and Policies Read`
+        - `Access: Apps and Policies Write`
+
         ## Example Usage
 
         ```python

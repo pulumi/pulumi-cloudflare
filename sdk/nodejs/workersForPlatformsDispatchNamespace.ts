@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -54,7 +60,7 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Identifier.
      */
@@ -99,7 +105,7 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: WorkersForPlatformsDispatchNamespaceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: WorkersForPlatformsDispatchNamespaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkersForPlatformsDispatchNamespaceArgs | WorkersForPlatformsDispatchNamespaceState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -117,9 +123,6 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
             resourceInputs["trustedWorkers"] = state?.trustedWorkers;
         } else {
             const args = argsOrState as WorkersForPlatformsDispatchNamespaceArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["name"] = args?.name;
             resourceInputs["createdBy"] = undefined /*out*/;
@@ -191,7 +194,7 @@ export interface WorkersForPlatformsDispatchNamespaceArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The name of the dispatch namespace.
      */

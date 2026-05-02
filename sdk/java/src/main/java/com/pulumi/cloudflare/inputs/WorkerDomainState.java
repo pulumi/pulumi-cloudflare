@@ -16,14 +16,14 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
     public static final WorkerDomainState Empty = new WorkerDomainState();
 
     /**
-     * Identifer of the account.
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifer of the account.
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,7 +31,22 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Worker environment associated with the zone and hostname.
+     * ID of the TLS certificate issued for the domain.
+     * 
+     */
+    @Import(name="certId")
+    private @Nullable Output<String> certId;
+
+    /**
+     * @return ID of the TLS certificate issued for the domain.
+     * 
+     */
+    public Optional<Output<String>> certId() {
+        return Optional.ofNullable(this.certId);
+    }
+
+    /**
+     * Worker environment associated with the domain.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -42,7 +57,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> environment;
 
     /**
-     * @return Worker environment associated with the zone and hostname.
+     * @return Worker environment associated with the domain.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -54,14 +69,14 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Hostname of the Worker Domain.
+     * Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return Hostname of the Worker Domain.
+     * @return Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -69,14 +84,14 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Worker service associated with the zone and hostname.
+     * Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return Worker service associated with the zone and hostname.
+     * @return Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      * 
      */
     public Optional<Output<String>> service() {
@@ -84,14 +99,14 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier of the zone.
+     * ID of the zone containing the domain hostname.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier of the zone.
+     * @return ID of the zone containing the domain hostname.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -99,14 +114,14 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the zone.
+     * Name of the zone containing the domain hostname.
      * 
      */
     @Import(name="zoneName")
     private @Nullable Output<String> zoneName;
 
     /**
-     * @return Name of the zone.
+     * @return Name of the zone containing the domain hostname.
      * 
      */
     public Optional<Output<String>> zoneName() {
@@ -117,6 +132,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
 
     private WorkerDomainState(WorkerDomainState $) {
         this.accountId = $.accountId;
+        this.certId = $.certId;
         this.environment = $.environment;
         this.hostname = $.hostname;
         this.service = $.service;
@@ -143,7 +159,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifer of the account.
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -154,7 +170,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifer of the account.
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -164,7 +180,28 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environment Worker environment associated with the zone and hostname.
+         * @param certId ID of the TLS certificate issued for the domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certId(@Nullable Output<String> certId) {
+            $.certId = certId;
+            return this;
+        }
+
+        /**
+         * @param certId ID of the TLS certificate issued for the domain.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certId(String certId) {
+            return certId(Output.of(certId));
+        }
+
+        /**
+         * @param environment Worker environment associated with the domain.
          * 
          * @return builder
          * 
@@ -179,7 +216,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environment Worker environment associated with the zone and hostname.
+         * @param environment Worker environment associated with the domain.
          * 
          * @return builder
          * 
@@ -193,7 +230,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname Hostname of the Worker Domain.
+         * @param hostname Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
          * 
          * @return builder
          * 
@@ -204,7 +241,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname Hostname of the Worker Domain.
+         * @param hostname Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
          * 
          * @return builder
          * 
@@ -214,7 +251,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service Worker service associated with the zone and hostname.
+         * @param service Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
          * 
          * @return builder
          * 
@@ -225,7 +262,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service Worker service associated with the zone and hostname.
+         * @param service Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
          * 
          * @return builder
          * 
@@ -235,7 +272,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier of the zone.
+         * @param zoneId ID of the zone containing the domain hostname.
          * 
          * @return builder
          * 
@@ -246,7 +283,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier of the zone.
+         * @param zoneId ID of the zone containing the domain hostname.
          * 
          * @return builder
          * 
@@ -256,7 +293,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneName Name of the zone.
+         * @param zoneName Name of the zone containing the domain hostname.
          * 
          * @return builder
          * 
@@ -267,7 +304,7 @@ public final class WorkerDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneName Name of the zone.
+         * @param zoneName Name of the zone containing the domain hostname.
          * 
          * @return builder
          * 

@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * - `Zone Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZoneCacheVariants(args: GetZoneCacheVariantsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneCacheVariantsResult> {
+export function getZoneCacheVariants(args?: GetZoneCacheVariantsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneCacheVariantsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneCacheVariants:getZoneCacheVariants", {
         "zoneId": args.zoneId,
@@ -32,7 +40,7 @@ export interface GetZoneCacheVariantsArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -58,9 +66,16 @@ export interface GetZoneCacheVariantsResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zone Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * - `Zone Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -72,7 +87,8 @@ export interface GetZoneCacheVariantsResult {
  * });
  * ```
  */
-export function getZoneCacheVariantsOutput(args: GetZoneCacheVariantsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneCacheVariantsResult> {
+export function getZoneCacheVariantsOutput(args?: GetZoneCacheVariantsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneCacheVariantsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneCacheVariants:getZoneCacheVariants", {
         "zoneId": args.zoneId,
@@ -86,5 +102,5 @@ export interface GetZoneCacheVariantsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

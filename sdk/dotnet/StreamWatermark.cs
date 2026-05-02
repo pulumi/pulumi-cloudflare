@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Stream Read`
+    /// - `Stream Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -23,12 +28,12 @@ namespace Pulumi.Cloudflare
     ///     var exampleStreamWatermark = new Cloudflare.Index.StreamWatermark("example_stream_watermark", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         File = "@/Users/rchen/Downloads/watermark.png",
     ///         Name = "Marketing Videos",
     ///         Opacity = 0.75,
     ///         Padding = 0.1,
     ///         Position = "center",
     ///         Scale = 0.1,
+    ///         Url = "https://example.com",
     ///     });
     /// 
     /// });
@@ -45,7 +50,7 @@ namespace Pulumi.Cloudflare
         /// The account identifier tag.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The date and a time a watermark profile was created.
@@ -58,12 +63,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("downloadedFrom")]
         public Output<string> DownloadedFrom { get; private set; } = null!;
-
-        /// <summary>
-        /// The image file to upload.
-        /// </summary>
-        [Output("file")]
-        public Output<string> File { get; private set; } = null!;
 
         /// <summary>
         /// The height of the image in pixels.
@@ -120,6 +119,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
+        /// URL of the watermark image to copy.
+        /// </summary>
+        [Output("url")]
+        public Output<string?> Url { get; private set; } = null!;
+
+        /// <summary>
         /// The width of the image in pixels.
         /// </summary>
         [Output("width")]
@@ -133,7 +138,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public StreamWatermark(string name, StreamWatermarkArgs args, CustomResourceOptions? options = null)
+        public StreamWatermark(string name, StreamWatermarkArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/streamWatermark:StreamWatermark", name, args ?? new StreamWatermarkArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -174,14 +179,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
-
-        /// <summary>
-        /// The image file to upload.
-        /// </summary>
-        [Input("file", required: true)]
-        public Input<string> File { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The unique identifier for a watermark profile.
@@ -219,6 +218,12 @@ namespace Pulumi.Cloudflare
         [Input("scale")]
         public Input<double>? Scale { get; set; }
 
+        /// <summary>
+        /// URL of the watermark image to copy.
+        /// </summary>
+        [Input("url")]
+        public Input<string>? Url { get; set; }
+
         public StreamWatermarkArgs()
         {
         }
@@ -244,12 +249,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("downloadedFrom")]
         public Input<string>? DownloadedFrom { get; set; }
-
-        /// <summary>
-        /// The image file to upload.
-        /// </summary>
-        [Input("file")]
-        public Input<string>? File { get; set; }
 
         /// <summary>
         /// The height of the image in pixels.
@@ -304,6 +303,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
+
+        /// <summary>
+        /// URL of the watermark image to copy.
+        /// </summary>
+        [Input("url")]
+        public Input<string>? Url { get; set; }
 
         /// <summary>
         /// The width of the image in pixels.

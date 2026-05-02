@@ -7,10 +7,12 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDnsZoneTransfersTsigResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return TSIG algorithm.
      * 
@@ -34,8 +36,8 @@ public final class GetDnsZoneTransfersTsigResult {
     private String tsigId;
 
     private GetDnsZoneTransfersTsigResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return TSIG algorithm.
@@ -78,7 +80,7 @@ public final class GetDnsZoneTransfersTsigResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String algo;
         private String id;
         private String name;
@@ -96,10 +98,8 @@ public final class GetDnsZoneTransfersTsigResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetDnsZoneTransfersTsigResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

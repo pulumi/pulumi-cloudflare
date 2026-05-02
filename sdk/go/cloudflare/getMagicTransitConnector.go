@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic WAN Read`
+// - `Magic WAN Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicTransitConnector(ctx, &cloudflare.LookupMagicTransitConnectorArgs{
-//				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ConnectorId: "connector_id",
 //			}, nil)
 //			if err != nil {
@@ -50,27 +55,31 @@ func LookupMagicTransitConnector(ctx *pulumi.Context, args *LookupMagicTransitCo
 // A collection of arguments for invoking getMagicTransitConnector.
 type LookupMagicTransitConnectorArgs struct {
 	// Account identifier
-	AccountId   string `pulumi:"accountId"`
-	ConnectorId string `pulumi:"connectorId"`
+	AccountId   *string `pulumi:"accountId"`
+	ConnectorId string  `pulumi:"connectorId"`
 }
 
 // A collection of values returned by getMagicTransitConnector.
 type LookupMagicTransitConnectorResult struct {
 	// Account identifier
-	AccountId   string                         `pulumi:"accountId"`
+	AccountId   *string                        `pulumi:"accountId"`
 	Activated   bool                           `pulumi:"activated"`
 	ConnectorId string                         `pulumi:"connectorId"`
 	Device      GetMagicTransitConnectorDevice `pulumi:"device"`
 	// The ID of this resource.
-	Id                           string  `pulumi:"id"`
-	InterruptWindowDurationHours float64 `pulumi:"interruptWindowDurationHours"`
-	InterruptWindowHourOfDay     float64 `pulumi:"interruptWindowHourOfDay"`
-	LastHeartbeat                string  `pulumi:"lastHeartbeat"`
-	LastSeenVersion              string  `pulumi:"lastSeenVersion"`
-	LastUpdated                  string  `pulumi:"lastUpdated"`
-	LicenseKey                   string  `pulumi:"licenseKey"`
-	Notes                        string  `pulumi:"notes"`
-	Timezone                     string  `pulumi:"timezone"`
+	Id string `pulumi:"id"`
+	// Allowed days of the week for upgrades. Default is all days.
+	InterruptWindowDaysOfWeeks   []string `pulumi:"interruptWindowDaysOfWeeks"`
+	InterruptWindowDurationHours float64  `pulumi:"interruptWindowDurationHours"`
+	// List of dates (YYYY-MM-DD) when upgrades are blocked.
+	InterruptWindowEmbargoDates []string `pulumi:"interruptWindowEmbargoDates"`
+	InterruptWindowHourOfDay    float64  `pulumi:"interruptWindowHourOfDay"`
+	LastHeartbeat               string   `pulumi:"lastHeartbeat"`
+	LastSeenVersion             string   `pulumi:"lastSeenVersion"`
+	LastUpdated                 string   `pulumi:"lastUpdated"`
+	LicenseKey                  string   `pulumi:"licenseKey"`
+	Notes                       string   `pulumi:"notes"`
+	Timezone                    string   `pulumi:"timezone"`
 }
 
 func LookupMagicTransitConnectorOutput(ctx *pulumi.Context, args LookupMagicTransitConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMagicTransitConnectorResultOutput {
@@ -85,8 +94,8 @@ func LookupMagicTransitConnectorOutput(ctx *pulumi.Context, args LookupMagicTran
 // A collection of arguments for invoking getMagicTransitConnector.
 type LookupMagicTransitConnectorOutputArgs struct {
 	// Account identifier
-	AccountId   pulumi.StringInput `pulumi:"accountId"`
-	ConnectorId pulumi.StringInput `pulumi:"connectorId"`
+	AccountId   pulumi.StringPtrInput `pulumi:"accountId"`
+	ConnectorId pulumi.StringInput    `pulumi:"connectorId"`
 }
 
 func (LookupMagicTransitConnectorOutputArgs) ElementType() reflect.Type {
@@ -109,8 +118,8 @@ func (o LookupMagicTransitConnectorResultOutput) ToLookupMagicTransitConnectorRe
 }
 
 // Account identifier
-func (o LookupMagicTransitConnectorResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMagicTransitConnectorResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupMagicTransitConnectorResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicTransitConnectorResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupMagicTransitConnectorResultOutput) Activated() pulumi.BoolOutput {
@@ -130,8 +139,18 @@ func (o LookupMagicTransitConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicTransitConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Allowed days of the week for upgrades. Default is all days.
+func (o LookupMagicTransitConnectorResultOutput) InterruptWindowDaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupMagicTransitConnectorResult) []string { return v.InterruptWindowDaysOfWeeks }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupMagicTransitConnectorResultOutput) InterruptWindowDurationHours() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupMagicTransitConnectorResult) float64 { return v.InterruptWindowDurationHours }).(pulumi.Float64Output)
+}
+
+// List of dates (YYYY-MM-DD) when upgrades are blocked.
+func (o LookupMagicTransitConnectorResultOutput) InterruptWindowEmbargoDates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupMagicTransitConnectorResult) []string { return v.InterruptWindowEmbargoDates }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupMagicTransitConnectorResultOutput) InterruptWindowHourOfDay() pulumi.Float64Output {

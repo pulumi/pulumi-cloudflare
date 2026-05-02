@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Routes Read`
+// - `Workers Routes Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersRoutes(ctx, &cloudflare.LookupWorkersRoutesArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +56,7 @@ type LookupWorkersRoutesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getWorkersRoutes.
@@ -63,7 +68,7 @@ type LookupWorkersRoutesResult struct {
 	// The items returned by the data source
 	Results []GetWorkersRoutesResult `pulumi:"results"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupWorkersRoutesOutput(ctx *pulumi.Context, args LookupWorkersRoutesOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersRoutesResultOutput {
@@ -80,7 +85,7 @@ type LookupWorkersRoutesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupWorkersRoutesOutputArgs) ElementType() reflect.Type {
@@ -118,8 +123,8 @@ func (o LookupWorkersRoutesResultOutput) Results() GetWorkersRoutesResultArrayOu
 }
 
 // Identifier.
-func (o LookupWorkersRoutesResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersRoutesResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupWorkersRoutesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersRoutesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetWorkersScript
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +37,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWorkersScriptResult> InvokeAsync(GetWorkersScriptArgs args, InvokeOptions? options = null)
+        public static Task<GetWorkersScriptResult> InvokeAsync(GetWorkersScriptArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkersScriptResult>("cloudflare:index/getWorkersScript:getWorkersScript", args ?? new GetWorkersScriptArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +66,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWorkersScriptResult> Invoke(GetWorkersScriptInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetWorkersScriptResult> Invoke(GetWorkersScriptInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkersScriptResult>("cloudflare:index/getWorkersScript:getWorkersScript", args ?? new GetWorkersScriptInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetWorkersScriptFilterArgs? Filter { get; set; }
@@ -110,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetWorkersScriptFilterInputArgs>? Filter { get; set; }
@@ -135,7 +153,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly Outputs.GetWorkersScriptFilterResult? Filter;
         /// <summary>
         /// Name of the script, used in URLs and route configuration.
@@ -149,7 +167,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWorkersScriptResult(
-            string accountId,
+            string? accountId,
 
             Outputs.GetWorkersScriptFilterResult? filter,
 

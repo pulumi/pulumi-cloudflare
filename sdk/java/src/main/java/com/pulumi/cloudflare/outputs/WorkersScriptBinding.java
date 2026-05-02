@@ -31,6 +31,11 @@ public final class WorkersScriptBinding {
      */
     private @Nullable List<String> allowedSenderAddresses;
     /**
+     * @return ID of the Flagship app to bind to for feature flag evaluation.
+     * 
+     */
+    private @Nullable String appId;
+    /**
      * @return R2 bucket to bind to.
      * 
      */
@@ -46,6 +51,11 @@ public final class WorkersScriptBinding {
      */
     private @Nullable String className;
     /**
+     * @return Identifier of the D1 database to bind to.
+     * 
+     */
+    private @Nullable String databaseId;
+    /**
      * @return The name of the dataset to bind to.
      * 
      */
@@ -55,6 +65,16 @@ public final class WorkersScriptBinding {
      * 
      */
     private @Nullable String destinationAddress;
+    /**
+     * @return The dispatch namespace the Durable Object script belongs to.
+     * 
+     */
+    private @Nullable String dispatchNamespace;
+    /**
+     * @return Entrypoint to invoke on the target Worker.
+     * 
+     */
+    private @Nullable String entrypoint;
     /**
      * @return The environment of the scriptName to bind to.
      * 
@@ -77,13 +97,18 @@ public final class WorkersScriptBinding {
      */
     private @Nullable String indexName;
     /**
+     * @return The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+     * 
+     */
+    private @Nullable String instanceName;
+    /**
      * @return JSON data to use.
      * 
      */
     private @Nullable String json;
     /**
      * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
      * 
      */
     private @Nullable String jurisdiction;
@@ -103,7 +128,7 @@ public final class WorkersScriptBinding {
      */
     private String name;
     /**
-     * @return The name of the dispatch namespace.
+     * @return The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
      * 
      */
     private @Nullable String namespace;
@@ -112,6 +137,11 @@ public final class WorkersScriptBinding {
      * 
      */
     private @Nullable String namespaceId;
+    /**
+     * @return Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+     * 
+     */
+    private @Nullable String networkId;
     /**
      * @return The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
      * 
@@ -153,6 +183,11 @@ public final class WorkersScriptBinding {
      */
     private @Nullable String service;
     /**
+     * @return Identifier of the VPC service to bind to.
+     * 
+     */
+    private @Nullable String serviceId;
+    /**
      * @return A simple rate limit.
      * 
      */
@@ -168,8 +203,13 @@ public final class WorkersScriptBinding {
      */
     private @Nullable String text;
     /**
+     * @return UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+     * 
+     */
+    private @Nullable String tunnelId;
+    /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;.
+     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
      * 
      */
     private String type;
@@ -212,6 +252,13 @@ public final class WorkersScriptBinding {
         return this.allowedSenderAddresses == null ? List.of() : this.allowedSenderAddresses;
     }
     /**
+     * @return ID of the Flagship app to bind to for feature flag evaluation.
+     * 
+     */
+    public Optional<String> appId() {
+        return Optional.ofNullable(this.appId);
+    }
+    /**
      * @return R2 bucket to bind to.
      * 
      */
@@ -233,6 +280,13 @@ public final class WorkersScriptBinding {
         return Optional.ofNullable(this.className);
     }
     /**
+     * @return Identifier of the D1 database to bind to.
+     * 
+     */
+    public Optional<String> databaseId() {
+        return Optional.ofNullable(this.databaseId);
+    }
+    /**
      * @return The name of the dataset to bind to.
      * 
      */
@@ -245,6 +299,20 @@ public final class WorkersScriptBinding {
      */
     public Optional<String> destinationAddress() {
         return Optional.ofNullable(this.destinationAddress);
+    }
+    /**
+     * @return The dispatch namespace the Durable Object script belongs to.
+     * 
+     */
+    public Optional<String> dispatchNamespace() {
+        return Optional.ofNullable(this.dispatchNamespace);
+    }
+    /**
+     * @return Entrypoint to invoke on the target Worker.
+     * 
+     */
+    public Optional<String> entrypoint() {
+        return Optional.ofNullable(this.entrypoint);
     }
     /**
      * @return The environment of the scriptName to bind to.
@@ -276,6 +344,13 @@ public final class WorkersScriptBinding {
         return Optional.ofNullable(this.indexName);
     }
     /**
+     * @return The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
+     * 
+     */
+    public Optional<String> instanceName() {
+        return Optional.ofNullable(this.instanceName);
+    }
+    /**
      * @return JSON data to use.
      * 
      */
@@ -284,7 +359,7 @@ public final class WorkersScriptBinding {
     }
     /**
      * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;, &#34;fedramp-high&#34;.
      * 
      */
     public Optional<String> jurisdiction() {
@@ -312,7 +387,7 @@ public final class WorkersScriptBinding {
         return this.name;
     }
     /**
-     * @return The name of the dispatch namespace.
+     * @return The namespace the instance belongs to. Defaults to &#34;default&#34; if omitted. Customers who don&#39;t use namespaces can simply omit this field.
      * 
      */
     public Optional<String> namespace() {
@@ -324,6 +399,13 @@ public final class WorkersScriptBinding {
      */
     public Optional<String> namespaceId() {
         return Optional.ofNullable(this.namespaceId);
+    }
+    /**
+     * @return Identifier of the network to bind to. Only &#34;cf1:network&#34; is currently supported. Mutually exclusive with tunnel_id.
+     * 
+     */
+    public Optional<String> networkId() {
+        return Optional.ofNullable(this.networkId);
     }
     /**
      * @return The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
@@ -382,6 +464,13 @@ public final class WorkersScriptBinding {
         return Optional.ofNullable(this.service);
     }
     /**
+     * @return Identifier of the VPC service to bind to.
+     * 
+     */
+    public Optional<String> serviceId() {
+        return Optional.ofNullable(this.serviceId);
+    }
+    /**
      * @return A simple rate limit.
      * 
      */
@@ -403,8 +492,15 @@ public final class WorkersScriptBinding {
         return Optional.ofNullable(this.text);
     }
     /**
+     * @return UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
+     * 
+     */
+    public Optional<String> tunnelId() {
+        return Optional.ofNullable(this.tunnelId);
+    }
+    /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;.
+     * Available values: &#34;ai&#34;, &#34;ai*search&#34;, &#34;ai*search*namespace&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;media&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;ratelimit&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;, &#34;vpc*service&#34;, &#34;vpc*network&#34;.
      * 
      */
     public String type() {
@@ -444,15 +540,20 @@ public final class WorkersScriptBinding {
         private @Nullable String algorithm;
         private @Nullable List<String> allowedDestinationAddresses;
         private @Nullable List<String> allowedSenderAddresses;
+        private @Nullable String appId;
         private @Nullable String bucketName;
         private @Nullable String certificateId;
         private @Nullable String className;
+        private @Nullable String databaseId;
         private @Nullable String dataset;
         private @Nullable String destinationAddress;
+        private @Nullable String dispatchNamespace;
+        private @Nullable String entrypoint;
         private @Nullable String environment;
         private @Nullable String format;
         private @Nullable String id;
         private @Nullable String indexName;
+        private @Nullable String instanceName;
         private @Nullable String json;
         private @Nullable String jurisdiction;
         private @Nullable String keyBase64;
@@ -460,6 +561,7 @@ public final class WorkersScriptBinding {
         private String name;
         private @Nullable String namespace;
         private @Nullable String namespaceId;
+        private @Nullable String networkId;
         private @Nullable String oldName;
         private @Nullable WorkersScriptBindingOutbound outbound;
         private @Nullable String part;
@@ -468,9 +570,11 @@ public final class WorkersScriptBinding {
         private @Nullable String scriptName;
         private @Nullable String secretName;
         private @Nullable String service;
+        private @Nullable String serviceId;
         private @Nullable WorkersScriptBindingSimple simple;
         private @Nullable String storeId;
         private @Nullable String text;
+        private @Nullable String tunnelId;
         private String type;
         private @Nullable List<String> usages;
         private @Nullable String versionId;
@@ -481,15 +585,20 @@ public final class WorkersScriptBinding {
     	      this.algorithm = defaults.algorithm;
     	      this.allowedDestinationAddresses = defaults.allowedDestinationAddresses;
     	      this.allowedSenderAddresses = defaults.allowedSenderAddresses;
+    	      this.appId = defaults.appId;
     	      this.bucketName = defaults.bucketName;
     	      this.certificateId = defaults.certificateId;
     	      this.className = defaults.className;
+    	      this.databaseId = defaults.databaseId;
     	      this.dataset = defaults.dataset;
     	      this.destinationAddress = defaults.destinationAddress;
+    	      this.dispatchNamespace = defaults.dispatchNamespace;
+    	      this.entrypoint = defaults.entrypoint;
     	      this.environment = defaults.environment;
     	      this.format = defaults.format;
     	      this.id = defaults.id;
     	      this.indexName = defaults.indexName;
+    	      this.instanceName = defaults.instanceName;
     	      this.json = defaults.json;
     	      this.jurisdiction = defaults.jurisdiction;
     	      this.keyBase64 = defaults.keyBase64;
@@ -497,6 +606,7 @@ public final class WorkersScriptBinding {
     	      this.name = defaults.name;
     	      this.namespace = defaults.namespace;
     	      this.namespaceId = defaults.namespaceId;
+    	      this.networkId = defaults.networkId;
     	      this.oldName = defaults.oldName;
     	      this.outbound = defaults.outbound;
     	      this.part = defaults.part;
@@ -505,9 +615,11 @@ public final class WorkersScriptBinding {
     	      this.scriptName = defaults.scriptName;
     	      this.secretName = defaults.secretName;
     	      this.service = defaults.service;
+    	      this.serviceId = defaults.serviceId;
     	      this.simple = defaults.simple;
     	      this.storeId = defaults.storeId;
     	      this.text = defaults.text;
+    	      this.tunnelId = defaults.tunnelId;
     	      this.type = defaults.type;
     	      this.usages = defaults.usages;
     	      this.versionId = defaults.versionId;
@@ -539,6 +651,12 @@ public final class WorkersScriptBinding {
             return allowedSenderAddresses(List.of(allowedSenderAddresses));
         }
         @CustomType.Setter
+        public Builder appId(@Nullable String appId) {
+
+            this.appId = appId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
 
             this.bucketName = bucketName;
@@ -557,6 +675,12 @@ public final class WorkersScriptBinding {
             return this;
         }
         @CustomType.Setter
+        public Builder databaseId(@Nullable String databaseId) {
+
+            this.databaseId = databaseId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder dataset(@Nullable String dataset) {
 
             this.dataset = dataset;
@@ -566,6 +690,18 @@ public final class WorkersScriptBinding {
         public Builder destinationAddress(@Nullable String destinationAddress) {
 
             this.destinationAddress = destinationAddress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dispatchNamespace(@Nullable String dispatchNamespace) {
+
+            this.dispatchNamespace = dispatchNamespace;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder entrypoint(@Nullable String entrypoint) {
+
+            this.entrypoint = entrypoint;
             return this;
         }
         @CustomType.Setter
@@ -590,6 +726,12 @@ public final class WorkersScriptBinding {
         public Builder indexName(@Nullable String indexName) {
 
             this.indexName = indexName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceName(@Nullable String instanceName) {
+
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
@@ -634,6 +776,12 @@ public final class WorkersScriptBinding {
         public Builder namespaceId(@Nullable String namespaceId) {
 
             this.namespaceId = namespaceId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder networkId(@Nullable String networkId) {
+
+            this.networkId = networkId;
             return this;
         }
         @CustomType.Setter
@@ -685,6 +833,12 @@ public final class WorkersScriptBinding {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceId(@Nullable String serviceId) {
+
+            this.serviceId = serviceId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder simple(@Nullable WorkersScriptBindingSimple simple) {
 
             this.simple = simple;
@@ -700,6 +854,12 @@ public final class WorkersScriptBinding {
         public Builder text(@Nullable String text) {
 
             this.text = text;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tunnelId(@Nullable String tunnelId) {
+
+            this.tunnelId = tunnelId;
             return this;
         }
         @CustomType.Setter
@@ -736,15 +896,20 @@ public final class WorkersScriptBinding {
             _resultValue.algorithm = algorithm;
             _resultValue.allowedDestinationAddresses = allowedDestinationAddresses;
             _resultValue.allowedSenderAddresses = allowedSenderAddresses;
+            _resultValue.appId = appId;
             _resultValue.bucketName = bucketName;
             _resultValue.certificateId = certificateId;
             _resultValue.className = className;
+            _resultValue.databaseId = databaseId;
             _resultValue.dataset = dataset;
             _resultValue.destinationAddress = destinationAddress;
+            _resultValue.dispatchNamespace = dispatchNamespace;
+            _resultValue.entrypoint = entrypoint;
             _resultValue.environment = environment;
             _resultValue.format = format;
             _resultValue.id = id;
             _resultValue.indexName = indexName;
+            _resultValue.instanceName = instanceName;
             _resultValue.json = json;
             _resultValue.jurisdiction = jurisdiction;
             _resultValue.keyBase64 = keyBase64;
@@ -752,6 +917,7 @@ public final class WorkersScriptBinding {
             _resultValue.name = name;
             _resultValue.namespace = namespace;
             _resultValue.namespaceId = namespaceId;
+            _resultValue.networkId = networkId;
             _resultValue.oldName = oldName;
             _resultValue.outbound = outbound;
             _resultValue.part = part;
@@ -760,9 +926,11 @@ public final class WorkersScriptBinding {
             _resultValue.scriptName = scriptName;
             _resultValue.secretName = secretName;
             _resultValue.service = service;
+            _resultValue.serviceId = serviceId;
             _resultValue.simple = simple;
             _resultValue.storeId = storeId;
             _resultValue.text = text;
+            _resultValue.tunnelId = tunnelId;
             _resultValue.type = type;
             _resultValue.usages = usages;
             _resultValue.versionId = versionId;

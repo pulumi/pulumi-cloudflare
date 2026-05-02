@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getWorkersForPlatformsDispatchNamespaces(args: GetWorkersForPlatformsDispatchNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersForPlatformsDispatchNamespacesResult> {
+export function getWorkersForPlatformsDispatchNamespaces(args?: GetWorkersForPlatformsDispatchNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersForPlatformsDispatchNamespacesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersForPlatformsDispatchNamespaces:getWorkersForPlatformsDispatchNamespaces", {
         "accountId": args.accountId,
@@ -33,7 +40,7 @@ export interface GetWorkersForPlatformsDispatchNamespacesArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +54,7 @@ export interface GetWorkersForPlatformsDispatchNamespacesResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +69,12 @@ export interface GetWorkersForPlatformsDispatchNamespacesResult {
     readonly results: outputs.GetWorkersForPlatformsDispatchNamespacesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +86,8 @@ export interface GetWorkersForPlatformsDispatchNamespacesResult {
  * });
  * ```
  */
-export function getWorkersForPlatformsDispatchNamespacesOutput(args: GetWorkersForPlatformsDispatchNamespacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersForPlatformsDispatchNamespacesResult> {
+export function getWorkersForPlatformsDispatchNamespacesOutput(args?: GetWorkersForPlatformsDispatchNamespacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersForPlatformsDispatchNamespacesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersForPlatformsDispatchNamespaces:getWorkersForPlatformsDispatchNamespaces", {
         "accountId": args.accountId,
@@ -88,7 +102,7 @@ export interface GetWorkersForPlatformsDispatchNamespacesOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

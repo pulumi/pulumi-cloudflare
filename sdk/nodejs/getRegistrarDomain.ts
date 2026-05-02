@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * const exampleRegistrarDomain = cloudflare.getRegistrarDomain({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     domainName: "cloudflare.com",
+ *     domainName: "example.com",
  * });
  * ```
  */
@@ -32,9 +32,12 @@ export interface GetRegistrarDomainArgs {
     /**
      * Identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
-     * Domain name.
+     * Fully qualified domain name (FQDN) including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+     * identifies a registration — the same domain cannot be registered
+     * twice, making it a natural idempotency key for registration requests.
      */
     domainName: string;
 }
@@ -46,9 +49,12 @@ export interface GetRegistrarDomainResult {
     /**
      * Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
-     * Domain name.
+     * Fully qualified domain name (FQDN) including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+     * identifies a registration — the same domain cannot be registered
+     * twice, making it a natural idempotency key for registration requests.
      */
     readonly domainName: string;
     /**
@@ -65,7 +71,7 @@ export interface GetRegistrarDomainResult {
  *
  * const exampleRegistrarDomain = cloudflare.getRegistrarDomain({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     domainName: "cloudflare.com",
+ *     domainName: "example.com",
  * });
  * ```
  */
@@ -84,9 +90,12 @@ export interface GetRegistrarDomainOutputArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
-     * Domain name.
+     * Fully qualified domain name (FQDN) including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+     * identifies a registration — the same domain cannot be registered
+     * twice, making it a natural idempotency key for registration requests.
      */
     domainName: pulumi.Input<string>;
 }

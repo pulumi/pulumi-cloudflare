@@ -26,7 +26,7 @@ class GetStreamKeyResult:
     """
     A collection of values returned by getStreamKey.
     """
-    def __init__(__self__, account_id=None, created=None, id=None):
+    def __init__(__self__, account_id=None, created=None, id=None, key_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -36,10 +36,13 @@ class GetStreamKeyResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if key_id and not isinstance(key_id, str):
+            raise TypeError("Expected argument 'key_id' to be a str")
+        pulumi.set(__self__, "key_id", key_id)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -61,6 +64,14 @@ class GetStreamKeyResult:
         """
         return pulumi.get(self, "id")
 
+    @_builtins.property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> _builtins.str:
+        """
+        The unique identifier for the signing key.
+        """
+        return pulumi.get(self, "key_id")
+
 
 class AwaitableGetStreamKeyResult(GetStreamKeyResult):
     # pylint: disable=using-constant-test
@@ -70,12 +81,18 @@ class AwaitableGetStreamKeyResult(GetStreamKeyResult):
         return GetStreamKeyResult(
             account_id=self.account_id,
             created=self.created,
-            id=self.id)
+            id=self.id,
+            key_id=self.key_id)
 
 
 def get_stream_key(account_id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStreamKeyResult:
     """
+    Accepted Permissions
+
+    - `Stream Read`
+    - `Stream Write`
+
     ## Example Usage
 
     ```python
@@ -96,10 +113,16 @@ def get_stream_key(account_id: Optional[_builtins.str] = None,
     return AwaitableGetStreamKeyResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         created=pulumi.get(__ret__, 'created'),
-        id=pulumi.get(__ret__, 'id'))
-def get_stream_key_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+        id=pulumi.get(__ret__, 'id'),
+        key_id=pulumi.get(__ret__, 'key_id'))
+def get_stream_key_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamKeyResult]:
     """
+    Accepted Permissions
+
+    - `Stream Read`
+    - `Stream Write`
+
     ## Example Usage
 
     ```python
@@ -119,4 +142,5 @@ def get_stream_key_output(account_id: Optional[pulumi.Input[_builtins.str]] = No
     return __ret__.apply(lambda __response__: GetStreamKeyResult(
         account_id=pulumi.get(__response__, 'account_id'),
         created=pulumi.get(__response__, 'created'),
-        id=pulumi.get(__response__, 'id')))
+        id=pulumi.get(__response__, 'id'),
+        key_id=pulumi.get(__response__, 'key_id')))

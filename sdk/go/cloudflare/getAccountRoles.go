@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+// - `SCIM Provisioning`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountRoles(ctx, &cloudflare.LookupAccountRolesArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +55,7 @@ func LookupAccountRoles(ctx *pulumi.Context, args *LookupAccountRolesArgs, opts 
 // A collection of arguments for invoking getAccountRoles.
 type LookupAccountRolesArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +63,7 @@ type LookupAccountRolesArgs struct {
 // A collection of values returned by getAccountRoles.
 type LookupAccountRolesResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +84,7 @@ func LookupAccountRolesOutput(ctx *pulumi.Context, args LookupAccountRolesOutput
 // A collection of arguments for invoking getAccountRoles.
 type LookupAccountRolesOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +109,8 @@ func (o LookupAccountRolesResultOutput) ToLookupAccountRolesResultOutputWithCont
 }
 
 // Account identifier tag.
-func (o LookupAccountRolesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountRolesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAccountRolesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountRolesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

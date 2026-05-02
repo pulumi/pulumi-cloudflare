@@ -28,13 +28,16 @@ class GetCustomSslResult:
     """
     A collection of values returned by getCustomSsl.
     """
-    def __init__(__self__, bundle_method=None, custom_certificate_id=None, expires_on=None, filter=None, geo_restrictions=None, hosts=None, id=None, issuer=None, keyless_server=None, modified_on=None, policy_restrictions=None, priority=None, signature=None, status=None, uploaded_on=None, zone_id=None):
+    def __init__(__self__, bundle_method=None, custom_certificate_id=None, custom_csr_id=None, expires_on=None, filter=None, geo_restrictions=None, hosts=None, id=None, issuer=None, keyless_server=None, modified_on=None, policy_restrictions=None, priority=None, signature=None, status=None, uploaded_on=None, zone_id=None):
         if bundle_method and not isinstance(bundle_method, str):
             raise TypeError("Expected argument 'bundle_method' to be a str")
         pulumi.set(__self__, "bundle_method", bundle_method)
         if custom_certificate_id and not isinstance(custom_certificate_id, str):
             raise TypeError("Expected argument 'custom_certificate_id' to be a str")
         pulumi.set(__self__, "custom_certificate_id", custom_certificate_id)
+        if custom_csr_id and not isinstance(custom_csr_id, str):
+            raise TypeError("Expected argument 'custom_csr_id' to be a str")
+        pulumi.set(__self__, "custom_csr_id", custom_csr_id)
         if expires_on and not isinstance(expires_on, str):
             raise TypeError("Expected argument 'expires_on' to be a str")
         pulumi.set(__self__, "expires_on", expires_on)
@@ -94,6 +97,14 @@ class GetCustomSslResult:
         Identifier.
         """
         return pulumi.get(self, "custom_certificate_id")
+
+    @_builtins.property
+    @pulumi.getter(name="customCsrId")
+    def custom_csr_id(self) -> _builtins.str:
+        """
+        The identifier for the Custom CSR that was used.
+        """
+        return pulumi.get(self, "custom_csr_id")
 
     @_builtins.property
     @pulumi.getter(name="expiresOn")
@@ -182,7 +193,7 @@ class GetCustomSslResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -197,6 +208,7 @@ class AwaitableGetCustomSslResult(GetCustomSslResult):
         return GetCustomSslResult(
             bundle_method=self.bundle_method,
             custom_certificate_id=self.custom_certificate_id,
+            custom_csr_id=self.custom_csr_id,
             expires_on=self.expires_on,
             filter=self.filter,
             geo_restrictions=self.geo_restrictions,
@@ -218,6 +230,13 @@ def get_custom_ssl(custom_certificate_id: Optional[_builtins.str] = None,
                    zone_id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomSslResult:
     """
+    Accepted Permissions
+
+    - `Access: Mutual TLS Certificates Read`
+    - `Access: Mutual TLS Certificates Write`
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+
     ## Example Usage
 
     ```python
@@ -242,6 +261,7 @@ def get_custom_ssl(custom_certificate_id: Optional[_builtins.str] = None,
     return AwaitableGetCustomSslResult(
         bundle_method=pulumi.get(__ret__, 'bundle_method'),
         custom_certificate_id=pulumi.get(__ret__, 'custom_certificate_id'),
+        custom_csr_id=pulumi.get(__ret__, 'custom_csr_id'),
         expires_on=pulumi.get(__ret__, 'expires_on'),
         filter=pulumi.get(__ret__, 'filter'),
         geo_restrictions=pulumi.get(__ret__, 'geo_restrictions'),
@@ -258,9 +278,16 @@ def get_custom_ssl(custom_certificate_id: Optional[_builtins.str] = None,
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_custom_ssl_output(custom_certificate_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           filter: Optional[pulumi.Input[Optional[Union['GetCustomSslFilterArgs', 'GetCustomSslFilterArgsDict']]]] = None,
-                          zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                          zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomSslResult]:
     """
+    Accepted Permissions
+
+    - `Access: Mutual TLS Certificates Read`
+    - `Access: Mutual TLS Certificates Write`
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+
     ## Example Usage
 
     ```python
@@ -284,6 +311,7 @@ def get_custom_ssl_output(custom_certificate_id: Optional[pulumi.Input[Optional[
     return __ret__.apply(lambda __response__: GetCustomSslResult(
         bundle_method=pulumi.get(__response__, 'bundle_method'),
         custom_certificate_id=pulumi.get(__response__, 'custom_certificate_id'),
+        custom_csr_id=pulumi.get(__response__, 'custom_csr_id'),
         expires_on=pulumi.get(__response__, 'expires_on'),
         filter=pulumi.get(__response__, 'filter'),
         geo_restrictions=pulumi.get(__response__, 'geo_restrictions'),

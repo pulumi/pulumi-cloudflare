@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetDnsZoneTransfersAcl
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneTransfersAclResult>("cloudflare:index/getDnsZoneTransfersAcl:getDnsZoneTransfersAcl", args ?? new GetDnsZoneTransfersAclArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetDnsZoneTransfersAclResult>("cloudflare:index/getDnsZoneTransfersAcl:getDnsZoneTransfersAcl", args ?? new GetDnsZoneTransfersAclInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetDnsZoneTransfersAclArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("aclId", required: true)]
         public string AclId { get; set; } = null!;
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetDnsZoneTransfersAclInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("aclId", required: true)]
         public Input<string> AclId { get; set; } = null!;
@@ -114,7 +129,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetDnsZoneTransfersAclResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly string AclId;
         /// <summary>
         /// The ID of this resource.
@@ -131,7 +146,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetDnsZoneTransfersAclResult(
-            string accountId,
+            string? accountId,
 
             string aclId,
 

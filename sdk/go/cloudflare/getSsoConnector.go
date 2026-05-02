@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSO Connector Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetSsoConnector(ctx, &cloudflare.LookupSsoConnectorArgs{
-//				AccountId:      "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:      pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SsoConnectorId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +54,7 @@ func LookupSsoConnector(ctx *pulumi.Context, args *LookupSsoConnectorArgs, opts 
 // A collection of arguments for invoking getSsoConnector.
 type LookupSsoConnectorArgs struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// SSO Connector identifier tag.
 	SsoConnectorId string `pulumi:"ssoConnectorId"`
 }
@@ -58,7 +62,7 @@ type LookupSsoConnectorArgs struct {
 // A collection of values returned by getSsoConnector.
 type LookupSsoConnectorResult struct {
 	// Account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Timestamp for the creation of the SSO connector
 	CreatedOn   string `pulumi:"createdOn"`
 	EmailDomain string `pulumi:"emailDomain"`
@@ -86,7 +90,7 @@ func LookupSsoConnectorOutput(ctx *pulumi.Context, args LookupSsoConnectorOutput
 // A collection of arguments for invoking getSsoConnector.
 type LookupSsoConnectorOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// SSO Connector identifier tag.
 	SsoConnectorId pulumi.StringInput `pulumi:"ssoConnectorId"`
 }
@@ -111,8 +115,8 @@ func (o LookupSsoConnectorResultOutput) ToLookupSsoConnectorResultOutputWithCont
 }
 
 // Account identifier tag.
-func (o LookupSsoConnectorResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSsoConnectorResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupSsoConnectorResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSsoConnectorResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Timestamp for the creation of the SSO connector

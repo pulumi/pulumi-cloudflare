@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Tokens Read`
+ * - `Account API Tokens Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -20,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getAccountApiTokenPermissionGroups(args: GetAccountApiTokenPermissionGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountApiTokenPermissionGroupsResult> {
+export function getAccountApiTokenPermissionGroups(args?: GetAccountApiTokenPermissionGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountApiTokenPermissionGroupsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups", {
         "accountId": args.accountId,
@@ -36,7 +42,7 @@ export interface GetAccountApiTokenPermissionGroupsArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Filter by the name of the permission group.
      * The value must be URL-encoded.
@@ -56,7 +62,7 @@ export interface GetAccountApiTokenPermissionGroupsResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -74,6 +80,11 @@ export interface GetAccountApiTokenPermissionGroupsResult {
     readonly scope?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Tokens Read`
+ * - `Account API Tokens Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -87,7 +98,8 @@ export interface GetAccountApiTokenPermissionGroupsResult {
  * });
  * ```
  */
-export function getAccountApiTokenPermissionGroupsOutput(args: GetAccountApiTokenPermissionGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountApiTokenPermissionGroupsResult> {
+export function getAccountApiTokenPermissionGroupsOutput(args?: GetAccountApiTokenPermissionGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountApiTokenPermissionGroupsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups", {
         "accountId": args.accountId,
@@ -103,7 +115,7 @@ export interface GetAccountApiTokenPermissionGroupsOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Filter by the name of the permission group.
      * The value must be URL-encoded.

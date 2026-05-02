@@ -31,6 +31,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record FlattenCname setting.
+        /// </summary>
+        [Input("flattenCname")]
+        public Input<bool>? FlattenCname { get; set; }
+
+        /// <summary>
         /// The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.
         /// </summary>
         [Input("header")]

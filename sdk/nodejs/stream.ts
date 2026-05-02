@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -51,11 +56,15 @@ export class Stream extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
      */
     declare public readonly allowedOrigins: pulumi.Output<string[] | undefined>;
+    /**
+     * The unique identifier of the source video this video was clipped from.
+     */
+    declare public /*out*/ readonly clippedFrom: pulumi.Output<string>;
     /**
      * The date and time the media item was created.
      */
@@ -82,6 +91,10 @@ export class Stream extends pulumi.CustomResource {
      */
     declare public readonly maxDurationSeconds: pulumi.Output<number | undefined>;
     /**
+     * The maximum size in bytes for the video upload.
+     */
+    declare public /*out*/ readonly maxSizeBytes: pulumi.Output<number>;
+    /**
      * A user modifiable key-value store used to reference other systems of record for managing videos.
      */
     declare public readonly meta: pulumi.Output<string | undefined>;
@@ -94,6 +107,10 @@ export class Stream extends pulumi.CustomResource {
      * The video's preview page URI. This field is omitted until encoding is complete.
      */
     declare public /*out*/ readonly preview: pulumi.Output<string>;
+    /**
+     * Public details for the video including title, share link, channel link, and logo.
+     */
+    declare public readonly publicDetails: pulumi.Output<outputs.StreamPublicDetails | undefined>;
     /**
      * Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
      */
@@ -127,9 +144,9 @@ export class Stream extends pulumi.CustomResource {
      */
     declare public readonly thumbnailTimestampPct: pulumi.Output<number>;
     /**
-     * A Cloudflare-generated unique identifier for a media item.
+     * The unique identifier for the video. Can be used to verify the video being updated.
      */
-    declare public /*out*/ readonly uid: pulumi.Output<string>;
+    declare public readonly uid: pulumi.Output<string | undefined>;
     /**
      * The date and time when the video upload URL is no longer valid for direct user uploads.
      */
@@ -147,7 +164,7 @@ export class Stream extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: StreamArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: StreamArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StreamArgs | StreamState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -155,6 +172,7 @@ export class Stream extends pulumi.CustomResource {
             const state = argsOrState as StreamState | undefined;
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["allowedOrigins"] = state?.allowedOrigins;
+            resourceInputs["clippedFrom"] = state?.clippedFrom;
             resourceInputs["created"] = state?.created;
             resourceInputs["creator"] = state?.creator;
             resourceInputs["duration"] = state?.duration;
@@ -162,10 +180,12 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["input"] = state?.input;
             resourceInputs["liveInput"] = state?.liveInput;
             resourceInputs["maxDurationSeconds"] = state?.maxDurationSeconds;
+            resourceInputs["maxSizeBytes"] = state?.maxSizeBytes;
             resourceInputs["meta"] = state?.meta;
             resourceInputs["modified"] = state?.modified;
             resourceInputs["playback"] = state?.playback;
             resourceInputs["preview"] = state?.preview;
+            resourceInputs["publicDetails"] = state?.publicDetails;
             resourceInputs["readyToStream"] = state?.readyToStream;
             resourceInputs["readyToStreamAt"] = state?.readyToStreamAt;
             resourceInputs["requireSignedUrls"] = state?.requireSignedUrls;
@@ -180,23 +200,24 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["watermark"] = state?.watermark;
         } else {
             const args = argsOrState as StreamArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["allowedOrigins"] = args?.allowedOrigins;
             resourceInputs["creator"] = args?.creator;
             resourceInputs["identifier"] = args?.identifier;
             resourceInputs["maxDurationSeconds"] = args?.maxDurationSeconds;
             resourceInputs["meta"] = args?.meta;
+            resourceInputs["publicDetails"] = args?.publicDetails;
             resourceInputs["requireSignedUrls"] = args?.requireSignedUrls;
             resourceInputs["scheduledDeletion"] = args?.scheduledDeletion;
             resourceInputs["thumbnailTimestampPct"] = args?.thumbnailTimestampPct;
+            resourceInputs["uid"] = args?.uid;
             resourceInputs["uploadExpiry"] = args?.uploadExpiry;
+            resourceInputs["clippedFrom"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["duration"] = undefined /*out*/;
             resourceInputs["input"] = undefined /*out*/;
             resourceInputs["liveInput"] = undefined /*out*/;
+            resourceInputs["maxSizeBytes"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
             resourceInputs["playback"] = undefined /*out*/;
             resourceInputs["preview"] = undefined /*out*/;
@@ -205,7 +226,6 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["thumbnail"] = undefined /*out*/;
-            resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["uploaded"] = undefined /*out*/;
             resourceInputs["watermark"] = undefined /*out*/;
         }
@@ -226,6 +246,10 @@ export interface StreamState {
      * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
      */
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The unique identifier of the source video this video was clipped from.
+     */
+    clippedFrom?: pulumi.Input<string>;
     /**
      * The date and time the media item was created.
      */
@@ -252,6 +276,10 @@ export interface StreamState {
      */
     maxDurationSeconds?: pulumi.Input<number>;
     /**
+     * The maximum size in bytes for the video upload.
+     */
+    maxSizeBytes?: pulumi.Input<number>;
+    /**
      * A user modifiable key-value store used to reference other systems of record for managing videos.
      */
     meta?: pulumi.Input<string>;
@@ -264,6 +292,10 @@ export interface StreamState {
      * The video's preview page URI. This field is omitted until encoding is complete.
      */
     preview?: pulumi.Input<string>;
+    /**
+     * Public details for the video including title, share link, channel link, and logo.
+     */
+    publicDetails?: pulumi.Input<inputs.StreamPublicDetails>;
     /**
      * Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
      */
@@ -297,7 +329,7 @@ export interface StreamState {
      */
     thumbnailTimestampPct?: pulumi.Input<number>;
     /**
-     * A Cloudflare-generated unique identifier for a media item.
+     * The unique identifier for the video. Can be used to verify the video being updated.
      */
     uid?: pulumi.Input<string>;
     /**
@@ -318,7 +350,7 @@ export interface StreamArgs {
     /**
      * The account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
      */
@@ -340,6 +372,10 @@ export interface StreamArgs {
      */
     meta?: pulumi.Input<string>;
     /**
+     * Public details for the video including title, share link, channel link, and logo.
+     */
+    publicDetails?: pulumi.Input<inputs.StreamPublicDetails>;
+    /**
      * Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
      */
     requireSignedUrls?: pulumi.Input<boolean>;
@@ -351,6 +387,10 @@ export interface StreamArgs {
      * The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
      */
     thumbnailTimestampPct?: pulumi.Input<number>;
+    /**
+     * The unique identifier for the video. Can be used to verify the video being updated.
+     */
+    uid?: pulumi.Input<string>;
     /**
      * The date and time when the video upload URL is no longer valid for direct user uploads.
      */

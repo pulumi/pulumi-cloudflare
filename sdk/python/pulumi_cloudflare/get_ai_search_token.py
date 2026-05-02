@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetAiSearchTokenResult',
@@ -26,7 +28,7 @@ class GetAiSearchTokenResult:
     """
     A collection of values returned by getAiSearchToken.
     """
-    def __init__(__self__, account_id=None, cf_api_id=None, created_at=None, created_by=None, enabled=None, id=None, legacy=None, modified_at=None, modified_by=None, name=None):
+    def __init__(__self__, account_id=None, cf_api_id=None, created_at=None, created_by=None, enabled=None, filter=None, id=None, legacy=None, modified_at=None, modified_by=None, name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -42,6 +44,9 @@ class GetAiSearchTokenResult:
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -60,7 +65,7 @@ class GetAiSearchTokenResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -82,6 +87,11 @@ class GetAiSearchTokenResult:
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetAiSearchTokenFilterResult']:
+        return pulumi.get(self, "filter")
 
     @_builtins.property
     @pulumi.getter
@@ -123,6 +133,7 @@ class AwaitableGetAiSearchTokenResult(GetAiSearchTokenResult):
             created_at=self.created_at,
             created_by=self.created_by,
             enabled=self.enabled,
+            filter=self.filter,
             id=self.id,
             legacy=self.legacy,
             modified_at=self.modified_at,
@@ -131,6 +142,7 @@ class AwaitableGetAiSearchTokenResult(GetAiSearchTokenResult):
 
 
 def get_ai_search_token(account_id: Optional[_builtins.str] = None,
+                        filter: Optional[Union['GetAiSearchTokenFilterArgs', 'GetAiSearchTokenFilterArgsDict']] = None,
                         id: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchTokenResult:
     """
@@ -140,6 +152,7 @@ def get_ai_search_token(account_id: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['id'] = id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getAiSearchToken:getAiSearchToken', __args__, opts=opts, typ=GetAiSearchTokenResult).value
@@ -150,13 +163,15 @@ def get_ai_search_token(account_id: Optional[_builtins.str] = None,
         created_at=pulumi.get(__ret__, 'created_at'),
         created_by=pulumi.get(__ret__, 'created_by'),
         enabled=pulumi.get(__ret__, 'enabled'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         legacy=pulumi.get(__ret__, 'legacy'),
         modified_at=pulumi.get(__ret__, 'modified_at'),
         modified_by=pulumi.get(__ret__, 'modified_by'),
         name=pulumi.get(__ret__, 'name'))
-def get_ai_search_token_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ai_search_token_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                               filter: Optional[pulumi.Input[Optional[Union['GetAiSearchTokenFilterArgs', 'GetAiSearchTokenFilterArgsDict']]]] = None,
+                               id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchTokenResult]:
     """
     Use this data source to access information about an existing resource.
@@ -165,6 +180,7 @@ def get_ai_search_token_output(account_id: Optional[pulumi.Input[_builtins.str]]
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['filter'] = filter
     __args__['id'] = id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAiSearchToken:getAiSearchToken', __args__, opts=opts, typ=GetAiSearchTokenResult)
@@ -174,6 +190,7 @@ def get_ai_search_token_output(account_id: Optional[pulumi.Input[_builtins.str]]
         created_at=pulumi.get(__response__, 'created_at'),
         created_by=pulumi.get(__response__, 'created_by'),
         enabled=pulumi.get(__response__, 'enabled'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         legacy=pulumi.get(__response__, 'legacy'),
         modified_at=pulumi.get(__response__, 'modified_at'),

@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.ConnectivityDirectoryServiceArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ConnectivityDirectoryServiceState;
 import com.pulumi.cloudflare.outputs.ConnectivityDirectoryServiceHost;
+import com.pulumi.cloudflare.outputs.ConnectivityDirectoryServiceTlsSettings;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -29,7 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.ConnectivityDirectoryService;
  * import com.pulumi.cloudflare.ConnectivityDirectoryServiceArgs;
  * import com.pulumi.cloudflare.inputs.ConnectivityDirectoryServiceHostArgs;
- * import com.pulumi.cloudflare.inputs.ConnectivityDirectoryServiceHostResolverNetworkArgs;
+ * import com.pulumi.cloudflare.inputs.ConnectivityDirectoryServiceHostNetworkArgs;
+ * import com.pulumi.cloudflare.inputs.ConnectivityDirectoryServiceTlsSettingsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,16 +48,18 @@ import javax.annotation.Nullable;
  *         var exampleConnectivityDirectoryService = new ConnectivityDirectoryService("exampleConnectivityDirectoryService", ConnectivityDirectoryServiceArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .host(ConnectivityDirectoryServiceHostArgs.builder()
- *                 .hostname("api.example.com")
- *                 .resolverNetwork(ConnectivityDirectoryServiceHostResolverNetworkArgs.builder()
+ *                 .ipv4("10.0.0.1")
+ *                 .network(ConnectivityDirectoryServiceHostNetworkArgs.builder()
  *                     .tunnelId("0191dce4-9ab4-7fce-b660-8e5dec5172da")
- *                     .resolverIps("string")
  *                     .build())
  *                 .build())
- *             .name("web-server")
+ *             .name("web-app")
  *             .type("http")
  *             .httpPort(8080)
  *             .httpsPort(8443)
+ *             .tlsSettings(ConnectivityDirectoryServiceTlsSettingsArgs.builder()
+ *                 .certVerificationMode("verify_full")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -77,14 +81,28 @@ public class ConnectivityDirectoryService extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Account identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
+    }
+    /**
+     * Available values: &#34;postgresql&#34;, &#34;mysql&#34;.
+     * 
+     */
+    @Export(name="appProtocol", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> appProtocol;
+
+    /**
+     * @return Available values: &#34;postgresql&#34;, &#34;mysql&#34;.
+     * 
+     */
+    public Output<Optional<String>> appProtocol() {
+        return Codegen.optional(this.appProtocol);
     }
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
@@ -122,15 +140,35 @@ public class ConnectivityDirectoryService extends com.pulumi.resources.CustomRes
     public Output<String> serviceId() {
         return this.serviceId;
     }
+    @Export(name="tcpPort", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> tcpPort;
+
+    public Output<Optional<Integer>> tcpPort() {
+        return Codegen.optional(this.tcpPort);
+    }
     /**
-     * Available values: &#34;http&#34;.
+     * TLS settings for a connectivity service.
+     * 
+     */
+    @Export(name="tlsSettings", refs={ConnectivityDirectoryServiceTlsSettings.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectivityDirectoryServiceTlsSettings> tlsSettings;
+
+    /**
+     * @return TLS settings for a connectivity service.
+     * 
+     */
+    public Output<Optional<ConnectivityDirectoryServiceTlsSettings>> tlsSettings() {
+        return Codegen.optional(this.tlsSettings);
+    }
+    /**
+     * Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Available values: &#34;http&#34;.
+     * @return Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     public Output<String> type() {

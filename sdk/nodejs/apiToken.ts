@@ -7,33 +7,49 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `API Tokens Read`
+ * - `API Tokens Write`
+ *
  * ## Example Usage
  *
- * resource "cloudflare.ApiToken" "exampleApiToken" {
- *   name       = "workers read-only token"
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
  *
- *   policies = [{
- *     effect = "allow"
- *     permissionGroups = [{
- *       id = "1a71c399035b4950a1bd1466bbe4f420"
- *       }, {
- *       id = "8b47d2786a534c08a1f94ee8f9f599ef"
- *     }]
- *     resources = jsonencode({
- *       "com.cloudflare.api.account.b67e14daa5f8dceeb91fe5449ba496eb" = "*"
- *     })
- *   }]
- *
- *   condition = {
- *     requestIp = {
- *       in     = ["123.123.123.0/24", "2606:4700::/32"]
- *       notIn = ["123.123.123.0/28", "2606:4700:4700::/48"]
- *     }
- *   }
- *
- *   expiresOn = "2027-10-01T00:00:00Z"
- *   notBefore = "2025-10-01T00:00:00Z"
- * }
+ * const exampleApiToken = new cloudflare.ApiToken("example_api_token", {
+ *     name: "workers read-only token",
+ *     policies: [{
+ *         effect: "allow",
+ *         permissionGroups: [
+ *             {
+ *                 id: "1a71c399035b4950a1bd1466bbe4f420",
+ *             },
+ *             {
+ *                 id: "8b47d2786a534c08a1f94ee8f9f599ef",
+ *             },
+ *         ],
+ *         resources: JSON.stringify({
+ *             "com.cloudflare.api.account.b67e14daa5f8dceeb91fe5449ba496eb": "*",
+ *         }),
+ *     }],
+ *     condition: {
+ *         requestIp: {
+ *             ins: [
+ *                 "123.123.123.0/24",
+ *                 "2606:4700::/32",
+ *             ],
+ *             notIns: [
+ *                 "123.123.123.0/28",
+ *                 "2606:4700:4700::/48",
+ *             ],
+ *         },
+ *     },
+ *     expiresOn: "2027-10-01T00:00:00Z",
+ *     notBefore: "2025-10-01T00:00:00Z",
+ * });
+ * ```
  *
  * ## Import
  *

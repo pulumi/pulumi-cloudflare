@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultAnnotations;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultAssets;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultBinding;
+import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultContainer;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultLimits;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultMigrations;
 import com.pulumi.cloudflare.outputs.GetWorkerVersionsResultModule;
@@ -45,6 +46,11 @@ public final class GetWorkerVersionsResult {
      */
     private List<String> compatibilityFlags;
     /**
+     * @return List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+     * 
+     */
+    private List<GetWorkerVersionsResultContainer> containers;
+    /**
      * @return When the version was created.
      * 
      */
@@ -69,6 +75,11 @@ public final class GetWorkerVersionsResult {
      * 
      */
     private String mainScriptBase64;
+    /**
+     * @return Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+     * 
+     */
+    private String migrationTag;
     /**
      * @return Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
      * 
@@ -104,6 +115,11 @@ public final class GetWorkerVersionsResult {
      * 
      */
     private Integer startupTimeMs;
+    /**
+     * @return All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+     * 
+     */
+    private List<String> urls;
     /**
      * @return Usage model for the version.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
@@ -152,6 +168,13 @@ public final class GetWorkerVersionsResult {
         return this.compatibilityFlags;
     }
     /**
+     * @return List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+     * 
+     */
+    public List<GetWorkerVersionsResultContainer> containers() {
+        return this.containers;
+    }
+    /**
      * @return When the version was created.
      * 
      */
@@ -185,6 +208,13 @@ public final class GetWorkerVersionsResult {
      */
     public String mainScriptBase64() {
         return this.mainScriptBase64;
+    }
+    /**
+     * @return Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+     * 
+     */
+    public String migrationTag() {
+        return this.migrationTag;
     }
     /**
      * @return Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
@@ -234,6 +264,13 @@ public final class GetWorkerVersionsResult {
         return this.startupTimeMs;
     }
     /**
+     * @return All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+     * 
+     */
+    public List<String> urls() {
+        return this.urls;
+    }
+    /**
      * @return Usage model for the version.
      * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
@@ -260,17 +297,20 @@ public final class GetWorkerVersionsResult {
         private List<GetWorkerVersionsResultBinding> bindings;
         private String compatibilityDate;
         private List<String> compatibilityFlags;
+        private List<GetWorkerVersionsResultContainer> containers;
         private String createdOn;
         private String id;
         private GetWorkerVersionsResultLimits limits;
         private String mainModule;
         private String mainScriptBase64;
+        private String migrationTag;
         private GetWorkerVersionsResultMigrations migrations;
         private List<GetWorkerVersionsResultModule> modules;
         private Integer number;
         private GetWorkerVersionsResultPlacement placement;
         private String source;
         private Integer startupTimeMs;
+        private List<String> urls;
         private String usageModel;
         public Builder() {}
         public Builder(GetWorkerVersionsResult defaults) {
@@ -280,17 +320,20 @@ public final class GetWorkerVersionsResult {
     	      this.bindings = defaults.bindings;
     	      this.compatibilityDate = defaults.compatibilityDate;
     	      this.compatibilityFlags = defaults.compatibilityFlags;
+    	      this.containers = defaults.containers;
     	      this.createdOn = defaults.createdOn;
     	      this.id = defaults.id;
     	      this.limits = defaults.limits;
     	      this.mainModule = defaults.mainModule;
     	      this.mainScriptBase64 = defaults.mainScriptBase64;
+    	      this.migrationTag = defaults.migrationTag;
     	      this.migrations = defaults.migrations;
     	      this.modules = defaults.modules;
     	      this.number = defaults.number;
     	      this.placement = defaults.placement;
     	      this.source = defaults.source;
     	      this.startupTimeMs = defaults.startupTimeMs;
+    	      this.urls = defaults.urls;
     	      this.usageModel = defaults.usageModel;
         }
 
@@ -341,6 +384,17 @@ public final class GetWorkerVersionsResult {
             return compatibilityFlags(List.of(compatibilityFlags));
         }
         @CustomType.Setter
+        public Builder containers(List<GetWorkerVersionsResultContainer> containers) {
+            if (containers == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "containers");
+            }
+            this.containers = containers;
+            return this;
+        }
+        public Builder containers(GetWorkerVersionsResultContainer... containers) {
+            return containers(List.of(containers));
+        }
+        @CustomType.Setter
         public Builder createdOn(String createdOn) {
             if (createdOn == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "createdOn");
@@ -378,6 +432,14 @@ public final class GetWorkerVersionsResult {
               throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "mainScriptBase64");
             }
             this.mainScriptBase64 = mainScriptBase64;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder migrationTag(String migrationTag) {
+            if (migrationTag == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "migrationTag");
+            }
+            this.migrationTag = migrationTag;
             return this;
         }
         @CustomType.Setter
@@ -432,6 +494,17 @@ public final class GetWorkerVersionsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder urls(List<String> urls) {
+            if (urls == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "urls");
+            }
+            this.urls = urls;
+            return this;
+        }
+        public Builder urls(String... urls) {
+            return urls(List.of(urls));
+        }
+        @CustomType.Setter
         public Builder usageModel(String usageModel) {
             if (usageModel == null) {
               throw new MissingRequiredPropertyException("GetWorkerVersionsResult", "usageModel");
@@ -446,17 +519,20 @@ public final class GetWorkerVersionsResult {
             _resultValue.bindings = bindings;
             _resultValue.compatibilityDate = compatibilityDate;
             _resultValue.compatibilityFlags = compatibilityFlags;
+            _resultValue.containers = containers;
             _resultValue.createdOn = createdOn;
             _resultValue.id = id;
             _resultValue.limits = limits;
             _resultValue.mainModule = mainModule;
             _resultValue.mainScriptBase64 = mainScriptBase64;
+            _resultValue.migrationTag = migrationTag;
             _resultValue.migrations = migrations;
             _resultValue.modules = modules;
             _resultValue.number = number;
             _resultValue.placement = placement;
             _resultValue.source = source;
             _resultValue.startupTimeMs = startupTimeMs;
+            _resultValue.urls = urls;
             _resultValue.usageModel = usageModel;
             return _resultValue;
         }

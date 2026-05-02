@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetWorkers
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +36,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWorkersResult> InvokeAsync(GetWorkersArgs args, InvokeOptions? options = null)
+        public static Task<GetWorkersResult> InvokeAsync(GetWorkersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkersResult>("cloudflare:index/getWorkers:getWorkers", args ?? new GetWorkersArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +64,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWorkersResult> Invoke(GetWorkersInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetWorkersResult> Invoke(GetWorkersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkersResult>("cloudflare:index/getWorkers:getWorkers", args ?? new GetWorkersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,14 +102,28 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public int? MaxItems { get; set; }
+
+        /// <summary>
+        /// Sort direction.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("order")]
+        public string? Order { get; set; }
+
+        /// <summary>
+        /// Property to sort results by.
+        /// Available values: "deployed*on", "updated*on", "CreatedOn", "name".
+        /// </summary>
+        [Input("orderBy")]
+        public string? OrderBy { get; set; }
 
         public GetWorkersArgs()
         {
@@ -104,14 +136,28 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
+
+        /// <summary>
+        /// Sort direction.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("order")]
+        public Input<string>? Order { get; set; }
+
+        /// <summary>
+        /// Property to sort results by.
+        /// Available values: "deployed*on", "updated*on", "CreatedOn", "name".
+        /// </summary>
+        [Input("orderBy")]
+        public Input<string>? OrderBy { get; set; }
 
         public GetWorkersInvokeArgs()
         {
@@ -126,7 +172,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -136,23 +182,39 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
+        /// Sort direction.
+        /// Available values: "asc", "desc".
+        /// </summary>
+        public readonly string Order;
+        /// <summary>
+        /// Property to sort results by.
+        /// Available values: "deployed*on", "updated*on", "CreatedOn", "name".
+        /// </summary>
+        public readonly string OrderBy;
+        /// <summary>
         /// The items returned by the data source
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkersResultResult> Results;
 
         [OutputConstructor]
         private GetWorkersResult(
-            string accountId,
+            string? accountId,
 
             string id,
 
             int? maxItems,
+
+            string order,
+
+            string orderBy,
 
             ImmutableArray<Outputs.GetWorkersResultResult> results)
         {
             AccountId = accountId;
             Id = id;
             MaxItems = maxItems;
+            Order = order;
+            OrderBy = orderBy;
             Results = results;
         }
     }

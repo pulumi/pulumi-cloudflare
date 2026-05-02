@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSO Connector Read`
+ * - `SSO Connector Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -58,7 +63,7 @@ export class SsoConnector extends pulumi.CustomResource {
     /**
      * Account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Begin the verification process after creation
      */
@@ -108,9 +113,6 @@ export class SsoConnector extends pulumi.CustomResource {
             resourceInputs["verification"] = state?.verification;
         } else {
             const args = argsOrState as SsoConnectorArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.emailDomain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'emailDomain'");
             }
@@ -170,7 +172,7 @@ export interface SsoConnectorArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Begin the verification process after creation
      */

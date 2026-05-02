@@ -84,8 +84,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayProxyEndpointArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("proxyEndpointId", required: true)]
         public string ProxyEndpointId { get; set; } = null!;
@@ -98,8 +98,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustGatewayProxyEndpointInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("proxyEndpointId", required: true)]
         public Input<string> ProxyEndpointId { get; set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustGatewayProxyEndpointResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly string CreatedAt;
         /// <summary>
         /// The ID of this resource.
@@ -142,7 +142,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustGatewayProxyEndpointResult(
-            string accountId,
+            string? accountId,
 
             string createdAt,
 

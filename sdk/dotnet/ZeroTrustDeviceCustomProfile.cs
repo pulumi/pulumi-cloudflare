@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Zero Trust Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -78,7 +82,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDeviceCustomProfile : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Whether to allow the user to switch WARP between modes.
@@ -278,8 +282,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDeviceCustomProfileArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Whether to allow the user to switch WARP between modes.

@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -35,7 +42,7 @@ export interface GetMagicTransitSiteAclsArgs {
     /**
      * Identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -53,7 +60,7 @@ export interface GetMagicTransitSiteAclsResult {
     /**
      * Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -72,6 +79,13 @@ export interface GetMagicTransitSiteAclsResult {
     readonly siteId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -100,7 +114,7 @@ export interface GetMagicTransitSiteAclsOutputArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

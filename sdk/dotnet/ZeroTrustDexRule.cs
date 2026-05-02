@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Cloudflare DEX Read`
+    /// - `Cloudflare DEX Write`
+    /// - `Zero Trust Read`
+    /// - `Zero Trust Report`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -41,7 +48,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDexRule : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -113,8 +120,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDexRuleArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("description")]
         public Input<string>? Description { get; set; }

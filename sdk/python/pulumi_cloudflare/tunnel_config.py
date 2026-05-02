@@ -21,37 +21,26 @@ __all__ = ['TunnelConfigArgs', 'TunnelConfig']
 @pulumi.input_type
 class TunnelConfigArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  tunnel_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  config: Optional[pulumi.Input['TunnelConfigConfigArgs']] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TunnelConfig resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['TunnelConfigConfigArgs'] config: The tunnel configuration and ingress rules.
         :param pulumi.Input[_builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
                Available values: "local", "cloudflare".
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "tunnel_id", tunnel_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if source is not None:
             pulumi.set(__self__, "source", source)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelId")
@@ -64,6 +53,18 @@ class TunnelConfigArgs:
     @tunnel_id.setter
     def tunnel_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "tunnel_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -211,6 +212,15 @@ class TunnelConfig(pulumi.CustomResource):
                  tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Cloudflare One Connector: cloudflared Read`
+        - `Cloudflare One Connector: cloudflared Write`
+        - `Cloudflare One Connectors Read`
+        - `Cloudflare One Connectors Write`
+        - `Cloudflare Tunnel Read`
+        - `Cloudflare Tunnel Write`
+
         ## Example Usage
 
         ```python
@@ -293,6 +303,15 @@ class TunnelConfig(pulumi.CustomResource):
                  args: TunnelConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Cloudflare One Connector: cloudflared Read`
+        - `Cloudflare One Connector: cloudflared Write`
+        - `Cloudflare One Connectors Read`
+        - `Cloudflare One Connectors Write`
+        - `Cloudflare Tunnel Read`
+        - `Cloudflare Tunnel Write`
+
         ## Example Usage
 
         ```python
@@ -389,8 +408,6 @@ class TunnelConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TunnelConfigArgs.__new__(TunnelConfigArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["config"] = config
             __props__.__dict__["source"] = source
@@ -445,7 +462,7 @@ class TunnelConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

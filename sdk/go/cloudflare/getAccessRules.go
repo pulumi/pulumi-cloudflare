@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Firewall Access Rules Read`
+// - `Account Firewall Access Rules Write`
+//
 // ## Example Usage
 //
 // ```go

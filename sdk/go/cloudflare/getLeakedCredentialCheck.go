@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account WAF Read`
+// - `Account WAF Write`
+// - `Zone WAF Read`
+// - `Zone WAF Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetLeakedCredentialCheck(ctx, &cloudflare.LookupLeakedCredentialCheckArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +56,7 @@ func LookupLeakedCredentialCheck(ctx *pulumi.Context, args *LookupLeakedCredenti
 // A collection of arguments for invoking getLeakedCredentialCheck.
 type LookupLeakedCredentialCheckArgs struct {
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getLeakedCredentialCheck.
@@ -59,7 +66,7 @@ type LookupLeakedCredentialCheckResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupLeakedCredentialCheckOutput(ctx *pulumi.Context, args LookupLeakedCredentialCheckOutputArgs, opts ...pulumi.InvokeOption) LookupLeakedCredentialCheckResultOutput {
@@ -74,7 +81,7 @@ func LookupLeakedCredentialCheckOutput(ctx *pulumi.Context, args LookupLeakedCre
 // A collection of arguments for invoking getLeakedCredentialCheck.
 type LookupLeakedCredentialCheckOutputArgs struct {
 	// Defines an identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupLeakedCredentialCheckOutputArgs) ElementType() reflect.Type {
@@ -107,8 +114,8 @@ func (o LookupLeakedCredentialCheckResultOutput) Id() pulumi.StringOutput {
 }
 
 // Defines an identifier.
-func (o LookupLeakedCredentialCheckResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLeakedCredentialCheckResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupLeakedCredentialCheckResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLeakedCredentialCheckResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

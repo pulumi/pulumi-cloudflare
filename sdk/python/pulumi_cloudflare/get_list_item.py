@@ -64,7 +64,7 @@ class GetListItemResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         The Account ID for this resource.
         """
@@ -175,6 +175,11 @@ def get_list_item(account_id: Optional[_builtins.str] = None,
                   list_id: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetListItemResult:
     """
+    Accepted Permissions
+
+    - `Account Filter Lists Edit`
+    - `Account Filter Lists Read`
+
     ## Example Usage
 
     ```python
@@ -210,11 +215,16 @@ def get_list_item(account_id: Optional[_builtins.str] = None,
         list_id=pulumi.get(__ret__, 'list_id'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
         redirect=pulumi.get(__ret__, 'redirect'))
-def get_list_item_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_list_item_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          item_id: Optional[pulumi.Input[_builtins.str]] = None,
                          list_id: Optional[pulumi.Input[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListItemResult]:
     """
+    Accepted Permissions
+
+    - `Account Filter Lists Edit`
+    - `Account Filter Lists Read`
+
     ## Example Usage
 
     ```python

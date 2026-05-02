@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+// - `Workers Tail Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkflow(ctx, &cloudflare.LookupWorkflowArgs{
-//				AccountId:    "account_id",
+//				AccountId:    pulumi.StringRef("account_id"),
 //				WorkflowName: pulumi.StringRef("x"),
 //			}, nil)
 //			if err != nil {
@@ -49,14 +55,14 @@ func LookupWorkflow(ctx *pulumi.Context, args *LookupWorkflowArgs, opts ...pulum
 
 // A collection of arguments for invoking getWorkflow.
 type LookupWorkflowArgs struct {
-	AccountId    string             `pulumi:"accountId"`
+	AccountId    *string            `pulumi:"accountId"`
 	Filter       *GetWorkflowFilter `pulumi:"filter"`
 	WorkflowName *string            `pulumi:"workflowName"`
 }
 
 // A collection of values returned by getWorkflow.
 type LookupWorkflowResult struct {
-	AccountId string             `pulumi:"accountId"`
+	AccountId *string            `pulumi:"accountId"`
 	ClassName string             `pulumi:"className"`
 	CreatedOn string             `pulumi:"createdOn"`
 	Filter    *GetWorkflowFilter `pulumi:"filter"`
@@ -81,7 +87,7 @@ func LookupWorkflowOutput(ctx *pulumi.Context, args LookupWorkflowOutputArgs, op
 
 // A collection of arguments for invoking getWorkflow.
 type LookupWorkflowOutputArgs struct {
-	AccountId    pulumi.StringInput        `pulumi:"accountId"`
+	AccountId    pulumi.StringPtrInput     `pulumi:"accountId"`
 	Filter       GetWorkflowFilterPtrInput `pulumi:"filter"`
 	WorkflowName pulumi.StringPtrInput     `pulumi:"workflowName"`
 }
@@ -105,8 +111,8 @@ func (o LookupWorkflowResultOutput) ToLookupWorkflowResultOutputWithContext(ctx 
 	return o
 }
 
-func (o LookupWorkflowResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupWorkflowResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupWorkflowResultOutput) ClassName() pulumi.StringOutput {

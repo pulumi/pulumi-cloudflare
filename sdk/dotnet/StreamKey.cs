@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Stream Read`
+    /// - `Stream Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -41,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The date and time a signing key was created.
@@ -54,6 +59,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("jwk")]
         public Output<string> Jwk { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier for the signing key.
+        /// </summary>
+        [Output("keyId")]
+        public Output<string> KeyId { get; private set; } = null!;
 
         /// <summary>
         /// The signing key in PEM format.
@@ -69,7 +80,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public StreamKey(string name, StreamKeyArgs args, CustomResourceOptions? options = null)
+        public StreamKey(string name, StreamKeyArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/streamKey:StreamKey", name, args ?? new StreamKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -115,8 +126,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         public StreamKeyArgs()
         {
@@ -153,6 +164,12 @@ namespace Pulumi.Cloudflare
                 _jwk = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// The unique identifier for the signing key.
+        /// </summary>
+        [Input("keyId")]
+        public Input<string>? KeyId { get; set; }
 
         [Input("pem")]
         private Input<string>? _pem;

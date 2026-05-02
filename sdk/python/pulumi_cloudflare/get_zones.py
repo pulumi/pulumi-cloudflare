@@ -132,6 +132,10 @@ def get_zones(account: Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArg
               status: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
+    Accepted Permissions
+
+    - `Zone Zone Read`
+
     ## Example Usage
 
     ```python
@@ -178,6 +182,10 @@ def get_zones_output(account: Optional[pulumi.Input[Optional[Union['GetZonesAcco
                      status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
+    Accepted Permissions
+
+    - `Zone Zone Read`
+
     ## Example Usage
 
     ```python

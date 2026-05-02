@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Firewall Services Read`
+// - `Firewall Services Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetFirewallRule(ctx, &cloudflare.LookupFirewallRuleArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RuleId: pulumi.StringRef("372e67954025e0ba6aaa6d586b9e0b60"),
 //			}, nil)
 //			if err != nil {
@@ -52,7 +57,7 @@ type LookupFirewallRuleArgs struct {
 	// The unique identifier of the firewall rule.
 	RuleId *string `pulumi:"ruleId"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getFirewallRule.
@@ -74,7 +79,7 @@ type LookupFirewallRuleResult struct {
 	// The unique identifier of the firewall rule.
 	RuleId *string `pulumi:"ruleId"`
 	// Defines an identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupFirewallRuleOutput(ctx *pulumi.Context, args LookupFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupFirewallRuleResultOutput {
@@ -91,7 +96,7 @@ type LookupFirewallRuleOutputArgs struct {
 	// The unique identifier of the firewall rule.
 	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
 	// Defines an identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupFirewallRuleOutputArgs) ElementType() reflect.Type {
@@ -154,8 +159,8 @@ func (o LookupFirewallRuleResultOutput) RuleId() pulumi.StringPtrOutput {
 }
 
 // Defines an identifier.
-func (o LookupFirewallRuleResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupFirewallRuleResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupFirewallRuleResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

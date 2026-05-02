@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Zero Trust Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -52,7 +56,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustLocalFallbackDomain : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("domains")]
         public Output<ImmutableArray<Outputs.ZeroTrustLocalFallbackDomainDomain>> Domains { get; private set; } = null!;
@@ -111,8 +115,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustLocalFallbackDomainArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("domains", required: true)]
         private InputList<Inputs.ZeroTrustLocalFallbackDomainDomainArgs>? _domains;

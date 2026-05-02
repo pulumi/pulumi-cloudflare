@@ -21,8 +21,8 @@ __all__ = ['DevicePostureRuleArgs', 'DevicePostureRule']
 @pulumi.input_type
 class DevicePostureRuleArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  expiration: Optional[pulumi.Input[_builtins.str]] = None,
                  input: Optional[pulumi.Input['DevicePostureRuleInputArgs']] = None,
@@ -41,8 +41,9 @@ class DevicePostureRuleArgs:
         :param pulumi.Input[_builtins.str] name: The name of the device posture rule.
         :param pulumi.Input[_builtins.str] schedule: Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "type", type)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if expiration is not None:
@@ -57,15 +58,6 @@ class DevicePostureRuleArgs:
             pulumi.set(__self__, "schedule", schedule)
 
     @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
-
-    @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
@@ -77,6 +69,15 @@ class DevicePostureRuleArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -307,6 +308,10 @@ class DevicePostureRule(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -357,6 +362,10 @@ class DevicePostureRule(pulumi.CustomResource):
                  args: DevicePostureRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -422,8 +431,6 @@ class DevicePostureRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DevicePostureRuleArgs.__new__(DevicePostureRuleArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             __props__.__dict__["expiration"] = expiration
@@ -486,7 +493,7 @@ class DevicePostureRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

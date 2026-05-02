@@ -13,14 +13,35 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetAiSearchInstanceFilterResult
     {
+        public readonly string? Namespace;
+        /// <summary>
+        /// Order By Column Name
+        /// Available values: "CreatedAt".
+        /// </summary>
+        public readonly string OrderBy;
+        /// <summary>
+        /// Order By Direction
+        /// Available values: "asc", "desc".
+        /// </summary>
+        public readonly string OrderByDirection;
         /// <summary>
         /// Search by id
         /// </summary>
         public readonly string? Search;
 
         [OutputConstructor]
-        private GetAiSearchInstanceFilterResult(string? search)
+        private GetAiSearchInstanceFilterResult(
+            string? @namespace,
+
+            string orderBy,
+
+            string orderByDirection,
+
+            string? search)
         {
+            Namespace = @namespace;
+            OrderBy = orderBy;
+            OrderByDirection = orderByDirection;
             Search = search;
         }
     }

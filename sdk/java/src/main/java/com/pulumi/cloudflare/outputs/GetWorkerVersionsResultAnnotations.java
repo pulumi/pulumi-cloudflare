@@ -11,12 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkerVersionsResultAnnotations {
     /**
-     * @return Human-readable message about the version.
+     * @return Human-readable message about the version. Truncated to 1000 bytes if longer.
      * 
      */
     private String workersMessage;
     /**
-     * @return User-provided identifier for the version.
+     * @return User-provided identifier for the version. Maximum 100 bytes.
      * 
      */
     private String workersTag;
@@ -28,14 +28,14 @@ public final class GetWorkerVersionsResultAnnotations {
 
     private GetWorkerVersionsResultAnnotations() {}
     /**
-     * @return Human-readable message about the version.
+     * @return Human-readable message about the version. Truncated to 1000 bytes if longer.
      * 
      */
     public String workersMessage() {
         return this.workersMessage;
     }
     /**
-     * @return User-provided identifier for the version.
+     * @return User-provided identifier for the version. Maximum 100 bytes.
      * 
      */
     public String workersTag() {

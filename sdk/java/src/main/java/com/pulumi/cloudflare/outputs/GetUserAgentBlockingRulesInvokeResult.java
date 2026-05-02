@@ -50,7 +50,7 @@ public final class GetUserAgentBlockingRulesInvokeResult {
      * @return Defines an identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetUserAgentBlockingRulesInvokeResult() {}
     /**
@@ -99,8 +99,8 @@ public final class GetUserAgentBlockingRulesInvokeResult {
      * @return Defines an identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -118,7 +118,7 @@ public final class GetUserAgentBlockingRulesInvokeResult {
         private @Nullable Boolean paused;
         private List<GetUserAgentBlockingRulesResult> results;
         private @Nullable String userAgent;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetUserAgentBlockingRulesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -175,10 +175,8 @@ public final class GetUserAgentBlockingRulesInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetUserAgentBlockingRulesInvokeResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

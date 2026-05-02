@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare Zero Trust Secure DNS Locations Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -31,7 +37,7 @@ export function getZeroTrustDnsLocation(args: GetZeroTrustDnsLocationArgs, opts?
  * A collection of arguments for invoking getZeroTrustDnsLocation.
  */
 export interface GetZeroTrustDnsLocationArgs {
-    accountId: string;
+    accountId?: string;
     locationId: string;
 }
 
@@ -39,7 +45,7 @@ export interface GetZeroTrustDnsLocationArgs {
  * A collection of values returned by getZeroTrustDnsLocation.
  */
 export interface GetZeroTrustDnsLocationResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Indicate whether this location is the default location.
      */
@@ -93,6 +99,12 @@ export interface GetZeroTrustDnsLocationResult {
     readonly updatedAt: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare Zero Trust Secure DNS Locations Write`
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -117,6 +129,6 @@ export function getZeroTrustDnsLocationOutput(args: GetZeroTrustDnsLocationOutpu
  * A collection of arguments for invoking getZeroTrustDnsLocation.
  */
 export interface GetZeroTrustDnsLocationOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     locationId: pulumi.Input<string>;
 }

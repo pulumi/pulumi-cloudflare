@@ -119,7 +119,7 @@ namespace Pulumi.Cloudflare
         /// An optional description forthe IPsec tunnel.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         [Output("healthCheck")]
         public Output<Outputs.MagicWanIpsecTunnelHealthCheck> HealthCheck { get; private set; } = null!;

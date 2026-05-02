@@ -24,7 +24,7 @@ class PageShieldPolicyArgs:
                  enabled: pulumi.Input[_builtins.bool],
                  expression: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PageShieldPolicy resource.
 
@@ -41,7 +41,8 @@ class PageShieldPolicyArgs:
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "value", value)
-        pulumi.set(__self__, "zone_id", zone_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -106,14 +107,14 @@ class PageShieldPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -238,7 +239,14 @@ class PageShieldPolicy(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        Accepted Permissions
+
+        - `Domain Page Shield`
+        - `Domain Page Shield Read`
+        - `Page Shield`
+        - `Page Shield Read`
+        - `Zone Settings Read`
+        - `Zone Settings Write`
 
         ## Import
 
@@ -264,7 +272,14 @@ class PageShieldPolicy(pulumi.CustomResource):
                  args: PageShieldPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        Accepted Permissions
+
+        - `Domain Page Shield`
+        - `Domain Page Shield Read`
+        - `Page Shield`
+        - `Page Shield Read`
+        - `Zone Settings Read`
+        - `Zone Settings Write`
 
         ## Import
 
@@ -318,8 +333,6 @@ class PageShieldPolicy(pulumi.CustomResource):
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = value
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
         super(PageShieldPolicy, __self__).__init__(
             'cloudflare:index/pageShieldPolicy:PageShieldPolicy',
@@ -407,7 +420,7 @@ class PageShieldPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier
         """

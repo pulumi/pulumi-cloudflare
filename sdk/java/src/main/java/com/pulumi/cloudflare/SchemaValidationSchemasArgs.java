@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SchemaValidationSchemasArgs extends com.pulumi.resources.ResourceArgs {
@@ -81,15 +83,15 @@ public final class SchemaValidationSchemasArgs extends com.pulumi.resources.Reso
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private SchemaValidationSchemasArgs() {}
@@ -212,7 +214,7 @@ public final class SchemaValidationSchemasArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -239,9 +241,6 @@ public final class SchemaValidationSchemasArgs extends com.pulumi.resources.Reso
             }
             if ($.validationEnabled == null) {
                 throw new MissingRequiredPropertyException("SchemaValidationSchemasArgs", "validationEnabled");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("SchemaValidationSchemasArgs", "zoneId");
             }
             return $;
         }

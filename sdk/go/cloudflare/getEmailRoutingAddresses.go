@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Email Routing Addresses Read`
+// - `Email Routing Addresses Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailRoutingAddresses(ctx, &cloudflare.LookupEmailRoutingAddressesArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupEmailRoutingAddresses(ctx *pulumi.Context, args *LookupEmailRoutingAd
 // A collection of arguments for invoking getEmailRoutingAddresses.
 type LookupEmailRoutingAddressesArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Sorts results in an ascending or descending order.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
@@ -62,7 +67,7 @@ type LookupEmailRoutingAddressesArgs struct {
 // A collection of values returned by getEmailRoutingAddresses.
 type LookupEmailRoutingAddressesResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Sorts results in an ascending or descending order.
 	// Available values: "asc", "desc".
 	Direction string `pulumi:"direction"`
@@ -88,7 +93,7 @@ func LookupEmailRoutingAddressesOutput(ctx *pulumi.Context, args LookupEmailRout
 // A collection of arguments for invoking getEmailRoutingAddresses.
 type LookupEmailRoutingAddressesOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Sorts results in an ascending or descending order.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
@@ -118,8 +123,8 @@ func (o LookupEmailRoutingAddressesResultOutput) ToLookupEmailRoutingAddressesRe
 }
 
 // Identifier.
-func (o LookupEmailRoutingAddressesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailRoutingAddressesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupEmailRoutingAddressesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailRoutingAddressesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Sorts results in an ascending or descending order.

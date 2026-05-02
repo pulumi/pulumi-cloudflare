@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Access: Mutual TLS Certificates Read`
+    /// - `Access: Mutual TLS Certificates Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

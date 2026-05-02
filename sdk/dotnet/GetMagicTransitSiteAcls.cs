@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetMagicTransitSiteAcls
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +42,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMagicTransitSiteAclsResult>("cloudflare:index/getMagicTransitSiteAcls:getMagicTransitSiteAcls", args ?? new GetMagicTransitSiteAclsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +72,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicTransitSiteAclsResult>("cloudflare:index/getMagicTransitSiteAcls:getMagicTransitSiteAcls", args ?? new GetMagicTransitSiteAclsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Magic Transit Read`
+        /// - `Magic Transit Write`
+        /// - `Magic WAN Read`
+        /// - `Magic WAN Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -113,8 +134,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -141,7 +162,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -161,7 +182,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetMagicTransitSiteAclsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

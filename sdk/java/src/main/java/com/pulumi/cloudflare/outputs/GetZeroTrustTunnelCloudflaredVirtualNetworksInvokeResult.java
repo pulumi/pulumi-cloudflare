@@ -20,7 +20,7 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult {
      * @return Cloudflare account ID
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return UUID of the virtual network.
      * 
@@ -62,8 +62,8 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult {
      * @return Cloudflare account ID
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return UUID of the virtual network.
@@ -124,7 +124,7 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private @Nullable String id;
         private @Nullable Boolean isDefault;
         private @Nullable Boolean isDefaultNetwork;
@@ -146,10 +146,8 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

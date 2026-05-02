@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Zero Trust Read`
+    /// - `Zero Trust Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -57,7 +62,7 @@ namespace Pulumi.Cloudflare
     public partial class DlpPredefinedProfile : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("aiContextEnabled")]
         public Output<bool> AiContextEnabled { get; private set; } = null!;
@@ -142,8 +147,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class DlpPredefinedProfileArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("aiContextEnabled")]
         public Input<bool>? AiContextEnabled { get; set; }
@@ -164,7 +169,7 @@ namespace Pulumi.Cloudflare
 
         [Input("entries")]
         private InputList<Inputs.DlpPredefinedProfileEntryArgs>? _entries;
-        [Obsolete(@"This attribute is deprecated.")]
+        [Obsolete(@"This attribute is deprecated. Use EnabledEntries instead.")]
         public InputList<Inputs.DlpPredefinedProfileEntryArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.DlpPredefinedProfileEntryArgs>());
@@ -207,7 +212,7 @@ namespace Pulumi.Cloudflare
 
         [Input("entries")]
         private InputList<Inputs.DlpPredefinedProfileEntryGetArgs>? _entries;
-        [Obsolete(@"This attribute is deprecated.")]
+        [Obsolete(@"This attribute is deprecated. Use EnabledEntries instead.")]
         public InputList<Inputs.DlpPredefinedProfileEntryGetArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.DlpPredefinedProfileEntryGetArgs>());

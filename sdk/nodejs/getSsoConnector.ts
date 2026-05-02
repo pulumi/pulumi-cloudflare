@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSO Connector Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +38,7 @@ export interface GetSsoConnectorArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * SSO Connector identifier tag.
      */
@@ -48,7 +52,7 @@ export interface GetSsoConnectorResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Timestamp for the creation of the SSO connector
      */
@@ -74,6 +78,10 @@ export interface GetSsoConnectorResult {
     readonly verification: outputs.GetSsoConnectorVerification;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSO Connector Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -101,7 +109,7 @@ export interface GetSsoConnectorOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * SSO Connector identifier tag.
      */

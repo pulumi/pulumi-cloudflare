@@ -21,15 +21,17 @@ __all__ = ['StreamArgs', 'Stream']
 @pulumi.input_type
 class StreamArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  creator: Optional[pulumi.Input[_builtins.str]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  max_duration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  meta: Optional[pulumi.Input[_builtins.str]] = None,
+                 public_details: Optional[pulumi.Input['StreamPublicDetailsArgs']] = None,
                  require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
                  scheduled_deletion: Optional[pulumi.Input[_builtins.str]] = None,
                  thumbnail_timestamp_pct: Optional[pulumi.Input[_builtins.float]] = None,
+                 uid: Optional[pulumi.Input[_builtins.str]] = None,
                  upload_expiry: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Stream resource.
@@ -40,12 +42,15 @@ class StreamArgs:
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.int] max_duration_seconds: The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing videos.
+        :param pulumi.Input['StreamPublicDetailsArgs'] public_details: Public details for the video including title, share link, channel link, and logo.
         :param pulumi.Input[_builtins.bool] require_signed_urls: Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
         :param pulumi.Input[_builtins.str] scheduled_deletion: Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
         :param pulumi.Input[_builtins.float] thumbnail_timestamp_pct: The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
+        :param pulumi.Input[_builtins.str] uid: The unique identifier for the video. Can be used to verify the video being updated.
         :param pulumi.Input[_builtins.str] upload_expiry: The date and time when the video upload URL is no longer valid for direct user uploads.
         """
-        pulumi.set(__self__, "account_id", account_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if allowed_origins is not None:
             pulumi.set(__self__, "allowed_origins", allowed_origins)
         if creator is not None:
@@ -56,25 +61,29 @@ class StreamArgs:
             pulumi.set(__self__, "max_duration_seconds", max_duration_seconds)
         if meta is not None:
             pulumi.set(__self__, "meta", meta)
+        if public_details is not None:
+            pulumi.set(__self__, "public_details", public_details)
         if require_signed_urls is not None:
             pulumi.set(__self__, "require_signed_urls", require_signed_urls)
         if scheduled_deletion is not None:
             pulumi.set(__self__, "scheduled_deletion", scheduled_deletion)
         if thumbnail_timestamp_pct is not None:
             pulumi.set(__self__, "thumbnail_timestamp_pct", thumbnail_timestamp_pct)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
         if upload_expiry is not None:
             pulumi.set(__self__, "upload_expiry", upload_expiry)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -138,6 +147,18 @@ class StreamArgs:
         pulumi.set(self, "meta", value)
 
     @_builtins.property
+    @pulumi.getter(name="publicDetails")
+    def public_details(self) -> Optional[pulumi.Input['StreamPublicDetailsArgs']]:
+        """
+        Public details for the video including title, share link, channel link, and logo.
+        """
+        return pulumi.get(self, "public_details")
+
+    @public_details.setter
+    def public_details(self, value: Optional[pulumi.Input['StreamPublicDetailsArgs']]):
+        pulumi.set(self, "public_details", value)
+
+    @_builtins.property
     @pulumi.getter(name="requireSignedUrls")
     def require_signed_urls(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -174,6 +195,18 @@ class StreamArgs:
         pulumi.set(self, "thumbnail_timestamp_pct", value)
 
     @_builtins.property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique identifier for the video. Can be used to verify the video being updated.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uid", value)
+
+    @_builtins.property
     @pulumi.getter(name="uploadExpiry")
     def upload_expiry(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -191,6 +224,7 @@ class _StreamState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 clipped_from: Optional[pulumi.Input[_builtins.str]] = None,
                  created: Optional[pulumi.Input[_builtins.str]] = None,
                  creator: Optional[pulumi.Input[_builtins.str]] = None,
                  duration: Optional[pulumi.Input[_builtins.float]] = None,
@@ -198,10 +232,12 @@ class _StreamState:
                  input: Optional[pulumi.Input['StreamInputArgs']] = None,
                  live_input: Optional[pulumi.Input[_builtins.str]] = None,
                  max_duration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  meta: Optional[pulumi.Input[_builtins.str]] = None,
                  modified: Optional[pulumi.Input[_builtins.str]] = None,
                  playback: Optional[pulumi.Input['StreamPlaybackArgs']] = None,
                  preview: Optional[pulumi.Input[_builtins.str]] = None,
+                 public_details: Optional[pulumi.Input['StreamPublicDetailsArgs']] = None,
                  ready_to_stream: Optional[pulumi.Input[_builtins.bool]] = None,
                  ready_to_stream_at: Optional[pulumi.Input[_builtins.str]] = None,
                  require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -219,15 +255,18 @@ class _StreamState:
 
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
+        :param pulumi.Input[_builtins.str] clipped_from: The unique identifier of the source video this video was clipped from.
         :param pulumi.Input[_builtins.str] created: The date and time the media item was created.
         :param pulumi.Input[_builtins.str] creator: A user-defined identifier for the media creator.
         :param pulumi.Input[_builtins.float] duration: The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.str] live_input: The live input ID used to upload a video with Stream Live.
         :param pulumi.Input[_builtins.int] max_duration_seconds: The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
+        :param pulumi.Input[_builtins.int] max_size_bytes: The maximum size in bytes for the video upload.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing videos.
         :param pulumi.Input[_builtins.str] modified: The date and time the media item was last modified.
         :param pulumi.Input[_builtins.str] preview: The video's preview page URI. This field is omitted until encoding is complete.
+        :param pulumi.Input['StreamPublicDetailsArgs'] public_details: Public details for the video including title, share link, channel link, and logo.
         :param pulumi.Input[_builtins.bool] ready_to_stream: Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
         :param pulumi.Input[_builtins.str] ready_to_stream_at: Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
         :param pulumi.Input[_builtins.bool] require_signed_urls: Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
@@ -236,7 +275,7 @@ class _StreamState:
         :param pulumi.Input['StreamStatusArgs'] status: Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.
         :param pulumi.Input[_builtins.str] thumbnail: The media item's thumbnail URI. This field is omitted until encoding is complete.
         :param pulumi.Input[_builtins.float] thumbnail_timestamp_pct: The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
-        :param pulumi.Input[_builtins.str] uid: A Cloudflare-generated unique identifier for a media item.
+        :param pulumi.Input[_builtins.str] uid: The unique identifier for the video. Can be used to verify the video being updated.
         :param pulumi.Input[_builtins.str] upload_expiry: The date and time when the video upload URL is no longer valid for direct user uploads.
         :param pulumi.Input[_builtins.str] uploaded: The date and time the media item was uploaded.
         """
@@ -244,6 +283,8 @@ class _StreamState:
             pulumi.set(__self__, "account_id", account_id)
         if allowed_origins is not None:
             pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if clipped_from is not None:
+            pulumi.set(__self__, "clipped_from", clipped_from)
         if created is not None:
             pulumi.set(__self__, "created", created)
         if creator is not None:
@@ -258,6 +299,8 @@ class _StreamState:
             pulumi.set(__self__, "live_input", live_input)
         if max_duration_seconds is not None:
             pulumi.set(__self__, "max_duration_seconds", max_duration_seconds)
+        if max_size_bytes is not None:
+            pulumi.set(__self__, "max_size_bytes", max_size_bytes)
         if meta is not None:
             pulumi.set(__self__, "meta", meta)
         if modified is not None:
@@ -266,6 +309,8 @@ class _StreamState:
             pulumi.set(__self__, "playback", playback)
         if preview is not None:
             pulumi.set(__self__, "preview", preview)
+        if public_details is not None:
+            pulumi.set(__self__, "public_details", public_details)
         if ready_to_stream is not None:
             pulumi.set(__self__, "ready_to_stream", ready_to_stream)
         if ready_to_stream_at is not None:
@@ -314,6 +359,18 @@ class _StreamState:
     @allowed_origins.setter
     def allowed_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_origins", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clippedFrom")
+    def clipped_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique identifier of the source video this video was clipped from.
+        """
+        return pulumi.get(self, "clipped_from")
+
+    @clipped_from.setter
+    def clipped_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "clipped_from", value)
 
     @_builtins.property
     @pulumi.getter
@@ -397,6 +454,18 @@ class _StreamState:
         pulumi.set(self, "max_duration_seconds", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxSizeBytes")
+    def max_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum size in bytes for the video upload.
+        """
+        return pulumi.get(self, "max_size_bytes")
+
+    @max_size_bytes.setter
+    def max_size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_size_bytes", value)
+
+    @_builtins.property
     @pulumi.getter
     def meta(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -440,6 +509,18 @@ class _StreamState:
     @preview.setter
     def preview(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "preview", value)
+
+    @_builtins.property
+    @pulumi.getter(name="publicDetails")
+    def public_details(self) -> Optional[pulumi.Input['StreamPublicDetailsArgs']]:
+        """
+        Public details for the video including title, share link, channel link, and logo.
+        """
+        return pulumi.get(self, "public_details")
+
+    @public_details.setter
+    def public_details(self, value: Optional[pulumi.Input['StreamPublicDetailsArgs']]):
+        pulumi.set(self, "public_details", value)
 
     @_builtins.property
     @pulumi.getter(name="readyToStream")
@@ -541,7 +622,7 @@ class _StreamState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A Cloudflare-generated unique identifier for a media item.
+        The unique identifier for the video. Can be used to verify the video being updated.
         """
         return pulumi.get(self, "uid")
 
@@ -595,12 +676,19 @@ class Stream(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  max_duration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  meta: Optional[pulumi.Input[_builtins.str]] = None,
+                 public_details: Optional[pulumi.Input[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']]] = None,
                  require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
                  scheduled_deletion: Optional[pulumi.Input[_builtins.str]] = None,
                  thumbnail_timestamp_pct: Optional[pulumi.Input[_builtins.float]] = None,
+                 uid: Optional[pulumi.Input[_builtins.str]] = None,
                  upload_expiry: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Stream Read`
+        - `Stream Write`
+
         ## Example Usage
 
         ```python
@@ -623,18 +711,25 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.int] max_duration_seconds: The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing videos.
+        :param pulumi.Input[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']] public_details: Public details for the video including title, share link, channel link, and logo.
         :param pulumi.Input[_builtins.bool] require_signed_urls: Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
         :param pulumi.Input[_builtins.str] scheduled_deletion: Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
         :param pulumi.Input[_builtins.float] thumbnail_timestamp_pct: The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
+        :param pulumi.Input[_builtins.str] uid: The unique identifier for the video. Can be used to verify the video being updated.
         :param pulumi.Input[_builtins.str] upload_expiry: The date and time when the video upload URL is no longer valid for direct user uploads.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: StreamArgs,
+                 args: Optional[StreamArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Stream Read`
+        - `Stream Write`
+
         ## Example Usage
 
         ```python
@@ -670,9 +765,11 @@ class Stream(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  max_duration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  meta: Optional[pulumi.Input[_builtins.str]] = None,
+                 public_details: Optional[pulumi.Input[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']]] = None,
                  require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
                  scheduled_deletion: Optional[pulumi.Input[_builtins.str]] = None,
                  thumbnail_timestamp_pct: Optional[pulumi.Input[_builtins.float]] = None,
+                 uid: Optional[pulumi.Input[_builtins.str]] = None,
                  upload_expiry: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -683,22 +780,24 @@ class Stream(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StreamArgs.__new__(StreamArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["allowed_origins"] = allowed_origins
             __props__.__dict__["creator"] = creator
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["max_duration_seconds"] = max_duration_seconds
             __props__.__dict__["meta"] = meta
+            __props__.__dict__["public_details"] = public_details
             __props__.__dict__["require_signed_urls"] = require_signed_urls
             __props__.__dict__["scheduled_deletion"] = scheduled_deletion
             __props__.__dict__["thumbnail_timestamp_pct"] = thumbnail_timestamp_pct
+            __props__.__dict__["uid"] = uid
             __props__.__dict__["upload_expiry"] = upload_expiry
+            __props__.__dict__["clipped_from"] = None
             __props__.__dict__["created"] = None
             __props__.__dict__["duration"] = None
             __props__.__dict__["input"] = None
             __props__.__dict__["live_input"] = None
+            __props__.__dict__["max_size_bytes"] = None
             __props__.__dict__["modified"] = None
             __props__.__dict__["playback"] = None
             __props__.__dict__["preview"] = None
@@ -707,7 +806,6 @@ class Stream(pulumi.CustomResource):
             __props__.__dict__["size"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["thumbnail"] = None
-            __props__.__dict__["uid"] = None
             __props__.__dict__["uploaded"] = None
             __props__.__dict__["watermark"] = None
         super(Stream, __self__).__init__(
@@ -722,6 +820,7 @@ class Stream(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            clipped_from: Optional[pulumi.Input[_builtins.str]] = None,
             created: Optional[pulumi.Input[_builtins.str]] = None,
             creator: Optional[pulumi.Input[_builtins.str]] = None,
             duration: Optional[pulumi.Input[_builtins.float]] = None,
@@ -729,10 +828,12 @@ class Stream(pulumi.CustomResource):
             input: Optional[pulumi.Input[Union['StreamInputArgs', 'StreamInputArgsDict']]] = None,
             live_input: Optional[pulumi.Input[_builtins.str]] = None,
             max_duration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+            max_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
             meta: Optional[pulumi.Input[_builtins.str]] = None,
             modified: Optional[pulumi.Input[_builtins.str]] = None,
             playback: Optional[pulumi.Input[Union['StreamPlaybackArgs', 'StreamPlaybackArgsDict']]] = None,
             preview: Optional[pulumi.Input[_builtins.str]] = None,
+            public_details: Optional[pulumi.Input[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']]] = None,
             ready_to_stream: Optional[pulumi.Input[_builtins.bool]] = None,
             ready_to_stream_at: Optional[pulumi.Input[_builtins.str]] = None,
             require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -754,15 +855,18 @@ class Stream(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account identifier tag.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
+        :param pulumi.Input[_builtins.str] clipped_from: The unique identifier of the source video this video was clipped from.
         :param pulumi.Input[_builtins.str] created: The date and time the media item was created.
         :param pulumi.Input[_builtins.str] creator: A user-defined identifier for the media creator.
         :param pulumi.Input[_builtins.float] duration: The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.str] live_input: The live input ID used to upload a video with Stream Live.
         :param pulumi.Input[_builtins.int] max_duration_seconds: The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
+        :param pulumi.Input[_builtins.int] max_size_bytes: The maximum size in bytes for the video upload.
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing videos.
         :param pulumi.Input[_builtins.str] modified: The date and time the media item was last modified.
         :param pulumi.Input[_builtins.str] preview: The video's preview page URI. This field is omitted until encoding is complete.
+        :param pulumi.Input[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']] public_details: Public details for the video including title, share link, channel link, and logo.
         :param pulumi.Input[_builtins.bool] ready_to_stream: Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
         :param pulumi.Input[_builtins.str] ready_to_stream_at: Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
         :param pulumi.Input[_builtins.bool] require_signed_urls: Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
@@ -771,7 +875,7 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[Union['StreamStatusArgs', 'StreamStatusArgsDict']] status: Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.
         :param pulumi.Input[_builtins.str] thumbnail: The media item's thumbnail URI. This field is omitted until encoding is complete.
         :param pulumi.Input[_builtins.float] thumbnail_timestamp_pct: The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
-        :param pulumi.Input[_builtins.str] uid: A Cloudflare-generated unique identifier for a media item.
+        :param pulumi.Input[_builtins.str] uid: The unique identifier for the video. Can be used to verify the video being updated.
         :param pulumi.Input[_builtins.str] upload_expiry: The date and time when the video upload URL is no longer valid for direct user uploads.
         :param pulumi.Input[_builtins.str] uploaded: The date and time the media item was uploaded.
         """
@@ -781,6 +885,7 @@ class Stream(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["allowed_origins"] = allowed_origins
+        __props__.__dict__["clipped_from"] = clipped_from
         __props__.__dict__["created"] = created
         __props__.__dict__["creator"] = creator
         __props__.__dict__["duration"] = duration
@@ -788,10 +893,12 @@ class Stream(pulumi.CustomResource):
         __props__.__dict__["input"] = input
         __props__.__dict__["live_input"] = live_input
         __props__.__dict__["max_duration_seconds"] = max_duration_seconds
+        __props__.__dict__["max_size_bytes"] = max_size_bytes
         __props__.__dict__["meta"] = meta
         __props__.__dict__["modified"] = modified
         __props__.__dict__["playback"] = playback
         __props__.__dict__["preview"] = preview
+        __props__.__dict__["public_details"] = public_details
         __props__.__dict__["ready_to_stream"] = ready_to_stream
         __props__.__dict__["ready_to_stream_at"] = ready_to_stream_at
         __props__.__dict__["require_signed_urls"] = require_signed_urls
@@ -808,7 +915,7 @@ class Stream(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The account identifier tag.
         """
@@ -821,6 +928,14 @@ class Stream(pulumi.CustomResource):
         Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
         """
         return pulumi.get(self, "allowed_origins")
+
+    @_builtins.property
+    @pulumi.getter(name="clippedFrom")
+    def clipped_from(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unique identifier of the source video this video was clipped from.
+        """
+        return pulumi.get(self, "clipped_from")
 
     @_builtins.property
     @pulumi.getter
@@ -876,6 +991,14 @@ class Stream(pulumi.CustomResource):
         return pulumi.get(self, "max_duration_seconds")
 
     @_builtins.property
+    @pulumi.getter(name="maxSizeBytes")
+    def max_size_bytes(self) -> pulumi.Output[_builtins.int]:
+        """
+        The maximum size in bytes for the video upload.
+        """
+        return pulumi.get(self, "max_size_bytes")
+
+    @_builtins.property
     @pulumi.getter
     def meta(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -903,6 +1026,14 @@ class Stream(pulumi.CustomResource):
         The video's preview page URI. This field is omitted until encoding is complete.
         """
         return pulumi.get(self, "preview")
+
+    @_builtins.property
+    @pulumi.getter(name="publicDetails")
+    def public_details(self) -> pulumi.Output[Optional['outputs.StreamPublicDetails']]:
+        """
+        Public details for the video including title, share link, channel link, and logo.
+        """
+        return pulumi.get(self, "public_details")
 
     @_builtins.property
     @pulumi.getter(name="readyToStream")
@@ -970,9 +1101,9 @@ class Stream(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> pulumi.Output[_builtins.str]:
+    def uid(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        A Cloudflare-generated unique identifier for a media item.
+        The unique identifier for the video. Can be used to verify the video being updated.
         """
         return pulumi.get(self, "uid")
 

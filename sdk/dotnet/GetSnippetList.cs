@@ -11,12 +11,30 @@ namespace Pulumi.Cloudflare
 {
     public static class GetSnippetList
     {
-        public static Task<GetSnippetListResult> InvokeAsync(GetSnippetListArgs args, InvokeOptions? options = null)
+        /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Snippets Read`
+        /// - `Snippets Write`
+        /// </summary>
+        public static Task<GetSnippetListResult> InvokeAsync(GetSnippetListArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnippetListResult>("cloudflare:index/getSnippetList:getSnippetList", args ?? new GetSnippetListArgs(), options.WithDefaults());
 
-        public static Output<GetSnippetListResult> Invoke(GetSnippetListInvokeArgs args, InvokeOptions? options = null)
+        /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Snippets Read`
+        /// - `Snippets Write`
+        /// </summary>
+        public static Output<GetSnippetListResult> Invoke(GetSnippetListInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnippetListResult>("cloudflare:index/getSnippetList:getSnippetList", args ?? new GetSnippetListInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Snippets Read`
+        /// - `Snippets Write`
+        /// </summary>
         public static Output<GetSnippetListResult> Invoke(GetSnippetListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnippetListResult>("cloudflare:index/getSnippetList:getSnippetList", args ?? new GetSnippetListInvokeArgs(), options.WithDefaults());
     }
@@ -33,8 +51,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this field to specify the unique ID of the zone.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetSnippetListArgs()
         {
@@ -53,8 +71,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this field to specify the unique ID of the zone.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetSnippetListInvokeArgs()
         {
@@ -81,7 +99,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this field to specify the unique ID of the zone.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetSnippetListResult(
@@ -91,7 +109,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetSnippetListResultResult> results,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             MaxItems = maxItems;

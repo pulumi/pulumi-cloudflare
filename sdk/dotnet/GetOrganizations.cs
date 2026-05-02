@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetOrganizations
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `User Details Read`
+        /// - `User Details Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -55,6 +60,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationsResult>("cloudflare:index/getOrganizations:getOrganizations", args ?? new GetOrganizationsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `User Details Read`
+        /// - `User Details Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -98,6 +108,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationsResult>("cloudflare:index/getOrganizations:getOrganizations", args ?? new GetOrganizationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `User Details Read`
+        /// - `User Details Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

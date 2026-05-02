@@ -21,8 +21,8 @@ __all__ = ['WorkerArgs', 'Worker']
 @pulumi.input_type
 class WorkerArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  logpush: Optional[pulumi.Input[_builtins.bool]] = None,
                  observability: Optional[pulumi.Input['WorkerObservabilityArgs']] = None,
                  subdomain: Optional[pulumi.Input['WorkerSubdomainArgs']] = None,
@@ -31,16 +31,17 @@ class WorkerArgs:
         """
         The set of arguments for constructing a Worker resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: Name of the Worker.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
         :param pulumi.Input['WorkerObservabilityArgs'] observability: Observability settings for the Worker.
         :param pulumi.Input['WorkerSubdomainArgs'] subdomain: Subdomain settings for the Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerTailConsumerArgs']]] tail_consumers: Other Workers that should consume logs from the Worker.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if logpush is not None:
             pulumi.set(__self__, "logpush", logpush)
         if observability is not None:
@@ -53,18 +54,6 @@ class WorkerArgs:
             pulumi.set(__self__, "tail_consumers", tail_consumers)
 
     @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
@@ -75,6 +64,18 @@ class WorkerArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -142,6 +143,7 @@ class _WorkerState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  created_on: Optional[pulumi.Input[_builtins.str]] = None,
+                 deployed_on: Optional[pulumi.Input[_builtins.str]] = None,
                  logpush: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  observability: Optional[pulumi.Input['WorkerObservabilityArgs']] = None,
@@ -155,6 +157,7 @@ class _WorkerState:
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created_on: When the Worker was created.
+        :param pulumi.Input[_builtins.str] deployed_on: When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
         :param pulumi.Input[_builtins.str] name: Name of the Worker.
         :param pulumi.Input['WorkerObservabilityArgs'] observability: Observability settings for the Worker.
@@ -168,6 +171,8 @@ class _WorkerState:
             pulumi.set(__self__, "account_id", account_id)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
+        if deployed_on is not None:
+            pulumi.set(__self__, "deployed_on", deployed_on)
         if logpush is not None:
             pulumi.set(__self__, "logpush", logpush)
         if name is not None:
@@ -208,6 +213,18 @@ class _WorkerState:
     @created_on.setter
     def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "created_on", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deployedOn")
+    def deployed_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+        """
+        return pulumi.get(self, "deployed_on")
+
+    @deployed_on.setter
+    def deployed_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deployed_on", value)
 
     @_builtins.property
     @pulumi.getter
@@ -321,6 +338,12 @@ class Worker(pulumi.CustomResource):
                  tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+        - `Workers Tail Read`
+
         ## Example Usage
 
         ```python
@@ -335,9 +358,17 @@ class Worker(pulumi.CustomResource):
                 "enabled": True,
                 "head_sampling_rate": 1,
                 "logs": {
+                    "destinations": ["string"],
                     "enabled": True,
                     "head_sampling_rate": 1,
                     "invocation_logs": True,
+                    "persist": True,
+                },
+                "traces": {
+                    "destinations": ["string"],
+                    "enabled": True,
+                    "head_sampling_rate": 1,
+                    "persist": True,
                 },
             },
             subdomain={
@@ -377,6 +408,12 @@ class Worker(pulumi.CustomResource):
                  args: WorkerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+        - `Workers Tail Read`
+
         ## Example Usage
 
         ```python
@@ -391,9 +428,17 @@ class Worker(pulumi.CustomResource):
                 "enabled": True,
                 "head_sampling_rate": 1,
                 "logs": {
+                    "destinations": ["string"],
                     "enabled": True,
                     "head_sampling_rate": 1,
                     "invocation_logs": True,
+                    "persist": True,
+                },
+                "traces": {
+                    "destinations": ["string"],
+                    "enabled": True,
+                    "head_sampling_rate": 1,
+                    "persist": True,
                 },
             },
             subdomain={
@@ -447,8 +492,6 @@ class Worker(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkerArgs.__new__(WorkerArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["logpush"] = logpush
             if name is None and not opts.urn:
@@ -459,6 +502,7 @@ class Worker(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tail_consumers"] = tail_consumers
             __props__.__dict__["created_on"] = None
+            __props__.__dict__["deployed_on"] = None
             __props__.__dict__["references"] = None
             __props__.__dict__["updated_on"] = None
         super(Worker, __self__).__init__(
@@ -473,6 +517,7 @@ class Worker(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             created_on: Optional[pulumi.Input[_builtins.str]] = None,
+            deployed_on: Optional[pulumi.Input[_builtins.str]] = None,
             logpush: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             observability: Optional[pulumi.Input[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']]] = None,
@@ -490,6 +535,7 @@ class Worker(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] created_on: When the Worker was created.
+        :param pulumi.Input[_builtins.str] deployed_on: When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
         :param pulumi.Input[_builtins.str] name: Name of the Worker.
         :param pulumi.Input[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']] observability: Observability settings for the Worker.
@@ -505,6 +551,7 @@ class Worker(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["deployed_on"] = deployed_on
         __props__.__dict__["logpush"] = logpush
         __props__.__dict__["name"] = name
         __props__.__dict__["observability"] = observability
@@ -517,7 +564,7 @@ class Worker(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """
@@ -530,6 +577,14 @@ class Worker(pulumi.CustomResource):
         When the Worker was created.
         """
         return pulumi.get(self, "created_on")
+
+    @_builtins.property
+    @pulumi.getter(name="deployedOn")
+    def deployed_on(self) -> pulumi.Output[_builtins.str]:
+        """
+        When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
+        """
+        return pulumi.get(self, "deployed_on")
 
     @_builtins.property
     @pulumi.getter

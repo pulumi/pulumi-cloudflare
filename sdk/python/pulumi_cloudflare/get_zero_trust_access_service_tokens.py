@@ -129,6 +129,11 @@ def get_zero_trust_access_service_tokens(account_id: Optional[_builtins.str] = N
                                          zone_id: Optional[_builtins.str] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessServiceTokensResult:
     """
+    Accepted Permissions
+
+    - `Access: Service Tokens Read`
+    - `Access: Service Tokens Write`
+
     ## Example Usage
 
     ```python
@@ -172,6 +177,11 @@ def get_zero_trust_access_service_tokens_output(account_id: Optional[pulumi.Inpu
                                                 zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessServiceTokensResult]:
     """
+    Accepted Permissions
+
+    - `Access: Service Tokens Read`
+    - `Access: Service Tokens Write`
+
     ## Example Usage
 
     ```python

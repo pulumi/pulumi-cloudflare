@@ -17,6 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Stream Read`
+ * - `Stream Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -35,24 +40,24 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
+ * public class App {
+ *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
- *     }}{@code
+ *     }
  * 
- *     public static void stack(Context ctx) }{{@code
+ *     public static void stack(Context ctx) {
  *         var exampleStreamWatermark = new StreamWatermark("exampleStreamWatermark", StreamWatermarkArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .file("}{@literal @}{@code /Users/rchen/Downloads/watermark.png")
  *             .name("Marketing Videos")
  *             .opacity(0.75)
  *             .padding(0.1)
  *             .position("center")
  *             .scale(0.1)
+ *             .url("https://example.com")
  *             .build());
  * 
- *     }}{@code
- * }}{@code
+ *     }
+ * }
  * }
  * </pre>
  * 
@@ -68,14 +73,14 @@ public class StreamWatermark extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return The account identifier tag.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * The date and a time a watermark profile was created.
@@ -104,20 +109,6 @@ public class StreamWatermark extends com.pulumi.resources.CustomResource {
      */
     public Output<String> downloadedFrom() {
         return this.downloadedFrom;
-    }
-    /**
-     * The image file to upload.
-     * 
-     */
-    @Export(name="file", refs={String.class}, tree="[0]")
-    private Output<String> file;
-
-    /**
-     * @return The image file to upload.
-     * 
-     */
-    public Output<String> file() {
-        return this.file;
     }
     /**
      * The height of the image in pixels.
@@ -246,6 +237,20 @@ public class StreamWatermark extends com.pulumi.resources.CustomResource {
         return this.uid;
     }
     /**
+     * URL of the watermark image to copy.
+     * 
+     */
+    @Export(name="url", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> url;
+
+    /**
+     * @return URL of the watermark image to copy.
+     * 
+     */
+    public Output<Optional<String>> url() {
+        return Codegen.optional(this.url);
+    }
+    /**
      * The width of the image in pixels.
      * 
      */
@@ -272,7 +277,7 @@ public class StreamWatermark extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StreamWatermark(java.lang.String name, StreamWatermarkArgs args) {
+    public StreamWatermark(java.lang.String name, @Nullable StreamWatermarkArgs args) {
         this(name, args, null);
     }
     /**
@@ -281,7 +286,7 @@ public class StreamWatermark extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StreamWatermark(java.lang.String name, StreamWatermarkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public StreamWatermark(java.lang.String name, @Nullable StreamWatermarkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/streamWatermark:StreamWatermark", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -289,7 +294,7 @@ public class StreamWatermark extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/streamWatermark:StreamWatermark", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static StreamWatermarkArgs makeArgs(StreamWatermarkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static StreamWatermarkArgs makeArgs(@Nullable StreamWatermarkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

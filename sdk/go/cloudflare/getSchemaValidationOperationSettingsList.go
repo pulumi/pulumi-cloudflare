@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account API Gateway`
+// - `Account API Gateway Read`
+// - `Domain API Gateway`
+// - `Domain API Gateway Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetSchemaValidationOperationSettingsList(ctx, &cloudflare.LookupSchemaValidationOperationSettingsListArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,8 +55,8 @@ func LookupSchemaValidationOperationSettingsList(ctx *pulumi.Context, args *Look
 
 // A collection of arguments for invoking getSchemaValidationOperationSettingsList.
 type LookupSchemaValidationOperationSettingsListArgs struct {
-	MaxItems *int   `pulumi:"maxItems"`
-	ZoneId   string `pulumi:"zoneId"`
+	MaxItems *int    `pulumi:"maxItems"`
+	ZoneId   *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getSchemaValidationOperationSettingsList.
@@ -58,7 +65,7 @@ type LookupSchemaValidationOperationSettingsListResult struct {
 	Id       string                                           `pulumi:"id"`
 	MaxItems *int                                             `pulumi:"maxItems"`
 	Results  []GetSchemaValidationOperationSettingsListResult `pulumi:"results"`
-	ZoneId   string                                           `pulumi:"zoneId"`
+	ZoneId   *string                                          `pulumi:"zoneId"`
 }
 
 func LookupSchemaValidationOperationSettingsListOutput(ctx *pulumi.Context, args LookupSchemaValidationOperationSettingsListOutputArgs, opts ...pulumi.InvokeOption) LookupSchemaValidationOperationSettingsListResultOutput {
@@ -72,8 +79,8 @@ func LookupSchemaValidationOperationSettingsListOutput(ctx *pulumi.Context, args
 
 // A collection of arguments for invoking getSchemaValidationOperationSettingsList.
 type LookupSchemaValidationOperationSettingsListOutputArgs struct {
-	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	ZoneId   pulumi.StringInput `pulumi:"zoneId"`
+	MaxItems pulumi.IntPtrInput    `pulumi:"maxItems"`
+	ZoneId   pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupSchemaValidationOperationSettingsListOutputArgs) ElementType() reflect.Type {
@@ -110,8 +117,8 @@ func (o LookupSchemaValidationOperationSettingsListResultOutput) Results() GetSc
 	}).(GetSchemaValidationOperationSettingsListResultArrayOutput)
 }
 
-func (o LookupSchemaValidationOperationSettingsListResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSchemaValidationOperationSettingsListResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupSchemaValidationOperationSettingsListResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSchemaValidationOperationSettingsListResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -23,20 +23,24 @@ func LookupAiSearchTokens(ctx *pulumi.Context, args *LookupAiSearchTokensArgs, o
 
 // A collection of arguments for invoking getAiSearchTokens.
 type LookupAiSearchTokensArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Filter tokens whose name contains this string (case-insensitive).
+	Search *string `pulumi:"search"`
 }
 
 // A collection of values returned by getAiSearchTokens.
 type LookupAiSearchTokensResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetAiSearchTokensResult `pulumi:"results"`
+	// Filter tokens whose name contains this string (case-insensitive).
+	Search *string `pulumi:"search"`
 }
 
 func LookupAiSearchTokensOutput(ctx *pulumi.Context, args LookupAiSearchTokensOutputArgs, opts ...pulumi.InvokeOption) LookupAiSearchTokensResultOutput {
@@ -50,9 +54,11 @@ func LookupAiSearchTokensOutput(ctx *pulumi.Context, args LookupAiSearchTokensOu
 
 // A collection of arguments for invoking getAiSearchTokens.
 type LookupAiSearchTokensOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Filter tokens whose name contains this string (case-insensitive).
+	Search pulumi.StringPtrInput `pulumi:"search"`
 }
 
 func (LookupAiSearchTokensOutputArgs) ElementType() reflect.Type {
@@ -74,8 +80,8 @@ func (o LookupAiSearchTokensResultOutput) ToLookupAiSearchTokensResultOutputWith
 	return o
 }
 
-func (o LookupAiSearchTokensResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAiSearchTokensResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupAiSearchTokensResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAiSearchTokensResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -91,6 +97,11 @@ func (o LookupAiSearchTokensResultOutput) MaxItems() pulumi.IntPtrOutput {
 // The items returned by the data source
 func (o LookupAiSearchTokensResultOutput) Results() GetAiSearchTokensResultArrayOutput {
 	return o.ApplyT(func(v LookupAiSearchTokensResult) []GetAiSearchTokensResult { return v.Results }).(GetAiSearchTokensResultArrayOutput)
+}
+
+// Filter tokens whose name contains this string (case-insensitive).
+func (o LookupAiSearchTokensResultOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAiSearchTokensResult) *string { return v.Search }).(pulumi.StringPtrOutput)
 }
 
 func init() {

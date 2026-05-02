@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Organizations, Identity Providers, and Groups Read`
+ * - `Access: Organizations, Identity Providers, and Groups Write`
+ *
  * ## Example Usage
  *
  * ```typescript

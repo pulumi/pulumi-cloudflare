@@ -52,7 +52,7 @@ class GetListItemsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         The Account ID for this resource.
         """
@@ -129,6 +129,11 @@ def get_list_items(account_id: Optional[_builtins.str] = None,
                    search: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetListItemsResult:
     """
+    Accepted Permissions
+
+    - `Account Filter Lists Edit`
+    - `Account Filter Lists Read`
+
     ## Example Usage
 
     ```python
@@ -165,13 +170,18 @@ def get_list_items(account_id: Optional[_builtins.str] = None,
         per_page=pulumi.get(__ret__, 'per_page'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
-def get_list_items_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_list_items_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           list_id: Optional[pulumi.Input[_builtins.str]] = None,
                           max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                           per_page: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                           search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListItemsResult]:
     """
+    Accepted Permissions
+
+    - `Account Filter Lists Edit`
+    - `Account Filter Lists Read`
+
     ## Example Usage
 
     ```python

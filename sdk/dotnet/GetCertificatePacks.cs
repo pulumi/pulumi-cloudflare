@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetCertificatePacks
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -32,10 +37,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCertificatePacksResult> InvokeAsync(GetCertificatePacksArgs args, InvokeOptions? options = null)
+        public static Task<GetCertificatePacksResult> InvokeAsync(GetCertificatePacksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificatePacksResult>("cloudflare:index/getCertificatePacks:getCertificatePacks", args ?? new GetCertificatePacksArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,10 +66,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCertificatePacksResult> Invoke(GetCertificatePacksInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetCertificatePacksResult> Invoke(GetCertificatePacksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificatePacksResult>("cloudflare:index/getCertificatePacks:getCertificatePacks", args ?? new GetCertificatePacksInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -110,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetCertificatePacksArgs()
         {
@@ -144,8 +159,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetCertificatePacksInvokeArgs()
         {
@@ -182,7 +197,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetCertificatePacksResult(
@@ -196,7 +211,7 @@ namespace Pulumi.Cloudflare
 
             string? status,
 
-            string zoneId)
+            string? zoneId)
         {
             Deploy = deploy;
             Id = id;

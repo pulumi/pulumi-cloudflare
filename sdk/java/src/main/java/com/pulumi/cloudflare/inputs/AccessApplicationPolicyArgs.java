@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.AccessApplicationPolicyConnectionRulesArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationPolicyExcludeArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationPolicyIncludeArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationPolicyMfaConfigArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationPolicyRequireArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -99,6 +100,21 @@ public final class AccessApplicationPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * 
+     */
+    @Import(name="mfaConfig")
+    private @Nullable Output<AccessApplicationPolicyMfaConfigArgs> mfaConfig;
+
+    /**
+     * @return Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+     * 
+     */
+    public Optional<Output<AccessApplicationPolicyMfaConfigArgs>> mfaConfig() {
+        return Optional.ofNullable(this.mfaConfig);
+    }
+
+    /**
      * The name of the Access policy.
      * 
      */
@@ -151,6 +167,7 @@ public final class AccessApplicationPolicyArgs extends com.pulumi.resources.Reso
         this.excludes = $.excludes;
         this.id = $.id;
         this.includes = $.includes;
+        this.mfaConfig = $.mfaConfig;
         this.name = $.name;
         this.precedence = $.precedence;
         this.requires = $.requires;
@@ -299,6 +316,27 @@ public final class AccessApplicationPolicyArgs extends com.pulumi.resources.Reso
          */
         public Builder includes(AccessApplicationPolicyIncludeArgs... includes) {
             return includes(List.of(includes));
+        }
+
+        /**
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaConfig(@Nullable Output<AccessApplicationPolicyMfaConfigArgs> mfaConfig) {
+            $.mfaConfig = mfaConfig;
+            return this;
+        }
+
+        /**
+         * @param mfaConfig Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `sshPivKey` is a supported authenticator; for other application types use `totp`, `biometrics`, or `securityKey`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaConfig(AccessApplicationPolicyMfaConfigArgs mfaConfig) {
+            return mfaConfig(Output.of(mfaConfig));
         }
 
         /**

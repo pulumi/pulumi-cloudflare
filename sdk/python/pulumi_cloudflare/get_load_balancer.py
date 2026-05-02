@@ -279,7 +279,7 @@ class GetLoadBalancerResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "zone_id")
 
 
@@ -321,6 +321,11 @@ def get_load_balancer(load_balancer_id: Optional[_builtins.str] = None,
                       zone_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerResult:
     """
+    Accepted Permissions
+
+    - `Load Balancers Read`
+    - `Load Balancers Write`
+
     ## Example Usage
 
     ```python
@@ -371,9 +376,14 @@ def get_load_balancer(load_balancer_id: Optional[_builtins.str] = None,
 def get_load_balancer_output(load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
                              pop_pools: Optional[pulumi.Input[Optional[Mapping[str, Sequence[_builtins.str]]]]] = None,
                              region_pools: Optional[pulumi.Input[Optional[Mapping[str, Sequence[_builtins.str]]]]] = None,
-                             zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                             zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerResult]:
     """
+    Accepted Permissions
+
+    - `Load Balancers Read`
+    - `Load Balancers Write`
+
     ## Example Usage
 
     ```python

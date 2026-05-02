@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustGatewayProxyEndpoints(ctx, &cloudflare.LookupZeroTrustGatewayProxyEndpointsArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,14 +48,14 @@ func LookupZeroTrustGatewayProxyEndpoints(ctx *pulumi.Context, args *LookupZeroT
 
 // A collection of arguments for invoking getZeroTrustGatewayProxyEndpoints.
 type LookupZeroTrustGatewayProxyEndpointsArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
 
 // A collection of values returned by getZeroTrustGatewayProxyEndpoints.
 type LookupZeroTrustGatewayProxyEndpointsResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -75,7 +75,7 @@ func LookupZeroTrustGatewayProxyEndpointsOutput(ctx *pulumi.Context, args Lookup
 
 // A collection of arguments for invoking getZeroTrustGatewayProxyEndpoints.
 type LookupZeroTrustGatewayProxyEndpointsOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -99,8 +99,8 @@ func (o LookupZeroTrustGatewayProxyEndpointsResultOutput) ToLookupZeroTrustGatew
 	return o
 }
 
-func (o LookupZeroTrustGatewayProxyEndpointsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustGatewayProxyEndpointsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

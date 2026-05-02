@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -59,7 +64,7 @@ export class RiskBehavior extends pulumi.CustomResource {
         return obj['__pulumiType'] === RiskBehavior.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public readonly behaviors: pulumi.Output<{[key: string]: outputs.RiskBehaviorBehaviors}>;
 
     /**
@@ -82,9 +87,6 @@ export class RiskBehavior extends pulumi.CustomResource {
             resourceInputs["behaviors"] = state?.behaviors;
         } else {
             const args = argsOrState as RiskBehaviorArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.behaviors === undefined && !opts.urn) {
                 throw new Error("Missing required property 'behaviors'");
             }
@@ -110,6 +112,6 @@ export interface RiskBehaviorState {
  * The set of arguments for constructing a RiskBehavior resource.
  */
 export interface RiskBehaviorArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     behaviors: pulumi.Input<{[key: string]: pulumi.Input<inputs.RiskBehaviorBehaviors>}>;
 }

@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetWorkerVersions
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +41,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkerVersionsResult>("cloudflare:index/getWorkerVersions:getWorkerVersions", args ?? new GetWorkerVersionsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +70,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkerVersionsResult>("cloudflare:index/getWorkerVersions:getWorkerVersions", args ?? new GetWorkerVersionsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Workers Tail Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -113,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -141,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -161,7 +179,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWorkerVersionsResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

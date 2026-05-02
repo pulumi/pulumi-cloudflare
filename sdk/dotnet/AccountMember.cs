@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Account Settings Read`
+    /// - `Account Settings Write`
+    /// - `SCIM Provisioning`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -47,7 +53,7 @@ namespace Pulumi.Cloudflare
         /// Account identifier tag.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The contact email address of the user.
@@ -130,8 +136,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The contact email address of the user.

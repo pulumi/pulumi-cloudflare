@@ -28,10 +28,13 @@ class GetZeroTrustAccessAiControlsMcpPortalResult:
     """
     A collection of values returned by getZeroTrustAccessAiControlsMcpPortal.
     """
-    def __init__(__self__, account_id=None, created_at=None, created_by=None, description=None, filter=None, hostname=None, id=None, modified_at=None, modified_by=None, name=None, secure_web_gateway=None, servers=None):
+    def __init__(__self__, account_id=None, allow_code_mode=None, created_at=None, created_by=None, description=None, filter=None, hostname=None, id=None, modified_at=None, modified_by=None, name=None, secure_web_gateway=None, servers=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if allow_code_mode and not isinstance(allow_code_mode, bool):
+            raise TypeError("Expected argument 'allow_code_mode' to be a bool")
+        pulumi.set(__self__, "allow_code_mode", allow_code_mode)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -68,8 +71,16 @@ class GetZeroTrustAccessAiControlsMcpPortalResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="allowCodeMode")
+    def allow_code_mode(self) -> _builtins.bool:
+        """
+        Allow remote code execution in Dynamic Workers (beta)
+        """
+        return pulumi.get(self, "allow_code_mode")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -140,6 +151,7 @@ class AwaitableGetZeroTrustAccessAiControlsMcpPortalResult(GetZeroTrustAccessAiC
             yield self
         return GetZeroTrustAccessAiControlsMcpPortalResult(
             account_id=self.account_id,
+            allow_code_mode=self.allow_code_mode,
             created_at=self.created_at,
             created_by=self.created_by,
             description=self.description,
@@ -180,6 +192,7 @@ def get_zero_trust_access_ai_controls_mcp_portal(account_id: Optional[_builtins.
 
     return AwaitableGetZeroTrustAccessAiControlsMcpPortalResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        allow_code_mode=pulumi.get(__ret__, 'allow_code_mode'),
         created_at=pulumi.get(__ret__, 'created_at'),
         created_by=pulumi.get(__ret__, 'created_by'),
         description=pulumi.get(__ret__, 'description'),
@@ -191,7 +204,7 @@ def get_zero_trust_access_ai_controls_mcp_portal(account_id: Optional[_builtins.
         name=pulumi.get(__ret__, 'name'),
         secure_web_gateway=pulumi.get(__ret__, 'secure_web_gateway'),
         servers=pulumi.get(__ret__, 'servers'))
-def get_zero_trust_access_ai_controls_mcp_portal_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_access_ai_controls_mcp_portal_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                         filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustAccessAiControlsMcpPortalFilterArgs', 'GetZeroTrustAccessAiControlsMcpPortalFilterArgsDict']]]] = None,
                                                         id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessAiControlsMcpPortalResult]:
@@ -217,6 +230,7 @@ def get_zero_trust_access_ai_controls_mcp_portal_output(account_id: Optional[pul
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal', __args__, opts=opts, typ=GetZeroTrustAccessAiControlsMcpPortalResult)
     return __ret__.apply(lambda __response__: GetZeroTrustAccessAiControlsMcpPortalResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        allow_code_mode=pulumi.get(__response__, 'allow_code_mode'),
         created_at=pulumi.get(__response__, 'created_at'),
         created_by=pulumi.get(__response__, 'created_by'),
         description=pulumi.get(__response__, 'description'),

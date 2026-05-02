@@ -187,6 +187,11 @@ def get_access_rule(account_id: Optional[_builtins.str] = None,
                     zone_id: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccessRuleResult:
     """
+    Accepted Permissions
+
+    - `Account Firewall Access Rules Read`
+    - `Account Firewall Access Rules Write`
+
     ## Example Usage
 
     ```python
@@ -230,6 +235,11 @@ def get_access_rule_output(account_id: Optional[pulumi.Input[Optional[_builtins.
                            zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessRuleResult]:
     """
+    Accepted Permissions
+
+    - `Account Firewall Access Rules Read`
+    - `Account Firewall Access Rules Write`
+
     ## Example Usage
 
     ```python

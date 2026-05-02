@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -16,11 +15,11 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
 
     public static final GetAiSearchInstancesPlainArgs Empty = new GetAiSearchInstancesPlainArgs();
 
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -36,6 +35,47 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
      */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
+    }
+
+    @Import(name="namespace")
+    private @Nullable String namespace;
+
+    public Optional<String> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
+
+    /**
+     * Order By Column Name
+     * Available values: &#34;createdAt&#34;.
+     * 
+     */
+    @Import(name="orderBy")
+    private @Nullable String orderBy;
+
+    /**
+     * @return Order By Column Name
+     * Available values: &#34;createdAt&#34;.
+     * 
+     */
+    public Optional<String> orderBy() {
+        return Optional.ofNullable(this.orderBy);
+    }
+
+    /**
+     * Order By Direction
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="orderByDirection")
+    private @Nullable String orderByDirection;
+
+    /**
+     * @return Order By Direction
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<String> orderByDirection() {
+        return Optional.ofNullable(this.orderByDirection);
     }
 
     /**
@@ -58,6 +98,9 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
     private GetAiSearchInstancesPlainArgs(GetAiSearchInstancesPlainArgs $) {
         this.accountId = $.accountId;
         this.maxItems = $.maxItems;
+        this.namespace = $.namespace;
+        this.orderBy = $.orderBy;
+        this.orderByDirection = $.orderByDirection;
         this.search = $.search;
     }
 
@@ -79,7 +122,7 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
             $ = new GetAiSearchInstancesPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -95,6 +138,35 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
+        public Builder namespace(@Nullable String namespace) {
+            $.namespace = namespace;
+            return this;
+        }
+
+        /**
+         * @param orderBy Order By Column Name
+         * Available values: &#34;createdAt&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderBy(@Nullable String orderBy) {
+            $.orderBy = orderBy;
+            return this;
+        }
+
+        /**
+         * @param orderByDirection Order By Direction
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orderByDirection(@Nullable String orderByDirection) {
+            $.orderByDirection = orderByDirection;
+            return this;
+        }
+
         /**
          * @param search Search by id
          * 
@@ -107,9 +179,6 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
         }
 
         public GetAiSearchInstancesPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetAiSearchInstancesPlainArgs", "accountId");
-            }
             return $;
         }
     }

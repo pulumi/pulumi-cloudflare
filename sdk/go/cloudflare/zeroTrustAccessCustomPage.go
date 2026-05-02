@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Custom Pages Read`
+// - `Access: Custom Pages Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -50,7 +55,7 @@ type ZeroTrustAccessCustomPage struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Custom page HTML.
 	CustomHtml pulumi.StringOutput `pulumi:"customHtml"`
 	// Custom page name.
@@ -69,9 +74,6 @@ func NewZeroTrustAccessCustomPage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.CustomHtml == nil {
 		return nil, errors.New("invalid value for required argument 'CustomHtml'")
 	}
@@ -143,7 +145,7 @@ func (ZeroTrustAccessCustomPageState) ElementType() reflect.Type {
 
 type zeroTrustAccessCustomPageArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Custom page HTML.
 	CustomHtml string `pulumi:"customHtml"`
 	// Custom page name.
@@ -156,7 +158,7 @@ type zeroTrustAccessCustomPageArgs struct {
 // The set of arguments for constructing a ZeroTrustAccessCustomPage resource.
 type ZeroTrustAccessCustomPageArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Custom page HTML.
 	CustomHtml pulumi.StringInput
 	// Custom page name.
@@ -254,8 +256,8 @@ func (o ZeroTrustAccessCustomPageOutput) ToZeroTrustAccessCustomPageOutputWithCo
 }
 
 // Identifier.
-func (o ZeroTrustAccessCustomPageOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessCustomPage) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustAccessCustomPageOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessCustomPage) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Custom page HTML.

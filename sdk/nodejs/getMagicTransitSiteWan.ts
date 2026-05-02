@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +43,7 @@ export interface GetMagicTransitSiteWanArgs {
     /**
      * Identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Identifier
      */
@@ -54,7 +61,7 @@ export interface GetMagicTransitSiteWanResult {
     /**
      * Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
      * Available values: "low", "mid", "high".
@@ -88,6 +95,13 @@ export interface GetMagicTransitSiteWanResult {
     readonly wanId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -117,7 +131,7 @@ export interface GetMagicTransitSiteWanOutputArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Identifier
      */

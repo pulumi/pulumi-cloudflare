@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.GetWorkersCustomDomainFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,29 +17,29 @@ public final class GetWorkersCustomDomainArgs extends com.pulumi.resources.Invok
     public static final GetWorkersCustomDomainArgs Empty = new GetWorkersCustomDomainArgs();
 
     /**
-     * Identifer of the account.
+     * Identifier.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifer of the account.
+     * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Identifer of the Worker Domain.
+     * ID of the domain.
      * 
      */
     @Import(name="domainId")
     private @Nullable Output<String> domainId;
 
     /**
-     * @return Identifer of the Worker Domain.
+     * @return ID of the domain.
      * 
      */
     public Optional<Output<String>> domainId() {
@@ -81,18 +80,18 @@ public final class GetWorkersCustomDomainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param accountId Identifer of the account.
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId Identifer of the account.
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -102,7 +101,7 @@ public final class GetWorkersCustomDomainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param domainId Identifer of the Worker Domain.
+         * @param domainId ID of the domain.
          * 
          * @return builder
          * 
@@ -113,7 +112,7 @@ public final class GetWorkersCustomDomainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param domainId Identifer of the Worker Domain.
+         * @param domainId ID of the domain.
          * 
          * @return builder
          * 
@@ -132,9 +131,6 @@ public final class GetWorkersCustomDomainArgs extends com.pulumi.resources.Invok
         }
 
         public GetWorkersCustomDomainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetWorkersCustomDomainArgs", "accountId");
-            }
             return $;
         }
     }

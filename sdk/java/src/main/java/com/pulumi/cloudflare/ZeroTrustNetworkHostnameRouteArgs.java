@@ -5,7 +5,6 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,15 +19,15 @@ public final class ZeroTrustNetworkHostnameRouteArgs extends com.pulumi.resource
      * Cloudflare account ID
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Cloudflare account ID
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -109,7 +108,7 @@ public final class ZeroTrustNetworkHostnameRouteArgs extends com.pulumi.resource
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -188,9 +187,6 @@ public final class ZeroTrustNetworkHostnameRouteArgs extends com.pulumi.resource
         }
 
         public ZeroTrustNetworkHostnameRouteArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustNetworkHostnameRouteArgs", "accountId");
-            }
             return $;
         }
     }

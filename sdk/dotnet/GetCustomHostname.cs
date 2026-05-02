@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetCustomHostname
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCustomHostnameResult> InvokeAsync(GetCustomHostnameArgs args, InvokeOptions? options = null)
+        public static Task<GetCustomHostnameResult> InvokeAsync(GetCustomHostnameArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomHostnameResult>("cloudflare:index/getCustomHostname:getCustomHostname", args ?? new GetCustomHostnameArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCustomHostnameResult> Invoke(GetCustomHostnameInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetCustomHostnameResult> Invoke(GetCustomHostnameInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomHostnameResult>("cloudflare:index/getCustomHostname:getCustomHostname", args ?? new GetCustomHostnameInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -96,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetCustomHostnameArgs()
         {
@@ -119,8 +134,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetCustomHostnameInvokeArgs()
         {
@@ -182,7 +197,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetCustomHostnameResult(
@@ -212,7 +227,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<string> verificationErrors,
 
-            string zoneId)
+            string? zoneId)
         {
             CreatedAt = createdAt;
             CustomHostnameId = customHostnameId;

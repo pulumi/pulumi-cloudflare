@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDeviceDefaultProfileCertificates(ctx, &cloudflare.LookupZeroTrustDeviceDefaultProfileCertificatesArgs{
-//				ZoneId: "699d98642c564d2e855e9661899b7252",
+//				ZoneId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,7 +53,7 @@ func LookupZeroTrustDeviceDefaultProfileCertificates(ctx *pulumi.Context, args *
 
 // A collection of arguments for invoking getZeroTrustDeviceDefaultProfileCertificates.
 type LookupZeroTrustDeviceDefaultProfileCertificatesArgs struct {
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZeroTrustDeviceDefaultProfileCertificates.
@@ -56,8 +61,8 @@ type LookupZeroTrustDeviceDefaultProfileCertificatesResult struct {
 	// The current status of the device policy certificate provisioning feature for WARP clients.
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	ZoneId string `pulumi:"zoneId"`
+	Id     string  `pulumi:"id"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupZeroTrustDeviceDefaultProfileCertificatesOutput(ctx *pulumi.Context, args LookupZeroTrustDeviceDefaultProfileCertificatesOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput {
@@ -71,7 +76,7 @@ func LookupZeroTrustDeviceDefaultProfileCertificatesOutput(ctx *pulumi.Context, 
 
 // A collection of arguments for invoking getZeroTrustDeviceDefaultProfileCertificates.
 type LookupZeroTrustDeviceDefaultProfileCertificatesOutputArgs struct {
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupZeroTrustDeviceDefaultProfileCertificatesOutputArgs) ElementType() reflect.Type {
@@ -103,8 +108,8 @@ func (o LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput) Id() pulumi
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileCertificatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileCertificatesResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileCertificatesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

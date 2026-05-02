@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `D1 Read`
+    /// - `D1 Write`
+    /// 
     /// !&gt; When a D1 Database is replaced all the data is lost. Please ensure you have a
     ///    backup of your data before replacing a D1 Database.
     /// 
@@ -47,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// Account identifier tag.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the timestamp the resource was created as an ISO8601 string.
@@ -148,8 +153,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.

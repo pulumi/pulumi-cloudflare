@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DDoS Botnet Feed Read`
+ * - `DDoS Botnet Feed Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getBotnetFeedConfigAsn(args: GetBotnetFeedConfigAsnArgs, opts?: pulumi.InvokeOptions): Promise<GetBotnetFeedConfigAsnResult> {
+export function getBotnetFeedConfigAsn(args?: GetBotnetFeedConfigAsnArgs, opts?: pulumi.InvokeOptions): Promise<GetBotnetFeedConfigAsnResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getBotnetFeedConfigAsn:getBotnetFeedConfigAsn", {
         "accountId": args.accountId,
@@ -30,7 +36,7 @@ export interface GetBotnetFeedConfigAsnArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
 }
 
 /**
@@ -40,7 +46,7 @@ export interface GetBotnetFeedConfigAsnResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly asn: number;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -48,6 +54,11 @@ export interface GetBotnetFeedConfigAsnResult {
     readonly id: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `DDoS Botnet Feed Read`
+ * - `DDoS Botnet Feed Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -59,7 +70,8 @@ export interface GetBotnetFeedConfigAsnResult {
  * });
  * ```
  */
-export function getBotnetFeedConfigAsnOutput(args: GetBotnetFeedConfigAsnOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBotnetFeedConfigAsnResult> {
+export function getBotnetFeedConfigAsnOutput(args?: GetBotnetFeedConfigAsnOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBotnetFeedConfigAsnResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getBotnetFeedConfigAsn:getBotnetFeedConfigAsn", {
         "accountId": args.accountId,
@@ -73,5 +85,5 @@ export interface GetBotnetFeedConfigAsnOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

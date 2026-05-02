@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetEmailRoutingAddresses
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Email Routing Addresses Read`
+        /// - `Email Routing Addresses Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetEmailRoutingAddressesResult> InvokeAsync(GetEmailRoutingAddressesArgs args, InvokeOptions? options = null)
+        public static Task<GetEmailRoutingAddressesResult> InvokeAsync(GetEmailRoutingAddressesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEmailRoutingAddressesResult>("cloudflare:index/getEmailRoutingAddresses:getEmailRoutingAddresses", args ?? new GetEmailRoutingAddressesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Email Routing Addresses Read`
+        /// - `Email Routing Addresses Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetEmailRoutingAddressesResult> Invoke(GetEmailRoutingAddressesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetEmailRoutingAddressesResult> Invoke(GetEmailRoutingAddressesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEmailRoutingAddressesResult>("cloudflare:index/getEmailRoutingAddresses:getEmailRoutingAddresses", args ?? new GetEmailRoutingAddressesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Email Routing Addresses Read`
+        /// - `Email Routing Addresses Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Sorts results in an ascending or descending order.
@@ -117,8 +132,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Sorts results in an ascending or descending order.
@@ -152,7 +167,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Sorts results in an ascending or descending order.
         /// Available values: "asc", "desc".
@@ -177,7 +192,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetEmailRoutingAddressesResult(
-            string accountId,
+            string? accountId,
 
             string direction,
 

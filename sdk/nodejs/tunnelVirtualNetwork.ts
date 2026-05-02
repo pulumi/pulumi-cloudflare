@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Networks Write`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -60,7 +65,7 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
     /**
      * Cloudflare account ID
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Optional remark describing the virtual network.
      */
@@ -113,9 +118,6 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as TunnelVirtualNetworkArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -177,7 +179,7 @@ export interface TunnelVirtualNetworkArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Optional remark describing the virtual network.
      */

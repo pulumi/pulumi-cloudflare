@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS Firewall Read`
+// - `DNS Firewall Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -64,7 +69,7 @@ type DnsFirewall struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Attack mitigation settings
 	AttackMitigation DnsFirewallAttackMitigationOutput `pulumi:"attackMitigation"`
 	// Whether to refuse to answer queries for the ANY type
@@ -116,9 +121,6 @@ func NewDnsFirewall(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -247,7 +249,7 @@ func (DnsFirewallState) ElementType() reflect.Type {
 
 type dnsFirewallArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Attack mitigation settings
 	AttackMitigation *DnsFirewallAttackMitigation `pulumi:"attackMitigation"`
 	// Whether to refuse to answer queries for the ANY type
@@ -292,7 +294,7 @@ type dnsFirewallArgs struct {
 // The set of arguments for constructing a DnsFirewall resource.
 type DnsFirewallArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Attack mitigation settings
 	AttackMitigation DnsFirewallAttackMitigationPtrInput
 	// Whether to refuse to answer queries for the ANY type
@@ -422,8 +424,8 @@ func (o DnsFirewallOutput) ToDnsFirewallOutputWithContext(ctx context.Context) D
 }
 
 // Identifier.
-func (o DnsFirewallOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *DnsFirewall) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o DnsFirewallOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsFirewall) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Attack mitigation settings

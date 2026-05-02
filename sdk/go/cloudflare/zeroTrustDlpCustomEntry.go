@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -54,7 +59,7 @@ import (
 type ZeroTrustDlpCustomEntry struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if secret is true
@@ -84,9 +89,6 @@ func NewZeroTrustDlpCustomEntry(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Enabled == nil {
 		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
@@ -171,7 +173,7 @@ func (ZeroTrustDlpCustomEntryState) ElementType() reflect.Type {
 }
 
 type zeroTrustDlpCustomEntryArgs struct {
-	AccountId   string                         `pulumi:"accountId"`
+	AccountId   *string                        `pulumi:"accountId"`
 	Description *string                        `pulumi:"description"`
 	Enabled     bool                           `pulumi:"enabled"`
 	Name        string                         `pulumi:"name"`
@@ -181,7 +183,7 @@ type zeroTrustDlpCustomEntryArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDlpCustomEntry resource.
 type ZeroTrustDlpCustomEntryArgs struct {
-	AccountId   pulumi.StringInput
+	AccountId   pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
 	Enabled     pulumi.BoolInput
 	Name        pulumi.StringInput
@@ -276,8 +278,8 @@ func (o ZeroTrustDlpCustomEntryOutput) ToZeroTrustDlpCustomEntryOutputWithContex
 	return o
 }
 
-func (o ZeroTrustDlpCustomEntryOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustDlpCustomEntryOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Only applies to custom word lists.

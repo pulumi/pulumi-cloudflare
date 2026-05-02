@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -61,7 +65,7 @@ export class DeviceManagedNetworks extends pulumi.CustomResource {
         return obj['__pulumiType'] === DeviceManagedNetworks.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The configuration object containing information for the WARP client to detect the managed network.
      */
@@ -103,9 +107,6 @@ export class DeviceManagedNetworks extends pulumi.CustomResource {
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as DeviceManagedNetworksArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
@@ -156,7 +157,7 @@ export interface DeviceManagedNetworksState {
  * The set of arguments for constructing a DeviceManagedNetworks resource.
  */
 export interface DeviceManagedNetworksArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The configuration object containing information for the WARP client to detect the managed network.
      */

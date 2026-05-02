@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Filter Lists Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetList(ctx, &cloudflare.LookupListArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ListId:    "2c0fc9fa937b11eaa1b71c4d701ab86e",
 //				Search:    pulumi.StringRef("1.1.1.1"),
 //			}, nil)
@@ -51,7 +55,7 @@ func LookupList(ctx *pulumi.Context, args *LookupListArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getList.
 type LookupListArgs struct {
 	// The Account ID for this resource.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The unique ID of the list.
 	ListId string `pulumi:"listId"`
 	// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
@@ -61,7 +65,7 @@ type LookupListArgs struct {
 // A collection of values returned by getList.
 type LookupListResult struct {
 	// The Account ID for this resource.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The RFC 3339 timestamp of when the list was created.
 	CreatedOn string `pulumi:"createdOn"`
 	// An informative summary of the list.
@@ -99,7 +103,7 @@ func LookupListOutput(ctx *pulumi.Context, args LookupListOutputArgs, opts ...pu
 // A collection of arguments for invoking getList.
 type LookupListOutputArgs struct {
 	// The Account ID for this resource.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The unique ID of the list.
 	ListId pulumi.StringInput `pulumi:"listId"`
 	// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
@@ -126,8 +130,8 @@ func (o LookupListResultOutput) ToLookupListResultOutputWithContext(ctx context.
 }
 
 // The Account ID for this resource.
-func (o LookupListResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupListResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupListResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupListResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The RFC 3339 timestamp of when the list was created.

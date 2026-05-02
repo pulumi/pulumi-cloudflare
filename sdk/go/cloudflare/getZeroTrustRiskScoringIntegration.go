@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustRiskScoringIntegration(ctx, &cloudflare.LookupZeroTrustRiskScoringIntegrationArgs{
-//				AccountId:     "account_id",
+//				AccountId:     pulumi.StringRef("account_id"),
 //				IntegrationId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 //			}, nil)
 //			if err != nil {
@@ -49,13 +54,13 @@ func LookupZeroTrustRiskScoringIntegration(ctx *pulumi.Context, args *LookupZero
 
 // A collection of arguments for invoking getZeroTrustRiskScoringIntegration.
 type LookupZeroTrustRiskScoringIntegrationArgs struct {
-	AccountId     string `pulumi:"accountId"`
-	IntegrationId string `pulumi:"integrationId"`
+	AccountId     *string `pulumi:"accountId"`
+	IntegrationId string  `pulumi:"integrationId"`
 }
 
 // A collection of values returned by getZeroTrustRiskScoringIntegration.
 type LookupZeroTrustRiskScoringIntegrationResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The Cloudflare account tag.
 	AccountTag string `pulumi:"accountTag"`
 	// Whether this integration is enabled and should export changes in risk score.
@@ -88,8 +93,8 @@ func LookupZeroTrustRiskScoringIntegrationOutput(ctx *pulumi.Context, args Looku
 
 // A collection of arguments for invoking getZeroTrustRiskScoringIntegration.
 type LookupZeroTrustRiskScoringIntegrationOutputArgs struct {
-	AccountId     pulumi.StringInput `pulumi:"accountId"`
-	IntegrationId pulumi.StringInput `pulumi:"integrationId"`
+	AccountId     pulumi.StringPtrInput `pulumi:"accountId"`
+	IntegrationId pulumi.StringInput    `pulumi:"integrationId"`
 }
 
 func (LookupZeroTrustRiskScoringIntegrationOutputArgs) ElementType() reflect.Type {
@@ -111,8 +116,8 @@ func (o LookupZeroTrustRiskScoringIntegrationResultOutput) ToLookupZeroTrustRisk
 	return o
 }
 
-func (o LookupZeroTrustRiskScoringIntegrationResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustRiskScoringIntegrationResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustRiskScoringIntegrationResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustRiskScoringIntegrationResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The Cloudflare account tag.

@@ -84,8 +84,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDevicePostureIntegrationArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// API UUID.
@@ -101,8 +101,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDevicePostureIntegrationInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// API UUID.
@@ -120,7 +120,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDevicePostureIntegrationResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The configuration object containing third-party integration information.
         /// </summary>
@@ -149,7 +149,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDevicePostureIntegrationResult(
-            string accountId,
+            string? accountId,
 
             Outputs.GetZeroTrustDevicePostureIntegrationConfigResult config,
 

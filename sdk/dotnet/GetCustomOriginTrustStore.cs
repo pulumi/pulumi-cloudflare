@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetCustomOriginTrustStore
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +36,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCustomOriginTrustStoreResult> InvokeAsync(GetCustomOriginTrustStoreArgs args, InvokeOptions? options = null)
+        public static Task<GetCustomOriginTrustStoreResult> InvokeAsync(GetCustomOriginTrustStoreArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomOriginTrustStoreResult>("cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore", args ?? new GetCustomOriginTrustStoreArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +64,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCustomOriginTrustStoreResult> Invoke(GetCustomOriginTrustStoreInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetCustomOriginTrustStoreResult> Invoke(GetCustomOriginTrustStoreInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomOriginTrustStoreResult>("cloudflare:index/getCustomOriginTrustStore:getCustomOriginTrustStore", args ?? new GetCustomOriginTrustStoreInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -96,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetCustomOriginTrustStoreArgs()
         {
@@ -119,8 +134,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetCustomOriginTrustStoreInvokeArgs()
         {
@@ -173,7 +188,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetCustomOriginTrustStoreResult(
@@ -197,7 +212,7 @@ namespace Pulumi.Cloudflare
 
             string uploadedOn,
 
-            string zoneId)
+            string? zoneId)
         {
             Certificate = certificate;
             CustomOriginTrustStoreId = customOriginTrustStoreId;

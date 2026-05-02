@@ -16,6 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

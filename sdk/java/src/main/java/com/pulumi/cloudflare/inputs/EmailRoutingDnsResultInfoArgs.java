@@ -75,6 +75,21 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.totalCount);
     }
 
+    /**
+     * The number of total pages in the entire result set.
+     * 
+     */
+    @Import(name="totalPages")
+    private @Nullable Output<Double> totalPages;
+
+    /**
+     * @return The number of total pages in the entire result set.
+     * 
+     */
+    public Optional<Output<Double>> totalPages() {
+        return Optional.ofNullable(this.totalPages);
+    }
+
     private EmailRoutingDnsResultInfoArgs() {}
 
     private EmailRoutingDnsResultInfoArgs(EmailRoutingDnsResultInfoArgs $) {
@@ -82,6 +97,7 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
         this.page = $.page;
         this.perPage = $.perPage;
         this.totalCount = $.totalCount;
+        this.totalPages = $.totalPages;
     }
 
     public static Builder builder() {
@@ -184,6 +200,27 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
          */
         public Builder totalCount(Double totalCount) {
             return totalCount(Output.of(totalCount));
+        }
+
+        /**
+         * @param totalPages The number of total pages in the entire result set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalPages(@Nullable Output<Double> totalPages) {
+            $.totalPages = totalPages;
+            return this;
+        }
+
+        /**
+         * @param totalPages The number of total pages in the entire result set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalPages(Double totalPages) {
+            return totalPages(Output.of(totalPages));
         }
 
         public EmailRoutingDnsResultInfoArgs build() {

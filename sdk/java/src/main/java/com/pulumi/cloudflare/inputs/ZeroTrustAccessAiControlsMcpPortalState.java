@@ -25,6 +25,21 @@ public final class ZeroTrustAccessAiControlsMcpPortalState extends com.pulumi.re
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Allow remote code execution in Dynamic Workers (beta)
+     * 
+     */
+    @Import(name="allowCodeMode")
+    private @Nullable Output<Boolean> allowCodeMode;
+
+    /**
+     * @return Allow remote code execution in Dynamic Workers (beta)
+     * 
+     */
+    public Optional<Output<Boolean>> allowCodeMode() {
+        return Optional.ofNullable(this.allowCodeMode);
+    }
+
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
@@ -115,6 +130,7 @@ public final class ZeroTrustAccessAiControlsMcpPortalState extends com.pulumi.re
 
     private ZeroTrustAccessAiControlsMcpPortalState(ZeroTrustAccessAiControlsMcpPortalState $) {
         this.accountId = $.accountId;
+        this.allowCodeMode = $.allowCodeMode;
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
         this.description = $.description;
@@ -152,6 +168,27 @@ public final class ZeroTrustAccessAiControlsMcpPortalState extends com.pulumi.re
 
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param allowCodeMode Allow remote code execution in Dynamic Workers (beta)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowCodeMode(@Nullable Output<Boolean> allowCodeMode) {
+            $.allowCodeMode = allowCodeMode;
+            return this;
+        }
+
+        /**
+         * @param allowCodeMode Allow remote code execution in Dynamic Workers (beta)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowCodeMode(Boolean allowCodeMode) {
+            return allowCodeMode(Output.of(allowCodeMode));
         }
 
         public Builder createdAt(@Nullable Output<String> createdAt) {

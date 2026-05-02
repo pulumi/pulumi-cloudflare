@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkerVersionAnnotationsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Human-readable message about the version.
+        /// Human-readable message about the version. Truncated to 1000 bytes if longer.
         /// </summary>
         [Input("workersMessage")]
         public Input<string>? WorkersMessage { get; set; }
 
         /// <summary>
-        /// User-provided identifier for the version.
+        /// User-provided identifier for the version. Maximum 100 bytes.
         /// </summary>
         [Input("workersTag")]
         public Input<string>? WorkersTag { get; set; }

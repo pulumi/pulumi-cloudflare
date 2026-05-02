@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS Read`
+// - `DNS Write`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+// - `Zone Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -62,8 +70,8 @@ type DnsZoneTransfersOutgoing struct {
 	// A list of peer tags.
 	Peers pulumi.StringArrayOutput `pulumi:"peers"`
 	// The serial number of the SOA for the given zone.
-	SoaSerial pulumi.Float64Output `pulumi:"soaSerial"`
-	ZoneId    pulumi.StringOutput  `pulumi:"zoneId"`
+	SoaSerial pulumi.Float64Output   `pulumi:"soaSerial"`
+	ZoneId    pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewDnsZoneTransfersOutgoing registers a new resource with the given unique name, arguments, and options.
@@ -78,9 +86,6 @@ func NewDnsZoneTransfersOutgoing(ctx *pulumi.Context,
 	}
 	if args.Peers == nil {
 		return nil, errors.New("invalid value for required argument 'Peers'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DnsZoneTransfersOutgoing
@@ -145,7 +150,7 @@ type dnsZoneTransfersOutgoingArgs struct {
 	Name string `pulumi:"name"`
 	// A list of peer tags.
 	Peers  []string `pulumi:"peers"`
-	ZoneId string   `pulumi:"zoneId"`
+	ZoneId *string  `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a DnsZoneTransfersOutgoing resource.
@@ -154,7 +159,7 @@ type DnsZoneTransfersOutgoingArgs struct {
 	Name pulumi.StringInput
 	// A list of peer tags.
 	Peers  pulumi.StringArrayInput
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (DnsZoneTransfersOutgoingArgs) ElementType() reflect.Type {
@@ -274,8 +279,8 @@ func (o DnsZoneTransfersOutgoingOutput) SoaSerial() pulumi.Float64Output {
 	return o.ApplyT(func(v *DnsZoneTransfersOutgoing) pulumi.Float64Output { return v.SoaSerial }).(pulumi.Float64Output)
 }
 
-func (o DnsZoneTransfersOutgoingOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *DnsZoneTransfersOutgoing) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o DnsZoneTransfersOutgoingOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsZoneTransfersOutgoing) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type DnsZoneTransfersOutgoingArrayOutput struct{ *pulumi.OutputState }

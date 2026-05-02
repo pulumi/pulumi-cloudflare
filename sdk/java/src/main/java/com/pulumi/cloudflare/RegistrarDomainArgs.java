@@ -21,15 +21,15 @@ public final class RegistrarDomainArgs extends com.pulumi.resources.ResourceArgs
      * Identifier
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -48,14 +48,20 @@ public final class RegistrarDomainArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Domain name.
+     * Fully qualified domain name (FQDN) including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+     * identifies a registration — the same domain cannot be registered
+     * twice, making it a natural idempotency key for registration requests.
      * 
      */
     @Import(name="domainName", required=true)
     private Output<String> domainName;
 
     /**
-     * @return Domain name.
+     * @return Fully qualified domain name (FQDN) including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+     * identifies a registration — the same domain cannot be registered
+     * twice, making it a natural idempotency key for registration requests.
      * 
      */
     public Output<String> domainName() {
@@ -126,7 +132,7 @@ public final class RegistrarDomainArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -163,7 +169,10 @@ public final class RegistrarDomainArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param domainName Domain name.
+         * @param domainName Fully qualified domain name (FQDN) including the extension
+         * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+         * identifies a registration — the same domain cannot be registered
+         * twice, making it a natural idempotency key for registration requests.
          * 
          * @return builder
          * 
@@ -174,7 +183,10 @@ public final class RegistrarDomainArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param domainName Domain name.
+         * @param domainName Fully qualified domain name (FQDN) including the extension
+         * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+         * identifies a registration — the same domain cannot be registered
+         * twice, making it a natural idempotency key for registration requests.
          * 
          * @return builder
          * 
@@ -226,9 +238,6 @@ public final class RegistrarDomainArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public RegistrarDomainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("RegistrarDomainArgs", "accountId");
-            }
             if ($.domainName == null) {
                 throw new MissingRequiredPropertyException("RegistrarDomainArgs", "domainName");
             }

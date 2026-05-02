@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultCorsHea
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultDestination;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultFooterLink;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultLandingPageDesign;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultMfaConfig;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicy;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultSaasApp;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultScimConfig;
@@ -126,6 +127,11 @@ public final class GetZeroTrustAccessApplicationsResult {
      * 
      */
     private String logoUrl;
+    /**
+     * @return Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * 
+     */
+    private GetZeroTrustAccessApplicationsResultMfaConfig mfaConfig;
     /**
      * @return The name of the application.
      * 
@@ -358,6 +364,13 @@ public final class GetZeroTrustAccessApplicationsResult {
         return this.logoUrl;
     }
     /**
+     * @return Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+     * 
+     */
+    public GetZeroTrustAccessApplicationsResultMfaConfig mfaConfig() {
+        return this.mfaConfig;
+    }
+    /**
      * @return The name of the application.
      * 
      */
@@ -500,6 +513,7 @@ public final class GetZeroTrustAccessApplicationsResult {
         private String id;
         private GetZeroTrustAccessApplicationsResultLandingPageDesign landingPageDesign;
         private String logoUrl;
+        private GetZeroTrustAccessApplicationsResultMfaConfig mfaConfig;
         private String name;
         private Boolean optionsPreflightBypass;
         private Boolean pathCookieAttribute;
@@ -541,6 +555,7 @@ public final class GetZeroTrustAccessApplicationsResult {
     	      this.id = defaults.id;
     	      this.landingPageDesign = defaults.landingPageDesign;
     	      this.logoUrl = defaults.logoUrl;
+    	      this.mfaConfig = defaults.mfaConfig;
     	      this.name = defaults.name;
     	      this.optionsPreflightBypass = defaults.optionsPreflightBypass;
     	      this.pathCookieAttribute = defaults.pathCookieAttribute;
@@ -748,6 +763,14 @@ public final class GetZeroTrustAccessApplicationsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder mfaConfig(GetZeroTrustAccessApplicationsResultMfaConfig mfaConfig) {
+            if (mfaConfig == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResult", "mfaConfig");
+            }
+            this.mfaConfig = mfaConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResult", "name");
@@ -911,6 +934,7 @@ public final class GetZeroTrustAccessApplicationsResult {
             _resultValue.id = id;
             _resultValue.landingPageDesign = landingPageDesign;
             _resultValue.logoUrl = logoUrl;
+            _resultValue.mfaConfig = mfaConfig;
             _resultValue.name = name;
             _resultValue.optionsPreflightBypass = optionsPreflightBypass;
             _resultValue.pathCookieAttribute = pathCookieAttribute;

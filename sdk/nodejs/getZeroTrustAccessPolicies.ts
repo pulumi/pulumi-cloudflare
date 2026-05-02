@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustAccessPolicies(args: GetZeroTrustAccessPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessPoliciesResult> {
+export function getZeroTrustAccessPolicies(args?: GetZeroTrustAccessPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustAccessPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustAccessPolicies:getZeroTrustAccessPolicies", {
         "accountId": args.accountId,
@@ -33,7 +39,7 @@ export interface GetZeroTrustAccessPoliciesArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +53,7 @@ export interface GetZeroTrustAccessPoliciesResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +68,11 @@ export interface GetZeroTrustAccessPoliciesResult {
     readonly results: outputs.GetZeroTrustAccessPoliciesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetZeroTrustAccessPoliciesResult {
  * });
  * ```
  */
-export function getZeroTrustAccessPoliciesOutput(args: GetZeroTrustAccessPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessPoliciesResult> {
+export function getZeroTrustAccessPoliciesOutput(args?: GetZeroTrustAccessPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustAccessPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustAccessPolicies:getZeroTrustAccessPolicies", {
         "accountId": args.accountId,
@@ -88,7 +100,7 @@ export interface GetZeroTrustAccessPoliciesOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

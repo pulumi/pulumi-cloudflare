@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetStreamWatermark
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStreamWatermarkResult>("cloudflare:index/getStreamWatermark:getStreamWatermark", args ?? new GetStreamWatermarkArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetStreamWatermarkResult>("cloudflare:index/getStreamWatermark:getStreamWatermark", args ?? new GetStreamWatermarkInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// The unique identifier for a watermark profile.
@@ -107,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The unique identifier for a watermark profile.
@@ -129,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The date and a time a watermark profile was created.
         /// </summary>
@@ -185,7 +200,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetStreamWatermarkResult(
-            string accountId,
+            string? accountId,
 
             string created,
 

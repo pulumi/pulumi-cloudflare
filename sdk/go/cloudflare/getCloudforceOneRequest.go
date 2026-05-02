@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudforce One Read`
+// - `Cloudforce One Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCloudforceOneRequest(ctx, &cloudflare.LookupCloudforceOneRequestArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RequestId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupCloudforceOneRequest(ctx *pulumi.Context, args *LookupCloudforceOneRe
 // A collection of arguments for invoking getCloudforceOneRequest.
 type LookupCloudforceOneRequestArgs struct {
 	// Identifier.
-	AccountId string                         `pulumi:"accountId"`
+	AccountId *string                        `pulumi:"accountId"`
 	Filter    *GetCloudforceOneRequestFilter `pulumi:"filter"`
 	// UUID.
 	RequestId *string `pulumi:"requestId"`
@@ -59,8 +64,8 @@ type LookupCloudforceOneRequestArgs struct {
 // A collection of values returned by getCloudforceOneRequest.
 type LookupCloudforceOneRequestResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
-	Completed string `pulumi:"completed"`
+	AccountId *string `pulumi:"accountId"`
+	Completed string  `pulumi:"completed"`
 	// Request content.
 	Content string                         `pulumi:"content"`
 	Created string                         `pulumi:"created"`
@@ -101,7 +106,7 @@ func LookupCloudforceOneRequestOutput(ctx *pulumi.Context, args LookupCloudforce
 // A collection of arguments for invoking getCloudforceOneRequest.
 type LookupCloudforceOneRequestOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput                    `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput                 `pulumi:"accountId"`
 	Filter    GetCloudforceOneRequestFilterPtrInput `pulumi:"filter"`
 	// UUID.
 	RequestId pulumi.StringPtrInput `pulumi:"requestId"`
@@ -127,8 +132,8 @@ func (o LookupCloudforceOneRequestResultOutput) ToLookupCloudforceOneRequestResu
 }
 
 // Identifier.
-func (o LookupCloudforceOneRequestResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupCloudforceOneRequestResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupCloudforceOneRequestResultOutput) Completed() pulumi.StringOutput {

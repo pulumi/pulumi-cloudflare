@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
@@ -21,7 +23,7 @@ public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
      * 
      */
     private String id;
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetZeroTrustDeviceDefaultProfileCertificatesResult() {}
     /**
@@ -38,8 +40,8 @@ public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
     public String id() {
         return this.id;
     }
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -53,7 +55,7 @@ public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
     public static final class Builder {
         private Boolean enabled;
         private String id;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZeroTrustDeviceDefaultProfileCertificatesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -79,10 +81,8 @@ public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileCertificatesResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

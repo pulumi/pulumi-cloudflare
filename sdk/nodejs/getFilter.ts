@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getFilter(args: GetFilterArgs, opts?: pulumi.InvokeOptions): Promise<GetFilterResult> {
+export function getFilter(args?: GetFilterArgs, opts?: pulumi.InvokeOptions): Promise<GetFilterResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getFilter:getFilter", {
         "filter": args.filter,
@@ -40,7 +46,7 @@ export interface GetFilterArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -75,9 +81,14 @@ export interface GetFilterResult {
     /**
      * Defines an identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -90,7 +101,8 @@ export interface GetFilterResult {
  * });
  * ```
  */
-export function getFilterOutput(args: GetFilterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFilterResult> {
+export function getFilterOutput(args?: GetFilterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFilterResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getFilter:getFilter", {
         "filter": args.filter,
@@ -111,5 +123,5 @@ export interface GetFilterOutputArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

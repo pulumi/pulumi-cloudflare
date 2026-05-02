@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -48,7 +53,7 @@ import (
 type DnsZoneTransfersAcl struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.
 	IpRange pulumi.StringOutput `pulumi:"ipRange"`
 	// The name of the acl.
@@ -62,9 +67,6 @@ func NewDnsZoneTransfersAcl(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.IpRange == nil {
 		return nil, errors.New("invalid value for required argument 'IpRange'")
 	}
@@ -114,7 +116,7 @@ func (DnsZoneTransfersAclState) ElementType() reflect.Type {
 }
 
 type dnsZoneTransfersAclArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.
 	IpRange string `pulumi:"ipRange"`
 	// The name of the acl.
@@ -123,7 +125,7 @@ type dnsZoneTransfersAclArgs struct {
 
 // The set of arguments for constructing a DnsZoneTransfersAcl resource.
 type DnsZoneTransfersAclArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.
 	IpRange pulumi.StringInput
 	// The name of the acl.
@@ -217,8 +219,8 @@ func (o DnsZoneTransfersAclOutput) ToDnsZoneTransfersAclOutputWithContext(ctx co
 	return o
 }
 
-func (o DnsZoneTransfersAclOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *DnsZoneTransfersAcl) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o DnsZoneTransfersAclOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsZoneTransfersAcl) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.

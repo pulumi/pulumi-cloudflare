@@ -48,6 +48,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool IsolationRequired;
         /// <summary>
+        /// Configures multi-factor authentication (MFA) settings for this policy.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustAccessApplicationPolicyMfaConfigResult MfaConfig;
+        /// <summary>
         /// The name of the Access policy.
         /// </summary>
         public readonly string Name;
@@ -93,6 +97,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool isolationRequired,
 
+            Outputs.GetZeroTrustAccessApplicationPolicyMfaConfigResult mfaConfig,
+
             string name,
 
             int precedence,
@@ -116,6 +122,7 @@ namespace Pulumi.Cloudflare.Outputs
             Id = id;
             Includes = includes;
             IsolationRequired = isolationRequired;
+            MfaConfig = mfaConfig;
             Name = name;
             Precedence = precedence;
             PurposeJustificationPrompt = purposeJustificationPrompt;

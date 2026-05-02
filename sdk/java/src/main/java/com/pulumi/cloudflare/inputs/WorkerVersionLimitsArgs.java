@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkerVersionLimitsArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,21 +19,37 @@ public final class WorkerVersionLimitsArgs extends com.pulumi.resources.Resource
      * CPU time limit in milliseconds.
      * 
      */
-    @Import(name="cpuMs", required=true)
-    private Output<Integer> cpuMs;
+    @Import(name="cpuMs")
+    private @Nullable Output<Integer> cpuMs;
 
     /**
      * @return CPU time limit in milliseconds.
      * 
      */
-    public Output<Integer> cpuMs() {
-        return this.cpuMs;
+    public Optional<Output<Integer>> cpuMs() {
+        return Optional.ofNullable(this.cpuMs);
+    }
+
+    /**
+     * Subrequest limit per request.
+     * 
+     */
+    @Import(name="subrequests")
+    private @Nullable Output<Integer> subrequests;
+
+    /**
+     * @return Subrequest limit per request.
+     * 
+     */
+    public Optional<Output<Integer>> subrequests() {
+        return Optional.ofNullable(this.subrequests);
     }
 
     private WorkerVersionLimitsArgs() {}
 
     private WorkerVersionLimitsArgs(WorkerVersionLimitsArgs $) {
         this.cpuMs = $.cpuMs;
+        this.subrequests = $.subrequests;
     }
 
     public static Builder builder() {
@@ -59,7 +76,7 @@ public final class WorkerVersionLimitsArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder cpuMs(Output<Integer> cpuMs) {
+        public Builder cpuMs(@Nullable Output<Integer> cpuMs) {
             $.cpuMs = cpuMs;
             return this;
         }
@@ -74,10 +91,28 @@ public final class WorkerVersionLimitsArgs extends com.pulumi.resources.Resource
             return cpuMs(Output.of(cpuMs));
         }
 
+        /**
+         * @param subrequests Subrequest limit per request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subrequests(@Nullable Output<Integer> subrequests) {
+            $.subrequests = subrequests;
+            return this;
+        }
+
+        /**
+         * @param subrequests Subrequest limit per request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subrequests(Integer subrequests) {
+            return subrequests(Output.of(subrequests));
+        }
+
         public WorkerVersionLimitsArgs build() {
-            if ($.cpuMs == null) {
-                throw new MissingRequiredPropertyException("WorkerVersionLimitsArgs", "cpuMs");
-            }
             return $;
         }
     }

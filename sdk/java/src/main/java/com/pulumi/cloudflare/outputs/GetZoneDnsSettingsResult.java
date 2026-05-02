@@ -12,6 +12,8 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZoneDnsSettingsResult {
@@ -64,7 +66,7 @@ public final class GetZoneDnsSettingsResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
     /**
      * @return Whether the zone mode is a regular or CDN/DNS only zone.
      * Available values: &#34;standard&#34;, &#34;cdn*only&#34;, &#34;dns*only&#34;.
@@ -140,8 +142,8 @@ public final class GetZoneDnsSettingsResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
     /**
      * @return Whether the zone mode is a regular or CDN/DNS only zone.
@@ -170,7 +172,7 @@ public final class GetZoneDnsSettingsResult {
         private Double nsTtl;
         private Boolean secondaryOverrides;
         private GetZoneDnsSettingsSoa soa;
-        private String zoneId;
+        private @Nullable String zoneId;
         private String zoneMode;
         public Builder() {}
         public Builder(GetZoneDnsSettingsResult defaults) {
@@ -261,10 +263,8 @@ public final class GetZoneDnsSettingsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetZoneDnsSettingsResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

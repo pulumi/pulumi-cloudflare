@@ -23,7 +23,7 @@ class WaitingRoomRulesArgs:
     def __init__(__self__, *,
                  rules: pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]],
                  waiting_room_id: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WaitingRoomRules resource.
 
@@ -31,7 +31,8 @@ class WaitingRoomRulesArgs:
         """
         pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "waiting_room_id", waiting_room_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -53,14 +54,14 @@ class WaitingRoomRulesArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -124,6 +125,11 @@ class WaitingRoomRules(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Waiting Rooms Read`
+        - `Waiting Rooms Write`
+
         ## Example Usage
 
         ```python
@@ -159,6 +165,11 @@ class WaitingRoomRules(pulumi.CustomResource):
                  args: WaitingRoomRulesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Waiting Rooms Read`
+        - `Waiting Rooms Write`
+
         ## Example Usage
 
         ```python
@@ -216,8 +227,6 @@ class WaitingRoomRules(pulumi.CustomResource):
             if waiting_room_id is None and not opts.urn:
                 raise TypeError("Missing required property 'waiting_room_id'")
             __props__.__dict__["waiting_room_id"] = waiting_room_id
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
         super(WaitingRoomRules, __self__).__init__(
             'cloudflare:index/waitingRoomRules:WaitingRoomRules',
@@ -262,7 +271,7 @@ class WaitingRoomRules(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

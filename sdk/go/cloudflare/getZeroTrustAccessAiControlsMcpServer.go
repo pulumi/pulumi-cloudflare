@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustAccessAiControlsMcpServer(ctx, &cloudflare.LookupZeroTrustAccessAiControlsMcpServerArgs{
-//				AccountId: "a86a8f5c339544d7bdc89926de14fb8c",
+//				AccountId: pulumi.StringRef("a86a8f5c339544d7bdc89926de14fb8c"),
 //				Id:        pulumi.StringRef("my-mcp-server"),
 //			}, nil)
 //			if err != nil {
@@ -49,7 +49,7 @@ func LookupZeroTrustAccessAiControlsMcpServer(ctx *pulumi.Context, args *LookupZ
 
 // A collection of arguments for invoking getZeroTrustAccessAiControlsMcpServer.
 type LookupZeroTrustAccessAiControlsMcpServerArgs struct {
-	AccountId string                                       `pulumi:"accountId"`
+	AccountId *string                                      `pulumi:"accountId"`
 	Filter    *GetZeroTrustAccessAiControlsMcpServerFilter `pulumi:"filter"`
 	// server id
 	Id *string `pulumi:"id"`
@@ -57,7 +57,7 @@ type LookupZeroTrustAccessAiControlsMcpServerArgs struct {
 
 // A collection of values returned by getZeroTrustAccessAiControlsMcpServer.
 type LookupZeroTrustAccessAiControlsMcpServerResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Available values: "oauth", "bearer", "unauthenticated".
 	AuthType    string                                       `pulumi:"authType"`
 	CreatedAt   string                                       `pulumi:"createdAt"`
@@ -67,15 +67,17 @@ type LookupZeroTrustAccessAiControlsMcpServerResult struct {
 	Filter      *GetZeroTrustAccessAiControlsMcpServerFilter `pulumi:"filter"`
 	Hostname    string                                       `pulumi:"hostname"`
 	// server id
-	Id                 string              `pulumi:"id"`
-	LastSuccessfulSync string              `pulumi:"lastSuccessfulSync"`
-	LastSynced         string              `pulumi:"lastSynced"`
-	ModifiedAt         string              `pulumi:"modifiedAt"`
-	ModifiedBy         string              `pulumi:"modifiedBy"`
-	Name               string              `pulumi:"name"`
-	Prompts            []map[string]string `pulumi:"prompts"`
-	Status             string              `pulumi:"status"`
-	Tools              []map[string]string `pulumi:"tools"`
+	Id                 string                                               `pulumi:"id"`
+	LastSuccessfulSync string                                               `pulumi:"lastSuccessfulSync"`
+	LastSynced         string                                               `pulumi:"lastSynced"`
+	ModifiedAt         string                                               `pulumi:"modifiedAt"`
+	ModifiedBy         string                                               `pulumi:"modifiedBy"`
+	Name               string                                               `pulumi:"name"`
+	Prompts            []map[string]string                                  `pulumi:"prompts"`
+	Status             string                                               `pulumi:"status"`
+	Tools              []map[string]string                                  `pulumi:"tools"`
+	UpdatedPrompts     []GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt `pulumi:"updatedPrompts"`
+	UpdatedTools       []GetZeroTrustAccessAiControlsMcpServerUpdatedTool   `pulumi:"updatedTools"`
 }
 
 func LookupZeroTrustAccessAiControlsMcpServerOutput(ctx *pulumi.Context, args LookupZeroTrustAccessAiControlsMcpServerOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessAiControlsMcpServerResultOutput {
@@ -89,7 +91,7 @@ func LookupZeroTrustAccessAiControlsMcpServerOutput(ctx *pulumi.Context, args Lo
 
 // A collection of arguments for invoking getZeroTrustAccessAiControlsMcpServer.
 type LookupZeroTrustAccessAiControlsMcpServerOutputArgs struct {
-	AccountId pulumi.StringInput                                  `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput                               `pulumi:"accountId"`
 	Filter    GetZeroTrustAccessAiControlsMcpServerFilterPtrInput `pulumi:"filter"`
 	// server id
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -114,8 +116,8 @@ func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) ToLookupZeroTrustA
 	return o
 }
 
-func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Available values: "oauth", "bearer", "unauthenticated".
@@ -184,6 +186,18 @@ func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Status() pulumi.St
 
 func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) Tools() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) []map[string]string { return v.Tools }).(pulumi.StringMapArrayOutput)
+}
+
+func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) UpdatedPrompts() GetZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) []GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt {
+		return v.UpdatedPrompts
+	}).(GetZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayOutput)
+}
+
+func (o LookupZeroTrustAccessAiControlsMcpServerResultOutput) UpdatedTools() GetZeroTrustAccessAiControlsMcpServerUpdatedToolArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessAiControlsMcpServerResult) []GetZeroTrustAccessAiControlsMcpServerUpdatedTool {
+		return v.UpdatedTools
+	}).(GetZeroTrustAccessAiControlsMcpServerUpdatedToolArrayOutput)
 }
 
 func init() {

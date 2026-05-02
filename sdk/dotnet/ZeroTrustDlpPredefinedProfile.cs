@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Zero Trust Read`
+    /// - `Zero Trust Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -56,7 +61,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDlpPredefinedProfile : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("aiContextEnabled")]
         public Output<bool> AiContextEnabled { get; private set; } = null!;
@@ -141,8 +146,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDlpPredefinedProfileArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("aiContextEnabled")]
         public Input<bool>? AiContextEnabled { get; set; }
@@ -163,7 +168,7 @@ namespace Pulumi.Cloudflare
 
         [Input("entries")]
         private InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryArgs>? _entries;
-        [Obsolete(@"This attribute is deprecated.")]
+        [Obsolete(@"This attribute is deprecated. Use EnabledEntries instead.")]
         public InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryArgs>());
@@ -206,7 +211,7 @@ namespace Pulumi.Cloudflare
 
         [Input("entries")]
         private InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryGetArgs>? _entries;
-        [Obsolete(@"This attribute is deprecated.")]
+        [Obsolete(@"This attribute is deprecated. Use EnabledEntries instead.")]
         public InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryGetArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryGetArgs>());

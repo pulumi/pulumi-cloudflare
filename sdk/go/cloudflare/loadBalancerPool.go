@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Load Balancing: Monitors and Pools Read`
+// - `Load Balancing: Monitors and Pools Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -31,8 +36,9 @@ import (
 //				Name:      pulumi.String("primary-dc-1"),
 //				Origins: cloudflare.LoadBalancerPoolOriginArray{
 //					&cloudflare.LoadBalancerPoolOriginArgs{
-//						Address: pulumi.String("0.0.0.0"),
-//						Enabled: pulumi.Bool(true),
+//						Address:      pulumi.String("0.0.0.0"),
+//						Enabled:      pulumi.Bool(true),
+//						FlattenCname: pulumi.Bool(true),
 //						Header: &cloudflare.LoadBalancerPoolOriginHeaderArgs{
 //							Host: []string{
 //								"example.com",
@@ -90,7 +96,7 @@ type LoadBalancerPool struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions pulumi.StringArrayOutput `pulumi:"checkRegions"`
 	CreatedOn    pulumi.StringOutput      `pulumi:"createdOn"`
@@ -103,7 +109,7 @@ type LoadBalancerPool struct {
 	// The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
 	Latitude pulumi.Float64PtrOutput `pulumi:"latitude"`
 	// Configures load shedding policies and percentages for the pool.
-	LoadShedding LoadBalancerPoolLoadSheddingPtrOutput `pulumi:"loadShedding"`
+	LoadShedding LoadBalancerPoolLoadSheddingOutput `pulumi:"loadShedding"`
 	// The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
 	Longitude pulumi.Float64PtrOutput `pulumi:"longitude"`
 	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
@@ -120,9 +126,9 @@ type LoadBalancerPool struct {
 	// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringOutput `pulumi:"notificationEmail"`
 	// Filter pool and origin health notifications by resource type or health status. Use null to reset.
-	NotificationFilter LoadBalancerPoolNotificationFilterPtrOutput `pulumi:"notificationFilter"`
+	NotificationFilter LoadBalancerPoolNotificationFilterOutput `pulumi:"notificationFilter"`
 	// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
-	OriginSteering LoadBalancerPoolOriginSteeringPtrOutput `pulumi:"originSteering"`
+	OriginSteering LoadBalancerPoolOriginSteeringOutput `pulumi:"originSteering"`
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
 	Origins LoadBalancerPoolOriginArrayOutput `pulumi:"origins"`
 }
@@ -134,9 +140,6 @@ func NewLoadBalancerPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -249,7 +252,7 @@ func (LoadBalancerPoolState) ElementType() reflect.Type {
 
 type loadBalancerPoolArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions []string `pulumi:"checkRegions"`
 	// A human-readable description of the pool.
@@ -283,7 +286,7 @@ type loadBalancerPoolArgs struct {
 // The set of arguments for constructing a LoadBalancerPool resource.
 type LoadBalancerPoolArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions pulumi.StringArrayInput
 	// A human-readable description of the pool.
@@ -402,8 +405,8 @@ func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutputWithContext(ctx context.
 }
 
 // Identifier.
-func (o LoadBalancerPoolOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o LoadBalancerPoolOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // A list of regions from which to run health checks. Null means every Cloudflare data center.
@@ -436,8 +439,8 @@ func (o LoadBalancerPoolOutput) Latitude() pulumi.Float64PtrOutput {
 }
 
 // Configures load shedding policies and percentages for the pool.
-func (o LoadBalancerPoolOutput) LoadShedding() LoadBalancerPoolLoadSheddingPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolLoadSheddingPtrOutput { return v.LoadShedding }).(LoadBalancerPoolLoadSheddingPtrOutput)
+func (o LoadBalancerPoolOutput) LoadShedding() LoadBalancerPoolLoadSheddingOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolLoadSheddingOutput { return v.LoadShedding }).(LoadBalancerPoolLoadSheddingOutput)
 }
 
 // The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
@@ -480,13 +483,13 @@ func (o LoadBalancerPoolOutput) NotificationEmail() pulumi.StringOutput {
 }
 
 // Filter pool and origin health notifications by resource type or health status. Use null to reset.
-func (o LoadBalancerPoolOutput) NotificationFilter() LoadBalancerPoolNotificationFilterPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolNotificationFilterPtrOutput { return v.NotificationFilter }).(LoadBalancerPoolNotificationFilterPtrOutput)
+func (o LoadBalancerPoolOutput) NotificationFilter() LoadBalancerPoolNotificationFilterOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolNotificationFilterOutput { return v.NotificationFilter }).(LoadBalancerPoolNotificationFilterOutput)
 }
 
 // Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
-func (o LoadBalancerPoolOutput) OriginSteering() LoadBalancerPoolOriginSteeringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolOriginSteeringPtrOutput { return v.OriginSteering }).(LoadBalancerPoolOriginSteeringPtrOutput)
+func (o LoadBalancerPoolOutput) OriginSteering() LoadBalancerPoolOriginSteeringOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolOriginSteeringOutput { return v.OriginSteering }).(LoadBalancerPoolOriginSteeringOutput)
 }
 
 // The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.

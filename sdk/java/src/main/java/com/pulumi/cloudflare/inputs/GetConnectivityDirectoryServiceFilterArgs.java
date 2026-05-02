@@ -16,14 +16,14 @@ public final class GetConnectivityDirectoryServiceFilterArgs extends com.pulumi.
     public static final GetConnectivityDirectoryServiceFilterArgs Empty = new GetConnectivityDirectoryServiceFilterArgs();
 
     /**
-     * Available values: &#34;http&#34;.
+     * Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;http&#34;.
+     * @return Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -55,7 +55,7 @@ public final class GetConnectivityDirectoryServiceFilterArgs extends com.pulumi.
         }
 
         /**
-         * @param type Available values: &#34;http&#34;.
+         * @param type Available values: &#34;tcp&#34;, &#34;http&#34;.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class GetConnectivityDirectoryServiceFilterArgs extends com.pulumi.
         }
 
         /**
-         * @param type Available values: &#34;http&#34;.
+         * @param type Available values: &#34;tcp&#34;, &#34;http&#34;.
          * 
          * @return builder
          * 

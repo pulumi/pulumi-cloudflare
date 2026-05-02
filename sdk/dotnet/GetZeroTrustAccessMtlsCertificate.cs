@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustAccessMtlsCertificate
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Mutual TLS Certificates Read`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +41,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessMtlsCertificateResult>("cloudflare:index/getZeroTrustAccessMtlsCertificate:getZeroTrustAccessMtlsCertificate", args ?? new GetZeroTrustAccessMtlsCertificateArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Mutual TLS Certificates Read`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +70,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessMtlsCertificateResult>("cloudflare:index/getZeroTrustAccessMtlsCertificate:getZeroTrustAccessMtlsCertificate", args ?? new GetZeroTrustAccessMtlsCertificateInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Mutual TLS Certificates Read`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

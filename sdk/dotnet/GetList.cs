@@ -12,6 +12,10 @@ namespace Pulumi.Cloudflare
     public static class GetList
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Filter Lists Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +40,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetListResult>("cloudflare:index/getList:getList", args ?? new GetListArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Filter Lists Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +68,10 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetListResult>("cloudflare:index/getList:getList", args ?? new GetListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Filter Lists Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Account ID for this resource.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// The unique ID of the list.
@@ -116,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Account ID for this resource.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The unique ID of the list.
@@ -144,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Account ID for this resource.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The RFC 3339 timestamp of when the list was created.
         /// </summary>
@@ -193,7 +205,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetListResult(
-            string accountId,
+            string? accountId,
 
             string createdOn,
 

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -31,7 +36,7 @@ export function getZeroTrustDlpPredefinedEntry(args: GetZeroTrustDlpPredefinedEn
  * A collection of arguments for invoking getZeroTrustDlpPredefinedEntry.
  */
 export interface GetZeroTrustDlpPredefinedEntryArgs {
-    accountId: string;
+    accountId?: string;
     entryId: string;
 }
 
@@ -39,7 +44,7 @@ export interface GetZeroTrustDlpPredefinedEntryArgs {
  * A collection of values returned by getZeroTrustDlpPredefinedEntry.
  */
 export interface GetZeroTrustDlpPredefinedEntryResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
@@ -73,6 +78,11 @@ export interface GetZeroTrustDlpPredefinedEntryResult {
     readonly wordList: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -97,6 +107,6 @@ export function getZeroTrustDlpPredefinedEntryOutput(args: GetZeroTrustDlpPredef
  * A collection of arguments for invoking getZeroTrustDlpPredefinedEntry.
  */
 export interface GetZeroTrustDlpPredefinedEntryOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     entryId: pulumi.Input<string>;
 }

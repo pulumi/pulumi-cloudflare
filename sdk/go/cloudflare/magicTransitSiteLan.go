@@ -12,6 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic Transit Read`
+// - `Magic Transit Write`
+// - `Magic WAN Read`
+// - `Magic WAN Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -27,11 +34,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewMagicTransitSiteLan(ctx, "example_magic_transit_site_lan", &cloudflare.MagicTransitSiteLanArgs{
-//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				SiteId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				BondId:    pulumi.Int(2),
-//				HaLink:    pulumi.Bool(true),
-//				Name:      pulumi.String("name"),
+//				AccountId:     pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SiteId:        pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				BondId:        pulumi.Int(2),
+//				HaLink:        pulumi.Bool(true),
+//				IsBreakout:    pulumi.Bool(true),
+//				IsPrioritized: pulumi.Bool(true),
+//				Name:          pulumi.String("name"),
 //				Nat: &cloudflare.MagicTransitSiteLanNatArgs{
 //					StaticPrefix: pulumi.String("192.0.2.0/24"),
 //				},
@@ -87,10 +96,14 @@ type MagicTransitSiteLan struct {
 	pulumi.CustomResourceState
 
 	// Identifier
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	BondId    pulumi.IntPtrOutput `pulumi:"bondId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	BondId    pulumi.IntPtrOutput    `pulumi:"bondId"`
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-	HaLink        pulumi.BoolPtrOutput                       `pulumi:"haLink"`
+	HaLink pulumi.BoolPtrOutput `pulumi:"haLink"`
+	// mark true to use this LAN for source-based breakout traffic
+	IsBreakout pulumi.BoolPtrOutput `pulumi:"isBreakout"`
+	// mark true to use this LAN for source-based prioritized traffic
+	IsPrioritized pulumi.BoolPtrOutput                       `pulumi:"isPrioritized"`
 	Name          pulumi.StringPtrOutput                     `pulumi:"name"`
 	Nat           MagicTransitSiteLanNatPtrOutput            `pulumi:"nat"`
 	Physport      pulumi.IntPtrOutput                        `pulumi:"physport"`
@@ -110,9 +123,6 @@ func NewMagicTransitSiteLan(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.SiteId == nil {
 		return nil, errors.New("invalid value for required argument 'SiteId'")
 	}
@@ -143,7 +153,11 @@ type magicTransitSiteLanState struct {
 	AccountId *string `pulumi:"accountId"`
 	BondId    *int    `pulumi:"bondId"`
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-	HaLink        *bool                             `pulumi:"haLink"`
+	HaLink *bool `pulumi:"haLink"`
+	// mark true to use this LAN for source-based breakout traffic
+	IsBreakout *bool `pulumi:"isBreakout"`
+	// mark true to use this LAN for source-based prioritized traffic
+	IsPrioritized *bool                             `pulumi:"isPrioritized"`
 	Name          *string                           `pulumi:"name"`
 	Nat           *MagicTransitSiteLanNat           `pulumi:"nat"`
 	Physport      *int                              `pulumi:"physport"`
@@ -161,7 +175,11 @@ type MagicTransitSiteLanState struct {
 	AccountId pulumi.StringPtrInput
 	BondId    pulumi.IntPtrInput
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-	HaLink        pulumi.BoolPtrInput
+	HaLink pulumi.BoolPtrInput
+	// mark true to use this LAN for source-based breakout traffic
+	IsBreakout pulumi.BoolPtrInput
+	// mark true to use this LAN for source-based prioritized traffic
+	IsPrioritized pulumi.BoolPtrInput
 	Name          pulumi.StringPtrInput
 	Nat           MagicTransitSiteLanNatPtrInput
 	Physport      pulumi.IntPtrInput
@@ -180,10 +198,14 @@ func (MagicTransitSiteLanState) ElementType() reflect.Type {
 
 type magicTransitSiteLanArgs struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
-	BondId    *int   `pulumi:"bondId"`
+	AccountId *string `pulumi:"accountId"`
+	BondId    *int    `pulumi:"bondId"`
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-	HaLink        *bool                             `pulumi:"haLink"`
+	HaLink *bool `pulumi:"haLink"`
+	// mark true to use this LAN for source-based breakout traffic
+	IsBreakout *bool `pulumi:"isBreakout"`
+	// mark true to use this LAN for source-based prioritized traffic
+	IsPrioritized *bool                             `pulumi:"isPrioritized"`
 	Name          *string                           `pulumi:"name"`
 	Nat           *MagicTransitSiteLanNat           `pulumi:"nat"`
 	Physport      *int                              `pulumi:"physport"`
@@ -199,10 +221,14 @@ type magicTransitSiteLanArgs struct {
 // The set of arguments for constructing a MagicTransitSiteLan resource.
 type MagicTransitSiteLanArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	BondId    pulumi.IntPtrInput
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
-	HaLink        pulumi.BoolPtrInput
+	HaLink pulumi.BoolPtrInput
+	// mark true to use this LAN for source-based breakout traffic
+	IsBreakout pulumi.BoolPtrInput
+	// mark true to use this LAN for source-based prioritized traffic
+	IsPrioritized pulumi.BoolPtrInput
 	Name          pulumi.StringPtrInput
 	Nat           MagicTransitSiteLanNatPtrInput
 	Physport      pulumi.IntPtrInput
@@ -303,8 +329,8 @@ func (o MagicTransitSiteLanOutput) ToMagicTransitSiteLanOutputWithContext(ctx co
 }
 
 // Identifier
-func (o MagicTransitSiteLanOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o MagicTransitSiteLanOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o MagicTransitSiteLanOutput) BondId() pulumi.IntPtrOutput {
@@ -314,6 +340,16 @@ func (o MagicTransitSiteLanOutput) BondId() pulumi.IntPtrOutput {
 // mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 func (o MagicTransitSiteLanOutput) HaLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.BoolPtrOutput { return v.HaLink }).(pulumi.BoolPtrOutput)
+}
+
+// mark true to use this LAN for source-based breakout traffic
+func (o MagicTransitSiteLanOutput) IsBreakout() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.BoolPtrOutput { return v.IsBreakout }).(pulumi.BoolPtrOutput)
+}
+
+// mark true to use this LAN for source-based prioritized traffic
+func (o MagicTransitSiteLanOutput) IsPrioritized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.BoolPtrOutput { return v.IsPrioritized }).(pulumi.BoolPtrOutput)
 }
 
 func (o MagicTransitSiteLanOutput) Name() pulumi.StringPtrOutput {

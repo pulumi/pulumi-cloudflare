@@ -61,10 +61,15 @@ public final class GetDnsRecordsResult {
      */
     private String name;
     /**
-     * @return Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+     * @return Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      * 
      */
     private Double priority;
+    /**
+     * @return Enables private network routing to the origin.
+     * 
+     */
+    private Boolean privateRouting;
     /**
      * @return Whether the record can be proxied by Cloudflare or not.
      * 
@@ -167,11 +172,18 @@ public final class GetDnsRecordsResult {
         return this.name;
     }
     /**
-     * @return Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
+     * @return Required for MX and URI records; ignored for other record types (but may still be returned by the API). Records with lower priorities are preferred. This field is to be deprecated in favor of the priority field within the data map.
      * 
      */
     public Double priority() {
         return this.priority;
+    }
+    /**
+     * @return Enables private network routing to the origin.
+     * 
+     */
+    public Boolean privateRouting() {
+        return this.privateRouting;
     }
     /**
      * @return Whether the record can be proxied by Cloudflare or not.
@@ -243,6 +255,7 @@ public final class GetDnsRecordsResult {
         private String modifiedOn;
         private String name;
         private Double priority;
+        private Boolean privateRouting;
         private Boolean proxiable;
         private Boolean proxied;
         private GetDnsRecordsResultSettings settings;
@@ -263,6 +276,7 @@ public final class GetDnsRecordsResult {
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.name = defaults.name;
     	      this.priority = defaults.priority;
+    	      this.privateRouting = defaults.privateRouting;
     	      this.proxiable = defaults.proxiable;
     	      this.proxied = defaults.proxied;
     	      this.settings = defaults.settings;
@@ -353,6 +367,14 @@ public final class GetDnsRecordsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder privateRouting(Boolean privateRouting) {
+            if (privateRouting == null) {
+              throw new MissingRequiredPropertyException("GetDnsRecordsResult", "privateRouting");
+            }
+            this.privateRouting = privateRouting;
+            return this;
+        }
+        @CustomType.Setter
         public Builder proxiable(Boolean proxiable) {
             if (proxiable == null) {
               throw new MissingRequiredPropertyException("GetDnsRecordsResult", "proxiable");
@@ -423,6 +445,7 @@ public final class GetDnsRecordsResult {
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.name = name;
             _resultValue.priority = priority;
+            _resultValue.privateRouting = privateRouting;
             _resultValue.proxiable = proxiable;
             _resultValue.proxied = proxied;
             _resultValue.settings = settings;

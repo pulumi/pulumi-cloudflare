@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Connector Read`
+ * - `Cloud Connector Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getCloudConnectorRules(args: GetCloudConnectorRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudConnectorRulesResult> {
+export function getCloudConnectorRules(args?: GetCloudConnectorRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudConnectorRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", {
         "zoneId": args.zoneId,
@@ -32,7 +38,7 @@ export interface GetCloudConnectorRulesArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -47,9 +53,14 @@ export interface GetCloudConnectorRulesResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Connector Read`
+ * - `Cloud Connector Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -61,7 +72,8 @@ export interface GetCloudConnectorRulesResult {
  * });
  * ```
  */
-export function getCloudConnectorRulesOutput(args: GetCloudConnectorRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudConnectorRulesResult> {
+export function getCloudConnectorRulesOutput(args?: GetCloudConnectorRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudConnectorRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", {
         "zoneId": args.zoneId,
@@ -75,5 +87,5 @@ export interface GetCloudConnectorRulesOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -21,8 +21,8 @@ __all__ = ['ZeroTrustDlpPredefinedProfileArgs', 'ZeroTrustDlpPredefinedProfile']
 @pulumi.input_type
 class ZeroTrustDlpPredefinedProfileArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  profile_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ai_context_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_match_count: Optional[pulumi.Input[_builtins.int]] = None,
                  confidence_threshold: Optional[pulumi.Input[_builtins.str]] = None,
@@ -32,8 +32,9 @@ class ZeroTrustDlpPredefinedProfileArgs:
         """
         The set of arguments for constructing a ZeroTrustDlpPredefinedProfile resource.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "profile_id", profile_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if ai_context_enabled is not None:
             pulumi.set(__self__, "ai_context_enabled", ai_context_enabled)
         if allowed_match_count is not None:
@@ -43,21 +44,12 @@ class ZeroTrustDlpPredefinedProfileArgs:
         if enabled_entries is not None:
             pulumi.set(__self__, "enabled_entries", enabled_entries)
         if entries is not None:
-            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""entries is deprecated: This attribute is deprecated.""")
+            warnings.warn("""This attribute is deprecated. Use enabled_entries instead.""", DeprecationWarning)
+            pulumi.log.warn("""entries is deprecated: This attribute is deprecated. Use enabled_entries instead.""")
         if entries is not None:
             pulumi.set(__self__, "entries", entries)
         if ocr_enabled is not None:
             pulumi.set(__self__, "ocr_enabled", ocr_enabled)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="profileId")
@@ -67,6 +59,15 @@ class ZeroTrustDlpPredefinedProfileArgs:
     @profile_id.setter
     def profile_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "profile_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aiContextEnabled")
@@ -106,7 +107,7 @@ class ZeroTrustDlpPredefinedProfileArgs:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""This attribute is deprecated.""")
+    @_utilities.deprecated("""This attribute is deprecated. Use enabled_entries instead.""")
     def entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]]:
         return pulumi.get(self, "entries")
 
@@ -154,8 +155,8 @@ class _ZeroTrustDlpPredefinedProfileState:
         if enabled_entries is not None:
             pulumi.set(__self__, "enabled_entries", enabled_entries)
         if entries is not None:
-            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""entries is deprecated: This attribute is deprecated.""")
+            warnings.warn("""This attribute is deprecated. Use enabled_entries instead.""", DeprecationWarning)
+            pulumi.log.warn("""entries is deprecated: This attribute is deprecated. Use enabled_entries instead.""")
         if entries is not None:
             pulumi.set(__self__, "entries", entries)
         if name is not None:
@@ -214,7 +215,7 @@ class _ZeroTrustDlpPredefinedProfileState:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""This attribute is deprecated.""")
+    @_utilities.deprecated("""This attribute is deprecated. Use enabled_entries instead.""")
     def entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]]:
         return pulumi.get(self, "entries")
 
@@ -281,6 +282,11 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
                  profile_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Read`
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -325,6 +331,11 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
                  args: ZeroTrustDlpPredefinedProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Zero Trust Read`
+        - `Zero Trust Write`
+
         ## Example Usage
 
         ```python
@@ -391,8 +402,6 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustDlpPredefinedProfileArgs.__new__(ZeroTrustDlpPredefinedProfileArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["ai_context_enabled"] = ai_context_enabled
             __props__.__dict__["allowed_match_count"] = allowed_match_count
@@ -455,7 +464,7 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -480,7 +489,7 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""This attribute is deprecated.""")
+    @_utilities.deprecated("""This attribute is deprecated. Use enabled_entries instead.""")
     def entries(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDlpPredefinedProfileEntry']]:
         return pulumi.get(self, "entries")
 

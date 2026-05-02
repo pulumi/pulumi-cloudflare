@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountPermissionGroupResult {
@@ -15,7 +17,7 @@ public final class GetAccountPermissionGroupResult {
      * @return Account identifier tag.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Identifier of the permission group.
      * 
@@ -42,8 +44,8 @@ public final class GetAccountPermissionGroupResult {
      * @return Account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Identifier of the permission group.
@@ -83,7 +85,7 @@ public final class GetAccountPermissionGroupResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String id;
         private GetAccountPermissionGroupMeta meta;
         private String name;
@@ -99,10 +101,8 @@ public final class GetAccountPermissionGroupResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAccountPermissionGroupResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

@@ -60,7 +60,7 @@ class GetNotificationPolicyWebhooksResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         The account id
         """
@@ -162,6 +162,14 @@ def get_notification_policy_webhooks(account_id: Optional[_builtins.str] = None,
                                      webhook_id: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotificationPolicyWebhooksResult:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+    - `Account Settings Write`
+    - `Notifications Read`
+    - `Notifications Write`
+    - `Zero Trust: PII Read`
+
     ## Example Usage
 
     ```python
@@ -193,10 +201,18 @@ def get_notification_policy_webhooks(account_id: Optional[_builtins.str] = None,
         type=pulumi.get(__ret__, 'type'),
         url=pulumi.get(__ret__, 'url'),
         webhook_id=pulumi.get(__ret__, 'webhook_id'))
-def get_notification_policy_webhooks_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_notification_policy_webhooks_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             webhook_id: Optional[pulumi.Input[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotificationPolicyWebhooksResult]:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+    - `Account Settings Write`
+    - `Notifications Read`
+    - `Notifications Write`
+    - `Zero Trust: PII Read`
+
     ## Example Usage
 
     ```python

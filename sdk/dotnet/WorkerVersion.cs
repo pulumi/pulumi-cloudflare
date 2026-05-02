@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Workers Scripts Read`
+    /// - `Workers Scripts Write`
+    /// - `Workers Tail Read`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -35,10 +41,7 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 HtmlHandling = "auto-trailing-slash",
     ///                 NotFoundHandling = "404-page",
-    ///                 RunWorkerFirst = new[]
-    ///                 {
-    ///                     "string",
-    ///                 },
+    ///                 RunWorkerFirst = new() { },
     ///             },
     ///             Jwt = "jwt",
     ///         },
@@ -56,9 +59,17 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             "nodejs_compat",
     ///         },
+    ///         Containers = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerVersionContainerArgs
+    ///             {
+    ///                 ClassName = "MyDurableObject",
+    ///             },
+    ///         },
     ///         Limits = new Cloudflare.Inputs.WorkerVersionLimitsArgs
     ///         {
     ///             CpuMs = 50,
+    ///             Subrequests = 1000,
     ///         },
     ///         MainModule = "index.js",
     ///         Migrations = new Cloudflare.Inputs.WorkerVersionMigrationsArgs
@@ -126,7 +137,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Metadata about the version.
@@ -159,6 +170,12 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> CompatibilityFlags { get; private set; } = null!;
 
         /// <summary>
+        /// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+        /// </summary>
+        [Output("containers")]
+        public Output<ImmutableArray<Outputs.WorkerVersionContainer>> Containers { get; private set; } = null!;
+
+        /// <summary>
         /// When the version was created.
         /// </summary>
         [Output("createdOn")]
@@ -181,6 +198,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("mainScriptBase64")]
         public Output<string> MainScriptBase64 { get; private set; } = null!;
+
+        /// <summary>
+        /// Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+        /// </summary>
+        [Output("migrationTag")]
+        public Output<string> MigrationTag { get; private set; } = null!;
 
         /// <summary>
         /// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
@@ -222,6 +245,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("startupTimeMs")]
         public Output<int> StartupTimeMs { get; private set; } = null!;
+
+        /// <summary>
+        /// All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+        /// </summary>
+        [Output("urls")]
+        public Output<ImmutableArray<string>> Urls { get; private set; } = null!;
 
         /// <summary>
         /// Usage model for the version.
@@ -285,8 +314,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Metadata about the version.
@@ -328,6 +357,18 @@ namespace Pulumi.Cloudflare
         {
             get => _compatibilityFlags ?? (_compatibilityFlags = new InputList<string>());
             set => _compatibilityFlags = value;
+        }
+
+        [Input("containers")]
+        private InputList<Inputs.WorkerVersionContainerArgs>? _containers;
+
+        /// <summary>
+        /// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+        /// </summary>
+        public InputList<Inputs.WorkerVersionContainerArgs> Containers
+        {
+            get => _containers ?? (_containers = new InputList<Inputs.WorkerVersionContainerArgs>());
+            set => _containers = value;
         }
 
         /// <summary>
@@ -440,6 +481,18 @@ namespace Pulumi.Cloudflare
             set => _compatibilityFlags = value;
         }
 
+        [Input("containers")]
+        private InputList<Inputs.WorkerVersionContainerGetArgs>? _containers;
+
+        /// <summary>
+        /// List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+        /// </summary>
+        public InputList<Inputs.WorkerVersionContainerGetArgs> Containers
+        {
+            get => _containers ?? (_containers = new InputList<Inputs.WorkerVersionContainerGetArgs>());
+            set => _containers = value;
+        }
+
         /// <summary>
         /// When the version was created.
         /// </summary>
@@ -463,6 +516,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("mainScriptBase64")]
         public Input<string>? MainScriptBase64 { get; set; }
+
+        /// <summary>
+        /// Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+        /// </summary>
+        [Input("migrationTag")]
+        public Input<string>? MigrationTag { get; set; }
 
         /// <summary>
         /// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
@@ -510,6 +569,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("startupTimeMs")]
         public Input<int>? StartupTimeMs { get; set; }
+
+        [Input("urls")]
+        private InputList<string>? _urls;
+
+        /// <summary>
+        /// All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+        /// </summary>
+        public InputList<string> Urls
+        {
+            get => _urls ?? (_urls = new InputList<string>());
+            set => _urls = value;
+        }
 
         /// <summary>
         /// Usage model for the version.

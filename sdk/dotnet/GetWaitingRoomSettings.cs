@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetWaitingRoomSettings
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Waiting Rooms Read`
+        /// - `Waiting Rooms Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWaitingRoomSettingsResult> InvokeAsync(GetWaitingRoomSettingsArgs args, InvokeOptions? options = null)
+        public static Task<GetWaitingRoomSettingsResult> InvokeAsync(GetWaitingRoomSettingsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWaitingRoomSettingsResult>("cloudflare:index/getWaitingRoomSettings:getWaitingRoomSettings", args ?? new GetWaitingRoomSettingsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Waiting Rooms Read`
+        /// - `Waiting Rooms Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWaitingRoomSettingsResult> Invoke(GetWaitingRoomSettingsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetWaitingRoomSettingsResult> Invoke(GetWaitingRoomSettingsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWaitingRoomSettingsResult>("cloudflare:index/getWaitingRoomSettings:getWaitingRoomSettings", args ?? new GetWaitingRoomSettingsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Waiting Rooms Read`
+        /// - `Waiting Rooms Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetWaitingRoomSettingsArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetWaitingRoomSettingsInvokeArgs()
         {
@@ -124,7 +139,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetWaitingRoomSettingsResult(
@@ -132,7 +147,7 @@ namespace Pulumi.Cloudflare
 
             bool searchEngineCrawlerBypass,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             SearchEngineCrawlerBypass = searchEngineCrawlerBypass;

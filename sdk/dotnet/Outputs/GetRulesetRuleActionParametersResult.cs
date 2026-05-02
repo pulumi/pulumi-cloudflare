@@ -58,6 +58,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Content;
         /// <summary>
+        /// Whether to enable content conversion (e.g., HTML to Markdown).
+        /// </summary>
+        public readonly bool ContentConverter;
+        /// <summary>
         /// The content type header to set with the error response.
         /// Available values: "application/json", "text/html", "text/plain", "text/xml".
         /// </summary>
@@ -219,6 +223,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int ReadTimeout;
         /// <summary>
+        /// Whether to redirect verified AI training crawlers to canonical URLs.
+        /// </summary>
+        public readonly bool RedirectsForAiTraining;
+        /// <summary>
         /// The request body buffering mode to configure.
         /// Available values: "none", "standard", "full".
         /// </summary>
@@ -352,6 +360,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string content,
 
+            bool contentConverter,
+
             string contentType,
 
             ImmutableArray<Outputs.GetRulesetRuleActionParametersCookieFieldResult> cookieFields,
@@ -430,6 +440,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             int readTimeout,
 
+            bool redirectsForAiTraining,
+
             string requestBodyBuffering,
 
             ImmutableArray<Outputs.GetRulesetRuleActionParametersRequestFieldResult> requestFields,
@@ -493,6 +505,7 @@ namespace Pulumi.Cloudflare.Outputs
             CacheKey = cacheKey;
             CacheReserve = cacheReserve;
             Content = content;
+            ContentConverter = contentConverter;
             ContentType = contentType;
             CookieFields = cookieFields;
             DisableApps = disableApps;
@@ -532,6 +545,7 @@ namespace Pulumi.Cloudflare.Outputs
             Public = @public;
             RawResponseFields = rawResponseFields;
             ReadTimeout = readTimeout;
+            RedirectsForAiTraining = redirectsForAiTraining;
             RequestBodyBuffering = requestBodyBuffering;
             RequestFields = requestFields;
             RespectStrongEtags = respectStrongEtags;

@@ -16,6 +16,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Queues Read`
+ * - `Queues Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -73,14 +80,14 @@ public class QueueConsumer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return A Resource identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * A Resource identifier.
@@ -133,20 +140,20 @@ public class QueueConsumer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="scriptName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> scriptName;
+    private Output<String> scriptName;
 
     /**
      * @return Name of a Worker
      * 
      */
-    public Output<Optional<String>> scriptName() {
-        return Codegen.optional(this.scriptName);
+    public Output<String> scriptName() {
+        return this.scriptName;
     }
     @Export(name="settings", refs={QueueConsumerSettings.class}, tree="[0]")
-    private Output</* @Nullable */ QueueConsumerSettings> settings;
+    private Output<QueueConsumerSettings> settings;
 
-    public Output<Optional<QueueConsumerSettings>> settings() {
-        return Codegen.optional(this.settings);
+    public Output<QueueConsumerSettings> settings() {
+        return this.settings;
     }
     /**
      * Available values: &#34;worker&#34;, &#34;httpPull&#34;.

@@ -34,7 +34,7 @@ export interface GetR2BucketLifecycleArgs {
     /**
      * Account ID.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Name of the bucket.
      */
@@ -48,7 +48,7 @@ export interface GetR2BucketLifecycleResult {
     /**
      * Account ID.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Name of the bucket.
      */
@@ -87,7 +87,7 @@ export interface GetR2BucketLifecycleOutputArgs {
     /**
      * Account ID.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Name of the bucket.
      */

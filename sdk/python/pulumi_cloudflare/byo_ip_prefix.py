@@ -19,43 +19,32 @@ __all__ = ['ByoIpPrefixArgs', 'ByoIpPrefix']
 @pulumi.input_type
 class ByoIpPrefixArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  asn: pulumi.Input[_builtins.int],
                  cidr: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  delegate_loa_creation: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  loa_document_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ByoIpPrefix resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier of a Cloudflare account.
         :param pulumi.Input[_builtins.int] asn: Autonomous System Number (ASN) the prefix will be advertised under.
         :param pulumi.Input[_builtins.str] cidr: IP Prefix in Classless Inter-Domain Routing format.
+        :param pulumi.Input[_builtins.str] account_id: Identifier of a Cloudflare account.
         :param pulumi.Input[_builtins.bool] delegate_loa_creation: Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
         :param pulumi.Input[_builtins.str] description: Description of the prefix.
         :param pulumi.Input[_builtins.str] loa_document_id: Identifier for the uploaded LOA document.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "asn", asn)
         pulumi.set(__self__, "cidr", cidr)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if delegate_loa_creation is not None:
             pulumi.set(__self__, "delegate_loa_creation", delegate_loa_creation)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if loa_document_id is not None:
             pulumi.set(__self__, "loa_document_id", loa_document_id)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier of a Cloudflare account.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -80,6 +69,18 @@ class ByoIpPrefixArgs:
     @cidr.setter
     def cidr(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "cidr", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier of a Cloudflare account.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateLoaCreation")
@@ -421,6 +422,15 @@ class ByoIpPrefix(pulumi.CustomResource):
                  loa_document_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `IP Prefixes: BGP On Demand Read`
+        - `IP Prefixes: BGP On Demand Write`
+        - `IP Prefixes: Read`
+        - `IP Prefixes: Write`
+        - `Magic Transit Read`
+        - `Magic Transit Write`
+
         ## Example Usage
 
         ```python
@@ -459,6 +469,15 @@ class ByoIpPrefix(pulumi.CustomResource):
                  args: ByoIpPrefixArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `IP Prefixes: BGP On Demand Read`
+        - `IP Prefixes: BGP On Demand Write`
+        - `IP Prefixes: Read`
+        - `IP Prefixes: Write`
+        - `Magic Transit Read`
+        - `Magic Transit Write`
+
         ## Example Usage
 
         ```python
@@ -511,8 +530,6 @@ class ByoIpPrefix(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ByoIpPrefixArgs.__new__(ByoIpPrefixArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if asn is None and not opts.urn:
                 raise TypeError("Missing required property 'asn'")
@@ -609,7 +626,7 @@ class ByoIpPrefix(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier of a Cloudflare account.
         """

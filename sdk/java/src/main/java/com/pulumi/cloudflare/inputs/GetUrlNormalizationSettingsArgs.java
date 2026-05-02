@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetUrlNormalizationSettingsArgs extends com.pulumi.resources.InvokeArgs {
@@ -18,15 +19,15 @@ public final class GetUrlNormalizationSettingsArgs extends com.pulumi.resources.
      * The unique ID of the zone.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return The unique ID of the zone.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetUrlNormalizationSettingsArgs() {}
@@ -59,7 +60,7 @@ public final class GetUrlNormalizationSettingsArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -75,9 +76,6 @@ public final class GetUrlNormalizationSettingsArgs extends com.pulumi.resources.
         }
 
         public GetUrlNormalizationSettingsArgs build() {
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetUrlNormalizationSettingsArgs", "zoneId");
-            }
             return $;
         }
     }

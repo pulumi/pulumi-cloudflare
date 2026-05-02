@@ -20,9 +20,13 @@ public final class GetPageShieldScriptsListResult {
      */
     private Integer cryptominingScore;
     /**
-     * @return The dataflow score of the JavaScript content.
+     * @return The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private Integer dataflowScore;
     private Boolean domainReportedMalicious;
     /**
@@ -62,9 +66,13 @@ public final class GetPageShieldScriptsListResult {
      */
     private Integer malwareScore;
     /**
-     * @return The obfuscation score of the JavaScript content.
+     * @return The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private Integer obfuscationScore;
     private List<String> pageUrls;
     private String url;
@@ -83,9 +91,13 @@ public final class GetPageShieldScriptsListResult {
         return this.cryptominingScore;
     }
     /**
-     * @return The dataflow score of the JavaScript content.
+     * @return The dataflow score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Integer dataflowScore() {
         return this.dataflowScore;
     }
@@ -153,9 +165,13 @@ public final class GetPageShieldScriptsListResult {
         return this.malwareScore;
     }
     /**
-     * @return The obfuscation score of the JavaScript content.
+     * @return The obfuscation score of the JavaScript content. This field has been deprecated in favour of js*integrity*score.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Integer obfuscationScore() {
         return this.obfuscationScore;
     }

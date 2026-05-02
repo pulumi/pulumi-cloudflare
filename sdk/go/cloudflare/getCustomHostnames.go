@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `SSL and Certificates Read`
+// - `SSL and Certificates Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,11 +31,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCustomHostnames(ctx, &cloudflare.LookupCustomHostnamesArgs{
-//				ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
-//				Id:        pulumi.StringRef("0d89c70d-ad9f-4843-b99f-6cc0252067e9"),
-//				Direction: pulumi.StringRef("desc"),
-//				Hostname:  pulumi.StringRef("app.example.com"),
-//				Ssl:       pulumi.Float64Ref(0),
+//				ZoneId:               pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Id:                   pulumi.StringRef("0d89c70d-ad9f-4843-b99f-6cc0252067e9"),
+//				CertificateAuthority: pulumi.StringRef("google"),
+//				CustomOriginServer:   pulumi.StringRef("origin2.example.com"),
+//				Direction:            pulumi.StringRef("desc"),
+//				Hostname: cloudflare.GetCustomHostnamesHostname{
+//					Contain: pulumi.StringRef("example.com"),
+//				},
+//				HostnameStatus: pulumi.StringRef("provisioned"),
+//				Ssl:            pulumi.Float64Ref(0),
+//				SslStatus:      pulumi.StringRef("active"),
+//				Wildcard:       pulumi.BoolRef(false),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,11 +64,18 @@ func LookupCustomHostnames(ctx *pulumi.Context, args *LookupCustomHostnamesArgs,
 
 // A collection of arguments for invoking getCustomHostnames.
 type LookupCustomHostnamesArgs struct {
+	// Filter by the certificate authority that issued the SSL certificate.
+	// Available values: "google", "lets*encrypt", "ssl*com".
+	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	// Filter by custom origin server name.
+	CustomOriginServer *string `pulumi:"customOriginServer"`
 	// Direction to order hostnames.
 	// Available values: "asc", "desc".
-	Direction *string `pulumi:"direction"`
-	// Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
-	Hostname *string `pulumi:"hostname"`
+	Direction *string                     `pulumi:"direction"`
+	Hostname  *GetCustomHostnamesHostname `pulumi:"hostname"`
+	// Filter by the hostname's activation status.
+	// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
+	HostnameStatus *string `pulumi:"hostnameStatus"`
 	// Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
 	Id *string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -67,17 +86,29 @@ type LookupCustomHostnamesArgs struct {
 	// Whether to filter hostnames based on if they have SSL enabled.
 	// Available values: 0, 1.
 	Ssl *float64 `pulumi:"ssl"`
+	// Filter by SSL certificate status.
+	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+	SslStatus *string `pulumi:"sslStatus"`
+	// Filter by whether the custom hostname is a wildcard hostname.
+	Wildcard *bool `pulumi:"wildcard"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getCustomHostnames.
 type LookupCustomHostnamesResult struct {
+	// Filter by the certificate authority that issued the SSL certificate.
+	// Available values: "google", "lets*encrypt", "ssl*com".
+	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	// Filter by custom origin server name.
+	CustomOriginServer *string `pulumi:"customOriginServer"`
 	// Direction to order hostnames.
 	// Available values: "asc", "desc".
-	Direction *string `pulumi:"direction"`
-	// Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
-	Hostname *string `pulumi:"hostname"`
+	Direction *string                     `pulumi:"direction"`
+	Hostname  *GetCustomHostnamesHostname `pulumi:"hostname"`
+	// Filter by the hostname's activation status.
+	// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
+	HostnameStatus *string `pulumi:"hostnameStatus"`
 	// Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
 	Id *string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -90,8 +121,13 @@ type LookupCustomHostnamesResult struct {
 	// Whether to filter hostnames based on if they have SSL enabled.
 	// Available values: 0, 1.
 	Ssl *float64 `pulumi:"ssl"`
+	// Filter by SSL certificate status.
+	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+	SslStatus *string `pulumi:"sslStatus"`
+	// Filter by whether the custom hostname is a wildcard hostname.
+	Wildcard *bool `pulumi:"wildcard"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupCustomHostnamesOutput(ctx *pulumi.Context, args LookupCustomHostnamesOutputArgs, opts ...pulumi.InvokeOption) LookupCustomHostnamesResultOutput {
@@ -105,11 +141,18 @@ func LookupCustomHostnamesOutput(ctx *pulumi.Context, args LookupCustomHostnames
 
 // A collection of arguments for invoking getCustomHostnames.
 type LookupCustomHostnamesOutputArgs struct {
+	// Filter by the certificate authority that issued the SSL certificate.
+	// Available values: "google", "lets*encrypt", "ssl*com".
+	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
+	// Filter by custom origin server name.
+	CustomOriginServer pulumi.StringPtrInput `pulumi:"customOriginServer"`
 	// Direction to order hostnames.
 	// Available values: "asc", "desc".
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
-	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	Direction pulumi.StringPtrInput              `pulumi:"direction"`
+	Hostname  GetCustomHostnamesHostnamePtrInput `pulumi:"hostname"`
+	// Filter by the hostname's activation status.
+	// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
+	HostnameStatus pulumi.StringPtrInput `pulumi:"hostnameStatus"`
 	// Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -120,8 +163,13 @@ type LookupCustomHostnamesOutputArgs struct {
 	// Whether to filter hostnames based on if they have SSL enabled.
 	// Available values: 0, 1.
 	Ssl pulumi.Float64PtrInput `pulumi:"ssl"`
+	// Filter by SSL certificate status.
+	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+	SslStatus pulumi.StringPtrInput `pulumi:"sslStatus"`
+	// Filter by whether the custom hostname is a wildcard hostname.
+	Wildcard pulumi.BoolPtrInput `pulumi:"wildcard"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupCustomHostnamesOutputArgs) ElementType() reflect.Type {
@@ -143,15 +191,31 @@ func (o LookupCustomHostnamesResultOutput) ToLookupCustomHostnamesResultOutputWi
 	return o
 }
 
+// Filter by the certificate authority that issued the SSL certificate.
+// Available values: "google", "lets*encrypt", "ssl*com".
+func (o LookupCustomHostnamesResultOutput) CertificateAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCustomHostnamesResult) *string { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
+}
+
+// Filter by custom origin server name.
+func (o LookupCustomHostnamesResultOutput) CustomOriginServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCustomHostnamesResult) *string { return v.CustomOriginServer }).(pulumi.StringPtrOutput)
+}
+
 // Direction to order hostnames.
 // Available values: "asc", "desc".
 func (o LookupCustomHostnamesResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomHostnamesResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.
-func (o LookupCustomHostnamesResultOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCustomHostnamesResult) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+func (o LookupCustomHostnamesResultOutput) Hostname() GetCustomHostnamesHostnamePtrOutput {
+	return o.ApplyT(func(v LookupCustomHostnamesResult) *GetCustomHostnamesHostname { return v.Hostname }).(GetCustomHostnamesHostnamePtrOutput)
+}
+
+// Filter by the hostname's activation status.
+// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
+func (o LookupCustomHostnamesResultOutput) HostnameStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCustomHostnamesResult) *string { return v.HostnameStatus }).(pulumi.StringPtrOutput)
 }
 
 // Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
@@ -181,9 +245,20 @@ func (o LookupCustomHostnamesResultOutput) Ssl() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupCustomHostnamesResult) *float64 { return v.Ssl }).(pulumi.Float64PtrOutput)
 }
 
+// Filter by SSL certificate status.
+// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+func (o LookupCustomHostnamesResultOutput) SslStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCustomHostnamesResult) *string { return v.SslStatus }).(pulumi.StringPtrOutput)
+}
+
+// Filter by whether the custom hostname is a wildcard hostname.
+func (o LookupCustomHostnamesResultOutput) Wildcard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupCustomHostnamesResult) *bool { return v.Wildcard }).(pulumi.BoolPtrOutput)
+}
+
 // Identifier.
-func (o LookupCustomHostnamesResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCustomHostnamesResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupCustomHostnamesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCustomHostnamesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

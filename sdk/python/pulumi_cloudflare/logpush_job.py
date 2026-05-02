@@ -42,7 +42,7 @@ class LogpushJobArgs:
         :param pulumi.Input[_builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-               Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+               Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         :param pulumi.Input[_builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[_builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
         :param pulumi.Input[_builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
@@ -123,7 +123,7 @@ class LogpushJobArgs:
     def dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-        Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+        Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         """
         return pulumi.get(self, "dataset")
 
@@ -306,7 +306,7 @@ class _LogpushJobState:
 
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-               Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+               Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         :param pulumi.Input[_builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[_builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[_builtins.str] error_message: If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
@@ -386,7 +386,7 @@ class _LogpushJobState:
     def dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-        Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+        Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         """
         return pulumi.get(self, "dataset")
 
@@ -614,6 +614,10 @@ class LogpushJob(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Logs Write`
+
         ## Example Usage
 
         ```python
@@ -643,6 +647,7 @@ class LogpushJob(pulumi.CustomResource):
                     "DstIP",
                     "SrcIP",
                 ],
+                "merge_subrequests": True,
                 "output_type": "ndjson",
                 "record_delimiter": "",
                 "record_prefix": "{",
@@ -667,7 +672,7 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-               Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+               Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         :param pulumi.Input[_builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[_builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[_builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
@@ -691,6 +696,10 @@ class LogpushJob(pulumi.CustomResource):
                  args: LogpushJobArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Logs Write`
+
         ## Example Usage
 
         ```python
@@ -720,6 +729,7 @@ class LogpushJob(pulumi.CustomResource):
                     "DstIP",
                     "SrcIP",
                 ],
+                "merge_subrequests": True,
                 "output_type": "ndjson",
                 "record_delimiter": "",
                 "record_prefix": "{",
@@ -783,7 +793,7 @@ class LogpushJob(pulumi.CustomResource):
             __props__.__dict__["dataset"] = dataset
             if destination_conf is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_conf'")
-            __props__.__dict__["destination_conf"] = destination_conf
+            __props__.__dict__["destination_conf"] = None if destination_conf is None else pulumi.Output.secret(destination_conf)
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["filter"] = filter
             __props__.__dict__["frequency"] = frequency
@@ -799,7 +809,7 @@ class LogpushJob(pulumi.CustomResource):
             __props__.__dict__["error_message"] = None
             __props__.__dict__["last_complete"] = None
             __props__.__dict__["last_error"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["ownershipChallenge"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["destinationConf", "ownershipChallenge"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(LogpushJob, __self__).__init__(
             'cloudflare:index/logpushJob:LogpushJob',
@@ -838,7 +848,7 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-               Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+               Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         :param pulumi.Input[_builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[_builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[_builtins.str] error_message: If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
@@ -895,7 +905,7 @@ class LogpushJob(pulumi.CustomResource):
     def dataset(self) -> pulumi.Output[_builtins.str]:
         """
         Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-        Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+        Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         """
         return pulumi.get(self, "dataset")
 

@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `SCIM Provisioning`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getAccountRoles(args: GetAccountRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountRolesResult> {
+export function getAccountRoles(args?: GetAccountRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountRolesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountRoles:getAccountRoles", {
         "accountId": args.accountId,
@@ -33,7 +40,7 @@ export interface GetAccountRolesArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +54,7 @@ export interface GetAccountRolesResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +69,12 @@ export interface GetAccountRolesResult {
     readonly results: outputs.GetAccountRolesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `SCIM Provisioning`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +86,8 @@ export interface GetAccountRolesResult {
  * });
  * ```
  */
-export function getAccountRolesOutput(args: GetAccountRolesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountRolesResult> {
+export function getAccountRolesOutput(args?: GetAccountRolesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountRolesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountRoles:getAccountRoles", {
         "accountId": args.accountId,
@@ -88,7 +102,7 @@ export interface GetAccountRolesOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

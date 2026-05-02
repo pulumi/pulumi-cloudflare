@@ -80,7 +80,7 @@ public final class GetCustomHostnameResult {
      * @return Identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetCustomHostnameResult() {}
     /**
@@ -171,8 +171,8 @@ public final class GetCustomHostnameResult {
      * @return Identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -197,7 +197,7 @@ public final class GetCustomHostnameResult {
         private GetCustomHostnameSsl ssl;
         private String status;
         private List<String> verificationErrors;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetCustomHostnameResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -321,10 +321,8 @@ public final class GetCustomHostnameResult {
             return verificationErrors(List.of(verificationErrors));
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetCustomHostnameResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

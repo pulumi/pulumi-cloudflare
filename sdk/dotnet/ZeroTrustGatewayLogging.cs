@@ -49,7 +49,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// &gt; This resource does not currently support `pulumi import`.
+    /// ```sh
+    /// $ pulumi import cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging example '&lt;account_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging")]
     public partial class ZeroTrustGatewayLogging : global::Pulumi.CustomResource

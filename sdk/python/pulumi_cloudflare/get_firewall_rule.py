@@ -119,7 +119,7 @@ class GetFirewallRuleResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Defines an identifier.
         """
@@ -147,6 +147,11 @@ def get_firewall_rule(rule_id: Optional[_builtins.str] = None,
                       zone_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallRuleResult:
     """
+    Accepted Permissions
+
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+
     ## Example Usage
 
     ```python
@@ -178,9 +183,14 @@ def get_firewall_rule(rule_id: Optional[_builtins.str] = None,
         rule_id=pulumi.get(__ret__, 'rule_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_firewall_rule_output(rule_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                             zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallRuleResult]:
     """
+    Accepted Permissions
+
+    - `Firewall Services Read`
+    - `Firewall Services Write`
+
     ## Example Usage
 
     ```python

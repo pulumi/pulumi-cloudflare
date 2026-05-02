@@ -21,50 +21,39 @@ __all__ = ['R2CustomDomainArgs', 'R2CustomDomain']
 @pulumi.input_type
 class R2CustomDomainArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  bucket_name: pulumi.Input[_builtins.str],
                  domain: pulumi.Input[_builtins.str],
                  enabled: pulumi.Input[_builtins.bool],
                  zone_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
                  min_tls: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a R2CustomDomain resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain to be added.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
         :param pulumi.Input[_builtins.str] zone_id: Zone ID of the custom domain.
+        :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[_builtins.str] min_tls: Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
                Available values: "1.0", "1.1", "1.2", "1.3".
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "zone_id", zone_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if ciphers is not None:
             pulumi.set(__self__, "ciphers", ciphers)
         if jurisdiction is not None:
             pulumi.set(__self__, "jurisdiction", jurisdiction)
         if min_tls is not None:
             pulumi.set(__self__, "min_tls", min_tls)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Account ID.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
@@ -113,6 +102,18 @@ class R2CustomDomainArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Account ID.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -335,6 +336,11 @@ class R2CustomDomain(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Workers R2 Storage Read`
+        - `Workers R2 Storage Write`
+
         ## Example Usage
 
         ```python
@@ -375,6 +381,11 @@ class R2CustomDomain(pulumi.CustomResource):
                  args: R2CustomDomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Workers R2 Storage Read`
+        - `Workers R2 Storage Write`
+
         ## Example Usage
 
         ```python
@@ -428,8 +439,6 @@ class R2CustomDomain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = R2CustomDomainArgs.__new__(R2CustomDomainArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if bucket_name is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_name'")
@@ -504,7 +513,7 @@ class R2CustomDomain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Account ID.
         """

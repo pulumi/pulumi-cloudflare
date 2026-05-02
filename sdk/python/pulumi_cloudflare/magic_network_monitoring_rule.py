@@ -19,44 +19,65 @@ __all__ = ['MagicNetworkMonitoringRuleArgs', 'MagicNetworkMonitoringRule']
 @pulumi.input_type
 class MagicNetworkMonitoringRuleArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
+                 automatic_advertisement: pulumi.Input[_builtins.bool],
                  name: pulumi.Input[_builtins.str],
-                 automatic_advertisement: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.float]] = None,
+                 prefixes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 type: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth_threshold: Optional[pulumi.Input[_builtins.float]] = None,
                  duration: Optional[pulumi.Input[_builtins.str]] = None,
                  packet_threshold: Optional[pulumi.Input[_builtins.float]] = None,
-                 prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 prefix_match: Optional[pulumi.Input[_builtins.str]] = None,
+                 zscore_sensitivity: Optional[pulumi.Input[_builtins.str]] = None,
+                 zscore_target: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MagicNetworkMonitoringRule resource.
 
-        :param pulumi.Input[_builtins.str] name: The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
         :param pulumi.Input[_builtins.bool] automatic_advertisement: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
-        :param pulumi.Input[_builtins.float] bandwidth: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
+        :param pulumi.Input[_builtins.str] name: The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
+        :param pulumi.Input[_builtins.str] type: MNM rule type.
+               Available values: "threshold", "zscore", "advanced_ddos".
+        :param pulumi.Input[_builtins.float] bandwidth_threshold: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         :param pulumi.Input[_builtins.str] duration: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
                Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         :param pulumi.Input[_builtins.float] packet_threshold: The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
+        :param pulumi.Input[_builtins.str] prefix_match: Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+               Available values: "exact", "subnet", "supernet".
+        :param pulumi.Input[_builtins.str] zscore_sensitivity: Level of sensitivity set for zscore rules.
+               Available values: "low", "medium", "high".
+        :param pulumi.Input[_builtins.str] zscore_target: Target of the zscore rule analysis.
+               Available values: "bits", "packets".
         """
-        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "automatic_advertisement", automatic_advertisement)
         pulumi.set(__self__, "name", name)
-        if automatic_advertisement is not None:
-            pulumi.set(__self__, "automatic_advertisement", automatic_advertisement)
-        if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+        pulumi.set(__self__, "prefixes", prefixes)
+        pulumi.set(__self__, "type", type)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if bandwidth_threshold is not None:
+            pulumi.set(__self__, "bandwidth_threshold", bandwidth_threshold)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
         if packet_threshold is not None:
             pulumi.set(__self__, "packet_threshold", packet_threshold)
-        if prefixes is not None:
-            pulumi.set(__self__, "prefixes", prefixes)
+        if prefix_match is not None:
+            pulumi.set(__self__, "prefix_match", prefix_match)
+        if zscore_sensitivity is not None:
+            pulumi.set(__self__, "zscore_sensitivity", zscore_sensitivity)
+        if zscore_target is not None:
+            pulumi.set(__self__, "zscore_target", zscore_target)
 
     @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "account_id")
+    @pulumi.getter(name="automaticAdvertisement")
+    def automatic_advertisement(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
+        """
+        return pulumi.get(self, "automatic_advertisement")
 
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
+    @automatic_advertisement.setter
+    def automatic_advertisement(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "automatic_advertisement", value)
 
     @_builtins.property
     @pulumi.getter
@@ -71,28 +92,47 @@ class MagicNetworkMonitoringRuleArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
-    @pulumi.getter(name="automaticAdvertisement")
-    def automatic_advertisement(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
-        """
-        return pulumi.get(self, "automatic_advertisement")
+    @pulumi.getter
+    def prefixes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        return pulumi.get(self, "prefixes")
 
-    @automatic_advertisement.setter
-    def automatic_advertisement(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "automatic_advertisement", value)
+    @prefixes.setter
+    def prefixes(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "prefixes", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        MNM rule type.
+        Available values: "threshold", "zscore", "advanced_ddos".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bandwidthThreshold")
+    def bandwidth_threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
         The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         """
-        return pulumi.get(self, "bandwidth")
+        return pulumi.get(self, "bandwidth_threshold")
 
-    @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.float]]):
-        pulumi.set(self, "bandwidth", value)
+    @bandwidth_threshold.setter
+    def bandwidth_threshold(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "bandwidth_threshold", value)
 
     @_builtins.property
     @pulumi.getter
@@ -120,13 +160,43 @@ class MagicNetworkMonitoringRuleArgs:
         pulumi.set(self, "packet_threshold", value)
 
     @_builtins.property
-    @pulumi.getter
-    def prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        return pulumi.get(self, "prefixes")
+    @pulumi.getter(name="prefixMatch")
+    def prefix_match(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+        Available values: "exact", "subnet", "supernet".
+        """
+        return pulumi.get(self, "prefix_match")
 
-    @prefixes.setter
-    def prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "prefixes", value)
+    @prefix_match.setter
+    def prefix_match(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "prefix_match", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zscoreSensitivity")
+    def zscore_sensitivity(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Level of sensitivity set for zscore rules.
+        Available values: "low", "medium", "high".
+        """
+        return pulumi.get(self, "zscore_sensitivity")
+
+    @zscore_sensitivity.setter
+    def zscore_sensitivity(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zscore_sensitivity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zscoreTarget")
+    def zscore_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Target of the zscore rule analysis.
+        Available values: "bits", "packets".
+        """
+        return pulumi.get(self, "zscore_target")
+
+    @zscore_target.setter
+    def zscore_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zscore_target", value)
 
 
 @pulumi.input_type
@@ -134,7 +204,6 @@ class _MagicNetworkMonitoringRuleState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  automatic_advertisement: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.float]] = None,
                  bandwidth_threshold: Optional[pulumi.Input[_builtins.float]] = None,
                  duration: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -148,7 +217,6 @@ class _MagicNetworkMonitoringRuleState:
         Input properties used for looking up and filtering MagicNetworkMonitoringRule resources.
 
         :param pulumi.Input[_builtins.bool] automatic_advertisement: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
-        :param pulumi.Input[_builtins.float] bandwidth: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         :param pulumi.Input[_builtins.float] bandwidth_threshold: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         :param pulumi.Input[_builtins.str] duration: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
                Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
@@ -167,8 +235,6 @@ class _MagicNetworkMonitoringRuleState:
             pulumi.set(__self__, "account_id", account_id)
         if automatic_advertisement is not None:
             pulumi.set(__self__, "automatic_advertisement", automatic_advertisement)
-        if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
         if bandwidth_threshold is not None:
             pulumi.set(__self__, "bandwidth_threshold", bandwidth_threshold)
         if duration is not None:
@@ -208,18 +274,6 @@ class _MagicNetworkMonitoringRuleState:
     @automatic_advertisement.setter
     def automatic_advertisement(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "automatic_advertisement", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.float]]:
-        """
-        The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-        """
-        return pulumi.get(self, "bandwidth")
-
-    @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.float]]):
-        pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthThreshold")
@@ -340,13 +394,23 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  automatic_advertisement: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.float]] = None,
+                 bandwidth_threshold: Optional[pulumi.Input[_builtins.float]] = None,
                  duration: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  packet_threshold: Optional[pulumi.Input[_builtins.float]] = None,
+                 prefix_match: Optional[pulumi.Input[_builtins.str]] = None,
                  prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 zscore_sensitivity: Optional[pulumi.Input[_builtins.str]] = None,
+                 zscore_target: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Magic Network Monitoring Admin`
+        - `Magic Network Monitoring Config Read`
+        - `Magic Network Monitoring Config Write`
+
         ## Example Usage
 
         ```python
@@ -355,12 +419,16 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
 
         example_magic_network_monitoring_rule = cloudflare.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule",
             account_id="6f91088a406011ed95aed352566e8d4c",
-            duration="1m",
-            name="my_rule_1",
             automatic_advertisement=True,
-            bandwidth=1000,
+            name="my_rule_1",
+            prefixes=["203.0.113.1/32"],
+            type="zscore",
+            bandwidth_threshold=1000,
+            duration="1m",
             packet_threshold=10000,
-            prefixes=["203.0.113.1/32"])
+            prefix_match="exact",
+            zscore_sensitivity="high",
+            zscore_target="bits")
         ```
 
         ## Import
@@ -373,11 +441,19 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] automatic_advertisement: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
-        :param pulumi.Input[_builtins.float] bandwidth: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
+        :param pulumi.Input[_builtins.float] bandwidth_threshold: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         :param pulumi.Input[_builtins.str] duration: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
                Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
         :param pulumi.Input[_builtins.str] name: The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
         :param pulumi.Input[_builtins.float] packet_threshold: The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
+        :param pulumi.Input[_builtins.str] prefix_match: Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+               Available values: "exact", "subnet", "supernet".
+        :param pulumi.Input[_builtins.str] type: MNM rule type.
+               Available values: "threshold", "zscore", "advanced_ddos".
+        :param pulumi.Input[_builtins.str] zscore_sensitivity: Level of sensitivity set for zscore rules.
+               Available values: "low", "medium", "high".
+        :param pulumi.Input[_builtins.str] zscore_target: Target of the zscore rule analysis.
+               Available values: "bits", "packets".
         """
         ...
     @overload
@@ -386,6 +462,12 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
                  args: MagicNetworkMonitoringRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Magic Network Monitoring Admin`
+        - `Magic Network Monitoring Config Read`
+        - `Magic Network Monitoring Config Write`
+
         ## Example Usage
 
         ```python
@@ -394,12 +476,16 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
 
         example_magic_network_monitoring_rule = cloudflare.MagicNetworkMonitoringRule("example_magic_network_monitoring_rule",
             account_id="6f91088a406011ed95aed352566e8d4c",
-            duration="1m",
-            name="my_rule_1",
             automatic_advertisement=True,
-            bandwidth=1000,
+            name="my_rule_1",
+            prefixes=["203.0.113.1/32"],
+            type="zscore",
+            bandwidth_threshold=1000,
+            duration="1m",
             packet_threshold=10000,
-            prefixes=["203.0.113.1/32"])
+            prefix_match="exact",
+            zscore_sensitivity="high",
+            zscore_target="bits")
         ```
 
         ## Import
@@ -426,11 +512,15 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  automatic_advertisement: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.float]] = None,
+                 bandwidth_threshold: Optional[pulumi.Input[_builtins.float]] = None,
                  duration: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  packet_threshold: Optional[pulumi.Input[_builtins.float]] = None,
+                 prefix_match: Optional[pulumi.Input[_builtins.str]] = None,
                  prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 zscore_sensitivity: Optional[pulumi.Input[_builtins.str]] = None,
+                 zscore_target: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -440,22 +530,25 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MagicNetworkMonitoringRuleArgs.__new__(MagicNetworkMonitoringRuleArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            if automatic_advertisement is None and not opts.urn:
+                raise TypeError("Missing required property 'automatic_advertisement'")
             __props__.__dict__["automatic_advertisement"] = automatic_advertisement
-            __props__.__dict__["bandwidth"] = bandwidth
+            __props__.__dict__["bandwidth_threshold"] = bandwidth_threshold
             __props__.__dict__["duration"] = duration
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["packet_threshold"] = packet_threshold
+            __props__.__dict__["prefix_match"] = prefix_match
+            if prefixes is None and not opts.urn:
+                raise TypeError("Missing required property 'prefixes'")
             __props__.__dict__["prefixes"] = prefixes
-            __props__.__dict__["bandwidth_threshold"] = None
-            __props__.__dict__["prefix_match"] = None
-            __props__.__dict__["type"] = None
-            __props__.__dict__["zscore_sensitivity"] = None
-            __props__.__dict__["zscore_target"] = None
+            if type is None and not opts.urn:
+                raise TypeError("Missing required property 'type'")
+            __props__.__dict__["type"] = type
+            __props__.__dict__["zscore_sensitivity"] = zscore_sensitivity
+            __props__.__dict__["zscore_target"] = zscore_target
         super(MagicNetworkMonitoringRule, __self__).__init__(
             'cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule',
             resource_name,
@@ -468,7 +561,6 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             automatic_advertisement: Optional[pulumi.Input[_builtins.bool]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.float]] = None,
             bandwidth_threshold: Optional[pulumi.Input[_builtins.float]] = None,
             duration: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -486,7 +578,6 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] automatic_advertisement: Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
-        :param pulumi.Input[_builtins.float] bandwidth: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         :param pulumi.Input[_builtins.float] bandwidth_threshold: The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         :param pulumi.Input[_builtins.str] duration: The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
                Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
@@ -507,7 +598,6 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["automatic_advertisement"] = automatic_advertisement
-        __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["bandwidth_threshold"] = bandwidth_threshold
         __props__.__dict__["duration"] = duration
         __props__.__dict__["name"] = name
@@ -521,28 +611,20 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter(name="automaticAdvertisement")
-    def automatic_advertisement(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def automatic_advertisement(self) -> pulumi.Output[_builtins.bool]:
         """
         Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
         """
         return pulumi.get(self, "automatic_advertisement")
 
     @_builtins.property
-    @pulumi.getter
-    def bandwidth(self) -> pulumi.Output[Optional[_builtins.float]]:
-        """
-        The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-        """
-        return pulumi.get(self, "bandwidth")
-
-    @_builtins.property
     @pulumi.getter(name="bandwidthThreshold")
-    def bandwidth_threshold(self) -> pulumi.Output[_builtins.float]:
+    def bandwidth_threshold(self) -> pulumi.Output[Optional[_builtins.float]]:
         """
         The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
         """
@@ -575,7 +657,7 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="prefixMatch")
-    def prefix_match(self) -> pulumi.Output[_builtins.str]:
+    def prefix_match(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
         Available values: "exact", "subnet", "supernet".
@@ -584,7 +666,7 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def prefixes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def prefixes(self) -> pulumi.Output[Sequence[_builtins.str]]:
         return pulumi.get(self, "prefixes")
 
     @_builtins.property
@@ -598,7 +680,7 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zscoreSensitivity")
-    def zscore_sensitivity(self) -> pulumi.Output[_builtins.str]:
+    def zscore_sensitivity(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Level of sensitivity set for zscore rules.
         Available values: "low", "medium", "high".
@@ -607,7 +689,7 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zscoreTarget")
-    def zscore_target(self) -> pulumi.Output[_builtins.str]:
+    def zscore_target(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Target of the zscore rule analysis.
         Available values: "bits", "packets".

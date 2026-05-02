@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Queues Read`
+ * - `Queues Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -56,7 +63,7 @@ export class Queue extends pulumi.CustomResource {
     /**
      * A Resource identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly consumers: pulumi.Output<outputs.QueueConsumer[]>;
     declare public /*out*/ readonly consumersTotalCount: pulumi.Output<number>;
     declare public /*out*/ readonly createdOn: pulumi.Output<string>;
@@ -92,9 +99,6 @@ export class Queue extends pulumi.CustomResource {
             resourceInputs["settings"] = state?.settings;
         } else {
             const args = argsOrState as QueueArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.queueName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queueName'");
             }
@@ -140,7 +144,7 @@ export interface QueueArgs {
     /**
      * A Resource identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     queueName: pulumi.Input<string>;
     settings?: pulumi.Input<inputs.QueueSettings>;
 }

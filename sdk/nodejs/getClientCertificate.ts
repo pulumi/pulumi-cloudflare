@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getClientCertificate(args: GetClientCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetClientCertificateResult> {
+export function getClientCertificate(args?: GetClientCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetClientCertificateResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getClientCertificate:getClientCertificate", {
         "clientCertificateId": args.clientCertificateId,
@@ -40,7 +46,7 @@ export interface GetClientCertificateArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -128,9 +134,14 @@ export interface GetClientCertificateResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -143,7 +154,8 @@ export interface GetClientCertificateResult {
  * });
  * ```
  */
-export function getClientCertificateOutput(args: GetClientCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientCertificateResult> {
+export function getClientCertificateOutput(args?: GetClientCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientCertificateResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getClientCertificate:getClientCertificate", {
         "clientCertificateId": args.clientCertificateId,
@@ -164,5 +176,5 @@ export interface GetClientCertificateOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

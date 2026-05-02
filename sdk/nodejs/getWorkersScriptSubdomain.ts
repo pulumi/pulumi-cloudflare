@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +38,7 @@ export interface GetWorkersScriptSubdomainArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Name of the script, used in URLs and route configuration.
      */
@@ -46,7 +52,7 @@ export interface GetWorkersScriptSubdomainResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Whether the Worker is available on the workers.dev subdomain.
      */
@@ -65,6 +71,12 @@ export interface GetWorkersScriptSubdomainResult {
     readonly scriptName: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -92,7 +104,7 @@ export interface GetWorkersScriptSubdomainOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Name of the script, used in URLs and route configuration.
      */

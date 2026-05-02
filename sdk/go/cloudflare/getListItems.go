@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Filter Lists Edit`
+// - `Account Filter Lists Read`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetListItems(ctx, &cloudflare.LookupListItemsArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ListId:    "2c0fc9fa937b11eaa1b71c4d701ab86e",
 //				PerPage:   pulumi.IntRef(1),
 //				Search:    pulumi.StringRef("1.1.1."),
@@ -52,7 +57,7 @@ func LookupListItems(ctx *pulumi.Context, args *LookupListItemsArgs, opts ...pul
 // A collection of arguments for invoking getListItems.
 type LookupListItemsArgs struct {
 	// The Account ID for this resource.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The unique ID of the list.
 	ListId string `pulumi:"listId"`
 	// Max items to fetch, default: 1000
@@ -66,7 +71,7 @@ type LookupListItemsArgs struct {
 // A collection of values returned by getListItems.
 type LookupListItemsResult struct {
 	// The Account ID for this resource.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The unique ID of the list.
@@ -93,7 +98,7 @@ func LookupListItemsOutput(ctx *pulumi.Context, args LookupListItemsOutputArgs, 
 // A collection of arguments for invoking getListItems.
 type LookupListItemsOutputArgs struct {
 	// The Account ID for this resource.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The unique ID of the list.
 	ListId pulumi.StringInput `pulumi:"listId"`
 	// Max items to fetch, default: 1000
@@ -124,8 +129,8 @@ func (o LookupListItemsResultOutput) ToLookupListItemsResultOutputWithContext(ct
 }
 
 // The Account ID for this resource.
-func (o LookupListItemsResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupListItemsResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupListItemsResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupListItemsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -12,9 +12,15 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Stream Read`
+ * - `Stream Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -62,14 +68,14 @@ public class StreamKey extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * The date and time a signing key was created.
@@ -100,6 +106,20 @@ public class StreamKey extends com.pulumi.resources.CustomResource {
         return this.jwk;
     }
     /**
+     * The unique identifier for the signing key.
+     * 
+     */
+    @Export(name="keyId", refs={String.class}, tree="[0]")
+    private Output<String> keyId;
+
+    /**
+     * @return The unique identifier for the signing key.
+     * 
+     */
+    public Output<String> keyId() {
+        return this.keyId;
+    }
+    /**
      * The signing key in PEM format.
      * 
      */
@@ -126,7 +146,7 @@ public class StreamKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StreamKey(java.lang.String name, StreamKeyArgs args) {
+    public StreamKey(java.lang.String name, @Nullable StreamKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -135,7 +155,7 @@ public class StreamKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StreamKey(java.lang.String name, StreamKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public StreamKey(java.lang.String name, @Nullable StreamKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/streamKey:StreamKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -143,7 +163,7 @@ public class StreamKey extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/streamKey:StreamKey", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static StreamKeyArgs makeArgs(StreamKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static StreamKeyArgs makeArgs(@Nullable StreamKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

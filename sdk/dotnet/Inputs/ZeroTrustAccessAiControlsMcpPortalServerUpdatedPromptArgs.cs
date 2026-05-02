@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs : global::Pulumi.ResourceArgs
     {
+        [Input("alias")]
+        public Input<string>? Alias { get; set; }
+
         [Input("description")]
         public Input<string>? Description { get; set; }
 

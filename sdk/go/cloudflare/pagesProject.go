@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Pages Read`
+// - `Pages Write`
+//
 // > If you are using a `source` block configuration, you must first have a
 //
 //	connected GitHub or GitLab account connected to Cloudflare. See the
@@ -261,7 +266,7 @@ type PagesProject struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Configs for the project build process.
 	BuildConfig PagesProjectBuildConfigOutput `pulumi:"buildConfig"`
 	// Most recent production deployment of the project.
@@ -301,9 +306,6 @@ func NewPagesProject(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -408,7 +410,7 @@ func (PagesProjectState) ElementType() reflect.Type {
 
 type pagesProjectArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Configs for the project build process.
 	BuildConfig *PagesProjectBuildConfig `pulumi:"buildConfig"`
 	// Configs for deployments in a project.
@@ -424,7 +426,7 @@ type pagesProjectArgs struct {
 // The set of arguments for constructing a PagesProject resource.
 type PagesProjectArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Configs for the project build process.
 	BuildConfig PagesProjectBuildConfigPtrInput
 	// Configs for deployments in a project.
@@ -525,8 +527,8 @@ func (o PagesProjectOutput) ToPagesProjectOutputWithContext(ctx context.Context)
 }
 
 // Identifier.
-func (o PagesProjectOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o PagesProjectOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PagesProject) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Configs for the project build process.

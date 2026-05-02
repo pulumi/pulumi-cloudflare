@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Email Routing Rules Read`
+// - `Email Routing Rules Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailRoutingRule(ctx, &cloudflare.LookupEmailRoutingRuleArgs{
-//				ZoneId:         "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:         pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RuleIdentifier: pulumi.StringRef("a7e6fb77503c41d8a7f3113c6918f10c"),
 //			}, nil)
 //			if err != nil {
@@ -53,7 +58,7 @@ type LookupEmailRoutingRuleArgs struct {
 	// Routing rule identifier.
 	RuleIdentifier *string `pulumi:"ruleIdentifier"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getEmailRoutingRule.
@@ -78,7 +83,7 @@ type LookupEmailRoutingRuleResult struct {
 	// Deprecated: This attribute is deprecated.
 	Tag string `pulumi:"tag"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupEmailRoutingRuleOutput(ctx *pulumi.Context, args LookupEmailRoutingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupEmailRoutingRuleResultOutput {
@@ -96,7 +101,7 @@ type LookupEmailRoutingRuleOutputArgs struct {
 	// Routing rule identifier.
 	RuleIdentifier pulumi.StringPtrInput `pulumi:"ruleIdentifier"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupEmailRoutingRuleOutputArgs) ElementType() reflect.Type {
@@ -165,8 +170,8 @@ func (o LookupEmailRoutingRuleResultOutput) Tag() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupEmailRoutingRuleResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailRoutingRuleResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupEmailRoutingRuleResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailRoutingRuleResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

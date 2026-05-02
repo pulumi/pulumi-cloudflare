@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getRateLimits(args: GetRateLimitsArgs, opts?: pulumi.InvokeOptions): Promise<GetRateLimitsResult> {
+export function getRateLimits(args?: GetRateLimitsArgs, opts?: pulumi.InvokeOptions): Promise<GetRateLimitsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRateLimits:getRateLimits", {
         "maxItems": args.maxItems,
@@ -37,7 +43,7 @@ export interface GetRateLimitsArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -59,9 +65,14 @@ export interface GetRateLimitsResult {
     /**
      * Defines an identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetRateLimitsResult {
  * });
  * ```
  */
-export function getRateLimitsOutput(args: GetRateLimitsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRateLimitsResult> {
+export function getRateLimitsOutput(args?: GetRateLimitsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRateLimitsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getRateLimits:getRateLimits", {
         "maxItems": args.maxItems,
@@ -92,5 +104,5 @@ export interface GetRateLimitsOutputArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

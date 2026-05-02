@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Cloudflare One Networks Write`
+    /// - `Cloudflare Tunnel Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -45,7 +50,7 @@ namespace Pulumi.Cloudflare
         /// Cloudflare account ID
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Optional remark describing the route.
@@ -136,8 +141,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Optional remark describing the route.

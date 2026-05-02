@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Bot Management Read`
+ * - `Bot Management Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getBotManagement(args: GetBotManagementArgs, opts?: pulumi.InvokeOptions): Promise<GetBotManagementResult> {
+export function getBotManagement(args?: GetBotManagementArgs, opts?: pulumi.InvokeOptions): Promise<GetBotManagementResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getBotManagement:getBotManagement", {
         "zoneId": args.zoneId,
@@ -32,7 +38,7 @@ export interface GetBotManagementArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -57,6 +63,11 @@ export interface GetBotManagementResult {
      * Available values: "off", "policyOnly".
      */
     readonly cfRobotsVariant: string;
+    /**
+     * Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
+     * Available values: "block", "disabled".
+     */
+    readonly contentBotsProtection: string;
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".
@@ -118,9 +129,14 @@ export interface GetBotManagementResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Bot Management Read`
+ * - `Bot Management Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -132,7 +148,8 @@ export interface GetBotManagementResult {
  * });
  * ```
  */
-export function getBotManagementOutput(args: GetBotManagementOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBotManagementResult> {
+export function getBotManagementOutput(args?: GetBotManagementOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBotManagementResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getBotManagement:getBotManagement", {
         "zoneId": args.zoneId,
@@ -146,5 +163,5 @@ export interface GetBotManagementOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

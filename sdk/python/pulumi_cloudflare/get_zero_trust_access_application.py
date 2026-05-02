@@ -28,7 +28,7 @@ class GetZeroTrustAccessApplicationResult:
     """
     A collection of values returned by getZeroTrustAccessApplication.
     """
-    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, allow_iframe=None, allowed_idps=None, app_id=None, app_launcher_logo_url=None, app_launcher_visible=None, aud=None, auto_redirect_to_identity=None, bg_color=None, cors_headers=None, custom_deny_message=None, custom_deny_url=None, custom_non_identity_deny_url=None, custom_pages=None, destinations=None, domain=None, enable_binding_cookie=None, filter=None, footer_links=None, header_bg_color=None, http_only_cookie_attribute=None, id=None, landing_page_design=None, logo_url=None, name=None, options_preflight_bypass=None, path_cookie_attribute=None, policies=None, read_service_tokens_from_header=None, saas_app=None, same_site_cookie_attribute=None, scim_config=None, self_hosted_domains=None, service_auth401_redirect=None, session_duration=None, skip_app_launcher_login_page=None, skip_interstitial=None, tags=None, target_criterias=None, type=None, zone_id=None):
+    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, allow_iframe=None, allowed_idps=None, app_id=None, app_launcher_logo_url=None, app_launcher_visible=None, aud=None, auto_redirect_to_identity=None, bg_color=None, cors_headers=None, custom_deny_message=None, custom_deny_url=None, custom_non_identity_deny_url=None, custom_pages=None, destinations=None, domain=None, enable_binding_cookie=None, filter=None, footer_links=None, header_bg_color=None, http_only_cookie_attribute=None, id=None, landing_page_design=None, logo_url=None, mfa_config=None, name=None, options_preflight_bypass=None, path_cookie_attribute=None, policies=None, read_service_tokens_from_header=None, saas_app=None, same_site_cookie_attribute=None, scim_config=None, self_hosted_domains=None, service_auth401_redirect=None, session_duration=None, skip_app_launcher_login_page=None, skip_interstitial=None, tags=None, target_criterias=None, type=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -104,6 +104,9 @@ class GetZeroTrustAccessApplicationResult:
         if logo_url and not isinstance(logo_url, str):
             raise TypeError("Expected argument 'logo_url' to be a str")
         pulumi.set(__self__, "logo_url", logo_url)
+        if mfa_config and not isinstance(mfa_config, dict):
+            raise TypeError("Expected argument 'mfa_config' to be a dict")
+        pulumi.set(__self__, "mfa_config", mfa_config)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -351,6 +354,14 @@ class GetZeroTrustAccessApplicationResult:
         return pulumi.get(self, "logo_url")
 
     @_builtins.property
+    @pulumi.getter(name="mfaConfig")
+    def mfa_config(self) -> 'outputs.GetZeroTrustAccessApplicationMfaConfigResult':
+        """
+        Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
+        """
+        return pulumi.get(self, "mfa_config")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -517,6 +528,7 @@ class AwaitableGetZeroTrustAccessApplicationResult(GetZeroTrustAccessApplication
             id=self.id,
             landing_page_design=self.landing_page_design,
             logo_url=self.logo_url,
+            mfa_config=self.mfa_config,
             name=self.name,
             options_preflight_bypass=self.options_preflight_bypass,
             path_cookie_attribute=self.path_cookie_attribute,
@@ -592,6 +604,7 @@ def get_zero_trust_access_application(account_id: Optional[_builtins.str] = None
         id=pulumi.get(__ret__, 'id'),
         landing_page_design=pulumi.get(__ret__, 'landing_page_design'),
         logo_url=pulumi.get(__ret__, 'logo_url'),
+        mfa_config=pulumi.get(__ret__, 'mfa_config'),
         name=pulumi.get(__ret__, 'name'),
         options_preflight_bypass=pulumi.get(__ret__, 'options_preflight_bypass'),
         path_cookie_attribute=pulumi.get(__ret__, 'path_cookie_attribute'),
@@ -664,6 +677,7 @@ def get_zero_trust_access_application_output(account_id: Optional[pulumi.Input[O
         id=pulumi.get(__response__, 'id'),
         landing_page_design=pulumi.get(__response__, 'landing_page_design'),
         logo_url=pulumi.get(__response__, 'logo_url'),
+        mfa_config=pulumi.get(__response__, 'mfa_config'),
         name=pulumi.get(__response__, 'name'),
         options_preflight_bypass=pulumi.get(__response__, 'options_preflight_bypass'),
         path_cookie_attribute=pulumi.get(__response__, 'path_cookie_attribute'),

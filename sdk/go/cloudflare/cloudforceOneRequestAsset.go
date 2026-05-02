@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudforce One Read`
+// - `Cloudforce One Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -50,7 +55,7 @@ type CloudforceOneRequestAsset struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Defines the asset creation time.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// Asset description.
@@ -76,9 +81,6 @@ func NewCloudforceOneRequestAsset(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Page == nil {
 		return nil, errors.New("invalid value for required argument 'Page'")
 	}
@@ -158,7 +160,7 @@ func (CloudforceOneRequestAssetState) ElementType() reflect.Type {
 
 type cloudforceOneRequestAssetArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Page number of results.
 	Page int `pulumi:"page"`
 	// Number of results per page.
@@ -172,7 +174,7 @@ type cloudforceOneRequestAssetArgs struct {
 // The set of arguments for constructing a CloudforceOneRequestAsset resource.
 type CloudforceOneRequestAssetArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Page number of results.
 	Page pulumi.IntInput
 	// Number of results per page.
@@ -271,8 +273,8 @@ func (o CloudforceOneRequestAssetOutput) ToCloudforceOneRequestAssetOutputWithCo
 }
 
 // Identifier.
-func (o CloudforceOneRequestAssetOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o CloudforceOneRequestAssetOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Defines the asset creation time.

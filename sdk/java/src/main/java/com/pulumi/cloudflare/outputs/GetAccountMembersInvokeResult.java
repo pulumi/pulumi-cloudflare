@@ -19,7 +19,7 @@ public final class GetAccountMembersInvokeResult {
      * @return Account identifier tag.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Direction to order results.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
@@ -59,8 +59,8 @@ public final class GetAccountMembersInvokeResult {
      * @return Account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Direction to order results.
@@ -117,7 +117,7 @@ public final class GetAccountMembersInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private @Nullable String direction;
         private String id;
         private @Nullable Integer maxItems;
@@ -137,10 +137,8 @@ public final class GetAccountMembersInvokeResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAccountMembersInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

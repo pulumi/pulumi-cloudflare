@@ -19,7 +19,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustList(args: GetZeroTrustListArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustListResult> {
+export function getZeroTrustList(args?: GetZeroTrustListArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustList:getZeroTrustList", {
         "accountId": args.accountId,
@@ -32,7 +33,7 @@ export function getZeroTrustList(args: GetZeroTrustListArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getZeroTrustList.
  */
 export interface GetZeroTrustListArgs {
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetZeroTrustListFilter;
     /**
      * Identify the API resource with a UUID.
@@ -44,7 +45,7 @@ export interface GetZeroTrustListArgs {
  * A collection of values returned by getZeroTrustList.
  */
 export interface GetZeroTrustListResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly createdAt: string;
     /**
      * Provide the list description.
@@ -73,7 +74,7 @@ export interface GetZeroTrustListResult {
     readonly name: string;
     /**
      * Specify the list type.
-     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE".
+     * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
      */
     readonly type: string;
     readonly updatedAt: string;
@@ -91,7 +92,8 @@ export interface GetZeroTrustListResult {
  * });
  * ```
  */
-export function getZeroTrustListOutput(args: GetZeroTrustListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustListResult> {
+export function getZeroTrustListOutput(args?: GetZeroTrustListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustList:getZeroTrustList", {
         "accountId": args.accountId,
@@ -104,7 +106,7 @@ export function getZeroTrustListOutput(args: GetZeroTrustListOutputArgs, opts?: 
  * A collection of arguments for invoking getZeroTrustList.
  */
 export interface GetZeroTrustListOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetZeroTrustListFilterArgs>;
     /**
      * Identify the API resource with a UUID.

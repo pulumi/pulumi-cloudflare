@@ -15,6 +15,13 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Zone Read`
+ * - `Zone Settings Read`
+ * - `Zone Settings Write`
+ * - `Zone Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

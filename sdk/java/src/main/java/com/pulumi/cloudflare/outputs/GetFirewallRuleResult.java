@@ -56,7 +56,7 @@ public final class GetFirewallRuleResult {
      * @return Defines an identifier.
      * 
      */
-    private String zoneId;
+    private @Nullable String zoneId;
 
     private GetFirewallRuleResult() {}
     /**
@@ -116,8 +116,8 @@ public final class GetFirewallRuleResult {
      * @return Defines an identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     public static Builder builder() {
@@ -137,7 +137,7 @@ public final class GetFirewallRuleResult {
         private List<String> products;
         private String ref;
         private @Nullable String ruleId;
-        private String zoneId;
+        private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetFirewallRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -218,10 +218,8 @@ public final class GetFirewallRuleResult {
             return this;
         }
         @CustomType.Setter
-        public Builder zoneId(String zoneId) {
-            if (zoneId == null) {
-              throw new MissingRequiredPropertyException("GetFirewallRuleResult", "zoneId");
-            }
+        public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

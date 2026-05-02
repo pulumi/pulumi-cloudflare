@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Billing Read`
+ * - `Billing Write`
+ *
  * ## Example Usage
  *
  * ```typescript

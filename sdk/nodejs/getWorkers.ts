@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,11 +24,14 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getWorkers(args: GetWorkersArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersResult> {
+export function getWorkers(args?: GetWorkersArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkers:getWorkers", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "order": args.order,
+        "orderBy": args.orderBy,
     }, opts);
 }
 
@@ -33,11 +42,21 @@ export interface GetWorkersArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Sort direction.
+     * Available values: "asc", "desc".
+     */
+    order?: string;
+    /**
+     * Property to sort results by.
+     * Available values: "deployed*on", "updated*on", "createdOn", "name".
+     */
+    orderBy?: string;
 }
 
 /**
@@ -47,7 +66,7 @@ export interface GetWorkersResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -57,11 +76,27 @@ export interface GetWorkersResult {
      */
     readonly maxItems?: number;
     /**
+     * Sort direction.
+     * Available values: "asc", "desc".
+     */
+    readonly order: string;
+    /**
+     * Property to sort results by.
+     * Available values: "deployed*on", "updated*on", "createdOn", "name".
+     */
+    readonly orderBy: string;
+    /**
      * The items returned by the data source
      */
     readonly results: outputs.GetWorkersResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,11 +108,14 @@ export interface GetWorkersResult {
  * });
  * ```
  */
-export function getWorkersOutput(args: GetWorkersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersResult> {
+export function getWorkersOutput(args?: GetWorkersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkers:getWorkers", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "order": args.order,
+        "orderBy": args.orderBy,
     }, opts);
 }
 
@@ -88,9 +126,19 @@ export interface GetWorkersOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
+    /**
+     * Sort direction.
+     * Available values: "asc", "desc".
+     */
+    order?: pulumi.Input<string>;
+    /**
+     * Property to sort results by.
+     * Available values: "deployed*on", "updated*on", "createdOn", "name".
+     */
+    orderBy?: pulumi.Input<string>;
 }

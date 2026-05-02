@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetConnectivityDirectoryServiceFilter {
     /**
-     * @return Available values: &#34;http&#34;.
+     * @return Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     private @Nullable String type;
 
     private GetConnectivityDirectoryServiceFilter() {}
     /**
-     * @return Available values: &#34;http&#34;.
+     * @return Available values: &#34;tcp&#34;, &#34;http&#34;.
      * 
      */
     public Optional<String> type() {

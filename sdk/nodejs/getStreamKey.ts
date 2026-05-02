@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getStreamKey(args: GetStreamKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamKeyResult> {
+export function getStreamKey(args?: GetStreamKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamKeyResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getStreamKey:getStreamKey", {
         "accountId": args.accountId,
@@ -30,7 +36,7 @@ export interface GetStreamKeyArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
 }
 
 /**
@@ -40,7 +46,7 @@ export interface GetStreamKeyResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The date and time a signing key was created.
      */
@@ -49,8 +55,17 @@ export interface GetStreamKeyResult {
      * Identifier.
      */
     readonly id: string;
+    /**
+     * The unique identifier for the signing key.
+     */
+    readonly keyId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -62,7 +77,8 @@ export interface GetStreamKeyResult {
  * });
  * ```
  */
-export function getStreamKeyOutput(args: GetStreamKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamKeyResult> {
+export function getStreamKeyOutput(args?: GetStreamKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStreamKeyResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getStreamKey:getStreamKey", {
         "accountId": args.accountId,
@@ -76,5 +92,5 @@ export interface GetStreamKeyOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
 }

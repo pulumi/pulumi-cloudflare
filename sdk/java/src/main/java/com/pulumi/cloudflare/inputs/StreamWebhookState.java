@@ -31,6 +31,21 @@ public final class StreamWebhookState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The date and time the webhook was last modified.
+     * 
+     */
+    @Import(name="modified")
+    private @Nullable Output<String> modified;
+
+    /**
+     * @return The date and time the webhook was last modified.
+     * 
+     */
+    public Optional<Output<String>> modified() {
+        return Optional.ofNullable(this.modified);
+    }
+
+    /**
      * The URL where webhooks will be sent.
      * 
      */
@@ -45,11 +60,28 @@ public final class StreamWebhookState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.notificationUrl);
     }
 
+    /**
+     * The secret used to verify webhook signatures.
+     * 
+     */
+    @Import(name="secret")
+    private @Nullable Output<String> secret;
+
+    /**
+     * @return The secret used to verify webhook signatures.
+     * 
+     */
+    public Optional<Output<String>> secret() {
+        return Optional.ofNullable(this.secret);
+    }
+
     private StreamWebhookState() {}
 
     private StreamWebhookState(StreamWebhookState $) {
         this.accountId = $.accountId;
+        this.modified = $.modified;
         this.notificationUrl = $.notificationUrl;
+        this.secret = $.secret;
     }
 
     public static Builder builder() {
@@ -92,6 +124,27 @@ public final class StreamWebhookState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param modified The date and time the webhook was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modified(@Nullable Output<String> modified) {
+            $.modified = modified;
+            return this;
+        }
+
+        /**
+         * @param modified The date and time the webhook was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modified(String modified) {
+            return modified(Output.of(modified));
+        }
+
+        /**
          * @param notificationUrl The URL where webhooks will be sent.
          * 
          * @return builder
@@ -110,6 +163,27 @@ public final class StreamWebhookState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder notificationUrl(String notificationUrl) {
             return notificationUrl(Output.of(notificationUrl));
+        }
+
+        /**
+         * @param secret The secret used to verify webhook signatures.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secret(@Nullable Output<String> secret) {
+            $.secret = secret;
+            return this;
+        }
+
+        /**
+         * @param secret The secret used to verify webhook signatures.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secret(String secret) {
+            return secret(Output.of(secret));
         }
 
         public StreamWebhookState build() {

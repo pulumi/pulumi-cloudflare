@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Stream Read`
+// - `Stream Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetStreamWatermarks(ctx, &cloudflare.LookupStreamWatermarksArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +54,7 @@ func LookupStreamWatermarks(ctx *pulumi.Context, args *LookupStreamWatermarksArg
 // A collection of arguments for invoking getStreamWatermarks.
 type LookupStreamWatermarksArgs struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +62,7 @@ type LookupStreamWatermarksArgs struct {
 // A collection of values returned by getStreamWatermarks.
 type LookupStreamWatermarksResult struct {
 	// The account identifier tag.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +83,7 @@ func LookupStreamWatermarksOutput(ctx *pulumi.Context, args LookupStreamWatermar
 // A collection of arguments for invoking getStreamWatermarks.
 type LookupStreamWatermarksOutputArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +108,8 @@ func (o LookupStreamWatermarksResultOutput) ToLookupStreamWatermarksResultOutput
 }
 
 // The account identifier tag.
-func (o LookupStreamWatermarksResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupStreamWatermarksResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupStreamWatermarksResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamWatermarksResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

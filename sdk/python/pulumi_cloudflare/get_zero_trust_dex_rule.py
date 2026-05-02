@@ -58,7 +58,7 @@ class GetZeroTrustDexRuleResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -129,6 +129,13 @@ def get_zero_trust_dex_rule(account_id: Optional[_builtins.str] = None,
                             rule_id: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustDexRuleResult:
     """
+    Accepted Permissions
+
+    - `Cloudflare DEX Read`
+    - `Cloudflare DEX Write`
+    - `Zero Trust Read`
+    - `Zero Trust Report`
+
     ## Example Usage
 
     ```python
@@ -158,10 +165,17 @@ def get_zero_trust_dex_rule(account_id: Optional[_builtins.str] = None,
         rule_id=pulumi.get(__ret__, 'rule_id'),
         targeted_tests=pulumi.get(__ret__, 'targeted_tests'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_zero_trust_dex_rule_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_dex_rule_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                    rule_id: Optional[pulumi.Input[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDexRuleResult]:
     """
+    Accepted Permissions
+
+    - `Cloudflare DEX Read`
+    - `Cloudflare DEX Write`
+    - `Zero Trust Read`
+    - `Zero Trust Report`
+
     ## Example Usage
 
     ```python

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * const exampleRegistrarDomain = new cloudflare.RegistrarDomain("example_registrar_domain", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     domainName: "cloudflare.com",
+ *     domainName: "example.com",
  *     autoRenew: true,
  *     locked: false,
  *     privacy: true,
@@ -55,13 +55,16 @@ export class RegistrarDomain extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Auto-renew controls whether subscription is automatically renewed upon domain expiration.
      */
     declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
-     * Domain name.
+     * Fully qualified domain name (FQDN) including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+     * identifies a registration — the same domain cannot be registered
+     * twice, making it a natural idempotency key for registration requests.
      */
     declare public readonly domainName: pulumi.Output<string>;
     /**
@@ -93,9 +96,6 @@ export class RegistrarDomain extends pulumi.CustomResource {
             resourceInputs["privacy"] = state?.privacy;
         } else {
             const args = argsOrState as RegistrarDomainArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
@@ -123,7 +123,10 @@ export interface RegistrarDomainState {
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * Domain name.
+     * Fully qualified domain name (FQDN) including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+     * identifies a registration — the same domain cannot be registered
+     * twice, making it a natural idempotency key for registration requests.
      */
     domainName?: pulumi.Input<string>;
     /**
@@ -143,13 +146,16 @@ export interface RegistrarDomainArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Auto-renew controls whether subscription is automatically renewed upon domain expiration.
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * Domain name.
+     * Fully qualified domain name (FQDN) including the extension
+     * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
+     * identifies a registration — the same domain cannot be registered
+     * twice, making it a natural idempotency key for registration requests.
      */
     domainName: pulumi.Input<string>;
     /**

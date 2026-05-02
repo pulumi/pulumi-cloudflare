@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Domain Page Shield`
+// - `Domain Page Shield Read`
+// - `Page Shield`
+// - `Page Shield Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetPageShieldPolicy(ctx, &cloudflare.LookupPageShieldPolicyArgs{
-//				ZoneId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				PolicyId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -52,7 +61,7 @@ type LookupPageShieldPolicyArgs struct {
 	// Identifier
 	PolicyId string `pulumi:"policyId"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getPageShieldPolicy.
@@ -73,7 +82,7 @@ type LookupPageShieldPolicyResult struct {
 	// The policy which will be applied
 	Value string `pulumi:"value"`
 	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupPageShieldPolicyOutput(ctx *pulumi.Context, args LookupPageShieldPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupPageShieldPolicyResultOutput {
@@ -90,7 +99,7 @@ type LookupPageShieldPolicyOutputArgs struct {
 	// Identifier
 	PolicyId pulumi.StringInput `pulumi:"policyId"`
 	// Identifier
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupPageShieldPolicyOutputArgs) ElementType() reflect.Type {
@@ -149,8 +158,8 @@ func (o LookupPageShieldPolicyResultOutput) Value() pulumi.StringOutput {
 }
 
 // Identifier
-func (o LookupPageShieldPolicyResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPageShieldPolicyResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupPageShieldPolicyResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPageShieldPolicyResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Account Filter Lists Edit`
+    /// - `Account Filter Lists Read`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -34,14 +39,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// ```sh
     /// $ pulumi import cloudflare:index/listItem:ListItem example '&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;'
-    /// $ pulumi import cloudflare:index/listItem:ListItem example '&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;'
-    /// $ pulumi import cloudflare:index/listItem:ListItem example '&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;'
-    /// $ pulumi import cloudflare:index/listItem:ListItem example '&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;'
-    /// $ pulumi import cloudflare:index/listItem:ListItem example '&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;'
-    /// $ pulumi import cloudflare:index/listItem:ListItem example '&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;'
-    /// $ pulumi import cloudflare:index/listItem:ListItem example '&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;'
-    /// $ pulumi import cloudflare:index/listItem:ListItem example '&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;'
-    /// $ pulumi import cloudflare:index/listItem:ListItem example '&lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/listItem:ListItem")]
@@ -51,7 +48,7 @@ namespace Pulumi.Cloudflare
         /// The Account ID for this resource.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// A non-negative 32 bit integer
@@ -156,8 +153,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Account ID for this resource.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// A non-negative 32 bit integer

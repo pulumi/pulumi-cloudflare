@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZoneDnssec
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +35,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZoneDnssecResult> InvokeAsync(GetZoneDnssecArgs args, InvokeOptions? options = null)
+        public static Task<GetZoneDnssecResult> InvokeAsync(GetZoneDnssecArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneDnssecResult>("cloudflare:index/getZoneDnssec:getZoneDnssec", args ?? new GetZoneDnssecArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +62,15 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZoneDnssecResult> Invoke(GetZoneDnssecInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZoneDnssecResult> Invoke(GetZoneDnssecInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneDnssecResult>("cloudflare:index/getZoneDnssec:getZoneDnssec", args ?? new GetZoneDnssecInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetZoneDnssecArgs()
         {
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetZoneDnssecInvokeArgs()
         {
@@ -147,7 +162,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetZoneDnssecResult(
@@ -181,7 +196,7 @@ namespace Pulumi.Cloudflare
 
             string status,
 
-            string zoneId)
+            string? zoneId)
         {
             Algorithm = algorithm;
             Digest = digest;

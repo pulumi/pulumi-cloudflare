@@ -7,6 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `IP Prefixes: BGP On Demand Read`
+ * - `IP Prefixes: BGP On Demand Write`
+ * - `IP Prefixes: Read`
+ * - `IP Prefixes: Write`
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +27,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getByoIpPrefixes(args: GetByoIpPrefixesArgs, opts?: pulumi.InvokeOptions): Promise<GetByoIpPrefixesResult> {
+export function getByoIpPrefixes(args?: GetByoIpPrefixesArgs, opts?: pulumi.InvokeOptions): Promise<GetByoIpPrefixesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getByoIpPrefixes:getByoIpPrefixes", {
         "accountId": args.accountId,
@@ -33,7 +43,7 @@ export interface GetByoIpPrefixesArgs {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -47,7 +57,7 @@ export interface GetByoIpPrefixesResult {
     /**
      * Identifier of a Cloudflare account.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,6 +72,15 @@ export interface GetByoIpPrefixesResult {
     readonly results: outputs.GetByoIpPrefixesResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `IP Prefixes: BGP On Demand Read`
+ * - `IP Prefixes: BGP On Demand Write`
+ * - `IP Prefixes: Read`
+ * - `IP Prefixes: Write`
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +92,8 @@ export interface GetByoIpPrefixesResult {
  * });
  * ```
  */
-export function getByoIpPrefixesOutput(args: GetByoIpPrefixesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetByoIpPrefixesResult> {
+export function getByoIpPrefixesOutput(args?: GetByoIpPrefixesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetByoIpPrefixesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getByoIpPrefixes:getByoIpPrefixes", {
         "accountId": args.accountId,
@@ -88,7 +108,7 @@ export interface GetByoIpPrefixesOutputArgs {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

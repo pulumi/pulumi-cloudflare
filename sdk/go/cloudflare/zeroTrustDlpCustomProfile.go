@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -68,8 +73,8 @@ import (
 type ZeroTrustDlpCustomProfile struct {
 	pulumi.CustomResourceState
 
-	AccountId        pulumi.StringOutput `pulumi:"accountId"`
-	AiContextEnabled pulumi.BoolOutput   `pulumi:"aiContextEnabled"`
+	AccountId        pulumi.StringPtrOutput `pulumi:"accountId"`
+	AiContextEnabled pulumi.BoolOutput      `pulumi:"aiContextEnabled"`
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   pulumi.IntOutput    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold pulumi.StringOutput `pulumi:"confidenceThreshold"`
@@ -79,6 +84,10 @@ type ZeroTrustDlpCustomProfile struct {
 	ContextAwareness ZeroTrustDlpCustomProfileContextAwarenessOutput `pulumi:"contextAwareness"`
 	// When the profile was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Data class IDs to associate with the profile.
+	DataClasses pulumi.StringArrayOutput `pulumi:"dataClasses"`
+	// Data tag IDs to associate with the profile.
+	DataTags pulumi.StringArrayOutput `pulumi:"dataTags"`
 	// The description of the profile.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Custom entries from this profile.
@@ -90,6 +99,8 @@ type ZeroTrustDlpCustomProfile struct {
 	OcrEnabled pulumi.BoolOutput                         `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolOutput `pulumi:"openAccess"`
+	// Sensitivity levels to associate with the profile.
+	SensitivityLevels ZeroTrustDlpCustomProfileSensitivityLevelArrayOutput `pulumi:"sensitivityLevels"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries ZeroTrustDlpCustomProfileSharedEntryArrayOutput `pulumi:"sharedEntries"`
 	// Available values: "custom", "predefined", "integration".
@@ -105,9 +116,6 @@ func NewZeroTrustDlpCustomProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -151,6 +159,10 @@ type zeroTrustDlpCustomProfileState struct {
 	ContextAwareness *ZeroTrustDlpCustomProfileContextAwareness `pulumi:"contextAwareness"`
 	// When the profile was created.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Data class IDs to associate with the profile.
+	DataClasses []string `pulumi:"dataClasses"`
+	// Data tag IDs to associate with the profile.
+	DataTags []string `pulumi:"dataTags"`
 	// The description of the profile.
 	Description *string `pulumi:"description"`
 	// Custom entries from this profile.
@@ -162,6 +174,8 @@ type zeroTrustDlpCustomProfileState struct {
 	OcrEnabled *bool                            `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
 	OpenAccess *bool `pulumi:"openAccess"`
+	// Sensitivity levels to associate with the profile.
+	SensitivityLevels []ZeroTrustDlpCustomProfileSensitivityLevel `pulumi:"sensitivityLevels"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries []ZeroTrustDlpCustomProfileSharedEntry `pulumi:"sharedEntries"`
 	// Available values: "custom", "predefined", "integration".
@@ -182,6 +196,10 @@ type ZeroTrustDlpCustomProfileState struct {
 	ContextAwareness ZeroTrustDlpCustomProfileContextAwarenessPtrInput
 	// When the profile was created.
 	CreatedAt pulumi.StringPtrInput
+	// Data class IDs to associate with the profile.
+	DataClasses pulumi.StringArrayInput
+	// Data tag IDs to associate with the profile.
+	DataTags pulumi.StringArrayInput
 	// The description of the profile.
 	Description pulumi.StringPtrInput
 	// Custom entries from this profile.
@@ -193,6 +211,8 @@ type ZeroTrustDlpCustomProfileState struct {
 	OcrEnabled pulumi.BoolPtrInput
 	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolPtrInput
+	// Sensitivity levels to associate with the profile.
+	SensitivityLevels ZeroTrustDlpCustomProfileSensitivityLevelArrayInput
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries ZeroTrustDlpCustomProfileSharedEntryArrayInput
 	// Available values: "custom", "predefined", "integration".
@@ -206,8 +226,8 @@ func (ZeroTrustDlpCustomProfileState) ElementType() reflect.Type {
 }
 
 type zeroTrustDlpCustomProfileArgs struct {
-	AccountId        string `pulumi:"accountId"`
-	AiContextEnabled *bool  `pulumi:"aiContextEnabled"`
+	AccountId        *string `pulumi:"accountId"`
+	AiContextEnabled *bool   `pulumi:"aiContextEnabled"`
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
@@ -215,6 +235,10 @@ type zeroTrustDlpCustomProfileArgs struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	ContextAwareness *ZeroTrustDlpCustomProfileContextAwareness `pulumi:"contextAwareness"`
+	// Data class IDs to associate with the profile.
+	DataClasses []string `pulumi:"dataClasses"`
+	// Data tag IDs to associate with the profile.
+	DataTags []string `pulumi:"dataTags"`
 	// The description of the profile.
 	Description *string `pulumi:"description"`
 	// Custom entries from this profile.
@@ -224,13 +248,15 @@ type zeroTrustDlpCustomProfileArgs struct {
 	Entries    []ZeroTrustDlpCustomProfileEntry `pulumi:"entries"`
 	Name       string                           `pulumi:"name"`
 	OcrEnabled *bool                            `pulumi:"ocrEnabled"`
+	// Sensitivity levels to associate with the profile.
+	SensitivityLevels []ZeroTrustDlpCustomProfileSensitivityLevel `pulumi:"sensitivityLevels"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries []ZeroTrustDlpCustomProfileSharedEntry `pulumi:"sharedEntries"`
 }
 
 // The set of arguments for constructing a ZeroTrustDlpCustomProfile resource.
 type ZeroTrustDlpCustomProfileArgs struct {
-	AccountId        pulumi.StringInput
+	AccountId        pulumi.StringPtrInput
 	AiContextEnabled pulumi.BoolPtrInput
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   pulumi.IntPtrInput
@@ -239,6 +265,10 @@ type ZeroTrustDlpCustomProfileArgs struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	ContextAwareness ZeroTrustDlpCustomProfileContextAwarenessPtrInput
+	// Data class IDs to associate with the profile.
+	DataClasses pulumi.StringArrayInput
+	// Data tag IDs to associate with the profile.
+	DataTags pulumi.StringArrayInput
 	// The description of the profile.
 	Description pulumi.StringPtrInput
 	// Custom entries from this profile.
@@ -248,6 +278,8 @@ type ZeroTrustDlpCustomProfileArgs struct {
 	Entries    ZeroTrustDlpCustomProfileEntryArrayInput
 	Name       pulumi.StringInput
 	OcrEnabled pulumi.BoolPtrInput
+	// Sensitivity levels to associate with the profile.
+	SensitivityLevels ZeroTrustDlpCustomProfileSensitivityLevelArrayInput
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries ZeroTrustDlpCustomProfileSharedEntryArrayInput
 }
@@ -339,8 +371,8 @@ func (o ZeroTrustDlpCustomProfileOutput) ToZeroTrustDlpCustomProfileOutputWithCo
 	return o
 }
 
-func (o ZeroTrustDlpCustomProfileOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustDlpCustomProfileOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o ZeroTrustDlpCustomProfileOutput) AiContextEnabled() pulumi.BoolOutput {
@@ -370,6 +402,16 @@ func (o ZeroTrustDlpCustomProfileOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Data class IDs to associate with the profile.
+func (o ZeroTrustDlpCustomProfileOutput) DataClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringArrayOutput { return v.DataClasses }).(pulumi.StringArrayOutput)
+}
+
+// Data tag IDs to associate with the profile.
+func (o ZeroTrustDlpCustomProfileOutput) DataTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringArrayOutput { return v.DataTags }).(pulumi.StringArrayOutput)
+}
+
 // The description of the profile.
 func (o ZeroTrustDlpCustomProfileOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -394,6 +436,13 @@ func (o ZeroTrustDlpCustomProfileOutput) OcrEnabled() pulumi.BoolOutput {
 // Whether this profile can be accessed by anyone.
 func (o ZeroTrustDlpCustomProfileOutput) OpenAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.BoolOutput { return v.OpenAccess }).(pulumi.BoolOutput)
+}
+
+// Sensitivity levels to associate with the profile.
+func (o ZeroTrustDlpCustomProfileOutput) SensitivityLevels() ZeroTrustDlpCustomProfileSensitivityLevelArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) ZeroTrustDlpCustomProfileSensitivityLevelArrayOutput {
+		return v.SensitivityLevels
+	}).(ZeroTrustDlpCustomProfileSensitivityLevelArrayOutput)
 }
 
 // Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).

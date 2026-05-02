@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Hyperdrive Read`
+// - `Hyperdrive Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetHyperdriveConfig(ctx, &cloudflare.LookupHyperdriveConfigArgs{
-//				AccountId:    "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				HyperdriveId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupHyperdriveConfig(ctx *pulumi.Context, args *LookupHyperdriveConfigArg
 // A collection of arguments for invoking getHyperdriveConfig.
 type LookupHyperdriveConfigArgs struct {
 	// Define configurations using a unique string identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Define configurations using a unique string identifier.
 	HyperdriveId string `pulumi:"hyperdriveId"`
 }
@@ -58,7 +63,7 @@ type LookupHyperdriveConfigArgs struct {
 // A collection of values returned by getHyperdriveConfig.
 type LookupHyperdriveConfigResult struct {
 	// Define configurations using a unique string identifier.
-	AccountId string                     `pulumi:"accountId"`
+	AccountId *string                    `pulumi:"accountId"`
 	Caching   GetHyperdriveConfigCaching `pulumi:"caching"`
 	// Defines the creation time of the Hyperdrive configuration.
 	CreatedOn string `pulumi:"createdOn"`
@@ -67,8 +72,9 @@ type LookupHyperdriveConfigResult struct {
 	// Define configurations using a unique string identifier.
 	Id string `pulumi:"id"`
 	// Defines the last modified time of the Hyperdrive configuration.
-	ModifiedOn string                  `pulumi:"modifiedOn"`
-	Mtls       GetHyperdriveConfigMtls `pulumi:"mtls"`
+	ModifiedOn string `pulumi:"modifiedOn"`
+	// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+	Mtls GetHyperdriveConfigMtls `pulumi:"mtls"`
 	// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
 	Name   string                    `pulumi:"name"`
 	Origin GetHyperdriveConfigOrigin `pulumi:"origin"`
@@ -88,7 +94,7 @@ func LookupHyperdriveConfigOutput(ctx *pulumi.Context, args LookupHyperdriveConf
 // A collection of arguments for invoking getHyperdriveConfig.
 type LookupHyperdriveConfigOutputArgs struct {
 	// Define configurations using a unique string identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Define configurations using a unique string identifier.
 	HyperdriveId pulumi.StringInput `pulumi:"hyperdriveId"`
 }
@@ -113,8 +119,8 @@ func (o LookupHyperdriveConfigResultOutput) ToLookupHyperdriveConfigResultOutput
 }
 
 // Define configurations using a unique string identifier.
-func (o LookupHyperdriveConfigResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupHyperdriveConfigResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupHyperdriveConfigResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupHyperdriveConfigResultOutput) Caching() GetHyperdriveConfigCachingOutput {
@@ -141,6 +147,7 @@ func (o LookupHyperdriveConfigResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
+// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
 func (o LookupHyperdriveConfigResultOutput) Mtls() GetHyperdriveConfigMtlsOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) GetHyperdriveConfigMtls { return v.Mtls }).(GetHyperdriveConfigMtlsOutput)
 }

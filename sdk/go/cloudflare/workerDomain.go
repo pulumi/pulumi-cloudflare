@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Workers Scripts Read`
+// - `Workers Scripts Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -27,11 +32,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewWorkersCustomDomain(ctx, "example_workers_custom_domain", &cloudflare.WorkersCustomDomainArgs{
-//				AccountId:   pulumi.String("9a7806061c88ada191ed06f989cc3dac"),
-//				Hostname:    pulumi.String("foo.example.com"),
-//				Service:     pulumi.String("foo"),
-//				ZoneId:      pulumi.String("593c9c94de529bbbfaac7c53ced0447d"),
+//				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Hostname:    pulumi.String("app.example.com"),
+//				Service:     pulumi.String("my-worker"),
 //				Environment: pulumi.String("production"),
+//				ZoneId:      pulumi.String("593c9c94de529bbbfaac7c53ced0447d"),
+//				ZoneName:    pulumi.String("example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -52,19 +58,21 @@ import (
 type WorkerDomain struct {
 	pulumi.CustomResourceState
 
-	// Identifer of the account.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Worker environment associated with the zone and hostname.
+	// Identifier.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// ID of the TLS certificate issued for the domain.
+	CertId pulumi.StringOutput `pulumi:"certId"`
+	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
-	Environment pulumi.StringPtrOutput `pulumi:"environment"`
-	// Hostname of the Worker Domain.
+	Environment pulumi.StringOutput `pulumi:"environment"`
+	// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
-	// Worker service associated with the zone and hostname.
+	// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 	Service pulumi.StringOutput `pulumi:"service"`
-	// Identifier of the zone.
+	// ID of the zone containing the domain hostname.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
-	// Name of the zone.
+	// Name of the zone containing the domain hostname.
 	ZoneName pulumi.StringOutput `pulumi:"zoneName"`
 }
 
@@ -75,17 +83,11 @@ func NewWorkerDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Hostname == nil {
 		return nil, errors.New("invalid value for required argument 'Hostname'")
 	}
 	if args.Service == nil {
 		return nil, errors.New("invalid value for required argument 'Service'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -116,36 +118,40 @@ func GetWorkerDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerDomain resources.
 type workerDomainState struct {
-	// Identifer of the account.
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Worker environment associated with the zone and hostname.
+	// ID of the TLS certificate issued for the domain.
+	CertId *string `pulumi:"certId"`
+	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
 	Environment *string `pulumi:"environment"`
-	// Hostname of the Worker Domain.
+	// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 	Hostname *string `pulumi:"hostname"`
-	// Worker service associated with the zone and hostname.
+	// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 	Service *string `pulumi:"service"`
-	// Identifier of the zone.
+	// ID of the zone containing the domain hostname.
 	ZoneId *string `pulumi:"zoneId"`
-	// Name of the zone.
+	// Name of the zone containing the domain hostname.
 	ZoneName *string `pulumi:"zoneName"`
 }
 
 type WorkerDomainState struct {
-	// Identifer of the account.
+	// Identifier.
 	AccountId pulumi.StringPtrInput
-	// Worker environment associated with the zone and hostname.
+	// ID of the TLS certificate issued for the domain.
+	CertId pulumi.StringPtrInput
+	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
 	Environment pulumi.StringPtrInput
-	// Hostname of the Worker Domain.
+	// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 	Hostname pulumi.StringPtrInput
-	// Worker service associated with the zone and hostname.
+	// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 	Service pulumi.StringPtrInput
-	// Identifier of the zone.
+	// ID of the zone containing the domain hostname.
 	ZoneId pulumi.StringPtrInput
-	// Name of the zone.
+	// Name of the zone containing the domain hostname.
 	ZoneName pulumi.StringPtrInput
 }
 
@@ -154,34 +160,38 @@ func (WorkerDomainState) ElementType() reflect.Type {
 }
 
 type workerDomainArgs struct {
-	// Identifer of the account.
-	AccountId string `pulumi:"accountId"`
-	// Worker environment associated with the zone and hostname.
+	// Identifier.
+	AccountId *string `pulumi:"accountId"`
+	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
 	Environment *string `pulumi:"environment"`
-	// Hostname of the Worker Domain.
+	// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 	Hostname string `pulumi:"hostname"`
-	// Worker service associated with the zone and hostname.
+	// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 	Service string `pulumi:"service"`
-	// Identifier of the zone.
-	ZoneId string `pulumi:"zoneId"`
+	// ID of the zone containing the domain hostname.
+	ZoneId *string `pulumi:"zoneId"`
+	// Name of the zone containing the domain hostname.
+	ZoneName *string `pulumi:"zoneName"`
 }
 
 // The set of arguments for constructing a WorkerDomain resource.
 type WorkerDomainArgs struct {
-	// Identifer of the account.
-	AccountId pulumi.StringInput
-	// Worker environment associated with the zone and hostname.
+	// Identifier.
+	AccountId pulumi.StringPtrInput
+	// Worker environment associated with the domain.
 	//
 	// Deprecated: This attribute is deprecated.
 	Environment pulumi.StringPtrInput
-	// Hostname of the Worker Domain.
+	// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 	Hostname pulumi.StringInput
-	// Worker service associated with the zone and hostname.
+	// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 	Service pulumi.StringInput
-	// Identifier of the zone.
-	ZoneId pulumi.StringInput
+	// ID of the zone containing the domain hostname.
+	ZoneId pulumi.StringPtrInput
+	// Name of the zone containing the domain hostname.
+	ZoneName pulumi.StringPtrInput
 }
 
 func (WorkerDomainArgs) ElementType() reflect.Type {
@@ -271,34 +281,39 @@ func (o WorkerDomainOutput) ToWorkerDomainOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Identifer of the account.
-func (o WorkerDomainOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+// Identifier.
+func (o WorkerDomainOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerDomain) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Worker environment associated with the zone and hostname.
+// ID of the TLS certificate issued for the domain.
+func (o WorkerDomainOutput) CertId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.CertId }).(pulumi.StringOutput)
+}
+
+// Worker environment associated with the domain.
 //
 // Deprecated: This attribute is deprecated.
-func (o WorkerDomainOutput) Environment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerDomain) pulumi.StringPtrOutput { return v.Environment }).(pulumi.StringPtrOutput)
+func (o WorkerDomainOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
 }
 
-// Hostname of the Worker Domain.
+// Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
 func (o WorkerDomainOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// Worker service associated with the zone and hostname.
+// Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
 func (o WorkerDomainOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }
 
-// Identifier of the zone.
+// ID of the zone containing the domain hostname.
 func (o WorkerDomainOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-// Name of the zone.
+// Name of the zone containing the domain hostname.
 func (o WorkerDomainOutput) ZoneName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerDomain) pulumi.StringOutput { return v.ZoneName }).(pulumi.StringOutput)
 }

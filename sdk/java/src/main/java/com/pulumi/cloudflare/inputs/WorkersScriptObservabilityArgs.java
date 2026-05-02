@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityLogsArgs;
+import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityTracesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -63,12 +64,28 @@ public final class WorkersScriptObservabilityArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.logs);
     }
 
+    /**
+     * Trace settings for the Worker.
+     * 
+     */
+    @Import(name="traces")
+    private @Nullable Output<WorkersScriptObservabilityTracesArgs> traces;
+
+    /**
+     * @return Trace settings for the Worker.
+     * 
+     */
+    public Optional<Output<WorkersScriptObservabilityTracesArgs>> traces() {
+        return Optional.ofNullable(this.traces);
+    }
+
     private WorkersScriptObservabilityArgs() {}
 
     private WorkersScriptObservabilityArgs(WorkersScriptObservabilityArgs $) {
         this.enabled = $.enabled;
         this.headSamplingRate = $.headSamplingRate;
         this.logs = $.logs;
+        this.traces = $.traces;
     }
 
     public static Builder builder() {
@@ -150,6 +167,27 @@ public final class WorkersScriptObservabilityArgs extends com.pulumi.resources.R
          */
         public Builder logs(WorkersScriptObservabilityLogsArgs logs) {
             return logs(Output.of(logs));
+        }
+
+        /**
+         * @param traces Trace settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder traces(@Nullable Output<WorkersScriptObservabilityTracesArgs> traces) {
+            $.traces = traces;
+            return this;
+        }
+
+        /**
+         * @param traces Trace settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder traces(WorkersScriptObservabilityTracesArgs traces) {
+            return traces(Output.of(traces));
         }
 
         public WorkersScriptObservabilityArgs build() {

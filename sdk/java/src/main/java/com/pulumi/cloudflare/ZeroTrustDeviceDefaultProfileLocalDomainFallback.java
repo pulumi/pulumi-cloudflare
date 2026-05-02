@@ -16,6 +16,10 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Zero Trust Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zero Trust Read`
+// - `Zero Trust Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDlpPredefinedProfile(ctx, &cloudflare.LookupZeroTrustDlpPredefinedProfileArgs{
-//				AccountId: "account_id",
+//				AccountId: pulumi.StringRef("account_id"),
 //				ProfileId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 //			}, nil)
 //			if err != nil {
@@ -49,16 +54,16 @@ func LookupZeroTrustDlpPredefinedProfile(ctx *pulumi.Context, args *LookupZeroTr
 
 // A collection of arguments for invoking getZeroTrustDlpPredefinedProfile.
 type LookupZeroTrustDlpPredefinedProfileArgs struct {
-	AccountId string `pulumi:"accountId"`
-	ProfileId string `pulumi:"profileId"`
+	AccountId *string `pulumi:"accountId"`
+	ProfileId string  `pulumi:"profileId"`
 }
 
 // A collection of values returned by getZeroTrustDlpPredefinedProfile.
 type LookupZeroTrustDlpPredefinedProfileResult struct {
-	AccountId           string `pulumi:"accountId"`
-	AiContextEnabled    bool   `pulumi:"aiContextEnabled"`
-	AllowedMatchCount   int    `pulumi:"allowedMatchCount"`
-	ConfidenceThreshold string `pulumi:"confidenceThreshold"`
+	AccountId           *string `pulumi:"accountId"`
+	AiContextEnabled    bool    `pulumi:"aiContextEnabled"`
+	AllowedMatchCount   int     `pulumi:"allowedMatchCount"`
+	ConfidenceThreshold string  `pulumi:"confidenceThreshold"`
 	// Entries to enable for this predefined profile. Any entries not provided will be disabled.
 	EnabledEntries []string `pulumi:"enabledEntries"`
 	// This field has been deprecated for `enabledEntries`.
@@ -86,8 +91,8 @@ func LookupZeroTrustDlpPredefinedProfileOutput(ctx *pulumi.Context, args LookupZ
 
 // A collection of arguments for invoking getZeroTrustDlpPredefinedProfile.
 type LookupZeroTrustDlpPredefinedProfileOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	ProfileId pulumi.StringInput `pulumi:"profileId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	ProfileId pulumi.StringInput    `pulumi:"profileId"`
 }
 
 func (LookupZeroTrustDlpPredefinedProfileOutputArgs) ElementType() reflect.Type {
@@ -109,8 +114,8 @@ func (o LookupZeroTrustDlpPredefinedProfileResultOutput) ToLookupZeroTrustDlpPre
 	return o
 }
 
-func (o LookupZeroTrustDlpPredefinedProfileResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDlpPredefinedProfileResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupZeroTrustDlpPredefinedProfileResultOutput) AiContextEnabled() pulumi.BoolOutput {

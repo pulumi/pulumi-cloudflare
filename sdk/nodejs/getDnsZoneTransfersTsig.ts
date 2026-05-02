@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -29,7 +34,7 @@ export function getDnsZoneTransfersTsig(args: GetDnsZoneTransfersTsigArgs, opts?
  * A collection of arguments for invoking getDnsZoneTransfersTsig.
  */
 export interface GetDnsZoneTransfersTsigArgs {
-    accountId: string;
+    accountId?: string;
     tsigId: string;
 }
 
@@ -37,7 +42,7 @@ export interface GetDnsZoneTransfersTsigArgs {
  * A collection of values returned by getDnsZoneTransfersTsig.
  */
 export interface GetDnsZoneTransfersTsigResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * TSIG algorithm.
      */
@@ -57,6 +62,11 @@ export interface GetDnsZoneTransfersTsigResult {
     readonly tsigId: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -81,6 +91,6 @@ export function getDnsZoneTransfersTsigOutput(args: GetDnsZoneTransfersTsigOutpu
  * A collection of arguments for invoking getDnsZoneTransfersTsig.
  */
 export interface GetDnsZoneTransfersTsigOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     tsigId: pulumi.Input<string>;
 }

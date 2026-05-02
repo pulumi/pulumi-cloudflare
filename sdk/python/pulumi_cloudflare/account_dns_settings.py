@@ -21,28 +21,45 @@ __all__ = ['AccountDnsSettingsArgs', 'AccountDnsSettings']
 @pulumi.input_type
 class AccountDnsSettingsArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enforce_dns_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  zone_defaults: Optional[pulumi.Input['AccountDnsSettingsZoneDefaultsArgs']] = None):
         """
         The set of arguments for constructing a AccountDnsSettings resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] enforce_dns_only: When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
         """
-        pulumi.set(__self__, "account_id", account_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if enforce_dns_only is not None:
+            pulumi.set(__self__, "enforce_dns_only", enforce_dns_only)
         if zone_defaults is not None:
             pulumi.set(__self__, "zone_defaults", zone_defaults)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enforceDnsOnly")
+    def enforce_dns_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+        """
+        return pulumi.get(self, "enforce_dns_only")
+
+    @enforce_dns_only.setter
+    def enforce_dns_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enforce_dns_only", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneDefaults")
@@ -58,14 +75,18 @@ class AccountDnsSettingsArgs:
 class _AccountDnsSettingsState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enforce_dns_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  zone_defaults: Optional[pulumi.Input['AccountDnsSettingsZoneDefaultsArgs']] = None):
         """
         Input properties used for looking up and filtering AccountDnsSettings resources.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] enforce_dns_only: When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if enforce_dns_only is not None:
+            pulumi.set(__self__, "enforce_dns_only", enforce_dns_only)
         if zone_defaults is not None:
             pulumi.set(__self__, "zone_defaults", zone_defaults)
 
@@ -80,6 +101,18 @@ class _AccountDnsSettingsState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enforceDnsOnly")
+    def enforce_dns_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+        """
+        return pulumi.get(self, "enforce_dns_only")
+
+    @enforce_dns_only.setter
+    def enforce_dns_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enforce_dns_only", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneDefaults")
@@ -98,9 +131,15 @@ class AccountDnsSettings(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enforce_dns_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  zone_defaults: Optional[pulumi.Input[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict']]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Account DNS Settings Read`
+        - `Account DNS Settings Write`
+
         ## Example Usage
 
         ```python
@@ -109,6 +148,7 @@ class AccountDnsSettings(pulumi.CustomResource):
 
         example_account_dns_settings = cloudflare.AccountDnsSettings("example_account_dns_settings",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            enforce_dns_only=False,
             zone_defaults={
                 "flatten_all_cnames": False,
                 "foundation_dns": False,
@@ -142,14 +182,20 @@ class AccountDnsSettings(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] enforce_dns_only: When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccountDnsSettingsArgs,
+                 args: Optional[AccountDnsSettingsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Account DNS Settings Read`
+        - `Account DNS Settings Write`
+
         ## Example Usage
 
         ```python
@@ -158,6 +204,7 @@ class AccountDnsSettings(pulumi.CustomResource):
 
         example_account_dns_settings = cloudflare.AccountDnsSettings("example_account_dns_settings",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            enforce_dns_only=False,
             zone_defaults={
                 "flatten_all_cnames": False,
                 "foundation_dns": False,
@@ -204,6 +251,7 @@ class AccountDnsSettings(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enforce_dns_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  zone_defaults: Optional[pulumi.Input[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -214,9 +262,8 @@ class AccountDnsSettings(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccountDnsSettingsArgs.__new__(AccountDnsSettingsArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["enforce_dns_only"] = enforce_dns_only
             __props__.__dict__["zone_defaults"] = zone_defaults
         super(AccountDnsSettings, __self__).__init__(
             'cloudflare:index/accountDnsSettings:AccountDnsSettings',
@@ -229,6 +276,7 @@ class AccountDnsSettings(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
+            enforce_dns_only: Optional[pulumi.Input[_builtins.bool]] = None,
             zone_defaults: Optional[pulumi.Input[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict']]] = None) -> 'AccountDnsSettings':
         """
         Get an existing AccountDnsSettings resource's state with the given name, id, and optional extra
@@ -238,22 +286,32 @@ class AccountDnsSettings(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] enforce_dns_only: When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AccountDnsSettingsState.__new__(_AccountDnsSettingsState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["enforce_dns_only"] = enforce_dns_only
         __props__.__dict__["zone_defaults"] = zone_defaults
         return AccountDnsSettings(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="enforceDnsOnly")
+    def enforce_dns_only(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
+        """
+        return pulumi.get(self, "enforce_dns_only")
 
     @_builtins.property
     @pulumi.getter(name="zoneDefaults")

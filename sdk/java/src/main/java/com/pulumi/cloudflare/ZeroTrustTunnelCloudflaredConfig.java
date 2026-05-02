@@ -15,9 +15,19 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Cloudflare One Connector: cloudflared Read`
+ * - `Cloudflare One Connector: cloudflared Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -118,14 +128,14 @@ public class ZeroTrustTunnelCloudflaredConfig extends com.pulumi.resources.Custo
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * The tunnel configuration and ingress rules.

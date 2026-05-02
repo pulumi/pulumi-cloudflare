@@ -18,6 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -70,14 +75,14 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return Account Identifier
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     @Export(name="bodies", refs={List.class,EmailSecurityTrustedDomainsBody.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EmailSecurityTrustedDomainsBody>> bodies;
@@ -162,7 +167,7 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EmailSecurityTrustedDomains(java.lang.String name, EmailSecurityTrustedDomainsArgs args) {
+    public EmailSecurityTrustedDomains(java.lang.String name, @Nullable EmailSecurityTrustedDomainsArgs args) {
         this(name, args, null);
     }
     /**
@@ -171,7 +176,7 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EmailSecurityTrustedDomains(java.lang.String name, EmailSecurityTrustedDomainsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public EmailSecurityTrustedDomains(java.lang.String name, @Nullable EmailSecurityTrustedDomainsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -179,7 +184,7 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
         super("cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static EmailSecurityTrustedDomainsArgs makeArgs(EmailSecurityTrustedDomainsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static EmailSecurityTrustedDomainsArgs makeArgs(@Nullable EmailSecurityTrustedDomainsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

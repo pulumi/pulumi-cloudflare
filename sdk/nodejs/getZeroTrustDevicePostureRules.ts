@@ -18,7 +18,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustDevicePostureRules(args: GetZeroTrustDevicePostureRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDevicePostureRulesResult> {
+export function getZeroTrustDevicePostureRules(args?: GetZeroTrustDevicePostureRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustDevicePostureRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustDevicePostureRules:getZeroTrustDevicePostureRules", {
         "accountId": args.accountId,
@@ -30,7 +31,7 @@ export function getZeroTrustDevicePostureRules(args: GetZeroTrustDevicePostureRu
  * A collection of arguments for invoking getZeroTrustDevicePostureRules.
  */
 export interface GetZeroTrustDevicePostureRulesArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -41,7 +42,7 @@ export interface GetZeroTrustDevicePostureRulesArgs {
  * A collection of values returned by getZeroTrustDevicePostureRules.
  */
 export interface GetZeroTrustDevicePostureRulesResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -67,7 +68,8 @@ export interface GetZeroTrustDevicePostureRulesResult {
  * });
  * ```
  */
-export function getZeroTrustDevicePostureRulesOutput(args: GetZeroTrustDevicePostureRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDevicePostureRulesResult> {
+export function getZeroTrustDevicePostureRulesOutput(args?: GetZeroTrustDevicePostureRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustDevicePostureRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustDevicePostureRules:getZeroTrustDevicePostureRules", {
         "accountId": args.accountId,
@@ -79,7 +81,7 @@ export function getZeroTrustDevicePostureRulesOutput(args: GetZeroTrustDevicePos
  * A collection of arguments for invoking getZeroTrustDevicePostureRules.
  */
 export interface GetZeroTrustDevicePostureRulesOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

@@ -7,6 +7,38 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account Firewall Access Rules Read`
+ * - `Account Firewall Access Rules Write`
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Billing Read`
+ * - `Billing Write`
+ * - `DDoS Botnet Feed Read`
+ * - `DDoS Botnet Feed Write`
+ * - `DDoS Protection Read`
+ * - `DDoS Protection Write`
+ * - `DNS Firewall Read`
+ * - `DNS Firewall Write`
+ * - `DNS View Read`
+ * - `DNS View Write`
+ * - `Load Balancers Account Read`
+ * - `Load Balancers Account Write`
+ * - `Load Balancing: Monitors and Pools Read`
+ * - `Load Balancing: Monitors and Pools Write`
+ * - `SCIM Provisioning`
+ * - `Trust and Safety Read`
+ * - `Trust and Safety Write`
+ * - `Workers KV Storage Read`
+ * - `Workers KV Storage Write`
+ * - `Workers R2 Storage Read`
+ * - `Workers R2 Storage Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ * - `Zero Trust: PII Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -21,7 +53,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getAccountPermissionGroups(args: GetAccountPermissionGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountPermissionGroupsResult> {
+export function getAccountPermissionGroups(args?: GetAccountPermissionGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountPermissionGroupsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountPermissionGroups:getAccountPermissionGroups", {
         "accountId": args.accountId,
@@ -39,7 +72,7 @@ export interface GetAccountPermissionGroupsArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * ID of the permission group to be fetched.
      */
@@ -65,7 +98,7 @@ export interface GetAccountPermissionGroupsResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * ID of the permission group to be fetched.
      */
@@ -88,6 +121,38 @@ export interface GetAccountPermissionGroupsResult {
     readonly results: outputs.GetAccountPermissionGroupsResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account Firewall Access Rules Read`
+ * - `Account Firewall Access Rules Write`
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Billing Read`
+ * - `Billing Write`
+ * - `DDoS Botnet Feed Read`
+ * - `DDoS Botnet Feed Write`
+ * - `DDoS Protection Read`
+ * - `DDoS Protection Write`
+ * - `DNS Firewall Read`
+ * - `DNS Firewall Write`
+ * - `DNS View Read`
+ * - `DNS View Write`
+ * - `Load Balancers Account Read`
+ * - `Load Balancers Account Write`
+ * - `Load Balancing: Monitors and Pools Read`
+ * - `Load Balancing: Monitors and Pools Write`
+ * - `SCIM Provisioning`
+ * - `Trust and Safety Read`
+ * - `Trust and Safety Write`
+ * - `Workers KV Storage Read`
+ * - `Workers KV Storage Write`
+ * - `Workers R2 Storage Read`
+ * - `Workers R2 Storage Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ * - `Workers Tail Read`
+ * - `Zero Trust: PII Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -102,7 +167,8 @@ export interface GetAccountPermissionGroupsResult {
  * });
  * ```
  */
-export function getAccountPermissionGroupsOutput(args: GetAccountPermissionGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountPermissionGroupsResult> {
+export function getAccountPermissionGroupsOutput(args?: GetAccountPermissionGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountPermissionGroupsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountPermissionGroups:getAccountPermissionGroups", {
         "accountId": args.accountId,
@@ -120,7 +186,7 @@ export interface GetAccountPermissionGroupsOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * ID of the permission group to be fetched.
      */

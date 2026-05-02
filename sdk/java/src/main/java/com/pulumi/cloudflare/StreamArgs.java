@@ -3,9 +3,9 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.StreamPublicDetailsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -24,15 +24,15 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
      * The account identifier tag.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return The account identifier tag.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -111,6 +111,21 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Public details for the video including title, share link, channel link, and logo.
+     * 
+     */
+    @Import(name="publicDetails")
+    private @Nullable Output<StreamPublicDetailsArgs> publicDetails;
+
+    /**
+     * @return Public details for the video including title, share link, channel link, and logo.
+     * 
+     */
+    public Optional<Output<StreamPublicDetailsArgs>> publicDetails() {
+        return Optional.ofNullable(this.publicDetails);
+    }
+
+    /**
      * Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
      * 
      */
@@ -156,6 +171,21 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The unique identifier for the video. Can be used to verify the video being updated.
+     * 
+     */
+    @Import(name="uid")
+    private @Nullable Output<String> uid;
+
+    /**
+     * @return The unique identifier for the video. Can be used to verify the video being updated.
+     * 
+     */
+    public Optional<Output<String>> uid() {
+        return Optional.ofNullable(this.uid);
+    }
+
+    /**
      * The date and time when the video upload URL is no longer valid for direct user uploads.
      * 
      */
@@ -179,9 +209,11 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         this.identifier = $.identifier;
         this.maxDurationSeconds = $.maxDurationSeconds;
         this.meta = $.meta;
+        this.publicDetails = $.publicDetails;
         this.requireSignedUrls = $.requireSignedUrls;
         this.scheduledDeletion = $.scheduledDeletion;
         this.thumbnailTimestampPct = $.thumbnailTimestampPct;
+        this.uid = $.uid;
         this.uploadExpiry = $.uploadExpiry;
     }
 
@@ -209,7 +241,7 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -340,6 +372,27 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param publicDetails Public details for the video including title, share link, channel link, and logo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicDetails(@Nullable Output<StreamPublicDetailsArgs> publicDetails) {
+            $.publicDetails = publicDetails;
+            return this;
+        }
+
+        /**
+         * @param publicDetails Public details for the video including title, share link, channel link, and logo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicDetails(StreamPublicDetailsArgs publicDetails) {
+            return publicDetails(Output.of(publicDetails));
+        }
+
+        /**
          * @param requireSignedUrls Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
          * 
          * @return builder
@@ -403,6 +456,27 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param uid The unique identifier for the video. Can be used to verify the video being updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uid(@Nullable Output<String> uid) {
+            $.uid = uid;
+            return this;
+        }
+
+        /**
+         * @param uid The unique identifier for the video. Can be used to verify the video being updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uid(String uid) {
+            return uid(Output.of(uid));
+        }
+
+        /**
          * @param uploadExpiry The date and time when the video upload URL is no longer valid for direct user uploads.
          * 
          * @return builder
@@ -424,9 +498,6 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public StreamArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("StreamArgs", "accountId");
-            }
             return $;
         }
     }

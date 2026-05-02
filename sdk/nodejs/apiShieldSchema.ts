@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * > `cloudflare.ApiShieldSchema` is in a deprecation phase and will be removed in the future.
  *   Instead, please utilize the cloudflare.SchemaValidationSchemas resource instead.
  *
@@ -18,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * const exampleApiShieldSchema = new cloudflare.ApiShieldSchema("example_api_shield_schema", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     file: null,
+ *     file: "Example data",
  *     kind: "openapi_v3",
  *     name: "petstore schema",
  *     validationEnabled: "true",
@@ -82,7 +89,7 @@ export class ApiShieldSchema extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ApiShieldSchema resource with the given unique name, arguments, and options.
@@ -114,9 +121,6 @@ export class ApiShieldSchema extends pulumi.CustomResource {
             }
             if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["file"] = args?.file;
             resourceInputs["kind"] = args?.kind;
@@ -196,5 +200,5 @@ export interface ApiShieldSchemaArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

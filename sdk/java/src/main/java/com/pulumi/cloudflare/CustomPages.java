@@ -16,6 +16,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Account Custom Pages Read`
+ * - `Account Custom Pages Write`
+ * - `Account Settings Read`
+ * - `Account Settings Write`
+ * - `Zero Trust: PII Read`
+ * 
  * ## Example Usage
  * 
  * <pre>

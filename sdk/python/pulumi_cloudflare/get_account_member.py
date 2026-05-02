@@ -59,7 +59,7 @@ class GetAccountMemberResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account identifier tag.
         """
@@ -150,6 +150,12 @@ def get_account_member(account_id: Optional[_builtins.str] = None,
                        member_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountMemberResult:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+    - `Account Settings Write`
+    - `SCIM Provisioning`
+
     ## Example Usage
 
     ```python
@@ -181,11 +187,17 @@ def get_account_member(account_id: Optional[_builtins.str] = None,
         roles=pulumi.get(__ret__, 'roles'),
         status=pulumi.get(__ret__, 'status'),
         user=pulumi.get(__ret__, 'user'))
-def get_account_member_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_member_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               filter: Optional[pulumi.Input[Optional[Union['GetAccountMemberFilterArgs', 'GetAccountMemberFilterArgsDict']]]] = None,
                               member_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountMemberResult]:
     """
+    Accepted Permissions
+
+    - `Account Settings Read`
+    - `Account Settings Write`
+    - `SCIM Provisioning`
+
     ## Example Usage
 
     ```python

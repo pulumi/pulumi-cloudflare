@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Magic Network Monitoring Admin`
+// - `Magic Network Monitoring Config Read`
+// - `Magic Network Monitoring Config Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -28,14 +34,18 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewMagicNetworkMonitoringRule(ctx, "example_magic_network_monitoring_rule", &cloudflare.MagicNetworkMonitoringRuleArgs{
 //				AccountId:              pulumi.String("6f91088a406011ed95aed352566e8d4c"),
-//				Duration:               pulumi.String("1m"),
-//				Name:                   pulumi.String("my_rule_1"),
 //				AutomaticAdvertisement: pulumi.Bool(true),
-//				Bandwidth:              pulumi.Float64(1000),
-//				PacketThreshold:        pulumi.Float64(10000),
+//				Name:                   pulumi.String("my_rule_1"),
 //				Prefixes: pulumi.StringArray{
 //					pulumi.String("203.0.113.1/32"),
 //				},
+//				Type:               pulumi.String("zscore"),
+//				BandwidthThreshold: pulumi.Float64(1000),
+//				Duration:           pulumi.String("1m"),
+//				PacketThreshold:    pulumi.Float64(10000),
+//				PrefixMatch:        pulumi.String("exact"),
+//				ZscoreSensitivity:  pulumi.String("high"),
+//				ZscoreTarget:       pulumi.String("bits"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,13 +64,11 @@ import (
 type MagicNetworkMonitoringRule struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
-	AutomaticAdvertisement pulumi.BoolPtrOutput `pulumi:"automaticAdvertisement"`
+	AutomaticAdvertisement pulumi.BoolOutput `pulumi:"automaticAdvertisement"`
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-	Bandwidth pulumi.Float64PtrOutput `pulumi:"bandwidth"`
-	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-	BandwidthThreshold pulumi.Float64Output `pulumi:"bandwidthThreshold"`
+	BandwidthThreshold pulumi.Float64PtrOutput `pulumi:"bandwidthThreshold"`
 	// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
 	// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
 	Duration pulumi.StringOutput `pulumi:"duration"`
@@ -70,17 +78,17 @@ type MagicNetworkMonitoringRule struct {
 	PacketThreshold pulumi.Float64PtrOutput `pulumi:"packetThreshold"`
 	// Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
 	// Available values: "exact", "subnet", "supernet".
-	PrefixMatch pulumi.StringOutput      `pulumi:"prefixMatch"`
+	PrefixMatch pulumi.StringPtrOutput   `pulumi:"prefixMatch"`
 	Prefixes    pulumi.StringArrayOutput `pulumi:"prefixes"`
 	// MNM rule type.
 	// Available values: "threshold", "zscore", "advancedDdos".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Level of sensitivity set for zscore rules.
 	// Available values: "low", "medium", "high".
-	ZscoreSensitivity pulumi.StringOutput `pulumi:"zscoreSensitivity"`
+	ZscoreSensitivity pulumi.StringPtrOutput `pulumi:"zscoreSensitivity"`
 	// Target of the zscore rule analysis.
 	// Available values: "bits", "packets".
-	ZscoreTarget pulumi.StringOutput `pulumi:"zscoreTarget"`
+	ZscoreTarget pulumi.StringPtrOutput `pulumi:"zscoreTarget"`
 }
 
 // NewMagicNetworkMonitoringRule registers a new resource with the given unique name, arguments, and options.
@@ -90,11 +98,17 @@ func NewMagicNetworkMonitoringRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
+	if args.AutomaticAdvertisement == nil {
+		return nil, errors.New("invalid value for required argument 'AutomaticAdvertisement'")
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Prefixes == nil {
+		return nil, errors.New("invalid value for required argument 'Prefixes'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MagicNetworkMonitoringRule
@@ -122,8 +136,6 @@ type magicNetworkMonitoringRuleState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
 	AutomaticAdvertisement *bool `pulumi:"automaticAdvertisement"`
-	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-	Bandwidth *float64 `pulumi:"bandwidth"`
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	BandwidthThreshold *float64 `pulumi:"bandwidthThreshold"`
 	// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
@@ -153,8 +165,6 @@ type MagicNetworkMonitoringRuleState struct {
 	// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
 	AutomaticAdvertisement pulumi.BoolPtrInput
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-	Bandwidth pulumi.Float64PtrInput
-	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	BandwidthThreshold pulumi.Float64PtrInput
 	// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
 	// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
@@ -183,11 +193,11 @@ func (MagicNetworkMonitoringRuleState) ElementType() reflect.Type {
 }
 
 type magicNetworkMonitoringRuleArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
-	AutomaticAdvertisement *bool `pulumi:"automaticAdvertisement"`
+	AutomaticAdvertisement bool `pulumi:"automaticAdvertisement"`
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-	Bandwidth *float64 `pulumi:"bandwidth"`
+	BandwidthThreshold *float64 `pulumi:"bandwidthThreshold"`
 	// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
 	// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
 	Duration *string `pulumi:"duration"`
@@ -195,16 +205,28 @@ type magicNetworkMonitoringRuleArgs struct {
 	Name string `pulumi:"name"`
 	// The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	PacketThreshold *float64 `pulumi:"packetThreshold"`
-	Prefixes        []string `pulumi:"prefixes"`
+	// Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
+	// Available values: "exact", "subnet", "supernet".
+	PrefixMatch *string  `pulumi:"prefixMatch"`
+	Prefixes    []string `pulumi:"prefixes"`
+	// MNM rule type.
+	// Available values: "threshold", "zscore", "advancedDdos".
+	Type string `pulumi:"type"`
+	// Level of sensitivity set for zscore rules.
+	// Available values: "low", "medium", "high".
+	ZscoreSensitivity *string `pulumi:"zscoreSensitivity"`
+	// Target of the zscore rule analysis.
+	// Available values: "bits", "packets".
+	ZscoreTarget *string `pulumi:"zscoreTarget"`
 }
 
 // The set of arguments for constructing a MagicNetworkMonitoringRule resource.
 type MagicNetworkMonitoringRuleArgs struct {
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
-	AutomaticAdvertisement pulumi.BoolPtrInput
+	AutomaticAdvertisement pulumi.BoolInput
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-	Bandwidth pulumi.Float64PtrInput
+	BandwidthThreshold pulumi.Float64PtrInput
 	// The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
 	// Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
 	Duration pulumi.StringPtrInput
@@ -212,7 +234,19 @@ type MagicNetworkMonitoringRuleArgs struct {
 	Name pulumi.StringInput
 	// The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
 	PacketThreshold pulumi.Float64PtrInput
-	Prefixes        pulumi.StringArrayInput
+	// Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
+	// Available values: "exact", "subnet", "supernet".
+	PrefixMatch pulumi.StringPtrInput
+	Prefixes    pulumi.StringArrayInput
+	// MNM rule type.
+	// Available values: "threshold", "zscore", "advancedDdos".
+	Type pulumi.StringInput
+	// Level of sensitivity set for zscore rules.
+	// Available values: "low", "medium", "high".
+	ZscoreSensitivity pulumi.StringPtrInput
+	// Target of the zscore rule analysis.
+	// Available values: "bits", "packets".
+	ZscoreTarget pulumi.StringPtrInput
 }
 
 func (MagicNetworkMonitoringRuleArgs) ElementType() reflect.Type {
@@ -302,23 +336,18 @@ func (o MagicNetworkMonitoringRuleOutput) ToMagicNetworkMonitoringRuleOutputWith
 	return o
 }
 
-func (o MagicNetworkMonitoringRuleOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o MagicNetworkMonitoringRuleOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
-func (o MagicNetworkMonitoringRuleOutput) AutomaticAdvertisement() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.BoolPtrOutput { return v.AutomaticAdvertisement }).(pulumi.BoolPtrOutput)
+func (o MagicNetworkMonitoringRuleOutput) AutomaticAdvertisement() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.BoolOutput { return v.AutomaticAdvertisement }).(pulumi.BoolOutput)
 }
 
 // The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-func (o MagicNetworkMonitoringRuleOutput) Bandwidth() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.Float64PtrOutput { return v.Bandwidth }).(pulumi.Float64PtrOutput)
-}
-
-// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
-func (o MagicNetworkMonitoringRuleOutput) BandwidthThreshold() pulumi.Float64Output {
-	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.Float64Output { return v.BandwidthThreshold }).(pulumi.Float64Output)
+func (o MagicNetworkMonitoringRuleOutput) BandwidthThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.Float64PtrOutput { return v.BandwidthThreshold }).(pulumi.Float64PtrOutput)
 }
 
 // The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
@@ -339,8 +368,8 @@ func (o MagicNetworkMonitoringRuleOutput) PacketThreshold() pulumi.Float64PtrOut
 
 // Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
 // Available values: "exact", "subnet", "supernet".
-func (o MagicNetworkMonitoringRuleOutput) PrefixMatch() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.StringOutput { return v.PrefixMatch }).(pulumi.StringOutput)
+func (o MagicNetworkMonitoringRuleOutput) PrefixMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.StringPtrOutput { return v.PrefixMatch }).(pulumi.StringPtrOutput)
 }
 
 func (o MagicNetworkMonitoringRuleOutput) Prefixes() pulumi.StringArrayOutput {
@@ -355,14 +384,14 @@ func (o MagicNetworkMonitoringRuleOutput) Type() pulumi.StringOutput {
 
 // Level of sensitivity set for zscore rules.
 // Available values: "low", "medium", "high".
-func (o MagicNetworkMonitoringRuleOutput) ZscoreSensitivity() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.StringOutput { return v.ZscoreSensitivity }).(pulumi.StringOutput)
+func (o MagicNetworkMonitoringRuleOutput) ZscoreSensitivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.StringPtrOutput { return v.ZscoreSensitivity }).(pulumi.StringPtrOutput)
 }
 
 // Target of the zscore rule analysis.
 // Available values: "bits", "packets".
-func (o MagicNetworkMonitoringRuleOutput) ZscoreTarget() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.StringOutput { return v.ZscoreTarget }).(pulumi.StringOutput)
+func (o MagicNetworkMonitoringRuleOutput) ZscoreTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.StringPtrOutput { return v.ZscoreTarget }).(pulumi.StringPtrOutput)
 }
 
 type MagicNetworkMonitoringRuleArrayOutput struct{ *pulumi.OutputState }

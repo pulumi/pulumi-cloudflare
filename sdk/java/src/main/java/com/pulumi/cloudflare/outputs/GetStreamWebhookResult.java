@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStreamWebhookResult {
@@ -14,20 +16,35 @@ public final class GetStreamWebhookResult {
      * @return The account identifier tag.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The date and time the webhook was last modified.
+     * 
+     */
+    private String modified;
+    /**
+     * @return The URL where webhooks will be sent.
+     * 
+     */
+    private String notificationUrl;
+    /**
+     * @return The secret used to verify webhook signatures.
+     * 
+     */
+    private String secret;
 
     private GetStreamWebhookResult() {}
     /**
      * @return The account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -35,6 +52,27 @@ public final class GetStreamWebhookResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return The date and time the webhook was last modified.
+     * 
+     */
+    public String modified() {
+        return this.modified;
+    }
+    /**
+     * @return The URL where webhooks will be sent.
+     * 
+     */
+    public String notificationUrl() {
+        return this.notificationUrl;
+    }
+    /**
+     * @return The secret used to verify webhook signatures.
+     * 
+     */
+    public String secret() {
+        return this.secret;
     }
 
     public static Builder builder() {
@@ -46,20 +84,24 @@ public final class GetStreamWebhookResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String id;
+        private String modified;
+        private String notificationUrl;
+        private String secret;
         public Builder() {}
         public Builder(GetStreamWebhookResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.id = defaults.id;
+    	      this.modified = defaults.modified;
+    	      this.notificationUrl = defaults.notificationUrl;
+    	      this.secret = defaults.secret;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetStreamWebhookResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -71,10 +113,37 @@ public final class GetStreamWebhookResult {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder modified(String modified) {
+            if (modified == null) {
+              throw new MissingRequiredPropertyException("GetStreamWebhookResult", "modified");
+            }
+            this.modified = modified;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder notificationUrl(String notificationUrl) {
+            if (notificationUrl == null) {
+              throw new MissingRequiredPropertyException("GetStreamWebhookResult", "notificationUrl");
+            }
+            this.notificationUrl = notificationUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder secret(String secret) {
+            if (secret == null) {
+              throw new MissingRequiredPropertyException("GetStreamWebhookResult", "secret");
+            }
+            this.secret = secret;
+            return this;
+        }
         public GetStreamWebhookResult build() {
             final var _resultValue = new GetStreamWebhookResult();
             _resultValue.accountId = accountId;
             _resultValue.id = id;
+            _resultValue.modified = modified;
+            _resultValue.notificationUrl = notificationUrl;
+            _resultValue.secret = secret;
             return _resultValue;
         }
     }

@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// Account identifier
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Date and time at which the target was created
@@ -133,8 +133,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// A non-unique field that refers to a target. Case insensitive, maximum

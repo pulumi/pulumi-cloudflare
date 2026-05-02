@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Waiting Rooms Read`
+ * - `Waiting Rooms Write`
+ *
  * ## Example Usage
  *
  * ```typescript

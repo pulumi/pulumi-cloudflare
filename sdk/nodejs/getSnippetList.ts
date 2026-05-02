@@ -6,7 +6,14 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getSnippetList(args: GetSnippetListArgs, opts?: pulumi.InvokeOptions): Promise<GetSnippetListResult> {
+/**
+ * Accepted Permissions
+ *
+ * - `Snippets Read`
+ * - `Snippets Write`
+ */
+export function getSnippetList(args?: GetSnippetListArgs, opts?: pulumi.InvokeOptions): Promise<GetSnippetListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSnippetList:getSnippetList", {
         "maxItems": args.maxItems,
@@ -25,7 +32,7 @@ export interface GetSnippetListArgs {
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -47,9 +54,16 @@ export interface GetSnippetListResult {
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
-export function getSnippetListOutput(args: GetSnippetListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnippetListResult> {
+/**
+ * Accepted Permissions
+ *
+ * - `Snippets Read`
+ * - `Snippets Write`
+ */
+export function getSnippetListOutput(args?: GetSnippetListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnippetListResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSnippetList:getSnippetList", {
         "maxItems": args.maxItems,
@@ -68,5 +82,5 @@ export interface GetSnippetListOutputArgs {
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -53,7 +58,7 @@ export class ZeroTrustDeviceDefaultProfileCertificates extends pulumi.CustomReso
      * The current status of the device policy certificate provisioning feature for WARP clients.
      */
     declare public readonly enabled: pulumi.Output<boolean>;
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ZeroTrustDeviceDefaultProfileCertificates resource with the given unique name, arguments, and options.
@@ -74,9 +79,6 @@ export class ZeroTrustDeviceDefaultProfileCertificates extends pulumi.CustomReso
             const args = argsOrState as ZeroTrustDeviceDefaultProfileCertificatesArgs | undefined;
             if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["zoneId"] = args?.zoneId;
@@ -105,5 +107,5 @@ export interface ZeroTrustDeviceDefaultProfileCertificatesArgs {
      * The current status of the device policy certificate provisioning feature for WARP clients.
      */
     enabled: pulumi.Input<boolean>;
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

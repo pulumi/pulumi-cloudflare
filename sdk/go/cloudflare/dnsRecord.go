@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS Read`
+// - `DNS Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -27,13 +32,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewDnsRecord(ctx, "example_dns_record", &cloudflare.DnsRecordArgs{
-//				ZoneId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Name:    pulumi.String("example.com"),
-//				Ttl:     pulumi.Float64(3600),
-//				Type:    pulumi.String("A"),
-//				Comment: pulumi.String("Domain verification record"),
-//				Content: pulumi.String("198.51.100.4"),
-//				Proxied: pulumi.Bool(true),
+//				ZoneId:         pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Name:           pulumi.String("example.com"),
+//				Ttl:            pulumi.Float64(3600),
+//				Type:           pulumi.String("A"),
+//				Comment:        pulumi.String("Domain verification record"),
+//				Content:        pulumi.String("198.51.100.4"),
+//				PrivateRouting: pulumi.Bool(true),
+//				Proxied:        pulumi.Bool(true),
 //				Settings: &cloudflare.DnsRecordSettingsArgs{
 //					Ipv4Only: pulumi.Bool(true),
 //					Ipv6Only: pulumi.Bool(true),
@@ -77,6 +83,8 @@ type DnsRecord struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority pulumi.Float64PtrOutput `pulumi:"priority"`
+	// Enables private network routing to the origin.
+	PrivateRouting pulumi.BoolPtrOutput `pulumi:"privateRouting"`
 	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable pulumi.BoolOutput `pulumi:"proxiable"`
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
@@ -93,7 +101,7 @@ type DnsRecord struct {
 	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Identifier.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewDnsRecord registers a new resource with the given unique name, arguments, and options.
@@ -111,9 +119,6 @@ func NewDnsRecord(ctx *pulumi.Context,
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -162,6 +167,8 @@ type dnsRecordState struct {
 	Name *string `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority *float64 `pulumi:"priority"`
+	// Enables private network routing to the origin.
+	PrivateRouting *bool `pulumi:"privateRouting"`
 	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable *bool `pulumi:"proxiable"`
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
@@ -200,6 +207,8 @@ type DnsRecordState struct {
 	Name pulumi.StringPtrInput
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority pulumi.Float64PtrInput
+	// Enables private network routing to the origin.
+	PrivateRouting pulumi.BoolPtrInput
 	// Whether the record can be proxied by Cloudflare or not.
 	Proxiable pulumi.BoolPtrInput
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
@@ -234,6 +243,8 @@ type dnsRecordArgs struct {
 	Name string `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority *float64 `pulumi:"priority"`
+	// Enables private network routing to the origin.
+	PrivateRouting *bool `pulumi:"privateRouting"`
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied *bool `pulumi:"proxied"`
 	// Settings for the DNS record.
@@ -246,7 +257,7 @@ type dnsRecordArgs struct {
 	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type string `pulumi:"type"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a DnsRecord resource.
@@ -261,6 +272,8 @@ type DnsRecordArgs struct {
 	Name pulumi.StringInput
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority pulumi.Float64PtrInput
+	// Enables private network routing to the origin.
+	PrivateRouting pulumi.BoolPtrInput
 	// Whether the record is receiving the performance and security benefits of Cloudflare.
 	Proxied pulumi.BoolPtrInput
 	// Settings for the DNS record.
@@ -273,7 +286,7 @@ type DnsRecordArgs struct {
 	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type pulumi.StringInput
 	// Identifier.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (DnsRecordArgs) ElementType() reflect.Type {
@@ -408,6 +421,11 @@ func (o DnsRecordOutput) Priority() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *DnsRecord) pulumi.Float64PtrOutput { return v.Priority }).(pulumi.Float64PtrOutput)
 }
 
+// Enables private network routing to the origin.
+func (o DnsRecordOutput) PrivateRouting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.BoolPtrOutput { return v.PrivateRouting }).(pulumi.BoolPtrOutput)
+}
+
 // Whether the record can be proxied by Cloudflare or not.
 func (o DnsRecordOutput) Proxiable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DnsRecord) pulumi.BoolOutput { return v.Proxiable }).(pulumi.BoolOutput)
@@ -445,8 +463,8 @@ func (o DnsRecordOutput) Type() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o DnsRecordOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o DnsRecordOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type DnsRecordArrayOutput struct{ *pulumi.OutputState }

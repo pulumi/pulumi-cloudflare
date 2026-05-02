@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAiSearchTokensInvokeResult {
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -31,10 +31,15 @@ public final class GetAiSearchTokensInvokeResult {
      * 
      */
     private List<GetAiSearchTokensResult> results;
+    /**
+     * @return Filter tokens whose name contains this string (case-insensitive).
+     * 
+     */
+    private @Nullable String search;
 
     private GetAiSearchTokensInvokeResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -57,6 +62,13 @@ public final class GetAiSearchTokensInvokeResult {
     public List<GetAiSearchTokensResult> results() {
         return this.results;
     }
+    /**
+     * @return Filter tokens whose name contains this string (case-insensitive).
+     * 
+     */
+    public Optional<String> search() {
+        return Optional.ofNullable(this.search);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -67,10 +79,11 @@ public final class GetAiSearchTokensInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String id;
         private @Nullable Integer maxItems;
         private List<GetAiSearchTokensResult> results;
+        private @Nullable String search;
         public Builder() {}
         public Builder(GetAiSearchTokensInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -78,13 +91,12 @@ public final class GetAiSearchTokensInvokeResult {
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
+    	      this.search = defaults.search;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetAiSearchTokensInvokeResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -113,12 +125,19 @@ public final class GetAiSearchTokensInvokeResult {
         public Builder results(GetAiSearchTokensResult... results) {
             return results(List.of(results));
         }
+        @CustomType.Setter
+        public Builder search(@Nullable String search) {
+
+            this.search = search;
+            return this;
+        }
         public GetAiSearchTokensInvokeResult build() {
             final var _resultValue = new GetAiSearchTokensInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
+            _resultValue.search = search;
             return _resultValue;
         }
     }

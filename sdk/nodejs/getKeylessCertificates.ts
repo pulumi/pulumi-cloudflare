@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +23,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getKeylessCertificates(args: GetKeylessCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetKeylessCertificatesResult> {
+export function getKeylessCertificates(args?: GetKeylessCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetKeylessCertificatesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getKeylessCertificates:getKeylessCertificates", {
         "maxItems": args.maxItems,
@@ -37,7 +43,7 @@ export interface GetKeylessCertificatesArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -59,9 +65,14 @@ export interface GetKeylessCertificatesResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `SSL and Certificates Read`
+ * - `SSL and Certificates Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +84,8 @@ export interface GetKeylessCertificatesResult {
  * });
  * ```
  */
-export function getKeylessCertificatesOutput(args: GetKeylessCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeylessCertificatesResult> {
+export function getKeylessCertificatesOutput(args?: GetKeylessCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeylessCertificatesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getKeylessCertificates:getKeylessCertificates", {
         "maxItems": args.maxItems,
@@ -92,5 +104,5 @@ export interface GetKeylessCertificatesOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

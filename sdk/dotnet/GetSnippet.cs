@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetSnippet
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Snippets Read`
+        /// - `Snippets Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnippetResult>("cloudflare:index/getSnippet:getSnippet", args ?? new GetSnippetArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Snippets Read`
+        /// - `Snippets Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetSnippetResult>("cloudflare:index/getSnippet:getSnippet", args ?? new GetSnippetInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Snippets Read`
+        /// - `Snippets Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this field to specify the unique ID of the zone.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetSnippetArgs()
         {
@@ -113,8 +128,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this field to specify the unique ID of the zone.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetSnippetInvokeArgs()
         {
@@ -145,7 +160,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this field to specify the unique ID of the zone.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetSnippetResult(
@@ -157,7 +172,7 @@ namespace Pulumi.Cloudflare
 
             string snippetName,
 
-            string zoneId)
+            string? zoneId)
         {
             CreatedOn = createdOn;
             Id = id;

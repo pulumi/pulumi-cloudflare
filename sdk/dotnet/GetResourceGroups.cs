@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetResourceGroups
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `SCIM Provisioning`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -32,10 +38,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetResourceGroupsResult> InvokeAsync(GetResourceGroupsArgs args, InvokeOptions? options = null)
+        public static Task<GetResourceGroupsResult> InvokeAsync(GetResourceGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupsResult>("cloudflare:index/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `SCIM Provisioning`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,10 +68,16 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetResourceGroupsResult> Invoke(GetResourceGroupsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetResourceGroupsResult> Invoke(GetResourceGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceGroupsResult>("cloudflare:index/getResourceGroups:getResourceGroups", args ?? new GetResourceGroupsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account Settings Read`
+        /// - `Account Settings Write`
+        /// - `SCIM Provisioning`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -90,8 +108,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// ID of the resource group to be fetched.
@@ -122,8 +140,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// ID of the resource group to be fetched.
@@ -156,7 +174,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// ID of the resource group to be fetched.
         /// </summary>
@@ -176,7 +194,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetResourceGroupsResult(
-            string accountId,
+            string? accountId,
 
             string? id,
 

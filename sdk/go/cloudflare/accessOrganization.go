@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Organizations, Identity Providers, and Groups Read`
+// - `Access: Organizations, Identity Providers, and Groups Revoke`
+// - `Access: Organizations, Identity Providers, and Groups Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -52,10 +58,24 @@ import (
 //						pulumi.String("biometrics"),
 //						pulumi.String("security_key"),
 //					},
-//					SessionDuration: pulumi.String("24h"),
+//					AmrMatchingSessionDuration: pulumi.String("12h"),
+//					RequiredAaguids:            pulumi.String("2fc0579f-8113-47ea-b116-bb5a8db9202a"),
+//					SessionDuration:            pulumi.String("24h"),
 //				},
-//				MfaConfigurationAllowed:        pulumi.Bool(true),
-//				MfaRequiredForAllApps:          pulumi.Bool(false),
+//				MfaRequiredForAllApps: pulumi.Bool(false),
+//				MfaSshPivKeyRequirements: &cloudflare.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs{
+//					PinPolicy:         pulumi.String("always"),
+//					RequireFipsDevice: pulumi.Bool(true),
+//					SshKeySizes: pulumi.IntArray{
+//						pulumi.Int(256),
+//						pulumi.Int(2048),
+//					},
+//					SshKeyTypes: pulumi.StringArray{
+//						pulumi.String("ecdsa"),
+//						pulumi.String("rsa"),
+//					},
+//					TouchPolicy: pulumi.String("always"),
+//				},
 //				Name:                           pulumi.String("Widget Corps Internal Applications"),
 //				SessionDuration:                pulumi.String("24h"),
 //				UiReadOnlyToggleReason:         pulumi.String("Temporarily turn off the UI read only lock to make a change via the UI"),
@@ -101,6 +121,8 @@ type AccessOrganization struct {
 	MfaConfigurationAllowed pulumi.BoolOutput `pulumi:"mfaConfigurationAllowed"`
 	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
 	MfaRequiredForAllApps pulumi.BoolOutput `pulumi:"mfaRequiredForAllApps"`
+	// Configures SSH PIV key requirements for MFA using hardware security keys.
+	MfaSshPivKeyRequirements AccessOrganizationMfaSshPivKeyRequirementsPtrOutput `pulumi:"mfaSshPivKeyRequirements"`
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -173,6 +195,8 @@ type accessOrganizationState struct {
 	MfaConfigurationAllowed *bool `pulumi:"mfaConfigurationAllowed"`
 	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
 	MfaRequiredForAllApps *bool `pulumi:"mfaRequiredForAllApps"`
+	// Configures SSH PIV key requirements for MFA using hardware security keys.
+	MfaSshPivKeyRequirements *AccessOrganizationMfaSshPivKeyRequirements `pulumi:"mfaSshPivKeyRequirements"`
 	// The name of your Zero Trust organization.
 	Name *string `pulumi:"name"`
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -210,6 +234,8 @@ type AccessOrganizationState struct {
 	MfaConfigurationAllowed pulumi.BoolPtrInput
 	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
 	MfaRequiredForAllApps pulumi.BoolPtrInput
+	// Configures SSH PIV key requirements for MFA using hardware security keys.
+	MfaSshPivKeyRequirements AccessOrganizationMfaSshPivKeyRequirementsPtrInput
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrInput
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -251,6 +277,8 @@ type accessOrganizationArgs struct {
 	MfaConfigurationAllowed *bool `pulumi:"mfaConfigurationAllowed"`
 	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
 	MfaRequiredForAllApps *bool `pulumi:"mfaRequiredForAllApps"`
+	// Configures SSH PIV key requirements for MFA using hardware security keys.
+	MfaSshPivKeyRequirements *AccessOrganizationMfaSshPivKeyRequirements `pulumi:"mfaSshPivKeyRequirements"`
 	// The name of your Zero Trust organization.
 	Name *string `pulumi:"name"`
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -289,6 +317,8 @@ type AccessOrganizationArgs struct {
 	MfaConfigurationAllowed pulumi.BoolPtrInput
 	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
 	MfaRequiredForAllApps pulumi.BoolPtrInput
+	// Configures SSH PIV key requirements for MFA using hardware security keys.
+	MfaSshPivKeyRequirements AccessOrganizationMfaSshPivKeyRequirementsPtrInput
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrInput
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -446,6 +476,13 @@ func (o AccessOrganizationOutput) MfaConfigurationAllowed() pulumi.BoolOutput {
 // Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
 func (o AccessOrganizationOutput) MfaRequiredForAllApps() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolOutput { return v.MfaRequiredForAllApps }).(pulumi.BoolOutput)
+}
+
+// Configures SSH PIV key requirements for MFA using hardware security keys.
+func (o AccessOrganizationOutput) MfaSshPivKeyRequirements() AccessOrganizationMfaSshPivKeyRequirementsPtrOutput {
+	return o.ApplyT(func(v *AccessOrganization) AccessOrganizationMfaSshPivKeyRequirementsPtrOutput {
+		return v.MfaSshPivKeyRequirements
+	}).(AccessOrganizationMfaSshPivKeyRequirementsPtrOutput)
 }
 
 // The name of your Zero Trust organization.

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -19,7 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getEmailSecurityTrustedDomains(args: GetEmailSecurityTrustedDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityTrustedDomainsResult> {
+export function getEmailSecurityTrustedDomains(args?: GetEmailSecurityTrustedDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityTrustedDomainsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailSecurityTrustedDomains:getEmailSecurityTrustedDomains", {
         "accountId": args.accountId,
@@ -35,7 +41,7 @@ export interface GetEmailSecurityTrustedDomainsArgs {
     /**
      * Account Identifier
      */
-    accountId: string;
+    accountId?: string;
     filter?: inputs.GetEmailSecurityTrustedDomainsFilter;
     /**
      * The unique identifier for the trusted domain.
@@ -50,7 +56,7 @@ export interface GetEmailSecurityTrustedDomainsResult {
     /**
      * Account Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly comments: string;
     readonly createdAt: string;
     readonly filter?: outputs.GetEmailSecurityTrustedDomainsFilter;
@@ -78,6 +84,11 @@ export interface GetEmailSecurityTrustedDomainsResult {
     readonly trustedDomainId?: number;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloud Email Security: Read`
+ * - `Cloud Email Security: Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -90,7 +101,8 @@ export interface GetEmailSecurityTrustedDomainsResult {
  * });
  * ```
  */
-export function getEmailSecurityTrustedDomainsOutput(args: GetEmailSecurityTrustedDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityTrustedDomainsResult> {
+export function getEmailSecurityTrustedDomainsOutput(args?: GetEmailSecurityTrustedDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityTrustedDomainsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailSecurityTrustedDomains:getEmailSecurityTrustedDomains", {
         "accountId": args.accountId,
@@ -106,7 +118,7 @@ export interface GetEmailSecurityTrustedDomainsOutputArgs {
     /**
      * Account Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetEmailSecurityTrustedDomainsFilterArgs>;
     /**
      * The unique identifier for the trusted domain.

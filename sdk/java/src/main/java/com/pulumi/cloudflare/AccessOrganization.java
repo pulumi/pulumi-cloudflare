@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.AccessOrganizationState;
 import com.pulumi.cloudflare.outputs.AccessOrganizationCustomPages;
 import com.pulumi.cloudflare.outputs.AccessOrganizationLoginDesign;
 import com.pulumi.cloudflare.outputs.AccessOrganizationMfaConfig;
+import com.pulumi.cloudflare.outputs.AccessOrganizationMfaSshPivKeyRequirements;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -21,6 +22,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Access: Organizations, Identity Providers, and Groups Read`
+ * - `Access: Organizations, Identity Providers, and Groups Revoke`
+ * - `Access: Organizations, Identity Providers, and Groups Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -35,6 +42,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationCustomPagesArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationLoginDesignArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaConfigArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -72,10 +80,22 @@ import javax.annotation.Nullable;
  *                     "totp",
  *                     "biometrics",
  *                     "security_key")
+ *                 .amrMatchingSessionDuration("12h")
+ *                 .requiredAaguids("2fc0579f-8113-47ea-b116-bb5a8db9202a")
  *                 .sessionDuration("24h")
  *                 .build())
- *             .mfaConfigurationAllowed(true)
  *             .mfaRequiredForAllApps(false)
+ *             .mfaSshPivKeyRequirements(ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs.builder()
+ *                 .pinPolicy("always")
+ *                 .requireFipsDevice(true)
+ *                 .sshKeySizes(                
+ *                     256,
+ *                     2048)
+ *                 .sshKeyTypes(                
+ *                     "ecdsa",
+ *                     "rsa")
+ *                 .touchPolicy("always")
+ *                 .build())
  *             .name("Widget Corps Internal Applications")
  *             .sessionDuration("24h")
  *             .uiReadOnlyToggleReason("Temporarily turn off the UI read only lock to make a change via the UI")
@@ -250,6 +270,20 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> mfaRequiredForAllApps() {
         return this.mfaRequiredForAllApps;
+    }
+    /**
+     * Configures SSH PIV key requirements for MFA using hardware security keys.
+     * 
+     */
+    @Export(name="mfaSshPivKeyRequirements", refs={AccessOrganizationMfaSshPivKeyRequirements.class}, tree="[0]")
+    private Output</* @Nullable */ AccessOrganizationMfaSshPivKeyRequirements> mfaSshPivKeyRequirements;
+
+    /**
+     * @return Configures SSH PIV key requirements for MFA using hardware security keys.
+     * 
+     */
+    public Output<Optional<AccessOrganizationMfaSshPivKeyRequirements>> mfaSshPivKeyRequirements() {
+        return Codegen.optional(this.mfaSshPivKeyRequirements);
     }
     /**
      * The name of your Zero Trust organization.

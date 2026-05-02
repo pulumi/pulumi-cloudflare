@@ -50,6 +50,21 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The identifier for the Custom CSR that was used.
+     * 
+     */
+    @Import(name="customCsrId")
+    private @Nullable Output<String> customCsrId;
+
+    /**
+     * @return The identifier for the Custom CSR that was used.
+     * 
+     */
+    public Optional<Output<String>> customCsrId() {
+        return Optional.ofNullable(this.customCsrId);
+    }
+
+    /**
      * The environment to deploy the certificate to.
      * Available values: &#34;staging&#34;, &#34;production&#34;.
      * 
@@ -134,15 +149,15 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
      * Identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private CustomSslArgs() {}
@@ -150,6 +165,7 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
     private CustomSslArgs(CustomSslArgs $) {
         this.bundleMethod = $.bundleMethod;
         this.certificate = $.certificate;
+        this.customCsrId = $.customCsrId;
         this.deploy = $.deploy;
         this.geoRestrictions = $.geoRestrictions;
         this.policy = $.policy;
@@ -218,6 +234,27 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder certificate(String certificate) {
             return certificate(Output.of(certificate));
+        }
+
+        /**
+         * @param customCsrId The identifier for the Custom CSR that was used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCsrId(@Nullable Output<String> customCsrId) {
+            $.customCsrId = customCsrId;
+            return this;
+        }
+
+        /**
+         * @param customCsrId The identifier for the Custom CSR that was used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCsrId(String customCsrId) {
+            return customCsrId(Output.of(customCsrId));
         }
 
         /**
@@ -337,7 +374,7 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -358,9 +395,6 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.privateKey == null) {
                 throw new MissingRequiredPropertyException("CustomSslArgs", "privateKey");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("CustomSslArgs", "zoneId");
             }
             return $;
         }

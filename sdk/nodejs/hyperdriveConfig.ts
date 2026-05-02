@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Hyperdrive Read`
+ * - `Hyperdrive Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +78,7 @@ export class HyperdriveConfig extends pulumi.CustomResource {
     /**
      * Define configurations using a unique string identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public readonly caching: pulumi.Output<outputs.HyperdriveConfigCaching | undefined>;
     /**
      * Defines the creation time of the Hyperdrive configuration.
@@ -83,6 +88,9 @@ export class HyperdriveConfig extends pulumi.CustomResource {
      * Defines the last modified time of the Hyperdrive configuration.
      */
     declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
+    /**
+     * mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+     */
     declare public readonly mtls: pulumi.Output<outputs.HyperdriveConfigMtls | undefined>;
     /**
      * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
@@ -117,9 +125,6 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             resourceInputs["originConnectionLimit"] = state?.originConnectionLimit;
         } else {
             const args = argsOrState as HyperdriveConfigArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -157,6 +162,9 @@ export interface HyperdriveConfigState {
      * Defines the last modified time of the Hyperdrive configuration.
      */
     modifiedOn?: pulumi.Input<string>;
+    /**
+     * mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+     */
     mtls?: pulumi.Input<inputs.HyperdriveConfigMtls>;
     /**
      * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
@@ -176,8 +184,11 @@ export interface HyperdriveConfigArgs {
     /**
      * Define configurations using a unique string identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     caching?: pulumi.Input<inputs.HyperdriveConfigCaching>;
+    /**
+     * mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
+     */
     mtls?: pulumi.Input<inputs.HyperdriveConfigMtls>;
     /**
      * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.

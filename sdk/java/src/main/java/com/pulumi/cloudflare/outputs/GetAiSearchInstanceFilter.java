@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,6 +12,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAiSearchInstanceFilter {
+    private @Nullable String namespace;
+    /**
+     * @return Order By Column Name
+     * Available values: &#34;createdAt&#34;.
+     * 
+     */
+    private String orderBy;
+    /**
+     * @return Order By Direction
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    private String orderByDirection;
     /**
      * @return Search by id
      * 
@@ -18,6 +32,25 @@ public final class GetAiSearchInstanceFilter {
     private @Nullable String search;
 
     private GetAiSearchInstanceFilter() {}
+    public Optional<String> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
+    /**
+     * @return Order By Column Name
+     * Available values: &#34;createdAt&#34;.
+     * 
+     */
+    public String orderBy() {
+        return this.orderBy;
+    }
+    /**
+     * @return Order By Direction
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public String orderByDirection() {
+        return this.orderByDirection;
+    }
     /**
      * @return Search by id
      * 
@@ -35,13 +68,41 @@ public final class GetAiSearchInstanceFilter {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String namespace;
+        private String orderBy;
+        private String orderByDirection;
         private @Nullable String search;
         public Builder() {}
         public Builder(GetAiSearchInstanceFilter defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.namespace = defaults.namespace;
+    	      this.orderBy = defaults.orderBy;
+    	      this.orderByDirection = defaults.orderByDirection;
     	      this.search = defaults.search;
         }
 
+        @CustomType.Setter
+        public Builder namespace(@Nullable String namespace) {
+
+            this.namespace = namespace;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder orderBy(String orderBy) {
+            if (orderBy == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstanceFilter", "orderBy");
+            }
+            this.orderBy = orderBy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder orderByDirection(String orderByDirection) {
+            if (orderByDirection == null) {
+              throw new MissingRequiredPropertyException("GetAiSearchInstanceFilter", "orderByDirection");
+            }
+            this.orderByDirection = orderByDirection;
+            return this;
+        }
         @CustomType.Setter
         public Builder search(@Nullable String search) {
 
@@ -50,6 +111,9 @@ public final class GetAiSearchInstanceFilter {
         }
         public GetAiSearchInstanceFilter build() {
             final var _resultValue = new GetAiSearchInstanceFilter();
+            _resultValue.namespace = namespace;
+            _resultValue.orderBy = orderBy;
+            _resultValue.orderByDirection = orderByDirection;
             _resultValue.search = search;
             return _resultValue;
         }

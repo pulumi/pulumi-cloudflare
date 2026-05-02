@@ -12,6 +12,15 @@ namespace Pulumi.Cloudflare
     public static class GetPageShieldCookies
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +44,15 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPageShieldCookiesResult>("cloudflare:index/getPageShieldCookies:getPageShieldCookies", args ?? new GetPageShieldCookiesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +76,15 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetPageShieldCookiesResult>("cloudflare:index/getPageShieldCookies:getPageShieldCookies", args ?? new GetPageShieldCookiesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +120,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetPageShieldCookiesArgs()
         {
@@ -113,8 +140,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetPageShieldCookiesInvokeArgs()
         {
@@ -156,7 +183,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetPageShieldCookiesResult(
@@ -190,7 +217,7 @@ namespace Pulumi.Cloudflare
 
             string type,
 
-            string zoneId)
+            string? zoneId)
         {
             CookieId = cookieId;
             DomainAttribute = domainAttribute;

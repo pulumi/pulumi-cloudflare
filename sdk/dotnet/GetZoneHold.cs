@@ -12,6 +12,45 @@ namespace Pulumi.Cloudflare
     public static class GetZoneHold
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Apps and Policies Read`
+        /// - `Access: Apps and Policies Revoke`
+        /// - `Access: Apps and Policies Write`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// - `Analytics Read`
+        /// - `Apps Write`
+        /// - `Cache Purge`
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// - `Load Balancers Read`
+        /// - `Load Balancers Write`
+        /// - `Logs Read`
+        /// - `Logs Write`
+        /// - `Page Rules Read`
+        /// - `Page Rules Write`
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// - `Trust and Safety Read`
+        /// - `Trust and Safety Write`
+        /// - `Workers Routes Read`
+        /// - `Workers Routes Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Zaraz Admin`
+        /// - `Zaraz Edit`
+        /// - `Zaraz Read`
+        /// - `Zero Trust: PII Read`
+        /// - `Zone Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +69,49 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZoneHoldResult> InvokeAsync(GetZoneHoldArgs args, InvokeOptions? options = null)
+        public static Task<GetZoneHoldResult> InvokeAsync(GetZoneHoldArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneHoldResult>("cloudflare:index/getZoneHold:getZoneHold", args ?? new GetZoneHoldArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Apps and Policies Read`
+        /// - `Access: Apps and Policies Revoke`
+        /// - `Access: Apps and Policies Write`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// - `Analytics Read`
+        /// - `Apps Write`
+        /// - `Cache Purge`
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// - `Load Balancers Read`
+        /// - `Load Balancers Write`
+        /// - `Logs Read`
+        /// - `Logs Write`
+        /// - `Page Rules Read`
+        /// - `Page Rules Write`
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// - `Trust and Safety Read`
+        /// - `Trust and Safety Write`
+        /// - `Workers Routes Read`
+        /// - `Workers Routes Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Zaraz Admin`
+        /// - `Zaraz Edit`
+        /// - `Zaraz Read`
+        /// - `Zero Trust: PII Read`
+        /// - `Zone Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +130,49 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZoneHoldResult> Invoke(GetZoneHoldInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZoneHoldResult> Invoke(GetZoneHoldInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneHoldResult>("cloudflare:index/getZoneHold:getZoneHold", args ?? new GetZoneHoldInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Access: Apps and Policies Read`
+        /// - `Access: Apps and Policies Revoke`
+        /// - `Access: Apps and Policies Write`
+        /// - `Access: Mutual TLS Certificates Write`
+        /// - `Access: Organizations, Identity Providers, and Groups Write`
+        /// - `Analytics Read`
+        /// - `Apps Write`
+        /// - `Cache Purge`
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// - `Firewall Services Read`
+        /// - `Firewall Services Write`
+        /// - `Load Balancers Read`
+        /// - `Load Balancers Write`
+        /// - `Logs Read`
+        /// - `Logs Write`
+        /// - `Page Rules Read`
+        /// - `Page Rules Write`
+        /// - `SSL and Certificates Read`
+        /// - `SSL and Certificates Write`
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// - `Trust and Safety Read`
+        /// - `Trust and Safety Write`
+        /// - `Workers Routes Read`
+        /// - `Workers Routes Write`
+        /// - `Workers Scripts Read`
+        /// - `Workers Scripts Write`
+        /// - `Zaraz Admin`
+        /// - `Zaraz Edit`
+        /// - `Zaraz Read`
+        /// - `Zero Trust: PII Read`
+        /// - `Zone Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// - `Zone Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +201,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetZoneHoldArgs()
         {
@@ -98,8 +215,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetZoneHoldInvokeArgs()
         {
@@ -121,7 +238,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetZoneHoldResult(
@@ -133,7 +250,7 @@ namespace Pulumi.Cloudflare
 
             string includeSubdomains,
 
-            string zoneId)
+            string? zoneId)
         {
             Hold = hold;
             HoldAfter = holdAfter;

@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetApiShieldSchema
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +43,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiShieldSchemaResult>("cloudflare:index/getApiShieldSchema:getApiShieldSchema", args ?? new GetApiShieldSchemaArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +74,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetApiShieldSchemaResult>("cloudflare:index/getApiShieldSchema:getApiShieldSchema", args ?? new GetApiShieldSchemaInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -99,8 +120,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetApiShieldSchemaArgs()
         {
@@ -122,8 +143,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetApiShieldSchemaInvokeArgs()
         {
@@ -165,7 +186,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetApiShieldSchemaResult(
@@ -185,7 +206,7 @@ namespace Pulumi.Cloudflare
 
             bool validationEnabled,
 
-            string zoneId)
+            string? zoneId)
         {
             CreatedAt = createdAt;
             Id = id;

@@ -67,7 +67,7 @@ class GetKeylessCertificatesResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -90,6 +90,11 @@ def get_keyless_certificates(max_items: Optional[_builtins.int] = None,
                              zone_id: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeylessCertificatesResult:
     """
+    Accepted Permissions
+
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+
     ## Example Usage
 
     ```python
@@ -115,9 +120,14 @@ def get_keyless_certificates(max_items: Optional[_builtins.int] = None,
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_keyless_certificates_output(max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                    zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                    zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeylessCertificatesResult]:
     """
+    Accepted Permissions
+
+    - `SSL and Certificates Read`
+    - `SSL and Certificates Write`
+
     ## Example Usage
 
     ```python

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Images Read`
+ * - `Images Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,7 +37,7 @@ export interface GetImageArgs {
     /**
      * Account identifier tag.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Image unique identifier.
      */
@@ -46,7 +51,7 @@ export interface GetImageResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Can set the creator field with an internal user ID.
      */
@@ -81,6 +86,11 @@ export interface GetImageResult {
     readonly variants: string[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Images Read`
+ * - `Images Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -108,7 +118,7 @@ export interface GetImageOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Image unique identifier.
      */

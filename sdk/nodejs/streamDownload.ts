@@ -2,9 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Stream Read`
+ * - `Stream Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -52,7 +59,15 @@ export class StreamDownload extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
+    /**
+     * The audio-only download. Only present if this download type has been created.
+     */
+    declare public /*out*/ readonly audio: pulumi.Output<outputs.StreamDownloadAudio>;
+    /**
+     * The default video download. Only present if this download type has been created.
+     */
+    declare public /*out*/ readonly default: pulumi.Output<outputs.StreamDownloadDefault>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
@@ -72,17 +87,18 @@ export class StreamDownload extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as StreamDownloadState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["audio"] = state?.audio;
+            resourceInputs["default"] = state?.default;
             resourceInputs["identifier"] = state?.identifier;
         } else {
             const args = argsOrState as StreamDownloadArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["audio"] = undefined /*out*/;
+            resourceInputs["default"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StreamDownload.__pulumiType, name, resourceInputs, opts);
@@ -98,6 +114,14 @@ export interface StreamDownloadState {
      */
     accountId?: pulumi.Input<string>;
     /**
+     * The audio-only download. Only present if this download type has been created.
+     */
+    audio?: pulumi.Input<inputs.StreamDownloadAudio>;
+    /**
+     * The default video download. Only present if this download type has been created.
+     */
+    default?: pulumi.Input<inputs.StreamDownloadDefault>;
+    /**
      * A Cloudflare-generated unique identifier for a media item.
      */
     identifier?: pulumi.Input<string>;
@@ -110,7 +134,7 @@ export interface StreamDownloadArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Firewall Services Read`
+ * - `Firewall Services Write`
+ *
  * > `cloudflare.Filter` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still fully
  *   supported but you are strongly advised to move to the
@@ -84,7 +89,7 @@ export class Filter extends pulumi.CustomResource {
     /**
      * Defines an identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Filter resource with the given unique name, arguments, and options.
@@ -109,9 +114,6 @@ export class Filter extends pulumi.CustomResource {
             const args = argsOrState as FilterArgs | undefined;
             if (args?.bodies === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bodies'");
-            }
-            if (args?.zoneId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["bodies"] = args?.bodies;
             resourceInputs["description"] = args?.description;
@@ -176,5 +178,5 @@ export interface FilterArgs {
     /**
      * Defines an identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

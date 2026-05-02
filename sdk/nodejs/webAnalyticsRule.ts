@@ -56,7 +56,7 @@ export class WebAnalyticsRule extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly created: pulumi.Output<string>;
     declare public readonly host: pulumi.Output<string | undefined>;
     /**
@@ -97,9 +97,6 @@ export class WebAnalyticsRule extends pulumi.CustomResource {
             resourceInputs["rulesetId"] = state?.rulesetId;
         } else {
             const args = argsOrState as WebAnalyticsRuleArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.rulesetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rulesetId'");
             }
@@ -150,7 +147,7 @@ export interface WebAnalyticsRuleArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
     /**
      * Whether the rule includes or excludes traffic from being measured.

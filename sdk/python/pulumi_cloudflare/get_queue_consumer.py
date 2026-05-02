@@ -61,7 +61,7 @@ class GetQueueConsumerResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         A Resource identifier.
         """
@@ -153,6 +153,13 @@ def get_queue_consumer(account_id: Optional[_builtins.str] = None,
                        queue_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQueueConsumerResult:
     """
+    Accepted Permissions
+
+    - `Queues Read`
+    - `Queues Write`
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+
     ## Example Usage
 
 
@@ -176,10 +183,17 @@ def get_queue_consumer(account_id: Optional[_builtins.str] = None,
         script_name=pulumi.get(__ret__, 'script_name'),
         settings=pulumi.get(__ret__, 'settings'),
         type=pulumi.get(__ret__, 'type'))
-def get_queue_consumer_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_queue_consumer_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               queue_id: Optional[pulumi.Input[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQueueConsumerResult]:
     """
+    Accepted Permissions
+
+    - `Queues Read`
+    - `Queues Write`
+    - `Workers Scripts Read`
+    - `Workers Scripts Write`
+
     ## Example Usage
 
 

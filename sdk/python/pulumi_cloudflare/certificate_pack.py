@@ -25,9 +25,9 @@ class CertificatePackArgs:
                  type: pulumi.Input[_builtins.str],
                  validation_method: pulumi.Input[_builtins.str],
                  validity_days: pulumi.Input[_builtins.int],
-                 zone_id: pulumi.Input[_builtins.str],
                  cloudflare_branding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CertificatePack resource.
 
@@ -39,19 +39,20 @@ class CertificatePackArgs:
                Available values: "txt", "http", "email".
         :param pulumi.Input[_builtins.int] validity_days: Validity Days selected for the order.
                Available values: 14, 30, 90, 365.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "certificate_authority", certificate_authority)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "validation_method", validation_method)
         pulumi.set(__self__, "validity_days", validity_days)
-        pulumi.set(__self__, "zone_id", zone_id)
         if cloudflare_branding is not None:
             pulumi.set(__self__, "cloudflare_branding", cloudflare_branding)
         if hosts is not None:
             pulumi.set(__self__, "hosts", hosts)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter(name="certificateAuthority")
@@ -106,18 +107,6 @@ class CertificatePackArgs:
         pulumi.set(self, "validity_days", value)
 
     @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="cloudflareBranding")
     def cloudflare_branding(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -140,6 +129,18 @@ class CertificatePackArgs:
     @hosts.setter
     def hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "hosts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -384,6 +385,11 @@ class CertificatePack(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         > Certificate packs are not able to be updated in place. If
         you require a zero downtime rotation, you can create multiple
         resources using a 2-phase change where you have both resources
@@ -441,6 +447,11 @@ class CertificatePack(pulumi.CustomResource):
                  args: CertificatePackArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         > Certificate packs are not able to be updated in place. If
         you require a zero downtime rotation, you can create multiple
         resources using a 2-phase change where you have both resources
@@ -522,8 +533,6 @@ class CertificatePack(pulumi.CustomResource):
             if validity_days is None and not opts.urn:
                 raise TypeError("Missing required property 'validity_days'")
             __props__.__dict__["validity_days"] = validity_days
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["certificates"] = None
             __props__.__dict__["dcv_delegation_records"] = None
@@ -702,7 +711,7 @@ class CertificatePack(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

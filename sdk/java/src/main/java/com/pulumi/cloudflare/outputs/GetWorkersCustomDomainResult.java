@@ -14,17 +14,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkersCustomDomainResult {
     /**
-     * @return Identifer of the account.
+     * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
-     * @return Identifer of the Worker Domain.
+     * @return ID of the TLS certificate issued for the domain.
+     * 
+     */
+    private String certId;
+    /**
+     * @return ID of the domain.
      * 
      */
     private @Nullable String domainId;
     /**
-     * @return Worker environment associated with the zone and hostname.
+     * @return Worker environment associated with the domain.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -34,48 +39,55 @@ public final class GetWorkersCustomDomainResult {
     private String environment;
     private @Nullable GetWorkersCustomDomainFilter filter;
     /**
-     * @return Hostname of the Worker Domain.
+     * @return Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      * 
      */
     private String hostname;
     /**
-     * @return Identifer of the Worker Domain.
+     * @return ID of the domain.
      * 
      */
     private String id;
     /**
-     * @return Worker service associated with the zone and hostname.
+     * @return Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      * 
      */
     private String service;
     /**
-     * @return Identifier of the zone.
+     * @return ID of the zone containing the domain hostname.
      * 
      */
     private String zoneId;
     /**
-     * @return Name of the zone.
+     * @return Name of the zone containing the domain hostname.
      * 
      */
     private String zoneName;
 
     private GetWorkersCustomDomainResult() {}
     /**
-     * @return Identifer of the account.
+     * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return Identifer of the Worker Domain.
+     * @return ID of the TLS certificate issued for the domain.
+     * 
+     */
+    public String certId() {
+        return this.certId;
+    }
+    /**
+     * @return ID of the domain.
      * 
      */
     public Optional<String> domainId() {
         return Optional.ofNullable(this.domainId);
     }
     /**
-     * @return Worker environment associated with the zone and hostname.
+     * @return Worker environment associated with the domain.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -89,35 +101,35 @@ public final class GetWorkersCustomDomainResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return Hostname of the Worker Domain.
+     * @return Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
      * 
      */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return Identifer of the Worker Domain.
+     * @return ID of the domain.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Worker service associated with the zone and hostname.
+     * @return Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
      * 
      */
     public String service() {
         return this.service;
     }
     /**
-     * @return Identifier of the zone.
+     * @return ID of the zone containing the domain hostname.
      * 
      */
     public String zoneId() {
         return this.zoneId;
     }
     /**
-     * @return Name of the zone.
+     * @return Name of the zone containing the domain hostname.
      * 
      */
     public String zoneName() {
@@ -133,7 +145,8 @@ public final class GetWorkersCustomDomainResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
+        private String certId;
         private @Nullable String domainId;
         private String environment;
         private @Nullable GetWorkersCustomDomainFilter filter;
@@ -146,6 +159,7 @@ public final class GetWorkersCustomDomainResult {
         public Builder(GetWorkersCustomDomainResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.certId = defaults.certId;
     	      this.domainId = defaults.domainId;
     	      this.environment = defaults.environment;
     	      this.filter = defaults.filter;
@@ -157,11 +171,17 @@ public final class GetWorkersCustomDomainResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetWorkersCustomDomainResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder certId(String certId) {
+            if (certId == null) {
+              throw new MissingRequiredPropertyException("GetWorkersCustomDomainResult", "certId");
+            }
+            this.certId = certId;
             return this;
         }
         @CustomType.Setter
@@ -227,6 +247,7 @@ public final class GetWorkersCustomDomainResult {
         public GetWorkersCustomDomainResult build() {
             final var _resultValue = new GetWorkersCustomDomainResult();
             _resultValue.accountId = accountId;
+            _resultValue.certId = certId;
             _resultValue.domainId = domainId;
             _resultValue.environment = environment;
             _resultValue.filter = filter;

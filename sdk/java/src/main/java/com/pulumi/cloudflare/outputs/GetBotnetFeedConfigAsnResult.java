@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBotnetFeedConfigAsnResult {
@@ -15,7 +17,7 @@ public final class GetBotnetFeedConfigAsnResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     private Integer asn;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -28,8 +30,8 @@ public final class GetBotnetFeedConfigAsnResult {
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public Integer asn() {
         return this.asn;
@@ -51,7 +53,7 @@ public final class GetBotnetFeedConfigAsnResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Integer asn;
         private String id;
         public Builder() {}
@@ -63,10 +65,8 @@ public final class GetBotnetFeedConfigAsnResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetBotnetFeedConfigAsnResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

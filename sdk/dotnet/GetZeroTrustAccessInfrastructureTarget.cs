@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustAccessInfrastructureTargetResult> InvokeAsync(GetZeroTrustAccessInfrastructureTargetArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustAccessInfrastructureTargetResult> InvokeAsync(GetZeroTrustAccessInfrastructureTargetArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessInfrastructureTargetResult>("cloudflare:index/getZeroTrustAccessInfrastructureTarget:getZeroTrustAccessInfrastructureTarget", args ?? new GetZeroTrustAccessInfrastructureTargetArgs(), options.WithDefaults());
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustAccessInfrastructureTargetResult> Invoke(GetZeroTrustAccessInfrastructureTargetInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustAccessInfrastructureTargetResult> Invoke(GetZeroTrustAccessInfrastructureTargetInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessInfrastructureTargetResult>("cloudflare:index/getZeroTrustAccessInfrastructureTarget:getZeroTrustAccessInfrastructureTarget", args ?? new GetZeroTrustAccessInfrastructureTargetInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("filter")]
         public Inputs.GetZeroTrustAccessInfrastructureTargetFilterArgs? Filter { get; set; }
@@ -110,8 +110,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("filter")]
         public Input<Inputs.GetZeroTrustAccessInfrastructureTargetFilterInputArgs>? Filter { get; set; }
@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Date and time at which the target was created
         /// </summary>
@@ -164,7 +164,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustAccessInfrastructureTargetResult(
-            string accountId,
+            string? accountId,
 
             string createdAt,
 

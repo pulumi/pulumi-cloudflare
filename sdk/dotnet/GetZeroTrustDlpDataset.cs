@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustDlpDataset
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDlpDatasetResult>("cloudflare:index/getZeroTrustDlpDataset:getZeroTrustDlpDataset", args ?? new GetZeroTrustDlpDatasetArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDlpDatasetResult>("cloudflare:index/getZeroTrustDlpDataset:getZeroTrustDlpDataset", args ?? new GetZeroTrustDlpDatasetInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Zero Trust Read`
+        /// - `Zero Trust Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +99,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDlpDatasetArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         [Input("datasetId", required: true)]
         public string DatasetId { get; set; } = null!;
@@ -98,8 +113,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDlpDatasetInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -114,7 +129,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDlpDatasetResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         public readonly bool CaseSensitive;
         public readonly ImmutableArray<Outputs.GetZeroTrustDlpDatasetColumnResult> Columns;
         public readonly string CreatedAt;
@@ -143,7 +158,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDlpDatasetResult(
-            string accountId,
+            string? accountId,
 
             bool caseSensitive,
 

@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Access: Organizations, Identity Providers, and Groups Read`
+// - `Access: Organizations, Identity Providers, and Groups Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -29,26 +34,20 @@ import (
 //			_, err := cloudflare.NewZeroTrustAccessGroup(ctx, "example_zero_trust_access_group", &cloudflare.ZeroTrustAccessGroupArgs{
 //				Includes: cloudflare.ZeroTrustAccessGroupIncludeArray{
 //					&cloudflare.ZeroTrustAccessGroupIncludeArgs{
-//						Group: &cloudflare.ZeroTrustAccessGroupIncludeGroupArgs{
-//							Id: pulumi.String("aa0a4aab-672b-4bdb-bc33-a59f1130a11f"),
-//						},
+//						Certificate: &cloudflare.ZeroTrustAccessGroupIncludeCertificateArgs{},
 //					},
 //				},
 //				Name:   pulumi.String("Allow devs"),
 //				ZoneId: pulumi.String("zone_id"),
 //				Excludes: cloudflare.ZeroTrustAccessGroupExcludeArray{
 //					&cloudflare.ZeroTrustAccessGroupExcludeArgs{
-//						Group: &cloudflare.ZeroTrustAccessGroupExcludeGroupArgs{
-//							Id: pulumi.String("aa0a4aab-672b-4bdb-bc33-a59f1130a11f"),
-//						},
+//						Certificate: &cloudflare.ZeroTrustAccessGroupExcludeCertificateArgs{},
 //					},
 //				},
 //				IsDefault: pulumi.Bool(true),
 //				Requires: cloudflare.ZeroTrustAccessGroupRequireArray{
 //					&cloudflare.ZeroTrustAccessGroupRequireArgs{
-//						Group: &cloudflare.ZeroTrustAccessGroupRequireGroupArgs{
-//							Id: pulumi.String("aa0a4aab-672b-4bdb-bc33-a59f1130a11f"),
-//						},
+//						Certificate: &cloudflare.ZeroTrustAccessGroupRequireCertificateArgs{},
 //					},
 //				},
 //			})

@@ -26,7 +26,7 @@ class TokenValidationConfigArgs:
                  title: pulumi.Input[_builtins.str],
                  token_sources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  token_type: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TokenValidationConfig resource.
 
@@ -38,7 +38,8 @@ class TokenValidationConfigArgs:
         pulumi.set(__self__, "title", title)
         pulumi.set(__self__, "token_sources", token_sources)
         pulumi.set(__self__, "token_type", token_type)
-        pulumi.set(__self__, "zone_id", zone_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -90,14 +91,14 @@ class TokenValidationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -228,6 +229,13 @@ class TokenValidationConfig(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Account API Gateway`
+        - `Account API Gateway Read`
+        - `Domain API Gateway`
+        - `Domain API Gateway Read`
+
         ## Example Usage
 
         ```python
@@ -274,6 +282,13 @@ class TokenValidationConfig(pulumi.CustomResource):
                  args: TokenValidationConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Account API Gateway`
+        - `Account API Gateway Read`
+        - `Domain API Gateway`
+        - `Domain API Gateway Read`
+
         ## Example Usage
 
         ```python
@@ -353,8 +368,6 @@ class TokenValidationConfig(pulumi.CustomResource):
             if token_type is None and not opts.urn:
                 raise TypeError("Missing required property 'token_type'")
             __props__.__dict__["token_type"] = token_type
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["last_updated"] = None
@@ -440,7 +453,7 @@ class TokenValidationConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[_builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """

@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Firewall Services Read`
+    /// - `Firewall Services Write`
+    /// 
     /// &gt; `cloudflare.Filter` is in a deprecation phase until June 15th, 2025.
     ///   During this time period, this resource is still fully
     ///   supported but you are strongly advised to move to the
@@ -84,7 +89,7 @@ namespace Pulumi.Cloudflare
         /// Defines an identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -167,8 +172,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public FilterArgs()
         {

@@ -6,11 +6,13 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getAiSearchTokens(args: GetAiSearchTokensArgs, opts?: pulumi.InvokeOptions): Promise<GetAiSearchTokensResult> {
+export function getAiSearchTokens(args?: GetAiSearchTokensArgs, opts?: pulumi.InvokeOptions): Promise<GetAiSearchTokensResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAiSearchTokens:getAiSearchTokens", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "search": args.search,
     }, opts);
 }
 
@@ -18,18 +20,22 @@ export function getAiSearchTokens(args: GetAiSearchTokensArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getAiSearchTokens.
  */
 export interface GetAiSearchTokensArgs {
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Filter tokens whose name contains this string (case-insensitive).
+     */
+    search?: string;
 }
 
 /**
  * A collection of values returned by getAiSearchTokens.
  */
 export interface GetAiSearchTokensResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -42,12 +48,18 @@ export interface GetAiSearchTokensResult {
      * The items returned by the data source
      */
     readonly results: outputs.GetAiSearchTokensResult[];
+    /**
+     * Filter tokens whose name contains this string (case-insensitive).
+     */
+    readonly search?: string;
 }
-export function getAiSearchTokensOutput(args: GetAiSearchTokensOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiSearchTokensResult> {
+export function getAiSearchTokensOutput(args?: GetAiSearchTokensOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiSearchTokensResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAiSearchTokens:getAiSearchTokens", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "search": args.search,
     }, opts);
 }
 
@@ -55,9 +67,13 @@ export function getAiSearchTokensOutput(args: GetAiSearchTokensOutputArgs, opts?
  * A collection of arguments for invoking getAiSearchTokens.
  */
 export interface GetAiSearchTokensOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
+    /**
+     * Filter tokens whose name contains this string (case-insensitive).
+     */
+    search?: pulumi.Input<string>;
 }

@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustListResult {
-    private String accountId;
+    private @Nullable String accountId;
     private String createdAt;
     /**
      * @return Provide the list description.
@@ -51,15 +51,15 @@ public final class GetZeroTrustListResult {
     private String name;
     /**
      * @return Specify the list type.
-     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
      * 
      */
     private String type;
     private String updatedAt;
 
     private GetZeroTrustListResult() {}
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     public String createdAt() {
         return this.createdAt;
@@ -111,7 +111,7 @@ public final class GetZeroTrustListResult {
     }
     /**
      * @return Specify the list type.
-     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;.
+     * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;, &#34;CATEGORY&#34;, &#34;LOCATION&#34;, &#34;DEVICE&#34;, &#34;AAGUID&#34;.
      * 
      */
     public String type() {
@@ -130,7 +130,7 @@ public final class GetZeroTrustListResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String createdAt;
         private String description;
         private @Nullable GetZeroTrustListFilter filter;
@@ -158,10 +158,8 @@ public final class GetZeroTrustListResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustListResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }

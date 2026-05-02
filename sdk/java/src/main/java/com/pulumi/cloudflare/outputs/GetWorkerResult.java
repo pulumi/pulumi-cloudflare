@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetWorkerFilter;
 import com.pulumi.cloudflare.outputs.GetWorkerObservability;
 import com.pulumi.cloudflare.outputs.GetWorkerReferences;
 import com.pulumi.cloudflare.outputs.GetWorkerSubdomain;
@@ -13,6 +14,8 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkerResult {
@@ -20,12 +23,18 @@ public final class GetWorkerResult {
      * @return Identifier.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return When the Worker was created.
      * 
      */
     private String createdOn;
+    /**
+     * @return When the Worker&#39;s most recent deployment was created. `null` if the Worker has never been deployed.
+     * 
+     */
+    private String deployedOn;
+    private @Nullable GetWorkerFilter filter;
     /**
      * @return Identifier for the Worker, which can be ID or name.
      * 
@@ -75,15 +84,15 @@ public final class GetWorkerResult {
      * @return Identifier for the Worker, which can be ID or name.
      * 
      */
-    private String workerId;
+    private @Nullable String workerId;
 
     private GetWorkerResult() {}
     /**
      * @return Identifier.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return When the Worker was created.
@@ -91,6 +100,16 @@ public final class GetWorkerResult {
      */
     public String createdOn() {
         return this.createdOn;
+    }
+    /**
+     * @return When the Worker&#39;s most recent deployment was created. `null` if the Worker has never been deployed.
+     * 
+     */
+    public String deployedOn() {
+        return this.deployedOn;
+    }
+    public Optional<GetWorkerFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
     /**
      * @return Identifier for the Worker, which can be ID or name.
@@ -159,8 +178,8 @@ public final class GetWorkerResult {
      * @return Identifier for the Worker, which can be ID or name.
      * 
      */
-    public String workerId() {
-        return this.workerId;
+    public Optional<String> workerId() {
+        return Optional.ofNullable(this.workerId);
     }
 
     public static Builder builder() {
@@ -172,8 +191,10 @@ public final class GetWorkerResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String createdOn;
+        private String deployedOn;
+        private @Nullable GetWorkerFilter filter;
         private String id;
         private Boolean logpush;
         private String name;
@@ -183,12 +204,14 @@ public final class GetWorkerResult {
         private List<String> tags;
         private List<GetWorkerTailConsumer> tailConsumers;
         private String updatedOn;
-        private String workerId;
+        private @Nullable String workerId;
         public Builder() {}
         public Builder(GetWorkerResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.createdOn = defaults.createdOn;
+    	      this.deployedOn = defaults.deployedOn;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.logpush = defaults.logpush;
     	      this.name = defaults.name;
@@ -202,10 +225,8 @@ public final class GetWorkerResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetWorkerResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -215,6 +236,20 @@ public final class GetWorkerResult {
               throw new MissingRequiredPropertyException("GetWorkerResult", "createdOn");
             }
             this.createdOn = createdOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deployedOn(String deployedOn) {
+            if (deployedOn == null) {
+              throw new MissingRequiredPropertyException("GetWorkerResult", "deployedOn");
+            }
+            this.deployedOn = deployedOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable GetWorkerFilter filter) {
+
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -296,10 +331,8 @@ public final class GetWorkerResult {
             return this;
         }
         @CustomType.Setter
-        public Builder workerId(String workerId) {
-            if (workerId == null) {
-              throw new MissingRequiredPropertyException("GetWorkerResult", "workerId");
-            }
+        public Builder workerId(@Nullable String workerId) {
+
             this.workerId = workerId;
             return this;
         }
@@ -307,6 +340,8 @@ public final class GetWorkerResult {
             final var _resultValue = new GetWorkerResult();
             _resultValue.accountId = accountId;
             _resultValue.createdOn = createdOn;
+            _resultValue.deployedOn = deployedOn;
+            _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.logpush = logpush;
             _resultValue.name = name;

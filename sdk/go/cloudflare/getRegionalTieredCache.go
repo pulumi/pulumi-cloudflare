@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Zone Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+// - `Zone Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetRegionalTieredCache(ctx, &cloudflare.LookupRegionalTieredCacheArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +56,7 @@ func LookupRegionalTieredCache(ctx *pulumi.Context, args *LookupRegionalTieredCa
 // A collection of arguments for invoking getRegionalTieredCache.
 type LookupRegionalTieredCacheArgs struct {
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getRegionalTieredCache.
@@ -64,7 +71,7 @@ type LookupRegionalTieredCacheResult struct {
 	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupRegionalTieredCacheOutput(ctx *pulumi.Context, args LookupRegionalTieredCacheOutputArgs, opts ...pulumi.InvokeOption) LookupRegionalTieredCacheResultOutput {
@@ -79,7 +86,7 @@ func LookupRegionalTieredCacheOutput(ctx *pulumi.Context, args LookupRegionalTie
 // A collection of arguments for invoking getRegionalTieredCache.
 type LookupRegionalTieredCacheOutputArgs struct {
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupRegionalTieredCacheOutputArgs) ElementType() reflect.Type {
@@ -123,8 +130,8 @@ func (o LookupRegionalTieredCacheResultOutput) Value() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o LookupRegionalTieredCacheResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRegionalTieredCacheResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupRegionalTieredCacheResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRegionalTieredCacheResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

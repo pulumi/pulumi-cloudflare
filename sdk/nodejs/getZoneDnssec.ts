@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +21,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZoneDnssec(args: GetZoneDnssecArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneDnssecResult> {
+export function getZoneDnssec(args?: GetZoneDnssecArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneDnssecResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneDnssec:getZoneDnssec", {
         "zoneId": args.zoneId,
@@ -30,7 +36,7 @@ export interface GetZoneDnssecArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -73,9 +79,14 @@ export interface GetZoneDnssecResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `DNS Read`
+ * - `DNS Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -87,7 +98,8 @@ export interface GetZoneDnssecResult {
  * });
  * ```
  */
-export function getZoneDnssecOutput(args: GetZoneDnssecOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneDnssecResult> {
+export function getZoneDnssecOutput(args?: GetZoneDnssecOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneDnssecResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneDnssec:getZoneDnssec", {
         "zoneId": args.zoneId,
@@ -101,5 +113,5 @@ export interface GetZoneDnssecOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

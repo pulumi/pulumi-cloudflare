@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Organizations, Identity Providers, and Groups Read`
+ * - `Access: Organizations, Identity Providers, and Groups Revoke`
+ * - `Access: Organizations, Identity Providers, and Groups Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -38,10 +44,24 @@ import * as utilities from "./utilities";
  *             "biometrics",
  *             "security_key",
  *         ],
+ *         amrMatchingSessionDuration: "12h",
+ *         requiredAaguids: "2fc0579f-8113-47ea-b116-bb5a8db9202a",
  *         sessionDuration: "24h",
  *     },
- *     mfaConfigurationAllowed: true,
  *     mfaRequiredForAllApps: false,
+ *     mfaSshPivKeyRequirements: {
+ *         pinPolicy: "always",
+ *         requireFipsDevice: true,
+ *         sshKeySizes: [
+ *             256,
+ *             2048,
+ *         ],
+ *         sshKeyTypes: [
+ *             "ecdsa",
+ *             "rsa",
+ *         ],
+ *         touchPolicy: "always",
+ *     },
  *     name: "Widget Corps Internal Applications",
  *     sessionDuration: "24h",
  *     uiReadOnlyToggleReason: "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -125,6 +145,10 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
      */
     declare public readonly mfaRequiredForAllApps: pulumi.Output<boolean>;
     /**
+     * Configures SSH PIV key requirements for MFA using hardware security keys.
+     */
+    declare public readonly mfaSshPivKeyRequirements: pulumi.Output<outputs.ZeroTrustOrganizationMfaSshPivKeyRequirements | undefined>;
+    /**
      * The name of your Zero Trust organization.
      */
     declare public readonly name: pulumi.Output<string | undefined>;
@@ -174,6 +198,7 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
             resourceInputs["mfaConfig"] = state?.mfaConfig;
             resourceInputs["mfaConfigurationAllowed"] = state?.mfaConfigurationAllowed;
             resourceInputs["mfaRequiredForAllApps"] = state?.mfaRequiredForAllApps;
+            resourceInputs["mfaSshPivKeyRequirements"] = state?.mfaSshPivKeyRequirements;
             resourceInputs["name"] = state?.name;
             resourceInputs["sessionDuration"] = state?.sessionDuration;
             resourceInputs["uiReadOnlyToggleReason"] = state?.uiReadOnlyToggleReason;
@@ -194,6 +219,7 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
             resourceInputs["mfaConfig"] = args?.mfaConfig;
             resourceInputs["mfaConfigurationAllowed"] = args?.mfaConfigurationAllowed;
             resourceInputs["mfaRequiredForAllApps"] = args?.mfaRequiredForAllApps;
+            resourceInputs["mfaSshPivKeyRequirements"] = args?.mfaSshPivKeyRequirements;
             resourceInputs["name"] = args?.name;
             resourceInputs["sessionDuration"] = args?.sessionDuration;
             resourceInputs["uiReadOnlyToggleReason"] = args?.uiReadOnlyToggleReason;
@@ -254,6 +280,10 @@ export interface ZeroTrustOrganizationState {
      * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
      */
     mfaRequiredForAllApps?: pulumi.Input<boolean>;
+    /**
+     * Configures SSH PIV key requirements for MFA using hardware security keys.
+     */
+    mfaSshPivKeyRequirements?: pulumi.Input<inputs.ZeroTrustOrganizationMfaSshPivKeyRequirements>;
     /**
      * The name of your Zero Trust organization.
      */
@@ -326,6 +356,10 @@ export interface ZeroTrustOrganizationArgs {
      * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
      */
     mfaRequiredForAllApps?: pulumi.Input<boolean>;
+    /**
+     * Configures SSH PIV key requirements for MFA using hardware security keys.
+     */
+    mfaSshPivKeyRequirements?: pulumi.Input<inputs.ZeroTrustOrganizationMfaSshPivKeyRequirements>;
     /**
      * The name of your Zero Trust organization.
      */

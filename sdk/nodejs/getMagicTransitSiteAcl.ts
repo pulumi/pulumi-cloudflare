@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -36,7 +43,7 @@ export interface GetMagicTransitSiteAclArgs {
     /**
      * Identifier
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Identifier
      */
@@ -54,7 +61,7 @@ export interface GetMagicTransitSiteAclResult {
     /**
      * Identifier
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Identifier
      */
@@ -88,6 +95,13 @@ export interface GetMagicTransitSiteAclResult {
     readonly unidirectional: boolean;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Magic Transit Read`
+ * - `Magic Transit Write`
+ * - `Magic WAN Read`
+ * - `Magic WAN Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -117,7 +131,7 @@ export interface GetMagicTransitSiteAclOutputArgs {
     /**
      * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Identifier
      */

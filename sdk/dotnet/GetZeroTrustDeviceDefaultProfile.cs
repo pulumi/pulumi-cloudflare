@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZeroTrustDeviceDefaultProfileResult> InvokeAsync(GetZeroTrustDeviceDefaultProfileArgs args, InvokeOptions? options = null)
+        public static Task<GetZeroTrustDeviceDefaultProfileResult> InvokeAsync(GetZeroTrustDeviceDefaultProfileArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustDeviceDefaultProfileResult>("cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile", args ?? new GetZeroTrustDeviceDefaultProfileArgs(), options.WithDefaults());
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZeroTrustDeviceDefaultProfileResult> Invoke(GetZeroTrustDeviceDefaultProfileInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZeroTrustDeviceDefaultProfileResult> Invoke(GetZeroTrustDeviceDefaultProfileInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustDeviceDefaultProfileResult>("cloudflare:index/getZeroTrustDeviceDefaultProfile:getZeroTrustDeviceDefaultProfile", args ?? new GetZeroTrustDeviceDefaultProfileInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDeviceDefaultProfileArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         public GetZeroTrustDeviceDefaultProfileArgs()
         {
@@ -92,8 +92,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZeroTrustDeviceDefaultProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         public GetZeroTrustDeviceDefaultProfileInvokeArgs()
         {
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDeviceDefaultProfileResult
     {
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Whether to allow the user to switch WARP between modes.
         /// </summary>
@@ -156,6 +156,7 @@ namespace Pulumi.Cloudflare
         /// List of routes included in the WARP client's tunnel.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceDefaultProfileIncludeResult> Includes;
+        public readonly string PolicyId;
         /// <summary>
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         /// </summary>
@@ -180,7 +181,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDeviceDefaultProfileResult(
-            string accountId,
+            string? accountId,
 
             bool allowModeSwitch,
 
@@ -210,6 +211,8 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetZeroTrustDeviceDefaultProfileIncludeResult> includes,
 
+            string policyId,
+
             bool registerInterfaceIpWithDns,
 
             bool sccmVpnBoundarySupport,
@@ -237,6 +240,7 @@ namespace Pulumi.Cloudflare
             GatewayUniqueId = gatewayUniqueId;
             Id = id;
             Includes = includes;
+            PolicyId = policyId;
             RegisterInterfaceIpWithDns = registerInterfaceIpWithDns;
             SccmVpnBoundarySupport = sccmVpnBoundarySupport;
             ServiceModeV2 = serviceModeV2;

@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetLeakedCredentialCheckRulePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -32,15 +34,15 @@ public final class GetLeakedCredentialCheckRulePlainArgs extends com.pulumi.reso
      * Defines an identifier.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private String zoneId;
+    @Import(name="zoneId")
+    private @Nullable String zoneId;
 
     /**
      * @return Defines an identifier.
      * 
      */
-    public String zoneId() {
-        return this.zoneId;
+    public Optional<String> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private GetLeakedCredentialCheckRulePlainArgs() {}
@@ -85,7 +87,7 @@ public final class GetLeakedCredentialCheckRulePlainArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder zoneId(String zoneId) {
+        public Builder zoneId(@Nullable String zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -93,9 +95,6 @@ public final class GetLeakedCredentialCheckRulePlainArgs extends com.pulumi.reso
         public GetLeakedCredentialCheckRulePlainArgs build() {
             if ($.detectionId == null) {
                 throw new MissingRequiredPropertyException("GetLeakedCredentialCheckRulePlainArgs", "detectionId");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("GetLeakedCredentialCheckRulePlainArgs", "zoneId");
             }
             return $;
         }

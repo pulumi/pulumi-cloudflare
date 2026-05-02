@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkerObservabilityLogsArgs;
+import com.pulumi.cloudflare.inputs.WorkerObservabilityTracesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -62,12 +63,28 @@ public final class WorkerObservabilityArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.logs);
     }
 
+    /**
+     * Trace settings for the Worker.
+     * 
+     */
+    @Import(name="traces")
+    private @Nullable Output<WorkerObservabilityTracesArgs> traces;
+
+    /**
+     * @return Trace settings for the Worker.
+     * 
+     */
+    public Optional<Output<WorkerObservabilityTracesArgs>> traces() {
+        return Optional.ofNullable(this.traces);
+    }
+
     private WorkerObservabilityArgs() {}
 
     private WorkerObservabilityArgs(WorkerObservabilityArgs $) {
         this.enabled = $.enabled;
         this.headSamplingRate = $.headSamplingRate;
         this.logs = $.logs;
+        this.traces = $.traces;
     }
 
     public static Builder builder() {
@@ -149,6 +166,27 @@ public final class WorkerObservabilityArgs extends com.pulumi.resources.Resource
          */
         public Builder logs(WorkerObservabilityLogsArgs logs) {
             return logs(Output.of(logs));
+        }
+
+        /**
+         * @param traces Trace settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder traces(@Nullable Output<WorkerObservabilityTracesArgs> traces) {
+            $.traces = traces;
+            return this;
+        }
+
+        /**
+         * @param traces Trace settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder traces(WorkerObservabilityTracesArgs traces) {
+            return traces(Output.of(traces));
         }
 
         public WorkerObservabilityArgs build() {

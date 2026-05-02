@@ -7,6 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: cloudflared Read`
+ * - `Cloudflare One Connector: cloudflared Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -27,7 +36,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getZeroTrustTunnelCloudflareds(args: GetZeroTrustTunnelCloudflaredsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredsResult> {
+export function getZeroTrustTunnelCloudflareds(args?: GetZeroTrustTunnelCloudflaredsArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelCloudflareds:getZeroTrustTunnelCloudflareds", {
         "accountId": args.accountId,
@@ -51,7 +61,7 @@ export interface GetZeroTrustTunnelCloudflaredsArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: string;
+    accountId?: string;
     excludePrefix?: string;
     /**
      * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -90,7 +100,7 @@ export interface GetZeroTrustTunnelCloudflaredsResult {
     /**
      * Cloudflare account ID
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     readonly excludePrefix?: string;
     /**
      * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -130,6 +140,15 @@ export interface GetZeroTrustTunnelCloudflaredsResult {
     readonly wasInactiveAt?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: cloudflared Read`
+ * - `Cloudflare One Connector: cloudflared Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -150,7 +169,8 @@ export interface GetZeroTrustTunnelCloudflaredsResult {
  * });
  * ```
  */
-export function getZeroTrustTunnelCloudflaredsOutput(args: GetZeroTrustTunnelCloudflaredsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredsResult> {
+export function getZeroTrustTunnelCloudflaredsOutput(args?: GetZeroTrustTunnelCloudflaredsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelCloudflareds:getZeroTrustTunnelCloudflareds", {
         "accountId": args.accountId,
@@ -174,7 +194,7 @@ export interface GetZeroTrustTunnelCloudflaredsOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     excludePrefix?: pulumi.Input<string>;
     /**
      * If provided, include only resources that were created (and not deleted) before this time. URL encoded.

@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetApiShieldOperationSchemaValidationSettings
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +42,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiShieldOperationSchemaValidationSettingsResult>("cloudflare:index/getApiShieldOperationSchemaValidationSettings:getApiShieldOperationSchemaValidationSettings", args ?? new GetApiShieldOperationSchemaValidationSettingsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +72,13 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetApiShieldOperationSchemaValidationSettingsResult>("cloudflare:index/getApiShieldOperationSchemaValidationSettings:getApiShieldOperationSchemaValidationSettings", args ?? new GetApiShieldOperationSchemaValidationSettingsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +108,8 @@ namespace Pulumi.Cloudflare
         [Input("operationId", required: true)]
         public string OperationId { get; set; } = null!;
 
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetApiShieldOperationSchemaValidationSettingsArgs()
         {
@@ -101,8 +122,8 @@ namespace Pulumi.Cloudflare
         [Input("operationId", required: true)]
         public Input<string> OperationId { get; set; } = null!;
 
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetApiShieldOperationSchemaValidationSettingsInvokeArgs()
         {
@@ -120,7 +141,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         public readonly string MitigationAction;
         public readonly string OperationId;
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetApiShieldOperationSchemaValidationSettingsResult(
@@ -130,7 +151,7 @@ namespace Pulumi.Cloudflare
 
             string operationId,
 
-            string zoneId)
+            string? zoneId)
         {
             Id = id;
             MitigationAction = mitigationAction;

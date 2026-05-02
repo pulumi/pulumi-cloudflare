@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Domain Page Shield`
+// - `Domain Page Shield Read`
+// - `Page Shield`
+// - `Page Shield Read`
+// - `Zone Settings Read`
+// - `Zone Settings Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetPageShieldCookiesList(ctx, &cloudflare.LookupPageShieldCookiesListArgs{
-//				ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Direction: pulumi.StringRef("asc"),
 //				Domain:    pulumi.StringRef("example.com"),
 //				Export:    pulumi.StringRef("csv"),
@@ -83,8 +92,7 @@ type LookupPageShieldCookiesListArgs struct {
 	SameSite *string  `pulumi:"sameSite"`
 	Secure   *bool    `pulumi:"secure"`
 	Type     *string  `pulumi:"type"`
-	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId   *string  `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getPageShieldCookiesList.
@@ -113,8 +121,7 @@ type LookupPageShieldCookiesListResult struct {
 	SameSite *string                          `pulumi:"sameSite"`
 	Secure   *bool                            `pulumi:"secure"`
 	Type     *string                          `pulumi:"type"`
-	// Identifier
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId   *string                          `pulumi:"zoneId"`
 }
 
 func LookupPageShieldCookiesListOutput(ctx *pulumi.Context, args LookupPageShieldCookiesListOutputArgs, opts ...pulumi.InvokeOption) LookupPageShieldCookiesListResultOutput {
@@ -149,8 +156,7 @@ type LookupPageShieldCookiesListOutputArgs struct {
 	SameSite pulumi.StringPtrInput  `pulumi:"sameSite"`
 	Secure   pulumi.BoolPtrInput    `pulumi:"secure"`
 	Type     pulumi.StringPtrInput  `pulumi:"type"`
-	// Identifier
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId   pulumi.StringPtrInput  `pulumi:"zoneId"`
 }
 
 func (LookupPageShieldCookiesListOutputArgs) ElementType() reflect.Type {
@@ -247,9 +253,8 @@ func (o LookupPageShieldCookiesListResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldCookiesListResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
-func (o LookupPageShieldCookiesListResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPageShieldCookiesListResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupPageShieldCookiesListResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPageShieldCookiesListResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

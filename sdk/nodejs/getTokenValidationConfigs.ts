@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getTokenValidationConfigs(args: GetTokenValidationConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetTokenValidationConfigsResult> {
+export function getTokenValidationConfigs(args?: GetTokenValidationConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetTokenValidationConfigsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getTokenValidationConfigs:getTokenValidationConfigs", {
         "maxItems": args.maxItems,
@@ -37,7 +45,7 @@ export interface GetTokenValidationConfigsArgs {
     /**
      * Identifier.
      */
-    zoneId: string;
+    zoneId?: string;
 }
 
 /**
@@ -59,9 +67,16 @@ export interface GetTokenValidationConfigsResult {
     /**
      * Identifier.
      */
-    readonly zoneId: string;
+    readonly zoneId?: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -73,7 +88,8 @@ export interface GetTokenValidationConfigsResult {
  * });
  * ```
  */
-export function getTokenValidationConfigsOutput(args: GetTokenValidationConfigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTokenValidationConfigsResult> {
+export function getTokenValidationConfigsOutput(args?: GetTokenValidationConfigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTokenValidationConfigsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getTokenValidationConfigs:getTokenValidationConfigs", {
         "maxItems": args.maxItems,
@@ -92,5 +108,5 @@ export interface GetTokenValidationConfigsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

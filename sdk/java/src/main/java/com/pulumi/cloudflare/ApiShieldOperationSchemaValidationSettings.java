@@ -15,6 +15,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Account API Gateway`
+ * - `Account API Gateway Read`
+ * - `Domain API Gateway`
+ * - `Domain API Gateway Read`
+ * 
  * &gt; `cloudflare.ApiShieldOperationSchemaValidationSettings` is in a deprecation phase and will be removed in the future.
  *   Instead, please utilize the cloudflare.SchemaValidationOperationSettings resource instead.
  * 
@@ -107,14 +114,14 @@ public class ApiShieldOperationSchemaValidationSettings extends com.pulumi.resou
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

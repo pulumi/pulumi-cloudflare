@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustDeviceDefaultProfileLocalDomainFallback(ctx, &cloudflare.LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,12 +48,12 @@ func LookupZeroTrustDeviceDefaultProfileLocalDomainFallback(ctx *pulumi.Context,
 
 // A collection of arguments for invoking getZeroTrustDeviceDefaultProfileLocalDomainFallback.
 type LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getZeroTrustDeviceDefaultProfileLocalDomainFallback.
 type LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResult struct {
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// A description of the fallback domain, displayed in the client UI.
 	Description string `pulumi:"description"`
 	// A list of IP addresses to handle domain resolution.
@@ -75,7 +75,7 @@ func LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackOutput(ctx *pulumi.Co
 
 // A collection of arguments for invoking getZeroTrustDeviceDefaultProfileLocalDomainFallback.
 type LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 }
 
 func (LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackOutputArgs) ElementType() reflect.Type {
@@ -97,8 +97,8 @@ func (o LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput) ToLo
 	return o
 }
 
-func (o LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileLocalDomainFallbackResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // A description of the fallback domain, displayed in the client UI.

@@ -19,7 +19,7 @@ public final class GetD1DatabaseResult {
      * @return Account identifier tag.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Specifies the timestamp the resource was created as an ISO8601 string.
      * 
@@ -41,6 +41,12 @@ public final class GetD1DatabaseResult {
      * 
      */
     private String id;
+    /**
+     * @return Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    private String jurisdiction;
     /**
      * @return D1 database name.
      * 
@@ -64,8 +70,8 @@ public final class GetD1DatabaseResult {
      * @return Account identifier tag.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Specifies the timestamp the resource was created as an ISO8601 string.
@@ -97,6 +103,14 @@ public final class GetD1DatabaseResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    public String jurisdiction() {
+        return this.jurisdiction;
     }
     /**
      * @return D1 database name.
@@ -135,12 +149,13 @@ public final class GetD1DatabaseResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private String createdAt;
         private @Nullable String databaseId;
         private Double fileSize;
         private @Nullable GetD1DatabaseFilter filter;
         private String id;
+        private String jurisdiction;
         private String name;
         private Double numTables;
         private GetD1DatabaseReadReplication readReplication;
@@ -155,6 +170,7 @@ public final class GetD1DatabaseResult {
     	      this.fileSize = defaults.fileSize;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.jurisdiction = defaults.jurisdiction;
     	      this.name = defaults.name;
     	      this.numTables = defaults.numTables;
     	      this.readReplication = defaults.readReplication;
@@ -163,10 +179,8 @@ public final class GetD1DatabaseResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetD1DatabaseResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -204,6 +218,14 @@ public final class GetD1DatabaseResult {
               throw new MissingRequiredPropertyException("GetD1DatabaseResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder jurisdiction(String jurisdiction) {
+            if (jurisdiction == null) {
+              throw new MissingRequiredPropertyException("GetD1DatabaseResult", "jurisdiction");
+            }
+            this.jurisdiction = jurisdiction;
             return this;
         }
         @CustomType.Setter
@@ -254,6 +276,7 @@ public final class GetD1DatabaseResult {
             _resultValue.fileSize = fileSize;
             _resultValue.filter = filter;
             _resultValue.id = id;
+            _resultValue.jurisdiction = jurisdiction;
             _resultValue.name = name;
             _resultValue.numTables = numTables;
             _resultValue.readReplication = readReplication;

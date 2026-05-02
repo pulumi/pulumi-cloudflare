@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Zero Trust Read`
+ * - `Zero Trust Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -55,7 +60,7 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDlpDataset.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
@@ -131,9 +136,6 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
             resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as ZeroTrustDlpDatasetArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -213,7 +215,7 @@ export interface ZeroTrustDlpDatasetState {
  * The set of arguments for constructing a ZeroTrustDlpDataset resource.
  */
 export interface ZeroTrustDlpDatasetArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner

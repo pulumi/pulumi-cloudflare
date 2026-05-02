@@ -17,6 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `DNS Read`
+ * - `DNS Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

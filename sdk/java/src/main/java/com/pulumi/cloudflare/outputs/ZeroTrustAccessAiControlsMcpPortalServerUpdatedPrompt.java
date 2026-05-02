@@ -13,11 +13,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt {
+    private @Nullable String alias;
     private @Nullable String description;
     private @Nullable Boolean enabled;
     private String name;
 
     private ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt() {}
+    public Optional<String> alias() {
+        return Optional.ofNullable(this.alias);
+    }
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -37,17 +41,25 @@ public final class ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String alias;
         private @Nullable String description;
         private @Nullable Boolean enabled;
         private String name;
         public Builder() {}
         public Builder(ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.alias = defaults.alias;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
+        public Builder alias(@Nullable String alias) {
+
+            this.alias = alias;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
 
@@ -70,6 +82,7 @@ public final class ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt {
         }
         public ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt build() {
             final var _resultValue = new ZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt();
+            _resultValue.alias = alias;
             _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.name = name;

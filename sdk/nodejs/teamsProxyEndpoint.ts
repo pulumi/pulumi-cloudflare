@@ -55,7 +55,7 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsProxyEndpoint.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Specify the list of CIDRs to restrict ingress connections.
@@ -101,9 +101,6 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as TeamsProxyEndpointArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -152,7 +149,7 @@ export interface TeamsProxyEndpointState {
  * The set of arguments for constructing a TeamsProxyEndpoint resource.
  */
 export interface TeamsProxyEndpointArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Specify the list of CIDRs to restrict ingress connections.
      */

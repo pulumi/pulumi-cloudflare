@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustTunnelCloudflaredToken
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: cloudflared Write`
+        /// - `Cloudflare One Connectors Write`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +41,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustTunnelCloudflaredTokenResult>("cloudflare:index/getZeroTrustTunnelCloudflaredToken:getZeroTrustTunnelCloudflaredToken", args ?? new GetZeroTrustTunnelCloudflaredTokenArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: cloudflared Write`
+        /// - `Cloudflare One Connectors Write`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +70,12 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustTunnelCloudflaredTokenResult>("cloudflare:index/getZeroTrustTunnelCloudflaredToken:getZeroTrustTunnelCloudflaredToken", args ?? new GetZeroTrustTunnelCloudflaredTokenInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Cloudflare One Connector: cloudflared Write`
+        /// - `Cloudflare One Connectors Write`
+        /// - `Cloudflare Tunnel Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// UUID of the tunnel.
@@ -107,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// UUID of the tunnel.
@@ -129,7 +147,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -145,7 +163,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustTunnelCloudflaredTokenResult(
-            string accountId,
+            string? accountId,
 
             string id,
 

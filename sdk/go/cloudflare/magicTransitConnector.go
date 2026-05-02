@@ -33,11 +33,17 @@ import (
 //					ProvisionLicense: pulumi.Bool(true),
 //					SerialNumber:     pulumi.String("serial_number"),
 //				},
-//				Activated:                    pulumi.Bool(true),
-//				InterruptWindowDurationHours: pulumi.Float64(0),
-//				InterruptWindowHourOfDay:     pulumi.Float64(0),
-//				Notes:                        pulumi.String("notes"),
-//				Timezone:                     pulumi.String("timezone"),
+//				Activated: pulumi.Bool(true),
+//				InterruptWindowDaysOfWeek: []string{
+//					"Sunday",
+//				},
+//				InterruptWindowDurationHours: pulumi.Float64(1),
+//				InterruptWindowEmbargoDates: []string{
+//					"string",
+//				},
+//				InterruptWindowHourOfDay: pulumi.Float64(0),
+//				Notes:                    pulumi.String("notes"),
+//				Timezone:                 pulumi.String("timezone"),
 //			})
 //			if err != nil {
 //				return err

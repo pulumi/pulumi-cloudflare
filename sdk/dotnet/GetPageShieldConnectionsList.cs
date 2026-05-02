@@ -12,6 +12,15 @@ namespace Pulumi.Cloudflare
     public static class GetPageShieldConnectionsList
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -42,10 +51,19 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetPageShieldConnectionsListResult> InvokeAsync(GetPageShieldConnectionsListArgs args, InvokeOptions? options = null)
+        public static Task<GetPageShieldConnectionsListResult> InvokeAsync(GetPageShieldConnectionsListArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPageShieldConnectionsListResult>("cloudflare:index/getPageShieldConnectionsList:getPageShieldConnectionsList", args ?? new GetPageShieldConnectionsListArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -76,10 +94,19 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetPageShieldConnectionsListResult> Invoke(GetPageShieldConnectionsListInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetPageShieldConnectionsListResult> Invoke(GetPageShieldConnectionsListInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPageShieldConnectionsListResult>("cloudflare:index/getPageShieldConnectionsList:getPageShieldConnectionsList", args ?? new GetPageShieldConnectionsListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Domain Page Shield`
+        /// - `Domain Page Shield Read`
+        /// - `Page Shield`
+        /// - `Page Shield Read`
+        /// - `Zone Settings Read`
+        /// - `Zone Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -173,11 +200,8 @@ namespace Pulumi.Cloudflare
         [Input("urls")]
         public string? Urls { get; set; }
 
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetPageShieldConnectionsListArgs()
         {
@@ -243,11 +267,8 @@ namespace Pulumi.Cloudflare
         [Input("urls")]
         public Input<string>? Urls { get; set; }
 
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetPageShieldConnectionsListInvokeArgs()
         {
@@ -294,10 +315,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetPageShieldConnectionsListResultResult> Results;
         public readonly string? Status;
         public readonly string? Urls;
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetPageShieldConnectionsListResult(
@@ -331,7 +349,7 @@ namespace Pulumi.Cloudflare
 
             string? urls,
 
-            string zoneId)
+            string? zoneId)
         {
             Direction = direction;
             ExcludeCdnCgi = excludeCdnCgi;

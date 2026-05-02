@@ -69,7 +69,7 @@ class GetMagicNetworkMonitoringRuleResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -196,6 +196,12 @@ def get_magic_network_monitoring_rule(account_id: Optional[_builtins.str] = None
                                       rule_id: Optional[_builtins.str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMagicNetworkMonitoringRuleResult:
     """
+    Accepted Permissions
+
+    - `Magic Network Monitoring Admin`
+    - `Magic Network Monitoring Config Read`
+    - `Magic Network Monitoring Config Write`
+
     ## Example Usage
 
     ```python
@@ -229,10 +235,16 @@ def get_magic_network_monitoring_rule(account_id: Optional[_builtins.str] = None
         type=pulumi.get(__ret__, 'type'),
         zscore_sensitivity=pulumi.get(__ret__, 'zscore_sensitivity'),
         zscore_target=pulumi.get(__ret__, 'zscore_target'))
-def get_magic_network_monitoring_rule_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_magic_network_monitoring_rule_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                              rule_id: Optional[pulumi.Input[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicNetworkMonitoringRuleResult]:
     """
+    Accepted Permissions
+
+    - `Magic Network Monitoring Admin`
+    - `Magic Network Monitoring Config Read`
+    - `Magic Network Monitoring Config Write`
+
     ## Example Usage
 
     ```python

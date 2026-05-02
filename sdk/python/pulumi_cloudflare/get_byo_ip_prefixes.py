@@ -43,7 +43,7 @@ class GetByoIpPrefixesResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Identifier of a Cloudflare account.
         """
@@ -90,6 +90,15 @@ def get_byo_ip_prefixes(account_id: Optional[_builtins.str] = None,
                         max_items: Optional[_builtins.int] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetByoIpPrefixesResult:
     """
+    Accepted Permissions
+
+    - `IP Prefixes: BGP On Demand Read`
+    - `IP Prefixes: BGP On Demand Write`
+    - `IP Prefixes: Read`
+    - `IP Prefixes: Write`
+    - `Magic Transit Read`
+    - `Magic Transit Write`
+
     ## Example Usage
 
     ```python
@@ -114,10 +123,19 @@ def get_byo_ip_prefixes(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
-def get_byo_ip_prefixes_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_byo_ip_prefixes_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetByoIpPrefixesResult]:
     """
+    Accepted Permissions
+
+    - `IP Prefixes: BGP On Demand Read`
+    - `IP Prefixes: BGP On Demand Write`
+    - `IP Prefixes: Read`
+    - `IP Prefixes: Write`
+    - `Magic Transit Read`
+    - `Magic Transit Write`
+
     ## Example Usage
 
     ```python

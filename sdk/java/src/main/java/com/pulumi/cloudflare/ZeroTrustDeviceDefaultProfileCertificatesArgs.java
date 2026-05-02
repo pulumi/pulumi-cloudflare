@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZeroTrustDeviceDefaultProfileCertificatesArgs extends com.pulumi.resources.ResourceArgs {
@@ -30,11 +32,11 @@ public final class ZeroTrustDeviceDefaultProfileCertificatesArgs extends com.pul
         return this.enabled;
     }
 
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private ZeroTrustDeviceDefaultProfileCertificatesArgs() {}
@@ -83,7 +85,7 @@ public final class ZeroTrustDeviceDefaultProfileCertificatesArgs extends com.pul
             return enabled(Output.of(enabled));
         }
 
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -95,9 +97,6 @@ public final class ZeroTrustDeviceDefaultProfileCertificatesArgs extends com.pul
         public ZeroTrustDeviceDefaultProfileCertificatesArgs build() {
             if ($.enabled == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDeviceDefaultProfileCertificatesArgs", "enabled");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDeviceDefaultProfileCertificatesArgs", "zoneId");
             }
             return $;
         }

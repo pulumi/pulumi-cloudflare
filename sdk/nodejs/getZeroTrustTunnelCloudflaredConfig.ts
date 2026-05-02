@@ -7,6 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: cloudflared Read`
+ * - `Cloudflare One Connector: cloudflared Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +43,7 @@ export interface GetZeroTrustTunnelCloudflaredConfigArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * UUID of the tunnel.
      */
@@ -48,7 +57,7 @@ export interface GetZeroTrustTunnelCloudflaredConfigResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The tunnel configuration and ingress rules.
      */
@@ -73,6 +82,15 @@ export interface GetZeroTrustTunnelCloudflaredConfigResult {
     readonly version: number;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Cloudflare One Connector: cloudflared Read`
+ * - `Cloudflare One Connector: cloudflared Write`
+ * - `Cloudflare One Connectors Read`
+ * - `Cloudflare One Connectors Write`
+ * - `Cloudflare Tunnel Read`
+ * - `Cloudflare Tunnel Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -100,7 +118,7 @@ export interface GetZeroTrustTunnelCloudflaredConfigOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * UUID of the tunnel.
      */

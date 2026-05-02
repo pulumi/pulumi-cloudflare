@@ -30,10 +30,26 @@ public final class WorkersScriptLimitsArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.cpuMs);
     }
 
+    /**
+     * The number of subrequests this Worker can make per request.
+     * 
+     */
+    @Import(name="subrequests")
+    private @Nullable Output<Integer> subrequests;
+
+    /**
+     * @return The number of subrequests this Worker can make per request.
+     * 
+     */
+    public Optional<Output<Integer>> subrequests() {
+        return Optional.ofNullable(this.subrequests);
+    }
+
     private WorkersScriptLimitsArgs() {}
 
     private WorkersScriptLimitsArgs(WorkersScriptLimitsArgs $) {
         this.cpuMs = $.cpuMs;
+        this.subrequests = $.subrequests;
     }
 
     public static Builder builder() {
@@ -73,6 +89,27 @@ public final class WorkersScriptLimitsArgs extends com.pulumi.resources.Resource
          */
         public Builder cpuMs(Integer cpuMs) {
             return cpuMs(Output.of(cpuMs));
+        }
+
+        /**
+         * @param subrequests The number of subrequests this Worker can make per request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subrequests(@Nullable Output<Integer> subrequests) {
+            $.subrequests = subrequests;
+            return this;
+        }
+
+        /**
+         * @param subrequests The number of subrequests this Worker can make per request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subrequests(Integer subrequests) {
+            return subrequests(Output.of(subrequests));
         }
 
         public WorkersScriptLimitsArgs build() {

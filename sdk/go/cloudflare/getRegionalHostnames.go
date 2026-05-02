@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `DNS Read`
+// - `DNS Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetRegionalHostnames(ctx, &cloudflare.LookupRegionalHostnamesArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +56,7 @@ type LookupRegionalHostnamesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getRegionalHostnames.
@@ -63,7 +68,7 @@ type LookupRegionalHostnamesResult struct {
 	// The items returned by the data source
 	Results []GetRegionalHostnamesResult `pulumi:"results"`
 	// Identifier.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func LookupRegionalHostnamesOutput(ctx *pulumi.Context, args LookupRegionalHostnamesOutputArgs, opts ...pulumi.InvokeOption) LookupRegionalHostnamesResultOutput {
@@ -80,7 +85,7 @@ type LookupRegionalHostnamesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// Identifier.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
 func (LookupRegionalHostnamesOutputArgs) ElementType() reflect.Type {
@@ -118,8 +123,8 @@ func (o LookupRegionalHostnamesResultOutput) Results() GetRegionalHostnamesResul
 }
 
 // Identifier.
-func (o LookupRegionalHostnamesResultOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRegionalHostnamesResult) string { return v.ZoneId }).(pulumi.StringOutput)
+func (o LookupRegionalHostnamesResultOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRegionalHostnamesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

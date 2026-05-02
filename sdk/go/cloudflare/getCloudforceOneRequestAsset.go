@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudforce One Read`
+// - `Cloudforce One Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCloudforceOneRequestAsset(ctx, &cloudflare.LookupCloudforceOneRequestAssetArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				RequestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //				AssetId:   "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
@@ -51,7 +56,7 @@ func LookupCloudforceOneRequestAsset(ctx *pulumi.Context, args *LookupCloudforce
 // A collection of arguments for invoking getCloudforceOneRequestAsset.
 type LookupCloudforceOneRequestAssetArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// UUID.
 	AssetId string `pulumi:"assetId"`
 	// UUID.
@@ -61,7 +66,7 @@ type LookupCloudforceOneRequestAssetArgs struct {
 // A collection of values returned by getCloudforceOneRequestAsset.
 type LookupCloudforceOneRequestAssetResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// UUID.
 	AssetId string `pulumi:"assetId"`
 	// Defines the asset creation time.
@@ -90,7 +95,7 @@ func LookupCloudforceOneRequestAssetOutput(ctx *pulumi.Context, args LookupCloud
 // A collection of arguments for invoking getCloudforceOneRequestAsset.
 type LookupCloudforceOneRequestAssetOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// UUID.
 	AssetId pulumi.StringInput `pulumi:"assetId"`
 	// UUID.
@@ -117,8 +122,8 @@ func (o LookupCloudforceOneRequestAssetResultOutput) ToLookupCloudforceOneReques
 }
 
 // Identifier.
-func (o LookupCloudforceOneRequestAssetResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupCloudforceOneRequestAssetResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // UUID.

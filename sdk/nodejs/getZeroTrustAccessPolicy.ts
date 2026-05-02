@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +39,7 @@ export interface GetZeroTrustAccessPolicyArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * The UUID of the policy
      */
@@ -48,7 +53,7 @@ export interface GetZeroTrustAccessPolicyResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Number of access applications currently using this policy.
      */
@@ -119,6 +124,11 @@ export interface GetZeroTrustAccessPolicyResult {
     readonly updatedAt: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Access: Apps and Policies Read`
+ * - `Access: Apps and Policies Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -146,7 +156,7 @@ export interface GetZeroTrustAccessPolicyOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The UUID of the policy
      */

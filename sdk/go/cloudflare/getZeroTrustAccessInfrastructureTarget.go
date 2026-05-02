@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustAccessInfrastructureTarget(ctx, &cloudflare.LookupZeroTrustAccessInfrastructureTargetArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				TargetId:  pulumi.StringRef("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +50,7 @@ func LookupZeroTrustAccessInfrastructureTarget(ctx *pulumi.Context, args *Lookup
 // A collection of arguments for invoking getZeroTrustAccessInfrastructureTarget.
 type LookupZeroTrustAccessInfrastructureTargetArgs struct {
 	// Account identifier
-	AccountId string                                        `pulumi:"accountId"`
+	AccountId *string                                       `pulumi:"accountId"`
 	Filter    *GetZeroTrustAccessInfrastructureTargetFilter `pulumi:"filter"`
 	// Target identifier
 	TargetId *string `pulumi:"targetId"`
@@ -59,7 +59,7 @@ type LookupZeroTrustAccessInfrastructureTargetArgs struct {
 // A collection of values returned by getZeroTrustAccessInfrastructureTarget.
 type LookupZeroTrustAccessInfrastructureTargetResult struct {
 	// Account identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Date and time at which the target was created
 	CreatedAt string                                        `pulumi:"createdAt"`
 	Filter    *GetZeroTrustAccessInfrastructureTargetFilter `pulumi:"filter"`
@@ -87,7 +87,7 @@ func LookupZeroTrustAccessInfrastructureTargetOutput(ctx *pulumi.Context, args L
 // A collection of arguments for invoking getZeroTrustAccessInfrastructureTarget.
 type LookupZeroTrustAccessInfrastructureTargetOutputArgs struct {
 	// Account identifier
-	AccountId pulumi.StringInput                                   `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput                                `pulumi:"accountId"`
 	Filter    GetZeroTrustAccessInfrastructureTargetFilterPtrInput `pulumi:"filter"`
 	// Target identifier
 	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
@@ -113,8 +113,8 @@ func (o LookupZeroTrustAccessInfrastructureTargetResultOutput) ToLookupZeroTrust
 }
 
 // Account identifier
-func (o LookupZeroTrustAccessInfrastructureTargetResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupZeroTrustAccessInfrastructureTargetResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessInfrastructureTargetResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Date and time at which the target was created

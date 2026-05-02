@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Email Routing Addresses Read`
+// - `Email Routing Addresses Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailRoutingAddress(ctx, &cloudflare.LookupEmailRoutingAddressArgs{
-//				AccountId:                    "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:                    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DestinationAddressIdentifier: pulumi.StringRef("ea95132c15732412d22c1476fa83f27a"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +55,7 @@ func LookupEmailRoutingAddress(ctx *pulumi.Context, args *LookupEmailRoutingAddr
 // A collection of arguments for invoking getEmailRoutingAddress.
 type LookupEmailRoutingAddressArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Destination address identifier.
 	DestinationAddressIdentifier *string                       `pulumi:"destinationAddressIdentifier"`
 	Filter                       *GetEmailRoutingAddressFilter `pulumi:"filter"`
@@ -59,7 +64,7 @@ type LookupEmailRoutingAddressArgs struct {
 // A collection of values returned by getEmailRoutingAddress.
 type LookupEmailRoutingAddressResult struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The date and time the destination address has been created.
 	Created string `pulumi:"created"`
 	// Destination address identifier.
@@ -91,7 +96,7 @@ func LookupEmailRoutingAddressOutput(ctx *pulumi.Context, args LookupEmailRoutin
 // A collection of arguments for invoking getEmailRoutingAddress.
 type LookupEmailRoutingAddressOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Destination address identifier.
 	DestinationAddressIdentifier pulumi.StringPtrInput                `pulumi:"destinationAddressIdentifier"`
 	Filter                       GetEmailRoutingAddressFilterPtrInput `pulumi:"filter"`
@@ -117,8 +122,8 @@ func (o LookupEmailRoutingAddressResultOutput) ToLookupEmailRoutingAddressResult
 }
 
 // Identifier.
-func (o LookupEmailRoutingAddressResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEmailRoutingAddressResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupEmailRoutingAddressResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailRoutingAddressResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The date and time the destination address has been created.

@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetDnsFirewall
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Firewall Read`
+        /// - `DNS Firewall Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDnsFirewallResult>("cloudflare:index/getDnsFirewall:getDnsFirewall", args ?? new GetDnsFirewallArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Firewall Read`
+        /// - `DNS Firewall Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetDnsFirewallResult>("cloudflare:index/getDnsFirewall:getDnsFirewall", args ?? new GetDnsFirewallInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Firewall Read`
+        /// - `DNS Firewall Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Identifier.
@@ -107,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Identifier.
@@ -129,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Attack mitigation settings
         /// </summary>
@@ -168,7 +183,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetDnsFirewallResult(
-            string accountId,
+            string? accountId,
 
             Outputs.GetDnsFirewallAttackMitigationResult attackMitigation,
 

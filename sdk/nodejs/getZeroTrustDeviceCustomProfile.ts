@@ -31,7 +31,7 @@ export function getZeroTrustDeviceCustomProfile(args: GetZeroTrustDeviceCustomPr
  * A collection of arguments for invoking getZeroTrustDeviceCustomProfile.
  */
 export interface GetZeroTrustDeviceCustomProfileArgs {
-    accountId: string;
+    accountId?: string;
     policyId: string;
 }
 
@@ -39,7 +39,7 @@ export interface GetZeroTrustDeviceCustomProfileArgs {
  * A collection of values returned by getZeroTrustDeviceCustomProfile.
  */
 export interface GetZeroTrustDeviceCustomProfileResult {
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Whether to allow the user to switch WARP between modes.
      */
@@ -163,6 +163,6 @@ export function getZeroTrustDeviceCustomProfileOutput(args: GetZeroTrustDeviceCu
  * A collection of arguments for invoking getZeroTrustDeviceCustomProfile.
  */
 export interface GetZeroTrustDeviceCustomProfileOutputArgs {
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     policyId: pulumi.Input<string>;
 }

@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultObservabilityLogs;
+import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultObservabilityTraces;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -27,6 +28,11 @@ public final class GetWorkersScriptsResultObservability {
      * 
      */
     private GetWorkersScriptsResultObservabilityLogs logs;
+    /**
+     * @return Trace settings for the Worker.
+     * 
+     */
+    private GetWorkersScriptsResultObservabilityTraces traces;
 
     private GetWorkersScriptsResultObservability() {}
     /**
@@ -50,6 +56,13 @@ public final class GetWorkersScriptsResultObservability {
     public GetWorkersScriptsResultObservabilityLogs logs() {
         return this.logs;
     }
+    /**
+     * @return Trace settings for the Worker.
+     * 
+     */
+    public GetWorkersScriptsResultObservabilityTraces traces() {
+        return this.traces;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,12 +76,14 @@ public final class GetWorkersScriptsResultObservability {
         private Boolean enabled;
         private Double headSamplingRate;
         private GetWorkersScriptsResultObservabilityLogs logs;
+        private GetWorkersScriptsResultObservabilityTraces traces;
         public Builder() {}
         public Builder(GetWorkersScriptsResultObservability defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
     	      this.logs = defaults.logs;
+    	      this.traces = defaults.traces;
         }
 
         @CustomType.Setter
@@ -95,11 +110,20 @@ public final class GetWorkersScriptsResultObservability {
             this.logs = logs;
             return this;
         }
+        @CustomType.Setter
+        public Builder traces(GetWorkersScriptsResultObservabilityTraces traces) {
+            if (traces == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResultObservability", "traces");
+            }
+            this.traces = traces;
+            return this;
+        }
         public GetWorkersScriptsResultObservability build() {
             final var _resultValue = new GetWorkersScriptsResultObservability();
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
             _resultValue.logs = logs;
+            _resultValue.traces = traces;
             return _resultValue;
         }
     }

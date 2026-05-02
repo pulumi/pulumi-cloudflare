@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetZoneDnsSettings
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// - `Zone DNS Settings Read`
+        /// - `Zone DNS Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -30,10 +37,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetZoneDnsSettingsResult> InvokeAsync(GetZoneDnsSettingsArgs args, InvokeOptions? options = null)
+        public static Task<GetZoneDnsSettingsResult> InvokeAsync(GetZoneDnsSettingsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneDnsSettingsResult>("cloudflare:index/getZoneDnsSettings:getZoneDnsSettings", args ?? new GetZoneDnsSettingsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// - `Zone DNS Settings Read`
+        /// - `Zone DNS Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,10 +66,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetZoneDnsSettingsResult> Invoke(GetZoneDnsSettingsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZoneDnsSettingsResult> Invoke(GetZoneDnsSettingsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneDnsSettingsResult>("cloudflare:index/getZoneDnsSettings:getZoneDnsSettings", args ?? new GetZoneDnsSettingsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `DNS Read`
+        /// - `DNS Write`
+        /// - `Zone DNS Settings Read`
+        /// - `Zone DNS Settings Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -84,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetZoneDnsSettingsArgs()
         {
@@ -98,8 +119,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetZoneDnsSettingsInvokeArgs()
         {
@@ -150,7 +171,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
         /// <summary>
         /// Whether the zone mode is a regular or CDN/DNS only zone.
         /// Available values: "standard", "cdn*only", "dns*only".
@@ -177,7 +198,7 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetZoneDnsSettingsSoaResult soa,
 
-            string zoneId,
+            string? zoneId,
 
             string zoneMode)
         {

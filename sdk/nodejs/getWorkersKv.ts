@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Workers KV Storage Read`
+ * - `Workers KV Storage Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -34,7 +39,7 @@ export interface GetWorkersKvArgs {
     /**
      * Identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
@@ -52,7 +57,7 @@ export interface GetWorkersKvResult {
     /**
      * Identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
@@ -68,6 +73,11 @@ export interface GetWorkersKvResult {
     readonly value: string;
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Workers KV Storage Read`
+ * - `Workers KV Storage Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -97,7 +107,7 @@ export interface GetWorkersKvOutputArgs {
     /**
      * Identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */

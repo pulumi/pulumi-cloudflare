@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Account Settings Read`
+// - `Account Settings Write`
+// - `Turnstile Sites Read`
+// - `Turnstile Sites Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetTurnstileWidget(ctx, &cloudflare.LookupTurnstileWidgetArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Sitekey:   pulumi.StringRef("0x4AAF00AAAABn0R22HWm-YUc"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +57,7 @@ func LookupTurnstileWidget(ctx *pulumi.Context, args *LookupTurnstileWidgetArgs,
 // A collection of arguments for invoking getTurnstileWidget.
 type LookupTurnstileWidgetArgs struct {
 	// Identifier
-	AccountId string                    `pulumi:"accountId"`
+	AccountId *string                   `pulumi:"accountId"`
 	Filter    *GetTurnstileWidgetFilter `pulumi:"filter"`
 	// Widget item identifier tag.
 	Sitekey *string `pulumi:"sitekey"`
@@ -59,7 +66,7 @@ type LookupTurnstileWidgetArgs struct {
 // A collection of values returned by getTurnstileWidget.
 type LookupTurnstileWidgetResult struct {
 	// Identifier
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// If bot*fight*mode is set to `true`, Cloudflare issues computationally
 	// expensive challenges in response to malicious bots (ENT only).
 	BotFightMode bool `pulumi:"botFightMode"`
@@ -107,7 +114,7 @@ func LookupTurnstileWidgetOutput(ctx *pulumi.Context, args LookupTurnstileWidget
 // A collection of arguments for invoking getTurnstileWidget.
 type LookupTurnstileWidgetOutputArgs struct {
 	// Identifier
-	AccountId pulumi.StringInput               `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput            `pulumi:"accountId"`
 	Filter    GetTurnstileWidgetFilterPtrInput `pulumi:"filter"`
 	// Widget item identifier tag.
 	Sitekey pulumi.StringPtrInput `pulumi:"sitekey"`
@@ -133,8 +140,8 @@ func (o LookupTurnstileWidgetResultOutput) ToLookupTurnstileWidgetResultOutputWi
 }
 
 // Identifier
-func (o LookupTurnstileWidgetResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupTurnstileWidgetResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupTurnstileWidgetResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // If bot*fight*mode is set to `true`, Cloudflare issues computationally

@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Stream Read`
+    /// - `Stream Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -40,7 +45,19 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// The audio-only download. Only present if this download type has been created.
+        /// </summary>
+        [Output("audio")]
+        public Output<Outputs.StreamDownloadAudio> Audio { get; private set; } = null!;
+
+        /// <summary>
+        /// The default video download. Only present if this download type has been created.
+        /// </summary>
+        [Output("default")]
+        public Output<Outputs.StreamDownloadDefault> Default { get; private set; } = null!;
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
@@ -97,8 +114,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
@@ -119,6 +136,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// The audio-only download. Only present if this download type has been created.
+        /// </summary>
+        [Input("audio")]
+        public Input<Inputs.StreamDownloadAudioGetArgs>? Audio { get; set; }
+
+        /// <summary>
+        /// The default video download. Only present if this download type has been created.
+        /// </summary>
+        [Input("default")]
+        public Input<Inputs.StreamDownloadDefaultGetArgs>? Default { get; set; }
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.

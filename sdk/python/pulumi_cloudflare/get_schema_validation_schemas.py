@@ -129,7 +129,7 @@ class GetSchemaValidationSchemasResult:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> _builtins.str:
+    def zone_id(self) -> Optional[_builtins.str]:
         """
         Identifier.
         """
@@ -160,6 +160,13 @@ def get_schema_validation_schemas(filter: Optional[Union['GetSchemaValidationSch
                                   zone_id: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSchemaValidationSchemasResult:
     """
+    Accepted Permissions
+
+    - `Account API Gateway`
+    - `Account API Gateway Read`
+    - `Domain API Gateway`
+    - `Domain API Gateway Read`
+
     ## Example Usage
 
     ```python
@@ -198,9 +205,16 @@ def get_schema_validation_schemas(filter: Optional[Union['GetSchemaValidationSch
 def get_schema_validation_schemas_output(filter: Optional[pulumi.Input[Optional[Union['GetSchemaValidationSchemasFilterArgs', 'GetSchemaValidationSchemasFilterArgsDict']]]] = None,
                                          omit_source: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                          schema_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                         zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchemaValidationSchemasResult]:
     """
+    Accepted Permissions
+
+    - `Account API Gateway`
+    - `Account API Gateway Read`
+    - `Domain API Gateway`
+    - `Domain API Gateway Read`
+
     ## Example Usage
 
     ```python

@@ -61,7 +61,7 @@ class GetEmailSecurityTrustedDomainsListResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         Account Identifier
         """
@@ -164,6 +164,11 @@ def get_email_security_trusted_domains_list(account_id: Optional[_builtins.str] 
                                             search: Optional[_builtins.str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailSecurityTrustedDomainsListResult:
     """
+    Accepted Permissions
+
+    - `Cloud Email Security: Read`
+    - `Cloud Email Security: Write`
+
     ## Example Usage
 
     ```python
@@ -214,7 +219,7 @@ def get_email_security_trusted_domains_list(account_id: Optional[_builtins.str] 
         pattern=pulumi.get(__ret__, 'pattern'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
-def get_email_security_trusted_domains_list_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_email_security_trusted_domains_list_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                    direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                    is_recent: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                                    is_similarity: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
@@ -224,6 +229,11 @@ def get_email_security_trusted_domains_list_output(account_id: Optional[pulumi.I
                                                    search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityTrustedDomainsListResult]:
     """
+    Accepted Permissions
+
+    - `Cloud Email Security: Read`
+    - `Cloud Email Security: Write`
+
     ## Example Usage
 
     ```python

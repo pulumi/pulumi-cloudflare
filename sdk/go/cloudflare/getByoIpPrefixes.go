@@ -11,6 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `IP Prefixes: BGP On Demand Read`
+// - `IP Prefixes: BGP On Demand Write`
+// - `IP Prefixes: Read`
+// - `IP Prefixes: Write`
+// - `Magic Transit Read`
+// - `Magic Transit Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetByoIpPrefixes(ctx, &cloudflare.LookupByoIpPrefixesArgs{
-//				AccountId: "258def64c72dae45f3e4c8516e2111f2",
+//				AccountId: pulumi.StringRef("258def64c72dae45f3e4c8516e2111f2"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,7 +58,7 @@ func LookupByoIpPrefixes(ctx *pulumi.Context, args *LookupByoIpPrefixesArgs, opt
 // A collection of arguments for invoking getByoIpPrefixes.
 type LookupByoIpPrefixesArgs struct {
 	// Identifier of a Cloudflare account.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -57,7 +66,7 @@ type LookupByoIpPrefixesArgs struct {
 // A collection of values returned by getByoIpPrefixes.
 type LookupByoIpPrefixesResult struct {
 	// Identifier of a Cloudflare account.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -78,7 +87,7 @@ func LookupByoIpPrefixesOutput(ctx *pulumi.Context, args LookupByoIpPrefixesOutp
 // A collection of arguments for invoking getByoIpPrefixes.
 type LookupByoIpPrefixesOutputArgs struct {
 	// Identifier of a Cloudflare account.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -103,8 +112,8 @@ func (o LookupByoIpPrefixesResultOutput) ToLookupByoIpPrefixesResultOutputWithCo
 }
 
 // Identifier of a Cloudflare account.
-func (o LookupByoIpPrefixesResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupByoIpPrefixesResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupByoIpPrefixesResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupByoIpPrefixesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

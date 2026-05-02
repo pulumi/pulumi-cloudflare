@@ -21,6 +21,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `DNS Read`
+ * - `DNS Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -53,6 +58,7 @@ import javax.annotation.Nullable;
  *             .type("A")
  *             .comment("Domain verification record")
  *             .content("198.51.100.4")
+ *             .privateRouting(true)
  *             .proxied(true)
  *             .settings(DnsRecordSettingsArgs.builder()
  *                 .ipv4Only(true)
@@ -202,6 +208,20 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.priority);
     }
     /**
+     * Enables private network routing to the origin.
+     * 
+     */
+    @Export(name="privateRouting", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> privateRouting;
+
+    /**
+     * @return Enables private network routing to the origin.
+     * 
+     */
+    public Output<Optional<Boolean>> privateRouting() {
+        return Codegen.optional(this.privateRouting);
+    }
+    /**
      * Whether the record can be proxied by Cloudflare or not.
      * 
      */
@@ -306,14 +326,14 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

@@ -21,13 +21,14 @@ __all__ = ['WorkerVersionArgs', 'WorkerVersion']
 @pulumi.input_type
 class WorkerVersionArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
                  worker_id: pulumi.Input[_builtins.str],
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  annotations: Optional[pulumi.Input['WorkerVersionAnnotationsArgs']] = None,
                  assets: Optional[pulumi.Input['WorkerVersionAssetsArgs']] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]] = None,
                  compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]] = None,
                  limits: Optional[pulumi.Input['WorkerVersionLimitsArgs']] = None,
                  main_module: Optional[pulumi.Input[_builtins.str]] = None,
                  migrations: Optional[pulumi.Input['WorkerVersionMigrationsArgs']] = None,
@@ -37,13 +38,14 @@ class WorkerVersionArgs:
         """
         The set of arguments for constructing a WorkerVersion resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['WorkerVersionAnnotationsArgs'] annotations: Metadata about the version.
         :param pulumi.Input['WorkerVersionAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
         :param pulumi.Input['WorkerVersionLimitsArgs'] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input['WorkerVersionMigrationsArgs'] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
@@ -57,8 +59,9 @@ class WorkerVersionArgs:
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "worker_id", worker_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if assets is not None:
@@ -69,6 +72,8 @@ class WorkerVersionArgs:
             pulumi.set(__self__, "compatibility_date", compatibility_date)
         if compatibility_flags is not None:
             pulumi.set(__self__, "compatibility_flags", compatibility_flags)
+        if containers is not None:
+            pulumi.set(__self__, "containers", containers)
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
         if main_module is not None:
@@ -86,18 +91,6 @@ class WorkerVersionArgs:
             pulumi.set(__self__, "usage_model", usage_model)
 
     @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "account_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="workerId")
     def worker_id(self) -> pulumi.Input[_builtins.str]:
         """
@@ -108,6 +101,18 @@ class WorkerVersionArgs:
     @worker_id.setter
     def worker_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "worker_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -168,6 +173,18 @@ class WorkerVersionArgs:
     @compatibility_flags.setter
     def compatibility_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "compatibility_flags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]]:
+        """
+        List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+        """
+        return pulumi.get(self, "containers")
+
+    @containers.setter
+    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]]):
+        pulumi.set(self, "containers", value)
 
     @_builtins.property
     @pulumi.getter
@@ -258,16 +275,19 @@ class _WorkerVersionState:
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]] = None,
                  compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]] = None,
                  created_on: Optional[pulumi.Input[_builtins.str]] = None,
                  limits: Optional[pulumi.Input['WorkerVersionLimitsArgs']] = None,
                  main_module: Optional[pulumi.Input[_builtins.str]] = None,
                  main_script_base64: Optional[pulumi.Input[_builtins.str]] = None,
+                 migration_tag: Optional[pulumi.Input[_builtins.str]] = None,
                  migrations: Optional[pulumi.Input['WorkerVersionMigrationsArgs']] = None,
                  modules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]] = None,
                  number: Optional[pulumi.Input[_builtins.int]] = None,
                  placement: Optional[pulumi.Input['WorkerVersionPlacementArgs']] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  startup_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
+                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  usage_model: Optional[pulumi.Input[_builtins.str]] = None,
                  worker_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -279,10 +299,12 @@ class _WorkerVersionState:
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
         :param pulumi.Input[_builtins.str] created_on: When the version was created.
         :param pulumi.Input['WorkerVersionLimitsArgs'] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input[_builtins.str] main_script_base64: The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+        :param pulumi.Input[_builtins.str] migration_tag: Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
         :param pulumi.Input['WorkerVersionMigrationsArgs'] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]] modules: Code, sourcemaps, and other content used at runtime.
                
@@ -294,6 +316,7 @@ class _WorkerVersionState:
         :param pulumi.Input['WorkerVersionPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] source: The client used to create the version.
         :param pulumi.Input[_builtins.int] startup_time_ms: Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
         :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
@@ -310,6 +333,8 @@ class _WorkerVersionState:
             pulumi.set(__self__, "compatibility_date", compatibility_date)
         if compatibility_flags is not None:
             pulumi.set(__self__, "compatibility_flags", compatibility_flags)
+        if containers is not None:
+            pulumi.set(__self__, "containers", containers)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
         if limits is not None:
@@ -318,6 +343,8 @@ class _WorkerVersionState:
             pulumi.set(__self__, "main_module", main_module)
         if main_script_base64 is not None:
             pulumi.set(__self__, "main_script_base64", main_script_base64)
+        if migration_tag is not None:
+            pulumi.set(__self__, "migration_tag", migration_tag)
         if migrations is not None:
             pulumi.set(__self__, "migrations", migrations)
         if modules is not None:
@@ -330,6 +357,8 @@ class _WorkerVersionState:
             pulumi.set(__self__, "source", source)
         if startup_time_ms is not None:
             pulumi.set(__self__, "startup_time_ms", startup_time_ms)
+        if urls is not None:
+            pulumi.set(__self__, "urls", urls)
         if usage_model is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""usage_model is deprecated: This attribute is deprecated.""")
@@ -411,6 +440,18 @@ class _WorkerVersionState:
         pulumi.set(self, "compatibility_flags", value)
 
     @_builtins.property
+    @pulumi.getter
+    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]]:
+        """
+        List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+        """
+        return pulumi.get(self, "containers")
+
+    @containers.setter
+    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]]):
+        pulumi.set(self, "containers", value)
+
+    @_builtins.property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -457,6 +498,18 @@ class _WorkerVersionState:
     @main_script_base64.setter
     def main_script_base64(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "main_script_base64", value)
+
+    @_builtins.property
+    @pulumi.getter(name="migrationTag")
+    def migration_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+        """
+        return pulumi.get(self, "migration_tag")
+
+    @migration_tag.setter
+    def migration_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "migration_tag", value)
 
     @_builtins.property
     @pulumi.getter
@@ -536,6 +589,18 @@ class _WorkerVersionState:
         pulumi.set(self, "startup_time_ms", value)
 
     @_builtins.property
+    @pulumi.getter
+    def urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+        """
+        return pulumi.get(self, "urls")
+
+    @urls.setter
+    def urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "urls", value)
+
+    @_builtins.property
     @pulumi.getter(name="usageModel")
     @_utilities.deprecated("""This attribute is deprecated.""")
     def usage_model(self) -> Optional[pulumi.Input[_builtins.str]]:
@@ -574,6 +639,7 @@ class WorkerVersion(pulumi.CustomResource):
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
                  compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
                  limits: Optional[pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
                  main_module: Optional[pulumi.Input[_builtins.str]] = None,
                  migrations: Optional[pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
@@ -583,6 +649,12 @@ class WorkerVersion(pulumi.CustomResource):
                  worker_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+        - `Workers Tail Read`
+
         ## Example Usage
 
         ```python
@@ -600,7 +672,7 @@ class WorkerVersion(pulumi.CustomResource):
                 "config": {
                     "html_handling": "auto-trailing-slash",
                     "not_found_handling": "404-page",
-                    "run_worker_first": ["string"],
+                    "run_worker_first": [],
                 },
                 "jwt": "jwt",
             },
@@ -611,8 +683,12 @@ class WorkerVersion(pulumi.CustomResource):
             }],
             compatibility_date="2021-01-01",
             compatibility_flags=["nodejs_compat"],
+            containers=[{
+                "class_name": "MyDurableObject",
+            }],
             limits={
                 "cpu_ms": 50,
+                "subrequests": 1000,
             },
             main_module="index.js",
             migrations={
@@ -656,6 +732,7 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
         :param pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
@@ -677,6 +754,12 @@ class WorkerVersion(pulumi.CustomResource):
                  args: WorkerVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Workers Scripts Read`
+        - `Workers Scripts Write`
+        - `Workers Tail Read`
+
         ## Example Usage
 
         ```python
@@ -694,7 +777,7 @@ class WorkerVersion(pulumi.CustomResource):
                 "config": {
                     "html_handling": "auto-trailing-slash",
                     "not_found_handling": "404-page",
-                    "run_worker_first": ["string"],
+                    "run_worker_first": [],
                 },
                 "jwt": "jwt",
             },
@@ -705,8 +788,12 @@ class WorkerVersion(pulumi.CustomResource):
             }],
             compatibility_date="2021-01-01",
             compatibility_flags=["nodejs_compat"],
+            containers=[{
+                "class_name": "MyDurableObject",
+            }],
             limits={
                 "cpu_ms": 50,
+                "subrequests": 1000,
             },
             main_module="index.js",
             migrations={
@@ -763,6 +850,7 @@ class WorkerVersion(pulumi.CustomResource):
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
                  compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
                  limits: Optional[pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
                  main_module: Optional[pulumi.Input[_builtins.str]] = None,
                  migrations: Optional[pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
@@ -779,14 +867,13 @@ class WorkerVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkerVersionArgs.__new__(WorkerVersionArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["assets"] = assets
             __props__.__dict__["bindings"] = bindings
             __props__.__dict__["compatibility_date"] = compatibility_date
             __props__.__dict__["compatibility_flags"] = compatibility_flags
+            __props__.__dict__["containers"] = containers
             __props__.__dict__["limits"] = limits
             __props__.__dict__["main_module"] = main_module
             __props__.__dict__["migrations"] = migrations
@@ -798,9 +885,11 @@ class WorkerVersion(pulumi.CustomResource):
             __props__.__dict__["worker_id"] = worker_id
             __props__.__dict__["created_on"] = None
             __props__.__dict__["main_script_base64"] = None
+            __props__.__dict__["migration_tag"] = None
             __props__.__dict__["number"] = None
             __props__.__dict__["source"] = None
             __props__.__dict__["startup_time_ms"] = None
+            __props__.__dict__["urls"] = None
         super(WorkerVersion, __self__).__init__(
             'cloudflare:index/workerVersion:WorkerVersion',
             resource_name,
@@ -817,16 +906,19 @@ class WorkerVersion(pulumi.CustomResource):
             bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
             compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
             compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
             created_on: Optional[pulumi.Input[_builtins.str]] = None,
             limits: Optional[pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
             main_module: Optional[pulumi.Input[_builtins.str]] = None,
             main_script_base64: Optional[pulumi.Input[_builtins.str]] = None,
+            migration_tag: Optional[pulumi.Input[_builtins.str]] = None,
             migrations: Optional[pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
             modules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
             number: Optional[pulumi.Input[_builtins.int]] = None,
             placement: Optional[pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
             source: Optional[pulumi.Input[_builtins.str]] = None,
             startup_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
+            urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             usage_model: Optional[pulumi.Input[_builtins.str]] = None,
             worker_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkerVersion':
         """
@@ -842,10 +934,12 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]] containers: List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
         :param pulumi.Input[_builtins.str] created_on: When the version was created.
         :param pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']] limits: Resource limits enforced at runtime.
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input[_builtins.str] main_script_base64: The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
+        :param pulumi.Input[_builtins.str] migration_tag: Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
         :param pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]] modules: Code, sourcemaps, and other content used at runtime.
                
@@ -857,6 +951,7 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] source: The client used to create the version.
         :param pulumi.Input[_builtins.int] startup_time_ms: Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
         :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
@@ -871,23 +966,26 @@ class WorkerVersion(pulumi.CustomResource):
         __props__.__dict__["bindings"] = bindings
         __props__.__dict__["compatibility_date"] = compatibility_date
         __props__.__dict__["compatibility_flags"] = compatibility_flags
+        __props__.__dict__["containers"] = containers
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["limits"] = limits
         __props__.__dict__["main_module"] = main_module
         __props__.__dict__["main_script_base64"] = main_script_base64
+        __props__.__dict__["migration_tag"] = migration_tag
         __props__.__dict__["migrations"] = migrations
         __props__.__dict__["modules"] = modules
         __props__.__dict__["number"] = number
         __props__.__dict__["placement"] = placement
         __props__.__dict__["source"] = source
         __props__.__dict__["startup_time_ms"] = startup_time_ms
+        __props__.__dict__["urls"] = urls
         __props__.__dict__["usage_model"] = usage_model
         __props__.__dict__["worker_id"] = worker_id
         return WorkerVersion(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[_builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Identifier.
         """
@@ -934,6 +1032,14 @@ class WorkerVersion(pulumi.CustomResource):
         return pulumi.get(self, "compatibility_flags")
 
     @_builtins.property
+    @pulumi.getter
+    def containers(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerVersionContainer']]]:
+        """
+        List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
+        """
+        return pulumi.get(self, "containers")
+
+    @_builtins.property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Output[_builtins.str]:
         """
@@ -964,6 +1070,14 @@ class WorkerVersion(pulumi.CustomResource):
         The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
         """
         return pulumi.get(self, "main_script_base64")
+
+    @_builtins.property
+    @pulumi.getter(name="migrationTag")
+    def migration_tag(self) -> pulumi.Output[_builtins.str]:
+        """
+        Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
+        """
+        return pulumi.get(self, "migration_tag")
 
     @_builtins.property
     @pulumi.getter
@@ -1017,6 +1131,14 @@ class WorkerVersion(pulumi.CustomResource):
         Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
         """
         return pulumi.get(self, "startup_time_ms")
+
+    @_builtins.property
+    @pulumi.getter
+    def urls(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
+        """
+        return pulumi.get(self, "urls")
 
     @_builtins.property
     @pulumi.getter(name="usageModel")

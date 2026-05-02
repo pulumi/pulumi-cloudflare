@@ -12,6 +12,13 @@ namespace Pulumi.Cloudflare
     public static class GetApiShield
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -31,10 +38,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetApiShieldResult> InvokeAsync(GetApiShieldArgs args, InvokeOptions? options = null)
+        public static Task<GetApiShieldResult> InvokeAsync(GetApiShieldArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiShieldResult>("cloudflare:index/getApiShield:getApiShield", args ?? new GetApiShieldArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -54,10 +68,17 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetApiShieldResult> Invoke(GetApiShieldInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetApiShieldResult> Invoke(GetApiShieldInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiShieldResult>("cloudflare:index/getApiShield:getApiShield", args ?? new GetApiShieldInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Account API Gateway`
+        /// - `Account API Gateway Read`
+        /// - `Domain API Gateway`
+        /// - `Domain API Gateway Read`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -93,8 +114,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public string ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
 
         public GetApiShieldArgs()
         {
@@ -113,8 +134,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public GetApiShieldInvokeArgs()
         {
@@ -138,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string ZoneId;
+        public readonly string? ZoneId;
 
         [OutputConstructor]
         private GetApiShieldResult(
@@ -148,7 +169,7 @@ namespace Pulumi.Cloudflare
 
             bool? normalize,
 
-            string zoneId)
+            string? zoneId)
         {
             AuthIdCharacteristics = authIdCharacteristics;
             Id = id;

@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `Queues Read`
+    /// - `Queues Write`
+    /// - `Workers Scripts Read`
+    /// - `Workers Scripts Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -51,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// A Resource identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// A Resource identifier.
@@ -78,10 +85,10 @@ namespace Pulumi.Cloudflare
         /// Name of a Worker
         /// </summary>
         [Output("scriptName")]
-        public Output<string?> ScriptName { get; private set; } = null!;
+        public Output<string> ScriptName { get; private set; } = null!;
 
         [Output("settings")]
-        public Output<Outputs.QueueConsumerSettings?> Settings { get; private set; } = null!;
+        public Output<Outputs.QueueConsumerSettings> Settings { get; private set; } = null!;
 
         /// <summary>
         /// Available values: "worker", "HttpPull".
@@ -138,8 +145,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("deadLetterQueue")]
         public Input<string>? DeadLetterQueue { get; set; }

@@ -161,6 +161,11 @@ class TotalTls(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         ## Example Usage
 
         ```python
@@ -194,6 +199,11 @@ class TotalTls(pulumi.CustomResource):
                  args: TotalTlsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `SSL and Certificates Read`
+        - `SSL and Certificates Write`
+
         ## Example Usage
 
         ```python

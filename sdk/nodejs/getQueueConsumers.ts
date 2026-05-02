@@ -7,6 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Queues Read`
+ * - `Queues Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -35,7 +42,7 @@ export interface GetQueueConsumersArgs {
     /**
      * A Resource identifier.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -53,7 +60,7 @@ export interface GetQueueConsumersResult {
     /**
      * A Resource identifier.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -72,6 +79,13 @@ export interface GetQueueConsumersResult {
     readonly results: outputs.GetQueueConsumersResult[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `Queues Read`
+ * - `Queues Write`
+ * - `Workers Scripts Read`
+ * - `Workers Scripts Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -100,7 +114,7 @@ export interface GetQueueConsumersOutputArgs {
     /**
      * A Resource identifier.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

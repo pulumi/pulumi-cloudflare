@@ -7,11 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `Cloudflare One Networks Read`
+// - `Cloudflare One Networks Write`
+// - `Cloudflare Tunnel Read`
+// - `Cloudflare Tunnel Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -50,7 +56,7 @@ type ZeroTrustNetworkHostnameRoute struct {
 	pulumi.CustomResourceState
 
 	// Cloudflare account ID
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// An optional description of the hostname route.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Timestamp of when the resource was created.
@@ -69,12 +75,9 @@ type ZeroTrustNetworkHostnameRoute struct {
 func NewZeroTrustNetworkHostnameRoute(ctx *pulumi.Context,
 	name string, args *ZeroTrustNetworkHostnameRouteArgs, opts ...pulumi.ResourceOption) (*ZeroTrustNetworkHostnameRoute, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ZeroTrustNetworkHostnameRouteArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustNetworkHostnameRoute
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute", name, args, &resource, opts...)
@@ -137,7 +140,7 @@ func (ZeroTrustNetworkHostnameRouteState) ElementType() reflect.Type {
 
 type zeroTrustNetworkHostnameRouteArgs struct {
 	// Cloudflare account ID
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// An optional description of the hostname route.
 	Comment *string `pulumi:"comment"`
 	// The hostname of the route.
@@ -149,7 +152,7 @@ type zeroTrustNetworkHostnameRouteArgs struct {
 // The set of arguments for constructing a ZeroTrustNetworkHostnameRoute resource.
 type ZeroTrustNetworkHostnameRouteArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// An optional description of the hostname route.
 	Comment pulumi.StringPtrInput
 	// The hostname of the route.
@@ -246,8 +249,8 @@ func (o ZeroTrustNetworkHostnameRouteOutput) ToZeroTrustNetworkHostnameRouteOutp
 }
 
 // Cloudflare account ID
-func (o ZeroTrustNetworkHostnameRouteOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustNetworkHostnameRoute) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+func (o ZeroTrustNetworkHostnameRouteOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustNetworkHostnameRoute) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // An optional description of the hostname route.

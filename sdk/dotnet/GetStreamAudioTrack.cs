@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetStreamAudioTrack
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStreamAudioTrackResult>("cloudflare:index/getStreamAudioTrack:getStreamAudioTrack", args ?? new GetStreamAudioTrackArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetStreamAudioTrackResult>("cloudflare:index/getStreamAudioTrack:getStreamAudioTrack", args ?? new GetStreamAudioTrackInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `Stream Read`
+        /// - `Stream Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -87,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
@@ -107,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
@@ -129,11 +144,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
-        /// Denotes whether the audio track will be played by default in a player.
+        /// Array of audio tracks for the video.
         /// </summary>
-        public readonly bool Default;
+        public readonly ImmutableArray<Outputs.GetStreamAudioTrackAudioResult> Audios;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -142,43 +157,21 @@ namespace Pulumi.Cloudflare
         /// A Cloudflare-generated unique identifier for a media item.
         /// </summary>
         public readonly string Identifier;
-        /// <summary>
-        /// A string to uniquely identify the track amongst other audio track labels for the specified video.
-        /// </summary>
-        public readonly string Label;
-        /// <summary>
-        /// Specifies the processing status of the video.
-        /// Available values: "queued", "ready", "error".
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// A Cloudflare-generated unique identifier for a media item.
-        /// </summary>
-        public readonly string Uid;
 
         [OutputConstructor]
         private GetStreamAudioTrackResult(
-            string accountId,
+            string? accountId,
 
-            bool @default,
+            ImmutableArray<Outputs.GetStreamAudioTrackAudioResult> audios,
 
             string id,
 
-            string identifier,
-
-            string label,
-
-            string status,
-
-            string uid)
+            string identifier)
         {
             AccountId = accountId;
-            Default = @default;
+            Audios = audios;
             Id = id;
             Identifier = identifier;
-            Label = label;
-            Status = status;
-            Uid = uid;
         }
     }
 }
