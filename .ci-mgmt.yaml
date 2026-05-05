@@ -1,5 +1,6 @@
 provider: cloudflare
 major-version: 6
+disableMajorProviderUpgrades: true
 makeTemplate: bridged
 runner:
     default: pulumi-ubuntu-8core
