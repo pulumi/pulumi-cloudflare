@@ -256,9 +256,9 @@ class MagicTransitConnector(pulumi.CustomResource):
             },
             activated=True,
             interrupt_window_days_of_week=["Sunday"],
-            interrupt_window_duration_hours=1,
+            interrupt_window_duration_hours=float(1),
             interrupt_window_embargo_dates=["string"],
-            interrupt_window_hour_of_day=0,
+            interrupt_window_hour_of_day=float(0),
             notes="notes",
             timezone="timezone")
         ```
@@ -296,9 +296,9 @@ class MagicTransitConnector(pulumi.CustomResource):
             },
             activated=True,
             interrupt_window_days_of_week=["Sunday"],
-            interrupt_window_duration_hours=1,
+            interrupt_window_duration_hours=float(1),
             interrupt_window_embargo_dates=["string"],
-            interrupt_window_hour_of_day=0,
+            interrupt_window_hour_of_day=float(0),
             notes="notes",
             timezone="timezone")
         ```

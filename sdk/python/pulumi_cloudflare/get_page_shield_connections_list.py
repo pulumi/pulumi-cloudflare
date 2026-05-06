@@ -242,7 +242,7 @@ def get_page_shield_connections_list(direction: Optional[_builtins.str] = None,
         order_by="first_seen_at",
         page="2",
         page_url="example.com/page,*/checkout,example.com/*,*checkout*",
-        per_page=100,
+        per_page=float(100),
         prioritize_malicious=True,
         status="active,inactive",
         urls="blog.cloudflare.com,www.example")
@@ -332,7 +332,7 @@ def get_page_shield_connections_list_output(direction: Optional[pulumi.Input[Opt
         order_by="first_seen_at",
         page="2",
         page_url="example.com/page,*/checkout,example.com/*,*checkout*",
-        per_page=100,
+        per_page=float(100),
         prioritize_malicious=True,
         status="active,inactive",
         urls="blog.cloudflare.com,www.example")

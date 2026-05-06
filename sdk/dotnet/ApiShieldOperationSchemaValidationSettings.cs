@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApiShieldOperationSchemaValidationSettings = new Cloudflare.Index.ApiShieldOperationSchemaValidationSettings("example_api_shield_operation_schema_validation_settings", new()
+    ///     var exampleApiShieldOperationSchemaValidationSettings = new Cloudflare.ApiShieldOperationSchemaValidationSettings("example_api_shield_operation_schema_validation_settings", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         OperationId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",

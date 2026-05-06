@@ -284,7 +284,7 @@ class EmailRoutingRule(pulumi.CustomResource):
             }],
             enabled=True,
             name="Send to user@example.net rule.",
-            priority=0)
+            priority=float(0))
         ```
 
         ## Import
@@ -334,7 +334,7 @@ class EmailRoutingRule(pulumi.CustomResource):
             }],
             enabled=True,
             name="Send to user@example.net rule.",
-            priority=0)
+            priority=float(0))
         ```
 
         ## Import

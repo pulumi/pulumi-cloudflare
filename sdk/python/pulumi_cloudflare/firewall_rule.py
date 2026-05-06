@@ -234,7 +234,7 @@ class FirewallRule(pulumi.CustomResource):
                     "body": "<error>This request has been rate-limited.</error>",
                     "content_type": "text/xml",
                 },
-                "timeout": 86400,
+                "timeout": float(86400),
             },
             filter={
                 "description": "Restrict access from these browsers on this address range.",
@@ -288,7 +288,7 @@ class FirewallRule(pulumi.CustomResource):
                     "body": "<error>This request has been rate-limited.</error>",
                     "content_type": "text/xml",
                 },
-                "timeout": 86400,
+                "timeout": float(86400),
             },
             filter={
                 "description": "Restrict access from these browsers on this address range.",

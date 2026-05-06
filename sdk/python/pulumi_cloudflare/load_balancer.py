@@ -853,32 +853,32 @@ class LoadBalancer(pulumi.CustomResource):
                     },
                     "session_affinity": "cookie",
                     "session_affinity_attributes": {
-                        "drain_duration": 100,
+                        "drain_duration": float(100),
                         "headers": ["x"],
                         "require_all_headers": True,
                         "samesite": "Auto",
                         "secure": "Auto",
                         "zero_downtime_failover": "sticky",
                     },
-                    "session_affinity_ttl": 1800,
+                    "session_affinity_ttl": float(1800),
                     "steering_policy": "dynamic_latency",
-                    "ttl": 30,
+                    "ttl": float(30),
                 },
                 "priority": 0,
                 "terminates": True,
             }],
             session_affinity="cookie",
             session_affinity_attributes={
-                "drain_duration": 100,
+                "drain_duration": float(100),
                 "headers": ["x"],
                 "require_all_headers": True,
                 "samesite": "Auto",
                 "secure": "Auto",
                 "zero_downtime_failover": "sticky",
             },
-            session_affinity_ttl=1800,
+            session_affinity_ttl=float(1800),
             steering_policy="dynamic_latency",
-            ttl=30)
+            ttl=float(30))
         ```
 
         ## Import
@@ -1038,32 +1038,32 @@ class LoadBalancer(pulumi.CustomResource):
                     },
                     "session_affinity": "cookie",
                     "session_affinity_attributes": {
-                        "drain_duration": 100,
+                        "drain_duration": float(100),
                         "headers": ["x"],
                         "require_all_headers": True,
                         "samesite": "Auto",
                         "secure": "Auto",
                         "zero_downtime_failover": "sticky",
                     },
-                    "session_affinity_ttl": 1800,
+                    "session_affinity_ttl": float(1800),
                     "steering_policy": "dynamic_latency",
-                    "ttl": 30,
+                    "ttl": float(30),
                 },
                 "priority": 0,
                 "terminates": True,
             }],
             session_affinity="cookie",
             session_affinity_attributes={
-                "drain_duration": 100,
+                "drain_duration": float(100),
                 "headers": ["x"],
                 "require_all_headers": True,
                 "samesite": "Auto",
                 "secure": "Auto",
                 "zero_downtime_failover": "sticky",
             },
-            session_affinity_ttl=1800,
+            session_affinity_ttl=float(1800),
             steering_policy="dynamic_latency",
-            ttl=30)
+            ttl=float(30))
         ```
 
         ## Import

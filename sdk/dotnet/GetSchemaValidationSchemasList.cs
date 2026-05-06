@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSchemaValidationSchemasList = Cloudflare.Index.GetSchemaValidationSchemasList.Invoke(new()
+        ///     var exampleSchemaValidationSchemasList = Cloudflare.GetSchemaValidationSchemasList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ValidationEnabled = true,
@@ -59,7 +59,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSchemaValidationSchemasList = Cloudflare.Index.GetSchemaValidationSchemasList.Invoke(new()
+        ///     var exampleSchemaValidationSchemasList = Cloudflare.GetSchemaValidationSchemasList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ValidationEnabled = true,
@@ -89,7 +89,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSchemaValidationSchemasList = Cloudflare.Index.GetSchemaValidationSchemasList.Invoke(new()
+        ///     var exampleSchemaValidationSchemasList = Cloudflare.GetSchemaValidationSchemasList.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ValidationEnabled = true,

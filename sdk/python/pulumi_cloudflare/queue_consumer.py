@@ -284,11 +284,11 @@ class QueueConsumer(pulumi.CustomResource):
             type="worker",
             dead_letter_queue="example-queue",
             settings={
-                "batch_size": 50,
-                "max_concurrency": 10,
-                "max_retries": 3,
-                "max_wait_time_ms": 5000,
-                "retry_delay": 10,
+                "batch_size": float(50),
+                "max_concurrency": float(10),
+                "max_retries": float(3),
+                "max_wait_time_ms": float(5000),
+                "retry_delay": float(10),
             })
         ```
 
@@ -331,11 +331,11 @@ class QueueConsumer(pulumi.CustomResource):
             type="worker",
             dead_letter_queue="example-queue",
             settings={
-                "batch_size": 50,
-                "max_concurrency": 10,
-                "max_retries": 3,
-                "max_wait_time_ms": 5000,
-                "retry_delay": 10,
+                "batch_size": float(50),
+                "max_concurrency": float(10),
+                "max_retries": float(3),
+                "max_wait_time_ms": float(5000),
+                "retry_delay": float(10),
             })
         ```
 

@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.MagicTransitConnector;
  * import com.pulumi.cloudflare.MagicTransitConnectorArgs;
  * import com.pulumi.cloudflare.inputs.MagicTransitConnectorDeviceArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -51,9 +51,9 @@ import javax.annotation.Nullable;
  *                 .serialNumber("serial_number")
  *                 .build())
  *             .activated(true)
- *             .interruptWindowDaysOfWeek(List.of("Sunday"))
+ *             .interruptWindowDaysOfWeek(Arrays.asList("Sunday"))
  *             .interruptWindowDurationHours(1.0)
- *             .interruptWindowEmbargoDates(List.of("string"))
+ *             .interruptWindowEmbargoDates(Arrays.asList("string"))
  *             .interruptWindowHourOfDay(0.0)
  *             .notes("notes")
  *             .timezone("timezone")

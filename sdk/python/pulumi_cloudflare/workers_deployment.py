@@ -243,7 +243,7 @@ class WorkersDeployment(pulumi.CustomResource):
             script_name="this-is_my_script-01",
             strategy="percentage",
             versions=[{
-                "percentage": 100,
+                "percentage": float(100),
                 "version_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             }],
             annotations={
@@ -288,7 +288,7 @@ class WorkersDeployment(pulumi.CustomResource):
             script_name="this-is_my_script-01",
             strategy="percentage",
             versions=[{
-                "percentage": 100,
+                "percentage": float(100),
                 "version_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             }],
             annotations={

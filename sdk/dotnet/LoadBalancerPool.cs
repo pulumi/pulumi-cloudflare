@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLoadBalancerPool = new Cloudflare.Index.LoadBalancerPool("example_load_balancer_pool", new()
+    ///     var exampleLoadBalancerPool = new Cloudflare.LoadBalancerPool("example_load_balancer_pool", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "primary-dc-1",

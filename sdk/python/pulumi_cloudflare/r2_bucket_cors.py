@@ -184,7 +184,7 @@ class R2BucketCors(pulumi.CustomResource):
                 },
                 "id": "Allow Local Development",
                 "expose_headers": ["Content-Encoding"],
-                "max_age_seconds": 3600,
+                "max_age_seconds": float(3600),
             }])
         ```
 
@@ -223,7 +223,7 @@ class R2BucketCors(pulumi.CustomResource):
                 },
                 "id": "Allow Local Development",
                 "expose_headers": ["Content-Encoding"],
-                "max_age_seconds": 3600,
+                "max_age_seconds": float(3600),
             }])
         ```
 

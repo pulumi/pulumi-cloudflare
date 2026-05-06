@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                     .service("https://localhost:8001")
  *                     .originRequest(ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestArgs.builder()
  *                         .access(ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs.builder()
- *                             .audTag(List.of("string"))
+ *                             .audTag(Arrays.asList("string"))
  *                             .teamName("zero-trust-organization-name")
  *                             .required(false)
  *                             .build())

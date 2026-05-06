@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShieldDiscoveryOperations = Cloudflare.Index.GetApiShieldDiscoveryOperations.Invoke(new()
+        ///     var exampleApiShieldDiscoveryOperations = Cloudflare.GetApiShieldDiscoveryOperations.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Diff = true,
@@ -72,7 +72,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShieldDiscoveryOperations = Cloudflare.Index.GetApiShieldDiscoveryOperations.Invoke(new()
+        ///     var exampleApiShieldDiscoveryOperations = Cloudflare.GetApiShieldDiscoveryOperations.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Diff = true,
@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiShieldDiscoveryOperations = Cloudflare.Index.GetApiShieldDiscoveryOperations.Invoke(new()
+        ///     var exampleApiShieldDiscoveryOperations = Cloudflare.GetApiShieldDiscoveryOperations.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Diff = true,

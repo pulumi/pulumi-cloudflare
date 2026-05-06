@@ -151,7 +151,7 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
 
         example_zero_trust_access_key_configuration = cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            key_rotation_interval_days=30)
+            key_rotation_interval_days=float(30))
         ```
 
         ## Import
@@ -186,7 +186,7 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
 
         example_zero_trust_access_key_configuration = cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            key_rotation_interval_days=30)
+            key_rotation_interval_days=float(30))
         ```
 
         ## Import

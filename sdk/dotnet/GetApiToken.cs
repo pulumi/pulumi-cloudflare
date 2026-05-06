@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiToken = Cloudflare.Index.GetApiToken.Invoke(new()
+        ///     var exampleApiToken = Cloudflare.GetApiToken.Invoke(new()
         ///     {
         ///         TokenId = "ed17574386854bf78a67040be0a770b0",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiToken = Cloudflare.Index.GetApiToken.Invoke(new()
+        ///     var exampleApiToken = Cloudflare.GetApiToken.Invoke(new()
         ///     {
         ///         TokenId = "ed17574386854bf78a67040be0a770b0",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiToken = Cloudflare.Index.GetApiToken.Invoke(new()
+        ///     var exampleApiToken = Cloudflare.GetApiToken.Invoke(new()
         ///     {
         ///         TokenId = "ed17574386854bf78a67040be0a770b0",
         ///     });

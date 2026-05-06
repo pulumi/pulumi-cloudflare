@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSsoConnector = new Cloudflare.Index.SsoConnector("example_sso_connector", new()
+    ///     var exampleSsoConnector = new Cloudflare.SsoConnector("example_sso_connector", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         EmailDomain = "example.com",

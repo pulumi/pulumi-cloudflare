@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLogpullRetention = new Cloudflare.Index.LogpullRetention("example_logpull_retention", new()
+    ///     var exampleLogpullRetention = new Cloudflare.LogpullRetention("example_logpull_retention", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Flag = true,

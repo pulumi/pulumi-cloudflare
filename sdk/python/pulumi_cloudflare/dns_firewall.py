@@ -530,11 +530,11 @@ class DnsFirewall(pulumi.CustomResource):
             },
             deprecate_any_requests=True,
             ecs_fallback=False,
-            maximum_cache_ttl=900,
-            minimum_cache_ttl=60,
-            negative_cache_ttl=900,
-            ratelimit=600,
-            retries=2)
+            maximum_cache_ttl=float(900),
+            minimum_cache_ttl=float(60),
+            negative_cache_ttl=float(900),
+            ratelimit=float(600),
+            retries=float(2))
         ```
 
         ## Import
@@ -609,11 +609,11 @@ class DnsFirewall(pulumi.CustomResource):
             },
             deprecate_any_requests=True,
             ecs_fallback=False,
-            maximum_cache_ttl=900,
-            minimum_cache_ttl=60,
-            negative_cache_ttl=900,
-            ratelimit=600,
-            retries=2)
+            maximum_cache_ttl=float(900),
+            minimum_cache_ttl=float(60),
+            negative_cache_ttl=float(900),
+            ratelimit=float(600),
+            retries=float(2))
         ```
 
         ## Import

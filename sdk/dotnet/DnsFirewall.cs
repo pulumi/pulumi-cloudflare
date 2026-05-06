@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDnsFirewall = new Cloudflare.Index.DnsFirewall("example_dns_firewall", new()
+    ///     var exampleDnsFirewall = new Cloudflare.DnsFirewall("example_dns_firewall", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "My Awesome DNS Firewall cluster",

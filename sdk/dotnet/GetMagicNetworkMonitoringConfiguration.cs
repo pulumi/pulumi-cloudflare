@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicNetworkMonitoringConfiguration = Cloudflare.Index.GetMagicNetworkMonitoringConfiguration.Invoke(new()
+        ///     var exampleMagicNetworkMonitoringConfiguration = Cloudflare.GetMagicNetworkMonitoringConfiguration.Invoke(new()
         ///     {
         ///         AccountId = "6f91088a406011ed95aed352566e8d4c",
         ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicNetworkMonitoringConfiguration = Cloudflare.Index.GetMagicNetworkMonitoringConfiguration.Invoke(new()
+        ///     var exampleMagicNetworkMonitoringConfiguration = Cloudflare.GetMagicNetworkMonitoringConfiguration.Invoke(new()
         ///     {
         ///         AccountId = "6f91088a406011ed95aed352566e8d4c",
         ///     });
@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicNetworkMonitoringConfiguration = Cloudflare.Index.GetMagicNetworkMonitoringConfiguration.Invoke(new()
+        ///     var exampleMagicNetworkMonitoringConfiguration = Cloudflare.GetMagicNetworkMonitoringConfiguration.Invoke(new()
         ///     {
         ///         AccountId = "6f91088a406011ed95aed352566e8d4c",
         ///     });

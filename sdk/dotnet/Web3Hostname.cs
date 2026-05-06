@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWeb3Hostname = new Cloudflare.Index.Web3Hostname("example_web3_hostname", new()
+    ///     var exampleWeb3Hostname = new Cloudflare.Web3Hostname("example_web3_hostname", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "gateway.example.com",

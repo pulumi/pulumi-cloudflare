@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersKvNamespace = new Cloudflare.Index.WorkersKvNamespace("example_workers_kv_namespace", new()
+    ///     var exampleWorkersKvNamespace = new Cloudflare.WorkersKvNamespace("example_workers_kv_namespace", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Title = "My Own Namespace",

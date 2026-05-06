@@ -376,7 +376,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
         example_zero_trust_device_settings = cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings",
             account_id="699d98642c564d2e855e9661899b7252",
-            disable_for_time=0,
+            disable_for_time=float(0),
             external_emergency_signal_enabled=True,
             external_emergency_signal_fingerprint="abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
             external_emergency_signal_interval="5m",
@@ -423,7 +423,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
         example_zero_trust_device_settings = cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings",
             account_id="699d98642c564d2e855e9661899b7252",
-            disable_for_time=0,
+            disable_for_time=float(0),
             external_emergency_signal_enabled=True,
             external_emergency_signal_fingerprint="abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
             external_emergency_signal_interval="5m",

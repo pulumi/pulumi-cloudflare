@@ -246,7 +246,7 @@ class OriginCaCertificate(pulumi.CustomResource):
                 "sub.example.com",
             ],
             request_type="origin-rsa",
-            requested_validity=5475)
+            requested_validity=float(5475))
         ```
 
         ## Import
@@ -304,7 +304,7 @@ class OriginCaCertificate(pulumi.CustomResource):
                 "sub.example.com",
             ],
             request_type="origin-rsa",
-            requested_validity=5475)
+            requested_validity=float(5475))
         ```
 
         ## Import

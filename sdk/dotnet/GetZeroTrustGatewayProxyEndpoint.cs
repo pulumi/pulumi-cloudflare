@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustGatewayProxyEndpoint = Cloudflare.Index.GetZeroTrustGatewayProxyEndpoint.Invoke(new()
+        ///     var exampleZeroTrustGatewayProxyEndpoint = Cloudflare.GetZeroTrustGatewayProxyEndpoint.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         ProxyEndpointId = "ed35569b41ce4d1facfe683550f54086",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustGatewayProxyEndpoint = Cloudflare.Index.GetZeroTrustGatewayProxyEndpoint.Invoke(new()
+        ///     var exampleZeroTrustGatewayProxyEndpoint = Cloudflare.GetZeroTrustGatewayProxyEndpoint.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         ProxyEndpointId = "ed35569b41ce4d1facfe683550f54086",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustGatewayProxyEndpoint = Cloudflare.Index.GetZeroTrustGatewayProxyEndpoint.Invoke(new()
+        ///     var exampleZeroTrustGatewayProxyEndpoint = Cloudflare.GetZeroTrustGatewayProxyEndpoint.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         ProxyEndpointId = "ed35569b41ce4d1facfe683550f54086",

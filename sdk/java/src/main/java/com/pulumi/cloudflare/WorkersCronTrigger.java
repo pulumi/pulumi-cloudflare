@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.WorkersCronTrigger;
  * import com.pulumi.cloudflare.WorkersCronTriggerArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *         var exampleWorkersCronTrigger = new WorkersCronTrigger("exampleWorkersCronTrigger", WorkersCronTriggerArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .scriptName("this-is_my_script-01")
- *             .body(List.of(Map.of("cron", "*}&#47;{@code 30 * * * *")))
+ *             .body(Arrays.asList(Map.of("cron", "*}&#47;{@code 30 * * * *")))
  *             .build());
  * 
  *     }}{@code

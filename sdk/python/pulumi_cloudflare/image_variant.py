@@ -202,9 +202,9 @@ class ImageVariant(pulumi.CustomResource):
             image_variant_id="hero",
             options={
                 "fit": "scale-down",
-                "height": 768,
+                "height": float(768),
                 "metadata": "none",
-                "width": 1366,
+                "width": float(1366),
             },
             never_require_signed_urls=True)
         ```
@@ -246,9 +246,9 @@ class ImageVariant(pulumi.CustomResource):
             image_variant_id="hero",
             options={
                 "fit": "scale-down",
-                "height": 768,
+                "height": float(768),
                 "metadata": "none",
-                "width": 1366,
+                "width": float(1366),
             },
             never_require_signed_urls=True)
         ```

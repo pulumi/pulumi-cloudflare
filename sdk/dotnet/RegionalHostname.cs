@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRegionalHostname = new Cloudflare.Index.RegionalHostname("example_regional_hostname", new()
+    ///     var exampleRegionalHostname = new Cloudflare.RegionalHostname("example_regional_hostname", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostname = "foo.example.com",

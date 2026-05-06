@@ -423,9 +423,9 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
             name="my_rule_1",
             prefixes=["203.0.113.1/32"],
             type="zscore",
-            bandwidth_threshold=1000,
+            bandwidth_threshold=float(1000),
             duration="1m",
-            packet_threshold=10000,
+            packet_threshold=float(10000),
             prefix_match="exact",
             zscore_sensitivity="high",
             zscore_target="bits")
@@ -480,9 +480,9 @@ class MagicNetworkMonitoringRule(pulumi.CustomResource):
             name="my_rule_1",
             prefixes=["203.0.113.1/32"],
             type="zscore",
-            bandwidth_threshold=1000,
+            bandwidth_threshold=float(1000),
             duration="1m",
-            packet_threshold=10000,
+            packet_threshold=float(10000),
             prefix_match="exact",
             zscore_sensitivity="high",
             zscore_target="bits")

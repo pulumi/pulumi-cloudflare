@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpPredefinedEntries = Cloudflare.Index.GetZeroTrustDlpPredefinedEntries.Invoke(new()
+        ///     var exampleZeroTrustDlpPredefinedEntries = Cloudflare.GetZeroTrustDlpPredefinedEntries.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpPredefinedEntries = Cloudflare.Index.GetZeroTrustDlpPredefinedEntries.Invoke(new()
+        ///     var exampleZeroTrustDlpPredefinedEntries = Cloudflare.GetZeroTrustDlpPredefinedEntries.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZeroTrustDlpPredefinedEntries = Cloudflare.Index.GetZeroTrustDlpPredefinedEntries.Invoke(new()
+        ///     var exampleZeroTrustDlpPredefinedEntries = Cloudflare.GetZeroTrustDlpPredefinedEntries.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///     });

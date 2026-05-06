@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallback;
  * import com.pulumi.cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *             .domains(ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs.builder()
  *                 .suffix("example.com")
  *                 .description("Domain bypass for local development")
- *                 .dnsServer(List.of("1.1.1.1"))
+ *                 .dnsServer(Arrays.asList("1.1.1.1"))
  *                 .build())
  *             .build());
  * 

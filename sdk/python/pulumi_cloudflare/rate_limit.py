@@ -278,7 +278,7 @@ class RateLimit(pulumi.CustomResource):
                     "body": "<error>This request has been rate-limited.</error>",
                     "content_type": "text/xml",
                 },
-                "timeout": 86400,
+                "timeout": float(86400),
             },
             match={
                 "headers": [{
@@ -301,8 +301,8 @@ class RateLimit(pulumi.CustomResource):
                     "origin_traffic": True,
                 },
             },
-            period=900,
-            threshold=60)
+            period=float(900),
+            threshold=float(60))
         ```
 
         ## Import
@@ -352,7 +352,7 @@ class RateLimit(pulumi.CustomResource):
                     "body": "<error>This request has been rate-limited.</error>",
                     "content_type": "text/xml",
                 },
-                "timeout": 86400,
+                "timeout": float(86400),
             },
             match={
                 "headers": [{
@@ -375,8 +375,8 @@ class RateLimit(pulumi.CustomResource):
                     "origin_traffic": True,
                 },
             },
-            period=900,
-            threshold=60)
+            period=float(900),
+            threshold=float(60))
         ```
 
         ## Import

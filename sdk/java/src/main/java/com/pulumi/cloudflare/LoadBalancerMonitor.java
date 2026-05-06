@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.LoadBalancerMonitor;
  * import com.pulumi.cloudflare.LoadBalancerMonitorArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -58,8 +58,8 @@ import javax.annotation.Nullable;
  *             .expectedCodes("2xx")
  *             .followRedirects(true)
  *             .header(Map.ofEntries(
- *                 Map.entry("Host", "example.com"),
- *                 Map.entry("X-App-ID", "abc123")
+ *                 Map.entry("Host", Arrays.asList("example.com")),
+ *                 Map.entry("X-App-ID", Arrays.asList("abc123"))
  *             ))
  *             .interval(0)
  *             .method("GET")

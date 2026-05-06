@@ -59,7 +59,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZoneHold = new Cloudflare.Index.ZoneHold("example_zone_hold", new()
+    ///     var exampleZoneHold = new Cloudflare.ZoneHold("example_zone_hold", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///     });

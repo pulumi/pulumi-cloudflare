@@ -655,7 +655,7 @@ class LogpushJob(pulumi.CustomResource):
 
         \"\"\",
                 "record_template": "record_template",
-                "sample_rate": 1,
+                "sample_rate": float(1),
                 "timestamp_format": "unixnano",
             },
             ownership_challenge="00000000000000000000")
@@ -737,7 +737,7 @@ class LogpushJob(pulumi.CustomResource):
 
         \"\"\",
                 "record_template": "record_template",
-                "sample_rate": 1,
+                "sample_rate": float(1),
                 "timestamp_format": "unixnano",
             },
             ownership_challenge="00000000000000000000")

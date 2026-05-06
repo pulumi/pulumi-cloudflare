@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplePipelineStream = new Cloudflare.Index.PipelineStream("example_pipeline_stream", new()
+    ///     var examplePipelineStream = new Cloudflare.PipelineStream("example_pipeline_stream", new()
     ///     {
     ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "my_stream",

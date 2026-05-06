@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePipelineStream = Cloudflare.Index.GetPipelineStream.Invoke(new()
+        ///     var examplePipelineStream = Cloudflare.GetPipelineStream.Invoke(new()
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         StreamId = "033e105f4ecef8ad9ca31a8372d0c353",
@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePipelineStream = Cloudflare.Index.GetPipelineStream.Invoke(new()
+        ///     var examplePipelineStream = Cloudflare.GetPipelineStream.Invoke(new()
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         StreamId = "033e105f4ecef8ad9ca31a8372d0c353",
@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var examplePipelineStream = Cloudflare.Index.GetPipelineStream.Invoke(new()
+        ///     var examplePipelineStream = Cloudflare.GetPipelineStream.Invoke(new()
         ///     {
         ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
         ///         StreamId = "033e105f4ecef8ad9ca31a8372d0c353",

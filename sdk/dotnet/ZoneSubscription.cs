@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZoneSubscription = new Cloudflare.Index.ZoneSubscription("example_zone_subscription", new()
+    ///     var exampleZoneSubscription = new Cloudflare.ZoneSubscription("example_zone_subscription", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Frequency = "monthly",

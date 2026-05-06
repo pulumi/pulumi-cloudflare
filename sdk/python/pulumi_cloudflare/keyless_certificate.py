@@ -455,7 +455,7 @@ class KeylessCertificate(pulumi.CustomResource):
           -----END CERTIFICATE-----
         \"\"\",
             host="example.com",
-            port=24008,
+            port=float(24008),
             bundle_method="ubiquitous",
             name="example.com Keyless SSL",
             tunnel={
@@ -561,7 +561,7 @@ class KeylessCertificate(pulumi.CustomResource):
           -----END CERTIFICATE-----
         \"\"\",
             host="example.com",
-            port=24008,
+            port=float(24008),
             bundle_method="ubiquitous",
             name="example.com Keyless SSL",
             tunnel={

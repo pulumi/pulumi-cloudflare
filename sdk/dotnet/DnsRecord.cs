@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDnsRecord = new Cloudflare.Index.DnsRecord("example_dns_record", new()
+    ///     var exampleDnsRecord = new Cloudflare.DnsRecord("example_dns_record", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "example.com",

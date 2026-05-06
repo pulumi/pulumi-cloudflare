@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleQueue = new Cloudflare.Index.Queue("example_queue", new()
+    ///     var exampleQueue = new Cloudflare.Queue("example_queue", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         QueueName = "example-queue",

@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicWanStaticRoute = Cloudflare.Index.GetMagicWanStaticRoute.Invoke(new()
+        ///     var exampleMagicWanStaticRoute = Cloudflare.GetMagicWanStaticRoute.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RouteId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -59,7 +59,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicWanStaticRoute = Cloudflare.Index.GetMagicWanStaticRoute.Invoke(new()
+        ///     var exampleMagicWanStaticRoute = Cloudflare.GetMagicWanStaticRoute.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RouteId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -89,7 +89,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMagicWanStaticRoute = Cloudflare.Index.GetMagicWanStaticRoute.Invoke(new()
+        ///     var exampleMagicWanStaticRoute = Cloudflare.GetMagicWanStaticRoute.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         RouteId = "023e105f4ecef8ad9ca31a8372d0c353",

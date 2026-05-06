@@ -248,7 +248,7 @@ class DnsZoneTransfersIncoming(pulumi.CustomResource):
 
         example_dns_zone_transfers_incoming = cloudflare.DnsZoneTransfersIncoming("example_dns_zone_transfers_incoming",
             zone_id="269d8f4853475ca241c4e730be286b20",
-            auto_refresh_seconds=86400,
+            auto_refresh_seconds=float(86400),
             name="www.example.com.",
             peers=[
                 "23ff594956f20c2a721606e94745a8aa",
@@ -293,7 +293,7 @@ class DnsZoneTransfersIncoming(pulumi.CustomResource):
 
         example_dns_zone_transfers_incoming = cloudflare.DnsZoneTransfersIncoming("example_dns_zone_transfers_incoming",
             zone_id="269d8f4853475ca241c4e730be286b20",
-            auto_refresh_seconds=86400,
+            auto_refresh_seconds=float(86400),
             name="www.example.com.",
             peers=[
                 "23ff594956f20c2a721606e94745a8aa",

@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2BucketSippy = new Cloudflare.Index.R2BucketSippy("example_r2_bucket_sippy", new()
+    ///     var exampleR2BucketSippy = new Cloudflare.R2BucketSippy("example_r2_bucket_sippy", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",

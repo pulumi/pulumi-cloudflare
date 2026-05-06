@@ -356,18 +356,18 @@ class Worker(pulumi.CustomResource):
             logpush=True,
             observability={
                 "enabled": True,
-                "head_sampling_rate": 1,
+                "head_sampling_rate": float(1),
                 "logs": {
                     "destinations": ["string"],
                     "enabled": True,
-                    "head_sampling_rate": 1,
+                    "head_sampling_rate": float(1),
                     "invocation_logs": True,
                     "persist": True,
                 },
                 "traces": {
                     "destinations": ["string"],
                     "enabled": True,
-                    "head_sampling_rate": 1,
+                    "head_sampling_rate": float(1),
                     "persist": True,
                 },
             },
@@ -426,18 +426,18 @@ class Worker(pulumi.CustomResource):
             logpush=True,
             observability={
                 "enabled": True,
-                "head_sampling_rate": 1,
+                "head_sampling_rate": float(1),
                 "logs": {
                     "destinations": ["string"],
                     "enabled": True,
-                    "head_sampling_rate": 1,
+                    "head_sampling_rate": float(1),
                     "invocation_logs": True,
                     "persist": True,
                 },
                 "traces": {
                     "destinations": ["string"],
                     "enabled": True,
-                    "head_sampling_rate": 1,
+                    "head_sampling_rate": float(1),
                     "persist": True,
                 },
             },

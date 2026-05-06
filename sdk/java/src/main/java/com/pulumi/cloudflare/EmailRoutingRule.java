@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.EmailRoutingRuleArgs;
  * import com.pulumi.cloudflare.inputs.EmailRoutingRuleActionArgs;
  * import com.pulumi.cloudflare.inputs.EmailRoutingRuleMatcherArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .actions(EmailRoutingRuleActionArgs.builder()
  *                 .type("forward")
- *                 .value(List.of("destinationaddress}{@literal @}{@code example.net"))
+ *                 .value(Arrays.asList("destinationaddress}{@literal @}{@code example.net"))
  *                 .build())
  *             .matchers(EmailRoutingRuleMatcherArgs.builder()
  *                 .type("literal")

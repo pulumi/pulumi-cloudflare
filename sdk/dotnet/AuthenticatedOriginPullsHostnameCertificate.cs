@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAuthenticatedOriginPullsHostnameCertificate = new Cloudflare.Index.AuthenticatedOriginPullsHostnameCertificate("example_authenticated_origin_pulls_hostname_certificate", new()
+    ///     var exampleAuthenticatedOriginPullsHostnameCertificate = new Cloudflare.AuthenticatedOriginPullsHostnameCertificate("example_authenticated_origin_pulls_hostname_certificate", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Certificate = @"  -----BEGIN CERTIFICATE-----

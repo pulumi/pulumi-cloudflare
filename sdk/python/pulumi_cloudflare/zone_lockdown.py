@@ -292,7 +292,7 @@ class ZoneLockdown(pulumi.CustomResource):
             urls=["shop.example.com/*"],
             description="Prevent multiple login failures to mitigate brute force attacks",
             paused=False,
-            priority=5)
+            priority=float(5))
         ```
 
         ## Import
@@ -338,7 +338,7 @@ class ZoneLockdown(pulumi.CustomResource):
             urls=["shop.example.com/*"],
             description="Prevent multiple login failures to mitigate brute force attacks",
             paused=False,
-            priority=5)
+            priority=float(5))
         ```
 
         ## Import

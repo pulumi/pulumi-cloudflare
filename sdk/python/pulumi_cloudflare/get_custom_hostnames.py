@@ -232,7 +232,7 @@ def get_custom_hostnames(certificate_authority: Optional[_builtins.str] = None,
             "contain": "example.com",
         },
         hostname_status="provisioned",
-        ssl=0,
+        ssl=float(0),
         ssl_status="active",
         wildcard=False)
     ```
@@ -320,7 +320,7 @@ def get_custom_hostnames_output(certificate_authority: Optional[pulumi.Input[Opt
             "contain": "example.com",
         },
         hostname_status="provisioned",
-        ssl=0,
+        ssl=float(0),
         ssl_status="active",
         wildcard=False)
     ```

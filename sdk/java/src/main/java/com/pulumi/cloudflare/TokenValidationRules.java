@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.TokenValidationRules;
  * import com.pulumi.cloudflare.TokenValidationRulesArgs;
  * import com.pulumi.cloudflare.inputs.TokenValidationRulesSelectorArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *                         "56828eae-035a-4396-ba07-51c66d680a04")
  *                     .build())
  *                 .includes(TokenValidationRulesSelectorIncludeArgs.builder()
- *                     .host(List.of(                    
+ *                     .host(Arrays.asList(                    
  *                         "v1.example.com",
  *                         "v2.example.com"))
  *                     .build())

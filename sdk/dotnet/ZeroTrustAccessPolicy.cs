@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessPolicy = new Cloudflare.Index.ZeroTrustAccessPolicy("example_zero_trust_access_policy", new()
+    ///     var exampleZeroTrustAccessPolicy = new Cloudflare.ZeroTrustAccessPolicy("example_zero_trust_access_policy", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Decision = "allow",

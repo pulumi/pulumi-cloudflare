@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAuthenticatedOriginPullsSettings = new Cloudflare.Index.AuthenticatedOriginPullsSettings("example_authenticated_origin_pulls_settings", new()
+    ///     var exampleAuthenticatedOriginPullsSettings = new Cloudflare.AuthenticatedOriginPullsSettings("example_authenticated_origin_pulls_settings", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Enabled = true,

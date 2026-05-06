@@ -261,7 +261,7 @@ def get_page_shield_cookies_list(direction: Optional[_builtins.str] = None,
         page="2",
         page_url="example.com/page,*/checkout,example.com/*,*checkout*",
         path="/",
-        per_page=100,
+        per_page=float(100),
         same_site="strict",
         secure=True,
         type="first_party")
@@ -358,7 +358,7 @@ def get_page_shield_cookies_list_output(direction: Optional[pulumi.Input[Optiona
         page="2",
         page_url="example.com/page,*/checkout,example.com/*,*checkout*",
         path="/",
-        per_page=100,
+        per_page=float(100),
         same_site="strict",
         secure=True,
         type="first_party")

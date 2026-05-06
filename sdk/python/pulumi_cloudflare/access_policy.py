@@ -533,7 +533,7 @@ class AccessPolicy(pulumi.CustomResource):
             name="Allow devs",
             approval_groups=[
                 {
-                    "approvals_needed": 1,
+                    "approvals_needed": float(1),
                     "email_addresses": [
                         "test1@cloudflare.com",
                         "test2@cloudflare.com",
@@ -541,7 +541,7 @@ class AccessPolicy(pulumi.CustomResource):
                     "email_list_uuid": "email_list_uuid",
                 },
                 {
-                    "approvals_needed": 3,
+                    "approvals_needed": float(3),
                     "email_addresses": [
                         "test@cloudflare.com",
                         "test2@cloudflare.com",
@@ -629,7 +629,7 @@ class AccessPolicy(pulumi.CustomResource):
             name="Allow devs",
             approval_groups=[
                 {
-                    "approvals_needed": 1,
+                    "approvals_needed": float(1),
                     "email_addresses": [
                         "test1@cloudflare.com",
                         "test2@cloudflare.com",
@@ -637,7 +637,7 @@ class AccessPolicy(pulumi.CustomResource):
                     "email_list_uuid": "email_list_uuid",
                 },
                 {
-                    "approvals_needed": 3,
+                    "approvals_needed": float(3),
                     "email_addresses": [
                         "test@cloudflare.com",
                         "test2@cloudflare.com",

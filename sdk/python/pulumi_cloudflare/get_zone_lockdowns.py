@@ -226,7 +226,7 @@ def get_zone_lockdowns(created_on: Optional[_builtins.str] = None,
         ip_range_search="1.2.3.0/16",
         ip_search="1.2.3.4",
         modified_on="2014-01-01T05:20:00.12345Z",
-        priority=5,
+        priority=float(5),
         uri_search="/some/path")
     ```
 
@@ -304,7 +304,7 @@ def get_zone_lockdowns_output(created_on: Optional[pulumi.Input[Optional[_builti
         ip_range_search="1.2.3.0/16",
         ip_search="1.2.3.4",
         modified_on="2014-01-01T05:20:00.12345Z",
-        priority=5,
+        priority=float(5),
         uri_search="/some/path")
     ```
 

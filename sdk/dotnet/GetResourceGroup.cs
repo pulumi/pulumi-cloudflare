@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleResourceGroup = Cloudflare.Index.GetResourceGroup.Invoke(new()
+        ///     var exampleResourceGroup = Cloudflare.GetResourceGroup.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ResourceGroupId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleResourceGroup = Cloudflare.Index.GetResourceGroup.Invoke(new()
+        ///     var exampleResourceGroup = Cloudflare.GetResourceGroup.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ResourceGroupId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleResourceGroup = Cloudflare.Index.GetResourceGroup.Invoke(new()
+        ///     var exampleResourceGroup = Cloudflare.GetResourceGroup.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ResourceGroupId = "023e105f4ecef8ad9ca31a8372d0c353",

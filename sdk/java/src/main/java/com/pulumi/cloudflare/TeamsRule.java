@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyScheduleArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -79,10 +79,10 @@ import javax.annotation.Nullable;
  *             .precedence(0)
  *             .ruleSettings(ZeroTrustGatewayPolicyRuleSettingsArgs.builder()
  *                 .addHeaders(Map.ofEntries(
- *                     Map.entry("My-Next-Header",                     
+ *                     Map.entry("My-Next-Header", Arrays.asList(                    
  *                         "foo",
- *                         "bar"),
- *                     Map.entry("X-Custom-Header-Name", "somecustomvalue")
+ *                         "bar")),
+ *                     Map.entry("X-Custom-Header-Name", Arrays.asList("somecustomvalue"))
  *                 ))
  *                 .allowChildBypass(false)
  *                 .auditSsh(ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs.builder()
