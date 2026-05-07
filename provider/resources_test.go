@@ -61,6 +61,15 @@ func TestRuleSetVersionReminder(t *testing.T) {
 		"custom Pulumi PreStateUpgradeHook needs to be revisited or possibly dropped")
 }
 
+func TestListVersionReminder(t *testing.T) {
+	version.Version = "0.0.1"
+	p := Provider()
+	r := p.P.ResourcesMap().Get("cloudflare_list")
+	// See https://github.com/pulumi/pulumi-cloudflare/issues/1549
+	assert.Equalf(t, 500, r.SchemaVersion(), "Reminder: cloudflare_list advanced schema version from 500 and "+
+		"custom Pulumi PreStateUpgradeHook needs to be revisited or possibly dropped")
+}
+
 func Test_delegateID(t *testing.T) {
 
 	type testCase struct {
