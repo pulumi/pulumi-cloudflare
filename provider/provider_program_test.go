@@ -119,6 +119,11 @@ func TestRuleSetUpgrade(t *testing.T) {
 	testUpgrade(t, "test-programs/ruleset/ruleset_v5")
 }
 
+func TestListUpgrade(t *testing.T) {
+	testUpgrade(
+		t, "test-programs/list/listv5", optproviderupgrade.NewSourcePath("test-programs/list"))
+}
+
 func TestAccRecordGo(t *testing.T) {
 	pt := testProgram(t, "test-programs/recordgo",
 		opttest.TestInPlace(), /* to use the parent directory's module */
