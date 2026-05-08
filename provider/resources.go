@@ -130,6 +130,8 @@ func Provider() info.Provider {
 				PreStateUpgradeHook: func(
 					args info.PreStateUpgradeHookArgs,
 				) (int64, resource.PropertyMap, error) {
+					// v5 stored actionParameters.headers as an array of {name, operation, value, expression};
+					// v6 stores it as a MapNestedAttribute keyed by header name. See pulumi/pulumi-cloudflare#1172.
 					updateRuleHeaders := func(r resource.PropertyValue) resource.PropertyValue {
 						if !r.IsObject() {
 							return r
@@ -144,12 +146,28 @@ func Provider() info.Provider {
 						if !ok || !headers.IsArray() {
 							return r
 						}
-						if len(headers.ArrayValue()) == 0 {
+						arr := headers.ArrayValue()
+						if len(arr) == 0 {
 							delete(apCopy, "headers")
 							ruleCopy["actionParameters"] = resource.NewObjectProperty(apCopy)
 							return resource.NewObjectProperty(ruleCopy)
 						}
-						return r
+						headersMap := resource.PropertyMap{}
+						for _, h := range arr {
+							if !h.IsObject() {
+								return r
+							}
+							hObj := h.ObjectValue().Copy()
+							name, ok := hObj["name"]
+							if !ok || !name.IsString() {
+								return r
+							}
+							delete(hObj, "name")
+							headersMap[resource.PropertyKey(name.StringValue())] = resource.NewObjectProperty(hObj)
+						}
+						apCopy["headers"] = resource.NewObjectProperty(headersMap)
+						ruleCopy["actionParameters"] = resource.NewObjectProperty(apCopy)
+						return resource.NewObjectProperty(ruleCopy)
 					}
 
 					// This migrates the rules field from a map[string]string to a map[string][]string
