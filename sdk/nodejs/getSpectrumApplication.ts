@@ -160,10 +160,10 @@ export interface GetSpectrumApplicationOutputArgs {
     /**
      * App identifier.
      */
-    appId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetSpectrumApplicationFilterArgs>;
+    appId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetSpectrumApplicationFilterArgs | undefined>;
     /**
      * Zone identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

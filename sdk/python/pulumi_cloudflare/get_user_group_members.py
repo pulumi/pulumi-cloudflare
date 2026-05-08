@@ -154,10 +154,10 @@ def get_user_group_members(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         members=pulumi.get(__ret__, 'members'),
         user_group_id=pulumi.get(__ret__, 'user_group_id'))
-def get_user_group_members_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                  direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  fuzzy_email: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_user_group_members_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                  direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  fuzzy_email: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserGroupMembersResult]:
     """
     Accepted Permissions

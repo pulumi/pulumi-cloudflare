@@ -165,72 +165,72 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDlpDataset resources.
  */
 export interface ZeroTrustDlpDatasetState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if `secret` is true or undefined
      */
-    caseSensitive?: pulumi.Input<boolean>;
-    columns?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpDatasetColumn>[]>;
-    createdAt?: pulumi.Input<string>;
-    dataset?: pulumi.Input<inputs.ZeroTrustDlpDatasetDataset>;
-    datasetId?: pulumi.Input<string>;
+    caseSensitive?: pulumi.Input<boolean | undefined>;
+    columns?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpDatasetColumn>[] | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    dataset?: pulumi.Input<inputs.ZeroTrustDlpDatasetDataset | undefined>;
+    datasetId?: pulumi.Input<string | undefined>;
     /**
      * The description of the dataset.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Dataset encoding version
      */
-    encodingVersion?: pulumi.Input<number>;
-    maxCells?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    numCells?: pulumi.Input<number>;
+    encodingVersion?: pulumi.Input<number | undefined>;
+    maxCells?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    numCells?: pulumi.Input<number | undefined>;
     /**
      * Generate a secret dataset.
      *
      * If true, the response will include a secret to use with the EDM encoder.
      * If false, the response has no secret and the dataset is uploaded in plaintext.
      */
-    secret?: pulumi.Input<boolean>;
+    secret?: pulumi.Input<boolean | undefined>;
     /**
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Stores when the dataset was last updated.
      *
      * This includes name or description changes as well as uploads.
      */
-    updatedAt?: pulumi.Input<string>;
-    uploads?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpDatasetUpload>[]>;
+    updatedAt?: pulumi.Input<string | undefined>;
+    uploads?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpDatasetUpload>[] | undefined>;
     /**
      * The version to use when uploading the dataset.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustDlpDataset resource.
  */
 export interface ZeroTrustDlpDatasetArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if `secret` is true or undefined
      */
-    caseSensitive?: pulumi.Input<boolean>;
-    datasetId?: pulumi.Input<string>;
+    caseSensitive?: pulumi.Input<boolean | undefined>;
+    datasetId?: pulumi.Input<string | undefined>;
     /**
      * The description of the dataset.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Dataset encoding version
      */
-    encodingVersion?: pulumi.Input<number>;
+    encodingVersion?: pulumi.Input<number | undefined>;
     name: pulumi.Input<string>;
     /**
      * Generate a secret dataset.
@@ -238,5 +238,5 @@ export interface ZeroTrustDlpDatasetArgs {
      * If true, the response will include a secret to use with the EDM encoder.
      * If false, the response has no secret and the dataset is uploaded in plaintext.
      */
-    secret?: pulumi.Input<boolean>;
+    secret?: pulumi.Input<boolean | undefined>;
 }

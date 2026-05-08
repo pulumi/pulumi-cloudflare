@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleHyperdriveConfig = Cloudflare.Index.GetHyperdriveConfig.Invoke(new()
+        ///     var exampleHyperdriveConfig = Cloudflare.GetHyperdriveConfig.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         HyperdriveId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleHyperdriveConfig = Cloudflare.Index.GetHyperdriveConfig.Invoke(new()
+        ///     var exampleHyperdriveConfig = Cloudflare.GetHyperdriveConfig.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         HyperdriveId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleHyperdriveConfig = Cloudflare.Index.GetHyperdriveConfig.Invoke(new()
+        ///     var exampleHyperdriveConfig = Cloudflare.GetHyperdriveConfig.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         HyperdriveId = "023e105f4ecef8ad9ca31a8372d0c353",

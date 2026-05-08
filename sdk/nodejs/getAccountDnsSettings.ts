@@ -91,5 +91,5 @@ export interface GetAccountDnsSettingsOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
 }

@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDnsLocation = new Cloudflare.Index.ZeroTrustDnsLocation("example_zero_trust_dns_location", new()
+    ///     var exampleZeroTrustDnsLocation = new Cloudflare.ZeroTrustDnsLocation("example_zero_trust_dns_location", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "Austin Office Location",

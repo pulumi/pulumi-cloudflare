@@ -184,11 +184,11 @@ def get_account_permission_groups(account_id: Optional[_builtins.str] = None,
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
         results=pulumi.get(__ret__, 'results'))
-def get_account_permission_groups_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         label: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                         name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_permission_groups_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         label: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                         name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountPermissionGroupsResult]:
     """
     Accepted Permissions

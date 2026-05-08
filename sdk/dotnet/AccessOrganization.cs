@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustOrganization = new Cloudflare.Index.ZeroTrustOrganization("example_zero_trust_organization", new()
+    ///     var exampleZeroTrustOrganization = new Cloudflare.ZeroTrustOrganization("example_zero_trust_organization", new()
     ///     {
     ///         ZoneId = "zone_id",
     ///         AllowAuthenticateViaWarp = true,

@@ -227,48 +227,48 @@ export interface CustomHostnameState {
     /**
      * This is the time the hostname was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      */
-    customMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      */
-    customOriginServer?: pulumi.Input<string>;
+    customOriginServer?: pulumi.Input<string | undefined>;
     /**
      * A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      */
-    customOriginSni?: pulumi.Input<string>;
+    customOriginSni?: pulumi.Input<string | undefined>;
     /**
      * The custom hostname that will point to your hostname via CNAME.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * This is a record which can be placed to activate a hostname.
      */
-    ownershipVerification?: pulumi.Input<inputs.CustomHostnameOwnershipVerification>;
+    ownershipVerification?: pulumi.Input<inputs.CustomHostnameOwnershipVerification | undefined>;
     /**
      * This presents the token to be served by the given http url to activate a hostname.
      */
-    ownershipVerificationHttp?: pulumi.Input<inputs.CustomHostnameOwnershipVerificationHttp>;
+    ownershipVerificationHttp?: pulumi.Input<inputs.CustomHostnameOwnershipVerificationHttp | undefined>;
     /**
      * SSL properties used when creating the custom hostname.
      */
-    ssl?: pulumi.Input<inputs.CustomHostnameSsl>;
+    ssl?: pulumi.Input<inputs.CustomHostnameSsl | undefined>;
     /**
      * Status of the hostname's activation.
      * Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * These are errors that were encountered while trying to activate a hostname.
      */
-    verificationErrors?: pulumi.Input<pulumi.Input<string>[]>;
+    verificationErrors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -278,15 +278,15 @@ export interface CustomHostnameArgs {
     /**
      * Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      */
-    customMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      */
-    customOriginServer?: pulumi.Input<string>;
+    customOriginServer?: pulumi.Input<string | undefined>;
     /**
      * A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      */
-    customOriginSni?: pulumi.Input<string>;
+    customOriginSni?: pulumi.Input<string | undefined>;
     /**
      * The custom hostname that will point to your hostname via CNAME.
      */
@@ -294,9 +294,9 @@ export interface CustomHostnameArgs {
     /**
      * SSL properties used when creating the custom hostname.
      */
-    ssl?: pulumi.Input<inputs.CustomHostnameSsl>;
+    ssl?: pulumi.Input<inputs.CustomHostnameSsl | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

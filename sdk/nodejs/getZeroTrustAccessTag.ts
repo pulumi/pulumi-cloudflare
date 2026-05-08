@@ -88,7 +88,7 @@ export interface GetZeroTrustAccessTagOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The name of the tag
      */

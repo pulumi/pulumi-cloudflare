@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessGroup = new Cloudflare.Index.ZeroTrustAccessGroup("example_zero_trust_access_group", new()
+    ///     var exampleZeroTrustAccessGroup = new Cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group", new()
     ///     {
     ///         Includes = new[]
     ///         {

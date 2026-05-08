@@ -226,7 +226,7 @@ def get_zone_lockdowns(created_on: Optional[_builtins.str] = None,
         ip_range_search="1.2.3.0/16",
         ip_search="1.2.3.4",
         modified_on="2014-01-01T05:20:00.12345Z",
-        priority=5,
+        priority=float(5),
         uri_search="/some/path")
     ```
 
@@ -272,17 +272,17 @@ def get_zone_lockdowns(created_on: Optional[_builtins.str] = None,
         results=pulumi.get(__ret__, 'results'),
         uri_search=pulumi.get(__ret__, 'uri_search'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zone_lockdowns_output(created_on: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              description_search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              ip: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              ip_range_search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              ip_search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                              modified_on: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              priority: Optional[pulumi.Input[Optional[_builtins.float]]] = None,
-                              uri_search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zone_lockdowns_output(created_on: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              description_search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              ip: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              ip_range_search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              ip_search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              modified_on: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              priority: pulumi.Input[Optional[Optional[_builtins.float]]] = None,
+                              uri_search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneLockdownsResult]:
     """
     Accepted Permissions
@@ -304,7 +304,7 @@ def get_zone_lockdowns_output(created_on: Optional[pulumi.Input[Optional[_builti
         ip_range_search="1.2.3.0/16",
         ip_search="1.2.3.4",
         modified_on="2014-01-01T05:20:00.12345Z",
-        priority=5,
+        priority=float(5),
         uri_search="/some/path")
     ```
 

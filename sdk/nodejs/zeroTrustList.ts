@@ -133,45 +133,45 @@ export class ZeroTrustList extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustList resources.
  */
 export interface ZeroTrustListState {
-    accountId?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Provide the list description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Add items to the list.
      */
-    items?: pulumi.Input<pulumi.Input<inputs.ZeroTrustListItem>[]>;
+    items?: pulumi.Input<pulumi.Input<inputs.ZeroTrustListItem>[] | undefined>;
     /**
      * Indicate the number of items in the list.
      */
-    listCount?: pulumi.Input<number>;
+    listCount?: pulumi.Input<number | undefined>;
     /**
      * Specify the list name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specify the list type.
      * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
      */
-    type?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustList resource.
  */
 export interface ZeroTrustListArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Provide the list description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Add items to the list.
      */
-    items?: pulumi.Input<pulumi.Input<inputs.ZeroTrustListItem>[]>;
+    items?: pulumi.Input<pulumi.Input<inputs.ZeroTrustListItem>[] | undefined>;
     /**
      * Specify the list name.
      */

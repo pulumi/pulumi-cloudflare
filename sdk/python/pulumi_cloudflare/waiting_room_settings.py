@@ -20,7 +20,7 @@ __all__ = ['WaitingRoomSettingsArgs', 'WaitingRoomSettings']
 class WaitingRoomSettingsArgs:
     def __init__(__self__, *,
                  zone_id: pulumi.Input[_builtins.str],
-                 search_engine_crawler_bypass: Optional[pulumi.Input[_builtins.bool]] = None):
+                 search_engine_crawler_bypass: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a WaitingRoomSettings resource.
 
@@ -47,7 +47,7 @@ class WaitingRoomSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="searchEngineCrawlerBypass")
-    def search_engine_crawler_bypass(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def search_engine_crawler_bypass(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
         Verified search engine crawlers will not be tracked or counted by the waiting room system,
@@ -56,15 +56,15 @@ class WaitingRoomSettingsArgs:
         return pulumi.get(self, "search_engine_crawler_bypass")
 
     @search_engine_crawler_bypass.setter
-    def search_engine_crawler_bypass(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def search_engine_crawler_bypass(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "search_engine_crawler_bypass", value)
 
 
 @pulumi.input_type
 class _WaitingRoomSettingsState:
     def __init__(__self__, *,
-                 search_engine_crawler_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 search_engine_crawler_bypass: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoomSettings resources.
 
@@ -80,7 +80,7 @@ class _WaitingRoomSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="searchEngineCrawlerBypass")
-    def search_engine_crawler_bypass(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def search_engine_crawler_bypass(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
         Verified search engine crawlers will not be tracked or counted by the waiting room system,
@@ -89,19 +89,19 @@ class _WaitingRoomSettingsState:
         return pulumi.get(self, "search_engine_crawler_bypass")
 
     @search_engine_crawler_bypass.setter
-    def search_engine_crawler_bypass(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def search_engine_crawler_bypass(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "search_engine_crawler_bypass", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -111,8 +111,8 @@ class WaitingRoomSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 search_engine_crawler_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 search_engine_crawler_bypass: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -190,8 +190,8 @@ class WaitingRoomSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 search_engine_crawler_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 search_engine_crawler_bypass: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -215,8 +215,8 @@ class WaitingRoomSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            search_engine_crawler_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WaitingRoomSettings':
+            search_engine_crawler_bypass: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WaitingRoomSettings':
         """
         Get an existing WaitingRoomSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

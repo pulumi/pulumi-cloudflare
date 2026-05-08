@@ -117,8 +117,8 @@ def get_workers_cron_trigger(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         schedules=pulumi.get(__ret__, 'schedules'),
         script_name=pulumi.get(__ret__, 'script_name'))
-def get_workers_cron_trigger_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    script_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workers_cron_trigger_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    script_name: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersCronTriggerResult]:
     """
     Accepted Permissions

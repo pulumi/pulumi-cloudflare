@@ -170,11 +170,11 @@ def get_list_items(account_id: Optional[_builtins.str] = None,
         per_page=pulumi.get(__ret__, 'per_page'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
-def get_list_items_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          list_id: Optional[pulumi.Input[_builtins.str]] = None,
-                          max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                          per_page: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                          search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_list_items_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          list_id: pulumi.Input[Optional[_builtins.str]] = None,
+                          max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                          per_page: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                          search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListItemsResult]:
     """
     Accepted Permissions

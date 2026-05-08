@@ -22,12 +22,12 @@ __all__ = ['ZeroTrustDnsLocationArgs', 'ZeroTrustDnsLocation']
 class ZeroTrustDnsLocationArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_destination_ips_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_support: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoints: Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsArgs']] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_support: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoints: pulumi.Input[Optional['ZeroTrustDnsLocationEndpointsArgs']] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]] = None):
         """
         The set of arguments for constructing a ZeroTrustDnsLocation resource.
 
@@ -66,91 +66,91 @@ class ZeroTrustDnsLocationArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientDefault")
-    def client_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def client_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicate whether this location is the default location.
         """
         return pulumi.get(self, "client_default")
 
     @client_default.setter
-    def client_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def client_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "client_default", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsDestinationIpsId")
-    def dns_destination_ips_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_destination_ips_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
         """
         return pulumi.get(self, "dns_destination_ips_id")
 
     @dns_destination_ips_id.setter
-    def dns_destination_ips_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_destination_ips_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_destination_ips_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsSupport")
-    def ecs_support(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ecs_support(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicate whether the location must resolve EDNS queries.
         """
         return pulumi.get(self, "ecs_support")
 
     @ecs_support.setter
-    def ecs_support(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ecs_support(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ecs_support", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsArgs']]:
+    def endpoints(self) -> pulumi.Input[Optional['ZeroTrustDnsLocationEndpointsArgs']]:
         """
         Configure the destination endpoints for this location.
         """
         return pulumi.get(self, "endpoints")
 
     @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsArgs']]):
+    def endpoints(self, value: pulumi.Input[Optional['ZeroTrustDnsLocationEndpointsArgs']]):
         pulumi.set(self, "endpoints", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]]:
         """
         Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
 
 
 @pulumi.input_type
 class _ZeroTrustDnsLocationState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_destination_ips_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_destination_ipv6_block_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 doh_subdomain: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_support: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoints: Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsArgs']] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_destination: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_destination_backup: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_destination_ipv6_block_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 doh_subdomain: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_support: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoints: pulumi.Input[Optional['ZeroTrustDnsLocationEndpointsArgs']] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4_destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4_destination_backup: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDnsLocation resources.
 
@@ -197,161 +197,161 @@ class _ZeroTrustDnsLocationState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientDefault")
-    def client_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def client_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicate whether this location is the default location.
         """
         return pulumi.get(self, "client_default")
 
     @client_default.setter
-    def client_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def client_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "client_default", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsDestinationIpsId")
-    def dns_destination_ips_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_destination_ips_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
         """
         return pulumi.get(self, "dns_destination_ips_id")
 
     @dns_destination_ips_id.setter
-    def dns_destination_ips_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_destination_ips_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_destination_ips_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsDestinationIpv6BlockId")
-    def dns_destination_ipv6_block_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_destination_ipv6_block_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
         """
         return pulumi.get(self, "dns_destination_ipv6_block_id")
 
     @dns_destination_ipv6_block_id.setter
-    def dns_destination_ipv6_block_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_destination_ipv6_block_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_destination_ipv6_block_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dohSubdomain")
-    def doh_subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def doh_subdomain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
         """
         return pulumi.get(self, "doh_subdomain")
 
     @doh_subdomain.setter
-    def doh_subdomain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def doh_subdomain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "doh_subdomain", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsSupport")
-    def ecs_support(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ecs_support(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicate whether the location must resolve EDNS queries.
         """
         return pulumi.get(self, "ecs_support")
 
     @ecs_support.setter
-    def ecs_support(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ecs_support(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ecs_support", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsArgs']]:
+    def endpoints(self) -> pulumi.Input[Optional['ZeroTrustDnsLocationEndpointsArgs']]:
         """
         Configure the destination endpoints for this location.
         """
         return pulumi.get(self, "endpoints")
 
     @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsArgs']]):
+    def endpoints(self, value: pulumi.Input[Optional['ZeroTrustDnsLocationEndpointsArgs']]):
         pulumi.set(self, "endpoints", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4Destination")
-    def ipv4_destination(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv4_destination(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
         """
         return pulumi.get(self, "ipv4_destination")
 
     @ipv4_destination.setter
-    def ipv4_destination(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv4_destination(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_destination", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4DestinationBackup")
-    def ipv4_destination_backup(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv4_destination_backup(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
         """
         return pulumi.get(self, "ipv4_destination_backup")
 
     @ipv4_destination_backup.setter
-    def ipv4_destination_backup(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv4_destination_backup(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_destination_backup", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the location name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]]:
         """
         Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -361,13 +361,13 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_destination_ips_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_support: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoints: Optional[pulumi.Input[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_support: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoints: pulumi.Input[Optional[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -509,13 +509,13 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_destination_ips_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_support: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoints: Optional[pulumi.Input[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_support: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoints: pulumi.Input[Optional[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -553,20 +553,20 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            client_default: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_destination_ips_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_destination_ipv6_block_id: Optional[pulumi.Input[_builtins.str]] = None,
-            doh_subdomain: Optional[pulumi.Input[_builtins.str]] = None,
-            ecs_support: Optional[pulumi.Input[_builtins.bool]] = None,
-            endpoints: Optional[pulumi.Input[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']]] = None,
-            ip: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv4_destination: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv4_destination_backup: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustDnsLocation':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_destination_ips_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_destination_ipv6_block_id: pulumi.Input[Optional[_builtins.str]] = None,
+            doh_subdomain: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_support: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoints: pulumi.Input[Optional[Union['ZeroTrustDnsLocationEndpointsArgs', 'ZeroTrustDnsLocationEndpointsArgsDict']]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_destination: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_destination_backup: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDnsLocationNetworkArgs', 'ZeroTrustDnsLocationNetworkArgsDict']]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDnsLocation':
         """
         Get an existing ZeroTrustDnsLocation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

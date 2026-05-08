@@ -101,7 +101,7 @@ export interface GetMagicWanGreTunnelOutputArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Identifier
      */

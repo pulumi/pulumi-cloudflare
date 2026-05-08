@@ -19,14 +19,14 @@ __all__ = ['StreamWatermarkInitArgs', 'StreamWatermark']
 @pulumi.input_type
 class StreamWatermarkInitArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 opacity: Optional[pulumi.Input[_builtins.float]] = None,
-                 padding: Optional[pulumi.Input[_builtins.float]] = None,
-                 position: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale: Optional[pulumi.Input[_builtins.float]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 opacity: pulumi.Input[Optional[_builtins.float]] = None,
+                 padding: pulumi.Input[Optional[_builtins.float]] = None,
+                 position: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale: pulumi.Input[Optional[_builtins.float]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamWatermark resource.
 
@@ -58,118 +58,118 @@ class StreamWatermarkInitArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for a watermark profile.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A short description of the watermark profile.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def opacity(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def opacity(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.
         """
         return pulumi.get(self, "opacity")
 
     @opacity.setter
-    def opacity(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def opacity(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "opacity", value)
 
     @_builtins.property
     @pulumi.getter
-    def padding(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def padding(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.
         """
         return pulumi.get(self, "padding")
 
     @padding.setter
-    def padding(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def padding(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "padding", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def position(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.
         """
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def position(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "position", value)
 
     @_builtins.property
     @pulumi.getter
-    def scale(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def scale(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video.
         """
         return pulumi.get(self, "scale")
 
     @scale.setter
-    def scale(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def scale(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "scale", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the watermark image to copy.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
 @pulumi.input_type
 class _StreamWatermarkState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 downloaded_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 height: Optional[pulumi.Input[_builtins.int]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 opacity: Optional[pulumi.Input[_builtins.float]] = None,
-                 padding: Optional[pulumi.Input[_builtins.float]] = None,
-                 position: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale: Optional[pulumi.Input[_builtins.float]] = None,
-                 size: Optional[pulumi.Input[_builtins.float]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 width: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 downloaded_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 height: pulumi.Input[Optional[_builtins.int]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 opacity: pulumi.Input[Optional[_builtins.float]] = None,
+                 padding: pulumi.Input[Optional[_builtins.float]] = None,
+                 position: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale: pulumi.Input[Optional[_builtins.float]] = None,
+                 size: pulumi.Input[Optional[_builtins.float]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 width: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering StreamWatermark resources.
 
@@ -219,170 +219,170 @@ class _StreamWatermarkState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and a time a watermark profile was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter(name="downloadedFrom")
-    def downloaded_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def downloaded_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
         """
         return pulumi.get(self, "downloaded_from")
 
     @downloaded_from.setter
-    def downloaded_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def downloaded_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "downloaded_from", value)
 
     @_builtins.property
     @pulumi.getter
-    def height(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def height(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The height of the image in pixels.
         """
         return pulumi.get(self, "height")
 
     @height.setter
-    def height(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def height(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "height", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for a watermark profile.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A short description of the watermark profile.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def opacity(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def opacity(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.
         """
         return pulumi.get(self, "opacity")
 
     @opacity.setter
-    def opacity(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def opacity(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "opacity", value)
 
     @_builtins.property
     @pulumi.getter
-    def padding(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def padding(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.
         """
         return pulumi.get(self, "padding")
 
     @padding.setter
-    def padding(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def padding(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "padding", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def position(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.
         """
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def position(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "position", value)
 
     @_builtins.property
     @pulumi.getter
-    def scale(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def scale(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video.
         """
         return pulumi.get(self, "scale")
 
     @scale.setter
-    def scale(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def scale(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "scale", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The size of the image in bytes.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for a watermark profile.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the watermark image to copy.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter
-    def width(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def width(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The width of the image in pixels.
         """
         return pulumi.get(self, "width")
 
     @width.setter
-    def width(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def width(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "width", value)
 
 
@@ -392,14 +392,14 @@ class StreamWatermark(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 opacity: Optional[pulumi.Input[_builtins.float]] = None,
-                 padding: Optional[pulumi.Input[_builtins.float]] = None,
-                 position: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale: Optional[pulumi.Input[_builtins.float]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 opacity: pulumi.Input[Optional[_builtins.float]] = None,
+                 padding: pulumi.Input[Optional[_builtins.float]] = None,
+                 position: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale: pulumi.Input[Optional[_builtins.float]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -487,14 +487,14 @@ class StreamWatermark(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 opacity: Optional[pulumi.Input[_builtins.float]] = None,
-                 padding: Optional[pulumi.Input[_builtins.float]] = None,
-                 position: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale: Optional[pulumi.Input[_builtins.float]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 opacity: pulumi.Input[Optional[_builtins.float]] = None,
+                 padding: pulumi.Input[Optional[_builtins.float]] = None,
+                 position: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale: pulumi.Input[Optional[_builtins.float]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -528,20 +528,20 @@ class StreamWatermark(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            downloaded_from: Optional[pulumi.Input[_builtins.str]] = None,
-            height: Optional[pulumi.Input[_builtins.int]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            opacity: Optional[pulumi.Input[_builtins.float]] = None,
-            padding: Optional[pulumi.Input[_builtins.float]] = None,
-            position: Optional[pulumi.Input[_builtins.str]] = None,
-            scale: Optional[pulumi.Input[_builtins.float]] = None,
-            size: Optional[pulumi.Input[_builtins.float]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            width: Optional[pulumi.Input[_builtins.int]] = None) -> 'StreamWatermark':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            downloaded_from: pulumi.Input[Optional[_builtins.str]] = None,
+            height: pulumi.Input[Optional[_builtins.int]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            opacity: pulumi.Input[Optional[_builtins.float]] = None,
+            padding: pulumi.Input[Optional[_builtins.float]] = None,
+            position: pulumi.Input[Optional[_builtins.str]] = None,
+            scale: pulumi.Input[Optional[_builtins.float]] = None,
+            size: pulumi.Input[Optional[_builtins.float]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            width: pulumi.Input[Optional[_builtins.int]] = None) -> 'StreamWatermark':
         """
         Get an existing StreamWatermark resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

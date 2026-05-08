@@ -176,8 +176,8 @@ def get_page_shield_policy(policy_id: Optional[_builtins.str] = None,
         policy_id=pulumi.get(__ret__, 'policy_id'),
         value=pulumi.get(__ret__, 'value'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_page_shield_policy_output(policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                  zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_page_shield_policy_output(policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                  zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPageShieldPolicyResult]:
     """
     Accepted Permissions

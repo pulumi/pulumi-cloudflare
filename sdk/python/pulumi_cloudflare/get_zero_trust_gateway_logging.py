@@ -105,7 +105,7 @@ def get_zero_trust_gateway_logging(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         redact_pii=pulumi.get(__ret__, 'redact_pii'),
         settings_by_rule_type=pulumi.get(__ret__, 'settings_by_rule_type'))
-def get_zero_trust_gateway_logging_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_gateway_logging_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustGatewayLoggingResult]:
     """
     ## Example Usage

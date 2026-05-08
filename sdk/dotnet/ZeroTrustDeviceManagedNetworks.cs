@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDeviceManagedNetworks = new Cloudflare.Index.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks", new()
+    ///     var exampleZeroTrustDeviceManagedNetworks = new Cloudflare.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Config = new Cloudflare.Inputs.ZeroTrustDeviceManagedNetworksConfigArgs

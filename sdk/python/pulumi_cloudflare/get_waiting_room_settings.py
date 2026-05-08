@@ -104,7 +104,7 @@ def get_waiting_room_settings(zone_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         search_engine_crawler_bypass=pulumi.get(__ret__, 'search_engine_crawler_bypass'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_waiting_room_settings_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_waiting_room_settings_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWaitingRoomSettingsResult]:
     """
     Accepted Permissions

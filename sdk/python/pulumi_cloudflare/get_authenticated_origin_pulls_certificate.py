@@ -193,8 +193,8 @@ def get_authenticated_origin_pulls_certificate(certificate_id: Optional[_builtin
         status=pulumi.get(__ret__, 'status'),
         uploaded_on=pulumi.get(__ret__, 'uploaded_on'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_authenticated_origin_pulls_certificate_output(certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                      zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_authenticated_origin_pulls_certificate_output(certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                      zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuthenticatedOriginPullsCertificateResult]:
     """
     ## Example Usage

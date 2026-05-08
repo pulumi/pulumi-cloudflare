@@ -107,16 +107,16 @@ export interface ContentScanningState {
     /**
      * Defines the last modification date (ISO 8601) of the Content Scanning status.
      */
-    modified?: pulumi.Input<string>;
+    modified?: pulumi.Input<string | undefined>;
     /**
      * The status value for Content Scanning.
      * Available values: "enabled", "disabled".
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -131,5 +131,5 @@ export interface ContentScanningArgs {
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

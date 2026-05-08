@@ -189,8 +189,8 @@ def get_zero_trust_risk_scoring_integration(account_id: Optional[_builtins.str] 
         reference_id=pulumi.get(__ret__, 'reference_id'),
         tenant_url=pulumi.get(__ret__, 'tenant_url'),
         well_known_url=pulumi.get(__ret__, 'well_known_url'))
-def get_zero_trust_risk_scoring_integration_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   integration_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_risk_scoring_integration_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                   integration_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustRiskScoringIntegrationResult]:
     """
     Accepted Permissions

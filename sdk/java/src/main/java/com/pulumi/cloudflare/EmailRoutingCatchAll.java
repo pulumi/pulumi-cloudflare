@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.EmailRoutingCatchAllArgs;
  * import com.pulumi.cloudflare.inputs.EmailRoutingCatchAllActionArgs;
  * import com.pulumi.cloudflare.inputs.EmailRoutingCatchAllMatcherArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .actions(EmailRoutingCatchAllActionArgs.builder()
  *                 .type("forward")
- *                 .value(List.of("destinationaddress}{@literal @}{@code example.net"))
+ *                 .value(Arrays.asList("destinationaddress}{@literal @}{@code example.net"))
  *                 .build())
  *             .matchers(EmailRoutingCatchAllMatcherArgs.builder()
  *                 .type("all")

@@ -117,19 +117,19 @@ export interface ZeroTrustAccessKeyConfigurationState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The number of days until the next key rotation.
      */
-    daysUntilNextRotation?: pulumi.Input<number>;
+    daysUntilNextRotation?: pulumi.Input<number | undefined>;
     /**
      * The number of days between key rotations.
      */
-    keyRotationIntervalDays?: pulumi.Input<number>;
+    keyRotationIntervalDays?: pulumi.Input<number | undefined>;
     /**
      * The timestamp of the previous key rotation.
      */
-    lastKeyRotationAt?: pulumi.Input<string>;
+    lastKeyRotationAt?: pulumi.Input<string | undefined>;
 }
 
 /**

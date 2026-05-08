@@ -187,9 +187,9 @@ def get_zero_trust_tunnel_cloudflared_virtual_network(account_id: Optional[_buil
         is_default_network=pulumi.get(__ret__, 'is_default_network'),
         name=pulumi.get(__ret__, 'name'),
         virtual_network_id=pulumi.get(__ret__, 'virtual_network_id'))
-def get_zero_trust_tunnel_cloudflared_virtual_network_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                             filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs', 'GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgsDict']]]] = None,
-                                                             virtual_network_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_tunnel_cloudflared_virtual_network_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                             filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs', 'GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgsDict']]]] = None,
+                                                             virtual_network_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredVirtualNetworkResult]:
     """
     Accepted Permissions

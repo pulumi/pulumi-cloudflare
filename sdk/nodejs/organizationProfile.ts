@@ -115,12 +115,12 @@ export class OrganizationProfile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OrganizationProfile resources.
  */
 export interface OrganizationProfileState {
-    businessAddress?: pulumi.Input<string>;
-    businessEmail?: pulumi.Input<string>;
-    businessName?: pulumi.Input<string>;
-    businessPhone?: pulumi.Input<string>;
-    externalMetadata?: pulumi.Input<string>;
-    organizationId?: pulumi.Input<string>;
+    businessAddress?: pulumi.Input<string | undefined>;
+    businessEmail?: pulumi.Input<string | undefined>;
+    businessName?: pulumi.Input<string | undefined>;
+    businessPhone?: pulumi.Input<string | undefined>;
+    externalMetadata?: pulumi.Input<string | undefined>;
+    organizationId?: pulumi.Input<string | undefined>;
 }
 
 /**

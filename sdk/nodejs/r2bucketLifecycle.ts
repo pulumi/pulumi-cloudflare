@@ -130,16 +130,16 @@ export interface R2BucketLifecycleState {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
-    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketLifecycleRule>[]>;
+    jurisdiction?: pulumi.Input<string | undefined>;
+    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketLifecycleRule>[] | undefined>;
 }
 
 /**
@@ -149,7 +149,7 @@ export interface R2BucketLifecycleArgs {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
@@ -157,6 +157,6 @@ export interface R2BucketLifecycleArgs {
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
-    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketLifecycleRule>[]>;
+    jurisdiction?: pulumi.Input<string | undefined>;
+    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketLifecycleRule>[] | undefined>;
 }

@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZones = Cloudflare.Index.GetZones.Invoke(new()
+        ///     var exampleZones = Cloudflare.GetZones.Invoke(new()
         ///     {
         ///         Account = new Cloudflare.Inputs.GetZonesAccountInputArgs
         ///         {
@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZones = Cloudflare.Index.GetZones.Invoke(new()
+        ///     var exampleZones = Cloudflare.GetZones.Invoke(new()
         ///     {
         ///         Account = new Cloudflare.Inputs.GetZonesAccountInputArgs
         ///         {
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZones = Cloudflare.Index.GetZones.Invoke(new()
+        ///     var exampleZones = Cloudflare.GetZones.Invoke(new()
         ///     {
         ///         Account = new Cloudflare.Inputs.GetZonesAccountInputArgs
         ///         {

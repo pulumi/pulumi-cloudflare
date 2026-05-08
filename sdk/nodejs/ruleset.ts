@@ -156,41 +156,41 @@ export interface RulesetState {
     /**
      * The unique ID of the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * An informative description of the ruleset.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The kind of the ruleset.
      * Available values: "managed", "custom", "root", "zone".
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of when the ruleset was last modified.
      */
-    lastUpdated?: pulumi.Input<string>;
+    lastUpdated?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the ruleset.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The phase of the ruleset.
      * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*cache*settings", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit*ratelimit".
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * The list of rules in the ruleset.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[] | undefined>;
     /**
      * The version of the ruleset.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,11 +200,11 @@ export interface RulesetArgs {
     /**
      * The unique ID of the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * An informative description of the ruleset.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The kind of the ruleset.
      * Available values: "managed", "custom", "root", "zone".
@@ -222,9 +222,9 @@ export interface RulesetArgs {
     /**
      * The list of rules in the ruleset.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[] | undefined>;
     /**
      * The unique ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

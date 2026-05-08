@@ -129,7 +129,7 @@ export function getMagicNetworkMonitoringRuleOutput(args: GetMagicNetworkMonitor
  * A collection of arguments for invoking getMagicNetworkMonitoringRule.
  */
 export interface GetMagicNetworkMonitoringRuleOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The id of the rule. Must be unique.
      */

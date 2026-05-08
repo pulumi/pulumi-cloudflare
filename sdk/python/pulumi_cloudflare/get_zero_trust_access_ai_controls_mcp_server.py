@@ -261,9 +261,9 @@ def get_zero_trust_access_ai_controls_mcp_server(account_id: Optional[_builtins.
         tools=pulumi.get(__ret__, 'tools'),
         updated_prompts=pulumi.get(__ret__, 'updated_prompts'),
         updated_tools=pulumi.get(__ret__, 'updated_tools'))
-def get_zero_trust_access_ai_controls_mcp_server_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                        filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustAccessAiControlsMcpServerFilterArgs', 'GetZeroTrustAccessAiControlsMcpServerFilterArgsDict']]]] = None,
-                                                        id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_access_ai_controls_mcp_server_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                        filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessAiControlsMcpServerFilterArgs', 'GetZeroTrustAccessAiControlsMcpServerFilterArgsDict']]]] = None,
+                                                        id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessAiControlsMcpServerResult]:
     """
     ## Example Usage

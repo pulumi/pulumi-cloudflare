@@ -89,5 +89,5 @@ export function getMagicNetworkMonitoringConfigurationOutput(args?: GetMagicNetw
  * A collection of arguments for invoking getMagicNetworkMonitoringConfiguration.
  */
 export interface GetMagicNetworkMonitoringConfigurationOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
 }

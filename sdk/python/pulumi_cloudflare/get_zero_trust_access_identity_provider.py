@@ -190,10 +190,10 @@ def get_zero_trust_access_identity_provider(account_id: Optional[_builtins.str] 
         scim_config=pulumi.get(__ret__, 'scim_config'),
         type=pulumi.get(__ret__, 'type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zero_trust_access_identity_provider_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustAccessIdentityProviderFilterArgs', 'GetZeroTrustAccessIdentityProviderFilterArgsDict']]]] = None,
-                                                   identity_provider_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_access_identity_provider_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                   filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessIdentityProviderFilterArgs', 'GetZeroTrustAccessIdentityProviderFilterArgsDict']]]] = None,
+                                                   identity_provider_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                   zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessIdentityProviderResult]:
     """
     Accepted Permissions

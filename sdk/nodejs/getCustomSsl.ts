@@ -143,10 +143,10 @@ export interface GetCustomSslOutputArgs {
     /**
      * Identifier.
      */
-    customCertificateId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetCustomSslFilterArgs>;
+    customCertificateId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetCustomSslFilterArgs | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

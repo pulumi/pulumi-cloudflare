@@ -23,7 +23,7 @@ class FirewallRuleArgs:
     def __init__(__self__, *,
                  action: pulumi.Input['FirewallRuleActionArgs'],
                  filter: pulumi.Input['FirewallRuleFilterArgs'],
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallRule resource.
 
@@ -58,28 +58,28 @@ class FirewallRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _FirewallRuleState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input['FirewallRuleActionArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input['FirewallRuleFilterArgs']] = None,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[_builtins.float]] = None,
-                 products: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional['FirewallRuleActionArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional['FirewallRuleFilterArgs']] = None,
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 priority: pulumi.Input[Optional[_builtins.float]] = None,
+                 products: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallRule resources.
 
@@ -109,92 +109,92 @@ class _FirewallRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input['FirewallRuleActionArgs']]:
+    def action(self) -> pulumi.Input[Optional['FirewallRuleActionArgs']]:
         """
         The action to perform when the threshold of matched traffic within the configured period is exceeded.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input['FirewallRuleActionArgs']]):
+    def action(self, value: pulumi.Input[Optional['FirewallRuleActionArgs']]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An informative summary of the firewall rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['FirewallRuleFilterArgs']]:
+    def filter(self) -> pulumi.Input[Optional['FirewallRuleFilterArgs']]:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['FirewallRuleFilterArgs']]):
+    def filter(self, value: pulumi.Input[Optional['FirewallRuleFilterArgs']]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def paused(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, indicates that the firewall rule is currently paused.
         """
         return pulumi.get(self, "paused")
 
     @paused.setter
-    def paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def paused(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "paused", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def products(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def products(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "products")
 
     @products.setter
-    def products(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def products(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "products", value)
 
     @_builtins.property
     @pulumi.getter
-    def ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A short reference tag. Allows you to select related firewall rules.
         """
         return pulumi.get(self, "ref")
 
     @ref.setter
-    def ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ref", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -204,9 +204,9 @@ class FirewallRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']]] = None,
-                 filter: Optional[pulumi.Input[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict']]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']]] = None,
+                 filter: pulumi.Input[Optional[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict']]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -234,7 +234,7 @@ class FirewallRule(pulumi.CustomResource):
                     "body": "<error>This request has been rate-limited.</error>",
                     "content_type": "text/xml",
                 },
-                "timeout": 86400,
+                "timeout": float(86400),
             },
             filter={
                 "description": "Restrict access from these browsers on this address range.",
@@ -288,7 +288,7 @@ class FirewallRule(pulumi.CustomResource):
                     "body": "<error>This request has been rate-limited.</error>",
                     "content_type": "text/xml",
                 },
-                "timeout": 86400,
+                "timeout": float(86400),
             },
             filter={
                 "description": "Restrict access from these browsers on this address range.",
@@ -320,9 +320,9 @@ class FirewallRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']]] = None,
-                 filter: Optional[pulumi.Input[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict']]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']]] = None,
+                 filter: pulumi.Input[Optional[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict']]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -354,14 +354,14 @@ class FirewallRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            filter: Optional[pulumi.Input[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict']]] = None,
-            paused: Optional[pulumi.Input[_builtins.bool]] = None,
-            priority: Optional[pulumi.Input[_builtins.float]] = None,
-            products: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ref: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'FirewallRule':
+            action: pulumi.Input[Optional[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[Union['FirewallRuleFilterArgs', 'FirewallRuleFilterArgsDict']]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            priority: pulumi.Input[Optional[_builtins.float]] = None,
+            products: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ref: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'FirewallRule':
         """
         Get an existing FirewallRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

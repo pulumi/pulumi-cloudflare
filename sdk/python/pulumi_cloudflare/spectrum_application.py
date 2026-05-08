@@ -23,16 +23,16 @@ class SpectrumApplicationArgs:
     def __init__(__self__, *,
                  dns: pulumi.Input['SpectrumApplicationDnsArgs'],
                  protocol: pulumi.Input[_builtins.str],
-                 argo_smart_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edge_ips: Optional[pulumi.Input['SpectrumApplicationEdgeIpsArgs']] = None,
-                 ip_firewall: Optional[pulumi.Input[_builtins.bool]] = None,
-                 origin_directs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 origin_dns: Optional[pulumi.Input['SpectrumApplicationOriginDnsArgs']] = None,
+                 argo_smart_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edge_ips: pulumi.Input[Optional['SpectrumApplicationEdgeIpsArgs']] = None,
+                 ip_firewall: pulumi.Input[Optional[_builtins.bool]] = None,
+                 origin_directs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 origin_dns: pulumi.Input[Optional['SpectrumApplicationOriginDnsArgs']] = None,
                  origin_port: Optional[Any] = None,
-                 proxy_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SpectrumApplication resource.
 
@@ -104,7 +104,7 @@ class SpectrumApplicationArgs:
 
     @_builtins.property
     @pulumi.getter(name="argoSmartRouting")
-    def argo_smart_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def argo_smart_routing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables Argo Smart Routing for this application.
         Notes: Only available for TCP applications with traffic_type set to "direct".
@@ -112,24 +112,24 @@ class SpectrumApplicationArgs:
         return pulumi.get(self, "argo_smart_routing")
 
     @argo_smart_routing.setter
-    def argo_smart_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def argo_smart_routing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "argo_smart_routing", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeIps")
-    def edge_ips(self) -> Optional[pulumi.Input['SpectrumApplicationEdgeIpsArgs']]:
+    def edge_ips(self) -> pulumi.Input[Optional['SpectrumApplicationEdgeIpsArgs']]:
         """
         The anycast edge IP configuration for the hostname of this application.
         """
         return pulumi.get(self, "edge_ips")
 
     @edge_ips.setter
-    def edge_ips(self, value: Optional[pulumi.Input['SpectrumApplicationEdgeIpsArgs']]):
+    def edge_ips(self, value: pulumi.Input[Optional['SpectrumApplicationEdgeIpsArgs']]):
         pulumi.set(self, "edge_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="ipFirewall")
-    def ip_firewall(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ip_firewall(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables IP Access Rules for this application.
         Notes: Only available for TCP applications.
@@ -137,31 +137,31 @@ class SpectrumApplicationArgs:
         return pulumi.get(self, "ip_firewall")
 
     @ip_firewall.setter
-    def ip_firewall(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ip_firewall(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ip_firewall", value)
 
     @_builtins.property
     @pulumi.getter(name="originDirects")
-    def origin_directs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def origin_directs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
         """
         return pulumi.get(self, "origin_directs")
 
     @origin_directs.setter
-    def origin_directs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def origin_directs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "origin_directs", value)
 
     @_builtins.property
     @pulumi.getter(name="originDns")
-    def origin_dns(self) -> Optional[pulumi.Input['SpectrumApplicationOriginDnsArgs']]:
+    def origin_dns(self) -> pulumi.Input[Optional['SpectrumApplicationOriginDnsArgs']]:
         """
         The name and type of DNS record for the Spectrum application.
         """
         return pulumi.get(self, "origin_dns")
 
     @origin_dns.setter
-    def origin_dns(self, value: Optional[pulumi.Input['SpectrumApplicationOriginDnsArgs']]):
+    def origin_dns(self, value: pulumi.Input[Optional['SpectrumApplicationOriginDnsArgs']]):
         pulumi.set(self, "origin_dns", value)
 
     @_builtins.property
@@ -179,7 +179,7 @@ class SpectrumApplicationArgs:
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocol")
-    def proxy_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
         Available values: "off", "v1", "v2", "simple".
@@ -187,12 +187,12 @@ class SpectrumApplicationArgs:
         return pulumi.get(self, "proxy_protocol")
 
     @proxy_protocol.setter
-    def proxy_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of TLS termination associated with the application.
         Available values: "off", "flexible", "full", "strict".
@@ -200,12 +200,12 @@ class SpectrumApplicationArgs:
         return pulumi.get(self, "tls")
 
     @tls.setter
-    def tls(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficType")
-    def traffic_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
         Available values: "direct", "http", "https".
@@ -213,39 +213,39 @@ class SpectrumApplicationArgs:
         return pulumi.get(self, "traffic_type")
 
     @traffic_type.setter
-    def traffic_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_type", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _SpectrumApplicationState:
     def __init__(__self__, *,
-                 argo_smart_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns: Optional[pulumi.Input['SpectrumApplicationDnsArgs']] = None,
-                 edge_ips: Optional[pulumi.Input['SpectrumApplicationEdgeIpsArgs']] = None,
-                 ip_firewall: Optional[pulumi.Input[_builtins.bool]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin_directs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 origin_dns: Optional[pulumi.Input['SpectrumApplicationOriginDnsArgs']] = None,
+                 argo_smart_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns: pulumi.Input[Optional['SpectrumApplicationDnsArgs']] = None,
+                 edge_ips: pulumi.Input[Optional['SpectrumApplicationEdgeIpsArgs']] = None,
+                 ip_firewall: pulumi.Input[Optional[_builtins.bool]] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin_directs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 origin_dns: pulumi.Input[Optional['SpectrumApplicationOriginDnsArgs']] = None,
                  origin_port: Optional[Any] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SpectrumApplication resources.
 
@@ -301,7 +301,7 @@ class _SpectrumApplicationState:
 
     @_builtins.property
     @pulumi.getter(name="argoSmartRouting")
-    def argo_smart_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def argo_smart_routing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables Argo Smart Routing for this application.
         Notes: Only available for TCP applications with traffic_type set to "direct".
@@ -309,48 +309,48 @@ class _SpectrumApplicationState:
         return pulumi.get(self, "argo_smart_routing")
 
     @argo_smart_routing.setter
-    def argo_smart_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def argo_smart_routing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "argo_smart_routing", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the Application was created.
         """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input['SpectrumApplicationDnsArgs']]:
+    def dns(self) -> pulumi.Input[Optional['SpectrumApplicationDnsArgs']]:
         """
         The name and type of DNS record for the Spectrum application.
         """
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input['SpectrumApplicationDnsArgs']]):
+    def dns(self, value: pulumi.Input[Optional['SpectrumApplicationDnsArgs']]):
         pulumi.set(self, "dns", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeIps")
-    def edge_ips(self) -> Optional[pulumi.Input['SpectrumApplicationEdgeIpsArgs']]:
+    def edge_ips(self) -> pulumi.Input[Optional['SpectrumApplicationEdgeIpsArgs']]:
         """
         The anycast edge IP configuration for the hostname of this application.
         """
         return pulumi.get(self, "edge_ips")
 
     @edge_ips.setter
-    def edge_ips(self, value: Optional[pulumi.Input['SpectrumApplicationEdgeIpsArgs']]):
+    def edge_ips(self, value: pulumi.Input[Optional['SpectrumApplicationEdgeIpsArgs']]):
         pulumi.set(self, "edge_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="ipFirewall")
-    def ip_firewall(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ip_firewall(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables IP Access Rules for this application.
         Notes: Only available for TCP applications.
@@ -358,43 +358,43 @@ class _SpectrumApplicationState:
         return pulumi.get(self, "ip_firewall")
 
     @ip_firewall.setter
-    def ip_firewall(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ip_firewall(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ip_firewall", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the Application was last modified.
         """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter(name="originDirects")
-    def origin_directs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def origin_directs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
         """
         return pulumi.get(self, "origin_directs")
 
     @origin_directs.setter
-    def origin_directs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def origin_directs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "origin_directs", value)
 
     @_builtins.property
     @pulumi.getter(name="originDns")
-    def origin_dns(self) -> Optional[pulumi.Input['SpectrumApplicationOriginDnsArgs']]:
+    def origin_dns(self) -> pulumi.Input[Optional['SpectrumApplicationOriginDnsArgs']]:
         """
         The name and type of DNS record for the Spectrum application.
         """
         return pulumi.get(self, "origin_dns")
 
     @origin_dns.setter
-    def origin_dns(self, value: Optional[pulumi.Input['SpectrumApplicationOriginDnsArgs']]):
+    def origin_dns(self, value: pulumi.Input[Optional['SpectrumApplicationOriginDnsArgs']]):
         pulumi.set(self, "origin_dns", value)
 
     @_builtins.property
@@ -412,19 +412,19 @@ class _SpectrumApplicationState:
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocol")
-    def proxy_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
         Available values: "off", "v1", "v2", "simple".
@@ -432,12 +432,12 @@ class _SpectrumApplicationState:
         return pulumi.get(self, "proxy_protocol")
 
     @proxy_protocol.setter
-    def proxy_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of TLS termination associated with the application.
         Available values: "off", "flexible", "full", "strict".
@@ -445,12 +445,12 @@ class _SpectrumApplicationState:
         return pulumi.get(self, "tls")
 
     @tls.setter
-    def tls(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficType")
-    def traffic_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
         Available values: "direct", "http", "https".
@@ -458,19 +458,19 @@ class _SpectrumApplicationState:
         return pulumi.get(self, "traffic_type")
 
     @traffic_type.setter
-    def traffic_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_type", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -480,18 +480,18 @@ class SpectrumApplication(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 argo_smart_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns: Optional[pulumi.Input[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict']]] = None,
-                 edge_ips: Optional[pulumi.Input[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict']]] = None,
-                 ip_firewall: Optional[pulumi.Input[_builtins.bool]] = None,
-                 origin_directs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 origin_dns: Optional[pulumi.Input[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict']]] = None,
+                 argo_smart_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns: pulumi.Input[Optional[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict']]] = None,
+                 edge_ips: pulumi.Input[Optional[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict']]] = None,
+                 ip_firewall: pulumi.Input[Optional[_builtins.bool]] = None,
+                 origin_directs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 origin_dns: pulumi.Input[Optional[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict']]] = None,
                  origin_port: Optional[Any] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -623,18 +623,18 @@ class SpectrumApplication(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 argo_smart_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns: Optional[pulumi.Input[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict']]] = None,
-                 edge_ips: Optional[pulumi.Input[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict']]] = None,
-                 ip_firewall: Optional[pulumi.Input[_builtins.bool]] = None,
-                 origin_directs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 origin_dns: Optional[pulumi.Input[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict']]] = None,
+                 argo_smart_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns: pulumi.Input[Optional[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict']]] = None,
+                 edge_ips: pulumi.Input[Optional[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict']]] = None,
+                 ip_firewall: pulumi.Input[Optional[_builtins.bool]] = None,
+                 origin_directs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 origin_dns: pulumi.Input[Optional[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict']]] = None,
                  origin_port: Optional[Any] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -672,20 +672,20 @@ class SpectrumApplication(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            argo_smart_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            dns: Optional[pulumi.Input[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict']]] = None,
-            edge_ips: Optional[pulumi.Input[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict']]] = None,
-            ip_firewall: Optional[pulumi.Input[_builtins.bool]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            origin_directs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            origin_dns: Optional[pulumi.Input[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict']]] = None,
+            argo_smart_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            dns: pulumi.Input[Optional[Union['SpectrumApplicationDnsArgs', 'SpectrumApplicationDnsArgsDict']]] = None,
+            edge_ips: pulumi.Input[Optional[Union['SpectrumApplicationEdgeIpsArgs', 'SpectrumApplicationEdgeIpsArgsDict']]] = None,
+            ip_firewall: pulumi.Input[Optional[_builtins.bool]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_directs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            origin_dns: pulumi.Input[Optional[Union['SpectrumApplicationOriginDnsArgs', 'SpectrumApplicationOriginDnsArgsDict']]] = None,
             origin_port: Optional[Any] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            tls: Optional[pulumi.Input[_builtins.str]] = None,
-            traffic_type: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SpectrumApplication':
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            tls: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'SpectrumApplication':
         """
         Get an existing SpectrumApplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

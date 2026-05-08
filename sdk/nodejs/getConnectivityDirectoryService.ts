@@ -93,7 +93,7 @@ export function getConnectivityDirectoryServiceOutput(args?: GetConnectivityDire
  * A collection of arguments for invoking getConnectivityDirectoryService.
  */
 export interface GetConnectivityDirectoryServiceOutputArgs {
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetConnectivityDirectoryServiceFilterArgs>;
-    serviceId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetConnectivityDirectoryServiceFilterArgs | undefined>;
+    serviceId?: pulumi.Input<string | undefined>;
 }

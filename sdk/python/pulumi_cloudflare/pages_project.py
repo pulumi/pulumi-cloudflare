@@ -23,10 +23,10 @@ class PagesProjectArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  production_branch: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_config: Optional[pulumi.Input['PagesProjectBuildConfigArgs']] = None,
-                 deployment_configs: Optional[pulumi.Input['PagesProjectDeploymentConfigsArgs']] = None,
-                 source: Optional[pulumi.Input['PagesProjectSourceArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_config: pulumi.Input[Optional['PagesProjectBuildConfigArgs']] = None,
+                 deployment_configs: pulumi.Input[Optional['PagesProjectDeploymentConfigsArgs']] = None,
+                 source: pulumi.Input[Optional['PagesProjectSourceArgs']] = None):
         """
         The set of arguments for constructing a PagesProject resource.
 
@@ -74,72 +74,72 @@ class PagesProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="buildConfig")
-    def build_config(self) -> Optional[pulumi.Input['PagesProjectBuildConfigArgs']]:
+    def build_config(self) -> pulumi.Input[Optional['PagesProjectBuildConfigArgs']]:
         """
         Configs for the project build process.
         """
         return pulumi.get(self, "build_config")
 
     @build_config.setter
-    def build_config(self, value: Optional[pulumi.Input['PagesProjectBuildConfigArgs']]):
+    def build_config(self, value: pulumi.Input[Optional['PagesProjectBuildConfigArgs']]):
         pulumi.set(self, "build_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentConfigs")
-    def deployment_configs(self) -> Optional[pulumi.Input['PagesProjectDeploymentConfigsArgs']]:
+    def deployment_configs(self) -> pulumi.Input[Optional['PagesProjectDeploymentConfigsArgs']]:
         """
         Configs for deployments in a project.
         """
         return pulumi.get(self, "deployment_configs")
 
     @deployment_configs.setter
-    def deployment_configs(self, value: Optional[pulumi.Input['PagesProjectDeploymentConfigsArgs']]):
+    def deployment_configs(self, value: pulumi.Input[Optional['PagesProjectDeploymentConfigsArgs']]):
         pulumi.set(self, "deployment_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['PagesProjectSourceArgs']]:
+    def source(self) -> pulumi.Input[Optional['PagesProjectSourceArgs']]:
         """
         Configs for the project source control.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input['PagesProjectSourceArgs']]):
+    def source(self, value: pulumi.Input[Optional['PagesProjectSourceArgs']]):
         pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
 class _PagesProjectState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_config: Optional[pulumi.Input['PagesProjectBuildConfigArgs']] = None,
-                 canonical_deployment: Optional[pulumi.Input['PagesProjectCanonicalDeploymentArgs']] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_configs: Optional[pulumi.Input['PagesProjectDeploymentConfigsArgs']] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 framework: Optional[pulumi.Input[_builtins.str]] = None,
-                 framework_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 latest_deployment: Optional[pulumi.Input['PagesProjectLatestDeploymentArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 preview_script_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 production_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 production_script_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input['PagesProjectSourceArgs']] = None,
-                 subdomain: Optional[pulumi.Input[_builtins.str]] = None,
-                 uses_functions: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_config: pulumi.Input[Optional['PagesProjectBuildConfigArgs']] = None,
+                 canonical_deployment: pulumi.Input[Optional['PagesProjectCanonicalDeploymentArgs']] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_configs: pulumi.Input[Optional['PagesProjectDeploymentConfigsArgs']] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 framework: pulumi.Input[Optional[_builtins.str]] = None,
+                 framework_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_deployment: pulumi.Input[Optional['PagesProjectLatestDeploymentArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 preview_script_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 production_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 production_script_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional['PagesProjectSourceArgs']] = None,
+                 subdomain: pulumi.Input[Optional[_builtins.str]] = None,
+                 uses_functions: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering PagesProject resources.
 
@@ -195,194 +195,194 @@ class _PagesProjectState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="buildConfig")
-    def build_config(self) -> Optional[pulumi.Input['PagesProjectBuildConfigArgs']]:
+    def build_config(self) -> pulumi.Input[Optional['PagesProjectBuildConfigArgs']]:
         """
         Configs for the project build process.
         """
         return pulumi.get(self, "build_config")
 
     @build_config.setter
-    def build_config(self, value: Optional[pulumi.Input['PagesProjectBuildConfigArgs']]):
+    def build_config(self, value: pulumi.Input[Optional['PagesProjectBuildConfigArgs']]):
         pulumi.set(self, "build_config", value)
 
     @_builtins.property
     @pulumi.getter(name="canonicalDeployment")
-    def canonical_deployment(self) -> Optional[pulumi.Input['PagesProjectCanonicalDeploymentArgs']]:
+    def canonical_deployment(self) -> pulumi.Input[Optional['PagesProjectCanonicalDeploymentArgs']]:
         """
         Most recent production deployment of the project.
         """
         return pulumi.get(self, "canonical_deployment")
 
     @canonical_deployment.setter
-    def canonical_deployment(self, value: Optional[pulumi.Input['PagesProjectCanonicalDeploymentArgs']]):
+    def canonical_deployment(self, value: pulumi.Input[Optional['PagesProjectCanonicalDeploymentArgs']]):
         pulumi.set(self, "canonical_deployment", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the project was created.
         """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentConfigs")
-    def deployment_configs(self) -> Optional[pulumi.Input['PagesProjectDeploymentConfigsArgs']]:
+    def deployment_configs(self) -> pulumi.Input[Optional['PagesProjectDeploymentConfigsArgs']]:
         """
         Configs for deployments in a project.
         """
         return pulumi.get(self, "deployment_configs")
 
     @deployment_configs.setter
-    def deployment_configs(self, value: Optional[pulumi.Input['PagesProjectDeploymentConfigsArgs']]):
+    def deployment_configs(self, value: pulumi.Input[Optional['PagesProjectDeploymentConfigsArgs']]):
         pulumi.set(self, "deployment_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of associated custom domains for the project.
         """
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domains", value)
 
     @_builtins.property
     @pulumi.getter
-    def framework(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def framework(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Framework the project is using.
         """
         return pulumi.get(self, "framework")
 
     @framework.setter
-    def framework(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def framework(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "framework", value)
 
     @_builtins.property
     @pulumi.getter(name="frameworkVersion")
-    def framework_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def framework_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version of the framework the project is using.
         """
         return pulumi.get(self, "framework_version")
 
     @framework_version.setter
-    def framework_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def framework_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "framework_version", value)
 
     @_builtins.property
     @pulumi.getter(name="latestDeployment")
-    def latest_deployment(self) -> Optional[pulumi.Input['PagesProjectLatestDeploymentArgs']]:
+    def latest_deployment(self) -> pulumi.Input[Optional['PagesProjectLatestDeploymentArgs']]:
         """
         Most recent deployment of the project.
         """
         return pulumi.get(self, "latest_deployment")
 
     @latest_deployment.setter
-    def latest_deployment(self, value: Optional[pulumi.Input['PagesProjectLatestDeploymentArgs']]):
+    def latest_deployment(self, value: pulumi.Input[Optional['PagesProjectLatestDeploymentArgs']]):
         pulumi.set(self, "latest_deployment", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the project.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="previewScriptName")
-    def preview_script_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preview_script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the preview script.
         """
         return pulumi.get(self, "preview_script_name")
 
     @preview_script_name.setter
-    def preview_script_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preview_script_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preview_script_name", value)
 
     @_builtins.property
     @pulumi.getter(name="productionBranch")
-    def production_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def production_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Production branch of the project. Used to identify production deployments.
         """
         return pulumi.get(self, "production_branch")
 
     @production_branch.setter
-    def production_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def production_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "production_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="productionScriptName")
-    def production_script_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def production_script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the production script.
         """
         return pulumi.get(self, "production_script_name")
 
     @production_script_name.setter
-    def production_script_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def production_script_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "production_script_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['PagesProjectSourceArgs']]:
+    def source(self) -> pulumi.Input[Optional['PagesProjectSourceArgs']]:
         """
         Configs for the project source control.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input['PagesProjectSourceArgs']]):
+    def source(self, value: pulumi.Input[Optional['PagesProjectSourceArgs']]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subdomain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloudflare subdomain associated with the project.
         """
         return pulumi.get(self, "subdomain")
 
     @subdomain.setter
-    def subdomain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subdomain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subdomain", value)
 
     @_builtins.property
     @pulumi.getter(name="usesFunctions")
-    def uses_functions(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def uses_functions(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the project uses functions.
         """
         return pulumi.get(self, "uses_functions")
 
     @uses_functions.setter
-    def uses_functions(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def uses_functions(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "uses_functions", value)
 
 
@@ -392,12 +392,12 @@ class PagesProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_config: Optional[pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']]] = None,
-                 deployment_configs: Optional[pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 production_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_config: pulumi.Input[Optional[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']]] = None,
+                 deployment_configs: pulumi.Input[Optional[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 production_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -877,12 +877,12 @@ class PagesProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_config: Optional[pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']]] = None,
-                 deployment_configs: Optional[pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 production_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_config: pulumi.Input[Optional[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']]] = None,
+                 deployment_configs: pulumi.Input[Optional[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 production_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -922,22 +922,22 @@ class PagesProject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            build_config: Optional[pulumi.Input[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']]] = None,
-            canonical_deployment: Optional[pulumi.Input[Union['PagesProjectCanonicalDeploymentArgs', 'PagesProjectCanonicalDeploymentArgsDict']]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment_configs: Optional[pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
-            domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            framework: Optional[pulumi.Input[_builtins.str]] = None,
-            framework_version: Optional[pulumi.Input[_builtins.str]] = None,
-            latest_deployment: Optional[pulumi.Input[Union['PagesProjectLatestDeploymentArgs', 'PagesProjectLatestDeploymentArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            preview_script_name: Optional[pulumi.Input[_builtins.str]] = None,
-            production_branch: Optional[pulumi.Input[_builtins.str]] = None,
-            production_script_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
-            subdomain: Optional[pulumi.Input[_builtins.str]] = None,
-            uses_functions: Optional[pulumi.Input[_builtins.bool]] = None) -> 'PagesProject':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            build_config: pulumi.Input[Optional[Union['PagesProjectBuildConfigArgs', 'PagesProjectBuildConfigArgsDict']]] = None,
+            canonical_deployment: pulumi.Input[Optional[Union['PagesProjectCanonicalDeploymentArgs', 'PagesProjectCanonicalDeploymentArgsDict']]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_configs: pulumi.Input[Optional[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
+            domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            framework: pulumi.Input[Optional[_builtins.str]] = None,
+            framework_version: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_deployment: pulumi.Input[Optional[Union['PagesProjectLatestDeploymentArgs', 'PagesProjectLatestDeploymentArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            preview_script_name: pulumi.Input[Optional[_builtins.str]] = None,
+            production_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            production_script_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
+            subdomain: pulumi.Input[Optional[_builtins.str]] = None,
+            uses_functions: pulumi.Input[Optional[_builtins.bool]] = None) -> 'PagesProject':
         """
         Get an existing PagesProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -106,10 +106,10 @@ export interface GetPipelineSinksOutputArgs {
     /**
      * Specifies the public ID of the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
-    pipelineId?: pulumi.Input<string>;
+    maxItems?: pulumi.Input<number | undefined>;
+    pipelineId?: pulumi.Input<string | undefined>;
 }

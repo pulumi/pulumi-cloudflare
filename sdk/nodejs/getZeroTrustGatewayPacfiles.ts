@@ -91,9 +91,9 @@ export function getZeroTrustGatewayPacfilesOutput(args?: GetZeroTrustGatewayPacf
  * A collection of arguments for invoking getZeroTrustGatewayPacfiles.
  */
 export interface GetZeroTrustGatewayPacfilesOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
 }

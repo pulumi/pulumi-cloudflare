@@ -118,7 +118,7 @@ export interface GetPipelineOutputArgs {
     /**
      * Specifies the public ID of the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the public ID of the pipeline.
      */

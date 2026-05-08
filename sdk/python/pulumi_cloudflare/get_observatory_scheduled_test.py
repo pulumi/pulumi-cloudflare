@@ -139,9 +139,9 @@ def get_observatory_scheduled_test(region: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         url=pulumi.get(__ret__, 'url'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_observatory_scheduled_test_output(region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          url: Optional[pulumi.Input[_builtins.str]] = None,
-                                          zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_observatory_scheduled_test_output(region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          url: pulumi.Input[Optional[_builtins.str]] = None,
+                                          zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObservatoryScheduledTestResult]:
     """
     Accepted Permissions

@@ -139,32 +139,32 @@ export class SchemaValidationSchemas extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SchemaValidationSchemas resources.
  */
 export interface SchemaValidationSchemasState {
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The kind of the schema
      * Available values: "openapiV3".
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * A human-readable name for the schema
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A unique identifier of this schema
      */
-    schemaId?: pulumi.Input<string>;
+    schemaId?: pulumi.Input<string | undefined>;
     /**
      * The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * An indicator if this schema is enabled
      */
-    validationEnabled?: pulumi.Input<boolean>;
+    validationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -191,5 +191,5 @@ export interface SchemaValidationSchemasArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

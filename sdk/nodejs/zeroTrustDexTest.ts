@@ -159,43 +159,43 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDexTest resources.
  */
 export interface ZeroTrustDexTestState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The configuration object which contains the details for the WARP client to conduct the test.
      */
-    data?: pulumi.Input<inputs.ZeroTrustDexTestData>;
+    data?: pulumi.Input<inputs.ZeroTrustDexTestData | undefined>;
     /**
      * Additional details about the test.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Determines whether or not the test is active.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * How often the test will run.
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * The name of the DEX test. Must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * DEX rules targeted by this test
      */
-    targetPolicies?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDexTestTargetPolicy>[]>;
-    targeted?: pulumi.Input<boolean>;
+    targetPolicies?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDexTestTargetPolicy>[] | undefined>;
+    targeted?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier for the test.
      */
-    testId?: pulumi.Input<string>;
+    testId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustDexTest resource.
  */
 export interface ZeroTrustDexTestArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The configuration object which contains the details for the WARP client to conduct the test.
      */
@@ -203,7 +203,7 @@ export interface ZeroTrustDexTestArgs {
     /**
      * Additional details about the test.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Determines whether or not the test is active.
      */
@@ -219,5 +219,5 @@ export interface ZeroTrustDexTestArgs {
     /**
      * DEX rules targeted by this test
      */
-    targetPolicies?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDexTestTargetPolicy>[]>;
+    targetPolicies?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDexTestTargetPolicy>[] | undefined>;
 }

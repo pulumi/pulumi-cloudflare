@@ -104,11 +104,11 @@ export interface SnippetRulesState {
     /**
      * Lists snippet rules.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.SnippetRulesRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.SnippetRulesRule>[] | undefined>;
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -122,5 +122,5 @@ export interface SnippetRulesArgs {
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

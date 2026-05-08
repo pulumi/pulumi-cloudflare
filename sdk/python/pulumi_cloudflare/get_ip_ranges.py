@@ -136,7 +136,7 @@ def get_ip_ranges(networks: Optional[_builtins.str] = None,
         ipv6_cidrs=pulumi.get(__ret__, 'ipv6_cidrs'),
         jdcloud_cidrs=pulumi.get(__ret__, 'jdcloud_cidrs'),
         networks=pulumi.get(__ret__, 'networks'))
-def get_ip_ranges_output(networks: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ip_ranges_output(networks: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpRangesResult]:
     """
     ## Example Usage

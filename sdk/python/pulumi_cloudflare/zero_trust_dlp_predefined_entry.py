@@ -23,8 +23,8 @@ class ZeroTrustDlpPredefinedEntryArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
                  entry_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpPredefinedEntry resource.
 
@@ -58,16 +58,16 @@ class ZeroTrustDlpPredefinedEntryArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="profileId")
-    def profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field is not used as the owning profile.
         For predefined entries it is already set to a predefined profile.
@@ -75,30 +75,30 @@ class ZeroTrustDlpPredefinedEntryArgs:
         return pulumi.get(self, "profile_id")
 
     @profile_id.setter
-    def profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile_id", value)
 
 
 @pulumi.input_type
 class _ZeroTrustDlpPredefinedEntryState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidence: Optional[pulumi.Input['ZeroTrustDlpPredefinedEntryConfidenceArgs']] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pattern: Optional[pulumi.Input['ZeroTrustDlpPredefinedEntryPatternArgs']] = None,
-                 profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 profiles: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedEntryProfileArgs']]]] = None,
-                 secret: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 upload_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 variant: Optional[pulumi.Input['ZeroTrustDlpPredefinedEntryVariantArgs']] = None,
-                 word_list: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidence: pulumi.Input[Optional['ZeroTrustDlpPredefinedEntryConfidenceArgs']] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pattern: pulumi.Input[Optional['ZeroTrustDlpPredefinedEntryPatternArgs']] = None,
+                 profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 profiles: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpPredefinedEntryProfileArgs']]]] = None,
+                 secret: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 upload_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 variant: pulumi.Input[Optional['ZeroTrustDlpPredefinedEntryVariantArgs']] = None,
+                 word_list: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpPredefinedEntry resources.
 
@@ -147,16 +147,16 @@ class _ZeroTrustDlpPredefinedEntryState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="caseSensitive")
-    def case_sensitive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def case_sensitive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only applies to custom word lists.
         Determines if the words should be matched in a case-sensitive manner
@@ -165,75 +165,75 @@ class _ZeroTrustDlpPredefinedEntryState:
         return pulumi.get(self, "case_sensitive")
 
     @case_sensitive.setter
-    def case_sensitive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def case_sensitive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "case_sensitive", value)
 
     @_builtins.property
     @pulumi.getter
-    def confidence(self) -> Optional[pulumi.Input['ZeroTrustDlpPredefinedEntryConfidenceArgs']]:
+    def confidence(self) -> pulumi.Input[Optional['ZeroTrustDlpPredefinedEntryConfidenceArgs']]:
         return pulumi.get(self, "confidence")
 
     @confidence.setter
-    def confidence(self, value: Optional[pulumi.Input['ZeroTrustDlpPredefinedEntryConfidenceArgs']]):
+    def confidence(self, value: pulumi.Input[Optional['ZeroTrustDlpPredefinedEntryConfidenceArgs']]):
         pulumi.set(self, "confidence", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="entryId")
-    def entry_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "entry_id")
 
     @entry_id.setter
-    def entry_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def pattern(self) -> Optional[pulumi.Input['ZeroTrustDlpPredefinedEntryPatternArgs']]:
+    def pattern(self) -> pulumi.Input[Optional['ZeroTrustDlpPredefinedEntryPatternArgs']]:
         return pulumi.get(self, "pattern")
 
     @pattern.setter
-    def pattern(self, value: Optional[pulumi.Input['ZeroTrustDlpPredefinedEntryPatternArgs']]):
+    def pattern(self, value: pulumi.Input[Optional['ZeroTrustDlpPredefinedEntryPatternArgs']]):
         pulumi.set(self, "pattern", value)
 
     @_builtins.property
     @pulumi.getter(name="profileId")
-    def profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field is not used as the owning profile.
         For predefined entries it is already set to a predefined profile.
@@ -241,76 +241,76 @@ class _ZeroTrustDlpPredefinedEntryState:
         return pulumi.get(self, "profile_id")
 
     @profile_id.setter
-    def profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def profiles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedEntryProfileArgs']]]]:
+    def profiles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpPredefinedEntryProfileArgs']]]]:
         return pulumi.get(self, "profiles")
 
     @profiles.setter
-    def profiles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedEntryProfileArgs']]]]):
+    def profiles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpPredefinedEntryProfileArgs']]]]):
         pulumi.set(self, "profiles", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadStatus")
-    def upload_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upload_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         return pulumi.get(self, "upload_status")
 
     @upload_status.setter
-    def upload_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upload_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upload_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def variant(self) -> Optional[pulumi.Input['ZeroTrustDlpPredefinedEntryVariantArgs']]:
+    def variant(self) -> pulumi.Input[Optional['ZeroTrustDlpPredefinedEntryVariantArgs']]:
         return pulumi.get(self, "variant")
 
     @variant.setter
-    def variant(self, value: Optional[pulumi.Input['ZeroTrustDlpPredefinedEntryVariantArgs']]):
+    def variant(self, value: pulumi.Input[Optional['ZeroTrustDlpPredefinedEntryVariantArgs']]):
         pulumi.set(self, "variant", value)
 
     @_builtins.property
     @pulumi.getter(name="wordList")
-    def word_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def word_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "word_list")
 
     @word_list.setter
-    def word_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def word_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "word_list", value)
 
 
@@ -320,10 +320,10 @@ class ZeroTrustDlpPredefinedEntry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -403,10 +403,10 @@ class ZeroTrustDlpPredefinedEntry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -447,23 +447,23 @@ class ZeroTrustDlpPredefinedEntry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-            confidence: Optional[pulumi.Input[Union['ZeroTrustDlpPredefinedEntryConfidenceArgs', 'ZeroTrustDlpPredefinedEntryConfidenceArgsDict']]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            pattern: Optional[pulumi.Input[Union['ZeroTrustDlpPredefinedEntryPatternArgs', 'ZeroTrustDlpPredefinedEntryPatternArgsDict']]] = None,
-            profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-            profiles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedEntryProfileArgs', 'ZeroTrustDlpPredefinedEntryProfileArgsDict']]]]] = None,
-            secret: Optional[pulumi.Input[_builtins.bool]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            upload_status: Optional[pulumi.Input[_builtins.str]] = None,
-            variant: Optional[pulumi.Input[Union['ZeroTrustDlpPredefinedEntryVariantArgs', 'ZeroTrustDlpPredefinedEntryVariantArgsDict']]] = None,
-            word_list: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustDlpPredefinedEntry':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+            confidence: pulumi.Input[Optional[Union['ZeroTrustDlpPredefinedEntryConfidenceArgs', 'ZeroTrustDlpPredefinedEntryConfidenceArgsDict']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pattern: pulumi.Input[Optional[Union['ZeroTrustDlpPredefinedEntryPatternArgs', 'ZeroTrustDlpPredefinedEntryPatternArgsDict']]] = None,
+            profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+            profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedEntryProfileArgs', 'ZeroTrustDlpPredefinedEntryProfileArgsDict']]]]] = None,
+            secret: pulumi.Input[Optional[_builtins.bool]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            upload_status: pulumi.Input[Optional[_builtins.str]] = None,
+            variant: pulumi.Input[Optional[Union['ZeroTrustDlpPredefinedEntryVariantArgs', 'ZeroTrustDlpPredefinedEntryVariantArgsDict']]] = None,
+            word_list: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDlpPredefinedEntry':
         """
         Get an existing ZeroTrustDlpPredefinedEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

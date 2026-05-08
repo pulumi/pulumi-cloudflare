@@ -156,7 +156,7 @@ export interface GetZeroTrustAccessPolicyOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the policy
      */

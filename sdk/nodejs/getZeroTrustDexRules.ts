@@ -131,23 +131,23 @@ export function getZeroTrustDexRulesOutput(args?: GetZeroTrustDexRulesOutputArgs
  * A collection of arguments for invoking getZeroTrustDexRules.
  */
 export interface GetZeroTrustDexRulesOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Filter results by rule name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Which property to sort results by
      * Available values: "name", "created*at", "updated*at".
      */
-    sortBy?: pulumi.Input<string>;
+    sortBy?: pulumi.Input<string | undefined>;
     /**
      * Sort direction for sortBy property
      * Available values: "ASC", "DESC".
      */
-    sortOrder?: pulumi.Input<string>;
+    sortOrder?: pulumi.Input<string | undefined>;
 }

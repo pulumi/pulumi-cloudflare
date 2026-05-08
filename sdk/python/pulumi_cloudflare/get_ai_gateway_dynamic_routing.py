@@ -163,9 +163,9 @@ def get_ai_gateway_dynamic_routing(account_id: Optional[_builtins.str] = None,
         modified_at=pulumi.get(__ret__, 'modified_at'),
         name=pulumi.get(__ret__, 'name'),
         version=pulumi.get(__ret__, 'version'))
-def get_ai_gateway_dynamic_routing_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                          id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ai_gateway_dynamic_routing_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                          id: pulumi.Input[Optional[_builtins.str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiGatewayDynamicRoutingResult]:
     """
     Accepted Permissions

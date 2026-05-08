@@ -58,10 +58,10 @@ class ZeroTrustAccessKeyConfigurationArgs:
 @pulumi.input_type
 class _ZeroTrustAccessKeyConfigurationState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 days_until_next_rotation: Optional[pulumi.Input[_builtins.float]] = None,
-                 key_rotation_interval_days: Optional[pulumi.Input[_builtins.float]] = None,
-                 last_key_rotation_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 days_until_next_rotation: pulumi.Input[Optional[_builtins.float]] = None,
+                 key_rotation_interval_days: pulumi.Input[Optional[_builtins.float]] = None,
+                 last_key_rotation_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessKeyConfiguration resources.
 
@@ -81,50 +81,50 @@ class _ZeroTrustAccessKeyConfigurationState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="daysUntilNextRotation")
-    def days_until_next_rotation(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def days_until_next_rotation(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The number of days until the next key rotation.
         """
         return pulumi.get(self, "days_until_next_rotation")
 
     @days_until_next_rotation.setter
-    def days_until_next_rotation(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def days_until_next_rotation(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "days_until_next_rotation", value)
 
     @_builtins.property
     @pulumi.getter(name="keyRotationIntervalDays")
-    def key_rotation_interval_days(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def key_rotation_interval_days(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The number of days between key rotations.
         """
         return pulumi.get(self, "key_rotation_interval_days")
 
     @key_rotation_interval_days.setter
-    def key_rotation_interval_days(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def key_rotation_interval_days(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "key_rotation_interval_days", value)
 
     @_builtins.property
     @pulumi.getter(name="lastKeyRotationAt")
-    def last_key_rotation_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_key_rotation_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of the previous key rotation.
         """
         return pulumi.get(self, "last_key_rotation_at")
 
     @last_key_rotation_at.setter
-    def last_key_rotation_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_key_rotation_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_key_rotation_at", value)
 
 
@@ -134,8 +134,8 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_rotation_interval_days: Optional[pulumi.Input[_builtins.float]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_rotation_interval_days: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -151,7 +151,7 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
 
         example_zero_trust_access_key_configuration = cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            key_rotation_interval_days=30)
+            key_rotation_interval_days=float(30))
         ```
 
         ## Import
@@ -186,7 +186,7 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
 
         example_zero_trust_access_key_configuration = cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            key_rotation_interval_days=30)
+            key_rotation_interval_days=float(30))
         ```
 
         ## Import
@@ -211,8 +211,8 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_rotation_interval_days: Optional[pulumi.Input[_builtins.float]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_rotation_interval_days: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -242,10 +242,10 @@ class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            days_until_next_rotation: Optional[pulumi.Input[_builtins.float]] = None,
-            key_rotation_interval_days: Optional[pulumi.Input[_builtins.float]] = None,
-            last_key_rotation_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustAccessKeyConfiguration':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            days_until_next_rotation: pulumi.Input[Optional[_builtins.float]] = None,
+            key_rotation_interval_days: pulumi.Input[Optional[_builtins.float]] = None,
+            last_key_rotation_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustAccessKeyConfiguration':
         """
         Get an existing ZeroTrustAccessKeyConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

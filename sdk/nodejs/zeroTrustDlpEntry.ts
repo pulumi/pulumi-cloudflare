@@ -159,47 +159,47 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDlpEntry resources.
  */
 export interface ZeroTrustDlpEntryState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      */
-    caseSensitive?: pulumi.Input<boolean>;
-    confidence?: pulumi.Input<inputs.ZeroTrustDlpEntryConfidence>;
-    createdAt?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    pattern?: pulumi.Input<inputs.ZeroTrustDlpEntryPattern>;
-    profileId?: pulumi.Input<string>;
-    profiles?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpEntryProfile>[]>;
-    secret?: pulumi.Input<boolean>;
+    caseSensitive?: pulumi.Input<boolean | undefined>;
+    confidence?: pulumi.Input<inputs.ZeroTrustDlpEntryConfidence | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    pattern?: pulumi.Input<inputs.ZeroTrustDlpEntryPattern | undefined>;
+    profileId?: pulumi.Input<string | undefined>;
+    profiles?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpEntryProfile>[] | undefined>;
+    secret?: pulumi.Input<boolean | undefined>;
     /**
      * Available values: "custom", "predefined", "integration".
      */
-    type?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
-    uploadStatus?: pulumi.Input<string>;
-    variant?: pulumi.Input<inputs.ZeroTrustDlpEntryVariant>;
-    wordList?: pulumi.Input<string>;
+    uploadStatus?: pulumi.Input<string | undefined>;
+    variant?: pulumi.Input<inputs.ZeroTrustDlpEntryVariant | undefined>;
+    wordList?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustDlpEntry resource.
  */
 export interface ZeroTrustDlpEntryArgs {
-    accountId?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
     enabled: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
     pattern: pulumi.Input<inputs.ZeroTrustDlpEntryPattern>;
-    profileId?: pulumi.Input<string>;
+    profileId?: pulumi.Input<string | undefined>;
     /**
      * Available values: "custom", "predefined", "integration".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

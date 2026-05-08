@@ -202,10 +202,10 @@ def get_zero_trust_access_group(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         requires=pulumi.get(__ret__, 'requires'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zero_trust_access_group_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustAccessGroupFilterArgs', 'GetZeroTrustAccessGroupFilterArgsDict']]]] = None,
-                                       group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_access_group_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessGroupFilterArgs', 'GetZeroTrustAccessGroupFilterArgsDict']]]] = None,
+                                       group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessGroupResult]:
     """
     Accepted Permissions

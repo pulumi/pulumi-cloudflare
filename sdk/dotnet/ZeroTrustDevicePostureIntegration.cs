@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDevicePostureIntegration = new Cloudflare.Index.ZeroTrustDevicePostureIntegration("example_zero_trust_device_posture_integration", new()
+    ///     var exampleZeroTrustDevicePostureIntegration = new Cloudflare.ZeroTrustDevicePostureIntegration("example_zero_trust_device_posture_integration", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Config = new Cloudflare.Inputs.ZeroTrustDevicePostureIntegrationConfigArgs

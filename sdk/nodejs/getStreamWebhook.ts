@@ -96,5 +96,5 @@ export interface GetStreamWebhookOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
 }

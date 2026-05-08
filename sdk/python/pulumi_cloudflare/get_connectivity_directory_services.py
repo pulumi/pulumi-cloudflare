@@ -131,9 +131,9 @@ def get_connectivity_directory_services(account_id: Optional[_builtins.str] = No
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         type=pulumi.get(__ret__, 'type'))
-def get_connectivity_directory_services_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                               type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_connectivity_directory_services_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                               type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectivityDirectoryServicesResult]:
     """
     ## Example Usage

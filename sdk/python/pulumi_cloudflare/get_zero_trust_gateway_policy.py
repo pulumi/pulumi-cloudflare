@@ -353,8 +353,8 @@ def get_zero_trust_gateway_policy(account_id: Optional[_builtins.str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         version=pulumi.get(__ret__, 'version'),
         warning_status=pulumi.get(__ret__, 'warning_status'))
-def get_zero_trust_gateway_policy_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         rule_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_gateway_policy_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         rule_id: pulumi.Input[Optional[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustGatewayPolicyResult]:
     """
     ## Example Usage

@@ -167,15 +167,15 @@ export interface ManagedHeadersState {
     /**
      * The list of Managed Request Transforms.
      */
-    managedRequestHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedRequestHeader>[]>;
+    managedRequestHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedRequestHeader>[] | undefined>;
     /**
      * The list of Managed Response Transforms.
      */
-    managedResponseHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedResponseHeader>[]>;
+    managedResponseHeaders?: pulumi.Input<pulumi.Input<inputs.ManagedHeadersManagedResponseHeader>[] | undefined>;
     /**
      * The unique ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**

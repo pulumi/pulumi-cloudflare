@@ -170,11 +170,11 @@ def get_user_agent_blocking_rules(description: Optional[_builtins.str] = None,
         results=pulumi.get(__ret__, 'results'),
         user_agent=pulumi.get(__ret__, 'user_agent'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_user_agent_blocking_rules_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                         paused: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                         user_agent: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_agent_blocking_rules_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                         paused: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                         user_agent: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserAgentBlockingRulesResult]:
     """
     Accepted Permissions

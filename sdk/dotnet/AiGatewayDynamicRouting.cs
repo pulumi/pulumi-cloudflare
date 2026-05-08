@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAiGatewayDynamicRouting = new Cloudflare.Index.AiGatewayDynamicRouting("example_ai_gateway_dynamic_routing", new()
+    ///     var exampleAiGatewayDynamicRouting = new Cloudflare.AiGatewayDynamicRouting("example_ai_gateway_dynamic_routing", new()
     ///     {
     ///         AccountId = "0d37909e38d3e99c29fa2cd343ac421a",
     ///         GatewayId = "54442216",

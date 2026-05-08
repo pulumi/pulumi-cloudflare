@@ -115,12 +115,12 @@ export interface UserGroupMembersState {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
-    members?: pulumi.Input<pulumi.Input<inputs.UserGroupMembersMember>[]>;
+    accountId?: pulumi.Input<string | undefined>;
+    members?: pulumi.Input<pulumi.Input<inputs.UserGroupMembersMember>[] | undefined>;
     /**
      * User Group identifier tag.
      */
-    userGroupId?: pulumi.Input<string>;
+    userGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -21,12 +21,12 @@ __all__ = ['AddressMapArgs', 'AddressMap']
 @pulumi.input_type
 class AddressMapArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_sni: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 memberships: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_sni: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 memberships: pulumi.Input[Optional[Sequence[pulumi.Input['AddressMapMembershipArgs']]]] = None):
         """
         The set of arguments for constructing a AddressMap resource.
 
@@ -51,87 +51,87 @@ class AddressMapArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of a Cloudflare account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSni")
-    def default_sni(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_sni(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
         """
         return pulumi.get(self, "default_sni")
 
     @default_sni.setter
-    def default_sni(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_sni(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_sni", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description field which may be used to describe the types of IPs or zones on the map.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "ips")
 
     @ips.setter
-    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def memberships(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]]:
+    def memberships(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AddressMapMembershipArgs']]]]:
         """
         Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
         """
         return pulumi.get(self, "memberships")
 
     @memberships.setter
-    def memberships(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]]):
+    def memberships(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AddressMapMembershipArgs']]]]):
         pulumi.set(self, "memberships", value)
 
 
 @pulumi.input_type
 class _AddressMapState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 can_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 can_modify_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_sni: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 memberships: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]] = None,
-                 modified_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 can_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 can_modify_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_sni: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 memberships: pulumi.Input[Optional[Sequence[pulumi.Input['AddressMapMembershipArgs']]]] = None,
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddressMap resources.
 
@@ -166,113 +166,113 @@ class _AddressMapState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of a Cloudflare account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="canDelete")
-    def can_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
         """
         return pulumi.get(self, "can_delete")
 
     @can_delete.setter
-    def can_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="canModifyIps")
-    def can_modify_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_modify_ips(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
         """
         return pulumi.get(self, "can_modify_ips")
 
     @can_modify_ips.setter
-    def can_modify_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_modify_ips(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_modify_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSni")
-    def default_sni(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_sni(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
         """
         return pulumi.get(self, "default_sni")
 
     @default_sni.setter
-    def default_sni(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_sni(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_sni", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description field which may be used to describe the types of IPs or zones on the map.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "ips")
 
     @ips.setter
-    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def memberships(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]]:
+    def memberships(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AddressMapMembershipArgs']]]]:
         """
         Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
         """
         return pulumi.get(self, "memberships")
 
     @memberships.setter
-    def memberships(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]]):
+    def memberships(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AddressMapMembershipArgs']]]]):
         pulumi.set(self, "memberships", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedAt")
-    def modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_at")
 
     @modified_at.setter
-    def modified_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_at", value)
 
 
@@ -282,12 +282,12 @@ class AddressMap(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_sni: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 memberships: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_sni: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 memberships: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -378,12 +378,12 @@ class AddressMap(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_sni: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 memberships: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_sni: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 memberships: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -413,16 +413,16 @@ class AddressMap(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            can_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            can_modify_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            default_sni: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            memberships: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None,
-            modified_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'AddressMap':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            can_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            can_modify_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            default_sni: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            memberships: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'AddressMap':
         """
         Get an existing AddressMap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

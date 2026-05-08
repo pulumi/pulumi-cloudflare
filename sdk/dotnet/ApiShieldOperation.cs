@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApiShieldOperation = new Cloudflare.Index.ApiShieldOperation("example_api_shield_operation", new()
+    ///     var exampleApiShieldOperation = new Cloudflare.ApiShieldOperation("example_api_shield_operation", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Endpoint = "/api/v1/users/{var1}",

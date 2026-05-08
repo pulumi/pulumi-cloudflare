@@ -144,8 +144,8 @@ def get_account_role(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         permissions=pulumi.get(__ret__, 'permissions'),
         role_id=pulumi.get(__ret__, 'role_id'))
-def get_account_role_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            role_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_role_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            role_id: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountRoleResult]:
     """
     Accepted Permissions

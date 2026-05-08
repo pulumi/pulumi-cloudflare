@@ -157,10 +157,10 @@ def get_workers_kv_namespaces(account_id: Optional[_builtins.str] = None,
         max_items=pulumi.get(__ret__, 'max_items'),
         order=pulumi.get(__ret__, 'order'),
         results=pulumi.get(__ret__, 'results'))
-def get_workers_kv_namespaces_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                     order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_workers_kv_namespaces_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                     order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersKvNamespacesResult]:
     """
     Accepted Permissions

@@ -96,7 +96,7 @@ def get_zero_trust_device_default_profile_certificates(zone_id: Optional[_builti
         enabled=pulumi.get(__ret__, 'enabled'),
         id=pulumi.get(__ret__, 'id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zero_trust_device_default_profile_certificates_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_device_default_profile_certificates_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceDefaultProfileCertificatesResult]:
     """
     Accepted Permissions

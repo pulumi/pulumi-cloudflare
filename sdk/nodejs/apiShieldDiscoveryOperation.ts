@@ -108,18 +108,18 @@ export interface ApiShieldDiscoveryOperationState {
     /**
      * UUID.
      */
-    operationId?: pulumi.Input<string>;
+    operationId?: pulumi.Input<string | undefined>;
     /**
      * Mark state of operation in API Discovery
      *   * `review` - Mark operation as for review
      *   * `ignored` - Mark operation as ignored
      * Available values: "review", "ignored".
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -136,9 +136,9 @@ export interface ApiShieldDiscoveryOperationArgs {
      *   * `ignored` - Mark operation as ignored
      * Available values: "review", "ignored".
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

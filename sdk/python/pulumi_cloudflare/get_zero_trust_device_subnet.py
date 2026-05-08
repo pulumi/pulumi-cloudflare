@@ -198,8 +198,8 @@ def get_zero_trust_device_subnet(account_id: Optional[_builtins.str] = None,
         network=pulumi.get(__ret__, 'network'),
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
         subnet_type=pulumi.get(__ret__, 'subnet_type'))
-def get_zero_trust_device_subnet_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_device_subnet_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceSubnetResult]:
     """
     Accepted Permissions

@@ -100,7 +100,7 @@ export interface GetZeroTrustTunnelWarpConnectorTokenOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the tunnel.
      */

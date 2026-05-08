@@ -102,7 +102,7 @@ def get_logpull_retention(zone_id: Optional[_builtins.str] = None,
         flag=pulumi.get(__ret__, 'flag'),
         id=pulumi.get(__ret__, 'id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_logpull_retention_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_logpull_retention_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogpullRetentionResult]:
     """
     Accepted Permissions

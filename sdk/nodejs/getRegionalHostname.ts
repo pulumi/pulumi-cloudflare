@@ -110,5 +110,5 @@ export interface GetRegionalHostnameOutputArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

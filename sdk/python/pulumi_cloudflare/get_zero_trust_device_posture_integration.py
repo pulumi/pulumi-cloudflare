@@ -151,8 +151,8 @@ def get_zero_trust_device_posture_integration(account_id: Optional[_builtins.str
         interval=pulumi.get(__ret__, 'interval'),
         name=pulumi.get(__ret__, 'name'),
         type=pulumi.get(__ret__, 'type'))
-def get_zero_trust_device_posture_integration_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                     integration_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_device_posture_integration_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                     integration_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDevicePostureIntegrationResult]:
     """
     ## Example Usage

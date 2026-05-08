@@ -259,8 +259,8 @@ def get_keyless_certificate(keyless_certificate_id: Optional[_builtins.str] = No
         status=pulumi.get(__ret__, 'status'),
         tunnel=pulumi.get(__ret__, 'tunnel'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_keyless_certificate_output(keyless_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_keyless_certificate_output(keyless_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeylessCertificateResult]:
     """
     Accepted Permissions

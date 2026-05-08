@@ -111,16 +111,16 @@ export class ZeroTrustLocalFallbackDomain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustLocalFallbackDomain resources.
  */
 export interface ZeroTrustLocalFallbackDomainState {
-    accountId?: pulumi.Input<string>;
-    domains?: pulumi.Input<pulumi.Input<inputs.ZeroTrustLocalFallbackDomainDomain>[]>;
-    policyId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    domains?: pulumi.Input<pulumi.Input<inputs.ZeroTrustLocalFallbackDomainDomain>[] | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustLocalFallbackDomain resource.
  */
 export interface ZeroTrustLocalFallbackDomainArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     domains: pulumi.Input<pulumi.Input<inputs.ZeroTrustLocalFallbackDomainDomain>[]>;
     policyId: pulumi.Input<string>;
 }

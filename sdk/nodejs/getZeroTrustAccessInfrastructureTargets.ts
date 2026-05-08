@@ -326,91 +326,91 @@ export interface GetZeroTrustAccessInfrastructureTargetsOutputArgs {
     /**
      * Account identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Date and time at which the target was created after (inclusive)
      */
-    createdAfter?: pulumi.Input<string>;
+    createdAfter?: pulumi.Input<string | undefined>;
     /**
      * Date and time at which the target was created before (inclusive)
      */
-    createdBefore?: pulumi.Input<string>;
+    createdBefore?: pulumi.Input<string | undefined>;
     /**
      * The sorting direction.
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Hostname of a target
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Partial match to the hostname of a target
      */
-    hostnameContains?: pulumi.Input<string>;
+    hostnameContains?: pulumi.Input<string | undefined>;
     /**
      * Filters for targets whose IP addresses look like the specified string.
      * Supports `*` as a wildcard character
      */
-    ipLike?: pulumi.Input<string>;
+    ipLike?: pulumi.Input<string | undefined>;
     /**
      * IPv4 address of the target
      */
-    ipV4?: pulumi.Input<string>;
+    ipV4?: pulumi.Input<string | undefined>;
     /**
      * IPv6 address of the target
      */
-    ipV6?: pulumi.Input<string>;
+    ipV6?: pulumi.Input<string | undefined>;
     /**
      * Filters for targets that have any of the following IP addresses. Specify
      * `ips` multiple times in query parameter to build list of candidates.
      */
-    ips?: pulumi.Input<pulumi.Input<string>[]>;
+    ips?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines an IPv4 filter range's ending value (inclusive). Requires
      * `ipv4Start` to be specified as well.
      */
-    ipv4End?: pulumi.Input<string>;
+    ipv4End?: pulumi.Input<string | undefined>;
     /**
      * Defines an IPv4 filter range's starting value (inclusive). Requires
      * `ipv4End` to be specified as well.
      */
-    ipv4Start?: pulumi.Input<string>;
+    ipv4Start?: pulumi.Input<string | undefined>;
     /**
      * Defines an IPv6 filter range's ending value (inclusive). Requires
      * `ipv6Start` to be specified as well.
      */
-    ipv6End?: pulumi.Input<string>;
+    ipv6End?: pulumi.Input<string | undefined>;
     /**
      * Defines an IPv6 filter range's starting value (inclusive). Requires
      * `ipv6End` to be specified as well.
      */
-    ipv6Start?: pulumi.Input<string>;
+    ipv6Start?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Date and time at which the target was modified after (inclusive)
      */
-    modifiedAfter?: pulumi.Input<string>;
+    modifiedAfter?: pulumi.Input<string | undefined>;
     /**
      * Date and time at which the target was modified before (inclusive)
      */
-    modifiedBefore?: pulumi.Input<string>;
+    modifiedBefore?: pulumi.Input<string | undefined>;
     /**
      * The field to sort by.
      * Available values: "hostname", "createdAt".
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * Filters for targets that have any of the following UUIDs. Specify
      * `targetIds` multiple times in query parameter to build list of
      * candidates.
      */
-    targetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    targetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Private virtual network identifier of the target
      */
-    virtualNetworkId?: pulumi.Input<string>;
+    virtualNetworkId?: pulumi.Input<string | undefined>;
 }

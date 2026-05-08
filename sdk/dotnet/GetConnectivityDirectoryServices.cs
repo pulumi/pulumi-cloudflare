@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleConnectivityDirectoryServices = Cloudflare.Index.GetConnectivityDirectoryServices.Invoke(new()
+        ///     var exampleConnectivityDirectoryServices = Cloudflare.GetConnectivityDirectoryServices.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Type = "tcp",
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleConnectivityDirectoryServices = Cloudflare.Index.GetConnectivityDirectoryServices.Invoke(new()
+        ///     var exampleConnectivityDirectoryServices = Cloudflare.GetConnectivityDirectoryServices.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Type = "tcp",
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleConnectivityDirectoryServices = Cloudflare.Index.GetConnectivityDirectoryServices.Invoke(new()
+        ///     var exampleConnectivityDirectoryServices = Cloudflare.GetConnectivityDirectoryServices.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Type = "tcp",

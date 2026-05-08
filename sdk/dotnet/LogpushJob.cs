@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLogpushJob = new Cloudflare.Index.LogpushJob("example_logpush_job", new()
+    ///     var exampleLogpushJob = new Cloudflare.LogpushJob("example_logpush_job", new()
     ///     {
     ///         DestinationConf = "s3://mybucket/logs?region=us-west-2",
     ///         ZoneId = "zone_id",

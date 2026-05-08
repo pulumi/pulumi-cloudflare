@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDnsZoneTransfersIncoming = new Cloudflare.Index.DnsZoneTransfersIncoming("example_dns_zone_transfers_incoming", new()
+    ///     var exampleDnsZoneTransfersIncoming = new Cloudflare.DnsZoneTransfersIncoming("example_dns_zone_transfers_incoming", new()
     ///     {
     ///         ZoneId = "269d8f4853475ca241c4e730be286b20",
     ///         AutoRefreshSeconds = 86400,

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCloudforceOneRequest = new Cloudflare.Index.CloudforceOneRequest("example_cloudforce_one_request", new()
+    ///     var exampleCloudforceOneRequest = new Cloudflare.CloudforceOneRequest("example_cloudforce_one_request", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Content = "What regions were most effected by the recent DoS?",

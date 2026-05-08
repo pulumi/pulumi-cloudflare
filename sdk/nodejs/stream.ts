@@ -241,106 +241,106 @@ export interface StreamState {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
      */
-    allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier of the source video this video was clipped from.
      */
-    clippedFrom?: pulumi.Input<string>;
+    clippedFrom?: pulumi.Input<string | undefined>;
     /**
      * The date and time the media item was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * A user-defined identifier for the media creator.
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
-    identifier?: pulumi.Input<string>;
-    input?: pulumi.Input<inputs.StreamInput>;
+    identifier?: pulumi.Input<string | undefined>;
+    input?: pulumi.Input<inputs.StreamInput | undefined>;
     /**
      * The live input ID used to upload a video with Stream Live.
      */
-    liveInput?: pulumi.Input<string>;
+    liveInput?: pulumi.Input<string | undefined>;
     /**
      * The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
      */
-    maxDurationSeconds?: pulumi.Input<number>;
+    maxDurationSeconds?: pulumi.Input<number | undefined>;
     /**
      * The maximum size in bytes for the video upload.
      */
-    maxSizeBytes?: pulumi.Input<number>;
+    maxSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * A user modifiable key-value store used to reference other systems of record for managing videos.
      */
-    meta?: pulumi.Input<string>;
+    meta?: pulumi.Input<string | undefined>;
     /**
      * The date and time the media item was last modified.
      */
-    modified?: pulumi.Input<string>;
-    playback?: pulumi.Input<inputs.StreamPlayback>;
+    modified?: pulumi.Input<string | undefined>;
+    playback?: pulumi.Input<inputs.StreamPlayback | undefined>;
     /**
      * The video's preview page URI. This field is omitted until encoding is complete.
      */
-    preview?: pulumi.Input<string>;
+    preview?: pulumi.Input<string | undefined>;
     /**
      * Public details for the video including title, share link, channel link, and logo.
      */
-    publicDetails?: pulumi.Input<inputs.StreamPublicDetails>;
+    publicDetails?: pulumi.Input<inputs.StreamPublicDetails | undefined>;
     /**
      * Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
      */
-    readyToStream?: pulumi.Input<boolean>;
+    readyToStream?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
      */
-    readyToStreamAt?: pulumi.Input<string>;
+    readyToStreamAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
      */
-    requireSignedUrls?: pulumi.Input<boolean>;
+    requireSignedUrls?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
      */
-    scheduledDeletion?: pulumi.Input<string>;
+    scheduledDeletion?: pulumi.Input<string | undefined>;
     /**
      * The size of the media item in bytes.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.
      */
-    status?: pulumi.Input<inputs.StreamStatus>;
+    status?: pulumi.Input<inputs.StreamStatus | undefined>;
     /**
      * The media item's thumbnail URI. This field is omitted until encoding is complete.
      */
-    thumbnail?: pulumi.Input<string>;
+    thumbnail?: pulumi.Input<string | undefined>;
     /**
      * The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
      */
-    thumbnailTimestampPct?: pulumi.Input<number>;
+    thumbnailTimestampPct?: pulumi.Input<number | undefined>;
     /**
      * The unique identifier for the video. Can be used to verify the video being updated.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the video upload URL is no longer valid for direct user uploads.
      */
-    uploadExpiry?: pulumi.Input<string>;
+    uploadExpiry?: pulumi.Input<string | undefined>;
     /**
      * The date and time the media item was uploaded.
      */
-    uploaded?: pulumi.Input<string>;
-    watermark?: pulumi.Input<inputs.StreamWatermark>;
+    uploaded?: pulumi.Input<string | undefined>;
+    watermark?: pulumi.Input<inputs.StreamWatermark | undefined>;
 }
 
 /**
@@ -350,49 +350,49 @@ export interface StreamArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
      */
-    allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A user-defined identifier for the media creator.
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
      */
-    maxDurationSeconds?: pulumi.Input<number>;
+    maxDurationSeconds?: pulumi.Input<number | undefined>;
     /**
      * A user modifiable key-value store used to reference other systems of record for managing videos.
      */
-    meta?: pulumi.Input<string>;
+    meta?: pulumi.Input<string | undefined>;
     /**
      * Public details for the video including title, share link, channel link, and logo.
      */
-    publicDetails?: pulumi.Input<inputs.StreamPublicDetails>;
+    publicDetails?: pulumi.Input<inputs.StreamPublicDetails | undefined>;
     /**
      * Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
      */
-    requireSignedUrls?: pulumi.Input<boolean>;
+    requireSignedUrls?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
      */
-    scheduledDeletion?: pulumi.Input<string>;
+    scheduledDeletion?: pulumi.Input<string | undefined>;
     /**
      * The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
      */
-    thumbnailTimestampPct?: pulumi.Input<number>;
+    thumbnailTimestampPct?: pulumi.Input<number | undefined>;
     /**
      * The unique identifier for the video. Can be used to verify the video being updated.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the video upload URL is no longer valid for direct user uploads.
      */
-    uploadExpiry?: pulumi.Input<string>;
+    uploadExpiry?: pulumi.Input<string | undefined>;
 }

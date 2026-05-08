@@ -177,11 +177,11 @@ def get_account_members(account_id: Optional[_builtins.str] = None,
         order=pulumi.get(__ret__, 'order'),
         results=pulumi.get(__ret__, 'results'),
         status=pulumi.get(__ret__, 'status'))
-def get_account_members_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                               order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_members_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                               order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountMembersResult]:
     """
     Accepted Permissions

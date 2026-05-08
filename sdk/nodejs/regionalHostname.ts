@@ -123,23 +123,23 @@ export interface RegionalHostnameState {
     /**
      * When the regional hostname was created
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Identifying key for the region
      */
-    regionKey?: pulumi.Input<string>;
+    regionKey?: pulumi.Input<string | undefined>;
     /**
      * Configure which routing method to use for the regional hostname
      */
-    routing?: pulumi.Input<string>;
+    routing?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,9 +157,9 @@ export interface RegionalHostnameArgs {
     /**
      * Configure which routing method to use for the regional hostname
      */
-    routing?: pulumi.Input<string>;
+    routing?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

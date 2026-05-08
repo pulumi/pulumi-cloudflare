@@ -119,8 +119,8 @@ def get_pages_projects(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
-def get_pages_projects_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_pages_projects_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPagesProjectsResult]:
     """
     Accepted Permissions

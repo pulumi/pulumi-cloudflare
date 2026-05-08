@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushJob = Cloudflare.Index.GetLogpushJob.Invoke(new()
+        ///     var exampleLogpushJob = Cloudflare.GetLogpushJob.Invoke(new()
         ///     {
         ///         JobId = 1,
         ///         AccountId = "account_id",
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushJob = Cloudflare.Index.GetLogpushJob.Invoke(new()
+        ///     var exampleLogpushJob = Cloudflare.GetLogpushJob.Invoke(new()
         ///     {
         ///         JobId = 1,
         ///         AccountId = "account_id",
@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLogpushJob = Cloudflare.Index.GetLogpushJob.Invoke(new()
+        ///     var exampleLogpushJob = Cloudflare.GetLogpushJob.Invoke(new()
         ///     {
         ///         JobId = 1,
         ///         AccountId = "account_id",

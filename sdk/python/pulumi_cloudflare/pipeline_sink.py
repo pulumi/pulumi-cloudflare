@@ -23,10 +23,10 @@ class PipelineSinkArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input['PipelineSinkConfigArgs']] = None,
-                 format: Optional[pulumi.Input['PipelineSinkFormatArgs']] = None,
-                 schema: Optional[pulumi.Input['PipelineSinkSchemaArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional['PipelineSinkConfigArgs']] = None,
+                 format: pulumi.Input[Optional['PipelineSinkFormatArgs']] = None,
+                 schema: pulumi.Input[Optional['PipelineSinkSchemaArgs']] = None):
         """
         The set of arguments for constructing a PipelineSink resource.
 
@@ -74,58 +74,58 @@ class PipelineSinkArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the public ID of the account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['PipelineSinkConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['PipelineSinkConfigArgs']]:
         """
         Defines the configuration of the R2 Sink.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['PipelineSinkConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['PipelineSinkConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input['PipelineSinkFormatArgs']]:
+    def format(self) -> pulumi.Input[Optional['PipelineSinkFormatArgs']]:
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input['PipelineSinkFormatArgs']]):
+    def format(self, value: pulumi.Input[Optional['PipelineSinkFormatArgs']]):
         pulumi.set(self, "format", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input['PipelineSinkSchemaArgs']]:
+    def schema(self) -> pulumi.Input[Optional['PipelineSinkSchemaArgs']]:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input['PipelineSinkSchemaArgs']]):
+    def schema(self, value: pulumi.Input[Optional['PipelineSinkSchemaArgs']]):
         pulumi.set(self, "schema", value)
 
 
 @pulumi.input_type
 class _PipelineSinkState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input['PipelineSinkConfigArgs']] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input['PipelineSinkFormatArgs']] = None,
-                 modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input['PipelineSinkSchemaArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional['PipelineSinkConfigArgs']] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional['PipelineSinkFormatArgs']] = None,
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional['PipelineSinkSchemaArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PipelineSink resources.
 
@@ -154,79 +154,79 @@ class _PipelineSinkState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the public ID of the account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['PipelineSinkConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['PipelineSinkConfigArgs']]:
         """
         Defines the configuration of the R2 Sink.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['PipelineSinkConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['PipelineSinkConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input['PipelineSinkFormatArgs']]:
+    def format(self) -> pulumi.Input[Optional['PipelineSinkFormatArgs']]:
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input['PipelineSinkFormatArgs']]):
+    def format(self, value: pulumi.Input[Optional['PipelineSinkFormatArgs']]):
         pulumi.set(self, "format", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedAt")
-    def modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_at")
 
     @modified_at.setter
-    def modified_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the name of the Sink.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input['PipelineSinkSchemaArgs']]:
+    def schema(self) -> pulumi.Input[Optional['PipelineSinkSchemaArgs']]:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input['PipelineSinkSchemaArgs']]):
+    def schema(self, value: pulumi.Input[Optional['PipelineSinkSchemaArgs']]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the type of sink.
         Available values: "r2", "r2*data*catalog".
@@ -234,7 +234,7 @@ class _PipelineSinkState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -244,12 +244,12 @@ class PipelineSink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict']]] = None,
-                 format: Optional[pulumi.Input[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict']]] = None,
+                 format: pulumi.Input[Optional[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -420,12 +420,12 @@ class PipelineSink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict']]] = None,
-                 format: Optional[pulumi.Input[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict']]] = None,
+                 format: pulumi.Input[Optional[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -457,14 +457,14 @@ class PipelineSink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            config: Optional[pulumi.Input[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict']]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            format: Optional[pulumi.Input[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict']]] = None,
-            modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            schema: Optional[pulumi.Input[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'PipelineSink':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['PipelineSinkConfigArgs', 'PipelineSinkConfigArgsDict']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            format: pulumi.Input[Optional[Union['PipelineSinkFormatArgs', 'PipelineSinkFormatArgsDict']]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[Union['PipelineSinkSchemaArgs', 'PipelineSinkSchemaArgsDict']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'PipelineSink':
         """
         Get an existing PipelineSink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

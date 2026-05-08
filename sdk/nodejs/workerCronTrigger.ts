@@ -119,12 +119,12 @@ export interface WorkerCronTriggerState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    schedules?: pulumi.Input<pulumi.Input<inputs.WorkerCronTriggerSchedule>[]>;
+    accountId?: pulumi.Input<string | undefined>;
+    schedules?: pulumi.Input<pulumi.Input<inputs.WorkerCronTriggerSchedule>[] | undefined>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
-    scriptName?: pulumi.Input<string>;
+    scriptName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -134,7 +134,7 @@ export interface WorkerCronTriggerArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     schedules: pulumi.Input<pulumi.Input<inputs.WorkerCronTriggerSchedule>[]>;
     /**
      * Name of the script, used in URLs and route configuration.

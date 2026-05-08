@@ -209,77 +209,77 @@ export interface ClientCertificateState {
     /**
      * The Client Certificate PEM
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * Certificate Authority used to issue the Client Certificate
      */
-    certificateAuthority?: pulumi.Input<inputs.ClientCertificateCertificateAuthority>;
+    certificateAuthority?: pulumi.Input<inputs.ClientCertificateCertificateAuthority | undefined>;
     /**
      * Common Name of the Client Certificate
      */
-    commonName?: pulumi.Input<string>;
+    commonName?: pulumi.Input<string | undefined>;
     /**
      * Country, provided by the CSR
      */
-    country?: pulumi.Input<string>;
+    country?: pulumi.Input<string | undefined>;
     /**
      * The Certificate Signing Request (CSR). Must be newline-encoded.
      */
-    csr?: pulumi.Input<string>;
+    csr?: pulumi.Input<string | undefined>;
     /**
      * Date that the Client Certificate expires
      */
-    expiresOn?: pulumi.Input<string>;
+    expiresOn?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the Client Certificate
      */
-    fingerprintSha256?: pulumi.Input<string>;
+    fingerprintSha256?: pulumi.Input<string | undefined>;
     /**
      * Date that the Client Certificate was issued by the Certificate Authority
      */
-    issuedOn?: pulumi.Input<string>;
+    issuedOn?: pulumi.Input<string | undefined>;
     /**
      * Location, provided by the CSR
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Organization, provided by the CSR
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * Organizational Unit, provided by the CSR
      */
-    organizationalUnit?: pulumi.Input<string>;
-    reactivate?: pulumi.Input<boolean>;
+    organizationalUnit?: pulumi.Input<string | undefined>;
+    reactivate?: pulumi.Input<boolean | undefined>;
     /**
      * The serial number on the created Client Certificate.
      */
-    serialNumber?: pulumi.Input<string>;
+    serialNumber?: pulumi.Input<string | undefined>;
     /**
      * The type of hash used for the Client Certificate..
      */
-    signature?: pulumi.Input<string>;
+    signature?: pulumi.Input<string | undefined>;
     /**
      * Subject Key Identifier
      */
-    ski?: pulumi.Input<string>;
+    ski?: pulumi.Input<string | undefined>;
     /**
      * State, provided by the CSR
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
      * Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The number of days the Client Certificate will be valid after the issuedOn date
      */
-    validityDays?: pulumi.Input<number>;
+    validityDays?: pulumi.Input<number | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -290,7 +290,7 @@ export interface ClientCertificateArgs {
      * The Certificate Signing Request (CSR). Must be newline-encoded.
      */
     csr: pulumi.Input<string>;
-    reactivate?: pulumi.Input<boolean>;
+    reactivate?: pulumi.Input<boolean | undefined>;
     /**
      * The number of days the Client Certificate will be valid after the issuedOn date
      */
@@ -298,5 +298,5 @@ export interface ClientCertificateArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

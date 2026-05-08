@@ -24,11 +24,11 @@ class NotificationPolicyArgs:
                  alert_type: pulumi.Input[_builtins.str],
                  mechanisms: pulumi.Input['NotificationPolicyMechanismsArgs'],
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input['NotificationPolicyFiltersArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional['NotificationPolicyFiltersArgs']] = None):
         """
         The set of arguments for constructing a NotificationPolicy resource.
 
@@ -95,78 +95,78 @@ class NotificationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account id
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="alertInterval")
-    def alert_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional specification of how often to re-alert from the same incident, not support on all alert types.
         """
         return pulumi.get(self, "alert_interval")
 
     @alert_interval.setter
-    def alert_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional description for the Notification policy.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the Notification policy is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input['NotificationPolicyFiltersArgs']]:
+    def filters(self) -> pulumi.Input[Optional['NotificationPolicyFiltersArgs']]:
         """
         Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input['NotificationPolicyFiltersArgs']]):
+    def filters(self, value: pulumi.Input[Optional['NotificationPolicyFiltersArgs']]):
         pulumi.set(self, "filters", value)
 
 
 @pulumi.input_type
 class _NotificationPolicyState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input['NotificationPolicyFiltersArgs']] = None,
-                 mechanisms: Optional[pulumi.Input['NotificationPolicyMechanismsArgs']] = None,
-                 modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional['NotificationPolicyFiltersArgs']] = None,
+                 mechanisms: pulumi.Input[Optional['NotificationPolicyMechanismsArgs']] = None,
+                 modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NotificationPolicy resources.
 
@@ -203,31 +203,31 @@ class _NotificationPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account id
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="alertInterval")
-    def alert_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional specification of how often to re-alert from the same incident, not support on all alert types.
         """
         return pulumi.get(self, "alert_interval")
 
     @alert_interval.setter
-    def alert_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="alertType")
-    def alert_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
         Available values: "abuse*report*alert", "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "bot*traffic*basic*alert", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "cni*maintenance*notification", "custom*analytics", "custom*bot*detection*alert", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
@@ -235,85 +235,85 @@ class _NotificationPolicyState:
         return pulumi.get(self, "alert_type")
 
     @alert_type.setter
-    def alert_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional description for the Notification policy.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the Notification policy is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input['NotificationPolicyFiltersArgs']]:
+    def filters(self) -> pulumi.Input[Optional['NotificationPolicyFiltersArgs']]:
         """
         Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input['NotificationPolicyFiltersArgs']]):
+    def filters(self, value: pulumi.Input[Optional['NotificationPolicyFiltersArgs']]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def mechanisms(self) -> Optional[pulumi.Input['NotificationPolicyMechanismsArgs']]:
+    def mechanisms(self) -> pulumi.Input[Optional['NotificationPolicyMechanismsArgs']]:
         """
         List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
         """
         return pulumi.get(self, "mechanisms")
 
     @mechanisms.setter
-    def mechanisms(self, value: Optional[pulumi.Input['NotificationPolicyMechanismsArgs']]):
+    def mechanisms(self, value: pulumi.Input[Optional['NotificationPolicyMechanismsArgs']]):
         pulumi.set(self, "mechanisms", value)
 
     @_builtins.property
     @pulumi.getter
-    def modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified")
 
     @modified.setter
-    def modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the policy.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -323,14 +323,14 @@ class NotificationPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']]] = None,
-                 mechanisms: Optional[pulumi.Input[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']]] = None,
+                 mechanisms: pulumi.Input[Optional[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -539,14 +539,14 @@ class NotificationPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']]] = None,
-                 mechanisms: Optional[pulumi.Input[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']]] = None,
+                 mechanisms: pulumi.Input[Optional[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -582,16 +582,16 @@ class NotificationPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            alert_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            alert_type: Optional[pulumi.Input[_builtins.str]] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            filters: Optional[pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']]] = None,
-            mechanisms: Optional[pulumi.Input[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']]] = None,
-            modified: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'NotificationPolicy':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            alert_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            alert_type: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            filters: pulumi.Input[Optional[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']]] = None,
+            mechanisms: pulumi.Input[Optional[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']]] = None,
+            modified: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'NotificationPolicy':
         """
         Get an existing NotificationPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

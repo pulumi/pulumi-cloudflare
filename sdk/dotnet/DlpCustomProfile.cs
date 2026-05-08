@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDlpCustomProfile = new Cloudflare.Index.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", new()
+    ///     var exampleZeroTrustDlpCustomProfile = new Cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", new()
     ///     {
     ///         Name = "name",
     ///         AccountId = "account_id",
@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Custom entry that is a part of this new profile
-    ///     var exampleCustomEntry = new Cloudflare.Index.ZeroTrustDlpCustomEntry("example_custom_entry", new()
+    ///     var exampleCustomEntry = new Cloudflare.ZeroTrustDlpCustomEntry("example_custom_entry", new()
     ///     {
     ///         Name = "custom",
     ///         AccountId = "account_id",

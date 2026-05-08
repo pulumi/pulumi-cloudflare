@@ -248,9 +248,9 @@ def get_custom_hostname(custom_hostname_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         verification_errors=pulumi.get(__ret__, 'verification_errors'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_custom_hostname_output(custom_hostname_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               filter: Optional[pulumi.Input[Optional[Union['GetCustomHostnameFilterArgs', 'GetCustomHostnameFilterArgsDict']]]] = None,
-                               zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_custom_hostname_output(custom_hostname_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               filter: pulumi.Input[Optional[Optional[Union['GetCustomHostnameFilterArgs', 'GetCustomHostnameFilterArgsDict']]]] = None,
+                               zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomHostnameResult]:
     """
     Accepted Permissions

@@ -110,7 +110,7 @@ export interface GetResourceGroupOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Resource Group identifier tag.
      */

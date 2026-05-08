@@ -212,9 +212,9 @@ def get_token_validation_rules(filter: Optional[Union['GetTokenValidationRulesFi
         selector=pulumi.get(__ret__, 'selector'),
         title=pulumi.get(__ret__, 'title'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_token_validation_rules_output(filter: Optional[pulumi.Input[Optional[Union['GetTokenValidationRulesFilterArgs', 'GetTokenValidationRulesFilterArgsDict']]]] = None,
-                                      rule_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_token_validation_rules_output(filter: pulumi.Input[Optional[Optional[Union['GetTokenValidationRulesFilterArgs', 'GetTokenValidationRulesFilterArgsDict']]]] = None,
+                                      rule_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTokenValidationRulesResult]:
     """
     Accepted Permissions

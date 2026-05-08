@@ -83,7 +83,7 @@ using Cloudflare = Pulumi.Cloudflare;
 return await Deployment.RunAsync(() =>
 {
     // Create a DNS record
-    var www = new Cloudflare.Index.DnsRecord("www");
+    var www = new Cloudflare.DnsRecord("www");
 
 });
 
@@ -159,8 +159,8 @@ import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.cloudflare.DnsRecord;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;

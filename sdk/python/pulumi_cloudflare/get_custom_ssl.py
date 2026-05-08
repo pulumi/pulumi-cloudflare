@@ -276,9 +276,9 @@ def get_custom_ssl(custom_certificate_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         uploaded_on=pulumi.get(__ret__, 'uploaded_on'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_custom_ssl_output(custom_certificate_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          filter: Optional[pulumi.Input[Optional[Union['GetCustomSslFilterArgs', 'GetCustomSslFilterArgsDict']]]] = None,
-                          zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_custom_ssl_output(custom_certificate_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          filter: pulumi.Input[Optional[Optional[Union['GetCustomSslFilterArgs', 'GetCustomSslFilterArgsDict']]]] = None,
+                          zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomSslResult]:
     """
     Accepted Permissions

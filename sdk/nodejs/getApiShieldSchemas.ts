@@ -126,17 +126,17 @@ export interface GetApiShieldSchemasOutputArgs {
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Omit the source-files of schemas and only retrieve their meta-data.
      */
-    omitSource?: pulumi.Input<boolean>;
+    omitSource?: pulumi.Input<boolean | undefined>;
     /**
      * Flag whether schema is enabled for validation.
      */
-    validationEnabled?: pulumi.Input<boolean>;
+    validationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

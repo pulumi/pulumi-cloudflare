@@ -228,9 +228,9 @@ def get_list(account_id: Optional[_builtins.str] = None,
         num_items=pulumi.get(__ret__, 'num_items'),
         num_referencing_filters=pulumi.get(__ret__, 'num_referencing_filters'),
         search=pulumi.get(__ret__, 'search'))
-def get_list_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    list_id: Optional[pulumi.Input[_builtins.str]] = None,
-                    search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_list_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    list_id: pulumi.Input[Optional[_builtins.str]] = None,
+                    search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListResult]:
     """
     Accepted Permissions

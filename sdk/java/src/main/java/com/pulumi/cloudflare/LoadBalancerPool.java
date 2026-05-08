@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.LoadBalancerPoolNotificationFilterOriginArgs;
  * import com.pulumi.cloudflare.inputs.LoadBalancerPoolNotificationFilterPoolArgs;
  * import com.pulumi.cloudflare.inputs.LoadBalancerPoolOriginSteeringArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *                 .enabled(true)
  *                 .flattenCname(true)
  *                 .header(LoadBalancerPoolOriginHeaderArgs.builder()
- *                     .host(List.of("example.com"))
+ *                     .host(Arrays.asList("example.com"))
  *                     .build())
  *                 .name("app-server-1")
  *                 .port(0)

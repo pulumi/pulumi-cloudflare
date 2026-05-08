@@ -127,14 +127,14 @@ export interface GetZeroTrustAccessServiceTokenOutputArgs {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetZeroTrustAccessServiceTokenFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustAccessServiceTokenFilterArgs | undefined>;
     /**
      * UUID.
      */
-    serviceTokenId?: pulumi.Input<string>;
+    serviceTokenId?: pulumi.Input<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustGatewayCertificate = new Cloudflare.Index.ZeroTrustGatewayCertificate("example_zero_trust_gateway_certificate", new()
+    ///     var exampleZeroTrustGatewayCertificate = new Cloudflare.ZeroTrustGatewayCertificate("example_zero_trust_gateway_certificate", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         ValidityPeriodDays = 1826,

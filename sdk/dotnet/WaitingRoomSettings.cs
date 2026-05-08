@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWaitingRoomSettings = new Cloudflare.Index.WaitingRoomSettings("example_waiting_room_settings", new()
+    ///     var exampleWaitingRoomSettings = new Cloudflare.WaitingRoomSettings("example_waiting_room_settings", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SearchEngineCrawlerBypass = true,

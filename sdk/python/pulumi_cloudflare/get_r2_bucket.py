@@ -169,8 +169,8 @@ def get_r2_bucket(account_id: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         storage_class=pulumi.get(__ret__, 'storage_class'))
-def get_r2_bucket_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_r2_bucket_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetR2BucketResult]:
     """
     ## Example Usage

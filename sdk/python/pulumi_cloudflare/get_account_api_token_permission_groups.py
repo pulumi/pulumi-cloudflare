@@ -138,9 +138,9 @@ def get_account_api_token_permission_groups(account_id: Optional[_builtins.str] 
         name=pulumi.get(__ret__, 'name'),
         permission_groups=pulumi.get(__ret__, 'permission_groups'),
         scope=pulumi.get(__ret__, 'scope'))
-def get_account_api_token_permission_groups_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   scope: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_api_token_permission_groups_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                   name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                   scope: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountApiTokenPermissionGroupsResult]:
     """
     Accepted Permissions

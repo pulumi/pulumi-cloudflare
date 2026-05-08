@@ -109,7 +109,7 @@ export interface GetSsoConnectorOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * SSO Connector identifier tag.
      */

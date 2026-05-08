@@ -23,8 +23,8 @@ class ImageVariantArgs:
     def __init__(__self__, *,
                  image_variant_id: pulumi.Input[_builtins.str],
                  options: pulumi.Input['ImageVariantOptionsArgs'],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 never_require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 never_require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ImageVariant resource.
 
@@ -66,37 +66,37 @@ class ImageVariantArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="neverRequireSignedUrls")
-    def never_require_signed_urls(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def never_require_signed_urls(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the variant can access an image without a signature, regardless of image access control.
         """
         return pulumi.get(self, "never_require_signed_urls")
 
     @never_require_signed_urls.setter
-    def never_require_signed_urls(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def never_require_signed_urls(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "never_require_signed_urls", value)
 
 
 @pulumi.input_type
 class _ImageVariantState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_variant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 never_require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 options: Optional[pulumi.Input['ImageVariantOptionsArgs']] = None,
-                 variant: Optional[pulumi.Input['ImageVariantVariantArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_variant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 never_require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 options: pulumi.Input[Optional['ImageVariantOptionsArgs']] = None,
+                 variant: pulumi.Input[Optional['ImageVariantVariantArgs']] = None):
         """
         Input properties used for looking up and filtering ImageVariant resources.
 
@@ -118,59 +118,59 @@ class _ImageVariantState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageVariantId")
-    def image_variant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_variant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of this resource.
         """
         return pulumi.get(self, "image_variant_id")
 
     @image_variant_id.setter
-    def image_variant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_variant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_variant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="neverRequireSignedUrls")
-    def never_require_signed_urls(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def never_require_signed_urls(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the variant can access an image without a signature, regardless of image access control.
         """
         return pulumi.get(self, "never_require_signed_urls")
 
     @never_require_signed_urls.setter
-    def never_require_signed_urls(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def never_require_signed_urls(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "never_require_signed_urls", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input['ImageVariantOptionsArgs']]:
+    def options(self) -> pulumi.Input[Optional['ImageVariantOptionsArgs']]:
         """
         Allows you to define image resizing sizes for different use cases.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input['ImageVariantOptionsArgs']]):
+    def options(self, value: pulumi.Input[Optional['ImageVariantOptionsArgs']]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def variant(self) -> Optional[pulumi.Input['ImageVariantVariantArgs']]:
+    def variant(self) -> pulumi.Input[Optional['ImageVariantVariantArgs']]:
         return pulumi.get(self, "variant")
 
     @variant.setter
-    def variant(self, value: Optional[pulumi.Input['ImageVariantVariantArgs']]):
+    def variant(self, value: pulumi.Input[Optional['ImageVariantVariantArgs']]):
         pulumi.set(self, "variant", value)
 
 
@@ -180,10 +180,10 @@ class ImageVariant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_variant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 never_require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 options: Optional[pulumi.Input[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_variant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 never_require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 options: pulumi.Input[Optional[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -202,9 +202,9 @@ class ImageVariant(pulumi.CustomResource):
             image_variant_id="hero",
             options={
                 "fit": "scale-down",
-                "height": 768,
+                "height": float(768),
                 "metadata": "none",
-                "width": 1366,
+                "width": float(1366),
             },
             never_require_signed_urls=True)
         ```
@@ -246,9 +246,9 @@ class ImageVariant(pulumi.CustomResource):
             image_variant_id="hero",
             options={
                 "fit": "scale-down",
-                "height": 768,
+                "height": float(768),
                 "metadata": "none",
-                "width": 1366,
+                "width": float(1366),
             },
             never_require_signed_urls=True)
         ```
@@ -275,10 +275,10 @@ class ImageVariant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_variant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 never_require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 options: Optional[pulumi.Input[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_variant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 never_require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 options: pulumi.Input[Optional[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -307,11 +307,11 @@ class ImageVariant(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            image_variant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            never_require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
-            options: Optional[pulumi.Input[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']]] = None,
-            variant: Optional[pulumi.Input[Union['ImageVariantVariantArgs', 'ImageVariantVariantArgsDict']]] = None) -> 'ImageVariant':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_variant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            never_require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
+            options: pulumi.Input[Optional[Union['ImageVariantOptionsArgs', 'ImageVariantOptionsArgsDict']]] = None,
+            variant: pulumi.Input[Optional[Union['ImageVariantVariantArgs', 'ImageVariantVariantArgsDict']]] = None) -> 'ImageVariant':
         """
         Get an existing ImageVariant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

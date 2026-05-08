@@ -106,5 +106,5 @@ export interface GetSnippetOutputArgs {
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

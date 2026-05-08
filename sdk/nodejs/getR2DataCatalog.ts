@@ -118,7 +118,7 @@ export interface GetR2DataCatalogOutputArgs {
     /**
      * Use this to identify the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the R2 bucket name.
      */

@@ -198,8 +198,8 @@ def get_rate_limit(rate_limit_id: Optional[_builtins.str] = None,
         rate_limit_id=pulumi.get(__ret__, 'rate_limit_id'),
         threshold=pulumi.get(__ret__, 'threshold'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_rate_limit_output(rate_limit_id: Optional[pulumi.Input[_builtins.str]] = None,
-                          zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_rate_limit_output(rate_limit_id: pulumi.Input[Optional[_builtins.str]] = None,
+                          zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRateLimitResult]:
     """
     Accepted Permissions

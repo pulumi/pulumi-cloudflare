@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCloudConnectorRules = new Cloudflare.Index.CloudConnectorRules("example_cloud_connector_rules", new()
+    ///     var exampleCloudConnectorRules = new Cloudflare.CloudConnectorRules("example_cloud_connector_rules", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Rules = new[]

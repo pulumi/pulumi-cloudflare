@@ -95,10 +95,10 @@ export function getZeroTrustAccessAiControlsMcpPortalOutput(args?: GetZeroTrustA
  * A collection of arguments for invoking getZeroTrustAccessAiControlsMcpPortal.
  */
 export interface GetZeroTrustAccessAiControlsMcpPortalOutputArgs {
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetZeroTrustAccessAiControlsMcpPortalFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustAccessAiControlsMcpPortalFilterArgs | undefined>;
     /**
      * portal id
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }

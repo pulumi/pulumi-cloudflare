@@ -23,7 +23,7 @@ class CloudforceOneRequestPriorityArgs:
                  priority: pulumi.Input[_builtins.int],
                  requirement: pulumi.Input[_builtins.str],
                  tlp: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CloudforceOneRequestPriority resource.
 
@@ -92,35 +92,35 @@ class CloudforceOneRequestPriorityArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
 class _CloudforceOneRequestPriorityState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 completed: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 message_tokens: Optional[pulumi.Input[_builtins.int]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 readable_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request: Optional[pulumi.Input[_builtins.str]] = None,
-                 requirement: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 summary: Optional[pulumi.Input[_builtins.str]] = None,
-                 tlp: Optional[pulumi.Input[_builtins.str]] = None,
-                 tokens: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 completed: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 message_tokens: pulumi.Input[Optional[_builtins.int]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 readable_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request: pulumi.Input[Optional[_builtins.str]] = None,
+                 requirement: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 tlp: pulumi.Input[Optional[_builtins.str]] = None,
+                 tokens: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CloudforceOneRequestPriority resources.
 
@@ -172,121 +172,121 @@ class _CloudforceOneRequestPriorityState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def completed(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def completed(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "completed")
 
     @completed.setter
-    def completed(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def completed(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "completed", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Request content.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of labels.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="messageTokens")
-    def message_tokens(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def message_tokens(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Tokens for the request messages.
         """
         return pulumi.get(self, "message_tokens")
 
     @message_tokens.setter
-    def message_tokens(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def message_tokens(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "message_tokens", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Priority.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="readableId")
-    def readable_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def readable_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Readable Request ID.
         """
         return pulumi.get(self, "readable_id")
 
     @readable_id.setter
-    def readable_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def readable_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "readable_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def request(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Requested information from request.
         """
         return pulumi.get(self, "request")
 
     @request.setter
-    def request(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request", value)
 
     @_builtins.property
     @pulumi.getter
-    def requirement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def requirement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Requirement.
         """
         return pulumi.get(self, "requirement")
 
     @requirement.setter
-    def requirement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def requirement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "requirement", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Request Status.
         Available values: "open", "accepted", "reported", "approved", "completed", "declined".
@@ -294,24 +294,24 @@ class _CloudforceOneRequestPriorityState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def summary(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def summary(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Brief description of the request.
         """
         return pulumi.get(self, "summary")
 
     @summary.setter
-    def summary(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def summary(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "summary", value)
 
     @_builtins.property
     @pulumi.getter
-    def tlp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tlp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CISA defined Traffic Light Protocol (TLP).
         Available values: "clear", "amber", "amber-strict", "green", "red".
@@ -319,28 +319,28 @@ class _CloudforceOneRequestPriorityState:
         return pulumi.get(self, "tlp")
 
     @tlp.setter
-    def tlp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tlp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tlp", value)
 
     @_builtins.property
     @pulumi.getter
-    def tokens(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tokens(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Tokens for the request.
         """
         return pulumi.get(self, "tokens")
 
     @tokens.setter
-    def tokens(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tokens(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tokens", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated", value)
 
 
@@ -350,11 +350,11 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 requirement: Optional[pulumi.Input[_builtins.str]] = None,
-                 tlp: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 requirement: pulumi.Input[Optional[_builtins.str]] = None,
+                 tlp: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -446,11 +446,11 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 requirement: Optional[pulumi.Input[_builtins.str]] = None,
-                 tlp: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 requirement: pulumi.Input[Optional[_builtins.str]] = None,
+                 tlp: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -493,21 +493,21 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            completed: Optional[pulumi.Input[_builtins.str]] = None,
-            content: Optional[pulumi.Input[_builtins.str]] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            message_tokens: Optional[pulumi.Input[_builtins.int]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            readable_id: Optional[pulumi.Input[_builtins.str]] = None,
-            request: Optional[pulumi.Input[_builtins.str]] = None,
-            requirement: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            summary: Optional[pulumi.Input[_builtins.str]] = None,
-            tlp: Optional[pulumi.Input[_builtins.str]] = None,
-            tokens: Optional[pulumi.Input[_builtins.int]] = None,
-            updated: Optional[pulumi.Input[_builtins.str]] = None) -> 'CloudforceOneRequestPriority':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            completed: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            message_tokens: pulumi.Input[Optional[_builtins.int]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            readable_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request: pulumi.Input[Optional[_builtins.str]] = None,
+            requirement: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            summary: pulumi.Input[Optional[_builtins.str]] = None,
+            tlp: pulumi.Input[Optional[_builtins.str]] = None,
+            tokens: pulumi.Input[Optional[_builtins.int]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None) -> 'CloudforceOneRequestPriority':
         """
         Get an existing CloudforceOneRequestPriority resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

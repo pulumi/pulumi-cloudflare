@@ -103,6 +103,6 @@ export function getZeroTrustDlpPredefinedProfileOutput(args: GetZeroTrustDlpPred
  * A collection of arguments for invoking getZeroTrustDlpPredefinedProfile.
  */
 export interface GetZeroTrustDlpPredefinedProfileOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     profileId: pulumi.Input<string>;
 }

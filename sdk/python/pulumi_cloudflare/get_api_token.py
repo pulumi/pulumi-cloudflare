@@ -218,8 +218,8 @@ def get_api_token(filter: Optional[Union['GetApiTokenFilterArgs', 'GetApiTokenFi
         policies=pulumi.get(__ret__, 'policies'),
         status=pulumi.get(__ret__, 'status'),
         token_id=pulumi.get(__ret__, 'token_id'))
-def get_api_token_output(filter: Optional[pulumi.Input[Optional[Union['GetApiTokenFilterArgs', 'GetApiTokenFilterArgsDict']]]] = None,
-                         token_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_api_token_output(filter: pulumi.Input[Optional[Optional[Union['GetApiTokenFilterArgs', 'GetApiTokenFilterArgsDict']]]] = None,
+                         token_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiTokenResult]:
     """
     Accepted Permissions

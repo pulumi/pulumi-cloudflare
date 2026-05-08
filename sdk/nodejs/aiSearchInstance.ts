@@ -248,91 +248,91 @@ export class AiSearchInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AiSearchInstance resources.
  */
 export interface AiSearchInstanceState {
-    accountId?: pulumi.Input<string>;
-    aiGatewayId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    aiGatewayId?: pulumi.Input<string | undefined>;
     /**
      * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      */
-    aiSearchInstanceId?: pulumi.Input<string>;
+    aiSearchInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
-    aisearchModel?: pulumi.Input<string>;
-    cache?: pulumi.Input<boolean>;
+    aisearchModel?: pulumi.Input<string | undefined>;
+    cache?: pulumi.Input<boolean | undefined>;
     /**
      * Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
      */
-    cacheThreshold?: pulumi.Input<string>;
-    chunk?: pulumi.Input<boolean>;
-    chunkOverlap?: pulumi.Input<number>;
-    chunkSize?: pulumi.Input<number>;
-    createdAt?: pulumi.Input<string>;
-    createdBy?: pulumi.Input<string>;
-    customMetadatas?: pulumi.Input<pulumi.Input<inputs.AiSearchInstanceCustomMetadata>[]>;
+    cacheThreshold?: pulumi.Input<string | undefined>;
+    chunk?: pulumi.Input<boolean | undefined>;
+    chunkOverlap?: pulumi.Input<number | undefined>;
+    chunkSize?: pulumi.Input<number | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    createdBy?: pulumi.Input<string | undefined>;
+    customMetadatas?: pulumi.Input<pulumi.Input<inputs.AiSearchInstanceCustomMetadata>[] | undefined>;
     /**
      * Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
      */
-    embeddingModel?: pulumi.Input<string>;
-    enable?: pulumi.Input<boolean>;
-    engineVersion?: pulumi.Input<number>;
+    embeddingModel?: pulumi.Input<string | undefined>;
+    enable?: pulumi.Input<boolean | undefined>;
+    engineVersion?: pulumi.Input<number | undefined>;
     /**
      * Available values: "max", "rrf".
      */
-    fusionMethod?: pulumi.Input<string>;
+    fusionMethod?: pulumi.Input<string | undefined>;
     /**
      * Deprecated — use indexMethod instead.
      *
      * @deprecated This attribute is deprecated.
      */
-    hybridSearchEnabled?: pulumi.Input<boolean>;
+    hybridSearchEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Controls which storage backends are used during indexing. Defaults to vector-only.
      */
-    indexMethod?: pulumi.Input<inputs.AiSearchInstanceIndexMethod>;
-    indexingOptions?: pulumi.Input<inputs.AiSearchInstanceIndexingOptions>;
-    lastActivity?: pulumi.Input<string>;
-    maxNumResults?: pulumi.Input<number>;
-    metadata?: pulumi.Input<inputs.AiSearchInstanceMetadata>;
-    modifiedAt?: pulumi.Input<string>;
-    modifiedBy?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
-    paused?: pulumi.Input<boolean>;
-    publicEndpointId?: pulumi.Input<string>;
-    publicEndpointParams?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParams>;
-    reranking?: pulumi.Input<boolean>;
+    indexMethod?: pulumi.Input<inputs.AiSearchInstanceIndexMethod | undefined>;
+    indexingOptions?: pulumi.Input<inputs.AiSearchInstanceIndexingOptions | undefined>;
+    lastActivity?: pulumi.Input<string | undefined>;
+    maxNumResults?: pulumi.Input<number | undefined>;
+    metadata?: pulumi.Input<inputs.AiSearchInstanceMetadata | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
+    modifiedBy?: pulumi.Input<string | undefined>;
+    namespace?: pulumi.Input<string | undefined>;
+    paused?: pulumi.Input<boolean | undefined>;
+    publicEndpointId?: pulumi.Input<string | undefined>;
+    publicEndpointParams?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParams | undefined>;
+    reranking?: pulumi.Input<boolean | undefined>;
     /**
      * Available values: "@cf/baai/bge-reranker-base", "".
      */
-    rerankingModel?: pulumi.Input<string>;
-    retrievalOptions?: pulumi.Input<inputs.AiSearchInstanceRetrievalOptions>;
+    rerankingModel?: pulumi.Input<string | undefined>;
+    retrievalOptions?: pulumi.Input<inputs.AiSearchInstanceRetrievalOptions | undefined>;
     /**
      * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
-    rewriteModel?: pulumi.Input<string>;
-    rewriteQuery?: pulumi.Input<boolean>;
-    scoreThreshold?: pulumi.Input<number>;
-    source?: pulumi.Input<string>;
-    sourceParams?: pulumi.Input<inputs.AiSearchInstanceSourceParams>;
-    status?: pulumi.Input<string>;
-    summarization?: pulumi.Input<boolean>;
+    rewriteModel?: pulumi.Input<string | undefined>;
+    rewriteQuery?: pulumi.Input<boolean | undefined>;
+    scoreThreshold?: pulumi.Input<number | undefined>;
+    source?: pulumi.Input<string | undefined>;
+    sourceParams?: pulumi.Input<inputs.AiSearchInstanceSourceParams | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    summarization?: pulumi.Input<boolean | undefined>;
     /**
      * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
-    summarizationModel?: pulumi.Input<string>;
+    summarizationModel?: pulumi.Input<string | undefined>;
     /**
      * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
      * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      */
-    syncInterval?: pulumi.Input<number>;
-    systemPromptAisearch?: pulumi.Input<string>;
-    systemPromptIndexSummarization?: pulumi.Input<string>;
-    systemPromptRewriteQuery?: pulumi.Input<string>;
-    tokenId?: pulumi.Input<string>;
+    syncInterval?: pulumi.Input<number | undefined>;
+    systemPromptAisearch?: pulumi.Input<string | undefined>;
+    systemPromptIndexSummarization?: pulumi.Input<string | undefined>;
+    systemPromptRewriteQuery?: pulumi.Input<string | undefined>;
+    tokenId?: pulumi.Input<string | undefined>;
     /**
      * Available values: "r2", "web-crawler".
      */
-    type?: pulumi.Input<string>;
-    vectorizeName?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
+    vectorizeName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -340,7 +340,7 @@ export interface AiSearchInstanceState {
  */
 export interface AiSearchInstanceArgs {
     accountId: pulumi.Input<string>;
-    aiGatewayId?: pulumi.Input<string>;
+    aiGatewayId?: pulumi.Input<string | undefined>;
     /**
      * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      */
@@ -348,69 +348,69 @@ export interface AiSearchInstanceArgs {
     /**
      * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
-    aisearchModel?: pulumi.Input<string>;
-    cache?: pulumi.Input<boolean>;
+    aisearchModel?: pulumi.Input<string | undefined>;
+    cache?: pulumi.Input<boolean | undefined>;
     /**
      * Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
      */
-    cacheThreshold?: pulumi.Input<string>;
-    chunk?: pulumi.Input<boolean>;
-    chunkOverlap?: pulumi.Input<number>;
-    chunkSize?: pulumi.Input<number>;
-    customMetadatas?: pulumi.Input<pulumi.Input<inputs.AiSearchInstanceCustomMetadata>[]>;
+    cacheThreshold?: pulumi.Input<string | undefined>;
+    chunk?: pulumi.Input<boolean | undefined>;
+    chunkOverlap?: pulumi.Input<number | undefined>;
+    chunkSize?: pulumi.Input<number | undefined>;
+    customMetadatas?: pulumi.Input<pulumi.Input<inputs.AiSearchInstanceCustomMetadata>[] | undefined>;
     /**
      * Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
      */
-    embeddingModel?: pulumi.Input<string>;
+    embeddingModel?: pulumi.Input<string | undefined>;
     /**
      * Available values: "max", "rrf".
      */
-    fusionMethod?: pulumi.Input<string>;
+    fusionMethod?: pulumi.Input<string | undefined>;
     /**
      * Deprecated — use indexMethod instead.
      *
      * @deprecated This attribute is deprecated.
      */
-    hybridSearchEnabled?: pulumi.Input<boolean>;
+    hybridSearchEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Controls which storage backends are used during indexing. Defaults to vector-only.
      */
-    indexMethod?: pulumi.Input<inputs.AiSearchInstanceIndexMethod>;
-    indexingOptions?: pulumi.Input<inputs.AiSearchInstanceIndexingOptions>;
-    maxNumResults?: pulumi.Input<number>;
-    metadata?: pulumi.Input<inputs.AiSearchInstanceMetadata>;
-    paused?: pulumi.Input<boolean>;
-    publicEndpointParams?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParams>;
-    reranking?: pulumi.Input<boolean>;
+    indexMethod?: pulumi.Input<inputs.AiSearchInstanceIndexMethod | undefined>;
+    indexingOptions?: pulumi.Input<inputs.AiSearchInstanceIndexingOptions | undefined>;
+    maxNumResults?: pulumi.Input<number | undefined>;
+    metadata?: pulumi.Input<inputs.AiSearchInstanceMetadata | undefined>;
+    paused?: pulumi.Input<boolean | undefined>;
+    publicEndpointParams?: pulumi.Input<inputs.AiSearchInstancePublicEndpointParams | undefined>;
+    reranking?: pulumi.Input<boolean | undefined>;
     /**
      * Available values: "@cf/baai/bge-reranker-base", "".
      */
-    rerankingModel?: pulumi.Input<string>;
-    retrievalOptions?: pulumi.Input<inputs.AiSearchInstanceRetrievalOptions>;
+    rerankingModel?: pulumi.Input<string | undefined>;
+    retrievalOptions?: pulumi.Input<inputs.AiSearchInstanceRetrievalOptions | undefined>;
     /**
      * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
-    rewriteModel?: pulumi.Input<string>;
-    rewriteQuery?: pulumi.Input<boolean>;
-    scoreThreshold?: pulumi.Input<number>;
-    source?: pulumi.Input<string>;
-    sourceParams?: pulumi.Input<inputs.AiSearchInstanceSourceParams>;
-    summarization?: pulumi.Input<boolean>;
+    rewriteModel?: pulumi.Input<string | undefined>;
+    rewriteQuery?: pulumi.Input<boolean | undefined>;
+    scoreThreshold?: pulumi.Input<number | undefined>;
+    source?: pulumi.Input<string | undefined>;
+    sourceParams?: pulumi.Input<inputs.AiSearchInstanceSourceParams | undefined>;
+    summarization?: pulumi.Input<boolean | undefined>;
     /**
      * Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
      */
-    summarizationModel?: pulumi.Input<string>;
+    summarizationModel?: pulumi.Input<string | undefined>;
     /**
      * Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
      * Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
      */
-    syncInterval?: pulumi.Input<number>;
-    systemPromptAisearch?: pulumi.Input<string>;
-    systemPromptIndexSummarization?: pulumi.Input<string>;
-    systemPromptRewriteQuery?: pulumi.Input<string>;
-    tokenId?: pulumi.Input<string>;
+    syncInterval?: pulumi.Input<number | undefined>;
+    systemPromptAisearch?: pulumi.Input<string | undefined>;
+    systemPromptIndexSummarization?: pulumi.Input<string | undefined>;
+    systemPromptRewriteQuery?: pulumi.Input<string | undefined>;
+    tokenId?: pulumi.Input<string | undefined>;
     /**
      * Available values: "r2", "web-crawler".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

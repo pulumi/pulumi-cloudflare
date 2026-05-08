@@ -216,14 +216,14 @@ def get_zero_trust_access_applications(account_id: Optional[_builtins.str] = Non
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zero_trust_access_applications_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              aud: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              domain: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              exact: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                              max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                              name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_access_applications_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              aud: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              domain: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              exact: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                              max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                              name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessApplicationsResult]:
     """
     ## Example Usage

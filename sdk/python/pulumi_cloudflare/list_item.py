@@ -22,12 +22,12 @@ __all__ = ['ListItemInitArgs', 'ListItem']
 class ListItemInitArgs:
     def __init__(__self__, *,
                  list_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input['ListItemHostnameArgs']] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional['ListItemHostnameArgs']] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect: pulumi.Input[Optional['ListItemRedirectArgs']] = None):
         """
         The set of arguments for constructing a ListItem resource.
 
@@ -67,90 +67,90 @@ class ListItemInitArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account ID for this resource.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def asn(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def asn(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A non-negative 32 bit integer
         """
         return pulumi.get(self, "asn")
 
     @asn.setter
-    def asn(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def asn(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "asn", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An informative summary of the list item.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input['ListItemHostnameArgs']]:
+    def hostname(self) -> pulumi.Input[Optional['ListItemHostnameArgs']]:
         """
         Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input['ListItemHostnameArgs']]):
+    def hostname(self, value: pulumi.Input[Optional['ListItemHostnameArgs']]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def redirect(self) -> Optional[pulumi.Input['ListItemRedirectArgs']]:
+    def redirect(self) -> pulumi.Input[Optional['ListItemRedirectArgs']]:
         """
         The definition of the redirect.
         """
         return pulumi.get(self, "redirect")
 
     @redirect.setter
-    def redirect(self, value: Optional[pulumi.Input['ListItemRedirectArgs']]):
+    def redirect(self, value: pulumi.Input[Optional['ListItemRedirectArgs']]):
         pulumi.set(self, "redirect", value)
 
 
 @pulumi.input_type
 class _ListItemState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input['ListItemHostnameArgs']] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 list_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional['ListItemHostnameArgs']] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 list_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect: pulumi.Input[Optional['ListItemRedirectArgs']] = None):
         """
         Input properties used for looking up and filtering ListItem resources.
 
@@ -188,122 +188,122 @@ class _ListItemState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account ID for this resource.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def asn(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def asn(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A non-negative 32 bit integer
         """
         return pulumi.get(self, "asn")
 
     @asn.setter
-    def asn(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def asn(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "asn", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An informative summary of the list item.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RFC 3339 timestamp of when the item was created.
         """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input['ListItemHostnameArgs']]:
+    def hostname(self) -> pulumi.Input[Optional['ListItemHostnameArgs']]:
         """
         Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input['ListItemHostnameArgs']]):
+    def hostname(self, value: pulumi.Input[Optional['ListItemHostnameArgs']]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter(name="listId")
-    def list_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def list_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ID of the list.
         """
         return pulumi.get(self, "list_id")
 
     @list_id.setter
-    def list_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def list_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "list_id", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RFC 3339 timestamp of when the item was last modified.
         """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter(name="operationId")
-    def operation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique operation ID of the asynchronous action.
         """
         return pulumi.get(self, "operation_id")
 
     @operation_id.setter
-    def operation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def redirect(self) -> Optional[pulumi.Input['ListItemRedirectArgs']]:
+    def redirect(self) -> pulumi.Input[Optional['ListItemRedirectArgs']]:
         """
         The definition of the redirect.
         """
         return pulumi.get(self, "redirect")
 
     @redirect.setter
-    def redirect(self, value: Optional[pulumi.Input['ListItemRedirectArgs']]):
+    def redirect(self, value: pulumi.Input[Optional['ListItemRedirectArgs']]):
         pulumi.set(self, "redirect", value)
 
 
@@ -313,13 +313,13 @@ class ListItem(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 list_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect: Optional[pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 list_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect: pulumi.Input[Optional[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -402,13 +402,13 @@ class ListItem(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 list_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect: Optional[pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 list_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect: pulumi.Input[Optional[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -440,16 +440,16 @@ class ListItem(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            asn: Optional[pulumi.Input[_builtins.int]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            hostname: Optional[pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
-            ip: Optional[pulumi.Input[_builtins.str]] = None,
-            list_id: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            operation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            redirect: Optional[pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']]] = None) -> 'ListItem':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            asn: pulumi.Input[Optional[_builtins.int]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            list_id: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect: pulumi.Input[Optional[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']]] = None) -> 'ListItem':
         """
         Get an existing ListItem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

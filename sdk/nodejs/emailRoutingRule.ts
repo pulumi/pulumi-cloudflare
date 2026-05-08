@@ -148,33 +148,33 @@ export interface EmailRoutingRuleState {
     /**
      * List actions patterns.
      */
-    actions?: pulumi.Input<pulumi.Input<inputs.EmailRoutingRuleAction>[]>;
+    actions?: pulumi.Input<pulumi.Input<inputs.EmailRoutingRuleAction>[] | undefined>;
     /**
      * Routing rule status.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Matching patterns to forward to your actions.
      */
-    matchers?: pulumi.Input<pulumi.Input<inputs.EmailRoutingRuleMatcher>[]>;
+    matchers?: pulumi.Input<pulumi.Input<inputs.EmailRoutingRuleMatcher>[] | undefined>;
     /**
      * Routing rule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Priority of the routing rule.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      *
      * @deprecated This attribute is deprecated.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -188,7 +188,7 @@ export interface EmailRoutingRuleArgs {
     /**
      * Routing rule status.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Matching patterns to forward to your actions.
      */
@@ -196,13 +196,13 @@ export interface EmailRoutingRuleArgs {
     /**
      * Routing rule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Priority of the routing rule.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

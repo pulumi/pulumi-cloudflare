@@ -22,10 +22,10 @@ __all__ = ['SsoConnectorArgs', 'SsoConnector']
 class SsoConnectorArgs:
     def __init__(__self__, *,
                  email_domain: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 begin_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_fedramp_language: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 begin_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_fedramp_language: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SsoConnector resource.
 
@@ -59,64 +59,64 @@ class SsoConnectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="beginVerification")
-    def begin_verification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def begin_verification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Begin the verification process after creation
         """
         return pulumi.get(self, "begin_verification")
 
     @begin_verification.setter
-    def begin_verification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def begin_verification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "begin_verification", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         SSO Connector enabled state
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="useFedrampLanguage")
-    def use_fedramp_language(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_fedramp_language(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls the display of FedRAMP language to the user during SSO login
         """
         return pulumi.get(self, "use_fedramp_language")
 
     @use_fedramp_language.setter
-    def use_fedramp_language(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_fedramp_language(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_fedramp_language", value)
 
 
 @pulumi.input_type
 class _SsoConnectorState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 begin_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updated_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_fedramp_language: Optional[pulumi.Input[_builtins.bool]] = None,
-                 verification: Optional[pulumi.Input['SsoConnectorVerificationArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 begin_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updated_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_fedramp_language: pulumi.Input[Optional[_builtins.bool]] = None,
+                 verification: pulumi.Input[Optional['SsoConnectorVerificationArgs']] = None):
         """
         Input properties used for looking up and filtering SsoConnector resources.
 
@@ -147,95 +147,95 @@ class _SsoConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="beginVerification")
-    def begin_verification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def begin_verification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Begin the verification process after creation
         """
         return pulumi.get(self, "begin_verification")
 
     @begin_verification.setter
-    def begin_verification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def begin_verification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "begin_verification", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp for the creation of the SSO connector
         """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter(name="emailDomain")
-    def email_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email domain of the new SSO connector
         """
         return pulumi.get(self, "email_domain")
 
     @email_domain.setter
-    def email_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email_domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         SSO Connector enabled state
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedOn")
-    def updated_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp for the last update of the SSO connector
         """
         return pulumi.get(self, "updated_on")
 
     @updated_on.setter
-    def updated_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_on", value)
 
     @_builtins.property
     @pulumi.getter(name="useFedrampLanguage")
-    def use_fedramp_language(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_fedramp_language(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls the display of FedRAMP language to the user during SSO login
         """
         return pulumi.get(self, "use_fedramp_language")
 
     @use_fedramp_language.setter
-    def use_fedramp_language(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_fedramp_language(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_fedramp_language", value)
 
     @_builtins.property
     @pulumi.getter
-    def verification(self) -> Optional[pulumi.Input['SsoConnectorVerificationArgs']]:
+    def verification(self) -> pulumi.Input[Optional['SsoConnectorVerificationArgs']]:
         return pulumi.get(self, "verification")
 
     @verification.setter
-    def verification(self, value: Optional[pulumi.Input['SsoConnectorVerificationArgs']]):
+    def verification(self, value: pulumi.Input[Optional['SsoConnectorVerificationArgs']]):
         pulumi.set(self, "verification", value)
 
 
@@ -245,11 +245,11 @@ class SsoConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 begin_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 email_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_fedramp_language: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 begin_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_fedramp_language: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -332,11 +332,11 @@ class SsoConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 begin_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 email_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_fedramp_language: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 begin_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_fedramp_language: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -366,14 +366,14 @@ class SsoConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            begin_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            email_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            updated_on: Optional[pulumi.Input[_builtins.str]] = None,
-            use_fedramp_language: Optional[pulumi.Input[_builtins.bool]] = None,
-            verification: Optional[pulumi.Input[Union['SsoConnectorVerificationArgs', 'SsoConnectorVerificationArgsDict']]] = None) -> 'SsoConnector':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            begin_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            email_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            updated_on: pulumi.Input[Optional[_builtins.str]] = None,
+            use_fedramp_language: pulumi.Input[Optional[_builtins.bool]] = None,
+            verification: pulumi.Input[Optional[Union['SsoConnectorVerificationArgs', 'SsoConnectorVerificationArgsDict']]] = None) -> 'SsoConnector':
         """
         Get an existing SsoConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

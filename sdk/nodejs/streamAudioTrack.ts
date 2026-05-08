@@ -140,36 +140,36 @@ export interface StreamAudioTrackState {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for an additional audio track.
      */
-    audioIdentifier?: pulumi.Input<string>;
+    audioIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Array of audio tracks for the video.
      */
-    audios?: pulumi.Input<pulumi.Input<inputs.StreamAudioTrackAudio>[]>;
+    audios?: pulumi.Input<pulumi.Input<inputs.StreamAudioTrackAudio>[] | undefined>;
     /**
      * Denotes whether the audio track will be played by default in a player.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * A string to uniquely identify the track amongst other audio track labels for the specified video.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * Specifies the processing status of the video.
      * Available values: "queued", "ready", "error".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,15 +179,15 @@ export interface StreamAudioTrackArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for an additional audio track.
      */
-    audioIdentifier?: pulumi.Input<string>;
+    audioIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Denotes whether the audio track will be played by default in a player.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
@@ -195,5 +195,5 @@ export interface StreamAudioTrackArgs {
     /**
      * A string to uniquely identify the track amongst other audio track labels for the specified video.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
 }

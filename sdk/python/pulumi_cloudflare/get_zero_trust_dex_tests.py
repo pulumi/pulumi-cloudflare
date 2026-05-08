@@ -153,10 +153,10 @@ def get_zero_trust_dex_tests(account_id: Optional[_builtins.str] = None,
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         test_name=pulumi.get(__ret__, 'test_name'))
-def get_zero_trust_dex_tests_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    kind: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                    test_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_dex_tests_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    kind: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                    test_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDexTestsResult]:
     """
     Accepted Permissions

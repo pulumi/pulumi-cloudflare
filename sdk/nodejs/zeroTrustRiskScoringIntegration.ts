@@ -136,47 +136,47 @@ export class ZeroTrustRiskScoringIntegration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustRiskScoringIntegration resources.
  */
 export interface ZeroTrustRiskScoringIntegrationState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The Cloudflare account tag.
      */
-    accountTag?: pulumi.Input<string>;
+    accountTag?: pulumi.Input<string | undefined>;
     /**
      * Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * When the integration was created in RFC3339 format.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Available values: "Okta".
      */
-    integrationType?: pulumi.Input<string>;
+    integrationType?: pulumi.Input<string | undefined>;
     /**
      * A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
      * https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
      */
-    referenceId?: pulumi.Input<string>;
+    referenceId?: pulumi.Input<string | undefined>;
     /**
      * The base url of the tenant, e.g. "https://tenant.okta.com".
      */
-    tenantUrl?: pulumi.Input<string>;
+    tenantUrl?: pulumi.Input<string | undefined>;
     /**
      * The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
      */
-    wellKnownUrl?: pulumi.Input<string>;
+    wellKnownUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustRiskScoringIntegration resource.
  */
 export interface ZeroTrustRiskScoringIntegrationArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Available values: "Okta".
      */
@@ -185,7 +185,7 @@ export interface ZeroTrustRiskScoringIntegrationArgs {
      * A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
      * https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
      */
-    referenceId?: pulumi.Input<string>;
+    referenceId?: pulumi.Input<string | undefined>;
     /**
      * The base url of the tenant, e.g. "https://tenant.okta.com".
      */

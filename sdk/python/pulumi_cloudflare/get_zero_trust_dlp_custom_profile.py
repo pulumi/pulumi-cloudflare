@@ -295,8 +295,8 @@ def get_zero_trust_dlp_custom_profile(account_id: Optional[_builtins.str] = None
         shared_entries=pulumi.get(__ret__, 'shared_entries'),
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_zero_trust_dlp_custom_profile_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_dlp_custom_profile_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDlpCustomProfileResult]:
     """
     Accepted Permissions

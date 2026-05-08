@@ -116,8 +116,8 @@ def get_certificate_authorities_hostname_associations(mtls_certificate_id: Optio
         id=pulumi.get(__ret__, 'id'),
         mtls_certificate_id=pulumi.get(__ret__, 'mtls_certificate_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_certificate_authorities_hostname_associations_output(mtls_certificate_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                             zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_certificate_authorities_hostname_associations_output(mtls_certificate_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                             zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateAuthoritiesHostnameAssociationsResult]:
     """
     Accepted Permissions

@@ -78,5 +78,5 @@ export function getZeroTrustRiskBehaviorOutput(args?: GetZeroTrustRiskBehaviorOu
  * A collection of arguments for invoking getZeroTrustRiskBehavior.
  */
 export interface GetZeroTrustRiskBehaviorOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
 }

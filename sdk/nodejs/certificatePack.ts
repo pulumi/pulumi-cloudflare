@@ -201,59 +201,59 @@ export interface CertificatePackState {
      * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
      * Available values: "google", "lets*encrypt", "ssl*com".
      */
-    certificateAuthority?: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string | undefined>;
     /**
      * Array of certificates in this pack.
      */
-    certificates?: pulumi.Input<pulumi.Input<inputs.CertificatePackCertificate>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.CertificatePackCertificate>[] | undefined>;
     /**
      * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      */
-    cloudflareBranding?: pulumi.Input<boolean>;
+    cloudflareBranding?: pulumi.Input<boolean | undefined>;
     /**
      * DCV Delegation records for domain validation.
      */
-    dcvDelegationRecords?: pulumi.Input<pulumi.Input<inputs.CertificatePackDcvDelegationRecord>[]>;
+    dcvDelegationRecords?: pulumi.Input<pulumi.Input<inputs.CertificatePackDcvDelegationRecord>[] | undefined>;
     /**
      * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      */
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Identifier of the primary certificate in a pack.
      */
-    primaryCertificate?: pulumi.Input<string>;
+    primaryCertificate?: pulumi.Input<string | undefined>;
     /**
      * Status of certificate pack.
      * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Type of certificate pack.
      * Available values: "advanced".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Domain validation errors that have been received by the certificate authority (CA).
      */
-    validationErrors?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationError>[]>;
+    validationErrors?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationError>[] | undefined>;
     /**
      * Validation Method selected for the order.
      * Available values: "txt", "http", "email".
      */
-    validationMethod?: pulumi.Input<string>;
+    validationMethod?: pulumi.Input<string | undefined>;
     /**
      * Certificates' validation records.
      */
-    validationRecords?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationRecord>[]>;
+    validationRecords?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationRecord>[] | undefined>;
     /**
      * Validity Days selected for the order.
      * Available values: 14, 30, 90, 365.
      */
-    validityDays?: pulumi.Input<number>;
+    validityDays?: pulumi.Input<number | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -268,11 +268,11 @@ export interface CertificatePackArgs {
     /**
      * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      */
-    cloudflareBranding?: pulumi.Input<boolean>;
+    cloudflareBranding?: pulumi.Input<boolean | undefined>;
     /**
      * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      */
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of certificate pack.
      * Available values: "advanced".
@@ -291,5 +291,5 @@ export interface CertificatePackArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

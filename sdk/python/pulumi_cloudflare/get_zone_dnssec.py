@@ -244,7 +244,7 @@ def get_zone_dnssec(zone_id: Optional[_builtins.str] = None,
         public_key=pulumi.get(__ret__, 'public_key'),
         status=pulumi.get(__ret__, 'status'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zone_dnssec_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zone_dnssec_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneDnssecResult]:
     """
     Accepted Permissions

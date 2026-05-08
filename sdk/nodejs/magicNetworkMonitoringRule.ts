@@ -169,56 +169,56 @@ export class MagicNetworkMonitoringRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MagicNetworkMonitoringRule resources.
  */
 export interface MagicNetworkMonitoringRuleState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      */
-    automaticAdvertisement?: pulumi.Input<boolean>;
+    automaticAdvertisement?: pulumi.Input<boolean | undefined>;
     /**
      * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      */
-    bandwidthThreshold?: pulumi.Input<number>;
+    bandwidthThreshold?: pulumi.Input<number | undefined>;
     /**
      * The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
      * Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      */
-    packetThreshold?: pulumi.Input<number>;
+    packetThreshold?: pulumi.Input<number | undefined>;
     /**
      * Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
      * Available values: "exact", "subnet", "supernet".
      */
-    prefixMatch?: pulumi.Input<string>;
-    prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    prefixMatch?: pulumi.Input<string | undefined>;
+    prefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * MNM rule type.
      * Available values: "threshold", "zscore", "advancedDdos".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Level of sensitivity set for zscore rules.
      * Available values: "low", "medium", "high".
      */
-    zscoreSensitivity?: pulumi.Input<string>;
+    zscoreSensitivity?: pulumi.Input<string | undefined>;
     /**
      * Target of the zscore rule analysis.
      * Available values: "bits", "packets".
      */
-    zscoreTarget?: pulumi.Input<string>;
+    zscoreTarget?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a MagicNetworkMonitoringRule resource.
  */
 export interface MagicNetworkMonitoringRuleArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      */
@@ -226,12 +226,12 @@ export interface MagicNetworkMonitoringRuleArgs {
     /**
      * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      */
-    bandwidthThreshold?: pulumi.Input<number>;
+    bandwidthThreshold?: pulumi.Input<number | undefined>;
     /**
      * The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
      * Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
      */
@@ -239,12 +239,12 @@ export interface MagicNetworkMonitoringRuleArgs {
     /**
      * The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      */
-    packetThreshold?: pulumi.Input<number>;
+    packetThreshold?: pulumi.Input<number | undefined>;
     /**
      * Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
      * Available values: "exact", "subnet", "supernet".
      */
-    prefixMatch?: pulumi.Input<string>;
+    prefixMatch?: pulumi.Input<string | undefined>;
     prefixes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * MNM rule type.
@@ -255,10 +255,10 @@ export interface MagicNetworkMonitoringRuleArgs {
      * Level of sensitivity set for zscore rules.
      * Available values: "low", "medium", "high".
      */
-    zscoreSensitivity?: pulumi.Input<string>;
+    zscoreSensitivity?: pulumi.Input<string | undefined>;
     /**
      * Target of the zscore rule analysis.
      * Available values: "bits", "packets".
      */
-    zscoreTarget?: pulumi.Input<string>;
+    zscoreTarget?: pulumi.Input<string | undefined>;
 }

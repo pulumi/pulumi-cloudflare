@@ -97,5 +97,5 @@ export interface GetArgoSmartRoutingOutputArgs {
     /**
      * Specifies the zone associated with the API call.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

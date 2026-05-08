@@ -186,47 +186,47 @@ export interface WorkerState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * When the Worker was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
      */
-    deployedOn?: pulumi.Input<string>;
+    deployedOn?: pulumi.Input<string | undefined>;
     /**
      * Whether logpush is enabled for the Worker.
      */
-    logpush?: pulumi.Input<boolean>;
+    logpush?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Worker.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Observability settings for the Worker.
      */
-    observability?: pulumi.Input<inputs.WorkerObservability>;
+    observability?: pulumi.Input<inputs.WorkerObservability | undefined>;
     /**
      * Other resources that reference the Worker and depend on it existing.
      */
-    references?: pulumi.Input<inputs.WorkerReferences>;
+    references?: pulumi.Input<inputs.WorkerReferences | undefined>;
     /**
      * Subdomain settings for the Worker.
      */
-    subdomain?: pulumi.Input<inputs.WorkerSubdomain>;
+    subdomain?: pulumi.Input<inputs.WorkerSubdomain | undefined>;
     /**
      * Tags associated with the Worker.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Other Workers that should consume logs from the Worker.
      */
-    tailConsumers?: pulumi.Input<pulumi.Input<inputs.WorkerTailConsumer>[]>;
+    tailConsumers?: pulumi.Input<pulumi.Input<inputs.WorkerTailConsumer>[] | undefined>;
     /**
      * When the Worker was most recently updated.
      */
-    updatedOn?: pulumi.Input<string>;
+    updatedOn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -236,11 +236,11 @@ export interface WorkerArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Whether logpush is enabled for the Worker.
      */
-    logpush?: pulumi.Input<boolean>;
+    logpush?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Worker.
      */
@@ -248,17 +248,17 @@ export interface WorkerArgs {
     /**
      * Observability settings for the Worker.
      */
-    observability?: pulumi.Input<inputs.WorkerObservability>;
+    observability?: pulumi.Input<inputs.WorkerObservability | undefined>;
     /**
      * Subdomain settings for the Worker.
      */
-    subdomain?: pulumi.Input<inputs.WorkerSubdomain>;
+    subdomain?: pulumi.Input<inputs.WorkerSubdomain | undefined>;
     /**
      * Tags associated with the Worker.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Other Workers that should consume logs from the Worker.
      */
-    tailConsumers?: pulumi.Input<pulumi.Input<inputs.WorkerTailConsumer>[]>;
+    tailConsumers?: pulumi.Input<pulumi.Input<inputs.WorkerTailConsumer>[] | undefined>;
 }

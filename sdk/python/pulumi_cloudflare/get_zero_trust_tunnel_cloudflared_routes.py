@@ -273,17 +273,17 @@ def get_zero_trust_tunnel_cloudflared_routes(account_id: Optional[_builtins.str]
         tun_types=pulumi.get(__ret__, 'tun_types'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'),
         virtual_network_id=pulumi.get(__ret__, 'virtual_network_id'))
-def get_zero_trust_tunnel_cloudflared_routes_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                    comment: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                    existed_at: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                    is_deleted: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                                    max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                    network_subset: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                    network_superset: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                    route_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                    tun_types: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                    tunnel_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                    virtual_network_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_tunnel_cloudflared_routes_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                    comment: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                    existed_at: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                    is_deleted: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                                    max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                    network_subset: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                    network_superset: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                    route_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                    tun_types: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                    tunnel_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                    virtual_network_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredRoutesResult]:
     """
     Accepted Permissions

@@ -116,26 +116,26 @@ export class DnsZoneTransfersTsig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DnsZoneTransfersTsig resources.
  */
 export interface DnsZoneTransfersTsigState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * TSIG algorithm.
      */
-    algo?: pulumi.Input<string>;
+    algo?: pulumi.Input<string | undefined>;
     /**
      * TSIG key name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * TSIG secret.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DnsZoneTransfersTsig resource.
  */
 export interface DnsZoneTransfersTsigArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * TSIG algorithm.
      */

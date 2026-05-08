@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustList = new Cloudflare.Index.ZeroTrustList("example_zero_trust_list", new()
+    ///     var exampleZeroTrustList = new Cloudflare.ZeroTrustList("example_zero_trust_list", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "Admin Serial Numbers",

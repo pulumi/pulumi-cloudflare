@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2BucketCors = new Cloudflare.Index.R2BucketCors("example_r2_bucket_cors", new()
+    ///     var exampleR2BucketCors = new Cloudflare.R2BucketCors("example_r2_bucket_cors", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",

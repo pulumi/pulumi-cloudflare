@@ -86,6 +86,6 @@ export function getSchemaValidationOperationSettingsListOutput(args?: GetSchemaV
  * A collection of arguments for invoking getSchemaValidationOperationSettingsList.
  */
 export interface GetSchemaValidationOperationSettingsListOutputArgs {
-    maxItems?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    maxItems?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

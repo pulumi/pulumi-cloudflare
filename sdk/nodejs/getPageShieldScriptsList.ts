@@ -212,37 +212,37 @@ export interface GetPageShieldScriptsListOutputArgs {
      * The direction used to sort returned scripts.
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * When true, excludes scripts seen in a `/cdn-cgi` path from the returned scripts. The default value is true.
      */
-    excludeCdnCgi?: pulumi.Input<boolean>;
+    excludeCdnCgi?: pulumi.Input<boolean | undefined>;
     /**
      * When true, excludes duplicate scripts. We consider a script duplicate of another if their javascript
      * content matches and they share the same url host and zone hostname. In such case, we return the most
      * recent script for the URL host and zone hostname combination.
      */
-    excludeDuplicates?: pulumi.Input<boolean>;
+    excludeDuplicates?: pulumi.Input<boolean | undefined>;
     /**
      * Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas.
      */
-    excludeUrls?: pulumi.Input<string>;
+    excludeUrls?: pulumi.Input<string | undefined>;
     /**
      * Export the list of scripts as a file, limited to 50000 entries.
      * Available values: "csv".
      */
-    export?: pulumi.Input<string>;
+    export?: pulumi.Input<string | undefined>;
     /**
      * Includes scripts that match one or more URL-encoded hostnames separated by commas.
      */
-    hosts?: pulumi.Input<string>;
-    maxItems?: pulumi.Input<number>;
-    orderBy?: pulumi.Input<string>;
-    page?: pulumi.Input<string>;
-    pageUrl?: pulumi.Input<string>;
-    perPage?: pulumi.Input<number>;
-    prioritizeMalicious?: pulumi.Input<boolean>;
-    status?: pulumi.Input<string>;
-    urls?: pulumi.Input<string>;
-    zoneId?: pulumi.Input<string>;
+    hosts?: pulumi.Input<string | undefined>;
+    maxItems?: pulumi.Input<number | undefined>;
+    orderBy?: pulumi.Input<string | undefined>;
+    page?: pulumi.Input<string | undefined>;
+    pageUrl?: pulumi.Input<string | undefined>;
+    perPage?: pulumi.Input<number | undefined>;
+    prioritizeMalicious?: pulumi.Input<boolean | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    urls?: pulumi.Input<string | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

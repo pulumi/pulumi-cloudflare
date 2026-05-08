@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleRegionalHostname = Cloudflare.Index.GetRegionalHostname.Invoke(new()
+        ///     var exampleRegionalHostname = Cloudflare.GetRegionalHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Hostname = "foo.example.com",
@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleRegionalHostname = Cloudflare.Index.GetRegionalHostname.Invoke(new()
+        ///     var exampleRegionalHostname = Cloudflare.GetRegionalHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Hostname = "foo.example.com",
@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleRegionalHostname = Cloudflare.Index.GetRegionalHostname.Invoke(new()
+        ///     var exampleRegionalHostname = Cloudflare.GetRegionalHostname.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Hostname = "foo.example.com",

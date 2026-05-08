@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUserGroup = new Cloudflare.Index.UserGroup("example_user_group", new()
+    ///     var exampleUserGroup = new Cloudflare.UserGroup("example_user_group", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "My New User Group",

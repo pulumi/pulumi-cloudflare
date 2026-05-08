@@ -130,36 +130,36 @@ export class ZeroTrustGatewayPacfile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustGatewayPacfile resources.
  */
 export interface ZeroTrustGatewayPacfileState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Actual contents of the PAC file
      */
-    contents?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
+    contents?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Detailed description of the PAC file.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the PAC file.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URL-friendly version of the PAC file name. If not provided, it will be auto-generated
      */
-    slug?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Unique URL to download the PAC file.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustGatewayPacfile resource.
  */
 export interface ZeroTrustGatewayPacfileArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Actual contents of the PAC file
      */
@@ -167,7 +167,7 @@ export interface ZeroTrustGatewayPacfileArgs {
     /**
      * Detailed description of the PAC file.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the PAC file.
      */
@@ -175,5 +175,5 @@ export interface ZeroTrustGatewayPacfileArgs {
     /**
      * URL-friendly version of the PAC file name. If not provided, it will be auto-generated
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

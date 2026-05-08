@@ -178,72 +178,72 @@ export interface StreamLiveInputState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The date and time the live input was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * Sets the creator ID asssociated with this live input.
      */
-    defaultCreator?: pulumi.Input<string>;
+    defaultCreator?: pulumi.Input<string | undefined>;
     /**
      * Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
      */
-    deleteRecordingAfterDays?: pulumi.Input<number>;
+    deleteRecordingAfterDays?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the live input is enabled and can accept streams.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A unique identifier for a live input.
      */
-    liveInputIdentifier?: pulumi.Input<string>;
+    liveInputIdentifier?: pulumi.Input<string | undefined>;
     /**
      * A user modifiable key-value store used to reference other systems of record for managing live inputs.
      */
-    meta?: pulumi.Input<string>;
+    meta?: pulumi.Input<string | undefined>;
     /**
      * The date and time the live input was last modified.
      */
-    modified?: pulumi.Input<string>;
+    modified?: pulumi.Input<string | undefined>;
     /**
      * Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
      */
-    recording?: pulumi.Input<inputs.StreamLiveInputRecording>;
+    recording?: pulumi.Input<inputs.StreamLiveInputRecording | undefined>;
     /**
      * Details for streaming to an live input using RTMPS.
      */
-    rtmps?: pulumi.Input<inputs.StreamLiveInputRtmps>;
+    rtmps?: pulumi.Input<inputs.StreamLiveInputRtmps | undefined>;
     /**
      * Details for playback from an live input using RTMPS.
      */
-    rtmpsPlayback?: pulumi.Input<inputs.StreamLiveInputRtmpsPlayback>;
+    rtmpsPlayback?: pulumi.Input<inputs.StreamLiveInputRtmpsPlayback | undefined>;
     /**
      * Details for streaming to a live input using SRT.
      */
-    srt?: pulumi.Input<inputs.StreamLiveInputSrt>;
+    srt?: pulumi.Input<inputs.StreamLiveInputSrt | undefined>;
     /**
      * Details for playback from an live input using SRT.
      */
-    srtPlayback?: pulumi.Input<inputs.StreamLiveInputSrtPlayback>;
+    srtPlayback?: pulumi.Input<inputs.StreamLiveInputSrtPlayback | undefined>;
     /**
      * The connection status of a live input.
      * Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A unique identifier for a live input.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Details for streaming to a live input using WebRTC.
      */
-    webRtc?: pulumi.Input<inputs.StreamLiveInputWebRtc>;
+    webRtc?: pulumi.Input<inputs.StreamLiveInputWebRtc | undefined>;
     /**
      * Details for playback from a live input using WebRTC.
      */
-    webRtcPlayback?: pulumi.Input<inputs.StreamLiveInputWebRtcPlayback>;
+    webRtcPlayback?: pulumi.Input<inputs.StreamLiveInputWebRtcPlayback | undefined>;
 }
 
 /**
@@ -253,29 +253,29 @@ export interface StreamLiveInputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Sets the creator ID asssociated with this live input.
      */
-    defaultCreator?: pulumi.Input<string>;
+    defaultCreator?: pulumi.Input<string | undefined>;
     /**
      * Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
      */
-    deleteRecordingAfterDays?: pulumi.Input<number>;
+    deleteRecordingAfterDays?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the live input is enabled and can accept streams.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A unique identifier for a live input.
      */
-    liveInputIdentifier?: pulumi.Input<string>;
+    liveInputIdentifier?: pulumi.Input<string | undefined>;
     /**
      * A user modifiable key-value store used to reference other systems of record for managing live inputs.
      */
-    meta?: pulumi.Input<string>;
+    meta?: pulumi.Input<string | undefined>;
     /**
      * Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
      */
-    recording?: pulumi.Input<inputs.StreamLiveInputRecording>;
+    recording?: pulumi.Input<inputs.StreamLiveInputRecording | undefined>;
 }

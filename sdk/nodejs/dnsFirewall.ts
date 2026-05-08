@@ -201,27 +201,27 @@ export interface DnsFirewallState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Attack mitigation settings
      */
-    attackMitigation?: pulumi.Input<inputs.DnsFirewallAttackMitigation>;
+    attackMitigation?: pulumi.Input<inputs.DnsFirewallAttackMitigation | undefined>;
     /**
      * Whether to refuse to answer queries for the ANY type
      */
-    deprecateAnyRequests?: pulumi.Input<boolean>;
-    dnsFirewallIps?: pulumi.Input<pulumi.Input<string>[]>;
+    deprecateAnyRequests?: pulumi.Input<boolean | undefined>;
+    dnsFirewallIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
      */
-    ecsFallback?: pulumi.Input<boolean>;
+    ecsFallback?: pulumi.Input<boolean | undefined>;
     /**
      * By default, Cloudflare attempts to cache responses for as long as
      * indicated by the TTL received from upstream nameservers. This setting
      * sets an upper bound on this duration. For caching purposes, higher TTLs
      * will be decreased to the maximum value defined by this setting.
      */
-    maximumCacheTtl?: pulumi.Input<number>;
+    maximumCacheTtl?: pulumi.Input<number | undefined>;
     /**
      * By default, Cloudflare attempts to cache responses for as long as
      * indicated by the TTL received from upstream nameservers. This setting
@@ -237,15 +237,15 @@ export interface DnsFirewallState {
      * responses may be removed earlier for capacity or other operational
      * reasons.
      */
-    minimumCacheTtl?: pulumi.Input<number>;
+    minimumCacheTtl?: pulumi.Input<number | undefined>;
     /**
      * Last modification of DNS Firewall cluster
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * DNS Firewall cluster name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This setting controls how long DNS Firewall should cache negative
      * responses (e.g., NXDOMAIN) from the upstream servers.
@@ -254,16 +254,16 @@ export interface DnsFirewallState {
      * Cloudflare returns to clients. Cloudflare will always forward the TTL
      * value received from upstream nameservers.
      */
-    negativeCacheTtl?: pulumi.Input<number>;
+    negativeCacheTtl?: pulumi.Input<number | undefined>;
     /**
      * Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
      */
-    ratelimit?: pulumi.Input<number>;
+    ratelimit?: pulumi.Input<number | undefined>;
     /**
      * Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
      */
-    retries?: pulumi.Input<number>;
-    upstreamIps?: pulumi.Input<pulumi.Input<string>[]>;
+    retries?: pulumi.Input<number | undefined>;
+    upstreamIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -273,26 +273,26 @@ export interface DnsFirewallArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Attack mitigation settings
      */
-    attackMitigation?: pulumi.Input<inputs.DnsFirewallAttackMitigation>;
+    attackMitigation?: pulumi.Input<inputs.DnsFirewallAttackMitigation | undefined>;
     /**
      * Whether to refuse to answer queries for the ANY type
      */
-    deprecateAnyRequests?: pulumi.Input<boolean>;
+    deprecateAnyRequests?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
      */
-    ecsFallback?: pulumi.Input<boolean>;
+    ecsFallback?: pulumi.Input<boolean | undefined>;
     /**
      * By default, Cloudflare attempts to cache responses for as long as
      * indicated by the TTL received from upstream nameservers. This setting
      * sets an upper bound on this duration. For caching purposes, higher TTLs
      * will be decreased to the maximum value defined by this setting.
      */
-    maximumCacheTtl?: pulumi.Input<number>;
+    maximumCacheTtl?: pulumi.Input<number | undefined>;
     /**
      * By default, Cloudflare attempts to cache responses for as long as
      * indicated by the TTL received from upstream nameservers. This setting
@@ -308,7 +308,7 @@ export interface DnsFirewallArgs {
      * responses may be removed earlier for capacity or other operational
      * reasons.
      */
-    minimumCacheTtl?: pulumi.Input<number>;
+    minimumCacheTtl?: pulumi.Input<number | undefined>;
     /**
      * DNS Firewall cluster name
      */
@@ -321,14 +321,14 @@ export interface DnsFirewallArgs {
      * Cloudflare returns to clients. Cloudflare will always forward the TTL
      * value received from upstream nameservers.
      */
-    negativeCacheTtl?: pulumi.Input<number>;
+    negativeCacheTtl?: pulumi.Input<number | undefined>;
     /**
      * Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
      */
-    ratelimit?: pulumi.Input<number>;
+    ratelimit?: pulumi.Input<number | undefined>;
     /**
      * Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
      */
-    retries?: pulumi.Input<number>;
+    retries?: pulumi.Input<number | undefined>;
     upstreamIps: pulumi.Input<pulumi.Input<string>[]>;
 }

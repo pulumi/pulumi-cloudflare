@@ -130,8 +130,8 @@ def get_zero_trust_device_custom_profile_local_domain_fallback(account_id: Optio
         id=pulumi.get(__ret__, 'id'),
         policy_id=pulumi.get(__ret__, 'policy_id'),
         suffix=pulumi.get(__ret__, 'suffix'))
-def get_zero_trust_device_custom_profile_local_domain_fallback_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                                      policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_device_custom_profile_local_domain_fallback_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                                      policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult]:
     """
     ## Example Usage

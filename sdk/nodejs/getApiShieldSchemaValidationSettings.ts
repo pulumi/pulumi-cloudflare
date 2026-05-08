@@ -93,5 +93,5 @@ export interface GetApiShieldSchemaValidationSettingsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

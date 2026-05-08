@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustRiskScoringIntegration = new Cloudflare.Index.ZeroTrustRiskScoringIntegration("example_zero_trust_risk_scoring_integration", new()
+    ///     var exampleZeroTrustRiskScoringIntegration = new Cloudflare.ZeroTrustRiskScoringIntegration("example_zero_trust_risk_scoring_integration", new()
     ///     {
     ///         AccountId = "account_id",
     ///         IntegrationType = "Okta",

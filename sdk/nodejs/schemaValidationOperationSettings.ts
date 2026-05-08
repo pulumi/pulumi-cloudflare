@@ -122,15 +122,15 @@ export interface SchemaValidationOperationSettingsState {
      *   - `null` - clears any mitigation action
      * Available values: "log", "block", "none".
      */
-    mitigationAction?: pulumi.Input<string>;
+    mitigationAction?: pulumi.Input<string | undefined>;
     /**
      * UUID.
      */
-    operationId?: pulumi.Input<string>;
+    operationId?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -154,5 +154,5 @@ export interface SchemaValidationOperationSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

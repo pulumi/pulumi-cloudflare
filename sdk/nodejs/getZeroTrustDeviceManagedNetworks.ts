@@ -90,7 +90,7 @@ export function getZeroTrustDeviceManagedNetworksOutput(args: GetZeroTrustDevice
  * A collection of arguments for invoking getZeroTrustDeviceManagedNetworks.
  */
 export interface GetZeroTrustDeviceManagedNetworksOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * API UUID.
      */

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustGatewayPacfile = new Cloudflare.Index.ZeroTrustGatewayPacfile("example_zero_trust_gateway_pacfile", new()
+    ///     var exampleZeroTrustGatewayPacfile = new Cloudflare.ZeroTrustGatewayPacfile("example_zero_trust_gateway_pacfile", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Contents = "function FindProxyForURL(url, host) { return \"DIRECT\"; }",

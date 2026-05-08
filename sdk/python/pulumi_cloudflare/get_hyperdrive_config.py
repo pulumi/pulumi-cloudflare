@@ -192,8 +192,8 @@ def get_hyperdrive_config(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         origin=pulumi.get(__ret__, 'origin'),
         origin_connection_limit=pulumi.get(__ret__, 'origin_connection_limit'))
-def get_hyperdrive_config_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 hyperdrive_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_hyperdrive_config_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 hyperdrive_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHyperdriveConfigResult]:
     """
     Accepted Permissions

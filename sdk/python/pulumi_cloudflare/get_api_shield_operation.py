@@ -190,10 +190,10 @@ def get_api_shield_operation(feature: Optional[Sequence[_builtins.str]] = None,
         method=pulumi.get(__ret__, 'method'),
         operation_id=pulumi.get(__ret__, 'operation_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_api_shield_operation_output(feature: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                    filter: Optional[pulumi.Input[Optional[Union['GetApiShieldOperationFilterArgs', 'GetApiShieldOperationFilterArgsDict']]]] = None,
-                                    operation_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_api_shield_operation_output(feature: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                    filter: pulumi.Input[Optional[Optional[Union['GetApiShieldOperationFilterArgs', 'GetApiShieldOperationFilterArgsDict']]]] = None,
+                                    operation_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiShieldOperationResult]:
     """
     Accepted Permissions

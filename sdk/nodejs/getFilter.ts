@@ -115,13 +115,13 @@ export function getFilterOutput(args?: GetFilterOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getFilter.
  */
 export interface GetFilterOutputArgs {
-    filter?: pulumi.Input<inputs.GetFilterFilterArgs>;
+    filter?: pulumi.Input<inputs.GetFilterFilterArgs | undefined>;
     /**
      * The unique identifier of the filter.
      */
-    filterId?: pulumi.Input<string>;
+    filterId?: pulumi.Input<string | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -320,112 +320,112 @@ export interface ZeroTrustAccessApplicationState {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      */
-    allowAuthenticateViaWarp?: pulumi.Input<boolean>;
+    allowAuthenticateViaWarp?: pulumi.Input<boolean | undefined>;
     /**
      * Enables loading application content in an iFrame.
      */
-    allowIframe?: pulumi.Input<boolean>;
+    allowIframe?: pulumi.Input<boolean | undefined>;
     /**
      * The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      */
-    allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedIdps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The image URL of the logo shown in the App Launcher header.
      */
-    appLauncherLogoUrl?: pulumi.Input<string>;
+    appLauncherLogoUrl?: pulumi.Input<string | undefined>;
     /**
      * Displays the application in the App Launcher.
      */
-    appLauncherVisible?: pulumi.Input<boolean>;
+    appLauncherVisible?: pulumi.Input<boolean | undefined>;
     /**
      * Audience tag.
      */
-    aud?: pulumi.Input<string>;
+    aud?: pulumi.Input<string | undefined>;
     /**
      * When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
      */
-    autoRedirectToIdentity?: pulumi.Input<boolean>;
+    autoRedirectToIdentity?: pulumi.Input<boolean | undefined>;
     /**
      * The background color of the App Launcher page.
      */
-    bgColor?: pulumi.Input<string>;
-    corsHeaders?: pulumi.Input<inputs.ZeroTrustAccessApplicationCorsHeaders>;
+    bgColor?: pulumi.Input<string | undefined>;
+    corsHeaders?: pulumi.Input<inputs.ZeroTrustAccessApplicationCorsHeaders | undefined>;
     /**
      * The custom error message shown to a user when they are denied access to the application.
      */
-    customDenyMessage?: pulumi.Input<string>;
+    customDenyMessage?: pulumi.Input<string | undefined>;
     /**
      * The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
      */
-    customDenyUrl?: pulumi.Input<string>;
+    customDenyUrl?: pulumi.Input<string | undefined>;
     /**
      * The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
      */
-    customNonIdentityDenyUrl?: pulumi.Input<string>;
+    customNonIdentityDenyUrl?: pulumi.Input<string | undefined>;
     /**
      * The custom pages that will be displayed when applicable for this application
      */
-    customPages?: pulumi.Input<pulumi.Input<string>[]>;
+    customPages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
      */
-    destinations?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationDestination>[]>;
+    destinations?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationDestination>[] | undefined>;
     /**
      * The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
      */
-    enableBindingCookie?: pulumi.Input<boolean>;
+    enableBindingCookie?: pulumi.Input<boolean | undefined>;
     /**
      * The links in the App Launcher footer.
      */
-    footerLinks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationFooterLink>[]>;
+    footerLinks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationFooterLink>[] | undefined>;
     /**
      * The background color of the App Launcher header.
      */
-    headerBgColor?: pulumi.Input<string>;
+    headerBgColor?: pulumi.Input<string | undefined>;
     /**
      * Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
      */
-    httpOnlyCookieAttribute?: pulumi.Input<boolean>;
+    httpOnlyCookieAttribute?: pulumi.Input<boolean | undefined>;
     /**
      * The design of the App Launcher landing page shown to users when they log in.
      */
-    landingPageDesign?: pulumi.Input<inputs.ZeroTrustAccessApplicationLandingPageDesign>;
+    landingPageDesign?: pulumi.Input<inputs.ZeroTrustAccessApplicationLandingPageDesign | undefined>;
     /**
      * The image URL for the logo shown in the App Launcher dashboard.
      */
-    logoUrl?: pulumi.Input<string>;
+    logoUrl?: pulumi.Input<string | undefined>;
     /**
      * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
      */
-    mfaConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationMfaConfig>;
+    mfaConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationMfaConfig | undefined>;
     /**
      * The name of the application.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
      */
-    oauthConfiguration?: pulumi.Input<inputs.ZeroTrustAccessApplicationOauthConfiguration>;
+    oauthConfiguration?: pulumi.Input<inputs.ZeroTrustAccessApplicationOauthConfiguration | undefined>;
     /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      */
-    optionsPreflightBypass?: pulumi.Input<boolean>;
+    optionsPreflightBypass?: pulumi.Input<boolean | undefined>;
     /**
      * Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
      */
-    pathCookieAttribute?: pulumi.Input<boolean>;
+    pathCookieAttribute?: pulumi.Input<boolean | undefined>;
     /**
      * The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationPolicy>[] | undefined>;
     /**
      * Allows matching Access Service Tokens passed HTTP in a single header with this name.
      * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
@@ -435,52 +435,52 @@ export interface ZeroTrustAccessApplicationState {
      * "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
      * }
      */
-    readServiceTokensFromHeader?: pulumi.Input<string>;
-    saasApp?: pulumi.Input<inputs.ZeroTrustAccessApplicationSaasApp>;
+    readServiceTokensFromHeader?: pulumi.Input<string | undefined>;
+    saasApp?: pulumi.Input<inputs.ZeroTrustAccessApplicationSaasApp | undefined>;
     /**
      * Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
      */
-    sameSiteCookieAttribute?: pulumi.Input<string>;
+    sameSiteCookieAttribute?: pulumi.Input<string | undefined>;
     /**
      * Configuration for provisioning to this application via SCIM. This is currently in closed beta.
      */
-    scimConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationScimConfig>;
+    scimConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationScimConfig | undefined>;
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      *
      * @deprecated This attribute is deprecated.
      */
-    selfHostedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    selfHostedDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Returns a 401 status code when the request is blocked by a Service Auth policy.
      */
-    serviceAuth401Redirect?: pulumi.Input<boolean>;
+    serviceAuth401Redirect?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      */
-    sessionDuration?: pulumi.Input<string>;
+    sessionDuration?: pulumi.Input<string | undefined>;
     /**
      * Determines when to skip the App Launcher landing page.
      */
-    skipAppLauncherLoginPage?: pulumi.Input<boolean>;
+    skipAppLauncherLoginPage?: pulumi.Input<boolean | undefined>;
     /**
      * Enables automatic authentication through cloudflared.
      */
-    skipInterstitial?: pulumi.Input<boolean>;
+    skipInterstitial?: pulumi.Input<boolean | undefined>;
     /**
      * The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    targetCriterias?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteria>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    targetCriterias?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteria>[] | undefined>;
     /**
      * The application type.
      * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -490,108 +490,108 @@ export interface ZeroTrustAccessApplicationArgs {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      */
-    allowAuthenticateViaWarp?: pulumi.Input<boolean>;
+    allowAuthenticateViaWarp?: pulumi.Input<boolean | undefined>;
     /**
      * Enables loading application content in an iFrame.
      */
-    allowIframe?: pulumi.Input<boolean>;
+    allowIframe?: pulumi.Input<boolean | undefined>;
     /**
      * The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      */
-    allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedIdps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The image URL of the logo shown in the App Launcher header.
      */
-    appLauncherLogoUrl?: pulumi.Input<string>;
+    appLauncherLogoUrl?: pulumi.Input<string | undefined>;
     /**
      * Displays the application in the App Launcher.
      */
-    appLauncherVisible?: pulumi.Input<boolean>;
+    appLauncherVisible?: pulumi.Input<boolean | undefined>;
     /**
      * When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
      */
-    autoRedirectToIdentity?: pulumi.Input<boolean>;
+    autoRedirectToIdentity?: pulumi.Input<boolean | undefined>;
     /**
      * The background color of the App Launcher page.
      */
-    bgColor?: pulumi.Input<string>;
-    corsHeaders?: pulumi.Input<inputs.ZeroTrustAccessApplicationCorsHeaders>;
+    bgColor?: pulumi.Input<string | undefined>;
+    corsHeaders?: pulumi.Input<inputs.ZeroTrustAccessApplicationCorsHeaders | undefined>;
     /**
      * The custom error message shown to a user when they are denied access to the application.
      */
-    customDenyMessage?: pulumi.Input<string>;
+    customDenyMessage?: pulumi.Input<string | undefined>;
     /**
      * The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
      */
-    customDenyUrl?: pulumi.Input<string>;
+    customDenyUrl?: pulumi.Input<string | undefined>;
     /**
      * The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
      */
-    customNonIdentityDenyUrl?: pulumi.Input<string>;
+    customNonIdentityDenyUrl?: pulumi.Input<string | undefined>;
     /**
      * The custom pages that will be displayed when applicable for this application
      */
-    customPages?: pulumi.Input<pulumi.Input<string>[]>;
+    customPages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
      */
-    destinations?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationDestination>[]>;
+    destinations?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationDestination>[] | undefined>;
     /**
      * The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
      */
-    enableBindingCookie?: pulumi.Input<boolean>;
+    enableBindingCookie?: pulumi.Input<boolean | undefined>;
     /**
      * The links in the App Launcher footer.
      */
-    footerLinks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationFooterLink>[]>;
+    footerLinks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationFooterLink>[] | undefined>;
     /**
      * The background color of the App Launcher header.
      */
-    headerBgColor?: pulumi.Input<string>;
+    headerBgColor?: pulumi.Input<string | undefined>;
     /**
      * Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
      */
-    httpOnlyCookieAttribute?: pulumi.Input<boolean>;
+    httpOnlyCookieAttribute?: pulumi.Input<boolean | undefined>;
     /**
      * The design of the App Launcher landing page shown to users when they log in.
      */
-    landingPageDesign?: pulumi.Input<inputs.ZeroTrustAccessApplicationLandingPageDesign>;
+    landingPageDesign?: pulumi.Input<inputs.ZeroTrustAccessApplicationLandingPageDesign | undefined>;
     /**
      * The image URL for the logo shown in the App Launcher dashboard.
      */
-    logoUrl?: pulumi.Input<string>;
+    logoUrl?: pulumi.Input<string | undefined>;
     /**
      * Configures multi-factor authentication (MFA) settings for the application. Only valid for self*hosted, ssh, vnc, and rdp application types.
      */
-    mfaConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationMfaConfig>;
+    mfaConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationMfaConfig | undefined>;
     /**
      * The name of the application.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Optional configuration for managing an OAuth authorization flow controlled by Access. When set, Access will act as the OAuth authorization server for this application. This feature is currently in beta.
      */
-    oauthConfiguration?: pulumi.Input<inputs.ZeroTrustAccessApplicationOauthConfiguration>;
+    oauthConfiguration?: pulumi.Input<inputs.ZeroTrustAccessApplicationOauthConfiguration | undefined>;
     /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      */
-    optionsPreflightBypass?: pulumi.Input<boolean>;
+    optionsPreflightBypass?: pulumi.Input<boolean | undefined>;
     /**
      * Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
      */
-    pathCookieAttribute?: pulumi.Input<boolean>;
+    pathCookieAttribute?: pulumi.Input<boolean | undefined>;
     /**
      * The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationPolicy>[] | undefined>;
     /**
      * Allows matching Access Service Tokens passed HTTP in a single header with this name.
      * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
@@ -601,50 +601,50 @@ export interface ZeroTrustAccessApplicationArgs {
      * "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
      * }
      */
-    readServiceTokensFromHeader?: pulumi.Input<string>;
-    saasApp?: pulumi.Input<inputs.ZeroTrustAccessApplicationSaasApp>;
+    readServiceTokensFromHeader?: pulumi.Input<string | undefined>;
+    saasApp?: pulumi.Input<inputs.ZeroTrustAccessApplicationSaasApp | undefined>;
     /**
      * Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
      */
-    sameSiteCookieAttribute?: pulumi.Input<string>;
+    sameSiteCookieAttribute?: pulumi.Input<string | undefined>;
     /**
      * Configuration for provisioning to this application via SCIM. This is currently in closed beta.
      */
-    scimConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationScimConfig>;
+    scimConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationScimConfig | undefined>;
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      *
      * @deprecated This attribute is deprecated.
      */
-    selfHostedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    selfHostedDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Returns a 401 status code when the request is blocked by a Service Auth policy.
      */
-    serviceAuth401Redirect?: pulumi.Input<boolean>;
+    serviceAuth401Redirect?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      */
-    sessionDuration?: pulumi.Input<string>;
+    sessionDuration?: pulumi.Input<string | undefined>;
     /**
      * Determines when to skip the App Launcher landing page.
      */
-    skipAppLauncherLoginPage?: pulumi.Input<boolean>;
+    skipAppLauncherLoginPage?: pulumi.Input<boolean | undefined>;
     /**
      * Enables automatic authentication through cloudflared.
      */
-    skipInterstitial?: pulumi.Input<boolean>;
+    skipInterstitial?: pulumi.Input<boolean | undefined>;
     /**
      * The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    targetCriterias?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteria>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    targetCriterias?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteria>[] | undefined>;
     /**
      * The application type.
      * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash*sso", "infrastructure", "rdp", "mcp", "mcp*portal", "proxyEndpoint".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -135,27 +135,27 @@ export interface R2BucketSippyState {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * R2 bucket to copy objects to.
      */
-    destination?: pulumi.Input<inputs.R2BucketSippyDestination>;
+    destination?: pulumi.Input<inputs.R2BucketSippyDestination | undefined>;
     /**
      * State of Sippy for this bucket.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
+    jurisdiction?: pulumi.Input<string | undefined>;
     /**
      * AWS S3 bucket to copy objects from.
      */
-    source?: pulumi.Input<inputs.R2BucketSippySource>;
+    source?: pulumi.Input<inputs.R2BucketSippySource | undefined>;
 }
 
 /**
@@ -165,7 +165,7 @@ export interface R2BucketSippyArgs {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
@@ -173,13 +173,13 @@ export interface R2BucketSippyArgs {
     /**
      * R2 bucket to copy objects to.
      */
-    destination?: pulumi.Input<inputs.R2BucketSippyDestination>;
+    destination?: pulumi.Input<inputs.R2BucketSippyDestination | undefined>;
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
+    jurisdiction?: pulumi.Input<string | undefined>;
     /**
      * AWS S3 bucket to copy objects from.
      */
-    source?: pulumi.Input<inputs.R2BucketSippySource>;
+    source?: pulumi.Input<inputs.R2BucketSippySource | undefined>;
 }

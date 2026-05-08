@@ -176,24 +176,24 @@ export interface PipelineSinkState {
     /**
      * Specifies the public ID of the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Defines the configuration of the R2 Sink.
      */
-    config?: pulumi.Input<inputs.PipelineSinkConfig>;
-    createdAt?: pulumi.Input<string>;
-    format?: pulumi.Input<inputs.PipelineSinkFormat>;
-    modifiedAt?: pulumi.Input<string>;
+    config?: pulumi.Input<inputs.PipelineSinkConfig | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    format?: pulumi.Input<inputs.PipelineSinkFormat | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
     /**
      * Defines the name of the Sink.
      */
-    name?: pulumi.Input<string>;
-    schema?: pulumi.Input<inputs.PipelineSinkSchema>;
+    name?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<inputs.PipelineSinkSchema | undefined>;
     /**
      * Specifies the type of sink.
      * Available values: "r2", "r2*data*catalog".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -203,17 +203,17 @@ export interface PipelineSinkArgs {
     /**
      * Specifies the public ID of the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Defines the configuration of the R2 Sink.
      */
-    config?: pulumi.Input<inputs.PipelineSinkConfig>;
-    format?: pulumi.Input<inputs.PipelineSinkFormat>;
+    config?: pulumi.Input<inputs.PipelineSinkConfig | undefined>;
+    format?: pulumi.Input<inputs.PipelineSinkFormat | undefined>;
     /**
      * Defines the name of the Sink.
      */
     name: pulumi.Input<string>;
-    schema?: pulumi.Input<inputs.PipelineSinkSchema>;
+    schema?: pulumi.Input<inputs.PipelineSinkSchema | undefined>;
     /**
      * Specifies the type of sink.
      * Available values: "r2", "r2*data*catalog".

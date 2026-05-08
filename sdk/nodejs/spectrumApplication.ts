@@ -204,64 +204,64 @@ export interface SpectrumApplicationState {
      * Enables Argo Smart Routing for this application.
      * Notes: Only available for TCP applications with trafficType set to "direct".
      */
-    argoSmartRouting?: pulumi.Input<boolean>;
+    argoSmartRouting?: pulumi.Input<boolean | undefined>;
     /**
      * When the Application was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * The name and type of DNS record for the Spectrum application.
      */
-    dns?: pulumi.Input<inputs.SpectrumApplicationDns>;
+    dns?: pulumi.Input<inputs.SpectrumApplicationDns | undefined>;
     /**
      * The anycast edge IP configuration for the hostname of this application.
      */
-    edgeIps?: pulumi.Input<inputs.SpectrumApplicationEdgeIps>;
+    edgeIps?: pulumi.Input<inputs.SpectrumApplicationEdgeIps | undefined>;
     /**
      * Enables IP Access Rules for this application.
      * Notes: Only available for TCP applications.
      */
-    ipFirewall?: pulumi.Input<boolean>;
+    ipFirewall?: pulumi.Input<boolean | undefined>;
     /**
      * When the Application was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
      */
-    originDirects?: pulumi.Input<pulumi.Input<string>[]>;
+    originDirects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name and type of DNS record for the Spectrum application.
      */
-    originDns?: pulumi.Input<inputs.SpectrumApplicationOriginDns>;
+    originDns?: pulumi.Input<inputs.SpectrumApplicationOriginDns | undefined>;
     /**
      * The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
      * Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
      */
-    originPort?: any;
+    originPort?: any | undefined;
     /**
      * The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
      * Available values: "off", "v1", "v2", "simple".
      */
-    proxyProtocol?: pulumi.Input<string>;
+    proxyProtocol?: pulumi.Input<string | undefined>;
     /**
      * The type of TLS termination associated with the application.
      * Available values: "off", "flexible", "full", "strict".
      */
-    tls?: pulumi.Input<string>;
+    tls?: pulumi.Input<string | undefined>;
     /**
      * Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
      * Available values: "direct", "http", "https".
      */
-    trafficType?: pulumi.Input<string>;
+    trafficType?: pulumi.Input<string | undefined>;
     /**
      * Zone identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -272,7 +272,7 @@ export interface SpectrumApplicationArgs {
      * Enables Argo Smart Routing for this application.
      * Notes: Only available for TCP applications with trafficType set to "direct".
      */
-    argoSmartRouting?: pulumi.Input<boolean>;
+    argoSmartRouting?: pulumi.Input<boolean | undefined>;
     /**
      * The name and type of DNS record for the Spectrum application.
      */
@@ -280,25 +280,25 @@ export interface SpectrumApplicationArgs {
     /**
      * The anycast edge IP configuration for the hostname of this application.
      */
-    edgeIps?: pulumi.Input<inputs.SpectrumApplicationEdgeIps>;
+    edgeIps?: pulumi.Input<inputs.SpectrumApplicationEdgeIps | undefined>;
     /**
      * Enables IP Access Rules for this application.
      * Notes: Only available for TCP applications.
      */
-    ipFirewall?: pulumi.Input<boolean>;
+    ipFirewall?: pulumi.Input<boolean | undefined>;
     /**
      * List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
      */
-    originDirects?: pulumi.Input<pulumi.Input<string>[]>;
+    originDirects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name and type of DNS record for the Spectrum application.
      */
-    originDns?: pulumi.Input<inputs.SpectrumApplicationOriginDns>;
+    originDns?: pulumi.Input<inputs.SpectrumApplicationOriginDns | undefined>;
     /**
      * The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
      * Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
      */
-    originPort?: any;
+    originPort?: any | undefined;
     /**
      * The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
      */
@@ -307,19 +307,19 @@ export interface SpectrumApplicationArgs {
      * Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
      * Available values: "off", "v1", "v2", "simple".
      */
-    proxyProtocol?: pulumi.Input<string>;
+    proxyProtocol?: pulumi.Input<string | undefined>;
     /**
      * The type of TLS termination associated with the application.
      * Available values: "off", "flexible", "full", "strict".
      */
-    tls?: pulumi.Input<string>;
+    tls?: pulumi.Input<string | undefined>;
     /**
      * Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
      * Available values: "direct", "http", "https".
      */
-    trafficType?: pulumi.Input<string>;
+    trafficType?: pulumi.Input<string | undefined>;
     /**
      * Zone identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

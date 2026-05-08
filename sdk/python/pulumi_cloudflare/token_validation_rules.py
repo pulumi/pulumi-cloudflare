@@ -27,8 +27,8 @@ class TokenValidationRulesArgs:
                  expression: pulumi.Input[_builtins.str],
                  selector: pulumi.Input['TokenValidationRulesSelectorArgs'],
                  title: pulumi.Input[_builtins.str],
-                 position: Optional[pulumi.Input['TokenValidationRulesPositionArgs']] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 position: pulumi.Input[Optional['TokenValidationRulesPositionArgs']] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TokenValidationRules resource.
 
@@ -132,42 +132,42 @@ class TokenValidationRulesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input['TokenValidationRulesPositionArgs']]:
+    def position(self) -> pulumi.Input[Optional['TokenValidationRulesPositionArgs']]:
         """
         Update rule order among zone rules.
         """
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input['TokenValidationRulesPositionArgs']]):
+    def position(self, value: pulumi.Input[Optional['TokenValidationRulesPositionArgs']]):
         pulumi.set(self, "position", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _TokenValidationRulesState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_updated: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input['TokenValidationRulesPositionArgs']] = None,
-                 selector: Optional[pulumi.Input['TokenValidationRulesSelectorArgs']] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_updated: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional['TokenValidationRulesPositionArgs']] = None,
+                 selector: pulumi.Input[Optional['TokenValidationRulesSelectorArgs']] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TokenValidationRules resources.
 
@@ -206,7 +206,7 @@ class _TokenValidationRulesState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Action to take on requests that match operations included in `selector` and fail `expression`.
         Available values: "log", "block".
@@ -214,78 +214,78 @@ class _TokenValidationRulesState:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description that gives more details than `title`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Toggle rule on or off.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule expression. Requests that fail to match this expression will be subject to `action`.
         """
         return pulumi.get(self, "expression")
 
     @expression.setter
-    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "last_updated")
 
     @last_updated.setter
-    def last_updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_updated", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input['TokenValidationRulesPositionArgs']]:
+    def position(self) -> pulumi.Input[Optional['TokenValidationRulesPositionArgs']]:
         """
         Update rule order among zone rules.
         """
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input['TokenValidationRulesPositionArgs']]):
+    def position(self, value: pulumi.Input[Optional['TokenValidationRulesPositionArgs']]):
         pulumi.set(self, "position", value)
 
     @_builtins.property
     @pulumi.getter
-    def selector(self) -> Optional[pulumi.Input['TokenValidationRulesSelectorArgs']]:
+    def selector(self) -> pulumi.Input[Optional['TokenValidationRulesSelectorArgs']]:
         """
         Select operations covered by this rule.
 
@@ -294,31 +294,31 @@ class _TokenValidationRulesState:
         return pulumi.get(self, "selector")
 
     @selector.setter
-    def selector(self, value: Optional[pulumi.Input['TokenValidationRulesSelectorArgs']]):
+    def selector(self, value: pulumi.Input[Optional['TokenValidationRulesSelectorArgs']]):
         pulumi.set(self, "selector", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable name for the rule.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -328,14 +328,14 @@ class TokenValidationRules(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict']]] = None,
-                 selector: Optional[pulumi.Input[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict']]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict']]] = None,
+                 selector: pulumi.Input[Optional[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict']]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -460,14 +460,14 @@ class TokenValidationRules(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict']]] = None,
-                 selector: Optional[pulumi.Input[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict']]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict']]] = None,
+                 selector: pulumi.Input[Optional[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict']]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -509,16 +509,16 @@ class TokenValidationRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            expression: Optional[pulumi.Input[_builtins.str]] = None,
-            last_updated: Optional[pulumi.Input[_builtins.str]] = None,
-            position: Optional[pulumi.Input[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict']]] = None,
-            selector: Optional[pulumi.Input[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict']]] = None,
-            title: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TokenValidationRules':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            expression: pulumi.Input[Optional[_builtins.str]] = None,
+            last_updated: pulumi.Input[Optional[_builtins.str]] = None,
+            position: pulumi.Input[Optional[Union['TokenValidationRulesPositionArgs', 'TokenValidationRulesPositionArgsDict']]] = None,
+            selector: pulumi.Input[Optional[Union['TokenValidationRulesSelectorArgs', 'TokenValidationRulesSelectorArgsDict']]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TokenValidationRules':
         """
         Get an existing TokenValidationRules resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

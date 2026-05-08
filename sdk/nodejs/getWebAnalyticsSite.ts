@@ -122,10 +122,10 @@ export interface GetWebAnalyticsSiteOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetWebAnalyticsSiteFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetWebAnalyticsSiteFilterArgs | undefined>;
     /**
      * Identifier.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
 }

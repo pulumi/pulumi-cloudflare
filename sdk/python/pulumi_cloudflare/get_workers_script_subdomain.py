@@ -133,8 +133,8 @@ def get_workers_script_subdomain(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         previews_enabled=pulumi.get(__ret__, 'previews_enabled'),
         script_name=pulumi.get(__ret__, 'script_name'))
-def get_workers_script_subdomain_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        script_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workers_script_subdomain_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        script_name: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersScriptSubdomainResult]:
     """
     Accepted Permissions

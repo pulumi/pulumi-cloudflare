@@ -108,12 +108,12 @@ export class WaitingRoomRules extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WaitingRoomRules resources.
  */
 export interface WaitingRoomRulesState {
-    rules?: pulumi.Input<pulumi.Input<inputs.WaitingRoomRulesRule>[]>;
-    waitingRoomId?: pulumi.Input<string>;
+    rules?: pulumi.Input<pulumi.Input<inputs.WaitingRoomRulesRule>[] | undefined>;
+    waitingRoomId?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -125,5 +125,5 @@ export interface WaitingRoomRulesArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

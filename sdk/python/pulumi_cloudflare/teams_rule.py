@@ -23,17 +23,17 @@ class TeamsRuleArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_posture: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiration: Optional[pulumi.Input['TeamsRuleExpirationArgs']] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 precedence: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_settings: Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']] = None,
-                 schedule: Optional[pulumi.Input['TeamsRuleScheduleArgs']] = None,
-                 traffic: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_posture: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiration: pulumi.Input[Optional['TeamsRuleExpirationArgs']] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 precedence: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_settings: pulumi.Input[Optional['TeamsRuleRuleSettingsArgs']] = None,
+                 schedule: pulumi.Input[Optional['TeamsRuleScheduleArgs']] = None,
+                 traffic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TeamsRule resource.
 
@@ -103,158 +103,158 @@ class TeamsRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the rule description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="devicePosture")
-    def device_posture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_posture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
         """
         return pulumi.get(self, "device_posture")
 
     @device_posture.setter
-    def device_posture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_posture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_posture", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specify whether the rule is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input['TeamsRuleExpirationArgs']]:
+    def expiration(self) -> pulumi.Input[Optional['TeamsRuleExpirationArgs']]:
         """
         Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
         """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input['TeamsRuleExpirationArgs']]):
+    def expiration(self, value: pulumi.Input[Optional['TeamsRuleExpirationArgs']]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
         """
         return pulumi.get(self, "identity")
 
     @identity.setter
-    def identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter
-    def precedence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def precedence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
         """
         return pulumi.get(self, "precedence")
 
     @precedence.setter
-    def precedence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def precedence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "precedence", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleSettings")
-    def rule_settings(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']]:
+    def rule_settings(self) -> pulumi.Input[Optional['TeamsRuleRuleSettingsArgs']]:
         """
         Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
         """
         return pulumi.get(self, "rule_settings")
 
     @rule_settings.setter
-    def rule_settings(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']]):
+    def rule_settings(self, value: pulumi.Input[Optional['TeamsRuleRuleSettingsArgs']]):
         pulumi.set(self, "rule_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['TeamsRuleScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['TeamsRuleScheduleArgs']]:
         """
         Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['TeamsRuleScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['TeamsRuleScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def traffic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
         """
         return pulumi.get(self, "traffic")
 
     @traffic.setter
-    def traffic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic", value)
 
 
 @pulumi.input_type
 class _TeamsRuleState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_posture: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiration: Optional[pulumi.Input['TeamsRuleExpirationArgs']] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 precedence: Optional[pulumi.Input[_builtins.int]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rule_settings: Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']] = None,
-                 schedule: Optional[pulumi.Input['TeamsRuleScheduleArgs']] = None,
-                 sharable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None,
-                 warning_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_posture: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiration: pulumi.Input[Optional['TeamsRuleExpirationArgs']] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 precedence: pulumi.Input[Optional[_builtins.int]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rule_settings: pulumi.Input[Optional['TeamsRuleRuleSettingsArgs']] = None,
+                 schedule: pulumi.Input[Optional['TeamsRuleScheduleArgs']] = None,
+                 sharable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None,
+                 warning_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TeamsRule resources.
 
@@ -323,16 +323,16 @@ class _TeamsRuleState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
         Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
@@ -340,229 +340,229 @@ class _TeamsRuleState:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="deletedAt")
-    def deleted_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deleted_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicate the date of deletion, if any.
         """
         return pulumi.get(self, "deleted_at")
 
     @deleted_at.setter
-    def deleted_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deleted_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deleted_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the rule description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="devicePosture")
-    def device_posture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_posture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the wirefilter expression used for device posture check. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
         """
         return pulumi.get(self, "device_posture")
 
     @device_posture.setter
-    def device_posture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_posture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_posture", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specify whether the rule is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input['TeamsRuleExpirationArgs']]:
+    def expiration(self) -> pulumi.Input[Optional['TeamsRuleExpirationArgs']]:
         """
         Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
         """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input['TeamsRuleExpirationArgs']]):
+    def expiration(self, value: pulumi.Input[Optional['TeamsRuleExpirationArgs']]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions. Can only contain a single value.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the wirefilter expression used for identity matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
         """
         return pulumi.get(self, "identity")
 
     @identity.setter
-    def identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the rule name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def precedence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def precedence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the order of your rules. Lower values indicate higher precedence. At each processing phase, evaluate applicable rules in ascending order of this value. Refer to Order of enforcement to manage precedence via Terraform.
         """
         return pulumi.get(self, "precedence")
 
     @precedence.setter
-    def precedence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def precedence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "precedence", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicate that this rule is shared via the Orgs API and read only.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleSettings")
-    def rule_settings(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']]:
+    def rule_settings(self) -> pulumi.Input[Optional['TeamsRuleRuleSettingsArgs']]:
         """
         Defines settings for this rule. Settings apply only to specific rule types and must use compatible selectors. If Terraform detects drift, confirm the setting supports your rule type and check whether the API modifies the value. Use API-returned values in your configuration to prevent drift.
         """
         return pulumi.get(self, "rule_settings")
 
     @rule_settings.setter
-    def rule_settings(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']]):
+    def rule_settings(self, value: pulumi.Input[Optional['TeamsRuleRuleSettingsArgs']]):
         pulumi.set(self, "rule_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['TeamsRuleScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['TeamsRuleScheduleArgs']]:
         """
         Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['TeamsRuleScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['TeamsRuleScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def sharable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sharable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicate that this rule is sharable via the Orgs API.
         """
         return pulumi.get(self, "sharable")
 
     @sharable.setter
-    def sharable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sharable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sharable", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceAccount")
-    def source_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provide the account tag of the account that created the rule.
         """
         return pulumi.get(self, "source_account")
 
     @source_account.setter
-    def source_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def traffic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
         """
         return pulumi.get(self, "traffic")
 
     @traffic.setter
-    def traffic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicate the version number of the rule(read-only).
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
     @_builtins.property
     @pulumi.getter(name="warningStatus")
-    def warning_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warning_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicate a warning for a misconfigured rule, if any.
         """
         return pulumi.get(self, "warning_status")
 
     @warning_status.setter
-    def warning_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warning_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warning_status", value)
 
 
@@ -577,19 +577,19 @@ class TeamsRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_posture: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiration: Optional[pulumi.Input[Union['TeamsRuleExpirationArgs', 'TeamsRuleExpirationArgsDict']]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 precedence: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_settings: Optional[pulumi.Input[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']]] = None,
-                 schedule: Optional[pulumi.Input[Union['TeamsRuleScheduleArgs', 'TeamsRuleScheduleArgsDict']]] = None,
-                 traffic: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_posture: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiration: pulumi.Input[Optional[Union['TeamsRuleExpirationArgs', 'TeamsRuleExpirationArgsDict']]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 precedence: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_settings: pulumi.Input[Optional[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['TeamsRuleScheduleArgs', 'TeamsRuleScheduleArgsDict']]] = None,
+                 traffic: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -908,19 +908,19 @@ class TeamsRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_posture: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiration: Optional[pulumi.Input[Union['TeamsRuleExpirationArgs', 'TeamsRuleExpirationArgsDict']]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 precedence: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_settings: Optional[pulumi.Input[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']]] = None,
-                 schedule: Optional[pulumi.Input[Union['TeamsRuleScheduleArgs', 'TeamsRuleScheduleArgsDict']]] = None,
-                 traffic: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_posture: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiration: pulumi.Input[Optional[Union['TeamsRuleExpirationArgs', 'TeamsRuleExpirationArgsDict']]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 precedence: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_settings: pulumi.Input[Optional[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['TeamsRuleScheduleArgs', 'TeamsRuleScheduleArgsDict']]] = None,
+                 traffic: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""TeamsRule is deprecated: cloudflare.index/teamsrule.TeamsRule has been deprecated in favor of cloudflare.index/zerotrustgatewaypolicy.ZeroTrustGatewayPolicy""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -968,27 +968,27 @@ class TeamsRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            device_posture: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            expiration: Optional[pulumi.Input[Union['TeamsRuleExpirationArgs', 'TeamsRuleExpirationArgsDict']]] = None,
-            filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            identity: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            precedence: Optional[pulumi.Input[_builtins.int]] = None,
-            read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            rule_settings: Optional[pulumi.Input[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']]] = None,
-            schedule: Optional[pulumi.Input[Union['TeamsRuleScheduleArgs', 'TeamsRuleScheduleArgsDict']]] = None,
-            sharable: Optional[pulumi.Input[_builtins.bool]] = None,
-            source_account: Optional[pulumi.Input[_builtins.str]] = None,
-            traffic: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None,
-            warning_status: Optional[pulumi.Input[_builtins.str]] = None) -> 'TeamsRule':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            device_posture: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            expiration: pulumi.Input[Optional[Union['TeamsRuleExpirationArgs', 'TeamsRuleExpirationArgsDict']]] = None,
+            filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            precedence: pulumi.Input[Optional[_builtins.int]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            rule_settings: pulumi.Input[Optional[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']]] = None,
+            schedule: pulumi.Input[Optional[Union['TeamsRuleScheduleArgs', 'TeamsRuleScheduleArgsDict']]] = None,
+            sharable: pulumi.Input[Optional[_builtins.bool]] = None,
+            source_account: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None,
+            warning_status: pulumi.Input[Optional[_builtins.str]] = None) -> 'TeamsRule':
         """
         Get an existing TeamsRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

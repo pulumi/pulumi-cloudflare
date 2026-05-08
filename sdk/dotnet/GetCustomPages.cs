@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPages = Cloudflare.Index.GetCustomPages.Invoke(new()
+        ///     var exampleCustomPages = Cloudflare.GetCustomPages.Invoke(new()
         ///     {
         ///         Identifier = "ratelimit_block",
         ///         AccountId = "account_id",
@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPages = Cloudflare.Index.GetCustomPages.Invoke(new()
+        ///     var exampleCustomPages = Cloudflare.GetCustomPages.Invoke(new()
         ///     {
         ///         Identifier = "ratelimit_block",
         ///         AccountId = "account_id",
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomPages = Cloudflare.Index.GetCustomPages.Invoke(new()
+        ///     var exampleCustomPages = Cloudflare.GetCustomPages.Invoke(new()
         ///     {
         ///         Identifier = "ratelimit_block",
         ///         AccountId = "account_id",

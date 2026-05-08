@@ -229,8 +229,8 @@ def get_magic_transit_connector(account_id: Optional[_builtins.str] = None,
         license_key=pulumi.get(__ret__, 'license_key'),
         notes=pulumi.get(__ret__, 'notes'),
         timezone=pulumi.get(__ret__, 'timezone'))
-def get_magic_transit_connector_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       connector_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_magic_transit_connector_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitConnectorResult]:
     """
     Accepted Permissions

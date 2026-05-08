@@ -20,11 +20,11 @@ __all__ = ['DnsZoneTransfersPeerArgs', 'DnsZoneTransfersPeer']
 class DnsZoneTransfersPeerArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ixfr_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port: Optional[pulumi.Input[_builtins.float]] = None,
-                 tsig_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ixfr_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.float]] = None,
+                 tsig_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DnsZoneTransfersPeer resource.
 
@@ -60,71 +60,71 @@ class DnsZoneTransfersPeerArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter(name="ixfrEnable")
-    def ixfr_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ixfr_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
         """
         return pulumi.get(self, "ixfr_enable")
 
     @ixfr_enable.setter
-    def ixfr_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ixfr_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ixfr_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="tsigId")
-    def tsig_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tsig_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TSIG authentication will be used for zone transfer if configured.
         """
         return pulumi.get(self, "tsig_id")
 
     @tsig_id.setter
-    def tsig_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tsig_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tsig_id", value)
 
 
 @pulumi.input_type
 class _DnsZoneTransfersPeerState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ixfr_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.float]] = None,
-                 tsig_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ixfr_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.float]] = None,
+                 tsig_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsZoneTransfersPeer resources.
 
@@ -149,71 +149,71 @@ class _DnsZoneTransfersPeerState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter(name="ixfrEnable")
-    def ixfr_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ixfr_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
         """
         return pulumi.get(self, "ixfr_enable")
 
     @ixfr_enable.setter
-    def ixfr_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ixfr_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ixfr_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the peer.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="tsigId")
-    def tsig_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tsig_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TSIG authentication will be used for zone transfer if configured.
         """
         return pulumi.get(self, "tsig_id")
 
     @tsig_id.setter
-    def tsig_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tsig_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tsig_id", value)
 
 
@@ -223,12 +223,12 @@ class DnsZoneTransfersPeer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ixfr_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.float]] = None,
-                 tsig_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ixfr_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.float]] = None,
+                 tsig_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -307,12 +307,12 @@ class DnsZoneTransfersPeer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ixfr_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.float]] = None,
-                 tsig_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ixfr_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.float]] = None,
+                 tsig_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -340,12 +340,12 @@ class DnsZoneTransfersPeer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ip: Optional[pulumi.Input[_builtins.str]] = None,
-            ixfr_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.float]] = None,
-            tsig_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DnsZoneTransfersPeer':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ixfr_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.float]] = None,
+            tsig_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DnsZoneTransfersPeer':
         """
         Get an existing DnsZoneTransfersPeer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

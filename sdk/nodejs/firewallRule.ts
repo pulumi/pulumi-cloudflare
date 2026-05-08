@@ -154,29 +154,29 @@ export interface FirewallRuleState {
     /**
      * The action to perform when the threshold of matched traffic within the configured period is exceeded.
      */
-    action?: pulumi.Input<inputs.FirewallRuleAction>;
+    action?: pulumi.Input<inputs.FirewallRuleAction | undefined>;
     /**
      * An informative summary of the firewall rule.
      */
-    description?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.FirewallRuleFilter>;
+    description?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.FirewallRuleFilter | undefined>;
     /**
      * When true, indicates that the firewall rule is currently paused.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
      */
-    priority?: pulumi.Input<number>;
-    products?: pulumi.Input<pulumi.Input<string>[]>;
+    priority?: pulumi.Input<number | undefined>;
+    products?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A short reference tag. Allows you to select related firewall rules.
      */
-    ref?: pulumi.Input<string>;
+    ref?: pulumi.Input<string | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -191,5 +191,5 @@ export interface FirewallRuleArgs {
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

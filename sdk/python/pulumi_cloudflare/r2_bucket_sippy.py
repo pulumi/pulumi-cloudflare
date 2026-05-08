@@ -22,10 +22,10 @@ __all__ = ['R2BucketSippyArgs', 'R2BucketSippy']
 class R2BucketSippyArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input['R2BucketSippyDestinationArgs']] = None,
-                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input['R2BucketSippySourceArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional['R2BucketSippyDestinationArgs']] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional['R2BucketSippySourceArgs']] = None):
         """
         The set of arguments for constructing a R2BucketSippy resource.
 
@@ -59,62 +59,62 @@ class R2BucketSippyArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input['R2BucketSippyDestinationArgs']]:
+    def destination(self) -> pulumi.Input[Optional['R2BucketSippyDestinationArgs']]:
         """
         R2 bucket to copy objects to.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input['R2BucketSippyDestinationArgs']]):
+    def destination(self, value: pulumi.Input[Optional['R2BucketSippyDestinationArgs']]):
         pulumi.set(self, "destination", value)
 
     @_builtins.property
     @pulumi.getter
-    def jurisdiction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Jurisdiction of the bucket
         """
         return pulumi.get(self, "jurisdiction")
 
     @jurisdiction.setter
-    def jurisdiction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jurisdiction", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['R2BucketSippySourceArgs']]:
+    def source(self) -> pulumi.Input[Optional['R2BucketSippySourceArgs']]:
         """
         AWS S3 bucket to copy objects from.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input['R2BucketSippySourceArgs']]):
+    def source(self, value: pulumi.Input[Optional['R2BucketSippySourceArgs']]):
         pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
 class _R2BucketSippyState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input['R2BucketSippyDestinationArgs']] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input['R2BucketSippySourceArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional['R2BucketSippyDestinationArgs']] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional['R2BucketSippySourceArgs']] = None):
         """
         Input properties used for looking up and filtering R2BucketSippy resources.
 
@@ -140,74 +140,74 @@ class _R2BucketSippyState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input['R2BucketSippyDestinationArgs']]:
+    def destination(self) -> pulumi.Input[Optional['R2BucketSippyDestinationArgs']]:
         """
         R2 bucket to copy objects to.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input['R2BucketSippyDestinationArgs']]):
+    def destination(self, value: pulumi.Input[Optional['R2BucketSippyDestinationArgs']]):
         pulumi.set(self, "destination", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         State of Sippy for this bucket.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def jurisdiction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Jurisdiction of the bucket
         """
         return pulumi.get(self, "jurisdiction")
 
     @jurisdiction.setter
-    def jurisdiction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jurisdiction", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['R2BucketSippySourceArgs']]:
+    def source(self) -> pulumi.Input[Optional['R2BucketSippySourceArgs']]:
         """
         AWS S3 bucket to copy objects from.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input['R2BucketSippySourceArgs']]):
+    def source(self, value: pulumi.Input[Optional['R2BucketSippySourceArgs']]):
         pulumi.set(self, "source", value)
 
 
@@ -217,11 +217,11 @@ class R2BucketSippy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']]] = None,
-                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -318,11 +318,11 @@ class R2BucketSippy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']]] = None,
-                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -350,12 +350,12 @@ class R2BucketSippy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-            destination: Optional[pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None) -> 'R2BucketSippy':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']]] = None) -> 'R2BucketSippy':
         """
         Get an existing R2BucketSippy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

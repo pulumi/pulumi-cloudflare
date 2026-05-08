@@ -148,67 +148,67 @@ export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDevicePostureRule resources.
  */
 export interface ZeroTrustDevicePostureRuleState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The description of the device posture rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      */
-    expiration?: pulumi.Input<string>;
+    expiration?: pulumi.Input<string | undefined>;
     /**
      * The value to be checked against.
      */
-    input?: pulumi.Input<inputs.ZeroTrustDevicePostureRuleInput>;
+    input?: pulumi.Input<inputs.ZeroTrustDevicePostureRuleInput | undefined>;
     /**
      * The conditions that the client must match to run the rule.
      */
-    matches?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDevicePostureRuleMatch>[]>;
+    matches?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDevicePostureRuleMatch>[] | undefined>;
     /**
      * The name of the device posture rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * The type of device posture rule.
      * Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "antivirus", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustDevicePostureRule resource.
  */
 export interface ZeroTrustDevicePostureRuleArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The description of the device posture rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      */
-    expiration?: pulumi.Input<string>;
+    expiration?: pulumi.Input<string | undefined>;
     /**
      * The value to be checked against.
      */
-    input?: pulumi.Input<inputs.ZeroTrustDevicePostureRuleInput>;
+    input?: pulumi.Input<inputs.ZeroTrustDevicePostureRuleInput | undefined>;
     /**
      * The conditions that the client must match to run the rule.
      */
-    matches?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDevicePostureRuleMatch>[]>;
+    matches?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDevicePostureRuleMatch>[] | undefined>;
     /**
      * The name of the device posture rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * The type of device posture rule.
      * Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "antivirus", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".

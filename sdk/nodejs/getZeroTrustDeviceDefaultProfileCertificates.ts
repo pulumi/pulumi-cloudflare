@@ -79,5 +79,5 @@ export function getZeroTrustDeviceDefaultProfileCertificatesOutput(args?: GetZer
  * A collection of arguments for invoking getZeroTrustDeviceDefaultProfileCertificates.
  */
 export interface GetZeroTrustDeviceDefaultProfileCertificatesOutputArgs {
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

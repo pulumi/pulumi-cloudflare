@@ -210,13 +210,13 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
         pattern_type=pulumi.get(__ret__, 'pattern_type'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
-def get_email_security_block_senders_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                            order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            pattern: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            pattern_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_email_security_block_senders_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                            order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            pattern: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            pattern_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityBlockSendersResult]:
     """
     Accepted Permissions

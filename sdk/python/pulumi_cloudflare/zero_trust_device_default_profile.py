@@ -22,23 +22,23 @@ __all__ = ['ZeroTrustDeviceDefaultProfileArgs', 'ZeroTrustDeviceDefaultProfile']
 class ZeroTrustDeviceDefaultProfileArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
-                 allow_mode_switch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_updates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_to_leave: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_connect: Optional[pulumi.Input[_builtins.float]] = None,
-                 captive_portal: Optional[pulumi.Input[_builtins.float]] = None,
-                 disable_auto_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclude_office_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]] = None,
-                 includes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]] = None,
-                 lan_allow_minutes: Optional[pulumi.Input[_builtins.float]] = None,
-                 lan_allow_subnet_size: Optional[pulumi.Input[_builtins.float]] = None,
-                 register_interface_ip_with_dns: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sccm_vpn_boundary_support: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_mode_v2: Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']] = None,
-                 support_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 switch_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tunnel_protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_mode_switch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_updates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_to_leave: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_connect: pulumi.Input[Optional[_builtins.float]] = None,
+                 captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
+                 disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]] = None,
+                 lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
+                 lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
+                 register_interface_ip_with_dns: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sccm_vpn_boundary_support: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_mode_v2: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileServiceModeV2Args']] = None,
+                 support_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDeviceDefaultProfile resource.
 
@@ -106,232 +106,232 @@ class ZeroTrustDeviceDefaultProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowModeSwitch")
-    def allow_mode_switch(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_mode_switch(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow the user to switch WARP between modes.
         """
         return pulumi.get(self, "allow_mode_switch")
 
     @allow_mode_switch.setter
-    def allow_mode_switch(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_mode_switch(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_mode_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="allowUpdates")
-    def allow_updates(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_updates(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to receive update notifications when a new version of the client is available.
         """
         return pulumi.get(self, "allow_updates")
 
     @allow_updates.setter
-    def allow_updates(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_updates(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_updates", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedToLeave")
-    def allowed_to_leave(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allowed_to_leave(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow devices to leave the organization.
         """
         return pulumi.get(self, "allowed_to_leave")
 
     @allowed_to_leave.setter
-    def allowed_to_leave(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allowed_to_leave(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allowed_to_leave", value)
 
     @_builtins.property
     @pulumi.getter(name="autoConnect")
-    def auto_connect(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def auto_connect(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of time in seconds to reconnect after having been disabled.
         """
         return pulumi.get(self, "auto_connect")
 
     @auto_connect.setter
-    def auto_connect(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def auto_connect(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "auto_connect", value)
 
     @_builtins.property
     @pulumi.getter(name="captivePortal")
-    def captive_portal(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def captive_portal(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Turn on the captive portal after the specified amount of time.
         """
         return pulumi.get(self, "captive_portal")
 
     @captive_portal.setter
-    def captive_portal(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def captive_portal(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "captive_portal", value)
 
     @_builtins.property
     @pulumi.getter(name="disableAutoFallback")
-    def disable_auto_fallback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_auto_fallback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         """
         return pulumi.get(self, "disable_auto_fallback")
 
     @disable_auto_fallback.setter
-    def disable_auto_fallback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_auto_fallback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_auto_fallback", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeOfficeIps")
-    def exclude_office_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def exclude_office_ips(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to add Microsoft IPs to Split Tunnel exclusions.
         """
         return pulumi.get(self, "exclude_office_ips")
 
     @exclude_office_ips.setter
-    def exclude_office_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def exclude_office_ips(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "exclude_office_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]]:
+    def excludes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]]:
         """
         List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]]):
+    def excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]]):
         pulumi.set(self, "excludes", value)
 
     @_builtins.property
     @pulumi.getter
-    def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]]:
+    def includes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]]:
         """
         List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         """
         return pulumi.get(self, "includes")
 
     @includes.setter
-    def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]]):
+    def includes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]]):
         pulumi.set(self, "includes", value)
 
     @_builtins.property
     @pulumi.getter(name="lanAllowMinutes")
-    def lan_allow_minutes(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def lan_allow_minutes(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         """
         return pulumi.get(self, "lan_allow_minutes")
 
     @lan_allow_minutes.setter
-    def lan_allow_minutes(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def lan_allow_minutes(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "lan_allow_minutes", value)
 
     @_builtins.property
     @pulumi.getter(name="lanAllowSubnetSize")
-    def lan_allow_subnet_size(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def lan_allow_subnet_size(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
         """
         return pulumi.get(self, "lan_allow_subnet_size")
 
     @lan_allow_subnet_size.setter
-    def lan_allow_subnet_size(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def lan_allow_subnet_size(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "lan_allow_subnet_size", value)
 
     @_builtins.property
     @pulumi.getter(name="registerInterfaceIpWithDns")
-    def register_interface_ip_with_dns(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def register_interface_ip_with_dns(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         """
         return pulumi.get(self, "register_interface_ip_with_dns")
 
     @register_interface_ip_with_dns.setter
-    def register_interface_ip_with_dns(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def register_interface_ip_with_dns(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "register_interface_ip_with_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="sccmVpnBoundarySupport")
-    def sccm_vpn_boundary_support(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sccm_vpn_boundary_support(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         """
         return pulumi.get(self, "sccm_vpn_boundary_support")
 
     @sccm_vpn_boundary_support.setter
-    def sccm_vpn_boundary_support(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sccm_vpn_boundary_support(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sccm_vpn_boundary_support", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceModeV2")
-    def service_mode_v2(self) -> Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']]:
+    def service_mode_v2(self) -> pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileServiceModeV2Args']]:
         return pulumi.get(self, "service_mode_v2")
 
     @service_mode_v2.setter
-    def service_mode_v2(self, value: Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']]):
+    def service_mode_v2(self, value: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileServiceModeV2Args']]):
         pulumi.set(self, "service_mode_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="supportUrl")
-    def support_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def support_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL to launch when the Send Feedback button is clicked.
         """
         return pulumi.get(self, "support_url")
 
     @support_url.setter
-    def support_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def support_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "support_url", value)
 
     @_builtins.property
     @pulumi.getter(name="switchLocked")
-    def switch_locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def switch_locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow the user to turn off the WARP switch and disconnect the client.
         """
         return pulumi.get(self, "switch_locked")
 
     @switch_locked.setter
-    def switch_locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def switch_locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "switch_locked", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelProtocol")
-    def tunnel_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tunnel_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines which tunnel protocol to use.
         """
         return pulumi.get(self, "tunnel_protocol")
 
     @tunnel_protocol.setter
-    def tunnel_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tunnel_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunnel_protocol", value)
 
 
 @pulumi.input_type
 class _ZeroTrustDeviceDefaultProfileState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_mode_switch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_updates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_to_leave: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_connect: Optional[pulumi.Input[_builtins.float]] = None,
-                 captive_portal: Optional[pulumi.Input[_builtins.float]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_auto_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclude_office_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]] = None,
-                 fallback_domains: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileFallbackDomainArgs']]]] = None,
-                 gateway_unique_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 includes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]] = None,
-                 lan_allow_minutes: Optional[pulumi.Input[_builtins.float]] = None,
-                 lan_allow_subnet_size: Optional[pulumi.Input[_builtins.float]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 register_interface_ip_with_dns: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sccm_vpn_boundary_support: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_mode_v2: Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']] = None,
-                 support_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 switch_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tunnel_protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_mode_switch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_updates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_to_leave: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_connect: pulumi.Input[Optional[_builtins.float]] = None,
+                 captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]] = None,
+                 fallback_domains: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileFallbackDomainArgs']]]] = None,
+                 gateway_unique_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]] = None,
+                 lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
+                 lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 register_interface_ip_with_dns: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sccm_vpn_boundary_support: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_mode_v2: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileServiceModeV2Args']] = None,
+                 support_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDeviceDefaultProfile resources.
 
@@ -403,263 +403,263 @@ class _ZeroTrustDeviceDefaultProfileState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowModeSwitch")
-    def allow_mode_switch(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_mode_switch(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow the user to switch WARP between modes.
         """
         return pulumi.get(self, "allow_mode_switch")
 
     @allow_mode_switch.setter
-    def allow_mode_switch(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_mode_switch(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_mode_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="allowUpdates")
-    def allow_updates(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_updates(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to receive update notifications when a new version of the client is available.
         """
         return pulumi.get(self, "allow_updates")
 
     @allow_updates.setter
-    def allow_updates(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_updates(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_updates", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedToLeave")
-    def allowed_to_leave(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allowed_to_leave(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow devices to leave the organization.
         """
         return pulumi.get(self, "allowed_to_leave")
 
     @allowed_to_leave.setter
-    def allowed_to_leave(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allowed_to_leave(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allowed_to_leave", value)
 
     @_builtins.property
     @pulumi.getter(name="autoConnect")
-    def auto_connect(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def auto_connect(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of time in seconds to reconnect after having been disabled.
         """
         return pulumi.get(self, "auto_connect")
 
     @auto_connect.setter
-    def auto_connect(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def auto_connect(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "auto_connect", value)
 
     @_builtins.property
     @pulumi.getter(name="captivePortal")
-    def captive_portal(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def captive_portal(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Turn on the captive portal after the specified amount of time.
         """
         return pulumi.get(self, "captive_portal")
 
     @captive_portal.setter
-    def captive_portal(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def captive_portal(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "captive_portal", value)
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the policy will be applied to matching devices.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter(name="disableAutoFallback")
-    def disable_auto_fallback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_auto_fallback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         """
         return pulumi.get(self, "disable_auto_fallback")
 
     @disable_auto_fallback.setter
-    def disable_auto_fallback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_auto_fallback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_auto_fallback", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the policy will be applied to matching devices.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeOfficeIps")
-    def exclude_office_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def exclude_office_ips(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to add Microsoft IPs to Split Tunnel exclusions.
         """
         return pulumi.get(self, "exclude_office_ips")
 
     @exclude_office_ips.setter
-    def exclude_office_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def exclude_office_ips(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "exclude_office_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]]:
+    def excludes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]]:
         """
         List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]]):
+    def excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileExcludeArgs']]]]):
         pulumi.set(self, "excludes", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackDomains")
-    def fallback_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileFallbackDomainArgs']]]]:
+    def fallback_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileFallbackDomainArgs']]]]:
         return pulumi.get(self, "fallback_domains")
 
     @fallback_domains.setter
-    def fallback_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileFallbackDomainArgs']]]]):
+    def fallback_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileFallbackDomainArgs']]]]):
         pulumi.set(self, "fallback_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayUniqueId")
-    def gateway_unique_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_unique_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gateway_unique_id")
 
     @gateway_unique_id.setter
-    def gateway_unique_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_unique_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_unique_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]]:
+    def includes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]]:
         """
         List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         """
         return pulumi.get(self, "includes")
 
     @includes.setter
-    def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]]):
+    def includes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileIncludeArgs']]]]):
         pulumi.set(self, "includes", value)
 
     @_builtins.property
     @pulumi.getter(name="lanAllowMinutes")
-    def lan_allow_minutes(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def lan_allow_minutes(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         """
         return pulumi.get(self, "lan_allow_minutes")
 
     @lan_allow_minutes.setter
-    def lan_allow_minutes(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def lan_allow_minutes(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "lan_allow_minutes", value)
 
     @_builtins.property
     @pulumi.getter(name="lanAllowSubnetSize")
-    def lan_allow_subnet_size(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def lan_allow_subnet_size(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
         """
         return pulumi.get(self, "lan_allow_subnet_size")
 
     @lan_allow_subnet_size.setter
-    def lan_allow_subnet_size(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def lan_allow_subnet_size(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "lan_allow_subnet_size", value)
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="registerInterfaceIpWithDns")
-    def register_interface_ip_with_dns(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def register_interface_ip_with_dns(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         """
         return pulumi.get(self, "register_interface_ip_with_dns")
 
     @register_interface_ip_with_dns.setter
-    def register_interface_ip_with_dns(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def register_interface_ip_with_dns(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "register_interface_ip_with_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="sccmVpnBoundarySupport")
-    def sccm_vpn_boundary_support(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sccm_vpn_boundary_support(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         """
         return pulumi.get(self, "sccm_vpn_boundary_support")
 
     @sccm_vpn_boundary_support.setter
-    def sccm_vpn_boundary_support(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sccm_vpn_boundary_support(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sccm_vpn_boundary_support", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceModeV2")
-    def service_mode_v2(self) -> Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']]:
+    def service_mode_v2(self) -> pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileServiceModeV2Args']]:
         return pulumi.get(self, "service_mode_v2")
 
     @service_mode_v2.setter
-    def service_mode_v2(self, value: Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']]):
+    def service_mode_v2(self, value: pulumi.Input[Optional['ZeroTrustDeviceDefaultProfileServiceModeV2Args']]):
         pulumi.set(self, "service_mode_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="supportUrl")
-    def support_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def support_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL to launch when the Send Feedback button is clicked.
         """
         return pulumi.get(self, "support_url")
 
     @support_url.setter
-    def support_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def support_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "support_url", value)
 
     @_builtins.property
     @pulumi.getter(name="switchLocked")
-    def switch_locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def switch_locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow the user to turn off the WARP switch and disconnect the client.
         """
         return pulumi.get(self, "switch_locked")
 
     @switch_locked.setter
-    def switch_locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def switch_locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "switch_locked", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelProtocol")
-    def tunnel_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tunnel_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines which tunnel protocol to use.
         """
         return pulumi.get(self, "tunnel_protocol")
 
     @tunnel_protocol.setter
-    def tunnel_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tunnel_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunnel_protocol", value)
 
 
@@ -669,24 +669,24 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_mode_switch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_updates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_to_leave: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_connect: Optional[pulumi.Input[_builtins.float]] = None,
-                 captive_portal: Optional[pulumi.Input[_builtins.float]] = None,
-                 disable_auto_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclude_office_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]]] = None,
-                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]]] = None,
-                 lan_allow_minutes: Optional[pulumi.Input[_builtins.float]] = None,
-                 lan_allow_subnet_size: Optional[pulumi.Input[_builtins.float]] = None,
-                 register_interface_ip_with_dns: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sccm_vpn_boundary_support: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_mode_v2: Optional[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
-                 support_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 switch_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tunnel_protocol: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_mode_switch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_updates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_to_leave: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_connect: pulumi.Input[Optional[_builtins.float]] = None,
+                 captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
+                 disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]]] = None,
+                 lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
+                 lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
+                 register_interface_ip_with_dns: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sccm_vpn_boundary_support: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_mode_v2: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
+                 support_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -704,8 +704,8 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             allow_mode_switch=True,
             allow_updates=True,
             allowed_to_leave=True,
-            auto_connect=0,
-            captive_portal=180,
+            auto_connect=float(0),
+            captive_portal=float(180),
             disable_auto_fallback=True,
             excludes=[{
                 "address": "192.0.2.0/24",
@@ -716,13 +716,13 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                 "address": "192.0.2.0/24",
                 "description": "Include testing domains in the tunnel",
             }],
-            lan_allow_minutes=30,
-            lan_allow_subnet_size=24,
+            lan_allow_minutes=float(30),
+            lan_allow_subnet_size=float(24),
             register_interface_ip_with_dns=True,
             sccm_vpn_boundary_support=False,
             service_mode_v2={
                 "mode": "proxy",
-                "port": 3000,
+                "port": float(3000),
             },
             support_url="https://1.1.1.1/help",
             switch_locked=True,
@@ -777,8 +777,8 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             allow_mode_switch=True,
             allow_updates=True,
             allowed_to_leave=True,
-            auto_connect=0,
-            captive_portal=180,
+            auto_connect=float(0),
+            captive_portal=float(180),
             disable_auto_fallback=True,
             excludes=[{
                 "address": "192.0.2.0/24",
@@ -789,13 +789,13 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                 "address": "192.0.2.0/24",
                 "description": "Include testing domains in the tunnel",
             }],
-            lan_allow_minutes=30,
-            lan_allow_subnet_size=24,
+            lan_allow_minutes=float(30),
+            lan_allow_subnet_size=float(24),
             register_interface_ip_with_dns=True,
             sccm_vpn_boundary_support=False,
             service_mode_v2={
                 "mode": "proxy",
-                "port": 3000,
+                "port": float(3000),
             },
             support_url="https://1.1.1.1/help",
             switch_locked=True,
@@ -824,24 +824,24 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_mode_switch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_updates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_to_leave: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_connect: Optional[pulumi.Input[_builtins.float]] = None,
-                 captive_portal: Optional[pulumi.Input[_builtins.float]] = None,
-                 disable_auto_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclude_office_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]]] = None,
-                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]]] = None,
-                 lan_allow_minutes: Optional[pulumi.Input[_builtins.float]] = None,
-                 lan_allow_subnet_size: Optional[pulumi.Input[_builtins.float]] = None,
-                 register_interface_ip_with_dns: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sccm_vpn_boundary_support: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_mode_v2: Optional[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
-                 support_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 switch_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tunnel_protocol: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_mode_switch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_updates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_to_leave: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_connect: pulumi.Input[Optional[_builtins.float]] = None,
+                 captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
+                 disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]]] = None,
+                 lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
+                 lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
+                 register_interface_ip_with_dns: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sccm_vpn_boundary_support: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_mode_v2: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
+                 support_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -888,29 +888,29 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            allow_mode_switch: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_updates: Optional[pulumi.Input[_builtins.bool]] = None,
-            allowed_to_leave: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_connect: Optional[pulumi.Input[_builtins.float]] = None,
-            captive_portal: Optional[pulumi.Input[_builtins.float]] = None,
-            default: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_auto_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            exclude_office_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-            excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]]] = None,
-            fallback_domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileFallbackDomainArgsDict']]]]] = None,
-            gateway_unique_id: Optional[pulumi.Input[_builtins.str]] = None,
-            includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]]] = None,
-            lan_allow_minutes: Optional[pulumi.Input[_builtins.float]] = None,
-            lan_allow_subnet_size: Optional[pulumi.Input[_builtins.float]] = None,
-            policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            register_interface_ip_with_dns: Optional[pulumi.Input[_builtins.bool]] = None,
-            sccm_vpn_boundary_support: Optional[pulumi.Input[_builtins.bool]] = None,
-            service_mode_v2: Optional[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
-            support_url: Optional[pulumi.Input[_builtins.str]] = None,
-            switch_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-            tunnel_protocol: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustDeviceDefaultProfile':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_mode_switch: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_updates: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_to_leave: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_connect: pulumi.Input[Optional[_builtins.float]] = None,
+            captive_portal: pulumi.Input[Optional[_builtins.float]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_auto_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            exclude_office_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+            excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileExcludeArgs', 'ZeroTrustDeviceDefaultProfileExcludeArgsDict']]]]] = None,
+            fallback_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileFallbackDomainArgsDict']]]]] = None,
+            gateway_unique_id: pulumi.Input[Optional[_builtins.str]] = None,
+            includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileIncludeArgs', 'ZeroTrustDeviceDefaultProfileIncludeArgsDict']]]]] = None,
+            lan_allow_minutes: pulumi.Input[Optional[_builtins.float]] = None,
+            lan_allow_subnet_size: pulumi.Input[Optional[_builtins.float]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            register_interface_ip_with_dns: pulumi.Input[Optional[_builtins.bool]] = None,
+            sccm_vpn_boundary_support: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_mode_v2: pulumi.Input[Optional[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
+            support_url: pulumi.Input[Optional[_builtins.str]] = None,
+            switch_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            tunnel_protocol: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDeviceDefaultProfile':
         """
         Get an existing ZeroTrustDeviceDefaultProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

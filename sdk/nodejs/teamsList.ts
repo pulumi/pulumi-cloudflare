@@ -139,45 +139,45 @@ export class TeamsList extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamsList resources.
  */
 export interface TeamsListState {
-    accountId?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Provide the list description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Add items to the list.
      */
-    items?: pulumi.Input<pulumi.Input<inputs.TeamsListItem>[]>;
+    items?: pulumi.Input<pulumi.Input<inputs.TeamsListItem>[] | undefined>;
     /**
      * Indicate the number of items in the list.
      */
-    listCount?: pulumi.Input<number>;
+    listCount?: pulumi.Input<number | undefined>;
     /**
      * Specify the list name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specify the list type.
      * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP", "CATEGORY", "LOCATION", "DEVICE", "AAGUID".
      */
-    type?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a TeamsList resource.
  */
 export interface TeamsListArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Provide the list description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Add items to the list.
      */
-    items?: pulumi.Input<pulumi.Input<inputs.TeamsListItem>[]>;
+    items?: pulumi.Input<pulumi.Input<inputs.TeamsListItem>[] | undefined>;
     /**
      * Specify the list name.
      */

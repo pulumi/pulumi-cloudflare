@@ -164,13 +164,13 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustGatewaySettings resources.
  */
 export interface ZeroTrustGatewaySettingsState {
-    accountId?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Specify account settings.
      */
-    settings?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettings>;
-    updatedAt?: pulumi.Input<string>;
+    settings?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettings | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,5 +181,5 @@ export interface ZeroTrustGatewaySettingsArgs {
     /**
      * Specify account settings.
      */
-    settings?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettings>;
+    settings?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettings | undefined>;
 }

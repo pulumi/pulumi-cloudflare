@@ -155,6 +155,6 @@ export interface GetLoadBalancerMonitorOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     monitorId: pulumi.Input<string>;
 }

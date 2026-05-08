@@ -138,7 +138,7 @@ export interface GetStreamWatermarkOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for a watermark profile.
      */

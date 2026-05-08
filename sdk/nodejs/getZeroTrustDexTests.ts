@@ -121,18 +121,18 @@ export function getZeroTrustDexTestsOutput(args?: GetZeroTrustDexTestsOutputArgs
  * A collection of arguments for invoking getZeroTrustDexTests.
  */
 export interface GetZeroTrustDexTestsOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Filter by test type
      * Available values: "http", "traceroute".
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Filter by test name
      */
-    testName?: pulumi.Input<string>;
+    testName?: pulumi.Input<string | undefined>;
 }

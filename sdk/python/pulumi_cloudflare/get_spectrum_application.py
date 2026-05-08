@@ -295,9 +295,9 @@ def get_spectrum_application(app_id: Optional[_builtins.str] = None,
         tls=pulumi.get(__ret__, 'tls'),
         traffic_type=pulumi.get(__ret__, 'traffic_type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_spectrum_application_output(app_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    filter: Optional[pulumi.Input[Optional[Union['GetSpectrumApplicationFilterArgs', 'GetSpectrumApplicationFilterArgsDict']]]] = None,
-                                    zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_spectrum_application_output(app_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    filter: pulumi.Input[Optional[Optional[Union['GetSpectrumApplicationFilterArgs', 'GetSpectrumApplicationFilterArgsDict']]]] = None,
+                                    zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpectrumApplicationResult]:
     """
     Accepted Permissions

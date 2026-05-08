@@ -127,5 +127,5 @@ export interface GetZoneDnsSettingsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

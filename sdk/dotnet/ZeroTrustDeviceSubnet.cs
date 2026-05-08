@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDeviceSubnet = new Cloudflare.Index.ZeroTrustDeviceSubnet("example_zero_trust_device_subnet", new()
+    ///     var exampleZeroTrustDeviceSubnet = new Cloudflare.ZeroTrustDeviceSubnet("example_zero_trust_device_subnet", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "IPv4 Cloudflare Source IPs",

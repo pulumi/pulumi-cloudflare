@@ -119,8 +119,8 @@ def get_magic_wan_gre_tunnel(account_id: Optional[_builtins.str] = None,
         gre_tunnel=pulumi.get(__ret__, 'gre_tunnel'),
         gre_tunnel_id=pulumi.get(__ret__, 'gre_tunnel_id'),
         id=pulumi.get(__ret__, 'id'))
-def get_magic_wan_gre_tunnel_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    gre_tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_magic_wan_gre_tunnel_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    gre_tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicWanGreTunnelResult]:
     """
     Accepted Permissions

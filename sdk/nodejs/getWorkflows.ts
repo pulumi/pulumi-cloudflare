@@ -105,13 +105,13 @@ export function getWorkflowsOutput(args?: GetWorkflowsOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getWorkflows.
  */
 export interface GetWorkflowsOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Allows filtering workflows` name.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
 }

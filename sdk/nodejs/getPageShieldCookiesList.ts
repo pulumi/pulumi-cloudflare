@@ -206,30 +206,30 @@ export interface GetPageShieldCookiesListOutputArgs {
      * The direction used to sort returned cookies.'
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Filters the returned cookies that match the specified domain attribute
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Export the list of cookies as a file, limited to 50000 entries.
      * Available values: "csv".
      */
-    export?: pulumi.Input<string>;
+    export?: pulumi.Input<string | undefined>;
     /**
      * Includes cookies that match one or more URL-encoded hostnames separated by commas.
      */
-    hosts?: pulumi.Input<string>;
-    httpOnly?: pulumi.Input<boolean>;
-    maxItems?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    orderBy?: pulumi.Input<string>;
-    page?: pulumi.Input<string>;
-    pageUrl?: pulumi.Input<string>;
-    path?: pulumi.Input<string>;
-    perPage?: pulumi.Input<number>;
-    sameSite?: pulumi.Input<string>;
-    secure?: pulumi.Input<boolean>;
-    type?: pulumi.Input<string>;
-    zoneId?: pulumi.Input<string>;
+    hosts?: pulumi.Input<string | undefined>;
+    httpOnly?: pulumi.Input<boolean | undefined>;
+    maxItems?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    orderBy?: pulumi.Input<string | undefined>;
+    page?: pulumi.Input<string | undefined>;
+    pageUrl?: pulumi.Input<string | undefined>;
+    path?: pulumi.Input<string | undefined>;
+    perPage?: pulumi.Input<number | undefined>;
+    sameSite?: pulumi.Input<string | undefined>;
+    secure?: pulumi.Input<boolean | undefined>;
+    type?: pulumi.Input<string | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

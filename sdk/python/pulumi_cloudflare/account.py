@@ -22,10 +22,10 @@ __all__ = ['AccountArgs', 'Account']
 class AccountArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 managed_by: Optional[pulumi.Input['AccountManagedByArgs']] = None,
-                 settings: Optional[pulumi.Input['AccountSettingsArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit: Optional[pulumi.Input['AccountUnitArgs']] = None):
+                 managed_by: pulumi.Input[Optional['AccountManagedByArgs']] = None,
+                 settings: pulumi.Input[Optional['AccountSettingsArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit: pulumi.Input[Optional['AccountUnitArgs']] = None):
         """
         The set of arguments for constructing a Account resource.
 
@@ -62,63 +62,63 @@ class AccountArgs:
 
     @_builtins.property
     @pulumi.getter(name="managedBy")
-    def managed_by(self) -> Optional[pulumi.Input['AccountManagedByArgs']]:
+    def managed_by(self) -> pulumi.Input[Optional['AccountManagedByArgs']]:
         """
         Parent container details
         """
         return pulumi.get(self, "managed_by")
 
     @managed_by.setter
-    def managed_by(self, value: Optional[pulumi.Input['AccountManagedByArgs']]):
+    def managed_by(self, value: pulumi.Input[Optional['AccountManagedByArgs']]):
         pulumi.set(self, "managed_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input['AccountSettingsArgs']]:
+    def settings(self) -> pulumi.Input[Optional['AccountSettingsArgs']]:
         """
         Account settings
         """
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input['AccountSettingsArgs']]):
+    def settings(self, value: pulumi.Input[Optional['AccountSettingsArgs']]):
         pulumi.set(self, "settings", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The 'type' field should no longer be set through the API.""")
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "standard", "enterprise".
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def unit(self) -> Optional[pulumi.Input['AccountUnitArgs']]:
+    def unit(self) -> pulumi.Input[Optional['AccountUnitArgs']]:
         """
         information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         return pulumi.get(self, "unit")
 
     @unit.setter
-    def unit(self, value: Optional[pulumi.Input['AccountUnitArgs']]):
+    def unit(self, value: pulumi.Input[Optional['AccountUnitArgs']]):
         pulumi.set(self, "unit", value)
 
 
 @pulumi.input_type
 class _AccountState:
     def __init__(__self__, *,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_by: Optional[pulumi.Input['AccountManagedByArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 settings: Optional[pulumi.Input['AccountSettingsArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit: Optional[pulumi.Input['AccountUnitArgs']] = None):
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_by: pulumi.Input[Optional['AccountManagedByArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 settings: pulumi.Input[Optional['AccountSettingsArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit: pulumi.Input[Optional['AccountUnitArgs']] = None):
         """
         Input properties used for looking up and filtering Account resources.
 
@@ -147,75 +147,75 @@ class _AccountState:
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp for the creation of the account
         """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter(name="managedBy")
-    def managed_by(self) -> Optional[pulumi.Input['AccountManagedByArgs']]:
+    def managed_by(self) -> pulumi.Input[Optional['AccountManagedByArgs']]:
         """
         Parent container details
         """
         return pulumi.get(self, "managed_by")
 
     @managed_by.setter
-    def managed_by(self, value: Optional[pulumi.Input['AccountManagedByArgs']]):
+    def managed_by(self, value: pulumi.Input[Optional['AccountManagedByArgs']]):
         pulumi.set(self, "managed_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input['AccountSettingsArgs']]:
+    def settings(self) -> pulumi.Input[Optional['AccountSettingsArgs']]:
         """
         Account settings
         """
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input['AccountSettingsArgs']]):
+    def settings(self, value: pulumi.Input[Optional['AccountSettingsArgs']]):
         pulumi.set(self, "settings", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The 'type' field should no longer be set through the API.""")
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "standard", "enterprise".
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def unit(self) -> Optional[pulumi.Input['AccountUnitArgs']]:
+    def unit(self) -> pulumi.Input[Optional['AccountUnitArgs']]:
         """
         information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         return pulumi.get(self, "unit")
 
     @unit.setter
-    def unit(self, value: Optional[pulumi.Input['AccountUnitArgs']]):
+    def unit(self, value: pulumi.Input[Optional['AccountUnitArgs']]):
         pulumi.set(self, "unit", value)
 
 
@@ -225,11 +225,11 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 managed_by: Optional[pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 settings: Optional[pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit: Optional[pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']]] = None,
+                 managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -368,11 +368,11 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 managed_by: Optional[pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 settings: Optional[pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit: Optional[pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']]] = None,
+                 managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -400,12 +400,12 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            managed_by: Optional[pulumi.Input[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            settings: Optional[pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            unit: Optional[pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']]] = None) -> 'Account':
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_by: pulumi.Input[Optional[Union['AccountManagedByArgs', 'AccountManagedByArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            settings: pulumi.Input[Optional[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            unit: pulumi.Input[Optional[Union['AccountUnitArgs', 'AccountUnitArgsDict']]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

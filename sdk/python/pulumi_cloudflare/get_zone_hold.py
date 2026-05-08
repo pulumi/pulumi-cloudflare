@@ -153,7 +153,7 @@ def get_zone_hold(zone_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         include_subdomains=pulumi.get(__ret__, 'include_subdomains'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zone_hold_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zone_hold_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneHoldResult]:
     """
     Accepted Permissions

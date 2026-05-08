@@ -124,10 +124,10 @@ export interface GetEmailRoutingAddressOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Destination address identifier.
      */
-    destinationAddressIdentifier?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetEmailRoutingAddressFilterArgs>;
+    destinationAddressIdentifier?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetEmailRoutingAddressFilterArgs | undefined>;
 }

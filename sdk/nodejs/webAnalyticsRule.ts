@@ -121,23 +121,23 @@ export interface WebAnalyticsRuleState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    created?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    created?: pulumi.Input<string | undefined>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Whether the rule includes or excludes traffic from being measured.
      */
-    inclusive?: pulumi.Input<boolean>;
+    inclusive?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the rule is paused or not.
      */
-    isPaused?: pulumi.Input<boolean>;
-    paths?: pulumi.Input<pulumi.Input<string>[]>;
-    priority?: pulumi.Input<number>;
+    isPaused?: pulumi.Input<boolean | undefined>;
+    paths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The Web Analytics ruleset identifier.
      */
-    rulesetId?: pulumi.Input<string>;
+    rulesetId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -147,17 +147,17 @@ export interface WebAnalyticsRuleArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Whether the rule includes or excludes traffic from being measured.
      */
-    inclusive?: pulumi.Input<boolean>;
+    inclusive?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the rule is paused or not.
      */
-    isPaused?: pulumi.Input<boolean>;
-    paths?: pulumi.Input<pulumi.Input<string>[]>;
+    isPaused?: pulumi.Input<boolean | undefined>;
+    paths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Web Analytics ruleset identifier.
      */

@@ -135,5 +135,5 @@ export function getZeroTrustDeviceDefaultProfileOutput(args?: GetZeroTrustDevice
  * A collection of arguments for invoking getZeroTrustDeviceDefaultProfile.
  */
 export interface GetZeroTrustDeviceDefaultProfileOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
 }

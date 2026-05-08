@@ -316,8 +316,8 @@ def get_byo_ip_prefix(account_id: Optional[_builtins.str] = None,
         ownership_validation_token=pulumi.get(__ret__, 'ownership_validation_token'),
         prefix_id=pulumi.get(__ret__, 'prefix_id'),
         rpki_validation_state=pulumi.get(__ret__, 'rpki_validation_state'))
-def get_byo_ip_prefix_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             prefix_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_byo_ip_prefix_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             prefix_id: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetByoIpPrefixResult]:
     """
     Accepted Permissions

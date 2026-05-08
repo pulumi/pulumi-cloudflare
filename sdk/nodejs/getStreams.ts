@@ -274,70 +274,70 @@ export interface GetStreamsOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Alias for 'start'. Returns videos created after this date/time (RFC 3339 format).
      */
-    after?: pulumi.Input<string>;
+    after?: pulumi.Input<string | undefined>;
     /**
      * Lists videos in ascending order of creation.
      */
-    asc?: pulumi.Input<boolean>;
+    asc?: pulumi.Input<boolean | undefined>;
     /**
      * Alias for 'end'. Returns videos created before this date/time (RFC 3339 format).
      */
-    before?: pulumi.Input<string>;
+    before?: pulumi.Input<string | undefined>;
     /**
      * A user-defined identifier for the media creator.
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * Lists videos created before the specified date.
      */
-    end?: pulumi.Input<string>;
+    end?: pulumi.Input<string | undefined>;
     /**
      * Filter by video ID(s). Can be a single ID or a comma-separated list of IDs.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Includes the total number of videos associated with the submitted query parameters.
      */
-    includeCounts?: pulumi.Input<boolean>;
+    includeCounts?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum number of videos to return (default 1000, max 1000).
      */
-    limit?: pulumi.Input<number>;
+    limit?: pulumi.Input<number | undefined>;
     /**
      * Filter by live input ID to find videos associated with a specific live stream.
      */
-    liveInputId?: pulumi.Input<string>;
+    liveInputId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Filter by video name/UID(s). Can be a single name or a comma-separated list.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
     /**
      * Lists videos created after the specified date.
      */
-    start?: pulumi.Input<string>;
+    start?: pulumi.Input<string | undefined>;
     /**
      * Specifies the processing status for all quality levels for a video.
      * Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error", "live-inprogress".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the video is `vod` or `live`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Provides a fast, exact string match on the `name` key in the `meta` field.
      */
-    videoName?: pulumi.Input<string>;
+    videoName?: pulumi.Input<string | undefined>;
 }

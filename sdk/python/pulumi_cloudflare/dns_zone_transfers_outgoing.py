@@ -21,7 +21,7 @@ class DnsZoneTransfersOutgoingArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  peers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DnsZoneTransfersOutgoing resource.
 
@@ -59,24 +59,24 @@ class DnsZoneTransfersOutgoingArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _DnsZoneTransfersOutgoingState:
     def __init__(__self__, *,
-                 checked_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_transferred_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 soa_serial: Optional[pulumi.Input[_builtins.float]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 checked_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_transferred_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 soa_serial: pulumi.Input[Optional[_builtins.float]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsZoneTransfersOutgoing resources.
 
@@ -104,83 +104,83 @@ class _DnsZoneTransfersOutgoingState:
 
     @_builtins.property
     @pulumi.getter(name="checkedTime")
-    def checked_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checked_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time for a specific event.
         """
         return pulumi.get(self, "checked_time")
 
     @checked_time.setter
-    def checked_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checked_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checked_time", value)
 
     @_builtins.property
     @pulumi.getter(name="createdTime")
-    def created_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time for a specific event.
         """
         return pulumi.get(self, "created_time")
 
     @created_time.setter
-    def created_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lastTransferredTime")
-    def last_transferred_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transferred_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time for a specific event.
         """
         return pulumi.get(self, "last_transferred_time")
 
     @last_transferred_time.setter
-    def last_transferred_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transferred_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transferred_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def peers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def peers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of peer tags.
         """
         return pulumi.get(self, "peers")
 
     @peers.setter
-    def peers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def peers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "peers", value)
 
     @_builtins.property
     @pulumi.getter(name="soaSerial")
-    def soa_serial(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def soa_serial(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The serial number of the SOA for the given zone.
         """
         return pulumi.get(self, "soa_serial")
 
     @soa_serial.setter
-    def soa_serial(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def soa_serial(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "soa_serial", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -190,9 +190,9 @@ class DnsZoneTransfersOutgoing(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -282,9 +282,9 @@ class DnsZoneTransfersOutgoing(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -315,13 +315,13 @@ class DnsZoneTransfersOutgoing(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            checked_time: Optional[pulumi.Input[_builtins.str]] = None,
-            created_time: Optional[pulumi.Input[_builtins.str]] = None,
-            last_transferred_time: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            soa_serial: Optional[pulumi.Input[_builtins.float]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DnsZoneTransfersOutgoing':
+            checked_time: pulumi.Input[Optional[_builtins.str]] = None,
+            created_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_transferred_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            soa_serial: pulumi.Input[Optional[_builtins.float]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DnsZoneTransfersOutgoing':
         """
         Get an existing DnsZoneTransfersOutgoing resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

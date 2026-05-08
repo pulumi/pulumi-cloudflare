@@ -23,11 +23,11 @@ class AccessGroupArgs:
     def __init__(__self__, *,
                  includes: pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]],
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 requires: pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupRequireArgs']]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessGroup resource.
 
@@ -78,75 +78,75 @@ class AccessGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]]:
+    def excludes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]]:
         """
         Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]]):
+    def excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]]):
         pulumi.set(self, "excludes", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is the default group
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter
-    def requires(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]]:
+    def requires(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupRequireArgs']]]]:
         """
         Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
         """
         return pulumi.get(self, "requires")
 
     @requires.setter
-    def requires(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]]):
+    def requires(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupRequireArgs']]]]):
         pulumi.set(self, "requires", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _AccessGroupState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]] = None,
-                 includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupIncludeArgs']]]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 requires: pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupRequireArgs']]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessGroup resources.
 
@@ -175,86 +175,86 @@ class _AccessGroupState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]]:
+    def excludes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]]:
         """
         Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]]):
+    def excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]]):
         pulumi.set(self, "excludes", value)
 
     @_builtins.property
     @pulumi.getter
-    def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]]]:
+    def includes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupIncludeArgs']]]]:
         """
         Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         """
         return pulumi.get(self, "includes")
 
     @includes.setter
-    def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]]]):
+    def includes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupIncludeArgs']]]]):
         pulumi.set(self, "includes", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is the default group
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Access group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def requires(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]]:
+    def requires(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupRequireArgs']]]]:
         """
         Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
         """
         return pulumi.get(self, "requires")
 
     @requires.setter
-    def requires(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]]):
+    def requires(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccessGroupRequireArgs']]]]):
         pulumi.set(self, "requires", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -269,13 +269,13 @@ class AccessGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]]] = None,
-                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -376,13 +376,13 @@ class AccessGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]]] = None,
-                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]]] = None,
+                 includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""AccessGroup is deprecated: cloudflare.index/accessgroup.AccessGroup has been deprecated in favor of cloudflare.index/zerotrustaccessgroup.ZeroTrustAccessGroup""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -416,13 +416,13 @@ class AccessGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]]] = None,
-            includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]]] = None,
-            is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessGroup':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            excludes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]]] = None,
+            includes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            requires: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessGroup':
         """
         Get an existing AccessGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

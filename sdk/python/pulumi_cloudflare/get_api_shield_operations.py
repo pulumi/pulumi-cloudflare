@@ -227,14 +227,14 @@ def get_api_shield_operations(direction: Optional[_builtins.str] = None,
         order=pulumi.get(__ret__, 'order'),
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_api_shield_operations_output(direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     endpoint: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     features: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                     hosts: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                     max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                     methods: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                     order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_api_shield_operations_output(direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     endpoint: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     features: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                     hosts: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                     max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                     methods: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                     order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiShieldOperationsResult]:
     """
     Accepted Permissions

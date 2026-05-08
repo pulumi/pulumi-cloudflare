@@ -94,7 +94,7 @@ export function getZeroTrustDevicePostureIntegrationOutput(args: GetZeroTrustDev
  * A collection of arguments for invoking getZeroTrustDevicePostureIntegration.
  */
 export interface GetZeroTrustDevicePostureIntegrationOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * API UUID.
      */

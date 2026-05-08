@@ -193,13 +193,13 @@ def get_zero_trust_tunnel_cloudflared_virtual_networks(account_id: Optional[_bui
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
         results=pulumi.get(__ret__, 'results'))
-def get_zero_trust_tunnel_cloudflared_virtual_networks_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                              id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                              is_default: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                                              is_default_network: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                                              is_deleted: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                                              max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                              name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_tunnel_cloudflared_virtual_networks_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                              id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                              is_default: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                                              is_default_network: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                                              is_deleted: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                                              max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                              name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredVirtualNetworksResult]:
     """
     Accepted Permissions

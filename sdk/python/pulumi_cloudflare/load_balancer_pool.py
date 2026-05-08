@@ -23,19 +23,19 @@ class LoadBalancerPoolArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  origins: pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 latitude: Optional[pulumi.Input[_builtins.float]] = None,
-                 load_shedding: Optional[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']] = None,
-                 longitude: Optional[pulumi.Input[_builtins.float]] = None,
-                 minimum_origins: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitor: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_filter: Optional[pulumi.Input['LoadBalancerPoolNotificationFilterArgs']] = None,
-                 origin_steering: Optional[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 latitude: pulumi.Input[Optional[_builtins.float]] = None,
+                 load_shedding: pulumi.Input[Optional['LoadBalancerPoolLoadSheddingArgs']] = None,
+                 longitude: pulumi.Input[Optional[_builtins.float]] = None,
+                 minimum_origins: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_filter: pulumi.Input[Optional['LoadBalancerPoolNotificationFilterArgs']] = None,
+                 origin_steering: pulumi.Input[Optional['LoadBalancerPoolOriginSteeringArgs']] = None):
         """
         The set of arguments for constructing a LoadBalancerPool resource.
 
@@ -110,183 +110,183 @@ class LoadBalancerPoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="checkRegions")
-    def check_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def check_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of regions from which to run health checks. Null means every Cloudflare data center.
         """
         return pulumi.get(self, "check_regions")
 
     @check_regions.setter
-    def check_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def check_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "check_regions", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the pool.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def latitude(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def latitude(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
         """
         return pulumi.get(self, "latitude")
 
     @latitude.setter
-    def latitude(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def latitude(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "latitude", value)
 
     @_builtins.property
     @pulumi.getter(name="loadShedding")
-    def load_shedding(self) -> Optional[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]:
+    def load_shedding(self) -> pulumi.Input[Optional['LoadBalancerPoolLoadSheddingArgs']]:
         """
         Configures load shedding policies and percentages for the pool.
         """
         return pulumi.get(self, "load_shedding")
 
     @load_shedding.setter
-    def load_shedding(self, value: Optional[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]):
+    def load_shedding(self, value: pulumi.Input[Optional['LoadBalancerPoolLoadSheddingArgs']]):
         pulumi.set(self, "load_shedding", value)
 
     @_builtins.property
     @pulumi.getter
-    def longitude(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def longitude(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
         """
         return pulumi.get(self, "longitude")
 
     @longitude.setter
-    def longitude(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def longitude(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "longitude", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumOrigins")
-    def minimum_origins(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_origins(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
         """
         return pulumi.get(self, "minimum_origins")
 
     @minimum_origins.setter
-    def minimum_origins(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_origins(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_origins", value)
 
     @_builtins.property
     @pulumi.getter
-    def monitor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Monitor to use for checking the health of origins within this pool.
         """
         return pulumi.get(self, "monitor")
 
     @monitor.setter
-    def monitor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorGroup")
-    def monitor_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Monitor Group to use for checking the health of origins within this pool.
         """
         return pulumi.get(self, "monitor_group")
 
     @monitor_group.setter
-    def monitor_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_group", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationEmail")
-    def notification_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notification_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         """
         return pulumi.get(self, "notification_email")
 
     @notification_email.setter
-    def notification_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notification_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notification_email", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationFilter")
-    def notification_filter(self) -> Optional[pulumi.Input['LoadBalancerPoolNotificationFilterArgs']]:
+    def notification_filter(self) -> pulumi.Input[Optional['LoadBalancerPoolNotificationFilterArgs']]:
         """
         Filter pool and origin health notifications by resource type or health status. Use null to reset.
         """
         return pulumi.get(self, "notification_filter")
 
     @notification_filter.setter
-    def notification_filter(self, value: Optional[pulumi.Input['LoadBalancerPoolNotificationFilterArgs']]):
+    def notification_filter(self, value: pulumi.Input[Optional['LoadBalancerPoolNotificationFilterArgs']]):
         pulumi.set(self, "notification_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="originSteering")
-    def origin_steering(self) -> Optional[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]:
+    def origin_steering(self) -> pulumi.Input[Optional['LoadBalancerPoolOriginSteeringArgs']]:
         """
         Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
         """
         return pulumi.get(self, "origin_steering")
 
     @origin_steering.setter
-    def origin_steering(self, value: Optional[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]):
+    def origin_steering(self, value: pulumi.Input[Optional['LoadBalancerPoolOriginSteeringArgs']]):
         pulumi.set(self, "origin_steering", value)
 
 
 @pulumi.input_type
 class _LoadBalancerPoolState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 latitude: Optional[pulumi.Input[_builtins.float]] = None,
-                 load_shedding: Optional[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']] = None,
-                 longitude: Optional[pulumi.Input[_builtins.float]] = None,
-                 minimum_origins: Optional[pulumi.Input[_builtins.int]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notification_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_filter: Optional[pulumi.Input['LoadBalancerPoolNotificationFilterArgs']] = None,
-                 origin_steering: Optional[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']] = None,
-                 origins: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 latitude: pulumi.Input[Optional[_builtins.float]] = None,
+                 load_shedding: pulumi.Input[Optional['LoadBalancerPoolLoadSheddingArgs']] = None,
+                 longitude: pulumi.Input[Optional[_builtins.float]] = None,
+                 minimum_origins: pulumi.Input[Optional[_builtins.int]] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notification_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_filter: pulumi.Input[Optional['LoadBalancerPoolNotificationFilterArgs']] = None,
+                 origin_steering: pulumi.Input[Optional['LoadBalancerPoolOriginSteeringArgs']] = None,
+                 origins: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerPool resources.
 
@@ -349,224 +349,224 @@ class _LoadBalancerPoolState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="checkRegions")
-    def check_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def check_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of regions from which to run health checks. Null means every Cloudflare data center.
         """
         return pulumi.get(self, "check_regions")
 
     @check_regions.setter
-    def check_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def check_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "check_regions", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the pool.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disabledAt")
-    def disabled_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disabled_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
         """
         return pulumi.get(self, "disabled_at")
 
     @disabled_at.setter
-    def disabled_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disabled_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disabled_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def latitude(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def latitude(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
         """
         return pulumi.get(self, "latitude")
 
     @latitude.setter
-    def latitude(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def latitude(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "latitude", value)
 
     @_builtins.property
     @pulumi.getter(name="loadShedding")
-    def load_shedding(self) -> Optional[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]:
+    def load_shedding(self) -> pulumi.Input[Optional['LoadBalancerPoolLoadSheddingArgs']]:
         """
         Configures load shedding policies and percentages for the pool.
         """
         return pulumi.get(self, "load_shedding")
 
     @load_shedding.setter
-    def load_shedding(self, value: Optional[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]):
+    def load_shedding(self, value: pulumi.Input[Optional['LoadBalancerPoolLoadSheddingArgs']]):
         pulumi.set(self, "load_shedding", value)
 
     @_builtins.property
     @pulumi.getter
-    def longitude(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def longitude(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
         """
         return pulumi.get(self, "longitude")
 
     @longitude.setter
-    def longitude(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def longitude(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "longitude", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumOrigins")
-    def minimum_origins(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_origins(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
         """
         return pulumi.get(self, "minimum_origins")
 
     @minimum_origins.setter
-    def minimum_origins(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_origins(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_origins", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def monitor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Monitor to use for checking the health of origins within this pool.
         """
         return pulumi.get(self, "monitor")
 
     @monitor.setter
-    def monitor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorGroup")
-    def monitor_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Monitor Group to use for checking the health of origins within this pool.
         """
         return pulumi.get(self, "monitor_group")
 
     @monitor_group.setter
-    def monitor_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of networks where Load Balancer or Pool is enabled.
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationEmail")
-    def notification_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notification_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         """
         return pulumi.get(self, "notification_email")
 
     @notification_email.setter
-    def notification_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notification_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notification_email", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationFilter")
-    def notification_filter(self) -> Optional[pulumi.Input['LoadBalancerPoolNotificationFilterArgs']]:
+    def notification_filter(self) -> pulumi.Input[Optional['LoadBalancerPoolNotificationFilterArgs']]:
         """
         Filter pool and origin health notifications by resource type or health status. Use null to reset.
         """
         return pulumi.get(self, "notification_filter")
 
     @notification_filter.setter
-    def notification_filter(self, value: Optional[pulumi.Input['LoadBalancerPoolNotificationFilterArgs']]):
+    def notification_filter(self, value: pulumi.Input[Optional['LoadBalancerPoolNotificationFilterArgs']]):
         pulumi.set(self, "notification_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="originSteering")
-    def origin_steering(self) -> Optional[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]:
+    def origin_steering(self) -> pulumi.Input[Optional['LoadBalancerPoolOriginSteeringArgs']]:
         """
         Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
         """
         return pulumi.get(self, "origin_steering")
 
     @origin_steering.setter
-    def origin_steering(self, value: Optional[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]):
+    def origin_steering(self, value: pulumi.Input[Optional['LoadBalancerPoolOriginSteeringArgs']]):
         pulumi.set(self, "origin_steering", value)
 
     @_builtins.property
     @pulumi.getter
-    def origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]]:
+    def origins(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]]:
         """
         The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
         """
         return pulumi.get(self, "origins")
 
     @origins.setter
-    def origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]]):
+    def origins(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]]):
         pulumi.set(self, "origins", value)
 
 
@@ -576,21 +576,21 @@ class LoadBalancerPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 latitude: Optional[pulumi.Input[_builtins.float]] = None,
-                 load_shedding: Optional[pulumi.Input[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]] = None,
-                 longitude: Optional[pulumi.Input[_builtins.float]] = None,
-                 minimum_origins: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitor: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_filter: Optional[pulumi.Input[Union['LoadBalancerPoolNotificationFilterArgs', 'LoadBalancerPoolNotificationFilterArgsDict']]] = None,
-                 origin_steering: Optional[pulumi.Input[Union['LoadBalancerPoolOriginSteeringArgs', 'LoadBalancerPoolOriginSteeringArgsDict']]] = None,
-                 origins: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 latitude: pulumi.Input[Optional[_builtins.float]] = None,
+                 load_shedding: pulumi.Input[Optional[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]] = None,
+                 longitude: pulumi.Input[Optional[_builtins.float]] = None,
+                 minimum_origins: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_filter: pulumi.Input[Optional[Union['LoadBalancerPoolNotificationFilterArgs', 'LoadBalancerPoolNotificationFilterArgsDict']]] = None,
+                 origin_steering: pulumi.Input[Optional[Union['LoadBalancerPoolOriginSteeringArgs', 'LoadBalancerPoolOriginSteeringArgsDict']]] = None,
+                 origins: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -621,14 +621,14 @@ class LoadBalancerPool(pulumi.CustomResource):
             }],
             description="Primary data center - Provider XYZ",
             enabled=False,
-            latitude=0,
+            latitude=float(0),
             load_shedding={
-                "default_percent": 0,
+                "default_percent": float(0),
                 "default_policy": "random",
-                "session_percent": 0,
+                "session_percent": float(0),
                 "session_policy": "hash",
             },
-            longitude=0,
+            longitude=float(0),
             minimum_origins=0,
             monitor="monitor",
             monitor_group="monitor_group",
@@ -708,14 +708,14 @@ class LoadBalancerPool(pulumi.CustomResource):
             }],
             description="Primary data center - Provider XYZ",
             enabled=False,
-            latitude=0,
+            latitude=float(0),
             load_shedding={
-                "default_percent": 0,
+                "default_percent": float(0),
                 "default_policy": "random",
-                "session_percent": 0,
+                "session_percent": float(0),
                 "session_policy": "hash",
             },
-            longitude=0,
+            longitude=float(0),
             minimum_origins=0,
             monitor="monitor",
             monitor_group="monitor_group",
@@ -757,21 +757,21 @@ class LoadBalancerPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 latitude: Optional[pulumi.Input[_builtins.float]] = None,
-                 load_shedding: Optional[pulumi.Input[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]] = None,
-                 longitude: Optional[pulumi.Input[_builtins.float]] = None,
-                 minimum_origins: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitor: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_filter: Optional[pulumi.Input[Union['LoadBalancerPoolNotificationFilterArgs', 'LoadBalancerPoolNotificationFilterArgsDict']]] = None,
-                 origin_steering: Optional[pulumi.Input[Union['LoadBalancerPoolOriginSteeringArgs', 'LoadBalancerPoolOriginSteeringArgsDict']]] = None,
-                 origins: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 latitude: pulumi.Input[Optional[_builtins.float]] = None,
+                 load_shedding: pulumi.Input[Optional[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]] = None,
+                 longitude: pulumi.Input[Optional[_builtins.float]] = None,
+                 minimum_origins: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_filter: pulumi.Input[Optional[Union['LoadBalancerPoolNotificationFilterArgs', 'LoadBalancerPoolNotificationFilterArgsDict']]] = None,
+                 origin_steering: pulumi.Input[Optional[Union['LoadBalancerPoolOriginSteeringArgs', 'LoadBalancerPoolOriginSteeringArgsDict']]] = None,
+                 origins: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -814,25 +814,25 @@ class LoadBalancerPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled_at: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            latitude: Optional[pulumi.Input[_builtins.float]] = None,
-            load_shedding: Optional[pulumi.Input[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]] = None,
-            longitude: Optional[pulumi.Input[_builtins.float]] = None,
-            minimum_origins: Optional[pulumi.Input[_builtins.int]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            monitor: Optional[pulumi.Input[_builtins.str]] = None,
-            monitor_group: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            notification_email: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_filter: Optional[pulumi.Input[Union['LoadBalancerPoolNotificationFilterArgs', 'LoadBalancerPoolNotificationFilterArgsDict']]] = None,
-            origin_steering: Optional[pulumi.Input[Union['LoadBalancerPoolOriginSteeringArgs', 'LoadBalancerPoolOriginSteeringArgsDict']]] = None,
-            origins: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict']]]]] = None) -> 'LoadBalancerPool':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled_at: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            latitude: pulumi.Input[Optional[_builtins.float]] = None,
+            load_shedding: pulumi.Input[Optional[Union['LoadBalancerPoolLoadSheddingArgs', 'LoadBalancerPoolLoadSheddingArgsDict']]] = None,
+            longitude: pulumi.Input[Optional[_builtins.float]] = None,
+            minimum_origins: pulumi.Input[Optional[_builtins.int]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_group: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            notification_email: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_filter: pulumi.Input[Optional[Union['LoadBalancerPoolNotificationFilterArgs', 'LoadBalancerPoolNotificationFilterArgsDict']]] = None,
+            origin_steering: pulumi.Input[Optional[Union['LoadBalancerPoolOriginSteeringArgs', 'LoadBalancerPoolOriginSteeringArgsDict']]] = None,
+            origins: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerPoolOriginArgs', 'LoadBalancerPoolOriginArgsDict']]]]] = None) -> 'LoadBalancerPool':
         """
         Get an existing LoadBalancerPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

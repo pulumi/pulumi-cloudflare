@@ -128,7 +128,7 @@ def get_organization_profile(organization_id: Optional[_builtins.str] = None,
         external_metadata=pulumi.get(__ret__, 'external_metadata'),
         id=pulumi.get(__ret__, 'id'),
         organization_id=pulumi.get(__ret__, 'organization_id'))
-def get_organization_profile_output(organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_organization_profile_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationProfileResult]:
     """
     ## Example Usage

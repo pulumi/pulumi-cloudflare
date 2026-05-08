@@ -75,9 +75,9 @@ class ManagedHeadersArgs:
 @pulumi.input_type
 class _ManagedHeadersState:
     def __init__(__self__, *,
-                 managed_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedRequestHeaderArgs']]]] = None,
-                 managed_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 managed_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedHeadersManagedRequestHeaderArgs']]]] = None,
+                 managed_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ManagedHeaders resources.
 
@@ -94,38 +94,38 @@ class _ManagedHeadersState:
 
     @_builtins.property
     @pulumi.getter(name="managedRequestHeaders")
-    def managed_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedRequestHeaderArgs']]]]:
+    def managed_request_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedHeadersManagedRequestHeaderArgs']]]]:
         """
         The list of Managed Request Transforms.
         """
         return pulumi.get(self, "managed_request_headers")
 
     @managed_request_headers.setter
-    def managed_request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedRequestHeaderArgs']]]]):
+    def managed_request_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedHeadersManagedRequestHeaderArgs']]]]):
         pulumi.set(self, "managed_request_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="managedResponseHeaders")
-    def managed_response_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]]]:
+    def managed_response_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]]]:
         """
         The list of Managed Response Transforms.
         """
         return pulumi.get(self, "managed_response_headers")
 
     @managed_response_headers.setter
-    def managed_response_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]]]):
+    def managed_response_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]]]):
         pulumi.set(self, "managed_response_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ID of the zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -140,9 +140,9 @@ class ManagedHeaders(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 managed_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedHeadersManagedRequestHeaderArgs', 'ManagedHeadersManagedRequestHeaderArgsDict']]]]] = None,
-                 managed_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedHeadersManagedResponseHeaderArgs', 'ManagedHeadersManagedResponseHeaderArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 managed_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedHeadersManagedRequestHeaderArgs', 'ManagedHeadersManagedRequestHeaderArgsDict']]]]] = None,
+                 managed_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedHeadersManagedResponseHeaderArgs', 'ManagedHeadersManagedResponseHeaderArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -309,9 +309,9 @@ class ManagedHeaders(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 managed_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedHeadersManagedRequestHeaderArgs', 'ManagedHeadersManagedRequestHeaderArgsDict']]]]] = None,
-                 managed_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedHeadersManagedResponseHeaderArgs', 'ManagedHeadersManagedResponseHeaderArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 managed_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedHeadersManagedRequestHeaderArgs', 'ManagedHeadersManagedRequestHeaderArgsDict']]]]] = None,
+                 managed_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedHeadersManagedResponseHeaderArgs', 'ManagedHeadersManagedResponseHeaderArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""ManagedHeaders is deprecated: cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -343,9 +343,9 @@ class ManagedHeaders(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            managed_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedHeadersManagedRequestHeaderArgs', 'ManagedHeadersManagedRequestHeaderArgsDict']]]]] = None,
-            managed_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedHeadersManagedResponseHeaderArgs', 'ManagedHeadersManagedResponseHeaderArgsDict']]]]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ManagedHeaders':
+            managed_request_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedHeadersManagedRequestHeaderArgs', 'ManagedHeadersManagedRequestHeaderArgsDict']]]]] = None,
+            managed_response_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedHeadersManagedResponseHeaderArgs', 'ManagedHeadersManagedResponseHeaderArgsDict']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ManagedHeaders':
         """
         Get an existing ManagedHeaders resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

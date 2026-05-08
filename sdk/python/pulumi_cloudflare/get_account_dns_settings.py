@@ -113,7 +113,7 @@ def get_account_dns_settings(account_id: Optional[_builtins.str] = None,
         enforce_dns_only=pulumi.get(__ret__, 'enforce_dns_only'),
         id=pulumi.get(__ret__, 'id'),
         zone_defaults=pulumi.get(__ret__, 'zone_defaults'))
-def get_account_dns_settings_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_dns_settings_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountDnsSettingsResult]:
     """
     Accepted Permissions

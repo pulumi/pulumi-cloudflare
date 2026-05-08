@@ -183,39 +183,39 @@ export interface TokenValidationRulesState {
      * Action to take on requests that match operations included in `selector` and fail `expression`.
      * Available values: "log", "block".
      */
-    action?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description that gives more details than `title`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Toggle rule on or off.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rule expression. Requests that fail to match this expression will be subject to `action`.
      */
-    expression?: pulumi.Input<string>;
-    lastUpdated?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
+    lastUpdated?: pulumi.Input<string | undefined>;
     /**
      * Update rule order among zone rules.
      */
-    position?: pulumi.Input<inputs.TokenValidationRulesPosition>;
+    position?: pulumi.Input<inputs.TokenValidationRulesPosition | undefined>;
     /**
      * Select operations covered by this rule.
      *
      * For details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
      */
-    selector?: pulumi.Input<inputs.TokenValidationRulesSelector>;
+    selector?: pulumi.Input<inputs.TokenValidationRulesSelector | undefined>;
     /**
      * A human-readable name for the rule.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -242,7 +242,7 @@ export interface TokenValidationRulesArgs {
     /**
      * Update rule order among zone rules.
      */
-    position?: pulumi.Input<inputs.TokenValidationRulesPosition>;
+    position?: pulumi.Input<inputs.TokenValidationRulesPosition | undefined>;
     /**
      * Select operations covered by this rule.
      *
@@ -256,5 +256,5 @@ export interface TokenValidationRulesArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

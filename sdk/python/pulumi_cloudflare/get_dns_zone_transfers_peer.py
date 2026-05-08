@@ -161,8 +161,8 @@ def get_dns_zone_transfers_peer(account_id: Optional[_builtins.str] = None,
         peer_id=pulumi.get(__ret__, 'peer_id'),
         port=pulumi.get(__ret__, 'port'),
         tsig_id=pulumi.get(__ret__, 'tsig_id'))
-def get_dns_zone_transfers_peer_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       peer_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_dns_zone_transfers_peer_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       peer_id: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsZoneTransfersPeerResult]:
     """
     Accepted Permissions

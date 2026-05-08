@@ -310,9 +310,9 @@ def get_logpush_job(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         output_options=pulumi.get(__ret__, 'output_options'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_logpush_job_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           job_id: Optional[pulumi.Input[_builtins.int]] = None,
-                           zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_logpush_job_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           job_id: pulumi.Input[Optional[_builtins.int]] = None,
+                           zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogpushJobResult]:
     """
     Accepted Permissions

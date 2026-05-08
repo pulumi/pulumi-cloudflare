@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTieredCache = new Cloudflare.Index.TieredCache("example_tiered_cache", new()
+    ///     var exampleTieredCache = new Cloudflare.TieredCache("example_tiered_cache", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Value = "on",

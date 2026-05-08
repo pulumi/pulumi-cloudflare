@@ -96,7 +96,7 @@ export function getWorkflowOutput(args?: GetWorkflowOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getWorkflow.
  */
 export interface GetWorkflowOutputArgs {
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetWorkflowFilterArgs>;
-    workflowName?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetWorkflowFilterArgs | undefined>;
+    workflowName?: pulumi.Input<string | undefined>;
 }

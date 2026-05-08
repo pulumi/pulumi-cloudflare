@@ -95,8 +95,8 @@ export interface ZeroTrustDeviceDefaultProfileCertificatesState {
     /**
      * The current status of the device policy certificate provisioning feature for WARP clients.
      */
-    enabled?: pulumi.Input<boolean>;
-    zoneId?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -107,5 +107,5 @@ export interface ZeroTrustDeviceDefaultProfileCertificatesArgs {
      * The current status of the device policy certificate provisioning feature for WARP clients.
      */
     enabled: pulumi.Input<boolean>;
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

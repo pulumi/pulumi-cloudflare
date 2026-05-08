@@ -251,9 +251,9 @@ def get_worker(account_id: Optional[_builtins.str] = None,
         tail_consumers=pulumi.get(__ret__, 'tail_consumers'),
         updated_on=pulumi.get(__ret__, 'updated_on'),
         worker_id=pulumi.get(__ret__, 'worker_id'))
-def get_worker_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      filter: Optional[pulumi.Input[Optional[Union['GetWorkerFilterArgs', 'GetWorkerFilterArgsDict']]]] = None,
-                      worker_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_worker_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      filter: pulumi.Input[Optional[Optional[Union['GetWorkerFilterArgs', 'GetWorkerFilterArgsDict']]]] = None,
+                      worker_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkerResult]:
     """
     Accepted Permissions

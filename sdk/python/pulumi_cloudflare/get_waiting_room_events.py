@@ -132,9 +132,9 @@ def get_waiting_room_events(max_items: Optional[_builtins.int] = None,
         results=pulumi.get(__ret__, 'results'),
         waiting_room_id=pulumi.get(__ret__, 'waiting_room_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_waiting_room_events_output(max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                   waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_waiting_room_events_output(max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                   waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWaitingRoomEventsResult]:
     """
     Accepted Permissions

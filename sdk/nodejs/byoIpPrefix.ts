@@ -203,73 +203,73 @@ export interface ByoIpPrefixState {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
      *
      * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
-    advertised?: pulumi.Input<boolean>;
+    advertised?: pulumi.Input<boolean | undefined>;
     /**
      * Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
      *
      * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
-    advertisedModifiedAt?: pulumi.Input<string>;
+    advertisedModifiedAt?: pulumi.Input<string | undefined>;
     /**
      * Approval state of the prefix (P = pending, V = active).
      */
-    approved?: pulumi.Input<string>;
+    approved?: pulumi.Input<string | undefined>;
     /**
      * Autonomous System Number (ASN) the prefix will be advertised under.
      */
-    asn?: pulumi.Input<number>;
+    asn?: pulumi.Input<number | undefined>;
     /**
      * IP Prefix in Classless Inter-Domain Routing format.
      */
-    cidr?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
      */
-    delegateLoaCreation?: pulumi.Input<boolean>;
+    delegateLoaCreation?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the prefix.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * State of one kind of validation for an IP prefix.
      */
-    irrValidationState?: pulumi.Input<string>;
+    irrValidationState?: pulumi.Input<string | undefined>;
     /**
      * Identifier for the uploaded LOA document.
      */
-    loaDocumentId?: pulumi.Input<string>;
-    modifiedAt?: pulumi.Input<string>;
+    loaDocumentId?: pulumi.Input<string | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
     /**
      * Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
      *
      * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
-    onDemandEnabled?: pulumi.Input<boolean>;
+    onDemandEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether advertisement status of the prefix is locked, meaning it cannot be changed.
      *
      * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
-    onDemandLocked?: pulumi.Input<boolean>;
+    onDemandLocked?: pulumi.Input<boolean | undefined>;
     /**
      * State of one kind of validation for an IP prefix.
      */
-    ownershipValidationState?: pulumi.Input<string>;
+    ownershipValidationState?: pulumi.Input<string | undefined>;
     /**
      * Token provided to demonstrate ownership of the prefix.
      */
-    ownershipValidationToken?: pulumi.Input<string>;
+    ownershipValidationToken?: pulumi.Input<string | undefined>;
     /**
      * State of one kind of validation for an IP prefix.
      */
-    rpkiValidationState?: pulumi.Input<string>;
+    rpkiValidationState?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -279,7 +279,7 @@ export interface ByoIpPrefixArgs {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Autonomous System Number (ASN) the prefix will be advertised under.
      */
@@ -291,13 +291,13 @@ export interface ByoIpPrefixArgs {
     /**
      * Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
      */
-    delegateLoaCreation?: pulumi.Input<boolean>;
+    delegateLoaCreation?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the prefix.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Identifier for the uploaded LOA document.
      */
-    loaDocumentId?: pulumi.Input<string>;
+    loaDocumentId?: pulumi.Input<string | undefined>;
 }

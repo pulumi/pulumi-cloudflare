@@ -142,28 +142,28 @@ export interface PagesDomainState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Available values: "google", "letsEncrypt".
      */
-    certificateAuthority?: pulumi.Input<string>;
-    createdOn?: pulumi.Input<string>;
-    domainId?: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string | undefined>;
+    createdOn?: pulumi.Input<string | undefined>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * The domain name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the project.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
      */
-    status?: pulumi.Input<string>;
-    validationData?: pulumi.Input<inputs.PagesDomainValidationData>;
-    verificationData?: pulumi.Input<inputs.PagesDomainVerificationData>;
-    zoneTag?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
+    validationData?: pulumi.Input<inputs.PagesDomainValidationData | undefined>;
+    verificationData?: pulumi.Input<inputs.PagesDomainVerificationData | undefined>;
+    zoneTag?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,7 +173,7 @@ export interface PagesDomainArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The domain name.
      */

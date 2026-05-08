@@ -219,63 +219,63 @@ export interface MagicWanIpsecTunnelState {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
      */
-    allowNullCipher?: pulumi.Input<boolean>;
+    allowNullCipher?: pulumi.Input<boolean | undefined>;
     /**
      * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
      */
-    automaticReturnRouting?: pulumi.Input<boolean>;
-    bgp?: pulumi.Input<inputs.MagicWanIpsecTunnelBgp>;
-    bgpStatus?: pulumi.Input<inputs.MagicWanIpsecTunnelBgpStatus>;
+    automaticReturnRouting?: pulumi.Input<boolean | undefined>;
+    bgp?: pulumi.Input<inputs.MagicWanIpsecTunnelBgp | undefined>;
+    bgpStatus?: pulumi.Input<inputs.MagicWanIpsecTunnelBgpStatus | undefined>;
     /**
      * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      */
-    cloudflareEndpoint?: pulumi.Input<string>;
+    cloudflareEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The date and time the tunnel was created.
      */
-    createdOn?: pulumi.Input<string>;
-    customRemoteIdentities?: pulumi.Input<inputs.MagicWanIpsecTunnelCustomRemoteIdentities>;
+    createdOn?: pulumi.Input<string | undefined>;
+    customRemoteIdentities?: pulumi.Input<inputs.MagicWanIpsecTunnelCustomRemoteIdentities | undefined>;
     /**
      * The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
      */
-    customerEndpoint?: pulumi.Input<string>;
+    customerEndpoint?: pulumi.Input<string | undefined>;
     /**
      * An optional description forthe IPsec tunnel.
      */
-    description?: pulumi.Input<string>;
-    healthCheck?: pulumi.Input<inputs.MagicWanIpsecTunnelHealthCheck>;
+    description?: pulumi.Input<string | undefined>;
+    healthCheck?: pulumi.Input<inputs.MagicWanIpsecTunnelHealthCheck | undefined>;
     /**
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      */
-    interfaceAddress?: pulumi.Input<string>;
+    interfaceAddress?: pulumi.Input<string | undefined>;
     /**
      * A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
      */
-    interfaceAddress6?: pulumi.Input<string>;
+    interfaceAddress6?: pulumi.Input<string | undefined>;
     /**
      * The date and time the tunnel was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * The name of the IPsec tunnel. The name cannot share a name with other tunnels.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A randomly generated or provided string for use in the IPsec tunnel.
      */
-    psk?: pulumi.Input<string>;
+    psk?: pulumi.Input<string | undefined>;
     /**
      * The PSK metadata that includes when the PSK was generated.
      */
-    pskMetadata?: pulumi.Input<inputs.MagicWanIpsecTunnelPskMetadata>;
+    pskMetadata?: pulumi.Input<inputs.MagicWanIpsecTunnelPskMetadata | undefined>;
     /**
      * If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
      */
-    replayProtection?: pulumi.Input<boolean>;
+    replayProtection?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -289,22 +289,22 @@ export interface MagicWanIpsecTunnelArgs {
     /**
      * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
      */
-    automaticReturnRouting?: pulumi.Input<boolean>;
-    bgp?: pulumi.Input<inputs.MagicWanIpsecTunnelBgp>;
+    automaticReturnRouting?: pulumi.Input<boolean | undefined>;
+    bgp?: pulumi.Input<inputs.MagicWanIpsecTunnelBgp | undefined>;
     /**
      * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      */
     cloudflareEndpoint: pulumi.Input<string>;
-    customRemoteIdentities?: pulumi.Input<inputs.MagicWanIpsecTunnelCustomRemoteIdentities>;
+    customRemoteIdentities?: pulumi.Input<inputs.MagicWanIpsecTunnelCustomRemoteIdentities | undefined>;
     /**
      * The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
      */
-    customerEndpoint?: pulumi.Input<string>;
+    customerEndpoint?: pulumi.Input<string | undefined>;
     /**
      * An optional description forthe IPsec tunnel.
      */
-    description?: pulumi.Input<string>;
-    healthCheck?: pulumi.Input<inputs.MagicWanIpsecTunnelHealthCheck>;
+    description?: pulumi.Input<string | undefined>;
+    healthCheck?: pulumi.Input<inputs.MagicWanIpsecTunnelHealthCheck | undefined>;
     /**
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      */
@@ -312,7 +312,7 @@ export interface MagicWanIpsecTunnelArgs {
     /**
      * A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
      */
-    interfaceAddress6?: pulumi.Input<string>;
+    interfaceAddress6?: pulumi.Input<string | undefined>;
     /**
      * The name of the IPsec tunnel. The name cannot share a name with other tunnels.
      */
@@ -320,9 +320,9 @@ export interface MagicWanIpsecTunnelArgs {
     /**
      * A randomly generated or provided string for use in the IPsec tunnel.
      */
-    psk?: pulumi.Input<string>;
+    psk?: pulumi.Input<string | undefined>;
     /**
      * If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
      */
-    replayProtection?: pulumi.Input<boolean>;
+    replayProtection?: pulumi.Input<boolean | undefined>;
 }

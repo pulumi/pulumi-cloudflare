@@ -144,34 +144,34 @@ export interface AddressMapState {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
      */
-    canDelete?: pulumi.Input<boolean>;
+    canDelete?: pulumi.Input<boolean | undefined>;
     /**
      * If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
      */
-    canModifyIps?: pulumi.Input<boolean>;
-    createdAt?: pulumi.Input<string>;
+    canModifyIps?: pulumi.Input<boolean | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
      */
-    defaultSni?: pulumi.Input<string>;
+    defaultSni?: pulumi.Input<string | undefined>;
     /**
      * An optional description field which may be used to describe the types of IPs or zones on the map.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
-    ips?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    ips?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      */
-    memberships?: pulumi.Input<pulumi.Input<inputs.AddressMapMembership>[]>;
-    modifiedAt?: pulumi.Input<string>;
+    memberships?: pulumi.Input<pulumi.Input<inputs.AddressMapMembership>[] | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,22 +181,22 @@ export interface AddressMapArgs {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
      */
-    defaultSni?: pulumi.Input<string>;
+    defaultSni?: pulumi.Input<string | undefined>;
     /**
      * An optional description field which may be used to describe the types of IPs or zones on the map.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
-    ips?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    ips?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      */
-    memberships?: pulumi.Input<pulumi.Input<inputs.AddressMapMembership>[]>;
+    memberships?: pulumi.Input<pulumi.Input<inputs.AddressMapMembership>[] | undefined>;
 }

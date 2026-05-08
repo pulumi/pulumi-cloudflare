@@ -21,9 +21,9 @@ __all__ = ['AccountSubscriptionArgs', 'AccountSubscription']
 @pulumi.input_type
 class AccountSubscriptionArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_plan: Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_plan: pulumi.Input[Optional['AccountSubscriptionRatePlanArgs']] = None):
         """
         The set of arguments for constructing a AccountSubscription resource.
 
@@ -41,19 +41,19 @@ class AccountSubscriptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How often the subscription is renewed automatically.
         Available values: "weekly", "monthly", "quarterly", "yearly".
@@ -61,33 +61,33 @@ class AccountSubscriptionArgs:
         return pulumi.get(self, "frequency")
 
     @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="ratePlan")
-    def rate_plan(self) -> Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']]:
+    def rate_plan(self) -> pulumi.Input[Optional['AccountSubscriptionRatePlanArgs']]:
         """
         The rate plan applied to the subscription.
         """
         return pulumi.get(self, "rate_plan")
 
     @rate_plan.setter
-    def rate_plan(self, value: Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']]):
+    def rate_plan(self, value: pulumi.Input[Optional['AccountSubscriptionRatePlanArgs']]):
         pulumi.set(self, "rate_plan", value)
 
 
 @pulumi.input_type
 class _AccountSubscriptionState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 currency: Optional[pulumi.Input[_builtins.str]] = None,
-                 current_period_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 current_period_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 price: Optional[pulumi.Input[_builtins.float]] = None,
-                 rate_plan: Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 currency: pulumi.Input[Optional[_builtins.str]] = None,
+                 current_period_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 current_period_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 price: pulumi.Input[Optional[_builtins.float]] = None,
+                 rate_plan: pulumi.Input[Optional['AccountSubscriptionRatePlanArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountSubscription resources.
 
@@ -121,55 +121,55 @@ class _AccountSubscriptionState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def currency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def currency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The monetary unit in which pricing information is displayed.
         """
         return pulumi.get(self, "currency")
 
     @currency.setter
-    def currency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def currency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "currency", value)
 
     @_builtins.property
     @pulumi.getter(name="currentPeriodEnd")
-    def current_period_end(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def current_period_end(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end of the current period and also when the next billing is due.
         """
         return pulumi.get(self, "current_period_end")
 
     @current_period_end.setter
-    def current_period_end(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def current_period_end(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "current_period_end", value)
 
     @_builtins.property
     @pulumi.getter(name="currentPeriodStart")
-    def current_period_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def current_period_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the current billing period started. May match initial*period*start if this is the first period.
         """
         return pulumi.get(self, "current_period_start")
 
     @current_period_start.setter
-    def current_period_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def current_period_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "current_period_start", value)
 
     @_builtins.property
     @pulumi.getter
-    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How often the subscription is renewed automatically.
         Available values: "weekly", "monthly", "quarterly", "yearly".
@@ -177,36 +177,36 @@ class _AccountSubscriptionState:
         return pulumi.get(self, "frequency")
 
     @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "frequency", value)
 
     @_builtins.property
     @pulumi.getter
-    def price(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def price(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The price of the subscription that will be billed, in US dollars.
         """
         return pulumi.get(self, "price")
 
     @price.setter
-    def price(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def price(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "price", value)
 
     @_builtins.property
     @pulumi.getter(name="ratePlan")
-    def rate_plan(self) -> Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']]:
+    def rate_plan(self) -> pulumi.Input[Optional['AccountSubscriptionRatePlanArgs']]:
         """
         The rate plan applied to the subscription.
         """
         return pulumi.get(self, "rate_plan")
 
     @rate_plan.setter
-    def rate_plan(self, value: Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']]):
+    def rate_plan(self, value: pulumi.Input[Optional['AccountSubscriptionRatePlanArgs']]):
         pulumi.set(self, "rate_plan", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state that the subscription is in.
         Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
@@ -214,7 +214,7 @@ class _AccountSubscriptionState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -224,9 +224,9 @@ class AccountSubscription(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_plan: Optional[pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_plan: pulumi.Input[Optional[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -322,9 +322,9 @@ class AccountSubscription(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_plan: Optional[pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_plan: pulumi.Input[Optional[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -352,14 +352,14 @@ class AccountSubscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            currency: Optional[pulumi.Input[_builtins.str]] = None,
-            current_period_end: Optional[pulumi.Input[_builtins.str]] = None,
-            current_period_start: Optional[pulumi.Input[_builtins.str]] = None,
-            frequency: Optional[pulumi.Input[_builtins.str]] = None,
-            price: Optional[pulumi.Input[_builtins.float]] = None,
-            rate_plan: Optional[pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountSubscription':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            currency: pulumi.Input[Optional[_builtins.str]] = None,
+            current_period_end: pulumi.Input[Optional[_builtins.str]] = None,
+            current_period_start: pulumi.Input[Optional[_builtins.str]] = None,
+            frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            price: pulumi.Input[Optional[_builtins.float]] = None,
+            rate_plan: pulumi.Input[Optional[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountSubscription':
         """
         Get an existing AccountSubscription resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

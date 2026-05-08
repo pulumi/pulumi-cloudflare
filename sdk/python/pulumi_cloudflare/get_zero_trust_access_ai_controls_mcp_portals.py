@@ -127,9 +127,9 @@ def get_zero_trust_access_ai_controls_mcp_portals(account_id: Optional[_builtins
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
-def get_zero_trust_access_ai_controls_mcp_portals_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                         max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                         search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_access_ai_controls_mcp_portals_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                         max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                         search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessAiControlsMcpPortalsResult]:
     """
     ## Example Usage

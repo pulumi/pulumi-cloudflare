@@ -133,38 +133,38 @@ export interface EmailRoutingSettingsState {
     /**
      * The date and time the settings have been created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * State of the zone settings for Email Routing.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The date and time the settings have been modified.
      */
-    modified?: pulumi.Input<string>;
+    modified?: pulumi.Input<string | undefined>;
     /**
      * Domain of your zone.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Flag to check if the user skipped the configuration wizard.
      */
-    skipWizard?: pulumi.Input<boolean>;
+    skipWizard?: pulumi.Input<boolean | undefined>;
     /**
      * Show the state of your account, and the type or configuration error.
      * Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      *
      * @deprecated This attribute is deprecated.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -174,5 +174,5 @@ export interface EmailRoutingSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

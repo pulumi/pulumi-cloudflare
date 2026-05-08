@@ -21,9 +21,9 @@ __all__ = ['AccountDnsSettingsArgs', 'AccountDnsSettings']
 @pulumi.input_type
 class AccountDnsSettingsArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_dns_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_defaults: Optional[pulumi.Input['AccountDnsSettingsZoneDefaultsArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_dns_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_defaults: pulumi.Input[Optional['AccountDnsSettingsZoneDefaultsArgs']] = None):
         """
         The set of arguments for constructing a AccountDnsSettings resource.
 
@@ -39,44 +39,44 @@ class AccountDnsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enforceDnsOnly")
-    def enforce_dns_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce_dns_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
         """
         return pulumi.get(self, "enforce_dns_only")
 
     @enforce_dns_only.setter
-    def enforce_dns_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce_dns_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce_dns_only", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneDefaults")
-    def zone_defaults(self) -> Optional[pulumi.Input['AccountDnsSettingsZoneDefaultsArgs']]:
+    def zone_defaults(self) -> pulumi.Input[Optional['AccountDnsSettingsZoneDefaultsArgs']]:
         return pulumi.get(self, "zone_defaults")
 
     @zone_defaults.setter
-    def zone_defaults(self, value: Optional[pulumi.Input['AccountDnsSettingsZoneDefaultsArgs']]):
+    def zone_defaults(self, value: pulumi.Input[Optional['AccountDnsSettingsZoneDefaultsArgs']]):
         pulumi.set(self, "zone_defaults", value)
 
 
 @pulumi.input_type
 class _AccountDnsSettingsState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_dns_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_defaults: Optional[pulumi.Input['AccountDnsSettingsZoneDefaultsArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_dns_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_defaults: pulumi.Input[Optional['AccountDnsSettingsZoneDefaultsArgs']] = None):
         """
         Input properties used for looking up and filtering AccountDnsSettings resources.
 
@@ -92,35 +92,35 @@ class _AccountDnsSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enforceDnsOnly")
-    def enforce_dns_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce_dns_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
         """
         return pulumi.get(self, "enforce_dns_only")
 
     @enforce_dns_only.setter
-    def enforce_dns_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce_dns_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce_dns_only", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneDefaults")
-    def zone_defaults(self) -> Optional[pulumi.Input['AccountDnsSettingsZoneDefaultsArgs']]:
+    def zone_defaults(self) -> pulumi.Input[Optional['AccountDnsSettingsZoneDefaultsArgs']]:
         return pulumi.get(self, "zone_defaults")
 
     @zone_defaults.setter
-    def zone_defaults(self, value: Optional[pulumi.Input['AccountDnsSettingsZoneDefaultsArgs']]):
+    def zone_defaults(self, value: pulumi.Input[Optional['AccountDnsSettingsZoneDefaultsArgs']]):
         pulumi.set(self, "zone_defaults", value)
 
 
@@ -130,9 +130,9 @@ class AccountDnsSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_dns_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_defaults: Optional[pulumi.Input[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_dns_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_defaults: pulumi.Input[Optional[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -159,16 +159,16 @@ class AccountDnsSettings(pulumi.CustomResource):
                 "nameservers": {
                     "type": "cloudflare.standard",
                 },
-                "ns_ttl": 86400,
+                "ns_ttl": float(86400),
                 "secondary_overrides": False,
                 "soa": {
-                    "expire": 604800,
-                    "min_ttl": 1800,
+                    "expire": float(604800),
+                    "min_ttl": float(1800),
                     "mname": "kristina.ns.cloudflare.com",
-                    "refresh": 10000,
-                    "retry": 2400,
+                    "refresh": float(10000),
+                    "retry": float(2400),
                     "rname": "admin.example.com",
-                    "ttl": 3600,
+                    "ttl": float(3600),
                 },
                 "zone_mode": "dns_only",
             })
@@ -215,16 +215,16 @@ class AccountDnsSettings(pulumi.CustomResource):
                 "nameservers": {
                     "type": "cloudflare.standard",
                 },
-                "ns_ttl": 86400,
+                "ns_ttl": float(86400),
                 "secondary_overrides": False,
                 "soa": {
-                    "expire": 604800,
-                    "min_ttl": 1800,
+                    "expire": float(604800),
+                    "min_ttl": float(1800),
                     "mname": "kristina.ns.cloudflare.com",
-                    "refresh": 10000,
-                    "retry": 2400,
+                    "refresh": float(10000),
+                    "retry": float(2400),
                     "rname": "admin.example.com",
-                    "ttl": 3600,
+                    "ttl": float(3600),
                 },
                 "zone_mode": "dns_only",
             })
@@ -250,9 +250,9 @@ class AccountDnsSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_dns_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_defaults: Optional[pulumi.Input[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_dns_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_defaults: pulumi.Input[Optional[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -275,9 +275,9 @@ class AccountDnsSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enforce_dns_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            zone_defaults: Optional[pulumi.Input[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict']]] = None) -> 'AccountDnsSettings':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enforce_dns_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_defaults: pulumi.Input[Optional[Union['AccountDnsSettingsZoneDefaultsArgs', 'AccountDnsSettingsZoneDefaultsArgsDict']]] = None) -> 'AccountDnsSettings':
         """
         Get an existing AccountDnsSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -229,70 +229,70 @@ export interface HealthcheckState {
     /**
      * The hostname or IP address of the origin server to run health checks on.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
      */
-    checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    checkRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of consecutive fails required from a health check before changing the health to unhealthy.
      */
-    consecutiveFails?: pulumi.Input<number>;
+    consecutiveFails?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive successes required from a health check before changing the health to healthy.
      */
-    consecutiveSuccesses?: pulumi.Input<number>;
-    createdOn?: pulumi.Input<string>;
+    consecutiveSuccesses?: pulumi.Input<number | undefined>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the health check.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The current failure reason if status is unhealthy.
      */
-    failureReason?: pulumi.Input<string>;
+    failureReason?: pulumi.Input<string | undefined>;
     /**
      * Parameters specific to an HTTP or HTTPS health check.
      */
-    httpConfig?: pulumi.Input<inputs.HealthcheckHttpConfig>;
+    httpConfig?: pulumi.Input<inputs.HealthcheckHttpConfig | undefined>;
     /**
      * The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
      */
-    interval?: pulumi.Input<number>;
-    modifiedOn?: pulumi.Input<string>;
+    interval?: pulumi.Input<number | undefined>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
      */
-    retries?: pulumi.Input<number>;
+    retries?: pulumi.Input<number | undefined>;
     /**
      * The current status of the origin server according to the health check.
      * Available values: "unknown", "healthy", "unhealthy", "suspended".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * If suspended, no health checks are sent to the origin.
      */
-    suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean | undefined>;
     /**
      * Parameters specific to TCP health check.
      */
-    tcpConfig?: pulumi.Input<inputs.HealthcheckTcpConfig>;
+    tcpConfig?: pulumi.Input<inputs.HealthcheckTcpConfig | undefined>;
     /**
      * The timeout (in seconds) before marking the health check as failed.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Identifier
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -306,27 +306,27 @@ export interface HealthcheckArgs {
     /**
      * A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
      */
-    checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    checkRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of consecutive fails required from a health check before changing the health to unhealthy.
      */
-    consecutiveFails?: pulumi.Input<number>;
+    consecutiveFails?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive successes required from a health check before changing the health to healthy.
      */
-    consecutiveSuccesses?: pulumi.Input<number>;
+    consecutiveSuccesses?: pulumi.Input<number | undefined>;
     /**
      * A human-readable description of the health check.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Parameters specific to an HTTP or HTTPS health check.
      */
-    httpConfig?: pulumi.Input<inputs.HealthcheckHttpConfig>;
+    httpConfig?: pulumi.Input<inputs.HealthcheckHttpConfig | undefined>;
     /**
      * The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
      */
@@ -334,25 +334,25 @@ export interface HealthcheckArgs {
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
      */
-    retries?: pulumi.Input<number>;
+    retries?: pulumi.Input<number | undefined>;
     /**
      * If suspended, no health checks are sent to the origin.
      */
-    suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean | undefined>;
     /**
      * Parameters specific to TCP health check.
      */
-    tcpConfig?: pulumi.Input<inputs.HealthcheckTcpConfig>;
+    tcpConfig?: pulumi.Input<inputs.HealthcheckTcpConfig | undefined>;
     /**
      * The timeout (in seconds) before marking the health check as failed.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Identifier
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

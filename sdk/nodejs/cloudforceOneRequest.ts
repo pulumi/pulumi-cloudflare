@@ -166,52 +166,52 @@ export interface CloudforceOneRequestState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    completed?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    completed?: pulumi.Input<string | undefined>;
     /**
      * Request content.
      */
-    content?: pulumi.Input<string>;
-    created?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * Tokens for the request messages.
      */
-    messageTokens?: pulumi.Input<number>;
+    messageTokens?: pulumi.Input<number | undefined>;
     /**
      * Priority for analyzing the request.
      */
-    priority?: pulumi.Input<string>;
+    priority?: pulumi.Input<string | undefined>;
     /**
      * Readable Request ID.
      */
-    readableId?: pulumi.Input<string>;
+    readableId?: pulumi.Input<string | undefined>;
     /**
      * Requested information from request.
      */
-    request?: pulumi.Input<string>;
+    request?: pulumi.Input<string | undefined>;
     /**
      * Requested information from request.
      */
-    requestType?: pulumi.Input<string>;
+    requestType?: pulumi.Input<string | undefined>;
     /**
      * Request Status.
      * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Brief description of the request.
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
     /**
      * The CISA defined Traffic Light Protocol (TLP).
      * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
-    tlp?: pulumi.Input<string>;
+    tlp?: pulumi.Input<string | undefined>;
     /**
      * Tokens for the request.
      */
-    tokens?: pulumi.Input<number>;
-    updated?: pulumi.Input<string>;
+    tokens?: pulumi.Input<number | undefined>;
+    updated?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -221,26 +221,26 @@ export interface CloudforceOneRequestArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Request content.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Priority for analyzing the request.
      */
-    priority?: pulumi.Input<string>;
+    priority?: pulumi.Input<string | undefined>;
     /**
      * Requested information from request.
      */
-    requestType?: pulumi.Input<string>;
+    requestType?: pulumi.Input<string | undefined>;
     /**
      * Brief description of the request.
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
     /**
      * The CISA defined Traffic Light Protocol (TLP).
      * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
-    tlp?: pulumi.Input<string>;
+    tlp?: pulumi.Input<string | undefined>;
 }

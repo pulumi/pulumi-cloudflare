@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccountDnsSettingsInternalView = new Cloudflare.Index.AccountDnsSettingsInternalView("example_account_dns_settings_internal_view", new()
+    ///     var exampleAccountDnsSettingsInternalView = new Cloudflare.AccountDnsSettingsInternalView("example_account_dns_settings_internal_view", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "my view",

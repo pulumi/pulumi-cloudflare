@@ -153,10 +153,10 @@ def get_custom_origin_trust_stores(limit: Optional[_builtins.int] = None,
         offset=pulumi.get(__ret__, 'offset'),
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_custom_origin_trust_stores_output(limit: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                          max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                          offset: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                          zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_custom_origin_trust_stores_output(limit: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                          max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                          offset: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                          zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomOriginTrustStoresResult]:
     """
     Accepted Permissions

@@ -146,9 +146,9 @@ def get_workers_kv_namespace(account_id: Optional[_builtins.str] = None,
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         supports_url_encoding=pulumi.get(__ret__, 'supports_url_encoding'),
         title=pulumi.get(__ret__, 'title'))
-def get_workers_kv_namespace_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    filter: Optional[pulumi.Input[Optional[Union['GetWorkersKvNamespaceFilterArgs', 'GetWorkersKvNamespaceFilterArgsDict']]]] = None,
-                                    namespace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_workers_kv_namespace_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    filter: pulumi.Input[Optional[Optional[Union['GetWorkersKvNamespaceFilterArgs', 'GetWorkersKvNamespaceFilterArgsDict']]]] = None,
+                                    namespace_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersKvNamespaceResult]:
     """
     Accepted Permissions

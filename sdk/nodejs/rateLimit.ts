@@ -183,35 +183,35 @@ export interface RateLimitState {
     /**
      * The action to perform when the threshold of matched traffic within the configured period is exceeded.
      */
-    action?: pulumi.Input<inputs.RateLimitAction>;
+    action?: pulumi.Input<inputs.RateLimitAction | undefined>;
     /**
      * Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
      */
-    bypasses?: pulumi.Input<pulumi.Input<inputs.RateLimitBypass>[]>;
+    bypasses?: pulumi.Input<pulumi.Input<inputs.RateLimitBypass>[] | undefined>;
     /**
      * An informative summary of the rule. This value is sanitized and any tags will be removed.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * When true, indicates that the rate limit is currently disabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Determines which traffic the rate limit counts towards the threshold.
      */
-    match?: pulumi.Input<inputs.RateLimitMatch>;
+    match?: pulumi.Input<inputs.RateLimitMatch | undefined>;
     /**
      * The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
      */
-    threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -237,5 +237,5 @@ export interface RateLimitArgs {
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

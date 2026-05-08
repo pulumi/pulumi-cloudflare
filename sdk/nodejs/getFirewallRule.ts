@@ -118,9 +118,9 @@ export interface GetFirewallRuleOutputArgs {
     /**
      * The unique identifier of the firewall rule.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

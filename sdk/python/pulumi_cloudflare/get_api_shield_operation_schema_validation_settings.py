@@ -108,8 +108,8 @@ def get_api_shield_operation_schema_validation_settings(operation_id: Optional[_
         mitigation_action=pulumi.get(__ret__, 'mitigation_action'),
         operation_id=pulumi.get(__ret__, 'operation_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_api_shield_operation_schema_validation_settings_output(operation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                               zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_api_shield_operation_schema_validation_settings_output(operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                               zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiShieldOperationSchemaValidationSettingsResult]:
     """
     Accepted Permissions

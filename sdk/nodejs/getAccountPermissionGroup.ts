@@ -158,7 +158,7 @@ export interface GetAccountPermissionGroupOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Permission Group identifier tag.
      */

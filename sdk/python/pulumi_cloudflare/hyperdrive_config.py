@@ -23,10 +23,10 @@ class HyperdriveConfigArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  origin: pulumi.Input['HyperdriveConfigOriginArgs'],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 caching: Optional[pulumi.Input['HyperdriveConfigCachingArgs']] = None,
-                 mtls: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']] = None,
-                 origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 caching: pulumi.Input[Optional['HyperdriveConfigCachingArgs']] = None,
+                 mtls: pulumi.Input[Optional['HyperdriveConfigMtlsArgs']] = None,
+                 origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a HyperdriveConfig resource.
 
@@ -69,61 +69,61 @@ class HyperdriveConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Define configurations using a unique string identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def caching(self) -> Optional[pulumi.Input['HyperdriveConfigCachingArgs']]:
+    def caching(self) -> pulumi.Input[Optional['HyperdriveConfigCachingArgs']]:
         return pulumi.get(self, "caching")
 
     @caching.setter
-    def caching(self, value: Optional[pulumi.Input['HyperdriveConfigCachingArgs']]):
+    def caching(self, value: pulumi.Input[Optional['HyperdriveConfigCachingArgs']]):
         pulumi.set(self, "caching", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtls(self) -> Optional[pulumi.Input['HyperdriveConfigMtlsArgs']]:
+    def mtls(self) -> pulumi.Input[Optional['HyperdriveConfigMtlsArgs']]:
         """
         mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         """
         return pulumi.get(self, "mtls")
 
     @mtls.setter
-    def mtls(self, value: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']]):
+    def mtls(self, value: pulumi.Input[Optional['HyperdriveConfigMtlsArgs']]):
         pulumi.set(self, "mtls", value)
 
     @_builtins.property
     @pulumi.getter(name="originConnectionLimit")
-    def origin_connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def origin_connection_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
         return pulumi.get(self, "origin_connection_limit")
 
     @origin_connection_limit.setter
-    def origin_connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def origin_connection_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "origin_connection_limit", value)
 
 
 @pulumi.input_type
 class _HyperdriveConfigState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 caching: Optional[pulumi.Input['HyperdriveConfigCachingArgs']] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtls: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input['HyperdriveConfigOriginArgs']] = None,
-                 origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 caching: pulumi.Input[Optional['HyperdriveConfigCachingArgs']] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtls: pulumi.Input[Optional['HyperdriveConfigMtlsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional['HyperdriveConfigOriginArgs']] = None,
+                 origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HyperdriveConfig resources.
 
@@ -153,92 +153,92 @@ class _HyperdriveConfigState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Define configurations using a unique string identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def caching(self) -> Optional[pulumi.Input['HyperdriveConfigCachingArgs']]:
+    def caching(self) -> pulumi.Input[Optional['HyperdriveConfigCachingArgs']]:
         return pulumi.get(self, "caching")
 
     @caching.setter
-    def caching(self, value: Optional[pulumi.Input['HyperdriveConfigCachingArgs']]):
+    def caching(self, value: pulumi.Input[Optional['HyperdriveConfigCachingArgs']]):
         pulumi.set(self, "caching", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the creation time of the Hyperdrive configuration.
         """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the last modified time of the Hyperdrive configuration.
         """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtls(self) -> Optional[pulumi.Input['HyperdriveConfigMtlsArgs']]:
+    def mtls(self) -> pulumi.Input[Optional['HyperdriveConfigMtlsArgs']]:
         """
         mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         """
         return pulumi.get(self, "mtls")
 
     @mtls.setter
-    def mtls(self, value: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']]):
+    def mtls(self, value: pulumi.Input[Optional['HyperdriveConfigMtlsArgs']]):
         pulumi.set(self, "mtls", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def origin(self) -> Optional[pulumi.Input['HyperdriveConfigOriginArgs']]:
+    def origin(self) -> pulumi.Input[Optional['HyperdriveConfigOriginArgs']]:
         return pulumi.get(self, "origin")
 
     @origin.setter
-    def origin(self, value: Optional[pulumi.Input['HyperdriveConfigOriginArgs']]):
+    def origin(self, value: pulumi.Input[Optional['HyperdriveConfigOriginArgs']]):
         pulumi.set(self, "origin", value)
 
     @_builtins.property
     @pulumi.getter(name="originConnectionLimit")
-    def origin_connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def origin_connection_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
         return pulumi.get(self, "origin_connection_limit")
 
     @origin_connection_limit.setter
-    def origin_connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def origin_connection_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "origin_connection_limit", value)
 
 
@@ -248,12 +248,12 @@ class HyperdriveConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 caching: Optional[pulumi.Input[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
-                 mtls: Optional[pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
-                 origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 caching: pulumi.Input[Optional[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
+                 mtls: pulumi.Input[Optional[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
+                 origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -365,12 +365,12 @@ class HyperdriveConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 caching: Optional[pulumi.Input[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
-                 mtls: Optional[pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
-                 origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 caching: pulumi.Input[Optional[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
+                 mtls: pulumi.Input[Optional[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
+                 origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -402,14 +402,14 @@ class HyperdriveConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            caching: Optional[pulumi.Input[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            mtls: Optional[pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
-            origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None) -> 'HyperdriveConfig':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            caching: pulumi.Input[Optional[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            mtls: pulumi.Input[Optional[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            origin: pulumi.Input[Optional[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
+            origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None) -> 'HyperdriveConfig':
         """
         Get an existing HyperdriveConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

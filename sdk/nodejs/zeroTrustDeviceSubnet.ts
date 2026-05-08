@@ -143,36 +143,36 @@ export interface ZeroTrustDeviceSubnetState {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * An optional description of the subnet.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of when the resource was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * If `true`, this is the default subnet for the account. There can only be one default subnet per account.
      */
-    isDefaultNetwork?: pulumi.Input<boolean>;
+    isDefaultNetwork?: pulumi.Input<boolean | undefined>;
     /**
      * A user-friendly name for the subnet.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The private IPv4 or IPv6 range defining the subnet, in CIDR notation.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The type of subnet.
      * Available values: "cloudflareSource", "warp".
      */
-    subnetType?: pulumi.Input<string>;
+    subnetType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,15 +182,15 @@ export interface ZeroTrustDeviceSubnetArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * An optional description of the subnet.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * If `true`, this is the default subnet for the account. There can only be one default subnet per account.
      */
-    isDefaultNetwork?: pulumi.Input<boolean>;
+    isDefaultNetwork?: pulumi.Input<boolean | undefined>;
     /**
      * A user-friendly name for the subnet.
      */

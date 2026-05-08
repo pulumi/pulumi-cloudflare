@@ -24,12 +24,12 @@ class ConnectivityDirectoryServiceArgs:
                  host: pulumi.Input['ConnectivityDirectoryServiceHostArgs'],
                  name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 https_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 tls_settings: Optional[pulumi.Input['ConnectivityDirectoryServiceTlsSettingsArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 https_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 tls_settings: pulumi.Input[Optional['ConnectivityDirectoryServiceTlsSettingsArgs']] = None):
         """
         The set of arguments for constructing a ConnectivityDirectoryService resource.
 
@@ -86,83 +86,83 @@ class ConnectivityDirectoryServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appProtocol")
-    def app_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "postgresql", "mysql".
         """
         return pulumi.get(self, "app_protocol")
 
     @app_protocol.setter
-    def app_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="httpPort")
-    def http_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "http_port")
 
     @http_port.setter
-    def http_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_port", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsPort")
-    def https_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def https_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "https_port")
 
     @https_port.setter
-    def https_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def https_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "https_port", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpPort")
-    def tcp_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tcp_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "tcp_port")
 
     @tcp_port.setter
-    def tcp_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tcp_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tcp_port", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsSettings")
-    def tls_settings(self) -> Optional[pulumi.Input['ConnectivityDirectoryServiceTlsSettingsArgs']]:
+    def tls_settings(self) -> pulumi.Input[Optional['ConnectivityDirectoryServiceTlsSettingsArgs']]:
         """
         TLS settings for a connectivity service.
         """
         return pulumi.get(self, "tls_settings")
 
     @tls_settings.setter
-    def tls_settings(self, value: Optional[pulumi.Input['ConnectivityDirectoryServiceTlsSettingsArgs']]):
+    def tls_settings(self, value: pulumi.Input[Optional['ConnectivityDirectoryServiceTlsSettingsArgs']]):
         pulumi.set(self, "tls_settings", value)
 
 
 @pulumi.input_type
 class _ConnectivityDirectoryServiceState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input['ConnectivityDirectoryServiceHostArgs']] = None,
-                 http_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 https_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tcp_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 tls_settings: Optional[pulumi.Input['ConnectivityDirectoryServiceTlsSettingsArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional['ConnectivityDirectoryServiceHostArgs']] = None,
+                 http_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 https_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tcp_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 tls_settings: pulumi.Input[Optional['ConnectivityDirectoryServiceTlsSettingsArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectivityDirectoryService resources.
 
@@ -198,122 +198,122 @@ class _ConnectivityDirectoryServiceState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appProtocol")
-    def app_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "postgresql", "mysql".
         """
         return pulumi.get(self, "app_protocol")
 
     @app_protocol.setter
-    def app_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input['ConnectivityDirectoryServiceHostArgs']]:
+    def host(self) -> pulumi.Input[Optional['ConnectivityDirectoryServiceHostArgs']]:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input['ConnectivityDirectoryServiceHostArgs']]):
+    def host(self, value: pulumi.Input[Optional['ConnectivityDirectoryServiceHostArgs']]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="httpPort")
-    def http_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "http_port")
 
     @http_port.setter
-    def http_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_port", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsPort")
-    def https_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def https_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "https_port")
 
     @https_port.setter
-    def https_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def https_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "https_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpPort")
-    def tcp_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tcp_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "tcp_port")
 
     @tcp_port.setter
-    def tcp_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tcp_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tcp_port", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsSettings")
-    def tls_settings(self) -> Optional[pulumi.Input['ConnectivityDirectoryServiceTlsSettingsArgs']]:
+    def tls_settings(self) -> pulumi.Input[Optional['ConnectivityDirectoryServiceTlsSettingsArgs']]:
         """
         TLS settings for a connectivity service.
         """
         return pulumi.get(self, "tls_settings")
 
     @tls_settings.setter
-    def tls_settings(self, value: Optional[pulumi.Input['ConnectivityDirectoryServiceTlsSettingsArgs']]):
+    def tls_settings(self, value: pulumi.Input[Optional['ConnectivityDirectoryServiceTlsSettingsArgs']]):
         pulumi.set(self, "tls_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "tcp", "http".
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -323,15 +323,15 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[Union['ConnectivityDirectoryServiceHostArgs', 'ConnectivityDirectoryServiceHostArgsDict']]] = None,
-                 http_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 https_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tcp_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 tls_settings: Optional[pulumi.Input[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceHostArgs', 'ConnectivityDirectoryServiceHostArgsDict']]] = None,
+                 http_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 https_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tcp_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 tls_settings: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -423,15 +423,15 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[Union['ConnectivityDirectoryServiceHostArgs', 'ConnectivityDirectoryServiceHostArgsDict']]] = None,
-                 http_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 https_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tcp_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 tls_settings: Optional[pulumi.Input[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceHostArgs', 'ConnectivityDirectoryServiceHostArgsDict']]] = None,
+                 http_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 https_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tcp_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 tls_settings: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -469,18 +469,18 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            app_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[Union['ConnectivityDirectoryServiceHostArgs', 'ConnectivityDirectoryServiceHostArgsDict']]] = None,
-            http_port: Optional[pulumi.Input[_builtins.int]] = None,
-            https_port: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tcp_port: Optional[pulumi.Input[_builtins.int]] = None,
-            tls_settings: Optional[pulumi.Input[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict']]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConnectivityDirectoryService':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceHostArgs', 'ConnectivityDirectoryServiceHostArgsDict']]] = None,
+            http_port: pulumi.Input[Optional[_builtins.int]] = None,
+            https_port: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tcp_port: pulumi.Input[Optional[_builtins.int]] = None,
+            tls_settings: pulumi.Input[Optional[Union['ConnectivityDirectoryServiceTlsSettingsArgs', 'ConnectivityDirectoryServiceTlsSettingsArgsDict']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConnectivityDirectoryService':
         """
         Get an existing ConnectivityDirectoryService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -133,23 +133,23 @@ export class AiGatewayDynamicRouting extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AiGatewayDynamicRouting resources.
  */
 export interface AiGatewayDynamicRoutingState {
-    accountId?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
-    deployment?: pulumi.Input<inputs.AiGatewayDynamicRoutingDeployment>;
-    elements?: pulumi.Input<pulumi.Input<inputs.AiGatewayDynamicRoutingElement>[]>;
-    gatewayId?: pulumi.Input<string>;
-    modifiedAt?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    route?: pulumi.Input<inputs.AiGatewayDynamicRoutingRoute>;
-    success?: pulumi.Input<boolean>;
-    version?: pulumi.Input<inputs.AiGatewayDynamicRoutingVersion>;
+    accountId?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    deployment?: pulumi.Input<inputs.AiGatewayDynamicRoutingDeployment | undefined>;
+    elements?: pulumi.Input<pulumi.Input<inputs.AiGatewayDynamicRoutingElement>[] | undefined>;
+    gatewayId?: pulumi.Input<string | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    route?: pulumi.Input<inputs.AiGatewayDynamicRoutingRoute | undefined>;
+    success?: pulumi.Input<boolean | undefined>;
+    version?: pulumi.Input<inputs.AiGatewayDynamicRoutingVersion | undefined>;
 }
 
 /**
  * The set of arguments for constructing a AiGatewayDynamicRouting resource.
  */
 export interface AiGatewayDynamicRoutingArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     elements: pulumi.Input<pulumi.Input<inputs.AiGatewayDynamicRoutingElement>[]>;
     gatewayId: pulumi.Input<string>;
     name: pulumi.Input<string>;

@@ -21,8 +21,8 @@ class WorkersScriptSubdomainArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
                  script_name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 previews_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 previews_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a WorkersScriptSubdomain resource.
 
@@ -64,36 +64,36 @@ class WorkersScriptSubdomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="previewsEnabled")
-    def previews_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def previews_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
         """
         return pulumi.get(self, "previews_enabled")
 
     @previews_enabled.setter
-    def previews_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def previews_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "previews_enabled", value)
 
 
 @pulumi.input_type
 class _WorkersScriptSubdomainState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 previews_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 previews_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersScriptSubdomain resources.
 
@@ -113,50 +113,50 @@ class _WorkersScriptSubdomainState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Worker should be available on the workers.dev subdomain.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="previewsEnabled")
-    def previews_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def previews_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
         """
         return pulumi.get(self, "previews_enabled")
 
     @previews_enabled.setter
-    def previews_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def previews_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "previews_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptName")
-    def script_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the script, used in URLs and route configuration.
         """
         return pulumi.get(self, "script_name")
 
     @script_name.setter
-    def script_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script_name", value)
 
 
@@ -166,10 +166,10 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 previews_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 previews_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -257,10 +257,10 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 previews_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 previews_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -288,10 +288,10 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            previews_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            script_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkersScriptSubdomain':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            previews_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            script_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkersScriptSubdomain':
         """
         Get an existing WorkersScriptSubdomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

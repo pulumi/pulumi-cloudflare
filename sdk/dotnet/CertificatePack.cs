@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCertificatePack = new Cloudflare.Index.CertificatePack("example_certificate_pack", new()
+    ///     var exampleCertificatePack = new Cloudflare.CertificatePack("example_certificate_pack", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         CertificateAuthority = "lets_encrypt",

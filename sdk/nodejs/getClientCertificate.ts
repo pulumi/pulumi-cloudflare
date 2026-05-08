@@ -171,10 +171,10 @@ export interface GetClientCertificateOutputArgs {
     /**
      * Identifier.
      */
-    clientCertificateId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetClientCertificateFilterArgs>;
+    clientCertificateId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetClientCertificateFilterArgs | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

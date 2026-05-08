@@ -120,8 +120,8 @@ def get_zero_trust_tunnel_warp_connector_token(account_id: Optional[_builtins.st
         id=pulumi.get(__ret__, 'id'),
         token=pulumi.get(__ret__, 'token'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'))
-def get_zero_trust_tunnel_warp_connector_token_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                      tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_tunnel_warp_connector_token_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                      tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelWarpConnectorTokenResult]:
     """
     Accepted Permissions

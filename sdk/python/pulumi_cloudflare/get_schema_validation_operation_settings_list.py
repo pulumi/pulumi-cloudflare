@@ -108,8 +108,8 @@ def get_schema_validation_operation_settings_list(max_items: Optional[_builtins.
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_schema_validation_operation_settings_list_output(max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                         zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_schema_validation_operation_settings_list_output(max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                         zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchemaValidationOperationSettingsListResult]:
     """
     Accepted Permissions

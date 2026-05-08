@@ -98,10 +98,10 @@ export function getZeroTrustAccessAiControlsMcpServerOutput(args?: GetZeroTrustA
  * A collection of arguments for invoking getZeroTrustAccessAiControlsMcpServer.
  */
 export interface GetZeroTrustAccessAiControlsMcpServerOutputArgs {
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetZeroTrustAccessAiControlsMcpServerFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustAccessAiControlsMcpServerFilterArgs | undefined>;
     /**
      * server id
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }

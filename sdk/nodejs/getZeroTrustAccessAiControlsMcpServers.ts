@@ -93,13 +93,13 @@ export function getZeroTrustAccessAiControlsMcpServersOutput(args?: GetZeroTrust
  * A collection of arguments for invoking getZeroTrustAccessAiControlsMcpServers.
  */
 export interface GetZeroTrustAccessAiControlsMcpServersOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Search by id, name
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
 }

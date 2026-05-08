@@ -162,7 +162,7 @@ export interface GetLoadBalancerPoolOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetLoadBalancerPoolFilterArgs>;
-    poolId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetLoadBalancerPoolFilterArgs | undefined>;
+    poolId?: pulumi.Input<string | undefined>;
 }

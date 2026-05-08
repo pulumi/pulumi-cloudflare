@@ -170,5 +170,5 @@ export interface GetManagedTransformsOutputArgs {
     /**
      * The unique ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

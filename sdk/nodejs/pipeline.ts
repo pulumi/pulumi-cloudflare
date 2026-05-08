@@ -136,29 +136,29 @@ export interface PipelineState {
     /**
      * Specifies the public ID of the account.
      */
-    accountId?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates the reason for the failure of the Pipeline.
      */
-    failureReason?: pulumi.Input<string>;
-    modifiedAt?: pulumi.Input<string>;
+    failureReason?: pulumi.Input<string | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of the Pipeline.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies SQL for the Pipeline processing flow.
      */
-    sql?: pulumi.Input<string>;
+    sql?: pulumi.Input<string | undefined>;
     /**
      * Indicates the current status of the Pipeline.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * List of streams and sinks used by this pipeline.
      */
-    tables?: pulumi.Input<pulumi.Input<inputs.PipelineTable>[]>;
+    tables?: pulumi.Input<pulumi.Input<inputs.PipelineTable>[] | undefined>;
 }
 
 /**
@@ -168,7 +168,7 @@ export interface PipelineArgs {
     /**
      * Specifies the public ID of the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of the Pipeline.
      */

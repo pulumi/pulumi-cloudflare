@@ -120,8 +120,8 @@ def get_stream_audio_track(account_id: Optional[_builtins.str] = None,
         audios=pulumi.get(__ret__, 'audios'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'))
-def get_stream_audio_track_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
+def get_stream_audio_track_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamAudioTrackResult]:
     """
     Accepted Permissions

@@ -215,10 +215,10 @@ def get_ruleset(account_id: Optional[_builtins.str] = None,
         ruleset_id=pulumi.get(__ret__, 'ruleset_id'),
         version=pulumi.get(__ret__, 'version'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_ruleset_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       ruleset_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ruleset_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       ruleset_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulesetResult]:
     """
     ## Example Usage

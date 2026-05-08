@@ -179,25 +179,25 @@ export interface ZeroTrustTunnelCloudflaredConfigState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The tunnel configuration and ingress rules.
      */
-    config?: pulumi.Input<inputs.ZeroTrustTunnelCloudflaredConfigConfig>;
-    createdAt?: pulumi.Input<string>;
+    config?: pulumi.Input<inputs.ZeroTrustTunnelCloudflaredConfigConfig | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
      * Available values: "local", "cloudflare".
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * UUID of the tunnel.
      */
-    tunnelId?: pulumi.Input<string>;
+    tunnelId?: pulumi.Input<string | undefined>;
     /**
      * The version of the Tunnel Configuration.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -207,16 +207,16 @@ export interface ZeroTrustTunnelCloudflaredConfigArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The tunnel configuration and ingress rules.
      */
-    config?: pulumi.Input<inputs.ZeroTrustTunnelCloudflaredConfigConfig>;
+    config?: pulumi.Input<inputs.ZeroTrustTunnelCloudflaredConfigConfig | undefined>;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
      * Available values: "local", "cloudflare".
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * UUID of the tunnel.
      */

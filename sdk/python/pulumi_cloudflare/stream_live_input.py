@@ -21,13 +21,13 @@ __all__ = ['StreamLiveInputArgs', 'StreamLiveInput']
 @pulumi.input_type
 class StreamLiveInputArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_recording_after_days: Optional[pulumi.Input[_builtins.float]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 live_input_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording: Optional[pulumi.Input['StreamLiveInputRecordingArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_recording_after_days: pulumi.Input[Optional[_builtins.float]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording: pulumi.Input[Optional['StreamLiveInputRecordingArgs']] = None):
         """
         The set of arguments for constructing a StreamLiveInput resource.
 
@@ -56,109 +56,109 @@ class StreamLiveInputArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCreator")
-    def default_creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the creator ID asssociated with this live input.
         """
         return pulumi.get(self, "default_creator")
 
     @default_creator.setter
-    def default_creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_creator", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteRecordingAfterDays")
-    def delete_recording_after_days(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def delete_recording_after_days(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
         """
         return pulumi.get(self, "delete_recording_after_days")
 
     @delete_recording_after_days.setter
-    def delete_recording_after_days(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def delete_recording_after_days(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "delete_recording_after_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the live input is enabled and can accept streams.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="liveInputIdentifier")
-    def live_input_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def live_input_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique identifier for a live input.
         """
         return pulumi.get(self, "live_input_identifier")
 
     @live_input_identifier.setter
-    def live_input_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def live_input_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "live_input_identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def meta(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user modifiable key-value store used to reference other systems of record for managing live inputs.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def meta(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def recording(self) -> Optional[pulumi.Input['StreamLiveInputRecordingArgs']]:
+    def recording(self) -> pulumi.Input[Optional['StreamLiveInputRecordingArgs']]:
         """
         Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
         """
         return pulumi.get(self, "recording")
 
     @recording.setter
-    def recording(self, value: Optional[pulumi.Input['StreamLiveInputRecordingArgs']]):
+    def recording(self, value: pulumi.Input[Optional['StreamLiveInputRecordingArgs']]):
         pulumi.set(self, "recording", value)
 
 
 @pulumi.input_type
 class _StreamLiveInputState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_recording_after_days: Optional[pulumi.Input[_builtins.float]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 live_input_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording: Optional[pulumi.Input['StreamLiveInputRecordingArgs']] = None,
-                 rtmps: Optional[pulumi.Input['StreamLiveInputRtmpsArgs']] = None,
-                 rtmps_playback: Optional[pulumi.Input['StreamLiveInputRtmpsPlaybackArgs']] = None,
-                 srt: Optional[pulumi.Input['StreamLiveInputSrtArgs']] = None,
-                 srt_playback: Optional[pulumi.Input['StreamLiveInputSrtPlaybackArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_rtc: Optional[pulumi.Input['StreamLiveInputWebRtcArgs']] = None,
-                 web_rtc_playback: Optional[pulumi.Input['StreamLiveInputWebRtcPlaybackArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_recording_after_days: pulumi.Input[Optional[_builtins.float]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording: pulumi.Input[Optional['StreamLiveInputRecordingArgs']] = None,
+                 rtmps: pulumi.Input[Optional['StreamLiveInputRtmpsArgs']] = None,
+                 rtmps_playback: pulumi.Input[Optional['StreamLiveInputRtmpsPlaybackArgs']] = None,
+                 srt: pulumi.Input[Optional['StreamLiveInputSrtArgs']] = None,
+                 srt_playback: pulumi.Input[Optional['StreamLiveInputSrtPlaybackArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_rtc: pulumi.Input[Optional['StreamLiveInputWebRtcArgs']] = None,
+                 web_rtc_playback: pulumi.Input[Optional['StreamLiveInputWebRtcPlaybackArgs']] = None):
         """
         Input properties used for looking up and filtering StreamLiveInput resources.
 
@@ -218,163 +218,163 @@ class _StreamLiveInputState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the live input was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCreator")
-    def default_creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the creator ID asssociated with this live input.
         """
         return pulumi.get(self, "default_creator")
 
     @default_creator.setter
-    def default_creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_creator", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteRecordingAfterDays")
-    def delete_recording_after_days(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def delete_recording_after_days(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
         """
         return pulumi.get(self, "delete_recording_after_days")
 
     @delete_recording_after_days.setter
-    def delete_recording_after_days(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def delete_recording_after_days(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "delete_recording_after_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the live input is enabled and can accept streams.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="liveInputIdentifier")
-    def live_input_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def live_input_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique identifier for a live input.
         """
         return pulumi.get(self, "live_input_identifier")
 
     @live_input_identifier.setter
-    def live_input_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def live_input_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "live_input_identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def meta(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user modifiable key-value store used to reference other systems of record for managing live inputs.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def meta(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the live input was last modified.
         """
         return pulumi.get(self, "modified")
 
     @modified.setter
-    def modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def recording(self) -> Optional[pulumi.Input['StreamLiveInputRecordingArgs']]:
+    def recording(self) -> pulumi.Input[Optional['StreamLiveInputRecordingArgs']]:
         """
         Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
         """
         return pulumi.get(self, "recording")
 
     @recording.setter
-    def recording(self, value: Optional[pulumi.Input['StreamLiveInputRecordingArgs']]):
+    def recording(self, value: pulumi.Input[Optional['StreamLiveInputRecordingArgs']]):
         pulumi.set(self, "recording", value)
 
     @_builtins.property
     @pulumi.getter
-    def rtmps(self) -> Optional[pulumi.Input['StreamLiveInputRtmpsArgs']]:
+    def rtmps(self) -> pulumi.Input[Optional['StreamLiveInputRtmpsArgs']]:
         """
         Details for streaming to an live input using RTMPS.
         """
         return pulumi.get(self, "rtmps")
 
     @rtmps.setter
-    def rtmps(self, value: Optional[pulumi.Input['StreamLiveInputRtmpsArgs']]):
+    def rtmps(self, value: pulumi.Input[Optional['StreamLiveInputRtmpsArgs']]):
         pulumi.set(self, "rtmps", value)
 
     @_builtins.property
     @pulumi.getter(name="rtmpsPlayback")
-    def rtmps_playback(self) -> Optional[pulumi.Input['StreamLiveInputRtmpsPlaybackArgs']]:
+    def rtmps_playback(self) -> pulumi.Input[Optional['StreamLiveInputRtmpsPlaybackArgs']]:
         """
         Details for playback from an live input using RTMPS.
         """
         return pulumi.get(self, "rtmps_playback")
 
     @rtmps_playback.setter
-    def rtmps_playback(self, value: Optional[pulumi.Input['StreamLiveInputRtmpsPlaybackArgs']]):
+    def rtmps_playback(self, value: pulumi.Input[Optional['StreamLiveInputRtmpsPlaybackArgs']]):
         pulumi.set(self, "rtmps_playback", value)
 
     @_builtins.property
     @pulumi.getter
-    def srt(self) -> Optional[pulumi.Input['StreamLiveInputSrtArgs']]:
+    def srt(self) -> pulumi.Input[Optional['StreamLiveInputSrtArgs']]:
         """
         Details for streaming to a live input using SRT.
         """
         return pulumi.get(self, "srt")
 
     @srt.setter
-    def srt(self, value: Optional[pulumi.Input['StreamLiveInputSrtArgs']]):
+    def srt(self, value: pulumi.Input[Optional['StreamLiveInputSrtArgs']]):
         pulumi.set(self, "srt", value)
 
     @_builtins.property
     @pulumi.getter(name="srtPlayback")
-    def srt_playback(self) -> Optional[pulumi.Input['StreamLiveInputSrtPlaybackArgs']]:
+    def srt_playback(self) -> pulumi.Input[Optional['StreamLiveInputSrtPlaybackArgs']]:
         """
         Details for playback from an live input using SRT.
         """
         return pulumi.get(self, "srt_playback")
 
     @srt_playback.setter
-    def srt_playback(self, value: Optional[pulumi.Input['StreamLiveInputSrtPlaybackArgs']]):
+    def srt_playback(self, value: pulumi.Input[Optional['StreamLiveInputSrtPlaybackArgs']]):
         pulumi.set(self, "srt_playback", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection status of a live input.
         Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
@@ -382,43 +382,43 @@ class _StreamLiveInputState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique identifier for a live input.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="webRtc")
-    def web_rtc(self) -> Optional[pulumi.Input['StreamLiveInputWebRtcArgs']]:
+    def web_rtc(self) -> pulumi.Input[Optional['StreamLiveInputWebRtcArgs']]:
         """
         Details for streaming to a live input using WebRTC.
         """
         return pulumi.get(self, "web_rtc")
 
     @web_rtc.setter
-    def web_rtc(self, value: Optional[pulumi.Input['StreamLiveInputWebRtcArgs']]):
+    def web_rtc(self, value: pulumi.Input[Optional['StreamLiveInputWebRtcArgs']]):
         pulumi.set(self, "web_rtc", value)
 
     @_builtins.property
     @pulumi.getter(name="webRtcPlayback")
-    def web_rtc_playback(self) -> Optional[pulumi.Input['StreamLiveInputWebRtcPlaybackArgs']]:
+    def web_rtc_playback(self) -> pulumi.Input[Optional['StreamLiveInputWebRtcPlaybackArgs']]:
         """
         Details for playback from a live input using WebRTC.
         """
         return pulumi.get(self, "web_rtc_playback")
 
     @web_rtc_playback.setter
-    def web_rtc_playback(self, value: Optional[pulumi.Input['StreamLiveInputWebRtcPlaybackArgs']]):
+    def web_rtc_playback(self, value: pulumi.Input[Optional['StreamLiveInputWebRtcPlaybackArgs']]):
         pulumi.set(self, "web_rtc_playback", value)
 
 
@@ -428,13 +428,13 @@ class StreamLiveInput(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_recording_after_days: Optional[pulumi.Input[_builtins.float]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 live_input_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording: Optional[pulumi.Input[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_recording_after_days: pulumi.Input[Optional[_builtins.float]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording: pulumi.Input[Optional[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -493,13 +493,13 @@ class StreamLiveInput(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_recording_after_days: Optional[pulumi.Input[_builtins.float]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 live_input_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording: Optional[pulumi.Input[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_recording_after_days: pulumi.Input[Optional[_builtins.float]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording: pulumi.Input[Optional[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -536,23 +536,23 @@ class StreamLiveInput(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            default_creator: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_recording_after_days: Optional[pulumi.Input[_builtins.float]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            live_input_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            meta: Optional[pulumi.Input[_builtins.str]] = None,
-            modified: Optional[pulumi.Input[_builtins.str]] = None,
-            recording: Optional[pulumi.Input[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']]] = None,
-            rtmps: Optional[pulumi.Input[Union['StreamLiveInputRtmpsArgs', 'StreamLiveInputRtmpsArgsDict']]] = None,
-            rtmps_playback: Optional[pulumi.Input[Union['StreamLiveInputRtmpsPlaybackArgs', 'StreamLiveInputRtmpsPlaybackArgsDict']]] = None,
-            srt: Optional[pulumi.Input[Union['StreamLiveInputSrtArgs', 'StreamLiveInputSrtArgsDict']]] = None,
-            srt_playback: Optional[pulumi.Input[Union['StreamLiveInputSrtPlaybackArgs', 'StreamLiveInputSrtPlaybackArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            web_rtc: Optional[pulumi.Input[Union['StreamLiveInputWebRtcArgs', 'StreamLiveInputWebRtcArgsDict']]] = None,
-            web_rtc_playback: Optional[pulumi.Input[Union['StreamLiveInputWebRtcPlaybackArgs', 'StreamLiveInputWebRtcPlaybackArgsDict']]] = None) -> 'StreamLiveInput':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            default_creator: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_recording_after_days: pulumi.Input[Optional[_builtins.float]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[_builtins.str]] = None,
+            modified: pulumi.Input[Optional[_builtins.str]] = None,
+            recording: pulumi.Input[Optional[Union['StreamLiveInputRecordingArgs', 'StreamLiveInputRecordingArgsDict']]] = None,
+            rtmps: pulumi.Input[Optional[Union['StreamLiveInputRtmpsArgs', 'StreamLiveInputRtmpsArgsDict']]] = None,
+            rtmps_playback: pulumi.Input[Optional[Union['StreamLiveInputRtmpsPlaybackArgs', 'StreamLiveInputRtmpsPlaybackArgsDict']]] = None,
+            srt: pulumi.Input[Optional[Union['StreamLiveInputSrtArgs', 'StreamLiveInputSrtArgsDict']]] = None,
+            srt_playback: pulumi.Input[Optional[Union['StreamLiveInputSrtPlaybackArgs', 'StreamLiveInputSrtPlaybackArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            web_rtc: pulumi.Input[Optional[Union['StreamLiveInputWebRtcArgs', 'StreamLiveInputWebRtcArgsDict']]] = None,
+            web_rtc_playback: pulumi.Input[Optional[Union['StreamLiveInputWebRtcPlaybackArgs', 'StreamLiveInputWebRtcPlaybackArgsDict']]] = None) -> 'StreamLiveInput':
         """
         Get an existing StreamLiveInput resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

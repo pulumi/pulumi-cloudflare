@@ -129,10 +129,10 @@ export interface GetD1DatabaseOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * D1 database identifier (UUID).
      */
-    databaseId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetD1DatabaseFilterArgs>;
+    databaseId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetD1DatabaseFilterArgs | undefined>;
 }

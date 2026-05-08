@@ -131,17 +131,17 @@ export interface MagicTransitConnectorState {
     /**
      * Account identifier
      */
-    accountId?: pulumi.Input<string>;
-    activated?: pulumi.Input<boolean>;
-    device?: pulumi.Input<inputs.MagicTransitConnectorDevice>;
-    interruptWindowDurationHours?: pulumi.Input<number>;
-    interruptWindowHourOfDay?: pulumi.Input<number>;
+    accountId?: pulumi.Input<string | undefined>;
+    activated?: pulumi.Input<boolean | undefined>;
+    device?: pulumi.Input<inputs.MagicTransitConnectorDevice | undefined>;
+    interruptWindowDurationHours?: pulumi.Input<number | undefined>;
+    interruptWindowHourOfDay?: pulumi.Input<number | undefined>;
     /**
      * License key for the connector. This is only returned on creation and will not be available in subsequent reads.
      */
-    licenseKey?: pulumi.Input<string>;
-    notes?: pulumi.Input<string>;
-    timezone?: pulumi.Input<string>;
+    licenseKey?: pulumi.Input<string | undefined>;
+    notes?: pulumi.Input<string | undefined>;
+    timezone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -152,10 +152,10 @@ export interface MagicTransitConnectorArgs {
      * Account identifier
      */
     accountId: pulumi.Input<string>;
-    activated?: pulumi.Input<boolean>;
+    activated?: pulumi.Input<boolean | undefined>;
     device: pulumi.Input<inputs.MagicTransitConnectorDevice>;
-    interruptWindowDurationHours?: pulumi.Input<number>;
-    interruptWindowHourOfDay?: pulumi.Input<number>;
-    notes?: pulumi.Input<string>;
-    timezone?: pulumi.Input<string>;
+    interruptWindowDurationHours?: pulumi.Input<number | undefined>;
+    interruptWindowHourOfDay?: pulumi.Input<number | undefined>;
+    notes?: pulumi.Input<string | undefined>;
+    timezone?: pulumi.Input<string | undefined>;
 }

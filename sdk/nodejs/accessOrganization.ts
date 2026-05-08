@@ -247,73 +247,73 @@ export interface AccessOrganizationState {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
      */
-    allowAuthenticateViaWarp?: pulumi.Input<boolean>;
+    allowAuthenticateViaWarp?: pulumi.Input<boolean | undefined>;
     /**
      * The unique subdomain assigned to your Zero Trust organization.
      */
-    authDomain?: pulumi.Input<string>;
+    authDomain?: pulumi.Input<string | undefined>;
     /**
      * When set to `true`, users skip the identity provider selection step during login.
      */
-    autoRedirectToIdentity?: pulumi.Input<boolean>;
-    customPages?: pulumi.Input<inputs.AccessOrganizationCustomPages>;
+    autoRedirectToIdentity?: pulumi.Input<boolean | undefined>;
+    customPages?: pulumi.Input<inputs.AccessOrganizationCustomPages | undefined>;
     /**
      * Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
      */
-    denyUnmatchedRequests?: pulumi.Input<boolean>;
+    denyUnmatchedRequests?: pulumi.Input<boolean | undefined>;
     /**
      * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
      */
-    denyUnmatchedRequestsExemptedZoneNames?: pulumi.Input<pulumi.Input<string>[]>;
+    denyUnmatchedRequestsExemptedZoneNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      */
-    isUiReadOnly?: pulumi.Input<boolean>;
-    loginDesign?: pulumi.Input<inputs.AccessOrganizationLoginDesign>;
+    isUiReadOnly?: pulumi.Input<boolean | undefined>;
+    loginDesign?: pulumi.Input<inputs.AccessOrganizationLoginDesign | undefined>;
     /**
      * Configures multi-factor authentication (MFA) settings for an organization.
      */
-    mfaConfig?: pulumi.Input<inputs.AccessOrganizationMfaConfig>;
+    mfaConfig?: pulumi.Input<inputs.AccessOrganizationMfaConfig | undefined>;
     /**
      * Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
      */
-    mfaConfigurationAllowed?: pulumi.Input<boolean>;
+    mfaConfigurationAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
      */
-    mfaRequiredForAllApps?: pulumi.Input<boolean>;
+    mfaRequiredForAllApps?: pulumi.Input<boolean | undefined>;
     /**
      * Configures SSH PIV key requirements for MFA using hardware security keys.
      */
-    mfaSshPivKeyRequirements?: pulumi.Input<inputs.AccessOrganizationMfaSshPivKeyRequirements>;
+    mfaSshPivKeyRequirements?: pulumi.Input<inputs.AccessOrganizationMfaSshPivKeyRequirements | undefined>;
     /**
      * The name of your Zero Trust organization.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
-    sessionDuration?: pulumi.Input<string>;
+    sessionDuration?: pulumi.Input<string | undefined>;
     /**
      * A description of the reason why the UI read only field is being toggled.
      */
-    uiReadOnlyToggleReason?: pulumi.Input<string>;
+    uiReadOnlyToggleReason?: pulumi.Input<string | undefined>;
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      */
-    userSeatExpirationInactiveTime?: pulumi.Input<string>;
+    userSeatExpirationInactiveTime?: pulumi.Input<string | undefined>;
     /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      */
-    warpAuthSessionDuration?: pulumi.Input<string>;
+    warpAuthSessionDuration?: pulumi.Input<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -323,71 +323,71 @@ export interface AccessOrganizationArgs {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
      */
-    allowAuthenticateViaWarp?: pulumi.Input<boolean>;
+    allowAuthenticateViaWarp?: pulumi.Input<boolean | undefined>;
     /**
      * The unique subdomain assigned to your Zero Trust organization.
      */
-    authDomain?: pulumi.Input<string>;
+    authDomain?: pulumi.Input<string | undefined>;
     /**
      * When set to `true`, users skip the identity provider selection step during login.
      */
-    autoRedirectToIdentity?: pulumi.Input<boolean>;
-    customPages?: pulumi.Input<inputs.AccessOrganizationCustomPages>;
+    autoRedirectToIdentity?: pulumi.Input<boolean | undefined>;
+    customPages?: pulumi.Input<inputs.AccessOrganizationCustomPages | undefined>;
     /**
      * Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `denyUnmatchedRequestsExemptedZoneNames` array.
      */
-    denyUnmatchedRequests?: pulumi.Input<boolean>;
+    denyUnmatchedRequests?: pulumi.Input<boolean | undefined>;
     /**
      * Contains zone names to exempt from the `denyUnmatchedRequests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
      */
-    denyUnmatchedRequestsExemptedZoneNames?: pulumi.Input<pulumi.Input<string>[]>;
+    denyUnmatchedRequestsExemptedZoneNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
      */
-    isUiReadOnly?: pulumi.Input<boolean>;
-    loginDesign?: pulumi.Input<inputs.AccessOrganizationLoginDesign>;
+    isUiReadOnly?: pulumi.Input<boolean | undefined>;
+    loginDesign?: pulumi.Input<inputs.AccessOrganizationLoginDesign | undefined>;
     /**
      * Configures multi-factor authentication (MFA) settings for an organization.
      */
-    mfaConfig?: pulumi.Input<inputs.AccessOrganizationMfaConfig>;
+    mfaConfig?: pulumi.Input<inputs.AccessOrganizationMfaConfig | undefined>;
     /**
      * Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
      */
-    mfaConfigurationAllowed?: pulumi.Input<boolean>;
+    mfaConfigurationAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
      */
-    mfaRequiredForAllApps?: pulumi.Input<boolean>;
+    mfaRequiredForAllApps?: pulumi.Input<boolean | undefined>;
     /**
      * Configures SSH PIV key requirements for MFA using hardware security keys.
      */
-    mfaSshPivKeyRequirements?: pulumi.Input<inputs.AccessOrganizationMfaSshPivKeyRequirements>;
+    mfaSshPivKeyRequirements?: pulumi.Input<inputs.AccessOrganizationMfaSshPivKeyRequirements | undefined>;
     /**
      * The name of your Zero Trust organization.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
-    sessionDuration?: pulumi.Input<string>;
+    sessionDuration?: pulumi.Input<string | undefined>;
     /**
      * A description of the reason why the UI read only field is being toggled.
      */
-    uiReadOnlyToggleReason?: pulumi.Input<string>;
+    uiReadOnlyToggleReason?: pulumi.Input<string | undefined>;
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      */
-    userSeatExpirationInactiveTime?: pulumi.Input<string>;
+    userSeatExpirationInactiveTime?: pulumi.Input<string | undefined>;
     /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      */
-    warpAuthSessionDuration?: pulumi.Input<string>;
+    warpAuthSessionDuration?: pulumi.Input<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

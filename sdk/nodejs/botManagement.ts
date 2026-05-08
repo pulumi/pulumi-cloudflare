@@ -209,83 +209,83 @@ export interface BotManagementState {
      * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
      * Available values: "block", "disabled", "only*on*ad_pages".
      */
-    aiBotsProtection?: pulumi.Input<string>;
+    aiBotsProtection?: pulumi.Input<string | undefined>;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
-    autoUpdateModel?: pulumi.Input<boolean>;
+    autoUpdateModel?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
      */
-    bmCookieEnabled?: pulumi.Input<boolean>;
+    bmCookieEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the Robots Access Control License variant to use.
      * Available values: "off", "policyOnly".
      */
-    cfRobotsVariant?: pulumi.Input<string>;
+    cfRobotsVariant?: pulumi.Input<string | undefined>;
     /**
      * Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
      * Available values: "block", "disabled".
      */
-    contentBotsProtection?: pulumi.Input<string>;
+    contentBotsProtection?: pulumi.Input<string | undefined>;
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".
      */
-    crawlerProtection?: pulumi.Input<string>;
+    crawlerProtection?: pulumi.Input<string | undefined>;
     /**
      * Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
      */
-    enableJs?: pulumi.Input<boolean>;
+    enableJs?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable Bot Fight Mode.
      */
-    fightMode?: pulumi.Input<boolean>;
+    fightMode?: pulumi.Input<boolean | undefined>;
     /**
      * Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
      */
-    isRobotsTxtManaged?: pulumi.Input<boolean>;
+    isRobotsTxtManaged?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      */
-    optimizeWordpress?: pulumi.Input<boolean>;
+    optimizeWordpress?: pulumi.Input<boolean | undefined>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
      * Available values: "allow", "block", "managedChallenge".
      */
-    sbfmDefinitelyAutomated?: pulumi.Input<string>;
+    sbfmDefinitelyAutomated?: pulumi.Input<string | undefined>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
      * Available values: "allow", "block", "managedChallenge".
      */
-    sbfmLikelyAutomated?: pulumi.Input<string>;
+    sbfmLikelyAutomated?: pulumi.Input<string | undefined>;
     /**
      * Super Bot Fight Mode (SBFM) to enable static resource protection.
      * Enable if static resources on your application need bot protection.
      * Note: Static resource protection can also result in legitimate traffic being blocked.
      */
-    sbfmStaticResourceProtection?: pulumi.Input<boolean>;
+    sbfmStaticResourceProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on verified bots requests.
      * Available values: "allow", "block".
      */
-    sbfmVerifiedBots?: pulumi.Input<string>;
+    sbfmVerifiedBots?: pulumi.Input<string | undefined>;
     /**
      * A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
      */
-    staleZoneConfiguration?: pulumi.Input<inputs.BotManagementStaleZoneConfiguration>;
+    staleZoneConfiguration?: pulumi.Input<inputs.BotManagementStaleZoneConfiguration | undefined>;
     /**
      * Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
      */
-    suppressSessionScore?: pulumi.Input<boolean>;
+    suppressSessionScore?: pulumi.Input<boolean | undefined>;
     /**
      * A read-only field that indicates whether the zone currently is running the latest ML model.
      */
-    usingLatestModel?: pulumi.Input<boolean>;
+    usingLatestModel?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -296,71 +296,71 @@ export interface BotManagementArgs {
      * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
      * Available values: "block", "disabled", "only*on*ad_pages".
      */
-    aiBotsProtection?: pulumi.Input<string>;
+    aiBotsProtection?: pulumi.Input<string | undefined>;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
-    autoUpdateModel?: pulumi.Input<boolean>;
+    autoUpdateModel?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
      */
-    bmCookieEnabled?: pulumi.Input<boolean>;
+    bmCookieEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the Robots Access Control License variant to use.
      * Available values: "off", "policyOnly".
      */
-    cfRobotsVariant?: pulumi.Input<string>;
+    cfRobotsVariant?: pulumi.Input<string | undefined>;
     /**
      * Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
      * Available values: "block", "disabled".
      */
-    contentBotsProtection?: pulumi.Input<string>;
+    contentBotsProtection?: pulumi.Input<string | undefined>;
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".
      */
-    crawlerProtection?: pulumi.Input<string>;
+    crawlerProtection?: pulumi.Input<string | undefined>;
     /**
      * Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
      */
-    enableJs?: pulumi.Input<boolean>;
+    enableJs?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable Bot Fight Mode.
      */
-    fightMode?: pulumi.Input<boolean>;
+    fightMode?: pulumi.Input<boolean | undefined>;
     /**
      * Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
      */
-    isRobotsTxtManaged?: pulumi.Input<boolean>;
+    isRobotsTxtManaged?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      */
-    optimizeWordpress?: pulumi.Input<boolean>;
+    optimizeWordpress?: pulumi.Input<boolean | undefined>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
      * Available values: "allow", "block", "managedChallenge".
      */
-    sbfmDefinitelyAutomated?: pulumi.Input<string>;
+    sbfmDefinitelyAutomated?: pulumi.Input<string | undefined>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
      * Available values: "allow", "block", "managedChallenge".
      */
-    sbfmLikelyAutomated?: pulumi.Input<string>;
+    sbfmLikelyAutomated?: pulumi.Input<string | undefined>;
     /**
      * Super Bot Fight Mode (SBFM) to enable static resource protection.
      * Enable if static resources on your application need bot protection.
      * Note: Static resource protection can also result in legitimate traffic being blocked.
      */
-    sbfmStaticResourceProtection?: pulumi.Input<boolean>;
+    sbfmStaticResourceProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on verified bots requests.
      * Available values: "allow", "block".
      */
-    sbfmVerifiedBots?: pulumi.Input<string>;
+    sbfmVerifiedBots?: pulumi.Input<string | undefined>;
     /**
      * Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
      */
-    suppressSessionScore?: pulumi.Input<boolean>;
+    suppressSessionScore?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */

@@ -135,20 +135,20 @@ export interface EmailSecurityImpersonationRegistryState {
     /**
      * Account Identifier
      */
-    accountId?: pulumi.Input<string>;
-    comments?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
-    directoryId?: pulumi.Input<number>;
-    directoryNodeId?: pulumi.Input<number>;
-    email?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    comments?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    directoryId?: pulumi.Input<number | undefined>;
+    directoryNodeId?: pulumi.Input<number | undefined>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * @deprecated This attribute is deprecated.
      */
-    externalDirectoryNodeId?: pulumi.Input<string>;
-    isEmailRegex?: pulumi.Input<boolean>;
-    lastModified?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    provenance?: pulumi.Input<string>;
+    externalDirectoryNodeId?: pulumi.Input<string | undefined>;
+    isEmailRegex?: pulumi.Input<boolean | undefined>;
+    lastModified?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    provenance?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -158,7 +158,7 @@ export interface EmailSecurityImpersonationRegistryArgs {
     /**
      * Account Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     email: pulumi.Input<string>;
     isEmailRegex: pulumi.Input<boolean>;
     name: pulumi.Input<string>;

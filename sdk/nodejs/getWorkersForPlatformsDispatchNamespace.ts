@@ -128,7 +128,7 @@ export interface GetWorkersForPlatformsDispatchNamespaceOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Workers for Platforms dispatch namespace.
      */

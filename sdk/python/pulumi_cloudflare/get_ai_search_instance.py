@@ -491,9 +491,9 @@ def get_ai_search_instance(account_id: Optional[_builtins.str] = None,
         sync_interval=pulumi.get(__ret__, 'sync_interval'),
         token_id=pulumi.get(__ret__, 'token_id'),
         type=pulumi.get(__ret__, 'type'))
-def get_ai_search_instance_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  filter: Optional[pulumi.Input[Optional[Union['GetAiSearchInstanceFilterArgs', 'GetAiSearchInstanceFilterArgsDict']]]] = None,
-                                  id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ai_search_instance_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  filter: pulumi.Input[Optional[Optional[Union['GetAiSearchInstanceFilterArgs', 'GetAiSearchInstanceFilterArgsDict']]]] = None,
+                                  id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchInstanceResult]:
     """
     Use this data source to access information about an existing resource.

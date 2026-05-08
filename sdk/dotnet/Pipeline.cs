@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplePipeline = new Cloudflare.Index.Pipeline("example_pipeline", new()
+    ///     var examplePipeline = new Cloudflare.Pipeline("example_pipeline", new()
     ///     {
     ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "my_pipeline",

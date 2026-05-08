@@ -91,6 +91,6 @@ export interface GetImageVariantOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     variantId: pulumi.Input<string>;
 }

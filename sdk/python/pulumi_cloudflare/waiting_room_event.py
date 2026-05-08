@@ -23,19 +23,19 @@ class WaitingRoomEventArgs:
                  event_start_time: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  waiting_room_id: pulumi.Input[_builtins.str],
-                 custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_session_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 new_users_per_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 prequeue_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 queueing_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 shuffle_at_event_start: Optional[pulumi.Input[_builtins.bool]] = None,
-                 suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 total_active_users: Optional[pulumi.Input[_builtins.int]] = None,
-                 turnstile_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_session_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 new_users_per_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 prequeue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 queueing_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 shuffle_at_event_start: pulumi.Input[Optional[_builtins.bool]] = None,
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 total_active_users: pulumi.Input[Optional[_builtins.int]] = None,
+                 turnstile_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WaitingRoomEvent resource.
 
@@ -136,127 +136,127 @@ class WaitingRoomEventArgs:
 
     @_builtins.property
     @pulumi.getter(name="customPageHtml")
-    def custom_page_html(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_page_html(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "custom_page_html")
 
     @custom_page_html.setter
-    def custom_page_html(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_page_html(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_page_html", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A note that you can use to add more details about the event.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSessionRenewal")
-    def disable_session_renewal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_session_renewal(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "disable_session_renewal")
 
     @disable_session_renewal.setter
-    def disable_session_renewal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_session_renewal(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_session_renewal", value)
 
     @_builtins.property
     @pulumi.getter(name="newUsersPerMinute")
-    def new_users_per_minute(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def new_users_per_minute(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.
         """
         return pulumi.get(self, "new_users_per_minute")
 
     @new_users_per_minute.setter
-    def new_users_per_minute(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def new_users_per_minute(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "new_users_per_minute", value)
 
     @_builtins.property
     @pulumi.getter(name="prequeueStartTime")
-    def prequeue_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prequeue_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
         """
         return pulumi.get(self, "prequeue_start_time")
 
     @prequeue_start_time.setter
-    def prequeue_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prequeue_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prequeue_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="queueingMethod")
-    def queueing_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queueing_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "queueing_method")
 
     @queueing_method.setter
-    def queueing_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queueing_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queueing_method", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionDuration")
-    def session_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "session_duration")
 
     @session_duration.setter
-    def session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="shuffleAtEventStart")
-    def shuffle_at_event_start(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shuffle_at_event_start(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
         """
         return pulumi.get(self, "shuffle_at_event_start")
 
     @shuffle_at_event_start.setter
-    def shuffle_at_event_start(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shuffle_at_event_start(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shuffle_at_event_start", value)
 
     @_builtins.property
     @pulumi.getter
-    def suspended(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def suspended(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
         """
         return pulumi.get(self, "suspended")
 
     @suspended.setter
-    def suspended(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def suspended(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "suspended", value)
 
     @_builtins.property
     @pulumi.getter(name="totalActiveUsers")
-    def total_active_users(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_active_users(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
         """
         return pulumi.get(self, "total_active_users")
 
     @total_active_users.setter
-    def total_active_users(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_active_users(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_active_users", value)
 
     @_builtins.property
     @pulumi.getter(name="turnstileAction")
-    def turnstile_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def turnstile_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
         Available values: "log", "infinite_queue".
@@ -264,12 +264,12 @@ class WaitingRoomEventArgs:
         return pulumi.get(self, "turnstile_action")
 
     @turnstile_action.setter
-    def turnstile_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def turnstile_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "turnstile_action", value)
 
     @_builtins.property
     @pulumi.getter(name="turnstileMode")
-    def turnstile_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def turnstile_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
         Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
@@ -277,44 +277,44 @@ class WaitingRoomEventArgs:
         return pulumi.get(self, "turnstile_mode")
 
     @turnstile_mode.setter
-    def turnstile_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def turnstile_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "turnstile_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _WaitingRoomEventState:
     def __init__(__self__, *,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_session_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 event_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_users_per_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 prequeue_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 queueing_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 shuffle_at_event_start: Optional[pulumi.Input[_builtins.bool]] = None,
-                 suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 total_active_users: Optional[pulumi.Input[_builtins.int]] = None,
-                 turnstile_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_session_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 event_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_users_per_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 prequeue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 queueing_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 shuffle_at_event_start: pulumi.Input[Optional[_builtins.bool]] = None,
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 total_active_users: pulumi.Input[Optional[_builtins.int]] = None,
+                 turnstile_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoomEvent resources.
 
@@ -378,181 +378,181 @@ class _WaitingRoomEventState:
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter(name="customPageHtml")
-    def custom_page_html(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_page_html(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "custom_page_html")
 
     @custom_page_html.setter
-    def custom_page_html(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_page_html(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_page_html", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A note that you can use to add more details about the event.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSessionRenewal")
-    def disable_session_renewal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_session_renewal(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "disable_session_renewal")
 
     @disable_session_renewal.setter
-    def disable_session_renewal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_session_renewal(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_session_renewal", value)
 
     @_builtins.property
     @pulumi.getter(name="eventEndTime")
-    def event_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An ISO 8601 timestamp that marks the end of the event.
         """
         return pulumi.get(self, "event_end_time")
 
     @event_end_time.setter
-    def event_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="eventStartTime")
-    def event_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
         """
         return pulumi.get(self, "event_start_time")
 
     @event_start_time.setter
-    def event_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="newUsersPerMinute")
-    def new_users_per_minute(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def new_users_per_minute(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.
         """
         return pulumi.get(self, "new_users_per_minute")
 
     @new_users_per_minute.setter
-    def new_users_per_minute(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def new_users_per_minute(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "new_users_per_minute", value)
 
     @_builtins.property
     @pulumi.getter(name="prequeueStartTime")
-    def prequeue_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prequeue_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
         """
         return pulumi.get(self, "prequeue_start_time")
 
     @prequeue_start_time.setter
-    def prequeue_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prequeue_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prequeue_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="queueingMethod")
-    def queueing_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queueing_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "queueing_method")
 
     @queueing_method.setter
-    def queueing_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queueing_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queueing_method", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionDuration")
-    def session_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "session_duration")
 
     @session_duration.setter
-    def session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="shuffleAtEventStart")
-    def shuffle_at_event_start(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shuffle_at_event_start(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
         """
         return pulumi.get(self, "shuffle_at_event_start")
 
     @shuffle_at_event_start.setter
-    def shuffle_at_event_start(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shuffle_at_event_start(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shuffle_at_event_start", value)
 
     @_builtins.property
     @pulumi.getter
-    def suspended(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def suspended(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
         """
         return pulumi.get(self, "suspended")
 
     @suspended.setter
-    def suspended(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def suspended(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "suspended", value)
 
     @_builtins.property
     @pulumi.getter(name="totalActiveUsers")
-    def total_active_users(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_active_users(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
         """
         return pulumi.get(self, "total_active_users")
 
     @total_active_users.setter
-    def total_active_users(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_active_users(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_active_users", value)
 
     @_builtins.property
     @pulumi.getter(name="turnstileAction")
-    def turnstile_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def turnstile_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
         Available values: "log", "infinite_queue".
@@ -560,12 +560,12 @@ class _WaitingRoomEventState:
         return pulumi.get(self, "turnstile_action")
 
     @turnstile_action.setter
-    def turnstile_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def turnstile_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "turnstile_action", value)
 
     @_builtins.property
     @pulumi.getter(name="turnstileMode")
-    def turnstile_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def turnstile_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
         Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
@@ -573,28 +573,28 @@ class _WaitingRoomEventState:
         return pulumi.get(self, "turnstile_mode")
 
     @turnstile_mode.setter
-    def turnstile_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def turnstile_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "turnstile_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="waitingRoomId")
-    def waiting_room_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def waiting_room_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "waiting_room_id")
 
     @waiting_room_id.setter
-    def waiting_room_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def waiting_room_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "waiting_room_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -604,23 +604,23 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_session_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 event_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_users_per_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 prequeue_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 queueing_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 shuffle_at_event_start: Optional[pulumi.Input[_builtins.bool]] = None,
-                 suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 total_active_users: Optional[pulumi.Input[_builtins.int]] = None,
-                 turnstile_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_session_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 event_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_users_per_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 prequeue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 queueing_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 shuffle_at_event_start: pulumi.Input[Optional[_builtins.bool]] = None,
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 total_active_users: pulumi.Input[Optional[_builtins.int]] = None,
+                 turnstile_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -742,23 +742,23 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_session_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 event_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_users_per_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 prequeue_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 queueing_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 shuffle_at_event_start: Optional[pulumi.Input[_builtins.bool]] = None,
-                 suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 total_active_users: Optional[pulumi.Input[_builtins.int]] = None,
-                 turnstile_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_session_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 event_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_users_per_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 prequeue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 queueing_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 shuffle_at_event_start: pulumi.Input[Optional[_builtins.bool]] = None,
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 total_active_users: pulumi.Input[Optional[_builtins.int]] = None,
+                 turnstile_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -805,25 +805,25 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_session_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-            event_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            event_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            new_users_per_minute: Optional[pulumi.Input[_builtins.int]] = None,
-            prequeue_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            queueing_method: Optional[pulumi.Input[_builtins.str]] = None,
-            session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            shuffle_at_event_start: Optional[pulumi.Input[_builtins.bool]] = None,
-            suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-            total_active_users: Optional[pulumi.Input[_builtins.int]] = None,
-            turnstile_action: Optional[pulumi.Input[_builtins.str]] = None,
-            turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WaitingRoomEvent':
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_session_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+            event_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            event_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            new_users_per_minute: pulumi.Input[Optional[_builtins.int]] = None,
+            prequeue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            queueing_method: pulumi.Input[Optional[_builtins.str]] = None,
+            session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            shuffle_at_event_start: pulumi.Input[Optional[_builtins.bool]] = None,
+            suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+            total_active_users: pulumi.Input[Optional[_builtins.int]] = None,
+            turnstile_action: pulumi.Input[Optional[_builtins.str]] = None,
+            turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WaitingRoomEvent':
         """
         Get an existing WaitingRoomEvent resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

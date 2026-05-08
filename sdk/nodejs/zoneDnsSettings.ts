@@ -169,44 +169,44 @@ export interface ZoneDnsSettingsState {
     /**
      * Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
      */
-    flattenAllCnames?: pulumi.Input<boolean>;
+    flattenAllCnames?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable Foundation DNS Advanced Nameservers on the zone.
      */
-    foundationDns?: pulumi.Input<boolean>;
+    foundationDns?: pulumi.Input<boolean | undefined>;
     /**
      * Settings for this internal zone.
      */
-    internalDns?: pulumi.Input<inputs.ZoneDnsSettingsInternalDns>;
+    internalDns?: pulumi.Input<inputs.ZoneDnsSettingsInternalDns | undefined>;
     /**
      * Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
      */
-    multiProvider?: pulumi.Input<boolean>;
+    multiProvider?: pulumi.Input<boolean | undefined>;
     /**
      * Settings determining the nameservers through which the zone should be available.
      */
-    nameservers?: pulumi.Input<inputs.ZoneDnsSettingsNameservers>;
+    nameservers?: pulumi.Input<inputs.ZoneDnsSettingsNameservers | undefined>;
     /**
      * The time to live (TTL) of the zone's nameserver (NS) records.
      */
-    nsTtl?: pulumi.Input<number>;
+    nsTtl?: pulumi.Input<number | undefined>;
     /**
      * Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
      */
-    secondaryOverrides?: pulumi.Input<boolean>;
+    secondaryOverrides?: pulumi.Input<boolean | undefined>;
     /**
      * Components of the zone's SOA record.
      */
-    soa?: pulumi.Input<inputs.ZoneDnsSettingsSoa>;
+    soa?: pulumi.Input<inputs.ZoneDnsSettingsSoa | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
     /**
      * Whether the zone mode is a regular or CDN/DNS only zone.
      * Available values: "standard", "cdn*only", "dns*only".
      */
-    zoneMode?: pulumi.Input<string>;
+    zoneMode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,42 +216,42 @@ export interface ZoneDnsSettingsArgs {
     /**
      * Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
      */
-    flattenAllCnames?: pulumi.Input<boolean>;
+    flattenAllCnames?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable Foundation DNS Advanced Nameservers on the zone.
      */
-    foundationDns?: pulumi.Input<boolean>;
+    foundationDns?: pulumi.Input<boolean | undefined>;
     /**
      * Settings for this internal zone.
      */
-    internalDns?: pulumi.Input<inputs.ZoneDnsSettingsInternalDns>;
+    internalDns?: pulumi.Input<inputs.ZoneDnsSettingsInternalDns | undefined>;
     /**
      * Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
      */
-    multiProvider?: pulumi.Input<boolean>;
+    multiProvider?: pulumi.Input<boolean | undefined>;
     /**
      * Settings determining the nameservers through which the zone should be available.
      */
-    nameservers?: pulumi.Input<inputs.ZoneDnsSettingsNameservers>;
+    nameservers?: pulumi.Input<inputs.ZoneDnsSettingsNameservers | undefined>;
     /**
      * The time to live (TTL) of the zone's nameserver (NS) records.
      */
-    nsTtl?: pulumi.Input<number>;
+    nsTtl?: pulumi.Input<number | undefined>;
     /**
      * Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
      */
-    secondaryOverrides?: pulumi.Input<boolean>;
+    secondaryOverrides?: pulumi.Input<boolean | undefined>;
     /**
      * Components of the zone's SOA record.
      */
-    soa?: pulumi.Input<inputs.ZoneDnsSettingsSoa>;
+    soa?: pulumi.Input<inputs.ZoneDnsSettingsSoa | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
     /**
      * Whether the zone mode is a regular or CDN/DNS only zone.
      * Available values: "standard", "cdn*only", "dns*only".
      */
-    zoneMode?: pulumi.Input<string>;
+    zoneMode?: pulumi.Input<string | undefined>;
 }

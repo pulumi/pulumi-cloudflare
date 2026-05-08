@@ -22,8 +22,8 @@ __all__ = ['OrganizationArgs', 'Organization']
 class OrganizationArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 parent: Optional[pulumi.Input['OrganizationParentArgs']] = None,
-                 profile: Optional[pulumi.Input['OrganizationProfileArgs']] = None):
+                 parent: pulumi.Input[Optional['OrganizationParentArgs']] = None,
+                 profile: pulumi.Input[Optional['OrganizationProfileArgs']] = None):
         """
         The set of arguments for constructing a Organization resource.
         """
@@ -44,31 +44,31 @@ class OrganizationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input['OrganizationParentArgs']]:
+    def parent(self) -> pulumi.Input[Optional['OrganizationParentArgs']]:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input['OrganizationParentArgs']]):
+    def parent(self, value: pulumi.Input[Optional['OrganizationParentArgs']]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input['OrganizationProfileArgs']]:
+    def profile(self) -> pulumi.Input[Optional['OrganizationProfileArgs']]:
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input['OrganizationProfileArgs']]):
+    def profile(self, value: pulumi.Input[Optional['OrganizationProfileArgs']]):
         pulumi.set(self, "profile", value)
 
 
 @pulumi.input_type
 class _OrganizationState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input['OrganizationMetaArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input['OrganizationParentArgs']] = None,
-                 profile: Optional[pulumi.Input['OrganizationProfileArgs']] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional['OrganizationMetaArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional['OrganizationParentArgs']] = None,
+                 profile: pulumi.Input[Optional['OrganizationProfileArgs']] = None):
         """
         Input properties used for looking up and filtering Organization resources.
         """
@@ -85,47 +85,47 @@ class _OrganizationState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input['OrganizationMetaArgs']]:
+    def meta(self) -> pulumi.Input[Optional['OrganizationMetaArgs']]:
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input['OrganizationMetaArgs']]):
+    def meta(self, value: pulumi.Input[Optional['OrganizationMetaArgs']]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input['OrganizationParentArgs']]:
+    def parent(self) -> pulumi.Input[Optional['OrganizationParentArgs']]:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input['OrganizationParentArgs']]):
+    def parent(self, value: pulumi.Input[Optional['OrganizationParentArgs']]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input['OrganizationProfileArgs']]:
+    def profile(self) -> pulumi.Input[Optional['OrganizationProfileArgs']]:
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input['OrganizationProfileArgs']]):
+    def profile(self, value: pulumi.Input[Optional['OrganizationProfileArgs']]):
         pulumi.set(self, "profile", value)
 
 
@@ -135,9 +135,9 @@ class Organization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[Union['OrganizationParentArgs', 'OrganizationParentArgsDict']]] = None,
-                 profile: Optional[pulumi.Input[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict']]] = None,
+                 profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -227,9 +227,9 @@ class Organization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[Union['OrganizationParentArgs', 'OrganizationParentArgsDict']]] = None,
-                 profile: Optional[pulumi.Input[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict']]] = None,
+                 profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,11 +256,11 @@ class Organization(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            meta: Optional[pulumi.Input[Union['OrganizationMetaArgs', 'OrganizationMetaArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[Union['OrganizationParentArgs', 'OrganizationParentArgsDict']]] = None,
-            profile: Optional[pulumi.Input[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict']]] = None) -> 'Organization':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[Union['OrganizationMetaArgs', 'OrganizationMetaArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[Union['OrganizationParentArgs', 'OrganizationParentArgsDict']]] = None,
+            profile: pulumi.Input[Optional[Union['OrganizationProfileArgs', 'OrganizationProfileArgsDict']]] = None) -> 'Organization':
         """
         Get an existing Organization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

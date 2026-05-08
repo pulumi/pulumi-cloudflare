@@ -154,16 +154,16 @@ export interface UrlNormalizationSettingsState {
      * The scope of the URL normalization.
      * Available values: "incoming", "both", "none".
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The type of URL normalization performed by Cloudflare.
      * Available values: "cloudflare", "rfc3986".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**

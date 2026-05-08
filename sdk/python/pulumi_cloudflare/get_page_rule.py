@@ -197,8 +197,8 @@ def get_page_rule(pagerule_id: Optional[_builtins.str] = None,
         priority=pulumi.get(__ret__, 'priority'),
         status=pulumi.get(__ret__, 'status'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_page_rule_output(pagerule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_page_rule_output(pagerule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                         zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPageRuleResult]:
     """
     Accepted Permissions

@@ -276,55 +276,55 @@ export interface WorkerVersionState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Metadata about the version.
      */
-    annotations?: pulumi.Input<inputs.WorkerVersionAnnotations>;
+    annotations?: pulumi.Input<inputs.WorkerVersionAnnotations | undefined>;
     /**
      * Configuration for assets within a Worker.
      */
-    assets?: pulumi.Input<inputs.WorkerVersionAssets>;
+    assets?: pulumi.Input<inputs.WorkerVersionAssets | undefined>;
     /**
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
-    bindings?: pulumi.Input<pulumi.Input<inputs.WorkerVersionBinding>[]>;
+    bindings?: pulumi.Input<pulumi.Input<inputs.WorkerVersionBinding>[] | undefined>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
-    compatibilityDate?: pulumi.Input<string>;
+    compatibilityDate?: pulumi.Input<string | undefined>;
     /**
      * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      */
-    compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
+    compatibilityFlags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
      */
-    containers?: pulumi.Input<pulumi.Input<inputs.WorkerVersionContainer>[]>;
+    containers?: pulumi.Input<pulumi.Input<inputs.WorkerVersionContainer>[] | undefined>;
     /**
      * When the version was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Resource limits enforced at runtime.
      */
-    limits?: pulumi.Input<inputs.WorkerVersionLimits>;
+    limits?: pulumi.Input<inputs.WorkerVersionLimits | undefined>;
     /**
      * The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
      */
-    mainModule?: pulumi.Input<string>;
+    mainModule?: pulumi.Input<string | undefined>;
     /**
      * The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
      */
-    mainScriptBase64?: pulumi.Input<string>;
+    mainScriptBase64?: pulumi.Input<string | undefined>;
     /**
      * Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
      */
-    migrationTag?: pulumi.Input<string>;
+    migrationTag?: pulumi.Input<string | undefined>;
     /**
      * Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
      */
-    migrations?: pulumi.Input<inputs.WorkerVersionMigrations>;
+    migrations?: pulumi.Input<inputs.WorkerVersionMigrations | undefined>;
     /**
      * Code, sourcemaps, and other content used at runtime.
      *
@@ -333,38 +333,38 @@ export interface WorkerVersionState {
      * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
      * included as modules named `_headers` and `_redirects` with content type `text/plain`.
      */
-    modules?: pulumi.Input<pulumi.Input<inputs.WorkerVersionModule>[]>;
+    modules?: pulumi.Input<pulumi.Input<inputs.WorkerVersionModule>[] | undefined>;
     /**
      * The integer version number, starting from one.
      */
-    number?: pulumi.Input<number>;
+    number?: pulumi.Input<number | undefined>;
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
-    placement?: pulumi.Input<inputs.WorkerVersionPlacement>;
+    placement?: pulumi.Input<inputs.WorkerVersionPlacement | undefined>;
     /**
      * The client used to create the version.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
      */
-    startupTimeMs?: pulumi.Input<number>;
+    startupTimeMs?: pulumi.Input<number | undefined>;
     /**
      * All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
      */
-    urls?: pulumi.Input<pulumi.Input<string>[]>;
+    urls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Usage model for the version.
      * Available values: "standard", "bundled", "unbound".
      *
      * @deprecated This attribute is deprecated.
      */
-    usageModel?: pulumi.Input<string>;
+    usageModel?: pulumi.Input<string | undefined>;
     /**
      * Identifier for the Worker, which can be ID or name.
      */
-    workerId?: pulumi.Input<string>;
+    workerId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -374,43 +374,43 @@ export interface WorkerVersionArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Metadata about the version.
      */
-    annotations?: pulumi.Input<inputs.WorkerVersionAnnotations>;
+    annotations?: pulumi.Input<inputs.WorkerVersionAnnotations | undefined>;
     /**
      * Configuration for assets within a Worker.
      */
-    assets?: pulumi.Input<inputs.WorkerVersionAssets>;
+    assets?: pulumi.Input<inputs.WorkerVersionAssets | undefined>;
     /**
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
-    bindings?: pulumi.Input<pulumi.Input<inputs.WorkerVersionBinding>[]>;
+    bindings?: pulumi.Input<pulumi.Input<inputs.WorkerVersionBinding>[] | undefined>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
-    compatibilityDate?: pulumi.Input<string>;
+    compatibilityDate?: pulumi.Input<string | undefined>;
     /**
      * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      */
-    compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
+    compatibilityFlags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
      */
-    containers?: pulumi.Input<pulumi.Input<inputs.WorkerVersionContainer>[]>;
+    containers?: pulumi.Input<pulumi.Input<inputs.WorkerVersionContainer>[] | undefined>;
     /**
      * Resource limits enforced at runtime.
      */
-    limits?: pulumi.Input<inputs.WorkerVersionLimits>;
+    limits?: pulumi.Input<inputs.WorkerVersionLimits | undefined>;
     /**
      * The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
      */
-    mainModule?: pulumi.Input<string>;
+    mainModule?: pulumi.Input<string | undefined>;
     /**
      * Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
      */
-    migrations?: pulumi.Input<inputs.WorkerVersionMigrations>;
+    migrations?: pulumi.Input<inputs.WorkerVersionMigrations | undefined>;
     /**
      * Code, sourcemaps, and other content used at runtime.
      *
@@ -419,18 +419,18 @@ export interface WorkerVersionArgs {
      * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
      * included as modules named `_headers` and `_redirects` with content type `text/plain`.
      */
-    modules?: pulumi.Input<pulumi.Input<inputs.WorkerVersionModule>[]>;
+    modules?: pulumi.Input<pulumi.Input<inputs.WorkerVersionModule>[] | undefined>;
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
-    placement?: pulumi.Input<inputs.WorkerVersionPlacement>;
+    placement?: pulumi.Input<inputs.WorkerVersionPlacement | undefined>;
     /**
      * Usage model for the version.
      * Available values: "standard", "bundled", "unbound".
      *
      * @deprecated This attribute is deprecated.
      */
-    usageModel?: pulumi.Input<string>;
+    usageModel?: pulumi.Input<string | undefined>;
     /**
      * Identifier for the Worker, which can be ID or name.
      */

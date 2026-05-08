@@ -124,25 +124,25 @@ export interface ObservatoryScheduledTestState {
     /**
      * The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
      */
-    frequency?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string | undefined>;
     /**
      * A test region.
      * Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The test schedule.
      */
-    schedule?: pulumi.Input<inputs.ObservatoryScheduledTestSchedule>;
-    test?: pulumi.Input<inputs.ObservatoryScheduledTestTest>;
+    schedule?: pulumi.Input<inputs.ObservatoryScheduledTestSchedule | undefined>;
+    test?: pulumi.Input<inputs.ObservatoryScheduledTestTest | undefined>;
     /**
      * A URL.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -152,12 +152,12 @@ export interface ObservatoryScheduledTestArgs {
     /**
      * The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
      */
-    frequency?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string | undefined>;
     /**
      * A test region.
      * Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A URL.
      */
@@ -165,5 +165,5 @@ export interface ObservatoryScheduledTestArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

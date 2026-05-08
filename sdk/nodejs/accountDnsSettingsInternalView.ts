@@ -122,23 +122,23 @@ export interface AccountDnsSettingsInternalViewState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * When the view was created.
      */
-    createdTime?: pulumi.Input<string>;
+    createdTime?: pulumi.Input<string | undefined>;
     /**
      * When the view was last modified.
      */
-    modifiedTime?: pulumi.Input<string>;
+    modifiedTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the view.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of zones linked to this view.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -148,7 +148,7 @@ export interface AccountDnsSettingsInternalViewArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The name of the view.
      */

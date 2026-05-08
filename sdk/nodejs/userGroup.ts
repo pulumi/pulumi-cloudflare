@@ -138,23 +138,23 @@ export interface UserGroupState {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Timestamp for the creation of the user group
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Last time the user group was modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * Name of the User group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Policies attached to the User group
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.UserGroupPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.UserGroupPolicy>[] | undefined>;
 }
 
 /**
@@ -172,5 +172,5 @@ export interface UserGroupArgs {
     /**
      * Policies attached to the User group
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.UserGroupPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.UserGroupPolicy>[] | undefined>;
 }

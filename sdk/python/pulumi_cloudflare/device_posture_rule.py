@@ -22,13 +22,13 @@ __all__ = ['DevicePostureRuleArgs', 'DevicePostureRule']
 class DevicePostureRuleArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
-                 input: Optional[pulumi.Input['DevicePostureRuleInputArgs']] = None,
-                 matches: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.str]] = None,
+                 input: pulumi.Input[Optional['DevicePostureRuleInputArgs']] = None,
+                 matches: pulumi.Input[Optional[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DevicePostureRule resource.
 
@@ -72,97 +72,97 @@ class DevicePostureRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the device posture rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter
-    def input(self) -> Optional[pulumi.Input['DevicePostureRuleInputArgs']]:
+    def input(self) -> pulumi.Input[Optional['DevicePostureRuleInputArgs']]:
         """
         The value to be checked against.
         """
         return pulumi.get(self, "input")
 
     @input.setter
-    def input(self, value: Optional[pulumi.Input['DevicePostureRuleInputArgs']]):
+    def input(self, value: pulumi.Input[Optional['DevicePostureRuleInputArgs']]):
         pulumi.set(self, "input", value)
 
     @_builtins.property
     @pulumi.getter
-    def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]]:
+    def matches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]]:
         """
         The conditions that the client must match to run the rule.
         """
         return pulumi.get(self, "matches")
 
     @matches.setter
-    def matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]]):
+    def matches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]]):
         pulumi.set(self, "matches", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the device posture rule.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
 
 @pulumi.input_type
 class _DevicePostureRuleState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
-                 input: Optional[pulumi.Input['DevicePostureRuleInputArgs']] = None,
-                 matches: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.str]] = None,
+                 input: pulumi.Input[Optional['DevicePostureRuleInputArgs']] = None,
+                 matches: pulumi.Input[Optional[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DevicePostureRule resources.
 
@@ -194,88 +194,88 @@ class _DevicePostureRuleState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the device posture rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter
-    def input(self) -> Optional[pulumi.Input['DevicePostureRuleInputArgs']]:
+    def input(self) -> pulumi.Input[Optional['DevicePostureRuleInputArgs']]:
         """
         The value to be checked against.
         """
         return pulumi.get(self, "input")
 
     @input.setter
-    def input(self, value: Optional[pulumi.Input['DevicePostureRuleInputArgs']]):
+    def input(self, value: pulumi.Input[Optional['DevicePostureRuleInputArgs']]):
         pulumi.set(self, "input", value)
 
     @_builtins.property
     @pulumi.getter
-    def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]]:
+    def matches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]]:
         """
         The conditions that the client must match to run the rule.
         """
         return pulumi.get(self, "matches")
 
     @matches.setter
-    def matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]]):
+    def matches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]]):
         pulumi.set(self, "matches", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the device posture rule.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of device posture rule.
         Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "antivirus", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
@@ -283,7 +283,7 @@ class _DevicePostureRuleState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -298,14 +298,14 @@ class DevicePostureRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
-                 input: Optional[pulumi.Input[Union['DevicePostureRuleInputArgs', 'DevicePostureRuleInputArgsDict']]] = None,
-                 matches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.str]] = None,
+                 input: pulumi.Input[Optional[Union['DevicePostureRuleInputArgs', 'DevicePostureRuleInputArgsDict']]] = None,
+                 matches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -413,14 +413,14 @@ class DevicePostureRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
-                 input: Optional[pulumi.Input[Union['DevicePostureRuleInputArgs', 'DevicePostureRuleInputArgsDict']]] = None,
-                 matches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.str]] = None,
+                 input: pulumi.Input[Optional[Union['DevicePostureRuleInputArgs', 'DevicePostureRuleInputArgsDict']]] = None,
+                 matches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""DevicePostureRule is deprecated: cloudflare.index/deviceposturerule.DevicePostureRule has been deprecated in favor of cloudflare.index/zerotrustdeviceposturerule.ZeroTrustDevicePostureRule""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -453,14 +453,14 @@ class DevicePostureRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            expiration: Optional[pulumi.Input[_builtins.str]] = None,
-            input: Optional[pulumi.Input[Union['DevicePostureRuleInputArgs', 'DevicePostureRuleInputArgsDict']]] = None,
-            matches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'DevicePostureRule':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration: pulumi.Input[Optional[_builtins.str]] = None,
+            input: pulumi.Input[Optional[Union['DevicePostureRuleInputArgs', 'DevicePostureRuleInputArgsDict']]] = None,
+            matches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DevicePostureRuleMatchArgs', 'DevicePostureRuleMatchArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'DevicePostureRule':
         """
         Get an existing DevicePostureRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

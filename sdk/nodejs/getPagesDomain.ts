@@ -125,7 +125,7 @@ export interface GetPagesDomainOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The domain name.
      */

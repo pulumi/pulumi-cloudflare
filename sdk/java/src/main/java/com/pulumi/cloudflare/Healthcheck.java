@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.HealthcheckArgs;
  * import com.pulumi.cloudflare.inputs.HealthcheckHttpConfigArgs;
  * import com.pulumi.cloudflare.inputs.HealthcheckTcpConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -69,8 +69,8 @@ import javax.annotation.Nullable;
  *                     "302")
  *                 .followRedirects(true)
  *                 .header(Map.ofEntries(
- *                     Map.entry("Host", "example.com"),
- *                     Map.entry("X-App-ID", "abc123")
+ *                     Map.entry("Host", Arrays.asList("example.com")),
+ *                     Map.entry("X-App-ID", Arrays.asList("abc123"))
  *                 ))
  *                 .method("GET")
  *                 .path("/health")

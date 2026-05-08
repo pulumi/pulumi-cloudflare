@@ -63,7 +63,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleManagedTransforms = new Cloudflare.Index.ManagedTransforms("example_managed_transforms", new()
+    ///     var exampleManagedTransforms = new Cloudflare.ManagedTransforms("example_managed_transforms", new()
     ///     {
     ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
     ///         ManagedRequestHeaders = new[]

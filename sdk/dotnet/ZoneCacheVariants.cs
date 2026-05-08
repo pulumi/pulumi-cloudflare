@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZoneCacheVariants = new Cloudflare.Index.ZoneCacheVariants("example_zone_cache_variants", new()
+    ///     var exampleZoneCacheVariants = new Cloudflare.ZoneCacheVariants("example_zone_cache_variants", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Value = new Cloudflare.Inputs.ZoneCacheVariantsValueArgs

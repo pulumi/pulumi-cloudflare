@@ -126,10 +126,10 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworkOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs | undefined>;
     /**
      * UUID of the virtual network.
      */
-    virtualNetworkId?: pulumi.Input<string>;
+    virtualNetworkId?: pulumi.Input<string | undefined>;
 }

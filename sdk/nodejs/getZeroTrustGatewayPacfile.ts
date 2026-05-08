@@ -101,6 +101,6 @@ export function getZeroTrustGatewayPacfileOutput(args: GetZeroTrustGatewayPacfil
  * A collection of arguments for invoking getZeroTrustGatewayPacfile.
  */
 export interface GetZeroTrustGatewayPacfileOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     pacfileId: pulumi.Input<string>;
 }

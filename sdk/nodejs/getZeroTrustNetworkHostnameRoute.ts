@@ -130,10 +130,10 @@ export interface GetZeroTrustNetworkHostnameRouteOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetZeroTrustNetworkHostnameRouteFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustNetworkHostnameRouteFilterArgs | undefined>;
     /**
      * The hostname route ID.
      */
-    hostnameRouteId?: pulumi.Input<string>;
+    hostnameRouteId?: pulumi.Input<string | undefined>;
 }

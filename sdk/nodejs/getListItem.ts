@@ -136,7 +136,7 @@ export interface GetListItemOutputArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Defines the unique ID of the item in the List.
      */

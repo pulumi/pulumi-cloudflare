@@ -155,46 +155,46 @@ export class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustAccessAiControlsMcpPortal resources.
  */
 export interface ZeroTrustAccessAiControlsMcpPortalState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Allow remote code execution in Dynamic Workers (beta)
      */
-    allowCodeMode?: pulumi.Input<boolean>;
-    createdAt?: pulumi.Input<string>;
-    createdBy?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    hostname?: pulumi.Input<string>;
-    modifiedAt?: pulumi.Input<string>;
-    modifiedBy?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    allowCodeMode?: pulumi.Input<boolean | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    createdBy?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    hostname?: pulumi.Input<string | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
+    modifiedBy?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Route outbound MCP traffic through Zero Trust Secure Web Gateway
      */
-    secureWebGateway?: pulumi.Input<boolean>;
-    servers?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpPortalServer>[]>;
+    secureWebGateway?: pulumi.Input<boolean | undefined>;
+    servers?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpPortalServer>[] | undefined>;
     /**
      * portal id
      */
-    zeroTrustAccessAiControlsMcpPortalId?: pulumi.Input<string>;
+    zeroTrustAccessAiControlsMcpPortalId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustAccessAiControlsMcpPortal resource.
  */
 export interface ZeroTrustAccessAiControlsMcpPortalArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Allow remote code execution in Dynamic Workers (beta)
      */
-    allowCodeMode?: pulumi.Input<boolean>;
-    description?: pulumi.Input<string>;
+    allowCodeMode?: pulumi.Input<boolean | undefined>;
+    description?: pulumi.Input<string | undefined>;
     hostname: pulumi.Input<string>;
     name: pulumi.Input<string>;
     /**
      * Route outbound MCP traffic through Zero Trust Secure Web Gateway
      */
-    secureWebGateway?: pulumi.Input<boolean>;
-    servers?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpPortalServer>[]>;
+    secureWebGateway?: pulumi.Input<boolean | undefined>;
+    servers?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpPortalServer>[] | undefined>;
     /**
      * portal id
      */

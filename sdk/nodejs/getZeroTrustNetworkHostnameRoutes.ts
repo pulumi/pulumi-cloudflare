@@ -170,33 +170,33 @@ export interface GetZeroTrustNetworkHostnameRoutesOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * If set, only list hostname routes with the given comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      */
-    existedAt?: pulumi.Input<string>;
+    existedAt?: pulumi.Input<string | undefined>;
     /**
      * If set, only list hostname routes that contain a substring of the given value, the filter is case-insensitive.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * The hostname route ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * If `true`, only return deleted hostname routes. If `false`, exclude deleted hostname routes.
      */
-    isDeleted?: pulumi.Input<boolean>;
+    isDeleted?: pulumi.Input<boolean | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * If set, only list hostname routes that point to a specific tunnel.
      */
-    tunnelId?: pulumi.Input<string>;
+    tunnelId?: pulumi.Input<string | undefined>;
 }

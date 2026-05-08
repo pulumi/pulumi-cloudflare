@@ -109,6 +109,6 @@ export function getZeroTrustRiskScoringIntegrationOutput(args: GetZeroTrustRiskS
  * A collection of arguments for invoking getZeroTrustRiskScoringIntegration.
  */
 export interface GetZeroTrustRiskScoringIntegrationOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     integrationId: pulumi.Input<string>;
 }

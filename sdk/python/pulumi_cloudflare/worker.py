@@ -22,12 +22,12 @@ __all__ = ['WorkerArgs', 'Worker']
 class WorkerArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 observability: Optional[pulumi.Input['WorkerObservabilityArgs']] = None,
-                 subdomain: Optional[pulumi.Input['WorkerSubdomainArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 observability: pulumi.Input[Optional['WorkerObservabilityArgs']] = None,
+                 subdomain: pulumi.Input[Optional['WorkerSubdomainArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]] = None):
         """
         The set of arguments for constructing a Worker resource.
 
@@ -67,91 +67,91 @@ class WorkerArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def logpush(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logpush(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether logpush is enabled for the Worker.
         """
         return pulumi.get(self, "logpush")
 
     @logpush.setter
-    def logpush(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logpush(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logpush", value)
 
     @_builtins.property
     @pulumi.getter
-    def observability(self) -> Optional[pulumi.Input['WorkerObservabilityArgs']]:
+    def observability(self) -> pulumi.Input[Optional['WorkerObservabilityArgs']]:
         """
         Observability settings for the Worker.
         """
         return pulumi.get(self, "observability")
 
     @observability.setter
-    def observability(self, value: Optional[pulumi.Input['WorkerObservabilityArgs']]):
+    def observability(self, value: pulumi.Input[Optional['WorkerObservabilityArgs']]):
         pulumi.set(self, "observability", value)
 
     @_builtins.property
     @pulumi.getter
-    def subdomain(self) -> Optional[pulumi.Input['WorkerSubdomainArgs']]:
+    def subdomain(self) -> pulumi.Input[Optional['WorkerSubdomainArgs']]:
         """
         Subdomain settings for the Worker.
         """
         return pulumi.get(self, "subdomain")
 
     @subdomain.setter
-    def subdomain(self, value: Optional[pulumi.Input['WorkerSubdomainArgs']]):
+    def subdomain(self, value: pulumi.Input[Optional['WorkerSubdomainArgs']]):
         pulumi.set(self, "subdomain", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with the Worker.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tailConsumers")
-    def tail_consumers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]]:
+    def tail_consumers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]]:
         """
         Other Workers that should consume logs from the Worker.
         """
         return pulumi.get(self, "tail_consumers")
 
     @tail_consumers.setter
-    def tail_consumers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]]):
+    def tail_consumers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]]):
         pulumi.set(self, "tail_consumers", value)
 
 
 @pulumi.input_type
 class _WorkerState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployed_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 observability: Optional[pulumi.Input['WorkerObservabilityArgs']] = None,
-                 references: Optional[pulumi.Input['WorkerReferencesArgs']] = None,
-                 subdomain: Optional[pulumi.Input['WorkerSubdomainArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]] = None,
-                 updated_on: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployed_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 observability: pulumi.Input[Optional['WorkerObservabilityArgs']] = None,
+                 references: pulumi.Input[Optional['WorkerReferencesArgs']] = None,
+                 subdomain: pulumi.Input[Optional['WorkerSubdomainArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]] = None,
+                 updated_on: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Worker resources.
 
@@ -192,134 +192,134 @@ class _WorkerState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the Worker was created.
         """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter(name="deployedOn")
-    def deployed_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployed_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
         """
         return pulumi.get(self, "deployed_on")
 
     @deployed_on.setter
-    def deployed_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployed_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployed_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def logpush(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logpush(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether logpush is enabled for the Worker.
         """
         return pulumi.get(self, "logpush")
 
     @logpush.setter
-    def logpush(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logpush(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logpush", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Worker.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def observability(self) -> Optional[pulumi.Input['WorkerObservabilityArgs']]:
+    def observability(self) -> pulumi.Input[Optional['WorkerObservabilityArgs']]:
         """
         Observability settings for the Worker.
         """
         return pulumi.get(self, "observability")
 
     @observability.setter
-    def observability(self, value: Optional[pulumi.Input['WorkerObservabilityArgs']]):
+    def observability(self, value: pulumi.Input[Optional['WorkerObservabilityArgs']]):
         pulumi.set(self, "observability", value)
 
     @_builtins.property
     @pulumi.getter
-    def references(self) -> Optional[pulumi.Input['WorkerReferencesArgs']]:
+    def references(self) -> pulumi.Input[Optional['WorkerReferencesArgs']]:
         """
         Other resources that reference the Worker and depend on it existing.
         """
         return pulumi.get(self, "references")
 
     @references.setter
-    def references(self, value: Optional[pulumi.Input['WorkerReferencesArgs']]):
+    def references(self, value: pulumi.Input[Optional['WorkerReferencesArgs']]):
         pulumi.set(self, "references", value)
 
     @_builtins.property
     @pulumi.getter
-    def subdomain(self) -> Optional[pulumi.Input['WorkerSubdomainArgs']]:
+    def subdomain(self) -> pulumi.Input[Optional['WorkerSubdomainArgs']]:
         """
         Subdomain settings for the Worker.
         """
         return pulumi.get(self, "subdomain")
 
     @subdomain.setter
-    def subdomain(self, value: Optional[pulumi.Input['WorkerSubdomainArgs']]):
+    def subdomain(self, value: pulumi.Input[Optional['WorkerSubdomainArgs']]):
         pulumi.set(self, "subdomain", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags associated with the Worker.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tailConsumers")
-    def tail_consumers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]]:
+    def tail_consumers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]]:
         """
         Other Workers that should consume logs from the Worker.
         """
         return pulumi.get(self, "tail_consumers")
 
     @tail_consumers.setter
-    def tail_consumers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]]):
+    def tail_consumers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerTailConsumerArgs']]]]):
         pulumi.set(self, "tail_consumers", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedOn")
-    def updated_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the Worker was most recently updated.
         """
         return pulumi.get(self, "updated_on")
 
     @updated_on.setter
-    def updated_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_on", value)
 
 
@@ -329,13 +329,13 @@ class Worker(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 observability: Optional[pulumi.Input[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']]] = None,
-                 subdomain: Optional[pulumi.Input[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 observability: pulumi.Input[Optional[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']]] = None,
+                 subdomain: pulumi.Input[Optional[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -356,18 +356,18 @@ class Worker(pulumi.CustomResource):
             logpush=True,
             observability={
                 "enabled": True,
-                "head_sampling_rate": 1,
+                "head_sampling_rate": float(1),
                 "logs": {
                     "destinations": ["string"],
                     "enabled": True,
-                    "head_sampling_rate": 1,
+                    "head_sampling_rate": float(1),
                     "invocation_logs": True,
                     "persist": True,
                 },
                 "traces": {
                     "destinations": ["string"],
                     "enabled": True,
-                    "head_sampling_rate": 1,
+                    "head_sampling_rate": float(1),
                     "persist": True,
                 },
             },
@@ -426,18 +426,18 @@ class Worker(pulumi.CustomResource):
             logpush=True,
             observability={
                 "enabled": True,
-                "head_sampling_rate": 1,
+                "head_sampling_rate": float(1),
                 "logs": {
                     "destinations": ["string"],
                     "enabled": True,
-                    "head_sampling_rate": 1,
+                    "head_sampling_rate": float(1),
                     "invocation_logs": True,
                     "persist": True,
                 },
                 "traces": {
                     "destinations": ["string"],
                     "enabled": True,
-                    "head_sampling_rate": 1,
+                    "head_sampling_rate": float(1),
                     "persist": True,
                 },
             },
@@ -476,13 +476,13 @@ class Worker(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 observability: Optional[pulumi.Input[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']]] = None,
-                 subdomain: Optional[pulumi.Input[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 observability: pulumi.Input[Optional[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']]] = None,
+                 subdomain: pulumi.Input[Optional[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -515,17 +515,17 @@ class Worker(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            deployed_on: Optional[pulumi.Input[_builtins.str]] = None,
-            logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            observability: Optional[pulumi.Input[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']]] = None,
-            references: Optional[pulumi.Input[Union['WorkerReferencesArgs', 'WorkerReferencesArgsDict']]] = None,
-            subdomain: Optional[pulumi.Input[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]]] = None,
-            updated_on: Optional[pulumi.Input[_builtins.str]] = None) -> 'Worker':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            deployed_on: pulumi.Input[Optional[_builtins.str]] = None,
+            logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            observability: pulumi.Input[Optional[Union['WorkerObservabilityArgs', 'WorkerObservabilityArgsDict']]] = None,
+            references: pulumi.Input[Optional[Union['WorkerReferencesArgs', 'WorkerReferencesArgsDict']]] = None,
+            subdomain: pulumi.Input[Optional[Union['WorkerSubdomainArgs', 'WorkerSubdomainArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerTailConsumerArgs', 'WorkerTailConsumerArgsDict']]]]] = None,
+            updated_on: pulumi.Input[Optional[_builtins.str]] = None) -> 'Worker':
         """
         Get an existing Worker resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

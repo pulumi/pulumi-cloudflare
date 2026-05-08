@@ -138,6 +138,6 @@ export function getZeroTrustDlpCustomProfileOutput(args: GetZeroTrustDlpCustomPr
  * A collection of arguments for invoking getZeroTrustDlpCustomProfile.
  */
 export interface GetZeroTrustDlpCustomProfileOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     profileId: pulumi.Input<string>;
 }

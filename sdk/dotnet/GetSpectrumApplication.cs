@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSpectrumApplication = Cloudflare.Index.GetSpectrumApplication.Invoke(new()
+        ///     var exampleSpectrumApplication = Cloudflare.GetSpectrumApplication.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         AppId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSpectrumApplication = Cloudflare.Index.GetSpectrumApplication.Invoke(new()
+        ///     var exampleSpectrumApplication = Cloudflare.GetSpectrumApplication.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         AppId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleSpectrumApplication = Cloudflare.Index.GetSpectrumApplication.Invoke(new()
+        ///     var exampleSpectrumApplication = Cloudflare.GetSpectrumApplication.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         AppId = "023e105f4ecef8ad9ca31a8372d0c353",

@@ -24,11 +24,11 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
                  hostname: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_code_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure_web_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_code_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessAiControlsMcpPortal resource.
 
@@ -82,71 +82,71 @@ class ZeroTrustAccessAiControlsMcpPortalArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowCodeMode")
-    def allow_code_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_code_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow remote code execution in Dynamic Workers (beta)
         """
         return pulumi.get(self, "allow_code_mode")
 
     @allow_code_mode.setter
-    def allow_code_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_code_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_code_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="secureWebGateway")
-    def secure_web_gateway(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secure_web_gateway(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Route outbound MCP traffic through Zero Trust Secure Web Gateway
         """
         return pulumi.get(self, "secure_web_gateway")
 
     @secure_web_gateway.setter
-    def secure_web_gateway(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secure_web_gateway(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secure_web_gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]]:
+    def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]]:
         return pulumi.get(self, "servers")
 
     @servers.setter
-    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]]):
+    def servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]]):
         pulumi.set(self, "servers", value)
 
 
 @pulumi.input_type
 class _ZeroTrustAccessAiControlsMcpPortalState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_code_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure_web_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]] = None,
-                 zero_trust_access_ai_controls_mcp_portal_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_code_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]] = None,
+                 zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessAiControlsMcpPortal resources.
 
@@ -181,119 +181,119 @@ class _ZeroTrustAccessAiControlsMcpPortalState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowCodeMode")
-    def allow_code_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_code_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow remote code execution in Dynamic Workers (beta)
         """
         return pulumi.get(self, "allow_code_mode")
 
     @allow_code_mode.setter
-    def allow_code_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_code_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_code_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedAt")
-    def modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_at")
 
     @modified_at.setter
-    def modified_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_at", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedBy")
-    def modified_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_by")
 
     @modified_by.setter
-    def modified_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="secureWebGateway")
-    def secure_web_gateway(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secure_web_gateway(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Route outbound MCP traffic through Zero Trust Secure Web Gateway
         """
         return pulumi.get(self, "secure_web_gateway")
 
     @secure_web_gateway.setter
-    def secure_web_gateway(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secure_web_gateway(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secure_web_gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]]:
+    def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]]:
         return pulumi.get(self, "servers")
 
     @servers.setter
-    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]]):
+    def servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerArgs']]]]):
         pulumi.set(self, "servers", value)
 
     @_builtins.property
     @pulumi.getter(name="zeroTrustAccessAiControlsMcpPortalId")
-    def zero_trust_access_ai_controls_mcp_portal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zero_trust_access_ai_controls_mcp_portal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         portal id
         """
         return pulumi.get(self, "zero_trust_access_ai_controls_mcp_portal_id")
 
     @zero_trust_access_ai_controls_mcp_portal_id.setter
-    def zero_trust_access_ai_controls_mcp_portal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zero_trust_access_ai_controls_mcp_portal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zero_trust_access_ai_controls_mcp_portal_id", value)
 
 
@@ -303,14 +303,14 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_code_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure_web_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]]] = None,
-                 zero_trust_access_ai_controls_mcp_portal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_code_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]]] = None,
+                 zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -421,14 +421,14 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_code_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure_web_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]]] = None,
-                 zero_trust_access_ai_controls_mcp_portal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_code_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]]] = None,
+                 zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -466,18 +466,18 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            allow_code_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_by: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            secure_web_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-            servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]]] = None,
-            zero_trust_access_ai_controls_mcp_portal_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustAccessAiControlsMcpPortal':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_code_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_by: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            secure_web_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpPortalServerArgs', 'ZeroTrustAccessAiControlsMcpPortalServerArgsDict']]]]] = None,
+            zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustAccessAiControlsMcpPortal':
         """
         Get an existing ZeroTrustAccessAiControlsMcpPortal resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

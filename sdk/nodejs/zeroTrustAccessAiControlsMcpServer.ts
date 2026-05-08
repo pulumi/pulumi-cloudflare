@@ -173,48 +173,48 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustAccessAiControlsMcpServer resources.
  */
 export interface ZeroTrustAccessAiControlsMcpServerState {
-    accountId?: pulumi.Input<string>;
-    authCredentials?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    authCredentials?: pulumi.Input<string | undefined>;
     /**
      * Available values: "oauth", "bearer", "unauthenticated".
      */
-    authType?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
-    createdBy?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    error?: pulumi.Input<string>;
-    hostname?: pulumi.Input<string>;
-    lastSuccessfulSync?: pulumi.Input<string>;
-    lastSynced?: pulumi.Input<string>;
-    modifiedAt?: pulumi.Input<string>;
-    modifiedBy?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    prompts?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
-    status?: pulumi.Input<string>;
-    tools?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
-    updatedPrompts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>[]>;
-    updatedTools?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool>[]>;
+    authType?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    createdBy?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    error?: pulumi.Input<string | undefined>;
+    hostname?: pulumi.Input<string | undefined>;
+    lastSuccessfulSync?: pulumi.Input<string | undefined>;
+    lastSynced?: pulumi.Input<string | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
+    modifiedBy?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    prompts?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    tools?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
+    updatedPrompts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>[] | undefined>;
+    updatedTools?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool>[] | undefined>;
     /**
      * server id
      */
-    zeroTrustAccessAiControlsMcpServerId?: pulumi.Input<string>;
+    zeroTrustAccessAiControlsMcpServerId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustAccessAiControlsMcpServer resource.
  */
 export interface ZeroTrustAccessAiControlsMcpServerArgs {
-    accountId?: pulumi.Input<string>;
-    authCredentials?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    authCredentials?: pulumi.Input<string | undefined>;
     /**
      * Available values: "oauth", "bearer", "unauthenticated".
      */
     authType: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     hostname: pulumi.Input<string>;
     name: pulumi.Input<string>;
-    updatedPrompts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>[]>;
-    updatedTools?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool>[]>;
+    updatedPrompts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>[] | undefined>;
+    updatedTools?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool>[] | undefined>;
     /**
      * server id
      */

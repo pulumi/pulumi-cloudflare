@@ -107,6 +107,6 @@ export interface GetOriginCaCertificateOutputArgs {
     /**
      * Identifier.
      */
-    certificateId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetOriginCaCertificateFilterArgs>;
+    certificateId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetOriginCaCertificateFilterArgs | undefined>;
 }

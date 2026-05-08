@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleHealthcheck = new Cloudflare.Index.Healthcheck("example_healthcheck", new()
+    ///     var exampleHealthcheck = new Cloudflare.Healthcheck("example_healthcheck", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Address = "www.example.com",

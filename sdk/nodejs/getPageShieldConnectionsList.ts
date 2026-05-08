@@ -200,31 +200,31 @@ export interface GetPageShieldConnectionsListOutputArgs {
      * The direction used to sort returned connections.
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * When true, excludes connections seen in a `/cdn-cgi` path from the returned connections. The default value is true.
      */
-    excludeCdnCgi?: pulumi.Input<boolean>;
+    excludeCdnCgi?: pulumi.Input<boolean | undefined>;
     /**
      * Excludes connections whose URL contains one of the URL-encoded URLs separated by commas.
      */
-    excludeUrls?: pulumi.Input<string>;
+    excludeUrls?: pulumi.Input<string | undefined>;
     /**
      * Export the list of connections as a file, limited to 50000 entries.
      * Available values: "csv".
      */
-    export?: pulumi.Input<string>;
+    export?: pulumi.Input<string | undefined>;
     /**
      * Includes connections that match one or more URL-encoded hostnames separated by commas.
      */
-    hosts?: pulumi.Input<string>;
-    maxItems?: pulumi.Input<number>;
-    orderBy?: pulumi.Input<string>;
-    page?: pulumi.Input<string>;
-    pageUrl?: pulumi.Input<string>;
-    perPage?: pulumi.Input<number>;
-    prioritizeMalicious?: pulumi.Input<boolean>;
-    status?: pulumi.Input<string>;
-    urls?: pulumi.Input<string>;
-    zoneId?: pulumi.Input<string>;
+    hosts?: pulumi.Input<string | undefined>;
+    maxItems?: pulumi.Input<number | undefined>;
+    orderBy?: pulumi.Input<string | undefined>;
+    page?: pulumi.Input<string | undefined>;
+    pageUrl?: pulumi.Input<string | undefined>;
+    perPage?: pulumi.Input<number | undefined>;
+    prioritizeMalicious?: pulumi.Input<boolean | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    urls?: pulumi.Input<string | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -20,8 +20,8 @@ __all__ = ['ZoneHoldArgs', 'ZoneHold']
 class ZoneHoldArgs:
     def __init__(__self__, *,
                  zone_id: pulumi.Input[_builtins.str],
-                 hold_after: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_subdomains: Optional[pulumi.Input[_builtins.bool]] = None):
+                 hold_after: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_subdomains: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ZoneHold resource.
 
@@ -56,7 +56,7 @@ class ZoneHoldArgs:
 
     @_builtins.property
     @pulumi.getter(name="holdAfter")
-    def hold_after(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hold_after(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
         then automatically re-enabled by the system at the time specified
@@ -67,12 +67,12 @@ class ZoneHoldArgs:
         return pulumi.get(self, "hold_after")
 
     @hold_after.setter
-    def hold_after(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hold_after(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hold_after", value)
 
     @_builtins.property
     @pulumi.getter(name="includeSubdomains")
-    def include_subdomains(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_subdomains(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, the zone hold will extend to block any subdomain of the given zone, as well
         as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
@@ -82,17 +82,17 @@ class ZoneHoldArgs:
         return pulumi.get(self, "include_subdomains")
 
     @include_subdomains.setter
-    def include_subdomains(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_subdomains(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_subdomains", value)
 
 
 @pulumi.input_type
 class _ZoneHoldState:
     def __init__(__self__, *,
-                 hold: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hold_after: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_subdomains: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 hold: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hold_after: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_subdomains: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneHold resources.
 
@@ -118,16 +118,16 @@ class _ZoneHoldState:
 
     @_builtins.property
     @pulumi.getter
-    def hold(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hold(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "hold")
 
     @hold.setter
-    def hold(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hold(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hold", value)
 
     @_builtins.property
     @pulumi.getter(name="holdAfter")
-    def hold_after(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hold_after(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
         then automatically re-enabled by the system at the time specified
@@ -138,12 +138,12 @@ class _ZoneHoldState:
         return pulumi.get(self, "hold_after")
 
     @hold_after.setter
-    def hold_after(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hold_after(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hold_after", value)
 
     @_builtins.property
     @pulumi.getter(name="includeSubdomains")
-    def include_subdomains(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_subdomains(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, the zone hold will extend to block any subdomain of the given zone, as well
         as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
@@ -153,19 +153,19 @@ class _ZoneHoldState:
         return pulumi.get(self, "include_subdomains")
 
     @include_subdomains.setter
-    def include_subdomains(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_subdomains(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_subdomains", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -175,9 +175,9 @@ class ZoneHold(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 hold_after: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_subdomains: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 hold_after: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_subdomains: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -325,9 +325,9 @@ class ZoneHold(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 hold_after: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_subdomains: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 hold_after: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_subdomains: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -353,10 +353,10 @@ class ZoneHold(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            hold: Optional[pulumi.Input[_builtins.bool]] = None,
-            hold_after: Optional[pulumi.Input[_builtins.str]] = None,
-            include_subdomains: Optional[pulumi.Input[_builtins.bool]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZoneHold':
+            hold: pulumi.Input[Optional[_builtins.bool]] = None,
+            hold_after: pulumi.Input[Optional[_builtins.str]] = None,
+            include_subdomains: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZoneHold':
         """
         Get an existing ZoneHold resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

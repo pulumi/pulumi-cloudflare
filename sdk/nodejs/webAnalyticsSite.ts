@@ -155,45 +155,45 @@ export interface WebAnalyticsSiteState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      */
-    autoInstall?: pulumi.Input<boolean>;
-    created?: pulumi.Input<string>;
+    autoInstall?: pulumi.Input<boolean | undefined>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * Enables or disables RUM. This option can be used only when autoInstall is set to true.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The hostname to use for gray-clouded sites.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * If enabled, the JavaScript snippet will not be injected for visitors from the EU.
      */
-    lite?: pulumi.Input<boolean>;
+    lite?: pulumi.Input<boolean | undefined>;
     /**
      * A list of rules.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.WebAnalyticsSiteRule>[]>;
-    ruleset?: pulumi.Input<inputs.WebAnalyticsSiteRuleset>;
+    rules?: pulumi.Input<pulumi.Input<inputs.WebAnalyticsSiteRule>[] | undefined>;
+    ruleset?: pulumi.Input<inputs.WebAnalyticsSiteRuleset | undefined>;
     /**
      * The Web Analytics site identifier.
      */
-    siteTag?: pulumi.Input<string>;
+    siteTag?: pulumi.Input<string | undefined>;
     /**
      * The Web Analytics site token.
      */
-    siteToken?: pulumi.Input<string>;
+    siteToken?: pulumi.Input<string | undefined>;
     /**
      * Encoded JavaScript snippet.
      */
-    snippet?: pulumi.Input<string>;
+    snippet?: pulumi.Input<string | undefined>;
     /**
      * The zone identifier.
      */
-    zoneTag?: pulumi.Input<string>;
+    zoneTag?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -203,25 +203,25 @@ export interface WebAnalyticsSiteArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      */
-    autoInstall?: pulumi.Input<boolean>;
+    autoInstall?: pulumi.Input<boolean | undefined>;
     /**
      * Enables or disables RUM. This option can be used only when autoInstall is set to true.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The hostname to use for gray-clouded sites.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * If enabled, the JavaScript snippet will not be injected for visitors from the EU.
      */
-    lite?: pulumi.Input<boolean>;
+    lite?: pulumi.Input<boolean | undefined>;
     /**
      * The zone identifier.
      */
-    zoneTag?: pulumi.Input<string>;
+    zoneTag?: pulumi.Input<string | undefined>;
 }

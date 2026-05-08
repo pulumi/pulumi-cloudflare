@@ -100,11 +100,11 @@ export interface LogpullRetentionState {
     /**
      * The log retention flag for Logpull API.
      */
-    flag?: pulumi.Input<boolean>;
+    flag?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -114,7 +114,7 @@ export interface LogpullRetentionArgs {
     /**
      * The log retention flag for Logpull API.
      */
-    flag?: pulumi.Input<boolean>;
+    flag?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */

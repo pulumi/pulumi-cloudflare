@@ -102,5 +102,5 @@ export interface GetZoneCacheVariantsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -99,7 +99,7 @@ def get_universal_ssl_setting(zone_id: Optional[_builtins.str] = None,
         enabled=pulumi.get(__ret__, 'enabled'),
         id=pulumi.get(__ret__, 'id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_universal_ssl_setting_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_universal_ssl_setting_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUniversalSslSettingResult]:
     """
     Accepted Permissions

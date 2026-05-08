@@ -20,8 +20,8 @@ __all__ = ['ApiShieldOperationSchemaValidationSettingsArgs', 'ApiShieldOperation
 class ApiShieldOperationSchemaValidationSettingsArgs:
     def __init__(__self__, *,
                  operation_id: pulumi.Input[_builtins.str],
-                 mitigation_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldOperationSchemaValidationSettings resource.
 
@@ -55,7 +55,7 @@ class ApiShieldOperationSchemaValidationSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="mitigationAction")
-    def mitigation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mitigation_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When set, this applies a mitigation action to this operation
 
@@ -68,28 +68,28 @@ class ApiShieldOperationSchemaValidationSettingsArgs:
         return pulumi.get(self, "mitigation_action")
 
     @mitigation_action.setter
-    def mitigation_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mitigation_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mitigation_action", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _ApiShieldOperationSchemaValidationSettingsState:
     def __init__(__self__, *,
-                 mitigation_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldOperationSchemaValidationSettings resources.
 
@@ -112,7 +112,7 @@ class _ApiShieldOperationSchemaValidationSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="mitigationAction")
-    def mitigation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mitigation_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When set, this applies a mitigation action to this operation
 
@@ -125,31 +125,31 @@ class _ApiShieldOperationSchemaValidationSettingsState:
         return pulumi.get(self, "mitigation_action")
 
     @mitigation_action.setter
-    def mitigation_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mitigation_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mitigation_action", value)
 
     @_builtins.property
     @pulumi.getter(name="operationId")
-    def operation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UUID.
         """
         return pulumi.get(self, "operation_id")
 
     @operation_id.setter
-    def operation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -159,9 +159,9 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 mitigation_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -256,9 +256,9 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 mitigation_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -283,9 +283,9 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            mitigation_action: Optional[pulumi.Input[_builtins.str]] = None,
-            operation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApiShieldOperationSchemaValidationSettings':
+            mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiShieldOperationSchemaValidationSettings':
         """
         Get an existing ApiShieldOperationSchemaValidationSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

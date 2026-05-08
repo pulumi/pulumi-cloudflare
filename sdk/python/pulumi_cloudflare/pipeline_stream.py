@@ -22,11 +22,11 @@ __all__ = ['PipelineStreamArgs', 'PipelineStream']
 class PipelineStreamArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input['PipelineStreamFormatArgs']] = None,
-                 http: Optional[pulumi.Input['PipelineStreamHttpArgs']] = None,
-                 schema: Optional[pulumi.Input['PipelineStreamSchemaArgs']] = None,
-                 worker_binding: Optional[pulumi.Input['PipelineStreamWorkerBindingArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional['PipelineStreamFormatArgs']] = None,
+                 http: pulumi.Input[Optional['PipelineStreamHttpArgs']] = None,
+                 schema: pulumi.Input[Optional['PipelineStreamSchemaArgs']] = None,
+                 worker_binding: pulumi.Input[Optional['PipelineStreamWorkerBindingArgs']] = None):
         """
         The set of arguments for constructing a PipelineStream resource.
 
@@ -59,66 +59,66 @@ class PipelineStreamArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the public ID of the account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input['PipelineStreamFormatArgs']]:
+    def format(self) -> pulumi.Input[Optional['PipelineStreamFormatArgs']]:
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input['PipelineStreamFormatArgs']]):
+    def format(self, value: pulumi.Input[Optional['PipelineStreamFormatArgs']]):
         pulumi.set(self, "format", value)
 
     @_builtins.property
     @pulumi.getter
-    def http(self) -> Optional[pulumi.Input['PipelineStreamHttpArgs']]:
+    def http(self) -> pulumi.Input[Optional['PipelineStreamHttpArgs']]:
         return pulumi.get(self, "http")
 
     @http.setter
-    def http(self, value: Optional[pulumi.Input['PipelineStreamHttpArgs']]):
+    def http(self, value: pulumi.Input[Optional['PipelineStreamHttpArgs']]):
         pulumi.set(self, "http", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input['PipelineStreamSchemaArgs']]:
+    def schema(self) -> pulumi.Input[Optional['PipelineStreamSchemaArgs']]:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input['PipelineStreamSchemaArgs']]):
+    def schema(self, value: pulumi.Input[Optional['PipelineStreamSchemaArgs']]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter(name="workerBinding")
-    def worker_binding(self) -> Optional[pulumi.Input['PipelineStreamWorkerBindingArgs']]:
+    def worker_binding(self) -> pulumi.Input[Optional['PipelineStreamWorkerBindingArgs']]:
         return pulumi.get(self, "worker_binding")
 
     @worker_binding.setter
-    def worker_binding(self, value: Optional[pulumi.Input['PipelineStreamWorkerBindingArgs']]):
+    def worker_binding(self, value: pulumi.Input[Optional['PipelineStreamWorkerBindingArgs']]):
         pulumi.set(self, "worker_binding", value)
 
 
 @pulumi.input_type
 class _PipelineStreamState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input['PipelineStreamFormatArgs']] = None,
-                 http: Optional[pulumi.Input['PipelineStreamHttpArgs']] = None,
-                 modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input['PipelineStreamSchemaArgs']] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None,
-                 worker_binding: Optional[pulumi.Input['PipelineStreamWorkerBindingArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional['PipelineStreamFormatArgs']] = None,
+                 http: pulumi.Input[Optional['PipelineStreamHttpArgs']] = None,
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional['PipelineStreamSchemaArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None,
+                 worker_binding: pulumi.Input[Optional['PipelineStreamWorkerBindingArgs']] = None):
         """
         Input properties used for looking up and filtering PipelineStream resources.
 
@@ -150,104 +150,104 @@ class _PipelineStreamState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the public ID of the account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the endpoint URL of this stream.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input['PipelineStreamFormatArgs']]:
+    def format(self) -> pulumi.Input[Optional['PipelineStreamFormatArgs']]:
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input['PipelineStreamFormatArgs']]):
+    def format(self, value: pulumi.Input[Optional['PipelineStreamFormatArgs']]):
         pulumi.set(self, "format", value)
 
     @_builtins.property
     @pulumi.getter
-    def http(self) -> Optional[pulumi.Input['PipelineStreamHttpArgs']]:
+    def http(self) -> pulumi.Input[Optional['PipelineStreamHttpArgs']]:
         return pulumi.get(self, "http")
 
     @http.setter
-    def http(self, value: Optional[pulumi.Input['PipelineStreamHttpArgs']]):
+    def http(self, value: pulumi.Input[Optional['PipelineStreamHttpArgs']]):
         pulumi.set(self, "http", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedAt")
-    def modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_at")
 
     @modified_at.setter
-    def modified_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the name of the Stream.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input['PipelineStreamSchemaArgs']]:
+    def schema(self) -> pulumi.Input[Optional['PipelineStreamSchemaArgs']]:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input['PipelineStreamSchemaArgs']]):
+    def schema(self, value: pulumi.Input[Optional['PipelineStreamSchemaArgs']]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicates the current version of this stream.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
     @_builtins.property
     @pulumi.getter(name="workerBinding")
-    def worker_binding(self) -> Optional[pulumi.Input['PipelineStreamWorkerBindingArgs']]:
+    def worker_binding(self) -> pulumi.Input[Optional['PipelineStreamWorkerBindingArgs']]:
         return pulumi.get(self, "worker_binding")
 
     @worker_binding.setter
-    def worker_binding(self, value: Optional[pulumi.Input['PipelineStreamWorkerBindingArgs']]):
+    def worker_binding(self, value: pulumi.Input[Optional['PipelineStreamWorkerBindingArgs']]):
         pulumi.set(self, "worker_binding", value)
 
 
@@ -257,12 +257,12 @@ class PipelineStream(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict']]] = None,
-                 http: Optional[pulumi.Input[Union['PipelineStreamHttpArgs', 'PipelineStreamHttpArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']]] = None,
-                 worker_binding: Optional[pulumi.Input[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict']]] = None,
+                 http: pulumi.Input[Optional[Union['PipelineStreamHttpArgs', 'PipelineStreamHttpArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']]] = None,
+                 worker_binding: pulumi.Input[Optional[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -402,12 +402,12 @@ class PipelineStream(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict']]] = None,
-                 http: Optional[pulumi.Input[Union['PipelineStreamHttpArgs', 'PipelineStreamHttpArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']]] = None,
-                 worker_binding: Optional[pulumi.Input[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict']]] = None,
+                 http: pulumi.Input[Optional[Union['PipelineStreamHttpArgs', 'PipelineStreamHttpArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']]] = None,
+                 worker_binding: pulumi.Input[Optional[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -439,16 +439,16 @@ class PipelineStream(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            format: Optional[pulumi.Input[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict']]] = None,
-            http: Optional[pulumi.Input[Union['PipelineStreamHttpArgs', 'PipelineStreamHttpArgsDict']]] = None,
-            modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            schema: Optional[pulumi.Input[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None,
-            worker_binding: Optional[pulumi.Input[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict']]] = None) -> 'PipelineStream':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            format: pulumi.Input[Optional[Union['PipelineStreamFormatArgs', 'PipelineStreamFormatArgsDict']]] = None,
+            http: pulumi.Input[Optional[Union['PipelineStreamHttpArgs', 'PipelineStreamHttpArgsDict']]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[Union['PipelineStreamSchemaArgs', 'PipelineStreamSchemaArgsDict']]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None,
+            worker_binding: pulumi.Input[Optional[Union['PipelineStreamWorkerBindingArgs', 'PipelineStreamWorkerBindingArgsDict']]] = None) -> 'PipelineStream':
         """
         Get an existing PipelineStream resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

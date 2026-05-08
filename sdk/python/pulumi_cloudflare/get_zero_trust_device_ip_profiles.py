@@ -131,9 +131,9 @@ def get_zero_trust_device_ip_profiles(account_id: Optional[_builtins.str] = None
         max_items=pulumi.get(__ret__, 'max_items'),
         per_page=pulumi.get(__ret__, 'per_page'),
         results=pulumi.get(__ret__, 'results'))
-def get_zero_trust_device_ip_profiles_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                             per_page: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_zero_trust_device_ip_profiles_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                             per_page: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceIpProfilesResult]:
     """
     Accepted Permissions

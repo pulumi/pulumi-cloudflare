@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLeakedCredentialCheck = new Cloudflare.Index.LeakedCredentialCheck("example_leaked_credential_check", new()
+    ///     var exampleLeakedCredentialCheck = new Cloudflare.LeakedCredentialCheck("example_leaked_credential_check", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Enabled = true,

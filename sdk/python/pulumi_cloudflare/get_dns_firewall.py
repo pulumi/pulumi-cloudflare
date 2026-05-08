@@ -242,8 +242,8 @@ def get_dns_firewall(account_id: Optional[_builtins.str] = None,
         ratelimit=pulumi.get(__ret__, 'ratelimit'),
         retries=pulumi.get(__ret__, 'retries'),
         upstream_ips=pulumi.get(__ret__, 'upstream_ips'))
-def get_dns_firewall_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            dns_firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_dns_firewall_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            dns_firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsFirewallResult]:
     """
     Accepted Permissions

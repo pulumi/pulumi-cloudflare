@@ -99,7 +99,7 @@ def get_botnet_feed_config_asn(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         asn=pulumi.get(__ret__, 'asn'),
         id=pulumi.get(__ret__, 'id'))
-def get_botnet_feed_config_asn_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_botnet_feed_config_asn_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBotnetFeedConfigAsnResult]:
     """
     Accepted Permissions

@@ -21,25 +21,25 @@ __all__ = ['AccessOrganizationArgs', 'AccessOrganization']
 @pulumi.input_type
 class AccessOrganizationArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_authenticate_via_warp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_pages: Optional[pulumi.Input['AccessOrganizationCustomPagesArgs']] = None,
-                 deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 login_design: Optional[pulumi.Input['AccessOrganizationLoginDesignArgs']] = None,
-                 mfa_config: Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']] = None,
-                 mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_ssh_piv_key_requirements: Optional[pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_seat_expiration_inactive_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 warp_auth_session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_authenticate_via_warp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_redirect_to_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_pages: pulumi.Input[Optional['AccessOrganizationCustomPagesArgs']] = None,
+                 deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 login_design: pulumi.Input[Optional['AccessOrganizationLoginDesignArgs']] = None,
+                 mfa_config: pulumi.Input[Optional['AccessOrganizationMfaConfigArgs']] = None,
+                 mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_ssh_piv_key_requirements: pulumi.Input[Optional['AccessOrganizationMfaSshPivKeyRequirementsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_seat_expiration_inactive_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 warp_auth_session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessOrganization resource.
 
@@ -102,249 +102,249 @@ class AccessOrganizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowAuthenticateViaWarp")
-    def allow_authenticate_via_warp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_authenticate_via_warp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         """
         return pulumi.get(self, "allow_authenticate_via_warp")
 
     @allow_authenticate_via_warp.setter
-    def allow_authenticate_via_warp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_authenticate_via_warp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_authenticate_via_warp", value)
 
     @_builtins.property
     @pulumi.getter(name="authDomain")
-    def auth_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique subdomain assigned to your Zero Trust organization.
         """
         return pulumi.get(self, "auth_domain")
 
     @auth_domain.setter
-    def auth_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRedirectToIdentity")
-    def auto_redirect_to_identity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_redirect_to_identity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to `true`, users skip the identity provider selection step during login.
         """
         return pulumi.get(self, "auto_redirect_to_identity")
 
     @auto_redirect_to_identity.setter
-    def auto_redirect_to_identity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_redirect_to_identity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_redirect_to_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="customPages")
-    def custom_pages(self) -> Optional[pulumi.Input['AccessOrganizationCustomPagesArgs']]:
+    def custom_pages(self) -> pulumi.Input[Optional['AccessOrganizationCustomPagesArgs']]:
         return pulumi.get(self, "custom_pages")
 
     @custom_pages.setter
-    def custom_pages(self, value: Optional[pulumi.Input['AccessOrganizationCustomPagesArgs']]):
+    def custom_pages(self, value: pulumi.Input[Optional['AccessOrganizationCustomPagesArgs']]):
         pulumi.set(self, "custom_pages", value)
 
     @_builtins.property
     @pulumi.getter(name="denyUnmatchedRequests")
-    def deny_unmatched_requests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deny_unmatched_requests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
         """
         return pulumi.get(self, "deny_unmatched_requests")
 
     @deny_unmatched_requests.setter
-    def deny_unmatched_requests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deny_unmatched_requests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deny_unmatched_requests", value)
 
     @_builtins.property
     @pulumi.getter(name="denyUnmatchedRequestsExemptedZoneNames")
-    def deny_unmatched_requests_exempted_zone_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def deny_unmatched_requests_exempted_zone_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         """
         return pulumi.get(self, "deny_unmatched_requests_exempted_zone_names")
 
     @deny_unmatched_requests_exempted_zone_names.setter
-    def deny_unmatched_requests_exempted_zone_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def deny_unmatched_requests_exempted_zone_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "deny_unmatched_requests_exempted_zone_names", value)
 
     @_builtins.property
     @pulumi.getter(name="isUiReadOnly")
-    def is_ui_read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_ui_read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         """
         return pulumi.get(self, "is_ui_read_only")
 
     @is_ui_read_only.setter
-    def is_ui_read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_ui_read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_ui_read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="loginDesign")
-    def login_design(self) -> Optional[pulumi.Input['AccessOrganizationLoginDesignArgs']]:
+    def login_design(self) -> pulumi.Input[Optional['AccessOrganizationLoginDesignArgs']]:
         return pulumi.get(self, "login_design")
 
     @login_design.setter
-    def login_design(self, value: Optional[pulumi.Input['AccessOrganizationLoginDesignArgs']]):
+    def login_design(self, value: pulumi.Input[Optional['AccessOrganizationLoginDesignArgs']]):
         pulumi.set(self, "login_design", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaConfig")
-    def mfa_config(self) -> Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']]:
+    def mfa_config(self) -> pulumi.Input[Optional['AccessOrganizationMfaConfigArgs']]:
         """
         Configures multi-factor authentication (MFA) settings for an organization.
         """
         return pulumi.get(self, "mfa_config")
 
     @mfa_config.setter
-    def mfa_config(self, value: Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']]):
+    def mfa_config(self, value: pulumi.Input[Optional['AccessOrganizationMfaConfigArgs']]):
         pulumi.set(self, "mfa_config", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaConfigurationAllowed")
-    def mfa_configuration_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mfa_configuration_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
         """
         return pulumi.get(self, "mfa_configuration_allowed")
 
     @mfa_configuration_allowed.setter
-    def mfa_configuration_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mfa_configuration_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mfa_configuration_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaRequiredForAllApps")
-    def mfa_required_for_all_apps(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mfa_required_for_all_apps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
         """
         return pulumi.get(self, "mfa_required_for_all_apps")
 
     @mfa_required_for_all_apps.setter
-    def mfa_required_for_all_apps(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mfa_required_for_all_apps(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mfa_required_for_all_apps", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaSshPivKeyRequirements")
-    def mfa_ssh_piv_key_requirements(self) -> Optional[pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs']]:
+    def mfa_ssh_piv_key_requirements(self) -> pulumi.Input[Optional['AccessOrganizationMfaSshPivKeyRequirementsArgs']]:
         """
         Configures SSH PIV key requirements for MFA using hardware security keys.
         """
         return pulumi.get(self, "mfa_ssh_piv_key_requirements")
 
     @mfa_ssh_piv_key_requirements.setter
-    def mfa_ssh_piv_key_requirements(self, value: Optional[pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs']]):
+    def mfa_ssh_piv_key_requirements(self, value: pulumi.Input[Optional['AccessOrganizationMfaSshPivKeyRequirementsArgs']]):
         pulumi.set(self, "mfa_ssh_piv_key_requirements", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of your Zero Trust organization.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionDuration")
-    def session_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         return pulumi.get(self, "session_duration")
 
     @session_duration.setter
-    def session_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="uiReadOnlyToggleReason")
-    def ui_read_only_toggle_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ui_read_only_toggle_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the reason why the UI read only field is being toggled.
         """
         return pulumi.get(self, "ui_read_only_toggle_reason")
 
     @ui_read_only_toggle_reason.setter
-    def ui_read_only_toggle_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ui_read_only_toggle_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ui_read_only_toggle_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="userSeatExpirationInactiveTime")
-    def user_seat_expiration_inactive_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_seat_expiration_inactive_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
         """
         return pulumi.get(self, "user_seat_expiration_inactive_time")
 
     @user_seat_expiration_inactive_time.setter
-    def user_seat_expiration_inactive_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_seat_expiration_inactive_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_seat_expiration_inactive_time", value)
 
     @_builtins.property
     @pulumi.getter(name="warpAuthSessionDuration")
-    def warp_auth_session_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warp_auth_session_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
         """
         return pulumi.get(self, "warp_auth_session_duration")
 
     @warp_auth_session_duration.setter
-    def warp_auth_session_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warp_auth_session_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warp_auth_session_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _AccessOrganizationState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_authenticate_via_warp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_pages: Optional[pulumi.Input['AccessOrganizationCustomPagesArgs']] = None,
-                 deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 login_design: Optional[pulumi.Input['AccessOrganizationLoginDesignArgs']] = None,
-                 mfa_config: Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']] = None,
-                 mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_ssh_piv_key_requirements: Optional[pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_seat_expiration_inactive_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 warp_auth_session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_authenticate_via_warp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_redirect_to_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_pages: pulumi.Input[Optional['AccessOrganizationCustomPagesArgs']] = None,
+                 deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 login_design: pulumi.Input[Optional['AccessOrganizationLoginDesignArgs']] = None,
+                 mfa_config: pulumi.Input[Optional['AccessOrganizationMfaConfigArgs']] = None,
+                 mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_ssh_piv_key_requirements: pulumi.Input[Optional['AccessOrganizationMfaSshPivKeyRequirementsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_seat_expiration_inactive_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 warp_auth_session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessOrganization resources.
 
@@ -407,224 +407,224 @@ class _AccessOrganizationState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowAuthenticateViaWarp")
-    def allow_authenticate_via_warp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_authenticate_via_warp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         """
         return pulumi.get(self, "allow_authenticate_via_warp")
 
     @allow_authenticate_via_warp.setter
-    def allow_authenticate_via_warp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_authenticate_via_warp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_authenticate_via_warp", value)
 
     @_builtins.property
     @pulumi.getter(name="authDomain")
-    def auth_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique subdomain assigned to your Zero Trust organization.
         """
         return pulumi.get(self, "auth_domain")
 
     @auth_domain.setter
-    def auth_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRedirectToIdentity")
-    def auto_redirect_to_identity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_redirect_to_identity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to `true`, users skip the identity provider selection step during login.
         """
         return pulumi.get(self, "auto_redirect_to_identity")
 
     @auto_redirect_to_identity.setter
-    def auto_redirect_to_identity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_redirect_to_identity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_redirect_to_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="customPages")
-    def custom_pages(self) -> Optional[pulumi.Input['AccessOrganizationCustomPagesArgs']]:
+    def custom_pages(self) -> pulumi.Input[Optional['AccessOrganizationCustomPagesArgs']]:
         return pulumi.get(self, "custom_pages")
 
     @custom_pages.setter
-    def custom_pages(self, value: Optional[pulumi.Input['AccessOrganizationCustomPagesArgs']]):
+    def custom_pages(self, value: pulumi.Input[Optional['AccessOrganizationCustomPagesArgs']]):
         pulumi.set(self, "custom_pages", value)
 
     @_builtins.property
     @pulumi.getter(name="denyUnmatchedRequests")
-    def deny_unmatched_requests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deny_unmatched_requests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.
         """
         return pulumi.get(self, "deny_unmatched_requests")
 
     @deny_unmatched_requests.setter
-    def deny_unmatched_requests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deny_unmatched_requests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deny_unmatched_requests", value)
 
     @_builtins.property
     @pulumi.getter(name="denyUnmatchedRequestsExemptedZoneNames")
-    def deny_unmatched_requests_exempted_zone_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def deny_unmatched_requests_exempted_zone_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.
         """
         return pulumi.get(self, "deny_unmatched_requests_exempted_zone_names")
 
     @deny_unmatched_requests_exempted_zone_names.setter
-    def deny_unmatched_requests_exempted_zone_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def deny_unmatched_requests_exempted_zone_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "deny_unmatched_requests_exempted_zone_names", value)
 
     @_builtins.property
     @pulumi.getter(name="isUiReadOnly")
-    def is_ui_read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_ui_read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         """
         return pulumi.get(self, "is_ui_read_only")
 
     @is_ui_read_only.setter
-    def is_ui_read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_ui_read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_ui_read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="loginDesign")
-    def login_design(self) -> Optional[pulumi.Input['AccessOrganizationLoginDesignArgs']]:
+    def login_design(self) -> pulumi.Input[Optional['AccessOrganizationLoginDesignArgs']]:
         return pulumi.get(self, "login_design")
 
     @login_design.setter
-    def login_design(self, value: Optional[pulumi.Input['AccessOrganizationLoginDesignArgs']]):
+    def login_design(self, value: pulumi.Input[Optional['AccessOrganizationLoginDesignArgs']]):
         pulumi.set(self, "login_design", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaConfig")
-    def mfa_config(self) -> Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']]:
+    def mfa_config(self) -> pulumi.Input[Optional['AccessOrganizationMfaConfigArgs']]:
         """
         Configures multi-factor authentication (MFA) settings for an organization.
         """
         return pulumi.get(self, "mfa_config")
 
     @mfa_config.setter
-    def mfa_config(self, value: Optional[pulumi.Input['AccessOrganizationMfaConfigArgs']]):
+    def mfa_config(self, value: pulumi.Input[Optional['AccessOrganizationMfaConfigArgs']]):
         pulumi.set(self, "mfa_config", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaConfigurationAllowed")
-    def mfa_configuration_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mfa_configuration_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
         """
         return pulumi.get(self, "mfa_configuration_allowed")
 
     @mfa_configuration_allowed.setter
-    def mfa_configuration_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mfa_configuration_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mfa_configuration_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaRequiredForAllApps")
-    def mfa_required_for_all_apps(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mfa_required_for_all_apps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
         """
         return pulumi.get(self, "mfa_required_for_all_apps")
 
     @mfa_required_for_all_apps.setter
-    def mfa_required_for_all_apps(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mfa_required_for_all_apps(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mfa_required_for_all_apps", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaSshPivKeyRequirements")
-    def mfa_ssh_piv_key_requirements(self) -> Optional[pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs']]:
+    def mfa_ssh_piv_key_requirements(self) -> pulumi.Input[Optional['AccessOrganizationMfaSshPivKeyRequirementsArgs']]:
         """
         Configures SSH PIV key requirements for MFA using hardware security keys.
         """
         return pulumi.get(self, "mfa_ssh_piv_key_requirements")
 
     @mfa_ssh_piv_key_requirements.setter
-    def mfa_ssh_piv_key_requirements(self, value: Optional[pulumi.Input['AccessOrganizationMfaSshPivKeyRequirementsArgs']]):
+    def mfa_ssh_piv_key_requirements(self, value: pulumi.Input[Optional['AccessOrganizationMfaSshPivKeyRequirementsArgs']]):
         pulumi.set(self, "mfa_ssh_piv_key_requirements", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of your Zero Trust organization.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionDuration")
-    def session_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         return pulumi.get(self, "session_duration")
 
     @session_duration.setter
-    def session_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="uiReadOnlyToggleReason")
-    def ui_read_only_toggle_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ui_read_only_toggle_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the reason why the UI read only field is being toggled.
         """
         return pulumi.get(self, "ui_read_only_toggle_reason")
 
     @ui_read_only_toggle_reason.setter
-    def ui_read_only_toggle_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ui_read_only_toggle_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ui_read_only_toggle_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="userSeatExpirationInactiveTime")
-    def user_seat_expiration_inactive_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_seat_expiration_inactive_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
         """
         return pulumi.get(self, "user_seat_expiration_inactive_time")
 
     @user_seat_expiration_inactive_time.setter
-    def user_seat_expiration_inactive_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_seat_expiration_inactive_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_seat_expiration_inactive_time", value)
 
     @_builtins.property
     @pulumi.getter(name="warpAuthSessionDuration")
-    def warp_auth_session_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warp_auth_session_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
         """
         return pulumi.get(self, "warp_auth_session_duration")
 
     @warp_auth_session_duration.setter
-    def warp_auth_session_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warp_auth_session_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warp_auth_session_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -639,25 +639,25 @@ class AccessOrganization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_authenticate_via_warp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_pages: Optional[pulumi.Input[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict']]] = None,
-                 deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 login_design: Optional[pulumi.Input[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]] = None,
-                 mfa_config: Optional[pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
-                 mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_ssh_piv_key_requirements: Optional[pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_seat_expiration_inactive_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 warp_auth_session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_authenticate_via_warp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_redirect_to_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict']]] = None,
+                 deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]] = None,
+                 mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
+                 mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_ssh_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_seat_expiration_inactive_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 warp_auth_session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -836,25 +836,25 @@ class AccessOrganization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_authenticate_via_warp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_pages: Optional[pulumi.Input[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict']]] = None,
-                 deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 login_design: Optional[pulumi.Input[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]] = None,
-                 mfa_config: Optional[pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
-                 mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_ssh_piv_key_requirements: Optional[pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_seat_expiration_inactive_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 warp_auth_session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_authenticate_via_warp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_redirect_to_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict']]] = None,
+                 deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]] = None,
+                 mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
+                 mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_ssh_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_seat_expiration_inactive_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 warp_auth_session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""AccessOrganization is deprecated: cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -896,25 +896,25 @@ class AccessOrganization(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            allow_authenticate_via_warp: Optional[pulumi.Input[_builtins.bool]] = None,
-            auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
-            custom_pages: Optional[pulumi.Input[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict']]] = None,
-            deny_unmatched_requests: Optional[pulumi.Input[_builtins.bool]] = None,
-            deny_unmatched_requests_exempted_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            login_design: Optional[pulumi.Input[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]] = None,
-            mfa_config: Optional[pulumi.Input[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
-            mfa_configuration_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            mfa_required_for_all_apps: Optional[pulumi.Input[_builtins.bool]] = None,
-            mfa_ssh_piv_key_requirements: Optional[pulumi.Input[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            user_seat_expiration_inactive_time: Optional[pulumi.Input[_builtins.str]] = None,
-            warp_auth_session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessOrganization':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_authenticate_via_warp: pulumi.Input[Optional[_builtins.bool]] = None,
+            auth_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_redirect_to_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+            custom_pages: pulumi.Input[Optional[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict']]] = None,
+            deny_unmatched_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+            deny_unmatched_requests_exempted_zone_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            is_ui_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            login_design: pulumi.Input[Optional[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]] = None,
+            mfa_config: pulumi.Input[Optional[Union['AccessOrganizationMfaConfigArgs', 'AccessOrganizationMfaConfigArgsDict']]] = None,
+            mfa_configuration_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            mfa_required_for_all_apps: pulumi.Input[Optional[_builtins.bool]] = None,
+            mfa_ssh_piv_key_requirements: pulumi.Input[Optional[Union['AccessOrganizationMfaSshPivKeyRequirementsArgs', 'AccessOrganizationMfaSshPivKeyRequirementsArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            ui_read_only_toggle_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            user_seat_expiration_inactive_time: pulumi.Input[Optional[_builtins.str]] = None,
+            warp_auth_session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessOrganization':
         """
         Get an existing AccessOrganization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

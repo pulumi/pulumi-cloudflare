@@ -81,6 +81,6 @@ export function getZeroTrustDeviceCustomProfileLocalDomainFallbackOutput(args: G
  * A collection of arguments for invoking getZeroTrustDeviceCustomProfileLocalDomainFallback.
  */
 export interface GetZeroTrustDeviceCustomProfileLocalDomainFallbackOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     policyId: pulumi.Input<string>;
 }

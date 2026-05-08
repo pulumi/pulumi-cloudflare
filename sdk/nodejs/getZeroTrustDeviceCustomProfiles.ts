@@ -81,9 +81,9 @@ export function getZeroTrustDeviceCustomProfilesOutput(args?: GetZeroTrustDevice
  * A collection of arguments for invoking getZeroTrustDeviceCustomProfiles.
  */
 export interface GetZeroTrustDeviceCustomProfilesOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
 }

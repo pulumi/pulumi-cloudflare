@@ -219,9 +219,9 @@ def get_pipeline_stream(account_id: Optional[_builtins.str] = None,
         stream_id=pulumi.get(__ret__, 'stream_id'),
         version=pulumi.get(__ret__, 'version'),
         worker_binding=pulumi.get(__ret__, 'worker_binding'))
-def get_pipeline_stream_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               filter: Optional[pulumi.Input[Optional[Union['GetPipelineStreamFilterArgs', 'GetPipelineStreamFilterArgsDict']]]] = None,
-                               stream_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_pipeline_stream_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               filter: pulumi.Input[Optional[Optional[Union['GetPipelineStreamFilterArgs', 'GetPipelineStreamFilterArgsDict']]]] = None,
+                               stream_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineStreamResult]:
     """
     Accepted Permissions

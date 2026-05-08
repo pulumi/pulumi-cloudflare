@@ -338,10 +338,10 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
         usage_model=pulumi.get(__ret__, 'usage_model'),
         version_id=pulumi.get(__ret__, 'version_id'),
         worker_id=pulumi.get(__ret__, 'worker_id'))
-def get_worker_version_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              include: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                              worker_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_worker_version_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              include: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                              worker_id: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkerVersionResult]:
     """
     Accepted Permissions

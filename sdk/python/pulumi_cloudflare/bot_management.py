@@ -22,21 +22,21 @@ __all__ = ['BotManagementArgs', 'BotManagement']
 class BotManagementArgs:
     def __init__(__self__, *,
                  zone_id: pulumi.Input[_builtins.str],
-                 ai_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_update_model: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bm_cookie_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cf_robots_variant: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_robots_txt_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 optimize_wordpress: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sbfm_definitely_automated: Optional[pulumi.Input[_builtins.str]] = None,
-                 sbfm_likely_automated: Optional[pulumi.Input[_builtins.str]] = None,
-                 sbfm_static_resource_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sbfm_verified_bots: Optional[pulumi.Input[_builtins.str]] = None,
-                 suppress_session_score: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cf_robots_variant: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 crawler_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_js: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_robots_txt_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 optimize_wordpress: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sbfm_definitely_automated: pulumi.Input[Optional[_builtins.str]] = None,
+                 sbfm_likely_automated: pulumi.Input[Optional[_builtins.str]] = None,
+                 sbfm_static_resource_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sbfm_verified_bots: pulumi.Input[Optional[_builtins.str]] = None,
+                 suppress_session_score: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BotManagement resource.
 
@@ -112,7 +112,7 @@ class BotManagementArgs:
 
     @_builtins.property
     @pulumi.getter(name="aiBotsProtection")
-    def ai_bots_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ai_bots_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
         Available values: "block", "disabled", "only*on*ad_pages".
@@ -120,36 +120,36 @@ class BotManagementArgs:
         return pulumi.get(self, "ai_bots_protection")
 
     @ai_bots_protection.setter
-    def ai_bots_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ai_bots_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ai_bots_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="autoUpdateModel")
-    def auto_update_model(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_update_model(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         """
         return pulumi.get(self, "auto_update_model")
 
     @auto_update_model.setter
-    def auto_update_model(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_update_model(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_update_model", value)
 
     @_builtins.property
     @pulumi.getter(name="bmCookieEnabled")
-    def bm_cookie_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bm_cookie_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
         """
         return pulumi.get(self, "bm_cookie_enabled")
 
     @bm_cookie_enabled.setter
-    def bm_cookie_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bm_cookie_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bm_cookie_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cfRobotsVariant")
-    def cf_robots_variant(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cf_robots_variant(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the Robots Access Control License variant to use.
         Available values: "off", "policy_only".
@@ -157,12 +157,12 @@ class BotManagementArgs:
         return pulumi.get(self, "cf_robots_variant")
 
     @cf_robots_variant.setter
-    def cf_robots_variant(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cf_robots_variant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cf_robots_variant", value)
 
     @_builtins.property
     @pulumi.getter(name="contentBotsProtection")
-    def content_bots_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_bots_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
         Available values: "block", "disabled".
@@ -170,12 +170,12 @@ class BotManagementArgs:
         return pulumi.get(self, "content_bots_protection")
 
     @content_bots_protection.setter
-    def content_bots_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_bots_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_bots_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="crawlerProtection")
-    def crawler_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crawler_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable rule to punish AI Scrapers and Crawlers via a link maze.
         Available values: "enabled", "disabled".
@@ -183,60 +183,60 @@ class BotManagementArgs:
         return pulumi.get(self, "crawler_protection")
 
     @crawler_protection.setter
-    def crawler_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crawler_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crawler_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="enableJs")
-    def enable_js(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_js(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         """
         return pulumi.get(self, "enable_js")
 
     @enable_js.setter
-    def enable_js(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_js(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_js", value)
 
     @_builtins.property
     @pulumi.getter(name="fightMode")
-    def fight_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fight_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable Bot Fight Mode.
         """
         return pulumi.get(self, "fight_mode")
 
     @fight_mode.setter
-    def fight_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fight_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fight_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="isRobotsTxtManaged")
-    def is_robots_txt_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_robots_txt_managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
         """
         return pulumi.get(self, "is_robots_txt_managed")
 
     @is_robots_txt_managed.setter
-    def is_robots_txt_managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_robots_txt_managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_robots_txt_managed", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizeWordpress")
-    def optimize_wordpress(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def optimize_wordpress(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to optimize Super Bot Fight Mode protections for Wordpress.
         """
         return pulumi.get(self, "optimize_wordpress")
 
     @optimize_wordpress.setter
-    def optimize_wordpress(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def optimize_wordpress(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "optimize_wordpress", value)
 
     @_builtins.property
     @pulumi.getter(name="sbfmDefinitelyAutomated")
-    def sbfm_definitely_automated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sbfm_definitely_automated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
         Available values: "allow", "block", "managed_challenge".
@@ -244,12 +244,12 @@ class BotManagementArgs:
         return pulumi.get(self, "sbfm_definitely_automated")
 
     @sbfm_definitely_automated.setter
-    def sbfm_definitely_automated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sbfm_definitely_automated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sbfm_definitely_automated", value)
 
     @_builtins.property
     @pulumi.getter(name="sbfmLikelyAutomated")
-    def sbfm_likely_automated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sbfm_likely_automated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on likely automated requests.
         Available values: "allow", "block", "managed_challenge".
@@ -257,12 +257,12 @@ class BotManagementArgs:
         return pulumi.get(self, "sbfm_likely_automated")
 
     @sbfm_likely_automated.setter
-    def sbfm_likely_automated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sbfm_likely_automated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sbfm_likely_automated", value)
 
     @_builtins.property
     @pulumi.getter(name="sbfmStaticResourceProtection")
-    def sbfm_static_resource_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sbfm_static_resource_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Super Bot Fight Mode (SBFM) to enable static resource protection.
         Enable if static resources on your application need bot protection.
@@ -271,12 +271,12 @@ class BotManagementArgs:
         return pulumi.get(self, "sbfm_static_resource_protection")
 
     @sbfm_static_resource_protection.setter
-    def sbfm_static_resource_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sbfm_static_resource_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sbfm_static_resource_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="sbfmVerifiedBots")
-    def sbfm_verified_bots(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sbfm_verified_bots(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on verified bots requests.
         Available values: "allow", "block".
@@ -284,43 +284,43 @@ class BotManagementArgs:
         return pulumi.get(self, "sbfm_verified_bots")
 
     @sbfm_verified_bots.setter
-    def sbfm_verified_bots(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sbfm_verified_bots(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sbfm_verified_bots", value)
 
     @_builtins.property
     @pulumi.getter(name="suppressSessionScore")
-    def suppress_session_score(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def suppress_session_score(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         """
         return pulumi.get(self, "suppress_session_score")
 
     @suppress_session_score.setter
-    def suppress_session_score(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def suppress_session_score(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "suppress_session_score", value)
 
 
 @pulumi.input_type
 class _BotManagementState:
     def __init__(__self__, *,
-                 ai_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_update_model: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bm_cookie_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cf_robots_variant: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_robots_txt_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 optimize_wordpress: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sbfm_definitely_automated: Optional[pulumi.Input[_builtins.str]] = None,
-                 sbfm_likely_automated: Optional[pulumi.Input[_builtins.str]] = None,
-                 sbfm_static_resource_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sbfm_verified_bots: Optional[pulumi.Input[_builtins.str]] = None,
-                 stale_zone_configuration: Optional[pulumi.Input['BotManagementStaleZoneConfigurationArgs']] = None,
-                 suppress_session_score: Optional[pulumi.Input[_builtins.bool]] = None,
-                 using_latest_model: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cf_robots_variant: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 crawler_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_js: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_robots_txt_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 optimize_wordpress: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sbfm_definitely_automated: pulumi.Input[Optional[_builtins.str]] = None,
+                 sbfm_likely_automated: pulumi.Input[Optional[_builtins.str]] = None,
+                 sbfm_static_resource_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sbfm_verified_bots: pulumi.Input[Optional[_builtins.str]] = None,
+                 stale_zone_configuration: pulumi.Input[Optional['BotManagementStaleZoneConfigurationArgs']] = None,
+                 suppress_session_score: pulumi.Input[Optional[_builtins.bool]] = None,
+                 using_latest_model: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BotManagement resources.
 
@@ -391,7 +391,7 @@ class _BotManagementState:
 
     @_builtins.property
     @pulumi.getter(name="aiBotsProtection")
-    def ai_bots_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ai_bots_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
         Available values: "block", "disabled", "only*on*ad_pages".
@@ -399,36 +399,36 @@ class _BotManagementState:
         return pulumi.get(self, "ai_bots_protection")
 
     @ai_bots_protection.setter
-    def ai_bots_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ai_bots_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ai_bots_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="autoUpdateModel")
-    def auto_update_model(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_update_model(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         """
         return pulumi.get(self, "auto_update_model")
 
     @auto_update_model.setter
-    def auto_update_model(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_update_model(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_update_model", value)
 
     @_builtins.property
     @pulumi.getter(name="bmCookieEnabled")
-    def bm_cookie_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bm_cookie_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
         """
         return pulumi.get(self, "bm_cookie_enabled")
 
     @bm_cookie_enabled.setter
-    def bm_cookie_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bm_cookie_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bm_cookie_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cfRobotsVariant")
-    def cf_robots_variant(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cf_robots_variant(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the Robots Access Control License variant to use.
         Available values: "off", "policy_only".
@@ -436,12 +436,12 @@ class _BotManagementState:
         return pulumi.get(self, "cf_robots_variant")
 
     @cf_robots_variant.setter
-    def cf_robots_variant(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cf_robots_variant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cf_robots_variant", value)
 
     @_builtins.property
     @pulumi.getter(name="contentBotsProtection")
-    def content_bots_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_bots_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
         Available values: "block", "disabled".
@@ -449,12 +449,12 @@ class _BotManagementState:
         return pulumi.get(self, "content_bots_protection")
 
     @content_bots_protection.setter
-    def content_bots_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_bots_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_bots_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="crawlerProtection")
-    def crawler_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crawler_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable rule to punish AI Scrapers and Crawlers via a link maze.
         Available values: "enabled", "disabled".
@@ -462,60 +462,60 @@ class _BotManagementState:
         return pulumi.get(self, "crawler_protection")
 
     @crawler_protection.setter
-    def crawler_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crawler_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crawler_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="enableJs")
-    def enable_js(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_js(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         """
         return pulumi.get(self, "enable_js")
 
     @enable_js.setter
-    def enable_js(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_js(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_js", value)
 
     @_builtins.property
     @pulumi.getter(name="fightMode")
-    def fight_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fight_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable Bot Fight Mode.
         """
         return pulumi.get(self, "fight_mode")
 
     @fight_mode.setter
-    def fight_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fight_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fight_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="isRobotsTxtManaged")
-    def is_robots_txt_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_robots_txt_managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
         """
         return pulumi.get(self, "is_robots_txt_managed")
 
     @is_robots_txt_managed.setter
-    def is_robots_txt_managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_robots_txt_managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_robots_txt_managed", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizeWordpress")
-    def optimize_wordpress(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def optimize_wordpress(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to optimize Super Bot Fight Mode protections for Wordpress.
         """
         return pulumi.get(self, "optimize_wordpress")
 
     @optimize_wordpress.setter
-    def optimize_wordpress(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def optimize_wordpress(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "optimize_wordpress", value)
 
     @_builtins.property
     @pulumi.getter(name="sbfmDefinitelyAutomated")
-    def sbfm_definitely_automated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sbfm_definitely_automated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
         Available values: "allow", "block", "managed_challenge".
@@ -523,12 +523,12 @@ class _BotManagementState:
         return pulumi.get(self, "sbfm_definitely_automated")
 
     @sbfm_definitely_automated.setter
-    def sbfm_definitely_automated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sbfm_definitely_automated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sbfm_definitely_automated", value)
 
     @_builtins.property
     @pulumi.getter(name="sbfmLikelyAutomated")
-    def sbfm_likely_automated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sbfm_likely_automated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on likely automated requests.
         Available values: "allow", "block", "managed_challenge".
@@ -536,12 +536,12 @@ class _BotManagementState:
         return pulumi.get(self, "sbfm_likely_automated")
 
     @sbfm_likely_automated.setter
-    def sbfm_likely_automated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sbfm_likely_automated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sbfm_likely_automated", value)
 
     @_builtins.property
     @pulumi.getter(name="sbfmStaticResourceProtection")
-    def sbfm_static_resource_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sbfm_static_resource_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Super Bot Fight Mode (SBFM) to enable static resource protection.
         Enable if static resources on your application need bot protection.
@@ -550,12 +550,12 @@ class _BotManagementState:
         return pulumi.get(self, "sbfm_static_resource_protection")
 
     @sbfm_static_resource_protection.setter
-    def sbfm_static_resource_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sbfm_static_resource_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sbfm_static_resource_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="sbfmVerifiedBots")
-    def sbfm_verified_bots(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sbfm_verified_bots(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Super Bot Fight Mode (SBFM) action to take on verified bots requests.
         Available values: "allow", "block".
@@ -563,55 +563,55 @@ class _BotManagementState:
         return pulumi.get(self, "sbfm_verified_bots")
 
     @sbfm_verified_bots.setter
-    def sbfm_verified_bots(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sbfm_verified_bots(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sbfm_verified_bots", value)
 
     @_builtins.property
     @pulumi.getter(name="staleZoneConfiguration")
-    def stale_zone_configuration(self) -> Optional[pulumi.Input['BotManagementStaleZoneConfigurationArgs']]:
+    def stale_zone_configuration(self) -> pulumi.Input[Optional['BotManagementStaleZoneConfigurationArgs']]:
         """
         A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
         """
         return pulumi.get(self, "stale_zone_configuration")
 
     @stale_zone_configuration.setter
-    def stale_zone_configuration(self, value: Optional[pulumi.Input['BotManagementStaleZoneConfigurationArgs']]):
+    def stale_zone_configuration(self, value: pulumi.Input[Optional['BotManagementStaleZoneConfigurationArgs']]):
         pulumi.set(self, "stale_zone_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="suppressSessionScore")
-    def suppress_session_score(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def suppress_session_score(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         """
         return pulumi.get(self, "suppress_session_score")
 
     @suppress_session_score.setter
-    def suppress_session_score(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def suppress_session_score(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "suppress_session_score", value)
 
     @_builtins.property
     @pulumi.getter(name="usingLatestModel")
-    def using_latest_model(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def using_latest_model(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A read-only field that indicates whether the zone currently is running the latest ML model.
         """
         return pulumi.get(self, "using_latest_model")
 
     @using_latest_model.setter
-    def using_latest_model(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def using_latest_model(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "using_latest_model", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -621,22 +621,22 @@ class BotManagement(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ai_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_update_model: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bm_cookie_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cf_robots_variant: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_robots_txt_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 optimize_wordpress: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sbfm_definitely_automated: Optional[pulumi.Input[_builtins.str]] = None,
-                 sbfm_likely_automated: Optional[pulumi.Input[_builtins.str]] = None,
-                 sbfm_static_resource_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sbfm_verified_bots: Optional[pulumi.Input[_builtins.str]] = None,
-                 suppress_session_score: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cf_robots_variant: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 crawler_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_js: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_robots_txt_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 optimize_wordpress: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sbfm_definitely_automated: pulumi.Input[Optional[_builtins.str]] = None,
+                 sbfm_likely_automated: pulumi.Input[Optional[_builtins.str]] = None,
+                 sbfm_static_resource_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sbfm_verified_bots: pulumi.Input[Optional[_builtins.str]] = None,
+                 suppress_session_score: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -737,22 +737,22 @@ class BotManagement(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ai_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_update_model: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bm_cookie_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cf_robots_variant: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_robots_txt_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 optimize_wordpress: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sbfm_definitely_automated: Optional[pulumi.Input[_builtins.str]] = None,
-                 sbfm_likely_automated: Optional[pulumi.Input[_builtins.str]] = None,
-                 sbfm_static_resource_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sbfm_verified_bots: Optional[pulumi.Input[_builtins.str]] = None,
-                 suppress_session_score: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cf_robots_variant: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 crawler_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_js: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_robots_txt_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 optimize_wordpress: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sbfm_definitely_automated: pulumi.Input[Optional[_builtins.str]] = None,
+                 sbfm_likely_automated: pulumi.Input[Optional[_builtins.str]] = None,
+                 sbfm_static_resource_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sbfm_verified_bots: pulumi.Input[Optional[_builtins.str]] = None,
+                 suppress_session_score: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -792,24 +792,24 @@ class BotManagement(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ai_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_update_model: Optional[pulumi.Input[_builtins.bool]] = None,
-            bm_cookie_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            cf_robots_variant: Optional[pulumi.Input[_builtins.str]] = None,
-            content_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
-            crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
-            fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_robots_txt_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-            optimize_wordpress: Optional[pulumi.Input[_builtins.bool]] = None,
-            sbfm_definitely_automated: Optional[pulumi.Input[_builtins.str]] = None,
-            sbfm_likely_automated: Optional[pulumi.Input[_builtins.str]] = None,
-            sbfm_static_resource_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            sbfm_verified_bots: Optional[pulumi.Input[_builtins.str]] = None,
-            stale_zone_configuration: Optional[pulumi.Input[Union['BotManagementStaleZoneConfigurationArgs', 'BotManagementStaleZoneConfigurationArgsDict']]] = None,
-            suppress_session_score: Optional[pulumi.Input[_builtins.bool]] = None,
-            using_latest_model: Optional[pulumi.Input[_builtins.bool]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'BotManagement':
+            ai_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_update_model: pulumi.Input[Optional[_builtins.bool]] = None,
+            bm_cookie_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            cf_robots_variant: pulumi.Input[Optional[_builtins.str]] = None,
+            content_bots_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            crawler_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_js: pulumi.Input[Optional[_builtins.bool]] = None,
+            fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_robots_txt_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            optimize_wordpress: pulumi.Input[Optional[_builtins.bool]] = None,
+            sbfm_definitely_automated: pulumi.Input[Optional[_builtins.str]] = None,
+            sbfm_likely_automated: pulumi.Input[Optional[_builtins.str]] = None,
+            sbfm_static_resource_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            sbfm_verified_bots: pulumi.Input[Optional[_builtins.str]] = None,
+            stale_zone_configuration: pulumi.Input[Optional[Union['BotManagementStaleZoneConfigurationArgs', 'BotManagementStaleZoneConfigurationArgsDict']]] = None,
+            suppress_session_score: pulumi.Input[Optional[_builtins.bool]] = None,
+            using_latest_model: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'BotManagement':
         """
         Get an existing BotManagement resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

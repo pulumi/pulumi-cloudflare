@@ -310,8 +310,8 @@ def get_zero_trust_organization(account_id: Optional[_builtins.str] = None,
         user_seat_expiration_inactive_time=pulumi.get(__ret__, 'user_seat_expiration_inactive_time'),
         warp_auth_session_duration=pulumi.get(__ret__, 'warp_auth_session_duration'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zero_trust_organization_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_organization_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustOrganizationResult]:
     """
     Accepted Permissions

@@ -183,7 +183,7 @@ def get_account_subscription(account_id: Optional[_builtins.str] = None,
         price=pulumi.get(__ret__, 'price'),
         rate_plan=pulumi.get(__ret__, 'rate_plan'),
         state=pulumi.get(__ret__, 'state'))
-def get_account_subscription_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_subscription_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountSubscriptionResult]:
     """
     Accepted Permissions

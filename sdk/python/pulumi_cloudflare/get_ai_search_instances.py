@@ -166,12 +166,12 @@ def get_ai_search_instances(account_id: Optional[_builtins.str] = None,
         order_by_direction=pulumi.get(__ret__, 'order_by_direction'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
-def get_ai_search_instances_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                   namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   order_by_direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ai_search_instances_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                   namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   order_by_direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchInstancesResult]:
     """
     Use this data source to access information about an existing resource.

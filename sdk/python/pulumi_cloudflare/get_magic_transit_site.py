@@ -197,9 +197,9 @@ def get_magic_transit_site(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         secondary_connector_id=pulumi.get(__ret__, 'secondary_connector_id'),
         site_id=pulumi.get(__ret__, 'site_id'))
-def get_magic_transit_site_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  filter: Optional[pulumi.Input[Optional[Union['GetMagicTransitSiteFilterArgs', 'GetMagicTransitSiteFilterArgsDict']]]] = None,
-                                  site_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_magic_transit_site_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  filter: pulumi.Input[Optional[Optional[Union['GetMagicTransitSiteFilterArgs', 'GetMagicTransitSiteFilterArgsDict']]]] = None,
+                                  site_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitSiteResult]:
     """
     Accepted Permissions

@@ -220,27 +220,27 @@ export interface GetCloudforceOneRequestsOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Retrieve requests completed after this time.
      */
-    completedAfter?: pulumi.Input<string>;
+    completedAfter?: pulumi.Input<string | undefined>;
     /**
      * Retrieve requests completed before this time.
      */
-    completedBefore?: pulumi.Input<string>;
+    completedBefore?: pulumi.Input<string | undefined>;
     /**
      * Retrieve requests created after this time.
      */
-    createdAfter?: pulumi.Input<string>;
+    createdAfter?: pulumi.Input<string | undefined>;
     /**
      * Retrieve requests created before this time.
      */
-    createdBefore?: pulumi.Input<string>;
+    createdBefore?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Page number of results.
      */
@@ -252,19 +252,19 @@ export interface GetCloudforceOneRequestsOutputArgs {
     /**
      * Requested information from request.
      */
-    requestType?: pulumi.Input<string>;
+    requestType?: pulumi.Input<string | undefined>;
     /**
      * Field to sort results by.
      */
-    sortBy?: pulumi.Input<string>;
+    sortBy?: pulumi.Input<string | undefined>;
     /**
      * Sort order (asc or desc).
      * Available values: "asc", "desc".
      */
-    sortOrder?: pulumi.Input<string>;
+    sortOrder?: pulumi.Input<string | undefined>;
     /**
      * Request Status.
      * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

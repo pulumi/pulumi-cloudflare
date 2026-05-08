@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustTunnelCloudflared = new Cloudflare.Index.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared", new()
+    ///     var exampleZeroTrustTunnelCloudflared = new Cloudflare.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "blog",

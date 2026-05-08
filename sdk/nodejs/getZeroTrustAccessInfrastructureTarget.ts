@@ -108,10 +108,10 @@ export interface GetZeroTrustAccessInfrastructureTargetOutputArgs {
     /**
      * Account identifier
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetZeroTrustAccessInfrastructureTargetFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustAccessInfrastructureTargetFilterArgs | undefined>;
     /**
      * Target identifier
      */
-    targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string | undefined>;
 }

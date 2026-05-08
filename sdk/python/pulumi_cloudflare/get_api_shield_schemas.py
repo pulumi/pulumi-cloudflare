@@ -154,10 +154,10 @@ def get_api_shield_schemas(max_items: Optional[_builtins.int] = None,
         results=pulumi.get(__ret__, 'results'),
         validation_enabled=pulumi.get(__ret__, 'validation_enabled'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_api_shield_schemas_output(max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                  omit_source: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                  validation_enabled: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                  zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_api_shield_schemas_output(max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                  omit_source: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                  validation_enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                  zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiShieldSchemasResult]:
     """
     Accepted Permissions

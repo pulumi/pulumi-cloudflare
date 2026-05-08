@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2DataCatalog = new Cloudflare.Index.R2DataCatalog("example_r2_data_catalog", new()
+    ///     var exampleR2DataCatalog = new Cloudflare.R2DataCatalog("example_r2_data_catalog", new()
     ///     {
     ///         AccountId = "0123456789abcdef0123456789abcdef",
     ///         BucketName = "my-data-bucket",

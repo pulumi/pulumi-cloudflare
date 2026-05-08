@@ -135,34 +135,34 @@ export class Web3Hostname extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Web3Hostname resources.
  */
 export interface Web3HostnameState {
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Specify an optional description of the hostname.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specify the DNSLink value used if the target is ipfs.
      */
-    dnslink?: pulumi.Input<string>;
-    modifiedOn?: pulumi.Input<string>;
+    dnslink?: pulumi.Input<string | undefined>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * Specify the hostname that points to the target gateway via CNAME.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the status of the hostname's activation.
      * Available values: "active", "pending", "deleting", "error".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Specify the target gateway of the hostname.
      * Available values: "ethereum", "ipfs", "ipfs*universal*path".
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * Specify the identifier of the hostname.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -172,11 +172,11 @@ export interface Web3HostnameArgs {
     /**
      * Specify an optional description of the hostname.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specify the DNSLink value used if the target is ipfs.
      */
-    dnslink?: pulumi.Input<string>;
+    dnslink?: pulumi.Input<string | undefined>;
     /**
      * Specify the hostname that points to the target gateway via CNAME.
      */
@@ -189,5 +189,5 @@ export interface Web3HostnameArgs {
     /**
      * Specify the identifier of the hostname.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

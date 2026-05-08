@@ -102,7 +102,7 @@ def get_dcv_delegation(zone_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         uuid=pulumi.get(__ret__, 'uuid'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_dcv_delegation_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_dcv_delegation_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDcvDelegationResult]:
     """
     Accepted Permissions

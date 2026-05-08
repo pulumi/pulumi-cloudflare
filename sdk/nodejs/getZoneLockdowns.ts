@@ -208,45 +208,45 @@ export interface GetZoneLockdownsOutputArgs {
     /**
      * The timestamp of when the rule was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * A string to search for in the description of existing rules.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A string to search for in the description of existing rules.
      */
-    descriptionSearch?: pulumi.Input<string>;
+    descriptionSearch?: pulumi.Input<string | undefined>;
     /**
      * A single IP address to search for in existing rules.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * A single IP address range to search for in existing rules.
      */
-    ipRangeSearch?: pulumi.Input<string>;
+    ipRangeSearch?: pulumi.Input<string | undefined>;
     /**
      * A single IP address to search for in existing rules.
      */
-    ipSearch?: pulumi.Input<string>;
+    ipSearch?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * The timestamp of when the rule was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * A single URI to search for in the list of URLs of existing rules.
      */
-    uriSearch?: pulumi.Input<string>;
+    uriSearch?: pulumi.Input<string | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

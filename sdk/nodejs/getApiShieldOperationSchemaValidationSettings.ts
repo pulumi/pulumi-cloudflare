@@ -85,5 +85,5 @@ export function getApiShieldOperationSchemaValidationSettingsOutput(args: GetApi
  */
 export interface GetApiShieldOperationSchemaValidationSettingsOutputArgs {
     operationId: pulumi.Input<string>;
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -23,7 +23,7 @@ class ZeroTrustAccessInfrastructureTargetArgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[_builtins.str],
                  ip: pulumi.Input['ZeroTrustAccessInfrastructureTargetIpArgs'],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessInfrastructureTarget resource.
 
@@ -68,25 +68,25 @@ class ZeroTrustAccessInfrastructureTargetArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
 class _ZeroTrustAccessInfrastructureTargetState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input['ZeroTrustAccessInfrastructureTargetIpArgs']] = None,
-                 modified_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional['ZeroTrustAccessInfrastructureTargetIpArgs']] = None,
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessInfrastructureTarget resources.
 
@@ -112,31 +112,31 @@ class _ZeroTrustAccessInfrastructureTargetState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date and time at which the target was created
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A non-unique field that refers to a target. Case insensitive, maximum
         length of 255 characters, supports the use of special characters dash
@@ -146,31 +146,31 @@ class _ZeroTrustAccessInfrastructureTargetState:
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input['ZeroTrustAccessInfrastructureTargetIpArgs']]:
+    def ip(self) -> pulumi.Input[Optional['ZeroTrustAccessInfrastructureTargetIpArgs']]:
         """
         The IPv4/IPv6 address that identifies where to reach a target
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input['ZeroTrustAccessInfrastructureTargetIpArgs']]):
+    def ip(self, value: pulumi.Input[Optional['ZeroTrustAccessInfrastructureTargetIpArgs']]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedAt")
-    def modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date and time at which the target was modified
         """
         return pulumi.get(self, "modified_at")
 
     @modified_at.setter
-    def modified_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_at", value)
 
 
@@ -180,9 +180,9 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -272,9 +272,9 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -303,11 +303,11 @@ class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            ip: Optional[pulumi.Input[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict']]] = None,
-            modified_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustAccessInfrastructureTarget':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            ip: pulumi.Input[Optional[Union['ZeroTrustAccessInfrastructureTargetIpArgs', 'ZeroTrustAccessInfrastructureTargetIpArgsDict']]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustAccessInfrastructureTarget':
         """
         Get an existing ZeroTrustAccessInfrastructureTarget resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

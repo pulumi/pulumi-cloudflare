@@ -129,17 +129,17 @@ export interface GetTurnstileWidgetsOutputArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Direction to order widgets.
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Filter widgets by field using case-insensitive substring matching.
      * Format: `field:value`
      */
-    filter?: pulumi.Input<string>;
-    maxItems?: pulumi.Input<number>;
-    order?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
+    maxItems?: pulumi.Input<number | undefined>;
+    order?: pulumi.Input<string | undefined>;
 }

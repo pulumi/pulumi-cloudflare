@@ -22,7 +22,7 @@ __all__ = ['RiskBehaviorArgs', 'RiskBehavior']
 class RiskBehaviorArgs:
     def __init__(__self__, *,
                  behaviors: pulumi.Input[Mapping[str, pulumi.Input['RiskBehaviorBehaviorsArgs']]],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RiskBehavior resource.
         """
@@ -41,19 +41,19 @@ class RiskBehaviorArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
 class _RiskBehaviorState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 behaviors: Optional[pulumi.Input[Mapping[str, pulumi.Input['RiskBehaviorBehaviorsArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input['RiskBehaviorBehaviorsArgs']]]] = None):
         """
         Input properties used for looking up and filtering RiskBehavior resources.
         """
@@ -64,20 +64,20 @@ class _RiskBehaviorState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def behaviors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['RiskBehaviorBehaviorsArgs']]]]:
+    def behaviors(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['RiskBehaviorBehaviorsArgs']]]]:
         return pulumi.get(self, "behaviors")
 
     @behaviors.setter
-    def behaviors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['RiskBehaviorBehaviorsArgs']]]]):
+    def behaviors(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['RiskBehaviorBehaviorsArgs']]]]):
         pulumi.set(self, "behaviors", value)
 
 
@@ -92,8 +92,8 @@ class RiskBehavior(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 behaviors: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -173,8 +173,8 @@ class RiskBehavior(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 behaviors: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict']]]]] = None,
                  __props__=None):
         pulumi.log.warn("""RiskBehavior is deprecated: cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -201,8 +201,8 @@ class RiskBehavior(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            behaviors: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict']]]]] = None) -> 'RiskBehavior':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            behaviors: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict']]]]] = None) -> 'RiskBehavior':
         """
         Get an existing RiskBehavior resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

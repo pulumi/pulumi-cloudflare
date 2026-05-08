@@ -164,29 +164,29 @@ export interface GetEmailSecurityTrustedDomainsListOutputArgs {
     /**
      * Account Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The sorting direction.
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
-    isRecent?: pulumi.Input<boolean>;
-    isSimilarity?: pulumi.Input<boolean>;
+    direction?: pulumi.Input<string | undefined>;
+    isRecent?: pulumi.Input<boolean | undefined>;
+    isSimilarity?: pulumi.Input<boolean | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * The field to sort by.
      * Available values: "pattern", "createdAt".
      */
-    order?: pulumi.Input<string>;
-    pattern?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
+    pattern?: pulumi.Input<string | undefined>;
     /**
      * Allows searching in multiple properties of a record simultaneously.
      * This parameter is intended for human users, not automation. Its exact
      * behavior is intentionally left unspecified and is subject to change
      * in the future.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
 }

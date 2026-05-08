@@ -23,39 +23,39 @@ class AiSearchInstanceArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  ai_search_instance_id: pulumi.Input[_builtins.str],
-                 ai_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aisearch_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 chunk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 chunk_overlap: Optional[pulumi.Input[_builtins.int]] = None,
-                 chunk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['AiSearchInstanceCustomMetadataArgs']]]] = None,
-                 embedding_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 fusion_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 hybrid_search_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index_method: Optional[pulumi.Input['AiSearchInstanceIndexMethodArgs']] = None,
-                 indexing_options: Optional[pulumi.Input['AiSearchInstanceIndexingOptionsArgs']] = None,
-                 max_num_results: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadata: Optional[pulumi.Input['AiSearchInstanceMetadataArgs']] = None,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_endpoint_params: Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsArgs']] = None,
-                 reranking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reranking_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 retrieval_options: Optional[pulumi.Input['AiSearchInstanceRetrievalOptionsArgs']] = None,
-                 rewrite_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_query: Optional[pulumi.Input[_builtins.bool]] = None,
-                 score_threshold: Optional[pulumi.Input[_builtins.float]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_params: Optional[pulumi.Input['AiSearchInstanceSourceParamsArgs']] = None,
-                 summarization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 summarization_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_interval: Optional[pulumi.Input[_builtins.float]] = None,
-                 system_prompt_aisearch: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_prompt_index_summarization: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_prompt_rewrite_query: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aisearch_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 chunk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 chunk_overlap: pulumi.Input[Optional[_builtins.int]] = None,
+                 chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input['AiSearchInstanceCustomMetadataArgs']]]] = None,
+                 embedding_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 fusion_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 hybrid_search_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_method: pulumi.Input[Optional['AiSearchInstanceIndexMethodArgs']] = None,
+                 indexing_options: pulumi.Input[Optional['AiSearchInstanceIndexingOptionsArgs']] = None,
+                 max_num_results: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadata: pulumi.Input[Optional['AiSearchInstanceMetadataArgs']] = None,
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_endpoint_params: pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsArgs']] = None,
+                 reranking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reranking_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 retrieval_options: pulumi.Input[Optional['AiSearchInstanceRetrievalOptionsArgs']] = None,
+                 rewrite_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_query: pulumi.Input[Optional[_builtins.bool]] = None,
+                 score_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_params: pulumi.Input[Optional['AiSearchInstanceSourceParamsArgs']] = None,
+                 summarization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 summarization_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_interval: pulumi.Input[Optional[_builtins.float]] = None,
+                 system_prompt_aisearch: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_prompt_index_summarization: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_prompt_rewrite_query: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiSearchInstance resource.
 
@@ -168,278 +168,278 @@ class AiSearchInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="aiGatewayId")
-    def ai_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ai_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ai_gateway_id")
 
     @ai_gateway_id.setter
-    def ai_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ai_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ai_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aisearchModel")
-    def aisearch_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aisearch_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         """
         return pulumi.get(self, "aisearch_model")
 
     @aisearch_model.setter
-    def aisearch_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aisearch_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aisearch_model", value)
 
     @_builtins.property
     @pulumi.getter
-    def cache(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cache(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "cache")
 
     @cache.setter
-    def cache(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cache(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cache", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheThreshold")
-    def cache_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "super*strict*match", "close*enough", "flexible*friend", "anything_goes".
         """
         return pulumi.get(self, "cache_threshold")
 
     @cache_threshold.setter
-    def cache_threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def chunk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def chunk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "chunk")
 
     @chunk.setter
-    def chunk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def chunk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "chunk", value)
 
     @_builtins.property
     @pulumi.getter(name="chunkOverlap")
-    def chunk_overlap(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def chunk_overlap(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "chunk_overlap")
 
     @chunk_overlap.setter
-    def chunk_overlap(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def chunk_overlap(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "chunk_overlap", value)
 
     @_builtins.property
     @pulumi.getter(name="chunkSize")
-    def chunk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def chunk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "chunk_size")
 
     @chunk_size.setter
-    def chunk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def chunk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "chunk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="customMetadatas")
-    def custom_metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiSearchInstanceCustomMetadataArgs']]]]:
+    def custom_metadatas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiSearchInstanceCustomMetadataArgs']]]]:
         return pulumi.get(self, "custom_metadatas")
 
     @custom_metadatas.setter
-    def custom_metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiSearchInstanceCustomMetadataArgs']]]]):
+    def custom_metadatas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiSearchInstanceCustomMetadataArgs']]]]):
         pulumi.set(self, "custom_metadatas", value)
 
     @_builtins.property
     @pulumi.getter(name="embeddingModel")
-    def embedding_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def embedding_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
         """
         return pulumi.get(self, "embedding_model")
 
     @embedding_model.setter
-    def embedding_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def embedding_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "embedding_model", value)
 
     @_builtins.property
     @pulumi.getter(name="fusionMethod")
-    def fusion_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fusion_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "max", "rrf".
         """
         return pulumi.get(self, "fusion_method")
 
     @fusion_method.setter
-    def fusion_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fusion_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fusion_method", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridSearchEnabled")
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def hybrid_search_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hybrid_search_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deprecated — use index_method instead.
         """
         return pulumi.get(self, "hybrid_search_enabled")
 
     @hybrid_search_enabled.setter
-    def hybrid_search_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hybrid_search_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hybrid_search_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="indexMethod")
-    def index_method(self) -> Optional[pulumi.Input['AiSearchInstanceIndexMethodArgs']]:
+    def index_method(self) -> pulumi.Input[Optional['AiSearchInstanceIndexMethodArgs']]:
         """
         Controls which storage backends are used during indexing. Defaults to vector-only.
         """
         return pulumi.get(self, "index_method")
 
     @index_method.setter
-    def index_method(self, value: Optional[pulumi.Input['AiSearchInstanceIndexMethodArgs']]):
+    def index_method(self, value: pulumi.Input[Optional['AiSearchInstanceIndexMethodArgs']]):
         pulumi.set(self, "index_method", value)
 
     @_builtins.property
     @pulumi.getter(name="indexingOptions")
-    def indexing_options(self) -> Optional[pulumi.Input['AiSearchInstanceIndexingOptionsArgs']]:
+    def indexing_options(self) -> pulumi.Input[Optional['AiSearchInstanceIndexingOptionsArgs']]:
         return pulumi.get(self, "indexing_options")
 
     @indexing_options.setter
-    def indexing_options(self, value: Optional[pulumi.Input['AiSearchInstanceIndexingOptionsArgs']]):
+    def indexing_options(self, value: pulumi.Input[Optional['AiSearchInstanceIndexingOptionsArgs']]):
         pulumi.set(self, "indexing_options", value)
 
     @_builtins.property
     @pulumi.getter(name="maxNumResults")
-    def max_num_results(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_num_results(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_num_results")
 
     @max_num_results.setter
-    def max_num_results(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_num_results(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_num_results", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['AiSearchInstanceMetadataArgs']]:
+    def metadata(self) -> pulumi.Input[Optional['AiSearchInstanceMetadataArgs']]:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['AiSearchInstanceMetadataArgs']]):
+    def metadata(self, value: pulumi.Input[Optional['AiSearchInstanceMetadataArgs']]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def paused(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "paused")
 
     @paused.setter
-    def paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def paused(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "paused", value)
 
     @_builtins.property
     @pulumi.getter(name="publicEndpointParams")
-    def public_endpoint_params(self) -> Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsArgs']]:
+    def public_endpoint_params(self) -> pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsArgs']]:
         return pulumi.get(self, "public_endpoint_params")
 
     @public_endpoint_params.setter
-    def public_endpoint_params(self, value: Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsArgs']]):
+    def public_endpoint_params(self, value: pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsArgs']]):
         pulumi.set(self, "public_endpoint_params", value)
 
     @_builtins.property
     @pulumi.getter
-    def reranking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reranking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "reranking")
 
     @reranking.setter
-    def reranking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reranking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reranking", value)
 
     @_builtins.property
     @pulumi.getter(name="rerankingModel")
-    def reranking_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reranking_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "@cf/baai/bge-reranker-base", "".
         """
         return pulumi.get(self, "reranking_model")
 
     @reranking_model.setter
-    def reranking_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reranking_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reranking_model", value)
 
     @_builtins.property
     @pulumi.getter(name="retrievalOptions")
-    def retrieval_options(self) -> Optional[pulumi.Input['AiSearchInstanceRetrievalOptionsArgs']]:
+    def retrieval_options(self) -> pulumi.Input[Optional['AiSearchInstanceRetrievalOptionsArgs']]:
         return pulumi.get(self, "retrieval_options")
 
     @retrieval_options.setter
-    def retrieval_options(self, value: Optional[pulumi.Input['AiSearchInstanceRetrievalOptionsArgs']]):
+    def retrieval_options(self, value: pulumi.Input[Optional['AiSearchInstanceRetrievalOptionsArgs']]):
         pulumi.set(self, "retrieval_options", value)
 
     @_builtins.property
     @pulumi.getter(name="rewriteModel")
-    def rewrite_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rewrite_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         """
         return pulumi.get(self, "rewrite_model")
 
     @rewrite_model.setter
-    def rewrite_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rewrite_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rewrite_model", value)
 
     @_builtins.property
     @pulumi.getter(name="rewriteQuery")
-    def rewrite_query(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def rewrite_query(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "rewrite_query")
 
     @rewrite_query.setter
-    def rewrite_query(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def rewrite_query(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "rewrite_query", value)
 
     @_builtins.property
     @pulumi.getter(name="scoreThreshold")
-    def score_threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def score_threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
         return pulumi.get(self, "score_threshold")
 
     @score_threshold.setter
-    def score_threshold(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def score_threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "score_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceParams")
-    def source_params(self) -> Optional[pulumi.Input['AiSearchInstanceSourceParamsArgs']]:
+    def source_params(self) -> pulumi.Input[Optional['AiSearchInstanceSourceParamsArgs']]:
         return pulumi.get(self, "source_params")
 
     @source_params.setter
-    def source_params(self, value: Optional[pulumi.Input['AiSearchInstanceSourceParamsArgs']]):
+    def source_params(self, value: pulumi.Input[Optional['AiSearchInstanceSourceParamsArgs']]):
         pulumi.set(self, "source_params", value)
 
     @_builtins.property
     @pulumi.getter
-    def summarization(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def summarization(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "summarization")
 
     @summarization.setter
-    def summarization(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def summarization(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "summarization", value)
 
     @_builtins.property
     @pulumi.getter(name="summarizationModel")
-    def summarization_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def summarization_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         """
         return pulumi.get(self, "summarization_model")
 
     @summarization_model.setter
-    def summarization_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def summarization_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "summarization_model", value)
 
     @_builtins.property
     @pulumi.getter(name="syncInterval")
-    def sync_interval(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def sync_interval(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
         Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
@@ -447,107 +447,107 @@ class AiSearchInstanceArgs:
         return pulumi.get(self, "sync_interval")
 
     @sync_interval.setter
-    def sync_interval(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def sync_interval(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "sync_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="systemPromptAisearch")
-    def system_prompt_aisearch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_prompt_aisearch(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "system_prompt_aisearch")
 
     @system_prompt_aisearch.setter
-    def system_prompt_aisearch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_prompt_aisearch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_prompt_aisearch", value)
 
     @_builtins.property
     @pulumi.getter(name="systemPromptIndexSummarization")
-    def system_prompt_index_summarization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_prompt_index_summarization(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "system_prompt_index_summarization")
 
     @system_prompt_index_summarization.setter
-    def system_prompt_index_summarization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_prompt_index_summarization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_prompt_index_summarization", value)
 
     @_builtins.property
     @pulumi.getter(name="systemPromptRewriteQuery")
-    def system_prompt_rewrite_query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_prompt_rewrite_query(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "system_prompt_rewrite_query")
 
     @system_prompt_rewrite_query.setter
-    def system_prompt_rewrite_query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_prompt_rewrite_query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_prompt_rewrite_query", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenId")
-    def token_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "token_id")
 
     @token_id.setter
-    def token_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "r2", "web-crawler".
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _AiSearchInstanceState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_search_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aisearch_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 chunk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 chunk_overlap: Optional[pulumi.Input[_builtins.int]] = None,
-                 chunk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['AiSearchInstanceCustomMetadataArgs']]]] = None,
-                 embedding_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.float]] = None,
-                 fusion_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 hybrid_search_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index_method: Optional[pulumi.Input['AiSearchInstanceIndexMethodArgs']] = None,
-                 indexing_options: Optional[pulumi.Input['AiSearchInstanceIndexingOptionsArgs']] = None,
-                 last_activity: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_num_results: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadata: Optional[pulumi.Input['AiSearchInstanceMetadataArgs']] = None,
-                 modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_endpoint_params: Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsArgs']] = None,
-                 reranking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reranking_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 retrieval_options: Optional[pulumi.Input['AiSearchInstanceRetrievalOptionsArgs']] = None,
-                 rewrite_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_query: Optional[pulumi.Input[_builtins.bool]] = None,
-                 score_threshold: Optional[pulumi.Input[_builtins.float]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_params: Optional[pulumi.Input['AiSearchInstanceSourceParamsArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 summarization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 summarization_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_interval: Optional[pulumi.Input[_builtins.float]] = None,
-                 system_prompt_aisearch: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_prompt_index_summarization: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_prompt_rewrite_query: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vectorize_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_search_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aisearch_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 chunk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 chunk_overlap: pulumi.Input[Optional[_builtins.int]] = None,
+                 chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input['AiSearchInstanceCustomMetadataArgs']]]] = None,
+                 embedding_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.float]] = None,
+                 fusion_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 hybrid_search_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_method: pulumi.Input[Optional['AiSearchInstanceIndexMethodArgs']] = None,
+                 indexing_options: pulumi.Input[Optional['AiSearchInstanceIndexingOptionsArgs']] = None,
+                 last_activity: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_num_results: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadata: pulumi.Input[Optional['AiSearchInstanceMetadataArgs']] = None,
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_endpoint_params: pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsArgs']] = None,
+                 reranking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reranking_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 retrieval_options: pulumi.Input[Optional['AiSearchInstanceRetrievalOptionsArgs']] = None,
+                 rewrite_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_query: pulumi.Input[Optional[_builtins.bool]] = None,
+                 score_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_params: pulumi.Input[Optional['AiSearchInstanceSourceParamsArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 summarization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 summarization_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_interval: pulumi.Input[Optional[_builtins.float]] = None,
+                 system_prompt_aisearch: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_prompt_index_summarization: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_prompt_rewrite_query: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vectorize_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiSearchInstance resources.
 
@@ -663,389 +663,389 @@ class _AiSearchInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aiGatewayId")
-    def ai_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ai_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ai_gateway_id")
 
     @ai_gateway_id.setter
-    def ai_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ai_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ai_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aiSearchInstanceId")
-    def ai_search_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ai_search_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
         """
         return pulumi.get(self, "ai_search_instance_id")
 
     @ai_search_instance_id.setter
-    def ai_search_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ai_search_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ai_search_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aisearchModel")
-    def aisearch_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aisearch_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         """
         return pulumi.get(self, "aisearch_model")
 
     @aisearch_model.setter
-    def aisearch_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aisearch_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aisearch_model", value)
 
     @_builtins.property
     @pulumi.getter
-    def cache(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cache(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "cache")
 
     @cache.setter
-    def cache(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cache(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cache", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheThreshold")
-    def cache_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "super*strict*match", "close*enough", "flexible*friend", "anything_goes".
         """
         return pulumi.get(self, "cache_threshold")
 
     @cache_threshold.setter
-    def cache_threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def chunk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def chunk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "chunk")
 
     @chunk.setter
-    def chunk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def chunk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "chunk", value)
 
     @_builtins.property
     @pulumi.getter(name="chunkOverlap")
-    def chunk_overlap(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def chunk_overlap(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "chunk_overlap")
 
     @chunk_overlap.setter
-    def chunk_overlap(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def chunk_overlap(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "chunk_overlap", value)
 
     @_builtins.property
     @pulumi.getter(name="chunkSize")
-    def chunk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def chunk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "chunk_size")
 
     @chunk_size.setter
-    def chunk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def chunk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "chunk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="customMetadatas")
-    def custom_metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiSearchInstanceCustomMetadataArgs']]]]:
+    def custom_metadatas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiSearchInstanceCustomMetadataArgs']]]]:
         return pulumi.get(self, "custom_metadatas")
 
     @custom_metadatas.setter
-    def custom_metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiSearchInstanceCustomMetadataArgs']]]]):
+    def custom_metadatas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiSearchInstanceCustomMetadataArgs']]]]):
         pulumi.set(self, "custom_metadatas", value)
 
     @_builtins.property
     @pulumi.getter(name="embeddingModel")
-    def embedding_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def embedding_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
         """
         return pulumi.get(self, "embedding_model")
 
     @embedding_model.setter
-    def embedding_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def embedding_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "embedding_model", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.float]]:
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="fusionMethod")
-    def fusion_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fusion_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "max", "rrf".
         """
         return pulumi.get(self, "fusion_method")
 
     @fusion_method.setter
-    def fusion_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fusion_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fusion_method", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridSearchEnabled")
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def hybrid_search_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hybrid_search_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deprecated — use index_method instead.
         """
         return pulumi.get(self, "hybrid_search_enabled")
 
     @hybrid_search_enabled.setter
-    def hybrid_search_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hybrid_search_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hybrid_search_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="indexMethod")
-    def index_method(self) -> Optional[pulumi.Input['AiSearchInstanceIndexMethodArgs']]:
+    def index_method(self) -> pulumi.Input[Optional['AiSearchInstanceIndexMethodArgs']]:
         """
         Controls which storage backends are used during indexing. Defaults to vector-only.
         """
         return pulumi.get(self, "index_method")
 
     @index_method.setter
-    def index_method(self, value: Optional[pulumi.Input['AiSearchInstanceIndexMethodArgs']]):
+    def index_method(self, value: pulumi.Input[Optional['AiSearchInstanceIndexMethodArgs']]):
         pulumi.set(self, "index_method", value)
 
     @_builtins.property
     @pulumi.getter(name="indexingOptions")
-    def indexing_options(self) -> Optional[pulumi.Input['AiSearchInstanceIndexingOptionsArgs']]:
+    def indexing_options(self) -> pulumi.Input[Optional['AiSearchInstanceIndexingOptionsArgs']]:
         return pulumi.get(self, "indexing_options")
 
     @indexing_options.setter
-    def indexing_options(self, value: Optional[pulumi.Input['AiSearchInstanceIndexingOptionsArgs']]):
+    def indexing_options(self, value: pulumi.Input[Optional['AiSearchInstanceIndexingOptionsArgs']]):
         pulumi.set(self, "indexing_options", value)
 
     @_builtins.property
     @pulumi.getter(name="lastActivity")
-    def last_activity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_activity(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "last_activity")
 
     @last_activity.setter
-    def last_activity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_activity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_activity", value)
 
     @_builtins.property
     @pulumi.getter(name="maxNumResults")
-    def max_num_results(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_num_results(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_num_results")
 
     @max_num_results.setter
-    def max_num_results(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_num_results(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_num_results", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['AiSearchInstanceMetadataArgs']]:
+    def metadata(self) -> pulumi.Input[Optional['AiSearchInstanceMetadataArgs']]:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['AiSearchInstanceMetadataArgs']]):
+    def metadata(self, value: pulumi.Input[Optional['AiSearchInstanceMetadataArgs']]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedAt")
-    def modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_at")
 
     @modified_at.setter
-    def modified_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_at", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedBy")
-    def modified_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_by")
 
     @modified_by.setter
-    def modified_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def paused(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "paused")
 
     @paused.setter
-    def paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def paused(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "paused", value)
 
     @_builtins.property
     @pulumi.getter(name="publicEndpointId")
-    def public_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "public_endpoint_id")
 
     @public_endpoint_id.setter
-    def public_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="publicEndpointParams")
-    def public_endpoint_params(self) -> Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsArgs']]:
+    def public_endpoint_params(self) -> pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsArgs']]:
         return pulumi.get(self, "public_endpoint_params")
 
     @public_endpoint_params.setter
-    def public_endpoint_params(self, value: Optional[pulumi.Input['AiSearchInstancePublicEndpointParamsArgs']]):
+    def public_endpoint_params(self, value: pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsArgs']]):
         pulumi.set(self, "public_endpoint_params", value)
 
     @_builtins.property
     @pulumi.getter
-    def reranking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reranking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "reranking")
 
     @reranking.setter
-    def reranking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reranking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reranking", value)
 
     @_builtins.property
     @pulumi.getter(name="rerankingModel")
-    def reranking_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reranking_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "@cf/baai/bge-reranker-base", "".
         """
         return pulumi.get(self, "reranking_model")
 
     @reranking_model.setter
-    def reranking_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reranking_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reranking_model", value)
 
     @_builtins.property
     @pulumi.getter(name="retrievalOptions")
-    def retrieval_options(self) -> Optional[pulumi.Input['AiSearchInstanceRetrievalOptionsArgs']]:
+    def retrieval_options(self) -> pulumi.Input[Optional['AiSearchInstanceRetrievalOptionsArgs']]:
         return pulumi.get(self, "retrieval_options")
 
     @retrieval_options.setter
-    def retrieval_options(self, value: Optional[pulumi.Input['AiSearchInstanceRetrievalOptionsArgs']]):
+    def retrieval_options(self, value: pulumi.Input[Optional['AiSearchInstanceRetrievalOptionsArgs']]):
         pulumi.set(self, "retrieval_options", value)
 
     @_builtins.property
     @pulumi.getter(name="rewriteModel")
-    def rewrite_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rewrite_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         """
         return pulumi.get(self, "rewrite_model")
 
     @rewrite_model.setter
-    def rewrite_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rewrite_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rewrite_model", value)
 
     @_builtins.property
     @pulumi.getter(name="rewriteQuery")
-    def rewrite_query(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def rewrite_query(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "rewrite_query")
 
     @rewrite_query.setter
-    def rewrite_query(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def rewrite_query(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "rewrite_query", value)
 
     @_builtins.property
     @pulumi.getter(name="scoreThreshold")
-    def score_threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def score_threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
         return pulumi.get(self, "score_threshold")
 
     @score_threshold.setter
-    def score_threshold(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def score_threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "score_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceParams")
-    def source_params(self) -> Optional[pulumi.Input['AiSearchInstanceSourceParamsArgs']]:
+    def source_params(self) -> pulumi.Input[Optional['AiSearchInstanceSourceParamsArgs']]:
         return pulumi.get(self, "source_params")
 
     @source_params.setter
-    def source_params(self, value: Optional[pulumi.Input['AiSearchInstanceSourceParamsArgs']]):
+    def source_params(self, value: pulumi.Input[Optional['AiSearchInstanceSourceParamsArgs']]):
         pulumi.set(self, "source_params", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def summarization(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def summarization(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "summarization")
 
     @summarization.setter
-    def summarization(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def summarization(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "summarization", value)
 
     @_builtins.property
     @pulumi.getter(name="summarizationModel")
-    def summarization_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def summarization_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         """
         return pulumi.get(self, "summarization_model")
 
     @summarization_model.setter
-    def summarization_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def summarization_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "summarization_model", value)
 
     @_builtins.property
     @pulumi.getter(name="syncInterval")
-    def sync_interval(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def sync_interval(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
         Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
@@ -1053,64 +1053,64 @@ class _AiSearchInstanceState:
         return pulumi.get(self, "sync_interval")
 
     @sync_interval.setter
-    def sync_interval(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def sync_interval(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "sync_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="systemPromptAisearch")
-    def system_prompt_aisearch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_prompt_aisearch(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "system_prompt_aisearch")
 
     @system_prompt_aisearch.setter
-    def system_prompt_aisearch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_prompt_aisearch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_prompt_aisearch", value)
 
     @_builtins.property
     @pulumi.getter(name="systemPromptIndexSummarization")
-    def system_prompt_index_summarization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_prompt_index_summarization(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "system_prompt_index_summarization")
 
     @system_prompt_index_summarization.setter
-    def system_prompt_index_summarization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_prompt_index_summarization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_prompt_index_summarization", value)
 
     @_builtins.property
     @pulumi.getter(name="systemPromptRewriteQuery")
-    def system_prompt_rewrite_query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_prompt_rewrite_query(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "system_prompt_rewrite_query")
 
     @system_prompt_rewrite_query.setter
-    def system_prompt_rewrite_query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_prompt_rewrite_query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_prompt_rewrite_query", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenId")
-    def token_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "token_id")
 
     @token_id.setter
-    def token_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "r2", "web-crawler".
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="vectorizeName")
-    def vectorize_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vectorize_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vectorize_name")
 
     @vectorize_name.setter
-    def vectorize_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vectorize_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vectorize_name", value)
 
 
@@ -1120,41 +1120,41 @@ class AiSearchInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_search_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aisearch_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 chunk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 chunk_overlap: Optional[pulumi.Input[_builtins.int]] = None,
-                 chunk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiSearchInstanceCustomMetadataArgs', 'AiSearchInstanceCustomMetadataArgsDict']]]]] = None,
-                 embedding_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 fusion_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 hybrid_search_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index_method: Optional[pulumi.Input[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict']]] = None,
-                 indexing_options: Optional[pulumi.Input[Union['AiSearchInstanceIndexingOptionsArgs', 'AiSearchInstanceIndexingOptionsArgsDict']]] = None,
-                 max_num_results: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadata: Optional[pulumi.Input[Union['AiSearchInstanceMetadataArgs', 'AiSearchInstanceMetadataArgsDict']]] = None,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_endpoint_params: Optional[pulumi.Input[Union['AiSearchInstancePublicEndpointParamsArgs', 'AiSearchInstancePublicEndpointParamsArgsDict']]] = None,
-                 reranking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reranking_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 retrieval_options: Optional[pulumi.Input[Union['AiSearchInstanceRetrievalOptionsArgs', 'AiSearchInstanceRetrievalOptionsArgsDict']]] = None,
-                 rewrite_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_query: Optional[pulumi.Input[_builtins.bool]] = None,
-                 score_threshold: Optional[pulumi.Input[_builtins.float]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_params: Optional[pulumi.Input[Union['AiSearchInstanceSourceParamsArgs', 'AiSearchInstanceSourceParamsArgsDict']]] = None,
-                 summarization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 summarization_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_interval: Optional[pulumi.Input[_builtins.float]] = None,
-                 system_prompt_aisearch: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_prompt_index_summarization: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_prompt_rewrite_query: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_search_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aisearch_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 chunk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 chunk_overlap: pulumi.Input[Optional[_builtins.int]] = None,
+                 chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSearchInstanceCustomMetadataArgs', 'AiSearchInstanceCustomMetadataArgsDict']]]]] = None,
+                 embedding_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 fusion_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 hybrid_search_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_method: pulumi.Input[Optional[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict']]] = None,
+                 indexing_options: pulumi.Input[Optional[Union['AiSearchInstanceIndexingOptionsArgs', 'AiSearchInstanceIndexingOptionsArgsDict']]] = None,
+                 max_num_results: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadata: pulumi.Input[Optional[Union['AiSearchInstanceMetadataArgs', 'AiSearchInstanceMetadataArgsDict']]] = None,
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_endpoint_params: pulumi.Input[Optional[Union['AiSearchInstancePublicEndpointParamsArgs', 'AiSearchInstancePublicEndpointParamsArgsDict']]] = None,
+                 reranking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reranking_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 retrieval_options: pulumi.Input[Optional[Union['AiSearchInstanceRetrievalOptionsArgs', 'AiSearchInstanceRetrievalOptionsArgsDict']]] = None,
+                 rewrite_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_query: pulumi.Input[Optional[_builtins.bool]] = None,
+                 score_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_params: pulumi.Input[Optional[Union['AiSearchInstanceSourceParamsArgs', 'AiSearchInstanceSourceParamsArgsDict']]] = None,
+                 summarization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 summarization_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_interval: pulumi.Input[Optional[_builtins.float]] = None,
+                 system_prompt_aisearch: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_prompt_index_summarization: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_prompt_rewrite_query: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## Import
@@ -1205,41 +1205,41 @@ class AiSearchInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_search_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aisearch_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 chunk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 chunk_overlap: Optional[pulumi.Input[_builtins.int]] = None,
-                 chunk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiSearchInstanceCustomMetadataArgs', 'AiSearchInstanceCustomMetadataArgsDict']]]]] = None,
-                 embedding_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 fusion_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 hybrid_search_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index_method: Optional[pulumi.Input[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict']]] = None,
-                 indexing_options: Optional[pulumi.Input[Union['AiSearchInstanceIndexingOptionsArgs', 'AiSearchInstanceIndexingOptionsArgsDict']]] = None,
-                 max_num_results: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadata: Optional[pulumi.Input[Union['AiSearchInstanceMetadataArgs', 'AiSearchInstanceMetadataArgsDict']]] = None,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_endpoint_params: Optional[pulumi.Input[Union['AiSearchInstancePublicEndpointParamsArgs', 'AiSearchInstancePublicEndpointParamsArgsDict']]] = None,
-                 reranking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reranking_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 retrieval_options: Optional[pulumi.Input[Union['AiSearchInstanceRetrievalOptionsArgs', 'AiSearchInstanceRetrievalOptionsArgsDict']]] = None,
-                 rewrite_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_query: Optional[pulumi.Input[_builtins.bool]] = None,
-                 score_threshold: Optional[pulumi.Input[_builtins.float]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_params: Optional[pulumi.Input[Union['AiSearchInstanceSourceParamsArgs', 'AiSearchInstanceSourceParamsArgsDict']]] = None,
-                 summarization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 summarization_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_interval: Optional[pulumi.Input[_builtins.float]] = None,
-                 system_prompt_aisearch: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_prompt_index_summarization: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_prompt_rewrite_query: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_search_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aisearch_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 chunk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 chunk_overlap: pulumi.Input[Optional[_builtins.int]] = None,
+                 chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSearchInstanceCustomMetadataArgs', 'AiSearchInstanceCustomMetadataArgsDict']]]]] = None,
+                 embedding_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 fusion_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 hybrid_search_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_method: pulumi.Input[Optional[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict']]] = None,
+                 indexing_options: pulumi.Input[Optional[Union['AiSearchInstanceIndexingOptionsArgs', 'AiSearchInstanceIndexingOptionsArgsDict']]] = None,
+                 max_num_results: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadata: pulumi.Input[Optional[Union['AiSearchInstanceMetadataArgs', 'AiSearchInstanceMetadataArgsDict']]] = None,
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_endpoint_params: pulumi.Input[Optional[Union['AiSearchInstancePublicEndpointParamsArgs', 'AiSearchInstancePublicEndpointParamsArgsDict']]] = None,
+                 reranking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reranking_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 retrieval_options: pulumi.Input[Optional[Union['AiSearchInstanceRetrievalOptionsArgs', 'AiSearchInstanceRetrievalOptionsArgsDict']]] = None,
+                 rewrite_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_query: pulumi.Input[Optional[_builtins.bool]] = None,
+                 score_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_params: pulumi.Input[Optional[Union['AiSearchInstanceSourceParamsArgs', 'AiSearchInstanceSourceParamsArgsDict']]] = None,
+                 summarization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 summarization_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_interval: pulumi.Input[Optional[_builtins.float]] = None,
+                 system_prompt_aisearch: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_prompt_index_summarization: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_prompt_rewrite_query: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1309,52 +1309,52 @@ class AiSearchInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ai_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ai_search_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            aisearch_model: Optional[pulumi.Input[_builtins.str]] = None,
-            cache: Optional[pulumi.Input[_builtins.bool]] = None,
-            cache_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-            chunk: Optional[pulumi.Input[_builtins.bool]] = None,
-            chunk_overlap: Optional[pulumi.Input[_builtins.int]] = None,
-            chunk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiSearchInstanceCustomMetadataArgs', 'AiSearchInstanceCustomMetadataArgsDict']]]]] = None,
-            embedding_model: Optional[pulumi.Input[_builtins.str]] = None,
-            enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            engine_version: Optional[pulumi.Input[_builtins.float]] = None,
-            fusion_method: Optional[pulumi.Input[_builtins.str]] = None,
-            hybrid_search_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            index_method: Optional[pulumi.Input[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict']]] = None,
-            indexing_options: Optional[pulumi.Input[Union['AiSearchInstanceIndexingOptionsArgs', 'AiSearchInstanceIndexingOptionsArgsDict']]] = None,
-            last_activity: Optional[pulumi.Input[_builtins.str]] = None,
-            max_num_results: Optional[pulumi.Input[_builtins.int]] = None,
-            metadata: Optional[pulumi.Input[Union['AiSearchInstanceMetadataArgs', 'AiSearchInstanceMetadataArgsDict']]] = None,
-            modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_by: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            paused: Optional[pulumi.Input[_builtins.bool]] = None,
-            public_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            public_endpoint_params: Optional[pulumi.Input[Union['AiSearchInstancePublicEndpointParamsArgs', 'AiSearchInstancePublicEndpointParamsArgsDict']]] = None,
-            reranking: Optional[pulumi.Input[_builtins.bool]] = None,
-            reranking_model: Optional[pulumi.Input[_builtins.str]] = None,
-            retrieval_options: Optional[pulumi.Input[Union['AiSearchInstanceRetrievalOptionsArgs', 'AiSearchInstanceRetrievalOptionsArgsDict']]] = None,
-            rewrite_model: Optional[pulumi.Input[_builtins.str]] = None,
-            rewrite_query: Optional[pulumi.Input[_builtins.bool]] = None,
-            score_threshold: Optional[pulumi.Input[_builtins.float]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None,
-            source_params: Optional[pulumi.Input[Union['AiSearchInstanceSourceParamsArgs', 'AiSearchInstanceSourceParamsArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            summarization: Optional[pulumi.Input[_builtins.bool]] = None,
-            summarization_model: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_interval: Optional[pulumi.Input[_builtins.float]] = None,
-            system_prompt_aisearch: Optional[pulumi.Input[_builtins.str]] = None,
-            system_prompt_index_summarization: Optional[pulumi.Input[_builtins.str]] = None,
-            system_prompt_rewrite_query: Optional[pulumi.Input[_builtins.str]] = None,
-            token_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            vectorize_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiSearchInstance':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_search_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aisearch_model: pulumi.Input[Optional[_builtins.str]] = None,
+            cache: pulumi.Input[Optional[_builtins.bool]] = None,
+            cache_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+            chunk: pulumi.Input[Optional[_builtins.bool]] = None,
+            chunk_overlap: pulumi.Input[Optional[_builtins.int]] = None,
+            chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiSearchInstanceCustomMetadataArgs', 'AiSearchInstanceCustomMetadataArgsDict']]]]] = None,
+            embedding_model: pulumi.Input[Optional[_builtins.str]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.float]] = None,
+            fusion_method: pulumi.Input[Optional[_builtins.str]] = None,
+            hybrid_search_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            index_method: pulumi.Input[Optional[Union['AiSearchInstanceIndexMethodArgs', 'AiSearchInstanceIndexMethodArgsDict']]] = None,
+            indexing_options: pulumi.Input[Optional[Union['AiSearchInstanceIndexingOptionsArgs', 'AiSearchInstanceIndexingOptionsArgsDict']]] = None,
+            last_activity: pulumi.Input[Optional[_builtins.str]] = None,
+            max_num_results: pulumi.Input[Optional[_builtins.int]] = None,
+            metadata: pulumi.Input[Optional[Union['AiSearchInstanceMetadataArgs', 'AiSearchInstanceMetadataArgsDict']]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_by: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            public_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            public_endpoint_params: pulumi.Input[Optional[Union['AiSearchInstancePublicEndpointParamsArgs', 'AiSearchInstancePublicEndpointParamsArgsDict']]] = None,
+            reranking: pulumi.Input[Optional[_builtins.bool]] = None,
+            reranking_model: pulumi.Input[Optional[_builtins.str]] = None,
+            retrieval_options: pulumi.Input[Optional[Union['AiSearchInstanceRetrievalOptionsArgs', 'AiSearchInstanceRetrievalOptionsArgsDict']]] = None,
+            rewrite_model: pulumi.Input[Optional[_builtins.str]] = None,
+            rewrite_query: pulumi.Input[Optional[_builtins.bool]] = None,
+            score_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            source_params: pulumi.Input[Optional[Union['AiSearchInstanceSourceParamsArgs', 'AiSearchInstanceSourceParamsArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            summarization: pulumi.Input[Optional[_builtins.bool]] = None,
+            summarization_model: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_interval: pulumi.Input[Optional[_builtins.float]] = None,
+            system_prompt_aisearch: pulumi.Input[Optional[_builtins.str]] = None,
+            system_prompt_index_summarization: pulumi.Input[Optional[_builtins.str]] = None,
+            system_prompt_rewrite_query: pulumi.Input[Optional[_builtins.str]] = None,
+            token_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vectorize_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiSearchInstance':
         """
         Get an existing AiSearchInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

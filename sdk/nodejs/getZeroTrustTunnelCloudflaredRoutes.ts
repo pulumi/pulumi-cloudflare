@@ -210,45 +210,45 @@ export interface GetZeroTrustTunnelCloudflaredRoutesOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Optional remark describing the route.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      */
-    existedAt?: pulumi.Input<string>;
+    existedAt?: pulumi.Input<string | undefined>;
     /**
      * If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.
      */
-    isDeleted?: pulumi.Input<boolean>;
+    isDeleted?: pulumi.Input<boolean | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * If set, only list routes that are contained within this IP range.
      */
-    networkSubset?: pulumi.Input<string>;
+    networkSubset?: pulumi.Input<string | undefined>;
     /**
      * If set, only list routes that contain this IP range.
      */
-    networkSuperset?: pulumi.Input<string>;
+    networkSuperset?: pulumi.Input<string | undefined>;
     /**
      * UUID of the route.
      */
-    routeId?: pulumi.Input<string>;
+    routeId?: pulumi.Input<string | undefined>;
     /**
      * The types of tunnels to filter by, separated by commas.
      */
-    tunTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    tunTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * UUID of the tunnel.
      */
-    tunnelId?: pulumi.Input<string>;
+    tunnelId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the virtual network.
      */
-    virtualNetworkId?: pulumi.Input<string>;
+    virtualNetworkId?: pulumi.Input<string | undefined>;
 }

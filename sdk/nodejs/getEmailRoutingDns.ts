@@ -106,9 +106,9 @@ export interface GetEmailRoutingDnsOutputArgs {
     /**
      * Domain of your zone.
      */
-    subdomain?: pulumi.Input<string>;
+    subdomain?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

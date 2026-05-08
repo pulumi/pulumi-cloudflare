@@ -147,8 +147,8 @@ def get_organization(filter: Optional[Union['GetOrganizationFilterArgs', 'GetOrg
         organization_id=pulumi.get(__ret__, 'organization_id'),
         parent=pulumi.get(__ret__, 'parent'),
         profile=pulumi.get(__ret__, 'profile'))
-def get_organization_output(filter: Optional[pulumi.Input[Optional[Union['GetOrganizationFilterArgs', 'GetOrganizationFilterArgsDict']]]] = None,
-                            organization_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_organization_output(filter: pulumi.Input[Optional[Optional[Union['GetOrganizationFilterArgs', 'GetOrganizationFilterArgsDict']]]] = None,
+                            organization_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationResult]:
     """
     Accepted Permissions

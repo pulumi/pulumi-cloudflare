@@ -153,40 +153,40 @@ export interface AccessRuleState {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The available actions that a rule can apply to a matched request.
      */
-    allowedModes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedModes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The rule configuration.
      */
-    configuration?: pulumi.Input<inputs.AccessRuleConfiguration>;
+    configuration?: pulumi.Input<inputs.AccessRuleConfiguration | undefined>;
     /**
      * The timestamp of when the rule was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * The action to apply to a matched request.
      * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of when the rule was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * An informative summary of the rule, typically used as a reminder or explanation.
      */
-    notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
     /**
      * All zones owned by the user will have the rule applied.
      */
-    scope?: pulumi.Input<inputs.AccessRuleScope>;
+    scope?: pulumi.Input<inputs.AccessRuleScope | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -196,7 +196,7 @@ export interface AccessRuleArgs {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The rule configuration.
      */
@@ -209,9 +209,9 @@ export interface AccessRuleArgs {
     /**
      * An informative summary of the rule, typically used as a reminder or explanation.
      */
-    notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

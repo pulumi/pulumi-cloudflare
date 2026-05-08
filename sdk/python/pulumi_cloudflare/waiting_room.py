@@ -25,24 +25,24 @@ class WaitingRoomArgs:
                  name: pulumi.Input[_builtins.str],
                  new_users_per_minute: pulumi.Input[_builtins.int],
                  total_active_users: pulumi.Input[_builtins.int],
-                 additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]] = None,
-                 cookie_attributes: Optional[pulumi.Input['WaitingRoomCookieAttributesArgs']] = None,
-                 cookie_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_template_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_session_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_origin_commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 json_response_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 queueing_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 queueing_status_code: Optional[pulumi.Input[_builtins.int]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 turnstile_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 additional_routes: pulumi.Input[Optional[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]] = None,
+                 cookie_attributes: pulumi.Input[Optional['WaitingRoomCookieAttributesArgs']] = None,
+                 cookie_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_template_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_session_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_origin_commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 json_response_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 queueing_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 queueing_status_code: pulumi.Input[Optional[_builtins.int]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 turnstile_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WaitingRoom resource.
 
@@ -267,55 +267,55 @@ class WaitingRoomArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalRoutes")
-    def additional_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]]:
+    def additional_routes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]]:
         """
         Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
         """
         return pulumi.get(self, "additional_routes")
 
     @additional_routes.setter
-    def additional_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]]):
+    def additional_routes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]]):
         pulumi.set(self, "additional_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="cookieAttributes")
-    def cookie_attributes(self) -> Optional[pulumi.Input['WaitingRoomCookieAttributesArgs']]:
+    def cookie_attributes(self) -> pulumi.Input[Optional['WaitingRoomCookieAttributesArgs']]:
         """
         Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
         """
         return pulumi.get(self, "cookie_attributes")
 
     @cookie_attributes.setter
-    def cookie_attributes(self, value: Optional[pulumi.Input['WaitingRoomCookieAttributesArgs']]):
+    def cookie_attributes(self, value: pulumi.Input[Optional['WaitingRoomCookieAttributesArgs']]):
         pulumi.set(self, "cookie_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="cookieSuffix")
-    def cookie_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cookie_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
         """
         return pulumi.get(self, "cookie_suffix")
 
     @cookie_suffix.setter
-    def cookie_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cookie_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cookie_suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="customPageHtml")
-    def custom_page_html(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_page_html(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
         """
         return pulumi.get(self, "custom_page_html")
 
     @custom_page_html.setter
-    def custom_page_html(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_page_html(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_page_html", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTemplateLanguage")
-    def default_template_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_template_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used.
         Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
@@ -323,48 +323,48 @@ class WaitingRoomArgs:
         return pulumi.get(self, "default_template_language")
 
     @default_template_language.setter
-    def default_template_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_template_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_template_language", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A note that you can use to add more details about the waiting room.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSessionRenewal")
-    def disable_session_renewal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_session_renewal(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.
         """
         return pulumi.get(self, "disable_session_renewal")
 
     @disable_session_renewal.setter
-    def disable_session_renewal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_session_renewal(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_session_renewal", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledOriginCommands")
-    def enabled_origin_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def enabled_origin_commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of enabled origin commands.
         """
         return pulumi.get(self, "enabled_origin_commands")
 
     @enabled_origin_commands.setter
-    def enabled_origin_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def enabled_origin_commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "enabled_origin_commands", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonResponseEnabled")
-    def json_response_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def json_response_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields:
         1. `inWaitingRoom`: Boolean indicating if the user is in the waiting room (always **true**).
@@ -461,36 +461,36 @@ class WaitingRoomArgs:
         return pulumi.get(self, "json_response_enabled")
 
     @json_response_enabled.setter
-    def json_response_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def json_response_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "json_response_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="queueAll")
-    def queue_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def queue_all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable.
         """
         return pulumi.get(self, "queue_all")
 
     @queue_all.setter
-    def queue_all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def queue_all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "queue_all", value)
 
     @_builtins.property
     @pulumi.getter(name="queueingMethod")
-    def queueing_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queueing_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are:
         1. `fifo` **(default)**: First-In-First-Out queue where customers gain access in the order they arrived.
@@ -502,12 +502,12 @@ class WaitingRoomArgs:
         return pulumi.get(self, "queueing_method")
 
     @queueing_method.setter
-    def queueing_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queueing_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queueing_method", value)
 
     @_builtins.property
     @pulumi.getter(name="queueingStatusCode")
-    def queueing_status_code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def queueing_status_code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         HTTP status code returned to a user while in the queue.
         Available values: 200, 202, 429.
@@ -515,36 +515,36 @@ class WaitingRoomArgs:
         return pulumi.get(self, "queueing_status_code")
 
     @queueing_status_code.setter
-    def queueing_status_code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def queueing_status_code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "queueing_status_code", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionDuration")
-    def session_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.
         """
         return pulumi.get(self, "session_duration")
 
     @session_duration.setter
-    def session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_duration", value)
 
     @_builtins.property
     @pulumi.getter
-    def suspended(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def suspended(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
         """
         return pulumi.get(self, "suspended")
 
     @suspended.setter
-    def suspended(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def suspended(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "suspended", value)
 
     @_builtins.property
     @pulumi.getter(name="turnstileAction")
-    def turnstile_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def turnstile_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which action to take when a bot is detected using Turnstile. `log` will
         have no impact on queueing behavior, simply keeping track of how many
@@ -556,12 +556,12 @@ class WaitingRoomArgs:
         return pulumi.get(self, "turnstile_action")
 
     @turnstile_action.setter
-    def turnstile_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def turnstile_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "turnstile_action", value)
 
     @_builtins.property
     @pulumi.getter(name="turnstileMode")
-    def turnstile_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def turnstile_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which Turnstile widget type to use for detecting bot traffic. See
         [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types)
@@ -573,51 +573,51 @@ class WaitingRoomArgs:
         return pulumi.get(self, "turnstile_mode")
 
     @turnstile_mode.setter
-    def turnstile_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def turnstile_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "turnstile_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _WaitingRoomState:
     def __init__(__self__, *,
-                 additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]] = None,
-                 cookie_attributes: Optional[pulumi.Input['WaitingRoomCookieAttributesArgs']] = None,
-                 cookie_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_template_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_session_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_origin_commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_response_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_users_per_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 next_event_prequeue_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_event_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 queueing_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 queueing_status_code: Optional[pulumi.Input[_builtins.int]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 total_active_users: Optional[pulumi.Input[_builtins.int]] = None,
-                 turnstile_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 additional_routes: pulumi.Input[Optional[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]] = None,
+                 cookie_attributes: pulumi.Input[Optional['WaitingRoomCookieAttributesArgs']] = None,
+                 cookie_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_template_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_session_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_origin_commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_response_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_users_per_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 next_event_prequeue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_event_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 queueing_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 queueing_status_code: pulumi.Input[Optional[_builtins.int]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 total_active_users: pulumi.Input[Optional[_builtins.int]] = None,
+                 turnstile_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoom resources.
 
@@ -808,64 +808,64 @@ class _WaitingRoomState:
 
     @_builtins.property
     @pulumi.getter(name="additionalRoutes")
-    def additional_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]]:
+    def additional_routes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]]:
         """
         Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
         """
         return pulumi.get(self, "additional_routes")
 
     @additional_routes.setter
-    def additional_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]]):
+    def additional_routes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]]):
         pulumi.set(self, "additional_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="cookieAttributes")
-    def cookie_attributes(self) -> Optional[pulumi.Input['WaitingRoomCookieAttributesArgs']]:
+    def cookie_attributes(self) -> pulumi.Input[Optional['WaitingRoomCookieAttributesArgs']]:
         """
         Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
         """
         return pulumi.get(self, "cookie_attributes")
 
     @cookie_attributes.setter
-    def cookie_attributes(self, value: Optional[pulumi.Input['WaitingRoomCookieAttributesArgs']]):
+    def cookie_attributes(self, value: pulumi.Input[Optional['WaitingRoomCookieAttributesArgs']]):
         pulumi.set(self, "cookie_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="cookieSuffix")
-    def cookie_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cookie_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
         """
         return pulumi.get(self, "cookie_suffix")
 
     @cookie_suffix.setter
-    def cookie_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cookie_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cookie_suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter(name="customPageHtml")
-    def custom_page_html(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_page_html(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
         """
         return pulumi.get(self, "custom_page_html")
 
     @custom_page_html.setter
-    def custom_page_html(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_page_html(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_page_html", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTemplateLanguage")
-    def default_template_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_template_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used.
         Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
@@ -873,60 +873,60 @@ class _WaitingRoomState:
         return pulumi.get(self, "default_template_language")
 
     @default_template_language.setter
-    def default_template_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_template_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_template_language", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A note that you can use to add more details about the waiting room.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSessionRenewal")
-    def disable_session_renewal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_session_renewal(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.
         """
         return pulumi.get(self, "disable_session_renewal")
 
     @disable_session_renewal.setter
-    def disable_session_renewal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_session_renewal(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_session_renewal", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledOriginCommands")
-    def enabled_origin_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def enabled_origin_commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of enabled origin commands.
         """
         return pulumi.get(self, "enabled_origin_commands")
 
     @enabled_origin_commands.setter
-    def enabled_origin_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def enabled_origin_commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "enabled_origin_commands", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonResponseEnabled")
-    def json_response_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def json_response_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields:
         1. `inWaitingRoom`: Boolean indicating if the user is in the waiting room (always **true**).
@@ -1023,93 +1023,93 @@ class _WaitingRoomState:
         return pulumi.get(self, "json_response_enabled")
 
     @json_response_enabled.setter
-    def json_response_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def json_response_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "json_response_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="newUsersPerMinute")
-    def new_users_per_minute(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def new_users_per_minute(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
         """
         return pulumi.get(self, "new_users_per_minute")
 
     @new_users_per_minute.setter
-    def new_users_per_minute(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def new_users_per_minute(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "new_users_per_minute", value)
 
     @_builtins.property
     @pulumi.getter(name="nextEventPrequeueStartTime")
-    def next_event_prequeue_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_event_prequeue_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An ISO 8601 timestamp that marks when the next event will begin queueing.
         """
         return pulumi.get(self, "next_event_prequeue_start_time")
 
     @next_event_prequeue_start_time.setter
-    def next_event_prequeue_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_event_prequeue_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_event_prequeue_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="nextEventStartTime")
-    def next_event_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_event_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An ISO 8601 timestamp that marks when the next event will start.
         """
         return pulumi.get(self, "next_event_start_time")
 
     @next_event_start_time.setter
-    def next_event_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_event_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_event_start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="queueAll")
-    def queue_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def queue_all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable.
         """
         return pulumi.get(self, "queue_all")
 
     @queue_all.setter
-    def queue_all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def queue_all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "queue_all", value)
 
     @_builtins.property
     @pulumi.getter(name="queueingMethod")
-    def queueing_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queueing_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are:
         1. `fifo` **(default)**: First-In-First-Out queue where customers gain access in the order they arrived.
@@ -1121,12 +1121,12 @@ class _WaitingRoomState:
         return pulumi.get(self, "queueing_method")
 
     @queueing_method.setter
-    def queueing_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queueing_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queueing_method", value)
 
     @_builtins.property
     @pulumi.getter(name="queueingStatusCode")
-    def queueing_status_code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def queueing_status_code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         HTTP status code returned to a user while in the queue.
         Available values: 200, 202, 429.
@@ -1134,48 +1134,48 @@ class _WaitingRoomState:
         return pulumi.get(self, "queueing_status_code")
 
     @queueing_status_code.setter
-    def queueing_status_code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def queueing_status_code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "queueing_status_code", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionDuration")
-    def session_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.
         """
         return pulumi.get(self, "session_duration")
 
     @session_duration.setter
-    def session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_duration", value)
 
     @_builtins.property
     @pulumi.getter
-    def suspended(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def suspended(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
         """
         return pulumi.get(self, "suspended")
 
     @suspended.setter
-    def suspended(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def suspended(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "suspended", value)
 
     @_builtins.property
     @pulumi.getter(name="totalActiveUsers")
-    def total_active_users(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_active_users(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
         """
         return pulumi.get(self, "total_active_users")
 
     @total_active_users.setter
-    def total_active_users(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_active_users(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_active_users", value)
 
     @_builtins.property
     @pulumi.getter(name="turnstileAction")
-    def turnstile_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def turnstile_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which action to take when a bot is detected using Turnstile. `log` will
         have no impact on queueing behavior, simply keeping track of how many
@@ -1187,12 +1187,12 @@ class _WaitingRoomState:
         return pulumi.get(self, "turnstile_action")
 
     @turnstile_action.setter
-    def turnstile_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def turnstile_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "turnstile_action", value)
 
     @_builtins.property
     @pulumi.getter(name="turnstileMode")
-    def turnstile_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def turnstile_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which Turnstile widget type to use for detecting bot traffic. See
         [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types)
@@ -1204,19 +1204,19 @@ class _WaitingRoomState:
         return pulumi.get(self, "turnstile_mode")
 
     @turnstile_mode.setter
-    def turnstile_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def turnstile_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "turnstile_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -1226,28 +1226,28 @@ class WaitingRoom(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]]] = None,
-                 cookie_attributes: Optional[pulumi.Input[Union['WaitingRoomCookieAttributesArgs', 'WaitingRoomCookieAttributesArgsDict']]] = None,
-                 cookie_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_template_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_session_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_origin_commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_response_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_users_per_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 queueing_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 queueing_status_code: Optional[pulumi.Input[_builtins.int]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 total_active_users: Optional[pulumi.Input[_builtins.int]] = None,
-                 turnstile_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 additional_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]]] = None,
+                 cookie_attributes: pulumi.Input[Optional[Union['WaitingRoomCookieAttributesArgs', 'WaitingRoomCookieAttributesArgsDict']]] = None,
+                 cookie_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_template_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_session_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_origin_commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_response_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_users_per_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 queueing_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 queueing_status_code: pulumi.Input[Optional[_builtins.int]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 total_active_users: pulumi.Input[Optional[_builtins.int]] = None,
+                 turnstile_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -1502,28 +1502,28 @@ class WaitingRoom(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]]] = None,
-                 cookie_attributes: Optional[pulumi.Input[Union['WaitingRoomCookieAttributesArgs', 'WaitingRoomCookieAttributesArgsDict']]] = None,
-                 cookie_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_template_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_session_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_origin_commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_response_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_users_per_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 queueing_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 queueing_status_code: Optional[pulumi.Input[_builtins.int]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 total_active_users: Optional[pulumi.Input[_builtins.int]] = None,
-                 turnstile_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 additional_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]]] = None,
+                 cookie_attributes: pulumi.Input[Optional[Union['WaitingRoomCookieAttributesArgs', 'WaitingRoomCookieAttributesArgsDict']]] = None,
+                 cookie_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_template_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_session_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_origin_commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_response_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_users_per_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 queueing_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 queueing_status_code: pulumi.Input[Optional[_builtins.int]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 total_active_users: pulumi.Input[Optional[_builtins.int]] = None,
+                 turnstile_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1577,32 +1577,32 @@ class WaitingRoom(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]]] = None,
-            cookie_attributes: Optional[pulumi.Input[Union['WaitingRoomCookieAttributesArgs', 'WaitingRoomCookieAttributesArgsDict']]] = None,
-            cookie_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-            default_template_language: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_session_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled_origin_commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            json_response_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            new_users_per_minute: Optional[pulumi.Input[_builtins.int]] = None,
-            next_event_prequeue_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            next_event_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None,
-            queue_all: Optional[pulumi.Input[_builtins.bool]] = None,
-            queueing_method: Optional[pulumi.Input[_builtins.str]] = None,
-            queueing_status_code: Optional[pulumi.Input[_builtins.int]] = None,
-            session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-            total_active_users: Optional[pulumi.Input[_builtins.int]] = None,
-            turnstile_action: Optional[pulumi.Input[_builtins.str]] = None,
-            turnstile_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WaitingRoom':
+            additional_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WaitingRoomAdditionalRouteArgs', 'WaitingRoomAdditionalRouteArgsDict']]]]] = None,
+            cookie_attributes: pulumi.Input[Optional[Union['WaitingRoomCookieAttributesArgs', 'WaitingRoomCookieAttributesArgsDict']]] = None,
+            cookie_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+            default_template_language: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_session_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled_origin_commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            json_response_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            new_users_per_minute: pulumi.Input[Optional[_builtins.int]] = None,
+            next_event_prequeue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            next_event_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_all: pulumi.Input[Optional[_builtins.bool]] = None,
+            queueing_method: pulumi.Input[Optional[_builtins.str]] = None,
+            queueing_status_code: pulumi.Input[Optional[_builtins.int]] = None,
+            session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+            total_active_users: pulumi.Input[Optional[_builtins.int]] = None,
+            turnstile_action: pulumi.Input[Optional[_builtins.str]] = None,
+            turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WaitingRoom':
         """
         Get an existing WaitingRoom resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

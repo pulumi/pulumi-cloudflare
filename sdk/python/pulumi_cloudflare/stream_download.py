@@ -22,7 +22,7 @@ __all__ = ['StreamDownloadArgs', 'StreamDownload']
 class StreamDownloadArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamDownload resource.
 
@@ -47,24 +47,24 @@ class StreamDownloadArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
 class _StreamDownloadState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 audio: Optional[pulumi.Input['StreamDownloadAudioArgs']] = None,
-                 default: Optional[pulumi.Input['StreamDownloadDefaultArgs']] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 audio: pulumi.Input[Optional['StreamDownloadAudioArgs']] = None,
+                 default: pulumi.Input[Optional['StreamDownloadDefaultArgs']] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamDownload resources.
 
@@ -84,50 +84,50 @@ class _StreamDownloadState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def audio(self) -> Optional[pulumi.Input['StreamDownloadAudioArgs']]:
+    def audio(self) -> pulumi.Input[Optional['StreamDownloadAudioArgs']]:
         """
         The audio-only download. Only present if this download type has been created.
         """
         return pulumi.get(self, "audio")
 
     @audio.setter
-    def audio(self, value: Optional[pulumi.Input['StreamDownloadAudioArgs']]):
+    def audio(self, value: pulumi.Input[Optional['StreamDownloadAudioArgs']]):
         pulumi.set(self, "audio", value)
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input['StreamDownloadDefaultArgs']]:
+    def default(self) -> pulumi.Input[Optional['StreamDownloadDefaultArgs']]:
         """
         The default video download. Only present if this download type has been created.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input['StreamDownloadDefaultArgs']]):
+    def default(self, value: pulumi.Input[Optional['StreamDownloadDefaultArgs']]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Cloudflare-generated unique identifier for a media item.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
 
@@ -137,8 +137,8 @@ class StreamDownload(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -210,8 +210,8 @@ class StreamDownload(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -237,10 +237,10 @@ class StreamDownload(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            audio: Optional[pulumi.Input[Union['StreamDownloadAudioArgs', 'StreamDownloadAudioArgsDict']]] = None,
-            default: Optional[pulumi.Input[Union['StreamDownloadDefaultArgs', 'StreamDownloadDefaultArgsDict']]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None) -> 'StreamDownload':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            audio: pulumi.Input[Optional[Union['StreamDownloadAudioArgs', 'StreamDownloadAudioArgsDict']]] = None,
+            default: pulumi.Input[Optional[Union['StreamDownloadDefaultArgs', 'StreamDownloadDefaultArgsDict']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None) -> 'StreamDownload':
         """
         Get an existing StreamDownload resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -20,10 +20,10 @@ __all__ = ['ZoneDnssecArgs', 'ZoneDnssec']
 class ZoneDnssecArgs:
     def __init__(__self__, *,
                  zone_id: pulumi.Input[_builtins.str],
-                 dnssec_multi_signer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dnssec_presigned: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dnssec_use_nsec3: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 dnssec_multi_signer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dnssec_presigned: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dnssec_use_nsec3: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneDnssec resource.
 
@@ -72,7 +72,7 @@ class ZoneDnssecArgs:
 
     @_builtins.property
     @pulumi.getter(name="dnssecMultiSigner")
-    def dnssec_multi_signer(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dnssec_multi_signer(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, multi-signer DNSSEC is enabled on the zone, allowing multiple
         providers to serve a DNSSEC-signed zone at the same time.
@@ -82,12 +82,12 @@ class ZoneDnssecArgs:
         return pulumi.get(self, "dnssec_multi_signer")
 
     @dnssec_multi_signer.setter
-    def dnssec_multi_signer(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dnssec_multi_signer(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dnssec_multi_signer", value)
 
     @_builtins.property
     @pulumi.getter(name="dnssecPresigned")
-    def dnssec_presigned(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dnssec_presigned(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, allows Cloudflare to transfer in a DNSSEC-signed zone
         including signatures from an external provider, without requiring
@@ -99,12 +99,12 @@ class ZoneDnssecArgs:
         return pulumi.get(self, "dnssec_presigned")
 
     @dnssec_presigned.setter
-    def dnssec_presigned(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dnssec_presigned(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dnssec_presigned", value)
 
     @_builtins.property
     @pulumi.getter(name="dnssecUseNsec3")
-    def dnssec_use_nsec3(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dnssec_use_nsec3(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, enables the use of NSEC3 together with DNSSEC on the zone.
         Combined with setting dnssec_presigned to true, this enables the use of
@@ -117,12 +117,12 @@ class ZoneDnssecArgs:
         return pulumi.get(self, "dnssec_use_nsec3")
 
     @dnssec_use_nsec3.setter
-    def dnssec_use_nsec3(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dnssec_use_nsec3(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dnssec_use_nsec3", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of DNSSEC, based on user-desired state and presence of necessary records.
         Available values: "active", "disabled".
@@ -130,28 +130,28 @@ class ZoneDnssecArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _ZoneDnssecState:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dnssec_multi_signer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dnssec_presigned: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dnssec_use_nsec3: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ds: Optional[pulumi.Input[_builtins.str]] = None,
-                 flags: Optional[pulumi.Input[_builtins.float]] = None,
-                 key_tag: Optional[pulumi.Input[_builtins.float]] = None,
-                 key_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dnssec_multi_signer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dnssec_presigned: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dnssec_use_nsec3: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ds: pulumi.Input[Optional[_builtins.str]] = None,
+                 flags: pulumi.Input[Optional[_builtins.float]] = None,
+                 key_tag: pulumi.Input[Optional[_builtins.float]] = None,
+                 key_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneDnssec resources.
 
@@ -219,55 +219,55 @@ class _ZoneDnssecState:
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Algorithm key code.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def digest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Digest hash.
         """
         return pulumi.get(self, "digest")
 
     @digest.setter
-    def digest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest", value)
 
     @_builtins.property
     @pulumi.getter(name="digestAlgorithm")
-    def digest_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of digest algorithm.
         """
         return pulumi.get(self, "digest_algorithm")
 
     @digest_algorithm.setter
-    def digest_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="digestType")
-    def digest_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Coded type for digest algorithm.
         """
         return pulumi.get(self, "digest_type")
 
     @digest_type.setter
-    def digest_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dnssecMultiSigner")
-    def dnssec_multi_signer(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dnssec_multi_signer(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, multi-signer DNSSEC is enabled on the zone, allowing multiple
         providers to serve a DNSSEC-signed zone at the same time.
@@ -277,12 +277,12 @@ class _ZoneDnssecState:
         return pulumi.get(self, "dnssec_multi_signer")
 
     @dnssec_multi_signer.setter
-    def dnssec_multi_signer(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dnssec_multi_signer(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dnssec_multi_signer", value)
 
     @_builtins.property
     @pulumi.getter(name="dnssecPresigned")
-    def dnssec_presigned(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dnssec_presigned(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, allows Cloudflare to transfer in a DNSSEC-signed zone
         including signatures from an external provider, without requiring
@@ -294,12 +294,12 @@ class _ZoneDnssecState:
         return pulumi.get(self, "dnssec_presigned")
 
     @dnssec_presigned.setter
-    def dnssec_presigned(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dnssec_presigned(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dnssec_presigned", value)
 
     @_builtins.property
     @pulumi.getter(name="dnssecUseNsec3")
-    def dnssec_use_nsec3(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dnssec_use_nsec3(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, enables the use of NSEC3 together with DNSSEC on the zone.
         Combined with setting dnssec_presigned to true, this enables the use of
@@ -312,84 +312,84 @@ class _ZoneDnssecState:
         return pulumi.get(self, "dnssec_use_nsec3")
 
     @dnssec_use_nsec3.setter
-    def dnssec_use_nsec3(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dnssec_use_nsec3(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dnssec_use_nsec3", value)
 
     @_builtins.property
     @pulumi.getter
-    def ds(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ds(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full DS record.
         """
         return pulumi.get(self, "ds")
 
     @ds.setter
-    def ds(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ds(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ds", value)
 
     @_builtins.property
     @pulumi.getter
-    def flags(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def flags(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Flag for DNSSEC record.
         """
         return pulumi.get(self, "flags")
 
     @flags.setter
-    def flags(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def flags(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "flags", value)
 
     @_builtins.property
     @pulumi.getter(name="keyTag")
-    def key_tag(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def key_tag(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Code for key tag.
         """
         return pulumi.get(self, "key_tag")
 
     @key_tag.setter
-    def key_tag(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def key_tag(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "key_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="keyType")
-    def key_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Algorithm key type.
         """
         return pulumi.get(self, "key_type")
 
     @key_type.setter
-    def key_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_type", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When DNSSEC was last modified.
         """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Public key for DS record.
         """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
-    def public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of DNSSEC, based on user-desired state and presence of necessary records.
         Available values: "active", "disabled".
@@ -397,19 +397,19 @@ class _ZoneDnssecState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -419,11 +419,11 @@ class ZoneDnssec(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dnssec_multi_signer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dnssec_presigned: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dnssec_use_nsec3: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dnssec_multi_signer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dnssec_presigned: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dnssec_use_nsec3: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -523,11 +523,11 @@ class ZoneDnssec(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dnssec_multi_signer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dnssec_presigned: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dnssec_use_nsec3: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dnssec_multi_signer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dnssec_presigned: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dnssec_use_nsec3: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -564,21 +564,21 @@ class ZoneDnssec(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            digest: Optional[pulumi.Input[_builtins.str]] = None,
-            digest_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            digest_type: Optional[pulumi.Input[_builtins.str]] = None,
-            dnssec_multi_signer: Optional[pulumi.Input[_builtins.bool]] = None,
-            dnssec_presigned: Optional[pulumi.Input[_builtins.bool]] = None,
-            dnssec_use_nsec3: Optional[pulumi.Input[_builtins.bool]] = None,
-            ds: Optional[pulumi.Input[_builtins.str]] = None,
-            flags: Optional[pulumi.Input[_builtins.float]] = None,
-            key_tag: Optional[pulumi.Input[_builtins.float]] = None,
-            key_type: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            public_key: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZoneDnssec':
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            digest: pulumi.Input[Optional[_builtins.str]] = None,
+            digest_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            digest_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dnssec_multi_signer: pulumi.Input[Optional[_builtins.bool]] = None,
+            dnssec_presigned: pulumi.Input[Optional[_builtins.bool]] = None,
+            dnssec_use_nsec3: pulumi.Input[Optional[_builtins.bool]] = None,
+            ds: pulumi.Input[Optional[_builtins.str]] = None,
+            flags: pulumi.Input[Optional[_builtins.float]] = None,
+            key_tag: pulumi.Input[Optional[_builtins.float]] = None,
+            key_type: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZoneDnssec':
         """
         Get an existing ZoneDnssec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

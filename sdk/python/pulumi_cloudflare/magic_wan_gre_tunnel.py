@@ -26,13 +26,13 @@ class MagicWanGreTunnelArgs:
                  customer_gre_endpoint: pulumi.Input[_builtins.str],
                  interface_address: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 automatic_return_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp: Optional[pulumi.Input['MagicWanGreTunnelBgpArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check: Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']] = None,
-                 interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 automatic_return_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp: pulumi.Input[Optional['MagicWanGreTunnelBgpArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check: pulumi.Input[Optional['MagicWanGreTunnelHealthCheckArgs']] = None,
+                 interface_address6: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a MagicWanGreTunnel resource.
 
@@ -129,101 +129,101 @@ class MagicWanGreTunnelArgs:
 
     @_builtins.property
     @pulumi.getter(name="automaticReturnRouting")
-    def automatic_return_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def automatic_return_routing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
         """
         return pulumi.get(self, "automatic_return_routing")
 
     @automatic_return_routing.setter
-    def automatic_return_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def automatic_return_routing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "automatic_return_routing", value)
 
     @_builtins.property
     @pulumi.getter
-    def bgp(self) -> Optional[pulumi.Input['MagicWanGreTunnelBgpArgs']]:
+    def bgp(self) -> pulumi.Input[Optional['MagicWanGreTunnelBgpArgs']]:
         return pulumi.get(self, "bgp")
 
     @bgp.setter
-    def bgp(self, value: Optional[pulumi.Input['MagicWanGreTunnelBgpArgs']]):
+    def bgp(self, value: pulumi.Input[Optional['MagicWanGreTunnelBgpArgs']]):
         pulumi.set(self, "bgp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the GRE tunnel.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheck")
-    def health_check(self) -> Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']]:
+    def health_check(self) -> pulumi.Input[Optional['MagicWanGreTunnelHealthCheckArgs']]:
         return pulumi.get(self, "health_check")
 
     @health_check.setter
-    def health_check(self, value: Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']]):
+    def health_check(self, value: pulumi.Input[Optional['MagicWanGreTunnelHealthCheckArgs']]):
         pulumi.set(self, "health_check", value)
 
     @_builtins.property
     @pulumi.getter(name="interfaceAddress6")
-    def interface_address6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface_address6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
         """
         return pulumi.get(self, "interface_address6")
 
     @interface_address6.setter
-    def interface_address6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface_address6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface_address6", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time To Live (TTL) in number of hops of the GRE tunnel.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
 
 @pulumi.input_type
 class _MagicWanGreTunnelState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 automatic_return_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp: Optional[pulumi.Input['MagicWanGreTunnelBgpArgs']] = None,
-                 bgp_status: Optional[pulumi.Input['MagicWanGreTunnelBgpStatusArgs']] = None,
-                 cloudflare_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check: Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']] = None,
-                 interface_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 automatic_return_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp: pulumi.Input[Optional['MagicWanGreTunnelBgpArgs']] = None,
+                 bgp_status: pulumi.Input[Optional['MagicWanGreTunnelBgpStatusArgs']] = None,
+                 cloudflare_gre_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_gre_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check: pulumi.Input[Optional['MagicWanGreTunnelHealthCheckArgs']] = None,
+                 interface_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface_address6: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering MagicWanGreTunnel resources.
 
@@ -273,173 +273,173 @@ class _MagicWanGreTunnelState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="automaticReturnRouting")
-    def automatic_return_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def automatic_return_routing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
         """
         return pulumi.get(self, "automatic_return_routing")
 
     @automatic_return_routing.setter
-    def automatic_return_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def automatic_return_routing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "automatic_return_routing", value)
 
     @_builtins.property
     @pulumi.getter
-    def bgp(self) -> Optional[pulumi.Input['MagicWanGreTunnelBgpArgs']]:
+    def bgp(self) -> pulumi.Input[Optional['MagicWanGreTunnelBgpArgs']]:
         return pulumi.get(self, "bgp")
 
     @bgp.setter
-    def bgp(self, value: Optional[pulumi.Input['MagicWanGreTunnelBgpArgs']]):
+    def bgp(self, value: pulumi.Input[Optional['MagicWanGreTunnelBgpArgs']]):
         pulumi.set(self, "bgp", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpStatus")
-    def bgp_status(self) -> Optional[pulumi.Input['MagicWanGreTunnelBgpStatusArgs']]:
+    def bgp_status(self) -> pulumi.Input[Optional['MagicWanGreTunnelBgpStatusArgs']]:
         return pulumi.get(self, "bgp_status")
 
     @bgp_status.setter
-    def bgp_status(self, value: Optional[pulumi.Input['MagicWanGreTunnelBgpStatusArgs']]):
+    def bgp_status(self, value: pulumi.Input[Optional['MagicWanGreTunnelBgpStatusArgs']]):
         pulumi.set(self, "bgp_status", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudflareGreEndpoint")
-    def cloudflare_gre_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudflare_gre_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address assigned to the Cloudflare side of the GRE tunnel.
         """
         return pulumi.get(self, "cloudflare_gre_endpoint")
 
     @cloudflare_gre_endpoint.setter
-    def cloudflare_gre_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudflare_gre_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudflare_gre_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the tunnel was created.
         """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter(name="customerGreEndpoint")
-    def customer_gre_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_gre_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address assigned to the customer side of the GRE tunnel.
         """
         return pulumi.get(self, "customer_gre_endpoint")
 
     @customer_gre_endpoint.setter
-    def customer_gre_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_gre_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_gre_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the GRE tunnel.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheck")
-    def health_check(self) -> Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']]:
+    def health_check(self) -> pulumi.Input[Optional['MagicWanGreTunnelHealthCheckArgs']]:
         return pulumi.get(self, "health_check")
 
     @health_check.setter
-    def health_check(self, value: Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']]):
+    def health_check(self, value: pulumi.Input[Optional['MagicWanGreTunnelHealthCheckArgs']]):
         pulumi.set(self, "health_check", value)
 
     @_builtins.property
     @pulumi.getter(name="interfaceAddress")
-    def interface_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         """
         return pulumi.get(self, "interface_address")
 
     @interface_address.setter
-    def interface_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface_address", value)
 
     @_builtins.property
     @pulumi.getter(name="interfaceAddress6")
-    def interface_address6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface_address6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
         """
         return pulumi.get(self, "interface_address6")
 
     @interface_address6.setter
-    def interface_address6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface_address6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface_address6", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the tunnel was last modified.
         """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time To Live (TTL) in number of hops of the GRE tunnel.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
 
@@ -449,18 +449,18 @@ class MagicWanGreTunnel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 automatic_return_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp: Optional[pulumi.Input[Union['MagicWanGreTunnelBgpArgs', 'MagicWanGreTunnelBgpArgsDict']]] = None,
-                 cloudflare_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check: Optional[pulumi.Input[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict']]] = None,
-                 interface_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 automatic_return_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp: pulumi.Input[Optional[Union['MagicWanGreTunnelBgpArgs', 'MagicWanGreTunnelBgpArgsDict']]] = None,
+                 cloudflare_gre_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_gre_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check: pulumi.Input[Optional[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict']]] = None,
+                 interface_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface_address6: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -578,18 +578,18 @@ class MagicWanGreTunnel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 automatic_return_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp: Optional[pulumi.Input[Union['MagicWanGreTunnelBgpArgs', 'MagicWanGreTunnelBgpArgsDict']]] = None,
-                 cloudflare_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check: Optional[pulumi.Input[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict']]] = None,
-                 interface_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 automatic_return_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp: pulumi.Input[Optional[Union['MagicWanGreTunnelBgpArgs', 'MagicWanGreTunnelBgpArgsDict']]] = None,
+                 cloudflare_gre_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_gre_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check: pulumi.Input[Optional[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict']]] = None,
+                 interface_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface_address6: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -636,21 +636,21 @@ class MagicWanGreTunnel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            automatic_return_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-            bgp: Optional[pulumi.Input[Union['MagicWanGreTunnelBgpArgs', 'MagicWanGreTunnelBgpArgsDict']]] = None,
-            bgp_status: Optional[pulumi.Input[Union['MagicWanGreTunnelBgpStatusArgs', 'MagicWanGreTunnelBgpStatusArgsDict']]] = None,
-            cloudflare_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            customer_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check: Optional[pulumi.Input[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict']]] = None,
-            interface_address: Optional[pulumi.Input[_builtins.str]] = None,
-            interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            mtu: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            ttl: Optional[pulumi.Input[_builtins.int]] = None) -> 'MagicWanGreTunnel':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            automatic_return_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+            bgp: pulumi.Input[Optional[Union['MagicWanGreTunnelBgpArgs', 'MagicWanGreTunnelBgpArgsDict']]] = None,
+            bgp_status: pulumi.Input[Optional[Union['MagicWanGreTunnelBgpStatusArgs', 'MagicWanGreTunnelBgpStatusArgsDict']]] = None,
+            cloudflare_gre_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_gre_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check: pulumi.Input[Optional[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict']]] = None,
+            interface_address: pulumi.Input[Optional[_builtins.str]] = None,
+            interface_address6: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> 'MagicWanGreTunnel':
         """
         Get an existing MagicWanGreTunnel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

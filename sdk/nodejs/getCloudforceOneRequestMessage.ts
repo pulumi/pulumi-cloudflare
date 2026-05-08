@@ -186,15 +186,15 @@ export interface GetCloudforceOneRequestMessageOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Retrieve mes  ges created after this time.
      */
-    after?: pulumi.Input<string>;
+    after?: pulumi.Input<string | undefined>;
     /**
      * Retrieve messages created before this time.
      */
-    before?: pulumi.Input<string>;
+    before?: pulumi.Input<string | undefined>;
     /**
      * Page number of results.
      */
@@ -210,10 +210,10 @@ export interface GetCloudforceOneRequestMessageOutputArgs {
     /**
      * Field to sort results by.
      */
-    sortBy?: pulumi.Input<string>;
+    sortBy?: pulumi.Input<string | undefined>;
     /**
      * Sort order (asc or desc).
      * Available values: "asc", "desc".
      */
-    sortOrder?: pulumi.Input<string>;
+    sortOrder?: pulumi.Input<string | undefined>;
 }

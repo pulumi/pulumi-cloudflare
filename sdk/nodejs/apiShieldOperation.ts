@@ -137,26 +137,26 @@ export interface ApiShieldOperationState {
     /**
      * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
      */
-    endpoint?: pulumi.Input<string>;
-    features?: pulumi.Input<inputs.ApiShieldOperationFeatures>;
+    endpoint?: pulumi.Input<string | undefined>;
+    features?: pulumi.Input<inputs.ApiShieldOperationFeatures | undefined>;
     /**
      * RFC3986-compliant host.
      */
-    host?: pulumi.Input<string>;
-    lastUpdated?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
+    lastUpdated?: pulumi.Input<string | undefined>;
     /**
      * The HTTP method used to access the endpoint.
      * Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * UUID.
      */
-    operationId?: pulumi.Input<string>;
+    operationId?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,5 +179,5 @@ export interface ApiShieldOperationArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

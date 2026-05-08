@@ -119,8 +119,8 @@ def get_api_shield(normalize: Optional[_builtins.bool] = None,
         id=pulumi.get(__ret__, 'id'),
         normalize=pulumi.get(__ret__, 'normalize'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_api_shield_output(normalize: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                          zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_api_shield_output(normalize: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                          zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiShieldResult]:
     """
     Accepted Permissions

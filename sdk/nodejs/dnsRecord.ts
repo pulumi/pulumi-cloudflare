@@ -218,76 +218,76 @@ export interface DnsRecordState {
     /**
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * When the record comment was last modified. Omitted if there is no comment.
      */
-    commentModifiedOn?: pulumi.Input<string>;
+    commentModifiedOn?: pulumi.Input<string | undefined>;
     /**
      * A valid IPv4 address.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * When the record was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Components of a CAA record.
      */
-    data?: pulumi.Input<inputs.DnsRecordData>;
+    data?: pulumi.Input<inputs.DnsRecordData | undefined>;
     /**
      * Extra Cloudflare-specific information about the record.
      */
-    meta?: pulumi.Input<string>;
+    meta?: pulumi.Input<string | undefined>;
     /**
      * When the record was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * DNS record name (or @ for the zone apex) in Punycode.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Enables private network routing to the origin.
      */
-    privateRouting?: pulumi.Input<boolean>;
+    privateRouting?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the record can be proxied by Cloudflare or not.
      */
-    proxiable?: pulumi.Input<boolean>;
+    proxiable?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the record is receiving the performance and security benefits of Cloudflare.
      */
-    proxied?: pulumi.Input<boolean>;
+    proxied?: pulumi.Input<boolean | undefined>;
     /**
      * Settings for the DNS record.
      */
-    settings?: pulumi.Input<inputs.DnsRecordSettings>;
+    settings?: pulumi.Input<inputs.DnsRecordSettings | undefined>;
     /**
      * Custom tags for the DNS record. This field has no effect on DNS responses.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When the record tags were last modified. Omitted if there are no tags.
      */
-    tagsModifiedOn?: pulumi.Input<string>;
+    tagsModifiedOn?: pulumi.Input<string | undefined>;
     /**
      * Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * Record type.
      * Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -297,15 +297,15 @@ export interface DnsRecordArgs {
     /**
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * A valid IPv4 address.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Components of a CAA record.
      */
-    data?: pulumi.Input<inputs.DnsRecordData>;
+    data?: pulumi.Input<inputs.DnsRecordData | undefined>;
     /**
      * DNS record name (or @ for the zone apex) in Punycode.
      */
@@ -313,23 +313,23 @@ export interface DnsRecordArgs {
     /**
      * Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Enables private network routing to the origin.
      */
-    privateRouting?: pulumi.Input<boolean>;
+    privateRouting?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the record is receiving the performance and security benefits of Cloudflare.
      */
-    proxied?: pulumi.Input<boolean>;
+    proxied?: pulumi.Input<boolean | undefined>;
     /**
      * Settings for the DNS record.
      */
-    settings?: pulumi.Input<inputs.DnsRecordSettings>;
+    settings?: pulumi.Input<inputs.DnsRecordSettings | undefined>;
     /**
      * Custom tags for the DNS record. This field has no effect on DNS responses.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
      */
@@ -342,5 +342,5 @@ export interface DnsRecordArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

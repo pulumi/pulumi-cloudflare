@@ -182,8 +182,8 @@ def get_token_validation_config(config_id: Optional[_builtins.str] = None,
         token_sources=pulumi.get(__ret__, 'token_sources'),
         token_type=pulumi.get(__ret__, 'token_type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_token_validation_config_output(config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                       zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_token_validation_config_output(config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                       zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTokenValidationConfigResult]:
     """
     Accepted Permissions

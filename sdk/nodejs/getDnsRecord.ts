@@ -171,10 +171,10 @@ export interface GetDnsRecordOutputArgs {
     /**
      * Identifier.
      */
-    dnsRecordId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetDnsRecordFilterArgs>;
+    dnsRecordId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetDnsRecordFilterArgs | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

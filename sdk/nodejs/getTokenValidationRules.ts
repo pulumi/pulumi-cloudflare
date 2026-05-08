@@ -121,13 +121,13 @@ export function getTokenValidationRulesOutput(args?: GetTokenValidationRulesOutp
  * A collection of arguments for invoking getTokenValidationRules.
  */
 export interface GetTokenValidationRulesOutputArgs {
-    filter?: pulumi.Input<inputs.GetTokenValidationRulesFilterArgs>;
+    filter?: pulumi.Input<inputs.GetTokenValidationRulesFilterArgs | undefined>;
     /**
      * UUID.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

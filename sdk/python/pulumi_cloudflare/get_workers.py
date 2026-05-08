@@ -156,10 +156,10 @@ def get_workers(account_id: Optional[_builtins.str] = None,
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         results=pulumi.get(__ret__, 'results'))
-def get_workers_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                       order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_workers_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                       order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersResult]:
     """
     Accepted Permissions

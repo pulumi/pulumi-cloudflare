@@ -25,11 +25,11 @@ class MagicTransitSiteAclArgs:
                  lan2: pulumi.Input['MagicTransitSiteAclLan2Args'],
                  name: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_locally: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 unidirectional: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_locally: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 unidirectional: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a MagicTransitSiteAcl resource.
 
@@ -99,74 +99,74 @@ class MagicTransitSiteAclArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for the ACL.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardLocally")
-    def forward_locally(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def forward_locally(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
         """
         return pulumi.get(self, "forward_locally")
 
     @forward_locally.setter
-    def forward_locally(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def forward_locally(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "forward_locally", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "protocols")
 
     @protocols.setter
-    def protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
     @pulumi.getter
-    def unidirectional(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unidirectional(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false.
         """
         return pulumi.get(self, "unidirectional")
 
     @unidirectional.setter
-    def unidirectional(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unidirectional(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unidirectional", value)
 
 
 @pulumi.input_type
 class _MagicTransitSiteAclState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_locally: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lan1: Optional[pulumi.Input['MagicTransitSiteAclLan1Args']] = None,
-                 lan2: Optional[pulumi.Input['MagicTransitSiteAclLan2Args']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 unidirectional: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_locally: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lan1: pulumi.Input[Optional['MagicTransitSiteAclLan1Args']] = None,
+                 lan2: pulumi.Input[Optional['MagicTransitSiteAclLan2Args']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 unidirectional: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering MagicTransitSiteAcl resources.
 
@@ -198,101 +198,101 @@ class _MagicTransitSiteAclState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for the ACL.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardLocally")
-    def forward_locally(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def forward_locally(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
         """
         return pulumi.get(self, "forward_locally")
 
     @forward_locally.setter
-    def forward_locally(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def forward_locally(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "forward_locally", value)
 
     @_builtins.property
     @pulumi.getter
-    def lan1(self) -> Optional[pulumi.Input['MagicTransitSiteAclLan1Args']]:
+    def lan1(self) -> pulumi.Input[Optional['MagicTransitSiteAclLan1Args']]:
         return pulumi.get(self, "lan1")
 
     @lan1.setter
-    def lan1(self, value: Optional[pulumi.Input['MagicTransitSiteAclLan1Args']]):
+    def lan1(self, value: pulumi.Input[Optional['MagicTransitSiteAclLan1Args']]):
         pulumi.set(self, "lan1", value)
 
     @_builtins.property
     @pulumi.getter
-    def lan2(self) -> Optional[pulumi.Input['MagicTransitSiteAclLan2Args']]:
+    def lan2(self) -> pulumi.Input[Optional['MagicTransitSiteAclLan2Args']]:
         return pulumi.get(self, "lan2")
 
     @lan2.setter
-    def lan2(self, value: Optional[pulumi.Input['MagicTransitSiteAclLan2Args']]):
+    def lan2(self, value: pulumi.Input[Optional['MagicTransitSiteAclLan2Args']]):
         pulumi.set(self, "lan2", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the ACL.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "protocols")
 
     @protocols.setter
-    def protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def unidirectional(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unidirectional(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false.
         """
         return pulumi.get(self, "unidirectional")
 
     @unidirectional.setter
-    def unidirectional(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unidirectional(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unidirectional", value)
 
 
@@ -302,15 +302,15 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_locally: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lan1: Optional[pulumi.Input[Union['MagicTransitSiteAclLan1Args', 'MagicTransitSiteAclLan1ArgsDict']]] = None,
-                 lan2: Optional[pulumi.Input[Union['MagicTransitSiteAclLan2Args', 'MagicTransitSiteAclLan2ArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 unidirectional: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_locally: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lan1: pulumi.Input[Optional[Union['MagicTransitSiteAclLan1Args', 'MagicTransitSiteAclLan1ArgsDict']]] = None,
+                 lan2: pulumi.Input[Optional[Union['MagicTransitSiteAclLan2Args', 'MagicTransitSiteAclLan2ArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 unidirectional: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -432,15 +432,15 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_locally: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lan1: Optional[pulumi.Input[Union['MagicTransitSiteAclLan1Args', 'MagicTransitSiteAclLan1ArgsDict']]] = None,
-                 lan2: Optional[pulumi.Input[Union['MagicTransitSiteAclLan2Args', 'MagicTransitSiteAclLan2ArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 unidirectional: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_locally: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lan1: pulumi.Input[Optional[Union['MagicTransitSiteAclLan1Args', 'MagicTransitSiteAclLan1ArgsDict']]] = None,
+                 lan2: pulumi.Input[Optional[Union['MagicTransitSiteAclLan2Args', 'MagicTransitSiteAclLan2ArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 unidirectional: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -477,15 +477,15 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            forward_locally: Optional[pulumi.Input[_builtins.bool]] = None,
-            lan1: Optional[pulumi.Input[Union['MagicTransitSiteAclLan1Args', 'MagicTransitSiteAclLan1ArgsDict']]] = None,
-            lan2: Optional[pulumi.Input[Union['MagicTransitSiteAclLan2Args', 'MagicTransitSiteAclLan2ArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            unidirectional: Optional[pulumi.Input[_builtins.bool]] = None) -> 'MagicTransitSiteAcl':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            forward_locally: pulumi.Input[Optional[_builtins.bool]] = None,
+            lan1: pulumi.Input[Optional[Union['MagicTransitSiteAclLan1Args', 'MagicTransitSiteAclLan1ArgsDict']]] = None,
+            lan2: pulumi.Input[Optional[Union['MagicTransitSiteAclLan2Args', 'MagicTransitSiteAclLan2ArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            unidirectional: pulumi.Input[Optional[_builtins.bool]] = None) -> 'MagicTransitSiteAcl':
         """
         Get an existing MagicTransitSiteAcl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

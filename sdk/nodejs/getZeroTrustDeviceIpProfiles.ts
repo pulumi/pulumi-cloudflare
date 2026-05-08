@@ -101,13 +101,13 @@ export function getZeroTrustDeviceIpProfilesOutput(args?: GetZeroTrustDeviceIpPr
  * A collection of arguments for invoking getZeroTrustDeviceIpProfiles.
  */
 export interface GetZeroTrustDeviceIpProfilesOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * The number of IP profiles to return per page.
      */
-    perPage?: pulumi.Input<number>;
+    perPage?: pulumi.Input<number | undefined>;
 }

@@ -175,9 +175,9 @@ def get_cloudforce_one_request_asset(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         request_id=pulumi.get(__ret__, 'request_id'))
-def get_cloudforce_one_request_asset_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            asset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                            request_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cloudforce_one_request_asset_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            asset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                            request_id: pulumi.Input[Optional[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudforceOneRequestAssetResult]:
     """
     Accepted Permissions

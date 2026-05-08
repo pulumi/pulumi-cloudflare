@@ -121,8 +121,8 @@ def get_api_tokens(direction: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
-def get_api_tokens_output(direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_api_tokens_output(direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiTokensResult]:
     """
     Accepted Permissions

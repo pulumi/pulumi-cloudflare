@@ -302,8 +302,8 @@ def get_pages_project(account_id: Optional[_builtins.str] = None,
         source=pulumi.get(__ret__, 'source'),
         subdomain=pulumi.get(__ret__, 'subdomain'),
         uses_functions=pulumi.get(__ret__, 'uses_functions'))
-def get_pages_project_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             project_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_pages_project_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             project_name: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPagesProjectResult]:
     """
     Accepted Permissions

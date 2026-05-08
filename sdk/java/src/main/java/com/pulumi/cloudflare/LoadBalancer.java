@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesRandomSteeringArgs;
  * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesSessionAffinityAttributesArgs;
  * import com.pulumi.cloudflare.inputs.LoadBalancerSessionAffinityAttributesArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -76,10 +76,10 @@ import javax.annotation.Nullable;
  *                 .failoverAcrossPools(true)
  *                 .build())
  *             .countryPools(Map.ofEntries(
- *                 Map.entry("GB", "abd90f38ced07c2e2f4df50b1f61d4194"),
- *                 Map.entry("US",                 
+ *                 Map.entry("GB", Arrays.asList("abd90f38ced07c2e2f4df50b1f61d4194")),
+ *                 Map.entry("US", Arrays.asList(                
  *                     "de90f38ced07c2e2f4df50b1f61d4194",
- *                     "00920f38ce07c2e2f4df50b1f61d4194")
+ *                     "00920f38ce07c2e2f4df50b1f61d4194"))
  *             ))
  *             .description("Load Balancer for www.example.com")
  *             .locationStrategy(LoadBalancerLocationStrategyArgs.builder()
@@ -88,13 +88,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .networks("string")
  *             .popPools(Map.ofEntries(
- *                 Map.entry("LAX",                 
+ *                 Map.entry("LAX", Arrays.asList(                
  *                     "de90f38ced07c2e2f4df50b1f61d4194",
- *                     "9290f38c5d07c2e2f4df57b1f61d4196"),
- *                 Map.entry("LHR",                 
+ *                     "9290f38c5d07c2e2f4df57b1f61d4196")),
+ *                 Map.entry("LHR", Arrays.asList(                
  *                     "abd90f38ced07c2e2f4df50b1f61d4194",
- *                     "f9138c5d07c2e2f4df57b1f61d4196"),
- *                 Map.entry("SJC", "00920f38ce07c2e2f4df50b1f61d4194")
+ *                     "f9138c5d07c2e2f4df57b1f61d4196")),
+ *                 Map.entry("SJC", Arrays.asList("00920f38ce07c2e2f4df50b1f61d4194"))
  *             ))
  *             .proxied(true)
  *             .randomSteering(LoadBalancerRandomSteeringArgs.builder()
@@ -105,10 +105,10 @@ import javax.annotation.Nullable;
  *                 ))
  *                 .build())
  *             .regionPools(Map.ofEntries(
- *                 Map.entry("ENAM", "00920f38ce07c2e2f4df50b1f61d4194"),
- *                 Map.entry("WNAM",                 
+ *                 Map.entry("ENAM", Arrays.asList("00920f38ce07c2e2f4df50b1f61d4194")),
+ *                 Map.entry("WNAM", Arrays.asList(                
  *                     "de90f38ced07c2e2f4df50b1f61d4194",
- *                     "9290f38c5d07c2e2f4df57b1f61d4196")
+ *                     "9290f38c5d07c2e2f4df57b1f61d4196"))
  *             ))
  *             .rules(LoadBalancerRuleArgs.builder()
  *                 .condition("http.request.uri.path contains \"/testing\"")
@@ -125,10 +125,10 @@ import javax.annotation.Nullable;
  *                         .failoverAcrossPools(true)
  *                         .build())
  *                     .countryPools(Map.ofEntries(
- *                         Map.entry("GB", "abd90f38ced07c2e2f4df50b1f61d4194"),
- *                         Map.entry("US",                         
+ *                         Map.entry("GB", Arrays.asList("abd90f38ced07c2e2f4df50b1f61d4194")),
+ *                         Map.entry("US", Arrays.asList(                        
  *                             "de90f38ced07c2e2f4df50b1f61d4194",
- *                             "00920f38ce07c2e2f4df50b1f61d4194")
+ *                             "00920f38ce07c2e2f4df50b1f61d4194"))
  *                     ))
  *                     .defaultPools(                    
  *                         "17b5962d775c646f3f9725cbc7a53df4",
@@ -140,13 +140,13 @@ import javax.annotation.Nullable;
  *                         .preferEcs("always")
  *                         .build())
  *                     .popPools(Map.ofEntries(
- *                         Map.entry("LAX",                         
+ *                         Map.entry("LAX", Arrays.asList(                        
  *                             "de90f38ced07c2e2f4df50b1f61d4194",
- *                             "9290f38c5d07c2e2f4df57b1f61d4196"),
- *                         Map.entry("LHR",                         
+ *                             "9290f38c5d07c2e2f4df57b1f61d4196")),
+ *                         Map.entry("LHR", Arrays.asList(                        
  *                             "abd90f38ced07c2e2f4df50b1f61d4194",
- *                             "f9138c5d07c2e2f4df57b1f61d4196"),
- *                         Map.entry("SJC", "00920f38ce07c2e2f4df50b1f61d4194")
+ *                             "f9138c5d07c2e2f4df57b1f61d4196")),
+ *                         Map.entry("SJC", Arrays.asList("00920f38ce07c2e2f4df50b1f61d4194"))
  *                     ))
  *                     .randomSteering(LoadBalancerRuleOverridesRandomSteeringArgs.builder()
  *                         .defaultWeight(0.2)
@@ -156,10 +156,10 @@ import javax.annotation.Nullable;
  *                         ))
  *                         .build())
  *                     .regionPools(Map.ofEntries(
- *                         Map.entry("ENAM", "00920f38ce07c2e2f4df50b1f61d4194"),
- *                         Map.entry("WNAM",                         
+ *                         Map.entry("ENAM", Arrays.asList("00920f38ce07c2e2f4df50b1f61d4194")),
+ *                         Map.entry("WNAM", Arrays.asList(                        
  *                             "de90f38ced07c2e2f4df50b1f61d4194",
- *                             "9290f38c5d07c2e2f4df57b1f61d4196")
+ *                             "9290f38c5d07c2e2f4df57b1f61d4196"))
  *                     ))
  *                     .sessionAffinity("cookie")
  *                     .sessionAffinityAttributes(LoadBalancerRuleOverridesSessionAffinityAttributesArgs.builder()

@@ -149,12 +149,12 @@ export interface GetWorkerVersionOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
      * Available values: "modules".
      */
-    include?: pulumi.Input<string>;
+    include?: pulumi.Input<string | undefined>;
     /**
      * Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version.
      */

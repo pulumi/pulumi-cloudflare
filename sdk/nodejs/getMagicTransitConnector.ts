@@ -108,6 +108,6 @@ export interface GetMagicTransitConnectorOutputArgs {
     /**
      * Account identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     connectorId: pulumi.Input<string>;
 }

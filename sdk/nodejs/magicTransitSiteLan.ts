@@ -184,36 +184,36 @@ export interface MagicTransitSiteLanState {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
-    bondId?: pulumi.Input<number>;
+    accountId?: pulumi.Input<string | undefined>;
+    bondId?: pulumi.Input<number | undefined>;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
-    haLink?: pulumi.Input<boolean>;
+    haLink?: pulumi.Input<boolean | undefined>;
     /**
      * mark true to use this LAN for source-based breakout traffic
      */
-    isBreakout?: pulumi.Input<boolean>;
+    isBreakout?: pulumi.Input<boolean | undefined>;
     /**
      * mark true to use this LAN for source-based prioritized traffic
      */
-    isPrioritized?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    nat?: pulumi.Input<inputs.MagicTransitSiteLanNat>;
-    physport?: pulumi.Input<number>;
-    routedSubnets?: pulumi.Input<pulumi.Input<inputs.MagicTransitSiteLanRoutedSubnet>[]>;
+    isPrioritized?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    nat?: pulumi.Input<inputs.MagicTransitSiteLanNat | undefined>;
+    physport?: pulumi.Input<number | undefined>;
+    routedSubnets?: pulumi.Input<pulumi.Input<inputs.MagicTransitSiteLanRoutedSubnet>[] | undefined>;
     /**
      * Identifier
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
      */
-    staticAddressing?: pulumi.Input<inputs.MagicTransitSiteLanStaticAddressing>;
+    staticAddressing?: pulumi.Input<inputs.MagicTransitSiteLanStaticAddressing | undefined>;
     /**
      * VLAN ID. Use zero for untagged.
      */
-    vlanTag?: pulumi.Input<number>;
+    vlanTag?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -223,24 +223,24 @@ export interface MagicTransitSiteLanArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
-    bondId?: pulumi.Input<number>;
+    accountId?: pulumi.Input<string | undefined>;
+    bondId?: pulumi.Input<number | undefined>;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
-    haLink?: pulumi.Input<boolean>;
+    haLink?: pulumi.Input<boolean | undefined>;
     /**
      * mark true to use this LAN for source-based breakout traffic
      */
-    isBreakout?: pulumi.Input<boolean>;
+    isBreakout?: pulumi.Input<boolean | undefined>;
     /**
      * mark true to use this LAN for source-based prioritized traffic
      */
-    isPrioritized?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    nat?: pulumi.Input<inputs.MagicTransitSiteLanNat>;
-    physport?: pulumi.Input<number>;
-    routedSubnets?: pulumi.Input<pulumi.Input<inputs.MagicTransitSiteLanRoutedSubnet>[]>;
+    isPrioritized?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    nat?: pulumi.Input<inputs.MagicTransitSiteLanNat | undefined>;
+    physport?: pulumi.Input<number | undefined>;
+    routedSubnets?: pulumi.Input<pulumi.Input<inputs.MagicTransitSiteLanRoutedSubnet>[] | undefined>;
     /**
      * Identifier
      */
@@ -248,9 +248,9 @@ export interface MagicTransitSiteLanArgs {
     /**
      * If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
      */
-    staticAddressing?: pulumi.Input<inputs.MagicTransitSiteLanStaticAddressing>;
+    staticAddressing?: pulumi.Input<inputs.MagicTransitSiteLanStaticAddressing | undefined>;
     /**
      * VLAN ID. Use zero for untagged.
      */
-    vlanTag?: pulumi.Input<number>;
+    vlanTag?: pulumi.Input<number | undefined>;
 }

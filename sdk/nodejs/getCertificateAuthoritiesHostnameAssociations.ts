@@ -97,9 +97,9 @@ export interface GetCertificateAuthoritiesHostnameAssociationsOutputArgs {
     /**
      * The UUID to match against for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the results will be the hostnames associated to your active Cloudflare Managed CA.
      */
-    mtlsCertificateId?: pulumi.Input<string>;
+    mtlsCertificateId?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

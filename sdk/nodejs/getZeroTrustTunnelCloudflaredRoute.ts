@@ -130,10 +130,10 @@ export interface GetZeroTrustTunnelCloudflaredRouteOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetZeroTrustTunnelCloudflaredRouteFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustTunnelCloudflaredRouteFilterArgs | undefined>;
     /**
      * UUID of the route.
      */
-    routeId?: pulumi.Input<string>;
+    routeId?: pulumi.Input<string | undefined>;
 }

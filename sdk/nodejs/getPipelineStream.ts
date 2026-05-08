@@ -120,10 +120,10 @@ export interface GetPipelineStreamOutputArgs {
     /**
      * Specifies the public ID of the account.
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetPipelineStreamFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetPipelineStreamFilterArgs | undefined>;
     /**
      * Specifies the public ID of the stream.
      */
-    streamId?: pulumi.Input<string>;
+    streamId?: pulumi.Input<string | undefined>;
 }

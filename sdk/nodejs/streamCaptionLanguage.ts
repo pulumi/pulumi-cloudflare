@@ -133,32 +133,32 @@ export interface StreamCaptionLanguageState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The WebVTT file containing the caption or subtitle content.
      */
-    file?: pulumi.Input<string>;
+    file?: pulumi.Input<string | undefined>;
     /**
      * Whether the caption was generated via AI.
      */
-    generated?: pulumi.Input<boolean>;
+    generated?: pulumi.Input<boolean | undefined>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * The language label displayed in the native language to users.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The language tag in BCP 47 format.
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * The status of a generated caption.
      * Available values: "ready", "inprogress", "error".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -168,11 +168,11 @@ export interface StreamCaptionLanguageArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The WebVTT file containing the caption or subtitle content.
      */
-    file?: pulumi.Input<string>;
+    file?: pulumi.Input<string | undefined>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */

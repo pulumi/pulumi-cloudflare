@@ -103,13 +103,13 @@ export function getAiGatewaysOutput(args?: GetAiGatewaysOutputArgs, opts?: pulum
  * A collection of arguments for invoking getAiGateways.
  */
 export interface GetAiGatewaysOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Search by id
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
 }

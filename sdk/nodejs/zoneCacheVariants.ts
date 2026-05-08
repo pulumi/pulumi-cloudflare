@@ -164,19 +164,19 @@ export interface ZoneCacheVariantsState {
     /**
      * Whether the setting is editable.
      */
-    editable?: pulumi.Input<boolean>;
+    editable?: pulumi.Input<boolean | undefined>;
     /**
      * Last time this setting was modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * Value of the zone setting.
      */
-    value?: pulumi.Input<inputs.ZoneCacheVariantsValue>;
+    value?: pulumi.Input<inputs.ZoneCacheVariantsValue | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**

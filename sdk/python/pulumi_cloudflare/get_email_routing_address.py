@@ -186,9 +186,9 @@ def get_email_routing_address(account_id: Optional[_builtins.str] = None,
         modified=pulumi.get(__ret__, 'modified'),
         tag=pulumi.get(__ret__, 'tag'),
         verified=pulumi.get(__ret__, 'verified'))
-def get_email_routing_address_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     destination_address_identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     filter: Optional[pulumi.Input[Optional[Union['GetEmailRoutingAddressFilterArgs', 'GetEmailRoutingAddressFilterArgsDict']]]] = None,
+def get_email_routing_address_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     destination_address_identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     filter: pulumi.Input[Optional[Optional[Union['GetEmailRoutingAddressFilterArgs', 'GetEmailRoutingAddressFilterArgsDict']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailRoutingAddressResult]:
     """
     Accepted Permissions

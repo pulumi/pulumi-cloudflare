@@ -97,11 +97,11 @@ export interface LeakedCredentialCheckState {
     /**
      * Determines whether or not Leaked Credential Checks are enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -111,9 +111,9 @@ export interface LeakedCredentialCheckArgs {
     /**
      * Determines whether or not Leaked Credential Checks are enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

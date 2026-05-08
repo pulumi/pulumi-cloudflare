@@ -133,31 +133,31 @@ export class ZeroTrustDevicePostureIntegration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDevicePostureIntegration resources.
  */
 export interface ZeroTrustDevicePostureIntegrationState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The configuration object containing third-party integration information.
      */
-    config?: pulumi.Input<inputs.ZeroTrustDevicePostureIntegrationConfig>;
+    config?: pulumi.Input<inputs.ZeroTrustDevicePostureIntegrationConfig | undefined>;
     /**
      * The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * The name of the device posture integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of device posture integration.
      * Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "customS2s".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustDevicePostureIntegration resource.
  */
 export interface ZeroTrustDevicePostureIntegrationArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The configuration object containing third-party integration information.
      */

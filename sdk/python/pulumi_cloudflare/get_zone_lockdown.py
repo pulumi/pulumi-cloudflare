@@ -198,9 +198,9 @@ def get_zone_lockdown(filter: Optional[Union['GetZoneLockdownFilterArgs', 'GetZo
         paused=pulumi.get(__ret__, 'paused'),
         urls=pulumi.get(__ret__, 'urls'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zone_lockdown_output(filter: Optional[pulumi.Input[Optional[Union['GetZoneLockdownFilterArgs', 'GetZoneLockdownFilterArgsDict']]]] = None,
-                             lock_downs_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zone_lockdown_output(filter: pulumi.Input[Optional[Optional[Union['GetZoneLockdownFilterArgs', 'GetZoneLockdownFilterArgsDict']]]] = None,
+                             lock_downs_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneLockdownResult]:
     """
     Accepted Permissions

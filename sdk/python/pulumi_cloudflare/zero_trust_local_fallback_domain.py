@@ -23,7 +23,7 @@ class ZeroTrustLocalFallbackDomainArgs:
     def __init__(__self__, *,
                  domains: pulumi.Input[Sequence[pulumi.Input['ZeroTrustLocalFallbackDomainDomainArgs']]],
                  policy_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustLocalFallbackDomain resource.
         """
@@ -52,20 +52,20 @@ class ZeroTrustLocalFallbackDomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
 class _ZeroTrustLocalFallbackDomainState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustLocalFallbackDomainDomainArgs']]]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustLocalFallbackDomainDomainArgs']]]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustLocalFallbackDomain resources.
         """
@@ -78,29 +78,29 @@ class _ZeroTrustLocalFallbackDomainState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustLocalFallbackDomainDomainArgs']]]]:
+    def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustLocalFallbackDomainDomainArgs']]]]:
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustLocalFallbackDomainDomainArgs']]]]):
+    def domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustLocalFallbackDomainDomainArgs']]]]):
         pulumi.set(self, "domains", value)
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
 
@@ -115,9 +115,9 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustLocalFallbackDomainDomainArgs', 'ZeroTrustLocalFallbackDomainDomainArgsDict']]]]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustLocalFallbackDomainDomainArgs', 'ZeroTrustLocalFallbackDomainDomainArgsDict']]]]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -199,9 +199,9 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustLocalFallbackDomainDomainArgs', 'ZeroTrustLocalFallbackDomainDomainArgsDict']]]]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustLocalFallbackDomainDomainArgs', 'ZeroTrustLocalFallbackDomainDomainArgsDict']]]]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""ZeroTrustLocalFallbackDomain is deprecated: cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -231,9 +231,9 @@ class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustLocalFallbackDomainDomainArgs', 'ZeroTrustLocalFallbackDomainDomainArgsDict']]]]] = None,
-            policy_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustLocalFallbackDomain':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustLocalFallbackDomainDomainArgs', 'ZeroTrustLocalFallbackDomainDomainArgsDict']]]]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustLocalFallbackDomain':
         """
         Get an existing ZeroTrustLocalFallbackDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -114,8 +114,8 @@ def get_zero_trust_access_tag(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         tag_name=pulumi.get(__ret__, 'tag_name'))
-def get_zero_trust_access_tag_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     tag_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_access_tag_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     tag_name: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessTagResult]:
     """
     ## Example Usage

@@ -246,8 +246,8 @@ def get_zone_setting(setting_id: Optional[_builtins.str] = None,
         time_remaining=pulumi.get(__ret__, 'time_remaining'),
         value=pulumi.get(__ret__, 'value'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zone_setting_output(setting_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zone_setting_output(setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneSettingResult]:
     """
     Accepted Permissions

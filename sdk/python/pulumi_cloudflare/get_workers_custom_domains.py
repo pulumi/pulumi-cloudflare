@@ -204,13 +204,13 @@ def get_workers_custom_domains(account_id: Optional[_builtins.str] = None,
         service=pulumi.get(__ret__, 'service'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_name=pulumi.get(__ret__, 'zone_name'))
-def get_workers_custom_domains_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      environment: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      hostname: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                      service: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      zone_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_workers_custom_domains_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      environment: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      hostname: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                      service: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      zone_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersCustomDomainsResult]:
     """
     Accepted Permissions

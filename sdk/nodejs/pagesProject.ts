@@ -389,67 +389,67 @@ export interface PagesProjectState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Configs for the project build process.
      */
-    buildConfig?: pulumi.Input<inputs.PagesProjectBuildConfig>;
+    buildConfig?: pulumi.Input<inputs.PagesProjectBuildConfig | undefined>;
     /**
      * Most recent production deployment of the project.
      */
-    canonicalDeployment?: pulumi.Input<inputs.PagesProjectCanonicalDeployment>;
+    canonicalDeployment?: pulumi.Input<inputs.PagesProjectCanonicalDeployment | undefined>;
     /**
      * When the project was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Configs for deployments in a project.
      */
-    deploymentConfigs?: pulumi.Input<inputs.PagesProjectDeploymentConfigs>;
+    deploymentConfigs?: pulumi.Input<inputs.PagesProjectDeploymentConfigs | undefined>;
     /**
      * A list of associated custom domains for the project.
      */
-    domains?: pulumi.Input<pulumi.Input<string>[]>;
+    domains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Framework the project is using.
      */
-    framework?: pulumi.Input<string>;
+    framework?: pulumi.Input<string | undefined>;
     /**
      * Version of the framework the project is using.
      */
-    frameworkVersion?: pulumi.Input<string>;
+    frameworkVersion?: pulumi.Input<string | undefined>;
     /**
      * Most recent deployment of the project.
      */
-    latestDeployment?: pulumi.Input<inputs.PagesProjectLatestDeployment>;
+    latestDeployment?: pulumi.Input<inputs.PagesProjectLatestDeployment | undefined>;
     /**
      * Name of the project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the preview script.
      */
-    previewScriptName?: pulumi.Input<string>;
+    previewScriptName?: pulumi.Input<string | undefined>;
     /**
      * Production branch of the project. Used to identify production deployments.
      */
-    productionBranch?: pulumi.Input<string>;
+    productionBranch?: pulumi.Input<string | undefined>;
     /**
      * Name of the production script.
      */
-    productionScriptName?: pulumi.Input<string>;
+    productionScriptName?: pulumi.Input<string | undefined>;
     /**
      * Configs for the project source control.
      */
-    source?: pulumi.Input<inputs.PagesProjectSource>;
+    source?: pulumi.Input<inputs.PagesProjectSource | undefined>;
     /**
      * The Cloudflare subdomain associated with the project.
      */
-    subdomain?: pulumi.Input<string>;
+    subdomain?: pulumi.Input<string | undefined>;
     /**
      * Whether the project uses functions.
      */
-    usesFunctions?: pulumi.Input<boolean>;
+    usesFunctions?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -459,15 +459,15 @@ export interface PagesProjectArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Configs for the project build process.
      */
-    buildConfig?: pulumi.Input<inputs.PagesProjectBuildConfig>;
+    buildConfig?: pulumi.Input<inputs.PagesProjectBuildConfig | undefined>;
     /**
      * Configs for deployments in a project.
      */
-    deploymentConfigs?: pulumi.Input<inputs.PagesProjectDeploymentConfigs>;
+    deploymentConfigs?: pulumi.Input<inputs.PagesProjectDeploymentConfigs | undefined>;
     /**
      * Name of the project.
      */
@@ -479,5 +479,5 @@ export interface PagesProjectArgs {
     /**
      * Configs for the project source control.
      */
-    source?: pulumi.Input<inputs.PagesProjectSource>;
+    source?: pulumi.Input<inputs.PagesProjectSource | undefined>;
 }

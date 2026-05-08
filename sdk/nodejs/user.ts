@@ -163,52 +163,52 @@ export interface UserState {
     /**
      * Lists the betas that the user is participating in.
      */
-    betas?: pulumi.Input<pulumi.Input<string>[]>;
+    betas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The country in which the user lives.
      */
-    country?: pulumi.Input<string>;
+    country?: pulumi.Input<string | undefined>;
     /**
      * User's first name
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether user has any business zones
      */
-    hasBusinessZones?: pulumi.Input<boolean>;
+    hasBusinessZones?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether user has any enterprise zones
      */
-    hasEnterpriseZones?: pulumi.Input<boolean>;
+    hasEnterpriseZones?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether user has any pro zones
      */
-    hasProZones?: pulumi.Input<boolean>;
+    hasProZones?: pulumi.Input<boolean | undefined>;
     /**
      * User's last name
      */
-    lastName?: pulumi.Input<string>;
-    organizations?: pulumi.Input<pulumi.Input<inputs.UserOrganization>[]>;
+    lastName?: pulumi.Input<string | undefined>;
+    organizations?: pulumi.Input<pulumi.Input<inputs.UserOrganization>[] | undefined>;
     /**
      * Indicates whether user has been suspended
      */
-    suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean | undefined>;
     /**
      * User's telephone number
      */
-    telephone?: pulumi.Input<string>;
+    telephone?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
      */
-    twoFactorAuthenticationEnabled?: pulumi.Input<boolean>;
+    twoFactorAuthenticationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
      */
-    twoFactorAuthenticationLocked?: pulumi.Input<boolean>;
+    twoFactorAuthenticationLocked?: pulumi.Input<boolean | undefined>;
     /**
      * The zipcode or postal code where the user lives.
      */
-    zipcode?: pulumi.Input<string>;
+    zipcode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -218,21 +218,21 @@ export interface UserArgs {
     /**
      * The country in which the user lives.
      */
-    country?: pulumi.Input<string>;
+    country?: pulumi.Input<string | undefined>;
     /**
      * User's first name
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * User's last name
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * User's telephone number
      */
-    telephone?: pulumi.Input<string>;
+    telephone?: pulumi.Input<string | undefined>;
     /**
      * The zipcode or postal code where the user lives.
      */
-    zipcode?: pulumi.Input<string>;
+    zipcode?: pulumi.Input<string | undefined>;
 }

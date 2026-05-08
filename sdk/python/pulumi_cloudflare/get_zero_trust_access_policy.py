@@ -320,8 +320,8 @@ def get_zero_trust_access_policy(account_id: Optional[_builtins.str] = None,
         reusable=pulumi.get(__ret__, 'reusable'),
         session_duration=pulumi.get(__ret__, 'session_duration'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_zero_trust_access_policy_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_access_policy_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessPolicyResult]:
     """
     Accepted Permissions
