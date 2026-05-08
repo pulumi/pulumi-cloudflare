@@ -1,0 +1,15 @@
+name: example-zero-trust-access-application
+runtime: yaml
+
+config:
+  cloudflare-account-id:
+    type: string
+
+resources:
+  app:
+    type: cloudflare:index:ZeroTrustAccessApplication
+    properties:
+      accountId: ${cloudflare-account-id}
+      name: pulumi_cloudflare_test_1165
+      domain: https://example.com/pulumi-cloudflare-test-1165
+      type: bookmark
