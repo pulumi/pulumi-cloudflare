@@ -1,0 +1,80 @@
+{
+    "version": 3,
+    "deployment": {
+      "manifest": {
+        "time": "2025-05-08T00:00:00.000000Z",
+        "magic": "d356bec6413f613372e5158db9b9441f6f60fd81ed9a5e4980d2b8af2faf06fd",
+        "version": "v3.228.0"
+      },
+      "secrets_providers": {
+        "type": "passphrase",
+        "state": {
+          "salt": "v1:O1t5suqMRIo=:v1:7DqVMCoY+uij+EZC:Bc3SzKdajmbRZU5OXZWfP0oEcpUIJw=="
+        }
+      },
+      "resources": [
+        {
+          "urn": "urn:pulumi:test::example-zta-app-state::pulumi:pulumi:Stack::example-zta-app-state-test",
+          "custom": false,
+          "type": "pulumi:pulumi:Stack",
+          "created": "2025-05-08T00:00:00.000000Z",
+          "modified": "2025-05-08T00:00:00.000000Z"
+        },
+        {
+          "urn": "urn:pulumi:test::example-zta-app-state::pulumi:providers:cloudflare::default",
+          "custom": true,
+          "id": "00000000-0000-0000-0000-000000000000",
+          "type": "pulumi:providers:cloudflare",
+          "inputs": {},
+          "outputs": {},
+          "created": "2025-05-08T00:00:00.000000Z",
+          "modified": "2025-05-08T00:00:00.000000Z"
+        },
+        {
+          "urn": "urn:pulumi:test::example-zta-app-state::cloudflare:index/accessApplication:AccessApplication::app",
+          "custom": true,
+          "id": "00000000-0000-0000-0000-000000000001",
+          "type": "cloudflare:index/accessApplication:AccessApplication",
+          "inputs": {
+            "zoneId": "cabcdb3c8548af2e275acc42ed1fea45",
+            "name": "pulumi_cloudflare_test_1165_self_hosted",
+            "domain": "pulumi-cloudflare-test-1165.example.com",
+            "type": "self_hosted",
+            "sessionDuration": "24h",
+            "corsHeaders": [
+              {
+                "allowAllOrigins": true,
+                "allowedMethods": ["GET", "POST"],
+                "maxAge": 300
+              }
+            ],
+            "policies": ["00000000-0000-0000-0000-000000000099"]
+          },
+          "outputs": {
+            "id": "00000000-0000-0000-0000-000000000001",
+            "zoneId": "cabcdb3c8548af2e275acc42ed1fea45",
+            "name": "pulumi_cloudflare_test_1165_self_hosted",
+            "domain": "pulumi-cloudflare-test-1165.example.com",
+            "type": "self_hosted",
+            "sessionDuration": "24h",
+            "aud": "0000000000000000000000000000000000000000000000000000000000000000",
+            "appLauncherVisible": true,
+            "httpOnlyCookieAttribute": true,
+            "corsHeaders": [
+              {
+                "allowAllOrigins": true,
+                "allowedMethods": ["GET", "POST"],
+                "maxAge": 300
+              }
+            ],
+            "policies": ["00000000-0000-0000-0000-000000000099"]
+          },
+          "parent": "urn:pulumi:test::example-zta-app-state::pulumi:pulumi:Stack::example-zta-app-state-test",
+          "provider": "urn:pulumi:test::example-zta-app-state::pulumi:providers:cloudflare::default::00000000-0000-0000-0000-000000000000",
+          "created": "2025-05-08T00:00:00.000000Z",
+          "modified": "2025-05-08T00:00:00.000000Z"
+        }
+      ],
+      "metadata": {}
+    }
+  }

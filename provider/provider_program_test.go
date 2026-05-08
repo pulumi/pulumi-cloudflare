@@ -137,6 +137,20 @@ func TestZeroTrustAccessApplicationUpgrade(t *testing.T) {
 		optproviderupgrade.NewSourcePath("test-programs/zero_trust_access_application"))
 }
 
+// Exercises the populated-array migration branches against a hand-crafted v5 state:
+// corsHeaders [{...}] → object, and policies ["id"] → [{id}]. The recorded
+// TestZeroTrustAccessApplicationUpgrade only covers the default-empty case.
+func TestZeroTrustAccessApplicationFromState(t *testing.T) {
+	state, err := os.ReadFile("testdata/zta_app_state_v5_self_hosted.json")
+	require.NoError(t, err)
+	depl := apitype.UntypedDeployment{}
+	require.NoError(t, json.Unmarshal(state, &depl))
+	pt := testProgram(t, "test-programs/zero_trust_access_application_state",
+		opttest.NewStackOptions(optnewstack.DisableAutoDestroy()))
+	pt.ImportStack(t, depl)
+	pt.Preview(t)
+}
+
 func TestAccRecordGo(t *testing.T) {
 	pt := testProgram(t, "test-programs/recordgo",
 		opttest.TestInPlace(), /* to use the parent directory's module */
