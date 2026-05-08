@@ -24,8 +24,8 @@ class WorkersDeploymentArgs:
                  script_name: pulumi.Input[_builtins.str],
                  strategy: pulumi.Input[_builtins.str],
                  versions: pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input['WorkersDeploymentAnnotationsArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']] = None):
         """
         The set of arguments for constructing a WorkersDeployment resource.
 
@@ -76,37 +76,37 @@ class WorkersDeploymentArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input['WorkersDeploymentAnnotationsArgs']]:
+    def annotations(self) -> pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']]:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input['WorkersDeploymentAnnotationsArgs']]):
+    def annotations(self, value: pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']]):
         pulumi.set(self, "annotations", value)
 
 
 @pulumi.input_type
 class _WorkersDeploymentState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input['WorkersDeploymentAnnotationsArgs']] = None,
-                 author_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']] = None,
+                 author_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]]] = None):
         """
         Input properties used for looking up and filtering WorkersDeployment resources.
 
@@ -133,83 +133,83 @@ class _WorkersDeploymentState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input['WorkersDeploymentAnnotationsArgs']]:
+    def annotations(self) -> pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']]:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input['WorkersDeploymentAnnotationsArgs']]):
+    def annotations(self, value: pulumi.Input[Optional['WorkersDeploymentAnnotationsArgs']]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="authorEmail")
-    def author_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "author_email")
 
     @author_email.setter
-    def author_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_email", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptName")
-    def script_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the script, used in URLs and route configuration.
         """
         return pulumi.get(self, "script_name")
 
     @script_name.setter
-    def script_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "percentage".
         """
         return pulumi.get(self, "strategy")
 
     @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]]]:
+    def versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]]]:
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]]]):
+    def versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkersDeploymentVersionArgs']]]]):
         pulumi.set(self, "versions", value)
 
 
@@ -219,11 +219,11 @@ class WorkersDeployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict']]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict']]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -243,7 +243,7 @@ class WorkersDeployment(pulumi.CustomResource):
             script_name="this-is_my_script-01",
             strategy="percentage",
             versions=[{
-                "percentage": 100,
+                "percentage": float(100),
                 "version_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             }],
             annotations={
@@ -288,7 +288,7 @@ class WorkersDeployment(pulumi.CustomResource):
             script_name="this-is_my_script-01",
             strategy="percentage",
             versions=[{
-                "percentage": 100,
+                "percentage": float(100),
                 "version_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             }],
             annotations={
@@ -318,11 +318,11 @@ class WorkersDeployment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict']]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict']]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -356,14 +356,14 @@ class WorkersDeployment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            annotations: Optional[pulumi.Input[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict']]] = None,
-            author_email: Optional[pulumi.Input[_builtins.str]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            script_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None,
-            strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            versions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict']]]]] = None) -> 'WorkersDeployment':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict']]] = None,
+            author_email: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            script_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkersDeploymentVersionArgs', 'WorkersDeploymentVersionArgsDict']]]]] = None) -> 'WorkersDeployment':
         """
         Get an existing WorkersDeployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

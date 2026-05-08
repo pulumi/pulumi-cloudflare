@@ -110,8 +110,8 @@ def get_zero_trust_device_managed_networks_list(account_id: Optional[_builtins.s
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
-def get_zero_trust_device_managed_networks_list_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_zero_trust_device_managed_networks_list_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceManagedNetworksListResult]:
     """
     ## Example Usage

@@ -136,21 +136,21 @@ export interface GetUserAgentBlockingRulesOutputArgs {
     /**
      * A string to search for in the description of existing rules.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * When true, indicates that the rule is currently paused.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * A string to search for in the user agent values of existing rules.
      */
-    userAgent?: pulumi.Input<string>;
+    userAgent?: pulumi.Input<string | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

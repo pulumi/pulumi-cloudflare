@@ -164,25 +164,25 @@ export interface PipelineStreamState {
     /**
      * Specifies the public ID of the account.
      */
-    accountId?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates the endpoint URL of this stream.
      */
-    endpoint?: pulumi.Input<string>;
-    format?: pulumi.Input<inputs.PipelineStreamFormat>;
-    http?: pulumi.Input<inputs.PipelineStreamHttp>;
-    modifiedAt?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
+    format?: pulumi.Input<inputs.PipelineStreamFormat | undefined>;
+    http?: pulumi.Input<inputs.PipelineStreamHttp | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of the Stream.
      */
-    name?: pulumi.Input<string>;
-    schema?: pulumi.Input<inputs.PipelineStreamSchema>;
+    name?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<inputs.PipelineStreamSchema | undefined>;
     /**
      * Indicates the current version of this stream.
      */
-    version?: pulumi.Input<number>;
-    workerBinding?: pulumi.Input<inputs.PipelineStreamWorkerBinding>;
+    version?: pulumi.Input<number | undefined>;
+    workerBinding?: pulumi.Input<inputs.PipelineStreamWorkerBinding | undefined>;
 }
 
 /**
@@ -192,13 +192,13 @@ export interface PipelineStreamArgs {
     /**
      * Specifies the public ID of the account.
      */
-    accountId?: pulumi.Input<string>;
-    format?: pulumi.Input<inputs.PipelineStreamFormat>;
-    http?: pulumi.Input<inputs.PipelineStreamHttp>;
+    accountId?: pulumi.Input<string | undefined>;
+    format?: pulumi.Input<inputs.PipelineStreamFormat | undefined>;
+    http?: pulumi.Input<inputs.PipelineStreamHttp | undefined>;
     /**
      * Specifies the name of the Stream.
      */
     name: pulumi.Input<string>;
-    schema?: pulumi.Input<inputs.PipelineStreamSchema>;
-    workerBinding?: pulumi.Input<inputs.PipelineStreamWorkerBinding>;
+    schema?: pulumi.Input<inputs.PipelineStreamSchema | undefined>;
+    workerBinding?: pulumi.Input<inputs.PipelineStreamWorkerBinding | undefined>;
 }

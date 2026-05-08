@@ -101,26 +101,26 @@ export class CertificateAuthoritiesHostnameAssociations extends pulumi.CustomRes
  * Input properties used for looking up and filtering CertificateAuthoritiesHostnameAssociations resources.
  */
 export interface CertificateAuthoritiesHostnameAssociationsState {
-    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
      */
-    mtlsCertificateId?: pulumi.Input<string>;
+    mtlsCertificateId?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a CertificateAuthoritiesHostnameAssociations resource.
  */
 export interface CertificateAuthoritiesHostnameAssociationsArgs {
-    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls*certificate*id is given, the hostnames will be associated to your active Cloudflare Managed CA.
      */
-    mtlsCertificateId?: pulumi.Input<string>;
+    mtlsCertificateId?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */

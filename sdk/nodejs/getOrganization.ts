@@ -86,6 +86,6 @@ export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: p
  * A collection of arguments for invoking getOrganization.
  */
 export interface GetOrganizationOutputArgs {
-    filter?: pulumi.Input<inputs.GetOrganizationFilterArgs>;
-    organizationId?: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetOrganizationFilterArgs | undefined>;
+    organizationId?: pulumi.Input<string | undefined>;
 }

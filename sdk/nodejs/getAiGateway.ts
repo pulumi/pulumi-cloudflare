@@ -132,10 +132,10 @@ export function getAiGatewayOutput(args?: GetAiGatewayOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getAiGateway.
  */
 export interface GetAiGatewayOutputArgs {
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetAiGatewayFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetAiGatewayFilterArgs | undefined>;
     /**
      * gateway id
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }

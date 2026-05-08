@@ -104,25 +104,25 @@ export class AiSearchToken extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AiSearchToken resources.
  */
 export interface AiSearchTokenState {
-    accountId?: pulumi.Input<string>;
-    cfApiId?: pulumi.Input<string>;
-    cfApiKey?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
-    createdBy?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
-    legacy?: pulumi.Input<boolean>;
-    modifiedAt?: pulumi.Input<string>;
-    modifiedBy?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    cfApiId?: pulumi.Input<string | undefined>;
+    cfApiKey?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    createdBy?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    legacy?: pulumi.Input<boolean | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
+    modifiedBy?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a AiSearchToken resource.
  */
 export interface AiSearchTokenArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     cfApiId: pulumi.Input<string>;
     cfApiKey: pulumi.Input<string>;
-    legacy?: pulumi.Input<boolean>;
+    legacy?: pulumi.Input<boolean | undefined>;
     name: pulumi.Input<string>;
 }

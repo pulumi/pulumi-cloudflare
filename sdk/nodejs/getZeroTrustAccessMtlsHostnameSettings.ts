@@ -108,9 +108,9 @@ export interface GetZeroTrustAccessMtlsHostnameSettingsOutputArgs {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

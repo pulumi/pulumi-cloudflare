@@ -118,7 +118,7 @@ export interface GetZeroTrustTunnelCloudflaredConfigOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the tunnel.
      */

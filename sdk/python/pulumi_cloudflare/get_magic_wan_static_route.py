@@ -119,8 +119,8 @@ def get_magic_wan_static_route(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         route=pulumi.get(__ret__, 'route'),
         route_id=pulumi.get(__ret__, 'route_id'))
-def get_magic_wan_static_route_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      route_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_magic_wan_static_route_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      route_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicWanStaticRouteResult]:
     """
     Accepted Permissions

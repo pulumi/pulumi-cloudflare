@@ -249,8 +249,8 @@ def get_stream_watermark(account_id: Optional[_builtins.str] = None,
         size=pulumi.get(__ret__, 'size'),
         uid=pulumi.get(__ret__, 'uid'),
         width=pulumi.get(__ret__, 'width'))
-def get_stream_watermark_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                identifier: Optional[pulumi.Input[_builtins.str]] = None,
+def get_stream_watermark_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamWatermarkResult]:
     """
     Accepted Permissions

@@ -129,6 +129,6 @@ export function getZeroTrustDnsLocationOutput(args: GetZeroTrustDnsLocationOutpu
  * A collection of arguments for invoking getZeroTrustDnsLocation.
  */
 export interface GetZeroTrustDnsLocationOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     locationId: pulumi.Input<string>;
 }

@@ -103,11 +103,11 @@ export interface AccessTagState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The name of the tag
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -117,7 +117,7 @@ export interface AccessTagArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The name of the tag
      */

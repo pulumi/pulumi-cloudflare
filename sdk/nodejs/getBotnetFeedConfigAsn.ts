@@ -85,5 +85,5 @@ export interface GetBotnetFeedConfigAsnOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
 }

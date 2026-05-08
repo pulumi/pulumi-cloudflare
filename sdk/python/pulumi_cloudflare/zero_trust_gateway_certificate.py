@@ -19,9 +19,9 @@ __all__ = ['ZeroTrustGatewayCertificateArgs', 'ZeroTrustGatewayCertificate']
 @pulumi.input_type
 class ZeroTrustGatewayCertificateArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 activate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 validity_period_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 activate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 validity_period_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ZeroTrustGatewayCertificate resource.
 
@@ -37,55 +37,55 @@ class ZeroTrustGatewayCertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def activate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def activate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `binding_status` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
         """
         return pulumi.get(self, "activate")
 
     @activate.setter
-    def activate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def activate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "activate", value)
 
     @_builtins.property
     @pulumi.getter(name="validityPeriodDays")
-    def validity_period_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def validity_period_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
         """
         return pulumi.get(self, "validity_period_days")
 
     @validity_period_days.setter
-    def validity_period_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def validity_period_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "validity_period_days", value)
 
 
 @pulumi.input_type
 class _ZeroTrustGatewayCertificateState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 activate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 binding_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 in_use: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issuer_org: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer_raw: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 uploaded_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 validity_period_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 activate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 binding_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 in_use: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issuer_org: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer_raw: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 uploaded_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 validity_period_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewayCertificate resources.
 
@@ -132,28 +132,28 @@ class _ZeroTrustGatewayCertificateState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def activate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def activate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `binding_status` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
         """
         return pulumi.get(self, "activate")
 
     @activate.setter
-    def activate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def activate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "activate", value)
 
     @_builtins.property
     @pulumi.getter(name="bindingStatus")
-    def binding_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def binding_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
         Available values: "pending*deployment", "available", "pending*deletion", "inactive".
@@ -161,90 +161,90 @@ class _ZeroTrustGatewayCertificateState:
         return pulumi.get(self, "binding_status")
 
     @binding_status.setter
-    def binding_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def binding_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "binding_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provide the CA certificate (read-only).
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresOn")
-    def expires_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "expires_on")
 
     @expires_on.setter
-    def expires_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provide the SHA256 fingerprint of the certificate (read-only).
         """
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="inUse")
-    def in_use(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def in_use(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
         """
         return pulumi.get(self, "in_use")
 
     @in_use.setter
-    def in_use(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def in_use(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "in_use", value)
 
     @_builtins.property
     @pulumi.getter(name="issuerOrg")
-    def issuer_org(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer_org(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicate the organization that issued the certificate (read-only).
         """
         return pulumi.get(self, "issuer_org")
 
     @issuer_org.setter
-    def issuer_org(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer_org(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer_org", value)
 
     @_builtins.property
     @pulumi.getter(name="issuerRaw")
-    def issuer_raw(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer_raw(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provide the entire issuer field of the certificate (read-only).
         """
         return pulumi.get(self, "issuer_raw")
 
     @issuer_raw.setter
-    def issuer_raw(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer_raw(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer_raw", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
         Available values: "custom", "gateway_managed".
@@ -252,37 +252,37 @@ class _ZeroTrustGatewayCertificateState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadedOn")
-    def uploaded_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uploaded_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "uploaded_on")
 
     @uploaded_on.setter
-    def uploaded_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uploaded_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uploaded_on", value)
 
     @_builtins.property
     @pulumi.getter(name="validityPeriodDays")
-    def validity_period_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def validity_period_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
         """
         return pulumi.get(self, "validity_period_days")
 
     @validity_period_days.setter
-    def validity_period_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def validity_period_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "validity_period_days", value)
 
 
@@ -292,9 +292,9 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 activate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 validity_period_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 activate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 validity_period_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -360,9 +360,9 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 activate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 validity_period_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 activate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 validity_period_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -396,20 +396,20 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            activate: Optional[pulumi.Input[_builtins.bool]] = None,
-            binding_status: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            expires_on: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            in_use: Optional[pulumi.Input[_builtins.bool]] = None,
-            issuer_org: Optional[pulumi.Input[_builtins.str]] = None,
-            issuer_raw: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            uploaded_on: Optional[pulumi.Input[_builtins.str]] = None,
-            validity_period_days: Optional[pulumi.Input[_builtins.int]] = None) -> 'ZeroTrustGatewayCertificate':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            activate: pulumi.Input[Optional[_builtins.bool]] = None,
+            binding_status: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            in_use: pulumi.Input[Optional[_builtins.bool]] = None,
+            issuer_org: pulumi.Input[Optional[_builtins.str]] = None,
+            issuer_raw: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            uploaded_on: pulumi.Input[Optional[_builtins.str]] = None,
+            validity_period_days: pulumi.Input[Optional[_builtins.int]] = None) -> 'ZeroTrustGatewayCertificate':
         """
         Get an existing ZeroTrustGatewayCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

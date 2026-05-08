@@ -23,11 +23,11 @@ class MagicTransitSiteWanArgs:
     def __init__(__self__, *,
                  physport: pulumi.Input[_builtins.int],
                  site_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 static_addressing: Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']] = None,
-                 vlan_tag: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 static_addressing: pulumi.Input[Optional['MagicTransitSiteWanStaticAddressingArgs']] = None,
+                 vlan_tag: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a MagicTransitSiteWan resource.
 
@@ -72,70 +72,70 @@ class MagicTransitSiteWanArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="staticAddressing")
-    def static_addressing(self) -> Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']]:
+    def static_addressing(self) -> pulumi.Input[Optional['MagicTransitSiteWanStaticAddressingArgs']]:
         """
         (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
         """
         return pulumi.get(self, "static_addressing")
 
     @static_addressing.setter
-    def static_addressing(self, value: Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']]):
+    def static_addressing(self, value: pulumi.Input[Optional['MagicTransitSiteWanStaticAddressingArgs']]):
         pulumi.set(self, "static_addressing", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanTag")
-    def vlan_tag(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan_tag(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VLAN ID. Use zero for untagged.
         """
         return pulumi.get(self, "vlan_tag")
 
     @vlan_tag.setter
-    def vlan_tag(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan_tag(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan_tag", value)
 
 
 @pulumi.input_type
 class _MagicTransitSiteWanState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_rate: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 physport: Optional[pulumi.Input[_builtins.int]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_addressing: Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']] = None,
-                 vlan_tag: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_rate: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 physport: pulumi.Input[Optional[_builtins.int]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_addressing: pulumi.Input[Optional['MagicTransitSiteWanStaticAddressingArgs']] = None,
+                 vlan_tag: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering MagicTransitSiteWan resources.
 
@@ -165,19 +165,19 @@ class _MagicTransitSiteWanState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckRate")
-    def health_check_rate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_rate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
         Available values: "low", "mid", "high".
@@ -185,70 +185,70 @@ class _MagicTransitSiteWanState:
         return pulumi.get(self, "health_check_rate")
 
     @health_check_rate.setter
-    def health_check_rate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_rate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_rate", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def physport(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def physport(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "physport")
 
     @physport.setter
-    def physport(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def physport(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "physport", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="staticAddressing")
-    def static_addressing(self) -> Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']]:
+    def static_addressing(self) -> pulumi.Input[Optional['MagicTransitSiteWanStaticAddressingArgs']]:
         """
         (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
         """
         return pulumi.get(self, "static_addressing")
 
     @static_addressing.setter
-    def static_addressing(self, value: Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']]):
+    def static_addressing(self, value: pulumi.Input[Optional['MagicTransitSiteWanStaticAddressingArgs']]):
         pulumi.set(self, "static_addressing", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanTag")
-    def vlan_tag(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan_tag(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VLAN ID. Use zero for untagged.
         """
         return pulumi.get(self, "vlan_tag")
 
     @vlan_tag.setter
-    def vlan_tag(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan_tag(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan_tag", value)
 
 
@@ -258,13 +258,13 @@ class MagicTransitSiteWan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 physport: Optional[pulumi.Input[_builtins.int]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_addressing: Optional[pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']]] = None,
-                 vlan_tag: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 physport: pulumi.Input[Optional[_builtins.int]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']]] = None,
+                 vlan_tag: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -364,13 +364,13 @@ class MagicTransitSiteWan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 physport: Optional[pulumi.Input[_builtins.int]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_addressing: Optional[pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']]] = None,
-                 vlan_tag: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 physport: pulumi.Input[Optional[_builtins.int]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']]] = None,
+                 vlan_tag: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -402,14 +402,14 @@ class MagicTransitSiteWan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_rate: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            physport: Optional[pulumi.Input[_builtins.int]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            static_addressing: Optional[pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']]] = None,
-            vlan_tag: Optional[pulumi.Input[_builtins.int]] = None) -> 'MagicTransitSiteWan':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_rate: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            physport: pulumi.Input[Optional[_builtins.int]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']]] = None,
+            vlan_tag: pulumi.Input[Optional[_builtins.int]] = None) -> 'MagicTransitSiteWan':
         """
         Get an existing MagicTransitSiteWan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

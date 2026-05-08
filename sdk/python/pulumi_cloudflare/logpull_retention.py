@@ -20,7 +20,7 @@ __all__ = ['LogpullRetentionArgs', 'LogpullRetention']
 class LogpullRetentionArgs:
     def __init__(__self__, *,
                  zone_id: pulumi.Input[_builtins.str],
-                 flag: Optional[pulumi.Input[_builtins.bool]] = None):
+                 flag: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a LogpullRetention resource.
 
@@ -45,22 +45,22 @@ class LogpullRetentionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def flag(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def flag(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The log retention flag for Logpull API.
         """
         return pulumi.get(self, "flag")
 
     @flag.setter
-    def flag(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def flag(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "flag", value)
 
 
 @pulumi.input_type
 class _LogpullRetentionState:
     def __init__(__self__, *,
-                 flag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 flag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogpullRetention resources.
 
@@ -74,26 +74,26 @@ class _LogpullRetentionState:
 
     @_builtins.property
     @pulumi.getter
-    def flag(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def flag(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The log retention flag for Logpull API.
         """
         return pulumi.get(self, "flag")
 
     @flag.setter
-    def flag(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def flag(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "flag", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -103,8 +103,8 @@ class LogpullRetention(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 flag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 flag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -180,8 +180,8 @@ class LogpullRetention(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 flag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 flag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -205,8 +205,8 @@ class LogpullRetention(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            flag: Optional[pulumi.Input[_builtins.bool]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'LogpullRetention':
+            flag: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'LogpullRetention':
         """
         Get an existing LogpullRetention resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

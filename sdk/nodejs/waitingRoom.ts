@@ -382,41 +382,41 @@ export interface WaitingRoomState {
     /**
      * Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
      */
-    additionalRoutes?: pulumi.Input<pulumi.Input<inputs.WaitingRoomAdditionalRoute>[]>;
+    additionalRoutes?: pulumi.Input<pulumi.Input<inputs.WaitingRoomAdditionalRoute>[] | undefined>;
     /**
      * Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
      */
-    cookieAttributes?: pulumi.Input<inputs.WaitingRoomCookieAttributes>;
+    cookieAttributes?: pulumi.Input<inputs.WaitingRoomCookieAttributes | undefined>;
     /**
      * Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookieSuffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
      */
-    cookieSuffix?: pulumi.Input<string>;
-    createdOn?: pulumi.Input<string>;
+    cookieSuffix?: pulumi.Input<string | undefined>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
      */
-    customPageHtml?: pulumi.Input<string>;
+    customPageHtml?: pulumi.Input<string | undefined>;
     /**
      * The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
      * Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
      */
-    defaultTemplateLanguage?: pulumi.Input<string>;
+    defaultTemplateLanguage?: pulumi.Input<string | undefined>;
     /**
      * A note that you can use to add more details about the waiting room.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have sessionDuration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.
      */
-    disableSessionRenewal?: pulumi.Input<boolean>;
+    disableSessionRenewal?: pulumi.Input<boolean | undefined>;
     /**
      * A list of enabled origin commands.
      */
-    enabledOriginCommands?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledOriginCommands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields:
      * 1. `inWaitingRoom`: Boolean indicating if the user is in the waiting room (always **true**).
@@ -510,32 +510,32 @@ export interface WaitingRoomState {
      * 		}
      * 	}
      */
-    jsonResponseEnabled?: pulumi.Input<boolean>;
-    modifiedOn?: pulumi.Input<string>;
+    jsonResponseEnabled?: pulumi.Input<boolean | undefined>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
      */
-    newUsersPerMinute?: pulumi.Input<number>;
+    newUsersPerMinute?: pulumi.Input<number | undefined>;
     /**
      * An ISO 8601 timestamp that marks when the next event will begin queueing.
      */
-    nextEventPrequeueStartTime?: pulumi.Input<string>;
+    nextEventPrequeueStartTime?: pulumi.Input<string | undefined>;
     /**
      * An ISO 8601 timestamp that marks when the next event will start.
      */
-    nextEventStartTime?: pulumi.Input<string>;
+    nextEventStartTime?: pulumi.Input<string | undefined>;
     /**
      * Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * If queueAll is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable.
      */
-    queueAll?: pulumi.Input<boolean>;
+    queueAll?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queueAll` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are:
      * 1. `fifo` **(default)**: First-In-First-Out queue where customers gain access in the order they arrived.
@@ -544,24 +544,24 @@ export interface WaitingRoomState {
      * 4. `reject`: Users will be immediately rejected from the waiting room. As a result, no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`, `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is prequeueing, the waiting room page **will not refresh automatically**.
      * Available values: "fifo", "random", "passthrough", "reject".
      */
-    queueingMethod?: pulumi.Input<string>;
+    queueingMethod?: pulumi.Input<string | undefined>;
     /**
      * HTTP status code returned to a user while in the queue.
      * Available values: 200, 202, 429.
      */
-    queueingStatusCode?: pulumi.Input<number>;
+    queueingStatusCode?: pulumi.Input<number | undefined>;
     /**
      * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.
      */
-    sessionDuration?: pulumi.Input<number>;
+    sessionDuration?: pulumi.Input<number | undefined>;
     /**
      * Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
      */
-    suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
      */
-    totalActiveUsers?: pulumi.Input<number>;
+    totalActiveUsers?: pulumi.Input<number | undefined>;
     /**
      * Which action to take when a bot is detected using Turnstile. `log` will
      * have no impact on queueing behavior, simply keeping track of how many
@@ -570,7 +570,7 @@ export interface WaitingRoomState {
      * origin. `infiniteQueue` requires Advanced Waiting Room.
      * Available values: "log", "infiniteQueue".
      */
-    turnstileAction?: pulumi.Input<string>;
+    turnstileAction?: pulumi.Input<string | undefined>;
     /**
      * Which Turnstile widget type to use for detecting bot traffic. See
      * [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types)
@@ -579,11 +579,11 @@ export interface WaitingRoomState {
      * `off` or `invisible` requires Advanced Waiting Room.
      * Available values: "off", "invisible", "visibleNonInteractive", "visibleManaged".
      */
-    turnstileMode?: pulumi.Input<string>;
+    turnstileMode?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -593,36 +593,36 @@ export interface WaitingRoomArgs {
     /**
      * Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
      */
-    additionalRoutes?: pulumi.Input<pulumi.Input<inputs.WaitingRoomAdditionalRoute>[]>;
+    additionalRoutes?: pulumi.Input<pulumi.Input<inputs.WaitingRoomAdditionalRoute>[] | undefined>;
     /**
      * Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
      */
-    cookieAttributes?: pulumi.Input<inputs.WaitingRoomCookieAttributes>;
+    cookieAttributes?: pulumi.Input<inputs.WaitingRoomCookieAttributes | undefined>;
     /**
      * Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookieSuffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
      */
-    cookieSuffix?: pulumi.Input<string>;
+    cookieSuffix?: pulumi.Input<string | undefined>;
     /**
      * Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
      */
-    customPageHtml?: pulumi.Input<string>;
+    customPageHtml?: pulumi.Input<string | undefined>;
     /**
      * The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
      * Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
      */
-    defaultTemplateLanguage?: pulumi.Input<string>;
+    defaultTemplateLanguage?: pulumi.Input<string | undefined>;
     /**
      * A note that you can use to add more details about the waiting room.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have sessionDuration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.
      */
-    disableSessionRenewal?: pulumi.Input<boolean>;
+    disableSessionRenewal?: pulumi.Input<boolean | undefined>;
     /**
      * A list of enabled origin commands.
      */
-    enabledOriginCommands?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledOriginCommands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.
      */
@@ -720,7 +720,7 @@ export interface WaitingRoomArgs {
      * 		}
      * 	}
      */
-    jsonResponseEnabled?: pulumi.Input<boolean>;
+    jsonResponseEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
      */
@@ -732,11 +732,11 @@ export interface WaitingRoomArgs {
     /**
      * Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * If queueAll is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable.
      */
-    queueAll?: pulumi.Input<boolean>;
+    queueAll?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queueAll` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are:
      * 1. `fifo` **(default)**: First-In-First-Out queue where customers gain access in the order they arrived.
@@ -745,20 +745,20 @@ export interface WaitingRoomArgs {
      * 4. `reject`: Users will be immediately rejected from the waiting room. As a result, no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`, `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is prequeueing, the waiting room page **will not refresh automatically**.
      * Available values: "fifo", "random", "passthrough", "reject".
      */
-    queueingMethod?: pulumi.Input<string>;
+    queueingMethod?: pulumi.Input<string | undefined>;
     /**
      * HTTP status code returned to a user while in the queue.
      * Available values: 200, 202, 429.
      */
-    queueingStatusCode?: pulumi.Input<number>;
+    queueingStatusCode?: pulumi.Input<number | undefined>;
     /**
      * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.
      */
-    sessionDuration?: pulumi.Input<number>;
+    sessionDuration?: pulumi.Input<number | undefined>;
     /**
      * Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.
      */
-    suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
      */
@@ -771,7 +771,7 @@ export interface WaitingRoomArgs {
      * origin. `infiniteQueue` requires Advanced Waiting Room.
      * Available values: "log", "infiniteQueue".
      */
-    turnstileAction?: pulumi.Input<string>;
+    turnstileAction?: pulumi.Input<string | undefined>;
     /**
      * Which Turnstile widget type to use for detecting bot traffic. See
      * [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types)
@@ -780,9 +780,9 @@ export interface WaitingRoomArgs {
      * `off` or `invisible` requires Advanced Waiting Room.
      * Available values: "off", "invisible", "visibleNonInteractive", "visibleManaged".
      */
-    turnstileMode?: pulumi.Input<string>;
+    turnstileMode?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

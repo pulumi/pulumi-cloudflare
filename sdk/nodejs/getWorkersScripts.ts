@@ -114,13 +114,13 @@ export interface GetWorkersScriptsOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
      */
-    tags?: pulumi.Input<string>;
+    tags?: pulumi.Input<string | undefined>;
 }

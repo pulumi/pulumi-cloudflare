@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCertificateAuthoritiesHostnameAssociations = new Cloudflare.Index.CertificateAuthoritiesHostnameAssociations("example_certificate_authorities_hostname_associations", new()
+    ///     var exampleCertificateAuthoritiesHostnameAssociations = new Cloudflare.CertificateAuthoritiesHostnameAssociations("example_certificate_authorities_hostname_associations", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostnames = new[]

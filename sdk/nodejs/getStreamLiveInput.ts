@@ -153,7 +153,7 @@ export interface GetStreamLiveInputOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A unique identifier for a live input.
      */

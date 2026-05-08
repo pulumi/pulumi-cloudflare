@@ -99,8 +99,8 @@ export class ZeroTrustDeviceDefaultProfileLocalDomainFallback extends pulumi.Cus
  * Input properties used for looking up and filtering ZeroTrustDeviceDefaultProfileLocalDomainFallback resources.
  */
 export interface ZeroTrustDeviceDefaultProfileLocalDomainFallbackState {
-    accountId?: pulumi.Input<string>;
-    domains?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomain>[]>;
+    accountId?: pulumi.Input<string | undefined>;
+    domains?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomain>[] | undefined>;
 }
 
 /**

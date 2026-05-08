@@ -156,29 +156,29 @@ export interface GetFiltersOutputArgs {
     /**
      * A case-insensitive string to find in the description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A case-insensitive string to find in the expression.
      */
-    expression?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the filter.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * When true, indicates that the filter is currently paused.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * The filter ref (a short reference tag) to search for. Must be an exact match.
      */
-    ref?: pulumi.Input<string>;
+    ref?: pulumi.Input<string | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

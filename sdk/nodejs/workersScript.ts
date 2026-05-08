@@ -289,141 +289,141 @@ export interface WorkersScriptState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Annotations for the version created by this upload.
      */
-    annotations?: pulumi.Input<inputs.WorkersScriptAnnotations>;
+    annotations?: pulumi.Input<inputs.WorkersScriptAnnotations | undefined>;
     /**
      * Configuration for assets within a Worker.
      */
-    assets?: pulumi.Input<inputs.WorkersScriptAssets>;
+    assets?: pulumi.Input<inputs.WorkersScriptAssets | undefined>;
     /**
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
-    bindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptBinding>[]>;
+    bindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptBinding>[] | undefined>;
     /**
      * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
-    bodyPart?: pulumi.Input<string>;
+    bodyPart?: pulumi.Input<string | undefined>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
-    compatibilityDate?: pulumi.Input<string>;
+    compatibilityDate?: pulumi.Input<string | undefined>;
     /**
      * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      */
-    compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
+    compatibilityFlags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
      */
-    contentFile?: pulumi.Input<string>;
+    contentFile?: pulumi.Input<string | undefined>;
     /**
      * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
      */
-    contentSha256?: pulumi.Input<string>;
+    contentSha256?: pulumi.Input<string | undefined>;
     /**
      * Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * When the script was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Hashed script content, can be used in a If-None-Match header when updating.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The names of handlers exported as part of the default export.
      */
-    handlers?: pulumi.Input<pulumi.Input<string>[]>;
+    handlers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether a Worker contains assets.
      */
-    hasAssets?: pulumi.Input<boolean>;
+    hasAssets?: pulumi.Input<boolean | undefined>;
     /**
      * Whether a Worker contains modules.
      */
-    hasModules?: pulumi.Input<boolean>;
+    hasModules?: pulumi.Input<boolean | undefined>;
     /**
      * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
      */
-    keepAssets?: pulumi.Input<boolean>;
+    keepAssets?: pulumi.Input<boolean | undefined>;
     /**
      * List of binding types to keep from previous_upload.
      */
-    keepBindings?: pulumi.Input<pulumi.Input<string>[]>;
+    keepBindings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The client most recently used to deploy this Worker.
      */
-    lastDeployedFrom?: pulumi.Input<string>;
+    lastDeployedFrom?: pulumi.Input<string | undefined>;
     /**
      * Limits to apply for this Worker.
      */
-    limits?: pulumi.Input<inputs.WorkersScriptLimits>;
+    limits?: pulumi.Input<inputs.WorkersScriptLimits | undefined>;
     /**
      * Whether Logpush is turned on for the Worker.
      */
-    logpush?: pulumi.Input<boolean>;
+    logpush?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      */
-    mainModule?: pulumi.Input<string>;
+    mainModule?: pulumi.Input<string | undefined>;
     /**
      * The tag of the Durable Object migration that was most recently applied for this Worker.
      */
-    migrationTag?: pulumi.Input<string>;
+    migrationTag?: pulumi.Input<string | undefined>;
     /**
      * Migrations to apply for Durable Objects associated with this Worker.
      */
-    migrations?: pulumi.Input<inputs.WorkersScriptMigrations>;
+    migrations?: pulumi.Input<inputs.WorkersScriptMigrations | undefined>;
     /**
      * When the script was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * Named exports, such as Durable Object class implementations and named entrypoints.
      */
-    namedHandlers?: pulumi.Input<pulumi.Input<inputs.WorkersScriptNamedHandler>[]>;
+    namedHandlers?: pulumi.Input<pulumi.Input<inputs.WorkersScriptNamedHandler>[] | undefined>;
     /**
      * Observability settings for the Worker.
      */
-    observability?: pulumi.Input<inputs.WorkersScriptObservability>;
+    observability?: pulumi.Input<inputs.WorkersScriptObservability | undefined>;
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
-    placement?: pulumi.Input<inputs.WorkersScriptPlacement>;
+    placement?: pulumi.Input<inputs.WorkersScriptPlacement | undefined>;
     /**
      * Available values: "smart", "targeted".
      *
      * @deprecated This attribute is deprecated.
      */
-    placementMode?: pulumi.Input<string>;
+    placementMode?: pulumi.Input<string | undefined>;
     /**
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
      *
      * @deprecated This attribute is deprecated.
      */
-    placementStatus?: pulumi.Input<string>;
+    placementStatus?: pulumi.Input<string | undefined>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
-    scriptName?: pulumi.Input<string>;
-    startupTimeMs?: pulumi.Input<number>;
+    scriptName?: pulumi.Input<string | undefined>;
+    startupTimeMs?: pulumi.Input<number | undefined>;
     /**
      * List of Workers that will consume logs from the attached Worker.
      */
-    tailConsumers?: pulumi.Input<pulumi.Input<inputs.WorkersScriptTailConsumer>[]>;
+    tailConsumers?: pulumi.Input<pulumi.Input<inputs.WorkersScriptTailConsumer>[] | undefined>;
     /**
      * Usage model for the Worker invocations.
      * Available values: "standard", "bundled", "unbound".
      */
-    usageModel?: pulumi.Input<string>;
+    usageModel?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -433,79 +433,79 @@ export interface WorkersScriptArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Annotations for the version created by this upload.
      */
-    annotations?: pulumi.Input<inputs.WorkersScriptAnnotations>;
+    annotations?: pulumi.Input<inputs.WorkersScriptAnnotations | undefined>;
     /**
      * Configuration for assets within a Worker.
      */
-    assets?: pulumi.Input<inputs.WorkersScriptAssets>;
+    assets?: pulumi.Input<inputs.WorkersScriptAssets | undefined>;
     /**
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
-    bindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptBinding>[]>;
+    bindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptBinding>[] | undefined>;
     /**
      * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
-    bodyPart?: pulumi.Input<string>;
+    bodyPart?: pulumi.Input<string | undefined>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
-    compatibilityDate?: pulumi.Input<string>;
+    compatibilityDate?: pulumi.Input<string | undefined>;
     /**
      * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      */
-    compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
+    compatibilityFlags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
      */
-    contentFile?: pulumi.Input<string>;
+    contentFile?: pulumi.Input<string | undefined>;
     /**
      * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
      */
-    contentSha256?: pulumi.Input<string>;
+    contentSha256?: pulumi.Input<string | undefined>;
     /**
      * Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
      */
-    keepAssets?: pulumi.Input<boolean>;
+    keepAssets?: pulumi.Input<boolean | undefined>;
     /**
      * List of binding types to keep from previous_upload.
      */
-    keepBindings?: pulumi.Input<pulumi.Input<string>[]>;
+    keepBindings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Limits to apply for this Worker.
      */
-    limits?: pulumi.Input<inputs.WorkersScriptLimits>;
+    limits?: pulumi.Input<inputs.WorkersScriptLimits | undefined>;
     /**
      * Whether Logpush is turned on for the Worker.
      */
-    logpush?: pulumi.Input<boolean>;
+    logpush?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      */
-    mainModule?: pulumi.Input<string>;
+    mainModule?: pulumi.Input<string | undefined>;
     /**
      * Migrations to apply for Durable Objects associated with this Worker.
      */
-    migrations?: pulumi.Input<inputs.WorkersScriptMigrations>;
+    migrations?: pulumi.Input<inputs.WorkersScriptMigrations | undefined>;
     /**
      * Observability settings for the Worker.
      */
-    observability?: pulumi.Input<inputs.WorkersScriptObservability>;
+    observability?: pulumi.Input<inputs.WorkersScriptObservability | undefined>;
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
      */
-    placement?: pulumi.Input<inputs.WorkersScriptPlacement>;
+    placement?: pulumi.Input<inputs.WorkersScriptPlacement | undefined>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
@@ -513,10 +513,10 @@ export interface WorkersScriptArgs {
     /**
      * List of Workers that will consume logs from the attached Worker.
      */
-    tailConsumers?: pulumi.Input<pulumi.Input<inputs.WorkersScriptTailConsumer>[]>;
+    tailConsumers?: pulumi.Input<pulumi.Input<inputs.WorkersScriptTailConsumer>[] | undefined>;
     /**
      * Usage model for the Worker invocations.
      * Available values: "standard", "bundled", "unbound".
      */
-    usageModel?: pulumi.Input<string>;
+    usageModel?: pulumi.Input<string | undefined>;
 }

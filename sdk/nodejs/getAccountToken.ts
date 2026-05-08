@@ -136,10 +136,10 @@ export interface GetAccountTokenOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetAccountTokenFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetAccountTokenFilterArgs | undefined>;
     /**
      * Token identifier tag.
      */
-    tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string | undefined>;
 }

@@ -106,7 +106,7 @@ export function getZeroTrustDevicePostureRuleOutput(args: GetZeroTrustDevicePost
  * A collection of arguments for invoking getZeroTrustDevicePostureRule.
  */
 export interface GetZeroTrustDevicePostureRuleOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * API UUID.
      */

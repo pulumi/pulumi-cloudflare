@@ -209,14 +209,14 @@ def get_zero_trust_network_hostname_routes(account_id: Optional[_builtins.str] =
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'))
-def get_zero_trust_network_hostname_routes_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                  comment: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                  existed_at: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                  hostname: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                  id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                  is_deleted: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                                  max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                  tunnel_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_network_hostname_routes_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                  comment: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                  existed_at: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                  hostname: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                  id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                  is_deleted: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                                  max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                  tunnel_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustNetworkHostnameRoutesResult]:
     """
     Accepted Permissions

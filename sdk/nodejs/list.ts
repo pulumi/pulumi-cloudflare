@@ -142,40 +142,40 @@ export interface ListState {
     /**
      * The Account ID for this resource.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The RFC 3339 timestamp of when the list was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * An informative summary of the list.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
      */
-    items?: pulumi.Input<pulumi.Input<inputs.ListItem>[]>;
+    items?: pulumi.Input<pulumi.Input<inputs.ListItem>[] | undefined>;
     /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
      * Available values: "ip", "redirect", "hostname", "asn".
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The RFC 3339 timestamp of when the list was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * An informative name for the list. Use this name in filter and rule expressions.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of items in the list.
      */
-    numItems?: pulumi.Input<number>;
+    numItems?: pulumi.Input<number | undefined>;
     /**
      * The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
      */
-    numReferencingFilters?: pulumi.Input<number>;
+    numReferencingFilters?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -185,15 +185,15 @@ export interface ListArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * An informative summary of the list.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
      */
-    items?: pulumi.Input<pulumi.Input<inputs.ListItem>[]>;
+    items?: pulumi.Input<pulumi.Input<inputs.ListItem>[] | undefined>;
     /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
      * Available values: "ip", "redirect", "hostname", "asn".

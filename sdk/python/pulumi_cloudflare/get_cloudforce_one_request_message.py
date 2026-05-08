@@ -274,14 +274,14 @@ def get_cloudforce_one_request_message(account_id: Optional[_builtins.str] = Non
         sort_by=pulumi.get(__ret__, 'sort_by'),
         sort_order=pulumi.get(__ret__, 'sort_order'),
         updated=pulumi.get(__ret__, 'updated'))
-def get_cloudforce_one_request_message_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              after: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              before: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              page: Optional[pulumi.Input[_builtins.int]] = None,
-                                              per_page: Optional[pulumi.Input[_builtins.int]] = None,
-                                              request_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                              sort_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              sort_order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_cloudforce_one_request_message_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              after: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              before: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              page: pulumi.Input[Optional[_builtins.int]] = None,
+                                              per_page: pulumi.Input[Optional[_builtins.int]] = None,
+                                              request_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                              sort_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              sort_order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudforceOneRequestMessageResult]:
     """
     Accepted Permissions

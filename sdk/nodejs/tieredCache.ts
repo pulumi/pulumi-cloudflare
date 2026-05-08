@@ -118,20 +118,20 @@ export interface TieredCacheState {
     /**
      * Whether the setting is editable.
      */
-    editable?: pulumi.Input<boolean>;
+    editable?: pulumi.Input<boolean | undefined>;
     /**
      * Last time this setting was modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable the Smart Tiered Cache.
      * Available values: "on", "off".
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**

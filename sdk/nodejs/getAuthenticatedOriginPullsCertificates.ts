@@ -88,7 +88,7 @@ export interface GetAuthenticatedOriginPullsCertificatesOutputArgs {
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Identifier.
      */

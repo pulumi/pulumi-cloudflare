@@ -116,20 +116,20 @@ export interface ArgoSmartRoutingState {
     /**
      * Specifies if the setting is editable.
      */
-    editable?: pulumi.Input<boolean>;
+    editable?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the time when the setting was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * Specifies the enablement value of Argo Smart Routing.
      * Available values: "on", "off".
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * Specifies the zone associated with the API call.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**

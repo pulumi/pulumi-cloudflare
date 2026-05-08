@@ -132,8 +132,8 @@ def get_snippet(snippet_name: Optional[_builtins.str] = None,
         modified_on=pulumi.get(__ret__, 'modified_on'),
         snippet_name=pulumi.get(__ret__, 'snippet_name'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_snippet_output(snippet_name: Optional[pulumi.Input[_builtins.str]] = None,
-                       zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_snippet_output(snippet_name: pulumi.Input[Optional[_builtins.str]] = None,
+                       zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnippetResult]:
     """
     Accepted Permissions

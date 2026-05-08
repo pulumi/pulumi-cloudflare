@@ -123,7 +123,7 @@ export interface SchemaValidationSettingsState {
      *   - `"none"` - skip running schema validation
      * Available values: "none", "log", "block".
      */
-    validationDefaultMitigationAction?: pulumi.Input<string>;
+    validationDefaultMitigationAction?: pulumi.Input<string | undefined>;
     /**
      * When set, this overrides both zone level and operation level mitigation actions.
      *
@@ -131,11 +131,11 @@ export interface SchemaValidationSettingsState {
      *   - `null` - clears any existing override
      * Available values: "none".
      */
-    validationOverrideMitigationAction?: pulumi.Input<string>;
+    validationOverrideMitigationAction?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -159,9 +159,9 @@ export interface SchemaValidationSettingsArgs {
      *   - `null` - clears any existing override
      * Available values: "none".
      */
-    validationOverrideMitigationAction?: pulumi.Input<string>;
+    validationOverrideMitigationAction?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

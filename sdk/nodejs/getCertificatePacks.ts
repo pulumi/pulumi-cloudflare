@@ -129,18 +129,18 @@ export interface GetCertificatePacksOutputArgs {
      * Specify the deployment environment for the certificate packs.
      * Available values: "staging", "production".
      */
-    deploy?: pulumi.Input<string>;
+    deploy?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Include Certificate Packs of all statuses, not just active ones.
      * Available values: "all".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

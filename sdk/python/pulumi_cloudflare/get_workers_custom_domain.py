@@ -199,9 +199,9 @@ def get_workers_custom_domain(account_id: Optional[_builtins.str] = None,
         service=pulumi.get(__ret__, 'service'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_name=pulumi.get(__ret__, 'zone_name'))
-def get_workers_custom_domain_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     domain_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     filter: Optional[pulumi.Input[Optional[Union['GetWorkersCustomDomainFilterArgs', 'GetWorkersCustomDomainFilterArgsDict']]]] = None,
+def get_workers_custom_domain_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     domain_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     filter: pulumi.Input[Optional[Optional[Union['GetWorkersCustomDomainFilterArgs', 'GetWorkersCustomDomainFilterArgsDict']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersCustomDomainResult]:
     """
     Accepted Permissions

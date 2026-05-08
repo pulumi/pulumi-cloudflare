@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccountToken = new Cloudflare.Index.AccountToken("example_account_token", new()
+    ///     var exampleAccountToken = new Cloudflare.AccountToken("example_account_token", new()
     ///     {
     ///         AccountId = "b67e14daa5f8dceeb91fe5449ba496eb",
     ///         Name = "workers read-only token",

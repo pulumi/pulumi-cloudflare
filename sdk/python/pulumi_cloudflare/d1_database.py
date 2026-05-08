@@ -22,10 +22,10 @@ __all__ = ['D1DatabaseArgs', 'D1Database']
 class D1DatabaseArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_location_hint: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_replication: Optional[pulumi.Input['D1DatabaseReadReplicationArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_replication: pulumi.Input[Optional['D1DatabaseReadReplicationArgs']] = None):
         """
         The set of arguments for constructing a D1Database resource.
 
@@ -61,19 +61,19 @@ class D1DatabaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def jurisdiction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
         Available values: "eu", "fedramp".
@@ -81,12 +81,12 @@ class D1DatabaseArgs:
         return pulumi.get(self, "jurisdiction")
 
     @jurisdiction.setter
-    def jurisdiction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jurisdiction", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryLocationHint")
-    def primary_location_hint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_location_hint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
         Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
@@ -94,35 +94,35 @@ class D1DatabaseArgs:
         return pulumi.get(self, "primary_location_hint")
 
     @primary_location_hint.setter
-    def primary_location_hint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_location_hint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_location_hint", value)
 
     @_builtins.property
     @pulumi.getter(name="readReplication")
-    def read_replication(self) -> Optional[pulumi.Input['D1DatabaseReadReplicationArgs']]:
+    def read_replication(self) -> pulumi.Input[Optional['D1DatabaseReadReplicationArgs']]:
         """
         Configuration for D1 read replication.
         """
         return pulumi.get(self, "read_replication")
 
     @read_replication.setter
-    def read_replication(self, value: Optional[pulumi.Input['D1DatabaseReadReplicationArgs']]):
+    def read_replication(self, value: pulumi.Input[Optional['D1DatabaseReadReplicationArgs']]):
         pulumi.set(self, "read_replication", value)
 
 
 @pulumi.input_type
 class _D1DatabaseState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_size: Optional[pulumi.Input[_builtins.float]] = None,
-                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_tables: Optional[pulumi.Input[_builtins.float]] = None,
-                 primary_location_hint: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_replication: Optional[pulumi.Input['D1DatabaseReadReplicationArgs']] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_size: pulumi.Input[Optional[_builtins.float]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_tables: pulumi.Input[Optional[_builtins.float]] = None,
+                 primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_replication: pulumi.Input[Optional['D1DatabaseReadReplicationArgs']] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering D1Database resources.
 
@@ -160,43 +160,43 @@ class _D1DatabaseState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the timestamp the resource was created as an ISO8601 string.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSize")
-    def file_size(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def file_size(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The D1 database's size, in bytes.
         """
         return pulumi.get(self, "file_size")
 
     @file_size.setter
-    def file_size(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def file_size(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "file_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def jurisdiction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
         Available values: "eu", "fedramp".
@@ -204,33 +204,33 @@ class _D1DatabaseState:
         return pulumi.get(self, "jurisdiction")
 
     @jurisdiction.setter
-    def jurisdiction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jurisdiction", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         D1 database name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="numTables")
-    def num_tables(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def num_tables(self) -> pulumi.Input[Optional[_builtins.float]]:
         return pulumi.get(self, "num_tables")
 
     @num_tables.setter
-    def num_tables(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def num_tables(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "num_tables", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryLocationHint")
-    def primary_location_hint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_location_hint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
         Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
@@ -238,40 +238,40 @@ class _D1DatabaseState:
         return pulumi.get(self, "primary_location_hint")
 
     @primary_location_hint.setter
-    def primary_location_hint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_location_hint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_location_hint", value)
 
     @_builtins.property
     @pulumi.getter(name="readReplication")
-    def read_replication(self) -> Optional[pulumi.Input['D1DatabaseReadReplicationArgs']]:
+    def read_replication(self) -> pulumi.Input[Optional['D1DatabaseReadReplicationArgs']]:
         """
         Configuration for D1 read replication.
         """
         return pulumi.get(self, "read_replication")
 
     @read_replication.setter
-    def read_replication(self, value: Optional[pulumi.Input['D1DatabaseReadReplicationArgs']]):
+    def read_replication(self, value: pulumi.Input[Optional['D1DatabaseReadReplicationArgs']]):
         pulumi.set(self, "read_replication", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         D1 database identifier (UUID).
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -281,11 +281,11 @@ class D1Database(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_location_hint: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_replication: Optional[pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_replication: pulumi.Input[Optional[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -376,11 +376,11 @@ class D1Database(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_location_hint: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_replication: Optional[pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_replication: pulumi.Input[Optional[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -412,16 +412,16 @@ class D1Database(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            file_size: Optional[pulumi.Input[_builtins.float]] = None,
-            jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            num_tables: Optional[pulumi.Input[_builtins.float]] = None,
-            primary_location_hint: Optional[pulumi.Input[_builtins.str]] = None,
-            read_replication: Optional[pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
-            uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'D1Database':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            file_size: pulumi.Input[Optional[_builtins.float]] = None,
+            jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            num_tables: pulumi.Input[Optional[_builtins.float]] = None,
+            primary_location_hint: pulumi.Input[Optional[_builtins.str]] = None,
+            read_replication: pulumi.Input[Optional[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'D1Database':
         """
         Get an existing D1Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

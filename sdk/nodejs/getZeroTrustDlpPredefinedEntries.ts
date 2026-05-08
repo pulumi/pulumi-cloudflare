@@ -91,9 +91,9 @@ export function getZeroTrustDlpPredefinedEntriesOutput(args?: GetZeroTrustDlpPre
  * A collection of arguments for invoking getZeroTrustDlpPredefinedEntries.
  */
 export interface GetZeroTrustDlpPredefinedEntriesOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
 }

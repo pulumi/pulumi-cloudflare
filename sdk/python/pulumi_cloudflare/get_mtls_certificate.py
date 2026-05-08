@@ -205,8 +205,8 @@ def get_mtls_certificate(account_id: Optional[_builtins.str] = None,
         serial_number=pulumi.get(__ret__, 'serial_number'),
         signature=pulumi.get(__ret__, 'signature'),
         uploaded_on=pulumi.get(__ret__, 'uploaded_on'))
-def get_mtls_certificate_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                mtls_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_mtls_certificate_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                mtls_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMtlsCertificateResult]:
     """
     ## Example Usage

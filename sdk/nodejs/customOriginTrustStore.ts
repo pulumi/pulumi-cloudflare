@@ -141,36 +141,36 @@ export interface CustomOriginTrustStoreState {
     /**
      * The zone's SSL certificate or certificate and the intermediate(s).
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * When the certificate expires.
      */
-    expiresOn?: pulumi.Input<string>;
+    expiresOn?: pulumi.Input<string | undefined>;
     /**
      * The certificate authority that issued the certificate.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * The type of hash used for the certificate.
      */
-    signature?: pulumi.Input<string>;
+    signature?: pulumi.Input<string | undefined>;
     /**
      * Status of the zone's custom SSL.
      * Available values: "initializing", "pending*deployment", "active", "pending*deletion", "deleted", "expired".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * When the certificate was last modified.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * When the certificate was uploaded to Cloudflare.
      */
-    uploadedOn?: pulumi.Input<string>;
+    uploadedOn?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -184,5 +184,5 @@ export interface CustomOriginTrustStoreArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

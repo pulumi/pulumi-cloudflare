@@ -22,10 +22,10 @@ __all__ = ['StreamAudioTrackArgs', 'StreamAudioTrack']
 class StreamAudioTrackArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 audio_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 audio_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamAudioTrack resource.
 
@@ -59,64 +59,64 @@ class StreamAudioTrackArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="audioIdentifier")
-    def audio_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audio_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for an additional audio track.
         """
         return pulumi.get(self, "audio_identifier")
 
     @audio_identifier.setter
-    def audio_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audio_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audio_identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Denotes whether the audio track will be played by default in a player.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string to uniquely identify the track amongst other audio track labels for the specified video.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
 
 @pulumi.input_type
 class _StreamAudioTrackState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 audio_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 audios: Optional[pulumi.Input[Sequence[pulumi.Input['StreamAudioTrackAudioArgs']]]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 audio_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 audios: pulumi.Input[Optional[Sequence[pulumi.Input['StreamAudioTrackAudioArgs']]]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamAudioTrack resources.
 
@@ -149,79 +149,79 @@ class _StreamAudioTrackState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="audioIdentifier")
-    def audio_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audio_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for an additional audio track.
         """
         return pulumi.get(self, "audio_identifier")
 
     @audio_identifier.setter
-    def audio_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audio_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audio_identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def audios(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamAudioTrackAudioArgs']]]]:
+    def audios(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamAudioTrackAudioArgs']]]]:
         """
         Array of audio tracks for the video.
         """
         return pulumi.get(self, "audios")
 
     @audios.setter
-    def audios(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamAudioTrackAudioArgs']]]]):
+    def audios(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamAudioTrackAudioArgs']]]]):
         pulumi.set(self, "audios", value)
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Denotes whether the audio track will be played by default in a player.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Cloudflare-generated unique identifier for a media item.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string to uniquely identify the track amongst other audio track labels for the specified video.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the processing status of the video.
         Available values: "queued", "ready", "error".
@@ -229,19 +229,19 @@ class _StreamAudioTrackState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Cloudflare-generated unique identifier for a media item.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
@@ -251,11 +251,11 @@ class StreamAudioTrack(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 audio_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 audio_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -336,11 +336,11 @@ class StreamAudioTrack(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 audio_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 audio_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -370,14 +370,14 @@ class StreamAudioTrack(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            audio_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            audios: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StreamAudioTrackAudioArgs', 'StreamAudioTrackAudioArgsDict']]]]] = None,
-            default: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'StreamAudioTrack':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            audio_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            audios: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StreamAudioTrackAudioArgs', 'StreamAudioTrackAudioArgsDict']]]]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'StreamAudioTrack':
         """
         Get an existing StreamAudioTrack resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

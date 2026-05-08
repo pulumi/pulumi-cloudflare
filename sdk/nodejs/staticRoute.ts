@@ -164,39 +164,39 @@ export interface StaticRouteState {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * When the route was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * An optional human provided description of the static route.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * When the route was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * The next-hop IP Address for the static route.
      */
-    nexthop?: pulumi.Input<string>;
+    nexthop?: pulumi.Input<string | undefined>;
     /**
      * IP Prefix in Classless Inter-Domain Routing format.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Priority of the static route.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Used only for ECMP routes.
      */
-    scope?: pulumi.Input<inputs.StaticRouteScope>;
+    scope?: pulumi.Input<inputs.StaticRouteScope | undefined>;
     /**
      * Optional weight of the ECMP scope - if provided.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -210,7 +210,7 @@ export interface StaticRouteArgs {
     /**
      * An optional human provided description of the static route.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The next-hop IP Address for the static route.
      */
@@ -226,9 +226,9 @@ export interface StaticRouteArgs {
     /**
      * Used only for ECMP routes.
      */
-    scope?: pulumi.Input<inputs.StaticRouteScope>;
+    scope?: pulumi.Input<inputs.StaticRouteScope | undefined>;
     /**
      * Optional weight of the ECMP scope - if provided.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }

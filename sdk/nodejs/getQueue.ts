@@ -108,7 +108,7 @@ export interface GetQueueOutputArgs {
     /**
      * A Resource identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A Resource identifier.
      */

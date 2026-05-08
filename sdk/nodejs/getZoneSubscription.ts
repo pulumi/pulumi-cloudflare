@@ -116,5 +116,5 @@ export interface GetZoneSubscriptionOutputArgs {
     /**
      * Identifier
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

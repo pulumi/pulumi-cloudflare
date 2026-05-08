@@ -128,19 +128,19 @@ export interface GetWorkersKvNamespacesOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Direction to order namespaces.
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Field to order results by.
      * Available values: "id", "title".
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
 }

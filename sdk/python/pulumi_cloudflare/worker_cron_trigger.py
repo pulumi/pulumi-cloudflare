@@ -23,7 +23,7 @@ class WorkerCronTriggerArgs:
     def __init__(__self__, *,
                  schedules: pulumi.Input[Sequence[pulumi.Input['WorkerCronTriggerScheduleArgs']]],
                  script_name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkerCronTrigger resource.
 
@@ -58,23 +58,23 @@ class WorkerCronTriggerArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
 class _WorkerCronTriggerState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerCronTriggerScheduleArgs']]]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerCronTriggerScheduleArgs']]]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkerCronTrigger resources.
 
@@ -90,35 +90,35 @@ class _WorkerCronTriggerState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerCronTriggerScheduleArgs']]]]:
+    def schedules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerCronTriggerScheduleArgs']]]]:
         return pulumi.get(self, "schedules")
 
     @schedules.setter
-    def schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerCronTriggerScheduleArgs']]]]):
+    def schedules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerCronTriggerScheduleArgs']]]]):
         pulumi.set(self, "schedules", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptName")
-    def script_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the script, used in URLs and route configuration.
         """
         return pulumi.get(self, "script_name")
 
     @script_name.setter
-    def script_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script_name", value)
 
 
@@ -133,9 +133,9 @@ class WorkerCronTrigger(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerCronTriggerScheduleArgs', 'WorkerCronTriggerScheduleArgsDict']]]]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerCronTriggerScheduleArgs', 'WorkerCronTriggerScheduleArgsDict']]]]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -217,9 +217,9 @@ class WorkerCronTrigger(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerCronTriggerScheduleArgs', 'WorkerCronTriggerScheduleArgsDict']]]]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerCronTriggerScheduleArgs', 'WorkerCronTriggerScheduleArgsDict']]]]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""WorkerCronTrigger is deprecated: cloudflare.index/workercrontrigger.WorkerCronTrigger has been deprecated in favor of cloudflare.index/workerscrontrigger.WorkersCronTrigger""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -249,9 +249,9 @@ class WorkerCronTrigger(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerCronTriggerScheduleArgs', 'WorkerCronTriggerScheduleArgsDict']]]]] = None,
-            script_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkerCronTrigger':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerCronTriggerScheduleArgs', 'WorkerCronTriggerScheduleArgsDict']]]]] = None,
+            script_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkerCronTrigger':
         """
         Get an existing WorkerCronTrigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

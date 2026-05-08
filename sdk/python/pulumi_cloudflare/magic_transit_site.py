@@ -22,12 +22,12 @@ __all__ = ['MagicTransitSiteArgs', 'MagicTransitSite']
 class MagicTransitSiteArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input['MagicTransitSiteLocationArgs']] = None,
-                 secondary_connector_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional['MagicTransitSiteLocationArgs']] = None,
+                 secondary_connector_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MagicTransitSite resource.
 
@@ -66,84 +66,84 @@ class MagicTransitSiteArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorId")
-    def connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Magic Connector identifier tag.
         """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
-    def connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="haMode")
-    def ha_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
         """
         return pulumi.get(self, "ha_mode")
 
     @ha_mode.setter
-    def ha_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input['MagicTransitSiteLocationArgs']]:
+    def location(self) -> pulumi.Input[Optional['MagicTransitSiteLocationArgs']]:
         """
         Location of site in latitude and longitude.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input['MagicTransitSiteLocationArgs']]):
+    def location(self, value: pulumi.Input[Optional['MagicTransitSiteLocationArgs']]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryConnectorId")
-    def secondary_connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Magic Connector identifier tag. Used when high availability mode is on.
         """
         return pulumi.get(self, "secondary_connector_id")
 
     @secondary_connector_id.setter
-    def secondary_connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_connector_id", value)
 
 
 @pulumi.input_type
 class _MagicTransitSiteState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input['MagicTransitSiteLocationArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_connector_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional['MagicTransitSiteLocationArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_connector_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MagicTransitSite resources.
 
@@ -171,83 +171,83 @@ class _MagicTransitSiteState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorId")
-    def connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Magic Connector identifier tag.
         """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
-    def connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="haMode")
-    def ha_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
         """
         return pulumi.get(self, "ha_mode")
 
     @ha_mode.setter
-    def ha_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input['MagicTransitSiteLocationArgs']]:
+    def location(self) -> pulumi.Input[Optional['MagicTransitSiteLocationArgs']]:
         """
         Location of site in latitude and longitude.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input['MagicTransitSiteLocationArgs']]):
+    def location(self, value: pulumi.Input[Optional['MagicTransitSiteLocationArgs']]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the site.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryConnectorId")
-    def secondary_connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Magic Connector identifier tag. Used when high availability mode is on.
         """
         return pulumi.get(self, "secondary_connector_id")
 
     @secondary_connector_id.setter
-    def secondary_connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_connector_id", value)
 
 
@@ -257,13 +257,13 @@ class MagicTransitSite(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -363,13 +363,13 @@ class MagicTransitSite(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -398,13 +398,13 @@ class MagicTransitSite(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-            location: Optional[pulumi.Input[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_connector_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'MagicTransitSite':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[Union['MagicTransitSiteLocationArgs', 'MagicTransitSiteLocationArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_connector_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'MagicTransitSite':
         """
         Get an existing MagicTransitSite resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

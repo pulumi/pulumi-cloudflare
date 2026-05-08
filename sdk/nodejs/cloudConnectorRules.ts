@@ -105,18 +105,18 @@ export class CloudConnectorRules extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CloudConnectorRules resources.
  */
 export interface CloudConnectorRulesState {
-    rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[] | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a CloudConnectorRules resource.
  */
 export interface CloudConnectorRulesArgs {
-    rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[] | undefined>;
     /**
      * Identifier.
      */

@@ -123,42 +123,42 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamsProxyEndpoint resources.
  */
 export interface TeamsProxyEndpointState {
-    accountId?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Specify the list of CIDRs to restrict ingress connections.
      */
-    ips?: pulumi.Input<pulumi.Input<string>[]>;
+    ips?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The proxy endpoint kind
      * Available values: "ip", "identity".
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Specify the name of the proxy endpoint.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specify the subdomain to use as the destination in the proxy client.
      */
-    subdomain?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
+    subdomain?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a TeamsProxyEndpoint resource.
  */
 export interface TeamsProxyEndpointArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Specify the list of CIDRs to restrict ingress connections.
      */
-    ips?: pulumi.Input<pulumi.Input<string>[]>;
+    ips?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The proxy endpoint kind
      * Available values: "ip", "identity".
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Specify the name of the proxy endpoint.
      */

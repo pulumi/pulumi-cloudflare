@@ -63,7 +63,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUrlNormalizationSettings = new Cloudflare.Index.UrlNormalizationSettings("example_url_normalization_settings", new()
+    ///     var exampleUrlNormalizationSettings = new Cloudflare.UrlNormalizationSettings("example_url_normalization_settings", new()
     ///     {
     ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
     ///         Scope = "incoming",

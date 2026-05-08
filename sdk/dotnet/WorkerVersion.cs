@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkerVersion = new Cloudflare.Index.WorkerVersion("example_worker_version", new()
+    ///     var exampleWorkerVersion = new Cloudflare.WorkerVersion("example_worker_version", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         WorkerId = "worker_id",

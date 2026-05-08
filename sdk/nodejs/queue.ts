@@ -125,16 +125,16 @@ export interface QueueState {
     /**
      * A Resource identifier.
      */
-    accountId?: pulumi.Input<string>;
-    consumers?: pulumi.Input<pulumi.Input<inputs.QueueConsumer>[]>;
-    consumersTotalCount?: pulumi.Input<number>;
-    createdOn?: pulumi.Input<string>;
-    modifiedOn?: pulumi.Input<string>;
-    producers?: pulumi.Input<pulumi.Input<inputs.QueueProducer>[]>;
-    producersTotalCount?: pulumi.Input<number>;
-    queueId?: pulumi.Input<string>;
-    queueName?: pulumi.Input<string>;
-    settings?: pulumi.Input<inputs.QueueSettings>;
+    accountId?: pulumi.Input<string | undefined>;
+    consumers?: pulumi.Input<pulumi.Input<inputs.QueueConsumer>[] | undefined>;
+    consumersTotalCount?: pulumi.Input<number | undefined>;
+    createdOn?: pulumi.Input<string | undefined>;
+    modifiedOn?: pulumi.Input<string | undefined>;
+    producers?: pulumi.Input<pulumi.Input<inputs.QueueProducer>[] | undefined>;
+    producersTotalCount?: pulumi.Input<number | undefined>;
+    queueId?: pulumi.Input<string | undefined>;
+    queueName?: pulumi.Input<string | undefined>;
+    settings?: pulumi.Input<inputs.QueueSettings | undefined>;
 }
 
 /**
@@ -144,7 +144,7 @@ export interface QueueArgs {
     /**
      * A Resource identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     queueName: pulumi.Input<string>;
-    settings?: pulumi.Input<inputs.QueueSettings>;
+    settings?: pulumi.Input<inputs.QueueSettings | undefined>;
 }

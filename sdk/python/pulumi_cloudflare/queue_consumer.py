@@ -23,10 +23,10 @@ class QueueConsumerInitArgs:
     def __init__(__self__, *,
                  queue_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dead_letter_queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 settings: Optional[pulumi.Input['QueueConsumerSettingsArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dead_letter_queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 settings: pulumi.Input[Optional['QueueConsumerSettingsArgs']] = None):
         """
         The set of arguments for constructing a QueueConsumer resource.
 
@@ -72,59 +72,59 @@ class QueueConsumerInitArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Resource identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deadLetterQueue")
-    def dead_letter_queue(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dead_letter_queue(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dead_letter_queue")
 
     @dead_letter_queue.setter
-    def dead_letter_queue(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dead_letter_queue(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dead_letter_queue", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptName")
-    def script_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of a Worker
         """
         return pulumi.get(self, "script_name")
 
     @script_name.setter
-    def script_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input['QueueConsumerSettingsArgs']]:
+    def settings(self) -> pulumi.Input[Optional['QueueConsumerSettingsArgs']]:
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input['QueueConsumerSettingsArgs']]):
+    def settings(self, value: pulumi.Input[Optional['QueueConsumerSettingsArgs']]):
         pulumi.set(self, "settings", value)
 
 
 @pulumi.input_type
 class _QueueConsumerState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 dead_letter_queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 settings: Optional[pulumi.Input['QueueConsumerSettingsArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 dead_letter_queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 settings: pulumi.Input[Optional['QueueConsumerSettingsArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QueueConsumer resources.
 
@@ -155,98 +155,98 @@ class _QueueConsumerState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Resource identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerId")
-    def consumer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consumer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Resource identifier.
         """
         return pulumi.get(self, "consumer_id")
 
     @consumer_id.setter
-    def consumer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consumer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter(name="deadLetterQueue")
-    def dead_letter_queue(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dead_letter_queue(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dead_letter_queue")
 
     @dead_letter_queue.setter
-    def dead_letter_queue(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dead_letter_queue(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dead_letter_queue", value)
 
     @_builtins.property
     @pulumi.getter(name="queueId")
-    def queue_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Resource identifier.
         """
         return pulumi.get(self, "queue_id")
 
     @queue_id.setter
-    def queue_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_id", value)
 
     @_builtins.property
     @pulumi.getter(name="queueName")
-    def queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "queue_name")
 
     @queue_name.setter
-    def queue_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptName")
-    def script_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of a Worker
         """
         return pulumi.get(self, "script_name")
 
     @script_name.setter
-    def script_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input['QueueConsumerSettingsArgs']]:
+    def settings(self) -> pulumi.Input[Optional['QueueConsumerSettingsArgs']]:
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input['QueueConsumerSettingsArgs']]):
+    def settings(self, value: pulumi.Input[Optional['QueueConsumerSettingsArgs']]):
         pulumi.set(self, "settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "worker", "http_pull".
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -256,12 +256,12 @@ class QueueConsumer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dead_letter_queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 settings: Optional[pulumi.Input[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dead_letter_queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 settings: pulumi.Input[Optional[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -284,11 +284,11 @@ class QueueConsumer(pulumi.CustomResource):
             type="worker",
             dead_letter_queue="example-queue",
             settings={
-                "batch_size": 50,
-                "max_concurrency": 10,
-                "max_retries": 3,
-                "max_wait_time_ms": 5000,
-                "retry_delay": 10,
+                "batch_size": float(50),
+                "max_concurrency": float(10),
+                "max_retries": float(3),
+                "max_wait_time_ms": float(5000),
+                "retry_delay": float(10),
             })
         ```
 
@@ -331,11 +331,11 @@ class QueueConsumer(pulumi.CustomResource):
             type="worker",
             dead_letter_queue="example-queue",
             settings={
-                "batch_size": 50,
-                "max_concurrency": 10,
-                "max_retries": 3,
-                "max_wait_time_ms": 5000,
-                "retry_delay": 10,
+                "batch_size": float(50),
+                "max_concurrency": float(10),
+                "max_retries": float(3),
+                "max_wait_time_ms": float(5000),
+                "retry_delay": float(10),
             })
         ```
 
@@ -359,12 +359,12 @@ class QueueConsumer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dead_letter_queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 settings: Optional[pulumi.Input[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dead_letter_queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 settings: pulumi.Input[Optional[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -397,15 +397,15 @@ class QueueConsumer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            consumer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            dead_letter_queue: Optional[pulumi.Input[_builtins.str]] = None,
-            queue_id: Optional[pulumi.Input[_builtins.str]] = None,
-            queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-            script_name: Optional[pulumi.Input[_builtins.str]] = None,
-            settings: Optional[pulumi.Input[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict']]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'QueueConsumer':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            dead_letter_queue: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            script_name: pulumi.Input[Optional[_builtins.str]] = None,
+            settings: pulumi.Input[Optional[Union['QueueConsumerSettingsArgs', 'QueueConsumerSettingsArgsDict']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'QueueConsumer':
         """
         Get an existing QueueConsumer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

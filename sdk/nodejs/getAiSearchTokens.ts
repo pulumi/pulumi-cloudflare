@@ -67,13 +67,13 @@ export function getAiSearchTokensOutput(args?: GetAiSearchTokensOutputArgs, opts
  * A collection of arguments for invoking getAiSearchTokens.
  */
 export interface GetAiSearchTokensOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Filter tokens whose name contains this string (case-insensitive).
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
 }

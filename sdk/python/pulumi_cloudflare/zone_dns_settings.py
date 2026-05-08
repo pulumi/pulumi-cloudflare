@@ -21,16 +21,16 @@ __all__ = ['ZoneDnsSettingsArgs', 'ZoneDnsSettings']
 @pulumi.input_type
 class ZoneDnsSettingsArgs:
     def __init__(__self__, *,
-                 flatten_all_cnames: Optional[pulumi.Input[_builtins.bool]] = None,
-                 foundation_dns: Optional[pulumi.Input[_builtins.bool]] = None,
-                 internal_dns: Optional[pulumi.Input['ZoneDnsSettingsInternalDnsArgs']] = None,
-                 multi_provider: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nameservers: Optional[pulumi.Input['ZoneDnsSettingsNameserversArgs']] = None,
-                 ns_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 secondary_overrides: Optional[pulumi.Input[_builtins.bool]] = None,
-                 soa: Optional[pulumi.Input['ZoneDnsSettingsSoaArgs']] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 flatten_all_cnames: pulumi.Input[Optional[_builtins.bool]] = None,
+                 foundation_dns: pulumi.Input[Optional[_builtins.bool]] = None,
+                 internal_dns: pulumi.Input[Optional['ZoneDnsSettingsInternalDnsArgs']] = None,
+                 multi_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nameservers: pulumi.Input[Optional['ZoneDnsSettingsNameserversArgs']] = None,
+                 ns_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 secondary_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
+                 soa: pulumi.Input[Optional['ZoneDnsSettingsSoaArgs']] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneDnsSettings resource.
 
@@ -69,115 +69,115 @@ class ZoneDnsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="flattenAllCnames")
-    def flatten_all_cnames(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def flatten_all_cnames(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
         """
         return pulumi.get(self, "flatten_all_cnames")
 
     @flatten_all_cnames.setter
-    def flatten_all_cnames(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def flatten_all_cnames(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "flatten_all_cnames", value)
 
     @_builtins.property
     @pulumi.getter(name="foundationDns")
-    def foundation_dns(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def foundation_dns(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable Foundation DNS Advanced Nameservers on the zone.
         """
         return pulumi.get(self, "foundation_dns")
 
     @foundation_dns.setter
-    def foundation_dns(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def foundation_dns(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "foundation_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="internalDns")
-    def internal_dns(self) -> Optional[pulumi.Input['ZoneDnsSettingsInternalDnsArgs']]:
+    def internal_dns(self) -> pulumi.Input[Optional['ZoneDnsSettingsInternalDnsArgs']]:
         """
         Settings for this internal zone.
         """
         return pulumi.get(self, "internal_dns")
 
     @internal_dns.setter
-    def internal_dns(self, value: Optional[pulumi.Input['ZoneDnsSettingsInternalDnsArgs']]):
+    def internal_dns(self, value: pulumi.Input[Optional['ZoneDnsSettingsInternalDnsArgs']]):
         pulumi.set(self, "internal_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="multiProvider")
-    def multi_provider(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multi_provider(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
         """
         return pulumi.get(self, "multi_provider")
 
     @multi_provider.setter
-    def multi_provider(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multi_provider(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multi_provider", value)
 
     @_builtins.property
     @pulumi.getter
-    def nameservers(self) -> Optional[pulumi.Input['ZoneDnsSettingsNameserversArgs']]:
+    def nameservers(self) -> pulumi.Input[Optional['ZoneDnsSettingsNameserversArgs']]:
         """
         Settings determining the nameservers through which the zone should be available.
         """
         return pulumi.get(self, "nameservers")
 
     @nameservers.setter
-    def nameservers(self, value: Optional[pulumi.Input['ZoneDnsSettingsNameserversArgs']]):
+    def nameservers(self, value: pulumi.Input[Optional['ZoneDnsSettingsNameserversArgs']]):
         pulumi.set(self, "nameservers", value)
 
     @_builtins.property
     @pulumi.getter(name="nsTtl")
-    def ns_ttl(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def ns_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The time to live (TTL) of the zone's nameserver (NS) records.
         """
         return pulumi.get(self, "ns_ttl")
 
     @ns_ttl.setter
-    def ns_ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def ns_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "ns_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryOverrides")
-    def secondary_overrides(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secondary_overrides(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
         """
         return pulumi.get(self, "secondary_overrides")
 
     @secondary_overrides.setter
-    def secondary_overrides(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secondary_overrides(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secondary_overrides", value)
 
     @_builtins.property
     @pulumi.getter
-    def soa(self) -> Optional[pulumi.Input['ZoneDnsSettingsSoaArgs']]:
+    def soa(self) -> pulumi.Input[Optional['ZoneDnsSettingsSoaArgs']]:
         """
         Components of the zone's SOA record.
         """
         return pulumi.get(self, "soa")
 
     @soa.setter
-    def soa(self, value: Optional[pulumi.Input['ZoneDnsSettingsSoaArgs']]):
+    def soa(self, value: pulumi.Input[Optional['ZoneDnsSettingsSoaArgs']]):
         pulumi.set(self, "soa", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneMode")
-    def zone_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the zone mode is a regular or CDN/DNS only zone.
         Available values: "standard", "cdn*only", "dns*only".
@@ -185,23 +185,23 @@ class ZoneDnsSettingsArgs:
         return pulumi.get(self, "zone_mode")
 
     @zone_mode.setter
-    def zone_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_mode", value)
 
 
 @pulumi.input_type
 class _ZoneDnsSettingsState:
     def __init__(__self__, *,
-                 flatten_all_cnames: Optional[pulumi.Input[_builtins.bool]] = None,
-                 foundation_dns: Optional[pulumi.Input[_builtins.bool]] = None,
-                 internal_dns: Optional[pulumi.Input['ZoneDnsSettingsInternalDnsArgs']] = None,
-                 multi_provider: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nameservers: Optional[pulumi.Input['ZoneDnsSettingsNameserversArgs']] = None,
-                 ns_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 secondary_overrides: Optional[pulumi.Input[_builtins.bool]] = None,
-                 soa: Optional[pulumi.Input['ZoneDnsSettingsSoaArgs']] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 flatten_all_cnames: pulumi.Input[Optional[_builtins.bool]] = None,
+                 foundation_dns: pulumi.Input[Optional[_builtins.bool]] = None,
+                 internal_dns: pulumi.Input[Optional['ZoneDnsSettingsInternalDnsArgs']] = None,
+                 multi_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nameservers: pulumi.Input[Optional['ZoneDnsSettingsNameserversArgs']] = None,
+                 ns_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 secondary_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
+                 soa: pulumi.Input[Optional['ZoneDnsSettingsSoaArgs']] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneDnsSettings resources.
 
@@ -240,115 +240,115 @@ class _ZoneDnsSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="flattenAllCnames")
-    def flatten_all_cnames(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def flatten_all_cnames(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
         """
         return pulumi.get(self, "flatten_all_cnames")
 
     @flatten_all_cnames.setter
-    def flatten_all_cnames(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def flatten_all_cnames(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "flatten_all_cnames", value)
 
     @_builtins.property
     @pulumi.getter(name="foundationDns")
-    def foundation_dns(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def foundation_dns(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable Foundation DNS Advanced Nameservers on the zone.
         """
         return pulumi.get(self, "foundation_dns")
 
     @foundation_dns.setter
-    def foundation_dns(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def foundation_dns(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "foundation_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="internalDns")
-    def internal_dns(self) -> Optional[pulumi.Input['ZoneDnsSettingsInternalDnsArgs']]:
+    def internal_dns(self) -> pulumi.Input[Optional['ZoneDnsSettingsInternalDnsArgs']]:
         """
         Settings for this internal zone.
         """
         return pulumi.get(self, "internal_dns")
 
     @internal_dns.setter
-    def internal_dns(self, value: Optional[pulumi.Input['ZoneDnsSettingsInternalDnsArgs']]):
+    def internal_dns(self, value: pulumi.Input[Optional['ZoneDnsSettingsInternalDnsArgs']]):
         pulumi.set(self, "internal_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="multiProvider")
-    def multi_provider(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multi_provider(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
         """
         return pulumi.get(self, "multi_provider")
 
     @multi_provider.setter
-    def multi_provider(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multi_provider(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multi_provider", value)
 
     @_builtins.property
     @pulumi.getter
-    def nameservers(self) -> Optional[pulumi.Input['ZoneDnsSettingsNameserversArgs']]:
+    def nameservers(self) -> pulumi.Input[Optional['ZoneDnsSettingsNameserversArgs']]:
         """
         Settings determining the nameservers through which the zone should be available.
         """
         return pulumi.get(self, "nameservers")
 
     @nameservers.setter
-    def nameservers(self, value: Optional[pulumi.Input['ZoneDnsSettingsNameserversArgs']]):
+    def nameservers(self, value: pulumi.Input[Optional['ZoneDnsSettingsNameserversArgs']]):
         pulumi.set(self, "nameservers", value)
 
     @_builtins.property
     @pulumi.getter(name="nsTtl")
-    def ns_ttl(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def ns_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The time to live (TTL) of the zone's nameserver (NS) records.
         """
         return pulumi.get(self, "ns_ttl")
 
     @ns_ttl.setter
-    def ns_ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def ns_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "ns_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryOverrides")
-    def secondary_overrides(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secondary_overrides(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
         """
         return pulumi.get(self, "secondary_overrides")
 
     @secondary_overrides.setter
-    def secondary_overrides(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secondary_overrides(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secondary_overrides", value)
 
     @_builtins.property
     @pulumi.getter
-    def soa(self) -> Optional[pulumi.Input['ZoneDnsSettingsSoaArgs']]:
+    def soa(self) -> pulumi.Input[Optional['ZoneDnsSettingsSoaArgs']]:
         """
         Components of the zone's SOA record.
         """
         return pulumi.get(self, "soa")
 
     @soa.setter
-    def soa(self, value: Optional[pulumi.Input['ZoneDnsSettingsSoaArgs']]):
+    def soa(self, value: pulumi.Input[Optional['ZoneDnsSettingsSoaArgs']]):
         pulumi.set(self, "soa", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneMode")
-    def zone_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the zone mode is a regular or CDN/DNS only zone.
         Available values: "standard", "cdn*only", "dns*only".
@@ -356,7 +356,7 @@ class _ZoneDnsSettingsState:
         return pulumi.get(self, "zone_mode")
 
     @zone_mode.setter
-    def zone_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_mode", value)
 
 
@@ -366,16 +366,16 @@ class ZoneDnsSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 flatten_all_cnames: Optional[pulumi.Input[_builtins.bool]] = None,
-                 foundation_dns: Optional[pulumi.Input[_builtins.bool]] = None,
-                 internal_dns: Optional[pulumi.Input[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict']]] = None,
-                 multi_provider: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nameservers: Optional[pulumi.Input[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict']]] = None,
-                 ns_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 secondary_overrides: Optional[pulumi.Input[_builtins.bool]] = None,
-                 soa: Optional[pulumi.Input[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict']]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 flatten_all_cnames: pulumi.Input[Optional[_builtins.bool]] = None,
+                 foundation_dns: pulumi.Input[Optional[_builtins.bool]] = None,
+                 internal_dns: pulumi.Input[Optional[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict']]] = None,
+                 multi_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nameservers: pulumi.Input[Optional[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict']]] = None,
+                 ns_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 secondary_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
+                 soa: pulumi.Input[Optional[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict']]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -403,16 +403,16 @@ class ZoneDnsSettings(pulumi.CustomResource):
                 "ns_set": 1,
                 "type": "cloudflare.standard",
             },
-            ns_ttl=86400,
+            ns_ttl=float(86400),
             secondary_overrides=False,
             soa={
-                "expire": 604800,
-                "min_ttl": 1800,
+                "expire": float(604800),
+                "min_ttl": float(1800),
                 "mname": "kristina.ns.cloudflare.com",
-                "refresh": 10000,
-                "retry": 2400,
+                "refresh": float(10000),
+                "retry": float(2400),
                 "rname": "admin.example.com",
-                "ttl": 3600,
+                "ttl": float(3600),
             },
             zone_mode="dns_only")
         ```
@@ -468,16 +468,16 @@ class ZoneDnsSettings(pulumi.CustomResource):
                 "ns_set": 1,
                 "type": "cloudflare.standard",
             },
-            ns_ttl=86400,
+            ns_ttl=float(86400),
             secondary_overrides=False,
             soa={
-                "expire": 604800,
-                "min_ttl": 1800,
+                "expire": float(604800),
+                "min_ttl": float(1800),
                 "mname": "kristina.ns.cloudflare.com",
-                "refresh": 10000,
-                "retry": 2400,
+                "refresh": float(10000),
+                "retry": float(2400),
                 "rname": "admin.example.com",
-                "ttl": 3600,
+                "ttl": float(3600),
             },
             zone_mode="dns_only")
         ```
@@ -502,16 +502,16 @@ class ZoneDnsSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 flatten_all_cnames: Optional[pulumi.Input[_builtins.bool]] = None,
-                 foundation_dns: Optional[pulumi.Input[_builtins.bool]] = None,
-                 internal_dns: Optional[pulumi.Input[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict']]] = None,
-                 multi_provider: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nameservers: Optional[pulumi.Input[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict']]] = None,
-                 ns_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 secondary_overrides: Optional[pulumi.Input[_builtins.bool]] = None,
-                 soa: Optional[pulumi.Input[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict']]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 flatten_all_cnames: pulumi.Input[Optional[_builtins.bool]] = None,
+                 foundation_dns: pulumi.Input[Optional[_builtins.bool]] = None,
+                 internal_dns: pulumi.Input[Optional[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict']]] = None,
+                 multi_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nameservers: pulumi.Input[Optional[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict']]] = None,
+                 ns_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 secondary_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
+                 soa: pulumi.Input[Optional[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict']]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -541,16 +541,16 @@ class ZoneDnsSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            flatten_all_cnames: Optional[pulumi.Input[_builtins.bool]] = None,
-            foundation_dns: Optional[pulumi.Input[_builtins.bool]] = None,
-            internal_dns: Optional[pulumi.Input[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict']]] = None,
-            multi_provider: Optional[pulumi.Input[_builtins.bool]] = None,
-            nameservers: Optional[pulumi.Input[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict']]] = None,
-            ns_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-            secondary_overrides: Optional[pulumi.Input[_builtins.bool]] = None,
-            soa: Optional[pulumi.Input[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict']]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_mode: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZoneDnsSettings':
+            flatten_all_cnames: pulumi.Input[Optional[_builtins.bool]] = None,
+            foundation_dns: pulumi.Input[Optional[_builtins.bool]] = None,
+            internal_dns: pulumi.Input[Optional[Union['ZoneDnsSettingsInternalDnsArgs', 'ZoneDnsSettingsInternalDnsArgsDict']]] = None,
+            multi_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+            nameservers: pulumi.Input[Optional[Union['ZoneDnsSettingsNameserversArgs', 'ZoneDnsSettingsNameserversArgsDict']]] = None,
+            ns_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            secondary_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
+            soa: pulumi.Input[Optional[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict']]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_mode: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZoneDnsSettings':
         """
         Get an existing ZoneDnsSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

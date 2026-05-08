@@ -191,13 +191,13 @@ def get_filters(description: Optional[_builtins.str] = None,
         ref=pulumi.get(__ret__, 'ref'),
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_filters_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       expression: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                       paused: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                       ref: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_filters_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       expression: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                       paused: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                       ref: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFiltersResult]:
     """
     Accepted Permissions

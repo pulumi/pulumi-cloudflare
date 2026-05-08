@@ -166,47 +166,47 @@ export interface MtlsCertificateState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the certificate is a CA or leaf certificate.
      */
-    ca?: pulumi.Input<boolean>;
+    ca?: pulumi.Input<boolean | undefined>;
     /**
      * The uploaded root CA certificate or certificate chain. Certificates must be provided in PEM format with the certificate matching the privateKey first in the chain.
      */
-    certificates?: pulumi.Input<string>;
+    certificates?: pulumi.Input<string | undefined>;
     /**
      * When the certificate expires.
      */
-    expiresOn?: pulumi.Input<string>;
+    expiresOn?: pulumi.Input<string | undefined>;
     /**
      * The certificate authority that issued the certificate.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * Optional unique name for the certificate. Only used for human readability.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The certificate serial number.
      */
-    serialNumber?: pulumi.Input<string>;
+    serialNumber?: pulumi.Input<string | undefined>;
     /**
      * The type of hash used for the certificate.
      */
-    signature?: pulumi.Input<string>;
+    signature?: pulumi.Input<string | undefined>;
     /**
      * This is the time the certificate was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * This is the time the certificate was uploaded.
      */
-    uploadedOn?: pulumi.Input<string>;
+    uploadedOn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -228,9 +228,9 @@ export interface MtlsCertificateArgs {
     /**
      * Optional unique name for the certificate. Only used for human readability.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
 }

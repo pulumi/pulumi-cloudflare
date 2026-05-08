@@ -158,29 +158,29 @@ export interface AccountState {
     /**
      * Timestamp for the creation of the account
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Parent container details
      */
-    managedBy?: pulumi.Input<inputs.AccountManagedBy>;
+    managedBy?: pulumi.Input<inputs.AccountManagedBy | undefined>;
     /**
      * Account name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Account settings
      */
-    settings?: pulumi.Input<inputs.AccountSettings>;
+    settings?: pulumi.Input<inputs.AccountSettings | undefined>;
     /**
      * Available values: "standard", "enterprise".
      *
      * @deprecated The 'type' field should no longer be set through the API.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
      */
-    unit?: pulumi.Input<inputs.AccountUnit>;
+    unit?: pulumi.Input<inputs.AccountUnit | undefined>;
 }
 
 /**
@@ -190,7 +190,7 @@ export interface AccountArgs {
     /**
      * Parent container details
      */
-    managedBy?: pulumi.Input<inputs.AccountManagedBy>;
+    managedBy?: pulumi.Input<inputs.AccountManagedBy | undefined>;
     /**
      * Account name
      */
@@ -198,15 +198,15 @@ export interface AccountArgs {
     /**
      * Account settings
      */
-    settings?: pulumi.Input<inputs.AccountSettings>;
+    settings?: pulumi.Input<inputs.AccountSettings | undefined>;
     /**
      * Available values: "standard", "enterprise".
      *
      * @deprecated The 'type' field should no longer be set through the API.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
      */
-    unit?: pulumi.Input<inputs.AccountUnit>;
+    unit?: pulumi.Input<inputs.AccountUnit | undefined>;
 }

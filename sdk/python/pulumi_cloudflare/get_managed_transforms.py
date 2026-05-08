@@ -154,7 +154,7 @@ def get_managed_transforms(zone_id: Optional[_builtins.str] = None,
         managed_request_headers=pulumi.get(__ret__, 'managed_request_headers'),
         managed_response_headers=pulumi.get(__ret__, 'managed_response_headers'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_managed_transforms_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_managed_transforms_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetManagedTransformsResult]:
     """
     Accepted Permissions

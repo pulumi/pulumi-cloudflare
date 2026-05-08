@@ -133,17 +133,17 @@ export function getSchemaValidationSchemasOutput(args?: GetSchemaValidationSchem
  * A collection of arguments for invoking getSchemaValidationSchemas.
  */
 export interface GetSchemaValidationSchemasOutputArgs {
-    filter?: pulumi.Input<inputs.GetSchemaValidationSchemasFilterArgs>;
+    filter?: pulumi.Input<inputs.GetSchemaValidationSchemasFilterArgs | undefined>;
     /**
      * Omit the source-files of schemas and only retrieve their meta-data.
      */
-    omitSource?: pulumi.Input<boolean>;
+    omitSource?: pulumi.Input<boolean | undefined>;
     /**
      * UUID.
      */
-    schemaId?: pulumi.Input<string>;
+    schemaId?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

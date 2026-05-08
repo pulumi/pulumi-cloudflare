@@ -182,8 +182,8 @@ def get_firewall_rule(rule_id: Optional[_builtins.str] = None,
         ref=pulumi.get(__ret__, 'ref'),
         rule_id=pulumi.get(__ret__, 'rule_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_firewall_rule_output(rule_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_firewall_rule_output(rule_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallRuleResult]:
     """
     Accepted Permissions

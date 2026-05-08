@@ -22,11 +22,11 @@ __all__ = ['CustomHostnameArgs', 'CustomHostname']
 class CustomHostnameArgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[_builtins.str],
-                 custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 custom_origin_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_origin_sni: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl: Optional[pulumi.Input['CustomHostnameSslArgs']] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 custom_origin_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_origin_sni: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl: pulumi.Input[Optional['CustomHostnameSslArgs']] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomHostname resource.
 
@@ -63,79 +63,79 @@ class CustomHostnameArgs:
 
     @_builtins.property
     @pulumi.getter(name="customMetadata")
-    def custom_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
         """
         return pulumi.get(self, "custom_metadata")
 
     @custom_metadata.setter
-    def custom_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="customOriginServer")
-    def custom_origin_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_origin_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
         """
         return pulumi.get(self, "custom_origin_server")
 
     @custom_origin_server.setter
-    def custom_origin_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_origin_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_origin_server", value)
 
     @_builtins.property
     @pulumi.getter(name="customOriginSni")
-    def custom_origin_sni(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_origin_sni(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
         """
         return pulumi.get(self, "custom_origin_sni")
 
     @custom_origin_sni.setter
-    def custom_origin_sni(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_origin_sni(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_origin_sni", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input['CustomHostnameSslArgs']]:
+    def ssl(self) -> pulumi.Input[Optional['CustomHostnameSslArgs']]:
         """
         SSL properties used when creating the custom hostname.
         """
         return pulumi.get(self, "ssl")
 
     @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input['CustomHostnameSslArgs']]):
+    def ssl(self, value: pulumi.Input[Optional['CustomHostnameSslArgs']]):
         pulumi.set(self, "ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _CustomHostnameState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 custom_origin_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_origin_sni: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 ownership_verification: Optional[pulumi.Input['CustomHostnameOwnershipVerificationArgs']] = None,
-                 ownership_verification_http: Optional[pulumi.Input['CustomHostnameOwnershipVerificationHttpArgs']] = None,
-                 ssl: Optional[pulumi.Input['CustomHostnameSslArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 verification_errors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 custom_origin_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_origin_sni: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 ownership_verification: pulumi.Input[Optional['CustomHostnameOwnershipVerificationArgs']] = None,
+                 ownership_verification_http: pulumi.Input[Optional['CustomHostnameOwnershipVerificationHttpArgs']] = None,
+                 ssl: pulumi.Input[Optional['CustomHostnameSslArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 verification_errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomHostname resources.
 
@@ -177,103 +177,103 @@ class _CustomHostnameState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the time the hostname was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="customMetadata")
-    def custom_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
         """
         return pulumi.get(self, "custom_metadata")
 
     @custom_metadata.setter
-    def custom_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="customOriginServer")
-    def custom_origin_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_origin_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
         """
         return pulumi.get(self, "custom_origin_server")
 
     @custom_origin_server.setter
-    def custom_origin_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_origin_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_origin_server", value)
 
     @_builtins.property
     @pulumi.getter(name="customOriginSni")
-    def custom_origin_sni(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_origin_sni(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
         """
         return pulumi.get(self, "custom_origin_sni")
 
     @custom_origin_sni.setter
-    def custom_origin_sni(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_origin_sni(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_origin_sni", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The custom hostname that will point to your hostname via CNAME.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="ownershipVerification")
-    def ownership_verification(self) -> Optional[pulumi.Input['CustomHostnameOwnershipVerificationArgs']]:
+    def ownership_verification(self) -> pulumi.Input[Optional['CustomHostnameOwnershipVerificationArgs']]:
         """
         This is a record which can be placed to activate a hostname.
         """
         return pulumi.get(self, "ownership_verification")
 
     @ownership_verification.setter
-    def ownership_verification(self, value: Optional[pulumi.Input['CustomHostnameOwnershipVerificationArgs']]):
+    def ownership_verification(self, value: pulumi.Input[Optional['CustomHostnameOwnershipVerificationArgs']]):
         pulumi.set(self, "ownership_verification", value)
 
     @_builtins.property
     @pulumi.getter(name="ownershipVerificationHttp")
-    def ownership_verification_http(self) -> Optional[pulumi.Input['CustomHostnameOwnershipVerificationHttpArgs']]:
+    def ownership_verification_http(self) -> pulumi.Input[Optional['CustomHostnameOwnershipVerificationHttpArgs']]:
         """
         This presents the token to be served by the given http url to activate a hostname.
         """
         return pulumi.get(self, "ownership_verification_http")
 
     @ownership_verification_http.setter
-    def ownership_verification_http(self, value: Optional[pulumi.Input['CustomHostnameOwnershipVerificationHttpArgs']]):
+    def ownership_verification_http(self, value: pulumi.Input[Optional['CustomHostnameOwnershipVerificationHttpArgs']]):
         pulumi.set(self, "ownership_verification_http", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input['CustomHostnameSslArgs']]:
+    def ssl(self) -> pulumi.Input[Optional['CustomHostnameSslArgs']]:
         """
         SSL properties used when creating the custom hostname.
         """
         return pulumi.get(self, "ssl")
 
     @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input['CustomHostnameSslArgs']]):
+    def ssl(self, value: pulumi.Input[Optional['CustomHostnameSslArgs']]):
         pulumi.set(self, "ssl", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the hostname's activation.
         Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
@@ -281,31 +281,31 @@ class _CustomHostnameState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="verificationErrors")
-    def verification_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def verification_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         These are errors that were encountered while trying to activate a hostname.
         """
         return pulumi.get(self, "verification_errors")
 
     @verification_errors.setter
-    def verification_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def verification_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "verification_errors", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -315,12 +315,12 @@ class CustomHostname(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 custom_origin_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_origin_sni: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl: Optional[pulumi.Input[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 custom_origin_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_origin_sni: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl: pulumi.Input[Optional[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -540,12 +540,12 @@ class CustomHostname(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 custom_origin_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_origin_sni: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl: Optional[pulumi.Input[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 custom_origin_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_origin_sni: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl: pulumi.Input[Optional[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -578,17 +578,17 @@ class CustomHostname(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            custom_origin_server: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_origin_sni: Optional[pulumi.Input[_builtins.str]] = None,
-            hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            ownership_verification: Optional[pulumi.Input[Union['CustomHostnameOwnershipVerificationArgs', 'CustomHostnameOwnershipVerificationArgsDict']]] = None,
-            ownership_verification_http: Optional[pulumi.Input[Union['CustomHostnameOwnershipVerificationHttpArgs', 'CustomHostnameOwnershipVerificationHttpArgsDict']]] = None,
-            ssl: Optional[pulumi.Input[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            verification_errors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'CustomHostname':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            custom_origin_server: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_origin_sni: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            ownership_verification: pulumi.Input[Optional[Union['CustomHostnameOwnershipVerificationArgs', 'CustomHostnameOwnershipVerificationArgsDict']]] = None,
+            ownership_verification_http: pulumi.Input[Optional[Union['CustomHostnameOwnershipVerificationHttpArgs', 'CustomHostnameOwnershipVerificationHttpArgsDict']]] = None,
+            ssl: pulumi.Input[Optional[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            verification_errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomHostname':
         """
         Get an existing CustomHostname resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2ManagedDomain = new Cloudflare.Index.R2ManagedDomain("example_r2_managed_domain", new()
+    ///     var exampleR2ManagedDomain = new Cloudflare.R2ManagedDomain("example_r2_managed_domain", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",

@@ -273,79 +273,79 @@ export interface CustomSslState {
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
      * Available values: "ubiquitous", "optimal", "force".
      */
-    bundleMethod?: pulumi.Input<string>;
+    bundleMethod?: pulumi.Input<string | undefined>;
     /**
      * The zone's SSL certificate or certificate and the intermediate(s).
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The identifier for the Custom CSR that was used.
      */
-    customCsrId?: pulumi.Input<string>;
+    customCsrId?: pulumi.Input<string | undefined>;
     /**
      * The environment to deploy the certificate to.
      * Available values: "staging", "production".
      */
-    deploy?: pulumi.Input<string>;
+    deploy?: pulumi.Input<string | undefined>;
     /**
      * When the certificate from the authority expires.
      */
-    expiresOn?: pulumi.Input<string>;
+    expiresOn?: pulumi.Input<string | undefined>;
     /**
      * Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
      */
-    geoRestrictions?: pulumi.Input<inputs.CustomSslGeoRestrictions>;
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    geoRestrictions?: pulumi.Input<inputs.CustomSslGeoRestrictions | undefined>;
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The certificate authority that issued the certificate.
      */
-    issuer?: pulumi.Input<string>;
-    keylessServer?: pulumi.Input<inputs.CustomSslKeylessServer>;
+    issuer?: pulumi.Input<string | undefined>;
+    keylessServer?: pulumi.Input<inputs.CustomSslKeylessServer | undefined>;
     /**
      * When the certificate was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
      * Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policyRestrictions".
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * The policy restrictions returned by the API. This field is returned in responses
      * when a policy has been set. The API accepts the "policy" field in requests but
      * returns this field as "policyRestrictions" in responses.
      */
-    policyRestrictions?: pulumi.Input<string>;
+    policyRestrictions?: pulumi.Input<string | undefined>;
     /**
      * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The zone's private key.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The type of hash used for the certificate.
      */
-    signature?: pulumi.Input<string>;
+    signature?: pulumi.Input<string | undefined>;
     /**
      * Status of the zone's custom SSL.
      * Available values: "active", "expired", "deleted", "pending", "initializing".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
      * Available values: "legacy*custom", "sniCustom".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * When the certificate was uploaded to Cloudflare.
      */
-    uploadedOn?: pulumi.Input<string>;
+    uploadedOn?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -356,7 +356,7 @@ export interface CustomSslArgs {
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
      * Available values: "ubiquitous", "optimal", "force".
      */
-    bundleMethod?: pulumi.Input<string>;
+    bundleMethod?: pulumi.Input<string | undefined>;
     /**
      * The zone's SSL certificate or certificate and the intermediate(s).
      */
@@ -364,21 +364,21 @@ export interface CustomSslArgs {
     /**
      * The identifier for the Custom CSR that was used.
      */
-    customCsrId?: pulumi.Input<string>;
+    customCsrId?: pulumi.Input<string | undefined>;
     /**
      * The environment to deploy the certificate to.
      * Available values: "staging", "production".
      */
-    deploy?: pulumi.Input<string>;
+    deploy?: pulumi.Input<string | undefined>;
     /**
      * Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
      */
-    geoRestrictions?: pulumi.Input<inputs.CustomSslGeoRestrictions>;
+    geoRestrictions?: pulumi.Input<inputs.CustomSslGeoRestrictions | undefined>;
     /**
      * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code*elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
      * Note: The API accepts this field as either "policy" or "policy*restrictions" in requests. Responses return this field as "policyRestrictions".
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * The zone's private key.
      */
@@ -387,9 +387,9 @@ export interface CustomSslArgs {
      * The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
      * Available values: "legacy*custom", "sniCustom".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

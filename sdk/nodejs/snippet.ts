@@ -142,27 +142,27 @@ export interface SnippetState {
     /**
      * Indicates when the snippet was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * The list of files belonging to the snippet.
      */
-    files?: pulumi.Input<pulumi.Input<inputs.SnippetFile>[]>;
+    files?: pulumi.Input<pulumi.Input<inputs.SnippetFile>[] | undefined>;
     /**
      * Provide metadata about the snippet.
      */
-    metadata?: pulumi.Input<inputs.SnippetMetadata>;
+    metadata?: pulumi.Input<inputs.SnippetMetadata | undefined>;
     /**
      * Indicates when the snippet was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * Identify the snippet.
      */
-    snippetName?: pulumi.Input<string>;
+    snippetName?: pulumi.Input<string | undefined>;
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -184,5 +184,5 @@ export interface SnippetArgs {
     /**
      * Use this field to specify the unique ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -137,33 +137,33 @@ export interface ZeroTrustTunnelCloudflaredVirtualNetworkState {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Optional remark describing the virtual network.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of when the resource was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * If `true`, this virtual network is the default for the account.
      *
      * @deprecated Use the isDefaultNetwork property instead.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * If `true`, this virtual network is the default for the account.
      */
-    isDefaultNetwork?: pulumi.Input<boolean>;
+    isDefaultNetwork?: pulumi.Input<boolean | undefined>;
     /**
      * A user-friendly name for the virtual network.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,21 +173,21 @@ export interface ZeroTrustTunnelCloudflaredVirtualNetworkArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Optional remark describing the virtual network.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * If `true`, this virtual network is the default for the account.
      *
      * @deprecated Use the isDefaultNetwork property instead.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * If `true`, this virtual network is the default for the account.
      */
-    isDefaultNetwork?: pulumi.Input<boolean>;
+    isDefaultNetwork?: pulumi.Input<boolean | undefined>;
     /**
      * A user-friendly name for the virtual network.
      */

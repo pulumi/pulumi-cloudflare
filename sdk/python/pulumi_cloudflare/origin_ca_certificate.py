@@ -22,7 +22,7 @@ class OriginCaCertificateArgs:
                  csr: pulumi.Input[_builtins.str],
                  hostnames: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  request_type: pulumi.Input[_builtins.str],
-                 requested_validity: Optional[pulumi.Input[_builtins.float]] = None):
+                 requested_validity: pulumi.Input[Optional[_builtins.float]] = None):
         """
         The set of arguments for constructing a OriginCaCertificate resource.
 
@@ -80,7 +80,7 @@ class OriginCaCertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="requestedValidity")
-    def requested_validity(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def requested_validity(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The number of days for which the certificate should be valid.
         Available values: 7, 30, 90, 365, 730, 1095, 5475.
@@ -88,19 +88,19 @@ class OriginCaCertificateArgs:
         return pulumi.get(self, "requested_validity")
 
     @requested_validity.setter
-    def requested_validity(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def requested_validity(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "requested_validity", value)
 
 
 @pulumi.input_type
 class _OriginCaCertificateState:
     def __init__(__self__, *,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 csr: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_validity: Optional[pulumi.Input[_builtins.float]] = None):
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 csr: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 request_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_validity: pulumi.Input[Optional[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering OriginCaCertificate resources.
 
@@ -129,43 +129,43 @@ class _OriginCaCertificateState:
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Origin CA certificate. Will be newline-encoded.
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter
-    def csr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Certificate Signing Request (CSR). Must be newline-encoded.
         """
         return pulumi.get(self, "csr")
 
     @csr.setter
-    def csr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csr", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresOn")
-    def expires_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the certificate will expire.
         """
         return pulumi.get(self, "expires_on")
 
     @expires_on.setter
-    def expires_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def hostnames(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Array of hostnames or wildcard names bound to the certificate.
         Hostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.
@@ -173,12 +173,12 @@ class _OriginCaCertificateState:
         return pulumi.get(self, "hostnames")
 
     @hostnames.setter
-    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def hostnames(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "hostnames", value)
 
     @_builtins.property
     @pulumi.getter(name="requestType")
-    def request_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
         Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
@@ -186,12 +186,12 @@ class _OriginCaCertificateState:
         return pulumi.get(self, "request_type")
 
     @request_type.setter
-    def request_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_type", value)
 
     @_builtins.property
     @pulumi.getter(name="requestedValidity")
-    def requested_validity(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def requested_validity(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The number of days for which the certificate should be valid.
         Available values: 7, 30, 90, 365, 730, 1095, 5475.
@@ -199,7 +199,7 @@ class _OriginCaCertificateState:
         return pulumi.get(self, "requested_validity")
 
     @requested_validity.setter
-    def requested_validity(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def requested_validity(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "requested_validity", value)
 
 
@@ -209,10 +209,10 @@ class OriginCaCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 csr: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_validity: Optional[pulumi.Input[_builtins.float]] = None,
+                 csr: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 request_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_validity: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -246,7 +246,7 @@ class OriginCaCertificate(pulumi.CustomResource):
                 "sub.example.com",
             ],
             request_type="origin-rsa",
-            requested_validity=5475)
+            requested_validity=float(5475))
         ```
 
         ## Import
@@ -304,7 +304,7 @@ class OriginCaCertificate(pulumi.CustomResource):
                 "sub.example.com",
             ],
             request_type="origin-rsa",
-            requested_validity=5475)
+            requested_validity=float(5475))
         ```
 
         ## Import
@@ -329,10 +329,10 @@ class OriginCaCertificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 csr: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 request_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_validity: Optional[pulumi.Input[_builtins.float]] = None,
+                 csr: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 request_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_validity: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -364,12 +364,12 @@ class OriginCaCertificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate: Optional[pulumi.Input[_builtins.str]] = None,
-            csr: Optional[pulumi.Input[_builtins.str]] = None,
-            expires_on: Optional[pulumi.Input[_builtins.str]] = None,
-            hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            request_type: Optional[pulumi.Input[_builtins.str]] = None,
-            requested_validity: Optional[pulumi.Input[_builtins.float]] = None) -> 'OriginCaCertificate':
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            csr: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+            hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_type: pulumi.Input[Optional[_builtins.str]] = None,
+            requested_validity: pulumi.Input[Optional[_builtins.float]] = None) -> 'OriginCaCertificate':
         """
         Get an existing OriginCaCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

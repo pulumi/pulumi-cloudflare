@@ -147,9 +147,9 @@ def get_r2_bucket_event_notification(account_id: Optional[_builtins.str] = None,
         queue_id=pulumi.get(__ret__, 'queue_id'),
         queue_name=pulumi.get(__ret__, 'queue_name'),
         rules=pulumi.get(__ret__, 'rules'))
-def get_r2_bucket_event_notification_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                            queue_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_r2_bucket_event_notification_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                            queue_id: pulumi.Input[Optional[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetR2BucketEventNotificationResult]:
     """
     Accepted Permissions

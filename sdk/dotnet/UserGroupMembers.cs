@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUserGroupMembers = new Cloudflare.Index.UserGroupMembers("example_user_group_members", new()
+    ///     var exampleUserGroupMembers = new Cloudflare.UserGroupMembers("example_user_group_members", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         UserGroupId = "023e105f4ecef8ad9ca31a8372d0c353",

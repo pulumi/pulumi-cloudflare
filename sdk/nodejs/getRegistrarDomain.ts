@@ -90,7 +90,7 @@ export interface GetRegistrarDomainOutputArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Fully qualified domain name (FQDN) including the extension
      * (e.g., `example.com`, `mybrand.app`). The domain name uniquely

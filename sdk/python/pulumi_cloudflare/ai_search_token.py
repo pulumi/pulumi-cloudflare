@@ -22,8 +22,8 @@ class AiSearchTokenArgs:
                  cf_api_id: pulumi.Input[_builtins.str],
                  cf_api_key: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 legacy: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 legacy: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AiSearchToken resource.
         """
@@ -64,36 +64,36 @@ class AiSearchTokenArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def legacy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def legacy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "legacy")
 
     @legacy.setter
-    def legacy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def legacy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "legacy", value)
 
 
 @pulumi.input_type
 class _AiSearchTokenState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cf_api_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cf_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 legacy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cf_api_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cf_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 legacy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiSearchToken resources.
         """
@@ -120,92 +120,92 @@ class _AiSearchTokenState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cfApiId")
-    def cf_api_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cf_api_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cf_api_id")
 
     @cf_api_id.setter
-    def cf_api_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cf_api_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cf_api_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cfApiKey")
-    def cf_api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cf_api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cf_api_key")
 
     @cf_api_key.setter
-    def cf_api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cf_api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cf_api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def legacy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def legacy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "legacy")
 
     @legacy.setter
-    def legacy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def legacy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "legacy", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedAt")
-    def modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_at")
 
     @modified_at.setter
-    def modified_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_at", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedBy")
-    def modified_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_by")
 
     @modified_by.setter
-    def modified_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -215,11 +215,11 @@ class AiSearchToken(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cf_api_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cf_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 legacy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cf_api_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cf_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 legacy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## Import
@@ -257,11 +257,11 @@ class AiSearchToken(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cf_api_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cf_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 legacy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cf_api_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cf_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 legacy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -299,16 +299,16 @@ class AiSearchToken(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cf_api_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cf_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            legacy: Optional[pulumi.Input[_builtins.bool]] = None,
-            modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_by: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiSearchToken':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cf_api_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cf_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            legacy: pulumi.Input[Optional[_builtins.bool]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_by: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiSearchToken':
         """
         Get an existing AiSearchToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

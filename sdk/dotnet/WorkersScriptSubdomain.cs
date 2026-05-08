@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersScriptSubdomain = new Cloudflare.Index.WorkersScriptSubdomain("example_workers_script_subdomain", new()
+    ///     var exampleWorkersScriptSubdomain = new Cloudflare.WorkersScriptSubdomain("example_workers_script_subdomain", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ScriptName = "this-is_my_script-01",

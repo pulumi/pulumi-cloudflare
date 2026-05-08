@@ -119,9 +119,9 @@ export interface GetUserGroupOutputArgs {
      * Account identifier tag.
      */
     accountId: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetUserGroupFilterArgs>;
+    filter?: pulumi.Input<inputs.GetUserGroupFilterArgs | undefined>;
     /**
      * User Group identifier tag.
      */
-    userGroupId?: pulumi.Input<string>;
+    userGroupId?: pulumi.Input<string | undefined>;
 }

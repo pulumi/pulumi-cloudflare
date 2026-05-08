@@ -113,16 +113,16 @@ export interface R2BucketLockState {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
-    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketLockRule>[]>;
+    jurisdiction?: pulumi.Input<string | undefined>;
+    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketLockRule>[] | undefined>;
 }
 
 /**
@@ -132,7 +132,7 @@ export interface R2BucketLockArgs {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
@@ -140,6 +140,6 @@ export interface R2BucketLockArgs {
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
-    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketLockRule>[]>;
+    jurisdiction?: pulumi.Input<string | undefined>;
+    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketLockRule>[] | undefined>;
 }

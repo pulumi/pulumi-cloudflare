@@ -22,9 +22,9 @@ __all__ = ['ZeroTrustTunnelCloudflaredConfigArgs', 'ZeroTrustTunnelCloudflaredCo
 class ZeroTrustTunnelCloudflaredConfigArgs:
     def __init__(__self__, *,
                  tunnel_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigArgs']] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigArgs']] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustTunnelCloudflaredConfig resource.
 
@@ -56,31 +56,31 @@ class ZeroTrustTunnelCloudflaredConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigArgs']]:
         """
         The tunnel configuration and ingress rules.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
         Available values: "local", "cloudflare".
@@ -88,19 +88,19 @@ class ZeroTrustTunnelCloudflaredConfigArgs:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
 class _ZeroTrustTunnelCloudflaredConfigState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigArgs']] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigArgs']] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustTunnelCloudflaredConfig resources.
 
@@ -126,40 +126,40 @@ class _ZeroTrustTunnelCloudflaredConfigState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigArgs']]:
         """
         The tunnel configuration and ingress rules.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
         Available values: "local", "cloudflare".
@@ -167,31 +167,31 @@ class _ZeroTrustTunnelCloudflaredConfigState:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelId")
-    def tunnel_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tunnel_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UUID of the tunnel.
         """
         return pulumi.get(self, "tunnel_id")
 
     @tunnel_id.setter
-    def tunnel_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tunnel_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunnel_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version of the Tunnel Configuration.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
@@ -201,10 +201,10 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -389,10 +389,10 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -422,12 +422,12 @@ class ZeroTrustTunnelCloudflaredConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            config: Optional[pulumi.Input[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None,
-            tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None) -> 'ZeroTrustTunnelCloudflaredConfig':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['ZeroTrustTunnelCloudflaredConfigConfigArgs', 'ZeroTrustTunnelCloudflaredConfigConfigArgsDict']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> 'ZeroTrustTunnelCloudflaredConfig':
         """
         Get an existing ZeroTrustTunnelCloudflaredConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

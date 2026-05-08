@@ -129,24 +129,24 @@ export interface ZeroTrustAccessCustomPageState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Custom page HTML.
      */
-    customHtml?: pulumi.Input<string>;
+    customHtml?: pulumi.Input<string | undefined>;
     /**
      * Custom page name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Custom page type.
      * Available values: "identityDenied", "forbidden".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * UUID.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -156,7 +156,7 @@ export interface ZeroTrustAccessCustomPageArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Custom page HTML.
      */

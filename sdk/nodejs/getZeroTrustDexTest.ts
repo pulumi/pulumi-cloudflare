@@ -132,14 +132,14 @@ export function getZeroTrustDexTestOutput(args?: GetZeroTrustDexTestOutputArgs, 
  * A collection of arguments for invoking getZeroTrustDexTest.
  */
 export interface GetZeroTrustDexTestOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the test.
      */
-    dexTestId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetZeroTrustDexTestFilterArgs>;
+    dexTestId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustDexTestFilterArgs | undefined>;
     /**
      * DEX rules targeted by this test
      */
-    targetPolicies?: pulumi.Input<pulumi.Input<inputs.GetZeroTrustDexTestTargetPolicyArgs>[]>;
+    targetPolicies?: pulumi.Input<pulumi.Input<inputs.GetZeroTrustDexTestTargetPolicyArgs>[] | undefined>;
 }

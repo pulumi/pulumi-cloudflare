@@ -161,8 +161,8 @@ def get_zero_trust_tunnel_cloudflared_config(account_id: Optional[_builtins.str]
         source=pulumi.get(__ret__, 'source'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'),
         version=pulumi.get(__ret__, 'version'))
-def get_zero_trust_tunnel_cloudflared_config_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                    tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_tunnel_cloudflared_config_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                    tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustTunnelCloudflaredConfigResult]:
     """
     Accepted Permissions

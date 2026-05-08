@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailRoutingDns = new Cloudflare.Index.EmailRoutingDns("example_email_routing_dns", new()
+    ///     var exampleEmailRoutingDns = new Cloudflare.EmailRoutingDns("example_email_routing_dns", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "example.net",

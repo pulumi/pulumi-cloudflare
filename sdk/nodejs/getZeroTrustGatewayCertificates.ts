@@ -81,9 +81,9 @@ export function getZeroTrustGatewayCertificatesOutput(args?: GetZeroTrustGateway
  * A collection of arguments for invoking getZeroTrustGatewayCertificates.
  */
 export interface GetZeroTrustGatewayCertificatesOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
 }

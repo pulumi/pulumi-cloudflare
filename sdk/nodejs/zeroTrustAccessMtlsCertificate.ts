@@ -140,28 +140,28 @@ export interface ZeroTrustAccessMtlsCertificateState {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The hostnames of the applications that will use this certificate.
      */
-    associatedHostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedHostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The certificate content.
      */
-    certificate?: pulumi.Input<string>;
-    expiresOn?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
+    expiresOn?: pulumi.Input<string | undefined>;
     /**
      * The MD5 fingerprint of the certificate.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The name of the certificate.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -171,11 +171,11 @@ export interface ZeroTrustAccessMtlsCertificateArgs {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The hostnames of the applications that will use this certificate.
      */
-    associatedHostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedHostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The certificate content.
      */
@@ -187,5 +187,5 @@ export interface ZeroTrustAccessMtlsCertificateArgs {
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

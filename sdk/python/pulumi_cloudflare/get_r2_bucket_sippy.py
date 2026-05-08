@@ -141,8 +141,8 @@ def get_r2_bucket_sippy(account_id: Optional[_builtins.str] = None,
         enabled=pulumi.get(__ret__, 'enabled'),
         id=pulumi.get(__ret__, 'id'),
         source=pulumi.get(__ret__, 'source'))
-def get_r2_bucket_sippy_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_r2_bucket_sippy_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetR2BucketSippyResult]:
     """
     ## Example Usage

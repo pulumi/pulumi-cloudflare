@@ -98,5 +98,5 @@ export interface GetTotalTlsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

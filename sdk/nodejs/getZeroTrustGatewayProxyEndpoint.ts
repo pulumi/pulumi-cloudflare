@@ -88,6 +88,6 @@ export function getZeroTrustGatewayProxyEndpointOutput(args: GetZeroTrustGateway
  * A collection of arguments for invoking getZeroTrustGatewayProxyEndpoint.
  */
 export interface GetZeroTrustGatewayProxyEndpointOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     proxyEndpointId: pulumi.Input<string>;
 }

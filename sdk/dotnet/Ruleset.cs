@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRuleset = new Cloudflare.Index.Ruleset("example_ruleset", new()
+    ///     var exampleRuleset = new Cloudflare.Ruleset("example_ruleset", new()
     ///     {
     ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
     ///         Name = "My ruleset",

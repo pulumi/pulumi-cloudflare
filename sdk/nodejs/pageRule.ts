@@ -173,15 +173,15 @@ export class PageRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PageRule resources.
  */
 export interface PageRuleState {
-    actions?: pulumi.Input<inputs.PageRuleActions>;
+    actions?: pulumi.Input<inputs.PageRuleActions | undefined>;
     /**
      * The timestamp of when the Page Rule was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of when the Page Rule was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * The priority of the rule, used to define which Page Rule is processed
      * over another. A higher number indicates a higher priority. For example,
@@ -189,17 +189,17 @@ export interface PageRuleState {
      * specific Page Rule to take precedence (rule B: `/images/special/*`),
      * specify a higher priority for rule B so it overrides rule A.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The status of the Page Rule.
      * Available values: "active", "disabled".
      */
-    status?: pulumi.Input<string>;
-    target?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -214,15 +214,15 @@ export interface PageRuleArgs {
      * specific Page Rule to take precedence (rule B: `/images/special/*`),
      * specify a higher priority for rule B so it overrides rule A.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The status of the Page Rule.
      * Available values: "active", "disabled".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     target: pulumi.Input<string>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

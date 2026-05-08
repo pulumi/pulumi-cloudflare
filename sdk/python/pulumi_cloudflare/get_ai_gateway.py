@@ -353,9 +353,9 @@ def get_ai_gateway(account_id: Optional[_builtins.str] = None,
         stripe=pulumi.get(__ret__, 'stripe'),
         workers_ai_billing_mode=pulumi.get(__ret__, 'workers_ai_billing_mode'),
         zdr=pulumi.get(__ret__, 'zdr'))
-def get_ai_gateway_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          filter: Optional[pulumi.Input[Optional[Union['GetAiGatewayFilterArgs', 'GetAiGatewayFilterArgsDict']]]] = None,
-                          id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ai_gateway_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          filter: pulumi.Input[Optional[Optional[Union['GetAiGatewayFilterArgs', 'GetAiGatewayFilterArgsDict']]]] = None,
+                          id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiGatewayResult]:
     """
     Accepted Permissions

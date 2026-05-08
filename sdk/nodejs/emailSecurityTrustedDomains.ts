@@ -130,24 +130,24 @@ export interface EmailSecurityTrustedDomainsState {
     /**
      * Account Identifier
      */
-    accountId?: pulumi.Input<string>;
-    bodies?: pulumi.Input<pulumi.Input<inputs.EmailSecurityTrustedDomainsBody>[]>;
-    comments?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    bodies?: pulumi.Input<pulumi.Input<inputs.EmailSecurityTrustedDomainsBody>[] | undefined>;
+    comments?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Select to prevent recently registered domains from triggering a
      * Suspicious or Malicious disposition.
      */
-    isRecent?: pulumi.Input<boolean>;
-    isRegex?: pulumi.Input<boolean>;
+    isRecent?: pulumi.Input<boolean | undefined>;
+    isRegex?: pulumi.Input<boolean | undefined>;
     /**
      * Select for partner or other approved domains that have similar
      * spelling to your connected domains. Prevents listed domains from
      * triggering a Spoof disposition.
      */
-    isSimilarity?: pulumi.Input<boolean>;
-    lastModified?: pulumi.Input<string>;
-    pattern?: pulumi.Input<string>;
+    isSimilarity?: pulumi.Input<boolean | undefined>;
+    lastModified?: pulumi.Input<string | undefined>;
+    pattern?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,20 +157,20 @@ export interface EmailSecurityTrustedDomainsArgs {
     /**
      * Account Identifier
      */
-    accountId?: pulumi.Input<string>;
-    bodies?: pulumi.Input<pulumi.Input<inputs.EmailSecurityTrustedDomainsBody>[]>;
-    comments?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    bodies?: pulumi.Input<pulumi.Input<inputs.EmailSecurityTrustedDomainsBody>[] | undefined>;
+    comments?: pulumi.Input<string | undefined>;
     /**
      * Select to prevent recently registered domains from triggering a
      * Suspicious or Malicious disposition.
      */
-    isRecent?: pulumi.Input<boolean>;
-    isRegex?: pulumi.Input<boolean>;
+    isRecent?: pulumi.Input<boolean | undefined>;
+    isRegex?: pulumi.Input<boolean | undefined>;
     /**
      * Select for partner or other approved domains that have similar
      * spelling to your connected domains. Prevents listed domains from
      * triggering a Spoof disposition.
      */
-    isSimilarity?: pulumi.Input<boolean>;
-    pattern?: pulumi.Input<string>;
+    isSimilarity?: pulumi.Input<boolean | undefined>;
+    pattern?: pulumi.Input<string | undefined>;
 }

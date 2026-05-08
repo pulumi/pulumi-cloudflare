@@ -211,8 +211,8 @@ def get_workers_for_platforms_dispatch_namespace(account_id: Optional[_builtins.
         namespace_name=pulumi.get(__ret__, 'namespace_name'),
         script_count=pulumi.get(__ret__, 'script_count'),
         trusted_workers=pulumi.get(__ret__, 'trusted_workers'))
-def get_workers_for_platforms_dispatch_namespace_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                        dispatch_namespace: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workers_for_platforms_dispatch_namespace_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                        dispatch_namespace: pulumi.Input[Optional[_builtins.str]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersForPlatformsDispatchNamespaceResult]:
     """
     Accepted Permissions

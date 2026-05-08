@@ -25,7 +25,7 @@ class RateLimitArgs:
                  match: pulumi.Input['RateLimitMatchArgs'],
                  period: pulumi.Input[_builtins.float],
                  threshold: pulumi.Input[_builtins.float],
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RateLimit resource.
 
@@ -92,28 +92,28 @@ class RateLimitArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _RateLimitState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input['RateLimitActionArgs']] = None,
-                 bypasses: Optional[pulumi.Input[Sequence[pulumi.Input['RateLimitBypassArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 match: Optional[pulumi.Input['RateLimitMatchArgs']] = None,
-                 period: Optional[pulumi.Input[_builtins.float]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.float]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional['RateLimitActionArgs']] = None,
+                 bypasses: pulumi.Input[Optional[Sequence[pulumi.Input['RateLimitBypassArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 match: pulumi.Input[Optional['RateLimitMatchArgs']] = None,
+                 period: pulumi.Input[Optional[_builtins.float]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RateLimit resources.
 
@@ -145,98 +145,98 @@ class _RateLimitState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input['RateLimitActionArgs']]:
+    def action(self) -> pulumi.Input[Optional['RateLimitActionArgs']]:
         """
         The action to perform when the threshold of matched traffic within the configured period is exceeded.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input['RateLimitActionArgs']]):
+    def action(self, value: pulumi.Input[Optional['RateLimitActionArgs']]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def bypasses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RateLimitBypassArgs']]]]:
+    def bypasses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RateLimitBypassArgs']]]]:
         """
         Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
         """
         return pulumi.get(self, "bypasses")
 
     @bypasses.setter
-    def bypasses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RateLimitBypassArgs']]]]):
+    def bypasses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RateLimitBypassArgs']]]]):
         pulumi.set(self, "bypasses", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An informative summary of the rule. This value is sanitized and any tags will be removed.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, indicates that the rate limit is currently disabled.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input['RateLimitMatchArgs']]:
+    def match(self) -> pulumi.Input[Optional['RateLimitMatchArgs']]:
         """
         Determines which traffic the rate limit counts towards the threshold.
         """
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input['RateLimitMatchArgs']]):
+    def match(self, value: pulumi.Input[Optional['RateLimitMatchArgs']]):
         pulumi.set(self, "match", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -246,11 +246,11 @@ class RateLimit(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']]] = None,
-                 match: Optional[pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']]] = None,
-                 period: Optional[pulumi.Input[_builtins.float]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.float]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']]] = None,
+                 period: pulumi.Input[Optional[_builtins.float]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -278,7 +278,7 @@ class RateLimit(pulumi.CustomResource):
                     "body": "<error>This request has been rate-limited.</error>",
                     "content_type": "text/xml",
                 },
-                "timeout": 86400,
+                "timeout": float(86400),
             },
             match={
                 "headers": [{
@@ -301,8 +301,8 @@ class RateLimit(pulumi.CustomResource):
                     "origin_traffic": True,
                 },
             },
-            period=900,
-            threshold=60)
+            period=float(900),
+            threshold=float(60))
         ```
 
         ## Import
@@ -352,7 +352,7 @@ class RateLimit(pulumi.CustomResource):
                     "body": "<error>This request has been rate-limited.</error>",
                     "content_type": "text/xml",
                 },
-                "timeout": 86400,
+                "timeout": float(86400),
             },
             match={
                 "headers": [{
@@ -375,8 +375,8 @@ class RateLimit(pulumi.CustomResource):
                     "origin_traffic": True,
                 },
             },
-            period=900,
-            threshold=60)
+            period=float(900),
+            threshold=float(60))
         ```
 
         ## Import
@@ -401,11 +401,11 @@ class RateLimit(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']]] = None,
-                 match: Optional[pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']]] = None,
-                 period: Optional[pulumi.Input[_builtins.float]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.float]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']]] = None,
+                 period: pulumi.Input[Optional[_builtins.float]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -441,14 +441,14 @@ class RateLimit(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']]] = None,
-            bypasses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RateLimitBypassArgs', 'RateLimitBypassArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            match: Optional[pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']]] = None,
-            period: Optional[pulumi.Input[_builtins.float]] = None,
-            threshold: Optional[pulumi.Input[_builtins.float]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RateLimit':
+            action: pulumi.Input[Optional[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']]] = None,
+            bypasses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RateLimitBypassArgs', 'RateLimitBypassArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            match: pulumi.Input[Optional[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']]] = None,
+            period: pulumi.Input[Optional[_builtins.float]] = None,
+            threshold: pulumi.Input[Optional[_builtins.float]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RateLimit':
         """
         Get an existing RateLimit resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

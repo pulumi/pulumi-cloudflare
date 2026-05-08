@@ -234,60 +234,60 @@ export interface AccessPolicyState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Administrators who can approve a temporary authentication request.
      */
-    approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
+    approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[] | undefined>;
     /**
      * Requires the user to request access from an administrator at the start of each session.
      */
-    approvalRequired?: pulumi.Input<boolean>;
+    approvalRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The rules that define how users may connect to targets secured by your application.
      */
-    connectionRules?: pulumi.Input<inputs.AccessPolicyConnectionRules>;
+    connectionRules?: pulumi.Input<inputs.AccessPolicyConnectionRules | undefined>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
      */
-    decision?: pulumi.Input<string>;
+    decision?: pulumi.Input<string | undefined>;
     /**
      * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
-    excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
+    excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[] | undefined>;
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
-    includes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
+    includes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[] | undefined>;
     /**
      * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */
-    isolationRequired?: pulumi.Input<boolean>;
+    isolationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Configures multi-factor authentication (MFA) settings.
      */
-    mfaConfig?: pulumi.Input<inputs.AccessPolicyMfaConfig>;
+    mfaConfig?: pulumi.Input<inputs.AccessPolicyMfaConfig | undefined>;
     /**
      * The name of the Access policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A custom message that will appear on the purpose justification screen.
      */
-    purposeJustificationPrompt?: pulumi.Input<string>;
+    purposeJustificationPrompt?: pulumi.Input<string | undefined>;
     /**
      * Require users to enter a justification when they log in to the application.
      */
-    purposeJustificationRequired?: pulumi.Input<boolean>;
+    purposeJustificationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
-    requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
+    requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[] | undefined>;
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
-    sessionDuration?: pulumi.Input<string>;
+    sessionDuration?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -297,19 +297,19 @@ export interface AccessPolicyArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Administrators who can approve a temporary authentication request.
      */
-    approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
+    approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[] | undefined>;
     /**
      * Requires the user to request access from an administrator at the start of each session.
      */
-    approvalRequired?: pulumi.Input<boolean>;
+    approvalRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The rules that define how users may connect to targets secured by your application.
      */
-    connectionRules?: pulumi.Input<inputs.AccessPolicyConnectionRules>;
+    connectionRules?: pulumi.Input<inputs.AccessPolicyConnectionRules | undefined>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
@@ -318,19 +318,19 @@ export interface AccessPolicyArgs {
     /**
      * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
-    excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
+    excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[] | undefined>;
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
-    includes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
+    includes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[] | undefined>;
     /**
      * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */
-    isolationRequired?: pulumi.Input<boolean>;
+    isolationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Configures multi-factor authentication (MFA) settings.
      */
-    mfaConfig?: pulumi.Input<inputs.AccessPolicyMfaConfig>;
+    mfaConfig?: pulumi.Input<inputs.AccessPolicyMfaConfig | undefined>;
     /**
      * The name of the Access policy.
      */
@@ -338,17 +338,17 @@ export interface AccessPolicyArgs {
     /**
      * A custom message that will appear on the purpose justification screen.
      */
-    purposeJustificationPrompt?: pulumi.Input<string>;
+    purposeJustificationPrompt?: pulumi.Input<string | undefined>;
     /**
      * Require users to enter a justification when they log in to the application.
      */
-    purposeJustificationRequired?: pulumi.Input<boolean>;
+    purposeJustificationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
-    requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
+    requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[] | undefined>;
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
-    sessionDuration?: pulumi.Input<string>;
+    sessionDuration?: pulumi.Input<string | undefined>;
 }

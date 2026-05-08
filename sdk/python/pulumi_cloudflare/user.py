@@ -21,11 +21,11 @@ __all__ = ['UserArgs', 'User']
 @pulumi.input_type
 class UserArgs:
     def __init__(__self__, *,
-                 country: Optional[pulumi.Input[_builtins.str]] = None,
-                 first_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 telephone: Optional[pulumi.Input[_builtins.str]] = None,
-                 zipcode: Optional[pulumi.Input[_builtins.str]] = None):
+                 country: pulumi.Input[Optional[_builtins.str]] = None,
+                 first_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 telephone: pulumi.Input[Optional[_builtins.str]] = None,
+                 zipcode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
 
@@ -48,81 +48,81 @@ class UserArgs:
 
     @_builtins.property
     @pulumi.getter
-    def country(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def country(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The country in which the user lives.
         """
         return pulumi.get(self, "country")
 
     @country.setter
-    def country(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def country(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "country", value)
 
     @_builtins.property
     @pulumi.getter(name="firstName")
-    def first_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def first_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User's first name
         """
         return pulumi.get(self, "first_name")
 
     @first_name.setter
-    def first_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def first_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "first_name", value)
 
     @_builtins.property
     @pulumi.getter(name="lastName")
-    def last_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User's last name
         """
         return pulumi.get(self, "last_name")
 
     @last_name.setter
-    def last_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def telephone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def telephone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User's telephone number
         """
         return pulumi.get(self, "telephone")
 
     @telephone.setter
-    def telephone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def telephone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "telephone", value)
 
     @_builtins.property
     @pulumi.getter
-    def zipcode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zipcode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zipcode or postal code where the user lives.
         """
         return pulumi.get(self, "zipcode")
 
     @zipcode.setter
-    def zipcode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zipcode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zipcode", value)
 
 
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
-                 betas: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 country: Optional[pulumi.Input[_builtins.str]] = None,
-                 first_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 has_business_zones: Optional[pulumi.Input[_builtins.bool]] = None,
-                 has_enterprise_zones: Optional[pulumi.Input[_builtins.bool]] = None,
-                 has_pro_zones: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organizations: Optional[pulumi.Input[Sequence[pulumi.Input['UserOrganizationArgs']]]] = None,
-                 suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 telephone: Optional[pulumi.Input[_builtins.str]] = None,
-                 two_factor_authentication_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 two_factor_authentication_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zipcode: Optional[pulumi.Input[_builtins.str]] = None):
+                 betas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 country: pulumi.Input[Optional[_builtins.str]] = None,
+                 first_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 has_business_zones: pulumi.Input[Optional[_builtins.bool]] = None,
+                 has_enterprise_zones: pulumi.Input[Optional[_builtins.bool]] = None,
+                 has_pro_zones: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organizations: pulumi.Input[Optional[Sequence[pulumi.Input['UserOrganizationArgs']]]] = None,
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 telephone: pulumi.Input[Optional[_builtins.str]] = None,
+                 two_factor_authentication_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 two_factor_authentication_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zipcode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
 
@@ -168,155 +168,155 @@ class _UserState:
 
     @_builtins.property
     @pulumi.getter
-    def betas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def betas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Lists the betas that the user is participating in.
         """
         return pulumi.get(self, "betas")
 
     @betas.setter
-    def betas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def betas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "betas", value)
 
     @_builtins.property
     @pulumi.getter
-    def country(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def country(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The country in which the user lives.
         """
         return pulumi.get(self, "country")
 
     @country.setter
-    def country(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def country(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "country", value)
 
     @_builtins.property
     @pulumi.getter(name="firstName")
-    def first_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def first_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User's first name
         """
         return pulumi.get(self, "first_name")
 
     @first_name.setter
-    def first_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def first_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "first_name", value)
 
     @_builtins.property
     @pulumi.getter(name="hasBusinessZones")
-    def has_business_zones(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def has_business_zones(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether user has any business zones
         """
         return pulumi.get(self, "has_business_zones")
 
     @has_business_zones.setter
-    def has_business_zones(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def has_business_zones(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "has_business_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="hasEnterpriseZones")
-    def has_enterprise_zones(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def has_enterprise_zones(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether user has any enterprise zones
         """
         return pulumi.get(self, "has_enterprise_zones")
 
     @has_enterprise_zones.setter
-    def has_enterprise_zones(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def has_enterprise_zones(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "has_enterprise_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="hasProZones")
-    def has_pro_zones(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def has_pro_zones(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether user has any pro zones
         """
         return pulumi.get(self, "has_pro_zones")
 
     @has_pro_zones.setter
-    def has_pro_zones(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def has_pro_zones(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "has_pro_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="lastName")
-    def last_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User's last name
         """
         return pulumi.get(self, "last_name")
 
     @last_name.setter
-    def last_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def organizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserOrganizationArgs']]]]:
+    def organizations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserOrganizationArgs']]]]:
         return pulumi.get(self, "organizations")
 
     @organizations.setter
-    def organizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserOrganizationArgs']]]]):
+    def organizations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserOrganizationArgs']]]]):
         pulumi.set(self, "organizations", value)
 
     @_builtins.property
     @pulumi.getter
-    def suspended(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def suspended(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether user has been suspended
         """
         return pulumi.get(self, "suspended")
 
     @suspended.setter
-    def suspended(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def suspended(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "suspended", value)
 
     @_builtins.property
     @pulumi.getter
-    def telephone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def telephone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User's telephone number
         """
         return pulumi.get(self, "telephone")
 
     @telephone.setter
-    def telephone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def telephone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "telephone", value)
 
     @_builtins.property
     @pulumi.getter(name="twoFactorAuthenticationEnabled")
-    def two_factor_authentication_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def two_factor_authentication_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
         """
         return pulumi.get(self, "two_factor_authentication_enabled")
 
     @two_factor_authentication_enabled.setter
-    def two_factor_authentication_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def two_factor_authentication_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "two_factor_authentication_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="twoFactorAuthenticationLocked")
-    def two_factor_authentication_locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def two_factor_authentication_locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
         """
         return pulumi.get(self, "two_factor_authentication_locked")
 
     @two_factor_authentication_locked.setter
-    def two_factor_authentication_locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def two_factor_authentication_locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "two_factor_authentication_locked", value)
 
     @_builtins.property
     @pulumi.getter
-    def zipcode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zipcode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zipcode or postal code where the user lives.
         """
         return pulumi.get(self, "zipcode")
 
     @zipcode.setter
-    def zipcode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zipcode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zipcode", value)
 
 
@@ -326,11 +326,11 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 country: Optional[pulumi.Input[_builtins.str]] = None,
-                 first_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 telephone: Optional[pulumi.Input[_builtins.str]] = None,
-                 zipcode: Optional[pulumi.Input[_builtins.str]] = None,
+                 country: pulumi.Input[Optional[_builtins.str]] = None,
+                 first_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 telephone: pulumi.Input[Optional[_builtins.str]] = None,
+                 zipcode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -411,11 +411,11 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 country: Optional[pulumi.Input[_builtins.str]] = None,
-                 first_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 telephone: Optional[pulumi.Input[_builtins.str]] = None,
-                 zipcode: Optional[pulumi.Input[_builtins.str]] = None,
+                 country: pulumi.Input[Optional[_builtins.str]] = None,
+                 first_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 telephone: pulumi.Input[Optional[_builtins.str]] = None,
+                 zipcode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -448,19 +448,19 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            betas: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            country: Optional[pulumi.Input[_builtins.str]] = None,
-            first_name: Optional[pulumi.Input[_builtins.str]] = None,
-            has_business_zones: Optional[pulumi.Input[_builtins.bool]] = None,
-            has_enterprise_zones: Optional[pulumi.Input[_builtins.bool]] = None,
-            has_pro_zones: Optional[pulumi.Input[_builtins.bool]] = None,
-            last_name: Optional[pulumi.Input[_builtins.str]] = None,
-            organizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserOrganizationArgs', 'UserOrganizationArgsDict']]]]] = None,
-            suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-            telephone: Optional[pulumi.Input[_builtins.str]] = None,
-            two_factor_authentication_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            two_factor_authentication_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-            zipcode: Optional[pulumi.Input[_builtins.str]] = None) -> 'User':
+            betas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            country: pulumi.Input[Optional[_builtins.str]] = None,
+            first_name: pulumi.Input[Optional[_builtins.str]] = None,
+            has_business_zones: pulumi.Input[Optional[_builtins.bool]] = None,
+            has_enterprise_zones: pulumi.Input[Optional[_builtins.bool]] = None,
+            has_pro_zones: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_name: pulumi.Input[Optional[_builtins.str]] = None,
+            organizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserOrganizationArgs', 'UserOrganizationArgsDict']]]]] = None,
+            suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+            telephone: pulumi.Input[Optional[_builtins.str]] = None,
+            two_factor_authentication_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            two_factor_authentication_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            zipcode: pulumi.Input[Optional[_builtins.str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -144,7 +144,7 @@ export class ZoneHold extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZoneHold resources.
  */
 export interface ZoneHoldState {
-    hold?: pulumi.Input<boolean>;
+    hold?: pulumi.Input<boolean | undefined>;
     /**
      * If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
      * then automatically re-enabled by the system at the time specified
@@ -152,18 +152,18 @@ export interface ZoneHoldState {
      * no effect on an existing, enabled hold. Providing an empty string will set its value
      * to the current time.
      */
-    holdAfter?: pulumi.Input<string>;
+    holdAfter?: pulumi.Input<string | undefined>;
     /**
      * If `true`, the zone hold will extend to block any subdomain of the given zone, as well
      * as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
      * 'example.com' and include_subdomains=true will block 'example.com',
      * 'staging.example.com', 'api.staging.example.com', etc.
      */
-    includeSubdomains?: pulumi.Input<boolean>;
+    includeSubdomains?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,14 +177,14 @@ export interface ZoneHoldArgs {
      * no effect on an existing, enabled hold. Providing an empty string will set its value
      * to the current time.
      */
-    holdAfter?: pulumi.Input<string>;
+    holdAfter?: pulumi.Input<string | undefined>;
     /**
      * If `true`, the zone hold will extend to block any subdomain of the given zone, as well
      * as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
      * 'example.com' and include_subdomains=true will block 'example.com',
      * 'staging.example.com', 'api.staging.example.com', etc.
      */
-    includeSubdomains?: pulumi.Input<boolean>;
+    includeSubdomains?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */

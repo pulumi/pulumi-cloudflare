@@ -111,15 +111,15 @@ export class ZeroTrustGatewayLogging extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustGatewayLogging resources.
  */
 export interface ZeroTrustGatewayLoggingState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
      */
-    redactPii?: pulumi.Input<boolean>;
+    redactPii?: pulumi.Input<boolean | undefined>;
     /**
      * Configure logging settings for each rule type.
      */
-    settingsByRuleType?: pulumi.Input<inputs.ZeroTrustGatewayLoggingSettingsByRuleType>;
+    settingsByRuleType?: pulumi.Input<inputs.ZeroTrustGatewayLoggingSettingsByRuleType | undefined>;
 }
 
 /**
@@ -130,9 +130,9 @@ export interface ZeroTrustGatewayLoggingArgs {
     /**
      * Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
      */
-    redactPii?: pulumi.Input<boolean>;
+    redactPii?: pulumi.Input<boolean | undefined>;
     /**
      * Configure logging settings for each rule type.
      */
-    settingsByRuleType?: pulumi.Input<inputs.ZeroTrustGatewayLoggingSettingsByRuleType>;
+    settingsByRuleType?: pulumi.Input<inputs.ZeroTrustGatewayLoggingSettingsByRuleType | undefined>;
 }

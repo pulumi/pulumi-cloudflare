@@ -187,37 +187,37 @@ export interface GetTokenValidationRulesListOutputArgs {
      * Action to take on requests that match operations included in `selector` and fail `expression`.
      * Available values: "log", "block".
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Toggle rule on or off.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Select rules with this host in `include`.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Select rules with this host in `include`.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Select rules with these IDs.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Select rules with these IDs.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * Select rules using any of these token configurations.
      */
-    tokenConfigurations?: pulumi.Input<pulumi.Input<string>[]>;
+    tokenConfigurations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

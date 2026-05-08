@@ -107,7 +107,7 @@ export interface GetAccountRoleOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Role identifier tag.
      */

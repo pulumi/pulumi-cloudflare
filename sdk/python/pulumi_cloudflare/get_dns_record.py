@@ -342,9 +342,9 @@ def get_dns_record(dns_record_id: Optional[_builtins.str] = None,
         ttl=pulumi.get(__ret__, 'ttl'),
         type=pulumi.get(__ret__, 'type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_dns_record_output(dns_record_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          filter: Optional[pulumi.Input[Optional[Union['GetDnsRecordFilterArgs', 'GetDnsRecordFilterArgsDict']]]] = None,
-                          zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_dns_record_output(dns_record_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          filter: pulumi.Input[Optional[Optional[Union['GetDnsRecordFilterArgs', 'GetDnsRecordFilterArgsDict']]]] = None,
+                          zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsRecordResult]:
     """
     Accepted Permissions

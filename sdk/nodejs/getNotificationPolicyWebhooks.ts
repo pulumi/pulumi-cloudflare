@@ -129,7 +129,7 @@ export interface GetNotificationPolicyWebhooksOutputArgs {
     /**
      * The account id
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of a webhook
      */

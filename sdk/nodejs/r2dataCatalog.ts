@@ -134,33 +134,33 @@ export interface R2DataCatalogState {
     /**
      * Use this to identify the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the associated R2 bucket name.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Specifies the R2 bucket name.
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * Shows the credential configuration status.
      * Available values: "present", "absent".
      */
-    credentialStatus?: pulumi.Input<string>;
+    credentialStatus?: pulumi.Input<string | undefined>;
     /**
      * Configures maintenance for the catalog.
      */
-    maintenanceConfig?: pulumi.Input<inputs.R2DataCatalogMaintenanceConfig>;
+    maintenanceConfig?: pulumi.Input<inputs.R2DataCatalogMaintenanceConfig | undefined>;
     /**
      * Specifies the catalog name (generated from account and bucket name).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates the status of the catalog.
      * Available values: "active", "inactive".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,7 +170,7 @@ export interface R2DataCatalogArgs {
     /**
      * Use this to identify the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the R2 bucket name.
      */

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleEmailRoutingCatchAll = new Cloudflare.Index.EmailRoutingCatchAll("example_email_routing_catch_all", new()
+    ///     var exampleEmailRoutingCatchAll = new Cloudflare.EmailRoutingCatchAll("example_email_routing_catch_all", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Actions = new[]

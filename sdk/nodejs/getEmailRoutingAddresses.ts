@@ -122,18 +122,18 @@ export interface GetEmailRoutingAddressesOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Sorts results in an ascending or descending order.
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Filter by verified destination addresses.
      */
-    verified?: pulumi.Input<boolean>;
+    verified?: pulumi.Input<boolean | undefined>;
 }

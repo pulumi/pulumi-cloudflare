@@ -140,10 +140,10 @@ export interface GetCustomHostnameOutputArgs {
     /**
      * Identifier.
      */
-    customHostnameId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetCustomHostnameFilterArgs>;
+    customHostnameId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetCustomHostnameFilterArgs | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -181,9 +181,9 @@ def get_workflow(account_id: Optional[_builtins.str] = None,
         script_name=pulumi.get(__ret__, 'script_name'),
         triggered_on=pulumi.get(__ret__, 'triggered_on'),
         workflow_name=pulumi.get(__ret__, 'workflow_name'))
-def get_workflow_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        filter: Optional[pulumi.Input[Optional[Union['GetWorkflowFilterArgs', 'GetWorkflowFilterArgsDict']]]] = None,
-                        workflow_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_workflow_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        filter: pulumi.Input[Optional[Optional[Union['GetWorkflowFilterArgs', 'GetWorkflowFilterArgsDict']]]] = None,
+                        workflow_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkflowResult]:
     """
     Accepted Permissions

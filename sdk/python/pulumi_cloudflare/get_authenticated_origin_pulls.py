@@ -272,8 +272,8 @@ def get_authenticated_origin_pulls(hostname: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_authenticated_origin_pulls_output(hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                                          zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_authenticated_origin_pulls_output(hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                                          zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuthenticatedOriginPullsResult]:
     """
     ## Example Usage

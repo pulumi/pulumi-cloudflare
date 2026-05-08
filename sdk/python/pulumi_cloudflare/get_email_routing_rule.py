@@ -199,9 +199,9 @@ def get_email_routing_rule(filter: Optional[Union['GetEmailRoutingRuleFilterArgs
         rule_identifier=pulumi.get(__ret__, 'rule_identifier'),
         tag=pulumi.get(__ret__, 'tag'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_email_routing_rule_output(filter: Optional[pulumi.Input[Optional[Union['GetEmailRoutingRuleFilterArgs', 'GetEmailRoutingRuleFilterArgsDict']]]] = None,
-                                  rule_identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_email_routing_rule_output(filter: pulumi.Input[Optional[Optional[Union['GetEmailRoutingRuleFilterArgs', 'GetEmailRoutingRuleFilterArgsDict']]]] = None,
+                                  rule_identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailRoutingRuleResult]:
     """
     Accepted Permissions

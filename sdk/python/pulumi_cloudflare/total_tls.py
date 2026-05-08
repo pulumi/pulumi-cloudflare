@@ -21,7 +21,7 @@ class TotalTlsArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
                  zone_id: pulumi.Input[_builtins.str],
-                 certificate_authority: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate_authority: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TotalTls resource.
 
@@ -61,7 +61,7 @@ class TotalTlsArgs:
 
     @_builtins.property
     @pulumi.getter(name="certificateAuthority")
-    def certificate_authority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_authority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Certificate Authority that Total TLS certificates will be issued through.
         Available values: "google", "lets*encrypt", "ssl*com".
@@ -69,17 +69,17 @@ class TotalTlsArgs:
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
-    def certificate_authority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_authority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_authority", value)
 
 
 @pulumi.input_type
 class _TotalTlsState:
     def __init__(__self__, *,
-                 certificate_authority: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 validity_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 validity_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TotalTls resources.
 
@@ -101,7 +101,7 @@ class _TotalTlsState:
 
     @_builtins.property
     @pulumi.getter(name="certificateAuthority")
-    def certificate_authority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_authority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Certificate Authority that Total TLS certificates will be issued through.
         Available values: "google", "lets*encrypt", "ssl*com".
@@ -109,24 +109,24 @@ class _TotalTlsState:
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
-    def certificate_authority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_authority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_authority", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="validityPeriod")
-    def validity_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def validity_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The validity period in days for the certificates ordered via Total TLS.
         Available values: 90.
@@ -134,19 +134,19 @@ class _TotalTlsState:
         return pulumi.get(self, "validity_period")
 
     @validity_period.setter
-    def validity_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def validity_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "validity_period", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -156,9 +156,9 @@ class TotalTls(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authority: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -238,9 +238,9 @@ class TotalTls(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authority: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -268,10 +268,10 @@ class TotalTls(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate_authority: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            validity_period: Optional[pulumi.Input[_builtins.int]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TotalTls':
+            certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            validity_period: pulumi.Input[Optional[_builtins.int]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TotalTls':
         """
         Get an existing TotalTls resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

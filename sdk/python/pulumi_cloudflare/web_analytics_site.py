@@ -21,12 +21,12 @@ __all__ = ['WebAnalyticsSiteArgs', 'WebAnalyticsSite']
 @pulumi.input_type
 class WebAnalyticsSiteArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_install: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 lite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_install: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 lite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WebAnalyticsSite resource.
 
@@ -52,92 +52,92 @@ class WebAnalyticsSiteArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoInstall")
-    def auto_install(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_install(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         """
         return pulumi.get(self, "auto_install")
 
     @auto_install.setter
-    def auto_install(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_install(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_install", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables or disables RUM. This option can be used only when auto_install is set to true.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname to use for gray-clouded sites.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def lite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, the JavaScript snippet will not be injected for visitors from the EU.
         """
         return pulumi.get(self, "lite")
 
     @lite.setter
-    def lite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lite", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneTag")
-    def zone_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone identifier.
         """
         return pulumi.get(self, "zone_tag")
 
     @zone_tag.setter
-    def zone_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_tag", value)
 
 
 @pulumi.input_type
 class _WebAnalyticsSiteState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_install: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 lite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WebAnalyticsSiteRuleArgs']]]] = None,
-                 ruleset: Optional[pulumi.Input['WebAnalyticsSiteRulesetArgs']] = None,
-                 site_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 snippet: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_install: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 lite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['WebAnalyticsSiteRuleArgs']]]] = None,
+                 ruleset: pulumi.Input[Optional['WebAnalyticsSiteRulesetArgs']] = None,
+                 site_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 snippet: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebAnalyticsSite resources.
 
@@ -179,140 +179,140 @@ class _WebAnalyticsSiteState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoInstall")
-    def auto_install(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_install(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         """
         return pulumi.get(self, "auto_install")
 
     @auto_install.setter
-    def auto_install(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_install(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_install", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables or disables RUM. This option can be used only when auto_install is set to true.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname to use for gray-clouded sites.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def lite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If enabled, the JavaScript snippet will not be injected for visitors from the EU.
         """
         return pulumi.get(self, "lite")
 
     @lite.setter
-    def lite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lite", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WebAnalyticsSiteRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WebAnalyticsSiteRuleArgs']]]]:
         """
         A list of rules.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WebAnalyticsSiteRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WebAnalyticsSiteRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def ruleset(self) -> Optional[pulumi.Input['WebAnalyticsSiteRulesetArgs']]:
+    def ruleset(self) -> pulumi.Input[Optional['WebAnalyticsSiteRulesetArgs']]:
         return pulumi.get(self, "ruleset")
 
     @ruleset.setter
-    def ruleset(self, value: Optional[pulumi.Input['WebAnalyticsSiteRulesetArgs']]):
+    def ruleset(self, value: pulumi.Input[Optional['WebAnalyticsSiteRulesetArgs']]):
         pulumi.set(self, "ruleset", value)
 
     @_builtins.property
     @pulumi.getter(name="siteTag")
-    def site_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Web Analytics site identifier.
         """
         return pulumi.get(self, "site_tag")
 
     @site_tag.setter
-    def site_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="siteToken")
-    def site_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Web Analytics site token.
         """
         return pulumi.get(self, "site_token")
 
     @site_token.setter
-    def site_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def snippet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snippet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Encoded JavaScript snippet.
         """
         return pulumi.get(self, "snippet")
 
     @snippet.setter
-    def snippet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snippet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snippet", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneTag")
-    def zone_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone identifier.
         """
         return pulumi.get(self, "zone_tag")
 
     @zone_tag.setter
-    def zone_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_tag", value)
 
 
@@ -322,12 +322,12 @@ class WebAnalyticsSite(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_install: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 lite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_tag: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_install: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 lite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -411,12 +411,12 @@ class WebAnalyticsSite(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_install: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 lite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_tag: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_install: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 lite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -448,18 +448,18 @@ class WebAnalyticsSite(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_install: Optional[pulumi.Input[_builtins.bool]] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            lite: Optional[pulumi.Input[_builtins.bool]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WebAnalyticsSiteRuleArgs', 'WebAnalyticsSiteRuleArgsDict']]]]] = None,
-            ruleset: Optional[pulumi.Input[Union['WebAnalyticsSiteRulesetArgs', 'WebAnalyticsSiteRulesetArgsDict']]] = None,
-            site_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            site_token: Optional[pulumi.Input[_builtins.str]] = None,
-            snippet: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_tag: Optional[pulumi.Input[_builtins.str]] = None) -> 'WebAnalyticsSite':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_install: pulumi.Input[Optional[_builtins.bool]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            lite: pulumi.Input[Optional[_builtins.bool]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WebAnalyticsSiteRuleArgs', 'WebAnalyticsSiteRuleArgsDict']]]]] = None,
+            ruleset: pulumi.Input[Optional[Union['WebAnalyticsSiteRulesetArgs', 'WebAnalyticsSiteRulesetArgsDict']]] = None,
+            site_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            site_token: pulumi.Input[Optional[_builtins.str]] = None,
+            snippet: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_tag: pulumi.Input[Optional[_builtins.str]] = None) -> 'WebAnalyticsSite':
         """
         Get an existing WebAnalyticsSite resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

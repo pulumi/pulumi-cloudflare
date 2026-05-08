@@ -121,9 +121,9 @@ export function getApiTokenOutput(args?: GetApiTokenOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getApiToken.
  */
 export interface GetApiTokenOutputArgs {
-    filter?: pulumi.Input<inputs.GetApiTokenFilterArgs>;
+    filter?: pulumi.Input<inputs.GetApiTokenFilterArgs | undefined>;
     /**
      * Token identifier tag.
      */
-    tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string | undefined>;
 }

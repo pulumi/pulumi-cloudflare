@@ -205,5 +205,5 @@ export interface GetKeylessCertificateOutputArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

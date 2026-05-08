@@ -109,7 +109,7 @@ export interface GetEmailSecurityImpersonationRegistryOutputArgs {
     /**
      * Account Identifier
      */
-    accountId?: pulumi.Input<string>;
-    displayNameId?: pulumi.Input<number>;
-    filter?: pulumi.Input<inputs.GetEmailSecurityImpersonationRegistryFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    displayNameId?: pulumi.Input<number | undefined>;
+    filter?: pulumi.Input<inputs.GetEmailSecurityImpersonationRegistryFilterArgs | undefined>;
 }

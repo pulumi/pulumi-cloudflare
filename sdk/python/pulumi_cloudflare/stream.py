@@ -21,18 +21,18 @@ __all__ = ['StreamArgs', 'Stream']
 @pulumi.input_type
 class StreamArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_duration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 meta: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_details: Optional[pulumi.Input['StreamPublicDetailsArgs']] = None,
-                 require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scheduled_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-                 thumbnail_timestamp_pct: Optional[pulumi.Input[_builtins.float]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 upload_expiry: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_duration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 meta: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_details: pulumi.Input[Optional['StreamPublicDetailsArgs']] = None,
+                 require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scheduled_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+                 thumbnail_timestamp_pct: pulumi.Input[Optional[_builtins.float]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 upload_expiry: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Stream resource.
 
@@ -76,180 +76,180 @@ class StreamArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_origins(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
         """
         return pulumi.get(self, "allowed_origins")
 
     @allowed_origins.setter
-    def allowed_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_origins(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_origins", value)
 
     @_builtins.property
     @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-defined identifier for the media creator.
         """
         return pulumi.get(self, "creator")
 
     @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Cloudflare-generated unique identifier for a media item.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDurationSeconds")
-    def max_duration_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_duration_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
         """
         return pulumi.get(self, "max_duration_seconds")
 
     @max_duration_seconds.setter
-    def max_duration_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_duration_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_duration_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def meta(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user modifiable key-value store used to reference other systems of record for managing videos.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def meta(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter(name="publicDetails")
-    def public_details(self) -> Optional[pulumi.Input['StreamPublicDetailsArgs']]:
+    def public_details(self) -> pulumi.Input[Optional['StreamPublicDetailsArgs']]:
         """
         Public details for the video including title, share link, channel link, and logo.
         """
         return pulumi.get(self, "public_details")
 
     @public_details.setter
-    def public_details(self, value: Optional[pulumi.Input['StreamPublicDetailsArgs']]):
+    def public_details(self, value: pulumi.Input[Optional['StreamPublicDetailsArgs']]):
         pulumi.set(self, "public_details", value)
 
     @_builtins.property
     @pulumi.getter(name="requireSignedUrls")
-    def require_signed_urls(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_signed_urls(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
         """
         return pulumi.get(self, "require_signed_urls")
 
     @require_signed_urls.setter
-    def require_signed_urls(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_signed_urls(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_signed_urls", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledDeletion")
-    def scheduled_deletion(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_deletion(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
         """
         return pulumi.get(self, "scheduled_deletion")
 
     @scheduled_deletion.setter
-    def scheduled_deletion(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_deletion(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="thumbnailTimestampPct")
-    def thumbnail_timestamp_pct(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def thumbnail_timestamp_pct(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
         """
         return pulumi.get(self, "thumbnail_timestamp_pct")
 
     @thumbnail_timestamp_pct.setter
-    def thumbnail_timestamp_pct(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def thumbnail_timestamp_pct(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "thumbnail_timestamp_pct", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the video. Can be used to verify the video being updated.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadExpiry")
-    def upload_expiry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upload_expiry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the video upload URL is no longer valid for direct user uploads.
         """
         return pulumi.get(self, "upload_expiry")
 
     @upload_expiry.setter
-    def upload_expiry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upload_expiry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upload_expiry", value)
 
 
 @pulumi.input_type
 class _StreamState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 clipped_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.float]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 input: Optional[pulumi.Input['StreamInputArgs']] = None,
-                 live_input: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_duration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 meta: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 playback: Optional[pulumi.Input['StreamPlaybackArgs']] = None,
-                 preview: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_details: Optional[pulumi.Input['StreamPublicDetailsArgs']] = None,
-                 ready_to_stream: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ready_to_stream_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scheduled_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.float]] = None,
-                 status: Optional[pulumi.Input['StreamStatusArgs']] = None,
-                 thumbnail: Optional[pulumi.Input[_builtins.str]] = None,
-                 thumbnail_timestamp_pct: Optional[pulumi.Input[_builtins.float]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 upload_expiry: Optional[pulumi.Input[_builtins.str]] = None,
-                 uploaded: Optional[pulumi.Input[_builtins.str]] = None,
-                 watermark: Optional[pulumi.Input['StreamWatermarkArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 clipped_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.float]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 input: pulumi.Input[Optional['StreamInputArgs']] = None,
+                 live_input: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_duration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 meta: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 playback: pulumi.Input[Optional['StreamPlaybackArgs']] = None,
+                 preview: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_details: pulumi.Input[Optional['StreamPublicDetailsArgs']] = None,
+                 ready_to_stream: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ready_to_stream_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scheduled_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.float]] = None,
+                 status: pulumi.Input[Optional['StreamStatusArgs']] = None,
+                 thumbnail: pulumi.Input[Optional[_builtins.str]] = None,
+                 thumbnail_timestamp_pct: pulumi.Input[Optional[_builtins.float]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 upload_expiry: pulumi.Input[Optional[_builtins.str]] = None,
+                 uploaded: pulumi.Input[Optional[_builtins.str]] = None,
+                 watermark: pulumi.Input[Optional['StreamWatermarkArgs']] = None):
         """
         Input properties used for looking up and filtering Stream resources.
 
@@ -338,329 +338,329 @@ class _StreamState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_origins(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
         """
         return pulumi.get(self, "allowed_origins")
 
     @allowed_origins.setter
-    def allowed_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_origins(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_origins", value)
 
     @_builtins.property
     @pulumi.getter(name="clippedFrom")
-    def clipped_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clipped_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the source video this video was clipped from.
         """
         return pulumi.get(self, "clipped_from")
 
     @clipped_from.setter
-    def clipped_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clipped_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clipped_from", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the media item was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-defined identifier for the media creator.
         """
         return pulumi.get(self, "creator")
 
     @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Cloudflare-generated unique identifier for a media item.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def input(self) -> Optional[pulumi.Input['StreamInputArgs']]:
+    def input(self) -> pulumi.Input[Optional['StreamInputArgs']]:
         return pulumi.get(self, "input")
 
     @input.setter
-    def input(self, value: Optional[pulumi.Input['StreamInputArgs']]):
+    def input(self, value: pulumi.Input[Optional['StreamInputArgs']]):
         pulumi.set(self, "input", value)
 
     @_builtins.property
     @pulumi.getter(name="liveInput")
-    def live_input(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def live_input(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The live input ID used to upload a video with Stream Live.
         """
         return pulumi.get(self, "live_input")
 
     @live_input.setter
-    def live_input(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def live_input(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "live_input", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDurationSeconds")
-    def max_duration_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_duration_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
         """
         return pulumi.get(self, "max_duration_seconds")
 
     @max_duration_seconds.setter
-    def max_duration_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_duration_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_duration_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSizeBytes")
-    def max_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum size in bytes for the video upload.
         """
         return pulumi.get(self, "max_size_bytes")
 
     @max_size_bytes.setter
-    def max_size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_size_bytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def meta(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user modifiable key-value store used to reference other systems of record for managing videos.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def meta(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the media item was last modified.
         """
         return pulumi.get(self, "modified")
 
     @modified.setter
-    def modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def playback(self) -> Optional[pulumi.Input['StreamPlaybackArgs']]:
+    def playback(self) -> pulumi.Input[Optional['StreamPlaybackArgs']]:
         return pulumi.get(self, "playback")
 
     @playback.setter
-    def playback(self, value: Optional[pulumi.Input['StreamPlaybackArgs']]):
+    def playback(self, value: pulumi.Input[Optional['StreamPlaybackArgs']]):
         pulumi.set(self, "playback", value)
 
     @_builtins.property
     @pulumi.getter
-    def preview(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preview(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The video's preview page URI. This field is omitted until encoding is complete.
         """
         return pulumi.get(self, "preview")
 
     @preview.setter
-    def preview(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preview(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preview", value)
 
     @_builtins.property
     @pulumi.getter(name="publicDetails")
-    def public_details(self) -> Optional[pulumi.Input['StreamPublicDetailsArgs']]:
+    def public_details(self) -> pulumi.Input[Optional['StreamPublicDetailsArgs']]:
         """
         Public details for the video including title, share link, channel link, and logo.
         """
         return pulumi.get(self, "public_details")
 
     @public_details.setter
-    def public_details(self, value: Optional[pulumi.Input['StreamPublicDetailsArgs']]):
+    def public_details(self, value: pulumi.Input[Optional['StreamPublicDetailsArgs']]):
         pulumi.set(self, "public_details", value)
 
     @_builtins.property
     @pulumi.getter(name="readyToStream")
-    def ready_to_stream(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ready_to_stream(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
         """
         return pulumi.get(self, "ready_to_stream")
 
     @ready_to_stream.setter
-    def ready_to_stream(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ready_to_stream(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ready_to_stream", value)
 
     @_builtins.property
     @pulumi.getter(name="readyToStreamAt")
-    def ready_to_stream_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ready_to_stream_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
         """
         return pulumi.get(self, "ready_to_stream_at")
 
     @ready_to_stream_at.setter
-    def ready_to_stream_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ready_to_stream_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ready_to_stream_at", value)
 
     @_builtins.property
     @pulumi.getter(name="requireSignedUrls")
-    def require_signed_urls(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_signed_urls(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
         """
         return pulumi.get(self, "require_signed_urls")
 
     @require_signed_urls.setter
-    def require_signed_urls(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_signed_urls(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_signed_urls", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledDeletion")
-    def scheduled_deletion(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_deletion(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
         """
         return pulumi.get(self, "scheduled_deletion")
 
     @scheduled_deletion.setter
-    def scheduled_deletion(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_deletion(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_deletion", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The size of the media item in bytes.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['StreamStatusArgs']]:
+    def status(self) -> pulumi.Input[Optional['StreamStatusArgs']]:
         """
         Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['StreamStatusArgs']]):
+    def status(self, value: pulumi.Input[Optional['StreamStatusArgs']]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def thumbnail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def thumbnail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The media item's thumbnail URI. This field is omitted until encoding is complete.
         """
         return pulumi.get(self, "thumbnail")
 
     @thumbnail.setter
-    def thumbnail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def thumbnail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "thumbnail", value)
 
     @_builtins.property
     @pulumi.getter(name="thumbnailTimestampPct")
-    def thumbnail_timestamp_pct(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def thumbnail_timestamp_pct(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
         """
         return pulumi.get(self, "thumbnail_timestamp_pct")
 
     @thumbnail_timestamp_pct.setter
-    def thumbnail_timestamp_pct(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def thumbnail_timestamp_pct(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "thumbnail_timestamp_pct", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the video. Can be used to verify the video being updated.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadExpiry")
-    def upload_expiry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upload_expiry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the video upload URL is no longer valid for direct user uploads.
         """
         return pulumi.get(self, "upload_expiry")
 
     @upload_expiry.setter
-    def upload_expiry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upload_expiry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upload_expiry", value)
 
     @_builtins.property
     @pulumi.getter
-    def uploaded(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uploaded(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the media item was uploaded.
         """
         return pulumi.get(self, "uploaded")
 
     @uploaded.setter
-    def uploaded(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uploaded(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uploaded", value)
 
     @_builtins.property
     @pulumi.getter
-    def watermark(self) -> Optional[pulumi.Input['StreamWatermarkArgs']]:
+    def watermark(self) -> pulumi.Input[Optional['StreamWatermarkArgs']]:
         return pulumi.get(self, "watermark")
 
     @watermark.setter
-    def watermark(self, value: Optional[pulumi.Input['StreamWatermarkArgs']]):
+    def watermark(self, value: pulumi.Input[Optional['StreamWatermarkArgs']]):
         pulumi.set(self, "watermark", value)
 
 
@@ -670,18 +670,18 @@ class Stream(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_duration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 meta: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_details: Optional[pulumi.Input[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']]] = None,
-                 require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scheduled_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-                 thumbnail_timestamp_pct: Optional[pulumi.Input[_builtins.float]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 upload_expiry: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_duration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 meta: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_details: pulumi.Input[Optional[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']]] = None,
+                 require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scheduled_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+                 thumbnail_timestamp_pct: pulumi.Input[Optional[_builtins.float]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 upload_expiry: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -759,18 +759,18 @@ class Stream(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_duration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 meta: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_details: Optional[pulumi.Input[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']]] = None,
-                 require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scheduled_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-                 thumbnail_timestamp_pct: Optional[pulumi.Input[_builtins.float]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 upload_expiry: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_duration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 meta: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_details: pulumi.Input[Optional[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']]] = None,
+                 require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scheduled_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+                 thumbnail_timestamp_pct: pulumi.Input[Optional[_builtins.float]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 upload_expiry: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -818,34 +818,34 @@ class Stream(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            clipped_from: Optional[pulumi.Input[_builtins.str]] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            creator: Optional[pulumi.Input[_builtins.str]] = None,
-            duration: Optional[pulumi.Input[_builtins.float]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            input: Optional[pulumi.Input[Union['StreamInputArgs', 'StreamInputArgsDict']]] = None,
-            live_input: Optional[pulumi.Input[_builtins.str]] = None,
-            max_duration_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            max_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            meta: Optional[pulumi.Input[_builtins.str]] = None,
-            modified: Optional[pulumi.Input[_builtins.str]] = None,
-            playback: Optional[pulumi.Input[Union['StreamPlaybackArgs', 'StreamPlaybackArgsDict']]] = None,
-            preview: Optional[pulumi.Input[_builtins.str]] = None,
-            public_details: Optional[pulumi.Input[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']]] = None,
-            ready_to_stream: Optional[pulumi.Input[_builtins.bool]] = None,
-            ready_to_stream_at: Optional[pulumi.Input[_builtins.str]] = None,
-            require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
-            scheduled_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-            size: Optional[pulumi.Input[_builtins.float]] = None,
-            status: Optional[pulumi.Input[Union['StreamStatusArgs', 'StreamStatusArgsDict']]] = None,
-            thumbnail: Optional[pulumi.Input[_builtins.str]] = None,
-            thumbnail_timestamp_pct: Optional[pulumi.Input[_builtins.float]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            upload_expiry: Optional[pulumi.Input[_builtins.str]] = None,
-            uploaded: Optional[pulumi.Input[_builtins.str]] = None,
-            watermark: Optional[pulumi.Input[Union['StreamWatermarkArgs', 'StreamWatermarkArgsDict']]] = None) -> 'Stream':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            clipped_from: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.float]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            input: pulumi.Input[Optional[Union['StreamInputArgs', 'StreamInputArgsDict']]] = None,
+            live_input: pulumi.Input[Optional[_builtins.str]] = None,
+            max_duration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            max_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            meta: pulumi.Input[Optional[_builtins.str]] = None,
+            modified: pulumi.Input[Optional[_builtins.str]] = None,
+            playback: pulumi.Input[Optional[Union['StreamPlaybackArgs', 'StreamPlaybackArgsDict']]] = None,
+            preview: pulumi.Input[Optional[_builtins.str]] = None,
+            public_details: pulumi.Input[Optional[Union['StreamPublicDetailsArgs', 'StreamPublicDetailsArgsDict']]] = None,
+            ready_to_stream: pulumi.Input[Optional[_builtins.bool]] = None,
+            ready_to_stream_at: pulumi.Input[Optional[_builtins.str]] = None,
+            require_signed_urls: pulumi.Input[Optional[_builtins.bool]] = None,
+            scheduled_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.float]] = None,
+            status: pulumi.Input[Optional[Union['StreamStatusArgs', 'StreamStatusArgsDict']]] = None,
+            thumbnail: pulumi.Input[Optional[_builtins.str]] = None,
+            thumbnail_timestamp_pct: pulumi.Input[Optional[_builtins.float]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            upload_expiry: pulumi.Input[Optional[_builtins.str]] = None,
+            uploaded: pulumi.Input[Optional[_builtins.str]] = None,
+            watermark: pulumi.Input[Optional[Union['StreamWatermarkArgs', 'StreamWatermarkArgsDict']]] = None) -> 'Stream':
         """
         Get an existing Stream resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

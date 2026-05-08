@@ -23,7 +23,7 @@ class PagesDomainArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  project_name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PagesDomain resource.
 
@@ -62,30 +62,30 @@ class PagesDomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
 class _PagesDomainState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_authority: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 validation_data: Optional[pulumi.Input['PagesDomainValidationDataArgs']] = None,
-                 verification_data: Optional[pulumi.Input['PagesDomainVerificationDataArgs']] = None,
-                 zone_tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_data: pulumi.Input[Optional['PagesDomainValidationDataArgs']] = None,
+                 verification_data: pulumi.Input[Optional['PagesDomainVerificationDataArgs']] = None,
+                 zone_tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PagesDomain resources.
 
@@ -118,107 +118,107 @@ class _PagesDomainState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateAuthority")
-    def certificate_authority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_authority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "google", "lets_encrypt".
         """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
-    def certificate_authority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_authority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_authority", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
-    def domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the project.
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="validationData")
-    def validation_data(self) -> Optional[pulumi.Input['PagesDomainValidationDataArgs']]:
+    def validation_data(self) -> pulumi.Input[Optional['PagesDomainValidationDataArgs']]:
         return pulumi.get(self, "validation_data")
 
     @validation_data.setter
-    def validation_data(self, value: Optional[pulumi.Input['PagesDomainValidationDataArgs']]):
+    def validation_data(self, value: pulumi.Input[Optional['PagesDomainValidationDataArgs']]):
         pulumi.set(self, "validation_data", value)
 
     @_builtins.property
     @pulumi.getter(name="verificationData")
-    def verification_data(self) -> Optional[pulumi.Input['PagesDomainVerificationDataArgs']]:
+    def verification_data(self) -> pulumi.Input[Optional['PagesDomainVerificationDataArgs']]:
         return pulumi.get(self, "verification_data")
 
     @verification_data.setter
-    def verification_data(self, value: Optional[pulumi.Input['PagesDomainVerificationDataArgs']]):
+    def verification_data(self, value: pulumi.Input[Optional['PagesDomainVerificationDataArgs']]):
         pulumi.set(self, "verification_data", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneTag")
-    def zone_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "zone_tag")
 
     @zone_tag.setter
-    def zone_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_tag", value)
 
 
@@ -228,9 +228,9 @@ class PagesDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -315,9 +315,9 @@ class PagesDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -351,16 +351,16 @@ class PagesDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate_authority: Optional[pulumi.Input[_builtins.str]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            validation_data: Optional[pulumi.Input[Union['PagesDomainValidationDataArgs', 'PagesDomainValidationDataArgsDict']]] = None,
-            verification_data: Optional[pulumi.Input[Union['PagesDomainVerificationDataArgs', 'PagesDomainVerificationDataArgsDict']]] = None,
-            zone_tag: Optional[pulumi.Input[_builtins.str]] = None) -> 'PagesDomain':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_authority: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_data: pulumi.Input[Optional[Union['PagesDomainValidationDataArgs', 'PagesDomainValidationDataArgsDict']]] = None,
+            verification_data: pulumi.Input[Optional[Union['PagesDomainVerificationDataArgs', 'PagesDomainVerificationDataArgsDict']]] = None,
+            zone_tag: pulumi.Input[Optional[_builtins.str]] = None) -> 'PagesDomain':
         """
         Get an existing PagesDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -91,9 +91,9 @@ export function getDnsZoneTransfersPeersOutput(args?: GetDnsZoneTransfersPeersOu
  * A collection of arguments for invoking getDnsZoneTransfersPeers.
  */
 export interface GetDnsZoneTransfersPeersOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
 }

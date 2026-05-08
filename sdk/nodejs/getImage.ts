@@ -118,7 +118,7 @@ export interface GetImageOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Image unique identifier.
      */

@@ -354,8 +354,8 @@ def get_zone(filter: Optional[Union['GetZoneFilterArgs', 'GetZoneFilterArgsDict'
         vanity_name_servers=pulumi.get(__ret__, 'vanity_name_servers'),
         verification_key=pulumi.get(__ret__, 'verification_key'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zone_output(filter: Optional[pulumi.Input[Optional[Union['GetZoneFilterArgs', 'GetZoneFilterArgsDict']]]] = None,
-                    zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zone_output(filter: pulumi.Input[Optional[Optional[Union['GetZoneFilterArgs', 'GetZoneFilterArgsDict']]]] = None,
+                    zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneResult]:
     """
     Accepted Permissions

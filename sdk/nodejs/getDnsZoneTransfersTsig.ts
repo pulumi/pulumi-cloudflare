@@ -91,6 +91,6 @@ export function getDnsZoneTransfersTsigOutput(args: GetDnsZoneTransfersTsigOutpu
  * A collection of arguments for invoking getDnsZoneTransfersTsig.
  */
 export interface GetDnsZoneTransfersTsigOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     tsigId: pulumi.Input<string>;
 }

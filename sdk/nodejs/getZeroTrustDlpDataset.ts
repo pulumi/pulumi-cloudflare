@@ -101,6 +101,6 @@ export function getZeroTrustDlpDatasetOutput(args: GetZeroTrustDlpDatasetOutputA
  * A collection of arguments for invoking getZeroTrustDlpDataset.
  */
 export interface GetZeroTrustDlpDatasetOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     datasetId: pulumi.Input<string>;
 }

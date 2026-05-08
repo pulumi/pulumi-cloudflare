@@ -110,11 +110,11 @@ export class Organization extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Organization resources.
  */
 export interface OrganizationState {
-    createTime?: pulumi.Input<string>;
-    meta?: pulumi.Input<inputs.OrganizationMeta>;
-    name?: pulumi.Input<string>;
-    parent?: pulumi.Input<inputs.OrganizationParent>;
-    profile?: pulumi.Input<inputs.OrganizationProfile>;
+    createTime?: pulumi.Input<string | undefined>;
+    meta?: pulumi.Input<inputs.OrganizationMeta | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    parent?: pulumi.Input<inputs.OrganizationParent | undefined>;
+    profile?: pulumi.Input<inputs.OrganizationProfile | undefined>;
 }
 
 /**
@@ -122,6 +122,6 @@ export interface OrganizationState {
  */
 export interface OrganizationArgs {
     name: pulumi.Input<string>;
-    parent?: pulumi.Input<inputs.OrganizationParent>;
-    profile?: pulumi.Input<inputs.OrganizationProfile>;
+    parent?: pulumi.Input<inputs.OrganizationParent | undefined>;
+    profile?: pulumi.Input<inputs.OrganizationProfile | undefined>;
 }

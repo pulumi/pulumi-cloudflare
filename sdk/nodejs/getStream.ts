@@ -191,7 +191,7 @@ export interface GetStreamOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */

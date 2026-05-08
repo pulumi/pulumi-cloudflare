@@ -20,11 +20,11 @@ __all__ = ['WebAnalyticsRuleArgs', 'WebAnalyticsRule']
 class WebAnalyticsRuleArgs:
     def __init__(__self__, *,
                  ruleset_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 inclusive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 inclusive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a WebAnalyticsRule resource.
 
@@ -59,70 +59,70 @@ class WebAnalyticsRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def inclusive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inclusive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the rule includes or excludes traffic from being measured.
         """
         return pulumi.get(self, "inclusive")
 
     @inclusive.setter
-    def inclusive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inclusive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inclusive", value)
 
     @_builtins.property
     @pulumi.getter(name="isPaused")
-    def is_paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_paused(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the rule is paused or not.
         """
         return pulumi.get(self, "is_paused")
 
     @is_paused.setter
-    def is_paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_paused(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_paused", value)
 
     @_builtins.property
     @pulumi.getter
-    def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "paths")
 
     @paths.setter
-    def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "paths", value)
 
 
 @pulumi.input_type
 class _WebAnalyticsRuleState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 inclusive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 priority: Optional[pulumi.Input[_builtins.float]] = None,
-                 ruleset_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 inclusive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 priority: pulumi.Input[Optional[_builtins.float]] = None,
+                 ruleset_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebAnalyticsRule resources.
 
@@ -150,86 +150,86 @@ class _WebAnalyticsRuleState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def inclusive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inclusive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the rule includes or excludes traffic from being measured.
         """
         return pulumi.get(self, "inclusive")
 
     @inclusive.setter
-    def inclusive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inclusive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inclusive", value)
 
     @_builtins.property
     @pulumi.getter(name="isPaused")
-    def is_paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_paused(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the rule is paused or not.
         """
         return pulumi.get(self, "is_paused")
 
     @is_paused.setter
-    def is_paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_paused(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_paused", value)
 
     @_builtins.property
     @pulumi.getter
-    def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "paths")
 
     @paths.setter
-    def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "paths", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.float]]:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="rulesetId")
-    def ruleset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ruleset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Web Analytics ruleset identifier.
         """
         return pulumi.get(self, "ruleset_id")
 
     @ruleset_id.setter
-    def ruleset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ruleset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ruleset_id", value)
 
 
@@ -239,12 +239,12 @@ class WebAnalyticsRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 inclusive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ruleset_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 inclusive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ruleset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -316,12 +316,12 @@ class WebAnalyticsRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 inclusive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ruleset_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 inclusive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ruleset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -351,14 +351,14 @@ class WebAnalyticsRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            inclusive: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_paused: Optional[pulumi.Input[_builtins.bool]] = None,
-            paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            priority: Optional[pulumi.Input[_builtins.float]] = None,
-            ruleset_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WebAnalyticsRule':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            inclusive: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            priority: pulumi.Input[Optional[_builtins.float]] = None,
+            ruleset_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WebAnalyticsRule':
         """
         Get an existing WebAnalyticsRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

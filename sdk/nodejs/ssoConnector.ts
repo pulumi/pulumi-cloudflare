@@ -137,32 +137,32 @@ export interface SsoConnectorState {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Begin the verification process after creation
      */
-    beginVerification?: pulumi.Input<boolean>;
+    beginVerification?: pulumi.Input<boolean | undefined>;
     /**
      * Timestamp for the creation of the SSO connector
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Email domain of the new SSO connector
      */
-    emailDomain?: pulumi.Input<string>;
+    emailDomain?: pulumi.Input<string | undefined>;
     /**
      * SSO Connector enabled state
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Timestamp for the last update of the SSO connector
      */
-    updatedOn?: pulumi.Input<string>;
+    updatedOn?: pulumi.Input<string | undefined>;
     /**
      * Controls the display of FedRAMP language to the user during SSO login
      */
-    useFedrampLanguage?: pulumi.Input<boolean>;
-    verification?: pulumi.Input<inputs.SsoConnectorVerification>;
+    useFedrampLanguage?: pulumi.Input<boolean | undefined>;
+    verification?: pulumi.Input<inputs.SsoConnectorVerification | undefined>;
 }
 
 /**
@@ -172,11 +172,11 @@ export interface SsoConnectorArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Begin the verification process after creation
      */
-    beginVerification?: pulumi.Input<boolean>;
+    beginVerification?: pulumi.Input<boolean | undefined>;
     /**
      * Email domain of the new SSO connector
      */
@@ -184,9 +184,9 @@ export interface SsoConnectorArgs {
     /**
      * SSO Connector enabled state
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Controls the display of FedRAMP language to the user during SSO login
      */
-    useFedrampLanguage?: pulumi.Input<boolean>;
+    useFedrampLanguage?: pulumi.Input<boolean | undefined>;
 }

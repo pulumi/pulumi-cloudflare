@@ -22,9 +22,9 @@ __all__ = ['R2BucketCorsArgs', 'R2BucketCors']
 class R2BucketCorsArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]] = None):
         """
         The set of arguments for constructing a R2BucketCors resource.
 
@@ -54,45 +54,45 @@ class R2BucketCorsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def jurisdiction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Jurisdiction of the bucket
         """
         return pulumi.get(self, "jurisdiction")
 
     @jurisdiction.setter
-    def jurisdiction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jurisdiction", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]]:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
 class _R2BucketCorsState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering R2BucketCors resources.
 
@@ -111,47 +111,47 @@ class _R2BucketCorsState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def jurisdiction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jurisdiction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Jurisdiction of the bucket
         """
         return pulumi.get(self, "jurisdiction")
 
     @jurisdiction.setter
-    def jurisdiction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jurisdiction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jurisdiction", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]]:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['R2BucketCorsRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
@@ -161,10 +161,10 @@ class R2BucketCors(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -184,7 +184,7 @@ class R2BucketCors(pulumi.CustomResource):
                 },
                 "id": "Allow Local Development",
                 "expose_headers": ["Content-Encoding"],
-                "max_age_seconds": 3600,
+                "max_age_seconds": float(3600),
             }])
         ```
 
@@ -223,7 +223,7 @@ class R2BucketCors(pulumi.CustomResource):
                 },
                 "id": "Allow Local Development",
                 "expose_headers": ["Content-Encoding"],
-                "max_age_seconds": 3600,
+                "max_age_seconds": float(3600),
             }])
         ```
 
@@ -247,10 +247,10 @@ class R2BucketCors(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -276,10 +276,10 @@ class R2BucketCors(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-            jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict']]]]] = None) -> 'R2BucketCors':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            jurisdiction: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['R2BucketCorsRuleArgs', 'R2BucketCorsRuleArgsDict']]]]] = None) -> 'R2BucketCors':
         """
         Get an existing R2BucketCors resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

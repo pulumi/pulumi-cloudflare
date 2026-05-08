@@ -153,10 +153,10 @@ def get_email_routing_addresses(account_id: Optional[_builtins.str] = None,
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         verified=pulumi.get(__ret__, 'verified'))
-def get_email_routing_addresses_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                       verified: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_email_routing_addresses_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                       verified: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailRoutingAddressesResult]:
     """
     Accepted Permissions

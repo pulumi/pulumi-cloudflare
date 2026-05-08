@@ -24,9 +24,9 @@ class AccessIdentityProviderArgs:
                  config: pulumi.Input['AccessIdentityProviderConfigArgs'],
                  name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_config: Optional[pulumi.Input['AccessIdentityProviderScimConfigArgs']] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_config: pulumi.Input[Optional['AccessIdentityProviderScimConfigArgs']] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessIdentityProvider resource.
 
@@ -87,50 +87,50 @@ class AccessIdentityProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scimConfig")
-    def scim_config(self) -> Optional[pulumi.Input['AccessIdentityProviderScimConfigArgs']]:
+    def scim_config(self) -> pulumi.Input[Optional['AccessIdentityProviderScimConfigArgs']]:
         """
         The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         """
         return pulumi.get(self, "scim_config")
 
     @scim_config.setter
-    def scim_config(self, value: Optional[pulumi.Input['AccessIdentityProviderScimConfigArgs']]):
+    def scim_config(self, value: pulumi.Input[Optional['AccessIdentityProviderScimConfigArgs']]):
         pulumi.set(self, "scim_config", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _AccessIdentityProviderState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input['AccessIdentityProviderConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_config: Optional[pulumi.Input['AccessIdentityProviderScimConfigArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional['AccessIdentityProviderConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_config: pulumi.Input[Optional['AccessIdentityProviderScimConfigArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessIdentityProvider resources.
 
@@ -157,55 +157,55 @@ class _AccessIdentityProviderState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['AccessIdentityProviderConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['AccessIdentityProviderConfigArgs']]:
         """
         The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['AccessIdentityProviderConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['AccessIdentityProviderConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the identity provider, shown to users on the login page.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="scimConfig")
-    def scim_config(self) -> Optional[pulumi.Input['AccessIdentityProviderScimConfigArgs']]:
+    def scim_config(self) -> pulumi.Input[Optional['AccessIdentityProviderScimConfigArgs']]:
         """
         The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         """
         return pulumi.get(self, "scim_config")
 
     @scim_config.setter
-    def scim_config(self, value: Optional[pulumi.Input['AccessIdentityProviderScimConfigArgs']]):
+    def scim_config(self, value: pulumi.Input[Optional['AccessIdentityProviderScimConfigArgs']]):
         pulumi.set(self, "scim_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
         Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
@@ -213,19 +213,19 @@ class _AccessIdentityProviderState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -240,12 +240,12 @@ class AccessIdentityProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_config: Optional[pulumi.Input[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_config: pulumi.Input[Optional[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -368,12 +368,12 @@ class AccessIdentityProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_config: Optional[pulumi.Input[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_config: pulumi.Input[Optional[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""AccessIdentityProvider is deprecated: cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -408,12 +408,12 @@ class AccessIdentityProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            config: Optional[pulumi.Input[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            scim_config: Optional[pulumi.Input[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessIdentityProvider':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            scim_config: pulumi.Input[Optional[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessIdentityProvider':
         """
         Get an existing AccessIdentityProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -111,7 +111,7 @@ export interface GetZeroTrustAccessCustomPageOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * UUID.
      */

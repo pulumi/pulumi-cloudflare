@@ -120,7 +120,7 @@ def get_zero_trust_dlp_settings(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ocr=pulumi.get(__ret__, 'ocr'),
         payload_logging=pulumi.get(__ret__, 'payload_logging'))
-def get_zero_trust_dlp_settings_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_dlp_settings_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDlpSettingsResult]:
     """
     Accepted Permissions

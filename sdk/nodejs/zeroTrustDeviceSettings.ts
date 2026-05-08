@@ -144,84 +144,84 @@ export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDeviceSettings resources.
  */
 export interface ZeroTrustDeviceSettingsState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
      */
-    disableForTime?: pulumi.Input<number>;
+    disableForTime?: pulumi.Input<number | undefined>;
     /**
      * Controls whether the external emergency disconnect feature is enabled.
      */
-    externalEmergencySignalEnabled?: pulumi.Input<boolean>;
+    externalEmergencySignalEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
      */
-    externalEmergencySignalFingerprint?: pulumi.Input<string>;
+    externalEmergencySignalFingerprint?: pulumi.Input<string | undefined>;
     /**
      * The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
      */
-    externalEmergencySignalInterval?: pulumi.Input<string>;
+    externalEmergencySignalInterval?: pulumi.Input<string | undefined>;
     /**
      * The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
      */
-    externalEmergencySignalUrl?: pulumi.Input<string>;
+    externalEmergencySignalUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable gateway proxy filtering on TCP.
      */
-    gatewayProxyEnabled?: pulumi.Input<boolean>;
+    gatewayProxyEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable gateway proxy filtering on UDP.
      */
-    gatewayUdpProxyEnabled?: pulumi.Input<boolean>;
+    gatewayUdpProxyEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable installation of cloudflare managed root certificate.
      */
-    rootCertificateInstallationEnabled?: pulumi.Input<boolean>;
+    rootCertificateInstallationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable using CGNAT virtual IPv4.
      */
-    useZtVirtualIp?: pulumi.Input<boolean>;
+    useZtVirtualIp?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustDeviceSettings resource.
  */
 export interface ZeroTrustDeviceSettingsArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
      */
-    disableForTime?: pulumi.Input<number>;
+    disableForTime?: pulumi.Input<number | undefined>;
     /**
      * Controls whether the external emergency disconnect feature is enabled.
      */
-    externalEmergencySignalEnabled?: pulumi.Input<boolean>;
+    externalEmergencySignalEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
      */
-    externalEmergencySignalFingerprint?: pulumi.Input<string>;
+    externalEmergencySignalFingerprint?: pulumi.Input<string | undefined>;
     /**
      * The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
      */
-    externalEmergencySignalInterval?: pulumi.Input<string>;
+    externalEmergencySignalInterval?: pulumi.Input<string | undefined>;
     /**
      * The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
      */
-    externalEmergencySignalUrl?: pulumi.Input<string>;
+    externalEmergencySignalUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable gateway proxy filtering on TCP.
      */
-    gatewayProxyEnabled?: pulumi.Input<boolean>;
+    gatewayProxyEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable gateway proxy filtering on UDP.
      */
-    gatewayUdpProxyEnabled?: pulumi.Input<boolean>;
+    gatewayUdpProxyEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable installation of cloudflare managed root certificate.
      */
-    rootCertificateInstallationEnabled?: pulumi.Input<boolean>;
+    rootCertificateInstallationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable using CGNAT virtual IPv4.
      */
-    useZtVirtualIp?: pulumi.Input<boolean>;
+    useZtVirtualIp?: pulumi.Input<boolean | undefined>;
 }

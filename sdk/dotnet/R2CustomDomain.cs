@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2CustomDomain = new Cloudflare.Index.R2CustomDomain("example_r2_custom_domain", new()
+    ///     var exampleR2CustomDomain = new Cloudflare.R2CustomDomain("example_r2_custom_domain", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",

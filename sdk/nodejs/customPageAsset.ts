@@ -130,28 +130,28 @@ export interface CustomPageAssetState {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A short description of the custom asset.
      */
-    description?: pulumi.Input<string>;
-    lastUpdated?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    lastUpdated?: pulumi.Input<string | undefined>;
     /**
      * The unique name of the custom asset. Can only contain letters (A-Z, a-z), numbers (0-9), and underscores (_).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The size of the asset content in bytes.
      */
-    sizeBytes?: pulumi.Input<number>;
+    sizeBytes?: pulumi.Input<number | undefined>;
     /**
      * The URL where the asset content is fetched from.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -161,7 +161,7 @@ export interface CustomPageAssetArgs {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A short description of the custom asset.
      */
@@ -177,5 +177,5 @@ export interface CustomPageAssetArgs {
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

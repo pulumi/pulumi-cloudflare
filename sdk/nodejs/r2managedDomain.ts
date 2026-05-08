@@ -121,27 +121,27 @@ export interface R2ManagedDomainState {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Bucket ID.
      */
-    bucketId?: pulumi.Input<string>;
+    bucketId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * Domain name of the bucket's r2.dev domain.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable public bucket access at the r2.dev domain.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
+    jurisdiction?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -151,7 +151,7 @@ export interface R2ManagedDomainArgs {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
@@ -163,5 +163,5 @@ export interface R2ManagedDomainArgs {
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
+    jurisdiction?: pulumi.Input<string | undefined>;
 }

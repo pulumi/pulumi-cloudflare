@@ -234,54 +234,54 @@ export interface KeylessCertificateState {
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
      * Available values: "ubiquitous", "optimal", "force".
      */
-    bundleMethod?: pulumi.Input<string>;
+    bundleMethod?: pulumi.Input<string | undefined>;
     /**
      * The zone's SSL certificate or SSL certificate and intermediate(s).
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * When the Keyless SSL was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the Keyless SSL is on or off.
      *
      * @deprecated This attribute is deprecated.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The keyless SSL name.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * When the Keyless SSL was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * The keyless SSL name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Available permissions for the Keyless SSL for the current user requesting the item.
      */
-    permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    permissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Status of the Keyless SSL.
      * Available values: "active", "deleted".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Configuration for using Keyless SSL through a Cloudflare Tunnel
      */
-    tunnel?: pulumi.Input<inputs.KeylessCertificateTunnel>;
+    tunnel?: pulumi.Input<inputs.KeylessCertificateTunnel | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -292,7 +292,7 @@ export interface KeylessCertificateArgs {
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
      * Available values: "ubiquitous", "optimal", "force".
      */
-    bundleMethod?: pulumi.Input<string>;
+    bundleMethod?: pulumi.Input<string | undefined>;
     /**
      * The zone's SSL certificate or SSL certificate and intermediate(s).
      */
@@ -302,7 +302,7 @@ export interface KeylessCertificateArgs {
      *
      * @deprecated This attribute is deprecated.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The keyless SSL name.
      */
@@ -310,17 +310,17 @@ export interface KeylessCertificateArgs {
     /**
      * The keyless SSL name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Configuration for using Keyless SSL through a Cloudflare Tunnel
      */
-    tunnel?: pulumi.Input<inputs.KeylessCertificateTunnel>;
+    tunnel?: pulumi.Input<inputs.KeylessCertificateTunnel | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

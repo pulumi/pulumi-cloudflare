@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleSnippet = new Cloudflare.Index.Snippet("example_snippet", new()
+    ///     var exampleSnippet = new Cloudflare.Snippet("example_snippet", new()
     ///     {
     ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
     ///         SnippetName = "my_snippet",

@@ -173,13 +173,13 @@ def get_zones(account: Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArg
         order=pulumi.get(__ret__, 'order'),
         results=pulumi.get(__ret__, 'results'),
         status=pulumi.get(__ret__, 'status'))
-def get_zones_output(account: Optional[pulumi.Input[Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArgsDict']]]] = None,
-                     direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     match: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                     name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zones_output(account: pulumi.Input[Optional[Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArgsDict']]]] = None,
+                     direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     match: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                     name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     Accepted Permissions

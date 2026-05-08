@@ -106,9 +106,9 @@ export interface GetNotificationPoliciesOutputArgs {
     /**
      * The account id
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
 }

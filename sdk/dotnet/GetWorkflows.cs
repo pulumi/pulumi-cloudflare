@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkflows = Cloudflare.Index.GetWorkflows.Invoke(new()
+        ///     var exampleWorkflows = Cloudflare.GetWorkflows.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         Search = "x",
@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkflows = Cloudflare.Index.GetWorkflows.Invoke(new()
+        ///     var exampleWorkflows = Cloudflare.GetWorkflows.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         Search = "x",
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkflows = Cloudflare.Index.GetWorkflows.Invoke(new()
+        ///     var exampleWorkflows = Cloudflare.GetWorkflows.Invoke(new()
         ///     {
         ///         AccountId = "account_id",
         ///         Search = "x",

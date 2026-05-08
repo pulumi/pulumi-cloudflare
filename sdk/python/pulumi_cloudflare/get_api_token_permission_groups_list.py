@@ -140,9 +140,9 @@ def get_api_token_permission_groups_list(max_items: Optional[_builtins.int] = No
         name=pulumi.get(__ret__, 'name'),
         results=pulumi.get(__ret__, 'results'),
         scope=pulumi.get(__ret__, 'scope'))
-def get_api_token_permission_groups_list_output(max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                scope: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_api_token_permission_groups_list_output(max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                scope: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiTokenPermissionGroupsListResult]:
     """
     Accepted Permissions

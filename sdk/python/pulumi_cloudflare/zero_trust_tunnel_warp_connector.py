@@ -22,9 +22,9 @@ __all__ = ['ZeroTrustTunnelWarpConnectorArgs', 'ZeroTrustTunnelWarpConnector']
 class ZeroTrustTunnelWarpConnectorArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tunnel_secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunnel_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustTunnelWarpConnector resource.
 
@@ -55,57 +55,57 @@ class ZeroTrustTunnelWarpConnectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloudflare account ID
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def ha(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
         """
         return pulumi.get(self, "ha")
 
     @ha.setter
-    def ha(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelSecret")
-    def tunnel_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tunnel_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
         """
         return pulumi.get(self, "tunnel_secret")
 
     @tunnel_secret.setter
-    def tunnel_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tunnel_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunnel_secret", value)
 
 
 @pulumi.input_type
 class _ZeroTrustTunnelWarpConnectorState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 connections: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustTunnelWarpConnectorConnectionArgs']]]] = None,
-                 conns_active_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 conns_inactive_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tun_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 connections: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustTunnelWarpConnectorConnectionArgs']]]] = None,
+                 conns_active_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 conns_inactive_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tun_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustTunnelWarpConnector resources.
 
@@ -157,128 +157,128 @@ class _ZeroTrustTunnelWarpConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloudflare account ID
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accountTag")
-    def account_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloudflare account ID
         """
         return pulumi.get(self, "account_tag")
 
     @account_tag.setter
-    def account_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_tag", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`""")
-    def connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustTunnelWarpConnectorConnectionArgs']]]]:
+    def connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustTunnelWarpConnectorConnectionArgs']]]]:
         """
         The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
         """
         return pulumi.get(self, "connections")
 
     @connections.setter
-    def connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustTunnelWarpConnectorConnectionArgs']]]]):
+    def connections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustTunnelWarpConnectorConnectionArgs']]]]):
         pulumi.set(self, "connections", value)
 
     @_builtins.property
     @pulumi.getter(name="connsActiveAt")
-    def conns_active_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def conns_active_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
         """
         return pulumi.get(self, "conns_active_at")
 
     @conns_active_at.setter
-    def conns_active_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def conns_active_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "conns_active_at", value)
 
     @_builtins.property
     @pulumi.getter(name="connsInactiveAt")
-    def conns_inactive_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def conns_inactive_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
         """
         return pulumi.get(self, "conns_inactive_at")
 
     @conns_inactive_at.setter
-    def conns_inactive_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def conns_inactive_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "conns_inactive_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp of when the resource was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="deletedAt")
-    def deleted_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deleted_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
         """
         return pulumi.get(self, "deleted_at")
 
     @deleted_at.setter
-    def deleted_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deleted_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deleted_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def ha(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
         """
         return pulumi.get(self, "ha")
 
     @ha.setter
-    def ha(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metadata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Metadata associated with the tunnel.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metadata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-friendly name for a tunnel.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
         Available values: "inactive", "degraded", "healthy", "down".
@@ -286,12 +286,12 @@ class _ZeroTrustTunnelWarpConnectorState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="tunType")
-    def tun_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tun_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of tunnel.
         Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
@@ -299,19 +299,19 @@ class _ZeroTrustTunnelWarpConnectorState:
         return pulumi.get(self, "tun_type")
 
     @tun_type.setter
-    def tun_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tun_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tun_type", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelSecret")
-    def tunnel_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tunnel_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
         """
         return pulumi.get(self, "tunnel_secret")
 
     @tunnel_secret.setter
-    def tunnel_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tunnel_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunnel_secret", value)
 
 
@@ -321,10 +321,10 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -408,10 +408,10 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -448,19 +448,19 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            account_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustTunnelWarpConnectorConnectionArgs', 'ZeroTrustTunnelWarpConnectorConnectionArgsDict']]]]] = None,
-            conns_active_at: Optional[pulumi.Input[_builtins.str]] = None,
-            conns_inactive_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
-            ha: Optional[pulumi.Input[_builtins.bool]] = None,
-            metadata: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tun_type: Optional[pulumi.Input[_builtins.str]] = None,
-            tunnel_secret: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustTunnelWarpConnector':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            account_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustTunnelWarpConnectorConnectionArgs', 'ZeroTrustTunnelWarpConnectorConnectionArgsDict']]]]] = None,
+            conns_active_at: pulumi.Input[Optional[_builtins.str]] = None,
+            conns_inactive_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+            ha: pulumi.Input[Optional[_builtins.bool]] = None,
+            metadata: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tun_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_secret: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustTunnelWarpConnector':
         """
         Get an existing ZeroTrustTunnelWarpConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

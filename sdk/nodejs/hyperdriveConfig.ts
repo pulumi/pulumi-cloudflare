@@ -152,29 +152,29 @@ export interface HyperdriveConfigState {
     /**
      * Define configurations using a unique string identifier.
      */
-    accountId?: pulumi.Input<string>;
-    caching?: pulumi.Input<inputs.HyperdriveConfigCaching>;
+    accountId?: pulumi.Input<string | undefined>;
+    caching?: pulumi.Input<inputs.HyperdriveConfigCaching | undefined>;
     /**
      * Defines the creation time of the Hyperdrive configuration.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Defines the last modified time of the Hyperdrive configuration.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
      */
-    mtls?: pulumi.Input<inputs.HyperdriveConfigMtls>;
+    mtls?: pulumi.Input<inputs.HyperdriveConfigMtls | undefined>;
     /**
      * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
      */
-    name?: pulumi.Input<string>;
-    origin?: pulumi.Input<inputs.HyperdriveConfigOrigin>;
+    name?: pulumi.Input<string | undefined>;
+    origin?: pulumi.Input<inputs.HyperdriveConfigOrigin | undefined>;
     /**
      * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
      */
-    originConnectionLimit?: pulumi.Input<number>;
+    originConnectionLimit?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -184,12 +184,12 @@ export interface HyperdriveConfigArgs {
     /**
      * Define configurations using a unique string identifier.
      */
-    accountId?: pulumi.Input<string>;
-    caching?: pulumi.Input<inputs.HyperdriveConfigCaching>;
+    accountId?: pulumi.Input<string | undefined>;
+    caching?: pulumi.Input<inputs.HyperdriveConfigCaching | undefined>;
     /**
      * mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
      */
-    mtls?: pulumi.Input<inputs.HyperdriveConfigMtls>;
+    mtls?: pulumi.Input<inputs.HyperdriveConfigMtls | undefined>;
     /**
      * The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
      */
@@ -198,5 +198,5 @@ export interface HyperdriveConfigArgs {
     /**
      * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
      */
-    originConnectionLimit?: pulumi.Input<number>;
+    originConnectionLimit?: pulumi.Input<number | undefined>;
 }

@@ -124,16 +124,16 @@ export interface EmailSecurityBlockSenderState {
     /**
      * Account Identifier
      */
-    accountId?: pulumi.Input<string>;
-    comments?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
-    isRegex?: pulumi.Input<boolean>;
-    lastModified?: pulumi.Input<string>;
-    pattern?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    comments?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    isRegex?: pulumi.Input<boolean | undefined>;
+    lastModified?: pulumi.Input<string | undefined>;
+    pattern?: pulumi.Input<string | undefined>;
     /**
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
-    patternType?: pulumi.Input<string>;
+    patternType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -143,8 +143,8 @@ export interface EmailSecurityBlockSenderArgs {
     /**
      * Account Identifier
      */
-    accountId?: pulumi.Input<string>;
-    comments?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    comments?: pulumi.Input<string | undefined>;
     isRegex: pulumi.Input<boolean>;
     pattern: pulumi.Input<string>;
     /**

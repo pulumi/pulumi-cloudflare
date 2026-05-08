@@ -159,8 +159,8 @@ def get_zero_trust_access_custom_page(account_id: Optional[_builtins.str] = None
         name=pulumi.get(__ret__, 'name'),
         type=pulumi.get(__ret__, 'type'),
         uid=pulumi.get(__ret__, 'uid'))
-def get_zero_trust_access_custom_page_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             custom_page_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_access_custom_page_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             custom_page_id: pulumi.Input[Optional[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessCustomPageResult]:
     """
     Accepted Permissions

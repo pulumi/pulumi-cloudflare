@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustNetworkHostnameRoute = new Cloudflare.Index.ZeroTrustNetworkHostnameRoute("example_zero_trust_network_hostname_route", new()
+    ///     var exampleZeroTrustNetworkHostnameRoute = new Cloudflare.ZeroTrustNetworkHostnameRoute("example_zero_trust_network_hostname_route", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Comment = "example comment",

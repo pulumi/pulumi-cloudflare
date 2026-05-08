@@ -22,17 +22,17 @@ __all__ = ['MagicTransitSiteLanArgs', 'MagicTransitSiteLan']
 class MagicTransitSiteLanArgs:
     def __init__(__self__, *,
                  site_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bond_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_breakout: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_prioritized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat: Optional[pulumi.Input['MagicTransitSiteLanNatArgs']] = None,
-                 physport: Optional[pulumi.Input[_builtins.int]] = None,
-                 routed_subnets: Optional[pulumi.Input[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]] = None,
-                 static_addressing: Optional[pulumi.Input['MagicTransitSiteLanStaticAddressingArgs']] = None,
-                 vlan_tag: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bond_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_link: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_breakout: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_prioritized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat: pulumi.Input[Optional['MagicTransitSiteLanNatArgs']] = None,
+                 physport: pulumi.Input[Optional[_builtins.int]] = None,
+                 routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]] = None,
+                 static_addressing: pulumi.Input[Optional['MagicTransitSiteLanStaticAddressingArgs']] = None,
+                 vlan_tag: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a MagicTransitSiteLan resource.
 
@@ -82,137 +82,137 @@ class MagicTransitSiteLanArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bondId")
-    def bond_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bond_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "bond_id")
 
     @bond_id.setter
-    def bond_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bond_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bond_id", value)
 
     @_builtins.property
     @pulumi.getter(name="haLink")
-    def ha_link(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_link(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
         """
         return pulumi.get(self, "ha_link")
 
     @ha_link.setter
-    def ha_link(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_link(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_link", value)
 
     @_builtins.property
     @pulumi.getter(name="isBreakout")
-    def is_breakout(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_breakout(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         mark true to use this LAN for source-based breakout traffic
         """
         return pulumi.get(self, "is_breakout")
 
     @is_breakout.setter
-    def is_breakout(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_breakout(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_breakout", value)
 
     @_builtins.property
     @pulumi.getter(name="isPrioritized")
-    def is_prioritized(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_prioritized(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         mark true to use this LAN for source-based prioritized traffic
         """
         return pulumi.get(self, "is_prioritized")
 
     @is_prioritized.setter
-    def is_prioritized(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_prioritized(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_prioritized", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def nat(self) -> Optional[pulumi.Input['MagicTransitSiteLanNatArgs']]:
+    def nat(self) -> pulumi.Input[Optional['MagicTransitSiteLanNatArgs']]:
         return pulumi.get(self, "nat")
 
     @nat.setter
-    def nat(self, value: Optional[pulumi.Input['MagicTransitSiteLanNatArgs']]):
+    def nat(self, value: pulumi.Input[Optional['MagicTransitSiteLanNatArgs']]):
         pulumi.set(self, "nat", value)
 
     @_builtins.property
     @pulumi.getter
-    def physport(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def physport(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "physport")
 
     @physport.setter
-    def physport(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def physport(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "physport", value)
 
     @_builtins.property
     @pulumi.getter(name="routedSubnets")
-    def routed_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]]:
+    def routed_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]]:
         return pulumi.get(self, "routed_subnets")
 
     @routed_subnets.setter
-    def routed_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]]):
+    def routed_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]]):
         pulumi.set(self, "routed_subnets", value)
 
     @_builtins.property
     @pulumi.getter(name="staticAddressing")
-    def static_addressing(self) -> Optional[pulumi.Input['MagicTransitSiteLanStaticAddressingArgs']]:
+    def static_addressing(self) -> pulumi.Input[Optional['MagicTransitSiteLanStaticAddressingArgs']]:
         """
         If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         """
         return pulumi.get(self, "static_addressing")
 
     @static_addressing.setter
-    def static_addressing(self, value: Optional[pulumi.Input['MagicTransitSiteLanStaticAddressingArgs']]):
+    def static_addressing(self, value: pulumi.Input[Optional['MagicTransitSiteLanStaticAddressingArgs']]):
         pulumi.set(self, "static_addressing", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanTag")
-    def vlan_tag(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan_tag(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VLAN ID. Use zero for untagged.
         """
         return pulumi.get(self, "vlan_tag")
 
     @vlan_tag.setter
-    def vlan_tag(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan_tag(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan_tag", value)
 
 
 @pulumi.input_type
 class _MagicTransitSiteLanState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bond_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_breakout: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_prioritized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat: Optional[pulumi.Input['MagicTransitSiteLanNatArgs']] = None,
-                 physport: Optional[pulumi.Input[_builtins.int]] = None,
-                 routed_subnets: Optional[pulumi.Input[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_addressing: Optional[pulumi.Input['MagicTransitSiteLanStaticAddressingArgs']] = None,
-                 vlan_tag: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bond_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_link: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_breakout: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_prioritized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat: pulumi.Input[Optional['MagicTransitSiteLanNatArgs']] = None,
+                 physport: pulumi.Input[Optional[_builtins.int]] = None,
+                 routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_addressing: pulumi.Input[Optional['MagicTransitSiteLanStaticAddressingArgs']] = None,
+                 vlan_tag: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering MagicTransitSiteLan resources.
 
@@ -251,131 +251,131 @@ class _MagicTransitSiteLanState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bondId")
-    def bond_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bond_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "bond_id")
 
     @bond_id.setter
-    def bond_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bond_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bond_id", value)
 
     @_builtins.property
     @pulumi.getter(name="haLink")
-    def ha_link(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_link(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
         """
         return pulumi.get(self, "ha_link")
 
     @ha_link.setter
-    def ha_link(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_link(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_link", value)
 
     @_builtins.property
     @pulumi.getter(name="isBreakout")
-    def is_breakout(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_breakout(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         mark true to use this LAN for source-based breakout traffic
         """
         return pulumi.get(self, "is_breakout")
 
     @is_breakout.setter
-    def is_breakout(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_breakout(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_breakout", value)
 
     @_builtins.property
     @pulumi.getter(name="isPrioritized")
-    def is_prioritized(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_prioritized(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         mark true to use this LAN for source-based prioritized traffic
         """
         return pulumi.get(self, "is_prioritized")
 
     @is_prioritized.setter
-    def is_prioritized(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_prioritized(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_prioritized", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def nat(self) -> Optional[pulumi.Input['MagicTransitSiteLanNatArgs']]:
+    def nat(self) -> pulumi.Input[Optional['MagicTransitSiteLanNatArgs']]:
         return pulumi.get(self, "nat")
 
     @nat.setter
-    def nat(self, value: Optional[pulumi.Input['MagicTransitSiteLanNatArgs']]):
+    def nat(self, value: pulumi.Input[Optional['MagicTransitSiteLanNatArgs']]):
         pulumi.set(self, "nat", value)
 
     @_builtins.property
     @pulumi.getter
-    def physport(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def physport(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "physport")
 
     @physport.setter
-    def physport(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def physport(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "physport", value)
 
     @_builtins.property
     @pulumi.getter(name="routedSubnets")
-    def routed_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]]:
+    def routed_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]]:
         return pulumi.get(self, "routed_subnets")
 
     @routed_subnets.setter
-    def routed_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]]):
+    def routed_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]]):
         pulumi.set(self, "routed_subnets", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="staticAddressing")
-    def static_addressing(self) -> Optional[pulumi.Input['MagicTransitSiteLanStaticAddressingArgs']]:
+    def static_addressing(self) -> pulumi.Input[Optional['MagicTransitSiteLanStaticAddressingArgs']]:
         """
         If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         """
         return pulumi.get(self, "static_addressing")
 
     @static_addressing.setter
-    def static_addressing(self, value: Optional[pulumi.Input['MagicTransitSiteLanStaticAddressingArgs']]):
+    def static_addressing(self, value: pulumi.Input[Optional['MagicTransitSiteLanStaticAddressingArgs']]):
         pulumi.set(self, "static_addressing", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanTag")
-    def vlan_tag(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan_tag(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VLAN ID. Use zero for untagged.
         """
         return pulumi.get(self, "vlan_tag")
 
     @vlan_tag.setter
-    def vlan_tag(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan_tag(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan_tag", value)
 
 
@@ -385,18 +385,18 @@ class MagicTransitSiteLan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bond_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_breakout: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_prioritized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat: Optional[pulumi.Input[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
-                 physport: Optional[pulumi.Input[_builtins.int]] = None,
-                 routed_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict']]]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_addressing: Optional[pulumi.Input[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']]] = None,
-                 vlan_tag: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bond_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_link: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_breakout: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_prioritized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
+                 physport: pulumi.Input[Optional[_builtins.int]] = None,
+                 routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict']]]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']]] = None,
+                 vlan_tag: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -551,18 +551,18 @@ class MagicTransitSiteLan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bond_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_breakout: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_prioritized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat: Optional[pulumi.Input[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
-                 physport: Optional[pulumi.Input[_builtins.int]] = None,
-                 routed_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict']]]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_addressing: Optional[pulumi.Input[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']]] = None,
-                 vlan_tag: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bond_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 ha_link: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_breakout: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_prioritized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
+                 physport: pulumi.Input[Optional[_builtins.int]] = None,
+                 routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict']]]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']]] = None,
+                 vlan_tag: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -596,18 +596,18 @@ class MagicTransitSiteLan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bond_id: Optional[pulumi.Input[_builtins.int]] = None,
-            ha_link: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_breakout: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_prioritized: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            nat: Optional[pulumi.Input[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
-            physport: Optional[pulumi.Input[_builtins.int]] = None,
-            routed_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict']]]]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            static_addressing: Optional[pulumi.Input[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']]] = None,
-            vlan_tag: Optional[pulumi.Input[_builtins.int]] = None) -> 'MagicTransitSiteLan':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bond_id: pulumi.Input[Optional[_builtins.int]] = None,
+            ha_link: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_breakout: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_prioritized: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nat: pulumi.Input[Optional[Union['MagicTransitSiteLanNatArgs', 'MagicTransitSiteLanNatArgsDict']]] = None,
+            physport: pulumi.Input[Optional[_builtins.int]] = None,
+            routed_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicTransitSiteLanRoutedSubnetArgs', 'MagicTransitSiteLanRoutedSubnetArgsDict']]]]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            static_addressing: pulumi.Input[Optional[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']]] = None,
+            vlan_tag: pulumi.Input[Optional[_builtins.int]] = None) -> 'MagicTransitSiteLan':
         """
         Get an existing MagicTransitSiteLan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

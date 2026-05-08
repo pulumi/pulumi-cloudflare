@@ -195,70 +195,70 @@ export interface AuthenticatedOriginPullsState {
     /**
      * Identifier.
      */
-    certId?: pulumi.Input<string>;
+    certId?: pulumi.Input<string | undefined>;
     /**
      * Status of the certificate or the association.
      * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
-    certStatus?: pulumi.Input<string>;
+    certStatus?: pulumi.Input<string | undefined>;
     /**
      * The time when the certificate was updated.
      */
-    certUpdatedAt?: pulumi.Input<string>;
+    certUpdatedAt?: pulumi.Input<string | undefined>;
     /**
      * The time when the certificate was uploaded.
      */
-    certUploadedOn?: pulumi.Input<string>;
+    certUploadedOn?: pulumi.Input<string | undefined>;
     /**
      * The hostname certificate.
      */
-    certificate?: pulumi.Input<string>;
-    configs?: pulumi.Input<pulumi.Input<inputs.AuthenticatedOriginPullsConfig>[]>;
+    certificate?: pulumi.Input<string | undefined>;
+    configs?: pulumi.Input<pulumi.Input<inputs.AuthenticatedOriginPullsConfig>[] | undefined>;
     /**
      * The time when the certificate was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The date when the certificate expires.
      */
-    expiresOn?: pulumi.Input<string>;
+    expiresOn?: pulumi.Input<string | undefined>;
     /**
      * The hostname on the origin for which the client certificate uploaded will be used.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * The certificate authority that issued the certificate.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * The hostname certificate's private key.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The serial number on the uploaded certificate.
      */
-    serialNumber?: pulumi.Input<string>;
+    serialNumber?: pulumi.Input<string | undefined>;
     /**
      * The type of hash used for the certificate.
      */
-    signature?: pulumi.Input<string>;
+    signature?: pulumi.Input<string | undefined>;
     /**
      * Status of the certificate or the association.
      * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The time when the certificate was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -186,10 +186,10 @@ def get_zero_trust_access_service_token(account_id: Optional[_builtins.str] = No
         name=pulumi.get(__ret__, 'name'),
         service_token_id=pulumi.get(__ret__, 'service_token_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zero_trust_access_service_token_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustAccessServiceTokenFilterArgs', 'GetZeroTrustAccessServiceTokenFilterArgsDict']]]] = None,
-                                               service_token_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_access_service_token_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               filter: pulumi.Input[Optional[Optional[Union['GetZeroTrustAccessServiceTokenFilterArgs', 'GetZeroTrustAccessServiceTokenFilterArgsDict']]]] = None,
+                                               service_token_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessServiceTokenResult]:
     """
     Accepted Permissions

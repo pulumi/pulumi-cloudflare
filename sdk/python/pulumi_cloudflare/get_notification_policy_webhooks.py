@@ -201,8 +201,8 @@ def get_notification_policy_webhooks(account_id: Optional[_builtins.str] = None,
         type=pulumi.get(__ret__, 'type'),
         url=pulumi.get(__ret__, 'url'),
         webhook_id=pulumi.get(__ret__, 'webhook_id'))
-def get_notification_policy_webhooks_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            webhook_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_notification_policy_webhooks_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            webhook_id: pulumi.Input[Optional[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotificationPolicyWebhooksResult]:
     """
     Accepted Permissions

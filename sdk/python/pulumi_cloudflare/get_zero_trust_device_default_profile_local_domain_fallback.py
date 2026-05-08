@@ -117,7 +117,7 @@ def get_zero_trust_device_default_profile_local_domain_fallback(account_id: Opti
         dns_servers=pulumi.get(__ret__, 'dns_servers'),
         id=pulumi.get(__ret__, 'id'),
         suffix=pulumi.get(__ret__, 'suffix'))
-def get_zero_trust_device_default_profile_local_domain_fallback_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_device_default_profile_local_domain_fallback_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult]:
     """
     ## Example Usage

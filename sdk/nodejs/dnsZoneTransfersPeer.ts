@@ -118,42 +118,42 @@ export class DnsZoneTransfersPeer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DnsZoneTransfersPeer resources.
  */
 export interface DnsZoneTransfersPeerState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
      */
-    ixfrEnable?: pulumi.Input<boolean>;
+    ixfrEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the peer.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * TSIG authentication will be used for zone transfer if configured.
      */
-    tsigId?: pulumi.Input<string>;
+    tsigId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DnsZoneTransfersPeer resource.
  */
 export interface DnsZoneTransfersPeerArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
      */
-    ixfrEnable?: pulumi.Input<boolean>;
+    ixfrEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the peer.
      */
@@ -161,9 +161,9 @@ export interface DnsZoneTransfersPeerArgs {
     /**
      * DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * TSIG authentication will be used for zone transfer if configured.
      */
-    tsigId?: pulumi.Input<string>;
+    tsigId?: pulumi.Input<string | undefined>;
 }

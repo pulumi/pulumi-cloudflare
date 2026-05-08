@@ -230,8 +230,8 @@ def get_page_shield_connections(connection_id: Optional[_builtins.str] = None,
         url_contains_cdn_cgi_path=pulumi.get(__ret__, 'url_contains_cdn_cgi_path'),
         url_reported_malicious=pulumi.get(__ret__, 'url_reported_malicious'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_page_shield_connections_output(connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                       zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_page_shield_connections_output(connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                       zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPageShieldConnectionsResult]:
     """
     Accepted Permissions

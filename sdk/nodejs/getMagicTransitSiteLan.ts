@@ -137,7 +137,7 @@ export interface GetMagicTransitSiteLanOutputArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Identifier
      */

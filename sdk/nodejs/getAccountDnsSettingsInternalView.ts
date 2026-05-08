@@ -118,10 +118,10 @@ export interface GetAccountDnsSettingsInternalViewOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetAccountDnsSettingsInternalViewFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetAccountDnsSettingsInternalViewFilterArgs | undefined>;
     /**
      * Identifier.
      */
-    viewId?: pulumi.Input<string>;
+    viewId?: pulumi.Input<string | undefined>;
 }

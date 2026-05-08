@@ -216,8 +216,8 @@ def get_zero_trust_dlp_dataset(account_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         uploads=pulumi.get(__ret__, 'uploads'))
-def get_zero_trust_dlp_dataset_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_dlp_dataset_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDlpDatasetResult]:
     """
     Accepted Permissions

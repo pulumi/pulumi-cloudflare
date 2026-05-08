@@ -94,6 +94,6 @@ export interface GetLoadBalancersOutputArgs {
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    maxItems?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

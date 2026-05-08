@@ -21,13 +21,13 @@ __all__ = ['EmailSecurityTrustedDomainsArgs', 'EmailSecurityTrustedDomains']
 @pulumi.input_type
 class EmailSecurityTrustedDomainsArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bodies: Optional[pulumi.Input[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]] = None,
-                 comments: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_recent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_regex: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_similarity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pattern: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]] = None,
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_recent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_similarity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pattern: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailSecurityTrustedDomains resource.
 
@@ -55,37 +55,37 @@ class EmailSecurityTrustedDomainsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def bodies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]]:
+    def bodies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]]:
         return pulumi.get(self, "bodies")
 
     @bodies.setter
-    def bodies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]]):
+    def bodies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]]):
         pulumi.set(self, "bodies", value)
 
     @_builtins.property
     @pulumi.getter
-    def comments(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comments(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "comments")
 
     @comments.setter
-    def comments(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comments(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comments", value)
 
     @_builtins.property
     @pulumi.getter(name="isRecent")
-    def is_recent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_recent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Select to prevent recently registered domains from triggering a
         Suspicious or Malicious disposition.
@@ -93,21 +93,21 @@ class EmailSecurityTrustedDomainsArgs:
         return pulumi.get(self, "is_recent")
 
     @is_recent.setter
-    def is_recent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_recent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_recent", value)
 
     @_builtins.property
     @pulumi.getter(name="isRegex")
-    def is_regex(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_regex(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_regex")
 
     @is_regex.setter
-    def is_regex(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_regex(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="isSimilarity")
-    def is_similarity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_similarity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Select for partner or other approved domains that have similar
         spelling to your connected domains. Prevents listed domains from
@@ -116,31 +116,31 @@ class EmailSecurityTrustedDomainsArgs:
         return pulumi.get(self, "is_similarity")
 
     @is_similarity.setter
-    def is_similarity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_similarity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_similarity", value)
 
     @_builtins.property
     @pulumi.getter
-    def pattern(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "pattern")
 
     @pattern.setter
-    def pattern(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pattern", value)
 
 
 @pulumi.input_type
 class _EmailSecurityTrustedDomainsState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bodies: Optional[pulumi.Input[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]] = None,
-                 comments: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_recent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_regex: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_similarity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 pattern: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]] = None,
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_recent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_similarity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 pattern: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailSecurityTrustedDomains resources.
 
@@ -172,46 +172,46 @@ class _EmailSecurityTrustedDomainsState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def bodies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]]:
+    def bodies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]]:
         return pulumi.get(self, "bodies")
 
     @bodies.setter
-    def bodies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]]):
+    def bodies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]]):
         pulumi.set(self, "bodies", value)
 
     @_builtins.property
     @pulumi.getter
-    def comments(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comments(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "comments")
 
     @comments.setter
-    def comments(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comments(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comments", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="isRecent")
-    def is_recent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_recent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Select to prevent recently registered domains from triggering a
         Suspicious or Malicious disposition.
@@ -219,21 +219,21 @@ class _EmailSecurityTrustedDomainsState:
         return pulumi.get(self, "is_recent")
 
     @is_recent.setter
-    def is_recent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_recent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_recent", value)
 
     @_builtins.property
     @pulumi.getter(name="isRegex")
-    def is_regex(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_regex(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_regex")
 
     @is_regex.setter
-    def is_regex(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_regex(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="isSimilarity")
-    def is_similarity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_similarity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Select for partner or other approved domains that have similar
         spelling to your connected domains. Prevents listed domains from
@@ -242,25 +242,25 @@ class _EmailSecurityTrustedDomainsState:
         return pulumi.get(self, "is_similarity")
 
     @is_similarity.setter
-    def is_similarity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_similarity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_similarity", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
-    def last_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def pattern(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "pattern")
 
     @pattern.setter
-    def pattern(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pattern", value)
 
 
@@ -270,13 +270,13 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailSecurityTrustedDomainsBodyArgs', 'EmailSecurityTrustedDomainsBodyArgsDict']]]]] = None,
-                 comments: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_recent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_regex: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_similarity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pattern: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailSecurityTrustedDomainsBodyArgs', 'EmailSecurityTrustedDomainsBodyArgsDict']]]]] = None,
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_recent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_similarity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pattern: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -364,13 +364,13 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailSecurityTrustedDomainsBodyArgs', 'EmailSecurityTrustedDomainsBodyArgsDict']]]]] = None,
-                 comments: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_recent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_regex: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_similarity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pattern: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailSecurityTrustedDomainsBodyArgs', 'EmailSecurityTrustedDomainsBodyArgsDict']]]]] = None,
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_recent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_similarity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pattern: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -399,15 +399,15 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailSecurityTrustedDomainsBodyArgs', 'EmailSecurityTrustedDomainsBodyArgsDict']]]]] = None,
-            comments: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            is_recent: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_regex: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_similarity: Optional[pulumi.Input[_builtins.bool]] = None,
-            last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-            pattern: Optional[pulumi.Input[_builtins.str]] = None) -> 'EmailSecurityTrustedDomains':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailSecurityTrustedDomainsBodyArgs', 'EmailSecurityTrustedDomainsBodyArgsDict']]]]] = None,
+            comments: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            is_recent: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_similarity: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            pattern: pulumi.Input[Optional[_builtins.str]] = None) -> 'EmailSecurityTrustedDomains':
         """
         Get an existing EmailSecurityTrustedDomains resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -160,41 +160,41 @@ export interface R2CustomDomainState {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
      */
-    ciphers?: pulumi.Input<pulumi.Input<string>[]>;
+    ciphers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the custom domain to be added.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
+    jurisdiction?: pulumi.Input<string | undefined>;
     /**
      * Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
      * Available values: "1.0", "1.1", "1.2", "1.3".
      */
-    minTls?: pulumi.Input<string>;
-    status?: pulumi.Input<inputs.R2CustomDomainStatus>;
+    minTls?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<inputs.R2CustomDomainStatus | undefined>;
     /**
      * Zone ID of the custom domain.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
     /**
      * Zone that the custom domain resides in.
      */
-    zoneName?: pulumi.Input<string>;
+    zoneName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -204,7 +204,7 @@ export interface R2CustomDomainArgs {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
@@ -212,7 +212,7 @@ export interface R2CustomDomainArgs {
     /**
      * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
      */
-    ciphers?: pulumi.Input<pulumi.Input<string>[]>;
+    ciphers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the custom domain to be added.
      */
@@ -224,12 +224,12 @@ export interface R2CustomDomainArgs {
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
+    jurisdiction?: pulumi.Input<string | undefined>;
     /**
      * Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
      * Available values: "1.0", "1.1", "1.2", "1.3".
      */
-    minTls?: pulumi.Input<string>;
+    minTls?: pulumi.Input<string | undefined>;
     /**
      * Zone ID of the custom domain.
      */

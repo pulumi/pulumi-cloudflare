@@ -114,18 +114,18 @@ export interface LogpushOwnershipChallengeState {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
      */
-    destinationConf?: pulumi.Input<string>;
-    filename?: pulumi.Input<string>;
-    message?: pulumi.Input<string>;
-    valid?: pulumi.Input<boolean>;
+    destinationConf?: pulumi.Input<string | undefined>;
+    filename?: pulumi.Input<string | undefined>;
+    message?: pulumi.Input<string | undefined>;
+    valid?: pulumi.Input<boolean | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -135,7 +135,7 @@ export interface LogpushOwnershipChallengeArgs {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
      */
@@ -143,5 +143,5 @@ export interface LogpushOwnershipChallengeArgs {
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

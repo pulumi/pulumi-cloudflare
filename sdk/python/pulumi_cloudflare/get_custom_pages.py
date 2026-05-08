@@ -206,9 +206,9 @@ def get_custom_pages(account_id: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         url=pulumi.get(__ret__, 'url'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_custom_pages_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                            zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_custom_pages_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                            zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomPagesResult]:
     """
     Accepted Permissions

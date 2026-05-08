@@ -104,11 +104,11 @@ export interface WaitingRoomSettingsState {
      * Verified search engine crawlers will not be tracked or counted by the waiting room system,
      * and will not appear in waiting room analytics.
      */
-    searchEngineCrawlerBypass?: pulumi.Input<boolean>;
+    searchEngineCrawlerBypass?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -120,7 +120,7 @@ export interface WaitingRoomSettingsArgs {
      * Verified search engine crawlers will not be tracked or counted by the waiting room system,
      * and will not appear in waiting room analytics.
      */
-    searchEngineCrawlerBypass?: pulumi.Input<boolean>;
+    searchEngineCrawlerBypass?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */

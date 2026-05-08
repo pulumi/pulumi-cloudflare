@@ -190,8 +190,8 @@ def get_zero_trust_dlp_predefined_profile(account_id: Optional[_builtins.str] = 
         ocr_enabled=pulumi.get(__ret__, 'ocr_enabled'),
         open_access=pulumi.get(__ret__, 'open_access'),
         profile_id=pulumi.get(__ret__, 'profile_id'))
-def get_zero_trust_dlp_predefined_profile_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_dlp_predefined_profile_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDlpPredefinedProfileResult]:
     """
     Accepted Permissions

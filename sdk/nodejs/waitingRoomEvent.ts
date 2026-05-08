@@ -216,75 +216,75 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WaitingRoomEvent resources.
  */
 export interface WaitingRoomEventState {
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * If set, the event will override the waiting room's `customPageHtml` property while it is active. If null, the event will inherit it.
      */
-    customPageHtml?: pulumi.Input<string>;
+    customPageHtml?: pulumi.Input<string | undefined>;
     /**
      * A note that you can use to add more details about the event.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If set, the event will override the waiting room's `disableSessionRenewal` property while it is active. If null, the event will inherit it.
      */
-    disableSessionRenewal?: pulumi.Input<boolean>;
+    disableSessionRenewal?: pulumi.Input<boolean | undefined>;
     /**
      * An ISO 8601 timestamp that marks the end of the event.
      */
-    eventEndTime?: pulumi.Input<string>;
+    eventEndTime?: pulumi.Input<string | undefined>;
     /**
      * An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `eventEndTime`.
      */
-    eventStartTime?: pulumi.Input<string>;
-    modifiedOn?: pulumi.Input<string>;
+    eventStartTime?: pulumi.Input<string | undefined>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * If set, the event will override the waiting room's `newUsersPerMinute` property while it is active. If null, the event will inherit it. This can only be set if the event's `totalActiveUsers` property is also set.
      */
-    newUsersPerMinute?: pulumi.Input<number>;
+    newUsersPerMinute?: pulumi.Input<number | undefined>;
     /**
      * An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `eventStartTime`.
      */
-    prequeueStartTime?: pulumi.Input<string>;
+    prequeueStartTime?: pulumi.Input<string | undefined>;
     /**
      * If set, the event will override the waiting room's `queueingMethod` property while it is active. If null, the event will inherit it.
      */
-    queueingMethod?: pulumi.Input<string>;
+    queueingMethod?: pulumi.Input<string | undefined>;
     /**
      * If set, the event will override the waiting room's `sessionDuration` property while it is active. If null, the event will inherit it.
      */
-    sessionDuration?: pulumi.Input<number>;
+    sessionDuration?: pulumi.Input<number | undefined>;
     /**
      * If enabled, users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueingMethod` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
      */
-    shuffleAtEventStart?: pulumi.Input<boolean>;
+    shuffleAtEventStart?: pulumi.Input<boolean | undefined>;
     /**
      * Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
      */
-    suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean | undefined>;
     /**
      * If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
      */
-    totalActiveUsers?: pulumi.Input<number>;
+    totalActiveUsers?: pulumi.Input<number | undefined>;
     /**
      * If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
      * Available values: "log", "infiniteQueue".
      */
-    turnstileAction?: pulumi.Input<string>;
+    turnstileAction?: pulumi.Input<string | undefined>;
     /**
      * If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
      * Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
      */
-    turnstileMode?: pulumi.Input<string>;
-    waitingRoomId?: pulumi.Input<string>;
+    turnstileMode?: pulumi.Input<string | undefined>;
+    waitingRoomId?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -294,15 +294,15 @@ export interface WaitingRoomEventArgs {
     /**
      * If set, the event will override the waiting room's `customPageHtml` property while it is active. If null, the event will inherit it.
      */
-    customPageHtml?: pulumi.Input<string>;
+    customPageHtml?: pulumi.Input<string | undefined>;
     /**
      * A note that you can use to add more details about the event.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If set, the event will override the waiting room's `disableSessionRenewal` property while it is active. If null, the event will inherit it.
      */
-    disableSessionRenewal?: pulumi.Input<boolean>;
+    disableSessionRenewal?: pulumi.Input<boolean | undefined>;
     /**
      * An ISO 8601 timestamp that marks the end of the event.
      */
@@ -318,44 +318,44 @@ export interface WaitingRoomEventArgs {
     /**
      * If set, the event will override the waiting room's `newUsersPerMinute` property while it is active. If null, the event will inherit it. This can only be set if the event's `totalActiveUsers` property is also set.
      */
-    newUsersPerMinute?: pulumi.Input<number>;
+    newUsersPerMinute?: pulumi.Input<number | undefined>;
     /**
      * An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `eventStartTime`.
      */
-    prequeueStartTime?: pulumi.Input<string>;
+    prequeueStartTime?: pulumi.Input<string | undefined>;
     /**
      * If set, the event will override the waiting room's `queueingMethod` property while it is active. If null, the event will inherit it.
      */
-    queueingMethod?: pulumi.Input<string>;
+    queueingMethod?: pulumi.Input<string | undefined>;
     /**
      * If set, the event will override the waiting room's `sessionDuration` property while it is active. If null, the event will inherit it.
      */
-    sessionDuration?: pulumi.Input<number>;
+    sessionDuration?: pulumi.Input<number | undefined>;
     /**
      * If enabled, users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueingMethod` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
      */
-    shuffleAtEventStart?: pulumi.Input<boolean>;
+    shuffleAtEventStart?: pulumi.Input<boolean | undefined>;
     /**
      * Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
      */
-    suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean | undefined>;
     /**
      * If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
      */
-    totalActiveUsers?: pulumi.Input<number>;
+    totalActiveUsers?: pulumi.Input<number | undefined>;
     /**
      * If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
      * Available values: "log", "infiniteQueue".
      */
-    turnstileAction?: pulumi.Input<string>;
+    turnstileAction?: pulumi.Input<string | undefined>;
     /**
      * If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
      * Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
      */
-    turnstileMode?: pulumi.Input<string>;
+    turnstileMode?: pulumi.Input<string | undefined>;
     waitingRoomId: pulumi.Input<string>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

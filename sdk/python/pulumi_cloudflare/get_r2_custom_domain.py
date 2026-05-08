@@ -200,9 +200,9 @@ def get_r2_custom_domain(account_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_name=pulumi.get(__ret__, 'zone_name'))
-def get_r2_custom_domain_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                domain: Optional[pulumi.Input[_builtins.str]] = None,
+def get_r2_custom_domain_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                domain: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetR2CustomDomainResult]:
     """
     Accepted Permissions

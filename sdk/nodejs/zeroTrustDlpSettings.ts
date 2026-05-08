@@ -115,21 +115,21 @@ export class ZeroTrustDlpSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDlpSettings resources.
  */
 export interface ZeroTrustDlpSettingsState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Whether AI context analysis is enabled at the account level.
      */
-    aiContextAnalysis?: pulumi.Input<boolean>;
+    aiContextAnalysis?: pulumi.Input<boolean | undefined>;
     /**
      * Whether OCR is enabled at the account level.
      */
-    ocr?: pulumi.Input<boolean>;
+    ocr?: pulumi.Input<boolean | undefined>;
     /**
      * Request model for payload log settings within the DLP settings endpoint.
      * Unlike the legacy endpoint, null and missing are treated identically here
      * (both mean "not provided" for PATCH, "reset to default" for PUT).
      */
-    payloadLogging?: pulumi.Input<inputs.ZeroTrustDlpSettingsPayloadLogging>;
+    payloadLogging?: pulumi.Input<inputs.ZeroTrustDlpSettingsPayloadLogging | undefined>;
 }
 
 /**
@@ -140,15 +140,15 @@ export interface ZeroTrustDlpSettingsArgs {
     /**
      * Whether AI context analysis is enabled at the account level.
      */
-    aiContextAnalysis?: pulumi.Input<boolean>;
+    aiContextAnalysis?: pulumi.Input<boolean | undefined>;
     /**
      * Whether OCR is enabled at the account level.
      */
-    ocr?: pulumi.Input<boolean>;
+    ocr?: pulumi.Input<boolean | undefined>;
     /**
      * Request model for payload log settings within the DLP settings endpoint.
      * Unlike the legacy endpoint, null and missing are treated identically here
      * (both mean "not provided" for PATCH, "reset to default" for PUT).
      */
-    payloadLogging?: pulumi.Input<inputs.ZeroTrustDlpSettingsPayloadLogging>;
+    payloadLogging?: pulumi.Input<inputs.ZeroTrustDlpSettingsPayloadLogging | undefined>;
 }

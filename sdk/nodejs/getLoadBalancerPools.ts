@@ -112,13 +112,13 @@ export interface GetLoadBalancerPoolsOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Monitor to use for checking the health of origins within this pool.
      */
-    monitor?: pulumi.Input<string>;
+    monitor?: pulumi.Input<string | undefined>;
 }

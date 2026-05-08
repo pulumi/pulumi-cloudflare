@@ -210,7 +210,7 @@ def get_zone_dns_settings(zone_id: Optional[_builtins.str] = None,
         soa=pulumi.get(__ret__, 'soa'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_mode=pulumi.get(__ret__, 'zone_mode'))
-def get_zone_dns_settings_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zone_dns_settings_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneDnsSettingsResult]:
     """
     Accepted Permissions

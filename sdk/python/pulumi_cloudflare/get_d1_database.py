@@ -219,9 +219,9 @@ def get_d1_database(account_id: Optional[_builtins.str] = None,
         read_replication=pulumi.get(__ret__, 'read_replication'),
         uuid=pulumi.get(__ret__, 'uuid'),
         version=pulumi.get(__ret__, 'version'))
-def get_d1_database_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           database_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           filter: Optional[pulumi.Input[Optional[Union['GetD1DatabaseFilterArgs', 'GetD1DatabaseFilterArgsDict']]]] = None,
+def get_d1_database_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           database_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           filter: pulumi.Input[Optional[Optional[Union['GetD1DatabaseFilterArgs', 'GetD1DatabaseFilterArgsDict']]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetD1DatabaseResult]:
     """
     Accepted Permissions

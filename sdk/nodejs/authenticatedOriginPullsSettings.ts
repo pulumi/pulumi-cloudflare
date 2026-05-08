@@ -103,11 +103,11 @@ export interface AuthenticatedOriginPullsSettingsState {
     /**
      * Indicates whether zone-level authenticated origin pulls is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**

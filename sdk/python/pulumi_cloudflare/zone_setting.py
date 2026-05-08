@@ -21,8 +21,8 @@ class ZoneSettingArgs:
     def __init__(__self__, *,
                  setting_id: pulumi.Input[_builtins.str],
                  value: Any,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneSetting resource.
 
@@ -64,39 +64,39 @@ class ZoneSettingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         ssl-recommender enrollment setting.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _ZoneSettingState:
     def __init__(__self__, *,
-                 editable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 setting_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_remaining: Optional[pulumi.Input[_builtins.float]] = None,
+                 editable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_remaining: pulumi.Input[Optional[_builtins.float]] = None,
                  value: Optional[Any] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneSetting resources.
 
@@ -126,55 +126,55 @@ class _ZoneSettingState:
 
     @_builtins.property
     @pulumi.getter
-    def editable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def editable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
         """
         return pulumi.get(self, "editable")
 
     @editable.setter
-    def editable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def editable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "editable", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         ssl-recommender enrollment setting.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         last time this setting was modified.
         """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter(name="settingId")
-    def setting_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def setting_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Setting name
         """
         return pulumi.get(self, "setting_id")
 
     @setting_id.setter
-    def setting_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def setting_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "setting_id", value)
 
     @_builtins.property
     @pulumi.getter(name="timeRemaining")
-    def time_remaining(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def time_remaining(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Value of the zone setting.
         Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
@@ -182,7 +182,7 @@ class _ZoneSettingState:
         return pulumi.get(self, "time_remaining")
 
     @time_remaining.setter
-    def time_remaining(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def time_remaining(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "time_remaining", value)
 
     @_builtins.property
@@ -199,14 +199,14 @@ class _ZoneSettingState:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -216,10 +216,10 @@ class ZoneSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 setting_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                  value: Optional[Any] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -795,10 +795,10 @@ class ZoneSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 setting_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 setting_id: pulumi.Input[Optional[_builtins.str]] = None,
                  value: Optional[Any] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -829,13 +829,13 @@ class ZoneSetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            editable: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            setting_id: Optional[pulumi.Input[_builtins.str]] = None,
-            time_remaining: Optional[pulumi.Input[_builtins.float]] = None,
+            editable: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+            time_remaining: pulumi.Input[Optional[_builtins.float]] = None,
             value: Optional[Any] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZoneSetting':
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZoneSetting':
         """
         Get an existing ZoneSetting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

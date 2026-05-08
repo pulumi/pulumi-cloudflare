@@ -114,16 +114,16 @@ export interface R2BucketCorsState {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
-    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketCorsRule>[]>;
+    jurisdiction?: pulumi.Input<string | undefined>;
+    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketCorsRule>[] | undefined>;
 }
 
 /**
@@ -133,7 +133,7 @@ export interface R2BucketCorsArgs {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
@@ -141,6 +141,6 @@ export interface R2BucketCorsArgs {
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
-    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketCorsRule>[]>;
+    jurisdiction?: pulumi.Input<string | undefined>;
+    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketCorsRule>[] | undefined>;
 }

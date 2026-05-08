@@ -144,27 +144,27 @@ export interface MagicTransitSiteWanState {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
      * Available values: "low", "mid", "high".
      */
-    healthCheckRate?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    physport?: pulumi.Input<number>;
-    priority?: pulumi.Input<number>;
+    healthCheckRate?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    physport?: pulumi.Input<number | undefined>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Identifier
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
      */
-    staticAddressing?: pulumi.Input<inputs.MagicTransitSiteWanStaticAddressing>;
+    staticAddressing?: pulumi.Input<inputs.MagicTransitSiteWanStaticAddressing | undefined>;
     /**
      * VLAN ID. Use zero for untagged.
      */
-    vlanTag?: pulumi.Input<number>;
+    vlanTag?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -174,10 +174,10 @@ export interface MagicTransitSiteWanArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     physport: pulumi.Input<number>;
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Identifier
      */
@@ -185,9 +185,9 @@ export interface MagicTransitSiteWanArgs {
     /**
      * (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
      */
-    staticAddressing?: pulumi.Input<inputs.MagicTransitSiteWanStaticAddressing>;
+    staticAddressing?: pulumi.Input<inputs.MagicTransitSiteWanStaticAddressing | undefined>;
     /**
      * VLAN ID. Use zero for untagged.
      */
-    vlanTag?: pulumi.Input<number>;
+    vlanTag?: pulumi.Input<number | undefined>;
 }

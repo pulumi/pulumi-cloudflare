@@ -344,9 +344,9 @@ def get_load_balancer_pool(account_id: Optional[_builtins.str] = None,
         origin_steering=pulumi.get(__ret__, 'origin_steering'),
         origins=pulumi.get(__ret__, 'origins'),
         pool_id=pulumi.get(__ret__, 'pool_id'))
-def get_load_balancer_pool_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  filter: Optional[pulumi.Input[Optional[Union['GetLoadBalancerPoolFilterArgs', 'GetLoadBalancerPoolFilterArgsDict']]]] = None,
-                                  pool_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_load_balancer_pool_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  filter: pulumi.Input[Optional[Optional[Union['GetLoadBalancerPoolFilterArgs', 'GetLoadBalancerPoolFilterArgsDict']]]] = None,
+                                  pool_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerPoolResult]:
     """
     Accepted Permissions

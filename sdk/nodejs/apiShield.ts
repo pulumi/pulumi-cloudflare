@@ -110,11 +110,11 @@ export class ApiShield extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApiShield resources.
  */
 export interface ApiShieldState {
-    authIdCharacteristics?: pulumi.Input<pulumi.Input<inputs.ApiShieldAuthIdCharacteristic>[]>;
+    authIdCharacteristics?: pulumi.Input<pulumi.Input<inputs.ApiShieldAuthIdCharacteristic>[] | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**

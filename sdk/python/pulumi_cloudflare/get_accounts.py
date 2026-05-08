@@ -133,9 +133,9 @@ def get_accounts(direction: Optional[_builtins.str] = None,
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
         results=pulumi.get(__ret__, 'results'))
-def get_accounts_output(direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                        name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_accounts_output(direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountsResult]:
     """
     ## Example Usage

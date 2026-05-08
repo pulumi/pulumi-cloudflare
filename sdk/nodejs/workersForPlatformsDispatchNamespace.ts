@@ -148,43 +148,43 @@ export interface WorkersForPlatformsDispatchNamespaceState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * When the script was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    modifiedBy?: pulumi.Input<string>;
+    modifiedBy?: pulumi.Input<string | undefined>;
     /**
      * When the script was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * The name of the dispatch namespace.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * API Resource UUID tag.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Workers for Platforms dispatch namespace.
      */
-    namespaceName?: pulumi.Input<string>;
+    namespaceName?: pulumi.Input<string | undefined>;
     /**
      * The current number of scripts in this Dispatch Namespace.
      */
-    scriptCount?: pulumi.Input<number>;
+    scriptCount?: pulumi.Input<number | undefined>;
     /**
      * Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
      */
-    trustedWorkers?: pulumi.Input<boolean>;
+    trustedWorkers?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -194,9 +194,9 @@ export interface WorkersForPlatformsDispatchNamespaceArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The name of the dispatch namespace.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

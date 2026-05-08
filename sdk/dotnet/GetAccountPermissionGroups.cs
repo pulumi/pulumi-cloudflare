@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountPermissionGroups = Cloudflare.Index.GetAccountPermissionGroups.Invoke(new()
+        ///     var exampleAccountPermissionGroups = Cloudflare.GetAccountPermissionGroups.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
@@ -111,7 +111,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountPermissionGroups = Cloudflare.Index.GetAccountPermissionGroups.Invoke(new()
+        ///     var exampleAccountPermissionGroups = Cloudflare.GetAccountPermissionGroups.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
@@ -168,7 +168,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccountPermissionGroups = Cloudflare.Index.GetAccountPermissionGroups.Invoke(new()
+        ///     var exampleAccountPermissionGroups = Cloudflare.GetAccountPermissionGroups.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "6d7f2f5f5b1d4a0e9081fdc98d432fd1",

@@ -21,7 +21,7 @@ class ApiShieldSchemaValidationSettingsArgs:
     def __init__(__self__, *,
                  validation_default_mitigation_action: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 validation_override_mitigation_action: Optional[pulumi.Input[_builtins.str]] = None):
+                 validation_override_mitigation_action: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldSchemaValidationSettings resource.
 
@@ -66,7 +66,7 @@ class ApiShieldSchemaValidationSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="validationOverrideMitigationAction")
-    def validation_override_mitigation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def validation_override_mitigation_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When set, this overrides both zone level and operation level mitigation actions.
 
@@ -79,16 +79,16 @@ class ApiShieldSchemaValidationSettingsArgs:
         return pulumi.get(self, "validation_override_mitigation_action")
 
     @validation_override_mitigation_action.setter
-    def validation_override_mitigation_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def validation_override_mitigation_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "validation_override_mitigation_action", value)
 
 
 @pulumi.input_type
 class _ApiShieldSchemaValidationSettingsState:
     def __init__(__self__, *,
-                 validation_default_mitigation_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 validation_override_mitigation_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 validation_default_mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_override_mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldSchemaValidationSettings resources.
 
@@ -111,19 +111,19 @@ class _ApiShieldSchemaValidationSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="validationDefaultMitigationAction")
-    def validation_default_mitigation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def validation_default_mitigation_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default mitigation action used when there is no mitigation action defined on the operation
         """
         return pulumi.get(self, "validation_default_mitigation_action")
 
     @validation_default_mitigation_action.setter
-    def validation_default_mitigation_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def validation_default_mitigation_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "validation_default_mitigation_action", value)
 
     @_builtins.property
     @pulumi.getter(name="validationOverrideMitigationAction")
-    def validation_override_mitigation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def validation_override_mitigation_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When set, this overrides both zone level and operation level mitigation actions.
 
@@ -136,19 +136,19 @@ class _ApiShieldSchemaValidationSettingsState:
         return pulumi.get(self, "validation_override_mitigation_action")
 
     @validation_override_mitigation_action.setter
-    def validation_override_mitigation_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def validation_override_mitigation_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "validation_override_mitigation_action", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -158,9 +158,9 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 validation_default_mitigation_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 validation_override_mitigation_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 validation_default_mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_override_mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -255,9 +255,9 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 validation_default_mitigation_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 validation_override_mitigation_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 validation_default_mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_override_mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -284,9 +284,9 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            validation_default_mitigation_action: Optional[pulumi.Input[_builtins.str]] = None,
-            validation_override_mitigation_action: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApiShieldSchemaValidationSettings':
+            validation_default_mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_override_mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiShieldSchemaValidationSettings':
         """
         Get an existing ApiShieldSchemaValidationSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -120,23 +120,23 @@ export interface ZeroTrustAccessShortLivedCertificateState {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * UUID.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The Application Audience (AUD) tag. Identifies the application associated with the CA.
      */
-    aud?: pulumi.Input<string>;
+    aud?: pulumi.Input<string | undefined>;
     /**
      * The public key to add to your SSH server configuration.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -146,7 +146,7 @@ export interface ZeroTrustAccessShortLivedCertificateArgs {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * UUID.
      */
@@ -154,5 +154,5 @@ export interface ZeroTrustAccessShortLivedCertificateArgs {
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

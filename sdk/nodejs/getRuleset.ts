@@ -138,19 +138,19 @@ export interface GetRulesetOutputArgs {
     /**
      * The unique ID of the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the ruleset.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the ruleset.
      *
      * @deprecated Configure id instead. This attribute will be removed in the next major version of the provider.
      */
-    rulesetId?: pulumi.Input<string>;
+    rulesetId?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

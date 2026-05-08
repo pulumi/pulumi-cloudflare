@@ -200,9 +200,9 @@ def get_pipeline_sink(account_id: Optional[_builtins.str] = None,
         schema=pulumi.get(__ret__, 'schema'),
         sink_id=pulumi.get(__ret__, 'sink_id'),
         type=pulumi.get(__ret__, 'type'))
-def get_pipeline_sink_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             filter: Optional[pulumi.Input[Optional[Union['GetPipelineSinkFilterArgs', 'GetPipelineSinkFilterArgsDict']]]] = None,
-                             sink_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_pipeline_sink_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             filter: pulumi.Input[Optional[Optional[Union['GetPipelineSinkFilterArgs', 'GetPipelineSinkFilterArgsDict']]]] = None,
+                             sink_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineSinkResult]:
     """
     Accepted Permissions

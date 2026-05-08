@@ -146,32 +146,32 @@ export interface DnsZoneTransfersIncomingState {
      * How often should a secondary zone auto refresh regardless of DNS NOTIFY.
      * Not applicable for primary zones.
      */
-    autoRefreshSeconds?: pulumi.Input<number>;
+    autoRefreshSeconds?: pulumi.Input<number | undefined>;
     /**
      * The time for a specific event.
      */
-    checkedTime?: pulumi.Input<string>;
+    checkedTime?: pulumi.Input<string | undefined>;
     /**
      * The time for a specific event.
      */
-    createdTime?: pulumi.Input<string>;
+    createdTime?: pulumi.Input<string | undefined>;
     /**
      * The time for a specific event.
      */
-    modifiedTime?: pulumi.Input<string>;
+    modifiedTime?: pulumi.Input<string | undefined>;
     /**
      * Zone name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of peer tags.
      */
-    peers?: pulumi.Input<pulumi.Input<string>[]>;
+    peers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The serial number of the SOA for the given zone.
      */
-    soaSerial?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    soaSerial?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,7 +182,7 @@ export interface DnsZoneTransfersIncomingArgs {
      * How often should a secondary zone auto refresh regardless of DNS NOTIFY.
      * Not applicable for primary zones.
      */
-    autoRefreshSeconds?: pulumi.Input<number>;
+    autoRefreshSeconds?: pulumi.Input<number | undefined>;
     /**
      * Zone name.
      */
@@ -191,5 +191,5 @@ export interface DnsZoneTransfersIncomingArgs {
      * A list of peer tags.
      */
     peers: pulumi.Input<pulumi.Input<string>[]>;
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

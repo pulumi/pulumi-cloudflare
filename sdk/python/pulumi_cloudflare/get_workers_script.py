@@ -131,9 +131,9 @@ def get_workers_script(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         script=pulumi.get(__ret__, 'script'),
         script_name=pulumi.get(__ret__, 'script_name'))
-def get_workers_script_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              filter: Optional[pulumi.Input[Optional[Union['GetWorkersScriptFilterArgs', 'GetWorkersScriptFilterArgsDict']]]] = None,
-                              script_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_workers_script_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              filter: pulumi.Input[Optional[Optional[Union['GetWorkersScriptFilterArgs', 'GetWorkersScriptFilterArgsDict']]]] = None,
+                              script_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersScriptResult]:
     """
     Accepted Permissions

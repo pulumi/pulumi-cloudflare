@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLoadBalancerPool = Cloudflare.Index.GetLoadBalancerPool.Invoke(new()
+        ///     var exampleLoadBalancerPool = Cloudflare.GetLoadBalancerPool.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         PoolId = "17b5962d775c646f3f9725cbc7a53df4",
@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLoadBalancerPool = Cloudflare.Index.GetLoadBalancerPool.Invoke(new()
+        ///     var exampleLoadBalancerPool = Cloudflare.GetLoadBalancerPool.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         PoolId = "17b5962d775c646f3f9725cbc7a53df4",
@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleLoadBalancerPool = Cloudflare.Index.GetLoadBalancerPool.Invoke(new()
+        ///     var exampleLoadBalancerPool = Cloudflare.GetLoadBalancerPool.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         PoolId = "17b5962d775c646f3f9725cbc7a53df4",

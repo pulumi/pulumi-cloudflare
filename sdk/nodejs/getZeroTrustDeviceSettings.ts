@@ -101,5 +101,5 @@ export function getZeroTrustDeviceSettingsOutput(args?: GetZeroTrustDeviceSettin
  * A collection of arguments for invoking getZeroTrustDeviceSettings.
  */
 export interface GetZeroTrustDeviceSettingsOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
 }

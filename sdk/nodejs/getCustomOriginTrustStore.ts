@@ -131,10 +131,10 @@ export interface GetCustomOriginTrustStoreOutputArgs {
     /**
      * Identifier.
      */
-    customOriginTrustStoreId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetCustomOriginTrustStoreFilterArgs>;
+    customOriginTrustStoreId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetCustomOriginTrustStoreFilterArgs | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

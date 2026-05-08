@@ -140,27 +140,27 @@ export interface R2BucketEventNotificationState {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
+    jurisdiction?: pulumi.Input<string | undefined>;
     /**
      * Queue ID.
      */
-    queueId?: pulumi.Input<string>;
+    queueId?: pulumi.Input<string | undefined>;
     /**
      * Name of the queue.
      */
-    queueName?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string | undefined>;
     /**
      * Array of rules to drive notifications.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketEventNotificationRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketEventNotificationRule>[] | undefined>;
 }
 
 /**
@@ -170,7 +170,7 @@ export interface R2BucketEventNotificationArgs {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */
@@ -178,7 +178,7 @@ export interface R2BucketEventNotificationArgs {
     /**
      * Jurisdiction of the bucket
      */
-    jurisdiction?: pulumi.Input<string>;
+    jurisdiction?: pulumi.Input<string | undefined>;
     /**
      * Queue ID.
      */

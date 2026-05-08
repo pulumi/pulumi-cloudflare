@@ -142,36 +142,36 @@ export class ApiShieldSchema extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApiShieldSchema resources.
  */
 export interface ApiShieldSchemaState {
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Schema file bytes
      */
-    file?: pulumi.Input<string>;
+    file?: pulumi.Input<string | undefined>;
     /**
      * Kind of schema
      * Available values: "openapiV3".
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Name of the schema
      */
-    name?: pulumi.Input<string>;
-    schema?: pulumi.Input<inputs.ApiShieldSchemaSchema>;
-    schemaId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<inputs.ApiShieldSchemaSchema | undefined>;
+    schemaId?: pulumi.Input<string | undefined>;
     /**
      * Source of the schema
      */
-    source?: pulumi.Input<string>;
-    uploadDetails?: pulumi.Input<inputs.ApiShieldSchemaUploadDetails>;
+    source?: pulumi.Input<string | undefined>;
+    uploadDetails?: pulumi.Input<inputs.ApiShieldSchemaUploadDetails | undefined>;
     /**
      * Flag whether schema is enabled for validation.
      * Available values: "true", "false".
      */
-    validationEnabled?: pulumi.Input<string>;
+    validationEnabled?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -190,15 +190,15 @@ export interface ApiShieldSchemaArgs {
     /**
      * Name of the schema
      */
-    name?: pulumi.Input<string>;
-    schemaId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    schemaId?: pulumi.Input<string | undefined>;
     /**
      * Flag whether schema is enabled for validation.
      * Available values: "true", "false".
      */
-    validationEnabled?: pulumi.Input<string>;
+    validationEnabled?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

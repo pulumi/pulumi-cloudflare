@@ -22,13 +22,13 @@ __all__ = ['ZeroTrustDlpPredefinedProfileArgs', 'ZeroTrustDlpPredefinedProfile']
 class ZeroTrustDlpPredefinedProfileArgs:
     def __init__(__self__, *,
                  profile_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_context_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_match_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 confidence_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_entries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]] = None,
-                 ocr_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_context_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_match_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 confidence_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_entries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]] = None,
+                 ocr_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpPredefinedProfile resource.
         """
@@ -62,82 +62,82 @@ class ZeroTrustDlpPredefinedProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aiContextEnabled")
-    def ai_context_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ai_context_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "ai_context_enabled")
 
     @ai_context_enabled.setter
-    def ai_context_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ai_context_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ai_context_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedMatchCount")
-    def allowed_match_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def allowed_match_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "allowed_match_count")
 
     @allowed_match_count.setter
-    def allowed_match_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def allowed_match_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "allowed_match_count", value)
 
     @_builtins.property
     @pulumi.getter(name="confidenceThreshold")
-    def confidence_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def confidence_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "confidence_threshold")
 
     @confidence_threshold.setter
-    def confidence_threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def confidence_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "confidence_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledEntries")
-    def enabled_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def enabled_entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "enabled_entries")
 
     @enabled_entries.setter
-    def enabled_entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def enabled_entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "enabled_entries", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated. Use enabled_entries instead.""")
-    def entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]]:
+    def entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]]:
         return pulumi.get(self, "entries")
 
     @entries.setter
-    def entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]]):
+    def entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]]):
         pulumi.set(self, "entries", value)
 
     @_builtins.property
     @pulumi.getter(name="ocrEnabled")
-    def ocr_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ocr_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "ocr_enabled")
 
     @ocr_enabled.setter
-    def ocr_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ocr_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ocr_enabled", value)
 
 
 @pulumi.input_type
 class _ZeroTrustDlpPredefinedProfileState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_context_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_match_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 confidence_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_entries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocr_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 open_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 profile_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_context_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_match_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 confidence_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_entries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocr_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 open_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 profile_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpPredefinedProfile resources.
 
@@ -170,99 +170,99 @@ class _ZeroTrustDlpPredefinedProfileState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aiContextEnabled")
-    def ai_context_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ai_context_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "ai_context_enabled")
 
     @ai_context_enabled.setter
-    def ai_context_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ai_context_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ai_context_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedMatchCount")
-    def allowed_match_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def allowed_match_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "allowed_match_count")
 
     @allowed_match_count.setter
-    def allowed_match_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def allowed_match_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "allowed_match_count", value)
 
     @_builtins.property
     @pulumi.getter(name="confidenceThreshold")
-    def confidence_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def confidence_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "confidence_threshold")
 
     @confidence_threshold.setter
-    def confidence_threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def confidence_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "confidence_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledEntries")
-    def enabled_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def enabled_entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "enabled_entries")
 
     @enabled_entries.setter
-    def enabled_entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def enabled_entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "enabled_entries", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated. Use enabled_entries instead.""")
-    def entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]]:
+    def entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]]:
         return pulumi.get(self, "entries")
 
     @entries.setter
-    def entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]]):
+    def entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpPredefinedProfileEntryArgs']]]]):
         pulumi.set(self, "entries", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the predefined profile.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ocrEnabled")
-    def ocr_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ocr_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "ocr_enabled")
 
     @ocr_enabled.setter
-    def ocr_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ocr_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ocr_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="openAccess")
-    def open_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def open_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this profile can be accessed by anyone.
         """
         return pulumi.get(self, "open_access")
 
     @open_access.setter
-    def open_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def open_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "open_access", value)
 
     @_builtins.property
     @pulumi.getter(name="profileId")
-    def profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "profile_id")
 
     @profile_id.setter
-    def profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile_id", value)
 
 
@@ -272,14 +272,14 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_context_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_match_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 confidence_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_entries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict']]]]] = None,
-                 ocr_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_context_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_match_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 confidence_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_entries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict']]]]] = None,
+                 ocr_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -385,14 +385,14 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_context_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_match_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 confidence_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_entries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict']]]]] = None,
-                 ocr_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 profile_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_context_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_match_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 confidence_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_entries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict']]]]] = None,
+                 ocr_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -426,16 +426,16 @@ class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ai_context_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            allowed_match_count: Optional[pulumi.Input[_builtins.int]] = None,
-            confidence_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled_entries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            ocr_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            open_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            profile_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustDlpPredefinedProfile':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_context_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_match_count: pulumi.Input[Optional[_builtins.int]] = None,
+            confidence_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled_entries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpPredefinedProfileEntryArgs', 'ZeroTrustDlpPredefinedProfileEntryArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ocr_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            open_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            profile_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustDlpPredefinedProfile':
         """
         Get an existing ZeroTrustDlpPredefinedProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

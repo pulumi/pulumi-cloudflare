@@ -192,8 +192,8 @@ def get_pipeline(account_id: Optional[_builtins.str] = None,
         sql=pulumi.get(__ret__, 'sql'),
         status=pulumi.get(__ret__, 'status'),
         tables=pulumi.get(__ret__, 'tables'))
-def get_pipeline_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_pipeline_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineResult]:
     """
     Accepted Permissions

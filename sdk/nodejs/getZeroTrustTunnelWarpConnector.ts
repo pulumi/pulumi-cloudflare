@@ -150,10 +150,10 @@ export interface GetZeroTrustTunnelWarpConnectorOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetZeroTrustTunnelWarpConnectorFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustTunnelWarpConnectorFilterArgs | undefined>;
     /**
      * UUID of the tunnel.
      */
-    tunnelId?: pulumi.Input<string>;
+    tunnelId?: pulumi.Input<string | undefined>;
 }

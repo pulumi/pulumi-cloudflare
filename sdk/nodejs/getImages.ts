@@ -112,13 +112,13 @@ export interface GetImagesOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
 }

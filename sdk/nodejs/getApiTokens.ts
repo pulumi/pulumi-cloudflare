@@ -103,9 +103,9 @@ export interface GetApiTokensOutputArgs {
      * Direction to order results.
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
 }

@@ -22,27 +22,27 @@ __all__ = ['WorkerScriptArgs', 'WorkerScript']
 class WorkerScriptArgs:
     def __init__(__self__, *,
                  script_name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input['WorkerScriptAnnotationsArgs']] = None,
-                 assets: Optional[pulumi.Input['WorkerScriptAssetsArgs']] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]] = None,
-                 body_part: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_sha256: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_assets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 limits: Optional[pulumi.Input['WorkerScriptLimitsArgs']] = None,
-                 logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 main_module: Optional[pulumi.Input[_builtins.str]] = None,
-                 migrations: Optional[pulumi.Input['WorkerScriptMigrationsArgs']] = None,
-                 observability: Optional[pulumi.Input['WorkerScriptObservabilityArgs']] = None,
-                 placement: Optional[pulumi.Input['WorkerScriptPlacementArgs']] = None,
-                 tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptTailConsumerArgs']]]] = None,
-                 usage_model: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional['WorkerScriptAnnotationsArgs']] = None,
+                 assets: pulumi.Input[Optional['WorkerScriptAssetsArgs']] = None,
+                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]] = None,
+                 body_part: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 limits: pulumi.Input[Optional['WorkerScriptLimitsArgs']] = None,
+                 logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 main_module: pulumi.Input[Optional[_builtins.str]] = None,
+                 migrations: pulumi.Input[Optional['WorkerScriptMigrationsArgs']] = None,
+                 observability: pulumi.Input[Optional['WorkerScriptObservabilityArgs']] = None,
+                 placement: pulumi.Input[Optional['WorkerScriptPlacementArgs']] = None,
+                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptTailConsumerArgs']]]] = None,
+                 usage_model: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkerScript resource.
 
@@ -128,247 +128,247 @@ class WorkerScriptArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input['WorkerScriptAnnotationsArgs']]:
+    def annotations(self) -> pulumi.Input[Optional['WorkerScriptAnnotationsArgs']]:
         """
         Annotations for the version created by this upload.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input['WorkerScriptAnnotationsArgs']]):
+    def annotations(self, value: pulumi.Input[Optional['WorkerScriptAnnotationsArgs']]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def assets(self) -> Optional[pulumi.Input['WorkerScriptAssetsArgs']]:
+    def assets(self) -> pulumi.Input[Optional['WorkerScriptAssetsArgs']]:
         """
         Configuration for assets within a Worker.
         """
         return pulumi.get(self, "assets")
 
     @assets.setter
-    def assets(self, value: Optional[pulumi.Input['WorkerScriptAssetsArgs']]):
+    def assets(self, value: pulumi.Input[Optional['WorkerScriptAssetsArgs']]):
         pulumi.set(self, "assets", value)
 
     @_builtins.property
     @pulumi.getter
-    def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]]:
+    def bindings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]]:
         """
         List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         """
         return pulumi.get(self, "bindings")
 
     @bindings.setter
-    def bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]]):
+    def bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]]):
         pulumi.set(self, "bindings", value)
 
     @_builtins.property
     @pulumi.getter(name="bodyPart")
-    def body_part(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def body_part(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         """
         return pulumi.get(self, "body_part")
 
     @body_part.setter
-    def body_part(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def body_part(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body_part", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
-    def compatibility_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compatibility_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         """
         return pulumi.get(self, "compatibility_date")
 
     @compatibility_date.setter
-    def compatibility_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compatibility_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compatibility_date", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityFlags")
-    def compatibility_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def compatibility_flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         """
         return pulumi.get(self, "compatibility_flags")
 
     @compatibility_flags.setter
-    def compatibility_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def compatibility_flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "compatibility_flags", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Module or Service Worker contents of the Worker. Conflicts with `content_file`.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="contentFile")
-    def content_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
         """
         return pulumi.get(self, "content_file")
 
     @content_file.setter
-    def content_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_file", value)
 
     @_builtins.property
     @pulumi.getter(name="contentSha256")
-    def content_sha256(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_sha256(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
         """
         return pulumi.get(self, "content_sha256")
 
     @content_sha256.setter
-    def content_sha256(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_sha256(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_sha256", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="keepAssets")
-    def keep_assets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_assets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
         """
         return pulumi.get(self, "keep_assets")
 
     @keep_assets.setter
-    def keep_assets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_assets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_assets", value)
 
     @_builtins.property
     @pulumi.getter(name="keepBindings")
-    def keep_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def keep_bindings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of binding types to keep from previous_upload.
         """
         return pulumi.get(self, "keep_bindings")
 
     @keep_bindings.setter
-    def keep_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def keep_bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "keep_bindings", value)
 
     @_builtins.property
     @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input['WorkerScriptLimitsArgs']]:
+    def limits(self) -> pulumi.Input[Optional['WorkerScriptLimitsArgs']]:
         """
         Limits to apply for this Worker.
         """
         return pulumi.get(self, "limits")
 
     @limits.setter
-    def limits(self, value: Optional[pulumi.Input['WorkerScriptLimitsArgs']]):
+    def limits(self, value: pulumi.Input[Optional['WorkerScriptLimitsArgs']]):
         pulumi.set(self, "limits", value)
 
     @_builtins.property
     @pulumi.getter
-    def logpush(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logpush(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Logpush is turned on for the Worker.
         """
         return pulumi.get(self, "logpush")
 
     @logpush.setter
-    def logpush(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logpush(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logpush", value)
 
     @_builtins.property
     @pulumi.getter(name="mainModule")
-    def main_module(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def main_module(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         """
         return pulumi.get(self, "main_module")
 
     @main_module.setter
-    def main_module(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def main_module(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "main_module", value)
 
     @_builtins.property
     @pulumi.getter
-    def migrations(self) -> Optional[pulumi.Input['WorkerScriptMigrationsArgs']]:
+    def migrations(self) -> pulumi.Input[Optional['WorkerScriptMigrationsArgs']]:
         """
         Migrations to apply for Durable Objects associated with this Worker.
         """
         return pulumi.get(self, "migrations")
 
     @migrations.setter
-    def migrations(self, value: Optional[pulumi.Input['WorkerScriptMigrationsArgs']]):
+    def migrations(self, value: pulumi.Input[Optional['WorkerScriptMigrationsArgs']]):
         pulumi.set(self, "migrations", value)
 
     @_builtins.property
     @pulumi.getter
-    def observability(self) -> Optional[pulumi.Input['WorkerScriptObservabilityArgs']]:
+    def observability(self) -> pulumi.Input[Optional['WorkerScriptObservabilityArgs']]:
         """
         Observability settings for the Worker.
         """
         return pulumi.get(self, "observability")
 
     @observability.setter
-    def observability(self, value: Optional[pulumi.Input['WorkerScriptObservabilityArgs']]):
+    def observability(self, value: pulumi.Input[Optional['WorkerScriptObservabilityArgs']]):
         pulumi.set(self, "observability", value)
 
     @_builtins.property
     @pulumi.getter
-    def placement(self) -> Optional[pulumi.Input['WorkerScriptPlacementArgs']]:
+    def placement(self) -> pulumi.Input[Optional['WorkerScriptPlacementArgs']]:
         """
         Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         """
         return pulumi.get(self, "placement")
 
     @placement.setter
-    def placement(self, value: Optional[pulumi.Input['WorkerScriptPlacementArgs']]):
+    def placement(self, value: pulumi.Input[Optional['WorkerScriptPlacementArgs']]):
         pulumi.set(self, "placement", value)
 
     @_builtins.property
     @pulumi.getter(name="tailConsumers")
-    def tail_consumers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptTailConsumerArgs']]]]:
+    def tail_consumers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptTailConsumerArgs']]]]:
         """
         List of Workers that will consume logs from the attached Worker.
         """
         return pulumi.get(self, "tail_consumers")
 
     @tail_consumers.setter
-    def tail_consumers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptTailConsumerArgs']]]]):
+    def tail_consumers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptTailConsumerArgs']]]]):
         pulumi.set(self, "tail_consumers", value)
 
     @_builtins.property
     @pulumi.getter(name="usageModel")
-    def usage_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usage_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Usage model for the Worker invocations.
         Available values: "standard", "bundled", "unbound".
@@ -376,47 +376,47 @@ class WorkerScriptArgs:
         return pulumi.get(self, "usage_model")
 
     @usage_model.setter
-    def usage_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usage_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage_model", value)
 
 
 @pulumi.input_type
 class _WorkerScriptState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input['WorkerScriptAnnotationsArgs']] = None,
-                 assets: Optional[pulumi.Input['WorkerScriptAssetsArgs']] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]] = None,
-                 body_part: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_sha256: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 has_assets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 has_modules: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_assets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 last_deployed_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 limits: Optional[pulumi.Input['WorkerScriptLimitsArgs']] = None,
-                 logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 main_module: Optional[pulumi.Input[_builtins.str]] = None,
-                 migration_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 migrations: Optional[pulumi.Input['WorkerScriptMigrationsArgs']] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 named_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptNamedHandlerArgs']]]] = None,
-                 observability: Optional[pulumi.Input['WorkerScriptObservabilityArgs']] = None,
-                 placement: Optional[pulumi.Input['WorkerScriptPlacementArgs']] = None,
-                 placement_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptTailConsumerArgs']]]] = None,
-                 usage_model: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional['WorkerScriptAnnotationsArgs']] = None,
+                 assets: pulumi.Input[Optional['WorkerScriptAssetsArgs']] = None,
+                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]] = None,
+                 body_part: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 handlers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 has_assets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 has_modules: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 last_deployed_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 limits: pulumi.Input[Optional['WorkerScriptLimitsArgs']] = None,
+                 logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 main_module: pulumi.Input[Optional[_builtins.str]] = None,
+                 migration_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 migrations: pulumi.Input[Optional['WorkerScriptMigrationsArgs']] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 named_handlers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptNamedHandlerArgs']]]] = None,
+                 observability: pulumi.Input[Optional['WorkerScriptObservabilityArgs']] = None,
+                 placement: pulumi.Input[Optional['WorkerScriptPlacementArgs']] = None,
+                 placement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptTailConsumerArgs']]]] = None,
+                 usage_model: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkerScript resources.
 
@@ -532,402 +532,402 @@ class _WorkerScriptState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input['WorkerScriptAnnotationsArgs']]:
+    def annotations(self) -> pulumi.Input[Optional['WorkerScriptAnnotationsArgs']]:
         """
         Annotations for the version created by this upload.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input['WorkerScriptAnnotationsArgs']]):
+    def annotations(self, value: pulumi.Input[Optional['WorkerScriptAnnotationsArgs']]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def assets(self) -> Optional[pulumi.Input['WorkerScriptAssetsArgs']]:
+    def assets(self) -> pulumi.Input[Optional['WorkerScriptAssetsArgs']]:
         """
         Configuration for assets within a Worker.
         """
         return pulumi.get(self, "assets")
 
     @assets.setter
-    def assets(self, value: Optional[pulumi.Input['WorkerScriptAssetsArgs']]):
+    def assets(self, value: pulumi.Input[Optional['WorkerScriptAssetsArgs']]):
         pulumi.set(self, "assets", value)
 
     @_builtins.property
     @pulumi.getter
-    def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]]:
+    def bindings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]]:
         """
         List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         """
         return pulumi.get(self, "bindings")
 
     @bindings.setter
-    def bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]]):
+    def bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptBindingArgs']]]]):
         pulumi.set(self, "bindings", value)
 
     @_builtins.property
     @pulumi.getter(name="bodyPart")
-    def body_part(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def body_part(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         """
         return pulumi.get(self, "body_part")
 
     @body_part.setter
-    def body_part(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def body_part(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body_part", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
-    def compatibility_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compatibility_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         """
         return pulumi.get(self, "compatibility_date")
 
     @compatibility_date.setter
-    def compatibility_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compatibility_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compatibility_date", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityFlags")
-    def compatibility_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def compatibility_flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         """
         return pulumi.get(self, "compatibility_flags")
 
     @compatibility_flags.setter
-    def compatibility_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def compatibility_flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "compatibility_flags", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Module or Service Worker contents of the Worker. Conflicts with `content_file`.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="contentFile")
-    def content_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
         """
         return pulumi.get(self, "content_file")
 
     @content_file.setter
-    def content_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_file", value)
 
     @_builtins.property
     @pulumi.getter(name="contentSha256")
-    def content_sha256(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_sha256(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
         """
         return pulumi.get(self, "content_sha256")
 
     @content_sha256.setter
-    def content_sha256(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_sha256(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_sha256", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the script was created.
         """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hashed script content, can be used in a If-None-Match header when updating.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def handlers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The names of handlers exported as part of the default export.
         """
         return pulumi.get(self, "handlers")
 
     @handlers.setter
-    def handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def handlers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "handlers", value)
 
     @_builtins.property
     @pulumi.getter(name="hasAssets")
-    def has_assets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def has_assets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether a Worker contains assets.
         """
         return pulumi.get(self, "has_assets")
 
     @has_assets.setter
-    def has_assets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def has_assets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "has_assets", value)
 
     @_builtins.property
     @pulumi.getter(name="hasModules")
-    def has_modules(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def has_modules(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether a Worker contains modules.
         """
         return pulumi.get(self, "has_modules")
 
     @has_modules.setter
-    def has_modules(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def has_modules(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "has_modules", value)
 
     @_builtins.property
     @pulumi.getter(name="keepAssets")
-    def keep_assets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_assets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
         """
         return pulumi.get(self, "keep_assets")
 
     @keep_assets.setter
-    def keep_assets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_assets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_assets", value)
 
     @_builtins.property
     @pulumi.getter(name="keepBindings")
-    def keep_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def keep_bindings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of binding types to keep from previous_upload.
         """
         return pulumi.get(self, "keep_bindings")
 
     @keep_bindings.setter
-    def keep_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def keep_bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "keep_bindings", value)
 
     @_builtins.property
     @pulumi.getter(name="lastDeployedFrom")
-    def last_deployed_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_deployed_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client most recently used to deploy this Worker.
         """
         return pulumi.get(self, "last_deployed_from")
 
     @last_deployed_from.setter
-    def last_deployed_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_deployed_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_deployed_from", value)
 
     @_builtins.property
     @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input['WorkerScriptLimitsArgs']]:
+    def limits(self) -> pulumi.Input[Optional['WorkerScriptLimitsArgs']]:
         """
         Limits to apply for this Worker.
         """
         return pulumi.get(self, "limits")
 
     @limits.setter
-    def limits(self, value: Optional[pulumi.Input['WorkerScriptLimitsArgs']]):
+    def limits(self, value: pulumi.Input[Optional['WorkerScriptLimitsArgs']]):
         pulumi.set(self, "limits", value)
 
     @_builtins.property
     @pulumi.getter
-    def logpush(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logpush(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Logpush is turned on for the Worker.
         """
         return pulumi.get(self, "logpush")
 
     @logpush.setter
-    def logpush(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logpush(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logpush", value)
 
     @_builtins.property
     @pulumi.getter(name="mainModule")
-    def main_module(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def main_module(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         """
         return pulumi.get(self, "main_module")
 
     @main_module.setter
-    def main_module(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def main_module(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "main_module", value)
 
     @_builtins.property
     @pulumi.getter(name="migrationTag")
-    def migration_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def migration_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag of the Durable Object migration that was most recently applied for this Worker.
         """
         return pulumi.get(self, "migration_tag")
 
     @migration_tag.setter
-    def migration_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def migration_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "migration_tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def migrations(self) -> Optional[pulumi.Input['WorkerScriptMigrationsArgs']]:
+    def migrations(self) -> pulumi.Input[Optional['WorkerScriptMigrationsArgs']]:
         """
         Migrations to apply for Durable Objects associated with this Worker.
         """
         return pulumi.get(self, "migrations")
 
     @migrations.setter
-    def migrations(self, value: Optional[pulumi.Input['WorkerScriptMigrationsArgs']]):
+    def migrations(self, value: pulumi.Input[Optional['WorkerScriptMigrationsArgs']]):
         pulumi.set(self, "migrations", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the script was last modified.
         """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter(name="namedHandlers")
-    def named_handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptNamedHandlerArgs']]]]:
+    def named_handlers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptNamedHandlerArgs']]]]:
         """
         Named exports, such as Durable Object class implementations and named entrypoints.
         """
         return pulumi.get(self, "named_handlers")
 
     @named_handlers.setter
-    def named_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptNamedHandlerArgs']]]]):
+    def named_handlers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptNamedHandlerArgs']]]]):
         pulumi.set(self, "named_handlers", value)
 
     @_builtins.property
     @pulumi.getter
-    def observability(self) -> Optional[pulumi.Input['WorkerScriptObservabilityArgs']]:
+    def observability(self) -> pulumi.Input[Optional['WorkerScriptObservabilityArgs']]:
         """
         Observability settings for the Worker.
         """
         return pulumi.get(self, "observability")
 
     @observability.setter
-    def observability(self, value: Optional[pulumi.Input['WorkerScriptObservabilityArgs']]):
+    def observability(self, value: pulumi.Input[Optional['WorkerScriptObservabilityArgs']]):
         pulumi.set(self, "observability", value)
 
     @_builtins.property
     @pulumi.getter
-    def placement(self) -> Optional[pulumi.Input['WorkerScriptPlacementArgs']]:
+    def placement(self) -> pulumi.Input[Optional['WorkerScriptPlacementArgs']]:
         """
         Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         """
         return pulumi.get(self, "placement")
 
     @placement.setter
-    def placement(self, value: Optional[pulumi.Input['WorkerScriptPlacementArgs']]):
+    def placement(self, value: pulumi.Input[Optional['WorkerScriptPlacementArgs']]):
         pulumi.set(self, "placement", value)
 
     @_builtins.property
     @pulumi.getter(name="placementMode")
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def placement_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def placement_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "smart", "targeted".
         """
         return pulumi.get(self, "placement_mode")
 
     @placement_mode.setter
-    def placement_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def placement_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "placement_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="placementStatus")
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def placement_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def placement_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
         """
         return pulumi.get(self, "placement_status")
 
     @placement_status.setter
-    def placement_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def placement_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "placement_status", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptName")
-    def script_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the script, used in URLs and route configuration.
         """
         return pulumi.get(self, "script_name")
 
     @script_name.setter
-    def script_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script_name", value)
 
     @_builtins.property
     @pulumi.getter(name="startupTimeMs")
-    def startup_time_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def startup_time_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "startup_time_ms")
 
     @startup_time_ms.setter
-    def startup_time_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def startup_time_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "startup_time_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="tailConsumers")
-    def tail_consumers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptTailConsumerArgs']]]]:
+    def tail_consumers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptTailConsumerArgs']]]]:
         """
         List of Workers that will consume logs from the attached Worker.
         """
         return pulumi.get(self, "tail_consumers")
 
     @tail_consumers.setter
-    def tail_consumers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptTailConsumerArgs']]]]):
+    def tail_consumers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptTailConsumerArgs']]]]):
         pulumi.set(self, "tail_consumers", value)
 
     @_builtins.property
     @pulumi.getter(name="usageModel")
-    def usage_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usage_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Usage model for the Worker invocations.
         Available values: "standard", "bundled", "unbound".
@@ -935,7 +935,7 @@ class _WorkerScriptState:
         return pulumi.get(self, "usage_model")
 
     @usage_model.setter
-    def usage_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usage_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage_model", value)
 
 
@@ -950,28 +950,28 @@ class WorkerScript(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict']]] = None,
-                 assets: Optional[pulumi.Input[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict']]] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict']]]]] = None,
-                 body_part: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_sha256: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_assets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 limits: Optional[pulumi.Input[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']]] = None,
-                 logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 main_module: Optional[pulumi.Input[_builtins.str]] = None,
-                 migrations: Optional[pulumi.Input[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict']]] = None,
-                 observability: Optional[pulumi.Input[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict']]] = None,
-                 placement: Optional[pulumi.Input[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict']]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict']]]]] = None,
-                 usage_model: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict']]] = None,
+                 assets: pulumi.Input[Optional[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict']]] = None,
+                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict']]]]] = None,
+                 body_part: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 limits: pulumi.Input[Optional[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']]] = None,
+                 logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 main_module: pulumi.Input[Optional[_builtins.str]] = None,
+                 migrations: pulumi.Input[Optional[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict']]] = None,
+                 observability: pulumi.Input[Optional[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict']]] = None,
+                 placement: pulumi.Input[Optional[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict']]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict']]]]] = None,
+                 usage_model: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -1052,28 +1052,28 @@ class WorkerScript(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict']]] = None,
-                 assets: Optional[pulumi.Input[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict']]] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict']]]]] = None,
-                 body_part: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_sha256: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_assets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 limits: Optional[pulumi.Input[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']]] = None,
-                 logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 main_module: Optional[pulumi.Input[_builtins.str]] = None,
-                 migrations: Optional[pulumi.Input[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict']]] = None,
-                 observability: Optional[pulumi.Input[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict']]] = None,
-                 placement: Optional[pulumi.Input[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict']]] = None,
-                 script_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict']]]]] = None,
-                 usage_model: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict']]] = None,
+                 assets: pulumi.Input[Optional[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict']]] = None,
+                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict']]]]] = None,
+                 body_part: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 limits: pulumi.Input[Optional[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']]] = None,
+                 logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 main_module: pulumi.Input[Optional[_builtins.str]] = None,
+                 migrations: pulumi.Input[Optional[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict']]] = None,
+                 observability: pulumi.Input[Optional[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict']]] = None,
+                 placement: pulumi.Input[Optional[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict']]] = None,
+                 script_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict']]]]] = None,
+                 usage_model: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""WorkerScript is deprecated: cloudflare.index/workerscript.WorkerScript has been deprecated in favor of cloudflare.index/workersscript.WorkersScript""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1132,40 +1132,40 @@ class WorkerScript(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            annotations: Optional[pulumi.Input[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict']]] = None,
-            assets: Optional[pulumi.Input[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict']]] = None,
-            bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict']]]]] = None,
-            body_part: Optional[pulumi.Input[_builtins.str]] = None,
-            compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
-            compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            content: Optional[pulumi.Input[_builtins.str]] = None,
-            content_file: Optional[pulumi.Input[_builtins.str]] = None,
-            content_sha256: Optional[pulumi.Input[_builtins.str]] = None,
-            content_type: Optional[pulumi.Input[_builtins.str]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            handlers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            has_assets: Optional[pulumi.Input[_builtins.bool]] = None,
-            has_modules: Optional[pulumi.Input[_builtins.bool]] = None,
-            keep_assets: Optional[pulumi.Input[_builtins.bool]] = None,
-            keep_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            last_deployed_from: Optional[pulumi.Input[_builtins.str]] = None,
-            limits: Optional[pulumi.Input[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']]] = None,
-            logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-            main_module: Optional[pulumi.Input[_builtins.str]] = None,
-            migration_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            migrations: Optional[pulumi.Input[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict']]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            named_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptNamedHandlerArgs', 'WorkerScriptNamedHandlerArgsDict']]]]] = None,
-            observability: Optional[pulumi.Input[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict']]] = None,
-            placement: Optional[pulumi.Input[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict']]] = None,
-            placement_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            placement_status: Optional[pulumi.Input[_builtins.str]] = None,
-            script_name: Optional[pulumi.Input[_builtins.str]] = None,
-            startup_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
-            tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict']]]]] = None,
-            usage_model: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkerScript':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Union['WorkerScriptAnnotationsArgs', 'WorkerScriptAnnotationsArgsDict']]] = None,
+            assets: pulumi.Input[Optional[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict']]] = None,
+            bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict']]]]] = None,
+            body_part: pulumi.Input[Optional[_builtins.str]] = None,
+            compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
+            compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            content_file: pulumi.Input[Optional[_builtins.str]] = None,
+            content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            handlers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            has_assets: pulumi.Input[Optional[_builtins.bool]] = None,
+            has_modules: pulumi.Input[Optional[_builtins.bool]] = None,
+            keep_assets: pulumi.Input[Optional[_builtins.bool]] = None,
+            keep_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            last_deployed_from: pulumi.Input[Optional[_builtins.str]] = None,
+            limits: pulumi.Input[Optional[Union['WorkerScriptLimitsArgs', 'WorkerScriptLimitsArgsDict']]] = None,
+            logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+            main_module: pulumi.Input[Optional[_builtins.str]] = None,
+            migration_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            migrations: pulumi.Input[Optional[Union['WorkerScriptMigrationsArgs', 'WorkerScriptMigrationsArgsDict']]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            named_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptNamedHandlerArgs', 'WorkerScriptNamedHandlerArgsDict']]]]] = None,
+            observability: pulumi.Input[Optional[Union['WorkerScriptObservabilityArgs', 'WorkerScriptObservabilityArgsDict']]] = None,
+            placement: pulumi.Input[Optional[Union['WorkerScriptPlacementArgs', 'WorkerScriptPlacementArgsDict']]] = None,
+            placement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            placement_status: pulumi.Input[Optional[_builtins.str]] = None,
+            script_name: pulumi.Input[Optional[_builtins.str]] = None,
+            startup_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            tail_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerScriptTailConsumerArgs', 'WorkerScriptTailConsumerArgsDict']]]]] = None,
+            usage_model: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkerScript':
         """
         Get an existing WorkerScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

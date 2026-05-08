@@ -22,12 +22,12 @@ class TurnstileWidgetArgs:
                  domains: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  mode: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bot_fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 clearance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 ephemeral_id: Optional[pulumi.Input[_builtins.bool]] = None,
-                 offlabel: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bot_fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
+                 offlabel: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TurnstileWidget resource.
 
@@ -101,19 +101,19 @@ class TurnstileWidgetArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="botFightMode")
-    def bot_fight_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bot_fight_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If bot*fight*mode is set to `true`, Cloudflare issues computationally
         expensive challenges in response to malicious bots (ENT only).
@@ -121,12 +121,12 @@ class TurnstileWidgetArgs:
         return pulumi.get(self, "bot_fight_mode")
 
     @bot_fight_mode.setter
-    def bot_fight_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bot_fight_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bot_fight_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="clearanceLevel")
-    def clearance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clearance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
         this setting can determine the clearance level to be set
@@ -135,36 +135,36 @@ class TurnstileWidgetArgs:
         return pulumi.get(self, "clearance_level")
 
     @clearance_level.setter
-    def clearance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clearance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clearance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="ephemeralId")
-    def ephemeral_id(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ephemeral_id(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Return the Ephemeral ID in /siteverify (ENT only).
         """
         return pulumi.get(self, "ephemeral_id")
 
     @ephemeral_id.setter
-    def ephemeral_id(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ephemeral_id(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ephemeral_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def offlabel(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def offlabel(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Do not show any Cloudflare branding on the widget (ENT only).
         """
         return pulumi.get(self, "offlabel")
 
     @offlabel.setter
-    def offlabel(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def offlabel(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "offlabel", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where this widget can be used. This cannot be changed after creation.
         Available values: "world", "china".
@@ -172,26 +172,26 @@ class TurnstileWidgetArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _TurnstileWidgetState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bot_fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 clearance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ephemeral_id: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 offlabel: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 sitekey: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bot_fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 offlabel: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 sitekey: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TurnstileWidget resources.
 
@@ -244,19 +244,19 @@ class _TurnstileWidgetState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="botFightMode")
-    def bot_fight_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bot_fight_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If bot*fight*mode is set to `true`, Cloudflare issues computationally
         expensive challenges in response to malicious bots (ENT only).
@@ -264,12 +264,12 @@ class _TurnstileWidgetState:
         return pulumi.get(self, "bot_fight_mode")
 
     @bot_fight_mode.setter
-    def bot_fight_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bot_fight_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bot_fight_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="clearanceLevel")
-    def clearance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clearance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
         this setting can determine the clearance level to be set
@@ -278,45 +278,45 @@ class _TurnstileWidgetState:
         return pulumi.get(self, "clearance_level")
 
     @clearance_level.setter
-    def clearance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clearance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clearance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the widget was created.
         """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domains", value)
 
     @_builtins.property
     @pulumi.getter(name="ephemeralId")
-    def ephemeral_id(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ephemeral_id(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Return the Ephemeral ID in /siteverify (ENT only).
         """
         return pulumi.get(self, "ephemeral_id")
 
     @ephemeral_id.setter
-    def ephemeral_id(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ephemeral_id(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ephemeral_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Widget Mode
         Available values: "non-interactive", "invisible", "managed".
@@ -324,24 +324,24 @@ class _TurnstileWidgetState:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the widget was modified.
         """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human readable widget name. Not unique. Cloudflare suggests that you
         set this to a meaningful string to make it easier to identify your
@@ -350,24 +350,24 @@ class _TurnstileWidgetState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def offlabel(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def offlabel(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Do not show any Cloudflare branding on the widget (ENT only).
         """
         return pulumi.get(self, "offlabel")
 
     @offlabel.setter
-    def offlabel(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def offlabel(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "offlabel", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where this widget can be used. This cannot be changed after creation.
         Available values: "world", "china".
@@ -375,31 +375,31 @@ class _TurnstileWidgetState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret key for this widget.
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def sitekey(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sitekey(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Widget item identifier tag.
         """
         return pulumi.get(self, "sitekey")
 
     @sitekey.setter
-    def sitekey(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sitekey(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sitekey", value)
 
 
@@ -409,15 +409,15 @@ class TurnstileWidget(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bot_fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 clearance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ephemeral_id: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 offlabel: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bot_fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 offlabel: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -532,15 +532,15 @@ class TurnstileWidget(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bot_fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 clearance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ephemeral_id: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 offlabel: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bot_fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 offlabel: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -581,19 +581,19 @@ class TurnstileWidget(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bot_fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-            clearance_level: Optional[pulumi.Input[_builtins.str]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ephemeral_id: Optional[pulumi.Input[_builtins.bool]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            offlabel: Optional[pulumi.Input[_builtins.bool]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            secret: Optional[pulumi.Input[_builtins.str]] = None,
-            sitekey: Optional[pulumi.Input[_builtins.str]] = None) -> 'TurnstileWidget':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bot_fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            offlabel: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            sitekey: pulumi.Input[Optional[_builtins.str]] = None) -> 'TurnstileWidget':
         """
         Get an existing TurnstileWidget resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -90,5 +90,5 @@ export interface GetIpRangesOutputArgs {
     /**
      * Specified as `jdcloud` to list IPs used by JD Cloud data centers.
      */
-    networks?: pulumi.Input<string>;
+    networks?: pulumi.Input<string | undefined>;
 }

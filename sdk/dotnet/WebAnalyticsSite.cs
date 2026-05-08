@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWebAnalyticsSite = new Cloudflare.Index.WebAnalyticsSite("example_web_analytics_site", new()
+    ///     var exampleWebAnalyticsSite = new Cloudflare.WebAnalyticsSite("example_web_analytics_site", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AutoInstall = true,

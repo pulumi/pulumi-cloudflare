@@ -22,19 +22,19 @@ __all__ = ['WorkerVersionArgs', 'WorkerVersion']
 class WorkerVersionArgs:
     def __init__(__self__, *,
                  worker_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input['WorkerVersionAnnotationsArgs']] = None,
-                 assets: Optional[pulumi.Input['WorkerVersionAssetsArgs']] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]] = None,
-                 compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]] = None,
-                 limits: Optional[pulumi.Input['WorkerVersionLimitsArgs']] = None,
-                 main_module: Optional[pulumi.Input[_builtins.str]] = None,
-                 migrations: Optional[pulumi.Input['WorkerVersionMigrationsArgs']] = None,
-                 modules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]] = None,
-                 placement: Optional[pulumi.Input['WorkerVersionPlacementArgs']] = None,
-                 usage_model: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional['WorkerVersionAnnotationsArgs']] = None,
+                 assets: pulumi.Input[Optional['WorkerVersionAssetsArgs']] = None,
+                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]] = None,
+                 compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]] = None,
+                 limits: pulumi.Input[Optional['WorkerVersionLimitsArgs']] = None,
+                 main_module: pulumi.Input[Optional[_builtins.str]] = None,
+                 migrations: pulumi.Input[Optional['WorkerVersionMigrationsArgs']] = None,
+                 modules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]] = None,
+                 placement: pulumi.Input[Optional['WorkerVersionPlacementArgs']] = None,
+                 usage_model: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkerVersion resource.
 
@@ -104,127 +104,127 @@ class WorkerVersionArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input['WorkerVersionAnnotationsArgs']]:
+    def annotations(self) -> pulumi.Input[Optional['WorkerVersionAnnotationsArgs']]:
         """
         Metadata about the version.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input['WorkerVersionAnnotationsArgs']]):
+    def annotations(self, value: pulumi.Input[Optional['WorkerVersionAnnotationsArgs']]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def assets(self) -> Optional[pulumi.Input['WorkerVersionAssetsArgs']]:
+    def assets(self) -> pulumi.Input[Optional['WorkerVersionAssetsArgs']]:
         """
         Configuration for assets within a Worker.
         """
         return pulumi.get(self, "assets")
 
     @assets.setter
-    def assets(self, value: Optional[pulumi.Input['WorkerVersionAssetsArgs']]):
+    def assets(self, value: pulumi.Input[Optional['WorkerVersionAssetsArgs']]):
         pulumi.set(self, "assets", value)
 
     @_builtins.property
     @pulumi.getter
-    def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]]:
+    def bindings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]]:
         """
         List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         """
         return pulumi.get(self, "bindings")
 
     @bindings.setter
-    def bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]]):
+    def bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]]):
         pulumi.set(self, "bindings", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
-    def compatibility_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compatibility_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         """
         return pulumi.get(self, "compatibility_date")
 
     @compatibility_date.setter
-    def compatibility_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compatibility_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compatibility_date", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityFlags")
-    def compatibility_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def compatibility_flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         """
         return pulumi.get(self, "compatibility_flags")
 
     @compatibility_flags.setter
-    def compatibility_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def compatibility_flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "compatibility_flags", value)
 
     @_builtins.property
     @pulumi.getter
-    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]]:
+    def containers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]]:
         """
         List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
         """
         return pulumi.get(self, "containers")
 
     @containers.setter
-    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]]):
+    def containers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]]):
         pulumi.set(self, "containers", value)
 
     @_builtins.property
     @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input['WorkerVersionLimitsArgs']]:
+    def limits(self) -> pulumi.Input[Optional['WorkerVersionLimitsArgs']]:
         """
         Resource limits enforced at runtime.
         """
         return pulumi.get(self, "limits")
 
     @limits.setter
-    def limits(self, value: Optional[pulumi.Input['WorkerVersionLimitsArgs']]):
+    def limits(self, value: pulumi.Input[Optional['WorkerVersionLimitsArgs']]):
         pulumi.set(self, "limits", value)
 
     @_builtins.property
     @pulumi.getter(name="mainModule")
-    def main_module(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def main_module(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         """
         return pulumi.get(self, "main_module")
 
     @main_module.setter
-    def main_module(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def main_module(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "main_module", value)
 
     @_builtins.property
     @pulumi.getter
-    def migrations(self) -> Optional[pulumi.Input['WorkerVersionMigrationsArgs']]:
+    def migrations(self) -> pulumi.Input[Optional['WorkerVersionMigrationsArgs']]:
         """
         Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         """
         return pulumi.get(self, "migrations")
 
     @migrations.setter
-    def migrations(self, value: Optional[pulumi.Input['WorkerVersionMigrationsArgs']]):
+    def migrations(self, value: pulumi.Input[Optional['WorkerVersionMigrationsArgs']]):
         pulumi.set(self, "migrations", value)
 
     @_builtins.property
     @pulumi.getter
-    def modules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]]:
+    def modules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]]:
         """
         Code, sourcemaps, and other content used at runtime.
 
@@ -236,25 +236,25 @@ class WorkerVersionArgs:
         return pulumi.get(self, "modules")
 
     @modules.setter
-    def modules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]]):
+    def modules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]]):
         pulumi.set(self, "modules", value)
 
     @_builtins.property
     @pulumi.getter
-    def placement(self) -> Optional[pulumi.Input['WorkerVersionPlacementArgs']]:
+    def placement(self) -> pulumi.Input[Optional['WorkerVersionPlacementArgs']]:
         """
         Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         """
         return pulumi.get(self, "placement")
 
     @placement.setter
-    def placement(self, value: Optional[pulumi.Input['WorkerVersionPlacementArgs']]):
+    def placement(self, value: pulumi.Input[Optional['WorkerVersionPlacementArgs']]):
         pulumi.set(self, "placement", value)
 
     @_builtins.property
     @pulumi.getter(name="usageModel")
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def usage_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usage_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Usage model for the version.
         Available values: "standard", "bundled", "unbound".
@@ -262,34 +262,34 @@ class WorkerVersionArgs:
         return pulumi.get(self, "usage_model")
 
     @usage_model.setter
-    def usage_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usage_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage_model", value)
 
 
 @pulumi.input_type
 class _WorkerVersionState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input['WorkerVersionAnnotationsArgs']] = None,
-                 assets: Optional[pulumi.Input['WorkerVersionAssetsArgs']] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]] = None,
-                 compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 limits: Optional[pulumi.Input['WorkerVersionLimitsArgs']] = None,
-                 main_module: Optional[pulumi.Input[_builtins.str]] = None,
-                 main_script_base64: Optional[pulumi.Input[_builtins.str]] = None,
-                 migration_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 migrations: Optional[pulumi.Input['WorkerVersionMigrationsArgs']] = None,
-                 modules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]] = None,
-                 number: Optional[pulumi.Input[_builtins.int]] = None,
-                 placement: Optional[pulumi.Input['WorkerVersionPlacementArgs']] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 usage_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional['WorkerVersionAnnotationsArgs']] = None,
+                 assets: pulumi.Input[Optional['WorkerVersionAssetsArgs']] = None,
+                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]] = None,
+                 compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 limits: pulumi.Input[Optional['WorkerVersionLimitsArgs']] = None,
+                 main_module: pulumi.Input[Optional[_builtins.str]] = None,
+                 main_script_base64: pulumi.Input[Optional[_builtins.str]] = None,
+                 migration_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 migrations: pulumi.Input[Optional['WorkerVersionMigrationsArgs']] = None,
+                 modules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]] = None,
+                 number: pulumi.Input[Optional[_builtins.int]] = None,
+                 placement: pulumi.Input[Optional['WorkerVersionPlacementArgs']] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 usage_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkerVersion resources.
 
@@ -369,163 +369,163 @@ class _WorkerVersionState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input['WorkerVersionAnnotationsArgs']]:
+    def annotations(self) -> pulumi.Input[Optional['WorkerVersionAnnotationsArgs']]:
         """
         Metadata about the version.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input['WorkerVersionAnnotationsArgs']]):
+    def annotations(self, value: pulumi.Input[Optional['WorkerVersionAnnotationsArgs']]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def assets(self) -> Optional[pulumi.Input['WorkerVersionAssetsArgs']]:
+    def assets(self) -> pulumi.Input[Optional['WorkerVersionAssetsArgs']]:
         """
         Configuration for assets within a Worker.
         """
         return pulumi.get(self, "assets")
 
     @assets.setter
-    def assets(self, value: Optional[pulumi.Input['WorkerVersionAssetsArgs']]):
+    def assets(self, value: pulumi.Input[Optional['WorkerVersionAssetsArgs']]):
         pulumi.set(self, "assets", value)
 
     @_builtins.property
     @pulumi.getter
-    def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]]:
+    def bindings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]]:
         """
         List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         """
         return pulumi.get(self, "bindings")
 
     @bindings.setter
-    def bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]]):
+    def bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]]):
         pulumi.set(self, "bindings", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
-    def compatibility_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compatibility_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         """
         return pulumi.get(self, "compatibility_date")
 
     @compatibility_date.setter
-    def compatibility_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compatibility_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compatibility_date", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibilityFlags")
-    def compatibility_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def compatibility_flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         """
         return pulumi.get(self, "compatibility_flags")
 
     @compatibility_flags.setter
-    def compatibility_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def compatibility_flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "compatibility_flags", value)
 
     @_builtins.property
     @pulumi.getter
-    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]]:
+    def containers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]]:
         """
         List of containers attached to a Worker. Containers can only be attached to Durable Object classes of this Worker script.
         """
         return pulumi.get(self, "containers")
 
     @containers.setter
-    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]]):
+    def containers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionContainerArgs']]]]):
         pulumi.set(self, "containers", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the version was created.
         """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input['WorkerVersionLimitsArgs']]:
+    def limits(self) -> pulumi.Input[Optional['WorkerVersionLimitsArgs']]:
         """
         Resource limits enforced at runtime.
         """
         return pulumi.get(self, "limits")
 
     @limits.setter
-    def limits(self, value: Optional[pulumi.Input['WorkerVersionLimitsArgs']]):
+    def limits(self, value: pulumi.Input[Optional['WorkerVersionLimitsArgs']]):
         pulumi.set(self, "limits", value)
 
     @_builtins.property
     @pulumi.getter(name="mainModule")
-    def main_module(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def main_module(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         """
         return pulumi.get(self, "main_module")
 
     @main_module.setter
-    def main_module(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def main_module(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "main_module", value)
 
     @_builtins.property
     @pulumi.getter(name="mainScriptBase64")
-    def main_script_base64(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def main_script_base64(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base64-encoded main script content. This is only returned for service worker syntax workers (not ES modules). Used when importing existing workers that use the older service worker syntax.
         """
         return pulumi.get(self, "main_script_base64")
 
     @main_script_base64.setter
-    def main_script_base64(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def main_script_base64(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "main_script_base64", value)
 
     @_builtins.property
     @pulumi.getter(name="migrationTag")
-    def migration_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def migration_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Durable Object migration tag. Set when the version is deployed. Omitted if the version has not been deployed or the Worker does not use Durable Objects.
         """
         return pulumi.get(self, "migration_tag")
 
     @migration_tag.setter
-    def migration_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def migration_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "migration_tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def migrations(self) -> Optional[pulumi.Input['WorkerVersionMigrationsArgs']]:
+    def migrations(self) -> pulumi.Input[Optional['WorkerVersionMigrationsArgs']]:
         """
         Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         """
         return pulumi.get(self, "migrations")
 
     @migrations.setter
-    def migrations(self, value: Optional[pulumi.Input['WorkerVersionMigrationsArgs']]):
+    def migrations(self, value: pulumi.Input[Optional['WorkerVersionMigrationsArgs']]):
         pulumi.set(self, "migrations", value)
 
     @_builtins.property
     @pulumi.getter
-    def modules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]]:
+    def modules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]]:
         """
         Code, sourcemaps, and other content used at runtime.
 
@@ -537,73 +537,73 @@ class _WorkerVersionState:
         return pulumi.get(self, "modules")
 
     @modules.setter
-    def modules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]]):
+    def modules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]]):
         pulumi.set(self, "modules", value)
 
     @_builtins.property
     @pulumi.getter
-    def number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The integer version number, starting from one.
         """
         return pulumi.get(self, "number")
 
     @number.setter
-    def number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "number", value)
 
     @_builtins.property
     @pulumi.getter
-    def placement(self) -> Optional[pulumi.Input['WorkerVersionPlacementArgs']]:
+    def placement(self) -> pulumi.Input[Optional['WorkerVersionPlacementArgs']]:
         """
         Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         """
         return pulumi.get(self, "placement")
 
     @placement.setter
-    def placement(self, value: Optional[pulumi.Input['WorkerVersionPlacementArgs']]):
+    def placement(self, value: pulumi.Input[Optional['WorkerVersionPlacementArgs']]):
         pulumi.set(self, "placement", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client used to create the version.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="startupTimeMs")
-    def startup_time_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def startup_time_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).
         """
         return pulumi.get(self, "startup_time_ms")
 
     @startup_time_ms.setter
-    def startup_time_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def startup_time_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "startup_time_ms", value)
 
     @_builtins.property
     @pulumi.getter
-    def urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.
         """
         return pulumi.get(self, "urls")
 
     @urls.setter
-    def urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "urls", value)
 
     @_builtins.property
     @pulumi.getter(name="usageModel")
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def usage_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usage_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Usage model for the version.
         Available values: "standard", "bundled", "unbound".
@@ -611,19 +611,19 @@ class _WorkerVersionState:
         return pulumi.get(self, "usage_model")
 
     @usage_model.setter
-    def usage_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usage_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage_model", value)
 
     @_builtins.property
     @pulumi.getter(name="workerId")
-    def worker_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def worker_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier for the Worker, which can be ID or name.
         """
         return pulumi.get(self, "worker_id")
 
     @worker_id.setter
-    def worker_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def worker_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "worker_id", value)
 
 
@@ -633,20 +633,20 @@ class WorkerVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']]] = None,
-                 assets: Optional[pulumi.Input[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']]] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
-                 compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
-                 limits: Optional[pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
-                 main_module: Optional[pulumi.Input[_builtins.str]] = None,
-                 migrations: Optional[pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
-                 modules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
-                 placement: Optional[pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
-                 usage_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']]] = None,
+                 assets: pulumi.Input[Optional[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']]] = None,
+                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
+                 compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
+                 limits: pulumi.Input[Optional[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
+                 main_module: pulumi.Input[Optional[_builtins.str]] = None,
+                 migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
+                 modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
+                 placement: pulumi.Input[Optional[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
+                 usage_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -844,20 +844,20 @@ class WorkerVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 annotations: Optional[pulumi.Input[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']]] = None,
-                 assets: Optional[pulumi.Input[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']]] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
-                 compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
-                 limits: Optional[pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
-                 main_module: Optional[pulumi.Input[_builtins.str]] = None,
-                 migrations: Optional[pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
-                 modules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
-                 placement: Optional[pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
-                 usage_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']]] = None,
+                 assets: pulumi.Input[Optional[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']]] = None,
+                 bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
+                 compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
+                 limits: pulumi.Input[Optional[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
+                 main_module: pulumi.Input[Optional[_builtins.str]] = None,
+                 migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
+                 modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
+                 placement: pulumi.Input[Optional[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
+                 usage_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -900,27 +900,27 @@ class WorkerVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            annotations: Optional[pulumi.Input[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']]] = None,
-            assets: Optional[pulumi.Input[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']]] = None,
-            bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
-            compatibility_date: Optional[pulumi.Input[_builtins.str]] = None,
-            compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            limits: Optional[pulumi.Input[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
-            main_module: Optional[pulumi.Input[_builtins.str]] = None,
-            main_script_base64: Optional[pulumi.Input[_builtins.str]] = None,
-            migration_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            migrations: Optional[pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
-            modules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
-            number: Optional[pulumi.Input[_builtins.int]] = None,
-            placement: Optional[pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None,
-            startup_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
-            urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            usage_model: Optional[pulumi.Input[_builtins.str]] = None,
-            worker_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkerVersion':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Union['WorkerVersionAnnotationsArgs', 'WorkerVersionAnnotationsArgsDict']]] = None,
+            assets: pulumi.Input[Optional[Union['WorkerVersionAssetsArgs', 'WorkerVersionAssetsArgsDict']]] = None,
+            bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionBindingArgs', 'WorkerVersionBindingArgsDict']]]]] = None,
+            compatibility_date: pulumi.Input[Optional[_builtins.str]] = None,
+            compatibility_flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionContainerArgs', 'WorkerVersionContainerArgsDict']]]]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            limits: pulumi.Input[Optional[Union['WorkerVersionLimitsArgs', 'WorkerVersionLimitsArgsDict']]] = None,
+            main_module: pulumi.Input[Optional[_builtins.str]] = None,
+            main_script_base64: pulumi.Input[Optional[_builtins.str]] = None,
+            migration_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            migrations: pulumi.Input[Optional[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']]] = None,
+            modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]]] = None,
+            number: pulumi.Input[Optional[_builtins.int]] = None,
+            placement: pulumi.Input[Optional[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            startup_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            usage_model: pulumi.Input[Optional[_builtins.str]] = None,
+            worker_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkerVersion':
         """
         Get an existing WorkerVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

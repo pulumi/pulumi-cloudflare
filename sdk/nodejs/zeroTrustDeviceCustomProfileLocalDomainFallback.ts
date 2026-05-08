@@ -105,16 +105,16 @@ export class ZeroTrustDeviceCustomProfileLocalDomainFallback extends pulumi.Cust
  * Input properties used for looking up and filtering ZeroTrustDeviceCustomProfileLocalDomainFallback resources.
  */
 export interface ZeroTrustDeviceCustomProfileLocalDomainFallbackState {
-    accountId?: pulumi.Input<string>;
-    domains?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>[]>;
-    policyId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    domains?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>[] | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustDeviceCustomProfileLocalDomainFallback resource.
  */
 export interface ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     domains: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>[]>;
     policyId: pulumi.Input<string>;
 }

@@ -146,37 +146,37 @@ export interface AccountSubscriptionState {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The monetary unit in which pricing information is displayed.
      */
-    currency?: pulumi.Input<string>;
+    currency?: pulumi.Input<string | undefined>;
     /**
      * The end of the current period and also when the next billing is due.
      */
-    currentPeriodEnd?: pulumi.Input<string>;
+    currentPeriodEnd?: pulumi.Input<string | undefined>;
     /**
      * When the current billing period started. May match initial*period*start if this is the first period.
      */
-    currentPeriodStart?: pulumi.Input<string>;
+    currentPeriodStart?: pulumi.Input<string | undefined>;
     /**
      * How often the subscription is renewed automatically.
      * Available values: "weekly", "monthly", "quarterly", "yearly".
      */
-    frequency?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string | undefined>;
     /**
      * The price of the subscription that will be billed, in US dollars.
      */
-    price?: pulumi.Input<number>;
+    price?: pulumi.Input<number | undefined>;
     /**
      * The rate plan applied to the subscription.
      */
-    ratePlan?: pulumi.Input<inputs.AccountSubscriptionRatePlan>;
+    ratePlan?: pulumi.Input<inputs.AccountSubscriptionRatePlan | undefined>;
     /**
      * The state that the subscription is in.
      * Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -186,14 +186,14 @@ export interface AccountSubscriptionArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * How often the subscription is renewed automatically.
      * Available values: "weekly", "monthly", "quarterly", "yearly".
      */
-    frequency?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string | undefined>;
     /**
      * The rate plan applied to the subscription.
      */
-    ratePlan?: pulumi.Input<inputs.AccountSubscriptionRatePlan>;
+    ratePlan?: pulumi.Input<inputs.AccountSubscriptionRatePlan | undefined>;
 }

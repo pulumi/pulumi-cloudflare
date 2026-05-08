@@ -199,9 +199,9 @@ def get_magic_transit_site_wan(account_id: Optional[_builtins.str] = None,
         static_addressing=pulumi.get(__ret__, 'static_addressing'),
         vlan_tag=pulumi.get(__ret__, 'vlan_tag'),
         wan_id=pulumi.get(__ret__, 'wan_id'))
-def get_magic_transit_site_wan_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      wan_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_magic_transit_site_wan_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                      wan_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitSiteWanResult]:
     """
     Accepted Permissions

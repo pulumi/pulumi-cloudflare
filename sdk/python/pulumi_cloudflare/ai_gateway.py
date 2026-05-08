@@ -27,22 +27,22 @@ class AiGatewayArgs:
                  collect_logs: pulumi.Input[_builtins.bool],
                  rate_limiting_interval: pulumi.Input[_builtins.int],
                  rate_limiting_limit: pulumi.Input[_builtins.int],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dlp: Optional[pulumi.Input['AiGatewayDlpArgs']] = None,
-                 log_management: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_management_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logpush_public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 otels: Optional[pulumi.Input[Sequence[pulumi.Input['AiGatewayOtelArgs']]]] = None,
-                 rate_limiting_technique: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_backoff: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_max_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stripe: Optional[pulumi.Input['AiGatewayStripeArgs']] = None,
-                 workers_ai_billing_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zdr: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dlp: pulumi.Input[Optional['AiGatewayDlpArgs']] = None,
+                 log_management: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logpush_public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 otels: pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayOtelArgs']]]] = None,
+                 rate_limiting_technique: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_backoff: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stripe: pulumi.Input[Optional['AiGatewayStripeArgs']] = None,
+                 workers_ai_billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zdr: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AiGateway resource.
 
@@ -154,94 +154,94 @@ class AiGatewayArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def authentication(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def authentication(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter
-    def dlp(self) -> Optional[pulumi.Input['AiGatewayDlpArgs']]:
+    def dlp(self) -> pulumi.Input[Optional['AiGatewayDlpArgs']]:
         return pulumi.get(self, "dlp")
 
     @dlp.setter
-    def dlp(self, value: Optional[pulumi.Input['AiGatewayDlpArgs']]):
+    def dlp(self, value: pulumi.Input[Optional['AiGatewayDlpArgs']]):
         pulumi.set(self, "dlp", value)
 
     @_builtins.property
     @pulumi.getter(name="logManagement")
-    def log_management(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_management(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "log_management")
 
     @log_management.setter
-    def log_management(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_management(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_management", value)
 
     @_builtins.property
     @pulumi.getter(name="logManagementStrategy")
-    def log_management_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_management_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "STOP*INSERTING", "DELETE*OLDEST".
         """
         return pulumi.get(self, "log_management_strategy")
 
     @log_management_strategy.setter
-    def log_management_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_management_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_management_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def logpush(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logpush(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "logpush")
 
     @logpush.setter
-    def logpush(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logpush(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logpush", value)
 
     @_builtins.property
     @pulumi.getter(name="logpushPublicKey")
-    def logpush_public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logpush_public_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "logpush_public_key")
 
     @logpush_public_key.setter
-    def logpush_public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logpush_public_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logpush_public_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def otels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiGatewayOtelArgs']]]]:
+    def otels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayOtelArgs']]]]:
         return pulumi.get(self, "otels")
 
     @otels.setter
-    def otels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiGatewayOtelArgs']]]]):
+    def otels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayOtelArgs']]]]):
         pulumi.set(self, "otels", value)
 
     @_builtins.property
     @pulumi.getter(name="rateLimitingTechnique")
-    def rate_limiting_technique(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rate_limiting_technique(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "fixed", "sliding".
         """
         return pulumi.get(self, "rate_limiting_technique")
 
     @rate_limiting_technique.setter
-    def rate_limiting_technique(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rate_limiting_technique(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rate_limiting_technique", value)
 
     @_builtins.property
     @pulumi.getter(name="retryBackoff")
-    def retry_backoff(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retry_backoff(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backoff strategy for retry delays
         Available values: "constant", "linear", "exponential".
@@ -249,54 +249,54 @@ class AiGatewayArgs:
         return pulumi.get(self, "retry_backoff")
 
     @retry_backoff.setter
-    def retry_backoff(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retry_backoff(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retry_backoff", value)
 
     @_builtins.property
     @pulumi.getter(name="retryDelay")
-    def retry_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retry_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Delay between retry attempts in milliseconds (0-5000)
         """
         return pulumi.get(self, "retry_delay")
 
     @retry_delay.setter
-    def retry_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retry_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retry_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="retryMaxAttempts")
-    def retry_max_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retry_max_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of retry attempts for failed requests (1-5)
         """
         return pulumi.get(self, "retry_max_attempts")
 
     @retry_max_attempts.setter
-    def retry_max_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retry_max_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retry_max_attempts", value)
 
     @_builtins.property
     @pulumi.getter(name="storeId")
-    def store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "store_id")
 
     @store_id.setter
-    def store_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def store_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "store_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def stripe(self) -> Optional[pulumi.Input['AiGatewayStripeArgs']]:
+    def stripe(self) -> pulumi.Input[Optional['AiGatewayStripeArgs']]:
         return pulumi.get(self, "stripe")
 
     @stripe.setter
-    def stripe(self, value: Optional[pulumi.Input['AiGatewayStripeArgs']]):
+    def stripe(self, value: pulumi.Input[Optional['AiGatewayStripeArgs']]):
         pulumi.set(self, "stripe", value)
 
     @_builtins.property
     @pulumi.getter(name="workersAiBillingMode")
-    def workers_ai_billing_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workers_ai_billing_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
         Available values: "postpaid".
@@ -304,47 +304,47 @@ class AiGatewayArgs:
         return pulumi.get(self, "workers_ai_billing_mode")
 
     @workers_ai_billing_mode.setter
-    def workers_ai_billing_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workers_ai_billing_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workers_ai_billing_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def zdr(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def zdr(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "zdr")
 
     @zdr.setter
-    def zdr(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def zdr(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "zdr", value)
 
 
 @pulumi.input_type
 class _AiGatewayState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_invalidate_on_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 collect_logs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 dlp: Optional[pulumi.Input['AiGatewayDlpArgs']] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_management: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_management_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logpush_public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 otels: Optional[pulumi.Input[Sequence[pulumi.Input['AiGatewayOtelArgs']]]] = None,
-                 rate_limiting_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 rate_limiting_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 rate_limiting_technique: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_backoff: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_max_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stripe: Optional[pulumi.Input['AiGatewayStripeArgs']] = None,
-                 workers_ai_billing_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zdr: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_invalidate_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 dlp: pulumi.Input[Optional['AiGatewayDlpArgs']] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_management: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logpush_public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 otels: pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayOtelArgs']]]] = None,
+                 rate_limiting_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 rate_limiting_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 rate_limiting_technique: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_backoff: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stripe: pulumi.Input[Optional['AiGatewayStripeArgs']] = None,
+                 workers_ai_billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zdr: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AiGateway resources.
 
@@ -411,178 +411,178 @@ class _AiGatewayState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aiGatewayId")
-    def ai_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ai_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         gateway id
         """
         return pulumi.get(self, "ai_gateway_id")
 
     @ai_gateway_id.setter
-    def ai_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ai_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ai_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def authentication(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def authentication(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheInvalidateOnUpdate")
-    def cache_invalidate_on_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cache_invalidate_on_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "cache_invalidate_on_update")
 
     @cache_invalidate_on_update.setter
-    def cache_invalidate_on_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cache_invalidate_on_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cache_invalidate_on_update", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheTtl")
-    def cache_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cache_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "cache_ttl")
 
     @cache_ttl.setter
-    def cache_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cache_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="collectLogs")
-    def collect_logs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def collect_logs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "collect_logs")
 
     @collect_logs.setter
-    def collect_logs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def collect_logs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "collect_logs", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def dlp(self) -> Optional[pulumi.Input['AiGatewayDlpArgs']]:
+    def dlp(self) -> pulumi.Input[Optional['AiGatewayDlpArgs']]:
         return pulumi.get(self, "dlp")
 
     @dlp.setter
-    def dlp(self, value: Optional[pulumi.Input['AiGatewayDlpArgs']]):
+    def dlp(self, value: pulumi.Input[Optional['AiGatewayDlpArgs']]):
         pulumi.set(self, "dlp", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter(name="logManagement")
-    def log_management(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_management(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "log_management")
 
     @log_management.setter
-    def log_management(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_management(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_management", value)
 
     @_builtins.property
     @pulumi.getter(name="logManagementStrategy")
-    def log_management_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_management_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "STOP*INSERTING", "DELETE*OLDEST".
         """
         return pulumi.get(self, "log_management_strategy")
 
     @log_management_strategy.setter
-    def log_management_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_management_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_management_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def logpush(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logpush(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "logpush")
 
     @logpush.setter
-    def logpush(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logpush(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logpush", value)
 
     @_builtins.property
     @pulumi.getter(name="logpushPublicKey")
-    def logpush_public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logpush_public_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "logpush_public_key")
 
     @logpush_public_key.setter
-    def logpush_public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logpush_public_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logpush_public_key", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedAt")
-    def modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_at")
 
     @modified_at.setter
-    def modified_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def otels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiGatewayOtelArgs']]]]:
+    def otels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayOtelArgs']]]]:
         return pulumi.get(self, "otels")
 
     @otels.setter
-    def otels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiGatewayOtelArgs']]]]):
+    def otels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayOtelArgs']]]]):
         pulumi.set(self, "otels", value)
 
     @_builtins.property
     @pulumi.getter(name="rateLimitingInterval")
-    def rate_limiting_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rate_limiting_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "rate_limiting_interval")
 
     @rate_limiting_interval.setter
-    def rate_limiting_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rate_limiting_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rate_limiting_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="rateLimitingLimit")
-    def rate_limiting_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rate_limiting_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "rate_limiting_limit")
 
     @rate_limiting_limit.setter
-    def rate_limiting_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rate_limiting_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rate_limiting_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="rateLimitingTechnique")
-    def rate_limiting_technique(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rate_limiting_technique(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "fixed", "sliding".
         """
         return pulumi.get(self, "rate_limiting_technique")
 
     @rate_limiting_technique.setter
-    def rate_limiting_technique(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rate_limiting_technique(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rate_limiting_technique", value)
 
     @_builtins.property
     @pulumi.getter(name="retryBackoff")
-    def retry_backoff(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retry_backoff(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backoff strategy for retry delays
         Available values: "constant", "linear", "exponential".
@@ -590,54 +590,54 @@ class _AiGatewayState:
         return pulumi.get(self, "retry_backoff")
 
     @retry_backoff.setter
-    def retry_backoff(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retry_backoff(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retry_backoff", value)
 
     @_builtins.property
     @pulumi.getter(name="retryDelay")
-    def retry_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retry_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Delay between retry attempts in milliseconds (0-5000)
         """
         return pulumi.get(self, "retry_delay")
 
     @retry_delay.setter
-    def retry_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retry_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retry_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="retryMaxAttempts")
-    def retry_max_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retry_max_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of retry attempts for failed requests (1-5)
         """
         return pulumi.get(self, "retry_max_attempts")
 
     @retry_max_attempts.setter
-    def retry_max_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retry_max_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retry_max_attempts", value)
 
     @_builtins.property
     @pulumi.getter(name="storeId")
-    def store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "store_id")
 
     @store_id.setter
-    def store_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def store_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "store_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def stripe(self) -> Optional[pulumi.Input['AiGatewayStripeArgs']]:
+    def stripe(self) -> pulumi.Input[Optional['AiGatewayStripeArgs']]:
         return pulumi.get(self, "stripe")
 
     @stripe.setter
-    def stripe(self, value: Optional[pulumi.Input['AiGatewayStripeArgs']]):
+    def stripe(self, value: pulumi.Input[Optional['AiGatewayStripeArgs']]):
         pulumi.set(self, "stripe", value)
 
     @_builtins.property
     @pulumi.getter(name="workersAiBillingMode")
-    def workers_ai_billing_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workers_ai_billing_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
         Available values: "postpaid".
@@ -645,16 +645,16 @@ class _AiGatewayState:
         return pulumi.get(self, "workers_ai_billing_mode")
 
     @workers_ai_billing_mode.setter
-    def workers_ai_billing_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workers_ai_billing_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workers_ai_billing_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def zdr(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def zdr(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "zdr")
 
     @zdr.setter
-    def zdr(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def zdr(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "zdr", value)
 
 
@@ -664,28 +664,28 @@ class AiGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_invalidate_on_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 collect_logs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dlp: Optional[pulumi.Input[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict']]] = None,
-                 log_management: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_management_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logpush_public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 otels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiGatewayOtelArgs', 'AiGatewayOtelArgsDict']]]]] = None,
-                 rate_limiting_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 rate_limiting_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 rate_limiting_technique: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_backoff: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_max_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stripe: Optional[pulumi.Input[Union['AiGatewayStripeArgs', 'AiGatewayStripeArgsDict']]] = None,
-                 workers_ai_billing_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zdr: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_invalidate_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dlp: pulumi.Input[Optional[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict']]] = None,
+                 log_management: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logpush_public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 otels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiGatewayOtelArgs', 'AiGatewayOtelArgsDict']]]]] = None,
+                 rate_limiting_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 rate_limiting_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 rate_limiting_technique: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_backoff: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stripe: pulumi.Input[Optional[Union['AiGatewayStripeArgs', 'AiGatewayStripeArgsDict']]] = None,
+                 workers_ai_billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zdr: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -800,28 +800,28 @@ class AiGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_invalidate_on_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 collect_logs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dlp: Optional[pulumi.Input[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict']]] = None,
-                 log_management: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_management_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logpush_public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 otels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiGatewayOtelArgs', 'AiGatewayOtelArgsDict']]]]] = None,
-                 rate_limiting_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 rate_limiting_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 rate_limiting_technique: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_backoff: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_max_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stripe: Optional[pulumi.Input[Union['AiGatewayStripeArgs', 'AiGatewayStripeArgsDict']]] = None,
-                 workers_ai_billing_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zdr: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_invalidate_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dlp: pulumi.Input[Optional[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict']]] = None,
+                 log_management: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logpush_public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 otels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiGatewayOtelArgs', 'AiGatewayOtelArgsDict']]]]] = None,
+                 rate_limiting_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 rate_limiting_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 rate_limiting_technique: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_backoff: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stripe: pulumi.Input[Optional[Union['AiGatewayStripeArgs', 'AiGatewayStripeArgsDict']]] = None,
+                 workers_ai_billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zdr: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -878,31 +878,31 @@ class AiGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ai_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-            cache_invalidate_on_update: Optional[pulumi.Input[_builtins.bool]] = None,
-            cache_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-            collect_logs: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            dlp: Optional[pulumi.Input[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict']]] = None,
-            is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-            log_management: Optional[pulumi.Input[_builtins.int]] = None,
-            log_management_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            logpush: Optional[pulumi.Input[_builtins.bool]] = None,
-            logpush_public_key: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-            otels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiGatewayOtelArgs', 'AiGatewayOtelArgsDict']]]]] = None,
-            rate_limiting_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            rate_limiting_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            rate_limiting_technique: Optional[pulumi.Input[_builtins.str]] = None,
-            retry_backoff: Optional[pulumi.Input[_builtins.str]] = None,
-            retry_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            retry_max_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-            store_id: Optional[pulumi.Input[_builtins.str]] = None,
-            stripe: Optional[pulumi.Input[Union['AiGatewayStripeArgs', 'AiGatewayStripeArgsDict']]] = None,
-            workers_ai_billing_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            zdr: Optional[pulumi.Input[_builtins.bool]] = None) -> 'AiGateway':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+            cache_invalidate_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            cache_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dlp: pulumi.Input[Optional[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict']]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_management: pulumi.Input[Optional[_builtins.int]] = None,
+            log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            logpush: pulumi.Input[Optional[_builtins.bool]] = None,
+            logpush_public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            otels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiGatewayOtelArgs', 'AiGatewayOtelArgsDict']]]]] = None,
+            rate_limiting_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            rate_limiting_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            rate_limiting_technique: pulumi.Input[Optional[_builtins.str]] = None,
+            retry_backoff: pulumi.Input[Optional[_builtins.str]] = None,
+            retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+            store_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stripe: pulumi.Input[Optional[Union['AiGatewayStripeArgs', 'AiGatewayStripeArgsDict']]] = None,
+            workers_ai_billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            zdr: pulumi.Input[Optional[_builtins.bool]] = None) -> 'AiGateway':
         """
         Get an existing AiGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

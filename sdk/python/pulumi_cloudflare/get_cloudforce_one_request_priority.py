@@ -252,8 +252,8 @@ def get_cloudforce_one_request_priority(account_id: Optional[_builtins.str] = No
         tlp=pulumi.get(__ret__, 'tlp'),
         tokens=pulumi.get(__ret__, 'tokens'),
         updated=pulumi.get(__ret__, 'updated'))
-def get_cloudforce_one_request_priority_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               priority_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cloudforce_one_request_priority_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               priority_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudforceOneRequestPriorityResult]:
     """
     Accepted Permissions

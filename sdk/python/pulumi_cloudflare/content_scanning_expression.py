@@ -22,7 +22,7 @@ __all__ = ['ContentScanningExpressionArgs', 'ContentScanningExpression']
 class ContentScanningExpressionArgs:
     def __init__(__self__, *,
                  bodies: pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]],
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ContentScanningExpression resource.
 
@@ -43,22 +43,22 @@ class ContentScanningExpressionArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _ContentScanningExpressionState:
     def __init__(__self__, *,
-                 bodies: Optional[pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContentScanningExpression resources.
 
@@ -71,23 +71,23 @@ class _ContentScanningExpressionState:
 
     @_builtins.property
     @pulumi.getter
-    def bodies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]]:
+    def bodies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]]:
         return pulumi.get(self, "bodies")
 
     @bodies.setter
-    def bodies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]]):
+    def bodies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]]):
         pulumi.set(self, "bodies", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -97,8 +97,8 @@ class ContentScanningExpression(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -173,8 +173,8 @@ class ContentScanningExpression(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -198,8 +198,8 @@ class ContentScanningExpression(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ContentScanningExpression':
+            bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ContentScanningExpression':
         """
         Get an existing ContentScanningExpression resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

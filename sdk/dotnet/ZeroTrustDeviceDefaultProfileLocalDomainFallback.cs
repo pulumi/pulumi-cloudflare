@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDeviceDefaultProfileLocalDomainFallback = new Cloudflare.Index.ZeroTrustDeviceDefaultProfileLocalDomainFallback("example_zero_trust_device_default_profile_local_domain_fallback", new()
+    ///     var exampleZeroTrustDeviceDefaultProfileLocalDomainFallback = new Cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallback("example_zero_trust_device_default_profile_local_domain_fallback", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Domains = new[]

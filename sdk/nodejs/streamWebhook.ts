@@ -109,19 +109,19 @@ export interface StreamWebhookState {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The date and time the webhook was last modified.
      */
-    modified?: pulumi.Input<string>;
+    modified?: pulumi.Input<string | undefined>;
     /**
      * The URL where webhooks will be sent.
      */
-    notificationUrl?: pulumi.Input<string>;
+    notificationUrl?: pulumi.Input<string | undefined>;
     /**
      * The secret used to verify webhook signatures.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -131,9 +131,9 @@ export interface StreamWebhookArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The URL where webhooks will be sent.
      */
-    notificationUrl?: pulumi.Input<string>;
+    notificationUrl?: pulumi.Input<string | undefined>;
 }

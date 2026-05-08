@@ -75,5 +75,5 @@ export function getZeroTrustGatewayLoggingOutput(args?: GetZeroTrustGatewayLoggi
  * A collection of arguments for invoking getZeroTrustGatewayLogging.
  */
 export interface GetZeroTrustGatewayLoggingOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
 }

@@ -159,46 +159,46 @@ export interface EmailRoutingDnsState {
     /**
      * The date and time the settings have been created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * State of the zone settings for Email Routing.
      */
-    enabled?: pulumi.Input<boolean>;
-    errors?: pulumi.Input<pulumi.Input<inputs.EmailRoutingDnsError>[]>;
-    messages?: pulumi.Input<pulumi.Input<inputs.EmailRoutingDnsMessage>[]>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    errors?: pulumi.Input<pulumi.Input<inputs.EmailRoutingDnsError>[] | undefined>;
+    messages?: pulumi.Input<pulumi.Input<inputs.EmailRoutingDnsMessage>[] | undefined>;
     /**
      * The date and time the settings have been modified.
      */
-    modified?: pulumi.Input<string>;
+    modified?: pulumi.Input<string | undefined>;
     /**
      * Domain of your zone.
      */
-    name?: pulumi.Input<string>;
-    result?: pulumi.Input<inputs.EmailRoutingDnsResult>;
-    resultInfo?: pulumi.Input<inputs.EmailRoutingDnsResultInfo>;
+    name?: pulumi.Input<string | undefined>;
+    result?: pulumi.Input<inputs.EmailRoutingDnsResult | undefined>;
+    resultInfo?: pulumi.Input<inputs.EmailRoutingDnsResultInfo | undefined>;
     /**
      * Flag to check if the user skipped the configuration wizard.
      */
-    skipWizard?: pulumi.Input<boolean>;
+    skipWizard?: pulumi.Input<boolean | undefined>;
     /**
      * Show the state of your account, and the type or configuration error.
      * Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Whether the API call was successful.
      */
-    success?: pulumi.Input<boolean>;
+    success?: pulumi.Input<boolean | undefined>;
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      *
      * @deprecated This attribute is deprecated.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,7 +208,7 @@ export interface EmailRoutingDnsArgs {
     /**
      * Domain of your zone.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */

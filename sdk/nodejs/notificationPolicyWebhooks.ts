@@ -147,36 +147,36 @@ export interface NotificationPolicyWebhooksState {
     /**
      * The account id
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of when the webhook destination was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
      */
-    lastFailure?: pulumi.Input<string>;
+    lastFailure?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.
      */
-    lastSuccess?: pulumi.Input<string>;
+    lastSuccess?: pulumi.Input<string | undefined>;
     /**
      * The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Type of webhook endpoint.
      * Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The POST endpoint to call when dispatching a notification.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -186,7 +186,7 @@ export interface NotificationPolicyWebhooksArgs {
     /**
      * The account id
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
      */
@@ -194,7 +194,7 @@ export interface NotificationPolicyWebhooksArgs {
     /**
      * Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * The POST endpoint to call when dispatching a notification.
      */

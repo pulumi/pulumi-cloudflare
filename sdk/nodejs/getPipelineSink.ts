@@ -119,10 +119,10 @@ export interface GetPipelineSinkOutputArgs {
     /**
      * Specifies the public ID of the account.
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetPipelineSinkFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetPipelineSinkFilterArgs | undefined>;
     /**
      * Specifies the publid ID of the sink.
      */
-    sinkId?: pulumi.Input<string>;
+    sinkId?: pulumi.Input<string | undefined>;
 }

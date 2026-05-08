@@ -191,13 +191,13 @@ def get_organizations(containing: Optional[Union['GetOrganizationsContainingArgs
         page_token=pulumi.get(__ret__, 'page_token'),
         parent=pulumi.get(__ret__, 'parent'),
         results=pulumi.get(__ret__, 'results'))
-def get_organizations_output(containing: Optional[pulumi.Input[Optional[Union['GetOrganizationsContainingArgs', 'GetOrganizationsContainingArgsDict']]]] = None,
-                             ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             name: Optional[pulumi.Input[Optional[Union['GetOrganizationsNameArgs', 'GetOrganizationsNameArgsDict']]]] = None,
-                             page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             page_token: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             parent: Optional[pulumi.Input[Optional[Union['GetOrganizationsParentArgs', 'GetOrganizationsParentArgsDict']]]] = None,
+def get_organizations_output(containing: pulumi.Input[Optional[Optional[Union['GetOrganizationsContainingArgs', 'GetOrganizationsContainingArgsDict']]]] = None,
+                             ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             name: pulumi.Input[Optional[Optional[Union['GetOrganizationsNameArgs', 'GetOrganizationsNameArgsDict']]]] = None,
+                             page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             page_token: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             parent: pulumi.Input[Optional[Optional[Union['GetOrganizationsParentArgs', 'GetOrganizationsParentArgsDict']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationsResult]:
     """
     Accepted Permissions

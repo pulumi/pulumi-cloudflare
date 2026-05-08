@@ -190,45 +190,45 @@ export interface AccountTokenState {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
-    condition?: pulumi.Input<inputs.AccountTokenCondition>;
+    accountId?: pulumi.Input<string | undefined>;
+    condition?: pulumi.Input<inputs.AccountTokenCondition | undefined>;
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      */
-    expiresOn?: pulumi.Input<string>;
+    expiresOn?: pulumi.Input<string | undefined>;
     /**
      * The time on which the token was created.
      */
-    issuedOn?: pulumi.Input<string>;
+    issuedOn?: pulumi.Input<string | undefined>;
     /**
      * Last time the token was used.
      */
-    lastUsedOn?: pulumi.Input<string>;
+    lastUsedOn?: pulumi.Input<string | undefined>;
     /**
      * Last time the token was modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * Token name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The time before which the token MUST NOT be accepted for processing.
      */
-    notBefore?: pulumi.Input<string>;
+    notBefore?: pulumi.Input<string | undefined>;
     /**
      * Set of access policies assigned to the token.
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.AccountTokenPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.AccountTokenPolicy>[] | undefined>;
     /**
      * Status of the token.
      * Available values: "active", "disabled", "expired".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The token value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -239,11 +239,11 @@ export interface AccountTokenArgs {
      * Account identifier tag.
      */
     accountId: pulumi.Input<string>;
-    condition?: pulumi.Input<inputs.AccountTokenCondition>;
+    condition?: pulumi.Input<inputs.AccountTokenCondition | undefined>;
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      */
-    expiresOn?: pulumi.Input<string>;
+    expiresOn?: pulumi.Input<string | undefined>;
     /**
      * Token name.
      */
@@ -251,7 +251,7 @@ export interface AccountTokenArgs {
     /**
      * The time before which the token MUST NOT be accepted for processing.
      */
-    notBefore?: pulumi.Input<string>;
+    notBefore?: pulumi.Input<string | undefined>;
     /**
      * Set of access policies assigned to the token.
      */
@@ -260,5 +260,5 @@ export interface AccountTokenArgs {
      * Status of the token.
      * Available values: "active", "disabled", "expired".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

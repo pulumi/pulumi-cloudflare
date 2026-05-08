@@ -116,5 +116,5 @@ export interface GetAccountSubscriptionOutputArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
 }

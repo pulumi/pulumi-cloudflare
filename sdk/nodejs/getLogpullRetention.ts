@@ -88,5 +88,5 @@ export interface GetLogpullRetentionOutputArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

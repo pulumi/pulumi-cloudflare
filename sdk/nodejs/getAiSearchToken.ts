@@ -61,10 +61,10 @@ export function getAiSearchTokenOutput(args?: GetAiSearchTokenOutputArgs, opts?:
  * A collection of arguments for invoking getAiSearchToken.
  */
 export interface GetAiSearchTokenOutputArgs {
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetAiSearchTokenFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetAiSearchTokenFilterArgs | undefined>;
     /**
      * The ID of this resource.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }

@@ -25,11 +25,11 @@ class ZeroTrustAccessAiControlsMcpServerArgs:
                  hostname: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  zero_trust_access_ai_controls_mcp_server_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_credentials: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_prompts: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]] = None,
-                 updated_tools: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_credentials: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_prompts: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]] = None,
+                 updated_tools: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessAiControlsMcpServer resource.
 
@@ -95,72 +95,72 @@ class ZeroTrustAccessAiControlsMcpServerArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="authCredentials")
-    def auth_credentials(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_credentials(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "auth_credentials")
 
     @auth_credentials.setter
-    def auth_credentials(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_credentials(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_credentials", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedPrompts")
-    def updated_prompts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]]:
+    def updated_prompts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]]:
         return pulumi.get(self, "updated_prompts")
 
     @updated_prompts.setter
-    def updated_prompts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]]):
+    def updated_prompts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]]):
         pulumi.set(self, "updated_prompts", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedTools")
-    def updated_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]]:
+    def updated_tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]]:
         return pulumi.get(self, "updated_tools")
 
     @updated_tools.setter
-    def updated_tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]]):
+    def updated_tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]]):
         pulumi.set(self, "updated_tools", value)
 
 
 @pulumi.input_type
 class _ZeroTrustAccessAiControlsMcpServerState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_credentials: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 error: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_successful_sync: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_synced: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompts: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tools: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 updated_prompts: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]] = None,
-                 updated_tools: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]] = None,
-                 zero_trust_access_ai_controls_mcp_server_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_credentials: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 error: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_successful_sync: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_synced: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tools: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 updated_prompts: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]] = None,
+                 updated_tools: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]] = None,
+                 zero_trust_access_ai_controls_mcp_server_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessAiControlsMcpServer resources.
 
@@ -208,179 +208,179 @@ class _ZeroTrustAccessAiControlsMcpServerState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="authCredentials")
-    def auth_credentials(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_credentials(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "auth_credentials")
 
     @auth_credentials.setter
-    def auth_credentials(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_credentials(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="authType")
-    def auth_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "oauth", "bearer", "unauthenticated".
         """
         return pulumi.get(self, "auth_type")
 
     @auth_type.setter
-    def auth_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def error(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "error")
 
     @error.setter
-    def error(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="lastSuccessfulSync")
-    def last_successful_sync(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_successful_sync(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "last_successful_sync")
 
     @last_successful_sync.setter
-    def last_successful_sync(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_successful_sync(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_successful_sync", value)
 
     @_builtins.property
     @pulumi.getter(name="lastSynced")
-    def last_synced(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_synced(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "last_synced")
 
     @last_synced.setter
-    def last_synced(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_synced(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_synced", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedAt")
-    def modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_at")
 
     @modified_at.setter
-    def modified_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_at", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedBy")
-    def modified_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_by")
 
     @modified_by.setter
-    def modified_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def prompts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def prompts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         return pulumi.get(self, "prompts")
 
     @prompts.setter
-    def prompts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def prompts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "prompts", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         return pulumi.get(self, "tools")
 
     @tools.setter
-    def tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "tools", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedPrompts")
-    def updated_prompts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]]:
+    def updated_prompts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]]:
         return pulumi.get(self, "updated_prompts")
 
     @updated_prompts.setter
-    def updated_prompts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]]):
+    def updated_prompts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs']]]]):
         pulumi.set(self, "updated_prompts", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedTools")
-    def updated_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]]:
+    def updated_tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]]:
         return pulumi.get(self, "updated_tools")
 
     @updated_tools.setter
-    def updated_tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]]):
+    def updated_tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs']]]]):
         pulumi.set(self, "updated_tools", value)
 
     @_builtins.property
     @pulumi.getter(name="zeroTrustAccessAiControlsMcpServerId")
-    def zero_trust_access_ai_controls_mcp_server_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zero_trust_access_ai_controls_mcp_server_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         server id
         """
         return pulumi.get(self, "zero_trust_access_ai_controls_mcp_server_id")
 
     @zero_trust_access_ai_controls_mcp_server_id.setter
-    def zero_trust_access_ai_controls_mcp_server_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zero_trust_access_ai_controls_mcp_server_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zero_trust_access_ai_controls_mcp_server_id", value)
 
 
@@ -390,15 +390,15 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_credentials: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_prompts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]]] = None,
-                 updated_tools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]]] = None,
-                 zero_trust_access_ai_controls_mcp_server_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_credentials: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]]] = None,
+                 updated_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]]] = None,
+                 zero_trust_access_ai_controls_mcp_server_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -498,15 +498,15 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_credentials: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_prompts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]]] = None,
-                 updated_tools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]]] = None,
-                 zero_trust_access_ai_controls_mcp_server_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_credentials: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]]] = None,
+                 updated_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]]] = None,
+                 zero_trust_access_ai_controls_mcp_server_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -555,25 +555,25 @@ class ZeroTrustAccessAiControlsMcpServer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            auth_credentials: Optional[pulumi.Input[_builtins.str]] = None,
-            auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            error: Optional[pulumi.Input[_builtins.str]] = None,
-            hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            last_successful_sync: Optional[pulumi.Input[_builtins.str]] = None,
-            last_synced: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_by: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            prompts: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tools: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-            updated_prompts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]]] = None,
-            updated_tools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]]] = None,
-            zero_trust_access_ai_controls_mcp_server_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustAccessAiControlsMcpServer':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_credentials: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            error: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            last_successful_sync: pulumi.Input[Optional[_builtins.str]] = None,
+            last_synced: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_by: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tools: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            updated_prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgsDict']]]]] = None,
+            updated_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs', 'ZeroTrustAccessAiControlsMcpServerUpdatedToolArgsDict']]]]] = None,
+            zero_trust_access_ai_controls_mcp_server_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustAccessAiControlsMcpServer':
         """
         Get an existing ZeroTrustAccessAiControlsMcpServer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

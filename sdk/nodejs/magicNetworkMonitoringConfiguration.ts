@@ -91,32 +91,32 @@ export class MagicNetworkMonitoringConfiguration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MagicNetworkMonitoringConfiguration resources.
  */
 export interface MagicNetworkMonitoringConfigurationState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
      */
-    defaultSampling?: pulumi.Input<number>;
+    defaultSampling?: pulumi.Input<number | undefined>;
     /**
      * The account name.
      */
-    name?: pulumi.Input<string>;
-    routerIps?: pulumi.Input<pulumi.Input<string>[]>;
-    warpDevices?: pulumi.Input<pulumi.Input<inputs.MagicNetworkMonitoringConfigurationWarpDevice>[]>;
+    name?: pulumi.Input<string | undefined>;
+    routerIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    warpDevices?: pulumi.Input<pulumi.Input<inputs.MagicNetworkMonitoringConfigurationWarpDevice>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a MagicNetworkMonitoringConfiguration resource.
  */
 export interface MagicNetworkMonitoringConfigurationArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
      */
-    defaultSampling?: pulumi.Input<number>;
+    defaultSampling?: pulumi.Input<number | undefined>;
     /**
      * The account name.
      */
     name: pulumi.Input<string>;
-    routerIps?: pulumi.Input<pulumi.Input<string>[]>;
-    warpDevices?: pulumi.Input<pulumi.Input<inputs.MagicNetworkMonitoringConfigurationWarpDevice>[]>;
+    routerIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    warpDevices?: pulumi.Input<pulumi.Input<inputs.MagicNetworkMonitoringConfigurationWarpDevice>[] | undefined>;
 }

@@ -122,8 +122,8 @@ def get_dns_zone_transfers_acl(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ip_range=pulumi.get(__ret__, 'ip_range'),
         name=pulumi.get(__ret__, 'name'))
-def get_dns_zone_transfers_acl_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      acl_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_dns_zone_transfers_acl_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      acl_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsZoneTransfersAclResult]:
     """
     Accepted Permissions

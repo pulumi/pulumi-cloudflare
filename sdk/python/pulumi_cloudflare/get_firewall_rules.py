@@ -174,12 +174,12 @@ def get_firewall_rules(action: Optional[_builtins.str] = None,
         paused=pulumi.get(__ret__, 'paused'),
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_firewall_rules_output(action: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                              paused: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                              zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_firewall_rules_output(action: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              paused: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                              zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallRulesResult]:
     """
     Accepted Permissions

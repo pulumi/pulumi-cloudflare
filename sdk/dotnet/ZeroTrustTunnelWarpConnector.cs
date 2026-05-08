@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustTunnelWarpConnector = new Cloudflare.Index.ZeroTrustTunnelWarpConnector("example_zero_trust_tunnel_warp_connector", new()
+    ///     var exampleZeroTrustTunnelWarpConnector = new Cloudflare.ZeroTrustTunnelWarpConnector("example_zero_trust_tunnel_warp_connector", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "blog",

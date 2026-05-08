@@ -22,12 +22,12 @@ __all__ = ['ZeroTrustDlpDatasetArgs', 'ZeroTrustDlpDataset']
 class ZeroTrustDlpDatasetArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoding_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoding_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpDataset resource.
 
@@ -66,16 +66,16 @@ class ZeroTrustDlpDatasetArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="caseSensitive")
-    def case_sensitive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def case_sensitive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only applies to custom word lists.
         Determines if the words should be matched in a case-sensitive manner
@@ -84,45 +84,45 @@ class ZeroTrustDlpDatasetArgs:
         return pulumi.get(self, "case_sensitive")
 
     @case_sensitive.setter
-    def case_sensitive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def case_sensitive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "case_sensitive", value)
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the dataset.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encodingVersion")
-    def encoding_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def encoding_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Dataset encoding version
         """
         return pulumi.get(self, "encoding_version")
 
     @encoding_version.setter
-    def encoding_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def encoding_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "encoding_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Generate a secret dataset.
 
@@ -132,29 +132,29 @@ class ZeroTrustDlpDatasetArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secret", value)
 
 
 @pulumi.input_type
 class _ZeroTrustDlpDatasetState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpDatasetColumnArgs']]]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset: Optional[pulumi.Input['ZeroTrustDlpDatasetDatasetArgs']] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoding_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_cells: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_cells: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 uploads: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpDatasetUploadArgs']]]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpDatasetColumnArgs']]]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset: pulumi.Input[Optional['ZeroTrustDlpDatasetDatasetArgs']] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoding_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_cells: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_cells: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 uploads: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpDatasetUploadArgs']]]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpDataset resources.
 
@@ -208,16 +208,16 @@ class _ZeroTrustDlpDatasetState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="caseSensitive")
-    def case_sensitive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def case_sensitive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only applies to custom word lists.
         Determines if the words should be matched in a case-sensitive manner
@@ -226,99 +226,99 @@ class _ZeroTrustDlpDatasetState:
         return pulumi.get(self, "case_sensitive")
 
     @case_sensitive.setter
-    def case_sensitive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def case_sensitive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "case_sensitive", value)
 
     @_builtins.property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpDatasetColumnArgs']]]]:
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpDatasetColumnArgs']]]]:
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpDatasetColumnArgs']]]]):
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpDatasetColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input['ZeroTrustDlpDatasetDatasetArgs']]:
+    def dataset(self) -> pulumi.Input[Optional['ZeroTrustDlpDatasetDatasetArgs']]:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input['ZeroTrustDlpDatasetDatasetArgs']]):
+    def dataset(self, value: pulumi.Input[Optional['ZeroTrustDlpDatasetDatasetArgs']]):
         pulumi.set(self, "dataset", value)
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the dataset.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encodingVersion")
-    def encoding_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def encoding_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Dataset encoding version
         """
         return pulumi.get(self, "encoding_version")
 
     @encoding_version.setter
-    def encoding_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def encoding_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "encoding_version", value)
 
     @_builtins.property
     @pulumi.getter(name="maxCells")
-    def max_cells(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_cells(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_cells")
 
     @max_cells.setter
-    def max_cells(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_cells(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_cells", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="numCells")
-    def num_cells(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_cells(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "num_cells")
 
     @num_cells.setter
-    def num_cells(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_cells(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_cells", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Generate a secret dataset.
 
@@ -328,24 +328,24 @@ class _ZeroTrustDlpDatasetState:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Stores when the dataset was last updated.
 
@@ -354,28 +354,28 @@ class _ZeroTrustDlpDatasetState:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def uploads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpDatasetUploadArgs']]]]:
+    def uploads(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpDatasetUploadArgs']]]]:
         return pulumi.get(self, "uploads")
 
     @uploads.setter
-    def uploads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpDatasetUploadArgs']]]]):
+    def uploads(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpDatasetUploadArgs']]]]):
         pulumi.set(self, "uploads", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version to use when uploading the dataset.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
@@ -385,13 +385,13 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoding_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoding_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -478,13 +478,13 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoding_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoding_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -522,22 +522,22 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-            columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpDatasetColumnArgs', 'ZeroTrustDlpDatasetColumnArgsDict']]]]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            dataset: Optional[pulumi.Input[Union['ZeroTrustDlpDatasetDatasetArgs', 'ZeroTrustDlpDatasetDatasetArgsDict']]] = None,
-            dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            encoding_version: Optional[pulumi.Input[_builtins.int]] = None,
-            max_cells: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            num_cells: Optional[pulumi.Input[_builtins.int]] = None,
-            secret: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            uploads: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpDatasetUploadArgs', 'ZeroTrustDlpDatasetUploadArgsDict']]]]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None) -> 'ZeroTrustDlpDataset':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+            columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDatasetColumnArgs', 'ZeroTrustDlpDatasetColumnArgsDict']]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset: pulumi.Input[Optional[Union['ZeroTrustDlpDatasetDatasetArgs', 'ZeroTrustDlpDatasetDatasetArgsDict']]] = None,
+            dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encoding_version: pulumi.Input[Optional[_builtins.int]] = None,
+            max_cells: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            num_cells: pulumi.Input[Optional[_builtins.int]] = None,
+            secret: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            uploads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDlpDatasetUploadArgs', 'ZeroTrustDlpDatasetUploadArgsDict']]]]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> 'ZeroTrustDlpDataset':
         """
         Get an existing ZeroTrustDlpDataset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

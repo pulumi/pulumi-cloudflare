@@ -266,5 +266,5 @@ export interface GetZoneSettingOutputArgs {
     /**
      * Identifier
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -24,7 +24,7 @@ class SnippetArgs:
                  files: pulumi.Input[Sequence[pulumi.Input['SnippetFileArgs']]],
                  metadata: pulumi.Input['SnippetMetadataArgs'],
                  snippet_name: pulumi.Input[_builtins.str],
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snippet resource.
 
@@ -77,26 +77,26 @@ class SnippetArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this field to specify the unique ID of the zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _SnippetState:
     def __init__(__self__, *,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 files: Optional[pulumi.Input[Sequence[pulumi.Input['SnippetFileArgs']]]] = None,
-                 metadata: Optional[pulumi.Input['SnippetMetadataArgs']] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 snippet_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 files: pulumi.Input[Optional[Sequence[pulumi.Input['SnippetFileArgs']]]] = None,
+                 metadata: pulumi.Input[Optional['SnippetMetadataArgs']] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 snippet_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Snippet resources.
 
@@ -122,74 +122,74 @@ class _SnippetState:
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates when the snippet was created.
         """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SnippetFileArgs']]]]:
+    def files(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SnippetFileArgs']]]]:
         """
         The list of files belonging to the snippet.
         """
         return pulumi.get(self, "files")
 
     @files.setter
-    def files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SnippetFileArgs']]]]):
+    def files(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SnippetFileArgs']]]]):
         pulumi.set(self, "files", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['SnippetMetadataArgs']]:
+    def metadata(self) -> pulumi.Input[Optional['SnippetMetadataArgs']]:
         """
         Provide metadata about the snippet.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['SnippetMetadataArgs']]):
+    def metadata(self, value: pulumi.Input[Optional['SnippetMetadataArgs']]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates when the snippet was last modified.
         """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter(name="snippetName")
-    def snippet_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snippet_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identify the snippet.
         """
         return pulumi.get(self, "snippet_name")
 
     @snippet_name.setter
-    def snippet_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snippet_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snippet_name", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this field to specify the unique ID of the zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -199,10 +199,10 @@ class Snippet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict']]]]] = None,
-                 metadata: Optional[pulumi.Input[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict']]] = None,
-                 snippet_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict']]]]] = None,
+                 metadata: pulumi.Input[Optional[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict']]] = None,
+                 snippet_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -300,10 +300,10 @@ class Snippet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict']]]]] = None,
-                 metadata: Optional[pulumi.Input[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict']]] = None,
-                 snippet_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict']]]]] = None,
+                 metadata: pulumi.Input[Optional[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict']]] = None,
+                 snippet_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -335,12 +335,12 @@ class Snippet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict']]]]] = None,
-            metadata: Optional[pulumi.Input[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict']]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            snippet_name: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Snippet':
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SnippetFileArgs', 'SnippetFileArgsDict']]]]] = None,
+            metadata: pulumi.Input[Optional[Union['SnippetMetadataArgs', 'SnippetMetadataArgsDict']]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            snippet_name: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Snippet':
         """
         Get an existing Snippet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

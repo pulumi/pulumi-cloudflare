@@ -123,7 +123,7 @@ export interface GetZeroTrustDeviceSubnetOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the subnet.
      */

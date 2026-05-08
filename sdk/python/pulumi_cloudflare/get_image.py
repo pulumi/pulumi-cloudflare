@@ -184,8 +184,8 @@ def get_image(account_id: Optional[_builtins.str] = None,
         require_signed_urls=pulumi.get(__ret__, 'require_signed_urls'),
         uploaded=pulumi.get(__ret__, 'uploaded'),
         variants=pulumi.get(__ret__, 'variants'))
-def get_image_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     image_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_image_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     image_id: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
     Accepted Permissions

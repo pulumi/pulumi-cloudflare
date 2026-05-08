@@ -151,27 +151,27 @@ export interface ConnectivityDirectoryServiceState {
     /**
      * Account identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Available values: "postgresql", "mysql".
      */
-    appProtocol?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
-    host?: pulumi.Input<inputs.ConnectivityDirectoryServiceHost>;
-    httpPort?: pulumi.Input<number>;
-    httpsPort?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    serviceId?: pulumi.Input<string>;
-    tcpPort?: pulumi.Input<number>;
+    appProtocol?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    host?: pulumi.Input<inputs.ConnectivityDirectoryServiceHost | undefined>;
+    httpPort?: pulumi.Input<number | undefined>;
+    httpsPort?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    serviceId?: pulumi.Input<string | undefined>;
+    tcpPort?: pulumi.Input<number | undefined>;
     /**
      * TLS settings for a connectivity service.
      */
-    tlsSettings?: pulumi.Input<inputs.ConnectivityDirectoryServiceTlsSettings>;
+    tlsSettings?: pulumi.Input<inputs.ConnectivityDirectoryServiceTlsSettings | undefined>;
     /**
      * Available values: "tcp", "http".
      */
-    type?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,20 +181,20 @@ export interface ConnectivityDirectoryServiceArgs {
     /**
      * Account identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Available values: "postgresql", "mysql".
      */
-    appProtocol?: pulumi.Input<string>;
+    appProtocol?: pulumi.Input<string | undefined>;
     host: pulumi.Input<inputs.ConnectivityDirectoryServiceHost>;
-    httpPort?: pulumi.Input<number>;
-    httpsPort?: pulumi.Input<number>;
+    httpPort?: pulumi.Input<number | undefined>;
+    httpsPort?: pulumi.Input<number | undefined>;
     name: pulumi.Input<string>;
-    tcpPort?: pulumi.Input<number>;
+    tcpPort?: pulumi.Input<number | undefined>;
     /**
      * TLS settings for a connectivity service.
      */
-    tlsSettings?: pulumi.Input<inputs.ConnectivityDirectoryServiceTlsSettings>;
+    tlsSettings?: pulumi.Input<inputs.ConnectivityDirectoryServiceTlsSettings | undefined>;
     /**
      * Available values: "tcp", "http".
      */

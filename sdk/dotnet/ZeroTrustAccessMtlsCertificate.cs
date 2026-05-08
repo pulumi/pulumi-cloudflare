@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessMtlsCertificate = new Cloudflare.Index.ZeroTrustAccessMtlsCertificate("example_zero_trust_access_mtls_certificate", new()
+    ///     var exampleZeroTrustAccessMtlsCertificate = new Cloudflare.ZeroTrustAccessMtlsCertificate("example_zero_trust_access_mtls_certificate", new()
     ///     {
     ///         Certificate = @"  -----BEGIN CERTIFICATE-----
     ///   MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10

@@ -119,7 +119,7 @@ export interface GetStreamCaptionLanguageOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */

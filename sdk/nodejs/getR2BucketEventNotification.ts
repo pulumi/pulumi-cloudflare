@@ -113,7 +113,7 @@ export interface GetR2BucketEventNotificationOutputArgs {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the bucket.
      */

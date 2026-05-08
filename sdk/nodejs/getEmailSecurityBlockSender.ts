@@ -111,10 +111,10 @@ export interface GetEmailSecurityBlockSenderOutputArgs {
     /**
      * Account Identifier
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetEmailSecurityBlockSenderFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetEmailSecurityBlockSenderFilterArgs | undefined>;
     /**
      * The unique identifier for the allow policy.
      */
-    patternId?: pulumi.Input<number>;
+    patternId?: pulumi.Input<number | undefined>;
 }

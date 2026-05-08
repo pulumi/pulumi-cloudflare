@@ -123,13 +123,13 @@ export function getZoneLockdownOutput(args?: GetZoneLockdownOutputArgs, opts?: p
  * A collection of arguments for invoking getZoneLockdown.
  */
 export interface GetZoneLockdownOutputArgs {
-    filter?: pulumi.Input<inputs.GetZoneLockdownFilterArgs>;
+    filter?: pulumi.Input<inputs.GetZoneLockdownFilterArgs | undefined>;
     /**
      * The unique identifier of the Zone Lockdown rule.
      */
-    lockDownsId?: pulumi.Input<string>;
+    lockDownsId?: pulumi.Input<string | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -151,43 +151,43 @@ export interface ListItemState {
     /**
      * The Account ID for this resource.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A non-negative 32 bit integer
      */
-    asn?: pulumi.Input<number>;
+    asn?: pulumi.Input<number | undefined>;
     /**
      * An informative summary of the list item.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The RFC 3339 timestamp of when the item was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      */
-    hostname?: pulumi.Input<inputs.ListItemHostname>;
+    hostname?: pulumi.Input<inputs.ListItemHostname | undefined>;
     /**
      * An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the list.
      */
-    listId?: pulumi.Input<string>;
+    listId?: pulumi.Input<string | undefined>;
     /**
      * The RFC 3339 timestamp of when the item was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * The unique operation ID of the asynchronous action.
      */
-    operationId?: pulumi.Input<string>;
+    operationId?: pulumi.Input<string | undefined>;
     /**
      * The definition of the redirect.
      */
-    redirect?: pulumi.Input<inputs.ListItemRedirect>;
+    redirect?: pulumi.Input<inputs.ListItemRedirect | undefined>;
 }
 
 /**
@@ -197,23 +197,23 @@ export interface ListItemArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A non-negative 32 bit integer
      */
-    asn?: pulumi.Input<number>;
+    asn?: pulumi.Input<number | undefined>;
     /**
      * An informative summary of the list item.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      */
-    hostname?: pulumi.Input<inputs.ListItemHostname>;
+    hostname?: pulumi.Input<inputs.ListItemHostname | undefined>;
     /**
      * An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the list.
      */
@@ -221,5 +221,5 @@ export interface ListItemArgs {
     /**
      * The definition of the redirect.
      */
-    redirect?: pulumi.Input<inputs.ListItemRedirect>;
+    redirect?: pulumi.Input<inputs.ListItemRedirect | undefined>;
 }

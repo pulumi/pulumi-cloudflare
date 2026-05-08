@@ -115,5 +115,5 @@ export interface GetEmailRoutingSettingsOutputArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

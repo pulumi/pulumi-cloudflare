@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAiGateway = new Cloudflare.Index.AiGateway("example_ai_gateway", new()
+    ///     var exampleAiGateway = new Cloudflare.AiGateway("example_ai_gateway", new()
     ///     {
     ///         AccountId = "3ebbcb006d4d46d7bb6a8c7f14676cb0",
     ///         AiGatewayId = "my-gateway",

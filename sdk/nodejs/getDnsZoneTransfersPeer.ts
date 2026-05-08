@@ -99,6 +99,6 @@ export function getDnsZoneTransfersPeerOutput(args: GetDnsZoneTransfersPeerOutpu
  * A collection of arguments for invoking getDnsZoneTransfersPeer.
  */
 export interface GetDnsZoneTransfersPeerOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     peerId: pulumi.Input<string>;
 }

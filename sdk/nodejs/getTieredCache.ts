@@ -101,5 +101,5 @@ export interface GetTieredCacheOutputArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

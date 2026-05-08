@@ -144,10 +144,10 @@ export interface GetWorkerOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetWorkerFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetWorkerFilterArgs | undefined>;
     /**
      * Identifier for the Worker, which can be ID or name.
      */
-    workerId?: pulumi.Input<string>;
+    workerId?: pulumi.Input<string | undefined>;
 }

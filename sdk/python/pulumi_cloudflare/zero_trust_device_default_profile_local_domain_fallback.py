@@ -51,8 +51,8 @@ class ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs:
 @pulumi.input_type
 class _ZeroTrustDeviceDefaultProfileLocalDomainFallbackState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDeviceDefaultProfileLocalDomainFallback resources.
         """
@@ -63,20 +63,20 @@ class _ZeroTrustDeviceDefaultProfileLocalDomainFallbackState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]]:
+    def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]]:
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]]):
+    def domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs']]]]):
         pulumi.set(self, "domains", value)
 
 
@@ -86,8 +86,8 @@ class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -167,8 +167,8 @@ class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -194,8 +194,8 @@ class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgsDict']]]]] = None) -> 'ZeroTrustDeviceDefaultProfileLocalDomainFallback':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgs', 'ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomainArgsDict']]]]] = None) -> 'ZeroTrustDeviceDefaultProfileLocalDomainFallback':
         """
         Get an existing ZeroTrustDeviceDefaultProfileLocalDomainFallback resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

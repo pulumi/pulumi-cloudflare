@@ -131,7 +131,7 @@ def get_magic_network_monitoring_configuration(account_id: Optional[_builtins.st
         name=pulumi.get(__ret__, 'name'),
         router_ips=pulumi.get(__ret__, 'router_ips'),
         warp_devices=pulumi.get(__ret__, 'warp_devices'))
-def get_magic_network_monitoring_configuration_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_magic_network_monitoring_configuration_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicNetworkMonitoringConfigurationResult]:
     """
     Accepted Permissions

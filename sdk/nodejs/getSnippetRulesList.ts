@@ -64,7 +64,7 @@ export interface GetSnippetRulesListOutputArgs {
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * The unique ID of the zone.
      */

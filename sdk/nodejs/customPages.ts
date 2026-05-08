@@ -143,30 +143,30 @@ export interface CustomPagesState {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
-    createdOn?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    createdOn?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Error Page Types
      * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
      */
-    identifier?: pulumi.Input<string>;
-    modifiedOn?: pulumi.Input<string>;
-    previewTarget?: pulumi.Input<string>;
-    requiredTokens?: pulumi.Input<pulumi.Input<string>[]>;
+    identifier?: pulumi.Input<string | undefined>;
+    modifiedOn?: pulumi.Input<string | undefined>;
+    previewTarget?: pulumi.Input<string | undefined>;
+    requiredTokens?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The custom page state.
      * Available values: "default", "customized".
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The URL associated with the custom page.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -176,7 +176,7 @@ export interface CustomPagesArgs {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Error Page Types
      * Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
@@ -190,9 +190,9 @@ export interface CustomPagesArgs {
     /**
      * The URL associated with the custom page.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

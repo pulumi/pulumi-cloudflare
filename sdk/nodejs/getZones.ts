@@ -114,11 +114,11 @@ export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesOutputArgs {
-    account?: pulumi.Input<inputs.GetZonesAccountArgs>;
-    direction?: pulumi.Input<string>;
-    match?: pulumi.Input<string>;
-    maxItems?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    order?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
+    account?: pulumi.Input<inputs.GetZonesAccountArgs | undefined>;
+    direction?: pulumi.Input<string | undefined>;
+    match?: pulumi.Input<string | undefined>;
+    maxItems?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    order?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
 }

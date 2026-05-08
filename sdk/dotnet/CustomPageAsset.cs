@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCustomPageAsset = new Cloudflare.Index.CustomPageAsset("example_custom_page_asset", new()
+    ///     var exampleCustomPageAsset = new Cloudflare.CustomPageAsset("example_custom_page_asset", new()
     ///     {
     ///         Description = "Custom 500 error page",
     ///         Name = "my_custom_error_page",

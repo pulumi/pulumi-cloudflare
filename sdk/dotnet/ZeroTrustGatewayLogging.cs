@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustGatewayLogging = new Cloudflare.Index.ZeroTrustGatewayLogging("example_zero_trust_gateway_logging", new()
+    ///     var exampleZeroTrustGatewayLogging = new Cloudflare.ZeroTrustGatewayLogging("example_zero_trust_gateway_logging", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         RedactPii = true,

@@ -133,31 +133,31 @@ export class DeviceManagedNetworks extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DeviceManagedNetworks resources.
  */
 export interface DeviceManagedNetworksState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The configuration object containing information for the WARP client to detect the managed network.
      */
-    config?: pulumi.Input<inputs.DeviceManagedNetworksConfig>;
+    config?: pulumi.Input<inputs.DeviceManagedNetworksConfig | undefined>;
     /**
      * The name of the device managed network. This name must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * API UUID.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The type of device managed network.
      * Available values: "tls".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DeviceManagedNetworks resource.
  */
 export interface DeviceManagedNetworksArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The configuration object containing information for the WARP client to detect the managed network.
      */

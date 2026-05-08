@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleIpRanges = Cloudflare.Index.GetIpRanges.Invoke(new()
+        ///     var exampleIpRanges = Cloudflare.GetIpRanges.Invoke(new()
         ///     {
         ///         Networks = "networks",
         ///     });
@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleIpRanges = Cloudflare.Index.GetIpRanges.Invoke(new()
+        ///     var exampleIpRanges = Cloudflare.GetIpRanges.Invoke(new()
         ///     {
         ///         Networks = "networks",
         ///     });
@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleIpRanges = Cloudflare.Index.GetIpRanges.Invoke(new()
+        ///     var exampleIpRanges = Cloudflare.GetIpRanges.Invoke(new()
         ///     {
         ///         Networks = "networks",
         ///     });

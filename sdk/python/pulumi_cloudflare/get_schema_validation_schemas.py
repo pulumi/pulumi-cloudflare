@@ -202,10 +202,10 @@ def get_schema_validation_schemas(filter: Optional[Union['GetSchemaValidationSch
         source=pulumi.get(__ret__, 'source'),
         validation_enabled=pulumi.get(__ret__, 'validation_enabled'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_schema_validation_schemas_output(filter: Optional[pulumi.Input[Optional[Union['GetSchemaValidationSchemasFilterArgs', 'GetSchemaValidationSchemasFilterArgsDict']]]] = None,
-                                         omit_source: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                         schema_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_schema_validation_schemas_output(filter: pulumi.Input[Optional[Optional[Union['GetSchemaValidationSchemasFilterArgs', 'GetSchemaValidationSchemasFilterArgsDict']]]] = None,
+                                         omit_source: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                         schema_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchemaValidationSchemasResult]:
     """
     Accepted Permissions

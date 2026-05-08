@@ -160,8 +160,8 @@ def get_email_routing_dns(subdomain: Optional[_builtins.str] = None,
         subdomain=pulumi.get(__ret__, 'subdomain'),
         success=pulumi.get(__ret__, 'success'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_email_routing_dns_output(subdomain: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_email_routing_dns_output(subdomain: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailRoutingDnsResult]:
     """
     Accepted Permissions

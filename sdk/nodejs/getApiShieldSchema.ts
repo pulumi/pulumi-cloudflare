@@ -122,10 +122,10 @@ export interface GetApiShieldSchemaOutputArgs {
     /**
      * Omit the source-files of schemas and only retrieve their meta-data.
      */
-    omitSource?: pulumi.Input<boolean>;
+    omitSource?: pulumi.Input<boolean | undefined>;
     schemaId: pulumi.Input<string>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

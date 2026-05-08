@@ -138,28 +138,28 @@ export class Workflow extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Workflow resources.
  */
 export interface WorkflowState {
-    accountId?: pulumi.Input<string>;
-    className?: pulumi.Input<string>;
-    createdOn?: pulumi.Input<string>;
-    instances?: pulumi.Input<inputs.WorkflowInstances>;
-    isDeleted?: pulumi.Input<number>;
-    limits?: pulumi.Input<inputs.WorkflowLimits>;
-    modifiedOn?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    scriptName?: pulumi.Input<string>;
-    terminatorRunning?: pulumi.Input<number>;
-    triggeredOn?: pulumi.Input<string>;
-    versionId?: pulumi.Input<string>;
-    workflowName?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    className?: pulumi.Input<string | undefined>;
+    createdOn?: pulumi.Input<string | undefined>;
+    instances?: pulumi.Input<inputs.WorkflowInstances | undefined>;
+    isDeleted?: pulumi.Input<number | undefined>;
+    limits?: pulumi.Input<inputs.WorkflowLimits | undefined>;
+    modifiedOn?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    scriptName?: pulumi.Input<string | undefined>;
+    terminatorRunning?: pulumi.Input<number | undefined>;
+    triggeredOn?: pulumi.Input<string | undefined>;
+    versionId?: pulumi.Input<string | undefined>;
+    workflowName?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Workflow resource.
  */
 export interface WorkflowArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     className: pulumi.Input<string>;
-    limits?: pulumi.Input<inputs.WorkflowLimits>;
+    limits?: pulumi.Input<inputs.WorkflowLimits | undefined>;
     scriptName: pulumi.Input<string>;
     workflowName: pulumi.Input<string>;
 }

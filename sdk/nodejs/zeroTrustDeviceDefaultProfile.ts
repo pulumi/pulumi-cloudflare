@@ -236,83 +236,83 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDeviceDefaultProfile resources.
  */
 export interface ZeroTrustDeviceDefaultProfileState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Whether to allow the user to switch WARP between modes.
      */
-    allowModeSwitch?: pulumi.Input<boolean>;
+    allowModeSwitch?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to receive update notifications when a new version of the client is available.
      */
-    allowUpdates?: pulumi.Input<boolean>;
+    allowUpdates?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to allow devices to leave the organization.
      */
-    allowedToLeave?: pulumi.Input<boolean>;
+    allowedToLeave?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of time in seconds to reconnect after having been disabled.
      */
-    autoConnect?: pulumi.Input<number>;
+    autoConnect?: pulumi.Input<number | undefined>;
     /**
      * Turn on the captive portal after the specified amount of time.
      */
-    captivePortal?: pulumi.Input<number>;
+    captivePortal?: pulumi.Input<number | undefined>;
     /**
      * Whether the policy will be applied to matching devices.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      */
-    disableAutoFallback?: pulumi.Input<boolean>;
+    disableAutoFallback?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the policy will be applied to matching devices.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to add Microsoft IPs to Split Tunnel exclusions.
      */
-    excludeOfficeIps?: pulumi.Input<boolean>;
+    excludeOfficeIps?: pulumi.Input<boolean | undefined>;
     /**
      * List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    excludes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileExclude>[]>;
-    fallbackDomains?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileFallbackDomain>[]>;
-    gatewayUniqueId?: pulumi.Input<string>;
+    excludes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileExclude>[] | undefined>;
+    fallbackDomains?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileFallbackDomain>[] | undefined>;
+    gatewayUniqueId?: pulumi.Input<string | undefined>;
     /**
      * List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    includes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileInclude>[]>;
+    includes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileInclude>[] | undefined>;
     /**
      * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
      */
-    lanAllowMinutes?: pulumi.Input<number>;
+    lanAllowMinutes?: pulumi.Input<number | undefined>;
     /**
      * The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
      */
-    lanAllowSubnetSize?: pulumi.Input<number>;
-    policyId?: pulumi.Input<string>;
+    lanAllowSubnetSize?: pulumi.Input<number | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
-    registerInterfaceIpWithDns?: pulumi.Input<boolean>;
+    registerInterfaceIpWithDns?: pulumi.Input<boolean | undefined>;
     /**
      * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
      */
-    sccmVpnBoundarySupport?: pulumi.Input<boolean>;
-    serviceModeV2?: pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileServiceModeV2>;
+    sccmVpnBoundarySupport?: pulumi.Input<boolean | undefined>;
+    serviceModeV2?: pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileServiceModeV2 | undefined>;
     /**
      * The URL to launch when the Send Feedback button is clicked.
      */
-    supportUrl?: pulumi.Input<string>;
+    supportUrl?: pulumi.Input<string | undefined>;
     /**
      * Whether to allow the user to turn off the WARP switch and disconnect the client.
      */
-    switchLocked?: pulumi.Input<boolean>;
+    switchLocked?: pulumi.Input<boolean | undefined>;
     /**
      * Determines which tunnel protocol to use.
      */
-    tunnelProtocol?: pulumi.Input<string>;
+    tunnelProtocol?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -323,66 +323,66 @@ export interface ZeroTrustDeviceDefaultProfileArgs {
     /**
      * Whether to allow the user to switch WARP between modes.
      */
-    allowModeSwitch?: pulumi.Input<boolean>;
+    allowModeSwitch?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to receive update notifications when a new version of the client is available.
      */
-    allowUpdates?: pulumi.Input<boolean>;
+    allowUpdates?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to allow devices to leave the organization.
      */
-    allowedToLeave?: pulumi.Input<boolean>;
+    allowedToLeave?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of time in seconds to reconnect after having been disabled.
      */
-    autoConnect?: pulumi.Input<number>;
+    autoConnect?: pulumi.Input<number | undefined>;
     /**
      * Turn on the captive portal after the specified amount of time.
      */
-    captivePortal?: pulumi.Input<number>;
+    captivePortal?: pulumi.Input<number | undefined>;
     /**
      * If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      */
-    disableAutoFallback?: pulumi.Input<boolean>;
+    disableAutoFallback?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to add Microsoft IPs to Split Tunnel exclusions.
      */
-    excludeOfficeIps?: pulumi.Input<boolean>;
+    excludeOfficeIps?: pulumi.Input<boolean | undefined>;
     /**
      * List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    excludes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileExclude>[]>;
+    excludes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileExclude>[] | undefined>;
     /**
      * List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    includes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileInclude>[]>;
+    includes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileInclude>[] | undefined>;
     /**
      * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
      */
-    lanAllowMinutes?: pulumi.Input<number>;
+    lanAllowMinutes?: pulumi.Input<number | undefined>;
     /**
      * The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
      */
-    lanAllowSubnetSize?: pulumi.Input<number>;
+    lanAllowSubnetSize?: pulumi.Input<number | undefined>;
     /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
-    registerInterfaceIpWithDns?: pulumi.Input<boolean>;
+    registerInterfaceIpWithDns?: pulumi.Input<boolean | undefined>;
     /**
      * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
      */
-    sccmVpnBoundarySupport?: pulumi.Input<boolean>;
-    serviceModeV2?: pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileServiceModeV2>;
+    sccmVpnBoundarySupport?: pulumi.Input<boolean | undefined>;
+    serviceModeV2?: pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileServiceModeV2 | undefined>;
     /**
      * The URL to launch when the Send Feedback button is clicked.
      */
-    supportUrl?: pulumi.Input<string>;
+    supportUrl?: pulumi.Input<string | undefined>;
     /**
      * Whether to allow the user to turn off the WARP switch and disconnect the client.
      */
-    switchLocked?: pulumi.Input<boolean>;
+    switchLocked?: pulumi.Input<boolean | undefined>;
     /**
      * Determines which tunnel protocol to use.
      */
-    tunnelProtocol?: pulumi.Input<string>;
+    tunnelProtocol?: pulumi.Input<string | undefined>;
 }

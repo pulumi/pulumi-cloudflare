@@ -21,10 +21,10 @@ class ByoIpPrefixArgs:
     def __init__(__self__, *,
                  asn: pulumi.Input[_builtins.int],
                  cidr: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delegate_loa_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 loa_document_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delegate_loa_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 loa_document_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ByoIpPrefix resource.
 
@@ -72,73 +72,73 @@ class ByoIpPrefixArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of a Cloudflare account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateLoaCreation")
-    def delegate_loa_creation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delegate_loa_creation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
         """
         return pulumi.get(self, "delegate_loa_creation")
 
     @delegate_loa_creation.setter
-    def delegate_loa_creation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delegate_loa_creation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delegate_loa_creation", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the prefix.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="loaDocumentId")
-    def loa_document_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loa_document_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier for the uploaded LOA document.
         """
         return pulumi.get(self, "loa_document_id")
 
     @loa_document_id.setter
-    def loa_document_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loa_document_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loa_document_id", value)
 
 
 @pulumi.input_type
 class _ByoIpPrefixState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 advertised: Optional[pulumi.Input[_builtins.bool]] = None,
-                 advertised_modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 approved: Optional[pulumi.Input[_builtins.str]] = None,
-                 asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 delegate_loa_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 irr_validation_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 loa_document_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_demand_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 on_demand_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ownership_validation_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 ownership_validation_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 rpki_validation_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 advertised: pulumi.Input[Optional[_builtins.bool]] = None,
+                 advertised_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 approved: pulumi.Input[Optional[_builtins.str]] = None,
+                 asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 delegate_loa_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 irr_validation_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 loa_document_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_demand_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 on_demand_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ownership_validation_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 ownership_validation_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 rpki_validation_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ByoIpPrefix resources.
 
@@ -207,204 +207,204 @@ class _ByoIpPrefixState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of a Cloudflare account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
-    def advertised(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advertised(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
         """
         return pulumi.get(self, "advertised")
 
     @advertised.setter
-    def advertised(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advertised(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advertised", value)
 
     @_builtins.property
     @pulumi.getter(name="advertisedModifiedAt")
     @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
-    def advertised_modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def advertised_modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
         """
         return pulumi.get(self, "advertised_modified_at")
 
     @advertised_modified_at.setter
-    def advertised_modified_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def advertised_modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "advertised_modified_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def approved(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def approved(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Approval state of the prefix (P = pending, V = active).
         """
         return pulumi.get(self, "approved")
 
     @approved.setter
-    def approved(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def approved(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "approved", value)
 
     @_builtins.property
     @pulumi.getter
-    def asn(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def asn(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Autonomous System Number (ASN) the prefix will be advertised under.
         """
         return pulumi.get(self, "asn")
 
     @asn.setter
-    def asn(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def asn(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "asn", value)
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP Prefix in Classless Inter-Domain Routing format.
         """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateLoaCreation")
-    def delegate_loa_creation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delegate_loa_creation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Cloudflare is allowed to generate the LOA document on behalf of the prefix owner.
         """
         return pulumi.get(self, "delegate_loa_creation")
 
     @delegate_loa_creation.setter
-    def delegate_loa_creation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delegate_loa_creation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delegate_loa_creation", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the prefix.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="irrValidationState")
-    def irr_validation_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def irr_validation_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of one kind of validation for an IP prefix.
         """
         return pulumi.get(self, "irr_validation_state")
 
     @irr_validation_state.setter
-    def irr_validation_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def irr_validation_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "irr_validation_state", value)
 
     @_builtins.property
     @pulumi.getter(name="loaDocumentId")
-    def loa_document_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loa_document_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier for the uploaded LOA document.
         """
         return pulumi.get(self, "loa_document_id")
 
     @loa_document_id.setter
-    def loa_document_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loa_document_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loa_document_id", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedAt")
-    def modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_at")
 
     @modified_at.setter
-    def modified_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_at", value)
 
     @_builtins.property
     @pulumi.getter(name="onDemandEnabled")
     @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
-    def on_demand_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def on_demand_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
         """
         return pulumi.get(self, "on_demand_enabled")
 
     @on_demand_enabled.setter
-    def on_demand_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def on_demand_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "on_demand_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="onDemandLocked")
     @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
-    def on_demand_locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def on_demand_locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether advertisement status of the prefix is locked, meaning it cannot be changed.
         """
         return pulumi.get(self, "on_demand_locked")
 
     @on_demand_locked.setter
-    def on_demand_locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def on_demand_locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "on_demand_locked", value)
 
     @_builtins.property
     @pulumi.getter(name="ownershipValidationState")
-    def ownership_validation_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ownership_validation_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of one kind of validation for an IP prefix.
         """
         return pulumi.get(self, "ownership_validation_state")
 
     @ownership_validation_state.setter
-    def ownership_validation_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ownership_validation_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ownership_validation_state", value)
 
     @_builtins.property
     @pulumi.getter(name="ownershipValidationToken")
-    def ownership_validation_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ownership_validation_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token provided to demonstrate ownership of the prefix.
         """
         return pulumi.get(self, "ownership_validation_token")
 
     @ownership_validation_token.setter
-    def ownership_validation_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ownership_validation_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ownership_validation_token", value)
 
     @_builtins.property
     @pulumi.getter(name="rpkiValidationState")
-    def rpki_validation_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rpki_validation_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of one kind of validation for an IP prefix.
         """
         return pulumi.get(self, "rpki_validation_state")
 
     @rpki_validation_state.setter
-    def rpki_validation_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rpki_validation_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rpki_validation_state", value)
 
 
@@ -414,12 +414,12 @@ class ByoIpPrefix(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 delegate_loa_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 loa_document_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 delegate_loa_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 loa_document_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -515,12 +515,12 @@ class ByoIpPrefix(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 delegate_loa_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 loa_document_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 delegate_loa_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 loa_document_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -561,23 +561,23 @@ class ByoIpPrefix(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            advertised: Optional[pulumi.Input[_builtins.bool]] = None,
-            advertised_modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-            approved: Optional[pulumi.Input[_builtins.str]] = None,
-            asn: Optional[pulumi.Input[_builtins.int]] = None,
-            cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            delegate_loa_creation: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            irr_validation_state: Optional[pulumi.Input[_builtins.str]] = None,
-            loa_document_id: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-            on_demand_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            on_demand_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-            ownership_validation_state: Optional[pulumi.Input[_builtins.str]] = None,
-            ownership_validation_token: Optional[pulumi.Input[_builtins.str]] = None,
-            rpki_validation_state: Optional[pulumi.Input[_builtins.str]] = None) -> 'ByoIpPrefix':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            advertised: pulumi.Input[Optional[_builtins.bool]] = None,
+            advertised_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            approved: pulumi.Input[Optional[_builtins.str]] = None,
+            asn: pulumi.Input[Optional[_builtins.int]] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            delegate_loa_creation: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            irr_validation_state: pulumi.Input[Optional[_builtins.str]] = None,
+            loa_document_id: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            on_demand_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            on_demand_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            ownership_validation_state: pulumi.Input[Optional[_builtins.str]] = None,
+            ownership_validation_token: pulumi.Input[Optional[_builtins.str]] = None,
+            rpki_validation_state: pulumi.Input[Optional[_builtins.str]] = None) -> 'ByoIpPrefix':
         """
         Get an existing ByoIpPrefix resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

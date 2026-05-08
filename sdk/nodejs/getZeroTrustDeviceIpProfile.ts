@@ -119,7 +119,7 @@ export function getZeroTrustDeviceIpProfileOutput(args?: GetZeroTrustDeviceIpPro
  * A collection of arguments for invoking getZeroTrustDeviceIpProfile.
  */
 export interface GetZeroTrustDeviceIpProfileOutputArgs {
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetZeroTrustDeviceIpProfileFilterArgs>;
-    profileId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustDeviceIpProfileFilterArgs | undefined>;
+    profileId?: pulumi.Input<string | undefined>;
 }

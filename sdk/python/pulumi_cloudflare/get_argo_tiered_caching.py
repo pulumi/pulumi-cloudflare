@@ -124,7 +124,7 @@ def get_argo_tiered_caching(zone_id: Optional[_builtins.str] = None,
         modified_on=pulumi.get(__ret__, 'modified_on'),
         value=pulumi.get(__ret__, 'value'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_argo_tiered_caching_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_argo_tiered_caching_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetArgoTieredCachingResult]:
     """
     ## Example Usage

@@ -327,7 +327,7 @@ def get_zero_trust_device_default_profile(account_id: Optional[_builtins.str] = 
         support_url=pulumi.get(__ret__, 'support_url'),
         switch_locked=pulumi.get(__ret__, 'switch_locked'),
         tunnel_protocol=pulumi.get(__ret__, 'tunnel_protocol'))
-def get_zero_trust_device_default_profile_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_device_default_profile_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceDefaultProfileResult]:
     """
     ## Example Usage

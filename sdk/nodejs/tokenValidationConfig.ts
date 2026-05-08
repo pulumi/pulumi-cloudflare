@@ -147,20 +147,20 @@ export class TokenValidationConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TokenValidationConfig resources.
  */
 export interface TokenValidationConfigState {
-    createdAt?: pulumi.Input<string>;
-    credentials?: pulumi.Input<inputs.TokenValidationConfigCredentials>;
-    description?: pulumi.Input<string>;
-    lastUpdated?: pulumi.Input<string>;
-    title?: pulumi.Input<string>;
-    tokenSources?: pulumi.Input<pulumi.Input<string>[]>;
+    createdAt?: pulumi.Input<string | undefined>;
+    credentials?: pulumi.Input<inputs.TokenValidationConfigCredentials | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    lastUpdated?: pulumi.Input<string | undefined>;
+    title?: pulumi.Input<string | undefined>;
+    tokenSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Available values: "JWT".
      */
-    tokenType?: pulumi.Input<string>;
+    tokenType?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -178,5 +178,5 @@ export interface TokenValidationConfigArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

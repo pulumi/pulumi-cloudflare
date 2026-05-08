@@ -95,24 +95,24 @@ export function getAiSearchInstancesOutput(args?: GetAiSearchInstancesOutputArgs
  * A collection of arguments for invoking getAiSearchInstances.
  */
 export interface GetAiSearchInstancesOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
-    namespace?: pulumi.Input<string>;
+    maxItems?: pulumi.Input<number | undefined>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Order By Column Name
      * Available values: "createdAt".
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * Order By Direction
      * Available values: "asc", "desc".
      */
-    orderByDirection?: pulumi.Input<string>;
+    orderByDirection?: pulumi.Input<string | undefined>;
     /**
      * Search by id
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
 }

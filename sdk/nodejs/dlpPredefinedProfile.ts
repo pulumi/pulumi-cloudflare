@@ -150,40 +150,40 @@ export class DlpPredefinedProfile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DlpPredefinedProfile resources.
  */
 export interface DlpPredefinedProfileState {
-    accountId?: pulumi.Input<string>;
-    aiContextEnabled?: pulumi.Input<boolean>;
-    allowedMatchCount?: pulumi.Input<number>;
-    confidenceThreshold?: pulumi.Input<string>;
-    enabledEntries?: pulumi.Input<pulumi.Input<string>[]>;
+    accountId?: pulumi.Input<string | undefined>;
+    aiContextEnabled?: pulumi.Input<boolean | undefined>;
+    allowedMatchCount?: pulumi.Input<number | undefined>;
+    confidenceThreshold?: pulumi.Input<string | undefined>;
+    enabledEntries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * @deprecated This attribute is deprecated. Use enabledEntries instead.
      */
-    entries?: pulumi.Input<pulumi.Input<inputs.DlpPredefinedProfileEntry>[]>;
+    entries?: pulumi.Input<pulumi.Input<inputs.DlpPredefinedProfileEntry>[] | undefined>;
     /**
      * The name of the predefined profile.
      */
-    name?: pulumi.Input<string>;
-    ocrEnabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string | undefined>;
+    ocrEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this profile can be accessed by anyone.
      */
-    openAccess?: pulumi.Input<boolean>;
-    profileId?: pulumi.Input<string>;
+    openAccess?: pulumi.Input<boolean | undefined>;
+    profileId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DlpPredefinedProfile resource.
  */
 export interface DlpPredefinedProfileArgs {
-    accountId?: pulumi.Input<string>;
-    aiContextEnabled?: pulumi.Input<boolean>;
-    allowedMatchCount?: pulumi.Input<number>;
-    confidenceThreshold?: pulumi.Input<string>;
-    enabledEntries?: pulumi.Input<pulumi.Input<string>[]>;
+    accountId?: pulumi.Input<string | undefined>;
+    aiContextEnabled?: pulumi.Input<boolean | undefined>;
+    allowedMatchCount?: pulumi.Input<number | undefined>;
+    confidenceThreshold?: pulumi.Input<string | undefined>;
+    enabledEntries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * @deprecated This attribute is deprecated. Use enabledEntries instead.
      */
-    entries?: pulumi.Input<pulumi.Input<inputs.DlpPredefinedProfileEntry>[]>;
-    ocrEnabled?: pulumi.Input<boolean>;
+    entries?: pulumi.Input<pulumi.Input<inputs.DlpPredefinedProfileEntry>[] | undefined>;
+    ocrEnabled?: pulumi.Input<boolean | undefined>;
     profileId: pulumi.Input<string>;
 }

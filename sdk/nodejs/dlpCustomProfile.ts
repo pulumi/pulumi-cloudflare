@@ -203,110 +203,110 @@ export class DlpCustomProfile extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DlpCustomProfile resources.
  */
 export interface DlpCustomProfileState {
-    accountId?: pulumi.Input<string>;
-    aiContextEnabled?: pulumi.Input<boolean>;
+    accountId?: pulumi.Input<string | undefined>;
+    aiContextEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      */
-    allowedMatchCount?: pulumi.Input<number>;
-    confidenceThreshold?: pulumi.Input<string>;
+    allowedMatchCount?: pulumi.Input<number | undefined>;
+    confidenceThreshold?: pulumi.Input<string | undefined>;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      *
      * @deprecated This attribute is deprecated.
      */
-    contextAwareness?: pulumi.Input<inputs.DlpCustomProfileContextAwareness>;
+    contextAwareness?: pulumi.Input<inputs.DlpCustomProfileContextAwareness | undefined>;
     /**
      * When the profile was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Data class IDs to associate with the profile.
      */
-    dataClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    dataClasses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Data tag IDs to associate with the profile.
      */
-    dataTags?: pulumi.Input<pulumi.Input<string>[]>;
+    dataTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the profile.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Custom entries from this profile.
      * If this field is omitted, entries owned by this profile will not be changed.
      *
      * @deprecated This attribute will be sunset on 01/01/2026
      */
-    entries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileEntry>[]>;
-    name?: pulumi.Input<string>;
-    ocrEnabled?: pulumi.Input<boolean>;
+    entries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileEntry>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    ocrEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this profile can be accessed by anyone.
      */
-    openAccess?: pulumi.Input<boolean>;
+    openAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Sensitivity levels to associate with the profile.
      */
-    sensitivityLevels?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileSensitivityLevel>[]>;
+    sensitivityLevels?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileSensitivityLevel>[] | undefined>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
-    sharedEntries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileSharedEntry>[]>;
+    sharedEntries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileSharedEntry>[] | undefined>;
     /**
      * Available values: "custom", "predefined", "integration".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * When the profile was lasted updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DlpCustomProfile resource.
  */
 export interface DlpCustomProfileArgs {
-    accountId?: pulumi.Input<string>;
-    aiContextEnabled?: pulumi.Input<boolean>;
+    accountId?: pulumi.Input<string | undefined>;
+    aiContextEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      */
-    allowedMatchCount?: pulumi.Input<number>;
-    confidenceThreshold?: pulumi.Input<string>;
+    allowedMatchCount?: pulumi.Input<number | undefined>;
+    confidenceThreshold?: pulumi.Input<string | undefined>;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      *
      * @deprecated This attribute is deprecated.
      */
-    contextAwareness?: pulumi.Input<inputs.DlpCustomProfileContextAwareness>;
+    contextAwareness?: pulumi.Input<inputs.DlpCustomProfileContextAwareness | undefined>;
     /**
      * Data class IDs to associate with the profile.
      */
-    dataClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    dataClasses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Data tag IDs to associate with the profile.
      */
-    dataTags?: pulumi.Input<pulumi.Input<string>[]>;
+    dataTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the profile.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Custom entries from this profile.
      * If this field is omitted, entries owned by this profile will not be changed.
      *
      * @deprecated This attribute will be sunset on 01/01/2026
      */
-    entries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileEntry>[]>;
+    entries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileEntry>[] | undefined>;
     name: pulumi.Input<string>;
-    ocrEnabled?: pulumi.Input<boolean>;
+    ocrEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Sensitivity levels to associate with the profile.
      */
-    sensitivityLevels?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileSensitivityLevel>[]>;
+    sensitivityLevels?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileSensitivityLevel>[] | undefined>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
-    sharedEntries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileSharedEntry>[]>;
+    sharedEntries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileSharedEntry>[] | undefined>;
 }

@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOrganizations = Cloudflare.Index.GetOrganizations.Invoke(new()
+        ///     var exampleOrganizations = Cloudflare.GetOrganizations.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -75,7 +75,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOrganizations = Cloudflare.Index.GetOrganizations.Invoke(new()
+        ///     var exampleOrganizations = Cloudflare.GetOrganizations.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOrganizations = Cloudflare.Index.GetOrganizations.Invoke(new()
+        ///     var exampleOrganizations = Cloudflare.GetOrganizations.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {

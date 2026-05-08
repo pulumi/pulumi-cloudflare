@@ -128,10 +128,10 @@ export interface GetWorkersCustomDomainOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * ID of the domain.
      */
-    domainId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetWorkersCustomDomainFilterArgs>;
+    domainId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetWorkersCustomDomainFilterArgs | undefined>;
 }

@@ -137,28 +137,28 @@ export interface DnsZoneTransfersOutgoingState {
     /**
      * The time for a specific event.
      */
-    checkedTime?: pulumi.Input<string>;
+    checkedTime?: pulumi.Input<string | undefined>;
     /**
      * The time for a specific event.
      */
-    createdTime?: pulumi.Input<string>;
+    createdTime?: pulumi.Input<string | undefined>;
     /**
      * The time for a specific event.
      */
-    lastTransferredTime?: pulumi.Input<string>;
+    lastTransferredTime?: pulumi.Input<string | undefined>;
     /**
      * Zone name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of peer tags.
      */
-    peers?: pulumi.Input<pulumi.Input<string>[]>;
+    peers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The serial number of the SOA for the given zone.
      */
-    soaSerial?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    soaSerial?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,5 +173,5 @@ export interface DnsZoneTransfersOutgoingArgs {
      * A list of peer tags.
      */
     peers: pulumi.Input<pulumi.Input<string>[]>;
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleR2BucketLifecycle = new Cloudflare.Index.R2BucketLifecycle("example_r2_bucket_lifecycle", new()
+    ///     var exampleR2BucketLifecycle = new Cloudflare.R2BucketLifecycle("example_r2_bucket_lifecycle", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",

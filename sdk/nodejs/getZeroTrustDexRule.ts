@@ -97,7 +97,7 @@ export function getZeroTrustDexRuleOutput(args: GetZeroTrustDexRuleOutputArgs, o
  * A collection of arguments for invoking getZeroTrustDexRule.
  */
 export interface GetZeroTrustDexRuleOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * API Resource UUID tag.
      */

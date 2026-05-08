@@ -22,8 +22,8 @@ __all__ = ['ZeroTrustGatewayLoggingArgs', 'ZeroTrustGatewayLogging']
 class ZeroTrustGatewayLoggingArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
-                 redact_pii: Optional[pulumi.Input[_builtins.bool]] = None,
-                 settings_by_rule_type: Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']] = None):
+                 redact_pii: pulumi.Input[Optional[_builtins.bool]] = None,
+                 settings_by_rule_type: pulumi.Input[Optional['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']] = None):
         """
         The set of arguments for constructing a ZeroTrustGatewayLogging resource.
 
@@ -47,35 +47,35 @@ class ZeroTrustGatewayLoggingArgs:
 
     @_builtins.property
     @pulumi.getter(name="redactPii")
-    def redact_pii(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def redact_pii(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
         """
         return pulumi.get(self, "redact_pii")
 
     @redact_pii.setter
-    def redact_pii(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def redact_pii(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "redact_pii", value)
 
     @_builtins.property
     @pulumi.getter(name="settingsByRuleType")
-    def settings_by_rule_type(self) -> Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']]:
+    def settings_by_rule_type(self) -> pulumi.Input[Optional['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']]:
         """
         Configure logging settings for each rule type.
         """
         return pulumi.get(self, "settings_by_rule_type")
 
     @settings_by_rule_type.setter
-    def settings_by_rule_type(self, value: Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']]):
+    def settings_by_rule_type(self, value: pulumi.Input[Optional['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']]):
         pulumi.set(self, "settings_by_rule_type", value)
 
 
 @pulumi.input_type
 class _ZeroTrustGatewayLoggingState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redact_pii: Optional[pulumi.Input[_builtins.bool]] = None,
-                 settings_by_rule_type: Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redact_pii: pulumi.Input[Optional[_builtins.bool]] = None,
+                 settings_by_rule_type: pulumi.Input[Optional['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewayLogging resources.
 
@@ -91,35 +91,35 @@ class _ZeroTrustGatewayLoggingState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="redactPii")
-    def redact_pii(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def redact_pii(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
         """
         return pulumi.get(self, "redact_pii")
 
     @redact_pii.setter
-    def redact_pii(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def redact_pii(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "redact_pii", value)
 
     @_builtins.property
     @pulumi.getter(name="settingsByRuleType")
-    def settings_by_rule_type(self) -> Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']]:
+    def settings_by_rule_type(self) -> pulumi.Input[Optional['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']]:
         """
         Configure logging settings for each rule type.
         """
         return pulumi.get(self, "settings_by_rule_type")
 
     @settings_by_rule_type.setter
-    def settings_by_rule_type(self, value: Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']]):
+    def settings_by_rule_type(self, value: pulumi.Input[Optional['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs']]):
         pulumi.set(self, "settings_by_rule_type", value)
 
 
@@ -129,9 +129,9 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redact_pii: Optional[pulumi.Input[_builtins.bool]] = None,
-                 settings_by_rule_type: Optional[pulumi.Input[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redact_pii: pulumi.Input[Optional[_builtins.bool]] = None,
+                 settings_by_rule_type: pulumi.Input[Optional[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -225,9 +225,9 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redact_pii: Optional[pulumi.Input[_builtins.bool]] = None,
-                 settings_by_rule_type: Optional[pulumi.Input[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redact_pii: pulumi.Input[Optional[_builtins.bool]] = None,
+                 settings_by_rule_type: pulumi.Input[Optional[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -252,9 +252,9 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            redact_pii: Optional[pulumi.Input[_builtins.bool]] = None,
-            settings_by_rule_type: Optional[pulumi.Input[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict']]] = None) -> 'ZeroTrustGatewayLogging':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            redact_pii: pulumi.Input[Optional[_builtins.bool]] = None,
+            settings_by_rule_type: pulumi.Input[Optional[Union['ZeroTrustGatewayLoggingSettingsByRuleTypeArgs', 'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict']]] = None) -> 'ZeroTrustGatewayLogging':
         """
         Get an existing ZeroTrustGatewayLogging resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

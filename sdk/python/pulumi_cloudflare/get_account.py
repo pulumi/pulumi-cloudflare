@@ -195,8 +195,8 @@ def get_account(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         settings=pulumi.get(__ret__, 'settings'),
         type=pulumi.get(__ret__, 'type'))
-def get_account_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       filter: Optional[pulumi.Input[Optional[Union['GetAccountFilterArgs', 'GetAccountFilterArgsDict']]]] = None,
+def get_account_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       filter: pulumi.Input[Optional[Optional[Union['GetAccountFilterArgs', 'GetAccountFilterArgsDict']]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountResult]:
     """
     Accepted Permissions

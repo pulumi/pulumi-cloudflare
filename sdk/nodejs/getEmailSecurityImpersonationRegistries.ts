@@ -158,30 +158,30 @@ export interface GetEmailSecurityImpersonationRegistriesOutputArgs {
     /**
      * Account Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The sorting direction.
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * The field to sort by.
      * Available values: "name", "email", "createdAt".
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
      */
-    provenance?: pulumi.Input<string>;
+    provenance?: pulumi.Input<string | undefined>;
     /**
      * Allows searching in multiple properties of a record simultaneously.
      * This parameter is intended for human users, not automation. Its exact
      * behavior is intentionally left unspecified and is subject to change
      * in the future.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
 }

@@ -156,25 +156,25 @@ export function getOrganizationsOutput(args?: GetOrganizationsOutputArgs, opts?:
  * A collection of arguments for invoking getOrganizations.
  */
 export interface GetOrganizationsOutputArgs {
-    containing?: pulumi.Input<inputs.GetOrganizationsContainingArgs>;
+    containing?: pulumi.Input<inputs.GetOrganizationsContainingArgs | undefined>;
     /**
      * Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements
      * by repeating the query value.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
-    name?: pulumi.Input<inputs.GetOrganizationsNameArgs>;
+    maxItems?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<inputs.GetOrganizationsNameArgs | undefined>;
     /**
      * The amount of items to return. Defaults to 10.
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * An opaque token returned from the last list response that when
      * provided will retrieve the next page.
      */
-    pageToken?: pulumi.Input<string>;
-    parent?: pulumi.Input<inputs.GetOrganizationsParentArgs>;
+    pageToken?: pulumi.Input<string | undefined>;
+    parent?: pulumi.Input<inputs.GetOrganizationsParentArgs | undefined>;
 }

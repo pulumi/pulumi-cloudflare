@@ -141,31 +141,31 @@ export interface HostnameTlsSettingState {
     /**
      * This is the time the tls setting was originally created for this hostname.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The hostname for which the tls settings are set.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * The TLS Setting name. The value type depends on the setting:
      */
-    settingId?: pulumi.Input<string>;
+    settingId?: pulumi.Input<string | undefined>;
     /**
      * Deployment status for the given tls setting.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * This is the time the tls setting was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The TLS setting value. The type depends on the `settingId` used in the request path:
      */
-    value?: any;
+    value?: any | undefined;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -187,5 +187,5 @@ export interface HostnameTlsSettingArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

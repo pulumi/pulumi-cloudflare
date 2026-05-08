@@ -100,7 +100,7 @@ def get_cloud_connector_rules(zone_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         rules=pulumi.get(__ret__, 'rules'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_cloud_connector_rules_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_cloud_connector_rules_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudConnectorRulesResult]:
     """
     Accepted Permissions

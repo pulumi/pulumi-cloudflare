@@ -119,7 +119,7 @@ export interface GetZeroTrustAccessMtlsCertificateOutputArgs {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * UUID.
      */
@@ -127,5 +127,5 @@ export interface GetZeroTrustAccessMtlsCertificateOutputArgs {
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

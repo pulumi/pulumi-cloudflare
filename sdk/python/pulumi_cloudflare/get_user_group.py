@@ -173,9 +173,9 @@ def get_user_group(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         policies=pulumi.get(__ret__, 'policies'),
         user_group_id=pulumi.get(__ret__, 'user_group_id'))
-def get_user_group_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                          filter: Optional[pulumi.Input[Optional[Union['GetUserGroupFilterArgs', 'GetUserGroupFilterArgsDict']]]] = None,
-                          user_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_group_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                          filter: pulumi.Input[Optional[Optional[Union['GetUserGroupFilterArgs', 'GetUserGroupFilterArgsDict']]]] = None,
+                          user_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserGroupResult]:
     """
     Accepted Permissions

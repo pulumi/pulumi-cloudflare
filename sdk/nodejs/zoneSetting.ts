@@ -407,32 +407,32 @@ export interface ZoneSettingState {
     /**
      * Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
      */
-    editable?: pulumi.Input<boolean>;
+    editable?: pulumi.Input<boolean | undefined>;
     /**
      * ssl-recommender enrollment setting.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * last time this setting was modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * Setting name
      */
-    settingId?: pulumi.Input<string>;
+    settingId?: pulumi.Input<string | undefined>;
     /**
      * Value of the zone setting.
      * Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
      */
-    timeRemaining?: pulumi.Input<number>;
+    timeRemaining?: pulumi.Input<number | undefined>;
     /**
      * Current value of the zone setting.
      */
-    value?: any;
+    value?: any | undefined;
     /**
      * Identifier
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -442,7 +442,7 @@ export interface ZoneSettingArgs {
     /**
      * ssl-recommender enrollment setting.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Setting name
      */
@@ -454,5 +454,5 @@ export interface ZoneSettingArgs {
     /**
      * Identifier
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

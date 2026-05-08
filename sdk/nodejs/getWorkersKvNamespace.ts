@@ -110,10 +110,10 @@ export interface GetWorkersKvNamespaceOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetWorkersKvNamespaceFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetWorkersKvNamespaceFilterArgs | undefined>;
     /**
      * Namespace identifier tag.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
 }

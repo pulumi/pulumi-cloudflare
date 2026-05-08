@@ -20,7 +20,7 @@ __all__ = ['WorkersKvNamespaceArgs', 'WorkersKvNamespace']
 class WorkersKvNamespaceArgs:
     def __init__(__self__, *,
                  title: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersKvNamespace resource.
 
@@ -45,23 +45,23 @@ class WorkersKvNamespaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
 class _WorkersKvNamespaceState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 supports_url_encoding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 supports_url_encoding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersKvNamespace resources.
 
@@ -78,38 +78,38 @@ class _WorkersKvNamespaceState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="supportsUrlEncoding")
-    def supports_url_encoding(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def supports_url_encoding(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
         """
         return pulumi.get(self, "supports_url_encoding")
 
     @supports_url_encoding.setter
-    def supports_url_encoding(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def supports_url_encoding(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "supports_url_encoding", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable string name for a Namespace.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
@@ -119,8 +119,8 @@ class WorkersKvNamespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -196,8 +196,8 @@ class WorkersKvNamespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -222,9 +222,9 @@ class WorkersKvNamespace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            supports_url_encoding: Optional[pulumi.Input[_builtins.bool]] = None,
-            title: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkersKvNamespace':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            supports_url_encoding: pulumi.Input[Optional[_builtins.bool]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkersKvNamespace':
         """
         Get an existing WorkersKvNamespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

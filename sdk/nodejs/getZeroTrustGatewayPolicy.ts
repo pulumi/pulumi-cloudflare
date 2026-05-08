@@ -152,7 +152,7 @@ export function getZeroTrustGatewayPolicyOutput(args: GetZeroTrustGatewayPolicyO
  * A collection of arguments for invoking getZeroTrustGatewayPolicy.
  */
 export interface GetZeroTrustGatewayPolicyOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Identify the API resource with a UUID.
      */

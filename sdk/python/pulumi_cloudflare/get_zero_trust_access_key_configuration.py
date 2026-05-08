@@ -128,7 +128,7 @@ def get_zero_trust_access_key_configuration(account_id: Optional[_builtins.str] 
         id=pulumi.get(__ret__, 'id'),
         key_rotation_interval_days=pulumi.get(__ret__, 'key_rotation_interval_days'),
         last_key_rotation_at=pulumi.get(__ret__, 'last_key_rotation_at'))
-def get_zero_trust_access_key_configuration_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_access_key_configuration_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessKeyConfigurationResult]:
     """
     Accepted Permissions

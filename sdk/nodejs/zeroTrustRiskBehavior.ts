@@ -98,14 +98,14 @@ export class ZeroTrustRiskBehavior extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustRiskBehavior resources.
  */
 export interface ZeroTrustRiskBehaviorState {
-    accountId?: pulumi.Input<string>;
-    behaviors?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ZeroTrustRiskBehaviorBehaviors>}>;
+    accountId?: pulumi.Input<string | undefined>;
+    behaviors?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ZeroTrustRiskBehaviorBehaviors>} | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustRiskBehavior resource.
  */
 export interface ZeroTrustRiskBehaviorArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     behaviors: pulumi.Input<{[key: string]: pulumi.Input<inputs.ZeroTrustRiskBehaviorBehaviors>}>;
 }

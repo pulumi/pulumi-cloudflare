@@ -156,7 +156,7 @@ export interface GetPagesProjectOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the project.
      */

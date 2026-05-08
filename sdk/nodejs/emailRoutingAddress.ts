@@ -126,29 +126,29 @@ export interface EmailRoutingAddressState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The date and time the destination address has been created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * The contact email address of the user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The date and time the destination address was last modified.
      */
-    modified?: pulumi.Input<string>;
+    modified?: pulumi.Input<string | undefined>;
     /**
      * Destination address tag. (Deprecated, replaced by destination address identifier)
      *
      * @deprecated This attribute is deprecated.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * The date and time the destination address has been verified. Null means not verified yet.
      */
-    verified?: pulumi.Input<string>;
+    verified?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -158,7 +158,7 @@ export interface EmailRoutingAddressArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The contact email address of the user.
      */

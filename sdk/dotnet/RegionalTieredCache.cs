@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRegionalTieredCache = new Cloudflare.Index.RegionalTieredCache("example_regional_tiered_cache", new()
+    ///     var exampleRegionalTieredCache = new Cloudflare.RegionalTieredCache("example_regional_tiered_cache", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Value = "on",

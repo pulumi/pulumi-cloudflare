@@ -24,15 +24,15 @@ class DnsRecordArgs:
                  name: pulumi.Input[_builtins.str],
                  ttl: pulumi.Input[_builtins.float],
                  type: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input['DnsRecordDataArgs']] = None,
-                 priority: Optional[pulumi.Input[_builtins.float]] = None,
-                 private_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 settings: Optional[pulumi.Input['DnsRecordSettingsArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional['DnsRecordDataArgs']] = None,
+                 priority: pulumi.Input[Optional[_builtins.float]] = None,
+                 private_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 settings: pulumi.Input[Optional['DnsRecordSettingsArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DnsRecord resource.
 
@@ -111,134 +111,134 @@ class DnsRecordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comments or notes about the DNS record. This field has no effect on DNS responses.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A valid IPv4 address.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input['DnsRecordDataArgs']]:
+    def data(self) -> pulumi.Input[Optional['DnsRecordDataArgs']]:
         """
         Components of a CAA record.
         """
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input['DnsRecordDataArgs']]):
+    def data(self, value: pulumi.Input[Optional['DnsRecordDataArgs']]):
         pulumi.set(self, "data", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="privateRouting")
-    def private_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def private_routing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables private network routing to the origin.
         """
         return pulumi.get(self, "private_routing")
 
     @private_routing.setter
-    def private_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def private_routing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "private_routing", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxied(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxied(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the record is receiving the performance and security benefits of Cloudflare.
         """
         return pulumi.get(self, "proxied")
 
     @proxied.setter
-    def proxied(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxied(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxied", value)
 
     @_builtins.property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input['DnsRecordSettingsArgs']]:
+    def settings(self) -> pulumi.Input[Optional['DnsRecordSettingsArgs']]:
         """
         Settings for the DNS record.
         """
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input['DnsRecordSettingsArgs']]):
+    def settings(self, value: pulumi.Input[Optional['DnsRecordSettingsArgs']]):
         pulumi.set(self, "settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Custom tags for the DNS record. This field has no effect on DNS responses.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _DnsRecordState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment_modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input['DnsRecordDataArgs']] = None,
-                 meta: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.float]] = None,
-                 private_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proxiable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 settings: Optional[pulumi.Input['DnsRecordSettingsArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags_modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment_modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional['DnsRecordDataArgs']] = None,
+                 meta: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.float]] = None,
+                 private_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proxiable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 settings: pulumi.Input[Optional['DnsRecordSettingsArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags_modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsRecord resources.
 
@@ -301,199 +301,199 @@ class _DnsRecordState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comments or notes about the DNS record. This field has no effect on DNS responses.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="commentModifiedOn")
-    def comment_modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment_modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the record comment was last modified. Omitted if there is no comment.
         """
         return pulumi.get(self, "comment_modified_on")
 
     @comment_modified_on.setter
-    def comment_modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment_modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment_modified_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A valid IPv4 address.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the record was created.
         """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input['DnsRecordDataArgs']]:
+    def data(self) -> pulumi.Input[Optional['DnsRecordDataArgs']]:
         """
         Components of a CAA record.
         """
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input['DnsRecordDataArgs']]):
+    def data(self, value: pulumi.Input[Optional['DnsRecordDataArgs']]):
         pulumi.set(self, "data", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def meta(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Extra Cloudflare-specific information about the record.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def meta(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the record was last modified.
         """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS record name (or @ for the zone apex) in Punycode.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="privateRouting")
-    def private_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def private_routing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables private network routing to the origin.
         """
         return pulumi.get(self, "private_routing")
 
     @private_routing.setter
-    def private_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def private_routing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "private_routing", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxiable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxiable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the record can be proxied by Cloudflare or not.
         """
         return pulumi.get(self, "proxiable")
 
     @proxiable.setter
-    def proxiable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxiable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxiable", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxied(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxied(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the record is receiving the performance and security benefits of Cloudflare.
         """
         return pulumi.get(self, "proxied")
 
     @proxied.setter
-    def proxied(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxied(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxied", value)
 
     @_builtins.property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input['DnsRecordSettingsArgs']]:
+    def settings(self) -> pulumi.Input[Optional['DnsRecordSettingsArgs']]:
         """
         Settings for the DNS record.
         """
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input['DnsRecordSettingsArgs']]):
+    def settings(self, value: pulumi.Input[Optional['DnsRecordSettingsArgs']]):
         pulumi.set(self, "settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Custom tags for the DNS record. This field has no effect on DNS responses.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tagsModifiedOn")
-    def tags_modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tags_modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the record tags were last modified. Omitted if there are no tags.
         """
         return pulumi.get(self, "tags_modified_on")
 
     @tags_modified_on.setter
-    def tags_modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tags_modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tags_modified_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "ttl", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Record type.
         Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
@@ -501,19 +501,19 @@ class _DnsRecordState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -523,18 +523,18 @@ class DnsRecord(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.float]] = None,
-                 private_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 settings: Optional[pulumi.Input[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.float]] = None,
+                 private_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 settings: pulumi.Input[Optional[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -551,7 +551,7 @@ class DnsRecord(pulumi.CustomResource):
         example_dns_record = cloudflare.DnsRecord("example_dns_record",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="example.com",
-            ttl=3600,
+            ttl=float(3600),
             type="A",
             comment="Domain verification record",
             content="198.51.100.4",
@@ -608,7 +608,7 @@ class DnsRecord(pulumi.CustomResource):
         example_dns_record = cloudflare.DnsRecord("example_dns_record",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="example.com",
-            ttl=3600,
+            ttl=float(3600),
             type="A",
             comment="Domain verification record",
             content="198.51.100.4",
@@ -643,18 +643,18 @@ class DnsRecord(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.float]] = None,
-                 private_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 settings: Optional[pulumi.Input[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.float]] = None,
+                 private_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 settings: pulumi.Input[Optional[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -700,24 +700,24 @@ class DnsRecord(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            comment_modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            content: Optional[pulumi.Input[_builtins.str]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            data: Optional[pulumi.Input[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']]] = None,
-            meta: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            priority: Optional[pulumi.Input[_builtins.float]] = None,
-            private_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-            proxiable: Optional[pulumi.Input[_builtins.bool]] = None,
-            proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-            settings: Optional[pulumi.Input[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags_modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            ttl: Optional[pulumi.Input[_builtins.float]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DnsRecord':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            comment_modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            data: pulumi.Input[Optional[Union['DnsRecordDataArgs', 'DnsRecordDataArgsDict']]] = None,
+            meta: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.float]] = None,
+            private_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+            proxiable: pulumi.Input[Optional[_builtins.bool]] = None,
+            proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+            settings: pulumi.Input[Optional[Union['DnsRecordSettingsArgs', 'DnsRecordSettingsArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags_modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DnsRecord':
         """
         Get an existing DnsRecord resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

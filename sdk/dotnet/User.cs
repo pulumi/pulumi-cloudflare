@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUser = new Cloudflare.Index.User("example_user", new()
+    ///     var exampleUser = new Cloudflare.User("example_user", new()
     ///     {
     ///         Country = "US",
     ///         FirstName = "John",

@@ -22,20 +22,20 @@ __all__ = ['LogpushJobArgs', 'LogpushJob']
 class LogpushJobArgs:
     def __init__(__self__, *,
                  destination_conf: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 logpull_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_upload_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_upload_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_upload_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_options: Optional[pulumi.Input['LogpushJobOutputOptionsArgs']] = None,
-                 ownership_challenge: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 logpull_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_upload_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_upload_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_upload_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_options: pulumi.Input[Optional['LogpushJobOutputOptionsArgs']] = None,
+                 ownership_challenge: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LogpushJob resource.
 
@@ -108,19 +108,19 @@ class LogpushJobArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
         Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
@@ -128,37 +128,37 @@ class LogpushJobArgs:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag that indicates if the job is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
         """
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
         Available values: "high", "low".
@@ -166,12 +166,12 @@ class LogpushJobArgs:
         return pulumi.get(self, "frequency")
 
     @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "frequency", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
         Available values: "", "edge".
@@ -179,128 +179,128 @@ class LogpushJobArgs:
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter(name="logpullOptions")
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def logpull_options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logpull_options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
         """
         return pulumi.get(self, "logpull_options")
 
     @logpull_options.setter
-    def logpull_options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logpull_options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logpull_options", value)
 
     @_builtins.property
     @pulumi.getter(name="maxUploadBytes")
-    def max_upload_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_upload_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
         """
         return pulumi.get(self, "max_upload_bytes")
 
     @max_upload_bytes.setter
-    def max_upload_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_upload_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_upload_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="maxUploadIntervalSeconds")
-    def max_upload_interval_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_upload_interval_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
         """
         return pulumi.get(self, "max_upload_interval_seconds")
 
     @max_upload_interval_seconds.setter
-    def max_upload_interval_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_upload_interval_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_upload_interval_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="maxUploadRecords")
-    def max_upload_records(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_upload_records(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
         """
         return pulumi.get(self, "max_upload_records")
 
     @max_upload_records.setter
-    def max_upload_records(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_upload_records(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_upload_records", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="outputOptions")
-    def output_options(self) -> Optional[pulumi.Input['LogpushJobOutputOptionsArgs']]:
+    def output_options(self) -> pulumi.Input[Optional['LogpushJobOutputOptionsArgs']]:
         """
         The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
         """
         return pulumi.get(self, "output_options")
 
     @output_options.setter
-    def output_options(self, value: Optional[pulumi.Input['LogpushJobOutputOptionsArgs']]):
+    def output_options(self, value: pulumi.Input[Optional['LogpushJobOutputOptionsArgs']]):
         pulumi.set(self, "output_options", value)
 
     @_builtins.property
     @pulumi.getter(name="ownershipChallenge")
-    def ownership_challenge(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ownership_challenge(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ownership challenge token to prove destination ownership.
         """
         return pulumi.get(self, "ownership_challenge")
 
     @ownership_challenge.setter
-    def ownership_challenge(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ownership_challenge(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ownership_challenge", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _LogpushJobState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 error_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_complete: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_error: Optional[pulumi.Input[_builtins.str]] = None,
-                 logpull_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_upload_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_upload_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_upload_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_options: Optional[pulumi.Input['LogpushJobOutputOptionsArgs']] = None,
-                 ownership_challenge: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_complete: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_error: pulumi.Input[Optional[_builtins.str]] = None,
+                 logpull_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_upload_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_upload_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_upload_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_options: pulumi.Input[Optional['LogpushJobOutputOptionsArgs']] = None,
+                 ownership_challenge: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogpushJob resources.
 
@@ -371,19 +371,19 @@ class _LogpushJobState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
         Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
@@ -391,61 +391,61 @@ class _LogpushJobState:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationConf")
-    def destination_conf(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_conf(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
         """
         return pulumi.get(self, "destination_conf")
 
     @destination_conf.setter
-    def destination_conf(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_conf(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_conf", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag that indicates if the job is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
         """
         return pulumi.get(self, "error_message")
 
     @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_message", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
         """
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
         Available values: "high", "low".
@@ -453,12 +453,12 @@ class _LogpushJobState:
         return pulumi.get(self, "frequency")
 
     @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "frequency", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
         Available values: "", "edge".
@@ -466,128 +466,128 @@ class _LogpushJobState:
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter(name="lastComplete")
-    def last_complete(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_complete(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
         """
         return pulumi.get(self, "last_complete")
 
     @last_complete.setter
-    def last_complete(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_complete(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_complete", value)
 
     @_builtins.property
     @pulumi.getter(name="lastError")
-    def last_error(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_error(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
         """
         return pulumi.get(self, "last_error")
 
     @last_error.setter
-    def last_error(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_error(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_error", value)
 
     @_builtins.property
     @pulumi.getter(name="logpullOptions")
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def logpull_options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logpull_options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
         """
         return pulumi.get(self, "logpull_options")
 
     @logpull_options.setter
-    def logpull_options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logpull_options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logpull_options", value)
 
     @_builtins.property
     @pulumi.getter(name="maxUploadBytes")
-    def max_upload_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_upload_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
         """
         return pulumi.get(self, "max_upload_bytes")
 
     @max_upload_bytes.setter
-    def max_upload_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_upload_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_upload_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="maxUploadIntervalSeconds")
-    def max_upload_interval_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_upload_interval_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
         """
         return pulumi.get(self, "max_upload_interval_seconds")
 
     @max_upload_interval_seconds.setter
-    def max_upload_interval_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_upload_interval_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_upload_interval_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="maxUploadRecords")
-    def max_upload_records(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_upload_records(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
         """
         return pulumi.get(self, "max_upload_records")
 
     @max_upload_records.setter
-    def max_upload_records(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_upload_records(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_upload_records", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="outputOptions")
-    def output_options(self) -> Optional[pulumi.Input['LogpushJobOutputOptionsArgs']]:
+    def output_options(self) -> pulumi.Input[Optional['LogpushJobOutputOptionsArgs']]:
         """
         The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
         """
         return pulumi.get(self, "output_options")
 
     @output_options.setter
-    def output_options(self, value: Optional[pulumi.Input['LogpushJobOutputOptionsArgs']]):
+    def output_options(self, value: pulumi.Input[Optional['LogpushJobOutputOptionsArgs']]):
         pulumi.set(self, "output_options", value)
 
     @_builtins.property
     @pulumi.getter(name="ownershipChallenge")
-    def ownership_challenge(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ownership_challenge(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ownership challenge token to prove destination ownership.
         """
         return pulumi.get(self, "ownership_challenge")
 
     @ownership_challenge.setter
-    def ownership_challenge(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ownership_challenge(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ownership_challenge", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -597,21 +597,21 @@ class LogpushJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 logpull_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_upload_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_upload_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_upload_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_options: Optional[pulumi.Input[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']]] = None,
-                 ownership_challenge: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 logpull_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_upload_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_upload_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_upload_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_options: pulumi.Input[Optional[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']]] = None,
+                 ownership_challenge: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -655,7 +655,7 @@ class LogpushJob(pulumi.CustomResource):
 
         \"\"\",
                 "record_template": "record_template",
-                "sample_rate": 1,
+                "sample_rate": float(1),
                 "timestamp_format": "unixnano",
             },
             ownership_challenge="00000000000000000000")
@@ -737,7 +737,7 @@ class LogpushJob(pulumi.CustomResource):
 
         \"\"\",
                 "record_template": "record_template",
-                "sample_rate": 1,
+                "sample_rate": float(1),
                 "timestamp_format": "unixnano",
             },
             ownership_challenge="00000000000000000000")
@@ -765,21 +765,21 @@ class LogpushJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 logpull_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_upload_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_upload_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_upload_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_options: Optional[pulumi.Input[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']]] = None,
-                 ownership_challenge: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 logpull_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_upload_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_upload_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_upload_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_options: pulumi.Input[Optional[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']]] = None,
+                 ownership_challenge: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -821,24 +821,24 @@ class LogpushJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dataset: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_conf: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            error_message: Optional[pulumi.Input[_builtins.str]] = None,
-            filter: Optional[pulumi.Input[_builtins.str]] = None,
-            frequency: Optional[pulumi.Input[_builtins.str]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            last_complete: Optional[pulumi.Input[_builtins.str]] = None,
-            last_error: Optional[pulumi.Input[_builtins.str]] = None,
-            logpull_options: Optional[pulumi.Input[_builtins.str]] = None,
-            max_upload_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            max_upload_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            max_upload_records: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            output_options: Optional[pulumi.Input[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']]] = None,
-            ownership_challenge: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'LogpushJob':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_conf: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            error_message: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            last_complete: pulumi.Input[Optional[_builtins.str]] = None,
+            last_error: pulumi.Input[Optional[_builtins.str]] = None,
+            logpull_options: pulumi.Input[Optional[_builtins.str]] = None,
+            max_upload_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            max_upload_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            max_upload_records: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_options: pulumi.Input[Optional[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']]] = None,
+            ownership_challenge: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'LogpushJob':
         """
         Get an existing LogpushJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

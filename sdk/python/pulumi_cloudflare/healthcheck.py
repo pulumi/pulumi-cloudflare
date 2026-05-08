@@ -23,18 +23,18 @@ class HealthcheckArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 consecutive_fails: Optional[pulumi.Input[_builtins.int]] = None,
-                 consecutive_successes: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_config: Optional[pulumi.Input['HealthcheckHttpConfigArgs']] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tcp_config: Optional[pulumi.Input['HealthcheckTcpConfigArgs']] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 consecutive_fails: pulumi.Input[Optional[_builtins.int]] = None,
+                 consecutive_successes: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_config: pulumi.Input[Optional['HealthcheckHttpConfigArgs']] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tcp_config: pulumi.Input[Optional['HealthcheckTcpConfigArgs']] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Healthcheck resource.
 
@@ -106,170 +106,170 @@ class HealthcheckArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkRegions")
-    def check_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def check_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
         """
         return pulumi.get(self, "check_regions")
 
     @check_regions.setter
-    def check_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def check_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "check_regions", value)
 
     @_builtins.property
     @pulumi.getter(name="consecutiveFails")
-    def consecutive_fails(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def consecutive_fails(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive fails required from a health check before changing the health to unhealthy.
         """
         return pulumi.get(self, "consecutive_fails")
 
     @consecutive_fails.setter
-    def consecutive_fails(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def consecutive_fails(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "consecutive_fails", value)
 
     @_builtins.property
     @pulumi.getter(name="consecutiveSuccesses")
-    def consecutive_successes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def consecutive_successes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive successes required from a health check before changing the health to healthy.
         """
         return pulumi.get(self, "consecutive_successes")
 
     @consecutive_successes.setter
-    def consecutive_successes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def consecutive_successes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "consecutive_successes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the health check.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="httpConfig")
-    def http_config(self) -> Optional[pulumi.Input['HealthcheckHttpConfigArgs']]:
+    def http_config(self) -> pulumi.Input[Optional['HealthcheckHttpConfigArgs']]:
         """
         Parameters specific to an HTTP or HTTPS health check.
         """
         return pulumi.get(self, "http_config")
 
     @http_config.setter
-    def http_config(self, value: Optional[pulumi.Input['HealthcheckHttpConfigArgs']]):
+    def http_config(self, value: pulumi.Input[Optional['HealthcheckHttpConfigArgs']]):
         pulumi.set(self, "http_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
         """
         return pulumi.get(self, "retries")
 
     @retries.setter
-    def retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retries", value)
 
     @_builtins.property
     @pulumi.getter
-    def suspended(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def suspended(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If suspended, no health checks are sent to the origin.
         """
         return pulumi.get(self, "suspended")
 
     @suspended.setter
-    def suspended(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def suspended(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "suspended", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpConfig")
-    def tcp_config(self) -> Optional[pulumi.Input['HealthcheckTcpConfigArgs']]:
+    def tcp_config(self) -> pulumi.Input[Optional['HealthcheckTcpConfigArgs']]:
         """
         Parameters specific to TCP health check.
         """
         return pulumi.get(self, "tcp_config")
 
     @tcp_config.setter
-    def tcp_config(self, value: Optional[pulumi.Input['HealthcheckTcpConfigArgs']]):
+    def tcp_config(self, value: pulumi.Input[Optional['HealthcheckTcpConfigArgs']]):
         pulumi.set(self, "tcp_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout (in seconds) before marking the health check as failed.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _HealthcheckState:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 consecutive_fails: Optional[pulumi.Input[_builtins.int]] = None,
-                 consecutive_successes: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 failure_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_config: Optional[pulumi.Input['HealthcheckHttpConfigArgs']] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tcp_config: Optional[pulumi.Input['HealthcheckTcpConfigArgs']] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 consecutive_fails: pulumi.Input[Optional[_builtins.int]] = None,
+                 consecutive_successes: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_config: pulumi.Input[Optional['HealthcheckHttpConfigArgs']] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tcp_config: pulumi.Input[Optional['HealthcheckTcpConfigArgs']] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Healthcheck resources.
 
@@ -330,145 +330,145 @@ class _HealthcheckState:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname or IP address of the origin server to run health checks on.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="checkRegions")
-    def check_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def check_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
         """
         return pulumi.get(self, "check_regions")
 
     @check_regions.setter
-    def check_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def check_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "check_regions", value)
 
     @_builtins.property
     @pulumi.getter(name="consecutiveFails")
-    def consecutive_fails(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def consecutive_fails(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive fails required from a health check before changing the health to unhealthy.
         """
         return pulumi.get(self, "consecutive_fails")
 
     @consecutive_fails.setter
-    def consecutive_fails(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def consecutive_fails(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "consecutive_fails", value)
 
     @_builtins.property
     @pulumi.getter(name="consecutiveSuccesses")
-    def consecutive_successes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def consecutive_successes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive successes required from a health check before changing the health to healthy.
         """
         return pulumi.get(self, "consecutive_successes")
 
     @consecutive_successes.setter
-    def consecutive_successes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def consecutive_successes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "consecutive_successes", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the health check.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="failureReason")
-    def failure_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failure_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current failure reason if status is unhealthy.
         """
         return pulumi.get(self, "failure_reason")
 
     @failure_reason.setter
-    def failure_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failure_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failure_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="httpConfig")
-    def http_config(self) -> Optional[pulumi.Input['HealthcheckHttpConfigArgs']]:
+    def http_config(self) -> pulumi.Input[Optional['HealthcheckHttpConfigArgs']]:
         """
         Parameters specific to an HTTP or HTTPS health check.
         """
         return pulumi.get(self, "http_config")
 
     @http_config.setter
-    def http_config(self, value: Optional[pulumi.Input['HealthcheckHttpConfigArgs']]):
+    def http_config(self, value: pulumi.Input[Optional['HealthcheckHttpConfigArgs']]):
         pulumi.set(self, "http_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
         """
         return pulumi.get(self, "retries")
 
     @retries.setter
-    def retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retries", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current status of the origin server according to the health check.
         Available values: "unknown", "healthy", "unhealthy", "suspended".
@@ -476,67 +476,67 @@ class _HealthcheckState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def suspended(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def suspended(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If suspended, no health checks are sent to the origin.
         """
         return pulumi.get(self, "suspended")
 
     @suspended.setter
-    def suspended(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def suspended(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "suspended", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpConfig")
-    def tcp_config(self) -> Optional[pulumi.Input['HealthcheckTcpConfigArgs']]:
+    def tcp_config(self) -> pulumi.Input[Optional['HealthcheckTcpConfigArgs']]:
         """
         Parameters specific to TCP health check.
         """
         return pulumi.get(self, "tcp_config")
 
     @tcp_config.setter
-    def tcp_config(self, value: Optional[pulumi.Input['HealthcheckTcpConfigArgs']]):
+    def tcp_config(self, value: pulumi.Input[Optional['HealthcheckTcpConfigArgs']]):
         pulumi.set(self, "tcp_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout (in seconds) before marking the health check as failed.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -546,20 +546,20 @@ class Healthcheck(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 consecutive_fails: Optional[pulumi.Input[_builtins.int]] = None,
-                 consecutive_successes: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_config: Optional[pulumi.Input[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict']]] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tcp_config: Optional[pulumi.Input[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict']]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 consecutive_fails: pulumi.Input[Optional[_builtins.int]] = None,
+                 consecutive_successes: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_config: pulumi.Input[Optional[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict']]] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tcp_config: pulumi.Input[Optional[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict']]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -713,20 +713,20 @@ class Healthcheck(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 consecutive_fails: Optional[pulumi.Input[_builtins.int]] = None,
-                 consecutive_successes: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_config: Optional[pulumi.Input[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict']]] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tcp_config: Optional[pulumi.Input[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict']]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 consecutive_fails: pulumi.Input[Optional[_builtins.int]] = None,
+                 consecutive_successes: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_config: pulumi.Input[Optional[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict']]] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tcp_config: pulumi.Input[Optional[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict']]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -768,24 +768,24 @@ class Healthcheck(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            consecutive_fails: Optional[pulumi.Input[_builtins.int]] = None,
-            consecutive_successes: Optional[pulumi.Input[_builtins.int]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            failure_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            http_config: Optional[pulumi.Input[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict']]] = None,
-            interval: Optional[pulumi.Input[_builtins.int]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            retries: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-            tcp_config: Optional[pulumi.Input[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict']]] = None,
-            timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Healthcheck':
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            check_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            consecutive_fails: pulumi.Input[Optional[_builtins.int]] = None,
+            consecutive_successes: pulumi.Input[Optional[_builtins.int]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            http_config: pulumi.Input[Optional[Union['HealthcheckHttpConfigArgs', 'HealthcheckHttpConfigArgsDict']]] = None,
+            interval: pulumi.Input[Optional[_builtins.int]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            retries: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+            tcp_config: pulumi.Input[Optional[Union['HealthcheckTcpConfigArgs', 'HealthcheckTcpConfigArgsDict']]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Healthcheck':
         """
         Get an existing Healthcheck resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

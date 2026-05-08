@@ -165,30 +165,30 @@ export interface MagicTransitSiteAclState {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Description for the ACL.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
      */
-    forwardLocally?: pulumi.Input<boolean>;
-    lan1?: pulumi.Input<inputs.MagicTransitSiteAclLan1>;
-    lan2?: pulumi.Input<inputs.MagicTransitSiteAclLan2>;
+    forwardLocally?: pulumi.Input<boolean | undefined>;
+    lan1?: pulumi.Input<inputs.MagicTransitSiteAclLan1 | undefined>;
+    lan2?: pulumi.Input<inputs.MagicTransitSiteAclLan2 | undefined>;
     /**
      * The name of the ACL.
      */
-    name?: pulumi.Input<string>;
-    protocols?: pulumi.Input<pulumi.Input<string>[]>;
+    name?: pulumi.Input<string | undefined>;
+    protocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Identifier
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false.
      */
-    unidirectional?: pulumi.Input<boolean>;
+    unidirectional?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -198,22 +198,22 @@ export interface MagicTransitSiteAclArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Description for the ACL.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
      */
-    forwardLocally?: pulumi.Input<boolean>;
+    forwardLocally?: pulumi.Input<boolean | undefined>;
     lan1: pulumi.Input<inputs.MagicTransitSiteAclLan1>;
     lan2: pulumi.Input<inputs.MagicTransitSiteAclLan2>;
     /**
      * The name of the ACL.
      */
     name: pulumi.Input<string>;
-    protocols?: pulumi.Input<pulumi.Input<string>[]>;
+    protocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Identifier
      */
@@ -221,5 +221,5 @@ export interface MagicTransitSiteAclArgs {
     /**
      * The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false.
      */
-    unidirectional?: pulumi.Input<boolean>;
+    unidirectional?: pulumi.Input<boolean | undefined>;
 }

@@ -124,24 +124,24 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UserAgentBlockingRule resources.
  */
 export interface UserAgentBlockingRuleState {
-    configuration?: pulumi.Input<inputs.UserAgentBlockingRuleConfiguration>;
+    configuration?: pulumi.Input<inputs.UserAgentBlockingRuleConfiguration | undefined>;
     /**
      * An informative summary of the rule. This value is sanitized and any tags will be removed.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The action to apply to a matched request.
      * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * When true, indicates that the rule is currently paused.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -152,7 +152,7 @@ export interface UserAgentBlockingRuleArgs {
     /**
      * An informative summary of the rule. This value is sanitized and any tags will be removed.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The action to apply to a matched request.
      * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
@@ -161,9 +161,9 @@ export interface UserAgentBlockingRuleArgs {
     /**
      * When true, indicates that the rule is currently paused.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

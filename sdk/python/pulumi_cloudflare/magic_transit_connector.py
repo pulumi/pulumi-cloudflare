@@ -23,11 +23,11 @@ class MagicTransitConnectorArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  device: pulumi.Input['MagicTransitConnectorDeviceArgs'],
-                 activated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 interrupt_window_duration_hours: Optional[pulumi.Input[_builtins.float]] = None,
-                 interrupt_window_hour_of_day: Optional[pulumi.Input[_builtins.float]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None):
+                 activated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 interrupt_window_duration_hours: pulumi.Input[Optional[_builtins.float]] = None,
+                 interrupt_window_hour_of_day: pulumi.Input[Optional[_builtins.float]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MagicTransitConnector resource.
 
@@ -69,61 +69,61 @@ class MagicTransitConnectorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def activated(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def activated(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "activated")
 
     @activated.setter
-    def activated(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def activated(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "activated", value)
 
     @_builtins.property
     @pulumi.getter(name="interruptWindowDurationHours")
-    def interrupt_window_duration_hours(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def interrupt_window_duration_hours(self) -> pulumi.Input[Optional[_builtins.float]]:
         return pulumi.get(self, "interrupt_window_duration_hours")
 
     @interrupt_window_duration_hours.setter
-    def interrupt_window_duration_hours(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def interrupt_window_duration_hours(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "interrupt_window_duration_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="interruptWindowHourOfDay")
-    def interrupt_window_hour_of_day(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def interrupt_window_hour_of_day(self) -> pulumi.Input[Optional[_builtins.float]]:
         return pulumi.get(self, "interrupt_window_hour_of_day")
 
     @interrupt_window_hour_of_day.setter
-    def interrupt_window_hour_of_day(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def interrupt_window_hour_of_day(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "interrupt_window_hour_of_day", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
 
 @pulumi.input_type
 class _MagicTransitConnectorState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 activated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 device: Optional[pulumi.Input['MagicTransitConnectorDeviceArgs']] = None,
-                 interrupt_window_duration_hours: Optional[pulumi.Input[_builtins.float]] = None,
-                 interrupt_window_hour_of_day: Optional[pulumi.Input[_builtins.float]] = None,
-                 license_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 activated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 device: pulumi.Input[Optional['MagicTransitConnectorDeviceArgs']] = None,
+                 interrupt_window_duration_hours: pulumi.Input[Optional[_builtins.float]] = None,
+                 interrupt_window_hour_of_day: pulumi.Input[Optional[_builtins.float]] = None,
+                 license_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MagicTransitConnector resources.
 
@@ -149,80 +149,80 @@ class _MagicTransitConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def activated(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def activated(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "activated")
 
     @activated.setter
-    def activated(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def activated(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "activated", value)
 
     @_builtins.property
     @pulumi.getter
-    def device(self) -> Optional[pulumi.Input['MagicTransitConnectorDeviceArgs']]:
+    def device(self) -> pulumi.Input[Optional['MagicTransitConnectorDeviceArgs']]:
         return pulumi.get(self, "device")
 
     @device.setter
-    def device(self, value: Optional[pulumi.Input['MagicTransitConnectorDeviceArgs']]):
+    def device(self, value: pulumi.Input[Optional['MagicTransitConnectorDeviceArgs']]):
         pulumi.set(self, "device", value)
 
     @_builtins.property
     @pulumi.getter(name="interruptWindowDurationHours")
-    def interrupt_window_duration_hours(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def interrupt_window_duration_hours(self) -> pulumi.Input[Optional[_builtins.float]]:
         return pulumi.get(self, "interrupt_window_duration_hours")
 
     @interrupt_window_duration_hours.setter
-    def interrupt_window_duration_hours(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def interrupt_window_duration_hours(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "interrupt_window_duration_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="interruptWindowHourOfDay")
-    def interrupt_window_hour_of_day(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def interrupt_window_hour_of_day(self) -> pulumi.Input[Optional[_builtins.float]]:
         return pulumi.get(self, "interrupt_window_hour_of_day")
 
     @interrupt_window_hour_of_day.setter
-    def interrupt_window_hour_of_day(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def interrupt_window_hour_of_day(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "interrupt_window_hour_of_day", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseKey")
-    def license_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         License key for the connector. This is only returned on creation and will not be available in subsequent reads.
         """
         return pulumi.get(self, "license_key")
 
     @license_key.setter
-    def license_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
 
@@ -232,13 +232,13 @@ class MagicTransitConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 activated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 device: Optional[pulumi.Input[Union['MagicTransitConnectorDeviceArgs', 'MagicTransitConnectorDeviceArgsDict']]] = None,
-                 interrupt_window_duration_hours: Optional[pulumi.Input[_builtins.float]] = None,
-                 interrupt_window_hour_of_day: Optional[pulumi.Input[_builtins.float]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 activated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 device: pulumi.Input[Optional[Union['MagicTransitConnectorDeviceArgs', 'MagicTransitConnectorDeviceArgsDict']]] = None,
+                 interrupt_window_duration_hours: pulumi.Input[Optional[_builtins.float]] = None,
+                 interrupt_window_hour_of_day: pulumi.Input[Optional[_builtins.float]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -256,9 +256,9 @@ class MagicTransitConnector(pulumi.CustomResource):
             },
             activated=True,
             interrupt_window_days_of_week=["Sunday"],
-            interrupt_window_duration_hours=1,
+            interrupt_window_duration_hours=float(1),
             interrupt_window_embargo_dates=["string"],
-            interrupt_window_hour_of_day=0,
+            interrupt_window_hour_of_day=float(0),
             notes="notes",
             timezone="timezone")
         ```
@@ -296,9 +296,9 @@ class MagicTransitConnector(pulumi.CustomResource):
             },
             activated=True,
             interrupt_window_days_of_week=["Sunday"],
-            interrupt_window_duration_hours=1,
+            interrupt_window_duration_hours=float(1),
             interrupt_window_embargo_dates=["string"],
-            interrupt_window_hour_of_day=0,
+            interrupt_window_hour_of_day=float(0),
             notes="notes",
             timezone="timezone")
         ```
@@ -325,13 +325,13 @@ class MagicTransitConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 activated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 device: Optional[pulumi.Input[Union['MagicTransitConnectorDeviceArgs', 'MagicTransitConnectorDeviceArgsDict']]] = None,
-                 interrupt_window_duration_hours: Optional[pulumi.Input[_builtins.float]] = None,
-                 interrupt_window_hour_of_day: Optional[pulumi.Input[_builtins.float]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 activated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 device: pulumi.Input[Optional[Union['MagicTransitConnectorDeviceArgs', 'MagicTransitConnectorDeviceArgsDict']]] = None,
+                 interrupt_window_duration_hours: pulumi.Input[Optional[_builtins.float]] = None,
+                 interrupt_window_hour_of_day: pulumi.Input[Optional[_builtins.float]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -365,14 +365,14 @@ class MagicTransitConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            activated: Optional[pulumi.Input[_builtins.bool]] = None,
-            device: Optional[pulumi.Input[Union['MagicTransitConnectorDeviceArgs', 'MagicTransitConnectorDeviceArgsDict']]] = None,
-            interrupt_window_duration_hours: Optional[pulumi.Input[_builtins.float]] = None,
-            interrupt_window_hour_of_day: Optional[pulumi.Input[_builtins.float]] = None,
-            license_key: Optional[pulumi.Input[_builtins.str]] = None,
-            notes: Optional[pulumi.Input[_builtins.str]] = None,
-            timezone: Optional[pulumi.Input[_builtins.str]] = None) -> 'MagicTransitConnector':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            activated: pulumi.Input[Optional[_builtins.bool]] = None,
+            device: pulumi.Input[Optional[Union['MagicTransitConnectorDeviceArgs', 'MagicTransitConnectorDeviceArgsDict']]] = None,
+            interrupt_window_duration_hours: pulumi.Input[Optional[_builtins.float]] = None,
+            interrupt_window_hour_of_day: pulumi.Input[Optional[_builtins.float]] = None,
+            license_key: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None) -> 'MagicTransitConnector':
         """
         Get an existing MagicTransitConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

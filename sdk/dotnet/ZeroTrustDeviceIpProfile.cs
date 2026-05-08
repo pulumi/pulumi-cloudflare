@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustDeviceIpProfile = new Cloudflare.Index.ZeroTrustDeviceIpProfile("example_zero_trust_device_ip_profile", new()
+    ///     var exampleZeroTrustDeviceIpProfile = new Cloudflare.ZeroTrustDeviceIpProfile("example_zero_trust_device_ip_profile", new()
     ///     {
     ///         AccountId = "account_id",
     ///         Match = "identity.email == \"test@cloudflare.com\"",

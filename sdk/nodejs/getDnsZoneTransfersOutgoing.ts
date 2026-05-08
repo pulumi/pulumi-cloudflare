@@ -105,5 +105,5 @@ export function getDnsZoneTransfersOutgoingOutput(args?: GetDnsZoneTransfersOutg
  * A collection of arguments for invoking getDnsZoneTransfersOutgoing.
  */
 export interface GetDnsZoneTransfersOutgoingOutputArgs {
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

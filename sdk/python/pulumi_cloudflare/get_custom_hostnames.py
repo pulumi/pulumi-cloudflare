@@ -232,7 +232,7 @@ def get_custom_hostnames(certificate_authority: Optional[_builtins.str] = None,
             "contain": "example.com",
         },
         hostname_status="provisioned",
-        ssl=0,
+        ssl=float(0),
         ssl_status="active",
         wildcard=False)
     ```
@@ -286,18 +286,18 @@ def get_custom_hostnames(certificate_authority: Optional[_builtins.str] = None,
         ssl_status=pulumi.get(__ret__, 'ssl_status'),
         wildcard=pulumi.get(__ret__, 'wildcard'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_custom_hostnames_output(certificate_authority: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                custom_origin_server: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                hostname: Optional[pulumi.Input[Optional[Union['GetCustomHostnamesHostnameArgs', 'GetCustomHostnamesHostnameArgsDict']]]] = None,
-                                hostname_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                ssl: Optional[pulumi.Input[Optional[_builtins.float]]] = None,
-                                ssl_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                wildcard: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_custom_hostnames_output(certificate_authority: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                custom_origin_server: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                hostname: pulumi.Input[Optional[Optional[Union['GetCustomHostnamesHostnameArgs', 'GetCustomHostnamesHostnameArgsDict']]]] = None,
+                                hostname_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                ssl: pulumi.Input[Optional[Optional[_builtins.float]]] = None,
+                                ssl_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                wildcard: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomHostnamesResult]:
     """
     Accepted Permissions
@@ -320,7 +320,7 @@ def get_custom_hostnames_output(certificate_authority: Optional[pulumi.Input[Opt
             "contain": "example.com",
         },
         hostname_status="provisioned",
-        ssl=0,
+        ssl=float(0),
         ssl_status="active",
         wildcard=False)
     ```

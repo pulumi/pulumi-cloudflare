@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleArgoTieredCaching = new Cloudflare.Index.ArgoTieredCaching("example_argo_tiered_caching", new()
+    ///     var exampleArgoTieredCaching = new Cloudflare.ArgoTieredCaching("example_argo_tiered_caching", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Value = "on",

@@ -111,14 +111,14 @@ export interface GetApiShieldOperationOutputArgs {
     /**
      * Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.
      */
-    feature?: pulumi.Input<pulumi.Input<string>[]>;
-    filter?: pulumi.Input<inputs.GetApiShieldOperationFilterArgs>;
+    feature?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    filter?: pulumi.Input<inputs.GetApiShieldOperationFilterArgs | undefined>;
     /**
      * UUID.
      */
-    operationId?: pulumi.Input<string>;
+    operationId?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

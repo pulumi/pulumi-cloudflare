@@ -125,10 +125,10 @@ export interface GetAccountMemberOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetAccountMemberFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetAccountMemberFilterArgs | undefined>;
     /**
      * Membership identifier tag.
      */
-    memberId?: pulumi.Input<string>;
+    memberId?: pulumi.Input<string | undefined>;
 }

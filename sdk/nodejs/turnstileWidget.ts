@@ -191,59 +191,59 @@ export interface TurnstileWidgetState {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * If bot*fight*mode is set to `true`, Cloudflare issues computationally
      * expensive challenges in response to malicious bots (ENT only).
      */
-    botFightMode?: pulumi.Input<boolean>;
+    botFightMode?: pulumi.Input<boolean | undefined>;
     /**
      * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
      * Available values: "noClearance", "jschallenge", "managed", "interactive".
      */
-    clearanceLevel?: pulumi.Input<string>;
+    clearanceLevel?: pulumi.Input<string | undefined>;
     /**
      * When the widget was created.
      */
-    createdOn?: pulumi.Input<string>;
-    domains?: pulumi.Input<pulumi.Input<string>[]>;
+    createdOn?: pulumi.Input<string | undefined>;
+    domains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Return the Ephemeral ID in /siteverify (ENT only).
      */
-    ephemeralId?: pulumi.Input<boolean>;
+    ephemeralId?: pulumi.Input<boolean | undefined>;
     /**
      * Widget Mode
      * Available values: "non-interactive", "invisible", "managed".
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * When the widget was modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * Human readable widget name. Not unique. Cloudflare suggests that you
      * set this to a meaningful string to make it easier to identify your
      * widget, and where it is used.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Do not show any Cloudflare branding on the widget (ENT only).
      */
-    offlabel?: pulumi.Input<boolean>;
+    offlabel?: pulumi.Input<boolean | undefined>;
     /**
      * Region where this widget can be used. This cannot be changed after creation.
      * Available values: "world", "china".
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Secret key for this widget.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Widget item identifier tag.
      */
-    sitekey?: pulumi.Input<string>;
+    sitekey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -253,23 +253,23 @@ export interface TurnstileWidgetArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * If bot*fight*mode is set to `true`, Cloudflare issues computationally
      * expensive challenges in response to malicious bots (ENT only).
      */
-    botFightMode?: pulumi.Input<boolean>;
+    botFightMode?: pulumi.Input<boolean | undefined>;
     /**
      * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
      * Available values: "noClearance", "jschallenge", "managed", "interactive".
      */
-    clearanceLevel?: pulumi.Input<string>;
+    clearanceLevel?: pulumi.Input<string | undefined>;
     domains: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Return the Ephemeral ID in /siteverify (ENT only).
      */
-    ephemeralId?: pulumi.Input<boolean>;
+    ephemeralId?: pulumi.Input<boolean | undefined>;
     /**
      * Widget Mode
      * Available values: "non-interactive", "invisible", "managed".
@@ -284,10 +284,10 @@ export interface TurnstileWidgetArgs {
     /**
      * Do not show any Cloudflare branding on the widget (ENT only).
      */
-    offlabel?: pulumi.Input<boolean>;
+    offlabel?: pulumi.Input<boolean | undefined>;
     /**
      * Region where this widget can be used. This cannot be changed after creation.
      * Available values: "world", "china".
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

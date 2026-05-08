@@ -151,39 +151,39 @@ export interface D1DatabaseState {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the timestamp the resource was created as an ISO8601 string.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The D1 database's size, in bytes.
      */
-    fileSize?: pulumi.Input<number>;
+    fileSize?: pulumi.Input<number | undefined>;
     /**
      * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
      * Available values: "eu", "fedramp".
      */
-    jurisdiction?: pulumi.Input<string>;
+    jurisdiction?: pulumi.Input<string | undefined>;
     /**
      * D1 database name.
      */
-    name?: pulumi.Input<string>;
-    numTables?: pulumi.Input<number>;
+    name?: pulumi.Input<string | undefined>;
+    numTables?: pulumi.Input<number | undefined>;
     /**
      * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
      * Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
      */
-    primaryLocationHint?: pulumi.Input<string>;
+    primaryLocationHint?: pulumi.Input<string | undefined>;
     /**
      * Configuration for D1 read replication.
      */
-    readReplication?: pulumi.Input<inputs.D1DatabaseReadReplication>;
+    readReplication?: pulumi.Input<inputs.D1DatabaseReadReplication | undefined>;
     /**
      * D1 database identifier (UUID).
      */
-    uuid?: pulumi.Input<string>;
-    version?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -193,12 +193,12 @@ export interface D1DatabaseArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
      * Available values: "eu", "fedramp".
      */
-    jurisdiction?: pulumi.Input<string>;
+    jurisdiction?: pulumi.Input<string | undefined>;
     /**
      * D1 database name.
      */
@@ -207,9 +207,9 @@ export interface D1DatabaseArgs {
      * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
      * Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
      */
-    primaryLocationHint?: pulumi.Input<string>;
+    primaryLocationHint?: pulumi.Input<string | undefined>;
     /**
      * Configuration for D1 read replication.
      */
-    readReplication?: pulumi.Input<inputs.D1DatabaseReadReplication>;
+    readReplication?: pulumi.Input<inputs.D1DatabaseReadReplication | undefined>;
 }

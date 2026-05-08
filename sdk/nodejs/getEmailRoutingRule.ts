@@ -125,13 +125,13 @@ export function getEmailRoutingRuleOutput(args?: GetEmailRoutingRuleOutputArgs, 
  * A collection of arguments for invoking getEmailRoutingRule.
  */
 export interface GetEmailRoutingRuleOutputArgs {
-    filter?: pulumi.Input<inputs.GetEmailRoutingRuleFilterArgs>;
+    filter?: pulumi.Input<inputs.GetEmailRoutingRuleFilterArgs | undefined>;
     /**
      * Routing rule identifier.
      */
-    ruleIdentifier?: pulumi.Input<string>;
+    ruleIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -240,73 +240,73 @@ export interface LoadBalancerPoolState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A list of regions from which to run health checks. Null means every Cloudflare data center.
      */
-    checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
-    createdOn?: pulumi.Input<string>;
+    checkRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the pool.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
      */
-    disabledAt?: pulumi.Input<string>;
+    disabledAt?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
      */
-    latitude?: pulumi.Input<number>;
+    latitude?: pulumi.Input<number | undefined>;
     /**
      * Configures load shedding policies and percentages for the pool.
      */
-    loadShedding?: pulumi.Input<inputs.LoadBalancerPoolLoadShedding>;
+    loadShedding?: pulumi.Input<inputs.LoadBalancerPoolLoadShedding | undefined>;
     /**
      * The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
      */
-    longitude?: pulumi.Input<number>;
+    longitude?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
      */
-    minimumOrigins?: pulumi.Input<number>;
-    modifiedOn?: pulumi.Input<string>;
+    minimumOrigins?: pulumi.Input<number | undefined>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Monitor to use for checking the health of origins within this pool.
      */
-    monitor?: pulumi.Input<string>;
+    monitor?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Monitor Group to use for checking the health of origins within this pool.
      */
-    monitorGroup?: pulumi.Input<string>;
+    monitorGroup?: pulumi.Input<string | undefined>;
     /**
      * A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of networks where Load Balancer or Pool is enabled.
      */
-    networks?: pulumi.Input<pulumi.Input<string>[]>;
+    networks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      */
-    notificationEmail?: pulumi.Input<string>;
+    notificationEmail?: pulumi.Input<string | undefined>;
     /**
      * Filter pool and origin health notifications by resource type or health status. Use null to reset.
      */
-    notificationFilter?: pulumi.Input<inputs.LoadBalancerPoolNotificationFilter>;
+    notificationFilter?: pulumi.Input<inputs.LoadBalancerPoolNotificationFilter | undefined>;
     /**
      * Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
      */
-    originSteering?: pulumi.Input<inputs.LoadBalancerPoolOriginSteering>;
+    originSteering?: pulumi.Input<inputs.LoadBalancerPoolOriginSteering | undefined>;
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
      */
-    origins?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolOrigin>[]>;
+    origins?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolOrigin>[] | undefined>;
 }
 
 /**
@@ -316,43 +316,43 @@ export interface LoadBalancerPoolArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A list of regions from which to run health checks. Null means every Cloudflare data center.
      */
-    checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    checkRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A human-readable description of the pool.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
      */
-    latitude?: pulumi.Input<number>;
+    latitude?: pulumi.Input<number | undefined>;
     /**
      * Configures load shedding policies and percentages for the pool.
      */
-    loadShedding?: pulumi.Input<inputs.LoadBalancerPoolLoadShedding>;
+    loadShedding?: pulumi.Input<inputs.LoadBalancerPoolLoadShedding | undefined>;
     /**
      * The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
      */
-    longitude?: pulumi.Input<number>;
+    longitude?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
      */
-    minimumOrigins?: pulumi.Input<number>;
+    minimumOrigins?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Monitor to use for checking the health of origins within this pool.
      */
-    monitor?: pulumi.Input<string>;
+    monitor?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Monitor Group to use for checking the health of origins within this pool.
      */
-    monitorGroup?: pulumi.Input<string>;
+    monitorGroup?: pulumi.Input<string | undefined>;
     /**
      * A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      */
@@ -360,15 +360,15 @@ export interface LoadBalancerPoolArgs {
     /**
      * This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      */
-    notificationEmail?: pulumi.Input<string>;
+    notificationEmail?: pulumi.Input<string | undefined>;
     /**
      * Filter pool and origin health notifications by resource type or health status. Use null to reset.
      */
-    notificationFilter?: pulumi.Input<inputs.LoadBalancerPoolNotificationFilter>;
+    notificationFilter?: pulumi.Input<inputs.LoadBalancerPoolNotificationFilter | undefined>;
     /**
      * Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
      */
-    originSteering?: pulumi.Input<inputs.LoadBalancerPoolOriginSteering>;
+    originSteering?: pulumi.Input<inputs.LoadBalancerPoolOriginSteering | undefined>;
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
      */

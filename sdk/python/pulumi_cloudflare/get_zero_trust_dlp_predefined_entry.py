@@ -258,8 +258,8 @@ def get_zero_trust_dlp_predefined_entry(account_id: Optional[_builtins.str] = No
         upload_status=pulumi.get(__ret__, 'upload_status'),
         variant=pulumi.get(__ret__, 'variant'),
         word_list=pulumi.get(__ret__, 'word_list'))
-def get_zero_trust_dlp_predefined_entry_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               entry_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_dlp_predefined_entry_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               entry_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDlpPredefinedEntryResult]:
     """
     Accepted Permissions

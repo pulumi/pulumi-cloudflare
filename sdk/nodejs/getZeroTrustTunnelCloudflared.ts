@@ -165,10 +165,10 @@ export interface GetZeroTrustTunnelCloudflaredOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetZeroTrustTunnelCloudflaredFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustTunnelCloudflaredFilterArgs | undefined>;
     /**
      * UUID of the tunnel.
      */
-    tunnelId?: pulumi.Input<string>;
+    tunnelId?: pulumi.Input<string | undefined>;
 }

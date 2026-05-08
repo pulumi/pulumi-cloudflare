@@ -128,28 +128,28 @@ export interface CustomHostnameFallbackOriginState {
     /**
      * This is the time the fallback origin was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * These are errors that were encountered while trying to activate a fallback origin.
      */
-    errors?: pulumi.Input<pulumi.Input<string>[]>;
+    errors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Your origin hostname that requests to your custom hostnames will be sent to.
      */
-    origin?: pulumi.Input<string>;
+    origin?: pulumi.Input<string | undefined>;
     /**
      * Status of the fallback origin's activation.
      * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * This is the time the fallback origin was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**

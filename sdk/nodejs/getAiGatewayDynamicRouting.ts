@@ -95,7 +95,7 @@ export function getAiGatewayDynamicRoutingOutput(args: GetAiGatewayDynamicRoutin
  * A collection of arguments for invoking getAiGatewayDynamicRouting.
  */
 export interface GetAiGatewayDynamicRoutingOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     gatewayId: pulumi.Input<string>;
     /**
      * The ID of this resource.

@@ -114,23 +114,23 @@ export interface StreamKeyState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The date and time a signing key was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * The signing key in JWK format.
      */
-    jwk?: pulumi.Input<string>;
+    jwk?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the signing key.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * The signing key in PEM format.
      */
-    pem?: pulumi.Input<string>;
+    pem?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -140,5 +140,5 @@ export interface StreamKeyArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
 }

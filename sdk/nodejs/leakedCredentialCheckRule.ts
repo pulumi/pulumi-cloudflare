@@ -106,15 +106,15 @@ export interface LeakedCredentialCheckRuleState {
     /**
      * Defines ehe ruleset expression to use in matching the password in a request.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Defines the ruleset expression to use in matching the username in a request.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -124,13 +124,13 @@ export interface LeakedCredentialCheckRuleArgs {
     /**
      * Defines ehe ruleset expression to use in matching the password in a request.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Defines the ruleset expression to use in matching the username in a request.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

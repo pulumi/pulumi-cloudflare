@@ -123,7 +123,7 @@ export interface GetDnsFirewallOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */

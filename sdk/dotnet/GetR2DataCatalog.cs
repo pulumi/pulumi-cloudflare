@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2DataCatalog = Cloudflare.Index.GetR2DataCatalog.Invoke(new()
+        ///     var exampleR2DataCatalog = Cloudflare.GetR2DataCatalog.Invoke(new()
         ///     {
         ///         AccountId = "0123456789abcdef0123456789abcdef",
         ///         BucketName = "my-data-bucket",
@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2DataCatalog = Cloudflare.Index.GetR2DataCatalog.Invoke(new()
+        ///     var exampleR2DataCatalog = Cloudflare.GetR2DataCatalog.Invoke(new()
         ///     {
         ///         AccountId = "0123456789abcdef0123456789abcdef",
         ///         BucketName = "my-data-bucket",
@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleR2DataCatalog = Cloudflare.Index.GetR2DataCatalog.Invoke(new()
+        ///     var exampleR2DataCatalog = Cloudflare.GetR2DataCatalog.Invoke(new()
         ///     {
         ///         AccountId = "0123456789abcdef0123456789abcdef",
         ///         BucketName = "my-data-bucket",

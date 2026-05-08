@@ -253,49 +253,49 @@ export function getDnsRecordsOutput(args?: GetDnsRecordsOutputArgs, opts?: pulum
  * A collection of arguments for invoking getDnsRecords.
  */
 export interface GetDnsRecordsOutputArgs {
-    comment?: pulumi.Input<inputs.GetDnsRecordsCommentArgs>;
-    content?: pulumi.Input<inputs.GetDnsRecordsContentArgs>;
+    comment?: pulumi.Input<inputs.GetDnsRecordsCommentArgs | undefined>;
+    content?: pulumi.Input<inputs.GetDnsRecordsContentArgs | undefined>;
     /**
      * Direction to order DNS records in.
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
      * Available values: "any", "all".
      */
-    match?: pulumi.Input<string>;
+    match?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
-    name?: pulumi.Input<inputs.GetDnsRecordsNameArgs>;
+    maxItems?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<inputs.GetDnsRecordsNameArgs | undefined>;
     /**
      * Field to order DNS records by.
      * Available values: "type", "name", "content", "ttl", "proxied".
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * Whether the record is receiving the performance and security benefits of Cloudflare.
      */
-    proxied?: pulumi.Input<boolean>;
+    proxied?: pulumi.Input<boolean | undefined>;
     /**
      * Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
      */
-    search?: pulumi.Input<string>;
-    tag?: pulumi.Input<inputs.GetDnsRecordsTagArgs>;
+    search?: pulumi.Input<string | undefined>;
+    tag?: pulumi.Input<inputs.GetDnsRecordsTagArgs | undefined>;
     /**
      * Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
      * Available values: "any", "all".
      */
-    tagMatch?: pulumi.Input<string>;
+    tagMatch?: pulumi.Input<string | undefined>;
     /**
      * Record type.
      * Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

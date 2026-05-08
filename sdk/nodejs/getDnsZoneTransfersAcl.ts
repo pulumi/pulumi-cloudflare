@@ -87,6 +87,6 @@ export function getDnsZoneTransfersAclOutput(args: GetDnsZoneTransfersAclOutputA
  * A collection of arguments for invoking getDnsZoneTransfersAcl.
  */
 export interface GetDnsZoneTransfersAclOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     aclId: pulumi.Input<string>;
 }

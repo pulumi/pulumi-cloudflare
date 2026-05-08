@@ -154,10 +154,10 @@ export interface GetTurnstileWidgetOutputArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetTurnstileWidgetFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetTurnstileWidgetFilterArgs | undefined>;
     /**
      * Widget item identifier tag.
      */
-    sitekey?: pulumi.Input<string>;
+    sitekey?: pulumi.Input<string | undefined>;
 }

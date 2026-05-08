@@ -147,31 +147,31 @@ export interface ZeroTrustAccessGroupState {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      */
-    excludes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupExclude>[]>;
+    excludes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupExclude>[] | undefined>;
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
-    includes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupInclude>[]>;
+    includes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupInclude>[] | undefined>;
     /**
      * Whether this is the default group
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Access group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
      */
-    requires?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupRequire>[]>;
+    requires?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupRequire>[] | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,11 +181,11 @@ export interface ZeroTrustAccessGroupArgs {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      */
-    excludes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupExclude>[]>;
+    excludes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupExclude>[] | undefined>;
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
@@ -193,7 +193,7 @@ export interface ZeroTrustAccessGroupArgs {
     /**
      * Whether this is the default group
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Access group.
      */
@@ -201,9 +201,9 @@ export interface ZeroTrustAccessGroupArgs {
     /**
      * Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
      */
-    requires?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupRequire>[]>;
+    requires?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupRequire>[] | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

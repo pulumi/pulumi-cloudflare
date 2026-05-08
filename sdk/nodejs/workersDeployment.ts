@@ -138,20 +138,20 @@ export interface WorkersDeploymentState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    annotations?: pulumi.Input<inputs.WorkersDeploymentAnnotations>;
-    authorEmail?: pulumi.Input<string>;
-    createdOn?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    annotations?: pulumi.Input<inputs.WorkersDeploymentAnnotations | undefined>;
+    authorEmail?: pulumi.Input<string | undefined>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
-    scriptName?: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
+    scriptName?: pulumi.Input<string | undefined>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Available values: "percentage".
      */
-    strategy?: pulumi.Input<string>;
-    versions?: pulumi.Input<pulumi.Input<inputs.WorkersDeploymentVersion>[]>;
+    strategy?: pulumi.Input<string | undefined>;
+    versions?: pulumi.Input<pulumi.Input<inputs.WorkersDeploymentVersion>[] | undefined>;
 }
 
 /**
@@ -161,8 +161,8 @@ export interface WorkersDeploymentArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    annotations?: pulumi.Input<inputs.WorkersDeploymentAnnotations>;
+    accountId?: pulumi.Input<string | undefined>;
+    annotations?: pulumi.Input<inputs.WorkersDeploymentAnnotations | undefined>;
     /**
      * Name of the script, used in URLs and route configuration.
      */

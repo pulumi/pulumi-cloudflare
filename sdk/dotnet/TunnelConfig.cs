@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustTunnelCloudflaredConfig = new Cloudflare.Index.ZeroTrustTunnelCloudflaredConfig("example_zero_trust_tunnel_cloudflared_config", new()
+    ///     var exampleZeroTrustTunnelCloudflaredConfig = new Cloudflare.ZeroTrustTunnelCloudflaredConfig("example_zero_trust_tunnel_cloudflared_config", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",

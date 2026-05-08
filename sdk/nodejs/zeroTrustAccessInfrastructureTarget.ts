@@ -131,26 +131,26 @@ export interface ZeroTrustAccessInfrastructureTargetState {
     /**
      * Account identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Date and time at which the target was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * A non-unique field that refers to a target. Case insensitive, maximum
      * length of 255 characters, supports the use of special characters dash
      * and period, does not support spaces, and must start and end with an
      * alphanumeric character.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * The IPv4/IPv6 address that identifies where to reach a target
      */
-    ip?: pulumi.Input<inputs.ZeroTrustAccessInfrastructureTargetIp>;
+    ip?: pulumi.Input<inputs.ZeroTrustAccessInfrastructureTargetIp | undefined>;
     /**
      * Date and time at which the target was modified
      */
-    modifiedAt?: pulumi.Input<string>;
+    modifiedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -160,7 +160,7 @@ export interface ZeroTrustAccessInfrastructureTargetArgs {
     /**
      * Account identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A non-unique field that refers to a target. Case insensitive, maximum
      * length of 255 characters, supports the use of special characters dash

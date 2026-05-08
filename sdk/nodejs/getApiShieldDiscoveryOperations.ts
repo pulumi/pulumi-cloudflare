@@ -134,14 +134,14 @@ export function getApiShieldDiscoveryOperationsOutput(args?: GetApiShieldDiscove
  * A collection of arguments for invoking getApiShieldDiscoveryOperations.
  */
 export interface GetApiShieldDiscoveryOperationsOutputArgs {
-    diff?: pulumi.Input<boolean>;
-    direction?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
-    maxItems?: pulumi.Input<number>;
-    methods?: pulumi.Input<pulumi.Input<string>[]>;
-    order?: pulumi.Input<string>;
-    origin?: pulumi.Input<string>;
-    state?: pulumi.Input<string>;
-    zoneId?: pulumi.Input<string>;
+    diff?: pulumi.Input<boolean | undefined>;
+    direction?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    maxItems?: pulumi.Input<number | undefined>;
+    methods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    order?: pulumi.Input<string | undefined>;
+    origin?: pulumi.Input<string | undefined>;
+    state?: pulumi.Input<string | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

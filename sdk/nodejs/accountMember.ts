@@ -131,29 +131,29 @@ export interface AccountMemberState {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The contact email address of the user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Array of policies associated with this member.
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.AccountMemberPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.AccountMemberPolicy>[] | undefined>;
     /**
      * Set of roles associated with this member.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Status of the member invitation. If not provided during creation, defaults to 'pending'.
      * Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
      * Available values: "accepted", "pending".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Details of the user associated to the membership.
      */
-    user?: pulumi.Input<inputs.AccountMemberUser>;
+    user?: pulumi.Input<inputs.AccountMemberUser | undefined>;
 }
 
 /**
@@ -163,7 +163,7 @@ export interface AccountMemberArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The contact email address of the user.
      */
@@ -171,15 +171,15 @@ export interface AccountMemberArgs {
     /**
      * Array of policies associated with this member.
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.AccountMemberPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.AccountMemberPolicy>[] | undefined>;
     /**
      * Set of roles associated with this member.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Status of the member invitation. If not provided during creation, defaults to 'pending'.
      * Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
      * Available values: "accepted", "pending".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

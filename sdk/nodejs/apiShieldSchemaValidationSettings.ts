@@ -121,7 +121,7 @@ export interface ApiShieldSchemaValidationSettingsState {
     /**
      * The default mitigation action used when there is no mitigation action defined on the operation
      */
-    validationDefaultMitigationAction?: pulumi.Input<string>;
+    validationDefaultMitigationAction?: pulumi.Input<string | undefined>;
     /**
      * When set, this overrides both zone level and operation level mitigation actions.
      *
@@ -131,11 +131,11 @@ export interface ApiShieldSchemaValidationSettingsState {
      * To clear any override, use the special value `disableOverride` or `null`
      * Available values: "none", "disableOverride".
      */
-    validationOverrideMitigationAction?: pulumi.Input<string>;
+    validationOverrideMitigationAction?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -155,7 +155,7 @@ export interface ApiShieldSchemaValidationSettingsArgs {
      * To clear any override, use the special value `disableOverride` or `null`
      * Available values: "none", "disableOverride".
      */
-    validationOverrideMitigationAction?: pulumi.Input<string>;
+    validationOverrideMitigationAction?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */

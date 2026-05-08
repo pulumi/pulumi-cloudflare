@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApiToken = new Cloudflare.Index.ApiToken("example_api_token", new()
+    ///     var exampleApiToken = new Cloudflare.ApiToken("example_api_token", new()
     ///     {
     ///         Name = "workers read-only token",
     ///         Policies = new[]

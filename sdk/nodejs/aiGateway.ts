@@ -216,103 +216,103 @@ export class AiGateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AiGateway resources.
  */
 export interface AiGatewayState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * gateway id
      */
-    aiGatewayId?: pulumi.Input<string>;
-    authentication?: pulumi.Input<boolean>;
-    cacheInvalidateOnUpdate?: pulumi.Input<boolean>;
-    cacheTtl?: pulumi.Input<number>;
-    collectLogs?: pulumi.Input<boolean>;
-    createdAt?: pulumi.Input<string>;
-    dlp?: pulumi.Input<inputs.AiGatewayDlp>;
-    isDefault?: pulumi.Input<boolean>;
-    logManagement?: pulumi.Input<number>;
+    aiGatewayId?: pulumi.Input<string | undefined>;
+    authentication?: pulumi.Input<boolean | undefined>;
+    cacheInvalidateOnUpdate?: pulumi.Input<boolean | undefined>;
+    cacheTtl?: pulumi.Input<number | undefined>;
+    collectLogs?: pulumi.Input<boolean | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    dlp?: pulumi.Input<inputs.AiGatewayDlp | undefined>;
+    isDefault?: pulumi.Input<boolean | undefined>;
+    logManagement?: pulumi.Input<number | undefined>;
     /**
      * Available values: "STOP*INSERTING", "DELETE*OLDEST".
      */
-    logManagementStrategy?: pulumi.Input<string>;
-    logpush?: pulumi.Input<boolean>;
-    logpushPublicKey?: pulumi.Input<string>;
-    modifiedAt?: pulumi.Input<string>;
-    otels?: pulumi.Input<pulumi.Input<inputs.AiGatewayOtel>[]>;
-    rateLimitingInterval?: pulumi.Input<number>;
-    rateLimitingLimit?: pulumi.Input<number>;
+    logManagementStrategy?: pulumi.Input<string | undefined>;
+    logpush?: pulumi.Input<boolean | undefined>;
+    logpushPublicKey?: pulumi.Input<string | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
+    otels?: pulumi.Input<pulumi.Input<inputs.AiGatewayOtel>[] | undefined>;
+    rateLimitingInterval?: pulumi.Input<number | undefined>;
+    rateLimitingLimit?: pulumi.Input<number | undefined>;
     /**
      * Available values: "fixed", "sliding".
      */
-    rateLimitingTechnique?: pulumi.Input<string>;
+    rateLimitingTechnique?: pulumi.Input<string | undefined>;
     /**
      * Backoff strategy for retry delays
      * Available values: "constant", "linear", "exponential".
      */
-    retryBackoff?: pulumi.Input<string>;
+    retryBackoff?: pulumi.Input<string | undefined>;
     /**
      * Delay between retry attempts in milliseconds (0-5000)
      */
-    retryDelay?: pulumi.Input<number>;
+    retryDelay?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of retry attempts for failed requests (1-5)
      */
-    retryMaxAttempts?: pulumi.Input<number>;
-    storeId?: pulumi.Input<string>;
-    stripe?: pulumi.Input<inputs.AiGatewayStripe>;
+    retryMaxAttempts?: pulumi.Input<number | undefined>;
+    storeId?: pulumi.Input<string | undefined>;
+    stripe?: pulumi.Input<inputs.AiGatewayStripe | undefined>;
     /**
      * Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
      * Available values: "postpaid".
      */
-    workersAiBillingMode?: pulumi.Input<string>;
-    zdr?: pulumi.Input<boolean>;
+    workersAiBillingMode?: pulumi.Input<string | undefined>;
+    zdr?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * The set of arguments for constructing a AiGateway resource.
  */
 export interface AiGatewayArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * gateway id
      */
     aiGatewayId: pulumi.Input<string>;
-    authentication?: pulumi.Input<boolean>;
+    authentication?: pulumi.Input<boolean | undefined>;
     cacheInvalidateOnUpdate: pulumi.Input<boolean>;
     cacheTtl: pulumi.Input<number>;
     collectLogs: pulumi.Input<boolean>;
-    dlp?: pulumi.Input<inputs.AiGatewayDlp>;
-    logManagement?: pulumi.Input<number>;
+    dlp?: pulumi.Input<inputs.AiGatewayDlp | undefined>;
+    logManagement?: pulumi.Input<number | undefined>;
     /**
      * Available values: "STOP*INSERTING", "DELETE*OLDEST".
      */
-    logManagementStrategy?: pulumi.Input<string>;
-    logpush?: pulumi.Input<boolean>;
-    logpushPublicKey?: pulumi.Input<string>;
-    otels?: pulumi.Input<pulumi.Input<inputs.AiGatewayOtel>[]>;
+    logManagementStrategy?: pulumi.Input<string | undefined>;
+    logpush?: pulumi.Input<boolean | undefined>;
+    logpushPublicKey?: pulumi.Input<string | undefined>;
+    otels?: pulumi.Input<pulumi.Input<inputs.AiGatewayOtel>[] | undefined>;
     rateLimitingInterval: pulumi.Input<number>;
     rateLimitingLimit: pulumi.Input<number>;
     /**
      * Available values: "fixed", "sliding".
      */
-    rateLimitingTechnique?: pulumi.Input<string>;
+    rateLimitingTechnique?: pulumi.Input<string | undefined>;
     /**
      * Backoff strategy for retry delays
      * Available values: "constant", "linear", "exponential".
      */
-    retryBackoff?: pulumi.Input<string>;
+    retryBackoff?: pulumi.Input<string | undefined>;
     /**
      * Delay between retry attempts in milliseconds (0-5000)
      */
-    retryDelay?: pulumi.Input<number>;
+    retryDelay?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of retry attempts for failed requests (1-5)
      */
-    retryMaxAttempts?: pulumi.Input<number>;
-    storeId?: pulumi.Input<string>;
-    stripe?: pulumi.Input<inputs.AiGatewayStripe>;
+    retryMaxAttempts?: pulumi.Input<number | undefined>;
+    storeId?: pulumi.Input<string | undefined>;
+    stripe?: pulumi.Input<inputs.AiGatewayStripe | undefined>;
     /**
      * Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
      * Available values: "postpaid".
      */
-    workersAiBillingMode?: pulumi.Input<string>;
-    zdr?: pulumi.Input<boolean>;
+    workersAiBillingMode?: pulumi.Input<string | undefined>;
+    zdr?: pulumi.Input<boolean | undefined>;
 }

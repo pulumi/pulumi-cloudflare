@@ -21,9 +21,9 @@ class ZeroTrustRiskScoringIntegrationArgs:
     def __init__(__self__, *,
                  integration_type: pulumi.Input[_builtins.str],
                  tenant_url: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reference_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reference_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustRiskScoringIntegration resource.
 
@@ -68,28 +68,28 @@ class ZeroTrustRiskScoringIntegrationArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="referenceId")
-    def reference_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reference_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
         https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
@@ -97,21 +97,21 @@ class ZeroTrustRiskScoringIntegrationArgs:
         return pulumi.get(self, "reference_id")
 
     @reference_id.setter
-    def reference_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reference_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reference_id", value)
 
 
 @pulumi.input_type
 class _ZeroTrustRiskScoringIntegrationState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 reference_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 well_known_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 well_known_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustRiskScoringIntegration resources.
 
@@ -143,64 +143,64 @@ class _ZeroTrustRiskScoringIntegrationState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accountTag")
-    def account_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloudflare account tag.
         """
         return pulumi.get(self, "account_tag")
 
     @account_tag.setter
-    def account_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the integration was created in RFC3339 format.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationType")
-    def integration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def integration_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available values: "Okta".
         """
         return pulumi.get(self, "integration_type")
 
     @integration_type.setter
-    def integration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def integration_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "integration_type", value)
 
     @_builtins.property
     @pulumi.getter(name="referenceId")
-    def reference_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reference_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
         https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
@@ -208,31 +208,31 @@ class _ZeroTrustRiskScoringIntegrationState:
         return pulumi.get(self, "reference_id")
 
     @reference_id.setter
-    def reference_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reference_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reference_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantUrl")
-    def tenant_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base url of the tenant, e.g. "https://tenant.okta.com".
         """
         return pulumi.get(self, "tenant_url")
 
     @tenant_url.setter
-    def tenant_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_url", value)
 
     @_builtins.property
     @pulumi.getter(name="wellKnownUrl")
-    def well_known_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def well_known_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
         """
         return pulumi.get(self, "well_known_url")
 
     @well_known_url.setter
-    def well_known_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def well_known_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "well_known_url", value)
 
 
@@ -242,11 +242,11 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 reference_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -329,11 +329,11 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 reference_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -365,14 +365,14 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            account_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            active: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-            reference_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant_url: Optional[pulumi.Input[_builtins.str]] = None,
-            well_known_url: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustRiskScoringIntegration':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            account_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+            reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_url: pulumi.Input[Optional[_builtins.str]] = None,
+            well_known_url: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustRiskScoringIntegration':
         """
         Get an existing ZeroTrustRiskScoringIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

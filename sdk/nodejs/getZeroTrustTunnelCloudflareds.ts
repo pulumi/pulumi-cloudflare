@@ -194,34 +194,34 @@ export interface GetZeroTrustTunnelCloudflaredsOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
-    excludePrefix?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    excludePrefix?: pulumi.Input<string | undefined>;
     /**
      * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      */
-    existedAt?: pulumi.Input<string>;
-    includePrefix?: pulumi.Input<string>;
+    existedAt?: pulumi.Input<string | undefined>;
+    includePrefix?: pulumi.Input<string | undefined>;
     /**
      * If `true`, only include deleted tunnels. If `false`, exclude deleted tunnels. If empty, all tunnels will be included.
      */
-    isDeleted?: pulumi.Input<boolean>;
+    isDeleted?: pulumi.Input<boolean | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * A user-friendly name for a tunnel.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      * Available values: "inactive", "degraded", "healthy", "down".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * UUID of the tunnel.
      */
-    uuid?: pulumi.Input<string>;
-    wasActiveAt?: pulumi.Input<string>;
-    wasInactiveAt?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
+    wasActiveAt?: pulumi.Input<string | undefined>;
+    wasInactiveAt?: pulumi.Input<string | undefined>;
 }

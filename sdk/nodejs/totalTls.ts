@@ -119,20 +119,20 @@ export interface TotalTlsState {
      * The Certificate Authority that Total TLS certificates will be issued through.
      * Available values: "google", "lets*encrypt", "ssl*com".
      */
-    certificateAuthority?: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string | undefined>;
     /**
      * If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The validity period in days for the certificates ordered via Total TLS.
      * Available values: 90.
      */
-    validityPeriod?: pulumi.Input<number>;
+    validityPeriod?: pulumi.Input<number | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -143,7 +143,7 @@ export interface TotalTlsArgs {
      * The Certificate Authority that Total TLS certificates will be issued through.
      * Available values: "google", "lets*encrypt", "ssl*com".
      */
-    certificateAuthority?: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string | undefined>;
     /**
      * If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
      */

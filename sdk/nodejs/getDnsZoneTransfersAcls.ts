@@ -91,9 +91,9 @@ export function getDnsZoneTransfersAclsOutput(args?: GetDnsZoneTransfersAclsOutp
  * A collection of arguments for invoking getDnsZoneTransfersAcls.
  */
 export interface GetDnsZoneTransfersAclsOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
 }

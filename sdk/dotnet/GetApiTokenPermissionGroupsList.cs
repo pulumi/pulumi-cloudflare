@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.Index.GetApiTokenPermissionGroupsList.Invoke(new()
+        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.GetApiTokenPermissionGroupsList.Invoke(new()
         ///     {
         ///         Name = "Account%20Settings%20Write",
         ///         Scope = "com.cloudflare.api.account.zone",
@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.Index.GetApiTokenPermissionGroupsList.Invoke(new()
+        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.GetApiTokenPermissionGroupsList.Invoke(new()
         ///     {
         ///         Name = "Account%20Settings%20Write",
         ///         Scope = "com.cloudflare.api.account.zone",
@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.Index.GetApiTokenPermissionGroupsList.Invoke(new()
+        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.GetApiTokenPermissionGroupsList.Invoke(new()
         ///     {
         ///         Name = "Account%20Settings%20Write",
         ///         Scope = "com.cloudflare.api.account.zone",

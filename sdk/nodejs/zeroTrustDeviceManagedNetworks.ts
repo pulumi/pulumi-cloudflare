@@ -127,31 +127,31 @@ export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDeviceManagedNetworks resources.
  */
 export interface ZeroTrustDeviceManagedNetworksState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The configuration object containing information for the WARP client to detect the managed network.
      */
-    config?: pulumi.Input<inputs.ZeroTrustDeviceManagedNetworksConfig>;
+    config?: pulumi.Input<inputs.ZeroTrustDeviceManagedNetworksConfig | undefined>;
     /**
      * The name of the device managed network. This name must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * API UUID.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The type of device managed network.
      * Available values: "tls".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustDeviceManagedNetworks resource.
  */
 export interface ZeroTrustDeviceManagedNetworksArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The configuration object containing information for the WARP client to detect the managed network.
      */

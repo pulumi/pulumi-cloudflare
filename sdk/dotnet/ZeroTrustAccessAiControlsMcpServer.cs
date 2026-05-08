@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZeroTrustAccessAiControlsMcpServer = new Cloudflare.Index.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server", new()
+    ///     var exampleZeroTrustAccessAiControlsMcpServer = new Cloudflare.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server", new()
     ///     {
     ///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
     ///         ZeroTrustAccessAiControlsMcpServerId = "my-mcp-server",

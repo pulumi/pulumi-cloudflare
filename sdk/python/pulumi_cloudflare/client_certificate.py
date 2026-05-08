@@ -23,8 +23,8 @@ class ClientCertificateArgs:
     def __init__(__self__, *,
                  csr: pulumi.Input[_builtins.str],
                  validity_days: pulumi.Input[_builtins.int],
-                 reactivate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 reactivate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientCertificate resource.
 
@@ -65,48 +65,48 @@ class ClientCertificateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def reactivate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reactivate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "reactivate")
 
     @reactivate.setter
-    def reactivate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reactivate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reactivate", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _ClientCertificateState:
     def __init__(__self__, *,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_authority: Optional[pulumi.Input['ClientCertificateCertificateAuthorityArgs']] = None,
-                 common_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 country: Optional[pulumi.Input[_builtins.str]] = None,
-                 csr: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint_sha256: Optional[pulumi.Input[_builtins.str]] = None,
-                 issued_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 organizational_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 reactivate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 serial_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 signature: Optional[pulumi.Input[_builtins.str]] = None,
-                 ski: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 validity_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_authority: pulumi.Input[Optional['ClientCertificateCertificateAuthorityArgs']] = None,
+                 common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 country: pulumi.Input[Optional[_builtins.str]] = None,
+                 csr: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+                 issued_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 organizational_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 reactivate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 serial_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 signature: pulumi.Input[Optional[_builtins.str]] = None,
+                 ski: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 validity_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientCertificate resources.
 
@@ -171,196 +171,196 @@ class _ClientCertificateState:
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Client Certificate PEM
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateAuthority")
-    def certificate_authority(self) -> Optional[pulumi.Input['ClientCertificateCertificateAuthorityArgs']]:
+    def certificate_authority(self) -> pulumi.Input[Optional['ClientCertificateCertificateAuthorityArgs']]:
         """
         Certificate Authority used to issue the Client Certificate
         """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
-    def certificate_authority(self, value: Optional[pulumi.Input['ClientCertificateCertificateAuthorityArgs']]):
+    def certificate_authority(self, value: pulumi.Input[Optional['ClientCertificateCertificateAuthorityArgs']]):
         pulumi.set(self, "certificate_authority", value)
 
     @_builtins.property
     @pulumi.getter(name="commonName")
-    def common_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def common_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Common Name of the Client Certificate
         """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
-    def common_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def common_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "common_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def country(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def country(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Country, provided by the CSR
         """
         return pulumi.get(self, "country")
 
     @country.setter
-    def country(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def country(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "country", value)
 
     @_builtins.property
     @pulumi.getter
-    def csr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Certificate Signing Request (CSR). Must be newline-encoded.
         """
         return pulumi.get(self, "csr")
 
     @csr.setter
-    def csr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csr", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresOn")
-    def expires_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date that the Client Certificate expires
         """
         return pulumi.get(self, "expires_on")
 
     @expires_on.setter
-    def expires_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_on", value)
 
     @_builtins.property
     @pulumi.getter(name="fingerprintSha256")
-    def fingerprint_sha256(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint_sha256(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the Client Certificate
         """
         return pulumi.get(self, "fingerprint_sha256")
 
     @fingerprint_sha256.setter
-    def fingerprint_sha256(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint_sha256(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint_sha256", value)
 
     @_builtins.property
     @pulumi.getter(name="issuedOn")
-    def issued_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issued_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date that the Client Certificate was issued by the Certificate Authority
         """
         return pulumi.get(self, "issued_on")
 
     @issued_on.setter
-    def issued_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issued_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issued_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location, provided by the CSR
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization, provided by the CSR
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationalUnit")
-    def organizational_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organizational_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organizational Unit, provided by the CSR
         """
         return pulumi.get(self, "organizational_unit")
 
     @organizational_unit.setter
-    def organizational_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organizational_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organizational_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def reactivate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reactivate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "reactivate")
 
     @reactivate.setter
-    def reactivate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reactivate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reactivate", value)
 
     @_builtins.property
     @pulumi.getter(name="serialNumber")
-    def serial_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serial_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The serial number on the created Client Certificate.
         """
         return pulumi.get(self, "serial_number")
 
     @serial_number.setter
-    def serial_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serial_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serial_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def signature(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signature(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of hash used for the Client Certificate..
         """
         return pulumi.get(self, "signature")
 
     @signature.setter
-    def signature(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signature(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signature", value)
 
     @_builtins.property
     @pulumi.getter
-    def ski(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ski(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject Key Identifier
         """
         return pulumi.get(self, "ski")
 
     @ski.setter
-    def ski(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ski(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ski", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State, provided by the CSR
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
         Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
@@ -368,31 +368,31 @@ class _ClientCertificateState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="validityDays")
-    def validity_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def validity_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days the Client Certificate will be valid after the issued_on date
         """
         return pulumi.get(self, "validity_days")
 
     @validity_days.setter
-    def validity_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def validity_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "validity_days", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -402,10 +402,10 @@ class ClientCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 csr: Optional[pulumi.Input[_builtins.str]] = None,
-                 reactivate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 validity_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 csr: pulumi.Input[Optional[_builtins.str]] = None,
+                 reactivate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 validity_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -490,10 +490,10 @@ class ClientCertificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 csr: Optional[pulumi.Input[_builtins.str]] = None,
-                 reactivate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 validity_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 csr: pulumi.Input[Optional[_builtins.str]] = None,
+                 reactivate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 validity_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -536,25 +536,25 @@ class ClientCertificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate_authority: Optional[pulumi.Input[Union['ClientCertificateCertificateAuthorityArgs', 'ClientCertificateCertificateAuthorityArgsDict']]] = None,
-            common_name: Optional[pulumi.Input[_builtins.str]] = None,
-            country: Optional[pulumi.Input[_builtins.str]] = None,
-            csr: Optional[pulumi.Input[_builtins.str]] = None,
-            expires_on: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprint_sha256: Optional[pulumi.Input[_builtins.str]] = None,
-            issued_on: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            organization: Optional[pulumi.Input[_builtins.str]] = None,
-            organizational_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            reactivate: Optional[pulumi.Input[_builtins.bool]] = None,
-            serial_number: Optional[pulumi.Input[_builtins.str]] = None,
-            signature: Optional[pulumi.Input[_builtins.str]] = None,
-            ski: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            validity_days: Optional[pulumi.Input[_builtins.int]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClientCertificate':
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_authority: pulumi.Input[Optional[Union['ClientCertificateCertificateAuthorityArgs', 'ClientCertificateCertificateAuthorityArgsDict']]] = None,
+            common_name: pulumi.Input[Optional[_builtins.str]] = None,
+            country: pulumi.Input[Optional[_builtins.str]] = None,
+            csr: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_on: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+            issued_on: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            organizational_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            reactivate: pulumi.Input[Optional[_builtins.bool]] = None,
+            serial_number: pulumi.Input[Optional[_builtins.str]] = None,
+            signature: pulumi.Input[Optional[_builtins.str]] = None,
+            ski: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            validity_days: pulumi.Input[Optional[_builtins.int]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ClientCertificate':
         """
         Get an existing ClientCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

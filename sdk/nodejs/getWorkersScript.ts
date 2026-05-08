@@ -105,10 +105,10 @@ export interface GetWorkersScriptOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetWorkersScriptFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetWorkersScriptFilterArgs | undefined>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
-    scriptName?: pulumi.Input<string>;
+    scriptName?: pulumi.Input<string | undefined>;
 }

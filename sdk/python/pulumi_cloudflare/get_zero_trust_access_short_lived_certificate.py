@@ -149,9 +149,9 @@ def get_zero_trust_access_short_lived_certificate(account_id: Optional[_builtins
         id=pulumi.get(__ret__, 'id'),
         public_key=pulumi.get(__ret__, 'public_key'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zero_trust_access_short_lived_certificate_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                         app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                         zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zero_trust_access_short_lived_certificate_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                         app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                         zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessShortLivedCertificateResult]:
     """
     Accepted Permissions

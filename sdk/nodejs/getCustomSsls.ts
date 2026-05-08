@@ -131,18 +131,18 @@ export interface GetCustomSslsOutputArgs {
      * Whether to match all search requirements or at least one (any).
      * Available values: "any", "all".
      */
-    match?: pulumi.Input<string>;
+    match?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Status of the zone's custom SSL.
      * Available values: "active", "expired", "deleted", "pending", "initializing".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

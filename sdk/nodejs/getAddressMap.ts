@@ -126,7 +126,7 @@ export interface GetAddressMapOutputArgs {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of an Address Map.
      */

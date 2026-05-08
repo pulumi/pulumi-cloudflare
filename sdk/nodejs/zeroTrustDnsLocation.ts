@@ -195,76 +195,76 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDnsLocation resources.
  */
 export interface ZeroTrustDnsLocationState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Indicate whether this location is the default location.
      */
-    clientDefault?: pulumi.Input<boolean>;
-    createdAt?: pulumi.Input<string>;
+    clientDefault?: pulumi.Input<boolean | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
      */
-    dnsDestinationIpsId?: pulumi.Input<string>;
+    dnsDestinationIpsId?: pulumi.Input<string | undefined>;
     /**
      * Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
      */
-    dnsDestinationIpv6BlockId?: pulumi.Input<string>;
+    dnsDestinationIpv6BlockId?: pulumi.Input<string | undefined>;
     /**
      * Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
      */
-    dohSubdomain?: pulumi.Input<string>;
+    dohSubdomain?: pulumi.Input<string | undefined>;
     /**
      * Indicate whether the location must resolve EDNS queries.
      */
-    ecsSupport?: pulumi.Input<boolean>;
+    ecsSupport?: pulumi.Input<boolean | undefined>;
     /**
      * Configure the destination endpoints for this location.
      */
-    endpoints?: pulumi.Input<inputs.ZeroTrustDnsLocationEndpoints>;
+    endpoints?: pulumi.Input<inputs.ZeroTrustDnsLocationEndpoints | undefined>;
     /**
      * Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
      */
-    ipv4Destination?: pulumi.Input<string>;
+    ipv4Destination?: pulumi.Input<string | undefined>;
     /**
      * Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
      */
-    ipv4DestinationBackup?: pulumi.Input<string>;
+    ipv4DestinationBackup?: pulumi.Input<string | undefined>;
     /**
      * Specify the location name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
      */
-    networks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDnsLocationNetwork>[]>;
-    updatedAt?: pulumi.Input<string>;
+    networks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDnsLocationNetwork>[] | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustDnsLocation resource.
  */
 export interface ZeroTrustDnsLocationArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Indicate whether this location is the default location.
      */
-    clientDefault?: pulumi.Input<boolean>;
+    clientDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
      */
-    dnsDestinationIpsId?: pulumi.Input<string>;
+    dnsDestinationIpsId?: pulumi.Input<string | undefined>;
     /**
      * Indicate whether the location must resolve EDNS queries.
      */
-    ecsSupport?: pulumi.Input<boolean>;
+    ecsSupport?: pulumi.Input<boolean | undefined>;
     /**
      * Configure the destination endpoints for this location.
      */
-    endpoints?: pulumi.Input<inputs.ZeroTrustDnsLocationEndpoints>;
+    endpoints?: pulumi.Input<inputs.ZeroTrustDnsLocationEndpoints | undefined>;
     /**
      * Specify the location name.
      */
@@ -272,5 +272,5 @@ export interface ZeroTrustDnsLocationArgs {
     /**
      * Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
      */
-    networks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDnsLocationNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDnsLocationNetwork>[] | undefined>;
 }

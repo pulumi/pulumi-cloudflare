@@ -107,6 +107,6 @@ export function getZeroTrustDlpPredefinedEntryOutput(args: GetZeroTrustDlpPredef
  * A collection of arguments for invoking getZeroTrustDlpPredefinedEntry.
  */
 export interface GetZeroTrustDlpPredefinedEntryOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     entryId: pulumi.Input<string>;
 }

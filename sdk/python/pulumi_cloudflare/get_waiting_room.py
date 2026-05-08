@@ -362,8 +362,8 @@ def get_waiting_room(waiting_room_id: Optional[_builtins.str] = None,
         turnstile_mode=pulumi.get(__ret__, 'turnstile_mode'),
         waiting_room_id=pulumi.get(__ret__, 'waiting_room_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_waiting_room_output(waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_waiting_room_output(waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWaitingRoomResult]:
     """
     Accepted Permissions

@@ -118,10 +118,10 @@ export interface GetEmailSecurityTrustedDomainsOutputArgs {
     /**
      * Account Identifier
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetEmailSecurityTrustedDomainsFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetEmailSecurityTrustedDomainsFilterArgs | undefined>;
     /**
      * The unique identifier for the trusted domain.
      */
-    trustedDomainId?: pulumi.Input<number>;
+    trustedDomainId?: pulumi.Input<number | undefined>;
 }

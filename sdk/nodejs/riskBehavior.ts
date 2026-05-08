@@ -104,14 +104,14 @@ export class RiskBehavior extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RiskBehavior resources.
  */
 export interface RiskBehaviorState {
-    accountId?: pulumi.Input<string>;
-    behaviors?: pulumi.Input<{[key: string]: pulumi.Input<inputs.RiskBehaviorBehaviors>}>;
+    accountId?: pulumi.Input<string | undefined>;
+    behaviors?: pulumi.Input<{[key: string]: pulumi.Input<inputs.RiskBehaviorBehaviors>} | undefined>;
 }
 
 /**
  * The set of arguments for constructing a RiskBehavior resource.
  */
 export interface RiskBehaviorArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     behaviors: pulumi.Input<{[key: string]: pulumi.Input<inputs.RiskBehaviorBehaviors>}>;
 }

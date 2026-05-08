@@ -133,9 +133,9 @@ def get_workers_kv(account_id: Optional[_builtins.str] = None,
         key_name=pulumi.get(__ret__, 'key_name'),
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         value=pulumi.get(__ret__, 'value'))
-def get_workers_kv_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                          namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workers_kv_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                          namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersKvResult]:
     """
     Accepted Permissions

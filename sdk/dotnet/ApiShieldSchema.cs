@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApiShieldSchema = new Cloudflare.Index.ApiShieldSchema("example_api_shield_schema", new()
+    ///     var exampleApiShieldSchema = new Cloudflare.ApiShieldSchema("example_api_shield_schema", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         File = "Example data",

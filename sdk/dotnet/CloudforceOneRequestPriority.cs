@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCloudforceOneRequestPriority = new Cloudflare.Index.CloudforceOneRequestPriority("example_cloudforce_one_request_priority", new()
+    ///     var exampleCloudforceOneRequestPriority = new Cloudflare.CloudforceOneRequestPriority("example_cloudforce_one_request_priority", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Labels = new[]

@@ -113,8 +113,8 @@ def get_image_variant(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         variant=pulumi.get(__ret__, 'variant'),
         variant_id=pulumi.get(__ret__, 'variant_id'))
-def get_image_variant_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             variant_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_image_variant_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             variant_id: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageVariantResult]:
     """
     Accepted Permissions

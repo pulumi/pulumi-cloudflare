@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomOriginTrustStore = Cloudflare.Index.GetCustomOriginTrustStore.Invoke(new()
+        ///     var exampleCustomOriginTrustStore = Cloudflare.GetCustomOriginTrustStore.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CustomOriginTrustStoreId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomOriginTrustStore = Cloudflare.Index.GetCustomOriginTrustStore.Invoke(new()
+        ///     var exampleCustomOriginTrustStore = Cloudflare.GetCustomOriginTrustStore.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CustomOriginTrustStoreId = "023e105f4ecef8ad9ca31a8372d0c353",
@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleCustomOriginTrustStore = Cloudflare.Index.GetCustomOriginTrustStore.Invoke(new()
+        ///     var exampleCustomOriginTrustStore = Cloudflare.GetCustomOriginTrustStore.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         CustomOriginTrustStoreId = "023e105f4ecef8ad9ca31a8372d0c353",

@@ -230,8 +230,8 @@ def get_zero_trust_gateway_certificate(account_id: Optional[_builtins.str] = Non
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         uploaded_on=pulumi.get(__ret__, 'uploaded_on'))
-def get_zero_trust_gateway_certificate_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zero_trust_gateway_certificate_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustGatewayCertificateResult]:
     """
     ## Example Usage

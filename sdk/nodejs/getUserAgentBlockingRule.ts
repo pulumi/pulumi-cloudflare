@@ -116,13 +116,13 @@ export function getUserAgentBlockingRuleOutput(args?: GetUserAgentBlockingRuleOu
  * A collection of arguments for invoking getUserAgentBlockingRule.
  */
 export interface GetUserAgentBlockingRuleOutputArgs {
-    filter?: pulumi.Input<inputs.GetUserAgentBlockingRuleFilterArgs>;
+    filter?: pulumi.Input<inputs.GetUserAgentBlockingRuleFilterArgs | undefined>;
     /**
      * The unique identifier of the User Agent Blocking rule.
      */
-    uaRuleId?: pulumi.Input<string>;
+    uaRuleId?: pulumi.Input<string | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

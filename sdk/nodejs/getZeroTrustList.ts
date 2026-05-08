@@ -106,10 +106,10 @@ export function getZeroTrustListOutput(args?: GetZeroTrustListOutputArgs, opts?:
  * A collection of arguments for invoking getZeroTrustList.
  */
 export interface GetZeroTrustListOutputArgs {
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetZeroTrustListFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetZeroTrustListFilterArgs | undefined>;
     /**
      * Identify the API resource with a UUID.
      */
-    listId?: pulumi.Input<string>;
+    listId?: pulumi.Input<string | undefined>;
 }

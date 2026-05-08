@@ -127,20 +127,20 @@ export interface ImageVariantState {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The ID of this resource.
      */
-    imageVariantId?: pulumi.Input<string>;
+    imageVariantId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the variant can access an image without a signature, regardless of image access control.
      */
-    neverRequireSignedUrls?: pulumi.Input<boolean>;
+    neverRequireSignedUrls?: pulumi.Input<boolean | undefined>;
     /**
      * Allows you to define image resizing sizes for different use cases.
      */
-    options?: pulumi.Input<inputs.ImageVariantOptions>;
-    variant?: pulumi.Input<inputs.ImageVariantVariant>;
+    options?: pulumi.Input<inputs.ImageVariantOptions | undefined>;
+    variant?: pulumi.Input<inputs.ImageVariantVariant | undefined>;
 }
 
 /**
@@ -150,7 +150,7 @@ export interface ImageVariantArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The ID of this resource.
      */
@@ -158,7 +158,7 @@ export interface ImageVariantArgs {
     /**
      * Indicates whether the variant can access an image without a signature, regardless of image access control.
      */
-    neverRequireSignedUrls?: pulumi.Input<boolean>;
+    neverRequireSignedUrls?: pulumi.Input<boolean | undefined>;
     /**
      * Allows you to define image resizing sizes for different use cases.
      */

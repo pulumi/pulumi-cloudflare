@@ -127,10 +127,10 @@ export interface GetMagicTransitSiteOutputArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetMagicTransitSiteFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetMagicTransitSiteFilterArgs | undefined>;
     /**
      * Identifier
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
 }

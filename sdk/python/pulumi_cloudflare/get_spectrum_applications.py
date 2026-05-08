@@ -155,10 +155,10 @@ def get_spectrum_applications(direction: Optional[_builtins.str] = None,
         order=pulumi.get(__ret__, 'order'),
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_spectrum_applications_output(direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                     order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_spectrum_applications_output(direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                     order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpectrumApplicationsResult]:
     """
     Accepted Permissions

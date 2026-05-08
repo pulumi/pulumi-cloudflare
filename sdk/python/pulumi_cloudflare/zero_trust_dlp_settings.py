@@ -22,9 +22,9 @@ __all__ = ['ZeroTrustDlpSettingsArgs', 'ZeroTrustDlpSettings']
 class ZeroTrustDlpSettingsArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
-                 ai_context_analysis: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ocr: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payload_logging: Optional[pulumi.Input['ZeroTrustDlpSettingsPayloadLoggingArgs']] = None):
+                 ai_context_analysis: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ocr: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payload_logging: pulumi.Input[Optional['ZeroTrustDlpSettingsPayloadLoggingArgs']] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpSettings resource.
 
@@ -53,31 +53,31 @@ class ZeroTrustDlpSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="aiContextAnalysis")
-    def ai_context_analysis(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ai_context_analysis(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether AI context analysis is enabled at the account level.
         """
         return pulumi.get(self, "ai_context_analysis")
 
     @ai_context_analysis.setter
-    def ai_context_analysis(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ai_context_analysis(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ai_context_analysis", value)
 
     @_builtins.property
     @pulumi.getter
-    def ocr(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ocr(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether OCR is enabled at the account level.
         """
         return pulumi.get(self, "ocr")
 
     @ocr.setter
-    def ocr(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ocr(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ocr", value)
 
     @_builtins.property
     @pulumi.getter(name="payloadLogging")
-    def payload_logging(self) -> Optional[pulumi.Input['ZeroTrustDlpSettingsPayloadLoggingArgs']]:
+    def payload_logging(self) -> pulumi.Input[Optional['ZeroTrustDlpSettingsPayloadLoggingArgs']]:
         """
         Request model for payload log settings within the DLP settings endpoint.
         Unlike the legacy endpoint, null and missing are treated identically here
@@ -86,17 +86,17 @@ class ZeroTrustDlpSettingsArgs:
         return pulumi.get(self, "payload_logging")
 
     @payload_logging.setter
-    def payload_logging(self, value: Optional[pulumi.Input['ZeroTrustDlpSettingsPayloadLoggingArgs']]):
+    def payload_logging(self, value: pulumi.Input[Optional['ZeroTrustDlpSettingsPayloadLoggingArgs']]):
         pulumi.set(self, "payload_logging", value)
 
 
 @pulumi.input_type
 class _ZeroTrustDlpSettingsState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_context_analysis: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ocr: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payload_logging: Optional[pulumi.Input['ZeroTrustDlpSettingsPayloadLoggingArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_context_analysis: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ocr: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payload_logging: pulumi.Input[Optional['ZeroTrustDlpSettingsPayloadLoggingArgs']] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpSettings resources.
 
@@ -117,40 +117,40 @@ class _ZeroTrustDlpSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aiContextAnalysis")
-    def ai_context_analysis(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ai_context_analysis(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether AI context analysis is enabled at the account level.
         """
         return pulumi.get(self, "ai_context_analysis")
 
     @ai_context_analysis.setter
-    def ai_context_analysis(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ai_context_analysis(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ai_context_analysis", value)
 
     @_builtins.property
     @pulumi.getter
-    def ocr(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ocr(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether OCR is enabled at the account level.
         """
         return pulumi.get(self, "ocr")
 
     @ocr.setter
-    def ocr(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ocr(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ocr", value)
 
     @_builtins.property
     @pulumi.getter(name="payloadLogging")
-    def payload_logging(self) -> Optional[pulumi.Input['ZeroTrustDlpSettingsPayloadLoggingArgs']]:
+    def payload_logging(self) -> pulumi.Input[Optional['ZeroTrustDlpSettingsPayloadLoggingArgs']]:
         """
         Request model for payload log settings within the DLP settings endpoint.
         Unlike the legacy endpoint, null and missing are treated identically here
@@ -159,7 +159,7 @@ class _ZeroTrustDlpSettingsState:
         return pulumi.get(self, "payload_logging")
 
     @payload_logging.setter
-    def payload_logging(self, value: Optional[pulumi.Input['ZeroTrustDlpSettingsPayloadLoggingArgs']]):
+    def payload_logging(self, value: pulumi.Input[Optional['ZeroTrustDlpSettingsPayloadLoggingArgs']]):
         pulumi.set(self, "payload_logging", value)
 
 
@@ -169,10 +169,10 @@ class ZeroTrustDlpSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_context_analysis: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ocr: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payload_logging: Optional[pulumi.Input[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_context_analysis: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ocr: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payload_logging: pulumi.Input[Optional[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict']]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -261,10 +261,10 @@ class ZeroTrustDlpSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_context_analysis: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ocr: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payload_logging: Optional[pulumi.Input[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_context_analysis: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ocr: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payload_logging: pulumi.Input[Optional[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -290,10 +290,10 @@ class ZeroTrustDlpSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ai_context_analysis: Optional[pulumi.Input[_builtins.bool]] = None,
-            ocr: Optional[pulumi.Input[_builtins.bool]] = None,
-            payload_logging: Optional[pulumi.Input[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict']]] = None) -> 'ZeroTrustDlpSettings':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_context_analysis: pulumi.Input[Optional[_builtins.bool]] = None,
+            ocr: pulumi.Input[Optional[_builtins.bool]] = None,
+            payload_logging: pulumi.Input[Optional[Union['ZeroTrustDlpSettingsPayloadLoggingArgs', 'ZeroTrustDlpSettingsPayloadLoggingArgsDict']]] = None) -> 'ZeroTrustDlpSettings':
         """
         Get an existing ZeroTrustDlpSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

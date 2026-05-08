@@ -136,9 +136,9 @@ def get_pages_domains(account_id: Optional[_builtins.str] = None,
         max_items=pulumi.get(__ret__, 'max_items'),
         project_name=pulumi.get(__ret__, 'project_name'),
         results=pulumi.get(__ret__, 'results'))
-def get_pages_domains_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             project_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_pages_domains_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             project_name: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPagesDomainsResult]:
     """
     Accepted Permissions

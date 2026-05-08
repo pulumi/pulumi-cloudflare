@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleStreamWebhook = new Cloudflare.Index.StreamWebhook("example_stream_webhook", new()
+    ///     var exampleStreamWebhook = new Cloudflare.StreamWebhook("example_stream_webhook", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         NotificationUrl = "https://example.com",

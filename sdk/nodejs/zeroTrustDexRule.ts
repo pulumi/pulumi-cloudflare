@@ -121,27 +121,27 @@ export class ZeroTrustDexRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustDexRule resources.
  */
 export interface ZeroTrustDexRuleState {
-    accountId?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The wirefilter expression to match.
      */
-    match?: pulumi.Input<string>;
+    match?: pulumi.Input<string | undefined>;
     /**
      * The name of the Rule.
      */
-    name?: pulumi.Input<string>;
-    targetedTests?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDexRuleTargetedTest>[]>;
-    updatedAt?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    targetedTests?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDexRuleTargetedTest>[] | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustDexRule resource.
  */
 export interface ZeroTrustDexRuleArgs {
-    accountId?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The wirefilter expression to match.
      */

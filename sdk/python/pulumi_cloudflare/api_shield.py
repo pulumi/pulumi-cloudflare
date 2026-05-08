@@ -56,8 +56,8 @@ class ApiShieldArgs:
 @pulumi.input_type
 class _ApiShieldState:
     def __init__(__self__, *,
-                 auth_id_characteristics: Optional[pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_id_characteristics: pulumi.Input[Optional[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShield resources.
 
@@ -70,23 +70,23 @@ class _ApiShieldState:
 
     @_builtins.property
     @pulumi.getter(name="authIdCharacteristics")
-    def auth_id_characteristics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]]:
+    def auth_id_characteristics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]]:
         return pulumi.get(self, "auth_id_characteristics")
 
     @auth_id_characteristics.setter
-    def auth_id_characteristics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]]):
+    def auth_id_characteristics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]]):
         pulumi.set(self, "auth_id_characteristics", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -96,8 +96,8 @@ class ApiShield(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_id_characteristics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiShieldAuthIdCharacteristicArgs', 'ApiShieldAuthIdCharacteristicArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_id_characteristics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiShieldAuthIdCharacteristicArgs', 'ApiShieldAuthIdCharacteristicArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -194,8 +194,8 @@ class ApiShield(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_id_characteristics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiShieldAuthIdCharacteristicArgs', 'ApiShieldAuthIdCharacteristicArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_id_characteristics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiShieldAuthIdCharacteristicArgs', 'ApiShieldAuthIdCharacteristicArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -221,8 +221,8 @@ class ApiShield(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_id_characteristics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiShieldAuthIdCharacteristicArgs', 'ApiShieldAuthIdCharacteristicArgsDict']]]]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApiShield':
+            auth_id_characteristics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiShieldAuthIdCharacteristicArgs', 'ApiShieldAuthIdCharacteristicArgsDict']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiShield':
         """
         Get an existing ApiShield resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

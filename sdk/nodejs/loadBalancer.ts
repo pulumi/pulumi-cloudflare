@@ -355,84 +355,84 @@ export interface LoadBalancerState {
     /**
      * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
      */
-    adaptiveRouting?: pulumi.Input<inputs.LoadBalancerAdaptiveRouting>;
+    adaptiveRouting?: pulumi.Input<inputs.LoadBalancerAdaptiveRouting | undefined>;
     /**
      * A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
      */
-    countryPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
-    createdOn?: pulumi.Input<string>;
+    countryPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when regionPools are not configured for a given region.
      */
-    defaultPools?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultPools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Object description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable (the default) this load balancer.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The pool ID to use when all other pools are detected as unhealthy.
      */
-    fallbackPool?: pulumi.Input<string>;
+    fallbackPool?: pulumi.Input<string | undefined>;
     /**
      * Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
      */
-    locationStrategy?: pulumi.Input<inputs.LoadBalancerLocationStrategy>;
-    modifiedOn?: pulumi.Input<string>;
+    locationStrategy?: pulumi.Input<inputs.LoadBalancerLocationStrategy | undefined>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of networks where Load Balancer or Pool is enabled.
      */
-    networks?: pulumi.Input<pulumi.Input<string>[]>;
+    networks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
      */
-    popPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    popPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
     /**
      * Whether the hostname should be gray clouded (false) or orange clouded (true).
      */
-    proxied?: pulumi.Input<boolean>;
+    proxied?: pulumi.Input<boolean | undefined>;
     /**
      * Configures pool weights.
      */
-    randomSteering?: pulumi.Input<inputs.LoadBalancerRandomSteering>;
+    randomSteering?: pulumi.Input<inputs.LoadBalancerRandomSteering | undefined>;
     /**
      * A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
      */
-    regionPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    regionPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
     /**
      * BETA Field Not General Access: A list of rules for this load balancer to execute.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRule>[] | undefined>;
     /**
      * Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
      * Available values: "none", "cookie", "ipCookie", "header".
      */
-    sessionAffinity?: pulumi.Input<string>;
+    sessionAffinity?: pulumi.Input<string | undefined>;
     /**
      * Configures attributes for session affinity.
      */
-    sessionAffinityAttributes?: pulumi.Input<inputs.LoadBalancerSessionAffinityAttributes>;
+    sessionAffinityAttributes?: pulumi.Input<inputs.LoadBalancerSessionAffinityAttributes | undefined>;
     /**
      * Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
      */
-    sessionAffinityTtl?: pulumi.Input<number>;
+    sessionAffinityTtl?: pulumi.Input<number | undefined>;
     /**
      * Steering Policy for this load balancer.
      */
-    steeringPolicy?: pulumi.Input<string>;
+    steeringPolicy?: pulumi.Input<string | undefined>;
     /**
      * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
      */
-    ttl?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
-    zoneName?: pulumi.Input<string>;
+    ttl?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
+    zoneName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -442,11 +442,11 @@ export interface LoadBalancerArgs {
     /**
      * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
      */
-    adaptiveRouting?: pulumi.Input<inputs.LoadBalancerAdaptiveRouting>;
+    adaptiveRouting?: pulumi.Input<inputs.LoadBalancerAdaptiveRouting | undefined>;
     /**
      * A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
      */
-    countryPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    countryPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
     /**
      * A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when regionPools are not configured for a given region.
      */
@@ -454,11 +454,11 @@ export interface LoadBalancerArgs {
     /**
      * Object description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable (the default) this load balancer.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The pool ID to use when all other pools are detected as unhealthy.
      */
@@ -466,7 +466,7 @@ export interface LoadBalancerArgs {
     /**
      * Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
      */
-    locationStrategy?: pulumi.Input<inputs.LoadBalancerLocationStrategy>;
+    locationStrategy?: pulumi.Input<inputs.LoadBalancerLocationStrategy | undefined>;
     /**
      * The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
      */
@@ -474,47 +474,47 @@ export interface LoadBalancerArgs {
     /**
      * List of networks where Load Balancer or Pool is enabled.
      */
-    networks?: pulumi.Input<pulumi.Input<string>[]>;
+    networks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
      */
-    popPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    popPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
     /**
      * Whether the hostname should be gray clouded (false) or orange clouded (true).
      */
-    proxied?: pulumi.Input<boolean>;
+    proxied?: pulumi.Input<boolean | undefined>;
     /**
      * Configures pool weights.
      */
-    randomSteering?: pulumi.Input<inputs.LoadBalancerRandomSteering>;
+    randomSteering?: pulumi.Input<inputs.LoadBalancerRandomSteering | undefined>;
     /**
      * A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
      */
-    regionPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    regionPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
     /**
      * BETA Field Not General Access: A list of rules for this load balancer to execute.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRule>[] | undefined>;
     /**
      * Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
      * Available values: "none", "cookie", "ipCookie", "header".
      */
-    sessionAffinity?: pulumi.Input<string>;
+    sessionAffinity?: pulumi.Input<string | undefined>;
     /**
      * Configures attributes for session affinity.
      */
-    sessionAffinityAttributes?: pulumi.Input<inputs.LoadBalancerSessionAffinityAttributes>;
+    sessionAffinityAttributes?: pulumi.Input<inputs.LoadBalancerSessionAffinityAttributes | undefined>;
     /**
      * Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
      */
-    sessionAffinityTtl?: pulumi.Input<number>;
+    sessionAffinityTtl?: pulumi.Input<number | undefined>;
     /**
      * Steering Policy for this load balancer.
      */
-    steeringPolicy?: pulumi.Input<string>;
+    steeringPolicy?: pulumi.Input<string | undefined>;
     /**
      * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
      */
-    ttl?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    ttl?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

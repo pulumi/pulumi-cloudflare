@@ -320,7 +320,7 @@ def get_bot_management(zone_id: Optional[_builtins.str] = None,
         suppress_session_score=pulumi.get(__ret__, 'suppress_session_score'),
         using_latest_model=pulumi.get(__ret__, 'using_latest_model'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_bot_management_output(zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_bot_management_output(zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBotManagementResult]:
     """
     Accepted Permissions

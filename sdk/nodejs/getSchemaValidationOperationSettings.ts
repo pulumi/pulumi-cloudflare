@@ -85,5 +85,5 @@ export function getSchemaValidationOperationSettingsOutput(args: GetSchemaValida
  */
 export interface GetSchemaValidationOperationSettingsOutputArgs {
     operationId: pulumi.Input<string>;
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

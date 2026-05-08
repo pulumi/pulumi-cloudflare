@@ -170,13 +170,13 @@ export class TeamsAccount extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamsAccount resources.
  */
 export interface TeamsAccountState {
-    accountId?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Specify account settings.
      */
-    settings?: pulumi.Input<inputs.TeamsAccountSettings>;
-    updatedAt?: pulumi.Input<string>;
+    settings?: pulumi.Input<inputs.TeamsAccountSettings | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -187,5 +187,5 @@ export interface TeamsAccountArgs {
     /**
      * Specify account settings.
      */
-    settings?: pulumi.Input<inputs.TeamsAccountSettings>;
+    settings?: pulumi.Input<inputs.TeamsAccountSettings | undefined>;
 }

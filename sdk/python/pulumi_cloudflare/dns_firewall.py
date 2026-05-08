@@ -23,15 +23,15 @@ class DnsFirewallArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  upstream_ips: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 attack_mitigation: Optional[pulumi.Input['DnsFirewallAttackMitigationArgs']] = None,
-                 deprecate_any_requests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecs_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maximum_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 minimum_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 negative_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 ratelimit: Optional[pulumi.Input[_builtins.float]] = None,
-                 retries: Optional[pulumi.Input[_builtins.float]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 attack_mitigation: pulumi.Input[Optional['DnsFirewallAttackMitigationArgs']] = None,
+                 deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecs_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maximum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 minimum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 negative_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 ratelimit: pulumi.Input[Optional[_builtins.float]] = None,
+                 retries: pulumi.Input[Optional[_builtins.float]] = None):
         """
         The set of arguments for constructing a DnsFirewall resource.
 
@@ -110,55 +110,55 @@ class DnsFirewallArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="attackMitigation")
-    def attack_mitigation(self) -> Optional[pulumi.Input['DnsFirewallAttackMitigationArgs']]:
+    def attack_mitigation(self) -> pulumi.Input[Optional['DnsFirewallAttackMitigationArgs']]:
         """
         Attack mitigation settings
         """
         return pulumi.get(self, "attack_mitigation")
 
     @attack_mitigation.setter
-    def attack_mitigation(self, value: Optional[pulumi.Input['DnsFirewallAttackMitigationArgs']]):
+    def attack_mitigation(self, value: pulumi.Input[Optional['DnsFirewallAttackMitigationArgs']]):
         pulumi.set(self, "attack_mitigation", value)
 
     @_builtins.property
     @pulumi.getter(name="deprecateAnyRequests")
-    def deprecate_any_requests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deprecate_any_requests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to refuse to answer queries for the ANY type
         """
         return pulumi.get(self, "deprecate_any_requests")
 
     @deprecate_any_requests.setter
-    def deprecate_any_requests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deprecate_any_requests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deprecate_any_requests", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsFallback")
-    def ecs_fallback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ecs_fallback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
         """
         return pulumi.get(self, "ecs_fallback")
 
     @ecs_fallback.setter
-    def ecs_fallback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ecs_fallback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ecs_fallback", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumCacheTtl")
-    def maximum_cache_ttl(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def maximum_cache_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         By default, Cloudflare attempts to cache responses for as long as
         indicated by the TTL received from upstream nameservers. This setting
@@ -168,12 +168,12 @@ class DnsFirewallArgs:
         return pulumi.get(self, "maximum_cache_ttl")
 
     @maximum_cache_ttl.setter
-    def maximum_cache_ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def maximum_cache_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "maximum_cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumCacheTtl")
-    def minimum_cache_ttl(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def minimum_cache_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         By default, Cloudflare attempts to cache responses for as long as
         indicated by the TTL received from upstream nameservers. This setting
@@ -192,12 +192,12 @@ class DnsFirewallArgs:
         return pulumi.get(self, "minimum_cache_ttl")
 
     @minimum_cache_ttl.setter
-    def minimum_cache_ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def minimum_cache_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "minimum_cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="negativeCacheTtl")
-    def negative_cache_ttl(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def negative_cache_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         This setting controls how long DNS Firewall should cache negative
         responses (e.g., NXDOMAIN) from the upstream servers.
@@ -209,50 +209,50 @@ class DnsFirewallArgs:
         return pulumi.get(self, "negative_cache_ttl")
 
     @negative_cache_ttl.setter
-    def negative_cache_ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def negative_cache_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "negative_cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter
-    def ratelimit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def ratelimit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
         """
         return pulumi.get(self, "ratelimit")
 
     @ratelimit.setter
-    def ratelimit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def ratelimit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "ratelimit", value)
 
     @_builtins.property
     @pulumi.getter
-    def retries(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def retries(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
         """
         return pulumi.get(self, "retries")
 
     @retries.setter
-    def retries(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def retries(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "retries", value)
 
 
 @pulumi.input_type
 class _DnsFirewallState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 attack_mitigation: Optional[pulumi.Input['DnsFirewallAttackMitigationArgs']] = None,
-                 deprecate_any_requests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_firewall_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ecs_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maximum_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 minimum_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 negative_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 ratelimit: Optional[pulumi.Input[_builtins.float]] = None,
-                 retries: Optional[pulumi.Input[_builtins.float]] = None,
-                 upstream_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 attack_mitigation: pulumi.Input[Optional['DnsFirewallAttackMitigationArgs']] = None,
+                 deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_firewall_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ecs_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maximum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 minimum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 negative_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 ratelimit: pulumi.Input[Optional[_builtins.float]] = None,
+                 retries: pulumi.Input[Optional[_builtins.float]] = None,
+                 upstream_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DnsFirewall resources.
 
@@ -317,64 +317,64 @@ class _DnsFirewallState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="attackMitigation")
-    def attack_mitigation(self) -> Optional[pulumi.Input['DnsFirewallAttackMitigationArgs']]:
+    def attack_mitigation(self) -> pulumi.Input[Optional['DnsFirewallAttackMitigationArgs']]:
         """
         Attack mitigation settings
         """
         return pulumi.get(self, "attack_mitigation")
 
     @attack_mitigation.setter
-    def attack_mitigation(self, value: Optional[pulumi.Input['DnsFirewallAttackMitigationArgs']]):
+    def attack_mitigation(self, value: pulumi.Input[Optional['DnsFirewallAttackMitigationArgs']]):
         pulumi.set(self, "attack_mitigation", value)
 
     @_builtins.property
     @pulumi.getter(name="deprecateAnyRequests")
-    def deprecate_any_requests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deprecate_any_requests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to refuse to answer queries for the ANY type
         """
         return pulumi.get(self, "deprecate_any_requests")
 
     @deprecate_any_requests.setter
-    def deprecate_any_requests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deprecate_any_requests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deprecate_any_requests", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsFirewallIps")
-    def dns_firewall_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_firewall_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "dns_firewall_ips")
 
     @dns_firewall_ips.setter
-    def dns_firewall_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_firewall_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_firewall_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsFallback")
-    def ecs_fallback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ecs_fallback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
         """
         return pulumi.get(self, "ecs_fallback")
 
     @ecs_fallback.setter
-    def ecs_fallback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ecs_fallback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ecs_fallback", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumCacheTtl")
-    def maximum_cache_ttl(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def maximum_cache_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         By default, Cloudflare attempts to cache responses for as long as
         indicated by the TTL received from upstream nameservers. This setting
@@ -384,12 +384,12 @@ class _DnsFirewallState:
         return pulumi.get(self, "maximum_cache_ttl")
 
     @maximum_cache_ttl.setter
-    def maximum_cache_ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def maximum_cache_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "maximum_cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumCacheTtl")
-    def minimum_cache_ttl(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def minimum_cache_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         By default, Cloudflare attempts to cache responses for as long as
         indicated by the TTL received from upstream nameservers. This setting
@@ -408,36 +408,36 @@ class _DnsFirewallState:
         return pulumi.get(self, "minimum_cache_ttl")
 
     @minimum_cache_ttl.setter
-    def minimum_cache_ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def minimum_cache_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "minimum_cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last modification of DNS Firewall cluster
         """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS Firewall cluster name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="negativeCacheTtl")
-    def negative_cache_ttl(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def negative_cache_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         This setting controls how long DNS Firewall should cache negative
         responses (e.g., NXDOMAIN) from the upstream servers.
@@ -449,40 +449,40 @@ class _DnsFirewallState:
         return pulumi.get(self, "negative_cache_ttl")
 
     @negative_cache_ttl.setter
-    def negative_cache_ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def negative_cache_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "negative_cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter
-    def ratelimit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def ratelimit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
         """
         return pulumi.get(self, "ratelimit")
 
     @ratelimit.setter
-    def ratelimit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def ratelimit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "ratelimit", value)
 
     @_builtins.property
     @pulumi.getter
-    def retries(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def retries(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
         """
         return pulumi.get(self, "retries")
 
     @retries.setter
-    def retries(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def retries(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "retries", value)
 
     @_builtins.property
     @pulumi.getter(name="upstreamIps")
-    def upstream_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def upstream_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "upstream_ips")
 
     @upstream_ips.setter
-    def upstream_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def upstream_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "upstream_ips", value)
 
 
@@ -492,17 +492,17 @@ class DnsFirewall(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 attack_mitigation: Optional[pulumi.Input[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']]] = None,
-                 deprecate_any_requests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecs_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maximum_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 minimum_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 negative_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 ratelimit: Optional[pulumi.Input[_builtins.float]] = None,
-                 retries: Optional[pulumi.Input[_builtins.float]] = None,
-                 upstream_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 attack_mitigation: pulumi.Input[Optional[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']]] = None,
+                 deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecs_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maximum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 minimum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 negative_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 ratelimit: pulumi.Input[Optional[_builtins.float]] = None,
+                 retries: pulumi.Input[Optional[_builtins.float]] = None,
+                 upstream_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -530,11 +530,11 @@ class DnsFirewall(pulumi.CustomResource):
             },
             deprecate_any_requests=True,
             ecs_fallback=False,
-            maximum_cache_ttl=900,
-            minimum_cache_ttl=60,
-            negative_cache_ttl=900,
-            ratelimit=600,
-            retries=2)
+            maximum_cache_ttl=float(900),
+            minimum_cache_ttl=float(60),
+            negative_cache_ttl=float(900),
+            ratelimit=float(600),
+            retries=float(2))
         ```
 
         ## Import
@@ -609,11 +609,11 @@ class DnsFirewall(pulumi.CustomResource):
             },
             deprecate_any_requests=True,
             ecs_fallback=False,
-            maximum_cache_ttl=900,
-            minimum_cache_ttl=60,
-            negative_cache_ttl=900,
-            ratelimit=600,
-            retries=2)
+            maximum_cache_ttl=float(900),
+            minimum_cache_ttl=float(60),
+            negative_cache_ttl=float(900),
+            ratelimit=float(600),
+            retries=float(2))
         ```
 
         ## Import
@@ -638,17 +638,17 @@ class DnsFirewall(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 attack_mitigation: Optional[pulumi.Input[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']]] = None,
-                 deprecate_any_requests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecs_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maximum_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 minimum_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 negative_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 ratelimit: Optional[pulumi.Input[_builtins.float]] = None,
-                 retries: Optional[pulumi.Input[_builtins.float]] = None,
-                 upstream_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 attack_mitigation: pulumi.Input[Optional[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']]] = None,
+                 deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecs_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maximum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 minimum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 negative_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 ratelimit: pulumi.Input[Optional[_builtins.float]] = None,
+                 retries: pulumi.Input[Optional[_builtins.float]] = None,
+                 upstream_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -685,19 +685,19 @@ class DnsFirewall(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            attack_mitigation: Optional[pulumi.Input[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']]] = None,
-            deprecate_any_requests: Optional[pulumi.Input[_builtins.bool]] = None,
-            dns_firewall_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ecs_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
-            maximum_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-            minimum_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            negative_cache_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-            ratelimit: Optional[pulumi.Input[_builtins.float]] = None,
-            retries: Optional[pulumi.Input[_builtins.float]] = None,
-            upstream_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DnsFirewall':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            attack_mitigation: pulumi.Input[Optional[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']]] = None,
+            deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+            dns_firewall_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ecs_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+            maximum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            minimum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            negative_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            ratelimit: pulumi.Input[Optional[_builtins.float]] = None,
+            retries: pulumi.Input[Optional[_builtins.float]] = None,
+            upstream_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DnsFirewall':
         """
         Get an existing DnsFirewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

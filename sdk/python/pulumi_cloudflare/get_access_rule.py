@@ -229,10 +229,10 @@ def get_access_rule(account_id: Optional[_builtins.str] = None,
         rule_id=pulumi.get(__ret__, 'rule_id'),
         scope=pulumi.get(__ret__, 'scope'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_access_rule_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           filter: Optional[pulumi.Input[Optional[Union['GetAccessRuleFilterArgs', 'GetAccessRuleFilterArgsDict']]]] = None,
-                           rule_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_access_rule_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           filter: pulumi.Input[Optional[Optional[Union['GetAccessRuleFilterArgs', 'GetAccessRuleFilterArgsDict']]]] = None,
+                           rule_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessRuleResult]:
     """
     Accepted Permissions

@@ -124,15 +124,15 @@ export interface ApiShieldOperationSchemaValidationSettingsState {
      *   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
      * Available values: "log", "block", "none".
      */
-    mitigationAction?: pulumi.Input<string>;
+    mitigationAction?: pulumi.Input<string | undefined>;
     /**
      * UUID.
      */
-    operationId?: pulumi.Input<string>;
+    operationId?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -148,7 +148,7 @@ export interface ApiShieldOperationSchemaValidationSettingsArgs {
      *   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
      * Available values: "log", "block", "none".
      */
-    mitigationAction?: pulumi.Input<string>;
+    mitigationAction?: pulumi.Input<string | undefined>;
     /**
      * UUID.
      */
@@ -156,5 +156,5 @@ export interface ApiShieldOperationSchemaValidationSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

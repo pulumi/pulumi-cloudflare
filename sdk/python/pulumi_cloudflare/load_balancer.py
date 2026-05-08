@@ -24,23 +24,23 @@ class LoadBalancerArgs:
                  default_pools: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  fallback_pool: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 adaptive_routing: Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']] = None,
-                 country_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location_strategy: Optional[pulumi.Input['LoadBalancerLocationStrategyArgs']] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 pop_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 random_steering: Optional[pulumi.Input['LoadBalancerRandomSteeringArgs']] = None,
-                 region_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity_attributes: Optional[pulumi.Input['LoadBalancerSessionAffinityAttributesArgs']] = None,
-                 session_affinity_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 adaptive_routing: pulumi.Input[Optional['LoadBalancerAdaptiveRoutingArgs']] = None,
+                 country_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location_strategy: pulumi.Input[Optional['LoadBalancerLocationStrategyArgs']] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pop_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 random_steering: pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']] = None,
+                 region_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity_attributes: pulumi.Input[Optional['LoadBalancerSessionAffinityAttributesArgs']] = None,
+                 session_affinity_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 steering_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
 
@@ -141,139 +141,139 @@ class LoadBalancerArgs:
 
     @_builtins.property
     @pulumi.getter(name="adaptiveRouting")
-    def adaptive_routing(self) -> Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']]:
+    def adaptive_routing(self) -> pulumi.Input[Optional['LoadBalancerAdaptiveRoutingArgs']]:
         """
         Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
         """
         return pulumi.get(self, "adaptive_routing")
 
     @adaptive_routing.setter
-    def adaptive_routing(self, value: Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']]):
+    def adaptive_routing(self, value: pulumi.Input[Optional['LoadBalancerAdaptiveRoutingArgs']]):
         pulumi.set(self, "adaptive_routing", value)
 
     @_builtins.property
     @pulumi.getter(name="countryPools")
-    def country_pools(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+    def country_pools(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
         """
         A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
         """
         return pulumi.get(self, "country_pools")
 
     @country_pools.setter
-    def country_pools(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+    def country_pools(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "country_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Object description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable (the default) this load balancer.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="locationStrategy")
-    def location_strategy(self) -> Optional[pulumi.Input['LoadBalancerLocationStrategyArgs']]:
+    def location_strategy(self) -> pulumi.Input[Optional['LoadBalancerLocationStrategyArgs']]:
         """
         Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
         """
         return pulumi.get(self, "location_strategy")
 
     @location_strategy.setter
-    def location_strategy(self, value: Optional[pulumi.Input['LoadBalancerLocationStrategyArgs']]):
+    def location_strategy(self, value: pulumi.Input[Optional['LoadBalancerLocationStrategyArgs']]):
         pulumi.set(self, "location_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of networks where Load Balancer or Pool is enabled.
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter(name="popPools")
-    def pop_pools(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+    def pop_pools(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
         """
         Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
         """
         return pulumi.get(self, "pop_pools")
 
     @pop_pools.setter
-    def pop_pools(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+    def pop_pools(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "pop_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxied(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxied(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the hostname should be gray clouded (false) or orange clouded (true).
         """
         return pulumi.get(self, "proxied")
 
     @proxied.setter
-    def proxied(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxied(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxied", value)
 
     @_builtins.property
     @pulumi.getter(name="randomSteering")
-    def random_steering(self) -> Optional[pulumi.Input['LoadBalancerRandomSteeringArgs']]:
+    def random_steering(self) -> pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']]:
         """
         Configures pool weights.
         """
         return pulumi.get(self, "random_steering")
 
     @random_steering.setter
-    def random_steering(self, value: Optional[pulumi.Input['LoadBalancerRandomSteeringArgs']]):
+    def random_steering(self, value: pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']]):
         pulumi.set(self, "random_steering", value)
 
     @_builtins.property
     @pulumi.getter(name="regionPools")
-    def region_pools(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+    def region_pools(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
         """
         A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
         """
         return pulumi.get(self, "region_pools")
 
     @region_pools.setter
-    def region_pools(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+    def region_pools(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "region_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]:
         """
         BETA Field Not General Access: A list of rules for this load balancer to execute.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
         Available values: "none", "cookie", "ip_cookie", "header".
@@ -281,93 +281,93 @@ class LoadBalancerArgs:
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
-    def session_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinityAttributes")
-    def session_affinity_attributes(self) -> Optional[pulumi.Input['LoadBalancerSessionAffinityAttributesArgs']]:
+    def session_affinity_attributes(self) -> pulumi.Input[Optional['LoadBalancerSessionAffinityAttributesArgs']]:
         """
         Configures attributes for session affinity.
         """
         return pulumi.get(self, "session_affinity_attributes")
 
     @session_affinity_attributes.setter
-    def session_affinity_attributes(self, value: Optional[pulumi.Input['LoadBalancerSessionAffinityAttributesArgs']]):
+    def session_affinity_attributes(self, value: pulumi.Input[Optional['LoadBalancerSessionAffinityAttributesArgs']]):
         pulumi.set(self, "session_affinity_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinityTtl")
-    def session_affinity_ttl(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def session_affinity_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
         """
         return pulumi.get(self, "session_affinity_ttl")
 
     @session_affinity_ttl.setter
-    def session_affinity_ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def session_affinity_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "session_affinity_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="steeringPolicy")
-    def steering_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def steering_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Steering Policy for this load balancer.
         """
         return pulumi.get(self, "steering_policy")
 
     @steering_policy.setter
-    def steering_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def steering_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "steering_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _LoadBalancerState:
     def __init__(__self__, *,
-                 adaptive_routing: Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']] = None,
-                 country_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 location_strategy: Optional[pulumi.Input['LoadBalancerLocationStrategyArgs']] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 pop_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 random_steering: Optional[pulumi.Input['LoadBalancerRandomSteeringArgs']] = None,
-                 region_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity_attributes: Optional[pulumi.Input['LoadBalancerSessionAffinityAttributesArgs']] = None,
-                 session_affinity_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 adaptive_routing: pulumi.Input[Optional['LoadBalancerAdaptiveRoutingArgs']] = None,
+                 country_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 created_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 location_strategy: pulumi.Input[Optional['LoadBalancerLocationStrategyArgs']] = None,
+                 modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pop_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 random_steering: pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']] = None,
+                 region_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity_attributes: pulumi.Input[Optional['LoadBalancerSessionAffinityAttributesArgs']] = None,
+                 session_affinity_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 steering_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
 
@@ -441,193 +441,193 @@ class _LoadBalancerState:
 
     @_builtins.property
     @pulumi.getter(name="adaptiveRouting")
-    def adaptive_routing(self) -> Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']]:
+    def adaptive_routing(self) -> pulumi.Input[Optional['LoadBalancerAdaptiveRoutingArgs']]:
         """
         Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
         """
         return pulumi.get(self, "adaptive_routing")
 
     @adaptive_routing.setter
-    def adaptive_routing(self, value: Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']]):
+    def adaptive_routing(self, value: pulumi.Input[Optional['LoadBalancerAdaptiveRoutingArgs']]):
         pulumi.set(self, "adaptive_routing", value)
 
     @_builtins.property
     @pulumi.getter(name="countryPools")
-    def country_pools(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+    def country_pools(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
         """
         A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
         """
         return pulumi.get(self, "country_pools")
 
     @country_pools.setter
-    def country_pools(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+    def country_pools(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "country_pools", value)
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_on")
 
     @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPools")
-    def default_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def default_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
         """
         return pulumi.get(self, "default_pools")
 
     @default_pools.setter
-    def default_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def default_pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "default_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Object description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable (the default) this load balancer.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackPool")
-    def fallback_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fallback_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pool ID to use when all other pools are detected as unhealthy.
         """
         return pulumi.get(self, "fallback_pool")
 
     @fallback_pool.setter
-    def fallback_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fallback_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fallback_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="locationStrategy")
-    def location_strategy(self) -> Optional[pulumi.Input['LoadBalancerLocationStrategyArgs']]:
+    def location_strategy(self) -> pulumi.Input[Optional['LoadBalancerLocationStrategyArgs']]:
         """
         Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
         """
         return pulumi.get(self, "location_strategy")
 
     @location_strategy.setter
-    def location_strategy(self, value: Optional[pulumi.Input['LoadBalancerLocationStrategyArgs']]):
+    def location_strategy(self, value: pulumi.Input[Optional['LoadBalancerLocationStrategyArgs']]):
         pulumi.set(self, "location_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modified_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modified_on(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of networks where Load Balancer or Pool is enabled.
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter(name="popPools")
-    def pop_pools(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+    def pop_pools(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
         """
         Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
         """
         return pulumi.get(self, "pop_pools")
 
     @pop_pools.setter
-    def pop_pools(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+    def pop_pools(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "pop_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxied(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxied(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the hostname should be gray clouded (false) or orange clouded (true).
         """
         return pulumi.get(self, "proxied")
 
     @proxied.setter
-    def proxied(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxied(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxied", value)
 
     @_builtins.property
     @pulumi.getter(name="randomSteering")
-    def random_steering(self) -> Optional[pulumi.Input['LoadBalancerRandomSteeringArgs']]:
+    def random_steering(self) -> pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']]:
         """
         Configures pool weights.
         """
         return pulumi.get(self, "random_steering")
 
     @random_steering.setter
-    def random_steering(self, value: Optional[pulumi.Input['LoadBalancerRandomSteeringArgs']]):
+    def random_steering(self, value: pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']]):
         pulumi.set(self, "random_steering", value)
 
     @_builtins.property
     @pulumi.getter(name="regionPools")
-    def region_pools(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+    def region_pools(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
         """
         A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
         """
         return pulumi.get(self, "region_pools")
 
     @region_pools.setter
-    def region_pools(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+    def region_pools(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "region_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]:
         """
         BETA Field Not General Access: A list of rules for this load balancer to execute.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
         Available values: "none", "cookie", "ip_cookie", "header".
@@ -635,73 +635,73 @@ class _LoadBalancerState:
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
-    def session_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinityAttributes")
-    def session_affinity_attributes(self) -> Optional[pulumi.Input['LoadBalancerSessionAffinityAttributesArgs']]:
+    def session_affinity_attributes(self) -> pulumi.Input[Optional['LoadBalancerSessionAffinityAttributesArgs']]:
         """
         Configures attributes for session affinity.
         """
         return pulumi.get(self, "session_affinity_attributes")
 
     @session_affinity_attributes.setter
-    def session_affinity_attributes(self, value: Optional[pulumi.Input['LoadBalancerSessionAffinityAttributesArgs']]):
+    def session_affinity_attributes(self, value: pulumi.Input[Optional['LoadBalancerSessionAffinityAttributesArgs']]):
         pulumi.set(self, "session_affinity_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinityTtl")
-    def session_affinity_ttl(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def session_affinity_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
         """
         return pulumi.get(self, "session_affinity_ttl")
 
     @session_affinity_ttl.setter
-    def session_affinity_ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def session_affinity_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "session_affinity_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="steeringPolicy")
-    def steering_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def steering_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Steering Policy for this load balancer.
         """
         return pulumi.get(self, "steering_policy")
 
     @steering_policy.setter
-    def steering_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def steering_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "steering_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneName")
-    def zone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "zone_name")
 
     @zone_name.setter
-    def zone_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_name", value)
 
 
@@ -711,26 +711,26 @@ class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adaptive_routing: Optional[pulumi.Input[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
-                 country_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 default_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 location_strategy: Optional[pulumi.Input[Union['LoadBalancerLocationStrategyArgs', 'LoadBalancerLocationStrategyArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 pop_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 random_steering: Optional[pulumi.Input[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
-                 region_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity_attributes: Optional[pulumi.Input[Union['LoadBalancerSessionAffinityAttributesArgs', 'LoadBalancerSessionAffinityAttributesArgsDict']]] = None,
-                 session_affinity_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 adaptive_routing: pulumi.Input[Optional[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
+                 country_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 location_strategy: pulumi.Input[Optional[Union['LoadBalancerLocationStrategyArgs', 'LoadBalancerLocationStrategyArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pop_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
+                 region_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity_attributes: pulumi.Input[Optional[Union['LoadBalancerSessionAffinityAttributesArgs', 'LoadBalancerSessionAffinityAttributesArgsDict']]] = None,
+                 session_affinity_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 steering_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -853,32 +853,32 @@ class LoadBalancer(pulumi.CustomResource):
                     },
                     "session_affinity": "cookie",
                     "session_affinity_attributes": {
-                        "drain_duration": 100,
+                        "drain_duration": float(100),
                         "headers": ["x"],
                         "require_all_headers": True,
                         "samesite": "Auto",
                         "secure": "Auto",
                         "zero_downtime_failover": "sticky",
                     },
-                    "session_affinity_ttl": 1800,
+                    "session_affinity_ttl": float(1800),
                     "steering_policy": "dynamic_latency",
-                    "ttl": 30,
+                    "ttl": float(30),
                 },
                 "priority": 0,
                 "terminates": True,
             }],
             session_affinity="cookie",
             session_affinity_attributes={
-                "drain_duration": 100,
+                "drain_duration": float(100),
                 "headers": ["x"],
                 "require_all_headers": True,
                 "samesite": "Auto",
                 "secure": "Auto",
                 "zero_downtime_failover": "sticky",
             },
-            session_affinity_ttl=1800,
+            session_affinity_ttl=float(1800),
             steering_policy="dynamic_latency",
-            ttl=30)
+            ttl=float(30))
         ```
 
         ## Import
@@ -1038,32 +1038,32 @@ class LoadBalancer(pulumi.CustomResource):
                     },
                     "session_affinity": "cookie",
                     "session_affinity_attributes": {
-                        "drain_duration": 100,
+                        "drain_duration": float(100),
                         "headers": ["x"],
                         "require_all_headers": True,
                         "samesite": "Auto",
                         "secure": "Auto",
                         "zero_downtime_failover": "sticky",
                     },
-                    "session_affinity_ttl": 1800,
+                    "session_affinity_ttl": float(1800),
                     "steering_policy": "dynamic_latency",
-                    "ttl": 30,
+                    "ttl": float(30),
                 },
                 "priority": 0,
                 "terminates": True,
             }],
             session_affinity="cookie",
             session_affinity_attributes={
-                "drain_duration": 100,
+                "drain_duration": float(100),
                 "headers": ["x"],
                 "require_all_headers": True,
                 "samesite": "Auto",
                 "secure": "Auto",
                 "zero_downtime_failover": "sticky",
             },
-            session_affinity_ttl=1800,
+            session_affinity_ttl=float(1800),
             steering_policy="dynamic_latency",
-            ttl=30)
+            ttl=float(30))
         ```
 
         ## Import
@@ -1088,26 +1088,26 @@ class LoadBalancer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adaptive_routing: Optional[pulumi.Input[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
-                 country_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 default_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 location_strategy: Optional[pulumi.Input[Union['LoadBalancerLocationStrategyArgs', 'LoadBalancerLocationStrategyArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 pop_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 random_steering: Optional[pulumi.Input[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
-                 region_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity_attributes: Optional[pulumi.Input[Union['LoadBalancerSessionAffinityAttributesArgs', 'LoadBalancerSessionAffinityAttributesArgsDict']]] = None,
-                 session_affinity_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.float]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 adaptive_routing: pulumi.Input[Optional[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
+                 country_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 location_strategy: pulumi.Input[Optional[Union['LoadBalancerLocationStrategyArgs', 'LoadBalancerLocationStrategyArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pop_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
+                 region_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity_attributes: pulumi.Input[Optional[Union['LoadBalancerSessionAffinityAttributesArgs', 'LoadBalancerSessionAffinityAttributesArgsDict']]] = None,
+                 session_affinity_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 steering_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.float]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1156,29 +1156,29 @@ class LoadBalancer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            adaptive_routing: Optional[pulumi.Input[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
-            country_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-            created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            default_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            fallback_pool: Optional[pulumi.Input[_builtins.str]] = None,
-            location_strategy: Optional[pulumi.Input[Union['LoadBalancerLocationStrategyArgs', 'LoadBalancerLocationStrategyArgsDict']]] = None,
-            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            pop_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-            proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-            random_steering: Optional[pulumi.Input[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
-            region_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
-            session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-            session_affinity_attributes: Optional[pulumi.Input[Union['LoadBalancerSessionAffinityAttributesArgs', 'LoadBalancerSessionAffinityAttributesArgsDict']]] = None,
-            session_affinity_ttl: Optional[pulumi.Input[_builtins.float]] = None,
-            steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            ttl: Optional[pulumi.Input[_builtins.float]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'LoadBalancer':
+            adaptive_routing: pulumi.Input[Optional[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
+            country_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+            created_on: pulumi.Input[Optional[_builtins.str]] = None,
+            default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            fallback_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            location_strategy: pulumi.Input[Optional[Union['LoadBalancerLocationStrategyArgs', 'LoadBalancerLocationStrategyArgsDict']]] = None,
+            modified_on: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            pop_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+            proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+            random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
+            region_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
+            session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+            session_affinity_attributes: pulumi.Input[Optional[Union['LoadBalancerSessionAffinityAttributesArgs', 'LoadBalancerSessionAffinityAttributesArgsDict']]] = None,
+            session_affinity_ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            steering_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.float]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'LoadBalancer':
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

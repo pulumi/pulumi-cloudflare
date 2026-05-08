@@ -93,12 +93,12 @@ class OrganizationProfileInitArgs:
 @pulumi.input_type
 class _OrganizationProfileState:
     def __init__(__self__, *,
-                 business_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 business_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 business_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 business_phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 business_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 business_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 business_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 business_phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationProfile resources.
         """
@@ -117,56 +117,56 @@ class _OrganizationProfileState:
 
     @_builtins.property
     @pulumi.getter(name="businessAddress")
-    def business_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def business_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "business_address")
 
     @business_address.setter
-    def business_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def business_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "business_address", value)
 
     @_builtins.property
     @pulumi.getter(name="businessEmail")
-    def business_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def business_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "business_email")
 
     @business_email.setter
-    def business_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def business_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "business_email", value)
 
     @_builtins.property
     @pulumi.getter(name="businessName")
-    def business_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def business_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "business_name")
 
     @business_name.setter
-    def business_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def business_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "business_name", value)
 
     @_builtins.property
     @pulumi.getter(name="businessPhone")
-    def business_phone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def business_phone(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "business_phone")
 
     @business_phone.setter
-    def business_phone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def business_phone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "business_phone", value)
 
     @_builtins.property
     @pulumi.getter(name="externalMetadata")
-    def external_metadata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_metadata(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "external_metadata")
 
     @external_metadata.setter
-    def external_metadata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_metadata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
 
@@ -176,12 +176,12 @@ class OrganizationProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 business_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 business_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 business_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 business_phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 business_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 business_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 business_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 business_phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -249,12 +249,12 @@ class OrganizationProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 business_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 business_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 business_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 business_phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 business_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 business_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 business_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 business_phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -292,12 +292,12 @@ class OrganizationProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            business_address: Optional[pulumi.Input[_builtins.str]] = None,
-            business_email: Optional[pulumi.Input[_builtins.str]] = None,
-            business_name: Optional[pulumi.Input[_builtins.str]] = None,
-            business_phone: Optional[pulumi.Input[_builtins.str]] = None,
-            external_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationProfile':
+            business_address: pulumi.Input[Optional[_builtins.str]] = None,
+            business_email: pulumi.Input[Optional[_builtins.str]] = None,
+            business_name: pulumi.Input[Optional[_builtins.str]] = None,
+            business_phone: pulumi.Input[Optional[_builtins.str]] = None,
+            external_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationProfile':
         """
         Get an existing OrganizationProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

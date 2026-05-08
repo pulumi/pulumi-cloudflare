@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleContentScanningExpression = new Cloudflare.Index.ContentScanningExpression("example_content_scanning_expression", new()
+    ///     var exampleContentScanningExpression = new Cloudflare.ContentScanningExpression("example_content_scanning_expression", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Bodies = new[]

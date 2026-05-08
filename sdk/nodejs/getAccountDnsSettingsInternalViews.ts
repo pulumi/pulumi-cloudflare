@@ -178,33 +178,33 @@ export interface GetAccountDnsSettingsInternalViewsOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Direction to order DNS views in.
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.
      * Available values: "any", "all".
      */
-    match?: pulumi.Input<string>;
+    match?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
-    name?: pulumi.Input<inputs.GetAccountDnsSettingsInternalViewsNameArgs>;
+    maxItems?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<inputs.GetAccountDnsSettingsInternalViewsNameArgs | undefined>;
     /**
      * Field to order DNS views by.
      * Available values: "name", "created*on", "modified*on".
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * A zone ID that exists in the zones list for the view.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
     /**
      * A zone name that exists in the zones list for the view.
      */
-    zoneName?: pulumi.Input<string>;
+    zoneName?: pulumi.Input<string | undefined>;
 }

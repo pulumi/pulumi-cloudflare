@@ -115,7 +115,7 @@ def get_stream_key(account_id: Optional[_builtins.str] = None,
         created=pulumi.get(__ret__, 'created'),
         id=pulumi.get(__ret__, 'id'),
         key_id=pulumi.get(__ret__, 'key_id'))
-def get_stream_key_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_stream_key_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamKeyResult]:
     """
     Accepted Permissions

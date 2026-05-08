@@ -197,66 +197,66 @@ export interface TunnelState {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Cloudflare account ID
      */
-    accountTag?: pulumi.Input<string>;
+    accountTag?: pulumi.Input<string | undefined>;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
      * Available values: "local", "cloudflare".
      */
-    configSrc?: pulumi.Input<string>;
+    configSrc?: pulumi.Input<string | undefined>;
     /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
      *
      * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
      */
-    connections?: pulumi.Input<pulumi.Input<inputs.TunnelConnection>[]>;
+    connections?: pulumi.Input<pulumi.Input<inputs.TunnelConnection>[] | undefined>;
     /**
      * Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
      */
-    connsActiveAt?: pulumi.Input<string>;
+    connsActiveAt?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
      */
-    connsInactiveAt?: pulumi.Input<string>;
+    connsInactiveAt?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of when the resource was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Metadata associated with the tunnel.
      */
-    metadata?: pulumi.Input<string>;
+    metadata?: pulumi.Input<string | undefined>;
     /**
      * A user-friendly name for a tunnel.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      *
      * @deprecated Use the configSrc field instead.
      */
-    remoteConfig?: pulumi.Input<boolean>;
+    remoteConfig?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      * Available values: "inactive", "degraded", "healthy", "down".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The type of tunnel.
      * Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
      */
-    tunType?: pulumi.Input<string>;
+    tunType?: pulumi.Input<string | undefined>;
     /**
      * Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
      */
-    tunnelSecret?: pulumi.Input<string>;
+    tunnelSecret?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -266,12 +266,12 @@ export interface TunnelArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
      * Available values: "local", "cloudflare".
      */
-    configSrc?: pulumi.Input<string>;
+    configSrc?: pulumi.Input<string | undefined>;
     /**
      * A user-friendly name for a tunnel.
      */
@@ -279,5 +279,5 @@ export interface TunnelArgs {
     /**
      * Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
      */
-    tunnelSecret?: pulumi.Input<string>;
+    tunnelSecret?: pulumi.Input<string | undefined>;
 }

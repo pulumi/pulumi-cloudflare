@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingDns = Cloudflare.Index.GetEmailRoutingDns.Invoke(new()
+        ///     var exampleEmailRoutingDns = Cloudflare.GetEmailRoutingDns.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Subdomain = "example.net",
@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingDns = Cloudflare.Index.GetEmailRoutingDns.Invoke(new()
+        ///     var exampleEmailRoutingDns = Cloudflare.GetEmailRoutingDns.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Subdomain = "example.net",
@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEmailRoutingDns = Cloudflare.Index.GetEmailRoutingDns.Invoke(new()
+        ///     var exampleEmailRoutingDns = Cloudflare.GetEmailRoutingDns.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Subdomain = "example.net",

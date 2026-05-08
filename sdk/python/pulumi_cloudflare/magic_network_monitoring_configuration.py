@@ -22,10 +22,10 @@ __all__ = ['MagicNetworkMonitoringConfigurationArgs', 'MagicNetworkMonitoringCon
 class MagicNetworkMonitoringConfigurationArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_sampling: Optional[pulumi.Input[_builtins.float]] = None,
-                 router_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 warp_devices: Optional[pulumi.Input[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_sampling: pulumi.Input[Optional[_builtins.float]] = None,
+                 router_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]] = None):
         """
         The set of arguments for constructing a MagicNetworkMonitoringConfiguration resource.
 
@@ -56,52 +56,52 @@ class MagicNetworkMonitoringConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSampling")
-    def default_sampling(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def default_sampling(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
         """
         return pulumi.get(self, "default_sampling")
 
     @default_sampling.setter
-    def default_sampling(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def default_sampling(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "default_sampling", value)
 
     @_builtins.property
     @pulumi.getter(name="routerIps")
-    def router_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def router_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "router_ips")
 
     @router_ips.setter
-    def router_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def router_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "router_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="warpDevices")
-    def warp_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]]:
+    def warp_devices(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]]:
         return pulumi.get(self, "warp_devices")
 
     @warp_devices.setter
-    def warp_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]]):
+    def warp_devices(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]]):
         pulumi.set(self, "warp_devices", value)
 
 
 @pulumi.input_type
 class _MagicNetworkMonitoringConfigurationState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_sampling: Optional[pulumi.Input[_builtins.float]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 warp_devices: Optional[pulumi.Input[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_sampling: pulumi.Input[Optional[_builtins.float]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]] = None):
         """
         Input properties used for looking up and filtering MagicNetworkMonitoringConfiguration resources.
 
@@ -121,53 +121,53 @@ class _MagicNetworkMonitoringConfigurationState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSampling")
-    def default_sampling(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def default_sampling(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
         """
         return pulumi.get(self, "default_sampling")
 
     @default_sampling.setter
-    def default_sampling(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def default_sampling(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "default_sampling", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="routerIps")
-    def router_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def router_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "router_ips")
 
     @router_ips.setter
-    def router_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def router_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "router_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="warpDevices")
-    def warp_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]]:
+    def warp_devices(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]]:
         return pulumi.get(self, "warp_devices")
 
     @warp_devices.setter
-    def warp_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]]):
+    def warp_devices(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]]):
         pulumi.set(self, "warp_devices", value)
 
 
@@ -177,11 +177,11 @@ class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_sampling: Optional[pulumi.Input[_builtins.float]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 warp_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_sampling: pulumi.Input[Optional[_builtins.float]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict']]]]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -225,11 +225,11 @@ class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_sampling: Optional[pulumi.Input[_builtins.float]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 warp_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict']]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_sampling: pulumi.Input[Optional[_builtins.float]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,11 +256,11 @@ class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            default_sampling: Optional[pulumi.Input[_builtins.float]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            router_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            warp_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict']]]]] = None) -> 'MagicNetworkMonitoringConfiguration':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_sampling: pulumi.Input[Optional[_builtins.float]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            router_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MagicNetworkMonitoringConfigurationWarpDeviceArgs', 'MagicNetworkMonitoringConfigurationWarpDeviceArgsDict']]]]] = None) -> 'MagicNetworkMonitoringConfiguration':
         """
         Get an existing MagicNetworkMonitoringConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -281,9 +281,9 @@ def get_certificate_pack(certificate_pack_id: Optional[_builtins.str] = None,
         validation_records=pulumi.get(__ret__, 'validation_records'),
         validity_days=pulumi.get(__ret__, 'validity_days'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_certificate_pack_output(certificate_pack_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                filter: Optional[pulumi.Input[Optional[Union['GetCertificatePackFilterArgs', 'GetCertificatePackFilterArgsDict']]]] = None,
-                                zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_certificate_pack_output(certificate_pack_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                filter: pulumi.Input[Optional[Optional[Union['GetCertificatePackFilterArgs', 'GetCertificatePackFilterArgsDict']]]] = None,
+                                zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificatePackResult]:
     """
     Accepted Permissions

@@ -101,5 +101,5 @@ export interface GetRegionalTieredCacheOutputArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

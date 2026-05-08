@@ -117,26 +117,26 @@ export interface RegistrarDomainState {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Auto-renew controls whether subscription is automatically renewed upon domain expiration.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Fully qualified domain name (FQDN) including the extension
      * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
      * identifies a registration — the same domain cannot be registered
      * twice, making it a natural idempotency key for registration requests.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * Shows whether a registrar lock is in place for a domain.
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Privacy option controls redacting WHOIS information.
      */
-    privacy?: pulumi.Input<boolean>;
+    privacy?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -146,11 +146,11 @@ export interface RegistrarDomainArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Auto-renew controls whether subscription is automatically renewed upon domain expiration.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Fully qualified domain name (FQDN) including the extension
      * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
@@ -161,9 +161,9 @@ export interface RegistrarDomainArgs {
     /**
      * Shows whether a registrar lock is in place for a domain.
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Privacy option controls redacting WHOIS information.
      */
-    privacy?: pulumi.Input<boolean>;
+    privacy?: pulumi.Input<boolean | undefined>;
 }

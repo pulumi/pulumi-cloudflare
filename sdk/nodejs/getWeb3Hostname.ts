@@ -122,5 +122,5 @@ export interface GetWeb3HostnameOutputArgs {
     /**
      * Specify the identifier of the hostname.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

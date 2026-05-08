@@ -139,7 +139,7 @@ export interface GetListOutputArgs {
     /**
      * The Account ID for this resource.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the list.
      */
@@ -147,5 +147,5 @@ export interface GetListOutputArgs {
     /**
      * A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
 }

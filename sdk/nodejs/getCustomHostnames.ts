@@ -225,51 +225,51 @@ export interface GetCustomHostnamesOutputArgs {
      * Filter by the certificate authority that issued the SSL certificate.
      * Available values: "google", "lets*encrypt", "ssl*com".
      */
-    certificateAuthority?: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string | undefined>;
     /**
      * Filter by custom origin server name.
      */
-    customOriginServer?: pulumi.Input<string>;
+    customOriginServer?: pulumi.Input<string | undefined>;
     /**
      * Direction to order hostnames.
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
-    hostname?: pulumi.Input<inputs.GetCustomHostnamesHostnameArgs>;
+    direction?: pulumi.Input<string | undefined>;
+    hostname?: pulumi.Input<inputs.GetCustomHostnamesHostnameArgs | undefined>;
     /**
      * Filter by the hostname's activation status.
      * Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
      */
-    hostnameStatus?: pulumi.Input<string>;
+    hostnameStatus?: pulumi.Input<string | undefined>;
     /**
      * Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the 'hostname' parameter.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Field to order hostnames by.
      * Available values: "ssl", "sslStatus".
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * Whether to filter hostnames based on if they have SSL enabled.
      * Available values: 0, 1.
      */
-    ssl?: pulumi.Input<number>;
+    ssl?: pulumi.Input<number | undefined>;
     /**
      * Filter by SSL certificate status.
      * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
      */
-    sslStatus?: pulumi.Input<string>;
+    sslStatus?: pulumi.Input<string | undefined>;
     /**
      * Filter by whether the custom hostname is a wildcard hostname.
      */
-    wildcard?: pulumi.Input<boolean>;
+    wildcard?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

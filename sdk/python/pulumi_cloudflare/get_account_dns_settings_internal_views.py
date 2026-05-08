@@ -227,14 +227,14 @@ def get_account_dns_settings_internal_views(account_id: Optional[_builtins.str] 
         results=pulumi.get(__ret__, 'results'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_name=pulumi.get(__ret__, 'zone_name'))
-def get_account_dns_settings_internal_views_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   match: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                   name: Optional[pulumi.Input[Optional[Union['GetAccountDnsSettingsInternalViewsNameArgs', 'GetAccountDnsSettingsInternalViewsNameArgsDict']]]] = None,
-                                                   order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   zone_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_dns_settings_internal_views_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                   direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                   match: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                   max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                   name: pulumi.Input[Optional[Optional[Union['GetAccountDnsSettingsInternalViewsNameArgs', 'GetAccountDnsSettingsInternalViewsNameArgsDict']]]] = None,
+                                                   order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                   zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                   zone_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountDnsSettingsInternalViewsResult]:
     """
     Accepted Permissions

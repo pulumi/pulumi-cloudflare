@@ -112,19 +112,19 @@ export interface StreamDownloadState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The audio-only download. Only present if this download type has been created.
      */
-    audio?: pulumi.Input<inputs.StreamDownloadAudio>;
+    audio?: pulumi.Input<inputs.StreamDownloadAudio | undefined>;
     /**
      * The default video download. Only present if this download type has been created.
      */
-    default?: pulumi.Input<inputs.StreamDownloadDefault>;
+    default?: pulumi.Input<inputs.StreamDownloadDefault | undefined>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -134,7 +134,7 @@ export interface StreamDownloadArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */

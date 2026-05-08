@@ -97,7 +97,7 @@ export interface GetWorkersCronTriggerOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the script, used in URLs and route configuration.
      */

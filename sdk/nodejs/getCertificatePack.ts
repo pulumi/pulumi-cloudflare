@@ -155,10 +155,10 @@ export interface GetCertificatePackOutputArgs {
     /**
      * Identifier.
      */
-    certificatePackId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetCertificatePackFilterArgs>;
+    certificatePackId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetCertificatePackFilterArgs | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

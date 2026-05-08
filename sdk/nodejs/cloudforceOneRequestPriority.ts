@@ -186,56 +186,56 @@ export interface CloudforceOneRequestPriorityState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    completed?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    completed?: pulumi.Input<string | undefined>;
     /**
      * Request content.
      */
-    content?: pulumi.Input<string>;
-    created?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * List of labels.
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Tokens for the request messages.
      */
-    messageTokens?: pulumi.Input<number>;
+    messageTokens?: pulumi.Input<number | undefined>;
     /**
      * Priority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Readable Request ID.
      */
-    readableId?: pulumi.Input<string>;
+    readableId?: pulumi.Input<string | undefined>;
     /**
      * Requested information from request.
      */
-    request?: pulumi.Input<string>;
+    request?: pulumi.Input<string | undefined>;
     /**
      * Requirement.
      */
-    requirement?: pulumi.Input<string>;
+    requirement?: pulumi.Input<string | undefined>;
     /**
      * Request Status.
      * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Brief description of the request.
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
     /**
      * The CISA defined Traffic Light Protocol (TLP).
      * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
-    tlp?: pulumi.Input<string>;
+    tlp?: pulumi.Input<string | undefined>;
     /**
      * Tokens for the request.
      */
-    tokens?: pulumi.Input<number>;
-    updated?: pulumi.Input<string>;
+    tokens?: pulumi.Input<number | undefined>;
+    updated?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -245,7 +245,7 @@ export interface CloudforceOneRequestPriorityArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * List of labels.
      */

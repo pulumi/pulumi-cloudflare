@@ -96,5 +96,5 @@ export interface GetZeroTrustAccessKeyConfigurationOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
 }

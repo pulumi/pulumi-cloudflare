@@ -19,16 +19,16 @@ __all__ = ['ZeroTrustDeviceSettingsArgs', 'ZeroTrustDeviceSettings']
 @pulumi.input_type
 class ZeroTrustDeviceSettingsArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_for_time: Optional[pulumi.Input[_builtins.float]] = None,
-                 external_emergency_signal_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_emergency_signal_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_emergency_signal_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_emergency_signal_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_udp_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 root_certificate_installation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_zt_virtual_ip: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_for_time: pulumi.Input[Optional[_builtins.float]] = None,
+                 external_emergency_signal_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_emergency_signal_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_emergency_signal_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_emergency_signal_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_udp_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 root_certificate_installation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_zt_virtual_ip: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ZeroTrustDeviceSettings resource.
 
@@ -65,135 +65,135 @@ class ZeroTrustDeviceSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="disableForTime")
-    def disable_for_time(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def disable_for_time(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
         """
         return pulumi.get(self, "disable_for_time")
 
     @disable_for_time.setter
-    def disable_for_time(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def disable_for_time(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "disable_for_time", value)
 
     @_builtins.property
     @pulumi.getter(name="externalEmergencySignalEnabled")
-    def external_emergency_signal_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external_emergency_signal_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether the external emergency disconnect feature is enabled.
         """
         return pulumi.get(self, "external_emergency_signal_enabled")
 
     @external_emergency_signal_enabled.setter
-    def external_emergency_signal_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external_emergency_signal_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external_emergency_signal_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="externalEmergencySignalFingerprint")
-    def external_emergency_signal_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_emergency_signal_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
         """
         return pulumi.get(self, "external_emergency_signal_fingerprint")
 
     @external_emergency_signal_fingerprint.setter
-    def external_emergency_signal_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_emergency_signal_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_emergency_signal_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="externalEmergencySignalInterval")
-    def external_emergency_signal_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_emergency_signal_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
         """
         return pulumi.get(self, "external_emergency_signal_interval")
 
     @external_emergency_signal_interval.setter
-    def external_emergency_signal_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_emergency_signal_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_emergency_signal_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="externalEmergencySignalUrl")
-    def external_emergency_signal_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_emergency_signal_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
         """
         return pulumi.get(self, "external_emergency_signal_url")
 
     @external_emergency_signal_url.setter
-    def external_emergency_signal_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_emergency_signal_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_emergency_signal_url", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayProxyEnabled")
-    def gateway_proxy_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gateway_proxy_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable gateway proxy filtering on TCP.
         """
         return pulumi.get(self, "gateway_proxy_enabled")
 
     @gateway_proxy_enabled.setter
-    def gateway_proxy_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gateway_proxy_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gateway_proxy_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayUdpProxyEnabled")
-    def gateway_udp_proxy_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gateway_udp_proxy_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable gateway proxy filtering on UDP.
         """
         return pulumi.get(self, "gateway_udp_proxy_enabled")
 
     @gateway_udp_proxy_enabled.setter
-    def gateway_udp_proxy_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gateway_udp_proxy_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gateway_udp_proxy_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="rootCertificateInstallationEnabled")
-    def root_certificate_installation_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def root_certificate_installation_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable installation of cloudflare managed root certificate.
         """
         return pulumi.get(self, "root_certificate_installation_enabled")
 
     @root_certificate_installation_enabled.setter
-    def root_certificate_installation_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def root_certificate_installation_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "root_certificate_installation_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="useZtVirtualIp")
-    def use_zt_virtual_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_zt_virtual_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable using CGNAT virtual IPv4.
         """
         return pulumi.get(self, "use_zt_virtual_ip")
 
     @use_zt_virtual_ip.setter
-    def use_zt_virtual_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_zt_virtual_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_zt_virtual_ip", value)
 
 
 @pulumi.input_type
 class _ZeroTrustDeviceSettingsState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_for_time: Optional[pulumi.Input[_builtins.float]] = None,
-                 external_emergency_signal_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_emergency_signal_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_emergency_signal_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_emergency_signal_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_udp_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 root_certificate_installation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_zt_virtual_ip: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_for_time: pulumi.Input[Optional[_builtins.float]] = None,
+                 external_emergency_signal_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_emergency_signal_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_emergency_signal_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_emergency_signal_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_udp_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 root_certificate_installation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_zt_virtual_ip: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDeviceSettings resources.
 
@@ -230,119 +230,119 @@ class _ZeroTrustDeviceSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="disableForTime")
-    def disable_for_time(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def disable_for_time(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
         """
         return pulumi.get(self, "disable_for_time")
 
     @disable_for_time.setter
-    def disable_for_time(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def disable_for_time(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "disable_for_time", value)
 
     @_builtins.property
     @pulumi.getter(name="externalEmergencySignalEnabled")
-    def external_emergency_signal_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external_emergency_signal_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether the external emergency disconnect feature is enabled.
         """
         return pulumi.get(self, "external_emergency_signal_enabled")
 
     @external_emergency_signal_enabled.setter
-    def external_emergency_signal_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external_emergency_signal_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external_emergency_signal_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="externalEmergencySignalFingerprint")
-    def external_emergency_signal_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_emergency_signal_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external*emergency*signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.
         """
         return pulumi.get(self, "external_emergency_signal_fingerprint")
 
     @external_emergency_signal_fingerprint.setter
-    def external_emergency_signal_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_emergency_signal_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_emergency_signal_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="externalEmergencySignalInterval")
-    def external_emergency_signal_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_emergency_signal_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., "5m", "2m30s", "1h"). Minimum 30 seconds.
         """
         return pulumi.get(self, "external_emergency_signal_interval")
 
     @external_emergency_signal_interval.setter
-    def external_emergency_signal_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_emergency_signal_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_emergency_signal_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="externalEmergencySignalUrl")
-    def external_emergency_signal_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_emergency_signal_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.
         """
         return pulumi.get(self, "external_emergency_signal_url")
 
     @external_emergency_signal_url.setter
-    def external_emergency_signal_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_emergency_signal_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_emergency_signal_url", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayProxyEnabled")
-    def gateway_proxy_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gateway_proxy_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable gateway proxy filtering on TCP.
         """
         return pulumi.get(self, "gateway_proxy_enabled")
 
     @gateway_proxy_enabled.setter
-    def gateway_proxy_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gateway_proxy_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gateway_proxy_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayUdpProxyEnabled")
-    def gateway_udp_proxy_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gateway_udp_proxy_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable gateway proxy filtering on UDP.
         """
         return pulumi.get(self, "gateway_udp_proxy_enabled")
 
     @gateway_udp_proxy_enabled.setter
-    def gateway_udp_proxy_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gateway_udp_proxy_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gateway_udp_proxy_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="rootCertificateInstallationEnabled")
-    def root_certificate_installation_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def root_certificate_installation_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable installation of cloudflare managed root certificate.
         """
         return pulumi.get(self, "root_certificate_installation_enabled")
 
     @root_certificate_installation_enabled.setter
-    def root_certificate_installation_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def root_certificate_installation_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "root_certificate_installation_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="useZtVirtualIp")
-    def use_zt_virtual_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_zt_virtual_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable using CGNAT virtual IPv4.
         """
         return pulumi.get(self, "use_zt_virtual_ip")
 
     @use_zt_virtual_ip.setter
-    def use_zt_virtual_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_zt_virtual_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_zt_virtual_ip", value)
 
 
@@ -352,16 +352,16 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_for_time: Optional[pulumi.Input[_builtins.float]] = None,
-                 external_emergency_signal_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_emergency_signal_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_emergency_signal_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_emergency_signal_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_udp_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 root_certificate_installation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_zt_virtual_ip: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_for_time: pulumi.Input[Optional[_builtins.float]] = None,
+                 external_emergency_signal_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_emergency_signal_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_emergency_signal_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_emergency_signal_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_udp_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 root_certificate_installation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_zt_virtual_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -376,7 +376,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
         example_zero_trust_device_settings = cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings",
             account_id="699d98642c564d2e855e9661899b7252",
-            disable_for_time=0,
+            disable_for_time=float(0),
             external_emergency_signal_enabled=True,
             external_emergency_signal_fingerprint="abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
             external_emergency_signal_interval="5m",
@@ -423,7 +423,7 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
 
         example_zero_trust_device_settings = cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings",
             account_id="699d98642c564d2e855e9661899b7252",
-            disable_for_time=0,
+            disable_for_time=float(0),
             external_emergency_signal_enabled=True,
             external_emergency_signal_fingerprint="abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
             external_emergency_signal_interval="5m",
@@ -454,16 +454,16 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_for_time: Optional[pulumi.Input[_builtins.float]] = None,
-                 external_emergency_signal_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_emergency_signal_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_emergency_signal_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_emergency_signal_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_udp_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 root_certificate_installation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_zt_virtual_ip: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_for_time: pulumi.Input[Optional[_builtins.float]] = None,
+                 external_emergency_signal_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_emergency_signal_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_emergency_signal_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_emergency_signal_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_udp_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 root_certificate_installation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_zt_virtual_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -493,16 +493,16 @@ class ZeroTrustDeviceSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_for_time: Optional[pulumi.Input[_builtins.float]] = None,
-            external_emergency_signal_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            external_emergency_signal_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            external_emergency_signal_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            external_emergency_signal_url: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            gateway_udp_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            root_certificate_installation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            use_zt_virtual_ip: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ZeroTrustDeviceSettings':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_for_time: pulumi.Input[Optional[_builtins.float]] = None,
+            external_emergency_signal_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            external_emergency_signal_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            external_emergency_signal_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            external_emergency_signal_url: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway_udp_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            root_certificate_installation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            use_zt_virtual_ip: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ZeroTrustDeviceSettings':
         """
         Get an existing ZeroTrustDeviceSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -139,28 +139,28 @@ export interface MagicTransitSiteState {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Magic Connector identifier tag.
      */
-    connectorId?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
      */
-    haMode?: pulumi.Input<boolean>;
+    haMode?: pulumi.Input<boolean | undefined>;
     /**
      * Location of site in latitude and longitude.
      */
-    location?: pulumi.Input<inputs.MagicTransitSiteLocation>;
+    location?: pulumi.Input<inputs.MagicTransitSiteLocation | undefined>;
     /**
      * The name of the site.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Magic Connector identifier tag. Used when high availability mode is on.
      */
-    secondaryConnectorId?: pulumi.Input<string>;
+    secondaryConnectorId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,20 +170,20 @@ export interface MagicTransitSiteArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Magic Connector identifier tag.
      */
-    connectorId?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
      */
-    haMode?: pulumi.Input<boolean>;
+    haMode?: pulumi.Input<boolean | undefined>;
     /**
      * Location of site in latitude and longitude.
      */
-    location?: pulumi.Input<inputs.MagicTransitSiteLocation>;
+    location?: pulumi.Input<inputs.MagicTransitSiteLocation | undefined>;
     /**
      * The name of the site.
      */
@@ -191,5 +191,5 @@ export interface MagicTransitSiteArgs {
     /**
      * Magic Connector identifier tag. Used when high availability mode is on.
      */
-    secondaryConnectorId?: pulumi.Input<string>;
+    secondaryConnectorId?: pulumi.Input<string | undefined>;
 }

@@ -109,7 +109,7 @@ export function getZeroTrustGatewayCertificateOutput(args: GetZeroTrustGatewayCe
  * A collection of arguments for invoking getZeroTrustGatewayCertificate.
  */
 export interface GetZeroTrustGatewayCertificateOutputArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Identify the certificate with a UUID.
      */

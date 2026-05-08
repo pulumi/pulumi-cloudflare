@@ -120,19 +120,19 @@ export interface WorkersScriptSubdomainState {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Whether the Worker should be available on the workers.dev subdomain.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
      */
-    previewsEnabled?: pulumi.Input<boolean>;
+    previewsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
-    scriptName?: pulumi.Input<string>;
+    scriptName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -142,7 +142,7 @@ export interface WorkersScriptSubdomainArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Whether the Worker should be available on the workers.dev subdomain.
      */
@@ -150,7 +150,7 @@ export interface WorkersScriptSubdomainArgs {
     /**
      * Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
      */
-    previewsEnabled?: pulumi.Input<boolean>;
+    previewsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the script, used in URLs and route configuration.
      */

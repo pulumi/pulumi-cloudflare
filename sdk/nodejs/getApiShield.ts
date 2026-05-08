@@ -103,9 +103,9 @@ export interface GetApiShieldOutputArgs {
     /**
      * Ensures that the configuration is written or retrieved in normalized fashion
      */
-    normalize?: pulumi.Input<boolean>;
+    normalize?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -123,10 +123,10 @@ export function getAiSearchInstanceOutput(args?: GetAiSearchInstanceOutputArgs, 
  * A collection of arguments for invoking getAiSearchInstance.
  */
 export interface GetAiSearchInstanceOutputArgs {
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetAiSearchInstanceFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetAiSearchInstanceFilterArgs | undefined>;
     /**
      * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }

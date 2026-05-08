@@ -179,8 +179,8 @@ def get_origin_ca_certificate(certificate_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         request_type=pulumi.get(__ret__, 'request_type'),
         requested_validity=pulumi.get(__ret__, 'requested_validity'))
-def get_origin_ca_certificate_output(certificate_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     filter: Optional[pulumi.Input[Optional[Union['GetOriginCaCertificateFilterArgs', 'GetOriginCaCertificateFilterArgsDict']]]] = None,
+def get_origin_ca_certificate_output(certificate_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     filter: pulumi.Input[Optional[Optional[Union['GetOriginCaCertificateFilterArgs', 'GetOriginCaCertificateFilterArgsDict']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOriginCaCertificateResult]:
     """
     ## Example Usage

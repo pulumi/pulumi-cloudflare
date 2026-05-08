@@ -197,12 +197,12 @@ def get_email_security_impersonation_registries(account_id: Optional[_builtins.s
         provenance=pulumi.get(__ret__, 'provenance'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
-def get_email_security_impersonation_registries_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                       order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       provenance: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_email_security_impersonation_registries_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                       order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       provenance: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityImpersonationRegistriesResult]:
     """
     Accepted Permissions

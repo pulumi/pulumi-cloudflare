@@ -96,11 +96,11 @@ export class ContentScanningExpression extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ContentScanningExpression resources.
  */
 export interface ContentScanningExpressionState {
-    bodies?: pulumi.Input<pulumi.Input<inputs.ContentScanningExpressionBody>[]>;
+    bodies?: pulumi.Input<pulumi.Input<inputs.ContentScanningExpressionBody>[] | undefined>;
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -111,5 +111,5 @@ export interface ContentScanningExpressionArgs {
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

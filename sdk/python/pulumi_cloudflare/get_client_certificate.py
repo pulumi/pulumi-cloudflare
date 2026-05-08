@@ -342,9 +342,9 @@ def get_client_certificate(client_certificate_id: Optional[_builtins.str] = None
         status=pulumi.get(__ret__, 'status'),
         validity_days=pulumi.get(__ret__, 'validity_days'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_client_certificate_output(client_certificate_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  filter: Optional[pulumi.Input[Optional[Union['GetClientCertificateFilterArgs', 'GetClientCertificateFilterArgsDict']]]] = None,
-                                  zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_client_certificate_output(client_certificate_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  filter: pulumi.Input[Optional[Optional[Union['GetClientCertificateFilterArgs', 'GetClientCertificateFilterArgsDict']]]] = None,
+                                  zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientCertificateResult]:
     """
     Accepted Permissions

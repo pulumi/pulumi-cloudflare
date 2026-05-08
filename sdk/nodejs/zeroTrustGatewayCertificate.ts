@@ -148,62 +148,62 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustGatewayCertificate resources.
  */
 export interface ZeroTrustGatewayCertificateState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
      */
-    activate?: pulumi.Input<boolean>;
+    activate?: pulumi.Input<boolean | undefined>;
     /**
      * Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
      * Available values: "pending*deployment", "available", "pending*deletion", "inactive".
      */
-    bindingStatus?: pulumi.Input<string>;
+    bindingStatus?: pulumi.Input<string | undefined>;
     /**
      * Provide the CA certificate (read-only).
      */
-    certificate?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
-    expiresOn?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
+    expiresOn?: pulumi.Input<string | undefined>;
     /**
      * Provide the SHA256 fingerprint of the certificate (read-only).
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
      */
-    inUse?: pulumi.Input<boolean>;
+    inUse?: pulumi.Input<boolean | undefined>;
     /**
      * Indicate the organization that issued the certificate (read-only).
      */
-    issuerOrg?: pulumi.Input<string>;
+    issuerOrg?: pulumi.Input<string | undefined>;
     /**
      * Provide the entire issuer field of the certificate (read-only).
      */
-    issuerRaw?: pulumi.Input<string>;
+    issuerRaw?: pulumi.Input<string | undefined>;
     /**
      * Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: "custom", "gatewayManaged".
      */
-    type?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
-    uploadedOn?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
+    uploadedOn?: pulumi.Input<string | undefined>;
     /**
      * Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
      */
-    validityPeriodDays?: pulumi.Input<number>;
+    validityPeriodDays?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ZeroTrustGatewayCertificate resource.
  */
 export interface ZeroTrustGatewayCertificateArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
      */
-    activate?: pulumi.Input<boolean>;
+    activate?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
      */
-    validityPeriodDays?: pulumi.Input<number>;
+    validityPeriodDays?: pulumi.Input<number | undefined>;
 }

@@ -118,7 +118,7 @@ export interface GetHyperdriveConfigOutputArgs {
     /**
      * Define configurations using a unique string identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Define configurations using a unique string identifier.
      */

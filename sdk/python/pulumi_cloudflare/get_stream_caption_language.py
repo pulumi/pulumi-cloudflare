@@ -163,9 +163,9 @@ def get_stream_caption_language(account_id: Optional[_builtins.str] = None,
         label=pulumi.get(__ret__, 'label'),
         language=pulumi.get(__ret__, 'language'),
         status=pulumi.get(__ret__, 'status'))
-def get_stream_caption_language_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                       language: Optional[pulumi.Input[_builtins.str]] = None,
+def get_stream_caption_language_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                       language: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamCaptionLanguageResult]:
     """
     Accepted Permissions

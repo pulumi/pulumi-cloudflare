@@ -159,47 +159,47 @@ export interface ImageState {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Can set the creator field with an internal user ID.
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * An image binary data. Only needed when type is uploading a file.
      */
-    file?: pulumi.Input<string>;
+    file?: pulumi.Input<string | undefined>;
     /**
      * Image file name.
      */
-    filename?: pulumi.Input<string>;
+    filename?: pulumi.Input<string | undefined>;
     /**
      * An optional custom unique identifier for your image.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.
      */
-    meta?: pulumi.Input<string>;
+    meta?: pulumi.Input<string | undefined>;
     /**
      * User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
      */
-    metadata?: pulumi.Input<string>;
+    metadata?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the image requires a signature token for the access.
      */
-    requireSignedUrls?: pulumi.Input<boolean>;
+    requireSignedUrls?: pulumi.Input<boolean | undefined>;
     /**
      * When the media item was uploaded.
      */
-    uploaded?: pulumi.Input<string>;
+    uploaded?: pulumi.Input<string | undefined>;
     /**
      * A URL to fetch an image from origin. Only needed when type is uploading from a URL.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Object specifying available variants for an image.
      */
-    variants?: pulumi.Input<pulumi.Input<string>[]>;
+    variants?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -209,15 +209,15 @@ export interface ImageArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Can set the creator field with an internal user ID.
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * An image binary data. Only needed when type is uploading a file.
      */
-    file?: pulumi.Input<string>;
+    file?: pulumi.Input<string | undefined>;
     /**
      * An optional custom unique identifier for your image.
      */
@@ -225,13 +225,13 @@ export interface ImageArgs {
     /**
      * User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
      */
-    metadata?: pulumi.Input<string>;
+    metadata?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the image requires a signature token for the access.
      */
-    requireSignedUrls?: pulumi.Input<boolean>;
+    requireSignedUrls?: pulumi.Input<boolean | undefined>;
     /**
      * A URL to fetch an image from origin. Only needed when type is uploading from a URL.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }

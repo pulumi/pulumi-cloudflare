@@ -142,29 +142,29 @@ export interface EmailRoutingCatchAllState {
     /**
      * List actions for the catch-all routing rule.
      */
-    actions?: pulumi.Input<pulumi.Input<inputs.EmailRoutingCatchAllAction>[]>;
+    actions?: pulumi.Input<pulumi.Input<inputs.EmailRoutingCatchAllAction>[] | undefined>;
     /**
      * Routing rule status.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * List of matchers for the catch-all routing rule.
      */
-    matchers?: pulumi.Input<pulumi.Input<inputs.EmailRoutingCatchAllMatcher>[]>;
+    matchers?: pulumi.Input<pulumi.Input<inputs.EmailRoutingCatchAllMatcher>[] | undefined>;
     /**
      * Routing rule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      *
      * @deprecated This attribute is deprecated.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -178,7 +178,7 @@ export interface EmailRoutingCatchAllArgs {
     /**
      * Routing rule status.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * List of matchers for the catch-all routing rule.
      */
@@ -186,7 +186,7 @@ export interface EmailRoutingCatchAllArgs {
     /**
      * Routing rule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Identifier.
      */

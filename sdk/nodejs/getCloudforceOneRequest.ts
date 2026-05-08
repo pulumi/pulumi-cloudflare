@@ -140,10 +140,10 @@ export interface GetCloudforceOneRequestOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.GetCloudforceOneRequestFilterArgs>;
+    accountId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetCloudforceOneRequestFilterArgs | undefined>;
     /**
      * UUID.
      */
-    requestId?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string | undefined>;
 }

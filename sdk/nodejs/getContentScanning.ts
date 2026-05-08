@@ -96,5 +96,5 @@ export interface GetContentScanningOutputArgs {
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

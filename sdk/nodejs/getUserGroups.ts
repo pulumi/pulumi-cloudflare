@@ -149,21 +149,21 @@ export interface GetUserGroupsOutputArgs {
      * The sort order of returned user groups by name (ascending or descending).
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * A string used for searching for user groups containing that substring.
      */
-    fuzzyName?: pulumi.Input<string>;
+    fuzzyName?: pulumi.Input<string | undefined>;
     /**
      * ID of the user group to be fetched.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
-    maxItems?: pulumi.Input<number>;
+    maxItems?: pulumi.Input<number | undefined>;
     /**
      * Name of the user group to be fetched.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

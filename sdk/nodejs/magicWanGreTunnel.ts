@@ -202,54 +202,54 @@ export interface MagicWanGreTunnelState {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
      */
-    automaticReturnRouting?: pulumi.Input<boolean>;
-    bgp?: pulumi.Input<inputs.MagicWanGreTunnelBgp>;
-    bgpStatus?: pulumi.Input<inputs.MagicWanGreTunnelBgpStatus>;
+    automaticReturnRouting?: pulumi.Input<boolean | undefined>;
+    bgp?: pulumi.Input<inputs.MagicWanGreTunnelBgp | undefined>;
+    bgpStatus?: pulumi.Input<inputs.MagicWanGreTunnelBgpStatus | undefined>;
     /**
      * The IP address assigned to the Cloudflare side of the GRE tunnel.
      */
-    cloudflareGreEndpoint?: pulumi.Input<string>;
+    cloudflareGreEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The date and time the tunnel was created.
      */
-    createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string | undefined>;
     /**
      * The IP address assigned to the customer side of the GRE tunnel.
      */
-    customerGreEndpoint?: pulumi.Input<string>;
+    customerGreEndpoint?: pulumi.Input<string | undefined>;
     /**
      * An optional description of the GRE tunnel.
      */
-    description?: pulumi.Input<string>;
-    healthCheck?: pulumi.Input<inputs.MagicWanGreTunnelHealthCheck>;
+    description?: pulumi.Input<string | undefined>;
+    healthCheck?: pulumi.Input<inputs.MagicWanGreTunnelHealthCheck | undefined>;
     /**
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      */
-    interfaceAddress?: pulumi.Input<string>;
+    interfaceAddress?: pulumi.Input<string | undefined>;
     /**
      * A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
      */
-    interfaceAddress6?: pulumi.Input<string>;
+    interfaceAddress6?: pulumi.Input<string | undefined>;
     /**
      * The date and time the tunnel was last modified.
      */
-    modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string | undefined>;
     /**
      * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Time To Live (TTL) in number of hops of the GRE tunnel.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -263,8 +263,8 @@ export interface MagicWanGreTunnelArgs {
     /**
      * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
      */
-    automaticReturnRouting?: pulumi.Input<boolean>;
-    bgp?: pulumi.Input<inputs.MagicWanGreTunnelBgp>;
+    automaticReturnRouting?: pulumi.Input<boolean | undefined>;
+    bgp?: pulumi.Input<inputs.MagicWanGreTunnelBgp | undefined>;
     /**
      * The IP address assigned to the Cloudflare side of the GRE tunnel.
      */
@@ -276,8 +276,8 @@ export interface MagicWanGreTunnelArgs {
     /**
      * An optional description of the GRE tunnel.
      */
-    description?: pulumi.Input<string>;
-    healthCheck?: pulumi.Input<inputs.MagicWanGreTunnelHealthCheck>;
+    description?: pulumi.Input<string | undefined>;
+    healthCheck?: pulumi.Input<inputs.MagicWanGreTunnelHealthCheck | undefined>;
     /**
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      */
@@ -285,11 +285,11 @@ export interface MagicWanGreTunnelArgs {
     /**
      * A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
      */
-    interfaceAddress6?: pulumi.Input<string>;
+    interfaceAddress6?: pulumi.Input<string | undefined>;
     /**
      * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
      */
@@ -297,5 +297,5 @@ export interface MagicWanGreTunnelArgs {
     /**
      * Time To Live (TTL) in number of hops of the GRE tunnel.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }

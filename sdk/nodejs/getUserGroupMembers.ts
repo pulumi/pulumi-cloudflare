@@ -130,11 +130,11 @@ export interface GetUserGroupMembersOutputArgs {
      * The sort order of returned user group members by email.
      * Available values: "asc", "desc".
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * A string used for filtering members by partial email match.
      */
-    fuzzyEmail?: pulumi.Input<string>;
+    fuzzyEmail?: pulumi.Input<string | undefined>;
     /**
      * User Group identifier tag.
      */

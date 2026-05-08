@@ -113,7 +113,7 @@ export interface GetWorkersDeploymentOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     deploymentId: pulumi.Input<string>;
     /**
      * Name of the script, used in URLs and route configuration.

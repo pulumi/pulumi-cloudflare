@@ -22,7 +22,7 @@ class EmailSecurityImpersonationRegistryArgs:
                  email: pulumi.Input[_builtins.str],
                  is_email_regex: pulumi.Input[_builtins.bool],
                  name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailSecurityImpersonationRegistry resource.
 
@@ -63,31 +63,31 @@ class EmailSecurityImpersonationRegistryArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
 class _EmailSecurityImpersonationRegistryState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 comments: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 directory_node_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_directory_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_email_regex: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provenance: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 directory_node_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_directory_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_email_regex: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provenance: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailSecurityImpersonationRegistry resources.
 
@@ -121,105 +121,105 @@ class _EmailSecurityImpersonationRegistryState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def comments(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comments(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "comments")
 
     @comments.setter
-    def comments(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comments(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comments", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
-    def directory_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def directory_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
-    def directory_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def directory_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "directory_id", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryNodeId")
-    def directory_node_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def directory_node_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "directory_node_id")
 
     @directory_node_id.setter
-    def directory_node_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def directory_node_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "directory_node_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="externalDirectoryNodeId")
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def external_directory_node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_directory_node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "external_directory_node_id")
 
     @external_directory_node_id.setter
-    def external_directory_node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_directory_node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_directory_node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isEmailRegex")
-    def is_email_regex(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_email_regex(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_email_regex")
 
     @is_email_regex.setter
-    def is_email_regex(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_email_regex(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_email_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
-    def last_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def provenance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provenance(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "provenance")
 
     @provenance.setter
-    def provenance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provenance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provenance", value)
 
 
@@ -229,10 +229,10 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_email_regex: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_email_regex: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -311,10 +311,10 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_email_regex: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_email_regex: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -351,17 +351,17 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            comments: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            directory_id: Optional[pulumi.Input[_builtins.int]] = None,
-            directory_node_id: Optional[pulumi.Input[_builtins.int]] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            external_directory_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-            is_email_regex: Optional[pulumi.Input[_builtins.bool]] = None,
-            last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provenance: Optional[pulumi.Input[_builtins.str]] = None) -> 'EmailSecurityImpersonationRegistry':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            comments: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_id: pulumi.Input[Optional[_builtins.int]] = None,
+            directory_node_id: pulumi.Input[Optional[_builtins.int]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            external_directory_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_email_regex: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provenance: pulumi.Input[Optional[_builtins.str]] = None) -> 'EmailSecurityImpersonationRegistry':
         """
         Get an existing EmailSecurityImpersonationRegistry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

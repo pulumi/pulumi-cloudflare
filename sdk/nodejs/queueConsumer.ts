@@ -145,27 +145,27 @@ export interface QueueConsumerState {
     /**
      * A Resource identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * A Resource identifier.
      */
-    consumerId?: pulumi.Input<string>;
-    createdOn?: pulumi.Input<string>;
-    deadLetterQueue?: pulumi.Input<string>;
+    consumerId?: pulumi.Input<string | undefined>;
+    createdOn?: pulumi.Input<string | undefined>;
+    deadLetterQueue?: pulumi.Input<string | undefined>;
     /**
      * A Resource identifier.
      */
-    queueId?: pulumi.Input<string>;
-    queueName?: pulumi.Input<string>;
+    queueId?: pulumi.Input<string | undefined>;
+    queueName?: pulumi.Input<string | undefined>;
     /**
      * Name of a Worker
      */
-    scriptName?: pulumi.Input<string>;
-    settings?: pulumi.Input<inputs.QueueConsumerSettings>;
+    scriptName?: pulumi.Input<string | undefined>;
+    settings?: pulumi.Input<inputs.QueueConsumerSettings | undefined>;
     /**
      * Available values: "worker", "httpPull".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -175,8 +175,8 @@ export interface QueueConsumerArgs {
     /**
      * A Resource identifier.
      */
-    accountId?: pulumi.Input<string>;
-    deadLetterQueue?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    deadLetterQueue?: pulumi.Input<string | undefined>;
     /**
      * A Resource identifier.
      */
@@ -184,8 +184,8 @@ export interface QueueConsumerArgs {
     /**
      * Name of a Worker
      */
-    scriptName?: pulumi.Input<string>;
-    settings?: pulumi.Input<inputs.QueueConsumerSettings>;
+    scriptName?: pulumi.Input<string | undefined>;
+    settings?: pulumi.Input<inputs.QueueConsumerSettings | undefined>;
     /**
      * Available values: "worker", "httpPull".
      */
