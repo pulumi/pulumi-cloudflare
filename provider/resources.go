@@ -210,6 +210,63 @@ func Provider() info.Provider {
 				},
 			},
 
+			"cloudflare_list": {
+				Tok: "cloudflare:index/list:List",
+				// Migrates Pulumi state written by pulumi-cloudflare v5 into a shape the v6 Framework schema can
+				// deserialize.
+				// v5 items are {comment, value: {asn, ip, hostnames[], redirects[]}}; v6 wants flat
+				// {comment, asn, ip, hostname, redirect}. Without this, v6 reads every item with all
+				// leaf fields null and the framework rejects the set as Duplicate Set Element. See
+				// pulumi/pulumi-cloudflare#1549.
+				PreStateUpgradeHook: func(
+					args info.PreStateUpgradeHookArgs,
+				) (int64, resource.PropertyMap, error) {
+					migrateItem := func(item resource.PropertyValue) resource.PropertyValue {
+						if !item.IsObject() {
+							return item
+						}
+						obj := item.ObjectValue().Copy()
+						value, ok := obj["value"]
+						// Idempotent: items lacking the v4 `value` wrapper are already v6-shaped.
+						if !ok || !value.IsObject() {
+							return item
+						}
+						v := value.ObjectValue()
+						if asn, ok := v["asn"]; ok && !asn.IsNull() {
+							obj["asn"] = asn
+						}
+						if ip, ok := v["ip"]; ok && !ip.IsNull() {
+							obj["ip"] = ip
+						}
+						if hostnames, ok := v["hostnames"]; ok && hostnames.IsArray() {
+							if arr := hostnames.ArrayValue(); len(arr) > 0 && arr[0].IsObject() {
+								obj["hostname"] = arr[0]
+							}
+						}
+						if redirects, ok := v["redirects"]; ok && redirects.IsArray() {
+							if arr := redirects.ArrayValue(); len(arr) > 0 && arr[0].IsObject() {
+								obj["redirect"] = arr[0]
+							}
+						}
+						delete(obj, "value")
+						return resource.NewObjectProperty(obj)
+					}
+
+					s := args.PriorState
+					items, ok := s["items"]
+					if !ok || !items.IsArray() {
+						return 0, s, nil
+					}
+					sCopy := s.Copy()
+					updated := make([]resource.PropertyValue, 0, len(items.ArrayValue()))
+					for _, item := range items.ArrayValue() {
+						updated = append(updated, migrateItem(item))
+					}
+					sCopy["items"] = resource.NewArrayProperty(updated)
+					return 0, sCopy, nil
+				},
+			},
+
 			"cloudflare_zone": {
 				TransformFromState: func(_ context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
 					if zone, ok := state["zone"]; ok {
