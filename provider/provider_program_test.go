@@ -70,7 +70,8 @@ func testProgram(t *testing.T, dir string, opts ...opttest.Option) *pulumitest.P
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without credentials")
 	}
 	if os.Getenv("CLOUDFLARE_ACCOUNT_ID") == "" {
-		t.Skip("CLOUDFLARE_ACCOUNT_ID not set; recorded state baked-in IDs won't match the empty config and produce confusing replace diffs")
+		t.Skip("CLOUDFLARE_ACCOUNT_ID not set; recorded state baked-in IDs won't match the empty config " +
+			"and produce confusing replace diffs")
 	}
 
 	rpFactory := providers.ResourceProviderFactory(providerFactory)

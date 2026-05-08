@@ -62,7 +62,7 @@ func TestRuleSetVersionReminder(t *testing.T) {
 }
 
 func TestListVersionReminder(t *testing.T) {
-	version.Version = "0.0.1"
+	version.Version = "0.0.2"
 	p := Provider()
 	r := p.P.ResourcesMap().Get("cloudflare_list")
 	// See https://github.com/pulumi/pulumi-cloudflare/issues/1549
@@ -71,7 +71,7 @@ func TestListVersionReminder(t *testing.T) {
 }
 
 func TestZeroTrustAccessApplicationVersionReminder(t *testing.T) {
-	version.Version = "0.0.1"
+	version.Version = "0.0.3"
 	p := Provider()
 	r := p.P.ResourcesMap().Get("cloudflare_zero_trust_access_application")
 	// See https://github.com/pulumi/pulumi-cloudflare/issues/1165
