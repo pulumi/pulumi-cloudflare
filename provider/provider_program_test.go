@@ -152,6 +152,12 @@ func TestZeroTrustAccessApplicationFromState(t *testing.T) {
 	pt.Preview(t)
 }
 
+func TestRuleSetHeadersUpgrade(t *testing.T) {
+	testUpgrade(
+		t, "test-programs/ruleset_headers/ruleset_headers_v5",
+		optproviderupgrade.NewSourcePath("test-programs/ruleset_headers"))
+}
+
 func TestAccRecordGo(t *testing.T) {
 	pt := testProgram(t, "test-programs/recordgo",
 		opttest.TestInPlace(), /* to use the parent directory's module */
