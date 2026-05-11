@@ -296,6 +296,47 @@ func Provider() info.Provider {
 			},
 			"cloudflare_zero_trust_access_application": {
 				Aliases: alias("cloudflare:index/accessApplication:AccessApplication"),
+				// v5 stored cors_headers as a list and policies as a list of strings; v6
+				// expects cors_headers as an object and policies as [{id}]. See
+				// pulumi/pulumi-cloudflare#1165.
+				PreStateUpgradeHook: func(
+					args info.PreStateUpgradeHookArgs,
+				) (int64, resource.PropertyMap, error) {
+					s := args.PriorState
+					sCopy := s.Copy()
+
+					if corsHeaders, ok := sCopy["corsHeaders"]; ok && corsHeaders.IsArray() {
+						arr := corsHeaders.ArrayValue()
+						if len(arr) == 0 {
+							delete(sCopy, "corsHeaders")
+						} else if arr[0].IsObject() {
+							sCopy["corsHeaders"] = arr[0]
+						}
+					}
+
+					if policies, ok := sCopy["policies"]; ok && policies.IsArray() {
+						arr := policies.ArrayValue()
+						updated := make([]resource.PropertyValue, 0, len(arr))
+						changed := false
+						for _, p := range arr {
+							if p.IsString() {
+								updated = append(updated, resource.NewObjectProperty(
+									resource.PropertyMap{
+										"id": p,
+									},
+								))
+								changed = true
+							} else {
+								updated = append(updated, p)
+							}
+						}
+						if changed {
+							sCopy["policies"] = resource.NewArrayProperty(updated)
+						}
+					}
+
+					return 0, sCopy, nil
+				},
 			},
 			"cloudflare_zero_trust_access_ai_controls_mcp_portal": {
 				Fields: map[string]*info.Schema{

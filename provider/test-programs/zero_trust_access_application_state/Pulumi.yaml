@@ -1,0 +1,20 @@
+name: example-zta-app-state
+runtime: yaml
+
+resources:
+  app:
+    type: cloudflare:index:ZeroTrustAccessApplication
+    properties:
+      zoneId: cabcdb3c8548af2e275acc42ed1fea45
+      name: pulumi_cloudflare_test_1165_self_hosted
+      domain: pulumi-cloudflare-test-1165.example.com
+      type: self_hosted
+      sessionDuration: 24h
+      corsHeaders:
+        allowAllOrigins: true
+        allowedMethods:
+          - GET
+          - POST
+        maxAge: 300
+      policies:
+        - id: "00000000-0000-0000-0000-000000000099"

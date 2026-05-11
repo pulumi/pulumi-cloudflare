@@ -69,13 +69,21 @@ func testProgram(t *testing.T, dir string, opts ...opttest.Option) *pulumitest.P
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without credentials")
 	}
+	if os.Getenv("CLOUDFLARE_ACCOUNT_ID") == "" {
+		t.Skip("CLOUDFLARE_ACCOUNT_ID not set; recorded state baked-in IDs won't match the empty config " +
+			"and produce confusing replace diffs")
+	}
 
 	rpFactory := providers.ResourceProviderFactory(providerFactory)
 	opts = append(opts, opttest.AttachProvider(providerName, rpFactory))
 	pt := pulumitest.NewPulumiTest(t, dir, opts...)
 	pt.SetConfig(t, "cloudflare-account-id", os.Getenv("CLOUDFLARE_ACCOUNT_ID"))
 	pt.SetConfig(t, "cloudflare-zone-id", os.Getenv("CLOUDFLARE_ZONE_ID"))
-	pt.SetConfig(t, "cloudflare-domain", "pulumi-cloudflare-demo.com")
+	domain := os.Getenv("CLOUDFLARE_DOMAIN")
+	if domain == "" {
+		domain = "pulumi-cloudflare-demo.com"
+	}
+	pt.SetConfig(t, "cloudflare-domain", domain)
 
 	return pt
 }
@@ -122,6 +130,26 @@ func TestRuleSetUpgrade(t *testing.T) {
 func TestListUpgrade(t *testing.T) {
 	testUpgrade(
 		t, "test-programs/list/listv5", optproviderupgrade.NewSourcePath("test-programs/list"))
+}
+
+func TestZeroTrustAccessApplicationUpgrade(t *testing.T) {
+	testUpgrade(
+		t, "test-programs/zero_trust_access_application/zero_trust_access_application_v5",
+		optproviderupgrade.NewSourcePath("test-programs/zero_trust_access_application"))
+}
+
+// Exercises the populated-array migration branches against a hand-crafted v5 state:
+// corsHeaders [{...}] → object, and policies ["id"] → [{id}]. The recorded
+// TestZeroTrustAccessApplicationUpgrade only covers the default-empty case.
+func TestZeroTrustAccessApplicationFromState(t *testing.T) {
+	state, err := os.ReadFile("testdata/zta_app_state_v5_self_hosted.json")
+	require.NoError(t, err)
+	depl := apitype.UntypedDeployment{}
+	require.NoError(t, json.Unmarshal(state, &depl))
+	pt := testProgram(t, "test-programs/zero_trust_access_application_state",
+		opttest.NewStackOptions(optnewstack.DisableAutoDestroy()))
+	pt.ImportStack(t, depl)
+	pt.Preview(t)
 }
 
 func TestAccRecordGo(t *testing.T) {
