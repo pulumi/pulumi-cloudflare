@@ -7,6 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
@@ -78,6 +79,44 @@ func TestZeroTrustAccessApplicationVersionReminder(t *testing.T) {
 	assert.Equalf(t, 500, r.SchemaVersion(),
 		"Reminder: cloudflare_zero_trust_access_application advanced schema version from 500 and "+
 			"custom Pulumi PreStateUpgradeHook needs to be revisited or possibly dropped")
+}
+
+func TestArgoTieredCachingVersionReminder(t *testing.T) {
+	version.Version = "0.0.4"
+	p := Provider()
+	r := p.P.ResourcesMap().Get("cloudflare_argo_tiered_caching")
+	// See https://github.com/pulumi/pulumi-cloudflare/issues/1575
+	assert.Equalf(t, 500, r.SchemaVersion(),
+		"Reminder: cloudflare_argo_tiered_caching advanced schema version from 500 and "+
+			"custom Pulumi PreStateUpgradeHook needs to be revisited or possibly dropped")
+}
+
+func TestArgoTieredCachingPreStateUpgradeHook(t *testing.T) {
+	pulumiState := resource.PropertyMap{
+		"value":  resource.NewStringProperty("on"),
+		"zoneId": resource.NewStringProperty("00000000000000000000000000000000"),
+	}
+	version, state, err := argoTieredCachingPreStateUpgradeHook(
+		tfbridge.PreStateUpgradeHookArgs{
+			PriorStateSchemaVersion: 0,
+			PriorState:              pulumiState,
+		})
+	require.NoError(t, err)
+	assert.Equal(t, int64(500), version)
+	assert.Equal(t, pulumiState, state)
+
+	legacyArgoState := resource.PropertyMap{
+		"tiered_caching": resource.NewStringProperty("on"),
+		"zone_id":        resource.NewStringProperty("00000000000000000000000000000000"),
+	}
+	version, state, err = argoTieredCachingPreStateUpgradeHook(
+		tfbridge.PreStateUpgradeHookArgs{
+			PriorStateSchemaVersion: 0,
+			PriorState:              legacyArgoState,
+		})
+	require.NoError(t, err)
+	assert.Equal(t, int64(0), version)
+	assert.Equal(t, legacyArgoState, state)
 }
 
 func Test_delegateID(t *testing.T) {

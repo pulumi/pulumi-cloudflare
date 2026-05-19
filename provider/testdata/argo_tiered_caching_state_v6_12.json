@@ -1,0 +1,67 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2026-05-18T00:00:00Z",
+      "magic": "0000000000000000000000000000000000000000000000000000000000000000",
+      "version": "v3.228.0"
+    },
+    "secrets_providers": {
+      "type": "passphrase",
+      "state": {
+        "salt": "v1:O1t5suqMRIo=:v1:7DqVMCoY+uij+EZC:Bc3SzKdajmbRZU5OXZWfP0oEcpUIJw=="
+      }
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test::argo-tiered-caching-state::pulumi:pulumi:Stack::argo-tiered-caching-state-test",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "outputs": {}
+      },
+      {
+        "urn": "urn:pulumi:test::argo-tiered-caching-state::pulumi:providers:cloudflare::default",
+        "custom": true,
+        "id": "00000000-0000-0000-0000-000000000001",
+        "type": "pulumi:providers:cloudflare",
+        "inputs": {
+          "apiClientLogging": "false",
+          "maxBackoff": "30",
+          "minBackoff": "1",
+          "retries": "3",
+          "rps": "4"
+        },
+        "outputs": {
+          "apiClientLogging": "false",
+          "maxBackoff": "30",
+          "minBackoff": "1",
+          "retries": "3",
+          "rps": "4"
+        }
+      },
+      {
+        "urn": "urn:pulumi:test::argo-tiered-caching-state::cloudflare:index/argoTieredCaching:ArgoTieredCaching::argo",
+        "custom": true,
+        "id": "00000000000000000000000000000000",
+        "type": "cloudflare:index/argoTieredCaching:ArgoTieredCaching",
+        "inputs": {
+          "value": "on",
+          "zoneId": "00000000000000000000000000000000"
+        },
+        "outputs": {
+          "editable": false,
+          "id": "00000000000000000000000000000000",
+          "modifiedOn": "2025-08-15T09:49:33Z",
+          "value": "on",
+          "zoneId": "00000000000000000000000000000000"
+        },
+        "parent": "urn:pulumi:test::argo-tiered-caching-state::pulumi:pulumi:Stack::argo-tiered-caching-state-test",
+        "provider": "urn:pulumi:test::argo-tiered-caching-state::pulumi:providers:cloudflare::default::00000000-0000-0000-0000-000000000001",
+        "propertyDependencies": {
+          "value": null,
+          "zoneId": null
+        }
+      }
+    ]
+  }
+}

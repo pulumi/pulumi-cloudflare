@@ -6,7 +6,9 @@ package cloudflare
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"os"
+	"strings"
 	"testing"
 
 	_ "embed"
@@ -88,6 +90,105 @@ func testProgram(t *testing.T, dir string, opts ...opttest.Option) *pulumitest.P
 	return pt
 }
 
+func testProgramNoCloudflareConfig(t *testing.T, dir string, opts ...opttest.Option) *pulumitest.PulumiTest {
+	rpFactory := providers.ResourceProviderFactory(providerFactory)
+	opts = append(opts, opttest.AttachProvider(providerName, rpFactory), opttest.SkipInstall())
+	return pulumitest.NewPulumiTest(t, dir, opts...)
+}
+
+func pulumiCommandEnv(pt *pulumitest.PulumiTest) []string {
+	workspace := pt.CurrentStack().Workspace()
+	env := []string{"PULUMI_DEBUG_COMMANDS=true"}
+	if pulumiHome := workspace.PulumiHome(); pulumiHome != "" {
+		env = append(env, "PULUMI_HOME="+pulumiHome)
+	}
+	for k, v := range workspace.GetEnvVars() {
+		env = append(env, strings.Join([]string{k, v}, "="))
+	}
+	return env
+}
+
+func importStackWithDisabledIntegrity(t *testing.T, pt *pulumitest.PulumiTest, source apitype.UntypedDeployment) {
+	t.Helper()
+	stack := pt.CurrentStack()
+	require.NotNil(t, stack)
+
+	f, err := os.CreateTemp(t.TempDir(), "stack-*.json")
+	require.NoError(t, err)
+	defer func() { require.NoError(t, f.Close()) }()
+
+	require.NoError(t, json.NewEncoder(f).Encode(source))
+
+	workspace := stack.Workspace()
+	stdout, stderr, _, err := workspace.PulumiCommand().Run(
+		pt.Context(),
+		workspace.WorkDir(),
+		nil,
+		nil,
+		nil,
+		pulumiCommandEnv(pt),
+		"--disable-integrity-checking",
+		"stack",
+		"import",
+		"--file",
+		f.Name(),
+		"--stack",
+		stack.Name(),
+	)
+	require.NoError(t, err, fmt.Sprintf("stdout:\n%s\nstderr:\n%s", stdout, stderr))
+}
+
+func previewWithDisabledIntegrity(t *testing.T, pt *pulumitest.PulumiTest) (string, string, error) {
+	t.Helper()
+	stack := pt.CurrentStack()
+	require.NotNil(t, stack)
+
+	workspace := stack.Workspace()
+	stdout, stderr, _, err := workspace.PulumiCommand().Run(
+		pt.Context(),
+		workspace.WorkDir(),
+		nil,
+		nil,
+		nil,
+		pulumiCommandEnv(pt),
+		"--disable-integrity-checking",
+		"preview",
+		"--non-interactive",
+		"--diff",
+		"--stack",
+		stack.Name(),
+	)
+	return stdout, stderr, err
+}
+
+func withArgoTieredCachingSchemaVersion(
+	t *testing.T, source apitype.UntypedDeployment, version string,
+) apitype.UntypedDeployment {
+	t.Helper()
+	var deployment map[string]interface{}
+	require.NoError(t, json.Unmarshal(source.Deployment, &deployment))
+	resources, ok := deployment["resources"].([]interface{})
+	require.True(t, ok)
+	found := false
+	for _, rawResource := range resources {
+		res, ok := rawResource.(map[string]interface{})
+		require.True(t, ok)
+		if res["type"] != "cloudflare:index/argoTieredCaching:ArgoTieredCaching" {
+			continue
+		}
+		found = true
+		outputs, ok := res["outputs"].(map[string]interface{})
+		require.True(t, ok)
+		outputs["__meta"] = fmt.Sprintf(`{"schema_version":"%s"}`, version)
+		break
+	}
+	require.True(t, found, "did not find ArgoTieredCaching resource in test state")
+	updatedDeployment, err := json.Marshal(deployment)
+	require.NoError(t, err)
+	source.Deployment = updatedDeployment
+	return source
+}
+
 func testUpgrade(
 	t *testing.T, dir1 string, opts ...optproviderupgrade.PreviewProviderUpgradeOpt,
 ) auto.PreviewResult {
@@ -150,6 +251,29 @@ func TestZeroTrustAccessApplicationFromState(t *testing.T) {
 		opttest.NewStackOptions(optnewstack.DisableAutoDestroy()))
 	pt.ImportStack(t, depl)
 	pt.Preview(t)
+}
+
+func TestArgoTieredCachingFromV612State(t *testing.T) {
+	state, err := os.ReadFile("testdata/argo_tiered_caching_state_v6_12.json")
+	require.NoError(t, err)
+	depl := apitype.UntypedDeployment{}
+	require.NoError(t, json.Unmarshal(state, &depl))
+
+	t.Run("direct upgrade skips legacy argo migration for Pulumi state", func(t *testing.T) {
+		pt := testProgramNoCloudflareConfig(t, "test-programs/argo_tiered_caching_state",
+			opttest.NewStackOptions(optnewstack.DisableAutoDestroy()))
+		importStackWithDisabledIntegrity(t, pt, depl)
+		stdout, stderr, err := previewWithDisabledIntegrity(t, pt)
+		require.NoError(t, err, fmt.Sprintf("stdout:\n%s\nstderr:\n%s", stdout, stderr))
+	})
+
+	t.Run("schema version bump avoids legacy argo migration", func(t *testing.T) {
+		pt := testProgramNoCloudflareConfig(t, "test-programs/argo_tiered_caching_state",
+			opttest.NewStackOptions(optnewstack.DisableAutoDestroy()))
+		importStackWithDisabledIntegrity(t, pt, withArgoTieredCachingSchemaVersion(t, depl, "500"))
+		stdout, stderr, err := previewWithDisabledIntegrity(t, pt)
+		require.NoError(t, err, fmt.Sprintf("stdout:\n%s\nstderr:\n%s", stdout, stderr))
+	})
 }
 
 func TestRuleSetHeadersUpgrade(t *testing.T) {

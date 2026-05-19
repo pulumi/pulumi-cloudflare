@@ -125,6 +125,10 @@ func Provider() info.Provider {
 				ComputeID: delegateID("imageId"),
 			},
 
+			"cloudflare_argo_tiered_caching": {
+				PreStateUpgradeHook: argoTieredCachingPreStateUpgradeHook,
+			},
+
 			"cloudflare_ruleset": {
 				Tok: "cloudflare:index/ruleset:Ruleset",
 				PreStateUpgradeHook: func(
@@ -790,6 +794,37 @@ func resetMigratedResourcesSchemaVersion(prov *info.Provider) {
 			return newPreStateUpgradeHook(args)
 		}
 	}
+}
+
+// argoTieredCachingPreStateUpgradeHook handles Pulumi state written before the
+// upstream resource had a current schema marker. Upstream now treats schema
+// version 0 as legacy Terraform cloudflare_argo state and expects
+// tiered_caching, but old Pulumi ArgoTieredCaching state is already shaped like
+// the current resource. Mark that Pulumi-shaped state as version 500 so the
+// wrong legacy migration is skipped.
+func argoTieredCachingPreStateUpgradeHook(
+	args info.PreStateUpgradeHookArgs,
+) (int64, resource.PropertyMap, error) {
+	if args.PriorStateSchemaVersion == 0 && isPulumiArgoTieredCachingState(args.PriorState) {
+		return 500, args.PriorState, nil
+	}
+	return args.PriorStateSchemaVersion, args.PriorState, nil
+}
+
+// isPulumiArgoTieredCachingState narrowly identifies old Pulumi-created
+// cloudflare_argo_tiered_caching state. The camelCase zoneId key distinguishes
+// it from Terraform's legacy snake_case cloudflare_argo state, and the absence
+// of tiered_caching keeps the real legacy migration path intact.
+func isPulumiArgoTieredCachingState(state resource.PropertyMap) bool {
+	value, hasValue := state["value"]
+	zoneID, hasZoneID := state["zoneId"]
+	_, hasTerraformTieredCaching := state["tiered_caching"]
+	_, hasPulumiTieredCaching := state["tieredCaching"]
+
+	return hasValue && value.IsString() &&
+		hasZoneID && zoneID.IsString() &&
+		!hasTerraformTieredCaching &&
+		!hasPulumiTieredCaching
 }
 
 func delegateID(pulumiField resource.PropertyKey) tfbridge.ComputeID {
