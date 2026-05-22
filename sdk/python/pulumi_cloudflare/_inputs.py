@@ -3195,7 +3195,7 @@ class AccessApplicationMfaConfigArgs:
 
 
 class AccessApplicationOauthConfigurationArgsDict(TypedDict):
-    dynamic_client_registration: NotRequired[pulumi.Input[Optional['AccessApplicationOauthConfigurationDynamicClientRegistrationArgs']]]
+    dynamic_client_registration: NotRequired[pulumi.Input[Optional['AccessApplicationOauthConfigurationDynamicClientRegistrationArgsDict']]]
     """
     Settings for OAuth dynamic client registration.
     """
@@ -3203,7 +3203,7 @@ class AccessApplicationOauthConfigurationArgsDict(TypedDict):
     """
     Whether the OAuth configuration is enabled for this application. When set to `false`, Access will not handle OAuth for this application. Defaults to `true` if omitted.
     """
-    grant: NotRequired[pulumi.Input[Optional['AccessApplicationOauthConfigurationGrantArgs']]]
+    grant: NotRequired[pulumi.Input[Optional['AccessApplicationOauthConfigurationGrantArgsDict']]]
     """
     Settings for OAuth grant behavior.
     """
@@ -3402,7 +3402,7 @@ class AccessApplicationOauthConfigurationGrantArgs:
 
 
 class AccessApplicationPolicyArgsDict(TypedDict):
-    connection_rules: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyConnectionRulesArgs']]]
+    connection_rules: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyConnectionRulesArgsDict']]]
     """
     The rules that define how users may connect to the targets secured by your application.
     """
@@ -3411,7 +3411,7 @@ class AccessApplicationPolicyArgsDict(TypedDict):
     The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
     Available values: "allow", "deny", "non_identity", "bypass".
     """
-    excludes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationPolicyExcludeArgs']]]]]
+    excludes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationPolicyExcludeArgsDict']]]]]
     """
     Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
     """
@@ -3419,11 +3419,11 @@ class AccessApplicationPolicyArgsDict(TypedDict):
     """
     The UUID of the policy
     """
-    includes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationPolicyIncludeArgs']]]]]
+    includes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationPolicyIncludeArgsDict']]]]]
     """
     Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
     """
-    mfa_config: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyMfaConfigArgs']]]
+    mfa_config: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyMfaConfigArgsDict']]]
     """
     Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `ssh_piv_key` is a supported authenticator; for other application types use `totp`, `biometrics`, or `security_key`.
     """
@@ -3435,7 +3435,7 @@ class AccessApplicationPolicyArgsDict(TypedDict):
     """
     The order of execution for this policy. Must be unique for each policy within an app.
     """
-    requires: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationPolicyRequireArgs']]]]]
+    requires: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationPolicyRequireArgsDict']]]]]
     """
     Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
     """
@@ -3594,11 +3594,11 @@ class AccessApplicationPolicyArgs:
 
 
 class AccessApplicationPolicyConnectionRulesArgsDict(TypedDict):
-    rdp: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyConnectionRulesRdpArgs']]]
+    rdp: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyConnectionRulesRdpArgsDict']]]
     """
     The RDP-specific rules that define clipboard behavior for RDP connections.
     """
-    ssh: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyConnectionRulesSshArgs']]]
+    ssh: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyConnectionRulesSshArgsDict']]]
     """
     The SSH-specific rules that define how users may connect to the targets secured by your application.
     """
@@ -3740,36 +3740,36 @@ class AccessApplicationPolicyConnectionRulesSshArgs:
 
 
 class AccessApplicationPolicyExcludeArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeServiceTokenArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyExcludeServiceTokenArgsDict']]]
 
 @pulumi.input_type
 class AccessApplicationPolicyExcludeArgs:
@@ -4919,36 +4919,36 @@ class AccessApplicationPolicyExcludeServiceTokenArgs:
 
 
 class AccessApplicationPolicyIncludeArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeServiceTokenArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyIncludeServiceTokenArgsDict']]]
 
 @pulumi.input_type
 class AccessApplicationPolicyIncludeArgs:
@@ -6170,36 +6170,36 @@ class AccessApplicationPolicyMfaConfigArgs:
 
 
 class AccessApplicationPolicyRequireArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireServiceTokenArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['AccessApplicationPolicyRequireServiceTokenArgsDict']]]
 
 @pulumi.input_type
 class AccessApplicationPolicyRequireArgs:
@@ -7378,8 +7378,8 @@ class AccessApplicationSaasAppArgsDict(TypedDict):
     """
     The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
     """
-    custom_attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeArgs']]]]]
-    custom_claims: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationSaasAppCustomClaimArgs']]]]]
+    custom_attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeArgsDict']]]]]
+    custom_claims: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationSaasAppCustomClaimArgsDict']]]]]
     default_relay_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URL that the user will be redirected to after a successful login for IDP initiated logins.
@@ -7392,7 +7392,7 @@ class AccessApplicationSaasAppArgsDict(TypedDict):
     """
     A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
     """
-    hybrid_and_implicit_options: NotRequired[pulumi.Input[Optional['AccessApplicationSaasAppHybridAndImplicitOptionsArgs']]]
+    hybrid_and_implicit_options: NotRequired[pulumi.Input[Optional['AccessApplicationSaasAppHybridAndImplicitOptionsArgsDict']]]
     idp_entity_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The unique identifier for your SaaS application.
@@ -7414,7 +7414,7 @@ class AccessApplicationSaasAppArgsDict(TypedDict):
     """
     The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
     """
-    refresh_token_options: NotRequired[pulumi.Input[Optional['AccessApplicationSaasAppRefreshTokenOptionsArgs']]]
+    refresh_token_options: NotRequired[pulumi.Input[Optional['AccessApplicationSaasAppRefreshTokenOptionsArgsDict']]]
     saml_attribute_transform_jsonata: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
@@ -7813,7 +7813,7 @@ class AccessApplicationSaasAppCustomAttributeArgsDict(TypedDict):
     """
     If the attribute is required when building a SAML assertion.
     """
-    source: NotRequired[pulumi.Input[Optional['AccessApplicationSaasAppCustomAttributeSourceArgs']]]
+    source: NotRequired[pulumi.Input[Optional['AccessApplicationSaasAppCustomAttributeSourceArgsDict']]]
 
 @pulumi.input_type
 class AccessApplicationSaasAppCustomAttributeArgs:
@@ -7905,7 +7905,7 @@ class AccessApplicationSaasAppCustomAttributeSourceArgsDict(TypedDict):
     """
     The name of the IdP attribute.
     """
-    name_by_idps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs']]]]]
+    name_by_idps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceNameByIdpArgsDict']]]]]
     """
     A mapping from IdP ID to attribute name.
     """
@@ -8012,7 +8012,7 @@ class AccessApplicationSaasAppCustomClaimArgsDict(TypedDict):
     The scope of the claim.
     Available values: "groups", "profile", "email", "openid".
     """
-    source: NotRequired[pulumi.Input[Optional['AccessApplicationSaasAppCustomClaimSourceArgs']]]
+    source: NotRequired[pulumi.Input[Optional['AccessApplicationSaasAppCustomClaimSourceArgsDict']]]
 
 @pulumi.input_type
 class AccessApplicationSaasAppCustomClaimArgs:
@@ -8219,7 +8219,7 @@ class AccessApplicationScimConfigArgsDict(TypedDict):
     """
     The base URI for the application's SCIM-compatible API.
     """
-    authentication: NotRequired[pulumi.Input[Optional['AccessApplicationScimConfigAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['AccessApplicationScimConfigAuthenticationArgsDict']]]
     """
     Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
     """
@@ -8231,7 +8231,7 @@ class AccessApplicationScimConfigArgsDict(TypedDict):
     """
     Whether SCIM provisioning is turned on for this application.
     """
-    mappings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgs']]]]]
+    mappings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgsDict']]]]]
     """
     A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
     """
@@ -8541,7 +8541,7 @@ class AccessApplicationScimConfigMappingArgsDict(TypedDict):
     """
     A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
     """
-    operations: NotRequired[pulumi.Input[Optional['AccessApplicationScimConfigMappingOperationsArgs']]]
+    operations: NotRequired[pulumi.Input[Optional['AccessApplicationScimConfigMappingOperationsArgsDict']]]
     """
     Whether or not this mapping applies to creates, updates, or deletes.
     """
@@ -8798,37 +8798,37 @@ class AccessApplicationTargetCriteriaArgs:
 
 
 class AccessGroupExcludeArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessGroupExcludeAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessGroupExcludeAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['AccessGroupExcludeAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['AccessGroupExcludeAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['AccessGroupExcludeAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['AccessGroupExcludeCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['AccessGroupExcludeCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['AccessGroupExcludeDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['AccessGroupExcludeEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['AccessGroupExcludeEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['AccessGroupExcludeEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['AccessGroupExcludeEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['AccessGroupExcludeAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['AccessGroupExcludeAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['AccessGroupExcludeAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['AccessGroupExcludeCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['AccessGroupExcludeCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['AccessGroupExcludeDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['AccessGroupExcludeEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['AccessGroupExcludeEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['AccessGroupExcludeEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['AccessGroupExcludeEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['AccessGroupExcludeExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['AccessGroupExcludeGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['AccessGroupExcludeGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['AccessGroupExcludeGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['AccessGroupExcludeGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['AccessGroupExcludeIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['AccessGroupExcludeIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['AccessGroupExcludeLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['AccessGroupExcludeLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['AccessGroupExcludeOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['AccessGroupExcludeOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['AccessGroupExcludeSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['AccessGroupExcludeServiceTokenArgs']]]
-    user_risk_score: NotRequired[pulumi.Input[Optional['AccessGroupExcludeUserRiskScoreArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['AccessGroupExcludeExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['AccessGroupExcludeGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['AccessGroupExcludeGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['AccessGroupExcludeGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['AccessGroupExcludeGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['AccessGroupExcludeIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['AccessGroupExcludeIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['AccessGroupExcludeLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['AccessGroupExcludeLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['AccessGroupExcludeOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['AccessGroupExcludeOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['AccessGroupExcludeSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['AccessGroupExcludeServiceTokenArgsDict']]]
+    user_risk_score: NotRequired[pulumi.Input[Optional['AccessGroupExcludeUserRiskScoreArgsDict']]]
 
 @pulumi.input_type
 class AccessGroupExcludeArgs:
@@ -10018,37 +10018,37 @@ class AccessGroupExcludeUserRiskScoreArgs:
 
 
 class AccessGroupIncludeArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessGroupIncludeAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessGroupIncludeAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['AccessGroupIncludeAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['AccessGroupIncludeAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['AccessGroupIncludeAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['AccessGroupIncludeCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['AccessGroupIncludeCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['AccessGroupIncludeDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['AccessGroupIncludeEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['AccessGroupIncludeEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['AccessGroupIncludeEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['AccessGroupIncludeEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['AccessGroupIncludeAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['AccessGroupIncludeAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['AccessGroupIncludeAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['AccessGroupIncludeCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['AccessGroupIncludeCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['AccessGroupIncludeDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['AccessGroupIncludeEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['AccessGroupIncludeEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['AccessGroupIncludeEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['AccessGroupIncludeEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['AccessGroupIncludeExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['AccessGroupIncludeGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['AccessGroupIncludeGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['AccessGroupIncludeGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['AccessGroupIncludeGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['AccessGroupIncludeIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['AccessGroupIncludeIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['AccessGroupIncludeLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['AccessGroupIncludeLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['AccessGroupIncludeOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['AccessGroupIncludeOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['AccessGroupIncludeSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['AccessGroupIncludeServiceTokenArgs']]]
-    user_risk_score: NotRequired[pulumi.Input[Optional['AccessGroupIncludeUserRiskScoreArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['AccessGroupIncludeExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['AccessGroupIncludeGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['AccessGroupIncludeGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['AccessGroupIncludeGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['AccessGroupIncludeGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['AccessGroupIncludeIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['AccessGroupIncludeIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['AccessGroupIncludeLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['AccessGroupIncludeLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['AccessGroupIncludeOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['AccessGroupIncludeOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['AccessGroupIncludeSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['AccessGroupIncludeServiceTokenArgsDict']]]
+    user_risk_score: NotRequired[pulumi.Input[Optional['AccessGroupIncludeUserRiskScoreArgsDict']]]
 
 @pulumi.input_type
 class AccessGroupIncludeArgs:
@@ -11238,37 +11238,37 @@ class AccessGroupIncludeUserRiskScoreArgs:
 
 
 class AccessGroupRequireArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessGroupRequireAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessGroupRequireAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['AccessGroupRequireAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['AccessGroupRequireAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['AccessGroupRequireAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['AccessGroupRequireCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['AccessGroupRequireCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['AccessGroupRequireDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['AccessGroupRequireEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['AccessGroupRequireEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['AccessGroupRequireEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['AccessGroupRequireEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['AccessGroupRequireAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['AccessGroupRequireAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['AccessGroupRequireAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['AccessGroupRequireCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['AccessGroupRequireCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['AccessGroupRequireDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['AccessGroupRequireEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['AccessGroupRequireEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['AccessGroupRequireEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['AccessGroupRequireEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['AccessGroupRequireExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['AccessGroupRequireGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['AccessGroupRequireGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['AccessGroupRequireGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['AccessGroupRequireGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['AccessGroupRequireIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['AccessGroupRequireIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['AccessGroupRequireLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['AccessGroupRequireLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['AccessGroupRequireOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['AccessGroupRequireOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['AccessGroupRequireSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['AccessGroupRequireServiceTokenArgs']]]
-    user_risk_score: NotRequired[pulumi.Input[Optional['AccessGroupRequireUserRiskScoreArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['AccessGroupRequireExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['AccessGroupRequireGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['AccessGroupRequireGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['AccessGroupRequireGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['AccessGroupRequireGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['AccessGroupRequireIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['AccessGroupRequireIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['AccessGroupRequireLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['AccessGroupRequireLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['AccessGroupRequireOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['AccessGroupRequireOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['AccessGroupRequireSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['AccessGroupRequireServiceTokenArgsDict']]]
+    user_risk_score: NotRequired[pulumi.Input[Optional['AccessGroupRequireUserRiskScoreArgsDict']]]
 
 @pulumi.input_type
 class AccessGroupRequireArgs:
@@ -12514,7 +12514,7 @@ class AccessIdentityProviderConfigArgsDict(TypedDict):
     """
     The claim name for email in the id_token response.
     """
-    header_attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessIdentityProviderConfigHeaderAttributeArgs']]]]]
+    header_attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessIdentityProviderConfigHeaderAttributeArgsDict']]]]]
     """
     Add a list of attribute names that will be returned in the response header from the Access callback.
     """
@@ -13700,7 +13700,7 @@ class AccessPolicyApprovalGroupArgs:
 
 
 class AccessPolicyConnectionRulesArgsDict(TypedDict):
-    rdp: NotRequired[pulumi.Input[Optional['AccessPolicyConnectionRulesRdpArgs']]]
+    rdp: NotRequired[pulumi.Input[Optional['AccessPolicyConnectionRulesRdpArgsDict']]]
     """
     The RDP-specific rules that define clipboard behavior for RDP connections.
     """
@@ -13778,37 +13778,37 @@ class AccessPolicyConnectionRulesRdpArgs:
 
 
 class AccessPolicyExcludeArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeServiceTokenArgs']]]
-    user_risk_score: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeUserRiskScoreArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeServiceTokenArgsDict']]]
+    user_risk_score: NotRequired[pulumi.Input[Optional['AccessPolicyExcludeUserRiskScoreArgsDict']]]
 
 @pulumi.input_type
 class AccessPolicyExcludeArgs:
@@ -14998,37 +14998,37 @@ class AccessPolicyExcludeUserRiskScoreArgs:
 
 
 class AccessPolicyIncludeArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeServiceTokenArgs']]]
-    user_risk_score: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeUserRiskScoreArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeServiceTokenArgsDict']]]
+    user_risk_score: NotRequired[pulumi.Input[Optional['AccessPolicyIncludeUserRiskScoreArgsDict']]]
 
 @pulumi.input_type
 class AccessPolicyIncludeArgs:
@@ -16287,37 +16287,37 @@ class AccessPolicyMfaConfigArgs:
 
 
 class AccessPolicyRequireArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessPolicyRequireAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['AccessPolicyRequireAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['AccessPolicyRequireAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['AccessPolicyRequireAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['AccessPolicyRequireAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['AccessPolicyRequireCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['AccessPolicyRequireCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['AccessPolicyRequireDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['AccessPolicyRequireEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['AccessPolicyRequireEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['AccessPolicyRequireEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['AccessPolicyRequireEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['AccessPolicyRequireAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['AccessPolicyRequireAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['AccessPolicyRequireAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['AccessPolicyRequireCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['AccessPolicyRequireCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['AccessPolicyRequireDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['AccessPolicyRequireEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['AccessPolicyRequireEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['AccessPolicyRequireEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['AccessPolicyRequireEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['AccessPolicyRequireExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['AccessPolicyRequireGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['AccessPolicyRequireGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['AccessPolicyRequireGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['AccessPolicyRequireGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['AccessPolicyRequireIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['AccessPolicyRequireIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['AccessPolicyRequireLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['AccessPolicyRequireLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['AccessPolicyRequireOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['AccessPolicyRequireOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['AccessPolicyRequireSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['AccessPolicyRequireServiceTokenArgs']]]
-    user_risk_score: NotRequired[pulumi.Input[Optional['AccessPolicyRequireUserRiskScoreArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['AccessPolicyRequireExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['AccessPolicyRequireGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['AccessPolicyRequireGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['AccessPolicyRequireGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['AccessPolicyRequireGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['AccessPolicyRequireIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['AccessPolicyRequireIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['AccessPolicyRequireLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['AccessPolicyRequireLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['AccessPolicyRequireOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['AccessPolicyRequireOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['AccessPolicyRequireSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['AccessPolicyRequireServiceTokenArgsDict']]]
+    user_risk_score: NotRequired[pulumi.Input[Optional['AccessPolicyRequireUserRiskScoreArgsDict']]]
 
 @pulumi.input_type
 class AccessPolicyRequireArgs:
@@ -17639,7 +17639,7 @@ class AccountDnsSettingsZoneDefaultsArgsDict(TypedDict):
     """
     Whether to enable Foundation DNS Advanced Nameservers on the zone.
     """
-    internal_dns: NotRequired[pulumi.Input[Optional['AccountDnsSettingsZoneDefaultsInternalDnsArgs']]]
+    internal_dns: NotRequired[pulumi.Input[Optional['AccountDnsSettingsZoneDefaultsInternalDnsArgsDict']]]
     """
     Settings for this internal zone.
     """
@@ -17647,7 +17647,7 @@ class AccountDnsSettingsZoneDefaultsArgsDict(TypedDict):
     """
     Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
     """
-    nameservers: NotRequired[pulumi.Input[Optional['AccountDnsSettingsZoneDefaultsNameserversArgs']]]
+    nameservers: NotRequired[pulumi.Input[Optional['AccountDnsSettingsZoneDefaultsNameserversArgsDict']]]
     """
     Settings determining the nameservers through which the zone should be available.
     """
@@ -17659,7 +17659,7 @@ class AccountDnsSettingsZoneDefaultsArgsDict(TypedDict):
     """
     Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
     """
-    soa: NotRequired[pulumi.Input[Optional['AccountDnsSettingsZoneDefaultsSoaArgs']]]
+    soa: NotRequired[pulumi.Input[Optional['AccountDnsSettingsZoneDefaultsSoaArgsDict']]]
     """
     Components of the zone's SOA record.
     """
@@ -18517,7 +18517,7 @@ class AccountSubscriptionRatePlanArgs:
 
 
 class AccountTokenConditionArgsDict(TypedDict):
-    request_ip: NotRequired[pulumi.Input[Optional['AccountTokenConditionRequestIpArgs']]]
+    request_ip: NotRequired[pulumi.Input[Optional['AccountTokenConditionRequestIpArgsDict']]]
     """
     Client IP restrictions.
     """
@@ -18778,7 +18778,7 @@ class AiGatewayDlpArgsDict(TypedDict):
     """
     Available values: "BLOCK", "FLAG".
     """
-    policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayDlpPolicyArgs']]]]]
+    policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayDlpPolicyArgsDict']]]]]
     profiles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
@@ -18968,7 +18968,7 @@ class AiGatewayDynamicRoutingElementArgsDict(TypedDict):
     """
     Available values: "start", "conditional", "percentage", "rate", "model", "end".
     """
-    properties: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingElementPropertiesArgs']]]
+    properties: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingElementPropertiesArgsDict']]]
 
 @pulumi.input_type
 class AiGatewayDynamicRoutingElementArgs:
@@ -19028,11 +19028,11 @@ class AiGatewayDynamicRoutingElementArgs:
 
 class AiGatewayDynamicRoutingElementOutputsArgsDict(TypedDict):
     element_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    fallback: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingElementOutputsFallbackArgs']]]
-    false: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingElementOutputsFalseArgs']]]
-    next: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingElementOutputsNextArgs']]]
-    success: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingElementOutputsSuccessArgs']]]
-    true: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingElementOutputsTrueArgs']]]
+    fallback: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingElementOutputsFallbackArgsDict']]]
+    false: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingElementOutputsFalseArgsDict']]]
+    next: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingElementOutputsNextArgsDict']]]
+    success: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingElementOutputsSuccessArgsDict']]]
+    true: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingElementOutputsTrueArgsDict']]]
 
 @pulumi.input_type
 class AiGatewayDynamicRoutingElementOutputsArgs:
@@ -19342,13 +19342,13 @@ class AiGatewayDynamicRoutingElementPropertiesArgs:
 class AiGatewayDynamicRoutingRouteArgsDict(TypedDict):
     account_tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     created_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    deployment: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteDeploymentArgs']]]
-    elements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayDynamicRoutingRouteElementArgs']]]]]
+    deployment: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteDeploymentArgsDict']]]
+    elements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiGatewayDynamicRoutingRouteElementArgsDict']]]]]
     gateway_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     modified_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    version: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteVersionArgs']]]
+    version: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteVersionArgsDict']]]
 
 @pulumi.input_type
 class AiGatewayDynamicRoutingRouteArgs:
@@ -19511,8 +19511,8 @@ class AiGatewayDynamicRoutingRouteDeploymentArgs:
 
 class AiGatewayDynamicRoutingRouteElementArgsDict(TypedDict):
     id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    outputs: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementOutputsArgs']]]
-    properties: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementPropertiesArgs']]]
+    outputs: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementOutputsArgsDict']]]
+    properties: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementPropertiesArgsDict']]]
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Available values: "start", "conditional", "percentage", "rate", "model", "end".
@@ -19579,11 +19579,11 @@ class AiGatewayDynamicRoutingRouteElementArgs:
 
 class AiGatewayDynamicRoutingRouteElementOutputsArgsDict(TypedDict):
     element_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    fallback: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementOutputsFallbackArgs']]]
-    false: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementOutputsFalseArgs']]]
-    next: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementOutputsNextArgs']]]
-    success: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementOutputsSuccessArgs']]]
-    true: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementOutputsTrueArgs']]]
+    fallback: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementOutputsFallbackArgsDict']]]
+    false: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementOutputsFalseArgsDict']]]
+    next: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementOutputsNextArgsDict']]]
+    success: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementOutputsSuccessArgsDict']]]
+    true: NotRequired[pulumi.Input[Optional['AiGatewayDynamicRoutingRouteElementOutputsTrueArgsDict']]]
 
 @pulumi.input_type
 class AiGatewayDynamicRoutingRouteElementOutputsArgs:
@@ -20267,7 +20267,7 @@ class AiSearchInstanceIndexingOptionsArgs:
 
 class AiSearchInstanceMetadataArgsDict(TypedDict):
     created_from_aisearch_wizard: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    search_for_agents: NotRequired[pulumi.Input[Optional['AiSearchInstanceMetadataSearchForAgentsArgs']]]
+    search_for_agents: NotRequired[pulumi.Input[Optional['AiSearchInstanceMetadataSearchForAgentsArgsDict']]]
     worker_domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
@@ -20356,11 +20356,11 @@ class AiSearchInstanceMetadataSearchForAgentsArgs:
 
 class AiSearchInstancePublicEndpointParamsArgsDict(TypedDict):
     authorized_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
-    chat_completions_endpoint: NotRequired[pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgs']]]
+    chat_completions_endpoint: NotRequired[pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsChatCompletionsEndpointArgsDict']]]
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    mcp: NotRequired[pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsMcpArgs']]]
-    rate_limit: NotRequired[pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsRateLimitArgs']]]
-    search_endpoint: NotRequired[pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsSearchEndpointArgs']]]
+    mcp: NotRequired[pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsMcpArgsDict']]]
+    rate_limit: NotRequired[pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsRateLimitArgsDict']]]
+    search_endpoint: NotRequired[pulumi.Input[Optional['AiSearchInstancePublicEndpointParamsSearchEndpointArgsDict']]]
 
 @pulumi.input_type
 class AiSearchInstancePublicEndpointParamsArgs:
@@ -20595,7 +20595,7 @@ class AiSearchInstancePublicEndpointParamsSearchEndpointArgs:
 
 
 class AiSearchInstanceRetrievalOptionsArgsDict(TypedDict):
-    boost_bies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiSearchInstanceRetrievalOptionsBoostByArgs']]]]]
+    boost_bies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiSearchInstanceRetrievalOptionsBoostByArgsDict']]]]]
     """
     Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
     """
@@ -20708,7 +20708,7 @@ class AiSearchInstanceSourceParamsArgsDict(TypedDict):
     """
     prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     r2_jurisdiction: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    web_crawler: NotRequired[pulumi.Input[Optional['AiSearchInstanceSourceParamsWebCrawlerArgs']]]
+    web_crawler: NotRequired[pulumi.Input[Optional['AiSearchInstanceSourceParamsWebCrawlerArgsDict']]]
 
 @pulumi.input_type
 class AiSearchInstanceSourceParamsArgs:
@@ -20786,13 +20786,13 @@ class AiSearchInstanceSourceParamsArgs:
 
 
 class AiSearchInstanceSourceParamsWebCrawlerArgsDict(TypedDict):
-    crawl_options: NotRequired[pulumi.Input[Optional['AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsArgs']]]
-    parse_options: NotRequired[pulumi.Input[Optional['AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs']]]
+    crawl_options: NotRequired[pulumi.Input[Optional['AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsArgsDict']]]
+    parse_options: NotRequired[pulumi.Input[Optional['AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgsDict']]]
     parse_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Available values: "sitemap", "feed-rss", "crawl".
     """
-    store_options: NotRequired[pulumi.Input[Optional['AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgs']]]
+    store_options: NotRequired[pulumi.Input[Optional['AiSearchInstanceSourceParamsWebCrawlerStoreOptionsArgsDict']]]
 
 @pulumi.input_type
 class AiSearchInstanceSourceParamsWebCrawlerArgs:
@@ -20935,7 +20935,7 @@ class AiSearchInstanceSourceParamsWebCrawlerCrawlOptionsArgs:
 
 
 class AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgsDict(TypedDict):
-    content_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs']]]]]
+    content_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgsDict']]]]]
     """
     List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
     """
@@ -21174,14 +21174,14 @@ class ApiShieldAuthIdCharacteristicArgs:
 
 
 class ApiShieldOperationFeaturesArgsDict(TypedDict):
-    api_routing: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesApiRoutingArgs']]]
+    api_routing: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesApiRoutingArgsDict']]]
     """
     API Routing settings on endpoint.
     """
-    confidence_intervals: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesConfidenceIntervalsArgs']]]
-    parameter_schemas: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesParameterSchemasArgs']]]
-    schema_info: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesSchemaInfoArgs']]]
-    thresholds: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesThresholdsArgs']]]
+    confidence_intervals: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesConfidenceIntervalsArgsDict']]]
+    parameter_schemas: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesParameterSchemasArgsDict']]]
+    schema_info: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesSchemaInfoArgsDict']]]
+    thresholds: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesThresholdsArgsDict']]]
 
 @pulumi.input_type
 class ApiShieldOperationFeaturesArgs:
@@ -21298,7 +21298,7 @@ class ApiShieldOperationFeaturesApiRoutingArgs:
 
 class ApiShieldOperationFeaturesConfidenceIntervalsArgsDict(TypedDict):
     last_updated: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    suggested_threshold: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdArgs']]]
+    suggested_threshold: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdArgsDict']]]
 
 @pulumi.input_type
 class ApiShieldOperationFeaturesConfidenceIntervalsArgs:
@@ -21330,7 +21330,7 @@ class ApiShieldOperationFeaturesConfidenceIntervalsArgs:
 
 
 class ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdArgsDict(TypedDict):
-    confidence_intervals: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsArgs']]]
+    confidence_intervals: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsArgsDict']]]
     mean: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Suggested threshold.
@@ -21372,15 +21372,15 @@ class ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdArgs:
 
 
 class ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsArgsDict(TypedDict):
-    p90: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90Args']]]
+    p90: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90ArgsDict']]]
     """
     Upper and lower bound for percentile estimate
     """
-    p95: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95Args']]]
+    p95: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95ArgsDict']]]
     """
     Upper and lower bound for percentile estimate
     """
-    p99: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99Args']]]
+    p99: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99ArgsDict']]]
     """
     Upper and lower bound for percentile estimate
     """
@@ -21589,7 +21589,7 @@ class ApiShieldOperationFeaturesConfidenceIntervalsSuggestedThresholdConfidenceI
 
 class ApiShieldOperationFeaturesParameterSchemasArgsDict(TypedDict):
     last_updated: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    parameter_schemas: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesParameterSchemasParameterSchemasArgs']]]
+    parameter_schemas: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesParameterSchemasParameterSchemasArgsDict']]]
     """
     An operation schema object containing a response.
     """
@@ -21679,7 +21679,7 @@ class ApiShieldOperationFeaturesParameterSchemasParameterSchemasArgs:
 
 
 class ApiShieldOperationFeaturesSchemaInfoArgsDict(TypedDict):
-    active_schema: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs']]]
+    active_schema: NotRequired[pulumi.Input[Optional['ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgsDict']]]
     """
     Schema active on endpoint.
     """
@@ -22140,7 +22140,7 @@ class ApiShieldSchemaSchemaArgs:
 
 
 class ApiShieldSchemaUploadDetailsArgsDict(TypedDict):
-    warnings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiShieldSchemaUploadDetailsWarningArgs']]]]]
+    warnings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiShieldSchemaUploadDetailsWarningArgsDict']]]]]
     """
     Diagnostic warning events that occurred during processing. These events are non-critical errors found within the schema.
     """
@@ -22238,7 +22238,7 @@ class ApiShieldSchemaUploadDetailsWarningArgs:
 
 
 class ApiTokenConditionArgsDict(TypedDict):
-    request_ip: NotRequired[pulumi.Input[Optional['ApiTokenConditionRequestIpArgs']]]
+    request_ip: NotRequired[pulumi.Input[Optional['ApiTokenConditionRequestIpArgsDict']]]
     """
     Client IP restrictions.
     """
@@ -22639,7 +22639,7 @@ class CertificatePackCertificateArgsDict(TypedDict):
     """
     When the certificate from the authority expires.
     """
-    geo_restrictions: NotRequired[pulumi.Input[Optional['CertificatePackCertificateGeoRestrictionsArgs']]]
+    geo_restrictions: NotRequired[pulumi.Input[Optional['CertificatePackCertificateGeoRestrictionsArgsDict']]]
     """
     Specify the region where your private key can be held locally.
     """
@@ -23313,7 +23313,7 @@ class CloudConnectorRulesRuleArgsDict(TypedDict):
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    parameters: NotRequired[pulumi.Input[Optional['CloudConnectorRulesRuleParametersArgs']]]
+    parameters: NotRequired[pulumi.Input[Optional['CloudConnectorRulesRuleParametersArgsDict']]]
     """
     Parameters of Cloud Connector Rule
     """
@@ -23445,8 +23445,8 @@ class ConnectivityDirectoryServiceHostArgsDict(TypedDict):
     hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     ipv4: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     ipv6: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    network: NotRequired[pulumi.Input[Optional['ConnectivityDirectoryServiceHostNetworkArgs']]]
-    resolver_network: NotRequired[pulumi.Input[Optional['ConnectivityDirectoryServiceHostResolverNetworkArgs']]]
+    network: NotRequired[pulumi.Input[Optional['ConnectivityDirectoryServiceHostNetworkArgsDict']]]
+    resolver_network: NotRequired[pulumi.Input[Optional['ConnectivityDirectoryServiceHostResolverNetworkArgsDict']]]
 
 @pulumi.input_type
 class ConnectivityDirectoryServiceHostArgs:
@@ -23756,7 +23756,7 @@ class CustomHostnameSslArgsDict(TypedDict):
     """
     Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
     """
-    custom_cert_bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CustomHostnameSslCustomCertBundleArgs']]]]]
+    custom_cert_bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CustomHostnameSslCustomCertBundleArgsDict']]]]]
     """
     Array of custom certificate and key pairs (1 or 2 pairs allowed)
     """
@@ -23777,7 +23777,7 @@ class CustomHostnameSslArgsDict(TypedDict):
     Domain control validation (DCV) method used for this hostname.
     Available values: "http", "txt", "email".
     """
-    settings: NotRequired[pulumi.Input[Optional['CustomHostnameSslSettingsArgs']]]
+    settings: NotRequired[pulumi.Input[Optional['CustomHostnameSslSettingsArgsDict']]]
     """
     SSL specific settings.
     """
@@ -24217,7 +24217,7 @@ class CustomSslKeylessServerArgsDict(TypedDict):
     Status of the Keyless SSL.
     Available values: "active", "deleted".
     """
-    tunnel: NotRequired[pulumi.Input[Optional['CustomSslKeylessServerTunnelArgs']]]
+    tunnel: NotRequired[pulumi.Input[Optional['CustomSslKeylessServerTunnelArgsDict']]]
     """
     Configuration for using Keyless SSL through a Cloudflare Tunnel
     """
@@ -24767,7 +24767,7 @@ class DevicePostureRuleInputArgsDict(TypedDict):
     """
     For more details on last seen, please refer to the Crowdstrike documentation.
     """
-    locations: NotRequired[pulumi.Input[Optional['DevicePostureRuleInputLocationsArgs']]]
+    locations: NotRequired[pulumi.Input[Optional['DevicePostureRuleInputLocationsArgsDict']]]
     network_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Network status of device.
@@ -25663,7 +25663,7 @@ class DlpCustomProfileContextAwarenessArgsDict(TypedDict):
     """
     If true, scan the context of predefined entries to only return matches surrounded by keywords.
     """
-    skip: NotRequired[pulumi.Input[Optional['DlpCustomProfileContextAwarenessSkipArgs']]]
+    skip: NotRequired[pulumi.Input[Optional['DlpCustomProfileContextAwarenessSkipArgsDict']]]
     """
     Content types to exclude from context analysis and return all matches.
     """
@@ -26038,7 +26038,7 @@ class DnsRecordDataArgsDict(TypedDict):
     """
     Fingerprint.
     """
-    flags: NotRequired[Optional[Any]]
+    flags: NotRequired[Any]
     """
     Flags for the CAA record.
     """
@@ -26896,7 +26896,7 @@ class EmailRoutingDnsErrorArgsDict(TypedDict):
     code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     documentation_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    source: NotRequired[pulumi.Input[Optional['EmailRoutingDnsErrorSourceArgs']]]
+    source: NotRequired[pulumi.Input[Optional['EmailRoutingDnsErrorSourceArgsDict']]]
 
 @pulumi.input_type
 class EmailRoutingDnsErrorArgs:
@@ -26975,7 +26975,7 @@ class EmailRoutingDnsMessageArgsDict(TypedDict):
     code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     documentation_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    source: NotRequired[pulumi.Input[Optional['EmailRoutingDnsMessageSourceArgs']]]
+    source: NotRequired[pulumi.Input[Optional['EmailRoutingDnsMessageSourceArgsDict']]]
 
 @pulumi.input_type
 class EmailRoutingDnsMessageArgs:
@@ -27055,7 +27055,7 @@ class EmailRoutingDnsResultArgsDict(TypedDict):
     """
     DNS record content.
     """
-    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EmailRoutingDnsResultErrorArgs']]]]]
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EmailRoutingDnsResultErrorArgsDict']]]]]
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     DNS record name (or @ for the zone apex).
@@ -27064,7 +27064,7 @@ class EmailRoutingDnsResultArgsDict(TypedDict):
     """
     Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.
     """
-    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EmailRoutingDnsResultRecordArgs']]]]]
+    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EmailRoutingDnsResultRecordArgsDict']]]]]
     ttl: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.
@@ -27190,7 +27190,7 @@ class EmailRoutingDnsResultArgs:
 
 class EmailRoutingDnsResultErrorArgsDict(TypedDict):
     code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    missing: NotRequired[pulumi.Input[Optional['EmailRoutingDnsResultErrorMissingArgs']]]
+    missing: NotRequired[pulumi.Input[Optional['EmailRoutingDnsResultErrorMissingArgsDict']]]
     """
     List of records needed to enable an Email Routing zone.
     """
@@ -27889,7 +27889,7 @@ class FirewallRuleActionArgsDict(TypedDict):
     The action to perform.
     Available values: "simulate", "ban", "challenge", "js*challenge", "managed*challenge".
     """
-    response: NotRequired[pulumi.Input[Optional['FirewallRuleActionResponseArgs']]]
+    response: NotRequired[pulumi.Input[Optional['FirewallRuleActionResponseArgsDict']]]
     """
     A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.
     Notes: If you omit this object, Cloudflare will use the default HTML error page. If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone challenge pages and you should not provide the "response" object.
@@ -28766,7 +28766,7 @@ class ImageVariantVariantArgsDict(TypedDict):
     """
     Indicates whether the variant can access an image without a signature, regardless of image access control.
     """
-    options: NotRequired[pulumi.Input[Optional['ImageVariantVariantOptionsArgs']]]
+    options: NotRequired[pulumi.Input[Optional['ImageVariantVariantOptionsArgsDict']]]
     """
     Allows you to define image resizing sizes for different use cases.
     """
@@ -28973,7 +28973,7 @@ class ListItemArgsDict(TypedDict):
     """
     An informative summary of the list item.
     """
-    hostname: NotRequired[pulumi.Input[Optional['ListItemHostnameArgs']]]
+    hostname: NotRequired[pulumi.Input[Optional['ListItemHostnameArgsDict']]]
     """
     Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
     """
@@ -28981,7 +28981,7 @@ class ListItemArgsDict(TypedDict):
     """
     An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
     """
-    redirect: NotRequired[pulumi.Input[Optional['ListItemRedirectArgs']]]
+    redirect: NotRequired[pulumi.Input[Optional['ListItemRedirectArgsDict']]]
     """
     The definition of the redirect.
     """
@@ -29393,11 +29393,11 @@ class LoadBalancerPoolLoadSheddingArgs:
 
 
 class LoadBalancerPoolNotificationFilterArgsDict(TypedDict):
-    origin: NotRequired[pulumi.Input[Optional['LoadBalancerPoolNotificationFilterOriginArgs']]]
+    origin: NotRequired[pulumi.Input[Optional['LoadBalancerPoolNotificationFilterOriginArgsDict']]]
     """
     Filter options for a particular resource type (pool or origin). Use null to reset.
     """
-    pool: NotRequired[pulumi.Input[Optional['LoadBalancerPoolNotificationFilterPoolArgs']]]
+    pool: NotRequired[pulumi.Input[Optional['LoadBalancerPoolNotificationFilterPoolArgsDict']]]
     """
     Filter options for a particular resource type (pool or origin). Use null to reset.
     """
@@ -29556,7 +29556,7 @@ class LoadBalancerPoolOriginArgsDict(TypedDict):
     """
     Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting.
     """
-    header: NotRequired[pulumi.Input[Optional['LoadBalancerPoolOriginHeaderArgs']]]
+    header: NotRequired[pulumi.Input[Optional['LoadBalancerPoolOriginHeaderArgsDict']]]
     """
     The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.
     """
@@ -29844,7 +29844,7 @@ class LoadBalancerRuleArgsDict(TypedDict):
     """
     Disable this specific rule. It will no longer be evaluated by this load balancer.
     """
-    fixed_response: NotRequired[pulumi.Input[Optional['LoadBalancerRuleFixedResponseArgs']]]
+    fixed_response: NotRequired[pulumi.Input[Optional['LoadBalancerRuleFixedResponseArgsDict']]]
     """
     A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed*response is supplied the rule will be marked as terminates.
     """
@@ -29852,7 +29852,7 @@ class LoadBalancerRuleArgsDict(TypedDict):
     """
     Name of this rule. Only used for human readability.
     """
-    overrides: NotRequired[pulumi.Input[Optional['LoadBalancerRuleOverridesArgs']]]
+    overrides: NotRequired[pulumi.Input[Optional['LoadBalancerRuleOverridesArgsDict']]]
     """
     A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional.
     """
@@ -30074,7 +30074,7 @@ class LoadBalancerRuleFixedResponseArgs:
 
 
 class LoadBalancerRuleOverridesArgsDict(TypedDict):
-    adaptive_routing: NotRequired[pulumi.Input[Optional['LoadBalancerRuleOverridesAdaptiveRoutingArgs']]]
+    adaptive_routing: NotRequired[pulumi.Input[Optional['LoadBalancerRuleOverridesAdaptiveRoutingArgsDict']]]
     """
     Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
     """
@@ -30090,7 +30090,7 @@ class LoadBalancerRuleOverridesArgsDict(TypedDict):
     """
     The pool ID to use when all other pools are detected as unhealthy.
     """
-    location_strategy: NotRequired[pulumi.Input[Optional['LoadBalancerRuleOverridesLocationStrategyArgs']]]
+    location_strategy: NotRequired[pulumi.Input[Optional['LoadBalancerRuleOverridesLocationStrategyArgsDict']]]
     """
     Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
     """
@@ -30098,7 +30098,7 @@ class LoadBalancerRuleOverridesArgsDict(TypedDict):
     """
     Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
     """
-    random_steering: NotRequired[pulumi.Input[Optional['LoadBalancerRuleOverridesRandomSteeringArgs']]]
+    random_steering: NotRequired[pulumi.Input[Optional['LoadBalancerRuleOverridesRandomSteeringArgsDict']]]
     """
     Configures pool weights.
     """
@@ -30111,7 +30111,7 @@ class LoadBalancerRuleOverridesArgsDict(TypedDict):
     Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
     Available values: "none", "cookie", "ip_cookie", "header".
     """
-    session_affinity_attributes: NotRequired[pulumi.Input[Optional['LoadBalancerRuleOverridesSessionAffinityAttributesArgs']]]
+    session_affinity_attributes: NotRequired[pulumi.Input[Optional['LoadBalancerRuleOverridesSessionAffinityAttributesArgsDict']]]
     """
     Configures attributes for session affinity.
     """
@@ -31398,7 +31398,7 @@ class MagicTransitSiteLanRoutedSubnetArgsDict(TypedDict):
     """
     A valid CIDR notation representing an IP range.
     """
-    nat: NotRequired[pulumi.Input[Optional['MagicTransitSiteLanRoutedSubnetNatArgs']]]
+    nat: NotRequired[pulumi.Input[Optional['MagicTransitSiteLanRoutedSubnetNatArgsDict']]]
 
 @pulumi.input_type
 class MagicTransitSiteLanRoutedSubnetArgs:
@@ -31483,8 +31483,8 @@ class MagicTransitSiteLanStaticAddressingArgsDict(TypedDict):
     """
     A valid CIDR notation representing an IP range.
     """
-    dhcp_relay: NotRequired[pulumi.Input[Optional['MagicTransitSiteLanStaticAddressingDhcpRelayArgs']]]
-    dhcp_server: NotRequired[pulumi.Input[Optional['MagicTransitSiteLanStaticAddressingDhcpServerArgs']]]
+    dhcp_relay: NotRequired[pulumi.Input[Optional['MagicTransitSiteLanStaticAddressingDhcpRelayArgsDict']]]
+    dhcp_server: NotRequired[pulumi.Input[Optional['MagicTransitSiteLanStaticAddressingDhcpServerArgsDict']]]
     secondary_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A valid CIDR notation representing an IP range.
@@ -32022,7 +32022,7 @@ class MagicWanGreTunnelHealthCheckArgsDict(TypedDict):
     How frequent the health check is run. The default value is `mid`.
     Available values: "low", "mid", "high".
     """
-    target: NotRequired[pulumi.Input[Optional['MagicWanGreTunnelHealthCheckTargetArgs']]]
+    target: NotRequired[pulumi.Input[Optional['MagicWanGreTunnelHealthCheckTargetArgsDict']]]
     """
     The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
     """
@@ -32409,7 +32409,7 @@ class MagicWanIpsecTunnelHealthCheckArgsDict(TypedDict):
     How frequent the health check is run. The default value is `mid`.
     Available values: "low", "mid", "high".
     """
-    target: NotRequired[pulumi.Input[Optional['MagicWanIpsecTunnelHealthCheckTargetArgs']]]
+    target: NotRequired[pulumi.Input[Optional['MagicWanIpsecTunnelHealthCheckTargetArgsDict']]]
     """
     The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
     """
@@ -33697,9 +33697,9 @@ class NotificationPolicyFiltersArgs:
 
 
 class NotificationPolicyMechanismsArgsDict(TypedDict):
-    emails: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NotificationPolicyMechanismsEmailArgs']]]]]
-    pagerduties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NotificationPolicyMechanismsPagerdutyArgs']]]]]
-    webhooks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NotificationPolicyMechanismsWebhookArgs']]]]]
+    emails: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NotificationPolicyMechanismsEmailArgsDict']]]]]
+    pagerduties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NotificationPolicyMechanismsPagerdutyArgsDict']]]]]
+    webhooks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NotificationPolicyMechanismsWebhookArgsDict']]]]]
 
 @pulumi.input_type
 class NotificationPolicyMechanismsArgs:
@@ -33906,7 +33906,7 @@ class ObservatoryScheduledTestScheduleArgs:
 
 class ObservatoryScheduledTestTestArgsDict(TypedDict):
     date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    desktop_report: NotRequired[pulumi.Input[Optional['ObservatoryScheduledTestTestDesktopReportArgs']]]
+    desktop_report: NotRequired[pulumi.Input[Optional['ObservatoryScheduledTestTestDesktopReportArgsDict']]]
     """
     The Lighthouse report.
     """
@@ -33914,11 +33914,11 @@ class ObservatoryScheduledTestTestArgsDict(TypedDict):
     """
     UUID.
     """
-    mobile_report: NotRequired[pulumi.Input[Optional['ObservatoryScheduledTestTestMobileReportArgs']]]
+    mobile_report: NotRequired[pulumi.Input[Optional['ObservatoryScheduledTestTestMobileReportArgsDict']]]
     """
     The Lighthouse report.
     """
-    region: NotRequired[pulumi.Input[Optional['ObservatoryScheduledTestTestRegionArgs']]]
+    region: NotRequired[pulumi.Input[Optional['ObservatoryScheduledTestTestRegionArgsDict']]]
     """
     A test region with a label.
     """
@@ -34059,7 +34059,7 @@ class ObservatoryScheduledTestTestDesktopReportArgsDict(TypedDict):
     The type of device.
     Available values: "DESKTOP", "MOBILE".
     """
-    error: NotRequired[pulumi.Input[Optional['ObservatoryScheduledTestTestDesktopReportErrorArgs']]]
+    error: NotRequired[pulumi.Input[Optional['ObservatoryScheduledTestTestDesktopReportErrorArgsDict']]]
     fcp: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     First Contentful Paint.
@@ -34379,7 +34379,7 @@ class ObservatoryScheduledTestTestMobileReportArgsDict(TypedDict):
     The type of device.
     Available values: "DESKTOP", "MOBILE".
     """
-    error: NotRequired[pulumi.Input[Optional['ObservatoryScheduledTestTestMobileReportErrorArgs']]]
+    error: NotRequired[pulumi.Input[Optional['ObservatoryScheduledTestTestMobileReportErrorArgsDict']]]
     fcp: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     First Contentful Paint.
@@ -34735,7 +34735,7 @@ class ObservatoryScheduledTestTestRegionArgs:
 
 
 class OrganizationMetaArgsDict(TypedDict):
-    flags: NotRequired[pulumi.Input[Optional['OrganizationMetaFlagsArgs']]]
+    flags: NotRequired[pulumi.Input[Optional['OrganizationMetaFlagsArgsDict']]]
     """
     Enable features for Organizations.
     """
@@ -34955,7 +34955,7 @@ class PageRuleActionsArgsDict(TypedDict):
     bypass_cache_on_cookie: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     cache_by_device_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     cache_deception_armor: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    cache_key_fields: NotRequired[pulumi.Input[Optional['PageRuleActionsCacheKeyFieldsArgs']]]
+    cache_key_fields: NotRequired[pulumi.Input[Optional['PageRuleActionsCacheKeyFieldsArgsDict']]]
     cache_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     cache_on_cookie: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     cache_ttl_by_status: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
@@ -34966,7 +34966,7 @@ class PageRuleActionsArgsDict(TypedDict):
     edge_cache_ttl: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     email_obfuscation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     explicit_cache_control: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    forwarding_url: NotRequired[pulumi.Input[Optional['PageRuleActionsForwardingUrlArgs']]]
+    forwarding_url: NotRequired[pulumi.Input[Optional['PageRuleActionsForwardingUrlArgsDict']]]
     host_header_override: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     ip_geolocation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     mirage: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -35397,11 +35397,11 @@ class PageRuleActionsArgs:
 
 
 class PageRuleActionsCacheKeyFieldsArgsDict(TypedDict):
-    cookie: NotRequired[pulumi.Input[Optional['PageRuleActionsCacheKeyFieldsCookieArgs']]]
-    header: NotRequired[pulumi.Input[Optional['PageRuleActionsCacheKeyFieldsHeaderArgs']]]
-    host: NotRequired[pulumi.Input[Optional['PageRuleActionsCacheKeyFieldsHostArgs']]]
-    query_string: NotRequired[pulumi.Input[Optional['PageRuleActionsCacheKeyFieldsQueryStringArgs']]]
-    user: NotRequired[pulumi.Input[Optional['PageRuleActionsCacheKeyFieldsUserArgs']]]
+    cookie: NotRequired[pulumi.Input[Optional['PageRuleActionsCacheKeyFieldsCookieArgsDict']]]
+    header: NotRequired[pulumi.Input[Optional['PageRuleActionsCacheKeyFieldsHeaderArgsDict']]]
+    host: NotRequired[pulumi.Input[Optional['PageRuleActionsCacheKeyFieldsHostArgsDict']]]
+    query_string: NotRequired[pulumi.Input[Optional['PageRuleActionsCacheKeyFieldsQueryStringArgsDict']]]
+    user: NotRequired[pulumi.Input[Optional['PageRuleActionsCacheKeyFieldsUserArgsDict']]]
 
 @pulumi.input_type
 class PageRuleActionsCacheKeyFieldsArgs:
@@ -35941,7 +35941,7 @@ class PagesProjectCanonicalDeploymentArgsDict(TypedDict):
     """
     A list of alias URLs pointing to this deployment.
     """
-    build_config: NotRequired[pulumi.Input[Optional['PagesProjectCanonicalDeploymentBuildConfigArgs']]]
+    build_config: NotRequired[pulumi.Input[Optional['PagesProjectCanonicalDeploymentBuildConfigArgsDict']]]
     """
     Configs for the project build process.
     """
@@ -35949,11 +35949,11 @@ class PagesProjectCanonicalDeploymentArgsDict(TypedDict):
     """
     When the deployment was created.
     """
-    deployment_trigger: NotRequired[pulumi.Input[Optional['PagesProjectCanonicalDeploymentDeploymentTriggerArgs']]]
+    deployment_trigger: NotRequired[pulumi.Input[Optional['PagesProjectCanonicalDeploymentDeploymentTriggerArgsDict']]]
     """
     Info about what caused the deployment.
     """
-    env_vars: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectCanonicalDeploymentEnvVarsArgs']]]]]
+    env_vars: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectCanonicalDeploymentEnvVarsArgsDict']]]]]
     """
     Environment variables used for builds and Pages Functions.
     """
@@ -35970,7 +35970,7 @@ class PagesProjectCanonicalDeploymentArgsDict(TypedDict):
     """
     If the deployment has been skipped.
     """
-    latest_stage: NotRequired[pulumi.Input[Optional['PagesProjectCanonicalDeploymentLatestStageArgs']]]
+    latest_stage: NotRequired[pulumi.Input[Optional['PagesProjectCanonicalDeploymentLatestStageArgsDict']]]
     """
     The status of the deployment.
     """
@@ -35990,11 +35990,11 @@ class PagesProjectCanonicalDeploymentArgsDict(TypedDict):
     """
     Short Id (8 character) of the deployment.
     """
-    source: NotRequired[pulumi.Input[Optional['PagesProjectCanonicalDeploymentSourceArgs']]]
+    source: NotRequired[pulumi.Input[Optional['PagesProjectCanonicalDeploymentSourceArgsDict']]]
     """
     Configs for the project source control.
     """
-    stages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PagesProjectCanonicalDeploymentStageArgs']]]]]
+    stages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PagesProjectCanonicalDeploymentStageArgsDict']]]]]
     """
     List of past stages.
     """
@@ -36418,7 +36418,7 @@ class PagesProjectCanonicalDeploymentBuildConfigArgs:
 
 
 class PagesProjectCanonicalDeploymentDeploymentTriggerArgsDict(TypedDict):
-    metadata: NotRequired[pulumi.Input[Optional['PagesProjectCanonicalDeploymentDeploymentTriggerMetadataArgs']]]
+    metadata: NotRequired[pulumi.Input[Optional['PagesProjectCanonicalDeploymentDeploymentTriggerMetadataArgsDict']]]
     """
     Additional info about the trigger.
     """
@@ -36703,7 +36703,7 @@ class PagesProjectCanonicalDeploymentLatestStageArgs:
 
 
 class PagesProjectCanonicalDeploymentSourceArgsDict(TypedDict):
-    config: NotRequired[pulumi.Input[Optional['PagesProjectCanonicalDeploymentSourceConfigArgs']]]
+    config: NotRequired[pulumi.Input[Optional['PagesProjectCanonicalDeploymentSourceConfigArgsDict']]]
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The source control management provider.
@@ -37122,11 +37122,11 @@ class PagesProjectCanonicalDeploymentStageArgs:
 
 
 class PagesProjectDeploymentConfigsArgsDict(TypedDict):
-    preview: NotRequired[pulumi.Input[Optional['PagesProjectDeploymentConfigsPreviewArgs']]]
+    preview: NotRequired[pulumi.Input[Optional['PagesProjectDeploymentConfigsPreviewArgsDict']]]
     """
     Configs for preview deploys.
     """
-    production: NotRequired[pulumi.Input[Optional['PagesProjectDeploymentConfigsProductionArgs']]]
+    production: NotRequired[pulumi.Input[Optional['PagesProjectDeploymentConfigsProductionArgsDict']]]
     """
     Configs for production deploys.
     """
@@ -37171,7 +37171,7 @@ class PagesProjectDeploymentConfigsArgs:
 
 
 class PagesProjectDeploymentConfigsPreviewArgsDict(TypedDict):
-    ai_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewAiBindingsArgs']]]]]
+    ai_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewAiBindingsArgsDict']]]]]
     """
     Constellation bindings used for Pages Functions.
     """
@@ -37179,11 +37179,11 @@ class PagesProjectDeploymentConfigsPreviewArgsDict(TypedDict):
     """
     Whether to always use the latest compatibility date for Pages Functions.
     """
-    analytics_engine_datasets: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs']]]]]
+    analytics_engine_datasets: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgsDict']]]]]
     """
     Analytics Engine bindings used for Pages Functions.
     """
-    browsers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewBrowsersArgs']]]]]
+    browsers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewBrowsersArgsDict']]]]]
     """
     Browser bindings used for Pages Functions.
     """
@@ -37199,15 +37199,15 @@ class PagesProjectDeploymentConfigsPreviewArgsDict(TypedDict):
     """
     Compatibility flags used for Pages Functions.
     """
-    d1_databases: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewD1DatabasesArgs']]]]]
+    d1_databases: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewD1DatabasesArgsDict']]]]]
     """
     D1 databases used for Pages Functions.
     """
-    durable_object_namespaces: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs']]]]]
+    durable_object_namespaces: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgsDict']]]]]
     """
     Durable Object namespaces used for Pages Functions.
     """
-    env_vars: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewEnvVarsArgs']]]]]
+    env_vars: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewEnvVarsArgsDict']]]]]
     """
     Environment variables used for builds and Pages Functions.
     """
@@ -37215,35 +37215,35 @@ class PagesProjectDeploymentConfigsPreviewArgsDict(TypedDict):
     """
     Whether to fail open when the deployment config cannot be applied.
     """
-    hyperdrive_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs']]]]]
+    hyperdrive_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgsDict']]]]]
     """
     Hyperdrive bindings used for Pages Functions.
     """
-    kv_namespaces: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewKvNamespacesArgs']]]]]
+    kv_namespaces: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewKvNamespacesArgsDict']]]]]
     """
     KV namespaces used for Pages Functions.
     """
-    limits: NotRequired[pulumi.Input[Optional['PagesProjectDeploymentConfigsPreviewLimitsArgs']]]
+    limits: NotRequired[pulumi.Input[Optional['PagesProjectDeploymentConfigsPreviewLimitsArgsDict']]]
     """
     Limits for Pages Functions.
     """
-    mtls_certificates: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs']]]]]
+    mtls_certificates: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewMtlsCertificatesArgsDict']]]]]
     """
     mTLS bindings used for Pages Functions.
     """
-    placement: NotRequired[pulumi.Input[Optional['PagesProjectDeploymentConfigsPreviewPlacementArgs']]]
+    placement: NotRequired[pulumi.Input[Optional['PagesProjectDeploymentConfigsPreviewPlacementArgsDict']]]
     """
     Placement setting used for Pages Functions.
     """
-    queue_producers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewQueueProducersArgs']]]]]
+    queue_producers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewQueueProducersArgsDict']]]]]
     """
     Queue Producer bindings used for Pages Functions.
     """
-    r2_buckets: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewR2BucketsArgs']]]]]
+    r2_buckets: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewR2BucketsArgsDict']]]]]
     """
     R2 buckets used for Pages Functions.
     """
-    services: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewServicesArgs']]]]]
+    services: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewServicesArgsDict']]]]]
     """
     Services used for Pages Functions.
     """
@@ -37252,7 +37252,7 @@ class PagesProjectDeploymentConfigsPreviewArgsDict(TypedDict):
     The usage model for Pages Functions.
     Available values: "standard", "bundled", "unbound".
     """
-    vectorize_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs']]]]]
+    vectorize_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgsDict']]]]]
     """
     Vectorize bindings used for Pages Functions.
     """
@@ -38072,7 +38072,7 @@ class PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs:
 
 
 class PagesProjectDeploymentConfigsProductionArgsDict(TypedDict):
-    ai_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionAiBindingsArgs']]]]]
+    ai_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionAiBindingsArgsDict']]]]]
     """
     Constellation bindings used for Pages Functions.
     """
@@ -38080,11 +38080,11 @@ class PagesProjectDeploymentConfigsProductionArgsDict(TypedDict):
     """
     Whether to always use the latest compatibility date for Pages Functions.
     """
-    analytics_engine_datasets: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs']]]]]
+    analytics_engine_datasets: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgsDict']]]]]
     """
     Analytics Engine bindings used for Pages Functions.
     """
-    browsers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionBrowsersArgs']]]]]
+    browsers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionBrowsersArgsDict']]]]]
     """
     Browser bindings used for Pages Functions.
     """
@@ -38100,15 +38100,15 @@ class PagesProjectDeploymentConfigsProductionArgsDict(TypedDict):
     """
     Compatibility flags used for Pages Functions.
     """
-    d1_databases: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionD1DatabasesArgs']]]]]
+    d1_databases: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionD1DatabasesArgsDict']]]]]
     """
     D1 databases used for Pages Functions.
     """
-    durable_object_namespaces: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs']]]]]
+    durable_object_namespaces: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgsDict']]]]]
     """
     Durable Object namespaces used for Pages Functions.
     """
-    env_vars: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionEnvVarsArgs']]]]]
+    env_vars: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionEnvVarsArgsDict']]]]]
     """
     Environment variables used for builds and Pages Functions.
     """
@@ -38116,35 +38116,35 @@ class PagesProjectDeploymentConfigsProductionArgsDict(TypedDict):
     """
     Whether to fail open when the deployment config cannot be applied.
     """
-    hyperdrive_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs']]]]]
+    hyperdrive_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionHyperdriveBindingsArgsDict']]]]]
     """
     Hyperdrive bindings used for Pages Functions.
     """
-    kv_namespaces: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionKvNamespacesArgs']]]]]
+    kv_namespaces: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionKvNamespacesArgsDict']]]]]
     """
     KV namespaces used for Pages Functions.
     """
-    limits: NotRequired[pulumi.Input[Optional['PagesProjectDeploymentConfigsProductionLimitsArgs']]]
+    limits: NotRequired[pulumi.Input[Optional['PagesProjectDeploymentConfigsProductionLimitsArgsDict']]]
     """
     Limits for Pages Functions.
     """
-    mtls_certificates: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs']]]]]
+    mtls_certificates: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionMtlsCertificatesArgsDict']]]]]
     """
     mTLS bindings used for Pages Functions.
     """
-    placement: NotRequired[pulumi.Input[Optional['PagesProjectDeploymentConfigsProductionPlacementArgs']]]
+    placement: NotRequired[pulumi.Input[Optional['PagesProjectDeploymentConfigsProductionPlacementArgsDict']]]
     """
     Placement setting used for Pages Functions.
     """
-    queue_producers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionQueueProducersArgs']]]]]
+    queue_producers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionQueueProducersArgsDict']]]]]
     """
     Queue Producer bindings used for Pages Functions.
     """
-    r2_buckets: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionR2BucketsArgs']]]]]
+    r2_buckets: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionR2BucketsArgsDict']]]]]
     """
     R2 buckets used for Pages Functions.
     """
-    services: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionServicesArgs']]]]]
+    services: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionServicesArgsDict']]]]]
     """
     Services used for Pages Functions.
     """
@@ -38153,7 +38153,7 @@ class PagesProjectDeploymentConfigsProductionArgsDict(TypedDict):
     The usage model for Pages Functions.
     Available values: "standard", "bundled", "unbound".
     """
-    vectorize_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionVectorizeBindingsArgs']]]]]
+    vectorize_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectDeploymentConfigsProductionVectorizeBindingsArgsDict']]]]]
     """
     Vectorize bindings used for Pages Functions.
     """
@@ -38977,7 +38977,7 @@ class PagesProjectLatestDeploymentArgsDict(TypedDict):
     """
     A list of alias URLs pointing to this deployment.
     """
-    build_config: NotRequired[pulumi.Input[Optional['PagesProjectLatestDeploymentBuildConfigArgs']]]
+    build_config: NotRequired[pulumi.Input[Optional['PagesProjectLatestDeploymentBuildConfigArgsDict']]]
     """
     Configs for the project build process.
     """
@@ -38985,11 +38985,11 @@ class PagesProjectLatestDeploymentArgsDict(TypedDict):
     """
     When the deployment was created.
     """
-    deployment_trigger: NotRequired[pulumi.Input[Optional['PagesProjectLatestDeploymentDeploymentTriggerArgs']]]
+    deployment_trigger: NotRequired[pulumi.Input[Optional['PagesProjectLatestDeploymentDeploymentTriggerArgsDict']]]
     """
     Info about what caused the deployment.
     """
-    env_vars: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectLatestDeploymentEnvVarsArgs']]]]]
+    env_vars: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['PagesProjectLatestDeploymentEnvVarsArgsDict']]]]]
     """
     Environment variables used for builds and Pages Functions.
     """
@@ -39006,7 +39006,7 @@ class PagesProjectLatestDeploymentArgsDict(TypedDict):
     """
     If the deployment has been skipped.
     """
-    latest_stage: NotRequired[pulumi.Input[Optional['PagesProjectLatestDeploymentLatestStageArgs']]]
+    latest_stage: NotRequired[pulumi.Input[Optional['PagesProjectLatestDeploymentLatestStageArgsDict']]]
     """
     The status of the deployment.
     """
@@ -39026,11 +39026,11 @@ class PagesProjectLatestDeploymentArgsDict(TypedDict):
     """
     Short Id (8 character) of the deployment.
     """
-    source: NotRequired[pulumi.Input[Optional['PagesProjectLatestDeploymentSourceArgs']]]
+    source: NotRequired[pulumi.Input[Optional['PagesProjectLatestDeploymentSourceArgsDict']]]
     """
     Configs for the project source control.
     """
-    stages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PagesProjectLatestDeploymentStageArgs']]]]]
+    stages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PagesProjectLatestDeploymentStageArgsDict']]]]]
     """
     List of past stages.
     """
@@ -39454,7 +39454,7 @@ class PagesProjectLatestDeploymentBuildConfigArgs:
 
 
 class PagesProjectLatestDeploymentDeploymentTriggerArgsDict(TypedDict):
-    metadata: NotRequired[pulumi.Input[Optional['PagesProjectLatestDeploymentDeploymentTriggerMetadataArgs']]]
+    metadata: NotRequired[pulumi.Input[Optional['PagesProjectLatestDeploymentDeploymentTriggerMetadataArgsDict']]]
     """
     Additional info about the trigger.
     """
@@ -39739,7 +39739,7 @@ class PagesProjectLatestDeploymentLatestStageArgs:
 
 
 class PagesProjectLatestDeploymentSourceArgsDict(TypedDict):
-    config: NotRequired[pulumi.Input[Optional['PagesProjectLatestDeploymentSourceConfigArgs']]]
+    config: NotRequired[pulumi.Input[Optional['PagesProjectLatestDeploymentSourceConfigArgsDict']]]
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The source control management provider.
@@ -40488,8 +40488,8 @@ class PipelineSinkConfigArgsDict(TypedDict):
     """
     R2 Bucket to write to
     """
-    credentials: NotRequired[pulumi.Input[Optional['PipelineSinkConfigCredentialsArgs']]]
-    file_naming: NotRequired[pulumi.Input[Optional['PipelineSinkConfigFileNamingArgs']]]
+    credentials: NotRequired[pulumi.Input[Optional['PipelineSinkConfigCredentialsArgsDict']]]
+    file_naming: NotRequired[pulumi.Input[Optional['PipelineSinkConfigFileNamingArgsDict']]]
     """
     Controls filename prefix/suffix and strategy.
     """
@@ -40501,7 +40501,7 @@ class PipelineSinkConfigArgsDict(TypedDict):
     """
     Table namespace
     """
-    partitioning: NotRequired[pulumi.Input[Optional['PipelineSinkConfigPartitioningArgs']]]
+    partitioning: NotRequired[pulumi.Input[Optional['PipelineSinkConfigPartitioningArgsDict']]]
     """
     Data-layout partitioning for sinks.
     """
@@ -40509,7 +40509,7 @@ class PipelineSinkConfigArgsDict(TypedDict):
     """
     Subpath within the bucket to write to
     """
-    rolling_policy: NotRequired[pulumi.Input[Optional['PipelineSinkConfigRollingPolicyArgs']]]
+    rolling_policy: NotRequired[pulumi.Input[Optional['PipelineSinkConfigRollingPolicyArgsDict']]]
     """
     Rolling policy for file sinks (when & why to close a file and open a new one).
     """
@@ -41031,8 +41031,8 @@ class PipelineSinkFormatArgs:
 
 
 class PipelineSinkSchemaArgsDict(TypedDict):
-    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PipelineSinkSchemaFieldArgs']]]]]
-    format: NotRequired[pulumi.Input[Optional['PipelineSinkSchemaFormatArgs']]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PipelineSinkSchemaFieldArgsDict']]]]]
+    format: NotRequired[pulumi.Input[Optional['PipelineSinkSchemaFormatArgsDict']]]
     inferred: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
@@ -41413,7 +41413,7 @@ class PipelineStreamHttpArgsDict(TypedDict):
     """
     Indicates that the HTTP endpoint is enabled.
     """
-    cors: NotRequired[pulumi.Input[Optional['PipelineStreamHttpCorsArgs']]]
+    cors: NotRequired[pulumi.Input[Optional['PipelineStreamHttpCorsArgsDict']]]
     """
     Specifies the CORS options for the HTTP endpoint.
     """
@@ -41492,8 +41492,8 @@ class PipelineStreamHttpCorsArgs:
 
 
 class PipelineStreamSchemaArgsDict(TypedDict):
-    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PipelineStreamSchemaFieldArgs']]]]]
-    format: NotRequired[pulumi.Input[Optional['PipelineStreamSchemaFormatArgs']]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PipelineStreamSchemaFieldArgsDict']]]]]
+    format: NotRequired[pulumi.Input[Optional['PipelineStreamSchemaFormatArgsDict']]]
     inferred: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
@@ -41906,7 +41906,7 @@ class QueueConsumerArgsDict(TypedDict):
     """
     Name of a Worker
     """
-    settings: NotRequired[pulumi.Input[Optional['QueueConsumerSettingsArgs']]]
+    settings: NotRequired[pulumi.Input[Optional['QueueConsumerSettingsArgsDict']]]
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Available values: "worker", "http_pull".
@@ -42528,15 +42528,15 @@ class R2BucketLifecycleRuleArgsDict(TypedDict):
     """
     Unique identifier for this rule.
     """
-    abort_multipart_uploads_transition: NotRequired[pulumi.Input[Optional['R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs']]]
+    abort_multipart_uploads_transition: NotRequired[pulumi.Input[Optional['R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgsDict']]]
     """
     Transition to abort ongoing multipart uploads.
     """
-    delete_objects_transition: NotRequired[pulumi.Input[Optional['R2BucketLifecycleRuleDeleteObjectsTransitionArgs']]]
+    delete_objects_transition: NotRequired[pulumi.Input[Optional['R2BucketLifecycleRuleDeleteObjectsTransitionArgsDict']]]
     """
     Transition to delete objects.
     """
-    storage_class_transitions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['R2BucketLifecycleRuleStorageClassTransitionArgs']]]]]
+    storage_class_transitions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['R2BucketLifecycleRuleStorageClassTransitionArgsDict']]]]]
     """
     Transitions to change the storage class of objects.
     """
@@ -42642,7 +42642,7 @@ class R2BucketLifecycleRuleArgs:
 
 
 class R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgsDict(TypedDict):
-    condition: NotRequired[pulumi.Input[Optional['R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs']]]
+    condition: NotRequired[pulumi.Input[Optional['R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgsDict']]]
     """
     Condition for lifecycle transitions to apply after an object reaches an age in seconds.
     """
@@ -42739,7 +42739,7 @@ class R2BucketLifecycleRuleConditionsArgs:
 
 
 class R2BucketLifecycleRuleDeleteObjectsTransitionArgsDict(TypedDict):
-    condition: NotRequired[pulumi.Input[Optional['R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs']]]
+    condition: NotRequired[pulumi.Input[Optional['R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgsDict']]]
     """
     Condition for lifecycle transitions to apply after an object reaches an age in seconds.
     """
@@ -43377,11 +43377,11 @@ class R2CustomDomainStatusArgs:
 
 
 class R2DataCatalogMaintenanceConfigArgsDict(TypedDict):
-    compaction: NotRequired[pulumi.Input[Optional['R2DataCatalogMaintenanceConfigCompactionArgs']]]
+    compaction: NotRequired[pulumi.Input[Optional['R2DataCatalogMaintenanceConfigCompactionArgsDict']]]
     """
     Configures compaction for catalog maintenance.
     """
-    snapshot_expiration: NotRequired[pulumi.Input[Optional['R2DataCatalogMaintenanceConfigSnapshotExpirationArgs']]]
+    snapshot_expiration: NotRequired[pulumi.Input[Optional['R2DataCatalogMaintenanceConfigSnapshotExpirationArgsDict']]]
     """
     Configures snapshot expiration settings.
     """
@@ -43567,7 +43567,7 @@ class RateLimitActionArgsDict(TypedDict):
     The action to perform.
     Available values: "simulate", "ban", "challenge", "js*challenge", "managed*challenge".
     """
-    response: NotRequired[pulumi.Input[Optional['RateLimitActionResponseArgs']]]
+    response: NotRequired[pulumi.Input[Optional['RateLimitActionResponseArgsDict']]]
     """
     A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.
     Notes: If you omit this object, Cloudflare will use the default HTML error page. If "mode" is "challenge", "managed*challenge", or "js*challenge", Cloudflare will use the zone challenge pages and you should not provide the "response" object.
@@ -43738,9 +43738,9 @@ class RateLimitBypassArgs:
 
 
 class RateLimitMatchArgsDict(TypedDict):
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RateLimitMatchHeaderArgs']]]]]
-    request: NotRequired[pulumi.Input[Optional['RateLimitMatchRequestArgs']]]
-    response: NotRequired[pulumi.Input[Optional['RateLimitMatchResponseArgs']]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RateLimitMatchHeaderArgsDict']]]]]
+    request: NotRequired[pulumi.Input[Optional['RateLimitMatchRequestArgsDict']]]
+    response: NotRequired[pulumi.Input[Optional['RateLimitMatchResponseArgsDict']]]
 
 @pulumi.input_type
 class RateLimitMatchArgs:
@@ -43981,7 +43981,7 @@ class RecordDataArgsDict(TypedDict):
     """
     Fingerprint.
     """
-    flags: NotRequired[Optional[Any]]
+    flags: NotRequired[Any]
     """
     Flags for the CAA record.
     """
@@ -44810,7 +44810,7 @@ class RulesetRuleArgsDict(TypedDict):
     """
     The expression defining which traffic will match the rule.
     """
-    action_parameters: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersArgs']]]
+    action_parameters: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersArgsDict']]]
     """
     The parameters configuring the rule's action.
     """
@@ -44822,7 +44822,7 @@ class RulesetRuleArgsDict(TypedDict):
     """
     Whether the rule should be executed.
     """
-    exposed_credential_check: NotRequired[pulumi.Input[Optional['RulesetRuleExposedCredentialCheckArgs']]]
+    exposed_credential_check: NotRequired[pulumi.Input[Optional['RulesetRuleExposedCredentialCheckArgsDict']]]
     """
     Configuration for exposed credential checking.
     """
@@ -44830,11 +44830,11 @@ class RulesetRuleArgsDict(TypedDict):
     """
     The unique ID of the rule.
     """
-    logging: NotRequired[pulumi.Input[Optional['RulesetRuleLoggingArgs']]]
+    logging: NotRequired[pulumi.Input[Optional['RulesetRuleLoggingArgsDict']]]
     """
     An object configuring the rule's logging behavior.
     """
-    ratelimit: NotRequired[pulumi.Input[Optional['RulesetRuleRatelimitArgs']]]
+    ratelimit: NotRequired[pulumi.Input[Optional['RulesetRuleRatelimitArgsDict']]]
     """
     An object configuring the rule's rate limit behavior.
     """
@@ -45015,7 +45015,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     A list of additional ports that caching should be enabled on.
     """
-    algorithms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersAlgorithmArgs']]]]]
+    algorithms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersAlgorithmArgsDict']]]]]
     """
     Custom order for compression algorithms.
     """
@@ -45027,7 +45027,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     Whether to enable Automatic HTTPS Rewrites.
     """
-    autominify: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersAutominifyArgs']]]
+    autominify: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersAutominifyArgsDict']]]
     """
     Which file extensions to minify automatically.
     """
@@ -45035,7 +45035,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     Whether to enable Browser Integrity Check (BIC).
     """
-    browser_ttl: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersBrowserTtlArgs']]]
+    browser_ttl: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersBrowserTtlArgsDict']]]
     """
     How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
     """
@@ -45043,11 +45043,11 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     Whether the request's response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations.
     """
-    cache_key: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyArgs']]]
+    cache_key: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyArgsDict']]]
     """
     Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache.
     """
-    cache_reserve: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheReserveArgs']]]
+    cache_reserve: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheReserveArgsDict']]]
     """
     Settings to determine whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
     """
@@ -45064,7 +45064,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     The content type header to set with the error response.
     Available values: "application/json", "text/html", "text/plain", "text/xml".
     """
-    cookie_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersCookieFieldArgs']]]]]
+    cookie_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersCookieFieldArgsDict']]]]]
     """
     The cookie fields to log.
     """
@@ -45080,7 +45080,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     Whether to disable Zaraz.
     """
-    edge_ttl: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersEdgeTtlArgs']]]
+    edge_ttl: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersEdgeTtlArgsDict']]]
     """
     How long the Cloudflare edge network should cache the response.
     """
@@ -45096,15 +45096,15 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     Whether to enable Cloudflare Fonts.
     """
-    from_list: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersFromListArgs']]]
+    from_list: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersFromListArgsDict']]]
     """
     A redirect based on a bulk list lookup.
     """
-    from_value: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersFromValueArgs']]]
+    from_value: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersFromValueArgsDict']]]
     """
     A redirect based on the request properties.
     """
-    headers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['RulesetRuleActionParametersHeadersArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['RulesetRuleActionParametersHeadersArgsDict']]]]]
     """
     A map of headers to rewrite.
     """
@@ -45120,7 +45120,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     The ID of the ruleset to execute.
     """
-    immutable: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersImmutableArgs']]]
+    immutable: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersImmutableArgsDict']]]
     """
     Set the immutable cache control directive.
     """
@@ -45128,11 +45128,11 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     A delta to change the score by, which can be either positive or negative.
     """
-    matched_data: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersMatchedDataArgs']]]
+    matched_data: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersMatchedDataArgsDict']]]
     """
     The configuration to use for matched data logging.
     """
-    max_age: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersMaxAgeArgs']]]
+    max_age: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersMaxAgeArgsDict']]]
     """
     Set the max-age cache control directive.
     """
@@ -45140,23 +45140,23 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     Whether to enable Mirage.
     """
-    must_revalidate: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersMustRevalidateArgs']]]
+    must_revalidate: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersMustRevalidateArgsDict']]]
     """
     Set the must-revalidate cache control directive.
     """
-    must_understand: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersMustUnderstandArgs']]]
+    must_understand: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersMustUnderstandArgsDict']]]
     """
     Set the must-understand cache control directive.
     """
-    no_cache: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersNoCacheArgs']]]
+    no_cache: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersNoCacheArgsDict']]]
     """
     Set the no-cache cache control directive.
     """
-    no_store: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersNoStoreArgs']]]
+    no_store: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersNoStoreArgsDict']]]
     """
     Set the no-store cache control directive.
     """
-    no_transform: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersNoTransformArgs']]]
+    no_transform: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersNoTransformArgsDict']]]
     """
     Set the no-transform cache control directive.
     """
@@ -45169,7 +45169,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     Whether to enable Opportunistic Encryption.
     """
-    origin: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersOriginArgs']]]
+    origin: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersOriginArgsDict']]]
     """
     An origin to route to.
     """
@@ -45181,7 +45181,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     Whether to generate Cloudflare error pages for issues from the origin server.
     """
-    overrides: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersOverridesArgs']]]
+    overrides: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersOverridesArgsDict']]]
     """
     A set of overrides to apply to the target ruleset.
     """
@@ -45195,7 +45195,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     The Polish level to configure.
     Available values: "off", "lossless", "lossy", "webp".
     """
-    private: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersPrivateArgs']]]
+    private: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersPrivateArgsDict']]]
     """
     Set the private cache control directive.
     """
@@ -45204,15 +45204,15 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     A list of legacy security products to skip the execution of.
     Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
     """
-    proxy_revalidate: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersProxyRevalidateArgs']]]
+    proxy_revalidate: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersProxyRevalidateArgsDict']]]
     """
     Set the proxy-revalidate cache control directive.
     """
-    public: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersPublicArgs']]]
+    public: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersPublicArgsDict']]]
     """
     Set the public cache control directive.
     """
-    raw_response_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersRawResponseFieldArgs']]]]]
+    raw_response_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersRawResponseFieldArgsDict']]]]]
     """
     The raw response fields to log.
     """
@@ -45229,7 +45229,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     The request body buffering mode to configure.
     Available values: "none", "standard", "full".
     """
-    request_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersRequestFieldArgs']]]]]
+    request_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersRequestFieldArgsDict']]]]]
     """
     The raw request fields to log.
     """
@@ -45237,7 +45237,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers.
     """
-    response: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersResponseArgs']]]
+    response: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersResponseArgsDict']]]
     """
     The response to show when the block is applied.
     """
@@ -45246,7 +45246,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     The response body buffering mode to configure.
     Available values: "none", "standard".
     """
-    response_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersResponseFieldArgs']]]]]
+    response_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersResponseFieldArgsDict']]]]]
     """
     The transformed response fields to log.
     """
@@ -45267,7 +45267,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options.
     """
-    s_maxage: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersSMaxageArgs']]]
+    s_maxage: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersSMaxageArgsDict']]]
     """
     Set the s-maxage cache control directive.
     """
@@ -45276,7 +45276,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     The Security Level to configure.
     Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
     """
-    serve_stale: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersServeStaleArgs']]]
+    serve_stale: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersServeStaleArgsDict']]]
     """
     When to serve stale content from cache.
     """
@@ -45284,7 +45284,7 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     Whether to enable Server-Side Excludes.
     """
-    sni: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersSniArgs']]]
+    sni: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersSniArgsDict']]]
     """
     A Server Name Indication (SNI) override.
     """
@@ -45293,11 +45293,11 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     The SSL level to configure.
     Available values: "off", "flexible", "full", "strict", "origin_pull".
     """
-    stale_if_error: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersStaleIfErrorArgs']]]
+    stale_if_error: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersStaleIfErrorArgsDict']]]
     """
     Set the stale-if-error cache control directive.
     """
-    stale_while_revalidate: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersStaleWhileRevalidateArgs']]]
+    stale_while_revalidate: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersStaleWhileRevalidateArgsDict']]]
     """
     Set the stale-while-revalidate cache control directive.
     """
@@ -45321,11 +45321,11 @@ class RulesetRuleActionParametersArgsDict(TypedDict):
     """
     Whether to enable Signed Exchanges (SXG).
     """
-    transformed_request_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersTransformedRequestFieldArgs']]]]]
+    transformed_request_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersTransformedRequestFieldArgsDict']]]]]
     """
     The transformed request fields to log.
     """
-    uri: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersUriArgs']]]
+    uri: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersUriArgsDict']]]
     """
     A URI rewrite.
     """
@@ -46770,7 +46770,7 @@ class RulesetRuleActionParametersCacheKeyArgsDict(TypedDict):
     """
     Whether to protect from web cache deception attacks, while allowing static assets to be cached.
     """
-    custom_key: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyArgs']]]
+    custom_key: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyArgsDict']]]
     """
     Which components of the request are included or excluded from the cache key.
     """
@@ -46851,23 +46851,23 @@ class RulesetRuleActionParametersCacheKeyArgs:
 
 
 class RulesetRuleActionParametersCacheKeyCustomKeyArgsDict(TypedDict):
-    cookie: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs']]]
+    cookie: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyCookieArgsDict']]]
     """
     Which cookies to include in the cache key.
     """
-    header: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs']]]
+    header: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgsDict']]]
     """
     Which headers to include in the cache key.
     """
-    host: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyHostArgs']]]
+    host: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyHostArgsDict']]]
     """
     How to use the host in the cache key.
     """
-    query_string: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs']]]
+    query_string: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgsDict']]]
     """
     Which query string parameters to include in or exclude from the cache key.
     """
-    user: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyUserArgs']]]
+    user: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyUserArgsDict']]]
     """
     How to use characteristics of the request user agent in the cache key.
     """
@@ -47127,11 +47127,11 @@ class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs:
 
 
 class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgsDict(TypedDict):
-    exclude: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs']]]
+    exclude: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgsDict']]]
     """
     Which query string parameters to exclude from the cache key.
     """
-    include: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs']]]
+    include: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgsDict']]]
     """
     Which query string parameters to include in the cache key.
     """
@@ -47428,7 +47428,7 @@ class RulesetRuleActionParametersEdgeTtlArgsDict(TypedDict):
     """
     The edge TTL (in seconds) if you choose the "override_origin" mode.
     """
-    status_code_ttls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs']]]]]
+    status_code_ttls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgsDict']]]]]
     """
     A list of TTLs to apply to specific status codes or status code ranges.
     """
@@ -47498,7 +47498,7 @@ class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgsDict(TypedDict):
     """
     A single status code to apply the TTL to.
     """
-    status_code_range: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs']]]
+    status_code_range: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgsDict']]]
     """
     A range of status codes to apply the TTL to.
     """
@@ -48320,7 +48320,7 @@ class RulesetRuleActionParametersOverridesArgsDict(TypedDict):
     """
     An action to override all rules with. This option has lower precedence than rule and category overrides.
     """
-    categories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersOverridesCategoryArgs']]]]]
+    categories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersOverridesCategoryArgsDict']]]]]
     """
     A list of category-level overrides. This option has the second-highest precedence after rule-level overrides.
     """
@@ -48328,7 +48328,7 @@ class RulesetRuleActionParametersOverridesArgsDict(TypedDict):
     """
     Whether to enable execution of all rules. This option has lower precedence than rule and category overrides.
     """
-    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersOverridesRuleArgs']]]]]
+    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RulesetRuleActionParametersOverridesRuleArgsDict']]]]]
     """
     A list of rule-level overrides. This option has the highest precedence.
     """
@@ -49291,11 +49291,11 @@ class RulesetRuleActionParametersTransformedRequestFieldArgs:
 
 
 class RulesetRuleActionParametersUriArgsDict(TypedDict):
-    path: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersUriPathArgs']]]
+    path: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersUriPathArgsDict']]]
     """
     A URI path rewrite.
     """
-    query: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersUriQueryArgs']]]
+    query: NotRequired[pulumi.Input[Optional['RulesetRuleActionParametersUriQueryArgsDict']]]
     """
     A URI query rewrite.
     """
@@ -51315,59 +51315,59 @@ class StreamWatermarkArgs:
 
 
 class TeamsAccountSettingsArgsDict(TypedDict):
-    activity_log: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsActivityLogArgs']]]
+    activity_log: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsActivityLogArgsDict']]]
     """
     Specify activity log settings.
     """
-    antivirus: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsAntivirusArgs']]]
+    antivirus: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsAntivirusArgsDict']]]
     """
     Specify anti-virus settings.
     """
-    block_page: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsBlockPageArgs']]]
+    block_page: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsBlockPageArgsDict']]]
     """
     Specify block page layout settings.
     """
-    body_scanning: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsBodyScanningArgs']]]
+    body_scanning: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsBodyScanningArgsDict']]]
     """
     Specify the DLP inspection mode.
     """
-    browser_isolation: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsBrowserIsolationArgs']]]
+    browser_isolation: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsBrowserIsolationArgsDict']]]
     """
     Specify Clientless Browser Isolation settings.
     """
-    certificate: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsCertificateArgs']]]
+    certificate: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsCertificateArgsDict']]]
     """
     Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
     """
-    custom_certificate: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsCustomCertificateArgs']]]
+    custom_certificate: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsCustomCertificateArgsDict']]]
     """
     Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
     """
-    extended_email_matching: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsExtendedEmailMatchingArgs']]]
+    extended_email_matching: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsExtendedEmailMatchingArgsDict']]]
     """
     Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers.
     """
-    fips: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsFipsArgs']]]
+    fips: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsFipsArgsDict']]]
     """
     Specify FIPS settings.
     """
-    host_selector: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsHostSelectorArgs']]]
+    host_selector: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsHostSelectorArgsDict']]]
     """
     Enable host selection in egress policies.
     """
-    inspection: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsInspectionArgs']]]
+    inspection: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsInspectionArgsDict']]]
     """
     Define the proxy inspection mode.
     """
-    protocol_detection: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsProtocolDetectionArgs']]]
+    protocol_detection: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsProtocolDetectionArgsDict']]]
     """
     Specify whether to detect protocols from the initial bytes of client traffic.
     """
-    sandbox: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsSandboxArgs']]]
+    sandbox: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsSandboxArgsDict']]]
     """
     Specify whether to enable the sandbox.
     """
-    tls_decrypt: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsTlsDecryptArgs']]]
+    tls_decrypt: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsTlsDecryptArgsDict']]]
     """
     Specify whether to inspect encrypted HTTP traffic.
     """
@@ -51649,7 +51649,7 @@ class TeamsAccountSettingsAntivirusArgsDict(TypedDict):
     """
     Specify whether to block requests for unscannable files.
     """
-    notification_settings: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsAntivirusNotificationSettingsArgs']]]
+    notification_settings: NotRequired[pulumi.Input[Optional['TeamsAccountSettingsAntivirusNotificationSettingsArgsDict']]]
     """
     Configure the message the user's device shows during an antivirus scan.
     """
@@ -52714,7 +52714,7 @@ class TeamsLocationEndpointsDohArgsDict(TypedDict):
     """
     Indicate whether the DOH endpoint is enabled for this location.
     """
-    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TeamsLocationEndpointsDohNetworkArgs']]]]]
+    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TeamsLocationEndpointsDohNetworkArgsDict']]]]]
     """
     Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
     """
@@ -52811,7 +52811,7 @@ class TeamsLocationEndpointsDotArgsDict(TypedDict):
     """
     Indicate whether the DOT endpoint is enabled for this location.
     """
-    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TeamsLocationEndpointsDotNetworkArgs']]]]]
+    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TeamsLocationEndpointsDotNetworkArgsDict']]]]]
     """
     Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
     """
@@ -52917,7 +52917,7 @@ class TeamsLocationEndpointsIpv6ArgsDict(TypedDict):
     """
     Indicate whether the IPV6 endpoint is enabled for this location.
     """
-    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TeamsLocationEndpointsIpv6NetworkArgs']]]]]
+    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TeamsLocationEndpointsIpv6NetworkArgsDict']]]]]
     """
     Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
     """
@@ -53094,15 +53094,15 @@ class TeamsRuleRuleSettingsArgsDict(TypedDict):
     """
     Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
     """
-    audit_ssh: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsAuditSshArgs']]]
+    audit_ssh: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsAuditSshArgsDict']]]
     """
     Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
     """
-    biso_admin_controls: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsBisoAdminControlsArgs']]]
+    biso_admin_controls: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsBisoAdminControlsArgsDict']]]
     """
     Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
     """
-    block_page: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsBlockPageArgs']]]
+    block_page: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsBlockPageArgsDict']]]
     """
     Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
     """
@@ -53118,19 +53118,19 @@ class TeamsRuleRuleSettingsArgsDict(TypedDict):
     """
     Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.
     """
-    check_session: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsCheckSessionArgs']]]
+    check_session: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsCheckSessionArgsDict']]]
     """
     Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
     """
-    dns_resolvers: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsDnsResolversArgs']]]
+    dns_resolvers: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsDnsResolversArgsDict']]]
     """
     Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.
     """
-    egress: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsEgressArgs']]]
+    egress: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsEgressArgsDict']]]
     """
     Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
     """
-    forensic_copy: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsForensicCopyArgs']]]
+    forensic_copy: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsForensicCopyArgsDict']]]
     """
     Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
     """
@@ -53150,11 +53150,11 @@ class TeamsRuleRuleSettingsArgsDict(TypedDict):
     """
     Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
     """
-    l4override: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsL4overrideArgs']]]
+    l4override: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsL4overrideArgsDict']]]
     """
     Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
     """
-    notification_settings: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsNotificationSettingsArgs']]]
+    notification_settings: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsNotificationSettingsArgsDict']]]
     """
     Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.
     """
@@ -53166,19 +53166,19 @@ class TeamsRuleRuleSettingsArgsDict(TypedDict):
     """
     Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
     """
-    payload_log: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsPayloadLogArgs']]]
+    payload_log: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsPayloadLogArgsDict']]]
     """
     Configure DLP payload logging. Settable only for `http` rules.
     """
-    quarantine: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsQuarantineArgs']]]
+    quarantine: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsQuarantineArgsDict']]]
     """
     Configure settings that apply to quarantine rules. Settable only for `http` rules.
     """
-    redirect: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsRedirectArgs']]]
+    redirect: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsRedirectArgsDict']]]
     """
     Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
     """
-    resolve_dns_internally: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsResolveDnsInternallyArgs']]]
+    resolve_dns_internally: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsResolveDnsInternallyArgsDict']]]
     """
     Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Not used when 'dns*resolvers' is specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.
     """
@@ -53186,7 +53186,7 @@ class TeamsRuleRuleSettingsArgsDict(TypedDict):
     """
     Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.
     """
-    untrusted_cert: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsUntrustedCertArgs']]]
+    untrusted_cert: NotRequired[pulumi.Input[Optional['TeamsRuleRuleSettingsUntrustedCertArgsDict']]]
     """
     Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
     """
@@ -54031,8 +54031,8 @@ class TeamsRuleRuleSettingsCheckSessionArgs:
 
 
 class TeamsRuleRuleSettingsDnsResolversArgsDict(TypedDict):
-    ipv4s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv4Args']]]]]
-    ipv6s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv6Args']]]]]
+    ipv4s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv4ArgsDict']]]]]
+    ipv6s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TeamsRuleRuleSettingsDnsResolversIpv6ArgsDict']]]]]
 
 @pulumi.input_type
 class TeamsRuleRuleSettingsDnsResolversArgs:
@@ -55118,11 +55118,11 @@ class TokenValidationRulesPositionArgs:
 
 
 class TokenValidationRulesSelectorArgsDict(TypedDict):
-    excludes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TokenValidationRulesSelectorExcludeArgs']]]]]
+    excludes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TokenValidationRulesSelectorExcludeArgsDict']]]]]
     """
     Ignore operations that were otherwise included by `include`.
     """
-    includes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TokenValidationRulesSelectorIncludeArgs']]]]]
+    includes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TokenValidationRulesSelectorIncludeArgsDict']]]]]
     """
     Select all matching operations.
     """
@@ -55225,11 +55225,11 @@ class TokenValidationRulesSelectorIncludeArgs:
 
 
 class TunnelConfigConfigArgsDict(TypedDict):
-    ingresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TunnelConfigConfigIngressArgs']]]]]
+    ingresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TunnelConfigConfigIngressArgsDict']]]]]
     """
     List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
     """
-    origin_request: NotRequired[pulumi.Input[Optional['TunnelConfigConfigOriginRequestArgs']]]
+    origin_request: NotRequired[pulumi.Input[Optional['TunnelConfigConfigOriginRequestArgsDict']]]
     """
     Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
     """
@@ -55282,7 +55282,7 @@ class TunnelConfigConfigIngressArgsDict(TypedDict):
     """
     Public hostname for this service.
     """
-    origin_request: NotRequired[pulumi.Input[Optional['TunnelConfigConfigIngressOriginRequestArgs']]]
+    origin_request: NotRequired[pulumi.Input[Optional['TunnelConfigConfigIngressOriginRequestArgsDict']]]
     """
     Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
     """
@@ -55362,7 +55362,7 @@ class TunnelConfigConfigIngressArgs:
 
 
 class TunnelConfigConfigIngressOriginRequestArgsDict(TypedDict):
-    access: NotRequired[pulumi.Input[Optional['TunnelConfigConfigIngressOriginRequestAccessArgs']]]
+    access: NotRequired[pulumi.Input[Optional['TunnelConfigConfigIngressOriginRequestAccessArgsDict']]]
     """
     For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
     """
@@ -55731,7 +55731,7 @@ class TunnelConfigConfigIngressOriginRequestAccessArgs:
 
 
 class TunnelConfigConfigOriginRequestArgsDict(TypedDict):
-    access: NotRequired[pulumi.Input[Optional['TunnelConfigConfigOriginRequestAccessArgs']]]
+    access: NotRequired[pulumi.Input[Optional['TunnelConfigConfigOriginRequestAccessArgsDict']]]
     """
     For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
     """
@@ -57097,11 +57097,11 @@ class WorkerObservabilityArgsDict(TypedDict):
     """
     The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
     """
-    logs: NotRequired[pulumi.Input[Optional['WorkerObservabilityLogsArgs']]]
+    logs: NotRequired[pulumi.Input[Optional['WorkerObservabilityLogsArgsDict']]]
     """
     Log settings for the Worker.
     """
-    traces: NotRequired[pulumi.Input[Optional['WorkerObservabilityTracesArgs']]]
+    traces: NotRequired[pulumi.Input[Optional['WorkerObservabilityTracesArgsDict']]]
     """
     Trace settings for the Worker.
     """
@@ -57376,23 +57376,23 @@ class WorkerObservabilityTracesArgs:
 
 
 class WorkerReferencesArgsDict(TypedDict):
-    dispatch_namespace_outbounds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerReferencesDispatchNamespaceOutboundArgs']]]]]
+    dispatch_namespace_outbounds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerReferencesDispatchNamespaceOutboundArgsDict']]]]]
     """
     Other Workers that reference the Worker as an outbound for a dispatch namespace.
     """
-    domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerReferencesDomainArgs']]]]]
+    domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerReferencesDomainArgsDict']]]]]
     """
     Custom domains connected to the Worker.
     """
-    durable_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerReferencesDurableObjectArgs']]]]]
+    durable_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerReferencesDurableObjectArgsDict']]]]]
     """
     Other Workers that reference Durable Object classes implemented by the Worker.
     """
-    queues: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerReferencesQueueArgs']]]]]
+    queues: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerReferencesQueueArgsDict']]]]]
     """
     Queues that send messages to the Worker.
     """
-    workers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerReferencesWorkerArgs']]]]]
+    workers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerReferencesWorkerArgsDict']]]]]
     """
     Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).
     """
@@ -57963,7 +57963,7 @@ class WorkerScriptAssetsArgsDict(TypedDict):
     """
     The SHA-256 hash of the asset manifest of files to upload.
     """
-    config: NotRequired[pulumi.Input[Optional['WorkerScriptAssetsConfigArgs']]]
+    config: NotRequired[pulumi.Input[Optional['WorkerScriptAssetsConfigArgsDict']]]
     """
     Configuration for assets within a Worker.
     """
@@ -58066,7 +58066,7 @@ class WorkerScriptAssetsConfigArgsDict(TypedDict):
     """
     The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
     """
-    run_worker_first: NotRequired[Optional[Any]]
+    run_worker_first: NotRequired[Any]
     """
     When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
     """
@@ -58298,7 +58298,7 @@ class WorkerScriptBindingArgsDict(TypedDict):
     """
     The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
     """
-    outbound: NotRequired[pulumi.Input[Optional['WorkerScriptBindingOutboundArgs']]]
+    outbound: NotRequired[pulumi.Input[Optional['WorkerScriptBindingOutboundArgsDict']]]
     """
     Outbound worker.
     """
@@ -58330,7 +58330,7 @@ class WorkerScriptBindingArgsDict(TypedDict):
     """
     Identifier of the VPC service to bind to.
     """
-    simple: NotRequired[pulumi.Input[Optional['WorkerScriptBindingSimpleArgs']]]
+    simple: NotRequired[pulumi.Input[Optional['WorkerScriptBindingSimpleArgsDict']]]
     """
     A simple rate limit.
     """
@@ -59047,7 +59047,7 @@ class WorkerScriptBindingOutboundArgsDict(TypedDict):
     """
     Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
     """
-    worker: NotRequired[pulumi.Input[Optional['WorkerScriptBindingOutboundWorkerArgs']]]
+    worker: NotRequired[pulumi.Input[Optional['WorkerScriptBindingOutboundWorkerArgsDict']]]
     """
     Outbound worker.
     """
@@ -59257,15 +59257,15 @@ class WorkerScriptMigrationsArgsDict(TypedDict):
     """
     Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
     """
-    renamed_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgs']]]]]
+    renamed_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgsDict']]]]]
     """
     A list of classes with Durable Object namespaces that were renamed.
     """
-    steps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgs']]]]]
+    steps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgsDict']]]]]
     """
     Migrations to apply in order.
     """
-    transferred_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgs']]]]]
+    transferred_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgsDict']]]]]
     """
     A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
     """
@@ -59451,11 +59451,11 @@ class WorkerScriptMigrationsStepArgsDict(TypedDict):
     """
     A list of classes to create Durable Object namespaces with SQLite from.
     """
-    renamed_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgs']]]]]
+    renamed_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgsDict']]]]]
     """
     A list of classes with Durable Object namespaces that were renamed.
     """
-    transferred_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgs']]]]]
+    transferred_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgsDict']]]]]
     """
     A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
     """
@@ -59730,11 +59730,11 @@ class WorkerScriptObservabilityArgsDict(TypedDict):
     """
     The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
     """
-    logs: NotRequired[pulumi.Input[Optional['WorkerScriptObservabilityLogsArgs']]]
+    logs: NotRequired[pulumi.Input[Optional['WorkerScriptObservabilityLogsArgsDict']]]
     """
     Log settings for the Worker.
     """
-    traces: NotRequired[pulumi.Input[Optional['WorkerScriptObservabilityTracesArgs']]]
+    traces: NotRequired[pulumi.Input[Optional['WorkerScriptObservabilityTracesArgsDict']]]
     """
     Trace settings for the Worker.
     """
@@ -60032,7 +60032,7 @@ class WorkerScriptPlacementArgsDict(TypedDict):
     Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
     Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
     """
-    targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptPlacementTargetArgs']]]]]
+    targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerScriptPlacementTargetArgsDict']]]]]
     """
     Array of placement targets (currently limited to single target).
     """
@@ -60448,7 +60448,7 @@ class WorkerVersionAssetsArgsDict(TypedDict):
     """
     The SHA-256 hash of the asset manifest of files to upload.
     """
-    config: NotRequired[pulumi.Input[Optional['WorkerVersionAssetsConfigArgs']]]
+    config: NotRequired[pulumi.Input[Optional['WorkerVersionAssetsConfigArgsDict']]]
     """
     Configuration for assets within a Worker.
     """
@@ -60543,7 +60543,7 @@ class WorkerVersionAssetsConfigArgsDict(TypedDict):
     Determines the response when a request does not match a static asset, and there is no Worker script.
     Available values: "none", "404-page", "single-page-application".
     """
-    run_worker_first: NotRequired[Optional[Any]]
+    run_worker_first: NotRequired[Any]
     """
     When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
     """
@@ -60719,7 +60719,7 @@ class WorkerVersionBindingArgsDict(TypedDict):
     """
     The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
     """
-    outbound: NotRequired[pulumi.Input[Optional['WorkerVersionBindingOutboundArgs']]]
+    outbound: NotRequired[pulumi.Input[Optional['WorkerVersionBindingOutboundArgsDict']]]
     """
     Outbound worker.
     """
@@ -60751,7 +60751,7 @@ class WorkerVersionBindingArgsDict(TypedDict):
     """
     Identifier of the VPC service to bind to.
     """
-    simple: NotRequired[pulumi.Input[Optional['WorkerVersionBindingSimpleArgs']]]
+    simple: NotRequired[pulumi.Input[Optional['WorkerVersionBindingSimpleArgsDict']]]
     """
     The rate limit configuration.
     """
@@ -61464,11 +61464,11 @@ class WorkerVersionBindingArgs:
 
 
 class WorkerVersionBindingOutboundArgsDict(TypedDict):
-    params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionBindingOutboundParamArgs']]]]]
+    params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionBindingOutboundParamArgsDict']]]]]
     """
     Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
     """
-    worker: NotRequired[pulumi.Input[Optional['WorkerVersionBindingOutboundWorkerArgs']]]
+    worker: NotRequired[pulumi.Input[Optional['WorkerVersionBindingOutboundWorkerArgsDict']]]
     """
     Outbound worker.
     """
@@ -61754,15 +61754,15 @@ class WorkerVersionMigrationsArgsDict(TypedDict):
     """
     Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
     """
-    renamed_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionMigrationsRenamedClassArgs']]]]]
+    renamed_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionMigrationsRenamedClassArgsDict']]]]]
     """
     A list of classes with Durable Object namespaces that were renamed.
     """
-    steps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionMigrationsStepArgs']]]]]
+    steps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionMigrationsStepArgsDict']]]]]
     """
     Migrations to apply in order.
     """
-    transferred_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionMigrationsTransferredClassArgs']]]]]
+    transferred_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionMigrationsTransferredClassArgsDict']]]]]
     """
     A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
     """
@@ -61948,11 +61948,11 @@ class WorkerVersionMigrationsStepArgsDict(TypedDict):
     """
     A list of classes to create Durable Object namespaces with SQLite from.
     """
-    renamed_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionMigrationsStepRenamedClassArgs']]]]]
+    renamed_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionMigrationsStepRenamedClassArgsDict']]]]]
     """
     A list of classes with Durable Object namespaces that were renamed.
     """
-    transferred_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionMigrationsStepTransferredClassArgs']]]]]
+    transferred_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionMigrationsStepTransferredClassArgsDict']]]]]
     """
     A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
     """
@@ -62294,7 +62294,7 @@ class WorkerVersionPlacementArgsDict(TypedDict):
     """
     Cloud region for targeted placement in format 'provider:region'.
     """
-    targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionPlacementTargetArgs']]]]]
+    targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionPlacementTargetArgsDict']]]]]
     """
     Array of placement targets (currently limited to single target).
     """
@@ -62656,7 +62656,7 @@ class WorkersScriptAssetsArgsDict(TypedDict):
     """
     The SHA-256 hash of the asset manifest of files to upload.
     """
-    config: NotRequired[pulumi.Input[Optional['WorkersScriptAssetsConfigArgs']]]
+    config: NotRequired[pulumi.Input[Optional['WorkersScriptAssetsConfigArgsDict']]]
     """
     Configuration for assets within a Worker.
     """
@@ -62759,7 +62759,7 @@ class WorkersScriptAssetsConfigArgsDict(TypedDict):
     """
     The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
     """
-    run_worker_first: NotRequired[Optional[Any]]
+    run_worker_first: NotRequired[Any]
     """
     When a boolean true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script. When a list of strings, contains path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
     """
@@ -62991,7 +62991,7 @@ class WorkersScriptBindingArgsDict(TypedDict):
     """
     The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
     """
-    outbound: NotRequired[pulumi.Input[Optional['WorkersScriptBindingOutboundArgs']]]
+    outbound: NotRequired[pulumi.Input[Optional['WorkersScriptBindingOutboundArgsDict']]]
     """
     Outbound worker.
     """
@@ -63023,7 +63023,7 @@ class WorkersScriptBindingArgsDict(TypedDict):
     """
     Identifier of the VPC service to bind to.
     """
-    simple: NotRequired[pulumi.Input[Optional['WorkersScriptBindingSimpleArgs']]]
+    simple: NotRequired[pulumi.Input[Optional['WorkersScriptBindingSimpleArgsDict']]]
     """
     A simple rate limit.
     """
@@ -63740,7 +63740,7 @@ class WorkersScriptBindingOutboundArgsDict(TypedDict):
     """
     Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
     """
-    worker: NotRequired[pulumi.Input[Optional['WorkersScriptBindingOutboundWorkerArgs']]]
+    worker: NotRequired[pulumi.Input[Optional['WorkersScriptBindingOutboundWorkerArgsDict']]]
     """
     Outbound worker.
     """
@@ -63950,15 +63950,15 @@ class WorkersScriptMigrationsArgsDict(TypedDict):
     """
     Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
     """
-    renamed_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptMigrationsRenamedClassArgs']]]]]
+    renamed_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptMigrationsRenamedClassArgsDict']]]]]
     """
     A list of classes with Durable Object namespaces that were renamed.
     """
-    steps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptMigrationsStepArgs']]]]]
+    steps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptMigrationsStepArgsDict']]]]]
     """
     Migrations to apply in order.
     """
-    transferred_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptMigrationsTransferredClassArgs']]]]]
+    transferred_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptMigrationsTransferredClassArgsDict']]]]]
     """
     A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
     """
@@ -64144,11 +64144,11 @@ class WorkersScriptMigrationsStepArgsDict(TypedDict):
     """
     A list of classes to create Durable Object namespaces with SQLite from.
     """
-    renamed_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptMigrationsStepRenamedClassArgs']]]]]
+    renamed_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptMigrationsStepRenamedClassArgsDict']]]]]
     """
     A list of classes with Durable Object namespaces that were renamed.
     """
-    transferred_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptMigrationsStepTransferredClassArgs']]]]]
+    transferred_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptMigrationsStepTransferredClassArgsDict']]]]]
     """
     A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
     """
@@ -64423,11 +64423,11 @@ class WorkersScriptObservabilityArgsDict(TypedDict):
     """
     The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
     """
-    logs: NotRequired[pulumi.Input[Optional['WorkersScriptObservabilityLogsArgs']]]
+    logs: NotRequired[pulumi.Input[Optional['WorkersScriptObservabilityLogsArgsDict']]]
     """
     Log settings for the Worker.
     """
-    traces: NotRequired[pulumi.Input[Optional['WorkersScriptObservabilityTracesArgs']]]
+    traces: NotRequired[pulumi.Input[Optional['WorkersScriptObservabilityTracesArgsDict']]]
     """
     Trace settings for the Worker.
     """
@@ -64725,7 +64725,7 @@ class WorkersScriptPlacementArgsDict(TypedDict):
     Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
     Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
     """
-    targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptPlacementTargetArgs']]]]]
+    targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkersScriptPlacementTargetArgsDict']]]]]
     """
     Array of placement targets (currently limited to single target).
     """
@@ -65128,8 +65128,8 @@ class ZeroTrustAccessAiControlsMcpPortalServerArgsDict(TypedDict):
     """
     default_disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     on_behalf: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    updated_prompts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs']]]]]
-    updated_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs']]]]]
+    updated_prompts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgsDict']]]]]
+    updated_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgsDict']]]]]
 
 @pulumi.input_type
 class ZeroTrustAccessAiControlsMcpPortalServerArgs:
@@ -66003,7 +66003,7 @@ class ZeroTrustAccessApplicationMfaConfigArgs:
 
 
 class ZeroTrustAccessApplicationOauthConfigurationArgsDict(TypedDict):
-    dynamic_client_registration: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationOauthConfigurationDynamicClientRegistrationArgs']]]
+    dynamic_client_registration: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationOauthConfigurationDynamicClientRegistrationArgsDict']]]
     """
     Settings for OAuth dynamic client registration.
     """
@@ -66011,7 +66011,7 @@ class ZeroTrustAccessApplicationOauthConfigurationArgsDict(TypedDict):
     """
     Whether the OAuth configuration is enabled for this application. When set to `false`, Access will not handle OAuth for this application. Defaults to `true` if omitted.
     """
-    grant: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationOauthConfigurationGrantArgs']]]
+    grant: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationOauthConfigurationGrantArgsDict']]]
     """
     Settings for OAuth grant behavior.
     """
@@ -66210,7 +66210,7 @@ class ZeroTrustAccessApplicationOauthConfigurationGrantArgs:
 
 
 class ZeroTrustAccessApplicationPolicyArgsDict(TypedDict):
-    connection_rules: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyConnectionRulesArgs']]]
+    connection_rules: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyConnectionRulesArgsDict']]]
     """
     The rules that define how users may connect to the targets secured by your application.
     """
@@ -66219,7 +66219,7 @@ class ZeroTrustAccessApplicationPolicyArgsDict(TypedDict):
     The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
     Available values: "allow", "deny", "non_identity", "bypass".
     """
-    excludes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeArgs']]]]]
+    excludes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeArgsDict']]]]]
     """
     Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
     """
@@ -66227,11 +66227,11 @@ class ZeroTrustAccessApplicationPolicyArgsDict(TypedDict):
     """
     The UUID of the policy
     """
-    includes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeArgs']]]]]
+    includes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeArgsDict']]]]]
     """
     Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
     """
-    mfa_config: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyMfaConfigArgs']]]
+    mfa_config: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyMfaConfigArgsDict']]]
     """
     Configures multi-factor authentication (MFA) settings for this policy. For infrastructure applications only `ssh_piv_key` is a supported authenticator; for other application types use `totp`, `biometrics`, or `security_key`.
     """
@@ -66243,7 +66243,7 @@ class ZeroTrustAccessApplicationPolicyArgsDict(TypedDict):
     """
     The order of execution for this policy. Must be unique for each policy within an app.
     """
-    requires: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireArgs']]]]]
+    requires: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireArgsDict']]]]]
     """
     Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
     """
@@ -66402,11 +66402,11 @@ class ZeroTrustAccessApplicationPolicyArgs:
 
 
 class ZeroTrustAccessApplicationPolicyConnectionRulesArgsDict(TypedDict):
-    rdp: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyConnectionRulesRdpArgs']]]
+    rdp: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyConnectionRulesRdpArgsDict']]]
     """
     The RDP-specific rules that define clipboard behavior for RDP connections.
     """
-    ssh: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyConnectionRulesSshArgs']]]
+    ssh: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyConnectionRulesSshArgsDict']]]
     """
     The SSH-specific rules that define how users may connect to the targets secured by your application.
     """
@@ -66548,36 +66548,36 @@ class ZeroTrustAccessApplicationPolicyConnectionRulesSshArgs:
 
 
 class ZeroTrustAccessApplicationPolicyExcludeArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeServiceTokenArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyExcludeServiceTokenArgsDict']]]
 
 @pulumi.input_type
 class ZeroTrustAccessApplicationPolicyExcludeArgs:
@@ -67727,36 +67727,36 @@ class ZeroTrustAccessApplicationPolicyExcludeServiceTokenArgs:
 
 
 class ZeroTrustAccessApplicationPolicyIncludeArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeServiceTokenArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyIncludeServiceTokenArgsDict']]]
 
 @pulumi.input_type
 class ZeroTrustAccessApplicationPolicyIncludeArgs:
@@ -68978,36 +68978,36 @@ class ZeroTrustAccessApplicationPolicyMfaConfigArgs:
 
 
 class ZeroTrustAccessApplicationPolicyRequireArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireServiceTokenArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationPolicyRequireServiceTokenArgsDict']]]
 
 @pulumi.input_type
 class ZeroTrustAccessApplicationPolicyRequireArgs:
@@ -70186,8 +70186,8 @@ class ZeroTrustAccessApplicationSaasAppArgsDict(TypedDict):
     """
     The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
     """
-    custom_attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationSaasAppCustomAttributeArgs']]]]]
-    custom_claims: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationSaasAppCustomClaimArgs']]]]]
+    custom_attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationSaasAppCustomAttributeArgsDict']]]]]
+    custom_claims: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationSaasAppCustomClaimArgsDict']]]]]
     default_relay_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URL that the user will be redirected to after a successful login for IDP initiated logins.
@@ -70200,7 +70200,7 @@ class ZeroTrustAccessApplicationSaasAppArgsDict(TypedDict):
     """
     A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
     """
-    hybrid_and_implicit_options: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs']]]
+    hybrid_and_implicit_options: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgsDict']]]
     idp_entity_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The unique identifier for your SaaS application.
@@ -70222,7 +70222,7 @@ class ZeroTrustAccessApplicationSaasAppArgsDict(TypedDict):
     """
     The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
     """
-    refresh_token_options: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationSaasAppRefreshTokenOptionsArgs']]]
+    refresh_token_options: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationSaasAppRefreshTokenOptionsArgsDict']]]
     saml_attribute_transform_jsonata: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
@@ -70621,7 +70621,7 @@ class ZeroTrustAccessApplicationSaasAppCustomAttributeArgsDict(TypedDict):
     """
     If the attribute is required when building a SAML assertion.
     """
-    source: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgs']]]
+    source: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgsDict']]]
 
 @pulumi.input_type
 class ZeroTrustAccessApplicationSaasAppCustomAttributeArgs:
@@ -70713,7 +70713,7 @@ class ZeroTrustAccessApplicationSaasAppCustomAttributeSourceArgsDict(TypedDict):
     """
     The name of the IdP attribute.
     """
-    name_by_idps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpArgs']]]]]
+    name_by_idps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdpArgsDict']]]]]
     """
     A mapping from IdP ID to attribute name.
     """
@@ -70820,7 +70820,7 @@ class ZeroTrustAccessApplicationSaasAppCustomClaimArgsDict(TypedDict):
     The scope of the claim.
     Available values: "groups", "profile", "email", "openid".
     """
-    source: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgs']]]
+    source: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationSaasAppCustomClaimSourceArgsDict']]]
 
 @pulumi.input_type
 class ZeroTrustAccessApplicationSaasAppCustomClaimArgs:
@@ -71027,7 +71027,7 @@ class ZeroTrustAccessApplicationScimConfigArgsDict(TypedDict):
     """
     The base URI for the application's SCIM-compatible API.
     """
-    authentication: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationScimConfigAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationScimConfigAuthenticationArgsDict']]]
     """
     Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
     """
@@ -71039,7 +71039,7 @@ class ZeroTrustAccessApplicationScimConfigArgsDict(TypedDict):
     """
     Whether SCIM provisioning is turned on for this application.
     """
-    mappings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationScimConfigMappingArgs']]]]]
+    mappings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessApplicationScimConfigMappingArgsDict']]]]]
     """
     A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
     """
@@ -71349,7 +71349,7 @@ class ZeroTrustAccessApplicationScimConfigMappingArgsDict(TypedDict):
     """
     A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
     """
-    operations: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationScimConfigMappingOperationsArgs']]]
+    operations: NotRequired[pulumi.Input[Optional['ZeroTrustAccessApplicationScimConfigMappingOperationsArgsDict']]]
     """
     Whether or not this mapping applies to creates, updates, or deletes.
     """
@@ -71606,37 +71606,37 @@ class ZeroTrustAccessApplicationTargetCriteriaArgs:
 
 
 class ZeroTrustAccessGroupExcludeArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeServiceTokenArgs']]]
-    user_risk_score: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeUserRiskScoreArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeServiceTokenArgsDict']]]
+    user_risk_score: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupExcludeUserRiskScoreArgsDict']]]
 
 @pulumi.input_type
 class ZeroTrustAccessGroupExcludeArgs:
@@ -72826,37 +72826,37 @@ class ZeroTrustAccessGroupExcludeUserRiskScoreArgs:
 
 
 class ZeroTrustAccessGroupIncludeArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeServiceTokenArgs']]]
-    user_risk_score: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeUserRiskScoreArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeServiceTokenArgsDict']]]
+    user_risk_score: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupIncludeUserRiskScoreArgsDict']]]
 
 @pulumi.input_type
 class ZeroTrustAccessGroupIncludeArgs:
@@ -74046,37 +74046,37 @@ class ZeroTrustAccessGroupIncludeUserRiskScoreArgs:
 
 
 class ZeroTrustAccessGroupRequireArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireServiceTokenArgs']]]
-    user_risk_score: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireUserRiskScoreArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireServiceTokenArgsDict']]]
+    user_risk_score: NotRequired[pulumi.Input[Optional['ZeroTrustAccessGroupRequireUserRiskScoreArgsDict']]]
 
 @pulumi.input_type
 class ZeroTrustAccessGroupRequireArgs:
@@ -75322,7 +75322,7 @@ class ZeroTrustAccessIdentityProviderConfigArgsDict(TypedDict):
     """
     The claim name for email in the id_token response.
     """
-    header_attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs']]]]]
+    header_attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustAccessIdentityProviderConfigHeaderAttributeArgsDict']]]]]
     """
     Add a list of attribute names that will be returned in the response header from the Access callback.
     """
@@ -76012,11 +76012,11 @@ class ZeroTrustAccessIdentityProviderScimConfigArgs:
 
 
 class ZeroTrustAccessInfrastructureTargetIpArgsDict(TypedDict):
-    ipv4: NotRequired[pulumi.Input[Optional['ZeroTrustAccessInfrastructureTargetIpIpv4Args']]]
+    ipv4: NotRequired[pulumi.Input[Optional['ZeroTrustAccessInfrastructureTargetIpIpv4ArgsDict']]]
     """
     The target's IPv4 address
     """
-    ipv6: NotRequired[pulumi.Input[Optional['ZeroTrustAccessInfrastructureTargetIpIpv6Args']]]
+    ipv6: NotRequired[pulumi.Input[Optional['ZeroTrustAccessInfrastructureTargetIpIpv6ArgsDict']]]
     """
     The target's IPv6 address
     """
@@ -76293,7 +76293,7 @@ class ZeroTrustAccessPolicyApprovalGroupArgs:
 
 
 class ZeroTrustAccessPolicyConnectionRulesArgsDict(TypedDict):
-    rdp: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyConnectionRulesRdpArgs']]]
+    rdp: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyConnectionRulesRdpArgsDict']]]
     """
     The RDP-specific rules that define clipboard behavior for RDP connections.
     """
@@ -76371,37 +76371,37 @@ class ZeroTrustAccessPolicyConnectionRulesRdpArgs:
 
 
 class ZeroTrustAccessPolicyExcludeArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeServiceTokenArgs']]]
-    user_risk_score: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeUserRiskScoreArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeServiceTokenArgsDict']]]
+    user_risk_score: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyExcludeUserRiskScoreArgsDict']]]
 
 @pulumi.input_type
 class ZeroTrustAccessPolicyExcludeArgs:
@@ -77591,37 +77591,37 @@ class ZeroTrustAccessPolicyExcludeUserRiskScoreArgs:
 
 
 class ZeroTrustAccessPolicyIncludeArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeServiceTokenArgs']]]
-    user_risk_score: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeUserRiskScoreArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeServiceTokenArgsDict']]]
+    user_risk_score: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyIncludeUserRiskScoreArgsDict']]]
 
 @pulumi.input_type
 class ZeroTrustAccessPolicyIncludeArgs:
@@ -78880,37 +78880,37 @@ class ZeroTrustAccessPolicyMfaConfigArgs:
 
 
 class ZeroTrustAccessPolicyRequireArgsDict(TypedDict):
-    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireAnyValidServiceTokenArgs']]]
+    any_valid_service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireAnyValidServiceTokenArgsDict']]]
     """
     An empty object which matches on all service tokens.
     """
-    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireAuthContextArgs']]]
-    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireAuthMethodArgs']]]
-    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireAzureAdArgs']]]
-    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireCertificateArgs']]]
-    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireCommonNameArgs']]]
-    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireDevicePostureArgs']]]
-    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireEmailArgs']]]
-    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireEmailDomainArgs']]]
-    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireEmailListArgs']]]
-    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireEveryoneArgs']]]
+    auth_context: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireAuthContextArgsDict']]]
+    auth_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireAuthMethodArgsDict']]]
+    azure_ad: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireAzureAdArgsDict']]]
+    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireCertificateArgsDict']]]
+    common_name: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireCommonNameArgsDict']]]
+    device_posture: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireDevicePostureArgsDict']]]
+    email: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireEmailArgsDict']]]
+    email_domain: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireEmailDomainArgsDict']]]
+    email_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireEmailListArgsDict']]]
+    everyone: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireEveryoneArgsDict']]]
     """
     An empty object which matches on all users.
     """
-    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireExternalEvaluationArgs']]]
-    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireGeoArgs']]]
-    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireGithubOrganizationArgs']]]
-    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireGroupArgs']]]
-    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireGsuiteArgs']]]
-    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireIpArgs']]]
-    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireIpListArgs']]]
-    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireLinkedAppTokenArgs']]]
-    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireLoginMethodArgs']]]
-    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireOidcArgs']]]
-    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireOktaArgs']]]
-    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireSamlArgs']]]
-    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireServiceTokenArgs']]]
-    user_risk_score: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireUserRiskScoreArgs']]]
+    external_evaluation: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireExternalEvaluationArgsDict']]]
+    geo: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireGeoArgsDict']]]
+    github_organization: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireGithubOrganizationArgsDict']]]
+    group: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireGroupArgsDict']]]
+    gsuite: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireGsuiteArgsDict']]]
+    ip: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireIpArgsDict']]]
+    ip_list: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireIpListArgsDict']]]
+    linked_app_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireLinkedAppTokenArgsDict']]]
+    login_method: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireLoginMethodArgsDict']]]
+    oidc: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireOidcArgsDict']]]
+    okta: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireOktaArgsDict']]]
+    saml: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireSamlArgsDict']]]
+    service_token: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireServiceTokenArgsDict']]]
+    user_risk_score: NotRequired[pulumi.Input[Optional['ZeroTrustAccessPolicyRequireUserRiskScoreArgsDict']]]
 
 @pulumi.input_type
 class ZeroTrustAccessPolicyRequireArgs:
@@ -81092,7 +81092,7 @@ class ZeroTrustDevicePostureRuleInputArgsDict(TypedDict):
     """
     For more details on last seen, please refer to the Crowdstrike documentation.
     """
-    locations: NotRequired[pulumi.Input[Optional['ZeroTrustDevicePostureRuleInputLocationsArgs']]]
+    locations: NotRequired[pulumi.Input[Optional['ZeroTrustDevicePostureRuleInputLocationsArgsDict']]]
     network_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Network status of device.
@@ -81984,7 +81984,7 @@ class ZeroTrustDevicePostureRuleMatchArgs:
 
 
 class ZeroTrustDexRuleTargetedTestArgsDict(TypedDict):
-    data: NotRequired[pulumi.Input[Optional['ZeroTrustDexRuleTargetedTestDataArgs']]]
+    data: NotRequired[pulumi.Input[Optional['ZeroTrustDexRuleTargetedTestDataArgsDict']]]
     """
     The configuration object which contains the details for the WARP client to conduct the test.
     """
@@ -82457,7 +82457,7 @@ class ZeroTrustDlpCustomProfileContextAwarenessArgsDict(TypedDict):
     """
     If true, scan the context of predefined entries to only return matches surrounded by keywords.
     """
-    skip: NotRequired[pulumi.Input[Optional['ZeroTrustDlpCustomProfileContextAwarenessSkipArgs']]]
+    skip: NotRequired[pulumi.Input[Optional['ZeroTrustDlpCustomProfileContextAwarenessSkipArgsDict']]]
     """
     Content types to exclude from context analysis and return all matches.
     """
@@ -82797,7 +82797,7 @@ class ZeroTrustDlpDatasetColumnArgs:
 
 class ZeroTrustDlpDatasetDatasetArgsDict(TypedDict):
     case_sensitive: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpDatasetDatasetColumnArgs']]]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpDatasetDatasetColumnArgsDict']]]]]
     created_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -82816,7 +82816,7 @@ class ZeroTrustDlpDatasetDatasetArgsDict(TypedDict):
     """
     Stores when the dataset was last updated.
     """
-    uploads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpDatasetDatasetUploadArgs']]]]]
+    uploads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDlpDatasetDatasetUploadArgsDict']]]]]
 
 @pulumi.input_type
 class ZeroTrustDlpDatasetDatasetArgs:
@@ -83898,7 +83898,7 @@ class ZeroTrustDnsLocationEndpointsDohArgsDict(TypedDict):
     """
     Indicate whether the DOH endpoint is enabled for this location.
     """
-    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationEndpointsDohNetworkArgs']]]]]
+    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationEndpointsDohNetworkArgsDict']]]]]
     """
     Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
     """
@@ -83995,7 +83995,7 @@ class ZeroTrustDnsLocationEndpointsDotArgsDict(TypedDict):
     """
     Indicate whether the DOT endpoint is enabled for this location.
     """
-    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationEndpointsDotNetworkArgs']]]]]
+    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationEndpointsDotNetworkArgsDict']]]]]
     """
     Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
     """
@@ -84101,7 +84101,7 @@ class ZeroTrustDnsLocationEndpointsIpv6ArgsDict(TypedDict):
     """
     Indicate whether the IPV6 endpoint is enabled for this location.
     """
-    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationEndpointsIpv6NetworkArgs']]]]]
+    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDnsLocationEndpointsIpv6NetworkArgsDict']]]]]
     """
     Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
     """
@@ -84202,15 +84202,15 @@ class ZeroTrustDnsLocationNetworkArgs:
 
 
 class ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict(TypedDict):
-    dns: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs']]]
+    dns: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgsDict']]]
     """
     Configure logging settings for DNS firewall.
     """
-    http: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs']]]
+    http: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgsDict']]]
     """
     Configure logging settings for HTTP/HTTPS firewall.
     """
-    l4: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args']]]
+    l4: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayLoggingSettingsByRuleTypeL4ArgsDict']]]
     """
     Configure logging settings for Network firewall.
     """
@@ -84494,15 +84494,15 @@ class ZeroTrustGatewayPolicyRuleSettingsArgsDict(TypedDict):
     """
     Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
     """
-    audit_ssh: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs']]]
+    audit_ssh: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsAuditSshArgsDict']]]
     """
     Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
     """
-    biso_admin_controls: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs']]]
+    biso_admin_controls: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgsDict']]]
     """
     Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
     """
-    block_page: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs']]]
+    block_page: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsBlockPageArgsDict']]]
     """
     Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
     """
@@ -84518,19 +84518,19 @@ class ZeroTrustGatewayPolicyRuleSettingsArgsDict(TypedDict):
     """
     Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.
     """
-    check_session: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs']]]
+    check_session: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgsDict']]]
     """
     Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
     """
-    dns_resolvers: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs']]]
+    dns_resolvers: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgsDict']]]
     """
     Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.
     """
-    egress: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsEgressArgs']]]
+    egress: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsEgressArgsDict']]]
     """
     Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
     """
-    forensic_copy: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgs']]]
+    forensic_copy: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsForensicCopyArgsDict']]]
     """
     Configure whether a copy of the HTTP request will be sent to storage when the rule matches.
     """
@@ -84550,11 +84550,11 @@ class ZeroTrustGatewayPolicyRuleSettingsArgsDict(TypedDict):
     """
     Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
     """
-    l4override: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs']]]
+    l4override: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsL4overrideArgsDict']]]
     """
     Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
     """
-    notification_settings: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs']]]
+    notification_settings: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgsDict']]]
     """
     Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.
     """
@@ -84566,19 +84566,19 @@ class ZeroTrustGatewayPolicyRuleSettingsArgsDict(TypedDict):
     """
     Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
     """
-    payload_log: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs']]]
+    payload_log: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgsDict']]]
     """
     Configure DLP payload logging. Settable only for `http` rules.
     """
-    quarantine: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs']]]
+    quarantine: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsQuarantineArgsDict']]]
     """
     Configure settings that apply to quarantine rules. Settable only for `http` rules.
     """
-    redirect: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsRedirectArgs']]]
+    redirect: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsRedirectArgsDict']]]
     """
     Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
     """
-    resolve_dns_internally: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs']]]
+    resolve_dns_internally: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgsDict']]]
     """
     Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Not used when 'dns*resolvers' is specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.
     """
@@ -84586,7 +84586,7 @@ class ZeroTrustGatewayPolicyRuleSettingsArgsDict(TypedDict):
     """
     Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.
     """
-    untrusted_cert: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs']]]
+    untrusted_cert: NotRequired[pulumi.Input[Optional['ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgsDict']]]
     """
     Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
     """
@@ -85431,8 +85431,8 @@ class ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs:
 
 
 class ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgsDict(TypedDict):
-    ipv4s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args']]]]]
-    ipv6s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args']]]]]
+    ipv4s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4ArgsDict']]]]]
+    ipv6s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6ArgsDict']]]]]
 
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs:
@@ -86255,59 +86255,59 @@ class ZeroTrustGatewayPolicyScheduleArgs:
 
 
 class ZeroTrustGatewaySettingsSettingsArgsDict(TypedDict):
-    activity_log: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsActivityLogArgs']]]
+    activity_log: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsActivityLogArgsDict']]]
     """
     Specify activity log settings.
     """
-    antivirus: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsAntivirusArgs']]]
+    antivirus: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsAntivirusArgsDict']]]
     """
     Specify anti-virus settings.
     """
-    block_page: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsBlockPageArgs']]]
+    block_page: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsBlockPageArgsDict']]]
     """
     Specify block page layout settings.
     """
-    body_scanning: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsBodyScanningArgs']]]
+    body_scanning: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsBodyScanningArgsDict']]]
     """
     Specify the DLP inspection mode.
     """
-    browser_isolation: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs']]]
+    browser_isolation: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsBrowserIsolationArgsDict']]]
     """
     Specify Clientless Browser Isolation settings.
     """
-    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsCertificateArgs']]]
+    certificate: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsCertificateArgsDict']]]
     """
     Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
     """
-    custom_certificate: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsCustomCertificateArgs']]]
+    custom_certificate: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsCustomCertificateArgsDict']]]
     """
     Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
     """
-    extended_email_matching: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs']]]
+    extended_email_matching: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgsDict']]]
     """
     Configures user email settings for firewall policies. When you enable this, the system standardizes email addresses in the identity portion of the rule to match extended email variants in firewall policies. When you disable this setting, the system matches email addresses exactly as you provide them. Enable this setting if your email uses `.` or `+` modifiers.
     """
-    fips: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsFipsArgs']]]
+    fips: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsFipsArgsDict']]]
     """
     Specify FIPS settings.
     """
-    host_selector: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsHostSelectorArgs']]]
+    host_selector: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsHostSelectorArgsDict']]]
     """
     Enable host selection in egress policies.
     """
-    inspection: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsInspectionArgs']]]
+    inspection: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsInspectionArgsDict']]]
     """
     Define the proxy inspection mode.
     """
-    protocol_detection: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs']]]
+    protocol_detection: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsProtocolDetectionArgsDict']]]
     """
     Specify whether to detect protocols from the initial bytes of client traffic.
     """
-    sandbox: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsSandboxArgs']]]
+    sandbox: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsSandboxArgsDict']]]
     """
     Specify whether to enable the sandbox.
     """
-    tls_decrypt: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsTlsDecryptArgs']]]
+    tls_decrypt: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsTlsDecryptArgsDict']]]
     """
     Specify whether to inspect encrypted HTTP traffic.
     """
@@ -86589,7 +86589,7 @@ class ZeroTrustGatewaySettingsSettingsAntivirusArgsDict(TypedDict):
     """
     Specify whether to block requests for unscannable files.
     """
-    notification_settings: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs']]]
+    notification_settings: NotRequired[pulumi.Input[Optional['ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgsDict']]]
     """
     Configure the message the user's device shows during an antivirus scan.
     """
@@ -88065,11 +88065,11 @@ class ZeroTrustRiskBehaviorBehaviorsArgs:
 
 
 class ZeroTrustTunnelCloudflaredConfigConfigArgsDict(TypedDict):
-    ingresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigIngressArgs']]]]]
+    ingresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustTunnelCloudflaredConfigConfigIngressArgsDict']]]]]
     """
     List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
     """
-    origin_request: NotRequired[pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs']]]
+    origin_request: NotRequired[pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgsDict']]]
     """
     Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
     """
@@ -88122,7 +88122,7 @@ class ZeroTrustTunnelCloudflaredConfigConfigIngressArgsDict(TypedDict):
     """
     Public hostname for this service.
     """
-    origin_request: NotRequired[pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestArgs']]]
+    origin_request: NotRequired[pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestArgsDict']]]
     """
     Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
     """
@@ -88202,7 +88202,7 @@ class ZeroTrustTunnelCloudflaredConfigConfigIngressArgs:
 
 
 class ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestArgsDict(TypedDict):
-    access: NotRequired[pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs']]]
+    access: NotRequired[pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgsDict']]]
     """
     For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
     """
@@ -88571,7 +88571,7 @@ class ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs:
 
 
 class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgsDict(TypedDict):
-    access: NotRequired[pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgs']]]
+    access: NotRequired[pulumi.Input[Optional['ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessArgsDict']]]
     """
     For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
     """
