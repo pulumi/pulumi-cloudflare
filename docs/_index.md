@@ -22,7 +22,7 @@ Cloudflare. The provider needs to be configured with the proper credentials
 before it can be used.
 ## Example Usage
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -176,6 +176,22 @@ public class App {
         var www = new DnsRecord("www");
 
     }
+}
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    cloudflare = {
+      source = "pulumi/cloudflare"
+    }
+  }
+}
+
+# Create a DNS record
+resource "cloudflare_dnsrecord" "www" {
 }
 ```
 
