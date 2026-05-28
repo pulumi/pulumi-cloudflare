@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare
     /// - `D1 Read`
     /// - `D1 Write`
     /// 
-    /// !&gt; When a D1 Database is replaced all the data is lost. Please ensure you have a
+    /// &gt; When a D1 Database is replaced all the data is lost. Please ensure you have a
     ///    backup of your data before replacing a D1 Database.
     /// 
     /// ## Example Usage

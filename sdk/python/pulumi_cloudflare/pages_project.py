@@ -616,7 +616,7 @@ class PagesProject(pulumi.CustomResource):
 
         ## Import
 
-        !> It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
+        > It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
 
         ```sh
         $ pulumi import cloudflare:index/pagesProject:PagesProject example '<account_id>/<project_name>'
@@ -855,7 +855,7 @@ class PagesProject(pulumi.CustomResource):
 
         ## Import
 
-        !> It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
+        > It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
 
         ```sh
         $ pulumi import cloudflare:index/pagesProject:PagesProject example '<account_id>/<project_name>'
