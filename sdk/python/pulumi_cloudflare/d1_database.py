@@ -293,7 +293,7 @@ class D1Database(pulumi.CustomResource):
         - `D1 Read`
         - `D1 Write`
 
-        !> When a D1 Database is replaced all the data is lost. Please ensure you have a
+        > When a D1 Database is replaced all the data is lost. Please ensure you have a
            backup of your data before replacing a D1 Database.
 
         ## Example Usage
@@ -338,7 +338,7 @@ class D1Database(pulumi.CustomResource):
         - `D1 Read`
         - `D1 Write`
 
-        !> When a D1 Database is replaced all the data is lost. Please ensure you have a
+        > When a D1 Database is replaced all the data is lost. Please ensure you have a
            backup of your data before replacing a D1 Database.
 
         ## Example Usage

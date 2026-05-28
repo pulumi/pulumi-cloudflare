@@ -221,7 +221,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * !&gt; It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
+ * &gt; It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
  * 
  * ```sh
  * $ pulumi import cloudflare:index/pagesProject:PagesProject example &#39;&lt;account_id&gt;/&lt;project_name&gt;&#39;
