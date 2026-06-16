@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ZeroTrustRiskBehavior;
  * import com.pulumi.cloudflare.ZeroTrustRiskBehaviorArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustRiskBehaviorBehaviorsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

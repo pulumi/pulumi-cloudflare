@@ -53,7 +53,7 @@ import (
 //								Id: pulumi.String("8b47d2786a534c08a1f94ee8f9f599ef"),
 //							},
 //						},
-//						Resources: pulumi.String(pulumi.String(json0)),
+//						Resources: pulumi.String(json0),
 //					},
 //				},
 //				Condition: &cloudflare.ApiTokenConditionArgs{

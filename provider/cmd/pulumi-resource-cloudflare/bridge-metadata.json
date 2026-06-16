@@ -10241,6 +10241,437 @@
             }
         }
     },
+    "default-resource-schema-fixups": {
+        "resources": {
+            "cloudflare_access_rule": {},
+            "cloudflare_account": {},
+            "cloudflare_account_dns_settings": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_account_dns_settings_internal_view": {},
+            "cloudflare_account_member": {},
+            "cloudflare_account_subscription": {},
+            "cloudflare_account_token": {},
+            "cloudflare_address_map": {},
+            "cloudflare_ai_gateway": {
+                "fields": {
+                    "id": {
+                        "name": "aiGatewayId"
+                    }
+                },
+                "computeID": {
+                    "kind": "delegate",
+                    "field": "aiGatewayId"
+                }
+            },
+            "cloudflare_ai_gateway_dynamic_routing": {},
+            "cloudflare_ai_search_instance": {
+                "fields": {
+                    "id": {
+                        "name": "aiSearchInstanceId"
+                    }
+                }
+            },
+            "cloudflare_ai_search_token": {},
+            "cloudflare_api_shield": {},
+            "cloudflare_api_shield_discovery_operation": {},
+            "cloudflare_api_shield_operation": {},
+            "cloudflare_api_shield_operation_schema_validation_settings": {},
+            "cloudflare_api_shield_schema": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_api_shield_schema_validation_settings": {},
+            "cloudflare_api_token": {},
+            "cloudflare_argo_smart_routing": {},
+            "cloudflare_argo_tiered_caching": {},
+            "cloudflare_authenticated_origin_pulls": {},
+            "cloudflare_authenticated_origin_pulls_certificate": {},
+            "cloudflare_authenticated_origin_pulls_hostname_certificate": {},
+            "cloudflare_authenticated_origin_pulls_settings": {},
+            "cloudflare_bot_management": {},
+            "cloudflare_byo_ip_prefix": {},
+            "cloudflare_calls_sfu_app": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_calls_turn_app": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_certificate_authorities_hostname_associations": {},
+            "cloudflare_certificate_pack": {},
+            "cloudflare_client_certificate": {},
+            "cloudflare_cloud_connector_rules": {},
+            "cloudflare_cloudforce_one_request": {},
+            "cloudflare_cloudforce_one_request_asset": {
+                "fields": {
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "cloudflare_cloudforce_one_request_message": {
+                "fields": {
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "cloudflare_cloudforce_one_request_priority": {},
+            "cloudflare_connectivity_directory_service": {},
+            "cloudflare_content_scanning": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_content_scanning_expression": {},
+            "cloudflare_custom_hostname": {},
+            "cloudflare_custom_hostname_fallback_origin": {},
+            "cloudflare_custom_origin_trust_store": {},
+            "cloudflare_custom_page_asset": {},
+            "cloudflare_custom_pages": {},
+            "cloudflare_custom_ssl": {},
+            "cloudflare_d1_database": {},
+            "cloudflare_dns_firewall": {},
+            "cloudflare_dns_record": {},
+            "cloudflare_dns_zone_transfers_acl": {},
+            "cloudflare_dns_zone_transfers_incoming": {},
+            "cloudflare_dns_zone_transfers_outgoing": {},
+            "cloudflare_dns_zone_transfers_peer": {},
+            "cloudflare_dns_zone_transfers_tsig": {},
+            "cloudflare_email_routing_address": {},
+            "cloudflare_email_routing_catch_all": {},
+            "cloudflare_email_routing_dns": {},
+            "cloudflare_email_routing_rule": {},
+            "cloudflare_email_routing_settings": {},
+            "cloudflare_email_security_block_sender": {
+                "fields": {
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "cloudflare_email_security_impersonation_registry": {
+                "fields": {
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "cloudflare_email_security_trusted_domains": {
+                "fields": {
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "cloudflare_filter": {},
+            "cloudflare_firewall_rule": {},
+            "cloudflare_healthcheck": {},
+            "cloudflare_hostname_tls_setting": {},
+            "cloudflare_hyperdrive_config": {},
+            "cloudflare_image": {
+                "fields": {
+                    "id": {
+                        "name": "imageId"
+                    }
+                }
+            },
+            "cloudflare_image_variant": {
+                "fields": {
+                    "id": {
+                        "name": "imageVariantId"
+                    }
+                }
+            },
+            "cloudflare_keyless_certificate": {},
+            "cloudflare_leaked_credential_check": {},
+            "cloudflare_leaked_credential_check_rule": {},
+            "cloudflare_list": {},
+            "cloudflare_list_item": {},
+            "cloudflare_load_balancer": {},
+            "cloudflare_load_balancer_monitor": {},
+            "cloudflare_load_balancer_pool": {},
+            "cloudflare_logpull_retention": {},
+            "cloudflare_logpush_job": {
+                "fields": {
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "cloudflare_logpush_ownership_challenge": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_magic_network_monitoring_configuration": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_magic_network_monitoring_rule": {},
+            "cloudflare_magic_transit_connector": {},
+            "cloudflare_magic_transit_site": {},
+            "cloudflare_magic_transit_site_acl": {},
+            "cloudflare_magic_transit_site_lan": {},
+            "cloudflare_magic_transit_site_wan": {},
+            "cloudflare_magic_wan_gre_tunnel": {},
+            "cloudflare_magic_wan_ipsec_tunnel": {},
+            "cloudflare_magic_wan_static_route": {},
+            "cloudflare_managed_transforms": {},
+            "cloudflare_mtls_certificate": {},
+            "cloudflare_notification_policy": {},
+            "cloudflare_notification_policy_webhooks": {},
+            "cloudflare_observatory_scheduled_test": {},
+            "cloudflare_organization": {},
+            "cloudflare_organization_profile": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_origin_ca_certificate": {},
+            "cloudflare_page_rule": {},
+            "cloudflare_page_shield_policy": {},
+            "cloudflare_pages_domain": {},
+            "cloudflare_pages_project": {},
+            "cloudflare_pipeline": {},
+            "cloudflare_pipeline_sink": {},
+            "cloudflare_pipeline_stream": {},
+            "cloudflare_queue": {},
+            "cloudflare_queue_consumer": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_r2_bucket": {},
+            "cloudflare_r2_bucket_cors": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_r2_bucket_event_notification": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_r2_bucket_lifecycle": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_r2_bucket_lock": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_r2_bucket_sippy": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_r2_custom_domain": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_r2_data_catalog": {},
+            "cloudflare_r2_managed_domain": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_rate_limit": {},
+            "cloudflare_regional_hostname": {},
+            "cloudflare_regional_tiered_cache": {},
+            "cloudflare_registrar_domain": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_ruleset": {},
+            "cloudflare_schema_validation_operation_settings": {},
+            "cloudflare_schema_validation_schemas": {},
+            "cloudflare_schema_validation_settings": {},
+            "cloudflare_snippet": {},
+            "cloudflare_snippet_rules": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_snippets": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_spectrum_application": {},
+            "cloudflare_sso_connector": {},
+            "cloudflare_stream": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_stream_audio_track": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_stream_caption_language": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_stream_download": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_stream_key": {},
+            "cloudflare_stream_live_input": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_stream_watermark": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_stream_webhook": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_tiered_cache": {},
+            "cloudflare_token_validation_config": {},
+            "cloudflare_token_validation_rules": {},
+            "cloudflare_total_tls": {},
+            "cloudflare_turnstile_widget": {},
+            "cloudflare_universal_ssl_setting": {},
+            "cloudflare_url_normalization_settings": {},
+            "cloudflare_user": {},
+            "cloudflare_user_agent_blocking_rule": {},
+            "cloudflare_user_group": {},
+            "cloudflare_user_group_members": {},
+            "cloudflare_vulnerability_scanner_credential": {},
+            "cloudflare_vulnerability_scanner_credential_set": {},
+            "cloudflare_vulnerability_scanner_target_environment": {},
+            "cloudflare_waiting_room": {},
+            "cloudflare_waiting_room_event": {},
+            "cloudflare_waiting_room_rules": {},
+            "cloudflare_waiting_room_settings": {},
+            "cloudflare_web3_hostname": {},
+            "cloudflare_web_analytics_rule": {},
+            "cloudflare_web_analytics_site": {},
+            "cloudflare_worker": {},
+            "cloudflare_worker_version": {},
+            "cloudflare_workers_cron_trigger": {},
+            "cloudflare_workers_custom_domain": {},
+            "cloudflare_workers_deployment": {},
+            "cloudflare_workers_for_platforms_dispatch_namespace": {},
+            "cloudflare_workers_kv": {},
+            "cloudflare_workers_kv_namespace": {},
+            "cloudflare_workers_route": {},
+            "cloudflare_workers_script": {},
+            "cloudflare_workers_script_subdomain": {},
+            "cloudflare_workflow": {},
+            "cloudflare_zero_trust_access_ai_controls_mcp_portal": {
+                "fields": {
+                    "id": {
+                        "name": "zeroTrustAccessAiControlsMcpPortalId"
+                    }
+                }
+            },
+            "cloudflare_zero_trust_access_ai_controls_mcp_server": {
+                "fields": {
+                    "id": {
+                        "name": "zeroTrustAccessAiControlsMcpServerId"
+                    }
+                }
+            },
+            "cloudflare_zero_trust_access_application": {},
+            "cloudflare_zero_trust_access_custom_page": {},
+            "cloudflare_zero_trust_access_group": {},
+            "cloudflare_zero_trust_access_identity_provider": {},
+            "cloudflare_zero_trust_access_infrastructure_target": {},
+            "cloudflare_zero_trust_access_key_configuration": {},
+            "cloudflare_zero_trust_access_mtls_certificate": {},
+            "cloudflare_zero_trust_access_mtls_hostname_settings": {},
+            "cloudflare_zero_trust_access_policy": {},
+            "cloudflare_zero_trust_access_service_token": {},
+            "cloudflare_zero_trust_access_short_lived_certificate": {},
+            "cloudflare_zero_trust_access_tag": {},
+            "cloudflare_zero_trust_device_custom_profile": {},
+            "cloudflare_zero_trust_device_custom_profile_local_domain_fallback": {},
+            "cloudflare_zero_trust_device_default_profile": {},
+            "cloudflare_zero_trust_device_default_profile_certificates": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_zero_trust_device_default_profile_local_domain_fallback": {},
+            "cloudflare_zero_trust_device_ip_profile": {},
+            "cloudflare_zero_trust_device_managed_networks": {},
+            "cloudflare_zero_trust_device_posture_integration": {},
+            "cloudflare_zero_trust_device_posture_rule": {},
+            "cloudflare_zero_trust_device_settings": {},
+            "cloudflare_zero_trust_device_subnet": {},
+            "cloudflare_zero_trust_dex_rule": {},
+            "cloudflare_zero_trust_dex_test": {},
+            "cloudflare_zero_trust_dlp_custom_entry": {},
+            "cloudflare_zero_trust_dlp_custom_profile": {},
+            "cloudflare_zero_trust_dlp_dataset": {},
+            "cloudflare_zero_trust_dlp_entry": {},
+            "cloudflare_zero_trust_dlp_integration_entry": {},
+            "cloudflare_zero_trust_dlp_predefined_entry": {},
+            "cloudflare_zero_trust_dlp_predefined_profile": {},
+            "cloudflare_zero_trust_dlp_settings": {},
+            "cloudflare_zero_trust_dns_location": {},
+            "cloudflare_zero_trust_gateway_certificate": {},
+            "cloudflare_zero_trust_gateway_logging": {},
+            "cloudflare_zero_trust_gateway_pacfile": {},
+            "cloudflare_zero_trust_gateway_policy": {},
+            "cloudflare_zero_trust_gateway_proxy_endpoint": {},
+            "cloudflare_zero_trust_gateway_settings": {},
+            "cloudflare_zero_trust_list": {},
+            "cloudflare_zero_trust_network_hostname_route": {},
+            "cloudflare_zero_trust_organization": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_zero_trust_risk_behavior": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_zero_trust_risk_scoring_integration": {},
+            "cloudflare_zero_trust_tunnel_cloudflared": {},
+            "cloudflare_zero_trust_tunnel_cloudflared_config": {},
+            "cloudflare_zero_trust_tunnel_cloudflared_route": {},
+            "cloudflare_zero_trust_tunnel_cloudflared_virtual_network": {},
+            "cloudflare_zero_trust_tunnel_warp_connector": {},
+            "cloudflare_zone": {},
+            "cloudflare_zone_cache_reserve": {},
+            "cloudflare_zone_cache_variants": {},
+            "cloudflare_zone_dns_settings": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "cloudflare_zone_dnssec": {},
+            "cloudflare_zone_hold": {},
+            "cloudflare_zone_lockdown": {},
+            "cloudflare_zone_setting": {},
+            "cloudflare_zone_subscription": {}
+        }
+    },
     "mux": {
         "resources": {
             "cloudflare:index/accessApplication:AccessApplication": 0,

@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.AccountToken;
  * import com.pulumi.cloudflare.AccountTokenArgs;
  * import com.pulumi.cloudflare.inputs.AccountTokenPolicyArgs;
+ * import com.pulumi.cloudflare.inputs.AccountTokenPolicyPermissionGroupArgs;
  * import com.pulumi.cloudflare.inputs.AccountTokenConditionArgs;
  * import com.pulumi.cloudflare.inputs.AccountTokenConditionRequestIpArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;

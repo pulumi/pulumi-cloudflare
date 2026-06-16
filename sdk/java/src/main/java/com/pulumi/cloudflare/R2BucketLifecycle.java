@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs;
  * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleDeleteObjectsTransitionArgs;
  * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleStorageClassTransitionArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleStorageClassTransitionConditionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

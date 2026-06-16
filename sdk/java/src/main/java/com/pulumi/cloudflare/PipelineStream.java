@@ -40,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.PipelineStreamHttpArgs;
  * import com.pulumi.cloudflare.inputs.PipelineStreamHttpCorsArgs;
  * import com.pulumi.cloudflare.inputs.PipelineStreamSchemaArgs;
+ * import com.pulumi.cloudflare.inputs.PipelineStreamSchemaFieldArgs;
  * import com.pulumi.cloudflare.inputs.PipelineStreamSchemaFormatArgs;
  * import com.pulumi.cloudflare.inputs.PipelineStreamWorkerBindingArgs;
  * import java.util.ArrayList;

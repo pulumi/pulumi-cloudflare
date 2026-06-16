@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.RateLimitActionArgs;
  * import com.pulumi.cloudflare.inputs.RateLimitActionResponseArgs;
  * import com.pulumi.cloudflare.inputs.RateLimitMatchArgs;
+ * import com.pulumi.cloudflare.inputs.RateLimitMatchHeaderArgs;
  * import com.pulumi.cloudflare.inputs.RateLimitMatchRequestArgs;
  * import com.pulumi.cloudflare.inputs.RateLimitMatchResponseArgs;
  * import java.util.ArrayList;

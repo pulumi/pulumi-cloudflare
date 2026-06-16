@@ -35,6 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.UserGroup;
  * import com.pulumi.cloudflare.UserGroupArgs;
  * import com.pulumi.cloudflare.inputs.UserGroupPolicyArgs;
+ * import com.pulumi.cloudflare.inputs.UserGroupPolicyPermissionGroupArgs;
+ * import com.pulumi.cloudflare.inputs.UserGroupPolicyResourceGroupArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
