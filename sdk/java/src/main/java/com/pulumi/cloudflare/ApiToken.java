@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.ApiToken;
  * import com.pulumi.cloudflare.ApiTokenArgs;
  * import com.pulumi.cloudflare.inputs.ApiTokenPolicyArgs;
+ * import com.pulumi.cloudflare.inputs.ApiTokenPolicyPermissionGroupArgs;
  * import com.pulumi.cloudflare.inputs.ApiTokenConditionArgs;
  * import com.pulumi.cloudflare.inputs.ApiTokenConditionRequestIpArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;

@@ -37,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.CustomHostname;
  * import com.pulumi.cloudflare.CustomHostnameArgs;
  * import com.pulumi.cloudflare.inputs.CustomHostnameSslArgs;
+ * import com.pulumi.cloudflare.inputs.CustomHostnameSslCustomCertBundleArgs;
  * import com.pulumi.cloudflare.inputs.CustomHostnameSslSettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

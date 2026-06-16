@@ -41,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.PipelineSinkConfigRollingPolicyArgs;
  * import com.pulumi.cloudflare.inputs.PipelineSinkFormatArgs;
  * import com.pulumi.cloudflare.inputs.PipelineSinkSchemaArgs;
+ * import com.pulumi.cloudflare.inputs.PipelineSinkSchemaFieldArgs;
  * import com.pulumi.cloudflare.inputs.PipelineSinkSchemaFormatArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

@@ -49,6 +49,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.WorkerVersionContainerArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionLimitsArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsRenamedClassArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsTransferredClassArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionModuleArgs;
  * import com.pulumi.cloudflare.inputs.WorkerVersionPlacementArgs;
  * import java.util.ArrayList;

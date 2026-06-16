@@ -37,6 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.TokenValidationRules;
  * import com.pulumi.cloudflare.TokenValidationRulesArgs;
  * import com.pulumi.cloudflare.inputs.TokenValidationRulesSelectorArgs;
+ * import com.pulumi.cloudflare.inputs.TokenValidationRulesSelectorExcludeArgs;
+ * import com.pulumi.cloudflare.inputs.TokenValidationRulesSelectorIncludeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

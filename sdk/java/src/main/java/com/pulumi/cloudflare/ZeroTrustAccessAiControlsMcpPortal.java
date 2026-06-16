@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpPortal;
  * import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpPortalArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpPortalServerArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedPromptArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpPortalServerUpdatedToolArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
