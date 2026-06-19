@@ -48,25 +48,25 @@ namespace Pulumi.Cloudflare
     public partial class ClientCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Client Certificate PEM
+        /// The Client Certificate PEM.
         /// </summary>
         [Output("certificate")]
         public Output<string> Certificate { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate Authority used to issue the Client Certificate
+        /// Certificate Authority used to issue the Client Certificate.
         /// </summary>
         [Output("certificateAuthority")]
         public Output<Outputs.ClientCertificateCertificateAuthority> CertificateAuthority { get; private set; } = null!;
 
         /// <summary>
-        /// Common Name of the Client Certificate
+        /// Common Name of the Client Certificate.
         /// </summary>
         [Output("commonName")]
         public Output<string> CommonName { get; private set; } = null!;
 
         /// <summary>
-        /// Country, provided by the CSR
+        /// Country, provided by the CSR.
         /// </summary>
         [Output("country")]
         public Output<string> Country { get; private set; } = null!;
@@ -78,37 +78,37 @@ namespace Pulumi.Cloudflare
         public Output<string> Csr { get; private set; } = null!;
 
         /// <summary>
-        /// Date that the Client Certificate expires
+        /// Date that the Client Certificate expires.
         /// </summary>
         [Output("expiresOn")]
         public Output<string> ExpiresOn { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the Client Certificate
+        /// Unique identifier of the Client Certificate.
         /// </summary>
         [Output("fingerprintSha256")]
         public Output<string> FingerprintSha256 { get; private set; } = null!;
 
         /// <summary>
-        /// Date that the Client Certificate was issued by the Certificate Authority
+        /// Date that the Client Certificate was issued by the Certificate Authority.
         /// </summary>
         [Output("issuedOn")]
         public Output<string> IssuedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Location, provided by the CSR
+        /// Location, provided by the CSR.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Organization, provided by the CSR
+        /// Organization, provided by the CSR.
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
 
         /// <summary>
-        /// Organizational Unit, provided by the CSR
+        /// Organizational Unit, provided by the CSR.
         /// </summary>
         [Output("organizationalUnit")]
         public Output<string> OrganizationalUnit { get; private set; } = null!;
@@ -129,26 +129,26 @@ namespace Pulumi.Cloudflare
         public Output<string> Signature { get; private set; } = null!;
 
         /// <summary>
-        /// Subject Key Identifier
+        /// Subject Key Identifier.
         /// </summary>
         [Output("ski")]
         public Output<string> Ski { get; private set; } = null!;
 
         /// <summary>
-        /// State, provided by the CSR
+        /// State, provided by the CSR.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+        /// Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
         /// Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The number of days the Client Certificate will be valid after the IssuedOn date
+        /// The number of days the Client Certificate will be valid after the IssuedOn date.
         /// </summary>
         [Output("validityDays")]
         public Output<int> ValidityDays { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Reactivate { get; set; }
 
         /// <summary>
-        /// The number of days the Client Certificate will be valid after the IssuedOn date
+        /// The number of days the Client Certificate will be valid after the IssuedOn date.
         /// </summary>
         [Input("validityDays", required: true)]
         public Input<int> ValidityDays { get; set; } = null!;
@@ -235,25 +235,25 @@ namespace Pulumi.Cloudflare
     public sealed class ClientCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Client Certificate PEM
+        /// The Client Certificate PEM.
         /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
 
         /// <summary>
-        /// Certificate Authority used to issue the Client Certificate
+        /// Certificate Authority used to issue the Client Certificate.
         /// </summary>
         [Input("certificateAuthority")]
         public Input<Inputs.ClientCertificateCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
 
         /// <summary>
-        /// Common Name of the Client Certificate
+        /// Common Name of the Client Certificate.
         /// </summary>
         [Input("commonName")]
         public Input<string>? CommonName { get; set; }
 
         /// <summary>
-        /// Country, provided by the CSR
+        /// Country, provided by the CSR.
         /// </summary>
         [Input("country")]
         public Input<string>? Country { get; set; }
@@ -265,37 +265,37 @@ namespace Pulumi.Cloudflare
         public Input<string>? Csr { get; set; }
 
         /// <summary>
-        /// Date that the Client Certificate expires
+        /// Date that the Client Certificate expires.
         /// </summary>
         [Input("expiresOn")]
         public Input<string>? ExpiresOn { get; set; }
 
         /// <summary>
-        /// Unique identifier of the Client Certificate
+        /// Unique identifier of the Client Certificate.
         /// </summary>
         [Input("fingerprintSha256")]
         public Input<string>? FingerprintSha256 { get; set; }
 
         /// <summary>
-        /// Date that the Client Certificate was issued by the Certificate Authority
+        /// Date that the Client Certificate was issued by the Certificate Authority.
         /// </summary>
         [Input("issuedOn")]
         public Input<string>? IssuedOn { get; set; }
 
         /// <summary>
-        /// Location, provided by the CSR
+        /// Location, provided by the CSR.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Organization, provided by the CSR
+        /// Organization, provided by the CSR.
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }
 
         /// <summary>
-        /// Organizational Unit, provided by the CSR
+        /// Organizational Unit, provided by the CSR.
         /// </summary>
         [Input("organizationalUnit")]
         public Input<string>? OrganizationalUnit { get; set; }
@@ -316,26 +316,26 @@ namespace Pulumi.Cloudflare
         public Input<string>? Signature { get; set; }
 
         /// <summary>
-        /// Subject Key Identifier
+        /// Subject Key Identifier.
         /// </summary>
         [Input("ski")]
         public Input<string>? Ski { get; set; }
 
         /// <summary>
-        /// State, provided by the CSR
+        /// State, provided by the CSR.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+        /// Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
         /// Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The number of days the Client Certificate will be valid after the IssuedOn date
+        /// The number of days the Client Certificate will be valid after the IssuedOn date.
         /// </summary>
         [Input("validityDays")]
         public Input<int>? ValidityDays { get; set; }

@@ -21,8 +21,8 @@ __all__ = ['MagicTransitSiteLanArgs', 'MagicTransitSiteLan']
 @pulumi.input_type
 class MagicTransitSiteLanArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bond_id: pulumi.Input[Optional[_builtins.int]] = None,
                  ha_link: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_breakout: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -36,17 +36,16 @@ class MagicTransitSiteLanArgs:
         """
         The set of arguments for constructing a MagicTransitSiteLan resource.
 
-        :param pulumi.Input[_builtins.str] site_id: Identifier
         :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] site_id: Identifier
         :param pulumi.Input[_builtins.bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
         :param pulumi.Input[_builtins.bool] is_breakout: mark true to use this LAN for source-based breakout traffic
         :param pulumi.Input[_builtins.bool] is_prioritized: mark true to use this LAN for source-based prioritized traffic
         :param pulumi.Input['MagicTransitSiteLanStaticAddressingArgs'] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         :param pulumi.Input[_builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "site_id", site_id)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if bond_id is not None:
             pulumi.set(__self__, "bond_id", bond_id)
         if ha_link is not None:
@@ -69,6 +68,18 @@ class MagicTransitSiteLanArgs:
             pulumi.set(__self__, "vlan_tag", vlan_tag)
 
     @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[_builtins.str]:
         """
@@ -79,18 +90,6 @@ class MagicTransitSiteLanArgs:
     @site_id.setter
     def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bondId")
@@ -572,6 +571,8 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MagicTransitSiteLanArgs.__new__(MagicTransitSiteLanArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["bond_id"] = bond_id
             __props__.__dict__["ha_link"] = ha_link
@@ -643,7 +644,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier
         """

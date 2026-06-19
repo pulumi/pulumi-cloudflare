@@ -17,6 +17,11 @@ public final class GetWorkerVersionsResultBindingSimple {
      */
     private Double limit;
     /**
+     * @return Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+     * 
+     */
+    private Integer mitigationTimeout;
+    /**
      * @return The period in seconds.
      * 
      */
@@ -29,6 +34,13 @@ public final class GetWorkerVersionsResultBindingSimple {
      */
     public Double limit() {
         return this.limit;
+    }
+    /**
+     * @return Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+     * 
+     */
+    public Integer mitigationTimeout() {
+        return this.mitigationTimeout;
     }
     /**
      * @return The period in seconds.
@@ -48,11 +60,13 @@ public final class GetWorkerVersionsResultBindingSimple {
     @CustomType.Builder
     public static final class Builder {
         private Double limit;
+        private Integer mitigationTimeout;
         private Integer period;
         public Builder() {}
         public Builder(GetWorkerVersionsResultBindingSimple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.limit = defaults.limit;
+    	      this.mitigationTimeout = defaults.mitigationTimeout;
     	      this.period = defaults.period;
         }
 
@@ -62,6 +76,14 @@ public final class GetWorkerVersionsResultBindingSimple {
               throw new MissingRequiredPropertyException("GetWorkerVersionsResultBindingSimple", "limit");
             }
             this.limit = limit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mitigationTimeout(Integer mitigationTimeout) {
+            if (mitigationTimeout == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionsResultBindingSimple", "mitigationTimeout");
+            }
+            this.mitigationTimeout = mitigationTimeout;
             return this;
         }
         @CustomType.Setter
@@ -75,6 +97,7 @@ public final class GetWorkerVersionsResultBindingSimple {
         public GetWorkerVersionsResultBindingSimple build() {
             final var _resultValue = new GetWorkerVersionsResultBindingSimple();
             _resultValue.limit = limit;
+            _resultValue.mitigationTimeout = mitigationTimeout;
             _resultValue.period = period;
             return _resultValue;
         }

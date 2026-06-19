@@ -77,9 +77,10 @@ type ZeroTrustDlpEntry struct {
 	Type      pulumi.StringPtrOutput `pulumi:"type"`
 	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-	UploadStatus pulumi.StringOutput            `pulumi:"uploadStatus"`
-	Variant      ZeroTrustDlpEntryVariantOutput `pulumi:"variant"`
-	WordList     pulumi.StringOutput            `pulumi:"wordList"`
+	UploadStatus pulumi.StringOutput `pulumi:"uploadStatus"`
+	// A Predefined AI prompt classification topic entry.
+	Variant  ZeroTrustDlpEntryVariantOutput `pulumi:"variant"`
+	WordList pulumi.StringOutput            `pulumi:"wordList"`
 }
 
 // NewZeroTrustDlpEntry registers a new resource with the given unique name, arguments, and options.
@@ -139,9 +140,10 @@ type zeroTrustDlpEntryState struct {
 	Type      *string `pulumi:"type"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-	UploadStatus *string                   `pulumi:"uploadStatus"`
-	Variant      *ZeroTrustDlpEntryVariant `pulumi:"variant"`
-	WordList     *string                   `pulumi:"wordList"`
+	UploadStatus *string `pulumi:"uploadStatus"`
+	// A Predefined AI prompt classification topic entry.
+	Variant  *ZeroTrustDlpEntryVariant `pulumi:"variant"`
+	WordList *string                   `pulumi:"wordList"`
 }
 
 type ZeroTrustDlpEntryState struct {
@@ -164,8 +166,9 @@ type ZeroTrustDlpEntryState struct {
 	UpdatedAt pulumi.StringPtrInput
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	UploadStatus pulumi.StringPtrInput
-	Variant      ZeroTrustDlpEntryVariantPtrInput
-	WordList     pulumi.StringPtrInput
+	// A Predefined AI prompt classification topic entry.
+	Variant  ZeroTrustDlpEntryVariantPtrInput
+	WordList pulumi.StringPtrInput
 }
 
 func (ZeroTrustDlpEntryState) ElementType() reflect.Type {
@@ -343,6 +346,7 @@ func (o ZeroTrustDlpEntryOutput) UploadStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpEntry) pulumi.StringOutput { return v.UploadStatus }).(pulumi.StringOutput)
 }
 
+// A Predefined AI prompt classification topic entry.
 func (o ZeroTrustDlpEntryOutput) Variant() ZeroTrustDlpEntryVariantOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpEntry) ZeroTrustDlpEntryVariantOutput { return v.Variant }).(ZeroTrustDlpEntryVariantOutput)
 }

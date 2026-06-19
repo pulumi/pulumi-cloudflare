@@ -43,7 +43,7 @@ export interface GetMagicTransitSiteWanArgs {
     /**
      * Identifier
      */
-    accountId?: string;
+    accountId: string;
     /**
      * Identifier
      */
@@ -61,7 +61,7 @@ export interface GetMagicTransitSiteWanResult {
     /**
      * Identifier
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
      * Available values: "low", "mid", "high".
@@ -131,7 +131,7 @@ export interface GetMagicTransitSiteWanOutputArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Identifier
      */

@@ -158,7 +158,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> MfaConfigurationAllowed { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
         /// </summary>
         [Output("mfaRequiredForAllApps")]
         public Output<bool> MfaRequiredForAllApps { get; private set; } = null!;
@@ -322,7 +322,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? MfaConfigurationAllowed { get; set; }
 
         /// <summary>
-        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
         /// </summary>
         [Input("mfaRequiredForAllApps")]
         public Input<bool>? MfaRequiredForAllApps { get; set; }
@@ -444,7 +444,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? MfaConfigurationAllowed { get; set; }
 
         /// <summary>
-        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
         /// </summary>
         [Input("mfaRequiredForAllApps")]
         public Input<bool>? MfaRequiredForAllApps { get; set; }

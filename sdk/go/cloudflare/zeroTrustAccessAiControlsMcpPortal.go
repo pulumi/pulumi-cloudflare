@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `MCP Portals Read`
+// - `MCP Portals Write`
+//
 // ## Example Usage
 //
 // ```go

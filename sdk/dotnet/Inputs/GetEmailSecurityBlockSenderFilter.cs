@@ -20,26 +20,27 @@ namespace Pulumi.Cloudflare.Inputs
         public string? Direction { get; set; }
 
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "pattern", "CreatedAt".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
+        /// <summary>
+        /// Filter by pattern value.
+        /// </summary>
         [Input("pattern")]
         public string? Pattern { get; set; }
 
         /// <summary>
+        /// Filter by pattern type.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         [Input("patternType")]
         public string? PatternType { get; set; }
 
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         [Input("search")]
         public string? Search { get; set; }

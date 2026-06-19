@@ -40,6 +40,11 @@ import (
 //				Limits: &cloudflare.WorkflowLimitsArgs{
 //					Steps: pulumi.Int(1),
 //				},
+//				Schedules: cloudflare.WorkflowScheduleArray{
+//					&cloudflare.WorkflowScheduleArgs{
+//						Cron: pulumi.String("x"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -58,19 +63,20 @@ import (
 type Workflow struct {
 	pulumi.CustomResourceState
 
-	AccountId         pulumi.StringPtrOutput  `pulumi:"accountId"`
-	ClassName         pulumi.StringOutput     `pulumi:"className"`
-	CreatedOn         pulumi.StringOutput     `pulumi:"createdOn"`
-	Instances         WorkflowInstancesOutput `pulumi:"instances"`
-	IsDeleted         pulumi.Float64Output    `pulumi:"isDeleted"`
-	Limits            WorkflowLimitsPtrOutput `pulumi:"limits"`
-	ModifiedOn        pulumi.StringOutput     `pulumi:"modifiedOn"`
-	Name              pulumi.StringOutput     `pulumi:"name"`
-	ScriptName        pulumi.StringOutput     `pulumi:"scriptName"`
-	TerminatorRunning pulumi.Float64Output    `pulumi:"terminatorRunning"`
-	TriggeredOn       pulumi.StringOutput     `pulumi:"triggeredOn"`
-	VersionId         pulumi.StringOutput     `pulumi:"versionId"`
-	WorkflowName      pulumi.StringOutput     `pulumi:"workflowName"`
+	AccountId         pulumi.StringPtrOutput      `pulumi:"accountId"`
+	ClassName         pulumi.StringOutput         `pulumi:"className"`
+	CreatedOn         pulumi.StringOutput         `pulumi:"createdOn"`
+	Instances         WorkflowInstancesOutput     `pulumi:"instances"`
+	IsDeleted         pulumi.Float64Output        `pulumi:"isDeleted"`
+	Limits            WorkflowLimitsPtrOutput     `pulumi:"limits"`
+	ModifiedOn        pulumi.StringOutput         `pulumi:"modifiedOn"`
+	Name              pulumi.StringOutput         `pulumi:"name"`
+	Schedules         WorkflowScheduleArrayOutput `pulumi:"schedules"`
+	ScriptName        pulumi.StringOutput         `pulumi:"scriptName"`
+	TerminatorRunning pulumi.Float64Output        `pulumi:"terminatorRunning"`
+	TriggeredOn       pulumi.StringOutput         `pulumi:"triggeredOn"`
+	VersionId         pulumi.StringOutput         `pulumi:"versionId"`
+	WorkflowName      pulumi.StringOutput         `pulumi:"workflowName"`
 }
 
 // NewWorkflow registers a new resource with the given unique name, arguments, and options.
@@ -120,6 +126,7 @@ type workflowState struct {
 	Limits            *WorkflowLimits    `pulumi:"limits"`
 	ModifiedOn        *string            `pulumi:"modifiedOn"`
 	Name              *string            `pulumi:"name"`
+	Schedules         []WorkflowSchedule `pulumi:"schedules"`
 	ScriptName        *string            `pulumi:"scriptName"`
 	TerminatorRunning *float64           `pulumi:"terminatorRunning"`
 	TriggeredOn       *string            `pulumi:"triggeredOn"`
@@ -136,6 +143,7 @@ type WorkflowState struct {
 	Limits            WorkflowLimitsPtrInput
 	ModifiedOn        pulumi.StringPtrInput
 	Name              pulumi.StringPtrInput
+	Schedules         WorkflowScheduleArrayInput
 	ScriptName        pulumi.StringPtrInput
 	TerminatorRunning pulumi.Float64PtrInput
 	TriggeredOn       pulumi.StringPtrInput
@@ -148,11 +156,12 @@ func (WorkflowState) ElementType() reflect.Type {
 }
 
 type workflowArgs struct {
-	AccountId    *string         `pulumi:"accountId"`
-	ClassName    string          `pulumi:"className"`
-	Limits       *WorkflowLimits `pulumi:"limits"`
-	ScriptName   string          `pulumi:"scriptName"`
-	WorkflowName string          `pulumi:"workflowName"`
+	AccountId    *string            `pulumi:"accountId"`
+	ClassName    string             `pulumi:"className"`
+	Limits       *WorkflowLimits    `pulumi:"limits"`
+	Schedules    []WorkflowSchedule `pulumi:"schedules"`
+	ScriptName   string             `pulumi:"scriptName"`
+	WorkflowName string             `pulumi:"workflowName"`
 }
 
 // The set of arguments for constructing a Workflow resource.
@@ -160,6 +169,7 @@ type WorkflowArgs struct {
 	AccountId    pulumi.StringPtrInput
 	ClassName    pulumi.StringInput
 	Limits       WorkflowLimitsPtrInput
+	Schedules    WorkflowScheduleArrayInput
 	ScriptName   pulumi.StringInput
 	WorkflowName pulumi.StringInput
 }
@@ -281,6 +291,10 @@ func (o WorkflowOutput) ModifiedOn() pulumi.StringOutput {
 
 func (o WorkflowOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o WorkflowOutput) Schedules() WorkflowScheduleArrayOutput {
+	return o.ApplyT(func(v *Workflow) WorkflowScheduleArrayOutput { return v.Schedules }).(WorkflowScheduleArrayOutput)
 }
 
 func (o WorkflowOutput) ScriptName() pulumi.StringOutput {

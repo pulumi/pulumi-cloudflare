@@ -15,6 +15,21 @@ public final class GetPipelineStreamFilter extends com.pulumi.resources.InvokeAr
     public static final GetPipelineStreamFilter Empty = new GetPipelineStreamFilter();
 
     /**
+     * Filters streams by name (case-insensitive substring).
+     * 
+     */
+    @Import(name="name")
+    private @Nullable String name;
+
+    /**
+     * @return Filters streams by name (case-insensitive substring).
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * Specifies the public ID of the pipeline.
      * 
      */
@@ -32,6 +47,7 @@ public final class GetPipelineStreamFilter extends com.pulumi.resources.InvokeAr
     private GetPipelineStreamFilter() {}
 
     private GetPipelineStreamFilter(GetPipelineStreamFilter $) {
+        this.name = $.name;
         this.pipelineId = $.pipelineId;
     }
 
@@ -51,6 +67,17 @@ public final class GetPipelineStreamFilter extends com.pulumi.resources.InvokeAr
 
         public Builder(GetPipelineStreamFilter defaults) {
             $ = new GetPipelineStreamFilter(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param name Filters streams by name (case-insensitive substring).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable String name) {
+            $.name = name;
+            return this;
         }
 
         /**

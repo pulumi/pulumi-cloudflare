@@ -52,7 +52,7 @@ import (
 type CustomOriginTrustStore struct {
 	pulumi.CustomResourceState
 
-	// The zone's SSL certificate or certificate and the intermediate(s).
+	// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	// When the certificate expires.
 	ExpiresOn pulumi.StringOutput `pulumi:"expiresOn"`
@@ -104,7 +104,7 @@ func GetCustomOriginTrustStore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomOriginTrustStore resources.
 type customOriginTrustStoreState struct {
-	// The zone's SSL certificate or certificate and the intermediate(s).
+	// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
 	Certificate *string `pulumi:"certificate"`
 	// When the certificate expires.
 	ExpiresOn *string `pulumi:"expiresOn"`
@@ -124,7 +124,7 @@ type customOriginTrustStoreState struct {
 }
 
 type CustomOriginTrustStoreState struct {
-	// The zone's SSL certificate or certificate and the intermediate(s).
+	// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
 	Certificate pulumi.StringPtrInput
 	// When the certificate expires.
 	ExpiresOn pulumi.StringPtrInput
@@ -148,7 +148,7 @@ func (CustomOriginTrustStoreState) ElementType() reflect.Type {
 }
 
 type customOriginTrustStoreArgs struct {
-	// The zone's SSL certificate or certificate and the intermediate(s).
+	// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
 	Certificate string `pulumi:"certificate"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
@@ -156,7 +156,7 @@ type customOriginTrustStoreArgs struct {
 
 // The set of arguments for constructing a CustomOriginTrustStore resource.
 type CustomOriginTrustStoreArgs struct {
-	// The zone's SSL certificate or certificate and the intermediate(s).
+	// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
 	Certificate pulumi.StringInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
@@ -249,7 +249,7 @@ func (o CustomOriginTrustStoreOutput) ToCustomOriginTrustStoreOutputWithContext(
 	return o
 }
 
-// The zone's SSL certificate or certificate and the intermediate(s).
+// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
 func (o CustomOriginTrustStoreOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomOriginTrustStore) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }

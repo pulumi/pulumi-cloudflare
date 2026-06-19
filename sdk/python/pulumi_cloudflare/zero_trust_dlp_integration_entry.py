@@ -107,8 +107,9 @@ class _ZeroTrustDlpIntegrationEntryState:
                Cannot be set to false if secret is true
         :param pulumi.Input[_builtins.str] profile_id: This field is not used as the owning profile.
                For predefined entries it is already set to a predefined profile.
-        :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        :param pulumi.Input[_builtins.str] type: Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        :param pulumi.Input['ZeroTrustDlpIntegrationEntryVariantArgs'] variant: A Predefined AI prompt classification topic entry.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -266,7 +267,7 @@ class _ZeroTrustDlpIntegrationEntryState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         """
         return pulumi.get(self, "type")
 
@@ -298,6 +299,9 @@ class _ZeroTrustDlpIntegrationEntryState:
     @_builtins.property
     @pulumi.getter
     def variant(self) -> pulumi.Input[Optional['ZeroTrustDlpIntegrationEntryVariantArgs']]:
+        """
+        A Predefined AI prompt classification topic entry.
+        """
         return pulumi.get(self, "variant")
 
     @variant.setter
@@ -476,8 +480,9 @@ class ZeroTrustDlpIntegrationEntry(pulumi.CustomResource):
                Cannot be set to false if secret is true
         :param pulumi.Input[_builtins.str] profile_id: This field is not used as the owning profile.
                For predefined entries it is already set to a predefined profile.
-        :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        :param pulumi.Input[_builtins.str] type: Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        :param pulumi.Input[Union['ZeroTrustDlpIntegrationEntryVariantArgs', 'ZeroTrustDlpIntegrationEntryVariantArgsDict']] variant: A Predefined AI prompt classification topic entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -575,7 +580,7 @@ class ZeroTrustDlpIntegrationEntry(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         """
         return pulumi.get(self, "type")
 
@@ -595,6 +600,9 @@ class ZeroTrustDlpIntegrationEntry(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def variant(self) -> pulumi.Output['outputs.ZeroTrustDlpIntegrationEntryVariant']:
+        """
+        A Predefined AI prompt classification topic entry.
+        """
         return pulumi.get(self, "variant")
 
     @_builtins.property

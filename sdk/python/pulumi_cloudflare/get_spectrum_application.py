@@ -28,7 +28,7 @@ class GetSpectrumApplicationResult:
     """
     A collection of values returned by getSpectrumApplication.
     """
-    def __init__(__self__, app_id=None, argo_smart_routing=None, created_on=None, dns=None, edge_ips=None, filter=None, id=None, ip_firewall=None, modified_on=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, zone_id=None):
+    def __init__(__self__, app_id=None, argo_smart_routing=None, created_on=None, dns=None, edge_ips=None, filter=None, id=None, ip_firewall=None, modified_on=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, virtual_network_id=None, zone_id=None):
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         pulumi.set(__self__, "app_id", app_id)
@@ -77,6 +77,9 @@ class GetSpectrumApplicationResult:
         if traffic_type and not isinstance(traffic_type, str):
             raise TypeError("Expected argument 'traffic_type' to be a str")
         pulumi.set(__self__, "traffic_type", traffic_type)
+        if virtual_network_id and not isinstance(virtual_network_id, str):
+            raise TypeError("Expected argument 'virtual_network_id' to be a str")
+        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -213,6 +216,14 @@ class GetSpectrumApplicationResult:
         return pulumi.get(self, "traffic_type")
 
     @_builtins.property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> _builtins.str:
+        """
+        Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+        """
+        return pulumi.get(self, "virtual_network_id")
+
+    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
         """
@@ -243,6 +254,7 @@ class AwaitableGetSpectrumApplicationResult(GetSpectrumApplicationResult):
             proxy_protocol=self.proxy_protocol,
             tls=self.tls,
             traffic_type=self.traffic_type,
+            virtual_network_id=self.virtual_network_id,
             zone_id=self.zone_id)
 
 
@@ -294,6 +306,7 @@ def get_spectrum_application(app_id: Optional[_builtins.str] = None,
         proxy_protocol=pulumi.get(__ret__, 'proxy_protocol'),
         tls=pulumi.get(__ret__, 'tls'),
         traffic_type=pulumi.get(__ret__, 'traffic_type'),
+        virtual_network_id=pulumi.get(__ret__, 'virtual_network_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_spectrum_application_output(app_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     filter: pulumi.Input[Optional[Optional[Union['GetSpectrumApplicationFilterArgs', 'GetSpectrumApplicationFilterArgsDict']]]] = None,
@@ -342,4 +355,5 @@ def get_spectrum_application_output(app_id: pulumi.Input[Optional[Optional[_buil
         proxy_protocol=pulumi.get(__response__, 'proxy_protocol'),
         tls=pulumi.get(__response__, 'tls'),
         traffic_type=pulumi.get(__response__, 'traffic_type'),
+        virtual_network_id=pulumi.get(__response__, 'virtual_network_id'),
         zone_id=pulumi.get(__response__, 'zone_id')))

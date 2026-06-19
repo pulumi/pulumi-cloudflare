@@ -35,6 +35,10 @@ public final class GetUserGroupMembersResult {
      * 
      */
     private String id;
+    /**
+     * @return List of members in the user group.
+     * 
+     */
     private List<GetUserGroupMembersMember> members;
     /**
      * @return User Group identifier tag.
@@ -72,6 +76,10 @@ public final class GetUserGroupMembersResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return List of members in the user group.
+     * 
+     */
     public List<GetUserGroupMembersMember> members() {
         return this.members;
     }

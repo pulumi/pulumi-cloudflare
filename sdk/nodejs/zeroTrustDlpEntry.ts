@@ -90,6 +90,9 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     declare public /*out*/ readonly uploadStatus: pulumi.Output<string>;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     declare public /*out*/ readonly variant: pulumi.Output<outputs.ZeroTrustDlpEntryVariant>;
     declare public /*out*/ readonly wordList: pulumi.Output<string>;
 
@@ -184,6 +187,9 @@ export interface ZeroTrustDlpEntryState {
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     uploadStatus?: pulumi.Input<string | undefined>;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     variant?: pulumi.Input<inputs.ZeroTrustDlpEntryVariant | undefined>;
     wordList?: pulumi.Input<string | undefined>;
 }

@@ -65,6 +65,9 @@ type ZeroTrustNetworkHostnameRoute struct {
 	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
 	// The hostname of the route.
 	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
+	// The type of tunnel.
+	// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+	TunType pulumi.StringOutput `pulumi:"tunType"`
 	// UUID of the tunnel.
 	TunnelId pulumi.StringPtrOutput `pulumi:"tunnelId"`
 	// A user-friendly name for a tunnel.
@@ -111,6 +114,9 @@ type zeroTrustNetworkHostnameRouteState struct {
 	DeletedAt *string `pulumi:"deletedAt"`
 	// The hostname of the route.
 	Hostname *string `pulumi:"hostname"`
+	// The type of tunnel.
+	// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+	TunType *string `pulumi:"tunType"`
 	// UUID of the tunnel.
 	TunnelId *string `pulumi:"tunnelId"`
 	// A user-friendly name for a tunnel.
@@ -128,6 +134,9 @@ type ZeroTrustNetworkHostnameRouteState struct {
 	DeletedAt pulumi.StringPtrInput
 	// The hostname of the route.
 	Hostname pulumi.StringPtrInput
+	// The type of tunnel.
+	// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+	TunType pulumi.StringPtrInput
 	// UUID of the tunnel.
 	TunnelId pulumi.StringPtrInput
 	// A user-friendly name for a tunnel.
@@ -271,6 +280,12 @@ func (o ZeroTrustNetworkHostnameRouteOutput) DeletedAt() pulumi.StringOutput {
 // The hostname of the route.
 func (o ZeroTrustNetworkHostnameRouteOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustNetworkHostnameRoute) pulumi.StringPtrOutput { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The type of tunnel.
+// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+func (o ZeroTrustNetworkHostnameRouteOutput) TunType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustNetworkHostnameRoute) pulumi.StringOutput { return v.TunType }).(pulumi.StringOutput)
 }
 
 // UUID of the tunnel.

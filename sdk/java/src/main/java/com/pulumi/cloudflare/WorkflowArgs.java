@@ -4,10 +4,12 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
+import com.pulumi.cloudflare.inputs.WorkflowScheduleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -38,6 +40,13 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.limits);
     }
 
+    @Import(name="schedules")
+    private @Nullable Output<List<WorkflowScheduleArgs>> schedules;
+
+    public Optional<Output<List<WorkflowScheduleArgs>>> schedules() {
+        return Optional.ofNullable(this.schedules);
+    }
+
     @Import(name="scriptName", required=true)
     private Output<String> scriptName;
 
@@ -58,6 +67,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.className = $.className;
         this.limits = $.limits;
+        this.schedules = $.schedules;
         this.scriptName = $.scriptName;
         this.workflowName = $.workflowName;
     }
@@ -105,6 +115,19 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder limits(WorkflowLimitsArgs limits) {
             return limits(Output.of(limits));
+        }
+
+        public Builder schedules(@Nullable Output<List<WorkflowScheduleArgs>> schedules) {
+            $.schedules = schedules;
+            return this;
+        }
+
+        public Builder schedules(List<WorkflowScheduleArgs> schedules) {
+            return schedules(Output.of(schedules));
+        }
+
+        public Builder schedules(WorkflowScheduleArgs... schedules) {
+            return schedules(List.of(schedules));
         }
 
         public Builder scriptName(Output<String> scriptName) {

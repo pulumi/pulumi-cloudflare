@@ -27,10 +27,13 @@ class GetMagicTransitConnectorsResult:
     """
     A collection of values returned by getMagicTransitConnectors.
     """
-    def __init__(__self__, account_id=None, id=None, max_items=None, results=None):
+    def __init__(__self__, account_id=None, device_type=None, id=None, max_items=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if device_type and not isinstance(device_type, str):
+            raise TypeError("Expected argument 'device_type' to be a str")
+        pulumi.set(__self__, "device_type", device_type)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -48,6 +51,15 @@ class GetMagicTransitConnectorsResult:
         Account identifier
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deviceType")
+    def device_type(self) -> Optional[_builtins.str]:
+        """
+        Filter connectors by device type.
+        Available values: "MANAGED", "LICENSED".
+        """
+        return pulumi.get(self, "device_type")
 
     @_builtins.property
     @pulumi.getter
@@ -81,12 +93,14 @@ class AwaitableGetMagicTransitConnectorsResult(GetMagicTransitConnectorsResult):
             yield self
         return GetMagicTransitConnectorsResult(
             account_id=self.account_id,
+            device_type=self.device_type,
             id=self.id,
             max_items=self.max_items,
             results=self.results)
 
 
 def get_magic_transit_connectors(account_id: Optional[_builtins.str] = None,
+                                 device_type: Optional[_builtins.str] = None,
                                  max_items: Optional[_builtins.int] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMagicTransitConnectorsResult:
     """
@@ -106,20 +120,25 @@ def get_magic_transit_connectors(account_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str account_id: Account identifier
+    :param _builtins.str device_type: Filter connectors by device type.
+           Available values: "MANAGED", "LICENSED".
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['deviceType'] = device_type
     __args__['maxItems'] = max_items
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors', __args__, opts=opts, typ=GetMagicTransitConnectorsResult).value
 
     return AwaitableGetMagicTransitConnectorsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        device_type=pulumi.get(__ret__, 'device_type'),
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'))
 def get_magic_transit_connectors_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        device_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMagicTransitConnectorsResult]:
     """
@@ -139,15 +158,19 @@ def get_magic_transit_connectors_output(account_id: pulumi.Input[Optional[Option
 
 
     :param _builtins.str account_id: Account identifier
+    :param _builtins.str device_type: Filter connectors by device type.
+           Available values: "MANAGED", "LICENSED".
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['deviceType'] = device_type
     __args__['maxItems'] = max_items
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getMagicTransitConnectors:getMagicTransitConnectors', __args__, opts=opts, typ=GetMagicTransitConnectorsResult)
     return __ret__.apply(lambda __response__: GetMagicTransitConnectorsResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        device_type=pulumi.get(__response__, 'device_type'),
         id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         results=pulumi.get(__response__, 'results')))

@@ -67,6 +67,10 @@ export interface GetZeroTrustDeviceDefaultProfileResult {
      */
     readonly disableAutoFallback: boolean;
     /**
+     * List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     */
+    readonly dnsSearchSuffixes: outputs.GetZeroTrustDeviceDefaultProfileDnsSearchSuffix[];
+    /**
      * Whether the policy will be applied to matching devices.
      */
     readonly enabled: boolean;
@@ -110,6 +114,10 @@ export interface GetZeroTrustDeviceDefaultProfileResult {
      * Determines which tunnel protocol to use.
      */
     readonly tunnelProtocol: string;
+    /**
+     * Virtual network access settings for the device.
+     */
+    readonly virtualNetworks: outputs.GetZeroTrustDeviceDefaultProfileVirtualNetworks;
 }
 /**
  * ## Example Usage

@@ -6,14 +6,12 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.EmailSecurityTrustedDomainsArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.EmailSecurityTrustedDomainsState;
-import com.pulumi.cloudflare.outputs.EmailSecurityTrustedDomainsBody;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -71,24 +69,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains")
 public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomResource {
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
-    }
-    @Export(name="bodies", refs={List.class,EmailSecurityTrustedDomainsBody.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<EmailSecurityTrustedDomainsBody>> bodies;
-
-    public Output<Optional<List<EmailSecurityTrustedDomainsBody>>> bodies() {
-        return Codegen.optional(this.bodies);
     }
     @Export(name="comments", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comments;
@@ -103,16 +95,14 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
         return this.createdAt;
     }
     /**
-     * Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
+     * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      * 
      */
     @Export(name="isRecent", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isRecent;
 
     /**
-     * @return Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
+     * @return Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      * 
      */
     public Output<Optional<Boolean>> isRecent() {
@@ -125,34 +115,48 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.isRegex);
     }
     /**
-     * Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
+     * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      * 
      */
     @Export(name="isSimilarity", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isSimilarity;
 
     /**
-     * @return Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
+     * @return Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      * 
      */
     public Output<Optional<Boolean>> isSimilarity() {
         return Codegen.optional(this.isSimilarity);
     }
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="lastModified", refs={String.class}, tree="[0]")
     private Output<String> lastModified;
 
+    /**
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     */
     public Output<String> lastModified() {
         return this.lastModified;
     }
-    @Export(name="pattern", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> pattern;
+    @Export(name="modifiedAt", refs={String.class}, tree="[0]")
+    private Output<String> modifiedAt;
 
-    public Output<Optional<String>> pattern() {
-        return Codegen.optional(this.pattern);
+    public Output<String> modifiedAt() {
+        return this.modifiedAt;
+    }
+    @Export(name="pattern", refs={String.class}, tree="[0]")
+    private Output<String> pattern;
+
+    public Output<String> pattern() {
+        return this.pattern;
     }
 
     /**
@@ -167,7 +171,7 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EmailSecurityTrustedDomains(java.lang.String name, @Nullable EmailSecurityTrustedDomainsArgs args) {
+    public EmailSecurityTrustedDomains(java.lang.String name, EmailSecurityTrustedDomainsArgs args) {
         this(name, args, null);
     }
     /**
@@ -176,7 +180,7 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EmailSecurityTrustedDomains(java.lang.String name, @Nullable EmailSecurityTrustedDomainsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public EmailSecurityTrustedDomains(java.lang.String name, EmailSecurityTrustedDomainsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -184,7 +188,7 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
         super("cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static EmailSecurityTrustedDomainsArgs makeArgs(@Nullable EmailSecurityTrustedDomainsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static EmailSecurityTrustedDomainsArgs makeArgs(EmailSecurityTrustedDomainsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

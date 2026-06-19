@@ -14,13 +14,21 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetPipelineStreamFilterResult
     {
         /// <summary>
+        /// Filters streams by name (case-insensitive substring).
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
         /// Specifies the public ID of the pipeline.
         /// </summary>
         public readonly string? PipelineId;
 
         [OutputConstructor]
-        private GetPipelineStreamFilterResult(string? pipelineId)
+        private GetPipelineStreamFilterResult(
+            string? name,
+
+            string? pipelineId)
         {
+            Name = name;
             PipelineId = pipelineId;
         }
     }

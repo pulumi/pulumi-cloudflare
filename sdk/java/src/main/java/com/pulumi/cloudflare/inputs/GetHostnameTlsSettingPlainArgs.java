@@ -16,14 +16,16 @@ public final class GetHostnameTlsSettingPlainArgs extends com.pulumi.resources.I
     public static final GetHostnameTlsSettingPlainArgs Empty = new GetHostnameTlsSettingPlainArgs();
 
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     @Import(name="settingId", required=true)
     private String settingId;
 
     /**
-     * @return The TLS Setting name. The value type depends on the setting:
+     * @return The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     public String settingId() {
@@ -71,7 +73,8 @@ public final class GetHostnameTlsSettingPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param settingId The TLS Setting name. The value type depends on the setting:
+         * @param settingId The TLS Setting name.
+         * The value type depends on the setting:
          * 
          * @return builder
          * 

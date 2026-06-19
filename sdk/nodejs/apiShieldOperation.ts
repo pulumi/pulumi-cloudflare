@@ -82,6 +82,10 @@ export class ApiShieldOperation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly operationId: pulumi.Output<string>;
     /**
+     * OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+     */
+    declare public /*out*/ readonly schemas: pulumi.Output<outputs.ApiShieldOperationSchemas>;
+    /**
      * Identifier.
      */
     declare public readonly zoneId: pulumi.Output<string | undefined>;
@@ -105,6 +109,7 @@ export class ApiShieldOperation extends pulumi.CustomResource {
             resourceInputs["lastUpdated"] = state?.lastUpdated;
             resourceInputs["method"] = state?.method;
             resourceInputs["operationId"] = state?.operationId;
+            resourceInputs["schemas"] = state?.schemas;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ApiShieldOperationArgs | undefined;
@@ -124,6 +129,7 @@ export class ApiShieldOperation extends pulumi.CustomResource {
             resourceInputs["features"] = undefined /*out*/;
             resourceInputs["lastUpdated"] = undefined /*out*/;
             resourceInputs["operationId"] = undefined /*out*/;
+            resourceInputs["schemas"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApiShieldOperation.__pulumiType, name, resourceInputs, opts);
@@ -153,6 +159,10 @@ export interface ApiShieldOperationState {
      * UUID.
      */
     operationId?: pulumi.Input<string | undefined>;
+    /**
+     * OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+     */
+    schemas?: pulumi.Input<inputs.ApiShieldOperationSchemas | undefined>;
     /**
      * Identifier.
      */

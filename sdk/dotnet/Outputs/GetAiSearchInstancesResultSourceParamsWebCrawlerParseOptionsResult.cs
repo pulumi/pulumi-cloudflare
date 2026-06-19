@@ -14,9 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsResult
     {
         /// <summary>
-        /// List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+        /// List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelectorResult> ContentSelectors;
+        /// <summary>
+        /// Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+        /// </summary>
         public readonly ImmutableDictionary<string, string> IncludeHeaders;
         public readonly bool IncludeImages;
         /// <summary>

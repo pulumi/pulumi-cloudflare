@@ -83,7 +83,7 @@ type LookupZeroTrustOrganizationResult struct {
 	LoginDesign  GetZeroTrustOrganizationLoginDesign `pulumi:"loginDesign"`
 	// Configures multi-factor authentication (MFA) settings for an organization.
 	MfaConfig GetZeroTrustOrganizationMfaConfig `pulumi:"mfaConfig"`
-	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 	MfaRequiredForAllApps bool `pulumi:"mfaRequiredForAllApps"`
 	// Configures SSH PIV key requirements for MFA using hardware security keys.
 	MfaSshPivKeyRequirements GetZeroTrustOrganizationMfaSshPivKeyRequirements `pulumi:"mfaSshPivKeyRequirements"`
@@ -190,7 +190,7 @@ func (o LookupZeroTrustOrganizationResultOutput) MfaConfig() GetZeroTrustOrganiz
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationMfaConfig { return v.MfaConfig }).(GetZeroTrustOrganizationMfaConfigOutput)
 }
 
-// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 func (o LookupZeroTrustOrganizationResultOutput) MfaRequiredForAllApps() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.MfaRequiredForAllApps }).(pulumi.BoolOutput)
 }

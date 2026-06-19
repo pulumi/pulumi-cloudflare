@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomOriginTrustStoreResult
     {
         /// <summary>
-        /// The zone's SSL certificate or certificate and the intermediate(s).
+        /// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
         /// </summary>
         public readonly string Certificate;
         /// <summary>

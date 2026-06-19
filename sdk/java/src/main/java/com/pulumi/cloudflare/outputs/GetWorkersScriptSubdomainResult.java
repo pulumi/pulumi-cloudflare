@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkersScriptSubdomainResult {
@@ -17,7 +15,7 @@ public final class GetWorkersScriptSubdomainResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return Whether the Worker is available on the workers.dev subdomain.
      * 
@@ -44,8 +42,8 @@ public final class GetWorkersScriptSubdomainResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return Whether the Worker is available on the workers.dev subdomain.
@@ -85,7 +83,7 @@ public final class GetWorkersScriptSubdomainResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private Boolean enabled;
         private String id;
         private Boolean previewsEnabled;
@@ -101,8 +99,10 @@ public final class GetWorkersScriptSubdomainResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptSubdomainResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

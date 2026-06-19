@@ -70,7 +70,8 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
      */
     declare public readonly hostname: pulumi.Output<string>;
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      */
     declare public readonly settingId: pulumi.Output<string>;
     /**
@@ -82,7 +83,8 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * The TLS setting value. The type depends on the `settingId` used in the request path:
+     * The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      */
     declare public readonly value: pulumi.Output<any>;
     /**
@@ -147,7 +149,8 @@ export interface HostnameTlsSettingState {
      */
     hostname?: pulumi.Input<string | undefined>;
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      */
     settingId?: pulumi.Input<string | undefined>;
     /**
@@ -159,7 +162,8 @@ export interface HostnameTlsSettingState {
      */
     updatedAt?: pulumi.Input<string | undefined>;
     /**
-     * The TLS setting value. The type depends on the `settingId` used in the request path:
+     * The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      */
     value?: any | undefined;
     /**
@@ -177,11 +181,13 @@ export interface HostnameTlsSettingArgs {
      */
     hostname: pulumi.Input<string>;
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      */
     settingId: pulumi.Input<string>;
     /**
-     * The TLS setting value. The type depends on the `settingId` used in the request path:
+     * The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      */
     value: any;
     /**

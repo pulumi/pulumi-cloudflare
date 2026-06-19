@@ -57,28 +57,25 @@ func LookupEmailSecurityImpersonationRegistries(ctx *pulumi.Context, args *Looku
 
 // A collection of arguments for invoking getEmailSecurityImpersonationRegistries.
 type LookupEmailSecurityImpersonationRegistriesArgs struct {
-	// Account Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// The field to sort by.
+	// Field to sort by.
 	// Available values: "name", "email", "createdAt".
 	Order *string `pulumi:"order"`
 	// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
 	Provenance *string `pulumi:"provenance"`
-	// Allows searching in multiple properties of a record simultaneously.
-	// This parameter is intended for human users, not automation. Its exact
-	// behavior is intentionally left unspecified and is subject to change
-	// in the future.
+	// Search term for filtering records. Behavior may change.
 	Search *string `pulumi:"search"`
 }
 
 // A collection of values returned by getEmailSecurityImpersonationRegistries.
 type LookupEmailSecurityImpersonationRegistriesResult struct {
-	// Account Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
@@ -87,17 +84,14 @@ type LookupEmailSecurityImpersonationRegistriesResult struct {
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// The field to sort by.
+	// Field to sort by.
 	// Available values: "name", "email", "createdAt".
 	Order *string `pulumi:"order"`
 	// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
 	Provenance *string `pulumi:"provenance"`
 	// The items returned by the data source
 	Results []GetEmailSecurityImpersonationRegistriesResult `pulumi:"results"`
-	// Allows searching in multiple properties of a record simultaneously.
-	// This parameter is intended for human users, not automation. Its exact
-	// behavior is intentionally left unspecified and is subject to change
-	// in the future.
+	// Search term for filtering records. Behavior may change.
 	Search *string `pulumi:"search"`
 }
 
@@ -112,22 +106,19 @@ func LookupEmailSecurityImpersonationRegistriesOutput(ctx *pulumi.Context, args 
 
 // A collection of arguments for invoking getEmailSecurityImpersonationRegistries.
 type LookupEmailSecurityImpersonationRegistriesOutputArgs struct {
-	// Account Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// The field to sort by.
+	// Field to sort by.
 	// Available values: "name", "email", "createdAt".
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
 	Provenance pulumi.StringPtrInput `pulumi:"provenance"`
-	// Allows searching in multiple properties of a record simultaneously.
-	// This parameter is intended for human users, not automation. Its exact
-	// behavior is intentionally left unspecified and is subject to change
-	// in the future.
+	// Search term for filtering records. Behavior may change.
 	Search pulumi.StringPtrInput `pulumi:"search"`
 }
 
@@ -150,7 +141,7 @@ func (o LookupEmailSecurityImpersonationRegistriesResultOutput) ToLookupEmailSec
 	return o
 }
 
-// Account Identifier
+// Identifier.
 func (o LookupEmailSecurityImpersonationRegistriesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistriesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -171,7 +162,7 @@ func (o LookupEmailSecurityImpersonationRegistriesResultOutput) MaxItems() pulum
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistriesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// The field to sort by.
+// Field to sort by.
 // Available values: "name", "email", "createdAt".
 func (o LookupEmailSecurityImpersonationRegistriesResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistriesResult) *string { return v.Order }).(pulumi.StringPtrOutput)
@@ -189,10 +180,7 @@ func (o LookupEmailSecurityImpersonationRegistriesResultOutput) Results() GetEma
 	}).(GetEmailSecurityImpersonationRegistriesResultArrayOutput)
 }
 
-// Allows searching in multiple properties of a record simultaneously.
-// This parameter is intended for human users, not automation. Its exact
-// behavior is intentionally left unspecified and is subject to change
-// in the future.
+// Search term for filtering records. Behavior may change.
 func (o LookupEmailSecurityImpersonationRegistriesResultOutput) Search() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistriesResult) *string { return v.Search }).(pulumi.StringPtrOutput)
 }

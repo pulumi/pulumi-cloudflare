@@ -229,6 +229,21 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     * 
+     */
+    @Import(name="virtualNetworkId")
+    private @Nullable Output<String> virtualNetworkId;
+
+    /**
+     * @return Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     * 
+     */
+    public Optional<Output<String>> virtualNetworkId() {
+        return Optional.ofNullable(this.virtualNetworkId);
+    }
+
+    /**
      * Zone identifier.
      * 
      */
@@ -259,6 +274,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
         this.proxyProtocol = $.proxyProtocol;
         this.tls = $.tls;
         this.trafficType = $.trafficType;
+        this.virtualNetworkId = $.virtualNetworkId;
         this.zoneId = $.zoneId;
     }
 
@@ -573,6 +589,27 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
          */
         public Builder trafficType(String trafficType) {
             return trafficType(Output.of(trafficType));
+        }
+
+        /**
+         * @param virtualNetworkId Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualNetworkId(@Nullable Output<String> virtualNetworkId) {
+            $.virtualNetworkId = virtualNetworkId;
+            return this;
+        }
+
+        /**
+         * @param virtualNetworkId Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualNetworkId(String virtualNetworkId) {
+            return virtualNetworkId(Output.of(virtualNetworkId));
         }
 
         /**

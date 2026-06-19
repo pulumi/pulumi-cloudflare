@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.ApiShieldOperationArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ApiShieldOperationState;
 import com.pulumi.cloudflare.outputs.ApiShieldOperationFeatures;
+import com.pulumi.cloudflare.outputs.ApiShieldOperationSchemas;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -137,6 +138,20 @@ public class ApiShieldOperation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> operationId() {
         return this.operationId;
+    }
+    /**
+     * OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+     * 
+     */
+    @Export(name="schemas", refs={ApiShieldOperationSchemas.class}, tree="[0]")
+    private Output<ApiShieldOperationSchemas> schemas;
+
+    /**
+     * @return OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+     * 
+     */
+    public Output<ApiShieldOperationSchemas> schemas() {
+        return this.schemas;
     }
     /**
      * Identifier.

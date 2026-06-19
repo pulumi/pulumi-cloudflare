@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMtlsCertificateAssociations(ctx, &cloudflare.GetMtlsCertificateAssociationsArgs{
-//				AccountId:         pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId:         "023e105f4ecef8ad9ca31a8372d0c353",
 //				MtlsCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -55,7 +55,7 @@ func GetMtlsCertificateAssociations(ctx *pulumi.Context, args *GetMtlsCertificat
 // A collection of arguments for invoking getMtlsCertificateAssociations.
 type GetMtlsCertificateAssociationsArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Identifier.
 	MtlsCertificateId string `pulumi:"mtlsCertificateId"`
 }
@@ -63,7 +63,7 @@ type GetMtlsCertificateAssociationsArgs struct {
 // A collection of values returned by getMtlsCertificateAssociations.
 type GetMtlsCertificateAssociationsResult struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Identifier.
@@ -86,7 +86,7 @@ func GetMtlsCertificateAssociationsOutput(ctx *pulumi.Context, args GetMtlsCerti
 // A collection of arguments for invoking getMtlsCertificateAssociations.
 type GetMtlsCertificateAssociationsOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier.
 	MtlsCertificateId pulumi.StringInput `pulumi:"mtlsCertificateId"`
 }
@@ -111,8 +111,8 @@ func (o GetMtlsCertificateAssociationsResultOutput) ToGetMtlsCertificateAssociat
 }
 
 // Identifier.
-func (o GetMtlsCertificateAssociationsResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetMtlsCertificateAssociationsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o GetMtlsCertificateAssociationsResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMtlsCertificateAssociationsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

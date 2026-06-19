@@ -78,6 +78,13 @@ namespace Pulumi.Cloudflare
         public Output<string?> Hostname { get; private set; } = null!;
 
         /// <summary>
+        /// The type of tunnel.
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "IpSec", "gre", "cni".
+        /// </summary>
+        [Output("tunType")]
+        public Output<string> TunType { get; private set; } = null!;
+
+        /// <summary>
         /// UUID of the tunnel.
         /// </summary>
         [Output("tunnelId")]
@@ -196,6 +203,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// The type of tunnel.
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "IpSec", "gre", "cni".
+        /// </summary>
+        [Input("tunType")]
+        public Input<string>? TunType { get; set; }
 
         /// <summary>
         /// UUID of the tunnel.

@@ -67,6 +67,8 @@ type ApiShieldOperation struct {
 	Method pulumi.StringOutput `pulumi:"method"`
 	// UUID.
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
+	// OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+	Schemas ApiShieldOperationSchemasOutput `pulumi:"schemas"`
 	// Identifier.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -121,6 +123,8 @@ type apiShieldOperationState struct {
 	Method *string `pulumi:"method"`
 	// UUID.
 	OperationId *string `pulumi:"operationId"`
+	// OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+	Schemas *ApiShieldOperationSchemas `pulumi:"schemas"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -137,6 +141,8 @@ type ApiShieldOperationState struct {
 	Method pulumi.StringPtrInput
 	// UUID.
 	OperationId pulumi.StringPtrInput
+	// OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+	Schemas ApiShieldOperationSchemasPtrInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
@@ -284,6 +290,11 @@ func (o ApiShieldOperationOutput) Method() pulumi.StringOutput {
 // UUID.
 func (o ApiShieldOperationOutput) OperationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.OperationId }).(pulumi.StringOutput)
+}
+
+// OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+func (o ApiShieldOperationOutput) Schemas() ApiShieldOperationSchemasOutput {
+	return o.ApplyT(func(v *ApiShieldOperation) ApiShieldOperationSchemasOutput { return v.Schemas }).(ApiShieldOperationSchemasOutput)
 }
 
 // Identifier.

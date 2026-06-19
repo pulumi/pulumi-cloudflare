@@ -60,7 +60,7 @@ class GetEmailSecurityBlockSendersResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        Account Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -93,7 +93,7 @@ class GetEmailSecurityBlockSendersResult:
     @pulumi.getter
     def order(self) -> Optional[_builtins.str]:
         """
-        The field to sort by.
+        Field to sort by.
         Available values: "pattern", "created_at".
         """
         return pulumi.get(self, "order")
@@ -101,12 +101,16 @@ class GetEmailSecurityBlockSendersResult:
     @_builtins.property
     @pulumi.getter
     def pattern(self) -> Optional[_builtins.str]:
+        """
+        Filter by pattern value.
+        """
         return pulumi.get(self, "pattern")
 
     @_builtins.property
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> Optional[_builtins.str]:
         """
+        Filter by pattern type.
         Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         return pulumi.get(self, "pattern_type")
@@ -123,10 +127,7 @@ class GetEmailSecurityBlockSendersResult:
     @pulumi.getter
     def search(self) -> Optional[_builtins.str]:
         """
-        Allows searching in multiple properties of a record simultaneously.
-        This parameter is intended for human users, not automation. Its exact
-        behavior is intentionally left unspecified and is subject to change
-        in the future.
+        Search term for filtering records. Behavior may change.
         """
         return pulumi.get(self, "search")
 
@@ -177,17 +178,16 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Account Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.str direction: The sorting direction.
            Available values: "asc", "desc".
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: The field to sort by.
+    :param _builtins.str order: Field to sort by.
            Available values: "pattern", "created_at".
-    :param _builtins.str pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-    :param _builtins.str search: Allows searching in multiple properties of a record simultaneously.
-           This parameter is intended for human users, not automation. Its exact
-           behavior is intentionally left unspecified and is subject to change
-           in the future.
+    :param _builtins.str pattern: Filter by pattern value.
+    :param _builtins.str pattern_type: Filter by pattern type.
+           Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+    :param _builtins.str search: Search term for filtering records. Behavior may change.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -239,17 +239,16 @@ def get_email_security_block_senders_output(account_id: pulumi.Input[Optional[Op
     ```
 
 
-    :param _builtins.str account_id: Account Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.str direction: The sorting direction.
            Available values: "asc", "desc".
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: The field to sort by.
+    :param _builtins.str order: Field to sort by.
            Available values: "pattern", "created_at".
-    :param _builtins.str pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-    :param _builtins.str search: Allows searching in multiple properties of a record simultaneously.
-           This parameter is intended for human users, not automation. Its exact
-           behavior is intentionally left unspecified and is subject to change
-           in the future.
+    :param _builtins.str pattern: Filter by pattern value.
+    :param _builtins.str pattern_type: Filter by pattern type.
+           Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+    :param _builtins.str search: Search term for filtering records. Behavior may change.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

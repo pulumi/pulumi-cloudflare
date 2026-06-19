@@ -58,7 +58,7 @@ export class StreamCaptionLanguage extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The WebVTT file containing the caption or subtitle content.
      */
@@ -107,6 +107,9 @@ export class StreamCaptionLanguage extends pulumi.CustomResource {
             resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as StreamCaptionLanguageArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
@@ -168,7 +171,7 @@ export interface StreamCaptionLanguageArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The WebVTT file containing the caption or subtitle content.
      */

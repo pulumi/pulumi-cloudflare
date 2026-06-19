@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetR2BucketLockResult {
@@ -18,7 +16,7 @@ public final class GetR2BucketLockResult {
      * @return Account ID.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return Name of the bucket.
      * 
@@ -36,8 +34,8 @@ public final class GetR2BucketLockResult {
      * @return Account ID.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return Name of the bucket.
@@ -66,7 +64,7 @@ public final class GetR2BucketLockResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private String bucketName;
         private String id;
         private List<GetR2BucketLockRule> rules;
@@ -80,8 +78,10 @@ public final class GetR2BucketLockResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetR2BucketLockResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

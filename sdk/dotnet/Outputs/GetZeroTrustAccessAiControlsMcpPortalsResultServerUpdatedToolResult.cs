@@ -13,29 +13,33 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedToolResult
     {
-        public readonly string Description;
         public readonly bool Enabled;
         public readonly string Name;
         public readonly string PortalAlias;
+        public readonly string PortalDescription;
         public readonly string ServerAlias;
+        public readonly string ServerDescription;
 
         [OutputConstructor]
         private GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedToolResult(
-            string description,
-
             bool enabled,
 
             string name,
 
             string portalAlias,
 
-            string serverAlias)
+            string portalDescription,
+
+            string serverAlias,
+
+            string serverDescription)
         {
-            Description = description;
             Enabled = enabled;
             Name = name;
             PortalAlias = portalAlias;
+            PortalDescription = portalDescription;
             ServerAlias = serverAlias;
+            ServerDescription = serverDescription;
         }
     }
 }

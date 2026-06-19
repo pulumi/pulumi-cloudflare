@@ -30,14 +30,14 @@ public final class AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSele
     }
 
     /**
-     * CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.
+     * CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
      * 
      */
     @Import(name="selector", required=true)
     private Output<String> selector;
 
     /**
-     * @return CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.
+     * @return CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
      * 
      */
     public Output<String> selector() {
@@ -91,7 +91,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSele
         }
 
         /**
-         * @param selector CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.
+         * @param selector CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSele
         }
 
         /**
-         * @param selector CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.
+         * @param selector CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
          * 
          * @return builder
          * 

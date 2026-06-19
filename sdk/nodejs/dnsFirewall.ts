@@ -31,6 +31,7 @@ import * as utilities from "./utilities";
  *         onlyWhenUpstreamUnhealthy: false,
  *     },
  *     deprecateAnyRequests: true,
+ *     dnsFirewallIpCount: 2,
  *     ecsFallback: false,
  *     maximumCacheTtl: 900,
  *     minimumCacheTtl: 60,
@@ -86,6 +87,10 @@ export class DnsFirewall extends pulumi.CustomResource {
      * Whether to refuse to answer queries for the ANY type
      */
     declare public readonly deprecateAnyRequests: pulumi.Output<boolean | undefined>;
+    /**
+     * Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+     */
+    declare public readonly dnsFirewallIpCount: pulumi.Output<number>;
     declare public /*out*/ readonly dnsFirewallIps: pulumi.Output<string[]>;
     /**
      * Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
@@ -132,7 +137,7 @@ export class DnsFirewall extends pulumi.CustomResource {
      */
     declare public readonly negativeCacheTtl: pulumi.Output<number | undefined>;
     /**
-     * Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+     * Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
      */
     declare public readonly ratelimit: pulumi.Output<number | undefined>;
     /**
@@ -157,6 +162,7 @@ export class DnsFirewall extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["attackMitigation"] = state?.attackMitigation;
             resourceInputs["deprecateAnyRequests"] = state?.deprecateAnyRequests;
+            resourceInputs["dnsFirewallIpCount"] = state?.dnsFirewallIpCount;
             resourceInputs["dnsFirewallIps"] = state?.dnsFirewallIps;
             resourceInputs["ecsFallback"] = state?.ecsFallback;
             resourceInputs["maximumCacheTtl"] = state?.maximumCacheTtl;
@@ -178,6 +184,7 @@ export class DnsFirewall extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["attackMitigation"] = args?.attackMitigation;
             resourceInputs["deprecateAnyRequests"] = args?.deprecateAnyRequests;
+            resourceInputs["dnsFirewallIpCount"] = args?.dnsFirewallIpCount;
             resourceInputs["ecsFallback"] = args?.ecsFallback;
             resourceInputs["maximumCacheTtl"] = args?.maximumCacheTtl;
             resourceInputs["minimumCacheTtl"] = args?.minimumCacheTtl;
@@ -210,6 +217,10 @@ export interface DnsFirewallState {
      * Whether to refuse to answer queries for the ANY type
      */
     deprecateAnyRequests?: pulumi.Input<boolean | undefined>;
+    /**
+     * Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+     */
+    dnsFirewallIpCount?: pulumi.Input<number | undefined>;
     dnsFirewallIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
@@ -256,7 +267,7 @@ export interface DnsFirewallState {
      */
     negativeCacheTtl?: pulumi.Input<number | undefined>;
     /**
-     * Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+     * Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
      */
     ratelimit?: pulumi.Input<number | undefined>;
     /**
@@ -282,6 +293,10 @@ export interface DnsFirewallArgs {
      * Whether to refuse to answer queries for the ANY type
      */
     deprecateAnyRequests?: pulumi.Input<boolean | undefined>;
+    /**
+     * Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+     */
+    dnsFirewallIpCount?: pulumi.Input<number | undefined>;
     /**
      * Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
      */
@@ -323,7 +338,7 @@ export interface DnsFirewallArgs {
      */
     negativeCacheTtl?: pulumi.Input<number | undefined>;
     /**
-     * Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+     * Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
      */
     ratelimit?: pulumi.Input<number | undefined>;
     /**

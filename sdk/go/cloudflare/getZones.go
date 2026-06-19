@@ -66,6 +66,7 @@ type LookupZonesArgs struct {
 	Name      *string          `pulumi:"name"`
 	Order     *string          `pulumi:"order"`
 	Status    *string          `pulumi:"status"`
+	Types     []string         `pulumi:"types"`
 }
 
 // A collection of values returned by getZones.
@@ -80,6 +81,7 @@ type LookupZonesResult struct {
 	Order    *string          `pulumi:"order"`
 	Results  []GetZonesResult `pulumi:"results"`
 	Status   *string          `pulumi:"status"`
+	Types    []string         `pulumi:"types"`
 }
 
 func LookupZonesOutput(ctx *pulumi.Context, args LookupZonesOutputArgs, opts ...pulumi.InvokeOption) LookupZonesResultOutput {
@@ -100,6 +102,7 @@ type LookupZonesOutputArgs struct {
 	Name      pulumi.StringPtrInput   `pulumi:"name"`
 	Order     pulumi.StringPtrInput   `pulumi:"order"`
 	Status    pulumi.StringPtrInput   `pulumi:"status"`
+	Types     pulumi.StringArrayInput `pulumi:"types"`
 }
 
 func (LookupZonesOutputArgs) ElementType() reflect.Type {
@@ -156,6 +159,10 @@ func (o LookupZonesResultOutput) Results() GetZonesResultArrayOutput {
 
 func (o LookupZonesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZonesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupZonesResultOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZonesResult) []string { return v.Types }).(pulumi.StringArrayOutput)
 }
 
 func init() {

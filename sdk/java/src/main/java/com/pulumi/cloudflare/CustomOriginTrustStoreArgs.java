@@ -17,14 +17,14 @@ public final class CustomOriginTrustStoreArgs extends com.pulumi.resources.Resou
     public static final CustomOriginTrustStoreArgs Empty = new CustomOriginTrustStoreArgs();
 
     /**
-     * The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      * 
      */
     @Import(name="certificate", required=true)
     private Output<String> certificate;
 
     /**
-     * @return The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * @return The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      * 
      */
     public Output<String> certificate() {
@@ -72,7 +72,7 @@ public final class CustomOriginTrustStoreArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param certificate The zone&#39;s SSL certificate or certificate and the intermediate(s).
+         * @param certificate The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class CustomOriginTrustStoreArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param certificate The zone&#39;s SSL certificate or certificate and the intermediate(s).
+         * @param certificate The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
          * 
          * @return builder
          * 

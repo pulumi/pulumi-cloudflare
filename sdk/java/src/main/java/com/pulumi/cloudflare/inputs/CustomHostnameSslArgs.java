@@ -37,7 +37,7 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The Certificate Authority that will issue the certificate
+     * The Certificate Authority that will issue the certificate.
      * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -45,7 +45,7 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> certificateAuthority;
 
     /**
-     * @return The Certificate Authority that will issue the certificate
+     * @return The Certificate Authority that will issue the certificate.
      * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -54,14 +54,14 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+     * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      * 
      */
     @Import(name="cloudflareBranding")
     private @Nullable Output<Boolean> cloudflareBranding;
 
     /**
-     * @return Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+     * @return Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      * 
      */
     public Optional<Output<Boolean>> cloudflareBranding() {
@@ -69,14 +69,14 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     * Array of custom certificate and key pairs (1 or 2 pairs allowed).
      * 
      */
     @Import(name="customCertBundles")
     private @Nullable Output<List<CustomHostnameSslCustomCertBundleArgs>> customCertBundles;
 
     /**
-     * @return Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     * @return Array of custom certificate and key pairs (1 or 2 pairs allowed).
      * 
      */
     public Optional<Output<List<CustomHostnameSslCustomCertBundleArgs>>> customCertBundles() {
@@ -250,7 +250,7 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param certificateAuthority The Certificate Authority that will issue the certificate
+         * @param certificateAuthority The Certificate Authority that will issue the certificate.
          * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
@@ -262,7 +262,7 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param certificateAuthority The Certificate Authority that will issue the certificate
+         * @param certificateAuthority The Certificate Authority that will issue the certificate.
          * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
@@ -273,7 +273,7 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cloudflareBranding Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+         * @param cloudflareBranding Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cloudflareBranding Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+         * @param cloudflareBranding Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customCertBundles Array of custom certificate and key pairs (1 or 2 pairs allowed)
+         * @param customCertBundles Array of custom certificate and key pairs (1 or 2 pairs allowed).
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customCertBundles Array of custom certificate and key pairs (1 or 2 pairs allowed)
+         * @param customCertBundles Array of custom certificate and key pairs (1 or 2 pairs allowed).
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customCertBundles Array of custom certificate and key pairs (1 or 2 pairs allowed)
+         * @param customCertBundles Array of custom certificate and key pairs (1 or 2 pairs allowed).
          * 
          * @return builder
          * 

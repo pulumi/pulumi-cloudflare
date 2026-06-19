@@ -18,14 +18,14 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
     public static final EmailSecurityImpersonationRegistryState Empty = new EmailSecurityImpersonationRegistryState();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -93,11 +93,34 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
         return Optional.ofNullable(this.isEmailRegex);
     }
 
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="lastModified")
     private @Nullable Output<String> lastModified;
 
+    /**
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<String>> lastModified() {
         return Optional.ofNullable(this.lastModified);
+    }
+
+    @Import(name="modifiedAt")
+    private @Nullable Output<String> modifiedAt;
+
+    public Optional<Output<String>> modifiedAt() {
+        return Optional.ofNullable(this.modifiedAt);
     }
 
     @Import(name="name")
@@ -107,9 +130,17 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
     @Import(name="provenance")
     private @Nullable Output<String> provenance;
 
+    /**
+     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
     public Optional<Output<String>> provenance() {
         return Optional.ofNullable(this.provenance);
     }
@@ -126,6 +157,7 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
         this.externalDirectoryNodeId = $.externalDirectoryNodeId;
         this.isEmailRegex = $.isEmailRegex;
         this.lastModified = $.lastModified;
+        this.modifiedAt = $.modifiedAt;
         this.name = $.name;
         this.provenance = $.provenance;
     }
@@ -149,7 +181,7 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -160,7 +192,7 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -248,13 +280,42 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
             return isEmailRegex(Output.of(isEmailRegex));
         }
 
+        /**
+         * @param lastModified Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder lastModified(@Nullable Output<String> lastModified) {
             $.lastModified = lastModified;
             return this;
         }
 
+        /**
+         * @param lastModified Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder lastModified(String lastModified) {
             return lastModified(Output.of(lastModified));
+        }
+
+        public Builder modifiedAt(@Nullable Output<String> modifiedAt) {
+            $.modifiedAt = modifiedAt;
+            return this;
+        }
+
+        public Builder modifiedAt(String modifiedAt) {
+            return modifiedAt(Output.of(modifiedAt));
         }
 
         public Builder name(@Nullable Output<String> name) {
@@ -266,11 +327,23 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
             return name(Output.of(name));
         }
 
+        /**
+         * @param provenance Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provenance(@Nullable Output<String> provenance) {
             $.provenance = provenance;
             return this;
         }
 
+        /**
+         * @param provenance Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provenance(String provenance) {
             return provenance(Output.of(provenance));
         }

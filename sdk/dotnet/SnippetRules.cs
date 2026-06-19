@@ -12,6 +12,7 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Accepted Permissions
     /// 
+    /// - `Snippets Read`
     /// - `Snippets Write`
     /// 
     /// ## Example Usage

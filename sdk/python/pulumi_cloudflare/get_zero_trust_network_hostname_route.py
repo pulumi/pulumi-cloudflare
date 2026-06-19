@@ -28,7 +28,7 @@ class GetZeroTrustNetworkHostnameRouteResult:
     """
     A collection of values returned by getZeroTrustNetworkHostnameRoute.
     """
-    def __init__(__self__, account_id=None, comment=None, created_at=None, deleted_at=None, filter=None, hostname=None, hostname_route_id=None, id=None, tunnel_id=None, tunnel_name=None):
+    def __init__(__self__, account_id=None, comment=None, created_at=None, deleted_at=None, filter=None, hostname=None, hostname_route_id=None, id=None, tun_type=None, tunnel_id=None, tunnel_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -53,6 +53,9 @@ class GetZeroTrustNetworkHostnameRouteResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if tun_type and not isinstance(tun_type, str):
+            raise TypeError("Expected argument 'tun_type' to be a str")
+        pulumi.set(__self__, "tun_type", tun_type)
         if tunnel_id and not isinstance(tunnel_id, str):
             raise TypeError("Expected argument 'tunnel_id' to be a str")
         pulumi.set(__self__, "tunnel_id", tunnel_id)
@@ -122,6 +125,15 @@ class GetZeroTrustNetworkHostnameRouteResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="tunType")
+    def tun_type(self) -> _builtins.str:
+        """
+        The type of tunnel.
+        Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
+        """
+        return pulumi.get(self, "tun_type")
+
+    @_builtins.property
     @pulumi.getter(name="tunnelId")
     def tunnel_id(self) -> _builtins.str:
         """
@@ -152,6 +164,7 @@ class AwaitableGetZeroTrustNetworkHostnameRouteResult(GetZeroTrustNetworkHostnam
             hostname=self.hostname,
             hostname_route_id=self.hostname_route_id,
             id=self.id,
+            tun_type=self.tun_type,
             tunnel_id=self.tunnel_id,
             tunnel_name=self.tunnel_name)
 
@@ -198,6 +211,7 @@ def get_zero_trust_network_hostname_route(account_id: Optional[_builtins.str] = 
         hostname=pulumi.get(__ret__, 'hostname'),
         hostname_route_id=pulumi.get(__ret__, 'hostname_route_id'),
         id=pulumi.get(__ret__, 'id'),
+        tun_type=pulumi.get(__ret__, 'tun_type'),
         tunnel_id=pulumi.get(__ret__, 'tunnel_id'),
         tunnel_name=pulumi.get(__ret__, 'tunnel_name'))
 def get_zero_trust_network_hostname_route_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -241,5 +255,6 @@ def get_zero_trust_network_hostname_route_output(account_id: pulumi.Input[Option
         hostname=pulumi.get(__response__, 'hostname'),
         hostname_route_id=pulumi.get(__response__, 'hostname_route_id'),
         id=pulumi.get(__response__, 'id'),
+        tun_type=pulumi.get(__response__, 'tun_type'),
         tunnel_id=pulumi.get(__response__, 'tunnel_id'),
         tunnel_name=pulumi.get(__response__, 'tunnel_name')))

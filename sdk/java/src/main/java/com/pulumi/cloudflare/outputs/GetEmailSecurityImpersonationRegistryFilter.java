@@ -18,7 +18,7 @@ public final class GetEmailSecurityImpersonationRegistryFilter {
      */
     private @Nullable String direction;
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -29,10 +29,7 @@ public final class GetEmailSecurityImpersonationRegistryFilter {
      */
     private @Nullable String provenance;
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     private @Nullable String search;
@@ -47,7 +44,7 @@ public final class GetEmailSecurityImpersonationRegistryFilter {
         return Optional.ofNullable(this.direction);
     }
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -62,10 +59,7 @@ public final class GetEmailSecurityImpersonationRegistryFilter {
         return Optional.ofNullable(this.provenance);
     }
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<String> search() {

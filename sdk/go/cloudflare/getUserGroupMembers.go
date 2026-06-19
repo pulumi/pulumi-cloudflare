@@ -78,7 +78,8 @@ type LookupUserGroupMembersResult struct {
 	// A string used for filtering members by partial email match.
 	FuzzyEmail *string `pulumi:"fuzzyEmail"`
 	// User Group identifier tag.
-	Id      string                      `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// List of members in the user group.
 	Members []GetUserGroupMembersMember `pulumi:"members"`
 	// User Group identifier tag.
 	UserGroupId string `pulumi:"userGroupId"`
@@ -146,6 +147,7 @@ func (o LookupUserGroupMembersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserGroupMembersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// List of members in the user group.
 func (o LookupUserGroupMembersResultOutput) Members() GetUserGroupMembersMemberArrayOutput {
 	return o.ApplyT(func(v LookupUserGroupMembersResult) []GetUserGroupMembersMember { return v.Members }).(GetUserGroupMembersMemberArrayOutput)
 }

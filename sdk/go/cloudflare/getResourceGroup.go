@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetResourceGroup(ctx, &cloudflare.GetResourceGroupArgs{
-//				AccountId:       pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId:       "023e105f4ecef8ad9ca31a8372d0c353",
 //				ResourceGroupId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -56,7 +56,7 @@ func GetResourceGroup(ctx *pulumi.Context, args *GetResourceGroupArgs, opts ...p
 // A collection of arguments for invoking getResourceGroup.
 type GetResourceGroupArgs struct {
 	// Account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Resource Group identifier tag.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 }
@@ -64,7 +64,7 @@ type GetResourceGroupArgs struct {
 // A collection of values returned by getResourceGroup.
 type GetResourceGroupResult struct {
 	// Account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Identifier of the resource group.
 	Id string `pulumi:"id"`
 	// Attributes associated to the resource group.
@@ -89,7 +89,7 @@ func GetResourceGroupOutput(ctx *pulumi.Context, args GetResourceGroupOutputArgs
 // A collection of arguments for invoking getResourceGroup.
 type GetResourceGroupOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Resource Group identifier tag.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 }
@@ -114,8 +114,8 @@ func (o GetResourceGroupResultOutput) ToGetResourceGroupResultOutputWithContext(
 }
 
 // Account identifier tag.
-func (o GetResourceGroupResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceGroupResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o GetResourceGroupResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Identifier of the resource group.

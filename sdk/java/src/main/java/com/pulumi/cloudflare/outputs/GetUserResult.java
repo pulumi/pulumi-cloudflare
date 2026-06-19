@@ -24,6 +24,11 @@ public final class GetUserResult {
      */
     private String country;
     /**
+     * @return Current email address of the user.
+     * 
+     */
+    private String email;
+    /**
      * @return User&#39;s first name
      * 
      */
@@ -94,6 +99,13 @@ public final class GetUserResult {
      */
     public String country() {
         return this.country;
+    }
+    /**
+     * @return Current email address of the user.
+     * 
+     */
+    public String email() {
+        return this.email;
     }
     /**
      * @return User&#39;s first name
@@ -187,6 +199,7 @@ public final class GetUserResult {
     public static final class Builder {
         private List<String> betas;
         private String country;
+        private String email;
         private String firstName;
         private Boolean hasBusinessZones;
         private Boolean hasEnterpriseZones;
@@ -204,6 +217,7 @@ public final class GetUserResult {
     	      Objects.requireNonNull(defaults);
     	      this.betas = defaults.betas;
     	      this.country = defaults.country;
+    	      this.email = defaults.email;
     	      this.firstName = defaults.firstName;
     	      this.hasBusinessZones = defaults.hasBusinessZones;
     	      this.hasEnterpriseZones = defaults.hasEnterpriseZones;
@@ -235,6 +249,14 @@ public final class GetUserResult {
               throw new MissingRequiredPropertyException("GetUserResult", "country");
             }
             this.country = country;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder email(String email) {
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
@@ -340,6 +362,7 @@ public final class GetUserResult {
             final var _resultValue = new GetUserResult();
             _resultValue.betas = betas;
             _resultValue.country = country;
+            _resultValue.email = email;
             _resultValue.firstName = firstName;
             _resultValue.hasBusinessZones = hasBusinessZones;
             _resultValue.hasEnterpriseZones = hasEnterpriseZones;

@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Accepted Permissions
  * 
+ * - `Snippets Read`
  * - `Snippets Write`
  * 
  * ## Example Usage

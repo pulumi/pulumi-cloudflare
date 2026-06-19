@@ -33,25 +33,28 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
+        /// <summary>
+        /// Filter by namespace.
+        /// </summary>
         [Input("namespace")]
         public string? Namespace { get; set; }
 
         /// <summary>
-        /// Order By Column Name
+        /// Field to order results by.
         /// Available values: "CreatedAt".
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
         /// <summary>
-        /// Order By Direction
+        /// Order direction.
         /// Available values: "asc", "desc".
         /// </summary>
         [Input("orderByDirection")]
         public string? OrderByDirection { get; set; }
 
         /// <summary>
-        /// Search by id
+        /// Filter instances whose id contains this string (case-insensitive).
         /// </summary>
         [Input("search")]
         public string? Search { get; set; }
@@ -73,25 +76,28 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
 
+        /// <summary>
+        /// Filter by namespace.
+        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Order By Column Name
+        /// Field to order results by.
         /// Available values: "CreatedAt".
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
 
         /// <summary>
-        /// Order By Direction
+        /// Order direction.
         /// Available values: "asc", "desc".
         /// </summary>
         [Input("orderByDirection")]
         public Input<string>? OrderByDirection { get; set; }
 
         /// <summary>
-        /// Search by id
+        /// Filter instances whose id contains this string (case-insensitive).
         /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
@@ -115,14 +121,17 @@ namespace Pulumi.Cloudflare
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
+        /// <summary>
+        /// Filter by namespace.
+        /// </summary>
         public readonly string? Namespace;
         /// <summary>
-        /// Order By Column Name
+        /// Field to order results by.
         /// Available values: "CreatedAt".
         /// </summary>
         public readonly string OrderBy;
         /// <summary>
-        /// Order By Direction
+        /// Order direction.
         /// Available values: "asc", "desc".
         /// </summary>
         public readonly string OrderByDirection;
@@ -131,7 +140,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAiSearchInstancesResultResult> Results;
         /// <summary>
-        /// Search by id
+        /// Filter instances whose id contains this string (case-insensitive).
         /// </summary>
         public readonly string? Search;
 

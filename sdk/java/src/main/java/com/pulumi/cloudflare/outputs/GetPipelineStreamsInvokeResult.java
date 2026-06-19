@@ -31,6 +31,11 @@ public final class GetPipelineStreamsInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
+     * @return Filters streams by name (case-insensitive substring).
+     * 
+     */
+    private @Nullable String name;
+    /**
      * @return Specifies the public ID of the pipeline.
      * 
      */
@@ -64,6 +69,13 @@ public final class GetPipelineStreamsInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
+     * @return Filters streams by name (case-insensitive substring).
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+    /**
      * @return Specifies the public ID of the pipeline.
      * 
      */
@@ -90,6 +102,7 @@ public final class GetPipelineStreamsInvokeResult {
         private @Nullable String accountId;
         private String id;
         private @Nullable Integer maxItems;
+        private @Nullable String name;
         private @Nullable String pipelineId;
         private List<GetPipelineStreamsResult> results;
         public Builder() {}
@@ -98,6 +111,7 @@ public final class GetPipelineStreamsInvokeResult {
     	      this.accountId = defaults.accountId;
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
+    	      this.name = defaults.name;
     	      this.pipelineId = defaults.pipelineId;
     	      this.results = defaults.results;
         }
@@ -123,6 +137,12 @@ public final class GetPipelineStreamsInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder name(@Nullable String name) {
+
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pipelineId(@Nullable String pipelineId) {
 
             this.pipelineId = pipelineId;
@@ -144,6 +164,7 @@ public final class GetPipelineStreamsInvokeResult {
             _resultValue.accountId = accountId;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
+            _resultValue.name = name;
             _resultValue.pipelineId = pipelineId;
             _resultValue.results = results;
             return _resultValue;
