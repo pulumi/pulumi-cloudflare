@@ -65,7 +65,7 @@ export class PagesDomain extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Available values: "google", "letsEncrypt".
      */
@@ -113,6 +113,9 @@ export class PagesDomain extends pulumi.CustomResource {
             resourceInputs["zoneTag"] = state?.zoneTag;
         } else {
             const args = argsOrState as PagesDomainArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -173,7 +176,7 @@ export interface PagesDomainArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The domain name.
      */

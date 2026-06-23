@@ -68,6 +68,10 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly country: pulumi.Output<string | undefined>;
     /**
+     * Current email address of the user.
+     */
+    declare public /*out*/ readonly email: pulumi.Output<string>;
+    /**
      * User's first name
      */
     declare public readonly firstName: pulumi.Output<string | undefined>;
@@ -124,6 +128,7 @@ export class User extends pulumi.CustomResource {
             const state = argsOrState as UserState | undefined;
             resourceInputs["betas"] = state?.betas;
             resourceInputs["country"] = state?.country;
+            resourceInputs["email"] = state?.email;
             resourceInputs["firstName"] = state?.firstName;
             resourceInputs["hasBusinessZones"] = state?.hasBusinessZones;
             resourceInputs["hasEnterpriseZones"] = state?.hasEnterpriseZones;
@@ -143,6 +148,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["telephone"] = args?.telephone;
             resourceInputs["zipcode"] = args?.zipcode;
             resourceInputs["betas"] = undefined /*out*/;
+            resourceInputs["email"] = undefined /*out*/;
             resourceInputs["hasBusinessZones"] = undefined /*out*/;
             resourceInputs["hasEnterpriseZones"] = undefined /*out*/;
             resourceInputs["hasProZones"] = undefined /*out*/;
@@ -168,6 +174,10 @@ export interface UserState {
      * The country in which the user lives.
      */
     country?: pulumi.Input<string | undefined>;
+    /**
+     * Current email address of the user.
+     */
+    email?: pulumi.Input<string | undefined>;
     /**
      * User's first name
      */

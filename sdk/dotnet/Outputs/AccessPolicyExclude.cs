@@ -21,6 +21,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.AccessPolicyExcludeAuthMethod? AuthMethod;
         public readonly Outputs.AccessPolicyExcludeAzureAd? AzureAd;
         public readonly Outputs.AccessPolicyExcludeCertificate? Certificate;
+        public readonly Outputs.AccessPolicyExcludeCloudflareAccountMember? CloudflareAccountMember;
         public readonly Outputs.AccessPolicyExcludeCommonName? CommonName;
         public readonly Outputs.AccessPolicyExcludeDevicePosture? DevicePosture;
         public readonly Outputs.AccessPolicyExcludeEmail? Email;
@@ -56,6 +57,8 @@ namespace Pulumi.Cloudflare.Outputs
             Outputs.AccessPolicyExcludeAzureAd? azureAd,
 
             Outputs.AccessPolicyExcludeCertificate? certificate,
+
+            Outputs.AccessPolicyExcludeCloudflareAccountMember? cloudflareAccountMember,
 
             Outputs.AccessPolicyExcludeCommonName? commonName,
 
@@ -102,6 +105,7 @@ namespace Pulumi.Cloudflare.Outputs
             AuthMethod = authMethod;
             AzureAd = azureAd;
             Certificate = certificate;
+            CloudflareAccountMember = cloudflareAccountMember;
             CommonName = commonName;
             DevicePosture = devicePosture;
             Email = email;

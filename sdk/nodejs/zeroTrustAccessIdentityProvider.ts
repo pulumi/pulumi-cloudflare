@@ -92,12 +92,27 @@ export class ZeroTrustAccessIdentityProvider extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+     */
+    declare public readonly readOnly: pulumi.Output<boolean | undefined>;
+    /**
+     * The SAML encryption certificate set details, including current and previous certificates.
+     * Only present for SAML identity providers with a certificate set assigned.
+     */
+    declare public /*out*/ readonly samlCertificateSet: pulumi.Output<outputs.ZeroTrustAccessIdentityProviderSamlCertificateSet>;
+    /**
+     * The UID of the SAML encryption certificate set assigned to this Identity Provider.
+     * Only present for SAML identity providers with encryption configured.
+     * Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+     */
+    declare public readonly samlCertificateSetId: pulumi.Output<string | undefined>;
+    /**
      * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      */
     declare public readonly scimConfig: pulumi.Output<outputs.ZeroTrustAccessIdentityProviderScimConfig>;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -121,6 +136,9 @@ export class ZeroTrustAccessIdentityProvider extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["config"] = state?.config;
             resourceInputs["name"] = state?.name;
+            resourceInputs["readOnly"] = state?.readOnly;
+            resourceInputs["samlCertificateSet"] = state?.samlCertificateSet;
+            resourceInputs["samlCertificateSetId"] = state?.samlCertificateSetId;
             resourceInputs["scimConfig"] = state?.scimConfig;
             resourceInputs["type"] = state?.type;
             resourceInputs["zoneId"] = state?.zoneId;
@@ -138,9 +156,12 @@ export class ZeroTrustAccessIdentityProvider extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["config"] = args?.config;
             resourceInputs["name"] = args?.name;
+            resourceInputs["readOnly"] = args?.readOnly;
+            resourceInputs["samlCertificateSetId"] = args?.samlCertificateSetId;
             resourceInputs["scimConfig"] = args?.scimConfig;
             resourceInputs["type"] = args?.type;
             resourceInputs["zoneId"] = args?.zoneId;
+            resourceInputs["samlCertificateSet"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessIdentityProvider:AccessIdentityProvider" }] };
@@ -166,12 +187,27 @@ export interface ZeroTrustAccessIdentityProviderState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+     */
+    readOnly?: pulumi.Input<boolean | undefined>;
+    /**
+     * The SAML encryption certificate set details, including current and previous certificates.
+     * Only present for SAML identity providers with a certificate set assigned.
+     */
+    samlCertificateSet?: pulumi.Input<inputs.ZeroTrustAccessIdentityProviderSamlCertificateSet | undefined>;
+    /**
+     * The UID of the SAML encryption certificate set assigned to this Identity Provider.
+     * Only present for SAML identity providers with encryption configured.
+     * Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+     */
+    samlCertificateSetId?: pulumi.Input<string | undefined>;
+    /**
      * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      */
     scimConfig?: pulumi.Input<inputs.ZeroTrustAccessIdentityProviderScimConfig | undefined>;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -197,12 +233,22 @@ export interface ZeroTrustAccessIdentityProviderArgs {
      */
     name: pulumi.Input<string>;
     /**
+     * Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+     */
+    readOnly?: pulumi.Input<boolean | undefined>;
+    /**
+     * The UID of the SAML encryption certificate set assigned to this Identity Provider.
+     * Only present for SAML identity providers with encryption configured.
+     * Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+     */
+    samlCertificateSetId?: pulumi.Input<string | undefined>;
+    /**
      * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      */
     scimConfig?: pulumi.Input<inputs.ZeroTrustAccessIdentityProviderScimConfig | undefined>;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
      */
     type: pulumi.Input<string>;
     /**

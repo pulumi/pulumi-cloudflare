@@ -37,7 +37,7 @@ export interface GetMtlsCertificateAssociationsArgs {
     /**
      * Identifier.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * Identifier.
      */
@@ -51,7 +51,7 @@ export interface GetMtlsCertificateAssociationsResult {
     /**
      * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -102,7 +102,7 @@ export interface GetMtlsCertificateAssociationsOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Identifier.
      */

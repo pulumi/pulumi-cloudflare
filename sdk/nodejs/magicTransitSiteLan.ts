@@ -98,7 +98,7 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public readonly bondId: pulumi.Output<number | undefined>;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
@@ -156,6 +156,9 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
             resourceInputs["vlanTag"] = state?.vlanTag;
         } else {
             const args = argsOrState as MagicTransitSiteLanArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
@@ -223,7 +226,7 @@ export interface MagicTransitSiteLanArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     bondId?: pulumi.Input<number | undefined>;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.

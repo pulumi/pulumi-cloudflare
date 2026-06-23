@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetEmailSecurityTrustedDomainsFilter;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +16,14 @@ public final class GetEmailSecurityTrustedDomainsPlainArgs extends com.pulumi.re
     public static final GetEmailSecurityTrustedDomainsPlainArgs Empty = new GetEmailSecurityTrustedDomainsPlainArgs();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> accountId() {
@@ -39,17 +38,17 @@ public final class GetEmailSecurityTrustedDomainsPlainArgs extends com.pulumi.re
     }
 
     /**
-     * The unique identifier for the trusted domain.
+     * Trusted domain identifier
      * 
      */
     @Import(name="trustedDomainId")
-    private @Nullable Integer trustedDomainId;
+    private @Nullable String trustedDomainId;
 
     /**
-     * @return The unique identifier for the trusted domain.
+     * @return Trusted domain identifier
      * 
      */
-    public Optional<Integer> trustedDomainId() {
+    public Optional<String> trustedDomainId() {
         return Optional.ofNullable(this.trustedDomainId);
     }
 
@@ -80,7 +79,7 @@ public final class GetEmailSecurityTrustedDomainsPlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -96,12 +95,12 @@ public final class GetEmailSecurityTrustedDomainsPlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param trustedDomainId The unique identifier for the trusted domain.
+         * @param trustedDomainId Trusted domain identifier
          * 
          * @return builder
          * 
          */
-        public Builder trustedDomainId(@Nullable Integer trustedDomainId) {
+        public Builder trustedDomainId(@Nullable String trustedDomainId) {
             $.trustedDomainId = trustedDomainId;
             return this;
         }

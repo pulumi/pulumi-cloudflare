@@ -54,7 +54,7 @@ type ListItem struct {
 	pulumi.CustomResourceState
 
 	// The Account ID for this resource.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// A non-negative 32 bit integer
 	Asn pulumi.IntPtrOutput `pulumi:"asn"`
 	// An informative summary of the list item.
@@ -82,6 +82,9 @@ func NewListItem(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.ListId == nil {
 		return nil, errors.New("invalid value for required argument 'ListId'")
 	}
@@ -159,7 +162,7 @@ func (ListItemState) ElementType() reflect.Type {
 
 type listItemArgs struct {
 	// The Account ID for this resource.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A non-negative 32 bit integer
 	Asn *int `pulumi:"asn"`
 	// An informative summary of the list item.
@@ -177,7 +180,7 @@ type listItemArgs struct {
 // The set of arguments for constructing a ListItem resource.
 type ListItemArgs struct {
 	// The Account ID for this resource.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// A non-negative 32 bit integer
 	Asn pulumi.IntPtrInput
 	// An informative summary of the list item.
@@ -280,8 +283,8 @@ func (o ListItemOutput) ToListItemOutputWithContext(ctx context.Context) ListIte
 }
 
 // The Account ID for this resource.
-func (o ListItemOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ListItem) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ListItemOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListItem) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // A non-negative 32 bit integer

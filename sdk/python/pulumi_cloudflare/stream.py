@@ -21,7 +21,7 @@ __all__ = ['StreamArgs', 'Stream']
 @pulumi.input_type
 class StreamArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[_builtins.str],
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  creator: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -49,8 +49,7 @@ class StreamArgs:
         :param pulumi.Input[_builtins.str] uid: The unique identifier for the video. Can be used to verify the video being updated.
         :param pulumi.Input[_builtins.str] upload_expiry: The date and time when the video upload URL is no longer valid for direct user uploads.
         """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_id", account_id)
         if allowed_origins is not None:
             pulumi.set(__self__, "allowed_origins", allowed_origins)
         if creator is not None:
@@ -76,14 +75,14 @@ class StreamArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[_builtins.str]:
         """
         The account identifier tag.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -722,7 +721,7 @@ class Stream(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[StreamArgs] = None,
+                 args: StreamArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Accepted Permissions
@@ -780,6 +779,8 @@ class Stream(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StreamArgs.__new__(StreamArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["allowed_origins"] = allowed_origins
             __props__.__dict__["creator"] = creator
@@ -915,7 +916,7 @@ class Stream(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         The account identifier tag.
         """

@@ -22,18 +22,18 @@ public final class CustomHostnameSsl {
      */
     private @Nullable String bundleMethod;
     /**
-     * @return The Certificate Authority that will issue the certificate
+     * @return The Certificate Authority that will issue the certificate.
      * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     private @Nullable String certificateAuthority;
     /**
-     * @return Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+     * @return Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      * 
      */
     private @Nullable Boolean cloudflareBranding;
     /**
-     * @return Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     * @return Array of custom certificate and key pairs (1 or 2 pairs allowed).
      * 
      */
     private @Nullable List<CustomHostnameSslCustomCertBundle> customCertBundles;
@@ -85,7 +85,7 @@ public final class CustomHostnameSsl {
         return Optional.ofNullable(this.bundleMethod);
     }
     /**
-     * @return The Certificate Authority that will issue the certificate
+     * @return The Certificate Authority that will issue the certificate.
      * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -93,14 +93,14 @@ public final class CustomHostnameSsl {
         return Optional.ofNullable(this.certificateAuthority);
     }
     /**
-     * @return Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+     * @return Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      * 
      */
     public Optional<Boolean> cloudflareBranding() {
         return Optional.ofNullable(this.cloudflareBranding);
     }
     /**
-     * @return Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     * @return Array of custom certificate and key pairs (1 or 2 pairs allowed).
      * 
      */
     public List<CustomHostnameSslCustomCertBundle> customCertBundles() {

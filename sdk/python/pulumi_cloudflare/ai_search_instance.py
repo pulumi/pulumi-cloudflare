@@ -27,6 +27,7 @@ class AiSearchInstanceArgs:
                  aisearch_model: pulumi.Input[Optional[_builtins.str]] = None,
                  cache: pulumi.Input[Optional[_builtins.bool]] = None,
                  cache_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  chunk: pulumi.Input[Optional[_builtins.bool]] = None,
                  chunk_overlap: pulumi.Input[Optional[_builtins.int]] = None,
                  chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -62,6 +63,8 @@ class AiSearchInstanceArgs:
         :param pulumi.Input[_builtins.str] ai_search_instance_id: AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
         :param pulumi.Input[_builtins.str] aisearch_model: Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         :param pulumi.Input[_builtins.str] cache_threshold: Available values: "super*strict*match", "close*enough", "flexible*friend", "anything_goes".
+        :param pulumi.Input[_builtins.float] cache_ttl: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+               Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
         :param pulumi.Input[_builtins.str] embedding_model: Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
         :param pulumi.Input[_builtins.str] fusion_method: Available values: "max", "rrf".
         :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead.
@@ -83,6 +86,8 @@ class AiSearchInstanceArgs:
             pulumi.set(__self__, "cache", cache)
         if cache_threshold is not None:
             pulumi.set(__self__, "cache_threshold", cache_threshold)
+        if cache_ttl is not None:
+            pulumi.set(__self__, "cache_ttl", cache_ttl)
         if chunk is not None:
             pulumi.set(__self__, "chunk", chunk)
         if chunk_overlap is not None:
@@ -207,6 +212,19 @@ class AiSearchInstanceArgs:
     @cache_threshold.setter
     def cache_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheTtl")
+    def cache_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+        Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+        """
+        return pulumi.get(self, "cache_ttl")
+
+    @cache_ttl.setter
+    def cache_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter
@@ -508,6 +526,7 @@ class _AiSearchInstanceState:
                  aisearch_model: pulumi.Input[Optional[_builtins.str]] = None,
                  cache: pulumi.Input[Optional[_builtins.bool]] = None,
                  cache_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  chunk: pulumi.Input[Optional[_builtins.bool]] = None,
                  chunk_overlap: pulumi.Input[Optional[_builtins.int]] = None,
                  chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -554,6 +573,8 @@ class _AiSearchInstanceState:
         :param pulumi.Input[_builtins.str] ai_search_instance_id: AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
         :param pulumi.Input[_builtins.str] aisearch_model: Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         :param pulumi.Input[_builtins.str] cache_threshold: Available values: "super*strict*match", "close*enough", "flexible*friend", "anything_goes".
+        :param pulumi.Input[_builtins.float] cache_ttl: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+               Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
         :param pulumi.Input[_builtins.str] embedding_model: Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
         :param pulumi.Input[_builtins.str] fusion_method: Available values: "max", "rrf".
         :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead.
@@ -577,6 +598,8 @@ class _AiSearchInstanceState:
             pulumi.set(__self__, "cache", cache)
         if cache_threshold is not None:
             pulumi.set(__self__, "cache_threshold", cache_threshold)
+        if cache_ttl is not None:
+            pulumi.set(__self__, "cache_ttl", cache_ttl)
         if chunk is not None:
             pulumi.set(__self__, "chunk", chunk)
         if chunk_overlap is not None:
@@ -723,6 +746,19 @@ class _AiSearchInstanceState:
     @cache_threshold.setter
     def cache_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheTtl")
+    def cache_ttl(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+        Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+        """
+        return pulumi.get(self, "cache_ttl")
+
+    @cache_ttl.setter
+    def cache_ttl(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1126,6 +1162,7 @@ class AiSearchInstance(pulumi.CustomResource):
                  aisearch_model: pulumi.Input[Optional[_builtins.str]] = None,
                  cache: pulumi.Input[Optional[_builtins.bool]] = None,
                  cache_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  chunk: pulumi.Input[Optional[_builtins.bool]] = None,
                  chunk_overlap: pulumi.Input[Optional[_builtins.int]] = None,
                  chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1167,6 +1204,8 @@ class AiSearchInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ai_search_instance_id: AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
         :param pulumi.Input[_builtins.str] aisearch_model: Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         :param pulumi.Input[_builtins.str] cache_threshold: Available values: "super*strict*match", "close*enough", "flexible*friend", "anything_goes".
+        :param pulumi.Input[_builtins.float] cache_ttl: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+               Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
         :param pulumi.Input[_builtins.str] embedding_model: Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
         :param pulumi.Input[_builtins.str] fusion_method: Available values: "max", "rrf".
         :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead.
@@ -1211,6 +1250,7 @@ class AiSearchInstance(pulumi.CustomResource):
                  aisearch_model: pulumi.Input[Optional[_builtins.str]] = None,
                  cache: pulumi.Input[Optional[_builtins.bool]] = None,
                  cache_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  chunk: pulumi.Input[Optional[_builtins.bool]] = None,
                  chunk_overlap: pulumi.Input[Optional[_builtins.int]] = None,
                  chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1259,6 +1299,7 @@ class AiSearchInstance(pulumi.CustomResource):
             __props__.__dict__["aisearch_model"] = aisearch_model
             __props__.__dict__["cache"] = cache
             __props__.__dict__["cache_threshold"] = cache_threshold
+            __props__.__dict__["cache_ttl"] = cache_ttl
             __props__.__dict__["chunk"] = chunk
             __props__.__dict__["chunk_overlap"] = chunk_overlap
             __props__.__dict__["chunk_size"] = chunk_size
@@ -1315,6 +1356,7 @@ class AiSearchInstance(pulumi.CustomResource):
             aisearch_model: pulumi.Input[Optional[_builtins.str]] = None,
             cache: pulumi.Input[Optional[_builtins.bool]] = None,
             cache_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
             chunk: pulumi.Input[Optional[_builtins.bool]] = None,
             chunk_overlap: pulumi.Input[Optional[_builtins.int]] = None,
             chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1365,6 +1407,8 @@ class AiSearchInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ai_search_instance_id: AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
         :param pulumi.Input[_builtins.str] aisearch_model: Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
         :param pulumi.Input[_builtins.str] cache_threshold: Available values: "super*strict*match", "close*enough", "flexible*friend", "anything_goes".
+        :param pulumi.Input[_builtins.float] cache_ttl: Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+               Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
         :param pulumi.Input[_builtins.str] embedding_model: Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
         :param pulumi.Input[_builtins.str] fusion_method: Available values: "max", "rrf".
         :param pulumi.Input[_builtins.bool] hybrid_search_enabled: Deprecated — use index_method instead.
@@ -1386,6 +1430,7 @@ class AiSearchInstance(pulumi.CustomResource):
         __props__.__dict__["aisearch_model"] = aisearch_model
         __props__.__dict__["cache"] = cache
         __props__.__dict__["cache_threshold"] = cache_threshold
+        __props__.__dict__["cache_ttl"] = cache_ttl
         __props__.__dict__["chunk"] = chunk
         __props__.__dict__["chunk_overlap"] = chunk_overlap
         __props__.__dict__["chunk_size"] = chunk_size
@@ -1466,6 +1511,15 @@ class AiSearchInstance(pulumi.CustomResource):
         Available values: "super*strict*match", "close*enough", "flexible*friend", "anything_goes".
         """
         return pulumi.get(self, "cache_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="cacheTtl")
+    def cache_ttl(self) -> pulumi.Output[_builtins.float]:
+        """
+        Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+        Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+        """
+        return pulumi.get(self, "cache_ttl")
 
     @_builtins.property
     @pulumi.getter

@@ -81,12 +81,27 @@ export interface GetZeroTrustAccessIdentityProviderResult {
      */
     readonly name: string;
     /**
+     * Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+     */
+    readonly readOnly: boolean;
+    /**
+     * The SAML encryption certificate set details, including current and previous certificates.
+     * Only present for SAML identity providers with a certificate set assigned.
+     */
+    readonly samlCertificateSet: outputs.GetZeroTrustAccessIdentityProviderSamlCertificateSet;
+    /**
+     * The UID of the SAML encryption certificate set assigned to this Identity Provider.
+     * Only present for SAML identity providers with encryption configured.
+     * Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+     */
+    readonly samlCertificateSetId: string;
+    /**
      * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      */
     readonly scimConfig: outputs.GetZeroTrustAccessIdentityProviderScimConfig;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
      */
     readonly type: string;
     /**

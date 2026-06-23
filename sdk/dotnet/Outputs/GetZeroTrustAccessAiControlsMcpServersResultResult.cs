@@ -21,17 +21,26 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string CreatedBy;
         public readonly string Description;
         public readonly string Error;
+        public readonly Outputs.GetZeroTrustAccessAiControlsMcpServersResultErrorDetailsResult ErrorDetails;
         public readonly string Hostname;
         /// <summary>
         /// server id
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the RedirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+        /// </summary>
+        public readonly bool IsSharedOauthCallbackEnabled;
         public readonly string LastSuccessfulSync;
         public readonly string LastSynced;
         public readonly string ModifiedAt;
         public readonly string ModifiedBy;
         public readonly string Name;
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Prompts;
+        /// <summary>
+        /// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+        /// </summary>
+        public readonly bool SecureWebGateway;
         public readonly string Status;
         public readonly ImmutableArray<ImmutableDictionary<string, string>> Tools;
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessAiControlsMcpServersResultUpdatedPromptResult> UpdatedPrompts;
@@ -49,9 +58,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             string error,
 
+            Outputs.GetZeroTrustAccessAiControlsMcpServersResultErrorDetailsResult errorDetails,
+
             string hostname,
 
             string id,
+
+            bool isSharedOauthCallbackEnabled,
 
             string lastSuccessfulSync,
 
@@ -64,6 +77,8 @@ namespace Pulumi.Cloudflare.Outputs
             string name,
 
             ImmutableArray<ImmutableDictionary<string, string>> prompts,
+
+            bool secureWebGateway,
 
             string status,
 
@@ -78,14 +93,17 @@ namespace Pulumi.Cloudflare.Outputs
             CreatedBy = createdBy;
             Description = description;
             Error = error;
+            ErrorDetails = errorDetails;
             Hostname = hostname;
             Id = id;
+            IsSharedOauthCallbackEnabled = isSharedOauthCallbackEnabled;
             LastSuccessfulSync = lastSuccessfulSync;
             LastSynced = lastSynced;
             ModifiedAt = modifiedAt;
             ModifiedBy = modifiedBy;
             Name = name;
             Prompts = prompts;
+            SecureWebGateway = secureWebGateway;
             Status = status;
             Tools = tools;
             UpdatedPrompts = updatedPrompts;

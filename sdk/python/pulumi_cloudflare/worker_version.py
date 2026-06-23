@@ -21,8 +21,8 @@ __all__ = ['WorkerVersionArgs', 'WorkerVersion']
 @pulumi.input_type
 class WorkerVersionArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  worker_id: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  annotations: pulumi.Input[Optional['WorkerVersionAnnotationsArgs']] = None,
                  assets: pulumi.Input[Optional['WorkerVersionAssetsArgs']] = None,
                  bindings: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerVersionBindingArgs']]]] = None,
@@ -38,8 +38,8 @@ class WorkerVersionArgs:
         """
         The set of arguments for constructing a WorkerVersion resource.
 
-        :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
         :param pulumi.Input['WorkerVersionAnnotationsArgs'] annotations: Metadata about the version.
         :param pulumi.Input['WorkerVersionAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
@@ -59,9 +59,8 @@ class WorkerVersionArgs:
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "worker_id", worker_id)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if assets is not None:
@@ -91,6 +90,18 @@ class WorkerVersionArgs:
             pulumi.set(__self__, "usage_model", usage_model)
 
     @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="workerId")
     def worker_id(self) -> pulumi.Input[_builtins.str]:
         """
@@ -101,18 +112,6 @@ class WorkerVersionArgs:
     @worker_id.setter
     def worker_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "worker_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -867,6 +866,8 @@ class WorkerVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkerVersionArgs.__new__(WorkerVersionArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["assets"] = assets
@@ -985,7 +986,7 @@ class WorkerVersion(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class StreamDownloadArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,15 +18,15 @@ public final class StreamDownloadArgs extends com.pulumi.resources.ResourceArgs 
      * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -77,7 +75,7 @@ public final class StreamDownloadArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -114,6 +112,9 @@ public final class StreamDownloadArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public StreamDownloadArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("StreamDownloadArgs", "accountId");
+            }
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("StreamDownloadArgs", "identifier");
             }

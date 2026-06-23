@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountRole(ctx, &cloudflare.GetAccountRoleArgs{
-//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				RoleId:    "3536bcfad5faccb999b47003c79917fb",
 //			}, nil)
 //			if err != nil {
@@ -56,7 +56,7 @@ func GetAccountRole(ctx *pulumi.Context, args *GetAccountRoleArgs, opts ...pulum
 // A collection of arguments for invoking getAccountRole.
 type GetAccountRoleArgs struct {
 	// Account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Role identifier tag.
 	RoleId string `pulumi:"roleId"`
 }
@@ -64,7 +64,7 @@ type GetAccountRoleArgs struct {
 // A collection of values returned by getAccountRole.
 type GetAccountRoleResult struct {
 	// Account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Description of role's permissions.
 	Description string `pulumi:"description"`
 	// Role identifier tag.
@@ -88,7 +88,7 @@ func GetAccountRoleOutput(ctx *pulumi.Context, args GetAccountRoleOutputArgs, op
 // A collection of arguments for invoking getAccountRole.
 type GetAccountRoleOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Role identifier tag.
 	RoleId pulumi.StringInput `pulumi:"roleId"`
 }
@@ -113,8 +113,8 @@ func (o GetAccountRoleResultOutput) ToGetAccountRoleResultOutputWithContext(ctx 
 }
 
 // Account identifier tag.
-func (o GetAccountRoleResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountRoleResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o GetAccountRoleResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountRoleResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Description of role's permissions.

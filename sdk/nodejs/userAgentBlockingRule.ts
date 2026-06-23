@@ -81,7 +81,7 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
     /**
      * Defines an identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a UserAgentBlockingRule resource with the given unique name, arguments, and options.
@@ -108,6 +108,9 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
             }
             if (args?.mode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["configuration"] = args?.configuration;
             resourceInputs["description"] = args?.description;
@@ -165,5 +168,5 @@ export interface UserAgentBlockingRuleArgs {
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

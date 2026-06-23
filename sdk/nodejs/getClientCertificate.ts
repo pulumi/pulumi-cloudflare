@@ -54,11 +54,11 @@ export interface GetClientCertificateArgs {
  */
 export interface GetClientCertificateResult {
     /**
-     * The Client Certificate PEM
+     * The Client Certificate PEM.
      */
     readonly certificate: string;
     /**
-     * Certificate Authority used to issue the Client Certificate
+     * Certificate Authority used to issue the Client Certificate.
      */
     readonly certificateAuthority: outputs.GetClientCertificateCertificateAuthority;
     /**
@@ -66,11 +66,11 @@ export interface GetClientCertificateResult {
      */
     readonly clientCertificateId?: string;
     /**
-     * Common Name of the Client Certificate
+     * Common Name of the Client Certificate.
      */
     readonly commonName: string;
     /**
-     * Country, provided by the CSR
+     * Country, provided by the CSR.
      */
     readonly country: string;
     /**
@@ -78,12 +78,12 @@ export interface GetClientCertificateResult {
      */
     readonly csr: string;
     /**
-     * Date that the Client Certificate expires
+     * Date that the Client Certificate expires.
      */
     readonly expiresOn: string;
     readonly filter?: outputs.GetClientCertificateFilter;
     /**
-     * Unique identifier of the Client Certificate
+     * Unique identifier of the Client Certificate.
      */
     readonly fingerprintSha256: string;
     /**
@@ -91,19 +91,19 @@ export interface GetClientCertificateResult {
      */
     readonly id: string;
     /**
-     * Date that the Client Certificate was issued by the Certificate Authority
+     * Date that the Client Certificate was issued by the Certificate Authority.
      */
     readonly issuedOn: string;
     /**
-     * Location, provided by the CSR
+     * Location, provided by the CSR.
      */
     readonly location: string;
     /**
-     * Organization, provided by the CSR
+     * Organization, provided by the CSR.
      */
     readonly organization: string;
     /**
-     * Organizational Unit, provided by the CSR
+     * Organizational Unit, provided by the CSR.
      */
     readonly organizationalUnit: string;
     /**
@@ -115,20 +115,20 @@ export interface GetClientCertificateResult {
      */
     readonly signature: string;
     /**
-     * Subject Key Identifier
+     * Subject Key Identifier.
      */
     readonly ski: string;
     /**
-     * State, provided by the CSR
+     * State, provided by the CSR.
      */
     readonly state: string;
     /**
-     * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+     * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
      * Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
      */
     readonly status: string;
     /**
-     * The number of days the Client Certificate will be valid after the issuedOn date
+     * The number of days the Client Certificate will be valid after the issuedOn date.
      */
     readonly validityDays: number;
     /**

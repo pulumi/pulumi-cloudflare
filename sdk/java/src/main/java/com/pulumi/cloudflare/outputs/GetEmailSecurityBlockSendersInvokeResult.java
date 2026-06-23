@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetEmailSecurityBlockSendersInvokeResult {
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String accountId;
@@ -37,14 +37,19 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
     private @Nullable String order;
+    /**
+     * @return Filter by pattern value.
+     * 
+     */
     private @Nullable String pattern;
     /**
-     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Filter by pattern type.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     private @Nullable String patternType;
@@ -54,17 +59,14 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
      */
     private List<GetEmailSecurityBlockSendersResult> results;
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     private @Nullable String search;
 
     private GetEmailSecurityBlockSendersInvokeResult() {}
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> accountId() {
@@ -93,18 +95,23 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
+    /**
+     * @return Filter by pattern value.
+     * 
+     */
     public Optional<String> pattern() {
         return Optional.ofNullable(this.pattern);
     }
     /**
-     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Filter by pattern type.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     public Optional<String> patternType() {
@@ -118,10 +125,7 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
         return this.results;
     }
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<String> search() {

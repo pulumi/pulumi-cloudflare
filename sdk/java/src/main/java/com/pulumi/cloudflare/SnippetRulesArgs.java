@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class SnippetRulesArgs extends com.pulumi.resources.ResourceArgs {
@@ -37,15 +35,15 @@ public final class SnippetRulesArgs extends com.pulumi.resources.ResourceArgs {
      * Use this field to specify the unique ID of the zone.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Use this field to specify the unique ID of the zone.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private SnippetRulesArgs() {}
@@ -110,7 +108,7 @@ public final class SnippetRulesArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -128,6 +126,9 @@ public final class SnippetRulesArgs extends com.pulumi.resources.ResourceArgs {
         public SnippetRulesArgs build() {
             if ($.rules == null) {
                 throw new MissingRequiredPropertyException("SnippetRulesArgs", "rules");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("SnippetRulesArgs", "zoneId");
             }
             return $;
         }

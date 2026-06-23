@@ -25,7 +25,7 @@ func LookupAiSearchInstance(ctx *pulumi.Context, args *LookupAiSearchInstanceArg
 type LookupAiSearchInstanceArgs struct {
 	AccountId *string                    `pulumi:"accountId"`
 	Filter    *GetAiSearchInstanceFilter `pulumi:"filter"`
-	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+	// The ID of this resource.
 	Id *string `pulumi:"id"`
 }
 
@@ -37,7 +37,10 @@ type LookupAiSearchInstanceResult struct {
 	AisearchModel string `pulumi:"aisearchModel"`
 	Cache         bool   `pulumi:"cache"`
 	// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
-	CacheThreshold  string                              `pulumi:"cacheThreshold"`
+	CacheThreshold string `pulumi:"cacheThreshold"`
+	// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+	// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+	CacheTtl        float64                             `pulumi:"cacheTtl"`
 	ChunkOverlap    int                                 `pulumi:"chunkOverlap"`
 	ChunkSize       int                                 `pulumi:"chunkSize"`
 	CreatedAt       string                              `pulumi:"createdAt"`
@@ -54,7 +57,7 @@ type LookupAiSearchInstanceResult struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	HybridSearchEnabled bool `pulumi:"hybridSearchEnabled"`
-	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// Controls which storage backends are used during indexing. Defaults to vector-only.
 	IndexMethod          GetAiSearchInstanceIndexMethod          `pulumi:"indexMethod"`
@@ -100,7 +103,7 @@ func LookupAiSearchInstanceOutput(ctx *pulumi.Context, args LookupAiSearchInstan
 type LookupAiSearchInstanceOutputArgs struct {
 	AccountId pulumi.StringPtrInput             `pulumi:"accountId"`
 	Filter    GetAiSearchInstanceFilterPtrInput `pulumi:"filter"`
-	// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+	// The ID of this resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -143,6 +146,12 @@ func (o LookupAiSearchInstanceResultOutput) Cache() pulumi.BoolOutput {
 // Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
 func (o LookupAiSearchInstanceResultOutput) CacheThreshold() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.CacheThreshold }).(pulumi.StringOutput)
+}
+
+// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+func (o LookupAiSearchInstanceResultOutput) CacheTtl() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupAiSearchInstanceResult) float64 { return v.CacheTtl }).(pulumi.Float64Output)
 }
 
 func (o LookupAiSearchInstanceResultOutput) ChunkOverlap() pulumi.IntOutput {
@@ -194,7 +203,7 @@ func (o LookupAiSearchInstanceResultOutput) HybridSearchEnabled() pulumi.BoolOut
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) bool { return v.HybridSearchEnabled }).(pulumi.BoolOutput)
 }
 
-// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+// The ID of this resource.
 func (o LookupAiSearchInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiSearchInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }

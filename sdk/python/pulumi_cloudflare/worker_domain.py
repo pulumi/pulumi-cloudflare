@@ -19,26 +19,25 @@ __all__ = ['WorkerDomainArgs', 'WorkerDomain']
 @pulumi.input_type
 class WorkerDomainArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  hostname: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkerDomain resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] hostname: Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.
         :param pulumi.Input[_builtins.str] service: Name of the Worker associated with the domain. Requests to the configured hostname will be routed to this Worker.
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] environment: Worker environment associated with the domain.
         :param pulumi.Input[_builtins.str] zone_id: ID of the zone containing the domain hostname.
         :param pulumi.Input[_builtins.str] zone_name: Name of the zone containing the domain hostname.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "service", service)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if environment is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""environment is deprecated: This attribute is deprecated.""")
@@ -48,6 +47,18 @@ class WorkerDomainArgs:
             pulumi.set(__self__, "zone_id", zone_id)
         if zone_name is not None:
             pulumi.set(__self__, "zone_name", zone_name)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -72,18 +83,6 @@ class WorkerDomainArgs:
     @service.setter
     def service(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "service", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -368,6 +367,8 @@ class WorkerDomain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkerDomainArgs.__new__(WorkerDomainArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["environment"] = environment
             if hostname is None and not opts.urn:
@@ -428,7 +429,7 @@ class WorkerDomain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

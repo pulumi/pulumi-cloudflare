@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityBlockSendersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
@@ -131,26 +131,27 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "pattern", "CreatedAt".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
+        /// <summary>
+        /// Filter by pattern value.
+        /// </summary>
         [Input("pattern")]
         public string? Pattern { get; set; }
 
         /// <summary>
+        /// Filter by pattern type.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         [Input("patternType")]
         public string? PatternType { get; set; }
 
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         [Input("search")]
         public string? Search { get; set; }
@@ -164,7 +165,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityBlockSendersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -183,26 +184,27 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "pattern", "CreatedAt".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
+        /// <summary>
+        /// Filter by pattern value.
+        /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
         /// <summary>
+        /// Filter by pattern type.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         [Input("patternType")]
         public Input<string>? PatternType { get; set; }
 
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
@@ -218,7 +220,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityBlockSendersResult
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
@@ -235,12 +237,16 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "pattern", "CreatedAt".
         /// </summary>
         public readonly string? Order;
+        /// <summary>
+        /// Filter by pattern value.
+        /// </summary>
         public readonly string? Pattern;
         /// <summary>
+        /// Filter by pattern type.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         public readonly string? PatternType;
@@ -249,10 +255,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEmailSecurityBlockSendersResultResult> Results;
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         public readonly string? Search;
 

@@ -32,7 +32,7 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
     }
 
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -40,7 +40,7 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
     private @Nullable String order;
 
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -48,14 +48,23 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
         return Optional.ofNullable(this.order);
     }
 
+    /**
+     * Filter by pattern value.
+     * 
+     */
     @Import(name="pattern")
     private @Nullable String pattern;
 
+    /**
+     * @return Filter by pattern value.
+     * 
+     */
     public Optional<String> pattern() {
         return Optional.ofNullable(this.pattern);
     }
 
     /**
+     * Filter by pattern type.
      * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
@@ -63,7 +72,8 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
     private @Nullable String patternType;
 
     /**
-     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Filter by pattern type.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     public Optional<String> patternType() {
@@ -71,20 +81,14 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
     }
 
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      * 
      */
     @Import(name="search")
     private @Nullable String search;
 
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<String> search() {
@@ -132,7 +136,7 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
         }
 
         /**
-         * @param order The field to sort by.
+         * @param order Field to sort by.
          * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
@@ -143,13 +147,20 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
             return this;
         }
 
+        /**
+         * @param pattern Filter by pattern value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(@Nullable String pattern) {
             $.pattern = pattern;
             return this;
         }
 
         /**
-         * @param patternType Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+         * @param patternType Filter by pattern type.
+         * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
          * 
          * @return builder
          * 
@@ -160,10 +171,7 @@ public final class GetEmailSecurityBlockSenderFilter extends com.pulumi.resource
         }
 
         /**
-         * @param search Allows searching in multiple properties of a record simultaneously.
-         * This parameter is intended for human users, not automation. Its exact
-         * behavior is intentionally left unspecified and is subject to change
-         * in the future.
+         * @param search Search term for filtering records. Behavior may change.
          * 
          * @return builder
          * 

@@ -102,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
         /// A unique identifier for a live input.
@@ -122,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// A unique identifier for a live input.
@@ -144,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// The date and time the live input was created.
         /// </summary>
@@ -213,7 +213,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetStreamLiveInputResult(
-            string? accountId,
+            string accountId,
 
             string created,
 

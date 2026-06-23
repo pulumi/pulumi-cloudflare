@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -62,7 +63,7 @@ type AddressMap struct {
 	pulumi.CustomResourceState
 
 	// Identifier of a Cloudflare account.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
 	CanDelete pulumi.BoolOutput `pulumi:"canDelete"`
 	// If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
@@ -84,9 +85,12 @@ type AddressMap struct {
 func NewAddressMap(ctx *pulumi.Context,
 	name string, args *AddressMapArgs, opts ...pulumi.ResourceOption) (*AddressMap, error) {
 	if args == nil {
-		args = &AddressMapArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AddressMap
 	err := ctx.RegisterResource("cloudflare:index/addressMap:AddressMap", name, args, &resource, opts...)
@@ -155,7 +159,7 @@ func (AddressMapState) ElementType() reflect.Type {
 
 type addressMapArgs struct {
 	// Identifier of a Cloudflare account.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
 	DefaultSni *string `pulumi:"defaultSni"`
 	// An optional description field which may be used to describe the types of IPs or zones on the map.
@@ -170,7 +174,7 @@ type addressMapArgs struct {
 // The set of arguments for constructing a AddressMap resource.
 type AddressMapArgs struct {
 	// Identifier of a Cloudflare account.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
 	DefaultSni pulumi.StringPtrInput
 	// An optional description field which may be used to describe the types of IPs or zones on the map.
@@ -270,8 +274,8 @@ func (o AddressMapOutput) ToAddressMapOutputWithContext(ctx context.Context) Add
 }
 
 // Identifier of a Cloudflare account.
-func (o AddressMapOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AddressMap) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o AddressMapOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressMap) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.

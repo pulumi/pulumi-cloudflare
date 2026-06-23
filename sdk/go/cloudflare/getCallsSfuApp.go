@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetCallsSfuApp(ctx, &cloudflare.LookupCallsSfuAppArgs{
-//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				AppId:     "2a95132c15732412d22c1476fa83f27a",
 //			}, nil)
 //			if err != nil {
@@ -55,7 +55,7 @@ func LookupCallsSfuApp(ctx *pulumi.Context, args *LookupCallsSfuAppArgs, opts ..
 // A collection of arguments for invoking getCallsSfuApp.
 type LookupCallsSfuAppArgs struct {
 	// The account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a item.
 	AppId string `pulumi:"appId"`
 }
@@ -63,7 +63,7 @@ type LookupCallsSfuAppArgs struct {
 // A collection of values returned by getCallsSfuApp.
 type LookupCallsSfuAppResult struct {
 	// The account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a item.
 	AppId string `pulumi:"appId"`
 	// The date and time the item was created.
@@ -90,7 +90,7 @@ func LookupCallsSfuAppOutput(ctx *pulumi.Context, args LookupCallsSfuAppOutputAr
 // A collection of arguments for invoking getCallsSfuApp.
 type LookupCallsSfuAppOutputArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a item.
 	AppId pulumi.StringInput `pulumi:"appId"`
 }
@@ -115,8 +115,8 @@ func (o LookupCallsSfuAppResultOutput) ToLookupCallsSfuAppResultOutputWithContex
 }
 
 // The account identifier tag.
-func (o LookupCallsSfuAppResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCallsSfuAppResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupCallsSfuAppResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCallsSfuAppResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // A Cloudflare-generated unique identifier for a item.

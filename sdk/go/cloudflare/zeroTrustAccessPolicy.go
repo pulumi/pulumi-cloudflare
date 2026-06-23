@@ -111,7 +111,7 @@ type ZeroTrustAccessPolicy struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups ZeroTrustAccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
@@ -148,6 +148,9 @@ func NewZeroTrustAccessPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Decision == nil {
 		return nil, errors.New("invalid value for required argument 'Decision'")
 	}
@@ -252,7 +255,7 @@ func (ZeroTrustAccessPolicyState) ElementType() reflect.Type {
 
 type zeroTrustAccessPolicyArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups []ZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
@@ -285,7 +288,7 @@ type zeroTrustAccessPolicyArgs struct {
 // The set of arguments for constructing a ZeroTrustAccessPolicy resource.
 type ZeroTrustAccessPolicyArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups ZeroTrustAccessPolicyApprovalGroupArrayInput
 	// Requires the user to request access from an administrator at the start of each session.
@@ -403,8 +406,8 @@ func (o ZeroTrustAccessPolicyOutput) ToZeroTrustAccessPolicyOutputWithContext(ct
 }
 
 // Identifier.
-func (o ZeroTrustAccessPolicyOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessPolicyOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Administrators who can approve a temporary authentication request.

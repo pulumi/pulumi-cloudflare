@@ -72,56 +72,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/clientCertificate:ClientCertificate")
 public class ClientCertificate extends com.pulumi.resources.CustomResource {
     /**
-     * The Client Certificate PEM
+     * The Client Certificate PEM.
      * 
      */
     @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output<String> certificate;
 
     /**
-     * @return The Client Certificate PEM
+     * @return The Client Certificate PEM.
      * 
      */
     public Output<String> certificate() {
         return this.certificate;
     }
     /**
-     * Certificate Authority used to issue the Client Certificate
+     * Certificate Authority used to issue the Client Certificate.
      * 
      */
     @Export(name="certificateAuthority", refs={ClientCertificateCertificateAuthority.class}, tree="[0]")
     private Output<ClientCertificateCertificateAuthority> certificateAuthority;
 
     /**
-     * @return Certificate Authority used to issue the Client Certificate
+     * @return Certificate Authority used to issue the Client Certificate.
      * 
      */
     public Output<ClientCertificateCertificateAuthority> certificateAuthority() {
         return this.certificateAuthority;
     }
     /**
-     * Common Name of the Client Certificate
+     * Common Name of the Client Certificate.
      * 
      */
     @Export(name="commonName", refs={String.class}, tree="[0]")
     private Output<String> commonName;
 
     /**
-     * @return Common Name of the Client Certificate
+     * @return Common Name of the Client Certificate.
      * 
      */
     public Output<String> commonName() {
         return this.commonName;
     }
     /**
-     * Country, provided by the CSR
+     * Country, provided by the CSR.
      * 
      */
     @Export(name="country", refs={String.class}, tree="[0]")
     private Output<String> country;
 
     /**
-     * @return Country, provided by the CSR
+     * @return Country, provided by the CSR.
      * 
      */
     public Output<String> country() {
@@ -142,84 +142,84 @@ public class ClientCertificate extends com.pulumi.resources.CustomResource {
         return this.csr;
     }
     /**
-     * Date that the Client Certificate expires
+     * Date that the Client Certificate expires.
      * 
      */
     @Export(name="expiresOn", refs={String.class}, tree="[0]")
     private Output<String> expiresOn;
 
     /**
-     * @return Date that the Client Certificate expires
+     * @return Date that the Client Certificate expires.
      * 
      */
     public Output<String> expiresOn() {
         return this.expiresOn;
     }
     /**
-     * Unique identifier of the Client Certificate
+     * Unique identifier of the Client Certificate.
      * 
      */
     @Export(name="fingerprintSha256", refs={String.class}, tree="[0]")
     private Output<String> fingerprintSha256;
 
     /**
-     * @return Unique identifier of the Client Certificate
+     * @return Unique identifier of the Client Certificate.
      * 
      */
     public Output<String> fingerprintSha256() {
         return this.fingerprintSha256;
     }
     /**
-     * Date that the Client Certificate was issued by the Certificate Authority
+     * Date that the Client Certificate was issued by the Certificate Authority.
      * 
      */
     @Export(name="issuedOn", refs={String.class}, tree="[0]")
     private Output<String> issuedOn;
 
     /**
-     * @return Date that the Client Certificate was issued by the Certificate Authority
+     * @return Date that the Client Certificate was issued by the Certificate Authority.
      * 
      */
     public Output<String> issuedOn() {
         return this.issuedOn;
     }
     /**
-     * Location, provided by the CSR
+     * Location, provided by the CSR.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return Location, provided by the CSR
+     * @return Location, provided by the CSR.
      * 
      */
     public Output<String> location() {
         return this.location;
     }
     /**
-     * Organization, provided by the CSR
+     * Organization, provided by the CSR.
      * 
      */
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
-     * @return Organization, provided by the CSR
+     * @return Organization, provided by the CSR.
      * 
      */
     public Output<String> organization() {
         return this.organization;
     }
     /**
-     * Organizational Unit, provided by the CSR
+     * Organizational Unit, provided by the CSR.
      * 
      */
     @Export(name="organizationalUnit", refs={String.class}, tree="[0]")
     private Output<String> organizationalUnit;
 
     /**
-     * @return Organizational Unit, provided by the CSR
+     * @return Organizational Unit, provided by the CSR.
      * 
      */
     public Output<String> organizationalUnit() {
@@ -260,35 +260,35 @@ public class ClientCertificate extends com.pulumi.resources.CustomResource {
         return this.signature;
     }
     /**
-     * Subject Key Identifier
+     * Subject Key Identifier.
      * 
      */
     @Export(name="ski", refs={String.class}, tree="[0]")
     private Output<String> ski;
 
     /**
-     * @return Subject Key Identifier
+     * @return Subject Key Identifier.
      * 
      */
     public Output<String> ski() {
         return this.ski;
     }
     /**
-     * State, provided by the CSR
+     * State, provided by the CSR.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return State, provided by the CSR
+     * @return State, provided by the CSR.
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+     * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
      * Available values: &#34;active&#34;, &#34;pending*reactivation&#34;, &#34;pending*revocation&#34;, &#34;revoked&#34;.
      * 
      */
@@ -296,7 +296,7 @@ public class ClientCertificate extends com.pulumi.resources.CustomResource {
     private Output<String> status;
 
     /**
-     * @return Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+     * @return Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
      * Available values: &#34;active&#34;, &#34;pending*reactivation&#34;, &#34;pending*revocation&#34;, &#34;revoked&#34;.
      * 
      */
@@ -304,14 +304,14 @@ public class ClientCertificate extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The number of days the Client Certificate will be valid after the issuedOn date
+     * The number of days the Client Certificate will be valid after the issuedOn date.
      * 
      */
     @Export(name="validityDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> validityDays;
 
     /**
-     * @return The number of days the Client Certificate will be valid after the issuedOn date
+     * @return The number of days the Client Certificate will be valid after the issuedOn date.
      * 
      */
     public Output<Integer> validityDays() {
@@ -322,14 +322,14 @@ public class ClientCertificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**

@@ -21,7 +21,7 @@ __all__ = ['AccountDnsSettingsArgs', 'AccountDnsSettings']
 @pulumi.input_type
 class AccountDnsSettingsArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[_builtins.str],
                  enforce_dns_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  zone_defaults: pulumi.Input[Optional['AccountDnsSettingsZoneDefaultsArgs']] = None):
         """
@@ -30,8 +30,7 @@ class AccountDnsSettingsArgs:
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] enforce_dns_only: When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
         """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_id", account_id)
         if enforce_dns_only is not None:
             pulumi.set(__self__, "enforce_dns_only", enforce_dns_only)
         if zone_defaults is not None:
@@ -39,14 +38,14 @@ class AccountDnsSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[_builtins.str]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -188,7 +187,7 @@ class AccountDnsSettings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[AccountDnsSettingsArgs] = None,
+                 args: AccountDnsSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Accepted Permissions
@@ -262,6 +261,8 @@ class AccountDnsSettings(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccountDnsSettingsArgs.__new__(AccountDnsSettingsArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["enforce_dns_only"] = enforce_dns_only
             __props__.__dict__["zone_defaults"] = zone_defaults
@@ -299,7 +300,7 @@ class AccountDnsSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

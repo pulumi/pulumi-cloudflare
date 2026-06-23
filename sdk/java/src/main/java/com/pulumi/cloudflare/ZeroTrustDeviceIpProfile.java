@@ -71,10 +71,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile")
 public class ZeroTrustDeviceIpProfile extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * The RFC3339Nano timestamp when the Device IP profile was created.

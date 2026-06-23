@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
     public partial class MagicNetworkMonitoringRule : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
@@ -167,8 +167,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class MagicNetworkMonitoringRuleArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.

@@ -18,22 +18,24 @@ public final class GetEmailSecurityBlockSenderFilter {
      */
     private @Nullable String direction;
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
     private @Nullable String order;
+    /**
+     * @return Filter by pattern value.
+     * 
+     */
     private @Nullable String pattern;
     /**
-     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Filter by pattern type.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     private @Nullable String patternType;
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     private @Nullable String search;
@@ -48,28 +50,30 @@ public final class GetEmailSecurityBlockSenderFilter {
         return Optional.ofNullable(this.direction);
     }
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
+    /**
+     * @return Filter by pattern value.
+     * 
+     */
     public Optional<String> pattern() {
         return Optional.ofNullable(this.pattern);
     }
     /**
-     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Filter by pattern type.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     public Optional<String> patternType() {
         return Optional.ofNullable(this.patternType);
     }
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<String> search() {

@@ -47,7 +47,7 @@ namespace Pulumi.Cloudflare
         /// Use this to identify the account.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the associated R2 bucket name.
@@ -136,8 +136,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this to identify the account.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Specifies the R2 bucket name.

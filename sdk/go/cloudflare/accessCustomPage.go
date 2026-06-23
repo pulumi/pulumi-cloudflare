@@ -57,7 +57,7 @@ type AccessCustomPage struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Custom page HTML.
 	CustomHtml pulumi.StringOutput `pulumi:"customHtml"`
 	// Custom page name.
@@ -76,6 +76,9 @@ func NewAccessCustomPage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.CustomHtml == nil {
 		return nil, errors.New("invalid value for required argument 'CustomHtml'")
 	}
@@ -147,7 +150,7 @@ func (AccessCustomPageState) ElementType() reflect.Type {
 
 type accessCustomPageArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Custom page HTML.
 	CustomHtml string `pulumi:"customHtml"`
 	// Custom page name.
@@ -160,7 +163,7 @@ type accessCustomPageArgs struct {
 // The set of arguments for constructing a AccessCustomPage resource.
 type AccessCustomPageArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Custom page HTML.
 	CustomHtml pulumi.StringInput
 	// Custom page name.
@@ -258,8 +261,8 @@ func (o AccessCustomPageOutput) ToAccessCustomPageOutputWithContext(ctx context.
 }
 
 // Identifier.
-func (o AccessCustomPageOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o AccessCustomPageOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Custom page HTML.

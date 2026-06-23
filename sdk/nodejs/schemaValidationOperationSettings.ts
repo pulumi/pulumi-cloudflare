@@ -74,7 +74,7 @@ export class SchemaValidationOperationSettings extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a SchemaValidationOperationSettings resource with the given unique name, arguments, and options.
@@ -99,6 +99,9 @@ export class SchemaValidationOperationSettings extends pulumi.CustomResource {
             }
             if (args?.operationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'operationId'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["mitigationAction"] = args?.mitigationAction;
             resourceInputs["operationId"] = args?.operationId;
@@ -154,5 +157,5 @@ export interface SchemaValidationOperationSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

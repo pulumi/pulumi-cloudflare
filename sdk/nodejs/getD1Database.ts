@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  * const exampleD1Database = cloudflare.getD1Database({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     databaseId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     fields: ["uuid"],
  * });
  * ```
  */
@@ -30,6 +31,7 @@ export function getD1Database(args?: GetD1DatabaseArgs, opts?: pulumi.InvokeOpti
     return pulumi.runtime.invoke("cloudflare:index/getD1Database:getD1Database", {
         "accountId": args.accountId,
         "databaseId": args.databaseId,
+        "fields": args.fields,
         "filter": args.filter,
     }, opts);
 }
@@ -46,6 +48,11 @@ export interface GetD1DatabaseArgs {
      * D1 database identifier (UUID).
      */
     databaseId?: string;
+    /**
+     * Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     */
+    fields?: string[];
     filter?: inputs.GetD1DatabaseFilter;
 }
 
@@ -65,6 +72,11 @@ export interface GetD1DatabaseResult {
      * D1 database identifier (UUID).
      */
     readonly databaseId?: string;
+    /**
+     * Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     */
+    readonly fields?: string[];
     /**
      * The D1 database's size, in bytes.
      */
@@ -109,6 +121,7 @@ export interface GetD1DatabaseResult {
  * const exampleD1Database = cloudflare.getD1Database({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     databaseId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     fields: ["uuid"],
  * });
  * ```
  */
@@ -118,6 +131,7 @@ export function getD1DatabaseOutput(args?: GetD1DatabaseOutputArgs, opts?: pulum
     return pulumi.runtime.invokeOutput("cloudflare:index/getD1Database:getD1Database", {
         "accountId": args.accountId,
         "databaseId": args.databaseId,
+        "fields": args.fields,
         "filter": args.filter,
     }, opts);
 }
@@ -134,5 +148,10 @@ export interface GetD1DatabaseOutputArgs {
      * D1 database identifier (UUID).
      */
     databaseId?: pulumi.Input<string | undefined>;
+    /**
+     * Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     */
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     filter?: pulumi.Input<inputs.GetD1DatabaseFilterArgs | undefined>;
 }

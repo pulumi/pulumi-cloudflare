@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,6 +19,7 @@ public final class AiGatewayDynamicRoutingVersion {
     private @Nullable String active;
     private @Nullable String createdAt;
     private @Nullable String data;
+    private @Nullable Boolean isValid;
     private @Nullable String versionId;
 
     private AiGatewayDynamicRoutingVersion() {}
@@ -33,6 +35,9 @@ public final class AiGatewayDynamicRoutingVersion {
     }
     public Optional<String> data() {
         return Optional.ofNullable(this.data);
+    }
+    public Optional<Boolean> isValid() {
+        return Optional.ofNullable(this.isValid);
     }
     public Optional<String> versionId() {
         return Optional.ofNullable(this.versionId);
@@ -50,6 +55,7 @@ public final class AiGatewayDynamicRoutingVersion {
         private @Nullable String active;
         private @Nullable String createdAt;
         private @Nullable String data;
+        private @Nullable Boolean isValid;
         private @Nullable String versionId;
         public Builder() {}
         public Builder(AiGatewayDynamicRoutingVersion defaults) {
@@ -57,6 +63,7 @@ public final class AiGatewayDynamicRoutingVersion {
     	      this.active = defaults.active;
     	      this.createdAt = defaults.createdAt;
     	      this.data = defaults.data;
+    	      this.isValid = defaults.isValid;
     	      this.versionId = defaults.versionId;
         }
 
@@ -79,6 +86,12 @@ public final class AiGatewayDynamicRoutingVersion {
             return this;
         }
         @CustomType.Setter
+        public Builder isValid(@Nullable Boolean isValid) {
+
+            this.isValid = isValid;
+            return this;
+        }
+        @CustomType.Setter
         public Builder versionId(@Nullable String versionId) {
 
             this.versionId = versionId;
@@ -89,6 +102,7 @@ public final class AiGatewayDynamicRoutingVersion {
             _resultValue.active = active;
             _resultValue.createdAt = createdAt;
             _resultValue.data = data;
+            _resultValue.isValid = isValid;
             _resultValue.versionId = versionId;
             return _resultValue;
         }

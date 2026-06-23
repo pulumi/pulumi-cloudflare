@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare
     public partial class AiGateway : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// gateway id
@@ -85,6 +85,9 @@ namespace Pulumi.Cloudflare
 
         [Output("dlp")]
         public Output<Outputs.AiGatewayDlp?> Dlp { get; private set; } = null!;
+
+        [Output("guardrails")]
+        public Output<Outputs.AiGatewayGuardrails?> Guardrails { get; private set; } = null!;
 
         [Output("isDefault")]
         public Output<bool> IsDefault { get; private set; } = null!;
@@ -140,6 +143,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("retryMaxAttempts")]
         public Output<int?> RetryMaxAttempts { get; private set; } = null!;
+
+        [Output("spendLimits")]
+        public Output<Outputs.AiGatewaySpendLimits> SpendLimits { get; private set; } = null!;
 
         [Output("storeId")]
         public Output<string?> StoreId { get; private set; } = null!;
@@ -203,8 +209,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class AiGatewayArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// gateway id
@@ -226,6 +232,9 @@ namespace Pulumi.Cloudflare
 
         [Input("dlp")]
         public Input<Inputs.AiGatewayDlpArgs>? Dlp { get; set; }
+
+        [Input("guardrails")]
+        public Input<Inputs.AiGatewayGuardrailsArgs>? Guardrails { get; set; }
 
         [Input("logManagement")]
         public Input<int>? LogManagement { get; set; }
@@ -281,6 +290,9 @@ namespace Pulumi.Cloudflare
         [Input("retryMaxAttempts")]
         public Input<int>? RetryMaxAttempts { get; set; }
 
+        [Input("spendLimits")]
+        public Input<Inputs.AiGatewaySpendLimitsArgs>? SpendLimits { get; set; }
+
         [Input("storeId")]
         public Input<string>? StoreId { get; set; }
 
@@ -331,6 +343,9 @@ namespace Pulumi.Cloudflare
 
         [Input("dlp")]
         public Input<Inputs.AiGatewayDlpGetArgs>? Dlp { get; set; }
+
+        [Input("guardrails")]
+        public Input<Inputs.AiGatewayGuardrailsGetArgs>? Guardrails { get; set; }
 
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
@@ -391,6 +406,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("retryMaxAttempts")]
         public Input<int>? RetryMaxAttempts { get; set; }
+
+        [Input("spendLimits")]
+        public Input<Inputs.AiGatewaySpendLimitsGetArgs>? SpendLimits { get; set; }
 
         [Input("storeId")]
         public Input<string>? StoreId { get; set; }

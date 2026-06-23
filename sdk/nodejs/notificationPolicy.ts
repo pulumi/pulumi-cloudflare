@@ -124,7 +124,7 @@ export class NotificationPolicy extends pulumi.CustomResource {
     /**
      * The account id
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Optional specification of how often to re-alert from the same incident, not support on all alert types.
      */
@@ -182,6 +182,9 @@ export class NotificationPolicy extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as NotificationPolicyArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.alertType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alertType'");
             }
@@ -255,7 +258,7 @@ export interface NotificationPolicyArgs {
     /**
      * The account id
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Optional specification of how often to re-alert from the same incident, not support on all alert types.
      */

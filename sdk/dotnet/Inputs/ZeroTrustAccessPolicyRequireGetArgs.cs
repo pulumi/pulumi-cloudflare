@@ -30,6 +30,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("certificate")]
         public Input<Inputs.ZeroTrustAccessPolicyRequireCertificateGetArgs>? Certificate { get; set; }
 
+        [Input("cloudflareAccountMember")]
+        public Input<Inputs.ZeroTrustAccessPolicyRequireCloudflareAccountMemberGetArgs>? CloudflareAccountMember { get; set; }
+
         [Input("commonName")]
         public Input<Inputs.ZeroTrustAccessPolicyRequireCommonNameGetArgs>? CommonName { get; set; }
 

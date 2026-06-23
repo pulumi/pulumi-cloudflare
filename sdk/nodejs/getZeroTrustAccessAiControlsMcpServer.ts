@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `MCP Portals Read`
+ * - `MCP Portals Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -54,24 +59,38 @@ export interface GetZeroTrustAccessAiControlsMcpServerResult {
     readonly createdBy: string;
     readonly description: string;
     readonly error: string;
+    readonly errorDetails: outputs.GetZeroTrustAccessAiControlsMcpServerErrorDetails;
     readonly filter?: outputs.GetZeroTrustAccessAiControlsMcpServerFilter;
     readonly hostname: string;
     /**
      * server id
      */
     readonly id: string;
+    /**
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     */
+    readonly isSharedOauthCallbackEnabled: boolean;
     readonly lastSuccessfulSync: string;
     readonly lastSynced: string;
     readonly modifiedAt: string;
     readonly modifiedBy: string;
     readonly name: string;
     readonly prompts: {[key: string]: string}[];
+    /**
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     */
+    readonly secureWebGateway: boolean;
     readonly status: string;
     readonly tools: {[key: string]: string}[];
     readonly updatedPrompts: outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedPrompt[];
     readonly updatedTools: outputs.GetZeroTrustAccessAiControlsMcpServerUpdatedTool[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `MCP Portals Read`
+ * - `MCP Portals Write`
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -72,7 +72,7 @@ export class PageShieldPolicy extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a PageShieldPolicy resource with the given unique name, arguments, and options.
@@ -109,6 +109,9 @@ export class PageShieldPolicy extends pulumi.CustomResource {
             }
             if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["action"] = args?.action;
             resourceInputs["description"] = args?.description;
@@ -181,5 +184,5 @@ export interface PageShieldPolicyArgs {
     /**
      * Identifier
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

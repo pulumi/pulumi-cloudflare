@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class CustomSslKeylessServerTunnelGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Private IP of the Key Server Host
+        /// Private IP of the Key Server Host.
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
 
         /// <summary>
-        /// Cloudflare Tunnel Virtual Network ID
+        /// Cloudflare Tunnel Virtual Network ID.
         /// </summary>
         [Input("vnetId")]
         public Input<string>? VnetId { get; set; }

@@ -72,7 +72,7 @@ export class TurnstileWidget extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * If bot*fight*mode is set to `true`, Cloudflare issues computationally
      * expensive challenges in response to malicious bots (ENT only).
@@ -154,6 +154,9 @@ export class TurnstileWidget extends pulumi.CustomResource {
             resourceInputs["sitekey"] = state?.sitekey;
         } else {
             const args = argsOrState as TurnstileWidgetArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.domains === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domains'");
             }
@@ -253,7 +256,7 @@ export interface TurnstileWidgetArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * If bot*fight*mode is set to `true`, Cloudflare issues computationally
      * expensive challenges in response to malicious bots (ENT only).

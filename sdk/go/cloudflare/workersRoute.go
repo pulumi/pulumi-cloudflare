@@ -58,7 +58,7 @@ type WorkersRoute struct {
 	// Name of the script to run if the route matches.
 	Script pulumi.StringPtrOutput `pulumi:"script"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewWorkersRoute registers a new resource with the given unique name, arguments, and options.
@@ -70,6 +70,9 @@ func NewWorkersRoute(ctx *pulumi.Context,
 
 	if args.Pattern == nil {
 		return nil, errors.New("invalid value for required argument 'Pattern'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkersRoute
@@ -121,7 +124,7 @@ type workersRouteArgs struct {
 	// Name of the script to run if the route matches.
 	Script *string `pulumi:"script"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a WorkersRoute resource.
@@ -131,7 +134,7 @@ type WorkersRouteArgs struct {
 	// Name of the script to run if the route matches.
 	Script pulumi.StringPtrInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (WorkersRouteArgs) ElementType() reflect.Type {
@@ -232,8 +235,8 @@ func (o WorkersRouteOutput) Script() pulumi.StringPtrOutput {
 }
 
 // Identifier.
-func (o WorkersRouteOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkersRoute) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o WorkersRouteOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersRoute) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type WorkersRouteArrayOutput struct{ *pulumi.OutputState }

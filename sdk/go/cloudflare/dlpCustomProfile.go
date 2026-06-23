@@ -75,8 +75,8 @@ import (
 type DlpCustomProfile struct {
 	pulumi.CustomResourceState
 
-	AccountId        pulumi.StringPtrOutput `pulumi:"accountId"`
-	AiContextEnabled pulumi.BoolOutput      `pulumi:"aiContextEnabled"`
+	AccountId        pulumi.StringOutput `pulumi:"accountId"`
+	AiContextEnabled pulumi.BoolOutput   `pulumi:"aiContextEnabled"`
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   pulumi.IntOutput    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold pulumi.StringOutput `pulumi:"confidenceThreshold"`
@@ -118,6 +118,9 @@ func NewDlpCustomProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -228,8 +231,8 @@ func (DlpCustomProfileState) ElementType() reflect.Type {
 }
 
 type dlpCustomProfileArgs struct {
-	AccountId        *string `pulumi:"accountId"`
-	AiContextEnabled *bool   `pulumi:"aiContextEnabled"`
+	AccountId        string `pulumi:"accountId"`
+	AiContextEnabled *bool  `pulumi:"aiContextEnabled"`
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
@@ -258,7 +261,7 @@ type dlpCustomProfileArgs struct {
 
 // The set of arguments for constructing a DlpCustomProfile resource.
 type DlpCustomProfileArgs struct {
-	AccountId        pulumi.StringPtrInput
+	AccountId        pulumi.StringInput
 	AiContextEnabled pulumi.BoolPtrInput
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   pulumi.IntPtrInput
@@ -373,8 +376,8 @@ func (o DlpCustomProfileOutput) ToDlpCustomProfileOutputWithContext(ctx context.
 	return o
 }
 
-func (o DlpCustomProfileOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o DlpCustomProfileOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o DlpCustomProfileOutput) AiContextEnabled() pulumi.BoolOutput {

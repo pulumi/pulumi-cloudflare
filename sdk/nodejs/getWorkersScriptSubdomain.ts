@@ -38,7 +38,7 @@ export interface GetWorkersScriptSubdomainArgs {
     /**
      * Identifier.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * Name of the script, used in URLs and route configuration.
      */
@@ -52,7 +52,7 @@ export interface GetWorkersScriptSubdomainResult {
     /**
      * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Whether the Worker is available on the workers.dev subdomain.
      */
@@ -104,7 +104,7 @@ export interface GetWorkersScriptSubdomainOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Name of the script, used in URLs and route configuration.
      */

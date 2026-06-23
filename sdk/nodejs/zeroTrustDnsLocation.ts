@@ -89,7 +89,7 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDnsLocation.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Indicate whether this location is the default location.
      */
@@ -166,6 +166,9 @@ export class ZeroTrustDnsLocation extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ZeroTrustDnsLocationArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -248,7 +251,7 @@ export interface ZeroTrustDnsLocationState {
  * The set of arguments for constructing a ZeroTrustDnsLocation resource.
  */
 export interface ZeroTrustDnsLocationArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Indicate whether this location is the default location.
      */

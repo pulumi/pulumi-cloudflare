@@ -55,7 +55,7 @@ class GetSnippetResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Identify the snippet.
         """
         return pulumi.get(self, "id")
 

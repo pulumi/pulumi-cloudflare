@@ -65,7 +65,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDlpEntry.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
@@ -90,6 +90,9 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     declare public /*out*/ readonly uploadStatus: pulumi.Output<string>;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     declare public /*out*/ readonly variant: pulumi.Output<outputs.ZeroTrustDlpEntryVariant>;
     declare public /*out*/ readonly wordList: pulumi.Output<string>;
 
@@ -124,6 +127,9 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
             resourceInputs["wordList"] = state?.wordList;
         } else {
             const args = argsOrState as ZeroTrustDlpEntryArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
@@ -184,6 +190,9 @@ export interface ZeroTrustDlpEntryState {
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     uploadStatus?: pulumi.Input<string | undefined>;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     variant?: pulumi.Input<inputs.ZeroTrustDlpEntryVariant | undefined>;
     wordList?: pulumi.Input<string | undefined>;
 }
@@ -192,7 +201,7 @@ export interface ZeroTrustDlpEntryState {
  * The set of arguments for constructing a ZeroTrustDlpEntry resource.
  */
 export interface ZeroTrustDlpEntryArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     description?: pulumi.Input<string | undefined>;
     enabled: pulumi.Input<boolean>;
     name: pulumi.Input<string>;

@@ -20,15 +20,15 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
      * The account id
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return The account id
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -109,7 +109,7 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -188,6 +188,9 @@ public final class NotificationPolicyWebhooksArgs extends com.pulumi.resources.R
         }
 
         public NotificationPolicyWebhooksArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("NotificationPolicyWebhooksArgs", "accountId");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("NotificationPolicyWebhooksArgs", "name");
             }

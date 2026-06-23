@@ -21,25 +21,36 @@ __all__ = ['ZeroTrustTunnelWarpConnectorArgs', 'ZeroTrustTunnelWarpConnector']
 @pulumi.input_type
 class ZeroTrustTunnelWarpConnectorArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
                  tunnel_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustTunnelWarpConnector resource.
 
-        :param pulumi.Input[_builtins.str] name: A user-friendly name for a tunnel.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
+        :param pulumi.Input[_builtins.str] name: A user-friendly name for a tunnel.
         :param pulumi.Input[_builtins.bool] ha: Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
         :param pulumi.Input[_builtins.str] tunnel_secret: Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if ha is not None:
             pulumi.set(__self__, "ha", ha)
         if tunnel_secret is not None:
             pulumi.set(__self__, "tunnel_secret", tunnel_secret)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Cloudflare account ID
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -52,18 +63,6 @@ class ZeroTrustTunnelWarpConnectorArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Cloudflare account ID
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -421,6 +420,8 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustTunnelWarpConnectorArgs.__new__(ZeroTrustTunnelWarpConnectorArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["ha"] = ha
             if name is None and not opts.urn:
@@ -505,7 +506,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Cloudflare account ID
         """

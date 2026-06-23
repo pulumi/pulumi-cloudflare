@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetStreamCaptionLanguage(ctx, &cloudflare.LookupStreamCaptionLanguageArgs{
-//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				Identifier: "ea95132c15732412d22c1476fa83f27a",
 //				Language:   "tr",
 //			}, nil)
@@ -56,7 +56,7 @@ func LookupStreamCaptionLanguage(ctx *pulumi.Context, args *LookupStreamCaptionL
 // A collection of arguments for invoking getStreamCaptionLanguage.
 type LookupStreamCaptionLanguageArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
 	// The language tag in BCP 47 format.
@@ -66,7 +66,7 @@ type LookupStreamCaptionLanguageArgs struct {
 // A collection of values returned by getStreamCaptionLanguage.
 type LookupStreamCaptionLanguageResult struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Whether the caption was generated via AI.
 	Generated bool `pulumi:"generated"`
 	// The provider-assigned unique ID for this managed resource.
@@ -94,7 +94,7 @@ func LookupStreamCaptionLanguageOutput(ctx *pulumi.Context, args LookupStreamCap
 // A collection of arguments for invoking getStreamCaptionLanguage.
 type LookupStreamCaptionLanguageOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// The language tag in BCP 47 format.
@@ -121,8 +121,8 @@ func (o LookupStreamCaptionLanguageResultOutput) ToLookupStreamCaptionLanguageRe
 }
 
 // Identifier.
-func (o LookupStreamCaptionLanguageResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupStreamCaptionLanguageResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupStreamCaptionLanguageResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamCaptionLanguageResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Whether the caption was generated via AI.

@@ -64,7 +64,7 @@ export class WorkersCronTrigger extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public readonly schedules: pulumi.Output<outputs.WorkersCronTriggerSchedule[]>;
     /**
      * Name of the script, used in URLs and route configuration.
@@ -89,6 +89,9 @@ export class WorkersCronTrigger extends pulumi.CustomResource {
             resourceInputs["scriptName"] = state?.scriptName;
         } else {
             const args = argsOrState as WorkersCronTriggerArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.schedules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schedules'");
             }
@@ -128,7 +131,7 @@ export interface WorkersCronTriggerArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     schedules: pulumi.Input<pulumi.Input<inputs.WorkersCronTriggerSchedule>[]>;
     /**
      * Name of the script, used in URLs and route configuration.

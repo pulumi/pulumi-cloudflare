@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetZeroTrustTunnelCloudflaredToken(ctx, &cloudflare.GetZeroTrustTunnelCloudflaredTokenArgs{
-//				AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
+//				AccountId: "699d98642c564d2e855e9661899b7252",
 //				TunnelId:  "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
@@ -56,7 +56,7 @@ func GetZeroTrustTunnelCloudflaredToken(ctx *pulumi.Context, args *GetZeroTrustT
 // A collection of arguments for invoking getZeroTrustTunnelCloudflaredToken.
 type GetZeroTrustTunnelCloudflaredTokenArgs struct {
 	// Cloudflare account ID
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// UUID of the tunnel.
 	TunnelId string `pulumi:"tunnelId"`
 }
@@ -64,7 +64,7 @@ type GetZeroTrustTunnelCloudflaredTokenArgs struct {
 // A collection of values returned by getZeroTrustTunnelCloudflaredToken.
 type GetZeroTrustTunnelCloudflaredTokenResult struct {
 	// Cloudflare account ID
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The Tunnel Token is used as a mechanism to authenticate the operation of a tunnel.
@@ -85,7 +85,7 @@ func GetZeroTrustTunnelCloudflaredTokenOutput(ctx *pulumi.Context, args GetZeroT
 // A collection of arguments for invoking getZeroTrustTunnelCloudflaredToken.
 type GetZeroTrustTunnelCloudflaredTokenOutputArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// UUID of the tunnel.
 	TunnelId pulumi.StringInput `pulumi:"tunnelId"`
 }
@@ -110,8 +110,8 @@ func (o GetZeroTrustTunnelCloudflaredTokenResultOutput) ToGetZeroTrustTunnelClou
 }
 
 // Cloudflare account ID
-func (o GetZeroTrustTunnelCloudflaredTokenResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustTunnelCloudflaredTokenResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o GetZeroTrustTunnelCloudflaredTokenResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustTunnelCloudflaredTokenResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

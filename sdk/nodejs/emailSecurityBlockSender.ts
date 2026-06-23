@@ -60,15 +60,23 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
     }
 
     /**
-     * Account Identifier
+     * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public readonly comments: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public readonly isRegex: pulumi.Output<boolean>;
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     declare public /*out*/ readonly lastModified: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     declare public readonly pattern: pulumi.Output<string>;
     /**
+     * Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     declare public readonly patternType: pulumi.Output<string>;
@@ -91,10 +99,14 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["isRegex"] = state?.isRegex;
             resourceInputs["lastModified"] = state?.lastModified;
+            resourceInputs["modifiedAt"] = state?.modifiedAt;
             resourceInputs["pattern"] = state?.pattern;
             resourceInputs["patternType"] = state?.patternType;
         } else {
             const args = argsOrState as EmailSecurityBlockSenderArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.isRegex === undefined && !opts.urn) {
                 throw new Error("Missing required property 'isRegex'");
             }
@@ -111,6 +123,7 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
             resourceInputs["patternType"] = args?.patternType;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;
+            resourceInputs["modifiedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EmailSecurityBlockSender.__pulumiType, name, resourceInputs, opts);
@@ -122,15 +135,23 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
  */
 export interface EmailSecurityBlockSenderState {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
     comments?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
     isRegex?: pulumi.Input<boolean | undefined>;
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     lastModified?: pulumi.Input<string | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
     pattern?: pulumi.Input<string | undefined>;
     /**
+     * Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     patternType?: pulumi.Input<string | undefined>;
@@ -141,13 +162,15 @@ export interface EmailSecurityBlockSenderState {
  */
 export interface EmailSecurityBlockSenderArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     comments?: pulumi.Input<string | undefined>;
     isRegex: pulumi.Input<boolean>;
     pattern: pulumi.Input<string>;
     /**
+     * Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     patternType: pulumi.Input<string>;

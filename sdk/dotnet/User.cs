@@ -57,6 +57,12 @@ namespace Pulumi.Cloudflare
         public Output<string?> Country { get; private set; } = null!;
 
         /// <summary>
+        /// Current email address of the user.
+        /// </summary>
+        [Output("email")]
+        public Output<string> Email { get; private set; } = null!;
+
+        /// <summary>
         /// User's first name
         /// </summary>
         [Output("firstName")]
@@ -220,6 +226,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("country")]
         public Input<string>? Country { get; set; }
+
+        /// <summary>
+        /// Current email address of the user.
+        /// </summary>
+        [Input("email")]
+        public Input<string>? Email { get; set; }
 
         /// <summary>
         /// User's first name

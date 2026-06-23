@@ -53,7 +53,7 @@ export class R2ManagedDomain extends pulumi.CustomResource {
     /**
      * Account ID.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Bucket ID.
      */
@@ -96,6 +96,9 @@ export class R2ManagedDomain extends pulumi.CustomResource {
             resourceInputs["jurisdiction"] = state?.jurisdiction;
         } else {
             const args = argsOrState as R2ManagedDomainArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
@@ -151,7 +154,7 @@ export interface R2ManagedDomainArgs {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Name of the bucket.
      */

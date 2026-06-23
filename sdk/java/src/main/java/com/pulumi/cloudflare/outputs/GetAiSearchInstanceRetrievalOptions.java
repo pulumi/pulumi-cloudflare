@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAiSearchInstanceRetrievalOptions {
     /**
-     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric/datetime fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
      * 
      */
     private List<GetAiSearchInstanceRetrievalOptionsBoostBy> boostBies;
@@ -26,7 +26,7 @@ public final class GetAiSearchInstanceRetrievalOptions {
 
     private GetAiSearchInstanceRetrievalOptions() {}
     /**
-     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric/datetime fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
      * 
      */
     public List<GetAiSearchInstanceRetrievalOptionsBoostBy> boostBies() {

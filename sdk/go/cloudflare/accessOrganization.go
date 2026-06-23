@@ -119,7 +119,7 @@ type AccessOrganization struct {
 	MfaConfig AccessOrganizationMfaConfigPtrOutput `pulumi:"mfaConfig"`
 	// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
 	MfaConfigurationAllowed pulumi.BoolOutput `pulumi:"mfaConfigurationAllowed"`
-	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 	MfaRequiredForAllApps pulumi.BoolOutput `pulumi:"mfaRequiredForAllApps"`
 	// Configures SSH PIV key requirements for MFA using hardware security keys.
 	MfaSshPivKeyRequirements AccessOrganizationMfaSshPivKeyRequirementsPtrOutput `pulumi:"mfaSshPivKeyRequirements"`
@@ -193,7 +193,7 @@ type accessOrganizationState struct {
 	MfaConfig *AccessOrganizationMfaConfig `pulumi:"mfaConfig"`
 	// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
 	MfaConfigurationAllowed *bool `pulumi:"mfaConfigurationAllowed"`
-	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 	MfaRequiredForAllApps *bool `pulumi:"mfaRequiredForAllApps"`
 	// Configures SSH PIV key requirements for MFA using hardware security keys.
 	MfaSshPivKeyRequirements *AccessOrganizationMfaSshPivKeyRequirements `pulumi:"mfaSshPivKeyRequirements"`
@@ -232,7 +232,7 @@ type AccessOrganizationState struct {
 	MfaConfig AccessOrganizationMfaConfigPtrInput
 	// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
 	MfaConfigurationAllowed pulumi.BoolPtrInput
-	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 	MfaRequiredForAllApps pulumi.BoolPtrInput
 	// Configures SSH PIV key requirements for MFA using hardware security keys.
 	MfaSshPivKeyRequirements AccessOrganizationMfaSshPivKeyRequirementsPtrInput
@@ -275,7 +275,7 @@ type accessOrganizationArgs struct {
 	MfaConfig *AccessOrganizationMfaConfig `pulumi:"mfaConfig"`
 	// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
 	MfaConfigurationAllowed *bool `pulumi:"mfaConfigurationAllowed"`
-	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 	MfaRequiredForAllApps *bool `pulumi:"mfaRequiredForAllApps"`
 	// Configures SSH PIV key requirements for MFA using hardware security keys.
 	MfaSshPivKeyRequirements *AccessOrganizationMfaSshPivKeyRequirements `pulumi:"mfaSshPivKeyRequirements"`
@@ -315,7 +315,7 @@ type AccessOrganizationArgs struct {
 	MfaConfig AccessOrganizationMfaConfigPtrInput
 	// Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
 	MfaConfigurationAllowed pulumi.BoolPtrInput
-	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+	// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 	MfaRequiredForAllApps pulumi.BoolPtrInput
 	// Configures SSH PIV key requirements for MFA using hardware security keys.
 	MfaSshPivKeyRequirements AccessOrganizationMfaSshPivKeyRequirementsPtrInput
@@ -473,7 +473,7 @@ func (o AccessOrganizationOutput) MfaConfigurationAllowed() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolOutput { return v.MfaConfigurationAllowed }).(pulumi.BoolOutput)
 }
 
-// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 func (o AccessOrganizationOutput) MfaRequiredForAllApps() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolOutput { return v.MfaRequiredForAllApps }).(pulumi.BoolOutput)
 }

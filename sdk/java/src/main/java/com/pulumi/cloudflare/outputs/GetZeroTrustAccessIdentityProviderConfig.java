@@ -84,6 +84,12 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
      */
     private String emailClaimName;
     /**
+     * @return Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+     * SAML assertions using the certificate from the assigned certificate set.
+     * 
+     */
+    private Boolean enableEncryption;
+    /**
      * @return Add a list of attribute names that will be returned in the response header from the Access callback.
      * 
      */
@@ -119,12 +125,17 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
      */
     private Boolean pkceEnabled;
     /**
-     * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
      * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
      * 
      */
     private String prompt;
     private String redirectUrl;
+    /**
+     * @return When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+     * 
+     */
+    private Boolean restrictToAccountMembers;
     /**
      * @return OAuth scopes
      * 
@@ -251,6 +262,14 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
         return this.emailClaimName;
     }
     /**
+     * @return Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+     * SAML assertions using the certificate from the assigned certificate set.
+     * 
+     */
+    public Boolean enableEncryption() {
+        return this.enableEncryption;
+    }
+    /**
      * @return Add a list of attribute names that will be returned in the response header from the Access callback.
      * 
      */
@@ -300,7 +319,7 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
         return this.pkceEnabled;
     }
     /**
-     * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
      * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
      * 
      */
@@ -309,6 +328,13 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
     }
     public String redirectUrl() {
         return this.redirectUrl;
+    }
+    /**
+     * @return When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+     * 
+     */
+    public Boolean restrictToAccountMembers() {
+        return this.restrictToAccountMembers;
     }
     /**
      * @return OAuth scopes
@@ -369,6 +395,7 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
         private String directoryId;
         private String emailAttributeName;
         private String emailClaimName;
+        private Boolean enableEncryption;
         private List<GetZeroTrustAccessIdentityProviderConfigHeaderAttribute> headerAttributes;
         private List<String> idpPublicCerts;
         private String issuerUrl;
@@ -378,6 +405,7 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
         private Boolean pkceEnabled;
         private String prompt;
         private String redirectUrl;
+        private Boolean restrictToAccountMembers;
         private List<String> scopes;
         private Boolean signRequest;
         private String ssoTargetUrl;
@@ -400,6 +428,7 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
     	      this.directoryId = defaults.directoryId;
     	      this.emailAttributeName = defaults.emailAttributeName;
     	      this.emailClaimName = defaults.emailClaimName;
+    	      this.enableEncryption = defaults.enableEncryption;
     	      this.headerAttributes = defaults.headerAttributes;
     	      this.idpPublicCerts = defaults.idpPublicCerts;
     	      this.issuerUrl = defaults.issuerUrl;
@@ -409,6 +438,7 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
     	      this.pkceEnabled = defaults.pkceEnabled;
     	      this.prompt = defaults.prompt;
     	      this.redirectUrl = defaults.redirectUrl;
+    	      this.restrictToAccountMembers = defaults.restrictToAccountMembers;
     	      this.scopes = defaults.scopes;
     	      this.signRequest = defaults.signRequest;
     	      this.ssoTargetUrl = defaults.ssoTargetUrl;
@@ -535,6 +565,14 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder enableEncryption(Boolean enableEncryption) {
+            if (enableEncryption == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProviderConfig", "enableEncryption");
+            }
+            this.enableEncryption = enableEncryption;
+            return this;
+        }
+        @CustomType.Setter
         public Builder headerAttributes(List<GetZeroTrustAccessIdentityProviderConfigHeaderAttribute> headerAttributes) {
             if (headerAttributes == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProviderConfig", "headerAttributes");
@@ -613,6 +651,14 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder restrictToAccountMembers(Boolean restrictToAccountMembers) {
+            if (restrictToAccountMembers == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProviderConfig", "restrictToAccountMembers");
+            }
+            this.restrictToAccountMembers = restrictToAccountMembers;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scopes(List<String> scopes) {
             if (scopes == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProviderConfig", "scopes");
@@ -671,6 +717,7 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
             _resultValue.directoryId = directoryId;
             _resultValue.emailAttributeName = emailAttributeName;
             _resultValue.emailClaimName = emailClaimName;
+            _resultValue.enableEncryption = enableEncryption;
             _resultValue.headerAttributes = headerAttributes;
             _resultValue.idpPublicCerts = idpPublicCerts;
             _resultValue.issuerUrl = issuerUrl;
@@ -680,6 +727,7 @@ public final class GetZeroTrustAccessIdentityProviderConfig {
             _resultValue.pkceEnabled = pkceEnabled;
             _resultValue.prompt = prompt;
             _resultValue.redirectUrl = redirectUrl;
+            _resultValue.restrictToAccountMembers = restrictToAccountMembers;
             _resultValue.scopes = scopes;
             _resultValue.signRequest = signRequest;
             _resultValue.ssoTargetUrl = ssoTargetUrl;

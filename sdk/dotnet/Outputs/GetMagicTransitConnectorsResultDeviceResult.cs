@@ -15,15 +15,22 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly string Id;
         public readonly string SerialNumber;
+        /// <summary>
+        /// Available values: "MANAGED", "LICENSED".
+        /// </summary>
+        public readonly string Type;
 
         [OutputConstructor]
         private GetMagicTransitConnectorsResultDeviceResult(
             string id,
 
-            string serialNumber)
+            string serialNumber,
+
+            string type)
         {
             Id = id;
             SerialNumber = serialNumber;
+            Type = type;
         }
     }
 }

@@ -56,7 +56,7 @@ export class Stream extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
      */
@@ -164,7 +164,7 @@ export class Stream extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: StreamArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: StreamArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StreamArgs | StreamState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -200,6 +200,9 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["watermark"] = state?.watermark;
         } else {
             const args = argsOrState as StreamArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["allowedOrigins"] = args?.allowedOrigins;
             resourceInputs["creator"] = args?.creator;
@@ -350,7 +353,7 @@ export interface StreamArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
      */

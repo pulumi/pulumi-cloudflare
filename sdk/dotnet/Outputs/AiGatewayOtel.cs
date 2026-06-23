@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AiGatewayOtel
     {
-        public readonly string Authorization;
+        public readonly string? Authorization;
         /// <summary>
         /// Available values: "json", "protobuf".
         /// </summary>
@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private AiGatewayOtel(
-            string authorization,
+            string? authorization,
 
             string? contentType,
 

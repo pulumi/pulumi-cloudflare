@@ -43,7 +43,7 @@ export interface GetMagicTransitSiteAclArgs {
     /**
      * Identifier
      */
-    accountId?: string;
+    accountId: string;
     /**
      * Identifier
      */
@@ -61,7 +61,7 @@ export interface GetMagicTransitSiteAclResult {
     /**
      * Identifier
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Identifier
      */
@@ -131,7 +131,7 @@ export interface GetMagicTransitSiteAclOutputArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Identifier
      */

@@ -42,7 +42,7 @@ export interface GetWorkersDeploymentArgs {
     /**
      * Identifier.
      */
-    accountId?: string;
+    accountId: string;
     deploymentId: string;
     /**
      * Name of the script, used in URLs and route configuration.
@@ -57,7 +57,7 @@ export interface GetWorkersDeploymentResult {
     /**
      * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     readonly annotations: outputs.GetWorkersDeploymentAnnotations;
     readonly authorEmail: string;
     readonly createdOn: string;
@@ -113,7 +113,7 @@ export interface GetWorkersDeploymentOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     deploymentId: pulumi.Input<string>;
     /**
      * Name of the script, used in URLs and route configuration.

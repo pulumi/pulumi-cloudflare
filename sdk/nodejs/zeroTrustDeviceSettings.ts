@@ -61,7 +61,7 @@ export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDeviceSettings.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
      */
@@ -106,7 +106,7 @@ export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ZeroTrustDeviceSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ZeroTrustDeviceSettingsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZeroTrustDeviceSettingsArgs | ZeroTrustDeviceSettingsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -124,6 +124,9 @@ export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
             resourceInputs["useZtVirtualIp"] = state?.useZtVirtualIp;
         } else {
             const args = argsOrState as ZeroTrustDeviceSettingsArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["disableForTime"] = args?.disableForTime;
             resourceInputs["externalEmergencySignalEnabled"] = args?.externalEmergencySignalEnabled;
@@ -187,7 +190,7 @@ export interface ZeroTrustDeviceSettingsState {
  * The set of arguments for constructing a ZeroTrustDeviceSettings resource.
  */
 export interface ZeroTrustDeviceSettingsArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
      */

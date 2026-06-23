@@ -62,7 +62,7 @@ export class ZeroTrustTunnelCloudflaredVirtualNetwork extends pulumi.CustomResou
     /**
      * Cloudflare account ID
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Optional remark describing the virtual network.
      */
@@ -112,6 +112,9 @@ export class ZeroTrustTunnelCloudflaredVirtualNetwork extends pulumi.CustomResou
             resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as ZeroTrustTunnelCloudflaredVirtualNetworkArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -173,7 +176,7 @@ export interface ZeroTrustTunnelCloudflaredVirtualNetworkArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Optional remark describing the virtual network.
      */

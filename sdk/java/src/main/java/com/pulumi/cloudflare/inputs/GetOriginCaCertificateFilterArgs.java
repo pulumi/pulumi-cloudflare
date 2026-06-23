@@ -33,14 +33,14 @@ public final class GetOriginCaCertificateFilterArgs extends com.pulumi.resources
     }
 
     /**
-     * Offset the results
+     * Offset the results.
      * 
      */
     @Import(name="offset")
     private @Nullable Output<Integer> offset;
 
     /**
-     * @return Offset the results
+     * @return Offset the results.
      * 
      */
     public Optional<Output<Integer>> offset() {
@@ -110,7 +110,7 @@ public final class GetOriginCaCertificateFilterArgs extends com.pulumi.resources
         }
 
         /**
-         * @param offset Offset the results
+         * @param offset Offset the results.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class GetOriginCaCertificateFilterArgs extends com.pulumi.resources
         }
 
         /**
-         * @param offset Offset the results
+         * @param offset Offset the results.
          * 
          * @return builder
          * 

@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -98,14 +97,14 @@ public class ContentScanning extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    private Output<String> zoneId;
 
     /**
      * @return Defines an identifier.
      * 
      */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**

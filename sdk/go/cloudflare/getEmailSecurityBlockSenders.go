@@ -58,29 +58,28 @@ func LookupEmailSecurityBlockSenders(ctx *pulumi.Context, args *LookupEmailSecur
 
 // A collection of arguments for invoking getEmailSecurityBlockSenders.
 type LookupEmailSecurityBlockSendersArgs struct {
-	// Account Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// The field to sort by.
+	// Field to sort by.
 	// Available values: "pattern", "createdAt".
-	Order   *string `pulumi:"order"`
+	Order *string `pulumi:"order"`
+	// Filter by pattern value.
 	Pattern *string `pulumi:"pattern"`
+	// Filter by pattern type.
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType *string `pulumi:"patternType"`
-	// Allows searching in multiple properties of a record simultaneously.
-	// This parameter is intended for human users, not automation. Its exact
-	// behavior is intentionally left unspecified and is subject to change
-	// in the future.
+	// Search term for filtering records. Behavior may change.
 	Search *string `pulumi:"search"`
 }
 
 // A collection of values returned by getEmailSecurityBlockSenders.
 type LookupEmailSecurityBlockSendersResult struct {
-	// Account Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
@@ -89,18 +88,17 @@ type LookupEmailSecurityBlockSendersResult struct {
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// The field to sort by.
+	// Field to sort by.
 	// Available values: "pattern", "createdAt".
-	Order   *string `pulumi:"order"`
+	Order *string `pulumi:"order"`
+	// Filter by pattern value.
 	Pattern *string `pulumi:"pattern"`
+	// Filter by pattern type.
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType *string `pulumi:"patternType"`
 	// The items returned by the data source
 	Results []GetEmailSecurityBlockSendersResult `pulumi:"results"`
-	// Allows searching in multiple properties of a record simultaneously.
-	// This parameter is intended for human users, not automation. Its exact
-	// behavior is intentionally left unspecified and is subject to change
-	// in the future.
+	// Search term for filtering records. Behavior may change.
 	Search *string `pulumi:"search"`
 }
 
@@ -115,23 +113,22 @@ func LookupEmailSecurityBlockSendersOutput(ctx *pulumi.Context, args LookupEmail
 
 // A collection of arguments for invoking getEmailSecurityBlockSenders.
 type LookupEmailSecurityBlockSendersOutputArgs struct {
-	// Account Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// The field to sort by.
+	// Field to sort by.
 	// Available values: "pattern", "createdAt".
-	Order   pulumi.StringPtrInput `pulumi:"order"`
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// Filter by pattern value.
 	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+	// Filter by pattern type.
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringPtrInput `pulumi:"patternType"`
-	// Allows searching in multiple properties of a record simultaneously.
-	// This parameter is intended for human users, not automation. Its exact
-	// behavior is intentionally left unspecified and is subject to change
-	// in the future.
+	// Search term for filtering records. Behavior may change.
 	Search pulumi.StringPtrInput `pulumi:"search"`
 }
 
@@ -154,7 +151,7 @@ func (o LookupEmailSecurityBlockSendersResultOutput) ToLookupEmailSecurityBlockS
 	return o
 }
 
-// Account Identifier
+// Identifier.
 func (o LookupEmailSecurityBlockSendersResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -175,16 +172,18 @@ func (o LookupEmailSecurityBlockSendersResultOutput) MaxItems() pulumi.IntPtrOut
 	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// The field to sort by.
+// Field to sort by.
 // Available values: "pattern", "createdAt".
 func (o LookupEmailSecurityBlockSendersResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *string { return v.Order }).(pulumi.StringPtrOutput)
 }
 
+// Filter by pattern value.
 func (o LookupEmailSecurityBlockSendersResultOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *string { return v.Pattern }).(pulumi.StringPtrOutput)
 }
 
+// Filter by pattern type.
 // Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 func (o LookupEmailSecurityBlockSendersResultOutput) PatternType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *string { return v.PatternType }).(pulumi.StringPtrOutput)
@@ -195,10 +194,7 @@ func (o LookupEmailSecurityBlockSendersResultOutput) Results() GetEmailSecurityB
 	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) []GetEmailSecurityBlockSendersResult { return v.Results }).(GetEmailSecurityBlockSendersResultArrayOutput)
 }
 
-// Allows searching in multiple properties of a record simultaneously.
-// This parameter is intended for human users, not automation. Its exact
-// behavior is intentionally left unspecified and is subject to change
-// in the future.
+// Search term for filtering records. Behavior may change.
 func (o LookupEmailSecurityBlockSendersResultOutput) Search() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSendersResult) *string { return v.Search }).(pulumi.StringPtrOutput)
 }
