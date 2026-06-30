@@ -54,7 +54,7 @@ type LookupOriginCaCertificatesArgs struct {
 	Limit *int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Offset the results
+	// Offset the results.
 	Offset *int `pulumi:"offset"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
@@ -68,7 +68,7 @@ type LookupOriginCaCertificatesResult struct {
 	Limit *int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Offset the results
+	// Offset the results.
 	Offset *int `pulumi:"offset"`
 	// The items returned by the data source
 	Results []GetOriginCaCertificatesResult `pulumi:"results"`
@@ -91,7 +91,7 @@ type LookupOriginCaCertificatesOutputArgs struct {
 	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Offset the results
+	// Offset the results.
 	Offset pulumi.IntPtrInput `pulumi:"offset"`
 	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -131,7 +131,7 @@ func (o LookupOriginCaCertificatesResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupOriginCaCertificatesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// Offset the results
+// Offset the results.
 func (o LookupOriginCaCertificatesResultOutput) Offset() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupOriginCaCertificatesResult) *int { return v.Offset }).(pulumi.IntPtrOutput)
 }

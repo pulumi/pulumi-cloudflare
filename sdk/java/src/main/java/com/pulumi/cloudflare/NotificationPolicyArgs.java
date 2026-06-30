@@ -23,15 +23,15 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
      * The account id
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return The account id
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -178,7 +178,7 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -343,6 +343,9 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         public NotificationPolicyArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("NotificationPolicyArgs", "accountId");
+            }
             if ($.alertType == null) {
                 throw new MissingRequiredPropertyException("NotificationPolicyArgs", "alertType");
             }

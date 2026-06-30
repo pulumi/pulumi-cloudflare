@@ -62,7 +62,7 @@ export class StreamWatermark extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The date and a time a watermark profile was created.
      */
@@ -123,7 +123,7 @@ export class StreamWatermark extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: StreamWatermarkArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: StreamWatermarkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StreamWatermarkArgs | StreamWatermarkState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -145,6 +145,9 @@ export class StreamWatermark extends pulumi.CustomResource {
             resourceInputs["width"] = state?.width;
         } else {
             const args = argsOrState as StreamWatermarkArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["identifier"] = args?.identifier;
             resourceInputs["name"] = args?.name;
@@ -234,7 +237,7 @@ export interface StreamWatermarkArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The unique identifier for a watermark profile.
      */

@@ -21,10 +21,10 @@ __all__ = ['ConnectivityDirectoryServiceArgs', 'ConnectivityDirectoryService']
 @pulumi.input_type
 class ConnectivityDirectoryServiceArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  host: pulumi.Input['ConnectivityDirectoryServiceHostArgs'],
                  name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  app_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  http_port: pulumi.Input[Optional[_builtins.int]] = None,
                  https_port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -33,16 +33,15 @@ class ConnectivityDirectoryServiceArgs:
         """
         The set of arguments for constructing a ConnectivityDirectoryService resource.
 
-        :param pulumi.Input[_builtins.str] type: Available values: "tcp", "http".
         :param pulumi.Input[_builtins.str] account_id: Account identifier
+        :param pulumi.Input[_builtins.str] type: Available values: "tcp", "http".
         :param pulumi.Input[_builtins.str] app_protocol: Available values: "postgresql", "mysql".
         :param pulumi.Input['ConnectivityDirectoryServiceTlsSettingsArgs'] tls_settings: TLS settings for a connectivity service.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if app_protocol is not None:
             pulumi.set(__self__, "app_protocol", app_protocol)
         if http_port is not None:
@@ -53,6 +52,18 @@ class ConnectivityDirectoryServiceArgs:
             pulumi.set(__self__, "tcp_port", tcp_port)
         if tls_settings is not None:
             pulumi.set(__self__, "tls_settings", tls_settings)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Account identifier
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -83,18 +94,6 @@ class ConnectivityDirectoryServiceArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Account identifier
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appProtocol")
@@ -441,6 +440,8 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectivityDirectoryServiceArgs.__new__(ConnectivityDirectoryServiceArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["app_protocol"] = app_protocol
             if host is None and not opts.urn:
@@ -513,7 +514,7 @@ class ConnectivityDirectoryService(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Account identifier
         """

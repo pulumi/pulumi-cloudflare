@@ -21,22 +21,21 @@ class ZoneSettingArgs:
     def __init__(__self__, *,
                  setting_id: pulumi.Input[_builtins.str],
                  value: Any,
-                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 zone_id: pulumi.Input[_builtins.str],
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ZoneSetting resource.
 
         :param pulumi.Input[_builtins.str] setting_id: Setting name
         :param Any value: Current value of the zone setting.
-        :param pulumi.Input[_builtins.bool] enabled: ssl-recommender enrollment setting.
         :param pulumi.Input[_builtins.str] zone_id: Identifier
+        :param pulumi.Input[_builtins.bool] enabled: ssl-recommender enrollment setting.
         """
         pulumi.set(__self__, "setting_id", setting_id)
         pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "zone_id", zone_id)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter(name="settingId")
@@ -63,6 +62,18 @@ class ZoneSettingArgs:
         pulumi.set(self, "value", value)
 
     @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -73,18 +84,6 @@ class ZoneSettingArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -283,6 +282,7 @@ class ZoneSetting(pulumi.CustomResource):
         | `replace_insecure_js` | `"on"` / `"off"` | Automatically replace insecure JavaScript libraries with safer and faster alt... |
         | `response_buffering` | `"on"` / `"off"` | Enables or disables buffering of responses from the proxied server. Cloudflar... |
         | `rocket_loader` | `"on"` / `"off"` | Rocket Loader is a general-purpose asynchronous JavaScript optimisation that ... |
+        | `search_for_agents` | `"on"` / `"off"` | When enabled, Cloudflare provisions an AI Search instance for the zone and ex... |
         | `security_header` | Object | Cloudflare security header for a zone. |
         | `security_level` | `"off"`, `"essentially_off"`, `"low"`, `"medium"`, `"high"`, `"under_attack"` | Choose the appropriate security profile for your website, which will automati... |
         | `server_side_exclude` | `"on"` / `"off"` | If there is sensitive content on your website that you want visible to real v... |
@@ -569,6 +569,7 @@ class ZoneSetting(pulumi.CustomResource):
         | `replace_insecure_js` | `"on"` / `"off"` | Automatically replace insecure JavaScript libraries with safer and faster alt... |
         | `response_buffering` | `"on"` / `"off"` | Enables or disables buffering of responses from the proxied server. Cloudflar... |
         | `rocket_loader` | `"on"` / `"off"` | Rocket Loader is a general-purpose asynchronous JavaScript optimisation that ... |
+        | `search_for_agents` | `"on"` / `"off"` | When enabled, Cloudflare provisions an AI Search instance for the zone and ex... |
         | `security_header` | Object | Cloudflare security header for a zone. |
         | `security_level` | `"off"`, `"essentially_off"`, `"low"`, `"medium"`, `"high"`, `"under_attack"` | Choose the appropriate security profile for your website, which will automati... |
         | `server_side_exclude` | `"on"` / `"off"` | If there is sensitive content on your website that you want visible to real v... |
@@ -815,6 +816,8 @@ class ZoneSetting(pulumi.CustomResource):
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = value
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["editable"] = None
             __props__.__dict__["modified_on"] = None
@@ -916,7 +919,7 @@ class ZoneSetting(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier
         """

@@ -36,6 +36,12 @@ public final class GetZeroTrustNetworkHostnameRoutesResult {
      */
     private String id;
     /**
+     * @return The type of tunnel.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * 
+     */
+    private String tunType;
+    /**
      * @return UUID of the tunnel.
      * 
      */
@@ -83,6 +89,14 @@ public final class GetZeroTrustNetworkHostnameRoutesResult {
         return this.id;
     }
     /**
+     * @return The type of tunnel.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * 
+     */
+    public String tunType() {
+        return this.tunType;
+    }
+    /**
      * @return UUID of the tunnel.
      * 
      */
@@ -111,6 +125,7 @@ public final class GetZeroTrustNetworkHostnameRoutesResult {
         private String deletedAt;
         private String hostname;
         private String id;
+        private String tunType;
         private String tunnelId;
         private String tunnelName;
         public Builder() {}
@@ -121,6 +136,7 @@ public final class GetZeroTrustNetworkHostnameRoutesResult {
     	      this.deletedAt = defaults.deletedAt;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
+    	      this.tunType = defaults.tunType;
     	      this.tunnelId = defaults.tunnelId;
     	      this.tunnelName = defaults.tunnelName;
         }
@@ -166,6 +182,14 @@ public final class GetZeroTrustNetworkHostnameRoutesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tunType(String tunType) {
+            if (tunType == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustNetworkHostnameRoutesResult", "tunType");
+            }
+            this.tunType = tunType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tunnelId(String tunnelId) {
             if (tunnelId == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustNetworkHostnameRoutesResult", "tunnelId");
@@ -188,6 +212,7 @@ public final class GetZeroTrustNetworkHostnameRoutesResult {
             _resultValue.deletedAt = deletedAt;
             _resultValue.hostname = hostname;
             _resultValue.id = id;
+            _resultValue.tunType = tunType;
             _resultValue.tunnelId = tunnelId;
             _resultValue.tunnelName = tunnelName;
             return _resultValue;

@@ -62,7 +62,7 @@ export class ZeroTrustDeviceCustomProfileLocalDomainFallback extends pulumi.Cust
         return obj['__pulumiType'] === ZeroTrustDeviceCustomProfileLocalDomainFallback.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public readonly domains: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain[]>;
     declare public readonly policyId: pulumi.Output<string>;
 
@@ -84,6 +84,9 @@ export class ZeroTrustDeviceCustomProfileLocalDomainFallback extends pulumi.Cust
             resourceInputs["policyId"] = state?.policyId;
         } else {
             const args = argsOrState as ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.domains === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domains'");
             }
@@ -114,7 +117,7 @@ export interface ZeroTrustDeviceCustomProfileLocalDomainFallbackState {
  * The set of arguments for constructing a ZeroTrustDeviceCustomProfileLocalDomainFallback resource.
  */
 export interface ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     domains: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>[]>;
     policyId: pulumi.Input<string>;
 }

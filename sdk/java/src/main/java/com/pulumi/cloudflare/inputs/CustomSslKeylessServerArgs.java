@@ -157,14 +157,14 @@ public final class CustomSslKeylessServerArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel.
      * 
      */
     @Import(name="tunnel")
     private @Nullable Output<CustomSslKeylessServerTunnelArgs> tunnel;
 
     /**
-     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel.
      * 
      */
     public Optional<Output<CustomSslKeylessServerTunnelArgs>> tunnel() {
@@ -406,7 +406,7 @@ public final class CustomSslKeylessServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tunnel Configuration for using Keyless SSL through a Cloudflare Tunnel
+         * @param tunnel Configuration for using Keyless SSL through a Cloudflare Tunnel.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class CustomSslKeylessServerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tunnel Configuration for using Keyless SSL through a Cloudflare Tunnel
+         * @param tunnel Configuration for using Keyless SSL through a Cloudflare Tunnel.
          * 
          * @return builder
          * 

@@ -20,11 +20,11 @@ public final class DlpPredefinedProfileArgs extends com.pulumi.resources.Resourc
 
     public static final DlpPredefinedProfileArgs Empty = new DlpPredefinedProfileArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="aiContextEnabled")
@@ -119,7 +119,7 @@ public final class DlpPredefinedProfileArgs extends com.pulumi.resources.Resourc
             $ = new DlpPredefinedProfileArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -224,6 +224,9 @@ public final class DlpPredefinedProfileArgs extends com.pulumi.resources.Resourc
         }
 
         public DlpPredefinedProfileArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("DlpPredefinedProfileArgs", "accountId");
+            }
             if ($.profileId == null) {
                 throw new MissingRequiredPropertyException("DlpPredefinedProfileArgs", "profileId");
             }

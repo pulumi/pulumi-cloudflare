@@ -17,14 +17,14 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
     public static final EmailSecurityBlockSenderState Empty = new EmailSecurityBlockSenderState();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -52,11 +52,34 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
         return Optional.ofNullable(this.isRegex);
     }
 
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="lastModified")
     private @Nullable Output<String> lastModified;
 
+    /**
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<String>> lastModified() {
         return Optional.ofNullable(this.lastModified);
+    }
+
+    @Import(name="modifiedAt")
+    private @Nullable Output<String> modifiedAt;
+
+    public Optional<Output<String>> modifiedAt() {
+        return Optional.ofNullable(this.modifiedAt);
     }
 
     @Import(name="pattern")
@@ -67,6 +90,8 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
     }
 
     /**
+     * Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
      * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
@@ -74,7 +99,9 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
     private @Nullable Output<String> patternType;
 
     /**
-     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     public Optional<Output<String>> patternType() {
@@ -89,6 +116,7 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
         this.createdAt = $.createdAt;
         this.isRegex = $.isRegex;
         this.lastModified = $.lastModified;
+        this.modifiedAt = $.modifiedAt;
         this.pattern = $.pattern;
         this.patternType = $.patternType;
     }
@@ -112,7 +140,7 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -123,7 +151,7 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -159,13 +187,42 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
             return isRegex(Output.of(isRegex));
         }
 
+        /**
+         * @param lastModified Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder lastModified(@Nullable Output<String> lastModified) {
             $.lastModified = lastModified;
             return this;
         }
 
+        /**
+         * @param lastModified Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder lastModified(String lastModified) {
             return lastModified(Output.of(lastModified));
+        }
+
+        public Builder modifiedAt(@Nullable Output<String> modifiedAt) {
+            $.modifiedAt = modifiedAt;
+            return this;
+        }
+
+        public Builder modifiedAt(String modifiedAt) {
+            return modifiedAt(Output.of(modifiedAt));
         }
 
         public Builder pattern(@Nullable Output<String> pattern) {
@@ -178,7 +235,9 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param patternType Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+         * @param patternType Type of pattern matching.
+         * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+         * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
          * 
          * @return builder
          * 
@@ -189,7 +248,9 @@ public final class EmailSecurityBlockSenderState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param patternType Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+         * @param patternType Type of pattern matching.
+         * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+         * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
          * 
          * @return builder
          * 

@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetMagicTransitConnectorResult> InvokeAsync(GetMagicTransitConnectorArgs args, InvokeOptions? options = null)
+        public static Task<GetMagicTransitConnectorResult> InvokeAsync(GetMagicTransitConnectorArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMagicTransitConnectorResult>("cloudflare:index/getMagicTransitConnector:getMagicTransitConnector", args ?? new GetMagicTransitConnectorArgs(), options.WithDefaults());
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetMagicTransitConnectorResult> Invoke(GetMagicTransitConnectorInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetMagicTransitConnectorResult> Invoke(GetMagicTransitConnectorInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMagicTransitConnectorResult>("cloudflare:index/getMagicTransitConnector:getMagicTransitConnector", args ?? new GetMagicTransitConnectorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -105,8 +105,11 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public string? AccountId { get; set; }
 
-        [Input("connectorId", required: true)]
-        public string ConnectorId { get; set; } = null!;
+        [Input("connectorId")]
+        public string? ConnectorId { get; set; }
+
+        [Input("filter")]
+        public Inputs.GetMagicTransitConnectorFilterArgs? Filter { get; set; }
 
         public GetMagicTransitConnectorArgs()
         {
@@ -122,8 +125,11 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        [Input("connectorId", required: true)]
-        public Input<string> ConnectorId { get; set; } = null!;
+        [Input("connectorId")]
+        public Input<string>? ConnectorId { get; set; }
+
+        [Input("filter")]
+        public Input<Inputs.GetMagicTransitConnectorFilterInputArgs>? Filter { get; set; }
 
         public GetMagicTransitConnectorInvokeArgs()
         {
@@ -140,8 +146,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         public readonly bool Activated;
-        public readonly string ConnectorId;
+        public readonly string? ConnectorId;
         public readonly Outputs.GetMagicTransitConnectorDeviceResult Device;
+        public readonly Outputs.GetMagicTransitConnectorFilterResult? Filter;
         /// <summary>
         /// The ID of this resource.
         /// </summary>
@@ -169,9 +176,11 @@ namespace Pulumi.Cloudflare
 
             bool activated,
 
-            string connectorId,
+            string? connectorId,
 
             Outputs.GetMagicTransitConnectorDeviceResult device,
+
+            Outputs.GetMagicTransitConnectorFilterResult? filter,
 
             string id,
 
@@ -199,6 +208,7 @@ namespace Pulumi.Cloudflare
             Activated = activated;
             ConnectorId = connectorId;
             Device = device;
+            Filter = filter;
             Id = id;
             InterruptWindowDaysOfWeeks = interruptWindowDaysOfWeeks;
             InterruptWindowDurationHours = interruptWindowDurationHours;

@@ -76,6 +76,12 @@ namespace Pulumi.Cloudflare
         public string? OperationId { get; set; }
 
         /// <summary>
+        /// When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+        /// </summary>
+        [Input("withSchemas")]
+        public bool? WithSchemas { get; set; }
+
+        /// <summary>
         /// Identifier.
         /// </summary>
         [Input("zoneId")]
@@ -109,6 +115,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("operationId")]
         public Input<string>? OperationId { get; set; }
+
+        /// <summary>
+        /// When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+        /// </summary>
+        [Input("withSchemas")]
+        public Input<bool>? WithSchemas { get; set; }
 
         /// <summary>
         /// Identifier.
@@ -155,6 +167,14 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string OperationId;
         /// <summary>
+        /// OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+        /// </summary>
+        public readonly Outputs.GetApiShieldOperationSchemasResult Schemas;
+        /// <summary>
+        /// When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+        /// </summary>
+        public readonly bool WithSchemas;
+        /// <summary>
         /// Identifier.
         /// </summary>
         public readonly string? ZoneId;
@@ -179,6 +199,10 @@ namespace Pulumi.Cloudflare
 
             string operationId,
 
+            Outputs.GetApiShieldOperationSchemasResult schemas,
+
+            bool withSchemas,
+
             string? zoneId)
         {
             Endpoint = endpoint;
@@ -190,6 +214,8 @@ namespace Pulumi.Cloudflare
             LastUpdated = lastUpdated;
             Method = method;
             OperationId = operationId;
+            Schemas = schemas;
+            WithSchemas = withSchemas;
             ZoneId = zoneId;
         }
     }

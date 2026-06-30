@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `MCP Portals Read`
+ * - `MCP Portals Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -69,6 +74,11 @@ export interface GetZeroTrustAccessAiControlsMcpPortalResult {
     readonly servers: outputs.GetZeroTrustAccessAiControlsMcpPortalServer[];
 }
 /**
+ * Accepted Permissions
+ *
+ * - `MCP Portals Read`
+ * - `MCP Portals Write`
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -7,7 +7,6 @@ import com.pulumi.cloudflare.outputs.GetEmailSecurityBlockSenderFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetEmailSecurityBlockSenderResult {
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String accountId;
@@ -24,27 +23,38 @@ public final class GetEmailSecurityBlockSenderResult {
     private String createdAt;
     private @Nullable GetEmailSecurityBlockSenderFilter filter;
     /**
-     * @return The unique identifier for the allow policy.
+     * @return Blocked sender pattern identifier
      * 
      */
-    private Integer id;
+    private String id;
     private Boolean isRegex;
+    /**
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     private String lastModified;
+    private String modifiedAt;
     private String pattern;
     /**
-     * @return The unique identifier for the allow policy.
+     * @return Blocked sender pattern identifier
      * 
      */
-    private @Nullable Integer patternId;
+    private @Nullable String patternId;
     /**
-     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     private String patternType;
 
     private GetEmailSecurityBlockSenderResult() {}
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> accountId() {
@@ -60,30 +70,43 @@ public final class GetEmailSecurityBlockSenderResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return The unique identifier for the allow policy.
+     * @return Blocked sender pattern identifier
      * 
      */
-    public Integer id() {
+    public String id() {
         return this.id;
     }
     public Boolean isRegex() {
         return this.isRegex;
     }
+    /**
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public String lastModified() {
         return this.lastModified;
+    }
+    public String modifiedAt() {
+        return this.modifiedAt;
     }
     public String pattern() {
         return this.pattern;
     }
     /**
-     * @return The unique identifier for the allow policy.
+     * @return Blocked sender pattern identifier
      * 
      */
-    public Optional<Integer> patternId() {
+    public Optional<String> patternId() {
         return Optional.ofNullable(this.patternId);
     }
     /**
-     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     public String patternType() {
@@ -103,11 +126,12 @@ public final class GetEmailSecurityBlockSenderResult {
         private String comments;
         private String createdAt;
         private @Nullable GetEmailSecurityBlockSenderFilter filter;
-        private Integer id;
+        private String id;
         private Boolean isRegex;
         private String lastModified;
+        private String modifiedAt;
         private String pattern;
-        private @Nullable Integer patternId;
+        private @Nullable String patternId;
         private String patternType;
         public Builder() {}
         public Builder(GetEmailSecurityBlockSenderResult defaults) {
@@ -119,6 +143,7 @@ public final class GetEmailSecurityBlockSenderResult {
     	      this.id = defaults.id;
     	      this.isRegex = defaults.isRegex;
     	      this.lastModified = defaults.lastModified;
+    	      this.modifiedAt = defaults.modifiedAt;
     	      this.pattern = defaults.pattern;
     	      this.patternId = defaults.patternId;
     	      this.patternType = defaults.patternType;
@@ -153,7 +178,7 @@ public final class GetEmailSecurityBlockSenderResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(Integer id) {
+        public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetEmailSecurityBlockSenderResult", "id");
             }
@@ -177,6 +202,14 @@ public final class GetEmailSecurityBlockSenderResult {
             return this;
         }
         @CustomType.Setter
+        public Builder modifiedAt(String modifiedAt) {
+            if (modifiedAt == null) {
+              throw new MissingRequiredPropertyException("GetEmailSecurityBlockSenderResult", "modifiedAt");
+            }
+            this.modifiedAt = modifiedAt;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pattern(String pattern) {
             if (pattern == null) {
               throw new MissingRequiredPropertyException("GetEmailSecurityBlockSenderResult", "pattern");
@@ -185,7 +218,7 @@ public final class GetEmailSecurityBlockSenderResult {
             return this;
         }
         @CustomType.Setter
-        public Builder patternId(@Nullable Integer patternId) {
+        public Builder patternId(@Nullable String patternId) {
 
             this.patternId = patternId;
             return this;
@@ -207,6 +240,7 @@ public final class GetEmailSecurityBlockSenderResult {
             _resultValue.id = id;
             _resultValue.isRegex = isRegex;
             _resultValue.lastModified = lastModified;
+            _resultValue.modifiedAt = modifiedAt;
             _resultValue.pattern = pattern;
             _resultValue.patternId = patternId;
             _resultValue.patternType = patternType;

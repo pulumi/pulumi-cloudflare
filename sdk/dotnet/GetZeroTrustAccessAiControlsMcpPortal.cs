@@ -12,6 +12,11 @@ namespace Pulumi.Cloudflare
     public static class GetZeroTrustAccessAiControlsMcpPortal
     {
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `MCP Portals Read`
+        /// - `MCP Portals Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,6 +40,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZeroTrustAccessAiControlsMcpPortalResult>("cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal", args ?? new GetZeroTrustAccessAiControlsMcpPortalArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `MCP Portals Read`
+        /// - `MCP Portals Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,6 +68,11 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZeroTrustAccessAiControlsMcpPortalResult>("cloudflare:index/getZeroTrustAccessAiControlsMcpPortal:getZeroTrustAccessAiControlsMcpPortal", args ?? new GetZeroTrustAccessAiControlsMcpPortalInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Accepted Permissions
+        /// 
+        /// - `MCP Portals Read`
+        /// - `MCP Portals Write`
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

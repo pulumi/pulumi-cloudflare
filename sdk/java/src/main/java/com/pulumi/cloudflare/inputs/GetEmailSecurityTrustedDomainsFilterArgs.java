@@ -33,22 +33,38 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
         return Optional.ofNullable(this.direction);
     }
 
+    /**
+     * Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     * 
+     */
     @Import(name="isRecent")
     private @Nullable Output<Boolean> isRecent;
 
+    /**
+     * @return Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     * 
+     */
     public Optional<Output<Boolean>> isRecent() {
         return Optional.ofNullable(this.isRecent);
     }
 
+    /**
+     * Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     * 
+     */
     @Import(name="isSimilarity")
     private @Nullable Output<Boolean> isSimilarity;
 
+    /**
+     * @return Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     * 
+     */
     public Optional<Output<Boolean>> isSimilarity() {
         return Optional.ofNullable(this.isSimilarity);
     }
 
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -56,7 +72,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
     private @Nullable Output<String> order;
 
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -72,20 +88,14 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
     }
 
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      * 
      */
     @Import(name="search")
     private @Nullable Output<String> search;
 
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<Output<String>> search() {
@@ -144,26 +154,50 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
             return direction(Output.of(direction));
         }
 
+        /**
+         * @param isRecent Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isRecent(@Nullable Output<Boolean> isRecent) {
             $.isRecent = isRecent;
             return this;
         }
 
+        /**
+         * @param isRecent Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isRecent(Boolean isRecent) {
             return isRecent(Output.of(isRecent));
         }
 
+        /**
+         * @param isSimilarity Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isSimilarity(@Nullable Output<Boolean> isSimilarity) {
             $.isSimilarity = isSimilarity;
             return this;
         }
 
+        /**
+         * @param isSimilarity Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isSimilarity(Boolean isSimilarity) {
             return isSimilarity(Output.of(isSimilarity));
         }
 
         /**
-         * @param order The field to sort by.
+         * @param order Field to sort by.
          * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
@@ -175,7 +209,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
         }
 
         /**
-         * @param order The field to sort by.
+         * @param order Field to sort by.
          * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
@@ -195,10 +229,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
         }
 
         /**
-         * @param search Allows searching in multiple properties of a record simultaneously.
-         * This parameter is intended for human users, not automation. Its exact
-         * behavior is intentionally left unspecified and is subject to change
-         * in the future.
+         * @param search Search term for filtering records. Behavior may change.
          * 
          * @return builder
          * 
@@ -209,10 +240,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
         }
 
         /**
-         * @param search Allows searching in multiple properties of a record simultaneously.
-         * This parameter is intended for human users, not automation. Its exact
-         * behavior is intentionally left unspecified and is subject to change
-         * in the future.
+         * @param search Search term for filtering records. Behavior may change.
          * 
          * @return builder
          * 

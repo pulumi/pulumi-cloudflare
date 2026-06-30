@@ -7,12 +7,14 @@ import com.pulumi.cloudflare.AccessIdentityProviderArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessIdentityProviderState;
 import com.pulumi.cloudflare.outputs.AccessIdentityProviderConfig;
+import com.pulumi.cloudflare.outputs.AccessIdentityProviderSamlCertificateSet;
 import com.pulumi.cloudflare.outputs.AccessIdentityProviderScimConfig;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -136,6 +138,54 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
         return this.name;
     }
     /**
+     * Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+     * 
+     */
+    @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> readOnly;
+
+    /**
+     * @return Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+     * 
+     */
+    public Output<Optional<Boolean>> readOnly() {
+        return Codegen.optional(this.readOnly);
+    }
+    /**
+     * The SAML encryption certificate set details, including current and previous certificates.
+     * Only present for SAML identity providers with a certificate set assigned.
+     * 
+     */
+    @Export(name="samlCertificateSet", refs={AccessIdentityProviderSamlCertificateSet.class}, tree="[0]")
+    private Output<AccessIdentityProviderSamlCertificateSet> samlCertificateSet;
+
+    /**
+     * @return The SAML encryption certificate set details, including current and previous certificates.
+     * Only present for SAML identity providers with a certificate set assigned.
+     * 
+     */
+    public Output<AccessIdentityProviderSamlCertificateSet> samlCertificateSet() {
+        return this.samlCertificateSet;
+    }
+    /**
+     * The UID of the SAML encryption certificate set assigned to this Identity Provider.
+     * Only present for SAML identity providers with encryption configured.
+     * Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+     * 
+     */
+    @Export(name="samlCertificateSetId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> samlCertificateSetId;
+
+    /**
+     * @return The UID of the SAML encryption certificate set assigned to this Identity Provider.
+     * Only present for SAML identity providers with encryption configured.
+     * Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+     * 
+     */
+    public Output<Optional<String>> samlCertificateSetId() {
+        return Codegen.optional(this.samlCertificateSetId);
+    }
+    /**
      * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      * 
      */
@@ -151,7 +201,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
     }
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -159,7 +209,7 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
 
     /**
      * @return The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;.
      * 
      */
     public Output<String> type() {

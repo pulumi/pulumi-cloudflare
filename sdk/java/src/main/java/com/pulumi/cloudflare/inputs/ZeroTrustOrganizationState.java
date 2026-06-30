@@ -171,14 +171,14 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot only contain &#39;ssh*piv_key&#39; if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
      * 
      */
     @Import(name="mfaRequiredForAllApps")
     private @Nullable Output<Boolean> mfaRequiredForAllApps;
 
     /**
-     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     * @return Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot only contain &#39;ssh*piv_key&#39; if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
      * 
      */
     public Optional<Output<Boolean>> mfaRequiredForAllApps() {
@@ -550,7 +550,7 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mfaRequiredForAllApps Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+         * @param mfaRequiredForAllApps Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot only contain &#39;ssh*piv_key&#39; if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mfaRequiredForAllApps Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+         * @param mfaRequiredForAllApps Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: &#39;allowed*authenticators&#39; cannot only contain &#39;ssh*piv_key&#39; if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
          * 
          * @return builder
          * 

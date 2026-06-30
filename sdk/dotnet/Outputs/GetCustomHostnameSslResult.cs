@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string BundleMethod;
         /// <summary>
-        /// The Certificate Authority that will issue the certificate
+        /// The Certificate Authority that will issue the certificate.
         /// Available values: "digicert", "google", "lets*encrypt", "ssl*com".
         /// </summary>
         public readonly string CertificateAuthority;

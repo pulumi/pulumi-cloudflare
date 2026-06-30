@@ -35,7 +35,8 @@ export function getHostnameTlsSetting(args: GetHostnameTlsSettingArgs, opts?: pu
  */
 export interface GetHostnameTlsSettingArgs {
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      */
     settingId: string;
     /**
@@ -57,11 +58,13 @@ export interface GetHostnameTlsSettingResult {
      */
     readonly hostname: string;
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      */
     readonly id: string;
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      */
     readonly settingId: string;
     /**
@@ -73,7 +76,8 @@ export interface GetHostnameTlsSettingResult {
      */
     readonly updatedAt: string;
     /**
-     * The TLS setting value. The type depends on the `settingId` used in the request path:
+     * The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      */
     readonly value: string;
     /**
@@ -112,7 +116,8 @@ export function getHostnameTlsSettingOutput(args: GetHostnameTlsSettingOutputArg
  */
 export interface GetHostnameTlsSettingOutputArgs {
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      */
     settingId: pulumi.Input<string>;
     /**

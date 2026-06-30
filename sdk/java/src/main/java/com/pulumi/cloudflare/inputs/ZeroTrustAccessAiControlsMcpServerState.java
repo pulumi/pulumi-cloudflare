@@ -3,10 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerErrorDetailsArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -76,11 +78,33 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
         return Optional.ofNullable(this.error);
     }
 
+    @Import(name="errorDetails")
+    private @Nullable Output<ZeroTrustAccessAiControlsMcpServerErrorDetailsArgs> errorDetails;
+
+    public Optional<Output<ZeroTrustAccessAiControlsMcpServerErrorDetailsArgs>> errorDetails() {
+        return Optional.ofNullable(this.errorDetails);
+    }
+
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     public Optional<Output<String>> hostname() {
         return Optional.ofNullable(this.hostname);
+    }
+
+    /**
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * 
+     */
+    @Import(name="isSharedOauthCallbackEnabled")
+    private @Nullable Output<Boolean> isSharedOauthCallbackEnabled;
+
+    /**
+     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * 
+     */
+    public Optional<Output<Boolean>> isSharedOauthCallbackEnabled() {
+        return Optional.ofNullable(this.isSharedOauthCallbackEnabled);
     }
 
     @Import(name="lastSuccessfulSync")
@@ -123,6 +147,21 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
 
     public Optional<Output<List<Map<String,String>>>> prompts() {
         return Optional.ofNullable(this.prompts);
+    }
+
+    /**
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * 
+     */
+    @Import(name="secureWebGateway")
+    private @Nullable Output<Boolean> secureWebGateway;
+
+    /**
+     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * 
+     */
+    public Optional<Output<Boolean>> secureWebGateway() {
+        return Optional.ofNullable(this.secureWebGateway);
     }
 
     @Import(name="status")
@@ -178,13 +217,16 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
         this.createdBy = $.createdBy;
         this.description = $.description;
         this.error = $.error;
+        this.errorDetails = $.errorDetails;
         this.hostname = $.hostname;
+        this.isSharedOauthCallbackEnabled = $.isSharedOauthCallbackEnabled;
         this.lastSuccessfulSync = $.lastSuccessfulSync;
         this.lastSynced = $.lastSynced;
         this.modifiedAt = $.modifiedAt;
         this.modifiedBy = $.modifiedBy;
         this.name = $.name;
         this.prompts = $.prompts;
+        this.secureWebGateway = $.secureWebGateway;
         this.status = $.status;
         this.tools = $.tools;
         this.updatedPrompts = $.updatedPrompts;
@@ -285,6 +327,15 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
             return error(Output.of(error));
         }
 
+        public Builder errorDetails(@Nullable Output<ZeroTrustAccessAiControlsMcpServerErrorDetailsArgs> errorDetails) {
+            $.errorDetails = errorDetails;
+            return this;
+        }
+
+        public Builder errorDetails(ZeroTrustAccessAiControlsMcpServerErrorDetailsArgs errorDetails) {
+            return errorDetails(Output.of(errorDetails));
+        }
+
         public Builder hostname(@Nullable Output<String> hostname) {
             $.hostname = hostname;
             return this;
@@ -292,6 +343,27 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
 
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
+        }
+
+        /**
+         * @param isSharedOauthCallbackEnabled When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSharedOauthCallbackEnabled(@Nullable Output<Boolean> isSharedOauthCallbackEnabled) {
+            $.isSharedOauthCallbackEnabled = isSharedOauthCallbackEnabled;
+            return this;
+        }
+
+        /**
+         * @param isSharedOauthCallbackEnabled When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSharedOauthCallbackEnabled(Boolean isSharedOauthCallbackEnabled) {
+            return isSharedOauthCallbackEnabled(Output.of(isSharedOauthCallbackEnabled));
         }
 
         public Builder lastSuccessfulSync(@Nullable Output<String> lastSuccessfulSync) {
@@ -350,6 +422,27 @@ public final class ZeroTrustAccessAiControlsMcpServerState extends com.pulumi.re
 
         public Builder prompts(Map<String,String>... prompts) {
             return prompts(List.of(prompts));
+        }
+
+        /**
+         * @param secureWebGateway Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secureWebGateway(@Nullable Output<Boolean> secureWebGateway) {
+            $.secureWebGateway = secureWebGateway;
+            return this;
+        }
+
+        /**
+         * @param secureWebGateway Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secureWebGateway(Boolean secureWebGateway) {
+            return secureWebGateway(Output.of(secureWebGateway));
         }
 
         public Builder status(@Nullable Output<String> status) {

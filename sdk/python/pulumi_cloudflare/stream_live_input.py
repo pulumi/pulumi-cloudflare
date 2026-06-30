@@ -21,7 +21,7 @@ __all__ = ['StreamLiveInputArgs', 'StreamLiveInput']
 @pulumi.input_type
 class StreamLiveInputArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[_builtins.str],
                  default_creator: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_recording_after_days: pulumi.Input[Optional[_builtins.float]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -39,8 +39,7 @@ class StreamLiveInputArgs:
         :param pulumi.Input[_builtins.str] meta: A user modifiable key-value store used to reference other systems of record for managing live inputs.
         :param pulumi.Input['StreamLiveInputRecordingArgs'] recording: Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
         """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_id", account_id)
         if default_creator is not None:
             pulumi.set(__self__, "default_creator", default_creator)
         if delete_recording_after_days is not None:
@@ -56,14 +55,14 @@ class StreamLiveInputArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[_builtins.str]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -463,7 +462,7 @@ class StreamLiveInput(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[StreamLiveInputArgs] = None,
+                 args: StreamLiveInputArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Accepted Permissions
@@ -509,6 +508,8 @@ class StreamLiveInput(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StreamLiveInputArgs.__new__(StreamLiveInputArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["default_creator"] = default_creator
             __props__.__dict__["delete_recording_after_days"] = delete_recording_after_days
@@ -604,7 +605,7 @@ class StreamLiveInput(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

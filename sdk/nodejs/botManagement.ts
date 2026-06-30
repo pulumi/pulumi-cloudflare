@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `Bot Management Read`
+ * - `Bot Management Write`
+ *
  * ## Example Usage
  *
  * ```typescript

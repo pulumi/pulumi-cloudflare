@@ -71,6 +71,7 @@ namespace Pulumi.Cloudflare
     /// | `ReplaceInsecureJs` | `"on"` / `"off"` | Automatically replace insecure JavaScript libraries with safer and faster alt... |
     /// | `ResponseBuffering` | `"on"` / `"off"` | Enables or disables buffering of responses from the proxied server. Cloudflar... |
     /// | `RocketLoader` | `"on"` / `"off"` | Rocket Loader is a general-purpose asynchronous JavaScript optimisation that ... |
+    /// | `SearchForAgents` | `"on"` / `"off"` | When enabled, Cloudflare provisions an AI Search instance for the zone and ex... |
     /// | `SecurityHeader` | Object | Cloudflare security header for a zone. |
     /// | `SecurityLevel` | `"off"`, `"EssentiallyOff"`, `"low"`, `"medium"`, `"high"`, `"UnderAttack"` | Choose the appropriate security profile for your website, which will automati... |
     /// | `ServerSideExclude` | `"on"` / `"off"` | If there is sensitive content on your website that you want visible to real v... |
@@ -434,7 +435,7 @@ namespace Pulumi.Cloudflare
         /// Identifier
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -503,8 +504,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public ZoneSettingArgs()
         {

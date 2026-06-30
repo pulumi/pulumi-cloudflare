@@ -19,8 +19,8 @@ __all__ = ['WebAnalyticsRuleArgs', 'WebAnalyticsRule']
 @pulumi.input_type
 class WebAnalyticsRuleArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  ruleset_id: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
                  inclusive: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_paused: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -28,14 +28,13 @@ class WebAnalyticsRuleArgs:
         """
         The set of arguments for constructing a WebAnalyticsRule resource.
 
-        :param pulumi.Input[_builtins.str] ruleset_id: The Web Analytics ruleset identifier.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] ruleset_id: The Web Analytics ruleset identifier.
         :param pulumi.Input[_builtins.bool] inclusive: Whether the rule includes or excludes traffic from being measured.
         :param pulumi.Input[_builtins.bool] is_paused: Whether the rule is paused or not.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "ruleset_id", ruleset_id)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if inclusive is not None:
@@ -44,6 +43,18 @@ class WebAnalyticsRuleArgs:
             pulumi.set(__self__, "is_paused", is_paused)
         if paths is not None:
             pulumi.set(__self__, "paths", paths)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rulesetId")
@@ -56,18 +67,6 @@ class WebAnalyticsRuleArgs:
     @ruleset_id.setter
     def ruleset_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "ruleset_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -331,6 +330,8 @@ class WebAnalyticsRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WebAnalyticsRuleArgs.__new__(WebAnalyticsRuleArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["host"] = host
             __props__.__dict__["inclusive"] = inclusive
@@ -387,7 +388,7 @@ class WebAnalyticsRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

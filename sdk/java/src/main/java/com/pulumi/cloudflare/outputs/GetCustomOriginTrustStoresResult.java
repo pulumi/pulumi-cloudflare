@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetCustomOriginTrustStoresResult {
     /**
-     * @return The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * @return The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      * 
      */
     private String certificate;
@@ -54,7 +54,7 @@ public final class GetCustomOriginTrustStoresResult {
 
     private GetCustomOriginTrustStoresResult() {}
     /**
-     * @return The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * @return The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      * 
      */
     public String certificate() {

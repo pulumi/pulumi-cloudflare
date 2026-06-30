@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class GetPipelineSinkFilterArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Filters sinks by name (case-insensitive substring).
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
+
         [Input("pipelineId")]
         public string? PipelineId { get; set; }
 

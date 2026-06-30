@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// then automatically re-enabled by the system at the time specified
         /// in this RFC3339-formatted timestamp. A past-dated `HoldAfter` value will have
         /// no effect on an existing, enabled hold. Providing an empty string will set its value
-        /// to the current time.
+        /// to the current time. Providing `Null` will disable the hold indefinitely.
         /// </summary>
         [Output("holdAfter")]
         public Output<string> HoldAfter { get; private set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumi.Cloudflare
         /// then automatically re-enabled by the system at the time specified
         /// in this RFC3339-formatted timestamp. A past-dated `HoldAfter` value will have
         /// no effect on an existing, enabled hold. Providing an empty string will set its value
-        /// to the current time.
+        /// to the current time. Providing `Null` will disable the hold indefinitely.
         /// </summary>
         [Input("holdAfter")]
         public Input<string>? HoldAfter { get; set; }
@@ -191,7 +191,7 @@ namespace Pulumi.Cloudflare
         /// then automatically re-enabled by the system at the time specified
         /// in this RFC3339-formatted timestamp. A past-dated `HoldAfter` value will have
         /// no effect on an existing, enabled hold. Providing an empty string will set its value
-        /// to the current time.
+        /// to the current time. Providing `Null` will disable the hold indefinitely.
         /// </summary>
         [Input("holdAfter")]
         public Input<string>? HoldAfter { get; set; }

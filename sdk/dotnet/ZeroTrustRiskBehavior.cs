@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustRiskBehavior : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("behaviors")]
         public Output<ImmutableDictionary<string, Outputs.ZeroTrustRiskBehaviorBehaviors>> Behaviors { get; private set; } = null!;
@@ -104,8 +104,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustRiskBehaviorArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("behaviors", required: true)]
         private InputMap<Inputs.ZeroTrustRiskBehaviorBehaviorsArgs>? _behaviors;

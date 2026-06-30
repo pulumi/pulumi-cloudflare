@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailSecurityTrustedDomains(ctx, &cloudflare.LookupEmailSecurityTrustedDomainsArgs{
 //				AccountId:       pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				TrustedDomainId: pulumi.IntRef(2401),
+//				TrustedDomainId: pulumi.StringRef("2401"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,34 +54,35 @@ func LookupEmailSecurityTrustedDomains(ctx *pulumi.Context, args *LookupEmailSec
 
 // A collection of arguments for invoking getEmailSecurityTrustedDomains.
 type LookupEmailSecurityTrustedDomainsArgs struct {
-	// Account Identifier
+	// Identifier.
 	AccountId *string                               `pulumi:"accountId"`
 	Filter    *GetEmailSecurityTrustedDomainsFilter `pulumi:"filter"`
-	// The unique identifier for the trusted domain.
-	TrustedDomainId *int `pulumi:"trustedDomainId"`
+	// Trusted domain identifier
+	TrustedDomainId *string `pulumi:"trustedDomainId"`
 }
 
 // A collection of values returned by getEmailSecurityTrustedDomains.
 type LookupEmailSecurityTrustedDomainsResult struct {
-	// Account Identifier
+	// Identifier.
 	AccountId *string                               `pulumi:"accountId"`
 	Comments  string                                `pulumi:"comments"`
 	CreatedAt string                                `pulumi:"createdAt"`
 	Filter    *GetEmailSecurityTrustedDomainsFilter `pulumi:"filter"`
-	// The unique identifier for the trusted domain.
-	Id int `pulumi:"id"`
-	// Select to prevent recently registered domains from triggering a
-	// Suspicious or Malicious disposition.
+	// Trusted domain identifier
+	Id string `pulumi:"id"`
+	// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 	IsRecent bool `pulumi:"isRecent"`
 	IsRegex  bool `pulumi:"isRegex"`
-	// Select for partner or other approved domains that have similar
-	// spelling to your connected domains. Prevents listed domains from
-	// triggering a Spoof disposition.
-	IsSimilarity bool   `pulumi:"isSimilarity"`
+	// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
+	IsSimilarity bool `pulumi:"isSimilarity"`
+	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+	//
+	// Deprecated: This attribute is deprecated.
 	LastModified string `pulumi:"lastModified"`
+	ModifiedAt   string `pulumi:"modifiedAt"`
 	Pattern      string `pulumi:"pattern"`
-	// The unique identifier for the trusted domain.
-	TrustedDomainId *int `pulumi:"trustedDomainId"`
+	// Trusted domain identifier
+	TrustedDomainId *string `pulumi:"trustedDomainId"`
 }
 
 func LookupEmailSecurityTrustedDomainsOutput(ctx *pulumi.Context, args LookupEmailSecurityTrustedDomainsOutputArgs, opts ...pulumi.InvokeOption) LookupEmailSecurityTrustedDomainsResultOutput {
@@ -95,11 +96,11 @@ func LookupEmailSecurityTrustedDomainsOutput(ctx *pulumi.Context, args LookupEma
 
 // A collection of arguments for invoking getEmailSecurityTrustedDomains.
 type LookupEmailSecurityTrustedDomainsOutputArgs struct {
-	// Account Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput                        `pulumi:"accountId"`
 	Filter    GetEmailSecurityTrustedDomainsFilterPtrInput `pulumi:"filter"`
-	// The unique identifier for the trusted domain.
-	TrustedDomainId pulumi.IntPtrInput `pulumi:"trustedDomainId"`
+	// Trusted domain identifier
+	TrustedDomainId pulumi.StringPtrInput `pulumi:"trustedDomainId"`
 }
 
 func (LookupEmailSecurityTrustedDomainsOutputArgs) ElementType() reflect.Type {
@@ -121,7 +122,7 @@ func (o LookupEmailSecurityTrustedDomainsResultOutput) ToLookupEmailSecurityTrus
 	return o
 }
 
-// Account Identifier
+// Identifier.
 func (o LookupEmailSecurityTrustedDomainsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -138,13 +139,12 @@ func (o LookupEmailSecurityTrustedDomainsResultOutput) Filter() GetEmailSecurity
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) *GetEmailSecurityTrustedDomainsFilter { return v.Filter }).(GetEmailSecurityTrustedDomainsFilterPtrOutput)
 }
 
-// The unique identifier for the trusted domain.
-func (o LookupEmailSecurityTrustedDomainsResultOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) int { return v.Id }).(pulumi.IntOutput)
+// Trusted domain identifier
+func (o LookupEmailSecurityTrustedDomainsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Select to prevent recently registered domains from triggering a
-// Suspicious or Malicious disposition.
+// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 func (o LookupEmailSecurityTrustedDomainsResultOutput) IsRecent() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) bool { return v.IsRecent }).(pulumi.BoolOutput)
 }
@@ -153,24 +153,29 @@ func (o LookupEmailSecurityTrustedDomainsResultOutput) IsRegex() pulumi.BoolOutp
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) bool { return v.IsRegex }).(pulumi.BoolOutput)
 }
 
-// Select for partner or other approved domains that have similar
-// spelling to your connected domains. Prevents listed domains from
-// triggering a Spoof disposition.
+// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
 func (o LookupEmailSecurityTrustedDomainsResultOutput) IsSimilarity() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) bool { return v.IsSimilarity }).(pulumi.BoolOutput)
 }
 
+// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupEmailSecurityTrustedDomainsResultOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) string { return v.LastModified }).(pulumi.StringOutput)
+}
+
+func (o LookupEmailSecurityTrustedDomainsResultOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
 }
 
 func (o LookupEmailSecurityTrustedDomainsResultOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) string { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// The unique identifier for the trusted domain.
-func (o LookupEmailSecurityTrustedDomainsResultOutput) TrustedDomainId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) *int { return v.TrustedDomainId }).(pulumi.IntPtrOutput)
+// Trusted domain identifier
+func (o LookupEmailSecurityTrustedDomainsResultOutput) TrustedDomainId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsResult) *string { return v.TrustedDomainId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

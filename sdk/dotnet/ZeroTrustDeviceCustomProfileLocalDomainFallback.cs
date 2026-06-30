@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDeviceCustomProfileLocalDomainFallback : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("domains")]
         public Output<ImmutableArray<Outputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>> Domains { get; private set; } = null!;
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("domains", required: true)]
         private InputList<Inputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArgs>? _domains;

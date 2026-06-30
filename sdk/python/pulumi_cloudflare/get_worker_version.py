@@ -103,7 +103,7 @@ class GetWorkerVersionResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         Identifier.
         """
@@ -338,7 +338,7 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
         usage_model=pulumi.get(__ret__, 'usage_model'),
         version_id=pulumi.get(__ret__, 'version_id'),
         worker_id=pulumi.get(__ret__, 'worker_id'))
-def get_worker_version_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_worker_version_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                               include: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               version_id: pulumi.Input[Optional[_builtins.str]] = None,
                               worker_id: pulumi.Input[Optional[_builtins.str]] = None,

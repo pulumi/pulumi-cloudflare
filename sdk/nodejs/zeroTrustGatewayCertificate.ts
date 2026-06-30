@@ -51,7 +51,7 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewayCertificate.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
      */
@@ -102,7 +102,7 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ZeroTrustGatewayCertificateArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ZeroTrustGatewayCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZeroTrustGatewayCertificateArgs | ZeroTrustGatewayCertificateState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -124,6 +124,9 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
             resourceInputs["validityPeriodDays"] = state?.validityPeriodDays;
         } else {
             const args = argsOrState as ZeroTrustGatewayCertificateArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["activate"] = args?.activate;
             resourceInputs["validityPeriodDays"] = args?.validityPeriodDays;
@@ -197,7 +200,7 @@ export interface ZeroTrustGatewayCertificateState {
  * The set of arguments for constructing a ZeroTrustGatewayCertificate resource.
  */
 export interface ZeroTrustGatewayCertificateArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
      */

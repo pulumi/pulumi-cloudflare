@@ -103,7 +103,7 @@ type WaitingRoomEvent struct {
 	TurnstileMode pulumi.StringPtrOutput `pulumi:"turnstileMode"`
 	WaitingRoomId pulumi.StringOutput    `pulumi:"waitingRoomId"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewWaitingRoomEvent registers a new resource with the given unique name, arguments, and options.
@@ -124,6 +124,9 @@ func NewWaitingRoomEvent(ctx *pulumi.Context,
 	}
 	if args.WaitingRoomId == nil {
 		return nil, errors.New("invalid value for required argument 'WaitingRoomId'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WaitingRoomEvent
@@ -266,7 +269,7 @@ type waitingRoomEventArgs struct {
 	TurnstileMode *string `pulumi:"turnstileMode"`
 	WaitingRoomId string  `pulumi:"waitingRoomId"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a WaitingRoomEvent resource.
@@ -305,7 +308,7 @@ type WaitingRoomEventArgs struct {
 	TurnstileMode pulumi.StringPtrInput
 	WaitingRoomId pulumi.StringInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (WaitingRoomEventArgs) ElementType() reflect.Type {
@@ -485,8 +488,8 @@ func (o WaitingRoomEventOutput) WaitingRoomId() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o WaitingRoomEventOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o WaitingRoomEventOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type WaitingRoomEventArrayOutput struct{ *pulumi.OutputState }

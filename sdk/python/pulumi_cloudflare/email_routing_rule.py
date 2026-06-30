@@ -23,30 +23,29 @@ class EmailRoutingRuleArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleActionArgs']]],
                  matchers: pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleMatcherArgs']]],
+                 zone_id: pulumi.Input[_builtins.str],
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 priority: pulumi.Input[Optional[_builtins.float]] = None,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 priority: pulumi.Input[Optional[_builtins.float]] = None):
         """
         The set of arguments for constructing a EmailRoutingRule resource.
 
         :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleActionArgs']]] actions: List actions patterns.
         :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleMatcherArgs']]] matchers: Matching patterns to forward to your actions.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.bool] enabled: Routing rule status.
         :param pulumi.Input[_builtins.str] name: Routing rule name.
         :param pulumi.Input[_builtins.float] priority: Priority of the routing rule.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "matchers", matchers)
+        pulumi.set(__self__, "zone_id", zone_id)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -71,6 +70,18 @@ class EmailRoutingRuleArgs:
     @matchers.setter
     def matchers(self, value: pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleMatcherArgs']]]):
         pulumi.set(self, "matchers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -107,18 +118,6 @@ class EmailRoutingRuleArgs:
     @priority.setter
     def priority(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "priority", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -383,6 +382,8 @@ class EmailRoutingRule(pulumi.CustomResource):
             __props__.__dict__["matchers"] = matchers
             __props__.__dict__["name"] = name
             __props__.__dict__["priority"] = priority
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["tag"] = None
         super(EmailRoutingRule, __self__).__init__(
@@ -481,7 +482,7 @@ class EmailRoutingRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

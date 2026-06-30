@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -17,6 +18,7 @@ public final class GetAiGatewayDynamicRoutingVersion {
     private String active;
     private String createdAt;
     private String data;
+    private Boolean isValid;
     private String versionId;
 
     private GetAiGatewayDynamicRoutingVersion() {}
@@ -32,6 +34,9 @@ public final class GetAiGatewayDynamicRoutingVersion {
     }
     public String data() {
         return this.data;
+    }
+    public Boolean isValid() {
+        return this.isValid;
     }
     public String versionId() {
         return this.versionId;
@@ -49,6 +54,7 @@ public final class GetAiGatewayDynamicRoutingVersion {
         private String active;
         private String createdAt;
         private String data;
+        private Boolean isValid;
         private String versionId;
         public Builder() {}
         public Builder(GetAiGatewayDynamicRoutingVersion defaults) {
@@ -56,6 +62,7 @@ public final class GetAiGatewayDynamicRoutingVersion {
     	      this.active = defaults.active;
     	      this.createdAt = defaults.createdAt;
     	      this.data = defaults.data;
+    	      this.isValid = defaults.isValid;
     	      this.versionId = defaults.versionId;
         }
 
@@ -84,6 +91,14 @@ public final class GetAiGatewayDynamicRoutingVersion {
             return this;
         }
         @CustomType.Setter
+        public Builder isValid(Boolean isValid) {
+            if (isValid == null) {
+              throw new MissingRequiredPropertyException("GetAiGatewayDynamicRoutingVersion", "isValid");
+            }
+            this.isValid = isValid;
+            return this;
+        }
+        @CustomType.Setter
         public Builder versionId(String versionId) {
             if (versionId == null) {
               throw new MissingRequiredPropertyException("GetAiGatewayDynamicRoutingVersion", "versionId");
@@ -96,6 +111,7 @@ public final class GetAiGatewayDynamicRoutingVersion {
             _resultValue.active = active;
             _resultValue.createdAt = createdAt;
             _resultValue.data = data;
+            _resultValue.isValid = isValid;
             _resultValue.versionId = versionId;
             return _resultValue;
         }

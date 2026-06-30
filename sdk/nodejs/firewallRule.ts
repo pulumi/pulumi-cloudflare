@@ -102,7 +102,7 @@ export class FirewallRule extends pulumi.CustomResource {
     /**
      * Defines an identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a FirewallRule resource with the given unique name, arguments, and options.
@@ -132,6 +132,9 @@ export class FirewallRule extends pulumi.CustomResource {
             }
             if (args?.filter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["action"] = args?.action;
             resourceInputs["filter"] = args?.filter;
@@ -191,5 +194,5 @@ export interface FirewallRuleArgs {
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

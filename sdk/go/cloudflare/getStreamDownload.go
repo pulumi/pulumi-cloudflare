@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetStreamDownload(ctx, &cloudflare.LookupStreamDownloadArgs{
-//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				Identifier: "ea95132c15732412d22c1476fa83f27a",
 //			}, nil)
 //			if err != nil {
@@ -55,7 +55,7 @@ func LookupStreamDownload(ctx *pulumi.Context, args *LookupStreamDownloadArgs, o
 // A collection of arguments for invoking getStreamDownload.
 type LookupStreamDownloadArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
 }
@@ -63,7 +63,7 @@ type LookupStreamDownloadArgs struct {
 // A collection of values returned by getStreamDownload.
 type LookupStreamDownloadResult struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A Cloudflare-generated unique identifier for a media item.
@@ -82,7 +82,7 @@ func LookupStreamDownloadOutput(ctx *pulumi.Context, args LookupStreamDownloadOu
 // A collection of arguments for invoking getStreamDownload.
 type LookupStreamDownloadOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 }
@@ -107,8 +107,8 @@ func (o LookupStreamDownloadResultOutput) ToLookupStreamDownloadResultOutputWith
 }
 
 // Identifier.
-func (o LookupStreamDownloadResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupStreamDownloadResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupStreamDownloadResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamDownloadResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

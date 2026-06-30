@@ -27,8 +27,8 @@ class TokenValidationRulesArgs:
                  expression: pulumi.Input[_builtins.str],
                  selector: pulumi.Input['TokenValidationRulesSelectorArgs'],
                  title: pulumi.Input[_builtins.str],
-                 position: pulumi.Input[Optional['TokenValidationRulesPositionArgs']] = None,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 zone_id: pulumi.Input[_builtins.str],
+                 position: pulumi.Input[Optional['TokenValidationRulesPositionArgs']] = None):
         """
         The set of arguments for constructing a TokenValidationRules resource.
 
@@ -41,8 +41,8 @@ class TokenValidationRulesArgs:
                
                For details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).
         :param pulumi.Input[_builtins.str] title: A human-readable name for the rule.
-        :param pulumi.Input['TokenValidationRulesPositionArgs'] position: Update rule order among zone rules.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
+        :param pulumi.Input['TokenValidationRulesPositionArgs'] position: Update rule order among zone rules.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "description", description)
@@ -50,10 +50,9 @@ class TokenValidationRulesArgs:
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "selector", selector)
         pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "zone_id", zone_id)
         if position is not None:
             pulumi.set(__self__, "position", position)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -131,6 +130,18 @@ class TokenValidationRulesArgs:
         pulumi.set(self, "title", value)
 
     @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def position(self) -> pulumi.Input[Optional['TokenValidationRulesPositionArgs']]:
         """
@@ -141,18 +152,6 @@ class TokenValidationRulesArgs:
     @position.setter
     def position(self, value: pulumi.Input[Optional['TokenValidationRulesPositionArgs']]):
         pulumi.set(self, "position", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -496,6 +495,8 @@ class TokenValidationRules(pulumi.CustomResource):
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["last_updated"] = None
@@ -625,7 +626,7 @@ class TokenValidationRules(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

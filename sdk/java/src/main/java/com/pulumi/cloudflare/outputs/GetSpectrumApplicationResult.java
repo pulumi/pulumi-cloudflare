@@ -102,6 +102,11 @@ public final class GetSpectrumApplicationResult {
      */
     private String trafficType;
     /**
+     * @return Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     * 
+     */
+    private String virtualNetworkId;
+    /**
      * @return Zone identifier.
      * 
      */
@@ -223,6 +228,13 @@ public final class GetSpectrumApplicationResult {
         return this.trafficType;
     }
     /**
+     * @return Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     * 
+     */
+    public String virtualNetworkId() {
+        return this.virtualNetworkId;
+    }
+    /**
      * @return Zone identifier.
      * 
      */
@@ -255,6 +267,7 @@ public final class GetSpectrumApplicationResult {
         private String proxyProtocol;
         private String tls;
         private String trafficType;
+        private String virtualNetworkId;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetSpectrumApplicationResult defaults) {
@@ -275,6 +288,7 @@ public final class GetSpectrumApplicationResult {
     	      this.proxyProtocol = defaults.proxyProtocol;
     	      this.tls = defaults.tls;
     	      this.trafficType = defaults.trafficType;
+    	      this.virtualNetworkId = defaults.virtualNetworkId;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -406,6 +420,14 @@ public final class GetSpectrumApplicationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder virtualNetworkId(String virtualNetworkId) {
+            if (virtualNetworkId == null) {
+              throw new MissingRequiredPropertyException("GetSpectrumApplicationResult", "virtualNetworkId");
+            }
+            this.virtualNetworkId = virtualNetworkId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -429,6 +451,7 @@ public final class GetSpectrumApplicationResult {
             _resultValue.proxyProtocol = proxyProtocol;
             _resultValue.tls = tls;
             _resultValue.trafficType = trafficType;
+            _resultValue.virtualNetworkId = virtualNetworkId;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

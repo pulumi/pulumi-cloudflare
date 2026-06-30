@@ -22,15 +22,15 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
      * Account ID.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Account ID.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -177,7 +177,7 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -352,6 +352,9 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public R2CustomDomainArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("R2CustomDomainArgs", "accountId");
+            }
             if ($.bucketName == null) {
                 throw new MissingRequiredPropertyException("R2CustomDomainArgs", "bucketName");
             }

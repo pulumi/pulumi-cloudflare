@@ -215,6 +215,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string TrafficType;
         /// <summary>
+        /// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+        /// </summary>
+        public readonly string VirtualNetworkId;
+        /// <summary>
         /// Zone identifier.
         /// </summary>
         public readonly string? ZoneId;
@@ -253,6 +257,8 @@ namespace Pulumi.Cloudflare
 
             string trafficType,
 
+            string virtualNetworkId,
+
             string? zoneId)
         {
             AppId = appId;
@@ -271,6 +277,7 @@ namespace Pulumi.Cloudflare
             ProxyProtocol = proxyProtocol;
             Tls = tls;
             TrafficType = trafficType;
+            VirtualNetworkId = virtualNetworkId;
             ZoneId = zoneId;
         }
     }

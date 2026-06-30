@@ -41,7 +41,7 @@ export interface GetR2BucketEventNotificationArgs {
     /**
      * Account ID.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * Name of the bucket.
      */
@@ -59,7 +59,7 @@ export interface GetR2BucketEventNotificationResult {
     /**
      * Account ID.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Name of the bucket.
      */
@@ -113,7 +113,7 @@ export interface GetR2BucketEventNotificationOutputArgs {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Name of the bucket.
      */

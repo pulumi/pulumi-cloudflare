@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare
         /// Identifier
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// If bot*fight*mode is set to `True`, Cloudflare issues computationally
@@ -192,8 +192,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// If bot*fight*mode is set to `True`, Cloudflare issues computationally

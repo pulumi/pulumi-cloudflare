@@ -21,31 +21,42 @@ __all__ = ['PipelineSinkArgs', 'PipelineSink']
 @pulumi.input_type
 class PipelineSinkArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional['PipelineSinkConfigArgs']] = None,
                  format: pulumi.Input[Optional['PipelineSinkFormatArgs']] = None,
                  schema: pulumi.Input[Optional['PipelineSinkSchemaArgs']] = None):
         """
         The set of arguments for constructing a PipelineSink resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
         :param pulumi.Input[_builtins.str] name: Defines the name of the Sink.
         :param pulumi.Input[_builtins.str] type: Specifies the type of sink.
                Available values: "r2", "r2*data*catalog".
-        :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
         :param pulumi.Input['PipelineSinkConfigArgs'] config: Defines the configuration of the R2 Sink.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specifies the public ID of the account.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -71,18 +82,6 @@ class PipelineSinkArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Specifies the public ID of the account.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -435,6 +434,8 @@ class PipelineSink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PipelineSinkArgs.__new__(PipelineSinkArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["config"] = config
             __props__.__dict__["format"] = format
@@ -494,7 +495,7 @@ class PipelineSink(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the public ID of the account.
         """

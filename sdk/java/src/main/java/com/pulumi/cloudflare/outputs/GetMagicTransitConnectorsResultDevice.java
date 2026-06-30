@@ -12,6 +12,11 @@ import java.util.Objects;
 public final class GetMagicTransitConnectorsResultDevice {
     private String id;
     private String serialNumber;
+    /**
+     * @return Available values: &#34;MANAGED&#34;, &#34;LICENSED&#34;.
+     * 
+     */
+    private String type;
 
     private GetMagicTransitConnectorsResultDevice() {}
     public String id() {
@@ -19,6 +24,13 @@ public final class GetMagicTransitConnectorsResultDevice {
     }
     public String serialNumber() {
         return this.serialNumber;
+    }
+    /**
+     * @return Available values: &#34;MANAGED&#34;, &#34;LICENSED&#34;.
+     * 
+     */
+    public String type() {
+        return this.type;
     }
 
     public static Builder builder() {
@@ -32,11 +44,13 @@ public final class GetMagicTransitConnectorsResultDevice {
     public static final class Builder {
         private String id;
         private String serialNumber;
+        private String type;
         public Builder() {}
         public Builder(GetMagicTransitConnectorsResultDevice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.serialNumber = defaults.serialNumber;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
@@ -55,10 +69,19 @@ public final class GetMagicTransitConnectorsResultDevice {
             this.serialNumber = serialNumber;
             return this;
         }
+        @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitConnectorsResultDevice", "type");
+            }
+            this.type = type;
+            return this;
+        }
         public GetMagicTransitConnectorsResultDevice build() {
             final var _resultValue = new GetMagicTransitConnectorsResultDevice();
             _resultValue.id = id;
             _resultValue.serialNumber = serialNumber;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

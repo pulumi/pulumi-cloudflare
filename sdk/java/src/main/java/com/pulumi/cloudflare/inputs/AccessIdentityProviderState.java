@@ -4,9 +4,11 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.AccessIdentityProviderConfigArgs;
+import com.pulumi.cloudflare.inputs.AccessIdentityProviderSamlCertificateSetArgs;
 import com.pulumi.cloudflare.inputs.AccessIdentityProviderScimConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -63,6 +65,57 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
     }
 
     /**
+     * Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+     * 
+     */
+    @Import(name="readOnly")
+    private @Nullable Output<Boolean> readOnly;
+
+    /**
+     * @return Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+     * 
+     */
+    public Optional<Output<Boolean>> readOnly() {
+        return Optional.ofNullable(this.readOnly);
+    }
+
+    /**
+     * The SAML encryption certificate set details, including current and previous certificates.
+     * Only present for SAML identity providers with a certificate set assigned.
+     * 
+     */
+    @Import(name="samlCertificateSet")
+    private @Nullable Output<AccessIdentityProviderSamlCertificateSetArgs> samlCertificateSet;
+
+    /**
+     * @return The SAML encryption certificate set details, including current and previous certificates.
+     * Only present for SAML identity providers with a certificate set assigned.
+     * 
+     */
+    public Optional<Output<AccessIdentityProviderSamlCertificateSetArgs>> samlCertificateSet() {
+        return Optional.ofNullable(this.samlCertificateSet);
+    }
+
+    /**
+     * The UID of the SAML encryption certificate set assigned to this Identity Provider.
+     * Only present for SAML identity providers with encryption configured.
+     * Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+     * 
+     */
+    @Import(name="samlCertificateSetId")
+    private @Nullable Output<String> samlCertificateSetId;
+
+    /**
+     * @return The UID of the SAML encryption certificate set assigned to this Identity Provider.
+     * Only present for SAML identity providers with encryption configured.
+     * Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+     * 
+     */
+    public Optional<Output<String>> samlCertificateSetId() {
+        return Optional.ofNullable(this.samlCertificateSetId);
+    }
+
+    /**
      * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      * 
      */
@@ -79,7 +132,7 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
 
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;.
      * 
      */
     @Import(name="type")
@@ -87,7 +140,7 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
 
     /**
      * @return The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -115,6 +168,9 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
         this.accountId = $.accountId;
         this.config = $.config;
         this.name = $.name;
+        this.readOnly = $.readOnly;
+        this.samlCertificateSet = $.samlCertificateSet;
+        this.samlCertificateSetId = $.samlCertificateSetId;
         this.scimConfig = $.scimConfig;
         this.type = $.type;
         this.zoneId = $.zoneId;
@@ -202,6 +258,75 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param readOnly Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnly(@Nullable Output<Boolean> readOnly) {
+            $.readOnly = readOnly;
+            return this;
+        }
+
+        /**
+         * @param readOnly Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnly(Boolean readOnly) {
+            return readOnly(Output.of(readOnly));
+        }
+
+        /**
+         * @param samlCertificateSet The SAML encryption certificate set details, including current and previous certificates.
+         * Only present for SAML identity providers with a certificate set assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder samlCertificateSet(@Nullable Output<AccessIdentityProviderSamlCertificateSetArgs> samlCertificateSet) {
+            $.samlCertificateSet = samlCertificateSet;
+            return this;
+        }
+
+        /**
+         * @param samlCertificateSet The SAML encryption certificate set details, including current and previous certificates.
+         * Only present for SAML identity providers with a certificate set assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder samlCertificateSet(AccessIdentityProviderSamlCertificateSetArgs samlCertificateSet) {
+            return samlCertificateSet(Output.of(samlCertificateSet));
+        }
+
+        /**
+         * @param samlCertificateSetId The UID of the SAML encryption certificate set assigned to this Identity Provider.
+         * Only present for SAML identity providers with encryption configured.
+         * Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder samlCertificateSetId(@Nullable Output<String> samlCertificateSetId) {
+            $.samlCertificateSetId = samlCertificateSetId;
+            return this;
+        }
+
+        /**
+         * @param samlCertificateSetId The UID of the SAML encryption certificate set assigned to this Identity Provider.
+         * Only present for SAML identity providers with encryption configured.
+         * Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder samlCertificateSetId(String samlCertificateSetId) {
+            return samlCertificateSetId(Output.of(samlCertificateSetId));
+        }
+
+        /**
          * @param scimConfig The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
          * 
          * @return builder
@@ -224,7 +349,7 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
 
         /**
          * @param type The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-         * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
+         * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;.
          * 
          * @return builder
          * 
@@ -236,7 +361,7 @@ public final class AccessIdentityProviderState extends com.pulumi.resources.Reso
 
         /**
          * @param type The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-         * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
+         * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;.
          * 
          * @return builder
          * 

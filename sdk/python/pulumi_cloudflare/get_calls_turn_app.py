@@ -51,7 +51,7 @@ class GetCallsTurnAppResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         The account identifier tag.
         """
@@ -158,7 +158,7 @@ def get_calls_turn_app(account_id: Optional[_builtins.str] = None,
         modified=pulumi.get(__ret__, 'modified'),
         name=pulumi.get(__ret__, 'name'),
         uid=pulumi.get(__ret__, 'uid'))
-def get_calls_turn_app_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_calls_turn_app_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                               key_id: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCallsTurnAppResult]:
     """

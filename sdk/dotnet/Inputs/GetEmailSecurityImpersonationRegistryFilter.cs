@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
         public string? Direction { get; set; }
 
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "name", "email", "CreatedAt".
         /// </summary>
         [Input("order")]
@@ -33,10 +33,7 @@ namespace Pulumi.Cloudflare.Inputs
         public string? Provenance { get; set; }
 
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         [Input("search")]
         public string? Search { get; set; }

@@ -19,7 +19,7 @@ __all__ = ['ZeroTrustGatewayCertificateArgs', 'ZeroTrustGatewayCertificate']
 @pulumi.input_type
 class ZeroTrustGatewayCertificateArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[_builtins.str],
                  activate: pulumi.Input[Optional[_builtins.bool]] = None,
                  validity_period_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
@@ -28,8 +28,7 @@ class ZeroTrustGatewayCertificateArgs:
         :param pulumi.Input[_builtins.bool] activate: Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `binding_status` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
         :param pulumi.Input[_builtins.int] validity_period_days: Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
         """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_id", account_id)
         if activate is not None:
             pulumi.set(__self__, "activate", activate)
         if validity_period_days is not None:
@@ -37,11 +36,11 @@ class ZeroTrustGatewayCertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
@@ -324,7 +323,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ZeroTrustGatewayCertificateArgs] = None,
+                 args: ZeroTrustGatewayCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -372,6 +371,8 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustGatewayCertificateArgs.__new__(ZeroTrustGatewayCertificateArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["activate"] = activate
             __props__.__dict__["validity_period_days"] = validity_period_days
@@ -451,7 +452,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

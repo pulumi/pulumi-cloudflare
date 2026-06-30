@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkersScriptBindingSimpleArgs extends com.pulumi.resources.ResourceArgs {
@@ -31,6 +33,21 @@ public final class WorkersScriptBindingSimpleArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+     * 
+     */
+    @Import(name="mitigationTimeout")
+    private @Nullable Output<Integer> mitigationTimeout;
+
+    /**
+     * @return Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+     * 
+     */
+    public Optional<Output<Integer>> mitigationTimeout() {
+        return Optional.ofNullable(this.mitigationTimeout);
+    }
+
+    /**
      * The rate limit period in seconds.
      * 
      */
@@ -49,6 +66,7 @@ public final class WorkersScriptBindingSimpleArgs extends com.pulumi.resources.R
 
     private WorkersScriptBindingSimpleArgs(WorkersScriptBindingSimpleArgs $) {
         this.limit = $.limit;
+        this.mitigationTimeout = $.mitigationTimeout;
         this.period = $.period;
     }
 
@@ -89,6 +107,27 @@ public final class WorkersScriptBindingSimpleArgs extends com.pulumi.resources.R
          */
         public Builder limit(Double limit) {
             return limit(Output.of(limit));
+        }
+
+        /**
+         * @param mitigationTimeout Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mitigationTimeout(@Nullable Output<Integer> mitigationTimeout) {
+            $.mitigationTimeout = mitigationTimeout;
+            return this;
+        }
+
+        /**
+         * @param mitigationTimeout Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mitigationTimeout(Integer mitigationTimeout) {
+            return mitigationTimeout(Output.of(mitigationTimeout));
         }
 
         /**

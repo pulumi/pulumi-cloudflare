@@ -208,7 +208,7 @@ type NotificationPolicy struct {
 	pulumi.CustomResourceState
 
 	// The account id
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Optional specification of how often to re-alert from the same incident, not support on all alert types.
 	AlertInterval pulumi.StringPtrOutput `pulumi:"alertInterval"`
 	// Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
@@ -235,6 +235,9 @@ func NewNotificationPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.AlertType == nil {
 		return nil, errors.New("invalid value for required argument 'AlertType'")
 	}
@@ -316,7 +319,7 @@ func (NotificationPolicyState) ElementType() reflect.Type {
 
 type notificationPolicyArgs struct {
 	// The account id
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Optional specification of how often to re-alert from the same incident, not support on all alert types.
 	AlertInterval *string `pulumi:"alertInterval"`
 	// Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
@@ -337,7 +340,7 @@ type notificationPolicyArgs struct {
 // The set of arguments for constructing a NotificationPolicy resource.
 type NotificationPolicyArgs struct {
 	// The account id
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Optional specification of how often to re-alert from the same incident, not support on all alert types.
 	AlertInterval pulumi.StringPtrInput
 	// Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
@@ -443,8 +446,8 @@ func (o NotificationPolicyOutput) ToNotificationPolicyOutputWithContext(ctx cont
 }
 
 // The account id
-func (o NotificationPolicyOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationPolicy) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o NotificationPolicyOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Optional specification of how often to re-alert from the same incident, not support on all alert types.

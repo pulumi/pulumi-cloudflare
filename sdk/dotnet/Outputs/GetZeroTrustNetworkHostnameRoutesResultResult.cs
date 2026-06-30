@@ -34,6 +34,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The type of tunnel.
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "IpSec", "gre", "cni".
+        /// </summary>
+        public readonly string TunType;
+        /// <summary>
         /// UUID of the tunnel.
         /// </summary>
         public readonly string TunnelId;
@@ -54,6 +59,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
+            string tunType,
+
             string tunnelId,
 
             string tunnelName)
@@ -63,6 +70,7 @@ namespace Pulumi.Cloudflare.Outputs
             DeletedAt = deletedAt;
             Hostname = hostname;
             Id = id;
+            TunType = tunType;
             TunnelId = tunnelId;
             TunnelName = tunnelName;
         }

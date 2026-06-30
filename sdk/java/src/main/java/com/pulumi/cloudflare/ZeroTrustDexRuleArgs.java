@@ -16,11 +16,11 @@ public final class ZeroTrustDexRuleArgs extends com.pulumi.resources.ResourceArg
 
     public static final ZeroTrustDexRuleArgs Empty = new ZeroTrustDexRuleArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="description")
@@ -87,7 +87,7 @@ public final class ZeroTrustDexRuleArgs extends com.pulumi.resources.ResourceArg
             $ = new ZeroTrustDexRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -148,6 +148,9 @@ public final class ZeroTrustDexRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ZeroTrustDexRuleArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDexRuleArgs", "accountId");
+            }
             if ($.match == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDexRuleArgs", "match");
             }

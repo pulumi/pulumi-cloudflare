@@ -139,7 +139,7 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a WaitingRoomEvent resource with the given unique name, arguments, and options.
@@ -186,6 +186,9 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
             }
             if (args?.waitingRoomId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'waitingRoomId'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["customPageHtml"] = args?.customPageHtml;
             resourceInputs["description"] = args?.description;
@@ -357,5 +360,5 @@ export interface WaitingRoomEventArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

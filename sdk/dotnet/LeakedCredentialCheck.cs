@@ -53,7 +53,7 @@ namespace Pulumi.Cloudflare
         /// Defines an identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public LeakedCredentialCheck(string name, LeakedCredentialCheckArgs? args = null, CustomResourceOptions? options = null)
+        public LeakedCredentialCheck(string name, LeakedCredentialCheckArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck", name, args ?? new LeakedCredentialCheckArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -110,8 +110,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Defines an identifier.
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public LeakedCredentialCheckArgs()
         {

@@ -13,24 +13,14 @@ import * as utilities from "./utilities";
  * - `Cloud Email Security: Write`
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleEmailSecurityImpersonationRegistry = cloudflare.getEmailSecurityImpersonationRegistry({
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     displayNameId: 2403,
- * });
- * ```
  */
 export function getEmailSecurityImpersonationRegistry(args?: GetEmailSecurityImpersonationRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetEmailSecurityImpersonationRegistryResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry", {
         "accountId": args.accountId,
-        "displayNameId": args.displayNameId,
         "filter": args.filter,
+        "impersonationRegistryId": args.impersonationRegistryId,
     }, opts);
 }
 
@@ -39,11 +29,14 @@ export function getEmailSecurityImpersonationRegistry(args?: GetEmailSecurityImp
  */
 export interface GetEmailSecurityImpersonationRegistryArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: string;
-    displayNameId?: number;
     filter?: inputs.GetEmailSecurityImpersonationRegistryFilter;
+    /**
+     * Impersonation registry entry identifier
+     */
+    impersonationRegistryId?: string;
 }
 
 /**
@@ -51,14 +44,13 @@ export interface GetEmailSecurityImpersonationRegistryArgs {
  */
 export interface GetEmailSecurityImpersonationRegistryResult {
     /**
-     * Account Identifier
+     * Identifier.
      */
     readonly accountId?: string;
     readonly comments: string;
     readonly createdAt: string;
     readonly directoryId: number;
     readonly directoryNodeId: number;
-    readonly displayNameId?: number;
     readonly email: string;
     /**
      * @deprecated This attribute is deprecated.
@@ -66,12 +58,25 @@ export interface GetEmailSecurityImpersonationRegistryResult {
     readonly externalDirectoryNodeId: string;
     readonly filter?: outputs.GetEmailSecurityImpersonationRegistryFilter;
     /**
-     * The ID of this resource.
+     * Impersonation registry entry identifier
      */
-    readonly id: number;
+    readonly id: string;
+    /**
+     * Impersonation registry entry identifier
+     */
+    readonly impersonationRegistryId?: string;
     readonly isEmailRegex: boolean;
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     readonly lastModified: string;
+    readonly modifiedAt: string;
     readonly name: string;
+    /**
+     * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+     */
     readonly provenance: string;
 }
 /**
@@ -81,24 +86,14 @@ export interface GetEmailSecurityImpersonationRegistryResult {
  * - `Cloud Email Security: Write`
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleEmailSecurityImpersonationRegistry = cloudflare.getEmailSecurityImpersonationRegistry({
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     displayNameId: 2403,
- * });
- * ```
  */
 export function getEmailSecurityImpersonationRegistryOutput(args?: GetEmailSecurityImpersonationRegistryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEmailSecurityImpersonationRegistryResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry", {
         "accountId": args.accountId,
-        "displayNameId": args.displayNameId,
         "filter": args.filter,
+        "impersonationRegistryId": args.impersonationRegistryId,
     }, opts);
 }
 
@@ -107,9 +102,12 @@ export function getEmailSecurityImpersonationRegistryOutput(args?: GetEmailSecur
  */
 export interface GetEmailSecurityImpersonationRegistryOutputArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
-    displayNameId?: pulumi.Input<number | undefined>;
     filter?: pulumi.Input<inputs.GetEmailSecurityImpersonationRegistryFilterArgs | undefined>;
+    /**
+     * Impersonation registry entry identifier
+     */
+    impersonationRegistryId?: pulumi.Input<string | undefined>;
 }

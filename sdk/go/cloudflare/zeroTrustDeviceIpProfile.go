@@ -57,7 +57,7 @@ import (
 type ZeroTrustDeviceIpProfile struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The RFC3339Nano timestamp when the Device IP profile was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// An optional description of the Device IP profile.
@@ -83,6 +83,9 @@ func NewZeroTrustDeviceIpProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Match == nil {
 		return nil, errors.New("invalid value for required argument 'Match'")
 	}
@@ -162,7 +165,7 @@ func (ZeroTrustDeviceIpProfileState) ElementType() reflect.Type {
 }
 
 type zeroTrustDeviceIpProfileArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// An optional description of the Device IP profile.
 	Description *string `pulumi:"description"`
 	// Whether the Device IP profile will be applied to matching devices.
@@ -179,7 +182,7 @@ type zeroTrustDeviceIpProfileArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDeviceIpProfile resource.
 type ZeroTrustDeviceIpProfileArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// An optional description of the Device IP profile.
 	Description pulumi.StringPtrInput
 	// Whether the Device IP profile will be applied to matching devices.
@@ -281,8 +284,8 @@ func (o ZeroTrustDeviceIpProfileOutput) ToZeroTrustDeviceIpProfileOutputWithCont
 	return o
 }
 
-func (o ZeroTrustDeviceIpProfileOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceIpProfile) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDeviceIpProfileOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceIpProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The RFC3339Nano timestamp when the Device IP profile was created.

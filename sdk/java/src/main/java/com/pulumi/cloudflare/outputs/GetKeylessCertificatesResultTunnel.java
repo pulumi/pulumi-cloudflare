@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetKeylessCertificatesResultTunnel {
     /**
-     * @return Private IP of the Key Server Host
+     * @return Private IP of the Key Server Host.
      * 
      */
     private String privateIp;
     /**
-     * @return Cloudflare Tunnel Virtual Network ID
+     * @return Cloudflare Tunnel Virtual Network ID.
      * 
      */
     private String vnetId;
 
     private GetKeylessCertificatesResultTunnel() {}
     /**
-     * @return Private IP of the Key Server Host
+     * @return Private IP of the Key Server Host.
      * 
      */
     public String privateIp() {
         return this.privateIp;
     }
     /**
-     * @return Cloudflare Tunnel Virtual Network ID
+     * @return Cloudflare Tunnel Virtual Network ID.
      * 
      */
     public String vnetId() {

@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetMagicTransitSiteLanStaticAddressingDhcpServerDhcpOption;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -12,6 +13,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
+    /**
+     * @return Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.
+     * 
+     */
+    private List<GetMagicTransitSiteLanStaticAddressingDhcpServerDhcpOption> dhcpOptions;
     /**
      * @return A valid IPv4 address.
      * 
@@ -35,6 +41,13 @@ public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
     private Map<String,String> reservations;
 
     private GetMagicTransitSiteLanStaticAddressingDhcpServer() {}
+    /**
+     * @return Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.
+     * 
+     */
+    public List<GetMagicTransitSiteLanStaticAddressingDhcpServerDhcpOption> dhcpOptions() {
+        return this.dhcpOptions;
+    }
     /**
      * @return A valid IPv4 address.
      * 
@@ -76,6 +89,7 @@ public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetMagicTransitSiteLanStaticAddressingDhcpServerDhcpOption> dhcpOptions;
         private String dhcpPoolEnd;
         private String dhcpPoolStart;
         private String dnsServer;
@@ -84,6 +98,7 @@ public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
         public Builder() {}
         public Builder(GetMagicTransitSiteLanStaticAddressingDhcpServer defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dhcpOptions = defaults.dhcpOptions;
     	      this.dhcpPoolEnd = defaults.dhcpPoolEnd;
     	      this.dhcpPoolStart = defaults.dhcpPoolStart;
     	      this.dnsServer = defaults.dnsServer;
@@ -91,6 +106,17 @@ public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
     	      this.reservations = defaults.reservations;
         }
 
+        @CustomType.Setter
+        public Builder dhcpOptions(List<GetMagicTransitSiteLanStaticAddressingDhcpServerDhcpOption> dhcpOptions) {
+            if (dhcpOptions == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteLanStaticAddressingDhcpServer", "dhcpOptions");
+            }
+            this.dhcpOptions = dhcpOptions;
+            return this;
+        }
+        public Builder dhcpOptions(GetMagicTransitSiteLanStaticAddressingDhcpServerDhcpOption... dhcpOptions) {
+            return dhcpOptions(List.of(dhcpOptions));
+        }
         @CustomType.Setter
         public Builder dhcpPoolEnd(String dhcpPoolEnd) {
             if (dhcpPoolEnd == null) {
@@ -136,6 +162,7 @@ public final class GetMagicTransitSiteLanStaticAddressingDhcpServer {
         }
         public GetMagicTransitSiteLanStaticAddressingDhcpServer build() {
             final var _resultValue = new GetMagicTransitSiteLanStaticAddressingDhcpServer();
+            _resultValue.dhcpOptions = dhcpOptions;
             _resultValue.dhcpPoolEnd = dhcpPoolEnd;
             _resultValue.dhcpPoolStart = dhcpPoolStart;
             _resultValue.dnsServer = dnsServer;

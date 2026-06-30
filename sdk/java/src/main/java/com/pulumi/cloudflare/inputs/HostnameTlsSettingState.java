@@ -47,14 +47,16 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     @Import(name="settingId")
     private @Nullable Output<String> settingId;
 
     /**
-     * @return The TLS Setting name. The value type depends on the setting:
+     * @return The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     public Optional<Output<String>> settingId() {
@@ -92,14 +94,16 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The TLS setting value. The type depends on the `settingId` used in the request path:
+     * The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      * 
      */
     @Import(name="value")
     private @Nullable Output<Object> value;
 
     /**
-     * @return The TLS setting value. The type depends on the `settingId` used in the request path:
+     * @return The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      * 
      */
     public Optional<Output<Object>> value() {
@@ -194,7 +198,8 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param settingId The TLS Setting name. The value type depends on the setting:
+         * @param settingId The TLS Setting name.
+         * The value type depends on the setting:
          * 
          * @return builder
          * 
@@ -205,7 +210,8 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param settingId The TLS Setting name. The value type depends on the setting:
+         * @param settingId The TLS Setting name.
+         * The value type depends on the setting:
          * 
          * @return builder
          * 
@@ -257,7 +263,8 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param value The TLS setting value. The type depends on the `settingId` used in the request path:
+         * @param value The TLS setting value.
+         * The type depends on the `settingId` used in the request path:
          * 
          * @return builder
          * 
@@ -268,7 +275,8 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param value The TLS setting value. The type depends on the `settingId` used in the request path:
+         * @param value The TLS setting value.
+         * The type depends on the `settingId` used in the request path:
          * 
          * @return builder
          * 

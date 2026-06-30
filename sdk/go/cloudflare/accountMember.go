@@ -58,7 +58,7 @@ type AccountMember struct {
 	pulumi.CustomResourceState
 
 	// Account identifier tag.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The contact email address of the user.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// Array of policies associated with this member.
@@ -80,6 +80,9 @@ func NewAccountMember(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Email == nil {
 		return nil, errors.New("invalid value for required argument 'Email'")
 	}
@@ -145,7 +148,7 @@ func (AccountMemberState) ElementType() reflect.Type {
 
 type accountMemberArgs struct {
 	// Account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The contact email address of the user.
 	Email string `pulumi:"email"`
 	// Array of policies associated with this member.
@@ -161,7 +164,7 @@ type accountMemberArgs struct {
 // The set of arguments for constructing a AccountMember resource.
 type AccountMemberArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// The contact email address of the user.
 	Email pulumi.StringInput
 	// Array of policies associated with this member.
@@ -262,8 +265,8 @@ func (o AccountMemberOutput) ToAccountMemberOutputWithContext(ctx context.Contex
 }
 
 // Account identifier tag.
-func (o AccountMemberOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccountMember) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o AccountMemberOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountMember) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The contact email address of the user.

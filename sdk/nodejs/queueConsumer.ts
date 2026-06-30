@@ -71,7 +71,7 @@ export class QueueConsumer extends pulumi.CustomResource {
     /**
      * A Resource identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * A Resource identifier.
      */
@@ -117,6 +117,9 @@ export class QueueConsumer extends pulumi.CustomResource {
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as QueueConsumerArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.queueId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queueId'");
             }
@@ -175,7 +178,7 @@ export interface QueueConsumerArgs {
     /**
      * A Resource identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     deadLetterQueue?: pulumi.Input<string | undefined>;
     /**
      * A Resource identifier.

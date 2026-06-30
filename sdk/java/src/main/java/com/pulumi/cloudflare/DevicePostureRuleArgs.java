@@ -19,11 +19,11 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
 
     public static final DevicePostureRuleArgs Empty = new DevicePostureRuleArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -164,7 +164,7 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
             $ = new DevicePostureRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -333,6 +333,9 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         public DevicePostureRuleArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("DevicePostureRuleArgs", "accountId");
+            }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("DevicePostureRuleArgs", "type");
             }

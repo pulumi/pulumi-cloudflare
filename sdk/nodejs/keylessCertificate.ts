@@ -167,13 +167,13 @@ export class KeylessCertificate extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel.
      */
     declare public readonly tunnel: pulumi.Output<outputs.KeylessCertificateTunnel | undefined>;
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a KeylessCertificate resource with the given unique name, arguments, and options.
@@ -207,6 +207,9 @@ export class KeylessCertificate extends pulumi.CustomResource {
             }
             if (args?.host === undefined && !opts.urn) {
                 throw new Error("Missing required property 'host'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["bundleMethod"] = args?.bundleMethod;
             resourceInputs["certificate"] = args?.certificate;
@@ -275,7 +278,7 @@ export interface KeylessCertificateState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel.
      */
     tunnel?: pulumi.Input<inputs.KeylessCertificateTunnel | undefined>;
     /**
@@ -316,11 +319,11 @@ export interface KeylessCertificateArgs {
      */
     port?: pulumi.Input<number | undefined>;
     /**
-     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel.
      */
     tunnel?: pulumi.Input<inputs.KeylessCertificateTunnel | undefined>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

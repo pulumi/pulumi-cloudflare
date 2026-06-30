@@ -66,7 +66,7 @@ type R2BucketCors struct {
 	pulumi.CustomResourceState
 
 	// Account ID.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// Jurisdiction of the bucket
@@ -81,6 +81,9 @@ func NewR2BucketCors(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.BucketName == nil {
 		return nil, errors.New("invalid value for required argument 'BucketName'")
 	}
@@ -132,7 +135,7 @@ func (R2BucketCorsState) ElementType() reflect.Type {
 
 type r2bucketCorsArgs struct {
 	// Account ID.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// Jurisdiction of the bucket
@@ -143,7 +146,7 @@ type r2bucketCorsArgs struct {
 // The set of arguments for constructing a R2BucketCors resource.
 type R2BucketCorsArgs struct {
 	// Account ID.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Name of the bucket.
 	BucketName pulumi.StringInput
 	// Jurisdiction of the bucket
@@ -239,8 +242,8 @@ func (o R2BucketCorsOutput) ToR2BucketCorsOutputWithContext(ctx context.Context)
 }
 
 // Account ID.
-func (o R2BucketCorsOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketCors) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o R2BucketCorsOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2BucketCors) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Name of the bucket.

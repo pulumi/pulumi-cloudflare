@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -20,15 +21,15 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
      * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -141,7 +142,7 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -262,6 +263,9 @@ public final class WebAnalyticsSiteArgs extends com.pulumi.resources.ResourceArg
         }
 
         public WebAnalyticsSiteArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("WebAnalyticsSiteArgs", "accountId");
+            }
             return $;
         }
     }

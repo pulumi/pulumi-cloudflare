@@ -7,7 +7,6 @@ import com.pulumi.cloudflare.outputs.GetEmailSecurityTrustedDomainsFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetEmailSecurityTrustedDomainsResult {
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String accountId;
@@ -24,35 +23,41 @@ public final class GetEmailSecurityTrustedDomainsResult {
     private String createdAt;
     private @Nullable GetEmailSecurityTrustedDomainsFilter filter;
     /**
-     * @return The unique identifier for the trusted domain.
+     * @return Trusted domain identifier
      * 
      */
-    private Integer id;
+    private String id;
     /**
-     * @return Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
+     * @return Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      * 
      */
     private Boolean isRecent;
     private Boolean isRegex;
     /**
-     * @return Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
+     * @return Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      * 
      */
     private Boolean isSimilarity;
-    private String lastModified;
-    private String pattern;
     /**
-     * @return The unique identifier for the trusted domain.
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
      * 
      */
-    private @Nullable Integer trustedDomainId;
+    @Deprecated /* This attribute is deprecated. */
+    private String lastModified;
+    private String modifiedAt;
+    private String pattern;
+    /**
+     * @return Trusted domain identifier
+     * 
+     */
+    private @Nullable String trustedDomainId;
 
     private GetEmailSecurityTrustedDomainsResult() {}
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> accountId() {
@@ -68,15 +73,14 @@ public final class GetEmailSecurityTrustedDomainsResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return The unique identifier for the trusted domain.
+     * @return Trusted domain identifier
      * 
      */
-    public Integer id() {
+    public String id() {
         return this.id;
     }
     /**
-     * @return Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
+     * @return Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      * 
      */
     public Boolean isRecent() {
@@ -86,25 +90,34 @@ public final class GetEmailSecurityTrustedDomainsResult {
         return this.isRegex;
     }
     /**
-     * @return Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
+     * @return Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      * 
      */
     public Boolean isSimilarity() {
         return this.isSimilarity;
     }
+    /**
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public String lastModified() {
         return this.lastModified;
+    }
+    public String modifiedAt() {
+        return this.modifiedAt;
     }
     public String pattern() {
         return this.pattern;
     }
     /**
-     * @return The unique identifier for the trusted domain.
+     * @return Trusted domain identifier
      * 
      */
-    public Optional<Integer> trustedDomainId() {
+    public Optional<String> trustedDomainId() {
         return Optional.ofNullable(this.trustedDomainId);
     }
 
@@ -121,13 +134,14 @@ public final class GetEmailSecurityTrustedDomainsResult {
         private String comments;
         private String createdAt;
         private @Nullable GetEmailSecurityTrustedDomainsFilter filter;
-        private Integer id;
+        private String id;
         private Boolean isRecent;
         private Boolean isRegex;
         private Boolean isSimilarity;
         private String lastModified;
+        private String modifiedAt;
         private String pattern;
-        private @Nullable Integer trustedDomainId;
+        private @Nullable String trustedDomainId;
         public Builder() {}
         public Builder(GetEmailSecurityTrustedDomainsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -140,6 +154,7 @@ public final class GetEmailSecurityTrustedDomainsResult {
     	      this.isRegex = defaults.isRegex;
     	      this.isSimilarity = defaults.isSimilarity;
     	      this.lastModified = defaults.lastModified;
+    	      this.modifiedAt = defaults.modifiedAt;
     	      this.pattern = defaults.pattern;
     	      this.trustedDomainId = defaults.trustedDomainId;
         }
@@ -173,7 +188,7 @@ public final class GetEmailSecurityTrustedDomainsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(Integer id) {
+        public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetEmailSecurityTrustedDomainsResult", "id");
             }
@@ -213,6 +228,14 @@ public final class GetEmailSecurityTrustedDomainsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder modifiedAt(String modifiedAt) {
+            if (modifiedAt == null) {
+              throw new MissingRequiredPropertyException("GetEmailSecurityTrustedDomainsResult", "modifiedAt");
+            }
+            this.modifiedAt = modifiedAt;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pattern(String pattern) {
             if (pattern == null) {
               throw new MissingRequiredPropertyException("GetEmailSecurityTrustedDomainsResult", "pattern");
@@ -221,7 +244,7 @@ public final class GetEmailSecurityTrustedDomainsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder trustedDomainId(@Nullable Integer trustedDomainId) {
+        public Builder trustedDomainId(@Nullable String trustedDomainId) {
 
             this.trustedDomainId = trustedDomainId;
             return this;
@@ -237,6 +260,7 @@ public final class GetEmailSecurityTrustedDomainsResult {
             _resultValue.isRegex = isRegex;
             _resultValue.isSimilarity = isSimilarity;
             _resultValue.lastModified = lastModified;
+            _resultValue.modifiedAt = modifiedAt;
             _resultValue.pattern = pattern;
             _resultValue.trustedDomainId = trustedDomainId;
             return _resultValue;

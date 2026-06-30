@@ -20,7 +20,6 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -486,10 +485,10 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.ttl;
     }
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    private Output<String> zoneId;
 
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
     @Export(name="zoneName", refs={String.class}, tree="[0]")
     private Output<String> zoneName;

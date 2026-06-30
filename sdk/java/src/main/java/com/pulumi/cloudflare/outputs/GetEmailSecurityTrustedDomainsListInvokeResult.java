@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetEmailSecurityTrustedDomainsListInvokeResult {
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String accountId;
@@ -32,7 +32,15 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
      * 
      */
     private String id;
+    /**
+     * @return Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     * 
+     */
     private @Nullable Boolean isRecent;
+    /**
+     * @return Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     * 
+     */
     private @Nullable Boolean isSimilarity;
     /**
      * @return Max items to fetch, default: 1000
@@ -40,7 +48,7 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -52,17 +60,14 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
      */
     private List<GetEmailSecurityTrustedDomainsListResult> results;
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     private @Nullable String search;
 
     private GetEmailSecurityTrustedDomainsListInvokeResult() {}
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> accountId() {
@@ -83,9 +88,17 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     * 
+     */
     public Optional<Boolean> isRecent() {
         return Optional.ofNullable(this.isRecent);
     }
+    /**
+     * @return Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     * 
+     */
     public Optional<Boolean> isSimilarity() {
         return Optional.ofNullable(this.isSimilarity);
     }
@@ -97,7 +110,7 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -115,10 +128,7 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
         return this.results;
     }
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<String> search() {

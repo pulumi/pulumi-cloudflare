@@ -198,6 +198,7 @@ def get_zone_setting(setting_id: Optional[_builtins.str] = None,
     | `replace_insecure_js` | `"on"` / `"off"` | Automatically replace insecure JavaScript libraries with safer and faster alt... |
     | `response_buffering` | `"on"` / `"off"` | Enables or disables buffering of responses from the proxied server. Cloudflar... |
     | `rocket_loader` | `"on"` / `"off"` | Rocket Loader is a general-purpose asynchronous JavaScript optimisation that ... |
+    | `search_for_agents` | `"on"` / `"off"` | When enabled, Cloudflare provisions an AI Search instance for the zone and ex... |
     | `security_header` | Object | Cloudflare security header for a zone. |
     | `security_level` | `"off"`, `"essentially_off"`, `"low"`, `"medium"`, `"high"`, `"under_attack"` | Choose the appropriate security profile for your website, which will automati... |
     | `server_side_exclude` | `"on"` / `"off"` | If there is sensitive content on your website that you want visible to real v... |
@@ -309,6 +310,7 @@ def get_zone_setting_output(setting_id: pulumi.Input[Optional[_builtins.str]] = 
     | `replace_insecure_js` | `"on"` / `"off"` | Automatically replace insecure JavaScript libraries with safer and faster alt... |
     | `response_buffering` | `"on"` / `"off"` | Enables or disables buffering of responses from the proxied server. Cloudflar... |
     | `rocket_loader` | `"on"` / `"off"` | Rocket Loader is a general-purpose asynchronous JavaScript optimisation that ... |
+    | `search_for_agents` | `"on"` / `"off"` | When enabled, Cloudflare provisions an AI Search instance for the zone and ex... |
     | `security_header` | Object | Cloudflare security header for a zone. |
     | `security_level` | `"off"`, `"essentially_off"`, `"low"`, `"medium"`, `"high"`, `"under_attack"` | Choose the appropriate security profile for your website, which will automati... |
     | `server_side_exclude` | `"on"` / `"off"` | If there is sensitive content on your website that you want visible to real v... |

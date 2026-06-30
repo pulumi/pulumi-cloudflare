@@ -253,7 +253,7 @@ namespace Pulumi.Cloudflare
         /// The account id
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Optional specification of how often to re-alert from the same incident, not support on all alert types.
@@ -353,8 +353,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account id
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Optional specification of how often to re-alert from the same incident, not support on all alert types.

@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
     public partial class CustomOriginTrustStore : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The zone's SSL certificate or certificate and the intermediate(s).
+        /// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
         /// </summary>
         [Output("certificate")]
         public Output<string> Certificate { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare
     public sealed class CustomOriginTrustStoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The zone's SSL certificate or certificate and the intermediate(s).
+        /// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
         /// </summary>
         [Input("certificate", required: true)]
         public Input<string> Certificate { get; set; } = null!;
@@ -151,8 +151,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public CustomOriginTrustStoreArgs()
         {
@@ -163,7 +163,7 @@ namespace Pulumi.Cloudflare
     public sealed class CustomOriginTrustStoreState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The zone's SSL certificate or certificate and the intermediate(s).
+        /// The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
         /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }

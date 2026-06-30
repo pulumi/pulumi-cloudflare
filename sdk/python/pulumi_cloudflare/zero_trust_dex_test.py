@@ -21,11 +21,11 @@ __all__ = ['ZeroTrustDexTestArgs', 'ZeroTrustDexTest']
 @pulumi.input_type
 class ZeroTrustDexTestArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  data: pulumi.Input['ZeroTrustDexTestDataArgs'],
                  enabled: pulumi.Input[_builtins.bool],
                  interval: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  target_policies: pulumi.Input[Optional[Sequence[pulumi.Input['ZeroTrustDexTestTargetPolicyArgs']]]] = None):
         """
@@ -38,16 +38,24 @@ class ZeroTrustDexTestArgs:
         :param pulumi.Input[_builtins.str] description: Additional details about the test.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDexTestTargetPolicyArgs']]] target_policies: DEX rules targeted by this test
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "data", data)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "interval", interval)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if target_policies is not None:
             pulumi.set(__self__, "target_policies", target_policies)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -96,15 +104,6 @@ class ZeroTrustDexTestArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -414,6 +413,8 @@ class ZeroTrustDexTest(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustDexTestArgs.__new__(ZeroTrustDexTestArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if data is None and not opts.urn:
                 raise TypeError("Missing required property 'data'")
@@ -482,7 +483,7 @@ class ZeroTrustDexTest(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

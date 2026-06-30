@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare
     public partial class AiSearchToken : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("cfApiId")]
         public Output<string> CfApiId { get; private set; } = null!;
@@ -97,8 +97,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class AiSearchTokenArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("cfApiId", required: true)]
         public Input<string> CfApiId { get; set; } = null!;

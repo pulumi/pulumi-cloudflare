@@ -3,10 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileExcludeArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileFallbackDomainArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileIncludeArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileServiceModeV2Args;
+import com.pulumi.cloudflare.inputs.ZeroTrustDeviceDefaultProfileVirtualNetworksArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -132,6 +134,21 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
      */
     public Optional<Output<Boolean>> disableAutoFallback() {
         return Optional.ofNullable(this.disableAutoFallback);
+    }
+
+    /**
+     * List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     * 
+     */
+    @Import(name="dnsSearchSuffixes")
+    private @Nullable Output<List<ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs>> dnsSearchSuffixes;
+
+    /**
+     * @return List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     * 
+     */
+    public Optional<Output<List<ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs>>> dnsSearchSuffixes() {
+        return Optional.ofNullable(this.dnsSearchSuffixes);
     }
 
     /**
@@ -327,6 +344,21 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
         return Optional.ofNullable(this.tunnelProtocol);
     }
 
+    /**
+     * Virtual network access settings for the device.
+     * 
+     */
+    @Import(name="virtualNetworks")
+    private @Nullable Output<ZeroTrustDeviceDefaultProfileVirtualNetworksArgs> virtualNetworks;
+
+    /**
+     * @return Virtual network access settings for the device.
+     * 
+     */
+    public Optional<Output<ZeroTrustDeviceDefaultProfileVirtualNetworksArgs>> virtualNetworks() {
+        return Optional.ofNullable(this.virtualNetworks);
+    }
+
     private ZeroTrustDeviceDefaultProfileState() {}
 
     private ZeroTrustDeviceDefaultProfileState(ZeroTrustDeviceDefaultProfileState $) {
@@ -338,6 +370,7 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
         this.captivePortal = $.captivePortal;
         this.default_ = $.default_;
         this.disableAutoFallback = $.disableAutoFallback;
+        this.dnsSearchSuffixes = $.dnsSearchSuffixes;
         this.enabled = $.enabled;
         this.excludeOfficeIps = $.excludeOfficeIps;
         this.excludes = $.excludes;
@@ -353,6 +386,7 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
         this.supportUrl = $.supportUrl;
         this.switchLocked = $.switchLocked;
         this.tunnelProtocol = $.tunnelProtocol;
+        this.virtualNetworks = $.virtualNetworks;
     }
 
     public static Builder builder() {
@@ -527,6 +561,37 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
          */
         public Builder disableAutoFallback(Boolean disableAutoFallback) {
             return disableAutoFallback(Output.of(disableAutoFallback));
+        }
+
+        /**
+         * @param dnsSearchSuffixes List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsSearchSuffixes(@Nullable Output<List<ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs>> dnsSearchSuffixes) {
+            $.dnsSearchSuffixes = dnsSearchSuffixes;
+            return this;
+        }
+
+        /**
+         * @param dnsSearchSuffixes List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsSearchSuffixes(List<ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs> dnsSearchSuffixes) {
+            return dnsSearchSuffixes(Output.of(dnsSearchSuffixes));
+        }
+
+        /**
+         * @param dnsSearchSuffixes List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsSearchSuffixes(ZeroTrustDeviceDefaultProfileDnsSearchSuffixArgs... dnsSearchSuffixes) {
+            return dnsSearchSuffixes(List.of(dnsSearchSuffixes));
         }
 
         /**
@@ -818,6 +883,27 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
          */
         public Builder tunnelProtocol(String tunnelProtocol) {
             return tunnelProtocol(Output.of(tunnelProtocol));
+        }
+
+        /**
+         * @param virtualNetworks Virtual network access settings for the device.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualNetworks(@Nullable Output<ZeroTrustDeviceDefaultProfileVirtualNetworksArgs> virtualNetworks) {
+            $.virtualNetworks = virtualNetworks;
+            return this;
+        }
+
+        /**
+         * @param virtualNetworks Virtual network access settings for the device.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualNetworks(ZeroTrustDeviceDefaultProfileVirtualNetworksArgs virtualNetworks) {
+            return virtualNetworks(Output.of(virtualNetworks));
         }
 
         public ZeroTrustDeviceDefaultProfileState build() {

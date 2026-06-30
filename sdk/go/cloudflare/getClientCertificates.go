@@ -60,7 +60,7 @@ type LookupClientCertificatesArgs struct {
 	Limit *int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Offset the results
+	// Offset the results.
 	Offset *int `pulumi:"offset"`
 	// Client Certitifcate Status to filter results by.
 	// Available values: "all", "active", "pending*reactivation", "pending*revocation", "revoked".
@@ -77,7 +77,7 @@ type LookupClientCertificatesResult struct {
 	Limit *int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Offset the results
+	// Offset the results.
 	Offset *int `pulumi:"offset"`
 	// The items returned by the data source
 	Results []GetClientCertificatesResult `pulumi:"results"`
@@ -103,7 +103,7 @@ type LookupClientCertificatesOutputArgs struct {
 	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Offset the results
+	// Offset the results.
 	Offset pulumi.IntPtrInput `pulumi:"offset"`
 	// Client Certitifcate Status to filter results by.
 	// Available values: "all", "active", "pending*reactivation", "pending*revocation", "revoked".
@@ -146,7 +146,7 @@ func (o LookupClientCertificatesResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupClientCertificatesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// Offset the results
+// Offset the results.
 func (o LookupClientCertificatesResultOutput) Offset() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupClientCertificatesResult) *int { return v.Offset }).(pulumi.IntPtrOutput)
 }

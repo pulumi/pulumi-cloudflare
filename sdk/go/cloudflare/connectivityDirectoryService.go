@@ -60,7 +60,7 @@ type ConnectivityDirectoryService struct {
 	pulumi.CustomResourceState
 
 	// Account identifier
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Available values: "postgresql", "mysql".
 	AppProtocol pulumi.StringPtrOutput                 `pulumi:"appProtocol"`
 	CreatedAt   pulumi.StringOutput                    `pulumi:"createdAt"`
@@ -84,6 +84,9 @@ func NewConnectivityDirectoryService(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Host == nil {
 		return nil, errors.New("invalid value for required argument 'Host'")
 	}
@@ -159,7 +162,7 @@ func (ConnectivityDirectoryServiceState) ElementType() reflect.Type {
 
 type connectivityDirectoryServiceArgs struct {
 	// Account identifier
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Available values: "postgresql", "mysql".
 	AppProtocol *string                          `pulumi:"appProtocol"`
 	Host        ConnectivityDirectoryServiceHost `pulumi:"host"`
@@ -176,7 +179,7 @@ type connectivityDirectoryServiceArgs struct {
 // The set of arguments for constructing a ConnectivityDirectoryService resource.
 type ConnectivityDirectoryServiceArgs struct {
 	// Account identifier
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Available values: "postgresql", "mysql".
 	AppProtocol pulumi.StringPtrInput
 	Host        ConnectivityDirectoryServiceHostInput
@@ -278,8 +281,8 @@ func (o ConnectivityDirectoryServiceOutput) ToConnectivityDirectoryServiceOutput
 }
 
 // Account identifier
-func (o ConnectivityDirectoryServiceOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectivityDirectoryService) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ConnectivityDirectoryServiceOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectivityDirectoryService) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Available values: "postgresql", "mysql".

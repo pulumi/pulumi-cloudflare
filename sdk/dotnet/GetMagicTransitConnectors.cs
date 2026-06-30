@@ -103,6 +103,13 @@ namespace Pulumi.Cloudflare
         public string? AccountId { get; set; }
 
         /// <summary>
+        /// Filter connectors by device type.
+        /// Available values: "MANAGED", "LICENSED".
+        /// </summary>
+        [Input("deviceType")]
+        public string? DeviceType { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
@@ -121,6 +128,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Filter connectors by device type.
+        /// Available values: "MANAGED", "LICENSED".
+        /// </summary>
+        [Input("deviceType")]
+        public Input<string>? DeviceType { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -143,6 +157,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
+        /// Filter connectors by device type.
+        /// Available values: "MANAGED", "LICENSED".
+        /// </summary>
+        public readonly string? DeviceType;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -159,6 +178,8 @@ namespace Pulumi.Cloudflare
         private GetMagicTransitConnectorsResult(
             string? accountId,
 
+            string? deviceType,
+
             string id,
 
             int? maxItems,
@@ -166,6 +187,7 @@ namespace Pulumi.Cloudflare
             ImmutableArray<Outputs.GetMagicTransitConnectorsResultResult> results)
         {
             AccountId = accountId;
+            DeviceType = deviceType;
             Id = id;
             MaxItems = maxItems;
             Results = results;

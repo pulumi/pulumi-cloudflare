@@ -62,7 +62,7 @@ public final class CustomSslKeylessServer {
      */
     private @Nullable String status;
     /**
-     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel.
      * 
      */
     private @Nullable CustomSslKeylessServerTunnel tunnel;
@@ -133,7 +133,7 @@ public final class CustomSslKeylessServer {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel.
      * 
      */
     public Optional<CustomSslKeylessServerTunnel> tunnel() {

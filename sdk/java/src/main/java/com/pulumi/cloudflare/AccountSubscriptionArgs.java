@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.AccountSubscriptionRatePlanArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,15 +21,15 @@ public final class AccountSubscriptionArgs extends com.pulumi.resources.Resource
      * Identifier
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Identifier
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -95,7 +96,7 @@ public final class AccountSubscriptionArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -155,6 +156,9 @@ public final class AccountSubscriptionArgs extends com.pulumi.resources.Resource
         }
 
         public AccountSubscriptionArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("AccountSubscriptionArgs", "accountId");
+            }
             return $;
         }
     }

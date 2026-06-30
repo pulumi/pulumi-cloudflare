@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,18 +19,39 @@ public final class EmailSecurityImpersonationRegistryArgs extends com.pulumi.res
     public static final EmailSecurityImpersonationRegistryArgs Empty = new EmailSecurityImpersonationRegistryArgs();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
+    }
+
+    @Import(name="comments")
+    private @Nullable Output<String> comments;
+
+    public Optional<Output<String>> comments() {
+        return Optional.ofNullable(this.comments);
+    }
+
+    @Import(name="directoryId")
+    private @Nullable Output<Integer> directoryId;
+
+    public Optional<Output<Integer>> directoryId() {
+        return Optional.ofNullable(this.directoryId);
+    }
+
+    @Import(name="directoryNodeId")
+    private @Nullable Output<Integer> directoryNodeId;
+
+    public Optional<Output<Integer>> directoryNodeId() {
+        return Optional.ofNullable(this.directoryNodeId);
     }
 
     @Import(name="email", required=true)
@@ -37,6 +59,25 @@ public final class EmailSecurityImpersonationRegistryArgs extends com.pulumi.res
 
     public Output<String> email() {
         return this.email;
+    }
+
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Import(name="externalDirectoryNodeId")
+    private @Nullable Output<String> externalDirectoryNodeId;
+
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    public Optional<Output<String>> externalDirectoryNodeId() {
+        return Optional.ofNullable(this.externalDirectoryNodeId);
     }
 
     @Import(name="isEmailRegex", required=true)
@@ -53,13 +94,33 @@ public final class EmailSecurityImpersonationRegistryArgs extends com.pulumi.res
         return this.name;
     }
 
+    /**
+     * Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
+    @Import(name="provenance")
+    private @Nullable Output<String> provenance;
+
+    /**
+     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
+    public Optional<Output<String>> provenance() {
+        return Optional.ofNullable(this.provenance);
+    }
+
     private EmailSecurityImpersonationRegistryArgs() {}
 
     private EmailSecurityImpersonationRegistryArgs(EmailSecurityImpersonationRegistryArgs $) {
         this.accountId = $.accountId;
+        this.comments = $.comments;
+        this.directoryId = $.directoryId;
+        this.directoryNodeId = $.directoryNodeId;
         this.email = $.email;
+        this.externalDirectoryNodeId = $.externalDirectoryNodeId;
         this.isEmailRegex = $.isEmailRegex;
         this.name = $.name;
+        this.provenance = $.provenance;
     }
 
     public static Builder builder() {
@@ -81,24 +142,51 @@ public final class EmailSecurityImpersonationRegistryArgs extends com.pulumi.res
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        public Builder comments(@Nullable Output<String> comments) {
+            $.comments = comments;
+            return this;
+        }
+
+        public Builder comments(String comments) {
+            return comments(Output.of(comments));
+        }
+
+        public Builder directoryId(@Nullable Output<Integer> directoryId) {
+            $.directoryId = directoryId;
+            return this;
+        }
+
+        public Builder directoryId(Integer directoryId) {
+            return directoryId(Output.of(directoryId));
+        }
+
+        public Builder directoryNodeId(@Nullable Output<Integer> directoryNodeId) {
+            $.directoryNodeId = directoryNodeId;
+            return this;
+        }
+
+        public Builder directoryNodeId(Integer directoryNodeId) {
+            return directoryNodeId(Output.of(directoryNodeId));
         }
 
         public Builder email(Output<String> email) {
@@ -108,6 +196,31 @@ public final class EmailSecurityImpersonationRegistryArgs extends com.pulumi.res
 
         public Builder email(String email) {
             return email(Output.of(email));
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder externalDirectoryNodeId(@Nullable Output<String> externalDirectoryNodeId) {
+            $.externalDirectoryNodeId = externalDirectoryNodeId;
+            return this;
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder externalDirectoryNodeId(String externalDirectoryNodeId) {
+            return externalDirectoryNodeId(Output.of(externalDirectoryNodeId));
         }
 
         public Builder isEmailRegex(Output<Boolean> isEmailRegex) {
@@ -128,7 +241,31 @@ public final class EmailSecurityImpersonationRegistryArgs extends com.pulumi.res
             return name(Output.of(name));
         }
 
+        /**
+         * @param provenance Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provenance(@Nullable Output<String> provenance) {
+            $.provenance = provenance;
+            return this;
+        }
+
+        /**
+         * @param provenance Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provenance(String provenance) {
+            return provenance(Output.of(provenance));
+        }
+
         public EmailSecurityImpersonationRegistryArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("EmailSecurityImpersonationRegistryArgs", "accountId");
+            }
             if ($.email == null) {
                 throw new MissingRequiredPropertyException("EmailSecurityImpersonationRegistryArgs", "email");
             }

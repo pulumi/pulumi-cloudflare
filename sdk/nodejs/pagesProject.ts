@@ -261,7 +261,7 @@ export class PagesProject extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Configs for the project build process.
      */
@@ -354,6 +354,9 @@ export class PagesProject extends pulumi.CustomResource {
             resourceInputs["usesFunctions"] = state?.usesFunctions;
         } else {
             const args = argsOrState as PagesProjectArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -459,7 +462,7 @@ export interface PagesProjectArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Configs for the project build process.
      */

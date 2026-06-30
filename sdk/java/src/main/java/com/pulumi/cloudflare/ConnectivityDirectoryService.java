@@ -81,14 +81,14 @@ public class ConnectivityDirectoryService extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return Account identifier
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * Available values: &#34;postgresql&#34;, &#34;mysql&#34;.

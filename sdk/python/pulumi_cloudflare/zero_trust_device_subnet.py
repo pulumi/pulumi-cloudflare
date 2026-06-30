@@ -19,28 +19,39 @@ __all__ = ['ZeroTrustDeviceSubnetArgs', 'ZeroTrustDeviceSubnet']
 @pulumi.input_type
 class ZeroTrustDeviceSubnetArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  network: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  is_default_network: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ZeroTrustDeviceSubnet resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] name: A user-friendly name for the subnet.
         :param pulumi.Input[_builtins.str] network: The private IPv4 or IPv6 range defining the subnet, in CIDR notation.
-        :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] comment: An optional description of the subnet.
         :param pulumi.Input[_builtins.bool] is_default_network: If `true`, this is the default subnet for the account. There can only be one default subnet per account.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if is_default_network is not None:
             pulumi.set(__self__, "is_default_network", is_default_network)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Cloudflare account ID
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -65,18 +76,6 @@ class ZeroTrustDeviceSubnetArgs:
     @network.setter
     def network(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "network", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Cloudflare account ID
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -351,6 +350,8 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustDeviceSubnetArgs.__new__(ZeroTrustDeviceSubnetArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["comment"] = comment
             __props__.__dict__["is_default_network"] = is_default_network
@@ -414,7 +415,7 @@ class ZeroTrustDeviceSubnet(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Cloudflare account ID
         """
