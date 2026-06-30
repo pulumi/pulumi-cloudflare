@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class CustomSslKeylessServerTunnel
     {
         /// <summary>
-        /// Private IP of the Key Server Host
+        /// Private IP of the Key Server Host.
         /// </summary>
         public readonly string? PrivateIp;
         /// <summary>
-        /// Cloudflare Tunnel Virtual Network ID
+        /// Cloudflare Tunnel Virtual Network ID.
         /// </summary>
         public readonly string? VnetId;
 

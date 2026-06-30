@@ -106,6 +106,8 @@ type SpectrumApplication struct {
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	// Available values: "direct", "http", "https".
 	TrafficType pulumi.StringOutput `pulumi:"trafficType"`
+	// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+	VirtualNetworkId pulumi.StringPtrOutput `pulumi:"virtualNetworkId"`
 	// Zone identifier.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -178,6 +180,8 @@ type spectrumApplicationState struct {
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	// Available values: "direct", "http", "https".
 	TrafficType *string `pulumi:"trafficType"`
+	// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 	// Zone identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -215,6 +219,8 @@ type SpectrumApplicationState struct {
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	// Available values: "direct", "http", "https".
 	TrafficType pulumi.StringPtrInput
+	// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+	VirtualNetworkId pulumi.StringPtrInput
 	// Zone identifier.
 	ZoneId pulumi.StringPtrInput
 }
@@ -252,6 +258,8 @@ type spectrumApplicationArgs struct {
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	// Available values: "direct", "http", "https".
 	TrafficType *string `pulumi:"trafficType"`
+	// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 	// Zone identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -286,6 +294,8 @@ type SpectrumApplicationArgs struct {
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	// Available values: "direct", "http", "https".
 	TrafficType pulumi.StringPtrInput
+	// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+	VirtualNetworkId pulumi.StringPtrInput
 	// Zone identifier.
 	ZoneId pulumi.StringPtrInput
 }
@@ -446,6 +456,11 @@ func (o SpectrumApplicationOutput) Tls() pulumi.StringOutput {
 // Available values: "direct", "http", "https".
 func (o SpectrumApplicationOutput) TrafficType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.TrafficType }).(pulumi.StringOutput)
+}
+
+// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+func (o SpectrumApplicationOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringPtrOutput { return v.VirtualNetworkId }).(pulumi.StringPtrOutput)
 }
 
 // Zone identifier.

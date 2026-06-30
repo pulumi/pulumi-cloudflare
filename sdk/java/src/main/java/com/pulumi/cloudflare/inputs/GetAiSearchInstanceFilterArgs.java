@@ -16,15 +16,23 @@ public final class GetAiSearchInstanceFilterArgs extends com.pulumi.resources.Re
 
     public static final GetAiSearchInstanceFilterArgs Empty = new GetAiSearchInstanceFilterArgs();
 
+    /**
+     * Filter by namespace.
+     * 
+     */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
+    /**
+     * @return Filter by namespace.
+     * 
+     */
     public Optional<Output<String>> namespace() {
         return Optional.ofNullable(this.namespace);
     }
 
     /**
-     * Order By Column Name
+     * Field to order results by.
      * Available values: &#34;createdAt&#34;.
      * 
      */
@@ -32,7 +40,7 @@ public final class GetAiSearchInstanceFilterArgs extends com.pulumi.resources.Re
     private Output<String> orderBy;
 
     /**
-     * @return Order By Column Name
+     * @return Field to order results by.
      * Available values: &#34;createdAt&#34;.
      * 
      */
@@ -41,7 +49,7 @@ public final class GetAiSearchInstanceFilterArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Order By Direction
+     * Order direction.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -49,7 +57,7 @@ public final class GetAiSearchInstanceFilterArgs extends com.pulumi.resources.Re
     private Output<String> orderByDirection;
 
     /**
-     * @return Order By Direction
+     * @return Order direction.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -58,14 +66,14 @@ public final class GetAiSearchInstanceFilterArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Search by id
+     * Filter instances whose id contains this string (case-insensitive).
      * 
      */
     @Import(name="search")
     private @Nullable Output<String> search;
 
     /**
-     * @return Search by id
+     * @return Filter instances whose id contains this string (case-insensitive).
      * 
      */
     public Optional<Output<String>> search() {
@@ -99,17 +107,29 @@ public final class GetAiSearchInstanceFilterArgs extends com.pulumi.resources.Re
             $ = new GetAiSearchInstanceFilterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param namespace Filter by namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(@Nullable Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
+        /**
+         * @param namespace Filter by namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }
 
         /**
-         * @param orderBy Order By Column Name
+         * @param orderBy Field to order results by.
          * Available values: &#34;createdAt&#34;.
          * 
          * @return builder
@@ -121,7 +141,7 @@ public final class GetAiSearchInstanceFilterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param orderBy Order By Column Name
+         * @param orderBy Field to order results by.
          * Available values: &#34;createdAt&#34;.
          * 
          * @return builder
@@ -132,7 +152,7 @@ public final class GetAiSearchInstanceFilterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param orderByDirection Order By Direction
+         * @param orderByDirection Order direction.
          * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
@@ -144,7 +164,7 @@ public final class GetAiSearchInstanceFilterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param orderByDirection Order By Direction
+         * @param orderByDirection Order direction.
          * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
@@ -155,7 +175,7 @@ public final class GetAiSearchInstanceFilterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param search Search by id
+         * @param search Filter instances whose id contains this string (case-insensitive).
          * 
          * @return builder
          * 
@@ -166,7 +186,7 @@ public final class GetAiSearchInstanceFilterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param search Search by id
+         * @param search Filter instances whose id contains this string (case-insensitive).
          * 
          * @return builder
          * 

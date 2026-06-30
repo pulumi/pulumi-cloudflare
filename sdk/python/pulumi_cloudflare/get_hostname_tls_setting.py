@@ -72,7 +72,8 @@ class GetHostnameTlsSettingResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The TLS Setting name. The value type depends on the setting:
+        The TLS Setting name.
+        The value type depends on the setting:
         """
         return pulumi.get(self, "id")
 
@@ -80,7 +81,8 @@ class GetHostnameTlsSettingResult:
     @pulumi.getter(name="settingId")
     def setting_id(self) -> _builtins.str:
         """
-        The TLS Setting name. The value type depends on the setting:
+        The TLS Setting name.
+        The value type depends on the setting:
         """
         return pulumi.get(self, "setting_id")
 
@@ -104,7 +106,8 @@ class GetHostnameTlsSettingResult:
     @pulumi.getter
     def value(self) -> _builtins.str:
         """
-        The TLS setting value. The type depends on the `setting_id` used in the request path:
+        The TLS setting value.
+        The type depends on the `setting_id` used in the request path:
         """
         return pulumi.get(self, "value")
 
@@ -153,7 +156,8 @@ def get_hostname_tls_setting(setting_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str setting_id: The TLS Setting name. The value type depends on the setting:
+    :param _builtins.str setting_id: The TLS Setting name.
+           The value type depends on the setting:
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
@@ -191,7 +195,8 @@ def get_hostname_tls_setting_output(setting_id: pulumi.Input[Optional[_builtins.
     ```
 
 
-    :param _builtins.str setting_id: The TLS Setting name. The value type depends on the setting:
+    :param _builtins.str setting_id: The TLS Setting name.
+           The value type depends on the setting:
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()

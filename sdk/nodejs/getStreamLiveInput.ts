@@ -39,7 +39,7 @@ export interface GetStreamLiveInputArgs {
     /**
      * Identifier.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * A unique identifier for a live input.
      */
@@ -53,7 +53,7 @@ export interface GetStreamLiveInputResult {
     /**
      * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * The date and time the live input was created.
      */
@@ -153,7 +153,7 @@ export interface GetStreamLiveInputOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * A unique identifier for a live input.
      */

@@ -66,7 +66,7 @@ export interface GetAccountPermissionGroupArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * Permission Group identifier tag.
      */
@@ -80,7 +80,7 @@ export interface GetAccountPermissionGroupResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Identifier of the permission group.
      */
@@ -158,7 +158,7 @@ export interface GetAccountPermissionGroupOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Permission Group identifier tag.
      */

@@ -57,6 +57,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("types")]
+        private InputList<string>? _types;
+
+        /// <summary>
+        /// Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type "internal" are excluded from the results.
+        /// </summary>
+        public InputList<string> Types
+        {
+            get => _types ?? (_types = new InputList<string>());
+            set => _types = value;
+        }
+
         public GetZoneFilterInputArgs()
         {
         }

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.OrganizationMetaFlags;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,16 @@ public final class OrganizationMeta {
      * 
      */
     private @Nullable OrganizationMetaFlags flags;
+    /**
+     * @return Ordered chain of organization tags from the root organization down to
+     * (and including) this organization itself. Root organizations return a
+     * single-element array containing their own tag; sub-organizations return
+     * `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+     * constructing authorization scopes that need to cover every ancestor
+     * in the hierarchy.
+     * 
+     */
+    private @Nullable List<String> hierarchyTags;
     private @Nullable String managedBy;
 
     private OrganizationMeta() {}
@@ -26,6 +37,18 @@ public final class OrganizationMeta {
      */
     public Optional<OrganizationMetaFlags> flags() {
         return Optional.ofNullable(this.flags);
+    }
+    /**
+     * @return Ordered chain of organization tags from the root organization down to
+     * (and including) this organization itself. Root organizations return a
+     * single-element array containing their own tag; sub-organizations return
+     * `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+     * constructing authorization scopes that need to cover every ancestor
+     * in the hierarchy.
+     * 
+     */
+    public List<String> hierarchyTags() {
+        return this.hierarchyTags == null ? List.of() : this.hierarchyTags;
     }
     public Optional<String> managedBy() {
         return Optional.ofNullable(this.managedBy);
@@ -41,11 +64,13 @@ public final class OrganizationMeta {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable OrganizationMetaFlags flags;
+        private @Nullable List<String> hierarchyTags;
         private @Nullable String managedBy;
         public Builder() {}
         public Builder(OrganizationMeta defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.flags = defaults.flags;
+    	      this.hierarchyTags = defaults.hierarchyTags;
     	      this.managedBy = defaults.managedBy;
         }
 
@@ -56,6 +81,15 @@ public final class OrganizationMeta {
             return this;
         }
         @CustomType.Setter
+        public Builder hierarchyTags(@Nullable List<String> hierarchyTags) {
+
+            this.hierarchyTags = hierarchyTags;
+            return this;
+        }
+        public Builder hierarchyTags(String... hierarchyTags) {
+            return hierarchyTags(List.of(hierarchyTags));
+        }
+        @CustomType.Setter
         public Builder managedBy(@Nullable String managedBy) {
 
             this.managedBy = managedBy;
@@ -64,6 +98,7 @@ public final class OrganizationMeta {
         public OrganizationMeta build() {
             final var _resultValue = new OrganizationMeta();
             _resultValue.flags = flags;
+            _resultValue.hierarchyTags = hierarchyTags;
             _resultValue.managedBy = managedBy;
             return _resultValue;
         }

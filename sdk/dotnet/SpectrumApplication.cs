@@ -154,6 +154,12 @@ namespace Pulumi.Cloudflare
         public Output<string> TrafficType { get; private set; } = null!;
 
         /// <summary>
+        /// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+        /// </summary>
+        [Output("virtualNetworkId")]
+        public Output<string?> VirtualNetworkId { get; private set; } = null!;
+
+        /// <summary>
         /// Zone identifier.
         /// </summary>
         [Output("zoneId")]
@@ -284,6 +290,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? TrafficType { get; set; }
 
         /// <summary>
+        /// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+        /// </summary>
+        [Input("virtualNetworkId")]
+        public Input<string>? VirtualNetworkId { get; set; }
+
+        /// <summary>
         /// Zone identifier.
         /// </summary>
         [Input("zoneId")]
@@ -386,6 +398,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }
+
+        /// <summary>
+        /// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+        /// </summary>
+        [Input("virtualNetworkId")]
+        public Input<string>? VirtualNetworkId { get; set; }
 
         /// <summary>
         /// Zone identifier.

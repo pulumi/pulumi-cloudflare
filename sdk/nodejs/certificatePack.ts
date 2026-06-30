@@ -77,7 +77,7 @@ export class CertificatePack extends pulumi.CustomResource {
     }
 
     /**
-     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
      * Available values: "google", "lets*encrypt", "ssl*com".
      */
     declare public readonly certificateAuthority: pulumi.Output<string>;
@@ -198,7 +198,7 @@ export class CertificatePack extends pulumi.CustomResource {
  */
 export interface CertificatePackState {
     /**
-     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
      * Available values: "google", "lets*encrypt", "ssl*com".
      */
     certificateAuthority?: pulumi.Input<string | undefined>;
@@ -261,7 +261,7 @@ export interface CertificatePackState {
  */
 export interface CertificatePackArgs {
     /**
-     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
      * Available values: "google", "lets*encrypt", "ssl*com".
      */
     certificateAuthority: pulumi.Input<string>;

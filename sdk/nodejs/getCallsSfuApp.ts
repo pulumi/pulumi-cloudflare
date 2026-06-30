@@ -37,7 +37,7 @@ export interface GetCallsSfuAppArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * A Cloudflare-generated unique identifier for a item.
      */
@@ -51,7 +51,7 @@ export interface GetCallsSfuAppResult {
     /**
      * The account identifier tag.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * A Cloudflare-generated unique identifier for a item.
      */
@@ -110,7 +110,7 @@ export interface GetCallsSfuAppOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * A Cloudflare-generated unique identifier for a item.
      */

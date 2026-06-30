@@ -3,8 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetMagicTransitConnectorFilter;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,11 +30,18 @@ public final class GetMagicTransitConnectorPlainArgs extends com.pulumi.resource
         return Optional.ofNullable(this.accountId);
     }
 
-    @Import(name="connectorId", required=true)
-    private String connectorId;
+    @Import(name="connectorId")
+    private @Nullable String connectorId;
 
-    public String connectorId() {
-        return this.connectorId;
+    public Optional<String> connectorId() {
+        return Optional.ofNullable(this.connectorId);
+    }
+
+    @Import(name="filter")
+    private @Nullable GetMagicTransitConnectorFilter filter;
+
+    public Optional<GetMagicTransitConnectorFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     private GetMagicTransitConnectorPlainArgs() {}
@@ -42,6 +49,7 @@ public final class GetMagicTransitConnectorPlainArgs extends com.pulumi.resource
     private GetMagicTransitConnectorPlainArgs(GetMagicTransitConnectorPlainArgs $) {
         this.accountId = $.accountId;
         this.connectorId = $.connectorId;
+        this.filter = $.filter;
     }
 
     public static Builder builder() {
@@ -73,15 +81,17 @@ public final class GetMagicTransitConnectorPlainArgs extends com.pulumi.resource
             return this;
         }
 
-        public Builder connectorId(String connectorId) {
+        public Builder connectorId(@Nullable String connectorId) {
             $.connectorId = connectorId;
             return this;
         }
 
+        public Builder filter(@Nullable GetMagicTransitConnectorFilter filter) {
+            $.filter = filter;
+            return this;
+        }
+
         public GetMagicTransitConnectorPlainArgs build() {
-            if ($.connectorId == null) {
-                throw new MissingRequiredPropertyException("GetMagicTransitConnectorPlainArgs", "connectorId");
-            }
             return $;
         }
     }

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiSearchInstanceRetrievalOptions {
     /**
-     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric/datetime fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
      * 
      */
     private @Nullable List<AiSearchInstanceRetrievalOptionsBoostBy> boostBies;
@@ -27,7 +27,7 @@ public final class AiSearchInstanceRetrievalOptions {
 
     private AiSearchInstanceRetrievalOptions() {}
     /**
-     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric/datetime fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
      * 
      */
     public List<AiSearchInstanceRetrievalOptionsBoostBy> boostBies() {

@@ -148,6 +148,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool DisableAutoFallback;
         /// <summary>
+        /// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfileDnsSearchSuffixResult> DnsSearchSuffixes;
+        /// <summary>
         /// Whether the policy will be applied to matching devices.
         /// </summary>
         public readonly bool Enabled;
@@ -212,6 +216,10 @@ namespace Pulumi.Cloudflare
         /// Determines which tunnel protocol to use.
         /// </summary>
         public readonly string TunnelProtocol;
+        /// <summary>
+        /// Virtual network access settings for the device.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustDeviceCustomProfileVirtualNetworksResult VirtualNetworks;
 
         [OutputConstructor]
         private GetZeroTrustDeviceCustomProfileResult(
@@ -232,6 +240,8 @@ namespace Pulumi.Cloudflare
             string description,
 
             bool disableAutoFallback,
+
+            ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfileDnsSearchSuffixResult> dnsSearchSuffixes,
 
             bool enabled,
 
@@ -271,7 +281,9 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfileTargetTestResult> targetTests,
 
-            string tunnelProtocol)
+            string tunnelProtocol,
+
+            Outputs.GetZeroTrustDeviceCustomProfileVirtualNetworksResult virtualNetworks)
         {
             AccountId = accountId;
             AllowModeSwitch = allowModeSwitch;
@@ -282,6 +294,7 @@ namespace Pulumi.Cloudflare
             Default = @default;
             Description = description;
             DisableAutoFallback = disableAutoFallback;
+            DnsSearchSuffixes = dnsSearchSuffixes;
             Enabled = enabled;
             ExcludeOfficeIps = excludeOfficeIps;
             Excludes = excludes;
@@ -302,6 +315,7 @@ namespace Pulumi.Cloudflare
             SwitchLocked = switchLocked;
             TargetTests = targetTests;
             TunnelProtocol = tunnelProtocol;
+            VirtualNetworks = virtualNetworks;
         }
     }
 }

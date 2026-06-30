@@ -24,7 +24,7 @@ class CustomOriginTrustStoreArgs:
         """
         The set of arguments for constructing a CustomOriginTrustStore resource.
 
-        :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[_builtins.str] certificate: The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "certificate", certificate)
@@ -35,7 +35,7 @@ class CustomOriginTrustStoreArgs:
     @pulumi.getter
     def certificate(self) -> pulumi.Input[_builtins.str]:
         """
-        The zone's SSL certificate or certificate and the intermediate(s).
+        The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
         """
         return pulumi.get(self, "certificate")
 
@@ -70,7 +70,7 @@ class _CustomOriginTrustStoreState:
         """
         Input properties used for looking up and filtering CustomOriginTrustStore resources.
 
-        :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[_builtins.str] certificate: The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
         :param pulumi.Input[_builtins.str] expires_on: When the certificate expires.
         :param pulumi.Input[_builtins.str] issuer: The certificate authority that issued the certificate.
         :param pulumi.Input[_builtins.str] signature: The type of hash used for the certificate.
@@ -101,7 +101,7 @@ class _CustomOriginTrustStoreState:
     @pulumi.getter
     def certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The zone's SSL certificate or certificate and the intermediate(s).
+        The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
         """
         return pulumi.get(self, "certificate")
 
@@ -234,7 +234,7 @@ class CustomOriginTrustStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[_builtins.str] certificate: The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -332,7 +332,7 @@ class CustomOriginTrustStore(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[_builtins.str] certificate: The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
         :param pulumi.Input[_builtins.str] expires_on: When the certificate expires.
         :param pulumi.Input[_builtins.str] issuer: The certificate authority that issued the certificate.
         :param pulumi.Input[_builtins.str] signature: The type of hash used for the certificate.
@@ -360,7 +360,7 @@ class CustomOriginTrustStore(pulumi.CustomResource):
     @pulumi.getter
     def certificate(self) -> pulumi.Output[_builtins.str]:
         """
-        The zone's SSL certificate or certificate and the intermediate(s).
+        The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
         """
         return pulumi.get(self, "certificate")
 

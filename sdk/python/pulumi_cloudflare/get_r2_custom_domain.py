@@ -61,7 +61,7 @@ class GetR2CustomDomainResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         Account ID.
         """
@@ -200,7 +200,7 @@ def get_r2_custom_domain(account_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         zone_id=pulumi.get(__ret__, 'zone_id'),
         zone_name=pulumi.get(__ret__, 'zone_name'))
-def get_r2_custom_domain_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_r2_custom_domain_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
                                 domain: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetR2CustomDomainResult]:

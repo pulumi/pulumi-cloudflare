@@ -64,7 +64,7 @@ type MagicTransitSiteWan struct {
 	pulumi.CustomResourceState
 
 	// Identifier
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
 	// Available values: "low", "mid", "high".
 	HealthCheckRate pulumi.StringOutput    `pulumi:"healthCheckRate"`
@@ -86,6 +86,9 @@ func NewMagicTransitSiteWan(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Physport == nil {
 		return nil, errors.New("invalid value for required argument 'Physport'")
 	}
@@ -154,7 +157,7 @@ func (MagicTransitSiteWanState) ElementType() reflect.Type {
 
 type magicTransitSiteWanArgs struct {
 	// Identifier
-	AccountId *string `pulumi:"accountId"`
+	AccountId string  `pulumi:"accountId"`
 	Name      *string `pulumi:"name"`
 	Physport  int     `pulumi:"physport"`
 	Priority  *int    `pulumi:"priority"`
@@ -169,7 +172,7 @@ type magicTransitSiteWanArgs struct {
 // The set of arguments for constructing a MagicTransitSiteWan resource.
 type MagicTransitSiteWanArgs struct {
 	// Identifier
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	Name      pulumi.StringPtrInput
 	Physport  pulumi.IntInput
 	Priority  pulumi.IntPtrInput
@@ -269,8 +272,8 @@ func (o MagicTransitSiteWanOutput) ToMagicTransitSiteWanOutputWithContext(ctx co
 }
 
 // Identifier
-func (o MagicTransitSiteWanOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicTransitSiteWan) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o MagicTransitSiteWanOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicTransitSiteWan) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Magic WAN health check rate for tunnels created on this link. The default value is `mid`.

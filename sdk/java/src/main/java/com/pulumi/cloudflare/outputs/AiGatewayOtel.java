@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AiGatewayOtel {
-    private String authorization;
+    private @Nullable String authorization;
     /**
      * @return Available values: &#34;json&#34;, &#34;protobuf&#34;.
      * 
@@ -23,8 +23,8 @@ public final class AiGatewayOtel {
     private String url;
 
     private AiGatewayOtel() {}
-    public String authorization() {
-        return this.authorization;
+    public Optional<String> authorization() {
+        return Optional.ofNullable(this.authorization);
     }
     /**
      * @return Available values: &#34;json&#34;, &#34;protobuf&#34;.
@@ -49,7 +49,7 @@ public final class AiGatewayOtel {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String authorization;
+        private @Nullable String authorization;
         private @Nullable String contentType;
         private Map<String,String> headers;
         private String url;
@@ -63,10 +63,8 @@ public final class AiGatewayOtel {
         }
 
         @CustomType.Setter
-        public Builder authorization(String authorization) {
-            if (authorization == null) {
-              throw new MissingRequiredPropertyException("AiGatewayOtel", "authorization");
-            }
+        public Builder authorization(@Nullable String authorization) {
+
             this.authorization = authorization;
             return this;
         }

@@ -45,7 +45,7 @@ export function getEmailSecurityImpersonationRegistries(args?: GetEmailSecurityI
  */
 export interface GetEmailSecurityImpersonationRegistriesArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: string;
     /**
@@ -58,7 +58,7 @@ export interface GetEmailSecurityImpersonationRegistriesArgs {
      */
     maxItems?: number;
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: "name", "email", "createdAt".
      */
     order?: string;
@@ -67,10 +67,7 @@ export interface GetEmailSecurityImpersonationRegistriesArgs {
      */
     provenance?: string;
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      */
     search?: string;
 }
@@ -80,7 +77,7 @@ export interface GetEmailSecurityImpersonationRegistriesArgs {
  */
 export interface GetEmailSecurityImpersonationRegistriesResult {
     /**
-     * Account Identifier
+     * Identifier.
      */
     readonly accountId?: string;
     /**
@@ -97,7 +94,7 @@ export interface GetEmailSecurityImpersonationRegistriesResult {
      */
     readonly maxItems?: number;
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: "name", "email", "createdAt".
      */
     readonly order?: string;
@@ -110,10 +107,7 @@ export interface GetEmailSecurityImpersonationRegistriesResult {
      */
     readonly results: outputs.GetEmailSecurityImpersonationRegistriesResult[];
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      */
     readonly search?: string;
 }
@@ -156,7 +150,7 @@ export function getEmailSecurityImpersonationRegistriesOutput(args?: GetEmailSec
  */
 export interface GetEmailSecurityImpersonationRegistriesOutputArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
@@ -169,7 +163,7 @@ export interface GetEmailSecurityImpersonationRegistriesOutputArgs {
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: "name", "email", "createdAt".
      */
     order?: pulumi.Input<string | undefined>;
@@ -178,10 +172,7 @@ export interface GetEmailSecurityImpersonationRegistriesOutputArgs {
      */
     provenance?: pulumi.Input<string | undefined>;
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      */
     search?: pulumi.Input<string | undefined>;
 }

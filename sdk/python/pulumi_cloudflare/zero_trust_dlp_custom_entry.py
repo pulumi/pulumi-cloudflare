@@ -120,8 +120,9 @@ class _ZeroTrustDlpCustomEntryState:
         :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
-        :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        :param pulumi.Input[_builtins.str] type: Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        :param pulumi.Input['ZeroTrustDlpCustomEntryVariantArgs'] variant: A Predefined AI prompt classification topic entry.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -264,7 +265,7 @@ class _ZeroTrustDlpCustomEntryState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         """
         return pulumi.get(self, "type")
 
@@ -296,6 +297,9 @@ class _ZeroTrustDlpCustomEntryState:
     @_builtins.property
     @pulumi.getter
     def variant(self) -> pulumi.Input[Optional['ZeroTrustDlpCustomEntryVariantArgs']]:
+        """
+        A Predefined AI prompt classification topic entry.
+        """
         return pulumi.get(self, "variant")
 
     @variant.setter
@@ -484,8 +488,9 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
-        :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        :param pulumi.Input[_builtins.str] type: Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        :param pulumi.Input[Union['ZeroTrustDlpCustomEntryVariantArgs', 'ZeroTrustDlpCustomEntryVariantArgsDict']] variant: A Predefined AI prompt classification topic entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -573,7 +578,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         """
         return pulumi.get(self, "type")
 
@@ -593,6 +598,9 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def variant(self) -> pulumi.Output['outputs.ZeroTrustDlpCustomEntryVariant']:
+        """
+        A Predefined AI prompt classification topic entry.
+        """
         return pulumi.get(self, "variant")
 
     @_builtins.property

@@ -14,6 +14,7 @@ import (
 
 // Accepted Permissions
 //
+// - `Snippets Read`
 // - `Snippets Write`
 //
 // ## Example Usage

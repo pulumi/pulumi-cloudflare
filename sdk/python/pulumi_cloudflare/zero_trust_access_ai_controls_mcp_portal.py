@@ -313,6 +313,11 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                  zero_trust_access_ai_controls_mcp_portal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `MCP Portals Read`
+        - `MCP Portals Write`
+
         ## Example Usage
 
         ```python
@@ -366,6 +371,11 @@ class ZeroTrustAccessAiControlsMcpPortal(pulumi.CustomResource):
                  args: ZeroTrustAccessAiControlsMcpPortalArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `MCP Portals Read`
+        - `MCP Portals Write`
+
         ## Example Usage
 
         ```python

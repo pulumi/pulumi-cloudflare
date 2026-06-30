@@ -46,40 +46,49 @@ namespace Pulumi.Cloudflare
     public partial class EmailSecurityImpersonationRegistry : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
         [Output("comments")]
-        public Output<string> Comments { get; private set; } = null!;
+        public Output<string?> Comments { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         [Output("directoryId")]
-        public Output<int> DirectoryId { get; private set; } = null!;
+        public Output<int?> DirectoryId { get; private set; } = null!;
 
         [Output("directoryNodeId")]
-        public Output<int> DirectoryNodeId { get; private set; } = null!;
+        public Output<int?> DirectoryNodeId { get; private set; } = null!;
 
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
         [Output("externalDirectoryNodeId")]
-        public Output<string> ExternalDirectoryNodeId { get; private set; } = null!;
+        public Output<string?> ExternalDirectoryNodeId { get; private set; } = null!;
 
         [Output("isEmailRegex")]
         public Output<bool> IsEmailRegex { get; private set; } = null!;
 
+        /// <summary>
+        /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
+        /// </summary>
         [Output("lastModified")]
         public Output<string> LastModified { get; private set; } = null!;
+
+        [Output("modifiedAt")]
+        public Output<string> ModifiedAt { get; private set; } = null!;
 
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        /// </summary>
         [Output("provenance")]
-        public Output<string> Provenance { get; private set; } = null!;
+        public Output<string?> Provenance { get; private set; } = null!;
 
 
         /// <summary>
@@ -128,19 +137,37 @@ namespace Pulumi.Cloudflare
     public sealed class EmailSecurityImpersonationRegistryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        [Input("comments")]
+        public Input<string>? Comments { get; set; }
+
+        [Input("directoryId")]
+        public Input<int>? DirectoryId { get; set; }
+
+        [Input("directoryNodeId")]
+        public Input<int>? DirectoryNodeId { get; set; }
+
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
+
+        [Input("externalDirectoryNodeId")]
+        public Input<string>? ExternalDirectoryNodeId { get; set; }
 
         [Input("isEmailRegex", required: true)]
         public Input<bool> IsEmailRegex { get; set; } = null!;
 
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        /// </summary>
+        [Input("provenance")]
+        public Input<string>? Provenance { get; set; }
 
         public EmailSecurityImpersonationRegistryArgs()
         {
@@ -151,7 +178,7 @@ namespace Pulumi.Cloudflare
     public sealed class EmailSecurityImpersonationRegistryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -177,12 +204,21 @@ namespace Pulumi.Cloudflare
         [Input("isEmailRegex")]
         public Input<bool>? IsEmailRegex { get; set; }
 
+        /// <summary>
+        /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
+        /// </summary>
         [Input("lastModified")]
         public Input<string>? LastModified { get; set; }
+
+        [Input("modifiedAt")]
+        public Input<string>? ModifiedAt { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        /// </summary>
         [Input("provenance")]
         public Input<string>? Provenance { get; set; }
 

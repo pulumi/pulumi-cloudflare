@@ -6,12 +6,14 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpServerArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerState;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessAiControlsMcpServerErrorDetails;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +21,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `MCP Portals Read`
+ * - `MCP Portals Write`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -53,6 +60,8 @@ import javax.annotation.Nullable;
  *             .name("My MCP Server")
  *             .authCredentials("auth_credentials")
  *             .description("This is one remote mcp server")
+ *             .isSharedOauthCallbackEnabled(true)
+ *             .secureWebGateway(false)
  *             .updatedPrompts(ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs.builder()
  *                 .name("name")
  *                 .alias("my-custom-alias")
@@ -131,11 +140,31 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
     public Output<String> error() {
         return this.error;
     }
+    @Export(name="errorDetails", refs={ZeroTrustAccessAiControlsMcpServerErrorDetails.class}, tree="[0]")
+    private Output<ZeroTrustAccessAiControlsMcpServerErrorDetails> errorDetails;
+
+    public Output<ZeroTrustAccessAiControlsMcpServerErrorDetails> errorDetails() {
+        return this.errorDetails;
+    }
     @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     public Output<String> hostname() {
         return this.hostname;
+    }
+    /**
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * 
+     */
+    @Export(name="isSharedOauthCallbackEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isSharedOauthCallbackEnabled;
+
+    /**
+     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * 
+     */
+    public Output<Optional<Boolean>> isSharedOauthCallbackEnabled() {
+        return Codegen.optional(this.isSharedOauthCallbackEnabled);
     }
     @Export(name="lastSuccessfulSync", refs={String.class}, tree="[0]")
     private Output<String> lastSuccessfulSync;
@@ -172,6 +201,20 @@ public class ZeroTrustAccessAiControlsMcpServer extends com.pulumi.resources.Cus
 
     public Output<List<Map<String,String>>> prompts() {
         return this.prompts;
+    }
+    /**
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * 
+     */
+    @Export(name="secureWebGateway", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> secureWebGateway;
+
+    /**
+     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * 
+     */
+    public Output<Boolean> secureWebGateway() {
+        return this.secureWebGateway;
     }
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;

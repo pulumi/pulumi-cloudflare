@@ -62,14 +62,15 @@ type LookupAiGatewayArgs struct {
 
 // A collection of values returned by getAiGateway.
 type LookupAiGatewayResult struct {
-	AccountId               *string             `pulumi:"accountId"`
-	Authentication          bool                `pulumi:"authentication"`
-	CacheInvalidateOnUpdate bool                `pulumi:"cacheInvalidateOnUpdate"`
-	CacheTtl                int                 `pulumi:"cacheTtl"`
-	CollectLogs             bool                `pulumi:"collectLogs"`
-	CreatedAt               string              `pulumi:"createdAt"`
-	Dlp                     GetAiGatewayDlp     `pulumi:"dlp"`
-	Filter                  *GetAiGatewayFilter `pulumi:"filter"`
+	AccountId               *string                `pulumi:"accountId"`
+	Authentication          bool                   `pulumi:"authentication"`
+	CacheInvalidateOnUpdate bool                   `pulumi:"cacheInvalidateOnUpdate"`
+	CacheTtl                int                    `pulumi:"cacheTtl"`
+	CollectLogs             bool                   `pulumi:"collectLogs"`
+	CreatedAt               string                 `pulumi:"createdAt"`
+	Dlp                     GetAiGatewayDlp        `pulumi:"dlp"`
+	Filter                  *GetAiGatewayFilter    `pulumi:"filter"`
+	Guardrails              GetAiGatewayGuardrails `pulumi:"guardrails"`
 	// gateway id
 	Id            string `pulumi:"id"`
 	IsDefault     bool   `pulumi:"isDefault"`
@@ -90,9 +91,10 @@ type LookupAiGatewayResult struct {
 	// Delay between retry attempts in milliseconds (0-5000)
 	RetryDelay int `pulumi:"retryDelay"`
 	// Maximum number of retry attempts for failed requests (1-5)
-	RetryMaxAttempts int                `pulumi:"retryMaxAttempts"`
-	StoreId          string             `pulumi:"storeId"`
-	Stripe           GetAiGatewayStripe `pulumi:"stripe"`
+	RetryMaxAttempts int                     `pulumi:"retryMaxAttempts"`
+	SpendLimits      GetAiGatewaySpendLimits `pulumi:"spendLimits"`
+	StoreId          string                  `pulumi:"storeId"`
+	Stripe           GetAiGatewayStripe      `pulumi:"stripe"`
 	// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
 	// Available values: "postpaid".
 	WorkersAiBillingMode string `pulumi:"workersAiBillingMode"`
@@ -167,6 +169,10 @@ func (o LookupAiGatewayResultOutput) Filter() GetAiGatewayFilterPtrOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) *GetAiGatewayFilter { return v.Filter }).(GetAiGatewayFilterPtrOutput)
 }
 
+func (o LookupAiGatewayResultOutput) Guardrails() GetAiGatewayGuardrailsOutput {
+	return o.ApplyT(func(v LookupAiGatewayResult) GetAiGatewayGuardrails { return v.Guardrails }).(GetAiGatewayGuardrailsOutput)
+}
+
 // gateway id
 func (o LookupAiGatewayResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) string { return v.Id }).(pulumi.StringOutput)
@@ -228,6 +234,10 @@ func (o LookupAiGatewayResultOutput) RetryDelay() pulumi.IntOutput {
 // Maximum number of retry attempts for failed requests (1-5)
 func (o LookupAiGatewayResultOutput) RetryMaxAttempts() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupAiGatewayResult) int { return v.RetryMaxAttempts }).(pulumi.IntOutput)
+}
+
+func (o LookupAiGatewayResultOutput) SpendLimits() GetAiGatewaySpendLimitsOutput {
+	return o.ApplyT(func(v LookupAiGatewayResult) GetAiGatewaySpendLimits { return v.SpendLimits }).(GetAiGatewaySpendLimitsOutput)
 }
 
 func (o LookupAiGatewayResultOutput) StoreId() pulumi.StringOutput {

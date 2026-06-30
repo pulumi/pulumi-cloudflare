@@ -32,22 +32,38 @@ public final class GetEmailSecurityTrustedDomainsFilter extends com.pulumi.resou
         return Optional.ofNullable(this.direction);
     }
 
+    /**
+     * Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     * 
+     */
     @Import(name="isRecent")
     private @Nullable Boolean isRecent;
 
+    /**
+     * @return Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     * 
+     */
     public Optional<Boolean> isRecent() {
         return Optional.ofNullable(this.isRecent);
     }
 
+    /**
+     * Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     * 
+     */
     @Import(name="isSimilarity")
     private @Nullable Boolean isSimilarity;
 
+    /**
+     * @return Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     * 
+     */
     public Optional<Boolean> isSimilarity() {
         return Optional.ofNullable(this.isSimilarity);
     }
 
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -55,7 +71,7 @@ public final class GetEmailSecurityTrustedDomainsFilter extends com.pulumi.resou
     private @Nullable String order;
 
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -71,20 +87,14 @@ public final class GetEmailSecurityTrustedDomainsFilter extends com.pulumi.resou
     }
 
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      * 
      */
     @Import(name="search")
     private @Nullable String search;
 
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<String> search() {
@@ -132,18 +142,30 @@ public final class GetEmailSecurityTrustedDomainsFilter extends com.pulumi.resou
             return this;
         }
 
+        /**
+         * @param isRecent Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isRecent(@Nullable Boolean isRecent) {
             $.isRecent = isRecent;
             return this;
         }
 
+        /**
+         * @param isSimilarity Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isSimilarity(@Nullable Boolean isSimilarity) {
             $.isSimilarity = isSimilarity;
             return this;
         }
 
         /**
-         * @param order The field to sort by.
+         * @param order Field to sort by.
          * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
@@ -160,10 +182,7 @@ public final class GetEmailSecurityTrustedDomainsFilter extends com.pulumi.resou
         }
 
         /**
-         * @param search Allows searching in multiple properties of a record simultaneously.
-         * This parameter is intended for human users, not automation. Its exact
-         * behavior is intentionally left unspecified and is subject to change
-         * in the future.
+         * @param search Search term for filtering records. Behavior may change.
          * 
          * @return builder
          * 

@@ -16,10 +16,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiSearchInstanceSourceParamsWebCrawlerParseOptions {
     /**
-     * @return List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+     * @return List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
      * 
      */
     private @Nullable List<AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector> contentSelectors;
+    /**
+     * @return Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+     * 
+     */
     private @Nullable Map<String,String> includeHeaders;
     private @Nullable Boolean includeImages;
     /**
@@ -31,12 +35,16 @@ public final class AiSearchInstanceSourceParamsWebCrawlerParseOptions {
 
     private AiSearchInstanceSourceParamsWebCrawlerParseOptions() {}
     /**
-     * @return List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+     * @return List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
      * 
      */
     public List<AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector> contentSelectors() {
         return this.contentSelectors == null ? List.of() : this.contentSelectors;
     }
+    /**
+     * @return Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+     * 
+     */
     public Map<String,String> includeHeaders() {
         return this.includeHeaders == null ? Map.of() : this.includeHeaders;
     }

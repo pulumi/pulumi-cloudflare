@@ -99,6 +99,7 @@ class _ApiShieldOperationState:
                  last_updated: pulumi.Input[Optional[_builtins.str]] = None,
                  method: pulumi.Input[Optional[_builtins.str]] = None,
                  operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schemas: pulumi.Input[Optional['ApiShieldOperationSchemasArgs']] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldOperation resources.
@@ -108,6 +109,7 @@ class _ApiShieldOperationState:
         :param pulumi.Input[_builtins.str] method: The HTTP method used to access the endpoint.
                Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
+        :param pulumi.Input['ApiShieldOperationSchemasArgs'] schemas: OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         if endpoint is not None:
@@ -122,6 +124,8 @@ class _ApiShieldOperationState:
             pulumi.set(__self__, "method", method)
         if operation_id is not None:
             pulumi.set(__self__, "operation_id", operation_id)
+        if schemas is not None:
+            pulumi.set(__self__, "schemas", schemas)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -191,6 +195,18 @@ class _ApiShieldOperationState:
     @operation_id.setter
     def operation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def schemas(self) -> pulumi.Input[Optional['ApiShieldOperationSchemasArgs']]:
+        """
+        OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+        """
+        return pulumi.get(self, "schemas")
+
+    @schemas.setter
+    def schemas(self, value: pulumi.Input[Optional['ApiShieldOperationSchemasArgs']]):
+        pulumi.set(self, "schemas", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -327,6 +343,7 @@ class ApiShieldOperation(pulumi.CustomResource):
             __props__.__dict__["features"] = None
             __props__.__dict__["last_updated"] = None
             __props__.__dict__["operation_id"] = None
+            __props__.__dict__["schemas"] = None
         super(ApiShieldOperation, __self__).__init__(
             'cloudflare:index/apiShieldOperation:ApiShieldOperation',
             resource_name,
@@ -343,6 +360,7 @@ class ApiShieldOperation(pulumi.CustomResource):
             last_updated: pulumi.Input[Optional[_builtins.str]] = None,
             method: pulumi.Input[Optional[_builtins.str]] = None,
             operation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schemas: pulumi.Input[Optional[Union['ApiShieldOperationSchemasArgs', 'ApiShieldOperationSchemasArgsDict']]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiShieldOperation':
         """
         Get an existing ApiShieldOperation resource's state with the given name, id, and optional extra
@@ -356,6 +374,7 @@ class ApiShieldOperation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] method: The HTTP method used to access the endpoint.
                Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
+        :param pulumi.Input[Union['ApiShieldOperationSchemasArgs', 'ApiShieldOperationSchemasArgsDict']] schemas: OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -368,6 +387,7 @@ class ApiShieldOperation(pulumi.CustomResource):
         __props__.__dict__["last_updated"] = last_updated
         __props__.__dict__["method"] = method
         __props__.__dict__["operation_id"] = operation_id
+        __props__.__dict__["schemas"] = schemas
         __props__.__dict__["zone_id"] = zone_id
         return ApiShieldOperation(resource_name, opts=opts, __props__=__props__)
 
@@ -413,6 +433,14 @@ class ApiShieldOperation(pulumi.CustomResource):
         UUID.
         """
         return pulumi.get(self, "operation_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def schemas(self) -> pulumi.Output['outputs.ApiShieldOperationSchemas']:
+        """
+        OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+        """
+        return pulumi.get(self, "schemas")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")

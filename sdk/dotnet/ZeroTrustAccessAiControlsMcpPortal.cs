@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// Accepted Permissions
+    /// 
+    /// - `MCP Portals Read`
+    /// - `MCP Portals Write`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

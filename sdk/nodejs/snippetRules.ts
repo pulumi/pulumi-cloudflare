@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Accepted Permissions
  *
+ * - `Snippets Read`
  * - `Snippets Write`
  *
  * ## Example Usage

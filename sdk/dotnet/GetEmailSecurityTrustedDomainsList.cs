@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityTrustedDomainsListArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
@@ -127,9 +127,15 @@ namespace Pulumi.Cloudflare
         [Input("direction")]
         public string? Direction { get; set; }
 
+        /// <summary>
+        /// Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+        /// </summary>
         [Input("isRecent")]
         public bool? IsRecent { get; set; }
 
+        /// <summary>
+        /// Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+        /// </summary>
         [Input("isSimilarity")]
         public bool? IsSimilarity { get; set; }
 
@@ -140,7 +146,7 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "pattern", "CreatedAt".
         /// </summary>
         [Input("order")]
@@ -150,10 +156,7 @@ namespace Pulumi.Cloudflare
         public string? Pattern { get; set; }
 
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         [Input("search")]
         public string? Search { get; set; }
@@ -167,7 +170,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityTrustedDomainsListInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -179,9 +182,15 @@ namespace Pulumi.Cloudflare
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
+        /// <summary>
+        /// Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+        /// </summary>
         [Input("isRecent")]
         public Input<bool>? IsRecent { get; set; }
 
+        /// <summary>
+        /// Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+        /// </summary>
         [Input("isSimilarity")]
         public Input<bool>? IsSimilarity { get; set; }
 
@@ -192,7 +201,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "pattern", "CreatedAt".
         /// </summary>
         [Input("order")]
@@ -202,10 +211,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Pattern { get; set; }
 
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
@@ -221,7 +227,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityTrustedDomainsListResult
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
@@ -233,14 +239,20 @@ namespace Pulumi.Cloudflare
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+        /// </summary>
         public readonly bool? IsRecent;
+        /// <summary>
+        /// Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+        /// </summary>
         public readonly bool? IsSimilarity;
         /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "pattern", "CreatedAt".
         /// </summary>
         public readonly string? Order;
@@ -250,10 +262,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEmailSecurityTrustedDomainsListResultResult> Results;
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         public readonly string? Search;
 

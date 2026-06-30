@@ -77,10 +77,19 @@ type LookupZeroTrustAccessIdentityProviderResult struct {
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The name of the identity provider, shown to users on the login page.
 	Name string `pulumi:"name"`
+	// Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+	ReadOnly bool `pulumi:"readOnly"`
+	// The SAML encryption certificate set details, including current and previous certificates.
+	// Only present for SAML identity providers with a certificate set assigned.
+	SamlCertificateSet GetZeroTrustAccessIdentityProviderSamlCertificateSet `pulumi:"samlCertificateSet"`
+	// The UID of the SAML encryption certificate set assigned to this Identity Provider.
+	// Only present for SAML identity providers with encryption configured.
+	// Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+	SamlCertificateSetId string `pulumi:"samlCertificateSetId"`
 	// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
 	ScimConfig GetZeroTrustAccessIdentityProviderScimConfig `pulumi:"scimConfig"`
 	// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-	// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+	// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
 	Type string `pulumi:"type"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -158,6 +167,26 @@ func (o LookupZeroTrustAccessIdentityProviderResultOutput) Name() pulumi.StringO
 	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+func (o LookupZeroTrustAccessIdentityProviderResultOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+// The SAML encryption certificate set details, including current and previous certificates.
+// Only present for SAML identity providers with a certificate set assigned.
+func (o LookupZeroTrustAccessIdentityProviderResultOutput) SamlCertificateSet() GetZeroTrustAccessIdentityProviderSamlCertificateSetOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) GetZeroTrustAccessIdentityProviderSamlCertificateSet {
+		return v.SamlCertificateSet
+	}).(GetZeroTrustAccessIdentityProviderSamlCertificateSetOutput)
+}
+
+// The UID of the SAML encryption certificate set assigned to this Identity Provider.
+// Only present for SAML identity providers with encryption configured.
+// Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+func (o LookupZeroTrustAccessIdentityProviderResultOutput) SamlCertificateSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) string { return v.SamlCertificateSetId }).(pulumi.StringOutput)
+}
+
 // The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
 func (o LookupZeroTrustAccessIdentityProviderResultOutput) ScimConfig() GetZeroTrustAccessIdentityProviderScimConfigOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) GetZeroTrustAccessIdentityProviderScimConfig {
@@ -166,7 +195,7 @@ func (o LookupZeroTrustAccessIdentityProviderResultOutput) ScimConfig() GetZeroT
 }
 
 // The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
 func (o LookupZeroTrustAccessIdentityProviderResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) string { return v.Type }).(pulumi.StringOutput)
 }

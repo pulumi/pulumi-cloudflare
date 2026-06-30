@@ -17,15 +17,27 @@ namespace Pulumi.Cloudflare.Outputs
         /// Enable features for Organizations.
         /// </summary>
         public readonly Outputs.GetOrganizationMetaFlagsResult Flags;
+        /// <summary>
+        /// Ordered chain of organization tags from the root organization down to
+        /// (and including) this organization itself. Root organizations return a
+        /// single-element array containing their own tag; sub-organizations return
+        /// `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+        /// constructing authorization scopes that need to cover every ancestor
+        /// in the hierarchy.
+        /// </summary>
+        public readonly ImmutableArray<string> HierarchyTags;
         public readonly string ManagedBy;
 
         [OutputConstructor]
         private GetOrganizationMetaResult(
             Outputs.GetOrganizationMetaFlagsResult flags,
 
+            ImmutableArray<string> hierarchyTags,
+
             string managedBy)
         {
             Flags = flags;
+            HierarchyTags = hierarchyTags;
             ManagedBy = managedBy;
         }
     }

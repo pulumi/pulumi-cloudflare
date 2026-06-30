@@ -105,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
         /// Name of the script, used in URLs and route configuration.
@@ -125,8 +125,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Name of the script, used in URLs and route configuration.
@@ -147,7 +147,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// Whether the Worker is available on the workers.dev subdomain.
         /// </summary>
@@ -167,7 +167,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWorkersScriptSubdomainResult(
-            string? accountId,
+            string accountId,
 
             bool enabled,
 

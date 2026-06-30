@@ -15,6 +15,7 @@ public final class WorkflowInstances {
     private @Nullable Double errored;
     private @Nullable Double paused;
     private @Nullable Double queued;
+    private @Nullable Double rollingBack;
     private @Nullable Double running;
     private @Nullable Double terminated;
     private @Nullable Double waiting;
@@ -32,6 +33,9 @@ public final class WorkflowInstances {
     }
     public Optional<Double> queued() {
         return Optional.ofNullable(this.queued);
+    }
+    public Optional<Double> rollingBack() {
+        return Optional.ofNullable(this.rollingBack);
     }
     public Optional<Double> running() {
         return Optional.ofNullable(this.running);
@@ -59,6 +63,7 @@ public final class WorkflowInstances {
         private @Nullable Double errored;
         private @Nullable Double paused;
         private @Nullable Double queued;
+        private @Nullable Double rollingBack;
         private @Nullable Double running;
         private @Nullable Double terminated;
         private @Nullable Double waiting;
@@ -70,6 +75,7 @@ public final class WorkflowInstances {
     	      this.errored = defaults.errored;
     	      this.paused = defaults.paused;
     	      this.queued = defaults.queued;
+    	      this.rollingBack = defaults.rollingBack;
     	      this.running = defaults.running;
     	      this.terminated = defaults.terminated;
     	      this.waiting = defaults.waiting;
@@ -98,6 +104,12 @@ public final class WorkflowInstances {
         public Builder queued(@Nullable Double queued) {
 
             this.queued = queued;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rollingBack(@Nullable Double rollingBack) {
+
+            this.rollingBack = rollingBack;
             return this;
         }
         @CustomType.Setter
@@ -130,6 +142,7 @@ public final class WorkflowInstances {
             _resultValue.errored = errored;
             _resultValue.paused = paused;
             _resultValue.queued = queued;
+            _resultValue.rollingBack = rollingBack;
             _resultValue.running = running;
             _resultValue.terminated = terminated;
             _resultValue.waiting = waiting;

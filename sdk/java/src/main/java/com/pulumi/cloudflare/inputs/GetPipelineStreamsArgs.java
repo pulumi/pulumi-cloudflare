@@ -47,6 +47,21 @@ public final class GetPipelineStreamsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
+     * Filters streams by name (case-insensitive substring).
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Filters streams by name (case-insensitive substring).
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * Specifies the public ID of the pipeline.
      * 
      */
@@ -66,6 +81,7 @@ public final class GetPipelineStreamsArgs extends com.pulumi.resources.InvokeArg
     private GetPipelineStreamsArgs(GetPipelineStreamsArgs $) {
         this.accountId = $.accountId;
         this.maxItems = $.maxItems;
+        this.name = $.name;
         this.pipelineId = $.pipelineId;
     }
 
@@ -127,6 +143,27 @@ public final class GetPipelineStreamsArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder maxItems(Integer maxItems) {
             return maxItems(Output.of(maxItems));
+        }
+
+        /**
+         * @param name Filters streams by name (case-insensitive substring).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Filters streams by name (case-insensitive substring).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

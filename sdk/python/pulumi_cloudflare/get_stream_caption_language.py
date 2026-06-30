@@ -51,7 +51,7 @@ class GetStreamCaptionLanguageResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         Identifier.
         """
@@ -163,7 +163,7 @@ def get_stream_caption_language(account_id: Optional[_builtins.str] = None,
         label=pulumi.get(__ret__, 'label'),
         language=pulumi.get(__ret__, 'language'),
         status=pulumi.get(__ret__, 'status'))
-def get_stream_caption_language_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_stream_caption_language_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                        identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                        language: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamCaptionLanguageResult]:

@@ -13,13 +13,16 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetZeroTrustDlpCustomEntriesResultVariantResult
     {
+        /// <summary>
+        /// A customer-facing explanation of what this predefined AI prompt topic represents.
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// Available values: "Intent", "Content".
         /// </summary>
         public readonly string TopicType;
         /// <summary>
-        /// Available values: "PromptTopic".
+        /// Available values: "PromptTopic", "General".
         /// </summary>
         public readonly string Type;
 

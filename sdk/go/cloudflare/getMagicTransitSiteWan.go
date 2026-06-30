@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetMagicTransitSiteWan(ctx, &cloudflare.LookupMagicTransitSiteWanArgs{
-//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				SiteId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				WanId:     "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
@@ -58,7 +58,7 @@ func LookupMagicTransitSiteWan(ctx *pulumi.Context, args *LookupMagicTransitSite
 // A collection of arguments for invoking getMagicTransitSiteWan.
 type LookupMagicTransitSiteWanArgs struct {
 	// Identifier
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Identifier
 	SiteId string `pulumi:"siteId"`
 	// Identifier
@@ -68,7 +68,7 @@ type LookupMagicTransitSiteWanArgs struct {
 // A collection of values returned by getMagicTransitSiteWan.
 type LookupMagicTransitSiteWanResult struct {
 	// Identifier
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
 	// Available values: "low", "mid", "high".
 	HealthCheckRate string `pulumi:"healthCheckRate"`
@@ -100,7 +100,7 @@ func LookupMagicTransitSiteWanOutput(ctx *pulumi.Context, args LookupMagicTransi
 // A collection of arguments for invoking getMagicTransitSiteWan.
 type LookupMagicTransitSiteWanOutputArgs struct {
 	// Identifier
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Identifier
 	SiteId pulumi.StringInput `pulumi:"siteId"`
 	// Identifier
@@ -127,8 +127,8 @@ func (o LookupMagicTransitSiteWanResultOutput) ToLookupMagicTransitSiteWanResult
 }
 
 // Identifier
-func (o LookupMagicTransitSiteWanResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupMagicTransitSiteWanResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMagicTransitSiteWanResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Magic WAN health check rate for tunnels created on this link. The default value is `mid`.

@@ -28,7 +28,7 @@ class GetEmailSecurityTrustedDomainsResult:
     """
     A collection of values returned by getEmailSecurityTrustedDomains.
     """
-    def __init__(__self__, account_id=None, comments=None, created_at=None, filter=None, id=None, is_recent=None, is_regex=None, is_similarity=None, last_modified=None, pattern=None, trusted_domain_id=None):
+    def __init__(__self__, account_id=None, comments=None, created_at=None, filter=None, id=None, is_recent=None, is_regex=None, is_similarity=None, last_modified=None, modified_at=None, pattern=None, trusted_domain_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -41,8 +41,8 @@ class GetEmailSecurityTrustedDomainsResult:
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
-        if id and not isinstance(id, int):
-            raise TypeError("Expected argument 'id' to be a int")
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if is_recent and not isinstance(is_recent, bool):
             raise TypeError("Expected argument 'is_recent' to be a bool")
@@ -56,18 +56,21 @@ class GetEmailSecurityTrustedDomainsResult:
         if last_modified and not isinstance(last_modified, str):
             raise TypeError("Expected argument 'last_modified' to be a str")
         pulumi.set(__self__, "last_modified", last_modified)
+        if modified_at and not isinstance(modified_at, str):
+            raise TypeError("Expected argument 'modified_at' to be a str")
+        pulumi.set(__self__, "modified_at", modified_at)
         if pattern and not isinstance(pattern, str):
             raise TypeError("Expected argument 'pattern' to be a str")
         pulumi.set(__self__, "pattern", pattern)
-        if trusted_domain_id and not isinstance(trusted_domain_id, int):
-            raise TypeError("Expected argument 'trusted_domain_id' to be a int")
+        if trusted_domain_id and not isinstance(trusted_domain_id, str):
+            raise TypeError("Expected argument 'trusted_domain_id' to be a str")
         pulumi.set(__self__, "trusted_domain_id", trusted_domain_id)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        Account Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -88,9 +91,9 @@ class GetEmailSecurityTrustedDomainsResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.int:
+    def id(self) -> _builtins.str:
         """
-        The unique identifier for the trusted domain.
+        Trusted domain identifier
         """
         return pulumi.get(self, "id")
 
@@ -98,8 +101,7 @@ class GetEmailSecurityTrustedDomainsResult:
     @pulumi.getter(name="isRecent")
     def is_recent(self) -> _builtins.bool:
         """
-        Select to prevent recently registered domains from triggering a
-        Suspicious or Malicious disposition.
+        Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         """
         return pulumi.get(self, "is_recent")
 
@@ -112,16 +114,23 @@ class GetEmailSecurityTrustedDomainsResult:
     @pulumi.getter(name="isSimilarity")
     def is_similarity(self) -> _builtins.bool:
         """
-        Select for partner or other approved domains that have similar
-        spelling to your connected domains. Prevents listed domains from
-        triggering a Spoof disposition.
+        Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         """
         return pulumi.get(self, "is_similarity")
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def last_modified(self) -> _builtins.str:
+        """
+        Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        """
         return pulumi.get(self, "last_modified")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> _builtins.str:
+        return pulumi.get(self, "modified_at")
 
     @_builtins.property
     @pulumi.getter
@@ -130,9 +139,9 @@ class GetEmailSecurityTrustedDomainsResult:
 
     @_builtins.property
     @pulumi.getter(name="trustedDomainId")
-    def trusted_domain_id(self) -> Optional[_builtins.int]:
+    def trusted_domain_id(self) -> Optional[_builtins.str]:
         """
-        The unique identifier for the trusted domain.
+        Trusted domain identifier
         """
         return pulumi.get(self, "trusted_domain_id")
 
@@ -152,13 +161,14 @@ class AwaitableGetEmailSecurityTrustedDomainsResult(GetEmailSecurityTrustedDomai
             is_regex=self.is_regex,
             is_similarity=self.is_similarity,
             last_modified=self.last_modified,
+            modified_at=self.modified_at,
             pattern=self.pattern,
             trusted_domain_id=self.trusted_domain_id)
 
 
 def get_email_security_trusted_domains(account_id: Optional[_builtins.str] = None,
                                        filter: Optional[Union['GetEmailSecurityTrustedDomainsFilterArgs', 'GetEmailSecurityTrustedDomainsFilterArgsDict']] = None,
-                                       trusted_domain_id: Optional[_builtins.int] = None,
+                                       trusted_domain_id: Optional[_builtins.str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailSecurityTrustedDomainsResult:
     """
     Accepted Permissions
@@ -173,12 +183,12 @@ def get_email_security_trusted_domains(account_id: Optional[_builtins.str] = Non
     import pulumi_cloudflare as cloudflare
 
     example_email_security_trusted_domains = cloudflare.get_email_security_trusted_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        trusted_domain_id=2401)
+        trusted_domain_id="2401")
     ```
 
 
-    :param _builtins.str account_id: Account Identifier
-    :param _builtins.int trusted_domain_id: The unique identifier for the trusted domain.
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str trusted_domain_id: Trusted domain identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -197,11 +207,12 @@ def get_email_security_trusted_domains(account_id: Optional[_builtins.str] = Non
         is_regex=pulumi.get(__ret__, 'is_regex'),
         is_similarity=pulumi.get(__ret__, 'is_similarity'),
         last_modified=pulumi.get(__ret__, 'last_modified'),
+        modified_at=pulumi.get(__ret__, 'modified_at'),
         pattern=pulumi.get(__ret__, 'pattern'),
         trusted_domain_id=pulumi.get(__ret__, 'trusted_domain_id'))
 def get_email_security_trusted_domains_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                               filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityTrustedDomainsFilterArgs', 'GetEmailSecurityTrustedDomainsFilterArgsDict']]]] = None,
-                                              trusted_domain_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                              trusted_domain_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityTrustedDomainsResult]:
     """
     Accepted Permissions
@@ -216,12 +227,12 @@ def get_email_security_trusted_domains_output(account_id: pulumi.Input[Optional[
     import pulumi_cloudflare as cloudflare
 
     example_email_security_trusted_domains = cloudflare.get_email_security_trusted_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        trusted_domain_id=2401)
+        trusted_domain_id="2401")
     ```
 
 
-    :param _builtins.str account_id: Account Identifier
-    :param _builtins.int trusted_domain_id: The unique identifier for the trusted domain.
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str trusted_domain_id: Trusted domain identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -239,5 +250,6 @@ def get_email_security_trusted_domains_output(account_id: pulumi.Input[Optional[
         is_regex=pulumi.get(__response__, 'is_regex'),
         is_similarity=pulumi.get(__response__, 'is_similarity'),
         last_modified=pulumi.get(__response__, 'last_modified'),
+        modified_at=pulumi.get(__response__, 'modified_at'),
         pattern=pulumi.get(__response__, 'pattern'),
         trusted_domain_id=pulumi.get(__response__, 'trusted_domain_id')))

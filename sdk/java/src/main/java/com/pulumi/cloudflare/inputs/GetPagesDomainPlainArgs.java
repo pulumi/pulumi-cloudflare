@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetPagesDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -19,15 +17,15 @@ public final class GetPagesDomainPlainArgs extends com.pulumi.resources.InvokeAr
      * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable String accountId;
+    @Import(name="accountId", required=true)
+    private String accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
 
     /**
@@ -92,7 +90,7 @@ public final class GetPagesDomainPlainArgs extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable String accountId) {
+        public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -120,6 +118,9 @@ public final class GetPagesDomainPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetPagesDomainPlainArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetPagesDomainPlainArgs", "accountId");
+            }
             if ($.domainName == null) {
                 throw new MissingRequiredPropertyException("GetPagesDomainPlainArgs", "domainName");
             }

@@ -81,6 +81,11 @@ export class ZeroTrustNetworkHostnameRoute extends pulumi.CustomResource {
      */
     declare public readonly hostname: pulumi.Output<string | undefined>;
     /**
+     * The type of tunnel.
+     * Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+     */
+    declare public /*out*/ readonly tunType: pulumi.Output<string>;
+    /**
      * UUID of the tunnel.
      */
     declare public readonly tunnelId: pulumi.Output<string | undefined>;
@@ -107,6 +112,7 @@ export class ZeroTrustNetworkHostnameRoute extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["deletedAt"] = state?.deletedAt;
             resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["tunType"] = state?.tunType;
             resourceInputs["tunnelId"] = state?.tunnelId;
             resourceInputs["tunnelName"] = state?.tunnelName;
         } else {
@@ -117,6 +123,7 @@ export class ZeroTrustNetworkHostnameRoute extends pulumi.CustomResource {
             resourceInputs["tunnelId"] = args?.tunnelId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["deletedAt"] = undefined /*out*/;
+            resourceInputs["tunType"] = undefined /*out*/;
             resourceInputs["tunnelName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -148,6 +155,11 @@ export interface ZeroTrustNetworkHostnameRouteState {
      * The hostname of the route.
      */
     hostname?: pulumi.Input<string | undefined>;
+    /**
+     * The type of tunnel.
+     * Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+     */
+    tunType?: pulumi.Input<string | undefined>;
     /**
      * UUID of the tunnel.
      */

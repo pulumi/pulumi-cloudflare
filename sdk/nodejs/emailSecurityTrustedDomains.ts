@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -63,26 +61,28 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
     }
 
     /**
-     * Account Identifier
+     * Identifier.
      */
     declare public readonly accountId: pulumi.Output<string | undefined>;
-    declare public readonly bodies: pulumi.Output<outputs.EmailSecurityTrustedDomainsBody[] | undefined>;
     declare public readonly comments: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
+     * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      */
     declare public readonly isRecent: pulumi.Output<boolean | undefined>;
     declare public readonly isRegex: pulumi.Output<boolean | undefined>;
     /**
-     * Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
+     * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      */
     declare public readonly isSimilarity: pulumi.Output<boolean | undefined>;
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     declare public /*out*/ readonly lastModified: pulumi.Output<string>;
-    declare public readonly pattern: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
+    declare public readonly pattern: pulumi.Output<string>;
 
     /**
      * Create a EmailSecurityTrustedDomains resource with the given unique name, arguments, and options.
@@ -91,25 +91,27 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: EmailSecurityTrustedDomainsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: EmailSecurityTrustedDomainsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EmailSecurityTrustedDomainsArgs | EmailSecurityTrustedDomainsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailSecurityTrustedDomainsState | undefined;
             resourceInputs["accountId"] = state?.accountId;
-            resourceInputs["bodies"] = state?.bodies;
             resourceInputs["comments"] = state?.comments;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["isRecent"] = state?.isRecent;
             resourceInputs["isRegex"] = state?.isRegex;
             resourceInputs["isSimilarity"] = state?.isSimilarity;
             resourceInputs["lastModified"] = state?.lastModified;
+            resourceInputs["modifiedAt"] = state?.modifiedAt;
             resourceInputs["pattern"] = state?.pattern;
         } else {
             const args = argsOrState as EmailSecurityTrustedDomainsArgs | undefined;
+            if (args?.pattern === undefined && !opts.urn) {
+                throw new Error("Missing required property 'pattern'");
+            }
             resourceInputs["accountId"] = args?.accountId;
-            resourceInputs["bodies"] = args?.bodies;
             resourceInputs["comments"] = args?.comments;
             resourceInputs["isRecent"] = args?.isRecent;
             resourceInputs["isRegex"] = args?.isRegex;
@@ -117,6 +119,7 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
             resourceInputs["pattern"] = args?.pattern;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;
+            resourceInputs["modifiedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EmailSecurityTrustedDomains.__pulumiType, name, resourceInputs, opts);
@@ -128,25 +131,27 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
  */
 export interface EmailSecurityTrustedDomainsState {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
-    bodies?: pulumi.Input<pulumi.Input<inputs.EmailSecurityTrustedDomainsBody>[] | undefined>;
     comments?: pulumi.Input<string | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
     /**
-     * Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
+     * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      */
     isRecent?: pulumi.Input<boolean | undefined>;
     isRegex?: pulumi.Input<boolean | undefined>;
     /**
-     * Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
+     * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      */
     isSimilarity?: pulumi.Input<boolean | undefined>;
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     lastModified?: pulumi.Input<string | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
     pattern?: pulumi.Input<string | undefined>;
 }
 
@@ -155,22 +160,18 @@ export interface EmailSecurityTrustedDomainsState {
  */
 export interface EmailSecurityTrustedDomainsArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
-    bodies?: pulumi.Input<pulumi.Input<inputs.EmailSecurityTrustedDomainsBody>[] | undefined>;
     comments?: pulumi.Input<string | undefined>;
     /**
-     * Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
+     * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      */
     isRecent?: pulumi.Input<boolean | undefined>;
     isRegex?: pulumi.Input<boolean | undefined>;
     /**
-     * Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
+     * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      */
     isSimilarity?: pulumi.Input<boolean | undefined>;
-    pattern?: pulumi.Input<string | undefined>;
+    pattern: pulumi.Input<string>;
 }

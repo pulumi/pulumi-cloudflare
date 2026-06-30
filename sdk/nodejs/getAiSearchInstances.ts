@@ -28,19 +28,22 @@ export interface GetAiSearchInstancesArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Filter by namespace.
+     */
     namespace?: string;
     /**
-     * Order By Column Name
+     * Field to order results by.
      * Available values: "createdAt".
      */
     orderBy?: string;
     /**
-     * Order By Direction
+     * Order direction.
      * Available values: "asc", "desc".
      */
     orderByDirection?: string;
     /**
-     * Search by id
+     * Filter instances whose id contains this string (case-insensitive).
      */
     search?: string;
 }
@@ -58,14 +61,17 @@ export interface GetAiSearchInstancesResult {
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
+    /**
+     * Filter by namespace.
+     */
     readonly namespace?: string;
     /**
-     * Order By Column Name
+     * Field to order results by.
      * Available values: "createdAt".
      */
     readonly orderBy: string;
     /**
-     * Order By Direction
+     * Order direction.
      * Available values: "asc", "desc".
      */
     readonly orderByDirection: string;
@@ -74,7 +80,7 @@ export interface GetAiSearchInstancesResult {
      */
     readonly results: outputs.GetAiSearchInstancesResult[];
     /**
-     * Search by id
+     * Filter instances whose id contains this string (case-insensitive).
      */
     readonly search?: string;
 }
@@ -100,19 +106,22 @@ export interface GetAiSearchInstancesOutputArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number | undefined>;
+    /**
+     * Filter by namespace.
+     */
     namespace?: pulumi.Input<string | undefined>;
     /**
-     * Order By Column Name
+     * Field to order results by.
      * Available values: "createdAt".
      */
     orderBy?: pulumi.Input<string | undefined>;
     /**
-     * Order By Direction
+     * Order direction.
      * Available values: "asc", "desc".
      */
     orderByDirection?: pulumi.Input<string | undefined>;
     /**
-     * Search by id
+     * Filter instances whose id contains this string (case-insensitive).
      */
     search?: pulumi.Input<string | undefined>;
 }

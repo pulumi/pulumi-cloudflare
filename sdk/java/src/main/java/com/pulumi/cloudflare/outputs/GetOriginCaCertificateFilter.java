@@ -19,7 +19,7 @@ public final class GetOriginCaCertificateFilter {
      */
     private @Nullable Integer limit;
     /**
-     * @return Offset the results
+     * @return Offset the results.
      * 
      */
     private @Nullable Integer offset;
@@ -38,7 +38,7 @@ public final class GetOriginCaCertificateFilter {
         return Optional.ofNullable(this.limit);
     }
     /**
-     * @return Offset the results
+     * @return Offset the results.
      * 
      */
     public Optional<Integer> offset() {

@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetR2BucketSippyResult {
@@ -19,7 +17,7 @@ public final class GetR2BucketSippyResult {
      * @return Account ID.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return Name of the bucket.
      * 
@@ -51,8 +49,8 @@ public final class GetR2BucketSippyResult {
      * @return Account ID.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return Name of the bucket.
@@ -99,7 +97,7 @@ public final class GetR2BucketSippyResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private String bucketName;
         private GetR2BucketSippyDestination destination;
         private Boolean enabled;
@@ -117,8 +115,10 @@ public final class GetR2BucketSippyResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetR2BucketSippyResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

@@ -31,14 +31,14 @@ public final class GetCustomOriginTrustStoreFilterArgs extends com.pulumi.resour
     }
 
     /**
-     * Offset the results
+     * Offset the results.
      * 
      */
     @Import(name="offset")
     private @Nullable Output<Integer> offset;
 
     /**
-     * @return Offset the results
+     * @return Offset the results.
      * 
      */
     public Optional<Output<Integer>> offset() {
@@ -92,7 +92,7 @@ public final class GetCustomOriginTrustStoreFilterArgs extends com.pulumi.resour
         }
 
         /**
-         * @param offset Offset the results
+         * @param offset Offset the results.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class GetCustomOriginTrustStoreFilterArgs extends com.pulumi.resour
         }
 
         /**
-         * @param offset Offset the results
+         * @param offset Offset the results.
          * 
          * @return builder
          * 

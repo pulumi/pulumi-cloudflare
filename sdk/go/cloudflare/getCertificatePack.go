@@ -63,7 +63,7 @@ type LookupCertificatePackArgs struct {
 
 // A collection of values returned by getCertificatePack.
 type LookupCertificatePackResult struct {
-	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	// Identifier.
@@ -138,7 +138,7 @@ func (o LookupCertificatePackResultOutput) ToLookupCertificatePackResultOutputWi
 	return o
 }
 
-// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
 // Available values: "google", "lets*encrypt", "ssl*com".
 func (o LookupCertificatePackResultOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.CertificateAuthority }).(pulumi.StringOutput)

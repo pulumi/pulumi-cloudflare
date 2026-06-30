@@ -15,9 +15,17 @@ public final class ZeroTrustDlpPredefinedEntryVariantArgs extends com.pulumi.res
 
     public static final ZeroTrustDlpPredefinedEntryVariantArgs Empty = new ZeroTrustDlpPredefinedEntryVariantArgs();
 
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return A customer-facing explanation of what this predefined AI prompt topic represents.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -38,14 +46,14 @@ public final class ZeroTrustDlpPredefinedEntryVariantArgs extends com.pulumi.res
     }
 
     /**
-     * Available values: &#34;PromptTopic&#34;.
+     * Available values: &#34;PromptTopic&#34;, &#34;General&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;PromptTopic&#34;.
+     * @return Available values: &#34;PromptTopic&#34;, &#34;General&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -78,11 +86,23 @@ public final class ZeroTrustDlpPredefinedEntryVariantArgs extends com.pulumi.res
             $ = new ZeroTrustDlpPredefinedEntryVariantArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description A customer-facing explanation of what this predefined AI prompt topic represents.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description A customer-facing explanation of what this predefined AI prompt topic represents.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -109,7 +129,7 @@ public final class ZeroTrustDlpPredefinedEntryVariantArgs extends com.pulumi.res
         }
 
         /**
-         * @param type Available values: &#34;PromptTopic&#34;.
+         * @param type Available values: &#34;PromptTopic&#34;, &#34;General&#34;.
          * 
          * @return builder
          * 
@@ -120,7 +140,7 @@ public final class ZeroTrustDlpPredefinedEntryVariantArgs extends com.pulumi.res
         }
 
         /**
-         * @param type Available values: &#34;PromptTopic&#34;.
+         * @param type Available values: &#34;PromptTopic&#34;, &#34;General&#34;.
          * 
          * @return builder
          * 

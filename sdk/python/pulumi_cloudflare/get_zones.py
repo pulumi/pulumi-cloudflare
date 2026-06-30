@@ -28,7 +28,7 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, account=None, direction=None, id=None, match=None, max_items=None, name=None, order=None, results=None, status=None):
+    def __init__(__self__, account=None, direction=None, id=None, match=None, max_items=None, name=None, order=None, results=None, status=None, types=None):
         if account and not isinstance(account, dict):
             raise TypeError("Expected argument 'account' to be a dict")
         pulumi.set(__self__, "account", account)
@@ -56,6 +56,9 @@ class GetZonesResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if types and not isinstance(types, list):
+            raise TypeError("Expected argument 'types' to be a list")
+        pulumi.set(__self__, "types", types)
 
     @_builtins.property
     @pulumi.getter
@@ -105,6 +108,11 @@ class GetZonesResult:
     def status(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "status")
 
+    @_builtins.property
+    @pulumi.getter
+    def types(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "types")
+
 
 class AwaitableGetZonesResult(GetZonesResult):
     # pylint: disable=using-constant-test
@@ -120,7 +128,8 @@ class AwaitableGetZonesResult(GetZonesResult):
             name=self.name,
             order=self.order,
             results=self.results,
-            status=self.status)
+            status=self.status,
+            types=self.types)
 
 
 def get_zones(account: Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArgsDict']] = None,
@@ -130,6 +139,7 @@ def get_zones(account: Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArg
               name: Optional[_builtins.str] = None,
               order: Optional[_builtins.str] = None,
               status: Optional[_builtins.str] = None,
+              types: Optional[Sequence[_builtins.str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
     Accepted Permissions
@@ -160,6 +170,7 @@ def get_zones(account: Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArg
     __args__['name'] = name
     __args__['order'] = order
     __args__['status'] = status
+    __args__['types'] = types
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
@@ -172,7 +183,8 @@ def get_zones(account: Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArg
         name=pulumi.get(__ret__, 'name'),
         order=pulumi.get(__ret__, 'order'),
         results=pulumi.get(__ret__, 'results'),
-        status=pulumi.get(__ret__, 'status'))
+        status=pulumi.get(__ret__, 'status'),
+        types=pulumi.get(__ret__, 'types'))
 def get_zones_output(account: pulumi.Input[Optional[Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArgsDict']]]] = None,
                      direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      match: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -180,6 +192,7 @@ def get_zones_output(account: pulumi.Input[Optional[Optional[Union['GetZonesAcco
                      name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     types: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     Accepted Permissions
@@ -210,6 +223,7 @@ def get_zones_output(account: pulumi.Input[Optional[Optional[Union['GetZonesAcco
     __args__['name'] = name
     __args__['order'] = order
     __args__['status'] = status
+    __args__['types'] = types
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
     return __ret__.apply(lambda __response__: GetZonesResult(
@@ -221,4 +235,5 @@ def get_zones_output(account: pulumi.Input[Optional[Optional[Union['GetZonesAcco
         name=pulumi.get(__response__, 'name'),
         order=pulumi.get(__response__, 'order'),
         results=pulumi.get(__response__, 'results'),
-        status=pulumi.get(__response__, 'status')))
+        status=pulumi.get(__response__, 'status'),
+        types=pulumi.get(__response__, 'types')))

@@ -90,7 +90,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> Secret { get; private set; } = null!;
 
         /// <summary>
-        /// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "WordList".
+        /// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "WordList".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -104,6 +104,9 @@ namespace Pulumi.Cloudflare
         [Output("uploadStatus")]
         public Output<string> UploadStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// A Predefined AI prompt classification topic entry.
+        /// </summary>
         [Output("variant")]
         public Output<Outputs.ZeroTrustDlpCustomEntryVariant> Variant { get; private set; } = null!;
 
@@ -226,7 +229,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Secret { get; set; }
 
         /// <summary>
-        /// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "WordList".
+        /// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "WordList".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -240,6 +243,9 @@ namespace Pulumi.Cloudflare
         [Input("uploadStatus")]
         public Input<string>? UploadStatus { get; set; }
 
+        /// <summary>
+        /// A Predefined AI prompt classification topic entry.
+        /// </summary>
         [Input("variant")]
         public Input<Inputs.ZeroTrustDlpCustomEntryVariantGetArgs>? Variant { get; set; }
 

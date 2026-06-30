@@ -59,7 +59,7 @@ type LookupCustomOriginTrustStoresArgs struct {
 	Limit *int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Offset the results
+	// Offset the results.
 	Offset *int `pulumi:"offset"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
@@ -73,7 +73,7 @@ type LookupCustomOriginTrustStoresResult struct {
 	Limit *int `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Offset the results
+	// Offset the results.
 	Offset *int `pulumi:"offset"`
 	// The items returned by the data source
 	Results []GetCustomOriginTrustStoresResult `pulumi:"results"`
@@ -96,7 +96,7 @@ type LookupCustomOriginTrustStoresOutputArgs struct {
 	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Offset the results
+	// Offset the results.
 	Offset pulumi.IntPtrInput `pulumi:"offset"`
 	// Identifier.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
@@ -136,7 +136,7 @@ func (o LookupCustomOriginTrustStoresResultOutput) MaxItems() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v LookupCustomOriginTrustStoresResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// Offset the results
+// Offset the results.
 func (o LookupCustomOriginTrustStoresResultOutput) Offset() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupCustomOriginTrustStoresResult) *int { return v.Offset }).(pulumi.IntPtrOutput)
 }
