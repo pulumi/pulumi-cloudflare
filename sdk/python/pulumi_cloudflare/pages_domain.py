@@ -21,20 +21,31 @@ __all__ = ['PagesDomainArgs', 'PagesDomain']
 @pulumi.input_type
 class PagesDomainArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 project_name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 project_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PagesDomain resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: The domain name.
         :param pulumi.Input[_builtins.str] project_name: Name of the project.
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project_name", project_name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -59,18 +70,6 @@ class PagesDomainArgs:
     @project_name.setter
     def project_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
@@ -327,6 +326,8 @@ class PagesDomain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PagesDomainArgs.__new__(PagesDomainArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -392,7 +393,7 @@ class PagesDomain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

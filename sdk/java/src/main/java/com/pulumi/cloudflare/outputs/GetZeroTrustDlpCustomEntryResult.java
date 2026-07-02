@@ -42,7 +42,7 @@ public final class GetZeroTrustDlpCustomEntryResult {
     private List<GetZeroTrustDlpCustomEntryProfile> profiles;
     private Boolean secret;
     /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     private String type;
@@ -52,6 +52,10 @@ public final class GetZeroTrustDlpCustomEntryResult {
      * 
      */
     private String uploadStatus;
+    /**
+     * @return A Predefined AI prompt classification topic entry.
+     * 
+     */
     private GetZeroTrustDlpCustomEntryVariant variant;
     private String wordList;
 
@@ -106,7 +110,7 @@ public final class GetZeroTrustDlpCustomEntryResult {
         return this.secret;
     }
     /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     public String type() {
@@ -122,6 +126,10 @@ public final class GetZeroTrustDlpCustomEntryResult {
     public String uploadStatus() {
         return this.uploadStatus;
     }
+    /**
+     * @return A Predefined AI prompt classification topic entry.
+     * 
+     */
     public GetZeroTrustDlpCustomEntryVariant variant() {
         return this.variant;
     }

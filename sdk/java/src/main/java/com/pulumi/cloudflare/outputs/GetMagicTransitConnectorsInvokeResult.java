@@ -21,6 +21,12 @@ public final class GetMagicTransitConnectorsInvokeResult {
      */
     private @Nullable String accountId;
     /**
+     * @return Filter connectors by device type.
+     * Available values: &#34;MANAGED&#34;, &#34;LICENSED&#34;.
+     * 
+     */
+    private @Nullable String deviceType;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -43,6 +49,14 @@ public final class GetMagicTransitConnectorsInvokeResult {
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+    /**
+     * @return Filter connectors by device type.
+     * Available values: &#34;MANAGED&#34;, &#34;LICENSED&#34;.
+     * 
+     */
+    public Optional<String> deviceType() {
+        return Optional.ofNullable(this.deviceType);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -76,6 +90,7 @@ public final class GetMagicTransitConnectorsInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
+        private @Nullable String deviceType;
         private String id;
         private @Nullable Integer maxItems;
         private List<GetMagicTransitConnectorsResult> results;
@@ -83,6 +98,7 @@ public final class GetMagicTransitConnectorsInvokeResult {
         public Builder(GetMagicTransitConnectorsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.deviceType = defaults.deviceType;
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
@@ -92,6 +108,12 @@ public final class GetMagicTransitConnectorsInvokeResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deviceType(@Nullable String deviceType) {
+
+            this.deviceType = deviceType;
             return this;
         }
         @CustomType.Setter
@@ -122,6 +144,7 @@ public final class GetMagicTransitConnectorsInvokeResult {
         public GetMagicTransitConnectorsInvokeResult build() {
             final var _resultValue = new GetMagicTransitConnectorsInvokeResult();
             _resultValue.accountId = accountId;
+            _resultValue.deviceType = deviceType;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;

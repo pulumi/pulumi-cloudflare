@@ -36,6 +36,13 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             Steps = 1,
     ///         },
+    ///         Schedules = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkflowScheduleArgs
+    ///             {
+    ///                 Cron = "x",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -51,7 +58,7 @@ namespace Pulumi.Cloudflare
     public partial class Workflow : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("className")]
         public Output<string> ClassName { get; private set; } = null!;
@@ -73,6 +80,9 @@ namespace Pulumi.Cloudflare
 
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("schedules")]
+        public Output<ImmutableArray<Outputs.WorkflowSchedule>> Schedules { get; private set; } = null!;
 
         [Output("scriptName")]
         public Output<string> ScriptName { get; private set; } = null!;
@@ -135,14 +145,22 @@ namespace Pulumi.Cloudflare
 
     public sealed class WorkflowArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("className", required: true)]
         public Input<string> ClassName { get; set; } = null!;
 
         [Input("limits")]
         public Input<Inputs.WorkflowLimitsArgs>? Limits { get; set; }
+
+        [Input("schedules")]
+        private InputList<Inputs.WorkflowScheduleArgs>? _schedules;
+        public InputList<Inputs.WorkflowScheduleArgs> Schedules
+        {
+            get => _schedules ?? (_schedules = new InputList<Inputs.WorkflowScheduleArgs>());
+            set => _schedules = value;
+        }
 
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
@@ -181,6 +199,14 @@ namespace Pulumi.Cloudflare
 
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("schedules")]
+        private InputList<Inputs.WorkflowScheduleGetArgs>? _schedules;
+        public InputList<Inputs.WorkflowScheduleGetArgs> Schedules
+        {
+            get => _schedules ?? (_schedules = new InputList<Inputs.WorkflowScheduleGetArgs>());
+            set => _schedules = value;
+        }
 
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }

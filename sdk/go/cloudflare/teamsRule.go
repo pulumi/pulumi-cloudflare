@@ -180,7 +180,7 @@ import (
 type TeamsRule struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    pulumi.StringOutput `pulumi:"action"`
@@ -229,6 +229,9 @@ func NewTeamsRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Action == nil {
 		return nil, errors.New("invalid value for required argument 'Action'")
 	}
@@ -354,7 +357,7 @@ func (TeamsRuleState) ElementType() reflect.Type {
 }
 
 type teamsRuleArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action string `pulumi:"action"`
@@ -384,7 +387,7 @@ type teamsRuleArgs struct {
 
 // The set of arguments for constructing a TeamsRule resource.
 type TeamsRuleArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action pulumi.StringInput
@@ -499,8 +502,8 @@ func (o TeamsRuleOutput) ToTeamsRuleOutputWithContext(ctx context.Context) Teams
 	return o
 }
 
-func (o TeamsRuleOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TeamsRule) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o TeamsRuleOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.

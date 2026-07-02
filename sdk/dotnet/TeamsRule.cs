@@ -198,7 +198,7 @@ namespace Pulumi.Cloudflare
     public partial class TeamsRule : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
@@ -365,8 +365,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsRuleArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.

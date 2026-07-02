@@ -109,7 +109,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityImpersonationRegistriesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
@@ -128,7 +128,7 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "name", "email", "CreatedAt".
         /// </summary>
         [Input("order")]
@@ -141,10 +141,7 @@ namespace Pulumi.Cloudflare
         public string? Provenance { get; set; }
 
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         [Input("search")]
         public string? Search { get; set; }
@@ -158,7 +155,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityImpersonationRegistriesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -177,7 +174,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "name", "email", "CreatedAt".
         /// </summary>
         [Input("order")]
@@ -190,10 +187,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Provenance { get; set; }
 
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
@@ -209,7 +203,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetEmailSecurityImpersonationRegistriesResult
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
@@ -226,7 +220,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "name", "email", "CreatedAt".
         /// </summary>
         public readonly string? Order;
@@ -239,10 +233,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEmailSecurityImpersonationRegistriesResultResult> Results;
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         public readonly string? Search;
 

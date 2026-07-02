@@ -89,7 +89,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public EmailRoutingSettings(string name, EmailRoutingSettingsArgs? args = null, CustomResourceOptions? options = null)
+        public EmailRoutingSettings(string name, EmailRoutingSettingsArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/emailRoutingSettings:EmailRoutingSettings", name, args ?? new EmailRoutingSettingsArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -140,8 +140,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public EmailRoutingSettingsArgs()
         {

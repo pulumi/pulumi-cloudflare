@@ -47,7 +47,7 @@ export function getEmailSecurityBlockSenders(args?: GetEmailSecurityBlockSenders
  */
 export interface GetEmailSecurityBlockSendersArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: string;
     /**
@@ -60,20 +60,21 @@ export interface GetEmailSecurityBlockSendersArgs {
      */
     maxItems?: number;
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: "pattern", "createdAt".
      */
     order?: string;
+    /**
+     * Filter by pattern value.
+     */
     pattern?: string;
     /**
+     * Filter by pattern type.
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     patternType?: string;
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      */
     search?: string;
 }
@@ -83,7 +84,7 @@ export interface GetEmailSecurityBlockSendersArgs {
  */
 export interface GetEmailSecurityBlockSendersResult {
     /**
-     * Account Identifier
+     * Identifier.
      */
     readonly accountId?: string;
     /**
@@ -100,12 +101,16 @@ export interface GetEmailSecurityBlockSendersResult {
      */
     readonly maxItems?: number;
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: "pattern", "createdAt".
      */
     readonly order?: string;
+    /**
+     * Filter by pattern value.
+     */
     readonly pattern?: string;
     /**
+     * Filter by pattern type.
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     readonly patternType?: string;
@@ -114,10 +119,7 @@ export interface GetEmailSecurityBlockSendersResult {
      */
     readonly results: outputs.GetEmailSecurityBlockSendersResult[];
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      */
     readonly search?: string;
 }
@@ -162,7 +164,7 @@ export function getEmailSecurityBlockSendersOutput(args?: GetEmailSecurityBlockS
  */
 export interface GetEmailSecurityBlockSendersOutputArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
@@ -175,20 +177,21 @@ export interface GetEmailSecurityBlockSendersOutputArgs {
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: "pattern", "createdAt".
      */
     order?: pulumi.Input<string | undefined>;
+    /**
+     * Filter by pattern value.
+     */
     pattern?: pulumi.Input<string | undefined>;
     /**
+     * Filter by pattern type.
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     patternType?: pulumi.Input<string | undefined>;
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      */
     search?: pulumi.Input<string | undefined>;
 }

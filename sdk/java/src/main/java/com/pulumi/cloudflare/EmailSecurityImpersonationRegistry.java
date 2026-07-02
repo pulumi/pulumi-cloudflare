@@ -68,24 +68,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry")
 public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.CustomResource {
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     @Export(name="comments", refs={String.class}, tree="[0]")
-    private Output<String> comments;
+    private Output</* @Nullable */ String> comments;
 
-    public Output<String> comments() {
-        return this.comments;
+    public Output<Optional<String>> comments() {
+        return Codegen.optional(this.comments);
     }
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
@@ -94,16 +94,16 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
         return this.createdAt;
     }
     @Export(name="directoryId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> directoryId;
+    private Output</* @Nullable */ Integer> directoryId;
 
-    public Output<Integer> directoryId() {
-        return this.directoryId;
+    public Output<Optional<Integer>> directoryId() {
+        return Codegen.optional(this.directoryId);
     }
     @Export(name="directoryNodeId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> directoryNodeId;
+    private Output</* @Nullable */ Integer> directoryNodeId;
 
-    public Output<Integer> directoryNodeId() {
-        return this.directoryNodeId;
+    public Output<Optional<Integer>> directoryNodeId() {
+        return Codegen.optional(this.directoryNodeId);
     }
     @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
@@ -118,10 +118,10 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
      */
     @Deprecated /* This attribute is deprecated. */
     @Export(name="externalDirectoryNodeId", refs={String.class}, tree="[0]")
-    private Output<String> externalDirectoryNodeId;
+    private Output</* @Nullable */ String> externalDirectoryNodeId;
 
-    public Output<String> externalDirectoryNodeId() {
-        return this.externalDirectoryNodeId;
+    public Output<Optional<String>> externalDirectoryNodeId() {
+        return Codegen.optional(this.externalDirectoryNodeId);
     }
     @Export(name="isEmailRegex", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isEmailRegex;
@@ -129,11 +129,29 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
     public Output<Boolean> isEmailRegex() {
         return this.isEmailRegex;
     }
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="lastModified", refs={String.class}, tree="[0]")
     private Output<String> lastModified;
 
+    /**
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     */
     public Output<String> lastModified() {
         return this.lastModified;
+    }
+    @Export(name="modifiedAt", refs={String.class}, tree="[0]")
+    private Output<String> modifiedAt;
+
+    public Output<String> modifiedAt() {
+        return this.modifiedAt;
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -141,11 +159,19 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
     @Export(name="provenance", refs={String.class}, tree="[0]")
-    private Output<String> provenance;
+    private Output</* @Nullable */ String> provenance;
 
-    public Output<String> provenance() {
-        return this.provenance;
+    /**
+     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
+    public Output<Optional<String>> provenance() {
+        return Codegen.optional(this.provenance);
     }
 
     /**

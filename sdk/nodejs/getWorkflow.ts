@@ -59,6 +59,7 @@ export interface GetWorkflowResult {
     readonly instances: outputs.GetWorkflowInstances;
     readonly modifiedOn: string;
     readonly name: string;
+    readonly schedules: outputs.GetWorkflowSchedule[];
     readonly scriptName: string;
     readonly triggeredOn: string;
     readonly workflowName?: string;

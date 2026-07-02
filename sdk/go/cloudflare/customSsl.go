@@ -158,7 +158,7 @@ type CustomSsl struct {
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewCustomSsl registers a new resource with the given unique name, arguments, and options.
@@ -173,6 +173,9 @@ func NewCustomSsl(ctx *pulumi.Context,
 	}
 	if args.PrivateKey == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateKey'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	if args.PrivateKey != nil {
 		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringInput)
@@ -321,7 +324,7 @@ type customSslArgs struct {
 	// Available values: "legacy*custom", "sniCustom".
 	Type *string `pulumi:"type"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a CustomSsl resource.
@@ -347,7 +350,7 @@ type CustomSslArgs struct {
 	// Available values: "legacy*custom", "sniCustom".
 	Type pulumi.StringPtrInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (CustomSslArgs) ElementType() reflect.Type {
@@ -533,8 +536,8 @@ func (o CustomSslOutput) UploadedOn() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o CustomSslOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomSsl) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o CustomSslOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type CustomSslArrayOutput struct{ *pulumi.OutputState }

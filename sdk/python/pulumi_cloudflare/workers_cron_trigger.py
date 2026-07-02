@@ -21,19 +21,30 @@ __all__ = ['WorkersCronTriggerArgs', 'WorkersCronTrigger']
 @pulumi.input_type
 class WorkersCronTriggerArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  schedules: pulumi.Input[Sequence[pulumi.Input['WorkersCronTriggerScheduleArgs']]],
-                 script_name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 script_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WorkersCronTrigger resource.
 
-        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "schedules", schedules)
         pulumi.set(__self__, "script_name", script_name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -55,18 +66,6 @@ class WorkersCronTriggerArgs:
     @script_name.setter
     def script_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "script_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
@@ -224,6 +223,8 @@ class WorkersCronTrigger(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkersCronTriggerArgs.__new__(WorkersCronTriggerArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if schedules is None and not opts.urn:
                 raise TypeError("Missing required property 'schedules'")
@@ -267,7 +268,7 @@ class WorkersCronTrigger(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

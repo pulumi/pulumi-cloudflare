@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int? Limit;
         /// <summary>
-        /// Offset the results
+        /// Offset the results.
         /// </summary>
         public readonly int? Offset;
         /// <summary>

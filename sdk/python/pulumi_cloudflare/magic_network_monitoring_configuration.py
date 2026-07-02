@@ -21,8 +21,8 @@ __all__ = ['MagicNetworkMonitoringConfigurationArgs', 'MagicNetworkMonitoringCon
 @pulumi.input_type
 class MagicNetworkMonitoringConfigurationArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  default_sampling: pulumi.Input[Optional[_builtins.float]] = None,
                  router_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  warp_devices: pulumi.Input[Optional[Sequence[pulumi.Input['MagicNetworkMonitoringConfigurationWarpDeviceArgs']]]] = None):
@@ -32,15 +32,23 @@ class MagicNetworkMonitoringConfigurationArgs:
         :param pulumi.Input[_builtins.str] name: The account name.
         :param pulumi.Input[_builtins.float] default_sampling: Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if default_sampling is not None:
             pulumi.set(__self__, "default_sampling", default_sampling)
         if router_ips is not None:
             pulumi.set(__self__, "router_ips", router_ips)
         if warp_devices is not None:
             pulumi.set(__self__, "warp_devices", warp_devices)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -53,15 +61,6 @@ class MagicNetworkMonitoringConfigurationArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSampling")
@@ -239,6 +238,8 @@ class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MagicNetworkMonitoringConfigurationArgs.__new__(MagicNetworkMonitoringConfigurationArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["default_sampling"] = default_sampling
             if name is None and not opts.urn:
@@ -284,7 +285,7 @@ class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

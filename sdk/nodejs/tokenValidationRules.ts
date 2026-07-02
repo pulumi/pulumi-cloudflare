@@ -114,7 +114,7 @@ export class TokenValidationRules extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a TokenValidationRules resource with the given unique name, arguments, and options.
@@ -158,6 +158,9 @@ export class TokenValidationRules extends pulumi.CustomResource {
             }
             if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["action"] = args?.action;
             resourceInputs["description"] = args?.description;
@@ -256,5 +259,5 @@ export interface TokenValidationRulesArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

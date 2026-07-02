@@ -50,7 +50,7 @@ type AccessTag struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The name of the tag
 	Name pulumi.StringOutput `pulumi:"name"`
 }
@@ -62,6 +62,9 @@ func NewAccessTag(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -113,7 +116,7 @@ func (AccessTagState) ElementType() reflect.Type {
 
 type accessTagArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The name of the tag
 	Name string `pulumi:"name"`
 }
@@ -121,7 +124,7 @@ type accessTagArgs struct {
 // The set of arguments for constructing a AccessTag resource.
 type AccessTagArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// The name of the tag
 	Name pulumi.StringInput
 }
@@ -214,8 +217,8 @@ func (o AccessTagOutput) ToAccessTagOutputWithContext(ctx context.Context) Acces
 }
 
 // Identifier.
-func (o AccessTagOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessTag) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o AccessTagOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessTag) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The name of the tag

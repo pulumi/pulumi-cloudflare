@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `MCP Portals Read`
+// - `MCP Portals Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -34,6 +39,8 @@ import (
 //				Name:                                 pulumi.String("My MCP Server"),
 //				AuthCredentials:                      pulumi.String("auth_credentials"),
 //				Description:                          pulumi.String("This is one remote mcp server"),
+//				IsSharedOauthCallbackEnabled:         pulumi.Bool(true),
+//				SecureWebGateway:                     pulumi.Bool(false),
 //				UpdatedPrompts: cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArray{
 //					&cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs{
 //						Name:        pulumi.String("name"),
@@ -68,25 +75,30 @@ import (
 type ZeroTrustAccessAiControlsMcpServer struct {
 	pulumi.CustomResourceState
 
-	AccountId       pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId       pulumi.StringOutput    `pulumi:"accountId"`
 	AuthCredentials pulumi.StringPtrOutput `pulumi:"authCredentials"`
 	// Available values: "oauth", "bearer", "unauthenticated".
-	AuthType           pulumi.StringOutput                                        `pulumi:"authType"`
-	CreatedAt          pulumi.StringOutput                                        `pulumi:"createdAt"`
-	CreatedBy          pulumi.StringOutput                                        `pulumi:"createdBy"`
-	Description        pulumi.StringPtrOutput                                     `pulumi:"description"`
-	Error              pulumi.StringOutput                                        `pulumi:"error"`
-	Hostname           pulumi.StringOutput                                        `pulumi:"hostname"`
-	LastSuccessfulSync pulumi.StringOutput                                        `pulumi:"lastSuccessfulSync"`
-	LastSynced         pulumi.StringOutput                                        `pulumi:"lastSynced"`
-	ModifiedAt         pulumi.StringOutput                                        `pulumi:"modifiedAt"`
-	ModifiedBy         pulumi.StringOutput                                        `pulumi:"modifiedBy"`
-	Name               pulumi.StringOutput                                        `pulumi:"name"`
-	Prompts            pulumi.StringMapArrayOutput                                `pulumi:"prompts"`
-	Status             pulumi.StringOutput                                        `pulumi:"status"`
-	Tools              pulumi.StringMapArrayOutput                                `pulumi:"tools"`
-	UpdatedPrompts     ZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayOutput `pulumi:"updatedPrompts"`
-	UpdatedTools       ZeroTrustAccessAiControlsMcpServerUpdatedToolArrayOutput   `pulumi:"updatedTools"`
+	AuthType     pulumi.StringOutput                                  `pulumi:"authType"`
+	CreatedAt    pulumi.StringOutput                                  `pulumi:"createdAt"`
+	CreatedBy    pulumi.StringOutput                                  `pulumi:"createdBy"`
+	Description  pulumi.StringPtrOutput                               `pulumi:"description"`
+	Error        pulumi.StringOutput                                  `pulumi:"error"`
+	ErrorDetails ZeroTrustAccessAiControlsMcpServerErrorDetailsOutput `pulumi:"errorDetails"`
+	Hostname     pulumi.StringOutput                                  `pulumi:"hostname"`
+	// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+	IsSharedOauthCallbackEnabled pulumi.BoolPtrOutput        `pulumi:"isSharedOauthCallbackEnabled"`
+	LastSuccessfulSync           pulumi.StringOutput         `pulumi:"lastSuccessfulSync"`
+	LastSynced                   pulumi.StringOutput         `pulumi:"lastSynced"`
+	ModifiedAt                   pulumi.StringOutput         `pulumi:"modifiedAt"`
+	ModifiedBy                   pulumi.StringOutput         `pulumi:"modifiedBy"`
+	Name                         pulumi.StringOutput         `pulumi:"name"`
+	Prompts                      pulumi.StringMapArrayOutput `pulumi:"prompts"`
+	// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+	SecureWebGateway pulumi.BoolOutput                                          `pulumi:"secureWebGateway"`
+	Status           pulumi.StringOutput                                        `pulumi:"status"`
+	Tools            pulumi.StringMapArrayOutput                                `pulumi:"tools"`
+	UpdatedPrompts   ZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayOutput `pulumi:"updatedPrompts"`
+	UpdatedTools     ZeroTrustAccessAiControlsMcpServerUpdatedToolArrayOutput   `pulumi:"updatedTools"`
 	// server id
 	ZeroTrustAccessAiControlsMcpServerId pulumi.StringOutput `pulumi:"zeroTrustAccessAiControlsMcpServerId"`
 }
@@ -98,6 +110,9 @@ func NewZeroTrustAccessAiControlsMcpServer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.AuthType == nil {
 		return nil, errors.New("invalid value for required argument 'AuthType'")
 	}
@@ -143,22 +158,27 @@ type zeroTrustAccessAiControlsMcpServerState struct {
 	AccountId       *string `pulumi:"accountId"`
 	AuthCredentials *string `pulumi:"authCredentials"`
 	// Available values: "oauth", "bearer", "unauthenticated".
-	AuthType           *string                                           `pulumi:"authType"`
-	CreatedAt          *string                                           `pulumi:"createdAt"`
-	CreatedBy          *string                                           `pulumi:"createdBy"`
-	Description        *string                                           `pulumi:"description"`
-	Error              *string                                           `pulumi:"error"`
-	Hostname           *string                                           `pulumi:"hostname"`
-	LastSuccessfulSync *string                                           `pulumi:"lastSuccessfulSync"`
-	LastSynced         *string                                           `pulumi:"lastSynced"`
-	ModifiedAt         *string                                           `pulumi:"modifiedAt"`
-	ModifiedBy         *string                                           `pulumi:"modifiedBy"`
-	Name               *string                                           `pulumi:"name"`
-	Prompts            []map[string]string                               `pulumi:"prompts"`
-	Status             *string                                           `pulumi:"status"`
-	Tools              []map[string]string                               `pulumi:"tools"`
-	UpdatedPrompts     []ZeroTrustAccessAiControlsMcpServerUpdatedPrompt `pulumi:"updatedPrompts"`
-	UpdatedTools       []ZeroTrustAccessAiControlsMcpServerUpdatedTool   `pulumi:"updatedTools"`
+	AuthType     *string                                         `pulumi:"authType"`
+	CreatedAt    *string                                         `pulumi:"createdAt"`
+	CreatedBy    *string                                         `pulumi:"createdBy"`
+	Description  *string                                         `pulumi:"description"`
+	Error        *string                                         `pulumi:"error"`
+	ErrorDetails *ZeroTrustAccessAiControlsMcpServerErrorDetails `pulumi:"errorDetails"`
+	Hostname     *string                                         `pulumi:"hostname"`
+	// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+	IsSharedOauthCallbackEnabled *bool               `pulumi:"isSharedOauthCallbackEnabled"`
+	LastSuccessfulSync           *string             `pulumi:"lastSuccessfulSync"`
+	LastSynced                   *string             `pulumi:"lastSynced"`
+	ModifiedAt                   *string             `pulumi:"modifiedAt"`
+	ModifiedBy                   *string             `pulumi:"modifiedBy"`
+	Name                         *string             `pulumi:"name"`
+	Prompts                      []map[string]string `pulumi:"prompts"`
+	// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+	SecureWebGateway *bool                                             `pulumi:"secureWebGateway"`
+	Status           *string                                           `pulumi:"status"`
+	Tools            []map[string]string                               `pulumi:"tools"`
+	UpdatedPrompts   []ZeroTrustAccessAiControlsMcpServerUpdatedPrompt `pulumi:"updatedPrompts"`
+	UpdatedTools     []ZeroTrustAccessAiControlsMcpServerUpdatedTool   `pulumi:"updatedTools"`
 	// server id
 	ZeroTrustAccessAiControlsMcpServerId *string `pulumi:"zeroTrustAccessAiControlsMcpServerId"`
 }
@@ -167,22 +187,27 @@ type ZeroTrustAccessAiControlsMcpServerState struct {
 	AccountId       pulumi.StringPtrInput
 	AuthCredentials pulumi.StringPtrInput
 	// Available values: "oauth", "bearer", "unauthenticated".
-	AuthType           pulumi.StringPtrInput
-	CreatedAt          pulumi.StringPtrInput
-	CreatedBy          pulumi.StringPtrInput
-	Description        pulumi.StringPtrInput
-	Error              pulumi.StringPtrInput
-	Hostname           pulumi.StringPtrInput
-	LastSuccessfulSync pulumi.StringPtrInput
-	LastSynced         pulumi.StringPtrInput
-	ModifiedAt         pulumi.StringPtrInput
-	ModifiedBy         pulumi.StringPtrInput
-	Name               pulumi.StringPtrInput
-	Prompts            pulumi.StringMapArrayInput
-	Status             pulumi.StringPtrInput
-	Tools              pulumi.StringMapArrayInput
-	UpdatedPrompts     ZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayInput
-	UpdatedTools       ZeroTrustAccessAiControlsMcpServerUpdatedToolArrayInput
+	AuthType     pulumi.StringPtrInput
+	CreatedAt    pulumi.StringPtrInput
+	CreatedBy    pulumi.StringPtrInput
+	Description  pulumi.StringPtrInput
+	Error        pulumi.StringPtrInput
+	ErrorDetails ZeroTrustAccessAiControlsMcpServerErrorDetailsPtrInput
+	Hostname     pulumi.StringPtrInput
+	// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+	IsSharedOauthCallbackEnabled pulumi.BoolPtrInput
+	LastSuccessfulSync           pulumi.StringPtrInput
+	LastSynced                   pulumi.StringPtrInput
+	ModifiedAt                   pulumi.StringPtrInput
+	ModifiedBy                   pulumi.StringPtrInput
+	Name                         pulumi.StringPtrInput
+	Prompts                      pulumi.StringMapArrayInput
+	// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+	SecureWebGateway pulumi.BoolPtrInput
+	Status           pulumi.StringPtrInput
+	Tools            pulumi.StringMapArrayInput
+	UpdatedPrompts   ZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayInput
+	UpdatedTools     ZeroTrustAccessAiControlsMcpServerUpdatedToolArrayInput
 	// server id
 	ZeroTrustAccessAiControlsMcpServerId pulumi.StringPtrInput
 }
@@ -192,30 +217,38 @@ func (ZeroTrustAccessAiControlsMcpServerState) ElementType() reflect.Type {
 }
 
 type zeroTrustAccessAiControlsMcpServerArgs struct {
-	AccountId       *string `pulumi:"accountId"`
+	AccountId       string  `pulumi:"accountId"`
 	AuthCredentials *string `pulumi:"authCredentials"`
 	// Available values: "oauth", "bearer", "unauthenticated".
-	AuthType       string                                            `pulumi:"authType"`
-	Description    *string                                           `pulumi:"description"`
-	Hostname       string                                            `pulumi:"hostname"`
-	Name           string                                            `pulumi:"name"`
-	UpdatedPrompts []ZeroTrustAccessAiControlsMcpServerUpdatedPrompt `pulumi:"updatedPrompts"`
-	UpdatedTools   []ZeroTrustAccessAiControlsMcpServerUpdatedTool   `pulumi:"updatedTools"`
+	AuthType    string  `pulumi:"authType"`
+	Description *string `pulumi:"description"`
+	Hostname    string  `pulumi:"hostname"`
+	// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+	IsSharedOauthCallbackEnabled *bool  `pulumi:"isSharedOauthCallbackEnabled"`
+	Name                         string `pulumi:"name"`
+	// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+	SecureWebGateway *bool                                             `pulumi:"secureWebGateway"`
+	UpdatedPrompts   []ZeroTrustAccessAiControlsMcpServerUpdatedPrompt `pulumi:"updatedPrompts"`
+	UpdatedTools     []ZeroTrustAccessAiControlsMcpServerUpdatedTool   `pulumi:"updatedTools"`
 	// server id
 	ZeroTrustAccessAiControlsMcpServerId string `pulumi:"zeroTrustAccessAiControlsMcpServerId"`
 }
 
 // The set of arguments for constructing a ZeroTrustAccessAiControlsMcpServer resource.
 type ZeroTrustAccessAiControlsMcpServerArgs struct {
-	AccountId       pulumi.StringPtrInput
+	AccountId       pulumi.StringInput
 	AuthCredentials pulumi.StringPtrInput
 	// Available values: "oauth", "bearer", "unauthenticated".
-	AuthType       pulumi.StringInput
-	Description    pulumi.StringPtrInput
-	Hostname       pulumi.StringInput
-	Name           pulumi.StringInput
-	UpdatedPrompts ZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayInput
-	UpdatedTools   ZeroTrustAccessAiControlsMcpServerUpdatedToolArrayInput
+	AuthType    pulumi.StringInput
+	Description pulumi.StringPtrInput
+	Hostname    pulumi.StringInput
+	// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+	IsSharedOauthCallbackEnabled pulumi.BoolPtrInput
+	Name                         pulumi.StringInput
+	// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+	SecureWebGateway pulumi.BoolPtrInput
+	UpdatedPrompts   ZeroTrustAccessAiControlsMcpServerUpdatedPromptArrayInput
+	UpdatedTools     ZeroTrustAccessAiControlsMcpServerUpdatedToolArrayInput
 	// server id
 	ZeroTrustAccessAiControlsMcpServerId pulumi.StringInput
 }
@@ -307,8 +340,8 @@ func (o ZeroTrustAccessAiControlsMcpServerOutput) ToZeroTrustAccessAiControlsMcp
 	return o
 }
 
-func (o ZeroTrustAccessAiControlsMcpServerOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessAiControlsMcpServerOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustAccessAiControlsMcpServerOutput) AuthCredentials() pulumi.StringPtrOutput {
@@ -336,8 +369,21 @@ func (o ZeroTrustAccessAiControlsMcpServerOutput) Error() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.StringOutput { return v.Error }).(pulumi.StringOutput)
 }
 
+func (o ZeroTrustAccessAiControlsMcpServerOutput) ErrorDetails() ZeroTrustAccessAiControlsMcpServerErrorDetailsOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) ZeroTrustAccessAiControlsMcpServerErrorDetailsOutput {
+		return v.ErrorDetails
+	}).(ZeroTrustAccessAiControlsMcpServerErrorDetailsOutput)
+}
+
 func (o ZeroTrustAccessAiControlsMcpServerOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+func (o ZeroTrustAccessAiControlsMcpServerOutput) IsSharedOauthCallbackEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.BoolPtrOutput {
+		return v.IsSharedOauthCallbackEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ZeroTrustAccessAiControlsMcpServerOutput) LastSuccessfulSync() pulumi.StringOutput {
@@ -362,6 +408,11 @@ func (o ZeroTrustAccessAiControlsMcpServerOutput) Name() pulumi.StringOutput {
 
 func (o ZeroTrustAccessAiControlsMcpServerOutput) Prompts() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.StringMapArrayOutput { return v.Prompts }).(pulumi.StringMapArrayOutput)
+}
+
+// Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+func (o ZeroTrustAccessAiControlsMcpServerOutput) SecureWebGateway() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpServer) pulumi.BoolOutput { return v.SecureWebGateway }).(pulumi.BoolOutput)
 }
 
 func (o ZeroTrustAccessAiControlsMcpServerOutput) Status() pulumi.StringOutput {

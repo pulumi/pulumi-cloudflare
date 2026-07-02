@@ -99,15 +99,15 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
      * Defines an identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Defines an identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private ZoneLockdownArgs() {}
@@ -270,7 +270,7 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -291,6 +291,9 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.urls == null) {
                 throw new MissingRequiredPropertyException("ZoneLockdownArgs", "urls");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ZoneLockdownArgs", "zoneId");
             }
             return $;
         }

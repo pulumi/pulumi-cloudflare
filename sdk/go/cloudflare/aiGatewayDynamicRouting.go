@@ -64,7 +64,7 @@ import (
 type AiGatewayDynamicRouting struct {
 	pulumi.CustomResourceState
 
-	AccountId  pulumi.StringPtrOutput                    `pulumi:"accountId"`
+	AccountId  pulumi.StringOutput                       `pulumi:"accountId"`
 	CreatedAt  pulumi.StringOutput                       `pulumi:"createdAt"`
 	Deployment AiGatewayDynamicRoutingDeploymentOutput   `pulumi:"deployment"`
 	Elements   AiGatewayDynamicRoutingElementArrayOutput `pulumi:"elements"`
@@ -83,6 +83,9 @@ func NewAiGatewayDynamicRouting(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Elements == nil {
 		return nil, errors.New("invalid value for required argument 'Elements'")
 	}
@@ -145,7 +148,7 @@ func (AiGatewayDynamicRoutingState) ElementType() reflect.Type {
 }
 
 type aiGatewayDynamicRoutingArgs struct {
-	AccountId *string                          `pulumi:"accountId"`
+	AccountId string                           `pulumi:"accountId"`
 	Elements  []AiGatewayDynamicRoutingElement `pulumi:"elements"`
 	GatewayId string                           `pulumi:"gatewayId"`
 	Name      string                           `pulumi:"name"`
@@ -153,7 +156,7 @@ type aiGatewayDynamicRoutingArgs struct {
 
 // The set of arguments for constructing a AiGatewayDynamicRouting resource.
 type AiGatewayDynamicRoutingArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	Elements  AiGatewayDynamicRoutingElementArrayInput
 	GatewayId pulumi.StringInput
 	Name      pulumi.StringInput
@@ -246,8 +249,8 @@ func (o AiGatewayDynamicRoutingOutput) ToAiGatewayDynamicRoutingOutputWithContex
 	return o
 }
 
-func (o AiGatewayDynamicRoutingOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AiGatewayDynamicRouting) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o AiGatewayDynamicRoutingOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiGatewayDynamicRouting) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o AiGatewayDynamicRoutingOutput) CreatedAt() pulumi.StringOutput {

@@ -102,8 +102,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
@@ -122,8 +122,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
@@ -144,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
         /// </summary>
@@ -251,7 +251,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetStreamResult(
-            string? accountId,
+            string accountId,
 
             ImmutableArray<string> allowedOrigins,
 

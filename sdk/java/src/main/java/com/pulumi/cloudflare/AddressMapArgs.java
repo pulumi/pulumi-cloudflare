@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.AddressMapMembershipArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -22,15 +23,15 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
      * Identifier of a Cloudflare account.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Identifier of a Cloudflare account.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -135,7 +136,7 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -258,6 +259,9 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AddressMapArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("AddressMapArgs", "accountId");
+            }
             return $;
         }
     }

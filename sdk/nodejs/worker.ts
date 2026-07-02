@@ -91,7 +91,7 @@ export class Worker extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * When the Worker was created.
      */
@@ -159,6 +159,9 @@ export class Worker extends pulumi.CustomResource {
             resourceInputs["updatedOn"] = state?.updatedOn;
         } else {
             const args = argsOrState as WorkerArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -236,7 +239,7 @@ export interface WorkerArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Whether logpush is enabled for the Worker.
      */

@@ -36,6 +36,8 @@ type LookupApiShieldOperationArgs struct {
 	Filter  *GetApiShieldOperationFilter `pulumi:"filter"`
 	// UUID.
 	OperationId *string `pulumi:"operationId"`
+	// When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+	WithSchemas *bool `pulumi:"withSchemas"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -58,6 +60,10 @@ type LookupApiShieldOperationResult struct {
 	Method string `pulumi:"method"`
 	// UUID.
 	OperationId string `pulumi:"operationId"`
+	// OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+	Schemas GetApiShieldOperationSchemas `pulumi:"schemas"`
+	// When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+	WithSchemas bool `pulumi:"withSchemas"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -78,6 +84,8 @@ type LookupApiShieldOperationOutputArgs struct {
 	Filter  GetApiShieldOperationFilterPtrInput `pulumi:"filter"`
 	// UUID.
 	OperationId pulumi.StringPtrInput `pulumi:"operationId"`
+	// When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+	WithSchemas pulumi.BoolPtrInput `pulumi:"withSchemas"`
 	// Identifier.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -142,6 +150,16 @@ func (o LookupApiShieldOperationResultOutput) Method() pulumi.StringOutput {
 // UUID.
 func (o LookupApiShieldOperationResultOutput) OperationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldOperationResult) string { return v.OperationId }).(pulumi.StringOutput)
+}
+
+// OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+func (o LookupApiShieldOperationResultOutput) Schemas() GetApiShieldOperationSchemasOutput {
+	return o.ApplyT(func(v LookupApiShieldOperationResult) GetApiShieldOperationSchemas { return v.Schemas }).(GetApiShieldOperationSchemasOutput)
+}
+
+// When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+func (o LookupApiShieldOperationResultOutput) WithSchemas() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupApiShieldOperationResult) bool { return v.WithSchemas }).(pulumi.BoolOutput)
 }
 
 // Identifier.

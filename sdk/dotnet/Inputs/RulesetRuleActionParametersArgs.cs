@@ -568,6 +568,12 @@ namespace Pulumi.Cloudflare.Inputs
             set => _values = value;
         }
 
+        /// <summary>
+        /// Controls how cached responses vary based on request headers. `Default` is required and applies to any Vary response header that does not have a per-header override.
+        /// </summary>
+        [Input("vary")]
+        public Input<Inputs.RulesetRuleActionParametersVaryArgs>? Vary { get; set; }
+
         public RulesetRuleActionParametersArgs()
         {
         }

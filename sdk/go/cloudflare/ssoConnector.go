@@ -55,7 +55,7 @@ type SsoConnector struct {
 	pulumi.CustomResourceState
 
 	// Account identifier tag.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Begin the verification process after creation
 	BeginVerification pulumi.BoolOutput `pulumi:"beginVerification"`
 	// Timestamp for the creation of the SSO connector
@@ -78,6 +78,9 @@ func NewSsoConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.EmailDomain == nil {
 		return nil, errors.New("invalid value for required argument 'EmailDomain'")
 	}
@@ -145,7 +148,7 @@ func (SsoConnectorState) ElementType() reflect.Type {
 
 type ssoConnectorArgs struct {
 	// Account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Begin the verification process after creation
 	BeginVerification *bool `pulumi:"beginVerification"`
 	// Email domain of the new SSO connector
@@ -159,7 +162,7 @@ type ssoConnectorArgs struct {
 // The set of arguments for constructing a SsoConnector resource.
 type SsoConnectorArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Begin the verification process after creation
 	BeginVerification pulumi.BoolPtrInput
 	// Email domain of the new SSO connector
@@ -258,8 +261,8 @@ func (o SsoConnectorOutput) ToSsoConnectorOutputWithContext(ctx context.Context)
 }
 
 // Account identifier tag.
-func (o SsoConnectorOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SsoConnector) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o SsoConnectorOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SsoConnector) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Begin the verification process after creation

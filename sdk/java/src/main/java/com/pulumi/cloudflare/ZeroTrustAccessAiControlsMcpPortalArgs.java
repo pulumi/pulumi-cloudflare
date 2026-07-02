@@ -19,11 +19,11 @@ public final class ZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.res
 
     public static final ZeroTrustAccessAiControlsMcpPortalArgs Empty = new ZeroTrustAccessAiControlsMcpPortalArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -130,7 +130,7 @@ public final class ZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.res
             $ = new ZeroTrustAccessAiControlsMcpPortalArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -243,6 +243,9 @@ public final class ZeroTrustAccessAiControlsMcpPortalArgs extends com.pulumi.res
         }
 
         public ZeroTrustAccessAiControlsMcpPortalArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessAiControlsMcpPortalArgs", "accountId");
+            }
             if ($.hostname == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustAccessAiControlsMcpPortalArgs", "hostname");
             }

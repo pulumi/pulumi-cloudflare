@@ -16,6 +16,11 @@ public final class GetSnippetListResult {
      */
     private String createdOn;
     /**
+     * @return Identify the snippet.
+     * 
+     */
+    private String id;
+    /**
      * @return Indicates when the snippet was last modified.
      * 
      */
@@ -33,6 +38,13 @@ public final class GetSnippetListResult {
      */
     public String createdOn() {
         return this.createdOn;
+    }
+    /**
+     * @return Identify the snippet.
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return Indicates when the snippet was last modified.
@@ -59,12 +71,14 @@ public final class GetSnippetListResult {
     @CustomType.Builder
     public static final class Builder {
         private String createdOn;
+        private String id;
         private String modifiedOn;
         private String snippetName;
         public Builder() {}
         public Builder(GetSnippetListResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdOn = defaults.createdOn;
+    	      this.id = defaults.id;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.snippetName = defaults.snippetName;
         }
@@ -75,6 +89,14 @@ public final class GetSnippetListResult {
               throw new MissingRequiredPropertyException("GetSnippetListResult", "createdOn");
             }
             this.createdOn = createdOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSnippetListResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -96,6 +118,7 @@ public final class GetSnippetListResult {
         public GetSnippetListResult build() {
             final var _resultValue = new GetSnippetListResult();
             _resultValue.createdOn = createdOn;
+            _resultValue.id = id;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.snippetName = snippetName;
             return _resultValue;

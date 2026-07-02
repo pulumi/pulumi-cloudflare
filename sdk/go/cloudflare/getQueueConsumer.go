@@ -32,7 +32,7 @@ func LookupQueueConsumer(ctx *pulumi.Context, args *LookupQueueConsumerArgs, opt
 // A collection of arguments for invoking getQueueConsumer.
 type LookupQueueConsumerArgs struct {
 	// A Resource identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A Resource identifier.
 	QueueId string `pulumi:"queueId"`
 }
@@ -40,7 +40,7 @@ type LookupQueueConsumerArgs struct {
 // A collection of values returned by getQueueConsumer.
 type LookupQueueConsumerResult struct {
 	// A Resource identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A Resource identifier.
 	ConsumerId string `pulumi:"consumerId"`
 	CreatedOn  string `pulumi:"createdOn"`
@@ -70,7 +70,7 @@ func LookupQueueConsumerOutput(ctx *pulumi.Context, args LookupQueueConsumerOutp
 // A collection of arguments for invoking getQueueConsumer.
 type LookupQueueConsumerOutputArgs struct {
 	// A Resource identifier.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A Resource identifier.
 	QueueId pulumi.StringInput `pulumi:"queueId"`
 }
@@ -95,8 +95,8 @@ func (o LookupQueueConsumerResultOutput) ToLookupQueueConsumerResultOutputWithCo
 }
 
 // A Resource identifier.
-func (o LookupQueueConsumerResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupQueueConsumerResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupQueueConsumerResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // A Resource identifier.

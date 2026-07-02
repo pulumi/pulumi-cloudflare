@@ -34,6 +34,12 @@ public final class WorkerScriptObservabilityTraces {
      * 
      */
     private @Nullable Boolean persist;
+    /**
+     * @return Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. &#34;authenticated&#34; (default) honors inbound trace context only when accompanied by a valid trace auth token. &#34;accept&#34; unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Available values: &#34;authenticated&#34;, &#34;accept&#34;.
+     * 
+     */
+    private @Nullable String propagationPolicy;
 
     private WorkerScriptObservabilityTraces() {}
     /**
@@ -64,6 +70,14 @@ public final class WorkerScriptObservabilityTraces {
     public Optional<Boolean> persist() {
         return Optional.ofNullable(this.persist);
     }
+    /**
+     * @return Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. &#34;authenticated&#34; (default) honors inbound trace context only when accompanied by a valid trace auth token. &#34;accept&#34; unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Available values: &#34;authenticated&#34;, &#34;accept&#34;.
+     * 
+     */
+    public Optional<String> propagationPolicy() {
+        return Optional.ofNullable(this.propagationPolicy);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -78,6 +92,7 @@ public final class WorkerScriptObservabilityTraces {
         private @Nullable Boolean enabled;
         private @Nullable Double headSamplingRate;
         private @Nullable Boolean persist;
+        private @Nullable String propagationPolicy;
         public Builder() {}
         public Builder(WorkerScriptObservabilityTraces defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,6 +100,7 @@ public final class WorkerScriptObservabilityTraces {
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
     	      this.persist = defaults.persist;
+    	      this.propagationPolicy = defaults.propagationPolicy;
         }
 
         @CustomType.Setter
@@ -114,12 +130,19 @@ public final class WorkerScriptObservabilityTraces {
             this.persist = persist;
             return this;
         }
+        @CustomType.Setter
+        public Builder propagationPolicy(@Nullable String propagationPolicy) {
+
+            this.propagationPolicy = propagationPolicy;
+            return this;
+        }
         public WorkerScriptObservabilityTraces build() {
             final var _resultValue = new WorkerScriptObservabilityTraces();
             _resultValue.destinations = destinations;
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
             _resultValue.persist = persist;
+            _resultValue.propagationPolicy = propagationPolicy;
             return _resultValue;
         }
     }

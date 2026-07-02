@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetEmailSecurityBlockSender(ctx, &cloudflare.LookupEmailSecurityBlockSenderArgs{
 //				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				PatternId: pulumi.IntRef(2402),
+//				PatternId: pulumi.StringRef("2402"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,27 +54,33 @@ func LookupEmailSecurityBlockSender(ctx *pulumi.Context, args *LookupEmailSecuri
 
 // A collection of arguments for invoking getEmailSecurityBlockSender.
 type LookupEmailSecurityBlockSenderArgs struct {
-	// Account Identifier
+	// Identifier.
 	AccountId *string                            `pulumi:"accountId"`
 	Filter    *GetEmailSecurityBlockSenderFilter `pulumi:"filter"`
-	// The unique identifier for the allow policy.
-	PatternId *int `pulumi:"patternId"`
+	// Blocked sender pattern identifier
+	PatternId *string `pulumi:"patternId"`
 }
 
 // A collection of values returned by getEmailSecurityBlockSender.
 type LookupEmailSecurityBlockSenderResult struct {
-	// Account Identifier
+	// Identifier.
 	AccountId *string                            `pulumi:"accountId"`
 	Comments  string                             `pulumi:"comments"`
 	CreatedAt string                             `pulumi:"createdAt"`
 	Filter    *GetEmailSecurityBlockSenderFilter `pulumi:"filter"`
-	// The unique identifier for the allow policy.
-	Id           int    `pulumi:"id"`
-	IsRegex      bool   `pulumi:"isRegex"`
+	// Blocked sender pattern identifier
+	Id      string `pulumi:"id"`
+	IsRegex bool   `pulumi:"isRegex"`
+	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+	//
+	// Deprecated: This attribute is deprecated.
 	LastModified string `pulumi:"lastModified"`
+	ModifiedAt   string `pulumi:"modifiedAt"`
 	Pattern      string `pulumi:"pattern"`
-	// The unique identifier for the allow policy.
-	PatternId *int `pulumi:"patternId"`
+	// Blocked sender pattern identifier
+	PatternId *string `pulumi:"patternId"`
+	// Type of pattern matching.
+	// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType string `pulumi:"patternType"`
 }
@@ -90,11 +96,11 @@ func LookupEmailSecurityBlockSenderOutput(ctx *pulumi.Context, args LookupEmailS
 
 // A collection of arguments for invoking getEmailSecurityBlockSender.
 type LookupEmailSecurityBlockSenderOutputArgs struct {
-	// Account Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput                     `pulumi:"accountId"`
 	Filter    GetEmailSecurityBlockSenderFilterPtrInput `pulumi:"filter"`
-	// The unique identifier for the allow policy.
-	PatternId pulumi.IntPtrInput `pulumi:"patternId"`
+	// Blocked sender pattern identifier
+	PatternId pulumi.StringPtrInput `pulumi:"patternId"`
 }
 
 func (LookupEmailSecurityBlockSenderOutputArgs) ElementType() reflect.Type {
@@ -116,7 +122,7 @@ func (o LookupEmailSecurityBlockSenderResultOutput) ToLookupEmailSecurityBlockSe
 	return o
 }
 
-// Account Identifier
+// Identifier.
 func (o LookupEmailSecurityBlockSenderResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -133,28 +139,37 @@ func (o LookupEmailSecurityBlockSenderResultOutput) Filter() GetEmailSecurityBlo
 	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) *GetEmailSecurityBlockSenderFilter { return v.Filter }).(GetEmailSecurityBlockSenderFilterPtrOutput)
 }
 
-// The unique identifier for the allow policy.
-func (o LookupEmailSecurityBlockSenderResultOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) int { return v.Id }).(pulumi.IntOutput)
+// Blocked sender pattern identifier
+func (o LookupEmailSecurityBlockSenderResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o LookupEmailSecurityBlockSenderResultOutput) IsRegex() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) bool { return v.IsRegex }).(pulumi.BoolOutput)
 }
 
+// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupEmailSecurityBlockSenderResultOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) string { return v.LastModified }).(pulumi.StringOutput)
+}
+
+func (o LookupEmailSecurityBlockSenderResultOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
 }
 
 func (o LookupEmailSecurityBlockSenderResultOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) string { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// The unique identifier for the allow policy.
-func (o LookupEmailSecurityBlockSenderResultOutput) PatternId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) *int { return v.PatternId }).(pulumi.IntPtrOutput)
+// Blocked sender pattern identifier
+func (o LookupEmailSecurityBlockSenderResultOutput) PatternId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) *string { return v.PatternId }).(pulumi.StringPtrOutput)
 }
 
+// Type of pattern matching.
+// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
 // Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 func (o LookupEmailSecurityBlockSenderResultOutput) PatternType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityBlockSenderResult) string { return v.PatternType }).(pulumi.StringOutput)

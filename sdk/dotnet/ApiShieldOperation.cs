@@ -79,10 +79,16 @@ namespace Pulumi.Cloudflare
         public Output<string> OperationId { get; private set; } = null!;
 
         /// <summary>
+        /// OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+        /// </summary>
+        [Output("schemas")]
+        public Output<Outputs.ApiShieldOperationSchemas> Schemas { get; private set; } = null!;
+
+        /// <summary>
         /// Identifier.
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -152,8 +158,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public ApiShieldOperationArgs()
         {
@@ -193,6 +199,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("operationId")]
         public Input<string>? OperationId { get; set; }
+
+        /// <summary>
+        /// OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+        /// </summary>
+        [Input("schemas")]
+        public Input<Inputs.ApiShieldOperationSchemasGetArgs>? Schemas { get; set; }
 
         /// <summary>
         /// Identifier.

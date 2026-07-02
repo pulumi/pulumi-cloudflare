@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMtlsCertificateAssociationsResult {
@@ -16,7 +14,7 @@ public final class GetMtlsCertificateAssociationsResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -43,8 +41,8 @@ public final class GetMtlsCertificateAssociationsResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -84,7 +82,7 @@ public final class GetMtlsCertificateAssociationsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private String id;
         private String mtlsCertificateId;
         private String service;
@@ -100,8 +98,10 @@ public final class GetMtlsCertificateAssociationsResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetMtlsCertificateAssociationsResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

@@ -83,6 +83,9 @@ class GetUserGroupMembersResult:
     @_builtins.property
     @pulumi.getter
     def members(self) -> Sequence['outputs.GetUserGroupMembersMemberResult']:
+        """
+        List of members in the user group.
+        """
         return pulumi.get(self, "members")
 
     @_builtins.property

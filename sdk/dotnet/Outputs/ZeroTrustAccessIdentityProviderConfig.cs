@@ -70,6 +70,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? EmailClaimName;
         /// <summary>
+        /// Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+        /// SAML assertions using the certificate from the assigned certificate set.
+        /// </summary>
+        public readonly bool? EnableEncryption;
+        /// <summary>
         /// Add a list of attribute names that will be returned in the response header from the Access callback.
         /// </summary>
         public readonly ImmutableArray<Outputs.ZeroTrustAccessIdentityProviderConfigHeaderAttribute> HeaderAttributes;
@@ -98,11 +103,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? PkceEnabled;
         /// <summary>
-        /// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+        /// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an InteractionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
         /// Available values: "login", "SelectAccount", "none".
         /// </summary>
         public readonly string? Prompt;
         public readonly string? RedirectUrl;
+        /// <summary>
+        /// When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+        /// </summary>
+        public readonly bool? RestrictToAccountMembers;
         /// <summary>
         /// OAuth scopes
         /// </summary>
@@ -154,6 +163,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? emailClaimName,
 
+            bool? enableEncryption,
+
             ImmutableArray<Outputs.ZeroTrustAccessIdentityProviderConfigHeaderAttribute> headerAttributes,
 
             ImmutableArray<string> idpPublicCerts,
@@ -171,6 +182,8 @@ namespace Pulumi.Cloudflare.Outputs
             string? prompt,
 
             string? redirectUrl,
+
+            bool? restrictToAccountMembers,
 
             ImmutableArray<string> scopes,
 
@@ -196,6 +209,7 @@ namespace Pulumi.Cloudflare.Outputs
             DirectoryId = directoryId;
             EmailAttributeName = emailAttributeName;
             EmailClaimName = emailClaimName;
+            EnableEncryption = enableEncryption;
             HeaderAttributes = headerAttributes;
             IdpPublicCerts = idpPublicCerts;
             IssuerUrl = issuerUrl;
@@ -205,6 +219,7 @@ namespace Pulumi.Cloudflare.Outputs
             PkceEnabled = pkceEnabled;
             Prompt = prompt;
             RedirectUrl = redirectUrl;
+            RestrictToAccountMembers = restrictToAccountMembers;
             Scopes = scopes;
             SignRequest = signRequest;
             SsoTargetUrl = ssoTargetUrl;

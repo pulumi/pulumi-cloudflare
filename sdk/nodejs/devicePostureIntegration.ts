@@ -68,7 +68,7 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
         return obj['__pulumiType'] === DevicePostureIntegration.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The configuration object containing third-party integration information.
      */
@@ -110,6 +110,9 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as DevicePostureIntegrationArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
@@ -163,7 +166,7 @@ export interface DevicePostureIntegrationState {
  * The set of arguments for constructing a DevicePostureIntegration resource.
  */
 export interface DevicePostureIntegrationArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The configuration object containing third-party integration information.
      */

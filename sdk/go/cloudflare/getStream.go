@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetStream(ctx, &cloudflare.LookupStreamArgs{
-//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				Identifier: "ea95132c15732412d22c1476fa83f27a",
 //			}, nil)
 //			if err != nil {
@@ -55,7 +55,7 @@ func LookupStream(ctx *pulumi.Context, args *LookupStreamArgs, opts ...pulumi.In
 // A collection of arguments for invoking getStream.
 type LookupStreamArgs struct {
 	// The account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
 }
@@ -63,7 +63,7 @@ type LookupStreamArgs struct {
 // A collection of values returned by getStream.
 type LookupStreamResult struct {
 	// The account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
 	// The unique identifier of the source video this video was clipped from.
@@ -131,7 +131,7 @@ func LookupStreamOutput(ctx *pulumi.Context, args LookupStreamOutputArgs, opts .
 // A collection of arguments for invoking getStream.
 type LookupStreamOutputArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 }
@@ -156,8 +156,8 @@ func (o LookupStreamResultOutput) ToLookupStreamResultOutputWithContext(ctx cont
 }
 
 // The account identifier tag.
-func (o LookupStreamResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupStreamResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupStreamResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.

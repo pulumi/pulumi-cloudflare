@@ -335,6 +335,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The cache tag values for set*cache*tags action.
         /// </summary>
         public readonly ImmutableArray<string> Values;
+        /// <summary>
+        /// Controls how cached responses vary based on request headers. `Default` is required and applies to any Vary response header that does not have a per-header override.
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersVary? Vary;
 
         [OutputConstructor]
         private RulesetRuleActionParameters(
@@ -492,7 +496,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.RulesetRuleActionParametersUri? uri,
 
-            ImmutableArray<string> values)
+            ImmutableArray<string> values,
+
+            Outputs.RulesetRuleActionParametersVary? vary)
         {
             AdditionalCacheablePorts = additionalCacheablePorts;
             Algorithms = algorithms;
@@ -572,6 +578,7 @@ namespace Pulumi.Cloudflare.Outputs
             TransformedRequestFields = transformedRequestFields;
             Uri = uri;
             Values = values;
+            Vary = vary;
         }
     }
 }

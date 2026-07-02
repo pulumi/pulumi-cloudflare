@@ -68,18 +68,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender")
 public class EmailSecurityBlockSender extends com.pulumi.resources.CustomResource {
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     @Export(name="comments", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comments;
@@ -99,11 +99,29 @@ public class EmailSecurityBlockSender extends com.pulumi.resources.CustomResourc
     public Output<Boolean> isRegex() {
         return this.isRegex;
     }
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="lastModified", refs={String.class}, tree="[0]")
     private Output<String> lastModified;
 
+    /**
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     */
     public Output<String> lastModified() {
         return this.lastModified;
+    }
+    @Export(name="modifiedAt", refs={String.class}, tree="[0]")
+    private Output<String> modifiedAt;
+
+    public Output<String> modifiedAt() {
+        return this.modifiedAt;
     }
     @Export(name="pattern", refs={String.class}, tree="[0]")
     private Output<String> pattern;
@@ -112,6 +130,8 @@ public class EmailSecurityBlockSender extends com.pulumi.resources.CustomResourc
         return this.pattern;
     }
     /**
+     * Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
      * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
@@ -119,7 +139,9 @@ public class EmailSecurityBlockSender extends com.pulumi.resources.CustomResourc
     private Output<String> patternType;
 
     /**
-     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     public Output<String> patternType() {

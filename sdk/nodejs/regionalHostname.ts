@@ -77,7 +77,7 @@ export class RegionalHostname extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a RegionalHostname resource with the given unique name, arguments, and options.
@@ -104,6 +104,9 @@ export class RegionalHostname extends pulumi.CustomResource {
             }
             if (args?.regionKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regionKey'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["regionKey"] = args?.regionKey;
@@ -161,5 +164,5 @@ export interface RegionalHostnameArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

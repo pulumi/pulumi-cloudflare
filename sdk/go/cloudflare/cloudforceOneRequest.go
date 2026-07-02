@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -56,8 +57,8 @@ type CloudforceOneRequest struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	Completed pulumi.StringOutput    `pulumi:"completed"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	Completed pulumi.StringOutput `pulumi:"completed"`
 	// Request content.
 	Content pulumi.StringPtrOutput `pulumi:"content"`
 	Created pulumi.StringOutput    `pulumi:"created"`
@@ -88,9 +89,12 @@ type CloudforceOneRequest struct {
 func NewCloudforceOneRequest(ctx *pulumi.Context,
 	name string, args *CloudforceOneRequestArgs, opts ...pulumi.ResourceOption) (*CloudforceOneRequest, error) {
 	if args == nil {
-		args = &CloudforceOneRequestArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CloudforceOneRequest
 	err := ctx.RegisterResource("cloudflare:index/cloudforceOneRequest:CloudforceOneRequest", name, args, &resource, opts...)
@@ -179,7 +183,7 @@ func (CloudforceOneRequestState) ElementType() reflect.Type {
 
 type cloudforceOneRequestArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Request content.
 	Content *string `pulumi:"content"`
 	// Priority for analyzing the request.
@@ -196,7 +200,7 @@ type cloudforceOneRequestArgs struct {
 // The set of arguments for constructing a CloudforceOneRequest resource.
 type CloudforceOneRequestArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Request content.
 	Content pulumi.StringPtrInput
 	// Priority for analyzing the request.
@@ -298,8 +302,8 @@ func (o CloudforceOneRequestOutput) ToCloudforceOneRequestOutputWithContext(ctx 
 }
 
 // Identifier.
-func (o CloudforceOneRequestOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o CloudforceOneRequestOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o CloudforceOneRequestOutput) Completed() pulumi.StringOutput {

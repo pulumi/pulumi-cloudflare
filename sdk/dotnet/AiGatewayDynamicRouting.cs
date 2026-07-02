@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare
     public partial class AiGatewayDynamicRouting : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -135,8 +135,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class AiGatewayDynamicRoutingArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("elements", required: true)]
         private InputList<Inputs.AiGatewayDynamicRoutingElementArgs>? _elements;

@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `MCP Portals Read`
+ * - `MCP Portals Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -75,7 +80,7 @@ export class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustAccessAiControlsMcpPortal.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Allow remote code execution in Dynamic Workers (beta)
      */
@@ -124,6 +129,9 @@ export class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
             resourceInputs["zeroTrustAccessAiControlsMcpPortalId"] = state?.zeroTrustAccessAiControlsMcpPortalId;
         } else {
             const args = argsOrState as ZeroTrustAccessAiControlsMcpPortalArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
             }
@@ -182,7 +190,7 @@ export interface ZeroTrustAccessAiControlsMcpPortalState {
  * The set of arguments for constructing a ZeroTrustAccessAiControlsMcpPortal resource.
  */
 export interface ZeroTrustAccessAiControlsMcpPortalArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Allow remote code execution in Dynamic Workers (beta)
      */

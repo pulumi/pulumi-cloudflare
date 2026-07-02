@@ -61,7 +61,7 @@ export class CustomOriginTrustStore extends pulumi.CustomResource {
     }
 
     /**
-     * The zone's SSL certificate or certificate and the intermediate(s).
+     * The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      */
     declare public readonly certificate: pulumi.Output<string>;
     /**
@@ -92,7 +92,7 @@ export class CustomOriginTrustStore extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a CustomOriginTrustStore resource with the given unique name, arguments, and options.
@@ -120,6 +120,9 @@ export class CustomOriginTrustStore extends pulumi.CustomResource {
             if (args?.certificate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificate'");
             }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             resourceInputs["certificate"] = args?.certificate;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["expiresOn"] = undefined /*out*/;
@@ -139,7 +142,7 @@ export class CustomOriginTrustStore extends pulumi.CustomResource {
  */
 export interface CustomOriginTrustStoreState {
     /**
-     * The zone's SSL certificate or certificate and the intermediate(s).
+     * The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      */
     certificate?: pulumi.Input<string | undefined>;
     /**
@@ -178,11 +181,11 @@ export interface CustomOriginTrustStoreState {
  */
 export interface CustomOriginTrustStoreArgs {
     /**
-     * The zone's SSL certificate or certificate and the intermediate(s).
+     * The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      */
     certificate: pulumi.Input<string>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

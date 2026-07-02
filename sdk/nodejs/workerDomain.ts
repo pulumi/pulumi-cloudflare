@@ -66,7 +66,7 @@ export class WorkerDomain extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * ID of the TLS certificate issued for the domain.
      */
@@ -119,6 +119,9 @@ export class WorkerDomain extends pulumi.CustomResource {
             resourceInputs["zoneName"] = state?.zoneName;
         } else {
             const args = argsOrState as WorkerDomainArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
             }
@@ -183,7 +186,7 @@ export interface WorkerDomainArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Worker environment associated with the domain.
      *

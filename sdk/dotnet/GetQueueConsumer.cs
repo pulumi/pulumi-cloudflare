@@ -57,8 +57,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
         /// A Resource identifier.
@@ -77,8 +77,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// A Resource identifier.
@@ -99,7 +99,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// A Resource identifier.
         /// </summary>
@@ -130,7 +130,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetQueueConsumerResult(
-            string? accountId,
+            string accountId,
 
             string consumerId,
 

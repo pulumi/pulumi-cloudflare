@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkersDeploymentResult {
@@ -19,7 +17,7 @@ public final class GetWorkersDeploymentResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     private GetWorkersDeploymentAnnotations annotations;
     private String authorEmail;
     private String createdOn;
@@ -47,8 +45,8 @@ public final class GetWorkersDeploymentResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     public GetWorkersDeploymentAnnotations annotations() {
         return this.annotations;
@@ -99,7 +97,7 @@ public final class GetWorkersDeploymentResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private GetWorkersDeploymentAnnotations annotations;
         private String authorEmail;
         private String createdOn;
@@ -125,8 +123,10 @@ public final class GetWorkersDeploymentResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetWorkersDeploymentResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

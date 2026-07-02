@@ -14,7 +14,6 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Object;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -79,6 +78,7 @@ import javax.annotation.Nullable;
  * | `replaceInsecureJs` | `&#34;on&#34;` / `&#34;off&#34;` | Automatically replace insecure JavaScript libraries with safer and faster alt... |
  * | `responseBuffering` | `&#34;on&#34;` / `&#34;off&#34;` | Enables or disables buffering of responses from the proxied server. Cloudflar... |
  * | `rocketLoader` | `&#34;on&#34;` / `&#34;off&#34;` | Rocket Loader is a general-purpose asynchronous JavaScript optimisation that ... |
+ * | `searchForAgents` | `&#34;on&#34;` / `&#34;off&#34;` | When enabled, Cloudflare provisions an AI Search instance for the zone and ex... |
  * | `securityHeader` | Object | Cloudflare security header for a zone. |
  * | `securityLevel` | `&#34;off&#34;`, `&#34;essentiallyOff&#34;`, `&#34;low&#34;`, `&#34;medium&#34;`, `&#34;high&#34;`, `&#34;underAttack&#34;` | Choose the appropriate security profile for your website, which will automati... |
  * | `serverSideExclude` | `&#34;on&#34;` / `&#34;off&#34;` | If there is sensitive content on your website that you want visible to real v... |
@@ -554,14 +554,14 @@ public class ZoneSetting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    private Output<String> zoneId;
 
     /**
      * @return Identifier
      * 
      */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**

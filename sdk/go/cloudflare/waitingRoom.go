@@ -238,7 +238,7 @@ type WaitingRoom struct {
 	// Available values: "off", "invisible", "visibleNonInteractive", "visibleManaged".
 	TurnstileMode pulumi.StringOutput `pulumi:"turnstileMode"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewWaitingRoom registers a new resource with the given unique name, arguments, and options.
@@ -259,6 +259,9 @@ func NewWaitingRoom(ctx *pulumi.Context,
 	}
 	if args.TotalActiveUsers == nil {
 		return nil, errors.New("invalid value for required argument 'TotalActiveUsers'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WaitingRoom
@@ -757,7 +760,7 @@ type waitingRoomArgs struct {
 	// Available values: "off", "invisible", "visibleNonInteractive", "visibleManaged".
 	TurnstileMode *string `pulumi:"turnstileMode"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a WaitingRoom resource.
@@ -912,7 +915,7 @@ type WaitingRoomArgs struct {
 	// Available values: "off", "invisible", "visibleNonInteractive", "visibleManaged".
 	TurnstileMode pulumi.StringPtrInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (WaitingRoomArgs) ElementType() reflect.Type {
@@ -1233,8 +1236,8 @@ func (o WaitingRoomOutput) TurnstileMode() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o WaitingRoomOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o WaitingRoomOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type WaitingRoomArrayOutput struct{ *pulumi.OutputState }

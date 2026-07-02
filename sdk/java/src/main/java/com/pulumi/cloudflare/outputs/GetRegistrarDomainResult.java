@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegistrarDomainResult {
@@ -16,7 +14,7 @@ public final class GetRegistrarDomainResult {
      * @return Identifier
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return Fully qualified domain name (FQDN) including the extension
      * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
@@ -36,8 +34,8 @@ public final class GetRegistrarDomainResult {
      * @return Identifier
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return Fully qualified domain name (FQDN) including the extension
@@ -66,7 +64,7 @@ public final class GetRegistrarDomainResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private String domainName;
         private String id;
         public Builder() {}
@@ -78,8 +76,10 @@ public final class GetRegistrarDomainResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetRegistrarDomainResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

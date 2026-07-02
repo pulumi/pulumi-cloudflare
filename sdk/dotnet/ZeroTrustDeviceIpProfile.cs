@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDeviceIpProfile : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The RFC3339Nano timestamp when the Device IP profile was created.
@@ -145,8 +145,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDeviceIpProfileArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// An optional description of the Device IP profile.

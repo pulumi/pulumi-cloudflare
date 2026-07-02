@@ -53,7 +53,7 @@ export interface GetSnippetResult {
      */
     readonly createdOn: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Identify the snippet.
      */
     readonly id: string;
     /**

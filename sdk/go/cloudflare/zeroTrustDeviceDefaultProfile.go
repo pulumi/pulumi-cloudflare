@@ -95,6 +95,8 @@ type ZeroTrustDeviceDefaultProfile struct {
 	Default pulumi.BoolOutput `pulumi:"default"`
 	// If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
 	DisableAutoFallback pulumi.BoolOutput `pulumi:"disableAutoFallback"`
+	// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+	DnsSearchSuffixes ZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput `pulumi:"dnsSearchSuffixes"`
 	// Whether the policy will be applied to matching devices.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
@@ -121,6 +123,8 @@ type ZeroTrustDeviceDefaultProfile struct {
 	SwitchLocked pulumi.BoolOutput `pulumi:"switchLocked"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol pulumi.StringOutput `pulumi:"tunnelProtocol"`
+	// Virtual network access settings for the device.
+	VirtualNetworks ZeroTrustDeviceDefaultProfileVirtualNetworksPtrOutput `pulumi:"virtualNetworks"`
 }
 
 // NewZeroTrustDeviceDefaultProfile registers a new resource with the given unique name, arguments, and options.
@@ -180,6 +184,8 @@ type zeroTrustDeviceDefaultProfileState struct {
 	Default *bool `pulumi:"default"`
 	// If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
 	DisableAutoFallback *bool `pulumi:"disableAutoFallback"`
+	// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+	DnsSearchSuffixes []ZeroTrustDeviceDefaultProfileDnsSearchSuffix `pulumi:"dnsSearchSuffixes"`
 	// Whether the policy will be applied to matching devices.
 	Enabled *bool `pulumi:"enabled"`
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
@@ -206,6 +212,8 @@ type zeroTrustDeviceDefaultProfileState struct {
 	SwitchLocked *bool `pulumi:"switchLocked"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol *string `pulumi:"tunnelProtocol"`
+	// Virtual network access settings for the device.
+	VirtualNetworks *ZeroTrustDeviceDefaultProfileVirtualNetworks `pulumi:"virtualNetworks"`
 }
 
 type ZeroTrustDeviceDefaultProfileState struct {
@@ -224,6 +232,8 @@ type ZeroTrustDeviceDefaultProfileState struct {
 	Default pulumi.BoolPtrInput
 	// If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
 	DisableAutoFallback pulumi.BoolPtrInput
+	// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+	DnsSearchSuffixes ZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayInput
 	// Whether the policy will be applied to matching devices.
 	Enabled pulumi.BoolPtrInput
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
@@ -250,6 +260,8 @@ type ZeroTrustDeviceDefaultProfileState struct {
 	SwitchLocked pulumi.BoolPtrInput
 	// Determines which tunnel protocol to use.
 	TunnelProtocol pulumi.StringPtrInput
+	// Virtual network access settings for the device.
+	VirtualNetworks ZeroTrustDeviceDefaultProfileVirtualNetworksPtrInput
 }
 
 func (ZeroTrustDeviceDefaultProfileState) ElementType() reflect.Type {
@@ -270,6 +282,8 @@ type zeroTrustDeviceDefaultProfileArgs struct {
 	CaptivePortal *float64 `pulumi:"captivePortal"`
 	// If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
 	DisableAutoFallback *bool `pulumi:"disableAutoFallback"`
+	// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+	DnsSearchSuffixes []ZeroTrustDeviceDefaultProfileDnsSearchSuffix `pulumi:"dnsSearchSuffixes"`
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
 	ExcludeOfficeIps *bool `pulumi:"excludeOfficeIps"`
 	// List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -291,6 +305,8 @@ type zeroTrustDeviceDefaultProfileArgs struct {
 	SwitchLocked *bool `pulumi:"switchLocked"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol *string `pulumi:"tunnelProtocol"`
+	// Virtual network access settings for the device.
+	VirtualNetworks *ZeroTrustDeviceDefaultProfileVirtualNetworks `pulumi:"virtualNetworks"`
 }
 
 // The set of arguments for constructing a ZeroTrustDeviceDefaultProfile resource.
@@ -308,6 +324,8 @@ type ZeroTrustDeviceDefaultProfileArgs struct {
 	CaptivePortal pulumi.Float64PtrInput
 	// If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
 	DisableAutoFallback pulumi.BoolPtrInput
+	// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+	DnsSearchSuffixes ZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayInput
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
 	ExcludeOfficeIps pulumi.BoolPtrInput
 	// List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -329,6 +347,8 @@ type ZeroTrustDeviceDefaultProfileArgs struct {
 	SwitchLocked pulumi.BoolPtrInput
 	// Determines which tunnel protocol to use.
 	TunnelProtocol pulumi.StringPtrInput
+	// Virtual network access settings for the device.
+	VirtualNetworks ZeroTrustDeviceDefaultProfileVirtualNetworksPtrInput
 }
 
 func (ZeroTrustDeviceDefaultProfileArgs) ElementType() reflect.Type {
@@ -457,6 +477,13 @@ func (o ZeroTrustDeviceDefaultProfileOutput) DisableAutoFallback() pulumi.BoolOu
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.BoolOutput { return v.DisableAutoFallback }).(pulumi.BoolOutput)
 }
 
+// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+func (o ZeroTrustDeviceDefaultProfileOutput) DnsSearchSuffixes() ZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) ZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput {
+		return v.DnsSearchSuffixes
+	}).(ZeroTrustDeviceDefaultProfileDnsSearchSuffixArrayOutput)
+}
+
 // Whether the policy will be applied to matching devices.
 func (o ZeroTrustDeviceDefaultProfileOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
@@ -534,6 +561,13 @@ func (o ZeroTrustDeviceDefaultProfileOutput) SwitchLocked() pulumi.BoolOutput {
 // Determines which tunnel protocol to use.
 func (o ZeroTrustDeviceDefaultProfileOutput) TunnelProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.StringOutput { return v.TunnelProtocol }).(pulumi.StringOutput)
+}
+
+// Virtual network access settings for the device.
+func (o ZeroTrustDeviceDefaultProfileOutput) VirtualNetworks() ZeroTrustDeviceDefaultProfileVirtualNetworksPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) ZeroTrustDeviceDefaultProfileVirtualNetworksPtrOutput {
+		return v.VirtualNetworks
+	}).(ZeroTrustDeviceDefaultProfileVirtualNetworksPtrOutput)
 }
 
 type ZeroTrustDeviceDefaultProfileArrayOutput struct{ *pulumi.OutputState }

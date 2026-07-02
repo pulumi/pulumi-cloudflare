@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceArgs {
@@ -22,15 +20,15 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
      * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="schedules", required=true)
@@ -87,7 +85,7 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -137,6 +135,9 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
         }
 
         public WorkerCronTriggerArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("WorkerCronTriggerArgs", "accountId");
+            }
             if ($.schedules == null) {
                 throw new MissingRequiredPropertyException("WorkerCronTriggerArgs", "schedules");
             }

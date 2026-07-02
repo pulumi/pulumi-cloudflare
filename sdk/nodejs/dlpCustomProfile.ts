@@ -77,7 +77,7 @@ export class DlpCustomProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === DlpCustomProfile.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public readonly aiContextEnabled: pulumi.Output<boolean>;
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
@@ -171,6 +171,9 @@ export class DlpCustomProfile extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as DlpCustomProfileArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -267,7 +270,7 @@ export interface DlpCustomProfileState {
  * The set of arguments for constructing a DlpCustomProfile resource.
  */
 export interface DlpCustomProfileArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     aiContextEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.

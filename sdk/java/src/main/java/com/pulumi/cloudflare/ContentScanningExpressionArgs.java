@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ContentScanningExpressionArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,15 +27,15 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
      * Defines an identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Defines an identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private ContentScanningExpressionArgs() {}
@@ -84,7 +82,7 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -102,6 +100,9 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
         public ContentScanningExpressionArgs build() {
             if ($.bodies == null) {
                 throw new MissingRequiredPropertyException("ContentScanningExpressionArgs", "bodies");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ContentScanningExpressionArgs", "zoneId");
             }
             return $;
         }

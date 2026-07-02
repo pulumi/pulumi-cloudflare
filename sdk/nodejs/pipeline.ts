@@ -62,7 +62,7 @@ export class Pipeline extends pulumi.CustomResource {
     /**
      * Specifies the public ID of the account.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Indicates the reason for the failure of the Pipeline.
@@ -109,6 +109,9 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["tables"] = state?.tables;
         } else {
             const args = argsOrState as PipelineArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -168,7 +171,7 @@ export interface PipelineArgs {
     /**
      * Specifies the public ID of the account.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Specifies the name of the Pipeline.
      */

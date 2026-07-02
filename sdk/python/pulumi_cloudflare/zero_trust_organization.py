@@ -52,7 +52,7 @@ class ZeroTrustOrganizationArgs:
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input['ZeroTrustOrganizationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
         :param pulumi.Input['ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs'] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -230,7 +230,7 @@ class ZeroTrustOrganizationArgs:
     @pulumi.getter(name="mfaRequiredForAllApps")
     def mfa_required_for_all_apps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
         """
         return pulumi.get(self, "mfa_required_for_all_apps")
 
@@ -357,7 +357,7 @@ class _ZeroTrustOrganizationState:
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input['ZeroTrustOrganizationMfaConfigArgs'] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
         :param pulumi.Input['ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs'] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -535,7 +535,7 @@ class _ZeroTrustOrganizationState:
     @pulumi.getter(name="mfaRequiredForAllApps")
     def mfa_required_for_all_apps(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
         """
         return pulumi.get(self, "mfa_required_for_all_apps")
 
@@ -733,7 +733,7 @@ class ZeroTrustOrganization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input[Union['ZeroTrustOrganizationMfaConfigArgs', 'ZeroTrustOrganizationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
         :param pulumi.Input[Union['ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs', 'ZeroTrustOrganizationMfaSshPivKeyRequirementsArgsDict']] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -925,7 +925,7 @@ class ZeroTrustOrganization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_ui_read_only: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.
         :param pulumi.Input[Union['ZeroTrustOrganizationMfaConfigArgs', 'ZeroTrustOrganizationMfaConfigArgsDict']] mfa_config: Configures multi-factor authentication (MFA) settings for an organization.
         :param pulumi.Input[_builtins.bool] mfa_configuration_allowed: Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.
-        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        :param pulumi.Input[_builtins.bool] mfa_required_for_all_apps: Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
         :param pulumi.Input[Union['ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs', 'ZeroTrustOrganizationMfaSshPivKeyRequirementsArgsDict']] mfa_ssh_piv_key_requirements: Configures SSH PIV key requirements for MFA using hardware security keys.
         :param pulumi.Input[_builtins.str] name: The name of your Zero Trust organization.
         :param pulumi.Input[_builtins.str] session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -1045,7 +1045,7 @@ class ZeroTrustOrganization(pulumi.CustomResource):
     @pulumi.getter(name="mfaRequiredForAllApps")
     def mfa_required_for_all_apps(self) -> pulumi.Output[_builtins.bool]:
         """
-        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+        Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
         """
         return pulumi.get(self, "mfa_required_for_all_apps")
 

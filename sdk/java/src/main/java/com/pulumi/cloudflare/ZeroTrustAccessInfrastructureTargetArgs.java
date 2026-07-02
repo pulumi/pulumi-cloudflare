@@ -9,8 +9,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ZeroTrustAccessInfrastructureTargetArgs extends com.pulumi.resources.ResourceArgs {
@@ -21,15 +19,15 @@ public final class ZeroTrustAccessInfrastructureTargetArgs extends com.pulumi.re
      * Account identifier
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Account identifier
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -100,7 +98,7 @@ public final class ZeroTrustAccessInfrastructureTargetArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -164,6 +162,9 @@ public final class ZeroTrustAccessInfrastructureTargetArgs extends com.pulumi.re
         }
 
         public ZeroTrustAccessInfrastructureTargetArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessInfrastructureTargetArgs", "accountId");
+            }
             if ($.hostname == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustAccessInfrastructureTargetArgs", "hostname");
             }

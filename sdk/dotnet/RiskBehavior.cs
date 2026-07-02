@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare
     public partial class RiskBehavior : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("behaviors")]
         public Output<ImmutableDictionary<string, Outputs.RiskBehaviorBehaviors>> Behaviors { get; private set; } = null!;
@@ -105,8 +105,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class RiskBehaviorArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("behaviors", required: true)]
         private InputMap<Inputs.RiskBehaviorBehaviorsArgs>? _behaviors;

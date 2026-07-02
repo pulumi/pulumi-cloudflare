@@ -24,6 +24,7 @@ class DnsRecordArgs:
                  name: pulumi.Input[_builtins.str],
                  ttl: pulumi.Input[_builtins.float],
                  type: pulumi.Input[_builtins.str],
+                 zone_id: pulumi.Input[_builtins.str],
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  content: pulumi.Input[Optional[_builtins.str]] = None,
                  data: pulumi.Input[Optional['DnsRecordDataArgs']] = None,
@@ -31,8 +32,7 @@ class DnsRecordArgs:
                  private_routing: pulumi.Input[Optional[_builtins.bool]] = None,
                  proxied: pulumi.Input[Optional[_builtins.bool]] = None,
                  settings: pulumi.Input[Optional['DnsRecordSettingsArgs']] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DnsRecord resource.
 
@@ -40,6 +40,7 @@ class DnsRecordArgs:
         :param pulumi.Input[_builtins.float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[_builtins.str] type: Record type.
                Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[_builtins.str] content: A valid IPv4 address.
         :param pulumi.Input['DnsRecordDataArgs'] data: Components of a CAA record.
@@ -48,11 +49,11 @@ class DnsRecordArgs:
         :param pulumi.Input[_builtins.bool] proxied: Whether the record is receiving the performance and security benefits of Cloudflare.
         :param pulumi.Input['DnsRecordSettingsArgs'] settings: Settings for the DNS record.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Custom tags for the DNS record. This field has no effect on DNS responses.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ttl", ttl)
         pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "zone_id", zone_id)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if content is not None:
@@ -69,8 +70,6 @@ class DnsRecordArgs:
             pulumi.set(__self__, "settings", settings)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -108,6 +107,18 @@ class DnsRecordArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -204,18 +215,6 @@ class DnsRecordArgs:
     @tags.setter
     def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -681,6 +680,8 @@ class DnsRecord(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["comment_modified_on"] = None
             __props__.__dict__["created_on"] = None
@@ -908,7 +909,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

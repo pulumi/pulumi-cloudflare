@@ -19,22 +19,33 @@ __all__ = ['LeakedCredentialCheckRuleArgs', 'LeakedCredentialCheckRule']
 @pulumi.input_type
 class LeakedCredentialCheckRuleArgs:
     def __init__(__self__, *,
+                 zone_id: pulumi.Input[_builtins.str],
                  password: pulumi.Input[Optional[_builtins.str]] = None,
-                 username: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LeakedCredentialCheckRule resource.
 
+        :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         :param pulumi.Input[_builtins.str] password: Defines ehe ruleset expression to use in matching the password in a request.
         :param pulumi.Input[_builtins.str] username: Defines the ruleset expression to use in matching the username in a request.
-        :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
+        pulumi.set(__self__, "zone_id", zone_id)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if username is not None:
             pulumi.set(__self__, "username", username)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Defines an identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -59,18 +70,6 @@ class LeakedCredentialCheckRuleArgs:
     @username.setter
     def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Defines an identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -177,7 +176,7 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[LeakedCredentialCheckRuleArgs] = None,
+                 args: LeakedCredentialCheckRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Accepted Permissions
@@ -235,6 +234,8 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
 
             __props__.__dict__["password"] = password
             __props__.__dict__["username"] = username
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
         super(LeakedCredentialCheckRule, __self__).__init__(
             'cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule',
@@ -287,7 +288,7 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Defines an identifier.
         """

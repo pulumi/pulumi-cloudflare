@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.AccessGroupExcludeAuthContext;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeAuthMethod;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeAzureAd;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeCertificate;
+import com.pulumi.cloudflare.outputs.AccessGroupExcludeCloudflareAccountMember;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeCommonName;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeDevicePosture;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeEmail;
@@ -44,6 +45,7 @@ public final class AccessGroupExclude {
     private @Nullable AccessGroupExcludeAuthMethod authMethod;
     private @Nullable AccessGroupExcludeAzureAd azureAd;
     private @Nullable AccessGroupExcludeCertificate certificate;
+    private @Nullable AccessGroupExcludeCloudflareAccountMember cloudflareAccountMember;
     private @Nullable AccessGroupExcludeCommonName commonName;
     private @Nullable AccessGroupExcludeDevicePosture devicePosture;
     private @Nullable AccessGroupExcludeEmail email;
@@ -88,6 +90,9 @@ public final class AccessGroupExclude {
     }
     public Optional<AccessGroupExcludeCertificate> certificate() {
         return Optional.ofNullable(this.certificate);
+    }
+    public Optional<AccessGroupExcludeCloudflareAccountMember> cloudflareAccountMember() {
+        return Optional.ofNullable(this.cloudflareAccountMember);
     }
     public Optional<AccessGroupExcludeCommonName> commonName() {
         return Optional.ofNullable(this.commonName);
@@ -168,6 +173,7 @@ public final class AccessGroupExclude {
         private @Nullable AccessGroupExcludeAuthMethod authMethod;
         private @Nullable AccessGroupExcludeAzureAd azureAd;
         private @Nullable AccessGroupExcludeCertificate certificate;
+        private @Nullable AccessGroupExcludeCloudflareAccountMember cloudflareAccountMember;
         private @Nullable AccessGroupExcludeCommonName commonName;
         private @Nullable AccessGroupExcludeDevicePosture devicePosture;
         private @Nullable AccessGroupExcludeEmail email;
@@ -196,6 +202,7 @@ public final class AccessGroupExclude {
     	      this.authMethod = defaults.authMethod;
     	      this.azureAd = defaults.azureAd;
     	      this.certificate = defaults.certificate;
+    	      this.cloudflareAccountMember = defaults.cloudflareAccountMember;
     	      this.commonName = defaults.commonName;
     	      this.devicePosture = defaults.devicePosture;
     	      this.email = defaults.email;
@@ -246,6 +253,12 @@ public final class AccessGroupExclude {
         public Builder certificate(@Nullable AccessGroupExcludeCertificate certificate) {
 
             this.certificate = certificate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloudflareAccountMember(@Nullable AccessGroupExcludeCloudflareAccountMember cloudflareAccountMember) {
+
+            this.cloudflareAccountMember = cloudflareAccountMember;
             return this;
         }
         @CustomType.Setter
@@ -375,6 +388,7 @@ public final class AccessGroupExclude {
             _resultValue.authMethod = authMethod;
             _resultValue.azureAd = azureAd;
             _resultValue.certificate = certificate;
+            _resultValue.cloudflareAccountMember = cloudflareAccountMember;
             _resultValue.commonName = commonName;
             _resultValue.devicePosture = devicePosture;
             _resultValue.email = email;

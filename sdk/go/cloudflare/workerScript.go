@@ -31,7 +31,7 @@ type WorkerScript struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Annotations for the version created by this upload.
 	Annotations WorkerScriptAnnotationsOutput `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
@@ -111,6 +111,9 @@ func NewWorkerScript(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.ScriptName == nil {
 		return nil, errors.New("invalid value for required argument 'ScriptName'")
 	}
@@ -298,7 +301,7 @@ func (WorkerScriptState) ElementType() reflect.Type {
 
 type workerScriptArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Annotations for the version created by this upload.
 	Annotations *WorkerScriptAnnotations `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
@@ -347,7 +350,7 @@ type workerScriptArgs struct {
 // The set of arguments for constructing a WorkerScript resource.
 type WorkerScriptArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Annotations for the version created by this upload.
 	Annotations WorkerScriptAnnotationsPtrInput
 	// Configuration for assets within a Worker.
@@ -481,8 +484,8 @@ func (o WorkerScriptOutput) ToWorkerScriptOutputWithContext(ctx context.Context)
 }
 
 // Identifier.
-func (o WorkerScriptOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o WorkerScriptOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Annotations for the version created by this upload.

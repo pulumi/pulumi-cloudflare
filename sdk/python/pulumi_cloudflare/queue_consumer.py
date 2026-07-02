@@ -21,30 +21,41 @@ __all__ = ['QueueConsumerInitArgs', 'QueueConsumer']
 @pulumi.input_type
 class QueueConsumerInitArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  queue_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dead_letter_queue: pulumi.Input[Optional[_builtins.str]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  settings: pulumi.Input[Optional['QueueConsumerSettingsArgs']] = None):
         """
         The set of arguments for constructing a QueueConsumer resource.
 
+        :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
         :param pulumi.Input[_builtins.str] queue_id: A Resource identifier.
         :param pulumi.Input[_builtins.str] type: Available values: "worker", "http_pull".
-        :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
         :param pulumi.Input[_builtins.str] script_name: Name of a Worker
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "queue_id", queue_id)
         pulumi.set(__self__, "type", type)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if dead_letter_queue is not None:
             pulumi.set(__self__, "dead_letter_queue", dead_letter_queue)
         if script_name is not None:
             pulumi.set(__self__, "script_name", script_name)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        A Resource identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="queueId")
@@ -69,18 +80,6 @@ class QueueConsumerInitArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        A Resource identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deadLetterQueue")
@@ -374,6 +373,8 @@ class QueueConsumer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = QueueConsumerInitArgs.__new__(QueueConsumerInitArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["dead_letter_queue"] = dead_letter_queue
             if queue_id is None and not opts.urn:
@@ -436,7 +437,7 @@ class QueueConsumer(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         A Resource identifier.
         """

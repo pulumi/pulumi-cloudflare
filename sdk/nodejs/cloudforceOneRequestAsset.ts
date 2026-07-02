@@ -61,7 +61,7 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Defines the asset creation time.
      */
@@ -119,6 +119,9 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
             resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as CloudforceOneRequestAssetArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.page === undefined && !opts.urn) {
                 throw new Error("Missing required property 'page'");
             }
@@ -192,7 +195,7 @@ export interface CloudforceOneRequestAssetArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Page number of results.
      */

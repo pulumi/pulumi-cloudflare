@@ -68,7 +68,7 @@ export class ConnectivityDirectoryService extends pulumi.CustomResource {
     /**
      * Account identifier
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Available values: "postgresql", "mysql".
      */
@@ -117,6 +117,9 @@ export class ConnectivityDirectoryService extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ConnectivityDirectoryServiceArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.host === undefined && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
@@ -181,7 +184,7 @@ export interface ConnectivityDirectoryServiceArgs {
     /**
      * Account identifier
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Available values: "postgresql", "mysql".
      */

@@ -100,15 +100,15 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
      * Identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private EmailRoutingRuleArgs() {}
@@ -271,7 +271,7 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -292,6 +292,9 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
             }
             if ($.matchers == null) {
                 throw new MissingRequiredPropertyException("EmailRoutingRuleArgs", "matchers");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("EmailRoutingRuleArgs", "zoneId");
             }
             return $;
         }

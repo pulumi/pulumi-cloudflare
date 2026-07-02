@@ -29,6 +29,7 @@ public final class GetZonesInvokeResult {
     private @Nullable String order;
     private List<GetZonesResult> results;
     private @Nullable String status;
+    private @Nullable List<String> types;
 
     private GetZonesInvokeResult() {}
     public Optional<GetZonesAccount> account() {
@@ -62,6 +63,9 @@ public final class GetZonesInvokeResult {
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    public List<String> types() {
+        return this.types == null ? List.of() : this.types;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -81,6 +85,7 @@ public final class GetZonesInvokeResult {
         private @Nullable String order;
         private List<GetZonesResult> results;
         private @Nullable String status;
+        private @Nullable List<String> types;
         public Builder() {}
         public Builder(GetZonesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -93,6 +98,7 @@ public final class GetZonesInvokeResult {
     	      this.order = defaults.order;
     	      this.results = defaults.results;
     	      this.status = defaults.status;
+    	      this.types = defaults.types;
         }
 
         @CustomType.Setter
@@ -158,6 +164,15 @@ public final class GetZonesInvokeResult {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
+        public Builder types(@Nullable List<String> types) {
+
+            this.types = types;
+            return this;
+        }
+        public Builder types(String... types) {
+            return types(List.of(types));
+        }
         public GetZonesInvokeResult build() {
             final var _resultValue = new GetZonesInvokeResult();
             _resultValue.account = account;
@@ -169,6 +184,7 @@ public final class GetZonesInvokeResult {
             _resultValue.order = order;
             _resultValue.results = results;
             _resultValue.status = status;
+            _resultValue.types = types;
             return _resultValue;
         }
     }

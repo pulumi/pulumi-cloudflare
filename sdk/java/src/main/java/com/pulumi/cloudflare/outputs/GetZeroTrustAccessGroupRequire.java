@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireAuthContext;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireAuthMethod;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireAzureAd;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireCertificate;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireCloudflareAccountMember;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireCommonName;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireDevicePosture;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupRequireEmail;
@@ -43,6 +44,7 @@ public final class GetZeroTrustAccessGroupRequire {
     private GetZeroTrustAccessGroupRequireAuthMethod authMethod;
     private GetZeroTrustAccessGroupRequireAzureAd azureAd;
     private GetZeroTrustAccessGroupRequireCertificate certificate;
+    private GetZeroTrustAccessGroupRequireCloudflareAccountMember cloudflareAccountMember;
     private GetZeroTrustAccessGroupRequireCommonName commonName;
     private GetZeroTrustAccessGroupRequireDevicePosture devicePosture;
     private GetZeroTrustAccessGroupRequireEmail email;
@@ -87,6 +89,9 @@ public final class GetZeroTrustAccessGroupRequire {
     }
     public GetZeroTrustAccessGroupRequireCertificate certificate() {
         return this.certificate;
+    }
+    public GetZeroTrustAccessGroupRequireCloudflareAccountMember cloudflareAccountMember() {
+        return this.cloudflareAccountMember;
     }
     public GetZeroTrustAccessGroupRequireCommonName commonName() {
         return this.commonName;
@@ -167,6 +172,7 @@ public final class GetZeroTrustAccessGroupRequire {
         private GetZeroTrustAccessGroupRequireAuthMethod authMethod;
         private GetZeroTrustAccessGroupRequireAzureAd azureAd;
         private GetZeroTrustAccessGroupRequireCertificate certificate;
+        private GetZeroTrustAccessGroupRequireCloudflareAccountMember cloudflareAccountMember;
         private GetZeroTrustAccessGroupRequireCommonName commonName;
         private GetZeroTrustAccessGroupRequireDevicePosture devicePosture;
         private GetZeroTrustAccessGroupRequireEmail email;
@@ -195,6 +201,7 @@ public final class GetZeroTrustAccessGroupRequire {
     	      this.authMethod = defaults.authMethod;
     	      this.azureAd = defaults.azureAd;
     	      this.certificate = defaults.certificate;
+    	      this.cloudflareAccountMember = defaults.cloudflareAccountMember;
     	      this.commonName = defaults.commonName;
     	      this.devicePosture = defaults.devicePosture;
     	      this.email = defaults.email;
@@ -255,6 +262,14 @@ public final class GetZeroTrustAccessGroupRequire {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupRequire", "certificate");
             }
             this.certificate = certificate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloudflareAccountMember(GetZeroTrustAccessGroupRequireCloudflareAccountMember cloudflareAccountMember) {
+            if (cloudflareAccountMember == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupRequire", "cloudflareAccountMember");
+            }
+            this.cloudflareAccountMember = cloudflareAccountMember;
             return this;
         }
         @CustomType.Setter
@@ -424,6 +439,7 @@ public final class GetZeroTrustAccessGroupRequire {
             _resultValue.authMethod = authMethod;
             _resultValue.azureAd = azureAd;
             _resultValue.certificate = certificate;
+            _resultValue.cloudflareAccountMember = cloudflareAccountMember;
             _resultValue.commonName = commonName;
             _resultValue.devicePosture = devicePosture;
             _resultValue.email = email;

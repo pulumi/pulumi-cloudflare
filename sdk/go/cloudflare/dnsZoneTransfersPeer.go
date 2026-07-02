@@ -52,7 +52,7 @@ import (
 type DnsZoneTransfersPeer struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
 	Ip pulumi.StringPtrOutput `pulumi:"ip"`
 	// Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
@@ -72,6 +72,9 @@ func NewDnsZoneTransfersPeer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -130,7 +133,7 @@ func (DnsZoneTransfersPeerState) ElementType() reflect.Type {
 }
 
 type dnsZoneTransfersPeerArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
 	Ip *string `pulumi:"ip"`
 	// Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
@@ -145,7 +148,7 @@ type dnsZoneTransfersPeerArgs struct {
 
 // The set of arguments for constructing a DnsZoneTransfersPeer resource.
 type DnsZoneTransfersPeerArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
 	Ip pulumi.StringPtrInput
 	// Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
@@ -245,8 +248,8 @@ func (o DnsZoneTransfersPeerOutput) ToDnsZoneTransfersPeerOutputWithContext(ctx 
 	return o
 }
 
-func (o DnsZoneTransfersPeerOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DnsZoneTransfersPeer) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o DnsZoneTransfersPeerOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsZoneTransfersPeer) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.

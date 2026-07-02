@@ -14,19 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAiSearchInstanceMetadataResult
     {
         public readonly bool CreatedFromAisearchWizard;
-        public readonly Outputs.GetAiSearchInstanceMetadataSearchForAgentsResult SearchForAgents;
         public readonly string WorkerDomain;
 
         [OutputConstructor]
         private GetAiSearchInstanceMetadataResult(
             bool createdFromAisearchWizard,
 
-            Outputs.GetAiSearchInstanceMetadataSearchForAgentsResult searchForAgents,
-
             string workerDomain)
         {
             CreatedFromAisearchWizard = createdFromAisearchWizard;
-            SearchForAgents = searchForAgents;
             WorkerDomain = workerDomain;
         }
     }

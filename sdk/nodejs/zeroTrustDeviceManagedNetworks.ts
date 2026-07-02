@@ -62,7 +62,7 @@ export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDeviceManagedNetworks.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The configuration object containing information for the WARP client to detect the managed network.
      */
@@ -101,6 +101,9 @@ export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ZeroTrustDeviceManagedNetworksArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
@@ -151,7 +154,7 @@ export interface ZeroTrustDeviceManagedNetworksState {
  * The set of arguments for constructing a ZeroTrustDeviceManagedNetworks resource.
  */
 export interface ZeroTrustDeviceManagedNetworksArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The configuration object containing information for the WARP client to detect the managed network.
      */

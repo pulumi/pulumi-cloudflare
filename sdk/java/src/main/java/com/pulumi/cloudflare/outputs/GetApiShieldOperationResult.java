@@ -5,8 +5,10 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetApiShieldOperationFeatures;
 import com.pulumi.cloudflare.outputs.GetApiShieldOperationFilter;
+import com.pulumi.cloudflare.outputs.GetApiShieldOperationSchemas;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -49,6 +51,16 @@ public final class GetApiShieldOperationResult {
      * 
      */
     private String operationId;
+    /**
+     * @return OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+     * 
+     */
+    private GetApiShieldOperationSchemas schemas;
+    /**
+     * @return When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+     * 
+     */
+    private Boolean withSchemas;
     /**
      * @return Identifier.
      * 
@@ -109,6 +121,20 @@ public final class GetApiShieldOperationResult {
         return this.operationId;
     }
     /**
+     * @return OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+     * 
+     */
+    public GetApiShieldOperationSchemas schemas() {
+        return this.schemas;
+    }
+    /**
+     * @return When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+     * 
+     */
+    public Boolean withSchemas() {
+        return this.withSchemas;
+    }
+    /**
      * @return Identifier.
      * 
      */
@@ -134,6 +160,8 @@ public final class GetApiShieldOperationResult {
         private String lastUpdated;
         private String method;
         private String operationId;
+        private GetApiShieldOperationSchemas schemas;
+        private Boolean withSchemas;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetApiShieldOperationResult defaults) {
@@ -147,6 +175,8 @@ public final class GetApiShieldOperationResult {
     	      this.lastUpdated = defaults.lastUpdated;
     	      this.method = defaults.method;
     	      this.operationId = defaults.operationId;
+    	      this.schemas = defaults.schemas;
+    	      this.withSchemas = defaults.withSchemas;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -222,6 +252,22 @@ public final class GetApiShieldOperationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder schemas(GetApiShieldOperationSchemas schemas) {
+            if (schemas == null) {
+              throw new MissingRequiredPropertyException("GetApiShieldOperationResult", "schemas");
+            }
+            this.schemas = schemas;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder withSchemas(Boolean withSchemas) {
+            if (withSchemas == null) {
+              throw new MissingRequiredPropertyException("GetApiShieldOperationResult", "withSchemas");
+            }
+            this.withSchemas = withSchemas;
+            return this;
+        }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -238,6 +284,8 @@ public final class GetApiShieldOperationResult {
             _resultValue.lastUpdated = lastUpdated;
             _resultValue.method = method;
             _resultValue.operationId = operationId;
+            _resultValue.schemas = schemas;
+            _resultValue.withSchemas = withSchemas;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

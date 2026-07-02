@@ -96,7 +96,7 @@ type LoadBalancerPool struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions pulumi.StringArrayOutput `pulumi:"checkRegions"`
 	CreatedOn    pulumi.StringOutput      `pulumi:"createdOn"`
@@ -140,6 +140,9 @@ func NewLoadBalancerPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -252,7 +255,7 @@ func (LoadBalancerPoolState) ElementType() reflect.Type {
 
 type loadBalancerPoolArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions []string `pulumi:"checkRegions"`
 	// A human-readable description of the pool.
@@ -286,7 +289,7 @@ type loadBalancerPoolArgs struct {
 // The set of arguments for constructing a LoadBalancerPool resource.
 type LoadBalancerPoolArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions pulumi.StringArrayInput
 	// A human-readable description of the pool.
@@ -405,8 +408,8 @@ func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutputWithContext(ctx context.
 }
 
 // Identifier.
-func (o LoadBalancerPoolOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LoadBalancerPoolOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // A list of regions from which to run health checks. Null means every Cloudflare data center.

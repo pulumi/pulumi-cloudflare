@@ -120,14 +120,14 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel.
      * 
      */
     @Import(name="tunnel")
     private @Nullable Output<KeylessCertificateTunnelArgs> tunnel;
 
     /**
-     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel.
      * 
      */
     public Optional<Output<KeylessCertificateTunnelArgs>> tunnel() {
@@ -138,15 +138,15 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
      * Identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private KeylessCertificateArgs() {}
@@ -317,7 +317,7 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tunnel Configuration for using Keyless SSL through a Cloudflare Tunnel
+         * @param tunnel Configuration for using Keyless SSL through a Cloudflare Tunnel.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tunnel Configuration for using Keyless SSL through a Cloudflare Tunnel
+         * @param tunnel Configuration for using Keyless SSL through a Cloudflare Tunnel.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -364,6 +364,9 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
             }
             if ($.host == null) {
                 throw new MissingRequiredPropertyException("KeylessCertificateArgs", "host");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("KeylessCertificateArgs", "zoneId");
             }
             return $;
         }

@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireAuthContextArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireAuthMethodArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireAzureAdArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireCertificateArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireCloudflareAccountMemberArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireCommonNameArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireDevicePostureArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireEmailArgs;
@@ -80,6 +81,13 @@ public final class ZeroTrustAccessPolicyRequireArgs extends com.pulumi.resources
 
     public Optional<Output<ZeroTrustAccessPolicyRequireCertificateArgs>> certificate() {
         return Optional.ofNullable(this.certificate);
+    }
+
+    @Import(name="cloudflareAccountMember")
+    private @Nullable Output<ZeroTrustAccessPolicyRequireCloudflareAccountMemberArgs> cloudflareAccountMember;
+
+    public Optional<Output<ZeroTrustAccessPolicyRequireCloudflareAccountMemberArgs>> cloudflareAccountMember() {
+        return Optional.ofNullable(this.cloudflareAccountMember);
     }
 
     @Import(name="commonName")
@@ -238,6 +246,7 @@ public final class ZeroTrustAccessPolicyRequireArgs extends com.pulumi.resources
         this.authMethod = $.authMethod;
         this.azureAd = $.azureAd;
         this.certificate = $.certificate;
+        this.cloudflareAccountMember = $.cloudflareAccountMember;
         this.commonName = $.commonName;
         this.devicePosture = $.devicePosture;
         this.email = $.email;
@@ -333,6 +342,15 @@ public final class ZeroTrustAccessPolicyRequireArgs extends com.pulumi.resources
 
         public Builder certificate(ZeroTrustAccessPolicyRequireCertificateArgs certificate) {
             return certificate(Output.of(certificate));
+        }
+
+        public Builder cloudflareAccountMember(@Nullable Output<ZeroTrustAccessPolicyRequireCloudflareAccountMemberArgs> cloudflareAccountMember) {
+            $.cloudflareAccountMember = cloudflareAccountMember;
+            return this;
+        }
+
+        public Builder cloudflareAccountMember(ZeroTrustAccessPolicyRequireCloudflareAccountMemberArgs cloudflareAccountMember) {
+            return cloudflareAccountMember(Output.of(cloudflareAccountMember));
         }
 
         public Builder commonName(@Nullable Output<ZeroTrustAccessPolicyRequireCommonNameArgs> commonName) {

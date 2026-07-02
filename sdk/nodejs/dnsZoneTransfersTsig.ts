@@ -58,7 +58,7 @@ export class DnsZoneTransfersTsig extends pulumi.CustomResource {
         return obj['__pulumiType'] === DnsZoneTransfersTsig.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * TSIG algorithm.
      */
@@ -91,6 +91,9 @@ export class DnsZoneTransfersTsig extends pulumi.CustomResource {
             resourceInputs["secret"] = state?.secret;
         } else {
             const args = argsOrState as DnsZoneTransfersTsigArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.algo === undefined && !opts.urn) {
                 throw new Error("Missing required property 'algo'");
             }
@@ -135,7 +138,7 @@ export interface DnsZoneTransfersTsigState {
  * The set of arguments for constructing a DnsZoneTransfersTsig resource.
  */
 export interface DnsZoneTransfersTsigArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * TSIG algorithm.
      */

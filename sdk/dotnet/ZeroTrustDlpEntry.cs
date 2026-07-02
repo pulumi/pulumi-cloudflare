@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDlpEntry : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Only applies to custom word lists.
@@ -104,6 +104,9 @@ namespace Pulumi.Cloudflare
         [Output("uploadStatus")]
         public Output<string> UploadStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// A Predefined AI prompt classification topic entry.
+        /// </summary>
         [Output("variant")]
         public Output<Outputs.ZeroTrustDlpEntryVariant> Variant { get; private set; } = null!;
 
@@ -156,8 +159,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDlpEntryArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -246,6 +249,9 @@ namespace Pulumi.Cloudflare
         [Input("uploadStatus")]
         public Input<string>? UploadStatus { get; set; }
 
+        /// <summary>
+        /// A Predefined AI prompt classification topic entry.
+        /// </summary>
         [Input("variant")]
         public Input<Inputs.ZeroTrustDlpEntryVariantGetArgs>? Variant { get; set; }
 

@@ -43,6 +43,13 @@ public final class WorkflowInstancesArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.queued);
     }
 
+    @Import(name="rollingBack")
+    private @Nullable Output<Double> rollingBack;
+
+    public Optional<Output<Double>> rollingBack() {
+        return Optional.ofNullable(this.rollingBack);
+    }
+
     @Import(name="running")
     private @Nullable Output<Double> running;
 
@@ -78,6 +85,7 @@ public final class WorkflowInstancesArgs extends com.pulumi.resources.ResourceAr
         this.errored = $.errored;
         this.paused = $.paused;
         this.queued = $.queued;
+        this.rollingBack = $.rollingBack;
         this.running = $.running;
         this.terminated = $.terminated;
         this.waiting = $.waiting;
@@ -136,6 +144,15 @@ public final class WorkflowInstancesArgs extends com.pulumi.resources.ResourceAr
 
         public Builder queued(Double queued) {
             return queued(Output.of(queued));
+        }
+
+        public Builder rollingBack(@Nullable Output<Double> rollingBack) {
+            $.rollingBack = rollingBack;
+            return this;
+        }
+
+        public Builder rollingBack(Double rollingBack) {
+            return rollingBack(Output.of(rollingBack));
         }
 
         public Builder running(@Nullable Output<Double> running) {

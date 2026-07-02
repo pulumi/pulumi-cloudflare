@@ -27,13 +27,16 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, betas=None, country=None, first_name=None, has_business_zones=None, has_enterprise_zones=None, has_pro_zones=None, id=None, last_name=None, organizations=None, suspended=None, telephone=None, two_factor_authentication_enabled=None, two_factor_authentication_locked=None, zipcode=None):
+    def __init__(__self__, betas=None, country=None, email=None, first_name=None, has_business_zones=None, has_enterprise_zones=None, has_pro_zones=None, id=None, last_name=None, organizations=None, suspended=None, telephone=None, two_factor_authentication_enabled=None, two_factor_authentication_locked=None, zipcode=None):
         if betas and not isinstance(betas, list):
             raise TypeError("Expected argument 'betas' to be a list")
         pulumi.set(__self__, "betas", betas)
         if country and not isinstance(country, str):
             raise TypeError("Expected argument 'country' to be a str")
         pulumi.set(__self__, "country", country)
+        if email and not isinstance(email, str):
+            raise TypeError("Expected argument 'email' to be a str")
+        pulumi.set(__self__, "email", email)
         if first_name and not isinstance(first_name, str):
             raise TypeError("Expected argument 'first_name' to be a str")
         pulumi.set(__self__, "first_name", first_name)
@@ -86,6 +89,14 @@ class GetUserResult:
         The country in which the user lives.
         """
         return pulumi.get(self, "country")
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        Current email address of the user.
+        """
+        return pulumi.get(self, "email")
 
     @_builtins.property
     @pulumi.getter(name="firstName")
@@ -189,6 +200,7 @@ class AwaitableGetUserResult(GetUserResult):
         return GetUserResult(
             betas=self.betas,
             country=self.country,
+            email=self.email,
             first_name=self.first_name,
             has_business_zones=self.has_business_zones,
             has_enterprise_zones=self.has_enterprise_zones,
@@ -226,6 +238,7 @@ def get_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserRes
     return AwaitableGetUserResult(
         betas=pulumi.get(__ret__, 'betas'),
         country=pulumi.get(__ret__, 'country'),
+        email=pulumi.get(__ret__, 'email'),
         first_name=pulumi.get(__ret__, 'first_name'),
         has_business_zones=pulumi.get(__ret__, 'has_business_zones'),
         has_enterprise_zones=pulumi.get(__ret__, 'has_enterprise_zones'),
@@ -260,6 +273,7 @@ def get_user_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutp
     return __ret__.apply(lambda __response__: GetUserResult(
         betas=pulumi.get(__response__, 'betas'),
         country=pulumi.get(__response__, 'country'),
+        email=pulumi.get(__response__, 'email'),
         first_name=pulumi.get(__response__, 'first_name'),
         has_business_zones=pulumi.get(__response__, 'has_business_zones'),
         has_enterprise_zones=pulumi.get(__response__, 'has_enterprise_zones'),

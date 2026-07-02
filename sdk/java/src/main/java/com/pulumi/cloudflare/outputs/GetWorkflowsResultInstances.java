@@ -14,6 +14,7 @@ public final class GetWorkflowsResultInstances {
     private Double errored;
     private Double paused;
     private Double queued;
+    private Double rollingBack;
     private Double running;
     private Double terminated;
     private Double waiting;
@@ -31,6 +32,9 @@ public final class GetWorkflowsResultInstances {
     }
     public Double queued() {
         return this.queued;
+    }
+    public Double rollingBack() {
+        return this.rollingBack;
     }
     public Double running() {
         return this.running;
@@ -58,6 +62,7 @@ public final class GetWorkflowsResultInstances {
         private Double errored;
         private Double paused;
         private Double queued;
+        private Double rollingBack;
         private Double running;
         private Double terminated;
         private Double waiting;
@@ -69,6 +74,7 @@ public final class GetWorkflowsResultInstances {
     	      this.errored = defaults.errored;
     	      this.paused = defaults.paused;
     	      this.queued = defaults.queued;
+    	      this.rollingBack = defaults.rollingBack;
     	      this.running = defaults.running;
     	      this.terminated = defaults.terminated;
     	      this.waiting = defaults.waiting;
@@ -105,6 +111,14 @@ public final class GetWorkflowsResultInstances {
               throw new MissingRequiredPropertyException("GetWorkflowsResultInstances", "queued");
             }
             this.queued = queued;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rollingBack(Double rollingBack) {
+            if (rollingBack == null) {
+              throw new MissingRequiredPropertyException("GetWorkflowsResultInstances", "rollingBack");
+            }
+            this.rollingBack = rollingBack;
             return this;
         }
         @CustomType.Setter
@@ -145,6 +159,7 @@ public final class GetWorkflowsResultInstances {
             _resultValue.errored = errored;
             _resultValue.paused = paused;
             _resultValue.queued = queued;
+            _resultValue.rollingBack = rollingBack;
             _resultValue.running = running;
             _resultValue.terminated = terminated;
             _resultValue.waiting = waiting;

@@ -18,19 +18,22 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
+        /// <summary>
+        /// Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+        /// </summary>
         public readonly bool? IsRecent;
+        /// <summary>
+        /// Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+        /// </summary>
         public readonly bool? IsSimilarity;
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "pattern", "CreatedAt".
         /// </summary>
         public readonly string? Order;
         public readonly string? Pattern;
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         public readonly string? Search;
 

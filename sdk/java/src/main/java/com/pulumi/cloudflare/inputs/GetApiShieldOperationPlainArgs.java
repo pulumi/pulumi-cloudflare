@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetApiShieldOperationFilter;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -54,6 +55,21 @@ public final class GetApiShieldOperationPlainArgs extends com.pulumi.resources.I
     }
 
     /**
+     * When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+     * 
+     */
+    @Import(name="withSchemas")
+    private @Nullable Boolean withSchemas;
+
+    /**
+     * @return When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+     * 
+     */
+    public Optional<Boolean> withSchemas() {
+        return Optional.ofNullable(this.withSchemas);
+    }
+
+    /**
      * Identifier.
      * 
      */
@@ -74,6 +90,7 @@ public final class GetApiShieldOperationPlainArgs extends com.pulumi.resources.I
         this.feature = $.feature;
         this.filter = $.filter;
         this.operationId = $.operationId;
+        this.withSchemas = $.withSchemas;
         this.zoneId = $.zoneId;
     }
 
@@ -129,6 +146,17 @@ public final class GetApiShieldOperationPlainArgs extends com.pulumi.resources.I
          */
         public Builder operationId(@Nullable String operationId) {
             $.operationId = operationId;
+            return this;
+        }
+
+        /**
+         * @param withSchemas When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder withSchemas(@Nullable Boolean withSchemas) {
+            $.withSchemas = withSchemas;
             return this;
         }
 

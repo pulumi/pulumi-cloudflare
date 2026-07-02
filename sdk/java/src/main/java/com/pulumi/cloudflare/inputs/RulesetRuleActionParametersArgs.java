@@ -37,6 +37,7 @@ import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersStaleIfErrorArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersStaleWhileRevalidateArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersTransformedRequestFieldArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersVaryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -1243,6 +1244,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.values);
     }
 
+    /**
+     * Controls how cached responses vary based on request headers. `default` is required and applies to any Vary response header that does not have a per-header override.
+     * 
+     */
+    @Import(name="vary")
+    private @Nullable Output<RulesetRuleActionParametersVaryArgs> vary;
+
+    /**
+     * @return Controls how cached responses vary based on request headers. `default` is required and applies to any Vary response header that does not have a per-header override.
+     * 
+     */
+    public Optional<Output<RulesetRuleActionParametersVaryArgs>> vary() {
+        return Optional.ofNullable(this.vary);
+    }
+
     private RulesetRuleActionParametersArgs() {}
 
     private RulesetRuleActionParametersArgs(RulesetRuleActionParametersArgs $) {
@@ -1324,6 +1340,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.transformedRequestFields = $.transformedRequestFields;
         this.uri = $.uri;
         this.values = $.values;
+        this.vary = $.vary;
     }
 
     public static Builder builder() {
@@ -3112,6 +3129,27 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder values(String... values) {
             return values(List.of(values));
+        }
+
+        /**
+         * @param vary Controls how cached responses vary based on request headers. `default` is required and applies to any Vary response header that does not have a per-header override.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vary(@Nullable Output<RulesetRuleActionParametersVaryArgs> vary) {
+            $.vary = vary;
+            return this;
+        }
+
+        /**
+         * @param vary Controls how cached responses vary based on request headers. `default` is required and applies to any Vary response header that does not have a per-header override.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vary(RulesetRuleActionParametersVaryArgs vary) {
+            return vary(Output.of(vary));
         }
 
         public RulesetRuleActionParametersArgs build() {

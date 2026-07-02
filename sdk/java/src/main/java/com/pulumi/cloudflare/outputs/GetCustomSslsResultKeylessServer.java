@@ -61,7 +61,7 @@ public final class GetCustomSslsResultKeylessServer {
      */
     private String status;
     /**
-     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel.
      * 
      */
     private GetCustomSslsResultKeylessServerTunnel tunnel;
@@ -132,7 +132,7 @@ public final class GetCustomSslsResultKeylessServer {
         return this.status;
     }
     /**
-     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel.
      * 
      */
     public GetCustomSslsResultKeylessServerTunnel tunnel() {

@@ -220,15 +220,15 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
      * Identifier
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Identifier
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private HealthcheckArgs() {}
@@ -557,7 +557,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -578,6 +578,9 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("HealthcheckArgs", "name");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("HealthcheckArgs", "zoneId");
             }
             return $;
         }
