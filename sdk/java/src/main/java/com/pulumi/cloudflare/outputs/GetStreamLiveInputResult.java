@@ -16,8 +16,6 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStreamLiveInputResult {
@@ -25,7 +23,7 @@ public final class GetStreamLiveInputResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return The date and time the live input was created.
      * 
@@ -113,8 +111,8 @@ public final class GetStreamLiveInputResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return The date and time the live input was created.
@@ -239,7 +237,7 @@ public final class GetStreamLiveInputResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private String created;
         private Double deleteRecordingAfterDays;
         private Boolean enabled;
@@ -279,8 +277,10 @@ public final class GetStreamLiveInputResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetStreamLiveInputResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

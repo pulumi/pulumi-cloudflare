@@ -63,19 +63,19 @@ export class ClientCertificate extends pulumi.CustomResource {
     }
 
     /**
-     * The Client Certificate PEM
+     * The Client Certificate PEM.
      */
     declare public /*out*/ readonly certificate: pulumi.Output<string>;
     /**
-     * Certificate Authority used to issue the Client Certificate
+     * Certificate Authority used to issue the Client Certificate.
      */
     declare public /*out*/ readonly certificateAuthority: pulumi.Output<outputs.ClientCertificateCertificateAuthority>;
     /**
-     * Common Name of the Client Certificate
+     * Common Name of the Client Certificate.
      */
     declare public /*out*/ readonly commonName: pulumi.Output<string>;
     /**
-     * Country, provided by the CSR
+     * Country, provided by the CSR.
      */
     declare public /*out*/ readonly country: pulumi.Output<string>;
     /**
@@ -83,27 +83,27 @@ export class ClientCertificate extends pulumi.CustomResource {
      */
     declare public readonly csr: pulumi.Output<string>;
     /**
-     * Date that the Client Certificate expires
+     * Date that the Client Certificate expires.
      */
     declare public /*out*/ readonly expiresOn: pulumi.Output<string>;
     /**
-     * Unique identifier of the Client Certificate
+     * Unique identifier of the Client Certificate.
      */
     declare public /*out*/ readonly fingerprintSha256: pulumi.Output<string>;
     /**
-     * Date that the Client Certificate was issued by the Certificate Authority
+     * Date that the Client Certificate was issued by the Certificate Authority.
      */
     declare public /*out*/ readonly issuedOn: pulumi.Output<string>;
     /**
-     * Location, provided by the CSR
+     * Location, provided by the CSR.
      */
     declare public /*out*/ readonly location: pulumi.Output<string>;
     /**
-     * Organization, provided by the CSR
+     * Organization, provided by the CSR.
      */
     declare public /*out*/ readonly organization: pulumi.Output<string>;
     /**
-     * Organizational Unit, provided by the CSR
+     * Organizational Unit, provided by the CSR.
      */
     declare public /*out*/ readonly organizationalUnit: pulumi.Output<string>;
     declare public readonly reactivate: pulumi.Output<boolean | undefined>;
@@ -116,26 +116,26 @@ export class ClientCertificate extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly signature: pulumi.Output<string>;
     /**
-     * Subject Key Identifier
+     * Subject Key Identifier.
      */
     declare public /*out*/ readonly ski: pulumi.Output<string>;
     /**
-     * State, provided by the CSR
+     * State, provided by the CSR.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+     * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
      * Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * The number of days the Client Certificate will be valid after the issuedOn date
+     * The number of days the Client Certificate will be valid after the issuedOn date.
      */
     declare public readonly validityDays: pulumi.Output<number>;
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ClientCertificate resource with the given unique name, arguments, and options.
@@ -177,6 +177,9 @@ export class ClientCertificate extends pulumi.CustomResource {
             if (args?.validityDays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'validityDays'");
             }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             resourceInputs["csr"] = args?.csr;
             resourceInputs["reactivate"] = args?.reactivate;
             resourceInputs["validityDays"] = args?.validityDays;
@@ -207,19 +210,19 @@ export class ClientCertificate extends pulumi.CustomResource {
  */
 export interface ClientCertificateState {
     /**
-     * The Client Certificate PEM
+     * The Client Certificate PEM.
      */
     certificate?: pulumi.Input<string | undefined>;
     /**
-     * Certificate Authority used to issue the Client Certificate
+     * Certificate Authority used to issue the Client Certificate.
      */
     certificateAuthority?: pulumi.Input<inputs.ClientCertificateCertificateAuthority | undefined>;
     /**
-     * Common Name of the Client Certificate
+     * Common Name of the Client Certificate.
      */
     commonName?: pulumi.Input<string | undefined>;
     /**
-     * Country, provided by the CSR
+     * Country, provided by the CSR.
      */
     country?: pulumi.Input<string | undefined>;
     /**
@@ -227,27 +230,27 @@ export interface ClientCertificateState {
      */
     csr?: pulumi.Input<string | undefined>;
     /**
-     * Date that the Client Certificate expires
+     * Date that the Client Certificate expires.
      */
     expiresOn?: pulumi.Input<string | undefined>;
     /**
-     * Unique identifier of the Client Certificate
+     * Unique identifier of the Client Certificate.
      */
     fingerprintSha256?: pulumi.Input<string | undefined>;
     /**
-     * Date that the Client Certificate was issued by the Certificate Authority
+     * Date that the Client Certificate was issued by the Certificate Authority.
      */
     issuedOn?: pulumi.Input<string | undefined>;
     /**
-     * Location, provided by the CSR
+     * Location, provided by the CSR.
      */
     location?: pulumi.Input<string | undefined>;
     /**
-     * Organization, provided by the CSR
+     * Organization, provided by the CSR.
      */
     organization?: pulumi.Input<string | undefined>;
     /**
-     * Organizational Unit, provided by the CSR
+     * Organizational Unit, provided by the CSR.
      */
     organizationalUnit?: pulumi.Input<string | undefined>;
     reactivate?: pulumi.Input<boolean | undefined>;
@@ -260,20 +263,20 @@ export interface ClientCertificateState {
      */
     signature?: pulumi.Input<string | undefined>;
     /**
-     * Subject Key Identifier
+     * Subject Key Identifier.
      */
     ski?: pulumi.Input<string | undefined>;
     /**
-     * State, provided by the CSR
+     * State, provided by the CSR.
      */
     state?: pulumi.Input<string | undefined>;
     /**
-     * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+     * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
      * Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * The number of days the Client Certificate will be valid after the issuedOn date
+     * The number of days the Client Certificate will be valid after the issuedOn date.
      */
     validityDays?: pulumi.Input<number | undefined>;
     /**
@@ -292,11 +295,11 @@ export interface ClientCertificateArgs {
     csr: pulumi.Input<string>;
     reactivate?: pulumi.Input<boolean | undefined>;
     /**
-     * The number of days the Client Certificate will be valid after the issuedOn date
+     * The number of days the Client Certificate will be valid after the issuedOn date.
      */
     validityDays: pulumi.Input<number>;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

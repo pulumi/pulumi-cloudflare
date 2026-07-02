@@ -13,22 +13,22 @@ import java.util.Objects;
 @CustomType
 public final class GetClientCertificatesResult {
     /**
-     * @return The Client Certificate PEM
+     * @return The Client Certificate PEM.
      * 
      */
     private String certificate;
     /**
-     * @return Certificate Authority used to issue the Client Certificate
+     * @return Certificate Authority used to issue the Client Certificate.
      * 
      */
     private GetClientCertificatesResultCertificateAuthority certificateAuthority;
     /**
-     * @return Common Name of the Client Certificate
+     * @return Common Name of the Client Certificate.
      * 
      */
     private String commonName;
     /**
-     * @return Country, provided by the CSR
+     * @return Country, provided by the CSR.
      * 
      */
     private String country;
@@ -38,12 +38,12 @@ public final class GetClientCertificatesResult {
      */
     private String csr;
     /**
-     * @return Date that the Client Certificate expires
+     * @return Date that the Client Certificate expires.
      * 
      */
     private String expiresOn;
     /**
-     * @return Unique identifier of the Client Certificate
+     * @return Unique identifier of the Client Certificate.
      * 
      */
     private String fingerprintSha256;
@@ -53,22 +53,22 @@ public final class GetClientCertificatesResult {
      */
     private String id;
     /**
-     * @return Date that the Client Certificate was issued by the Certificate Authority
+     * @return Date that the Client Certificate was issued by the Certificate Authority.
      * 
      */
     private String issuedOn;
     /**
-     * @return Location, provided by the CSR
+     * @return Location, provided by the CSR.
      * 
      */
     private String location;
     /**
-     * @return Organization, provided by the CSR
+     * @return Organization, provided by the CSR.
      * 
      */
     private String organization;
     /**
-     * @return Organizational Unit, provided by the CSR
+     * @return Organizational Unit, provided by the CSR.
      * 
      */
     private String organizationalUnit;
@@ -83,51 +83,51 @@ public final class GetClientCertificatesResult {
      */
     private String signature;
     /**
-     * @return Subject Key Identifier
+     * @return Subject Key Identifier.
      * 
      */
     private String ski;
     /**
-     * @return State, provided by the CSR
+     * @return State, provided by the CSR.
      * 
      */
     private String state;
     /**
-     * @return Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+     * @return Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
      * Available values: &#34;active&#34;, &#34;pending*reactivation&#34;, &#34;pending*revocation&#34;, &#34;revoked&#34;.
      * 
      */
     private String status;
     /**
-     * @return The number of days the Client Certificate will be valid after the issuedOn date
+     * @return The number of days the Client Certificate will be valid after the issuedOn date.
      * 
      */
     private Integer validityDays;
 
     private GetClientCertificatesResult() {}
     /**
-     * @return The Client Certificate PEM
+     * @return The Client Certificate PEM.
      * 
      */
     public String certificate() {
         return this.certificate;
     }
     /**
-     * @return Certificate Authority used to issue the Client Certificate
+     * @return Certificate Authority used to issue the Client Certificate.
      * 
      */
     public GetClientCertificatesResultCertificateAuthority certificateAuthority() {
         return this.certificateAuthority;
     }
     /**
-     * @return Common Name of the Client Certificate
+     * @return Common Name of the Client Certificate.
      * 
      */
     public String commonName() {
         return this.commonName;
     }
     /**
-     * @return Country, provided by the CSR
+     * @return Country, provided by the CSR.
      * 
      */
     public String country() {
@@ -141,14 +141,14 @@ public final class GetClientCertificatesResult {
         return this.csr;
     }
     /**
-     * @return Date that the Client Certificate expires
+     * @return Date that the Client Certificate expires.
      * 
      */
     public String expiresOn() {
         return this.expiresOn;
     }
     /**
-     * @return Unique identifier of the Client Certificate
+     * @return Unique identifier of the Client Certificate.
      * 
      */
     public String fingerprintSha256() {
@@ -162,28 +162,28 @@ public final class GetClientCertificatesResult {
         return this.id;
     }
     /**
-     * @return Date that the Client Certificate was issued by the Certificate Authority
+     * @return Date that the Client Certificate was issued by the Certificate Authority.
      * 
      */
     public String issuedOn() {
         return this.issuedOn;
     }
     /**
-     * @return Location, provided by the CSR
+     * @return Location, provided by the CSR.
      * 
      */
     public String location() {
         return this.location;
     }
     /**
-     * @return Organization, provided by the CSR
+     * @return Organization, provided by the CSR.
      * 
      */
     public String organization() {
         return this.organization;
     }
     /**
-     * @return Organizational Unit, provided by the CSR
+     * @return Organizational Unit, provided by the CSR.
      * 
      */
     public String organizationalUnit() {
@@ -204,21 +204,21 @@ public final class GetClientCertificatesResult {
         return this.signature;
     }
     /**
-     * @return Subject Key Identifier
+     * @return Subject Key Identifier.
      * 
      */
     public String ski() {
         return this.ski;
     }
     /**
-     * @return State, provided by the CSR
+     * @return State, provided by the CSR.
      * 
      */
     public String state() {
         return this.state;
     }
     /**
-     * @return Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+     * @return Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
      * Available values: &#34;active&#34;, &#34;pending*reactivation&#34;, &#34;pending*revocation&#34;, &#34;revoked&#34;.
      * 
      */
@@ -226,7 +226,7 @@ public final class GetClientCertificatesResult {
         return this.status;
     }
     /**
-     * @return The number of days the Client Certificate will be valid after the issuedOn date
+     * @return The number of days the Client Certificate will be valid after the issuedOn date.
      * 
      */
     public Integer validityDays() {

@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeAuthContext;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeAuthMethod;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeAzureAd;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeCertificate;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeCloudflareAccountMember;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeCommonName;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeDevicePosture;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeEmail;
@@ -44,6 +45,7 @@ public final class ZeroTrustAccessGroupExclude {
     private @Nullable ZeroTrustAccessGroupExcludeAuthMethod authMethod;
     private @Nullable ZeroTrustAccessGroupExcludeAzureAd azureAd;
     private @Nullable ZeroTrustAccessGroupExcludeCertificate certificate;
+    private @Nullable ZeroTrustAccessGroupExcludeCloudflareAccountMember cloudflareAccountMember;
     private @Nullable ZeroTrustAccessGroupExcludeCommonName commonName;
     private @Nullable ZeroTrustAccessGroupExcludeDevicePosture devicePosture;
     private @Nullable ZeroTrustAccessGroupExcludeEmail email;
@@ -88,6 +90,9 @@ public final class ZeroTrustAccessGroupExclude {
     }
     public Optional<ZeroTrustAccessGroupExcludeCertificate> certificate() {
         return Optional.ofNullable(this.certificate);
+    }
+    public Optional<ZeroTrustAccessGroupExcludeCloudflareAccountMember> cloudflareAccountMember() {
+        return Optional.ofNullable(this.cloudflareAccountMember);
     }
     public Optional<ZeroTrustAccessGroupExcludeCommonName> commonName() {
         return Optional.ofNullable(this.commonName);
@@ -168,6 +173,7 @@ public final class ZeroTrustAccessGroupExclude {
         private @Nullable ZeroTrustAccessGroupExcludeAuthMethod authMethod;
         private @Nullable ZeroTrustAccessGroupExcludeAzureAd azureAd;
         private @Nullable ZeroTrustAccessGroupExcludeCertificate certificate;
+        private @Nullable ZeroTrustAccessGroupExcludeCloudflareAccountMember cloudflareAccountMember;
         private @Nullable ZeroTrustAccessGroupExcludeCommonName commonName;
         private @Nullable ZeroTrustAccessGroupExcludeDevicePosture devicePosture;
         private @Nullable ZeroTrustAccessGroupExcludeEmail email;
@@ -196,6 +202,7 @@ public final class ZeroTrustAccessGroupExclude {
     	      this.authMethod = defaults.authMethod;
     	      this.azureAd = defaults.azureAd;
     	      this.certificate = defaults.certificate;
+    	      this.cloudflareAccountMember = defaults.cloudflareAccountMember;
     	      this.commonName = defaults.commonName;
     	      this.devicePosture = defaults.devicePosture;
     	      this.email = defaults.email;
@@ -246,6 +253,12 @@ public final class ZeroTrustAccessGroupExclude {
         public Builder certificate(@Nullable ZeroTrustAccessGroupExcludeCertificate certificate) {
 
             this.certificate = certificate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloudflareAccountMember(@Nullable ZeroTrustAccessGroupExcludeCloudflareAccountMember cloudflareAccountMember) {
+
+            this.cloudflareAccountMember = cloudflareAccountMember;
             return this;
         }
         @CustomType.Setter
@@ -375,6 +388,7 @@ public final class ZeroTrustAccessGroupExclude {
             _resultValue.authMethod = authMethod;
             _resultValue.azureAd = azureAd;
             _resultValue.certificate = certificate;
+            _resultValue.cloudflareAccountMember = cloudflareAccountMember;
             _resultValue.commonName = commonName;
             _resultValue.devicePosture = devicePosture;
             _resultValue.email = email;

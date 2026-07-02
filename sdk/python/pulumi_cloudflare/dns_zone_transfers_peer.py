@@ -19,8 +19,8 @@ __all__ = ['DnsZoneTransfersPeerArgs', 'DnsZoneTransfersPeer']
 @pulumi.input_type
 class DnsZoneTransfersPeerArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ip: pulumi.Input[Optional[_builtins.str]] = None,
                  ixfr_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  port: pulumi.Input[Optional[_builtins.float]] = None,
@@ -34,9 +34,8 @@ class DnsZoneTransfersPeerArgs:
         :param pulumi.Input[_builtins.float] port: DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
         :param pulumi.Input[_builtins.str] tsig_id: TSIG authentication will be used for zone transfer if configured.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
         if ixfr_enable is not None:
@@ -45,6 +44,15 @@ class DnsZoneTransfersPeerArgs:
             pulumi.set(__self__, "port", port)
         if tsig_id is not None:
             pulumi.set(__self__, "tsig_id", tsig_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -57,15 +65,6 @@ class DnsZoneTransfersPeerArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -322,6 +321,8 @@ class DnsZoneTransfersPeer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DnsZoneTransfersPeerArgs.__new__(DnsZoneTransfersPeerArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["ip"] = ip
             __props__.__dict__["ixfr_enable"] = ixfr_enable
@@ -373,7 +374,7 @@ class DnsZoneTransfersPeer(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

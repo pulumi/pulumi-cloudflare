@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -53,7 +54,7 @@ type WorkersForPlatformsDispatchNamespace struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Identifier.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// When the script was created.
@@ -78,9 +79,12 @@ type WorkersForPlatformsDispatchNamespace struct {
 func NewWorkersForPlatformsDispatchNamespace(ctx *pulumi.Context,
 	name string, args *WorkersForPlatformsDispatchNamespaceArgs, opts ...pulumi.ResourceOption) (*WorkersForPlatformsDispatchNamespace, error) {
 	if args == nil {
-		args = &WorkersForPlatformsDispatchNamespaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace"),
@@ -161,7 +165,7 @@ func (WorkersForPlatformsDispatchNamespaceState) ElementType() reflect.Type {
 
 type workersForPlatformsDispatchNamespaceArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The name of the dispatch namespace.
 	Name *string `pulumi:"name"`
 }
@@ -169,7 +173,7 @@ type workersForPlatformsDispatchNamespaceArgs struct {
 // The set of arguments for constructing a WorkersForPlatformsDispatchNamespace resource.
 type WorkersForPlatformsDispatchNamespaceArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// The name of the dispatch namespace.
 	Name pulumi.StringPtrInput
 }
@@ -262,8 +266,8 @@ func (o WorkersForPlatformsDispatchNamespaceOutput) ToWorkersForPlatformsDispatc
 }
 
 // Identifier.
-func (o WorkersForPlatformsDispatchNamespaceOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkersForPlatformsDispatchNamespace) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o WorkersForPlatformsDispatchNamespaceOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersForPlatformsDispatchNamespace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Identifier.

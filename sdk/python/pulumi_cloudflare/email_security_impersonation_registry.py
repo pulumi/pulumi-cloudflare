@@ -19,20 +19,50 @@ __all__ = ['EmailSecurityImpersonationRegistryArgs', 'EmailSecurityImpersonation
 @pulumi.input_type
 class EmailSecurityImpersonationRegistryArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  email: pulumi.Input[_builtins.str],
                  is_email_regex: pulumi.Input[_builtins.bool],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 directory_node_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_directory_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provenance: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailSecurityImpersonationRegistry resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "is_email_regex", is_email_regex)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+        if comments is not None:
+            pulumi.set(__self__, "comments", comments)
+        if directory_id is not None:
+            pulumi.set(__self__, "directory_id", directory_id)
+        if directory_node_id is not None:
+            pulumi.set(__self__, "directory_node_id", directory_node_id)
+        if external_directory_node_id is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""external_directory_node_id is deprecated: This attribute is deprecated.""")
+        if external_directory_node_id is not None:
+            pulumi.set(__self__, "external_directory_node_id", external_directory_node_id)
+        if provenance is not None:
+            pulumi.set(__self__, "provenance", provenance)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -62,16 +92,53 @@ class EmailSecurityImpersonationRegistryArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Account Identifier
-        """
-        return pulumi.get(self, "account_id")
+    @pulumi.getter
+    def comments(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "comments")
 
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
+    @comments.setter
+    def comments(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comments", value)
+
+    @_builtins.property
+    @pulumi.getter(name="directoryId")
+    def directory_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "directory_id")
+
+    @directory_id.setter
+    def directory_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "directory_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="directoryNodeId")
+    def directory_node_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "directory_node_id")
+
+    @directory_node_id.setter
+    def directory_node_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "directory_node_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalDirectoryNodeId")
+    @_utilities.deprecated("""This attribute is deprecated.""")
+    def external_directory_node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "external_directory_node_id")
+
+    @external_directory_node_id.setter
+    def external_directory_node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "external_directory_node_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def provenance(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        """
+        return pulumi.get(self, "provenance")
+
+    @provenance.setter
+    def provenance(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "provenance", value)
 
 
 @pulumi.input_type
@@ -86,12 +153,15 @@ class _EmailSecurityImpersonationRegistryState:
                  external_directory_node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  is_email_regex: pulumi.Input[Optional[_builtins.bool]] = None,
                  last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provenance: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailSecurityImpersonationRegistry resources.
 
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        :param pulumi.Input[_builtins.str] provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -113,7 +183,12 @@ class _EmailSecurityImpersonationRegistryState:
         if is_email_regex is not None:
             pulumi.set(__self__, "is_email_regex", is_email_regex)
         if last_modified is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""last_modified is deprecated: This attribute is deprecated.""")
+        if last_modified is not None:
             pulumi.set(__self__, "last_modified", last_modified)
+        if modified_at is not None:
+            pulumi.set(__self__, "modified_at", modified_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if provenance is not None:
@@ -123,7 +198,7 @@ class _EmailSecurityImpersonationRegistryState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Account Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -197,12 +272,25 @@ class _EmailSecurityImpersonationRegistryState:
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def last_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        """
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
     def last_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "modified_at")
+
+    @modified_at.setter
+    def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "modified_at", value)
 
     @_builtins.property
     @pulumi.getter
@@ -216,6 +304,9 @@ class _EmailSecurityImpersonationRegistryState:
     @_builtins.property
     @pulumi.getter
     def provenance(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        """
         return pulumi.get(self, "provenance")
 
     @provenance.setter
@@ -230,9 +321,14 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 directory_node_id: pulumi.Input[Optional[_builtins.int]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_directory_node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  is_email_regex: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provenance: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Accepted Permissions
@@ -262,7 +358,8 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         """
         ...
     @overload
@@ -312,9 +409,14 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 directory_node_id: pulumi.Input[Optional[_builtins.int]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_directory_node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  is_email_regex: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provenance: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -324,23 +426,26 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EmailSecurityImpersonationRegistryArgs.__new__(EmailSecurityImpersonationRegistryArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["comments"] = comments
+            __props__.__dict__["directory_id"] = directory_id
+            __props__.__dict__["directory_node_id"] = directory_node_id
             if email is None and not opts.urn:
                 raise TypeError("Missing required property 'email'")
             __props__.__dict__["email"] = email
+            __props__.__dict__["external_directory_node_id"] = external_directory_node_id
             if is_email_regex is None and not opts.urn:
                 raise TypeError("Missing required property 'is_email_regex'")
             __props__.__dict__["is_email_regex"] = is_email_regex
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            __props__.__dict__["comments"] = None
+            __props__.__dict__["provenance"] = provenance
             __props__.__dict__["created_at"] = None
-            __props__.__dict__["directory_id"] = None
-            __props__.__dict__["directory_node_id"] = None
-            __props__.__dict__["external_directory_node_id"] = None
             __props__.__dict__["last_modified"] = None
-            __props__.__dict__["provenance"] = None
+            __props__.__dict__["modified_at"] = None
         super(EmailSecurityImpersonationRegistry, __self__).__init__(
             'cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry',
             resource_name,
@@ -360,6 +465,7 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
             external_directory_node_id: pulumi.Input[Optional[_builtins.str]] = None,
             is_email_regex: pulumi.Input[Optional[_builtins.bool]] = None,
             last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             provenance: pulumi.Input[Optional[_builtins.str]] = None) -> 'EmailSecurityImpersonationRegistry':
         """
@@ -369,7 +475,9 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        :param pulumi.Input[_builtins.str] provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -384,21 +492,22 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
         __props__.__dict__["external_directory_node_id"] = external_directory_node_id
         __props__.__dict__["is_email_regex"] = is_email_regex
         __props__.__dict__["last_modified"] = last_modified
+        __props__.__dict__["modified_at"] = modified_at
         __props__.__dict__["name"] = name
         __props__.__dict__["provenance"] = provenance
         return EmailSecurityImpersonationRegistry(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Account Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter
-    def comments(self) -> pulumi.Output[_builtins.str]:
+    def comments(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "comments")
 
     @_builtins.property
@@ -408,12 +517,12 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
-    def directory_id(self) -> pulumi.Output[_builtins.int]:
+    def directory_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         return pulumi.get(self, "directory_id")
 
     @_builtins.property
     @pulumi.getter(name="directoryNodeId")
-    def directory_node_id(self) -> pulumi.Output[_builtins.int]:
+    def directory_node_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         return pulumi.get(self, "directory_node_id")
 
     @_builtins.property
@@ -424,7 +533,7 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="externalDirectoryNodeId")
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def external_directory_node_id(self) -> pulumi.Output[_builtins.str]:
+    def external_directory_node_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "external_directory_node_id")
 
     @_builtins.property
@@ -434,8 +543,17 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def last_modified(self) -> pulumi.Output[_builtins.str]:
+        """
+        Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        """
         return pulumi.get(self, "last_modified")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "modified_at")
 
     @_builtins.property
     @pulumi.getter
@@ -444,6 +562,9 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def provenance(self) -> pulumi.Output[_builtins.str]:
+    def provenance(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        """
         return pulumi.get(self, "provenance")
 

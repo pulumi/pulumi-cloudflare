@@ -229,6 +229,23 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
     }
 
     /**
+     * Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+     * SAML assertions using the certificate from the assigned certificate set.
+     * 
+     */
+    @Import(name="enableEncryption")
+    private @Nullable Output<Boolean> enableEncryption;
+
+    /**
+     * @return Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+     * SAML assertions using the certificate from the assigned certificate set.
+     * 
+     */
+    public Optional<Output<Boolean>> enableEncryption() {
+        return Optional.ofNullable(this.enableEncryption);
+    }
+
+    /**
      * Add a list of attribute names that will be returned in the response header from the Access callback.
      * 
      */
@@ -334,7 +351,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
     }
 
     /**
-     * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
      * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
      * 
      */
@@ -342,7 +359,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
     private @Nullable Output<String> prompt;
 
     /**
-     * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
      * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
      * 
      */
@@ -355,6 +372,21 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
 
     public Optional<Output<String>> redirectUrl() {
         return Optional.ofNullable(this.redirectUrl);
+    }
+
+    /**
+     * When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+     * 
+     */
+    @Import(name="restrictToAccountMembers")
+    private @Nullable Output<Boolean> restrictToAccountMembers;
+
+    /**
+     * @return When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+     * 
+     */
+    public Optional<Output<Boolean>> restrictToAccountMembers() {
+        return Optional.ofNullable(this.restrictToAccountMembers);
     }
 
     /**
@@ -449,6 +481,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         this.directoryId = $.directoryId;
         this.emailAttributeName = $.emailAttributeName;
         this.emailClaimName = $.emailClaimName;
+        this.enableEncryption = $.enableEncryption;
         this.headerAttributes = $.headerAttributes;
         this.idpPublicCerts = $.idpPublicCerts;
         this.issuerUrl = $.issuerUrl;
@@ -458,6 +491,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         this.pkceEnabled = $.pkceEnabled;
         this.prompt = $.prompt;
         this.redirectUrl = $.redirectUrl;
+        this.restrictToAccountMembers = $.restrictToAccountMembers;
         this.scopes = $.scopes;
         this.signRequest = $.signRequest;
         this.ssoTargetUrl = $.ssoTargetUrl;
@@ -798,6 +832,29 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         }
 
         /**
+         * @param enableEncryption Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+         * SAML assertions using the certificate from the assigned certificate set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableEncryption(@Nullable Output<Boolean> enableEncryption) {
+            $.enableEncryption = enableEncryption;
+            return this;
+        }
+
+        /**
+         * @param enableEncryption Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+         * SAML assertions using the certificate from the assigned certificate set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableEncryption(Boolean enableEncryption) {
+            return enableEncryption(Output.of(enableEncryption));
+        }
+
+        /**
          * @param headerAttributes Add a list of attribute names that will be returned in the response header from the Access callback.
          * 
          * @return builder
@@ -965,7 +1022,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param prompt Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+         * @param prompt Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
          * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
          * 
          * @return builder
@@ -977,7 +1034,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param prompt Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+         * @param prompt Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
          * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
          * 
          * @return builder
@@ -994,6 +1051,27 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
 
         public Builder redirectUrl(String redirectUrl) {
             return redirectUrl(Output.of(redirectUrl));
+        }
+
+        /**
+         * @param restrictToAccountMembers When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictToAccountMembers(@Nullable Output<Boolean> restrictToAccountMembers) {
+            $.restrictToAccountMembers = restrictToAccountMembers;
+            return this;
+        }
+
+        /**
+         * @param restrictToAccountMembers When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictToAccountMembers(Boolean restrictToAccountMembers) {
+            return restrictToAccountMembers(Output.of(restrictToAccountMembers));
         }
 
         /**

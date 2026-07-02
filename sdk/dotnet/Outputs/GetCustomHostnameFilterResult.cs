@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// Whether to filter hostnames based on if they have SSL enabled.
         /// Available values: 0, 1.
         /// </summary>
-        public readonly double? Ssl;
+        public readonly int Ssl;
         /// <summary>
         /// Filter by SSL certificate status.
         /// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
@@ -73,7 +73,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string order,
 
-            double? ssl,
+            int ssl,
 
             string? sslStatus,
 

@@ -63,45 +63,45 @@ type LookupClientCertificateArgs struct {
 
 // A collection of values returned by getClientCertificate.
 type LookupClientCertificateResult struct {
-	// The Client Certificate PEM
+	// The Client Certificate PEM.
 	Certificate string `pulumi:"certificate"`
-	// Certificate Authority used to issue the Client Certificate
+	// Certificate Authority used to issue the Client Certificate.
 	CertificateAuthority GetClientCertificateCertificateAuthority `pulumi:"certificateAuthority"`
 	// Identifier.
 	ClientCertificateId *string `pulumi:"clientCertificateId"`
-	// Common Name of the Client Certificate
+	// Common Name of the Client Certificate.
 	CommonName string `pulumi:"commonName"`
-	// Country, provided by the CSR
+	// Country, provided by the CSR.
 	Country string `pulumi:"country"`
 	// The Certificate Signing Request (CSR). Must be newline-encoded.
 	Csr string `pulumi:"csr"`
-	// Date that the Client Certificate expires
+	// Date that the Client Certificate expires.
 	ExpiresOn string                      `pulumi:"expiresOn"`
 	Filter    *GetClientCertificateFilter `pulumi:"filter"`
-	// Unique identifier of the Client Certificate
+	// Unique identifier of the Client Certificate.
 	FingerprintSha256 string `pulumi:"fingerprintSha256"`
 	// Identifier.
 	Id string `pulumi:"id"`
-	// Date that the Client Certificate was issued by the Certificate Authority
+	// Date that the Client Certificate was issued by the Certificate Authority.
 	IssuedOn string `pulumi:"issuedOn"`
-	// Location, provided by the CSR
+	// Location, provided by the CSR.
 	Location string `pulumi:"location"`
-	// Organization, provided by the CSR
+	// Organization, provided by the CSR.
 	Organization string `pulumi:"organization"`
-	// Organizational Unit, provided by the CSR
+	// Organizational Unit, provided by the CSR.
 	OrganizationalUnit string `pulumi:"organizationalUnit"`
 	// The serial number on the created Client Certificate.
 	SerialNumber string `pulumi:"serialNumber"`
 	// The type of hash used for the Client Certificate..
 	Signature string `pulumi:"signature"`
-	// Subject Key Identifier
+	// Subject Key Identifier.
 	Ski string `pulumi:"ski"`
-	// State, provided by the CSR
+	// State, provided by the CSR.
 	State string `pulumi:"state"`
-	// Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+	// Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
 	// Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
 	Status string `pulumi:"status"`
-	// The number of days the Client Certificate will be valid after the issuedOn date
+	// The number of days the Client Certificate will be valid after the issuedOn date.
 	ValidityDays int `pulumi:"validityDays"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
@@ -144,12 +144,12 @@ func (o LookupClientCertificateResultOutput) ToLookupClientCertificateResultOutp
 	return o
 }
 
-// The Client Certificate PEM
+// The Client Certificate PEM.
 func (o LookupClientCertificateResultOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// Certificate Authority used to issue the Client Certificate
+// Certificate Authority used to issue the Client Certificate.
 func (o LookupClientCertificateResultOutput) CertificateAuthority() GetClientCertificateCertificateAuthorityOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) GetClientCertificateCertificateAuthority {
 		return v.CertificateAuthority
@@ -161,12 +161,12 @@ func (o LookupClientCertificateResultOutput) ClientCertificateId() pulumi.String
 	return o.ApplyT(func(v LookupClientCertificateResult) *string { return v.ClientCertificateId }).(pulumi.StringPtrOutput)
 }
 
-// Common Name of the Client Certificate
+// Common Name of the Client Certificate.
 func (o LookupClientCertificateResultOutput) CommonName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.CommonName }).(pulumi.StringOutput)
 }
 
-// Country, provided by the CSR
+// Country, provided by the CSR.
 func (o LookupClientCertificateResultOutput) Country() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.Country }).(pulumi.StringOutput)
 }
@@ -176,7 +176,7 @@ func (o LookupClientCertificateResultOutput) Csr() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.Csr }).(pulumi.StringOutput)
 }
 
-// Date that the Client Certificate expires
+// Date that the Client Certificate expires.
 func (o LookupClientCertificateResultOutput) ExpiresOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.ExpiresOn }).(pulumi.StringOutput)
 }
@@ -185,7 +185,7 @@ func (o LookupClientCertificateResultOutput) Filter() GetClientCertificateFilter
 	return o.ApplyT(func(v LookupClientCertificateResult) *GetClientCertificateFilter { return v.Filter }).(GetClientCertificateFilterPtrOutput)
 }
 
-// Unique identifier of the Client Certificate
+// Unique identifier of the Client Certificate.
 func (o LookupClientCertificateResultOutput) FingerprintSha256() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.FingerprintSha256 }).(pulumi.StringOutput)
 }
@@ -195,22 +195,22 @@ func (o LookupClientCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Date that the Client Certificate was issued by the Certificate Authority
+// Date that the Client Certificate was issued by the Certificate Authority.
 func (o LookupClientCertificateResultOutput) IssuedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.IssuedOn }).(pulumi.StringOutput)
 }
 
-// Location, provided by the CSR
+// Location, provided by the CSR.
 func (o LookupClientCertificateResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Organization, provided by the CSR
+// Organization, provided by the CSR.
 func (o LookupClientCertificateResultOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.Organization }).(pulumi.StringOutput)
 }
 
-// Organizational Unit, provided by the CSR
+// Organizational Unit, provided by the CSR.
 func (o LookupClientCertificateResultOutput) OrganizationalUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.OrganizationalUnit }).(pulumi.StringOutput)
 }
@@ -225,23 +225,23 @@ func (o LookupClientCertificateResultOutput) Signature() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.Signature }).(pulumi.StringOutput)
 }
 
-// Subject Key Identifier
+// Subject Key Identifier.
 func (o LookupClientCertificateResultOutput) Ski() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.Ski }).(pulumi.StringOutput)
 }
 
-// State, provided by the CSR
+// State, provided by the CSR.
 func (o LookupClientCertificateResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+// Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
 // Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
 func (o LookupClientCertificateResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The number of days the Client Certificate will be valid after the issuedOn date
+// The number of days the Client Certificate will be valid after the issuedOn date.
 func (o LookupClientCertificateResultOutput) ValidityDays() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClientCertificateResult) int { return v.ValidityDays }).(pulumi.IntOutput)
 }

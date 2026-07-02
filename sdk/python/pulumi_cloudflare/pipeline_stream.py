@@ -21,8 +21,8 @@ __all__ = ['PipelineStreamArgs', 'PipelineStream']
 @pulumi.input_type
 class PipelineStreamArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  format: pulumi.Input[Optional['PipelineStreamFormatArgs']] = None,
                  http: pulumi.Input[Optional['PipelineStreamHttpArgs']] = None,
                  schema: pulumi.Input[Optional['PipelineStreamSchemaArgs']] = None,
@@ -30,12 +30,11 @@ class PipelineStreamArgs:
         """
         The set of arguments for constructing a PipelineStream resource.
 
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the Stream.
         :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the Stream.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if http is not None:
@@ -44,6 +43,18 @@ class PipelineStreamArgs:
             pulumi.set(__self__, "schema", schema)
         if worker_binding is not None:
             pulumi.set(__self__, "worker_binding", worker_binding)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specifies the public ID of the account.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -56,18 +67,6 @@ class PipelineStreamArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Specifies the public ID of the account.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -417,6 +416,8 @@ class PipelineStream(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PipelineStreamArgs.__new__(PipelineStreamArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["format"] = format
             __props__.__dict__["http"] = http
@@ -479,7 +480,7 @@ class PipelineStream(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the public ID of the account.
         """

@@ -58,7 +58,7 @@ type TunnelVirtualNetwork struct {
 	pulumi.CustomResourceState
 
 	// Cloudflare account ID
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Optional remark describing the virtual network.
 	Comment pulumi.StringOutput `pulumi:"comment"`
 	// Timestamp of when the resource was created.
@@ -82,6 +82,9 @@ func NewTunnelVirtualNetwork(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -157,7 +160,7 @@ func (TunnelVirtualNetworkState) ElementType() reflect.Type {
 
 type tunnelVirtualNetworkArgs struct {
 	// Cloudflare account ID
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Optional remark describing the virtual network.
 	Comment *string `pulumi:"comment"`
 	// If `true`, this virtual network is the default for the account.
@@ -173,7 +176,7 @@ type tunnelVirtualNetworkArgs struct {
 // The set of arguments for constructing a TunnelVirtualNetwork resource.
 type TunnelVirtualNetworkArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Optional remark describing the virtual network.
 	Comment pulumi.StringPtrInput
 	// If `true`, this virtual network is the default for the account.
@@ -274,8 +277,8 @@ func (o TunnelVirtualNetworkOutput) ToTunnelVirtualNetworkOutputWithContext(ctx 
 }
 
 // Cloudflare account ID
-func (o TunnelVirtualNetworkOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o TunnelVirtualNetworkOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Optional remark describing the virtual network.

@@ -54,7 +54,7 @@ type StreamAudioTrack struct {
 	pulumi.CustomResourceState
 
 	// The account identifier tag.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The unique identifier for an additional audio track.
 	AudioIdentifier pulumi.StringPtrOutput `pulumi:"audioIdentifier"`
 	// Array of audio tracks for the video.
@@ -79,6 +79,9 @@ func NewStreamAudioTrack(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
@@ -150,7 +153,7 @@ func (StreamAudioTrackState) ElementType() reflect.Type {
 
 type streamAudioTrackArgs struct {
 	// The account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The unique identifier for an additional audio track.
 	AudioIdentifier *string `pulumi:"audioIdentifier"`
 	// Denotes whether the audio track will be played by default in a player.
@@ -164,7 +167,7 @@ type streamAudioTrackArgs struct {
 // The set of arguments for constructing a StreamAudioTrack resource.
 type StreamAudioTrackArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// The unique identifier for an additional audio track.
 	AudioIdentifier pulumi.StringPtrInput
 	// Denotes whether the audio track will be played by default in a player.
@@ -263,8 +266,8 @@ func (o StreamAudioTrackOutput) ToStreamAudioTrackOutputWithContext(ctx context.
 }
 
 // The account identifier tag.
-func (o StreamAudioTrackOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StreamAudioTrack) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o StreamAudioTrackOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StreamAudioTrack) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The unique identifier for an additional audio track.

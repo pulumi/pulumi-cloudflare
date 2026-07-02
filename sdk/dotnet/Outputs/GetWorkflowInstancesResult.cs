@@ -17,6 +17,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly double Errored;
         public readonly double Paused;
         public readonly double Queued;
+        public readonly double RollingBack;
         public readonly double Running;
         public readonly double Terminated;
         public readonly double Waiting;
@@ -32,6 +33,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             double queued,
 
+            double rollingBack,
+
             double running,
 
             double terminated,
@@ -44,6 +47,7 @@ namespace Pulumi.Cloudflare.Outputs
             Errored = errored;
             Paused = paused;
             Queued = queued;
+            RollingBack = rollingBack;
             Running = running;
             Terminated = terminated;
             Waiting = waiting;

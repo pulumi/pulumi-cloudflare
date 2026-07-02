@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetPipelineStreamFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Filters streams by name (case-insensitive substring).
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// Specifies the public ID of the pipeline.
         /// </summary>
         [Input("pipelineId")]

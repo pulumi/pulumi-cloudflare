@@ -19,18 +19,29 @@ __all__ = ['LeakedCredentialCheckArgs', 'LeakedCredentialCheck']
 @pulumi.input_type
 class LeakedCredentialCheckArgs:
     def __init__(__self__, *,
-                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 zone_id: pulumi.Input[_builtins.str],
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a LeakedCredentialCheck resource.
 
-        :param pulumi.Input[_builtins.bool] enabled: Determines whether or not Leaked Credential Checks are enabled.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
+        :param pulumi.Input[_builtins.bool] enabled: Determines whether or not Leaked Credential Checks are enabled.
         """
+        pulumi.set(__self__, "zone_id", zone_id)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Defines an identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -43,18 +54,6 @@ class LeakedCredentialCheckArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Defines an identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -140,7 +139,7 @@ class LeakedCredentialCheck(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[LeakedCredentialCheckArgs] = None,
+                 args: LeakedCredentialCheckArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Accepted Permissions
@@ -193,6 +192,8 @@ class LeakedCredentialCheck(pulumi.CustomResource):
             __props__ = LeakedCredentialCheckArgs.__new__(LeakedCredentialCheckArgs)
 
             __props__.__dict__["enabled"] = enabled
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
         super(LeakedCredentialCheck, __self__).__init__(
             'cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck',
@@ -234,7 +235,7 @@ class LeakedCredentialCheck(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Defines an identifier.
         """

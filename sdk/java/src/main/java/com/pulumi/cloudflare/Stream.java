@@ -74,14 +74,14 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return The account identifier tag.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
@@ -450,7 +450,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Stream(java.lang.String name, @Nullable StreamArgs args) {
+    public Stream(java.lang.String name, StreamArgs args) {
         this(name, args, null);
     }
     /**
@@ -459,7 +459,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Stream(java.lang.String name, @Nullable StreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Stream(java.lang.String name, StreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/stream:Stream", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -467,7 +467,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/stream:Stream", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static StreamArgs makeArgs(@Nullable StreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static StreamArgs makeArgs(StreamArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

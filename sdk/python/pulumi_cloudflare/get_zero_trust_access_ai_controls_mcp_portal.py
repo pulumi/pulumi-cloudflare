@@ -170,6 +170,11 @@ def get_zero_trust_access_ai_controls_mcp_portal(account_id: Optional[_builtins.
                                                  id: Optional[_builtins.str] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZeroTrustAccessAiControlsMcpPortalResult:
     """
+    Accepted Permissions
+
+    - `MCP Portals Read`
+    - `MCP Portals Write`
+
     ## Example Usage
 
     ```python
@@ -209,6 +214,11 @@ def get_zero_trust_access_ai_controls_mcp_portal_output(account_id: pulumi.Input
                                                         id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessAiControlsMcpPortalResult]:
     """
+    Accepted Permissions
+
+    - `MCP Portals Read`
+    - `MCP Portals Write`
+
     ## Example Usage
 
     ```python

@@ -24,11 +24,13 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getMagicTransitConnector(args: GetMagicTransitConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitConnectorResult> {
+export function getMagicTransitConnector(args?: GetMagicTransitConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetMagicTransitConnectorResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getMagicTransitConnector:getMagicTransitConnector", {
         "accountId": args.accountId,
         "connectorId": args.connectorId,
+        "filter": args.filter,
     }, opts);
 }
 
@@ -40,7 +42,8 @@ export interface GetMagicTransitConnectorArgs {
      * Account identifier
      */
     accountId?: string;
-    connectorId: string;
+    connectorId?: string;
+    filter?: inputs.GetMagicTransitConnectorFilter;
 }
 
 /**
@@ -52,8 +55,9 @@ export interface GetMagicTransitConnectorResult {
      */
     readonly accountId?: string;
     readonly activated: boolean;
-    readonly connectorId: string;
+    readonly connectorId?: string;
     readonly device: outputs.GetMagicTransitConnectorDevice;
+    readonly filter?: outputs.GetMagicTransitConnectorFilter;
     /**
      * The ID of this resource.
      */
@@ -93,11 +97,13 @@ export interface GetMagicTransitConnectorResult {
  * });
  * ```
  */
-export function getMagicTransitConnectorOutput(args: GetMagicTransitConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitConnectorResult> {
+export function getMagicTransitConnectorOutput(args?: GetMagicTransitConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMagicTransitConnectorResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getMagicTransitConnector:getMagicTransitConnector", {
         "accountId": args.accountId,
         "connectorId": args.connectorId,
+        "filter": args.filter,
     }, opts);
 }
 
@@ -109,5 +115,6 @@ export interface GetMagicTransitConnectorOutputArgs {
      * Account identifier
      */
     accountId?: pulumi.Input<string | undefined>;
-    connectorId: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.GetMagicTransitConnectorFilterArgs | undefined>;
 }

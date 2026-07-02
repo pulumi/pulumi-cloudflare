@@ -70,7 +70,7 @@ export class Tunnel extends pulumi.CustomResource {
     /**
      * Cloudflare account ID
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Cloudflare account ID
      */
@@ -163,6 +163,9 @@ export class Tunnel extends pulumi.CustomResource {
             resourceInputs["tunnelSecret"] = state?.tunnelSecret;
         } else {
             const args = argsOrState as TunnelArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -266,7 +269,7 @@ export interface TunnelArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
      * Available values: "local", "cloudflare".

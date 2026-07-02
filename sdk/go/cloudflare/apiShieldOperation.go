@@ -67,8 +67,10 @@ type ApiShieldOperation struct {
 	Method pulumi.StringOutput `pulumi:"method"`
 	// UUID.
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
+	// OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+	Schemas ApiShieldOperationSchemasOutput `pulumi:"schemas"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewApiShieldOperation registers a new resource with the given unique name, arguments, and options.
@@ -86,6 +88,9 @@ func NewApiShieldOperation(ctx *pulumi.Context,
 	}
 	if args.Method == nil {
 		return nil, errors.New("invalid value for required argument 'Method'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApiShieldOperation
@@ -121,6 +126,8 @@ type apiShieldOperationState struct {
 	Method *string `pulumi:"method"`
 	// UUID.
 	OperationId *string `pulumi:"operationId"`
+	// OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+	Schemas *ApiShieldOperationSchemas `pulumi:"schemas"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -137,6 +144,8 @@ type ApiShieldOperationState struct {
 	Method pulumi.StringPtrInput
 	// UUID.
 	OperationId pulumi.StringPtrInput
+	// OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+	Schemas ApiShieldOperationSchemasPtrInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
@@ -154,7 +163,7 @@ type apiShieldOperationArgs struct {
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method string `pulumi:"method"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ApiShieldOperation resource.
@@ -167,7 +176,7 @@ type ApiShieldOperationArgs struct {
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method pulumi.StringInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (ApiShieldOperationArgs) ElementType() reflect.Type {
@@ -286,9 +295,14 @@ func (o ApiShieldOperationOutput) OperationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.OperationId }).(pulumi.StringOutput)
 }
 
+// OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+func (o ApiShieldOperationOutput) Schemas() ApiShieldOperationSchemasOutput {
+	return o.ApplyT(func(v *ApiShieldOperation) ApiShieldOperationSchemasOutput { return v.Schemas }).(ApiShieldOperationSchemasOutput)
+}
+
 // Identifier.
-func (o ApiShieldOperationOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o ApiShieldOperationOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type ApiShieldOperationArrayOutput struct{ *pulumi.OutputState }

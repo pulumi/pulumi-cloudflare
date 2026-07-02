@@ -82,15 +82,15 @@ public final class Web3HostnameArgs extends com.pulumi.resources.ResourceArgs {
      * Specify the identifier of the hostname.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Specify the identifier of the hostname.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private Web3HostnameArgs() {}
@@ -213,7 +213,7 @@ public final class Web3HostnameArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -234,6 +234,9 @@ public final class Web3HostnameArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.target == null) {
                 throw new MissingRequiredPropertyException("Web3HostnameArgs", "target");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("Web3HostnameArgs", "zoneId");
             }
             return $;
         }

@@ -28,7 +28,7 @@ class GetEmailSecurityBlockSenderResult:
     """
     A collection of values returned by getEmailSecurityBlockSender.
     """
-    def __init__(__self__, account_id=None, comments=None, created_at=None, filter=None, id=None, is_regex=None, last_modified=None, pattern=None, pattern_id=None, pattern_type=None):
+    def __init__(__self__, account_id=None, comments=None, created_at=None, filter=None, id=None, is_regex=None, last_modified=None, modified_at=None, pattern=None, pattern_id=None, pattern_type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -41,8 +41,8 @@ class GetEmailSecurityBlockSenderResult:
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
-        if id and not isinstance(id, int):
-            raise TypeError("Expected argument 'id' to be a int")
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if is_regex and not isinstance(is_regex, bool):
             raise TypeError("Expected argument 'is_regex' to be a bool")
@@ -50,11 +50,14 @@ class GetEmailSecurityBlockSenderResult:
         if last_modified and not isinstance(last_modified, str):
             raise TypeError("Expected argument 'last_modified' to be a str")
         pulumi.set(__self__, "last_modified", last_modified)
+        if modified_at and not isinstance(modified_at, str):
+            raise TypeError("Expected argument 'modified_at' to be a str")
+        pulumi.set(__self__, "modified_at", modified_at)
         if pattern and not isinstance(pattern, str):
             raise TypeError("Expected argument 'pattern' to be a str")
         pulumi.set(__self__, "pattern", pattern)
-        if pattern_id and not isinstance(pattern_id, int):
-            raise TypeError("Expected argument 'pattern_id' to be a int")
+        if pattern_id and not isinstance(pattern_id, str):
+            raise TypeError("Expected argument 'pattern_id' to be a str")
         pulumi.set(__self__, "pattern_id", pattern_id)
         if pattern_type and not isinstance(pattern_type, str):
             raise TypeError("Expected argument 'pattern_type' to be a str")
@@ -64,7 +67,7 @@ class GetEmailSecurityBlockSenderResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        Account Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -85,9 +88,9 @@ class GetEmailSecurityBlockSenderResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.int:
+    def id(self) -> _builtins.str:
         """
-        The unique identifier for the allow policy.
+        Blocked sender pattern identifier
         """
         return pulumi.get(self, "id")
 
@@ -98,8 +101,17 @@ class GetEmailSecurityBlockSenderResult:
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def last_modified(self) -> _builtins.str:
+        """
+        Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        """
         return pulumi.get(self, "last_modified")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> _builtins.str:
+        return pulumi.get(self, "modified_at")
 
     @_builtins.property
     @pulumi.getter
@@ -108,9 +120,9 @@ class GetEmailSecurityBlockSenderResult:
 
     @_builtins.property
     @pulumi.getter(name="patternId")
-    def pattern_id(self) -> Optional[_builtins.int]:
+    def pattern_id(self) -> Optional[_builtins.str]:
         """
-        The unique identifier for the allow policy.
+        Blocked sender pattern identifier
         """
         return pulumi.get(self, "pattern_id")
 
@@ -118,6 +130,8 @@ class GetEmailSecurityBlockSenderResult:
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> _builtins.str:
         """
+        Type of pattern matching.
+        Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
         Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         return pulumi.get(self, "pattern_type")
@@ -136,6 +150,7 @@ class AwaitableGetEmailSecurityBlockSenderResult(GetEmailSecurityBlockSenderResu
             id=self.id,
             is_regex=self.is_regex,
             last_modified=self.last_modified,
+            modified_at=self.modified_at,
             pattern=self.pattern,
             pattern_id=self.pattern_id,
             pattern_type=self.pattern_type)
@@ -143,7 +158,7 @@ class AwaitableGetEmailSecurityBlockSenderResult(GetEmailSecurityBlockSenderResu
 
 def get_email_security_block_sender(account_id: Optional[_builtins.str] = None,
                                     filter: Optional[Union['GetEmailSecurityBlockSenderFilterArgs', 'GetEmailSecurityBlockSenderFilterArgsDict']] = None,
-                                    pattern_id: Optional[_builtins.int] = None,
+                                    pattern_id: Optional[_builtins.str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailSecurityBlockSenderResult:
     """
     Accepted Permissions
@@ -158,12 +173,12 @@ def get_email_security_block_sender(account_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_email_security_block_sender = cloudflare.get_email_security_block_sender(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        pattern_id=2402)
+        pattern_id="2402")
     ```
 
 
-    :param _builtins.str account_id: Account Identifier
-    :param _builtins.int pattern_id: The unique identifier for the allow policy.
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str pattern_id: Blocked sender pattern identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -180,12 +195,13 @@ def get_email_security_block_sender(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         is_regex=pulumi.get(__ret__, 'is_regex'),
         last_modified=pulumi.get(__ret__, 'last_modified'),
+        modified_at=pulumi.get(__ret__, 'modified_at'),
         pattern=pulumi.get(__ret__, 'pattern'),
         pattern_id=pulumi.get(__ret__, 'pattern_id'),
         pattern_type=pulumi.get(__ret__, 'pattern_type'))
 def get_email_security_block_sender_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                            filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityBlockSenderFilterArgs', 'GetEmailSecurityBlockSenderFilterArgsDict']]]] = None,
-                                           pattern_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                           pattern_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityBlockSenderResult]:
     """
     Accepted Permissions
@@ -200,12 +216,12 @@ def get_email_security_block_sender_output(account_id: pulumi.Input[Optional[Opt
     import pulumi_cloudflare as cloudflare
 
     example_email_security_block_sender = cloudflare.get_email_security_block_sender(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        pattern_id=2402)
+        pattern_id="2402")
     ```
 
 
-    :param _builtins.str account_id: Account Identifier
-    :param _builtins.int pattern_id: The unique identifier for the allow policy.
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str pattern_id: Blocked sender pattern identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -221,6 +237,7 @@ def get_email_security_block_sender_output(account_id: pulumi.Input[Optional[Opt
         id=pulumi.get(__response__, 'id'),
         is_regex=pulumi.get(__response__, 'is_regex'),
         last_modified=pulumi.get(__response__, 'last_modified'),
+        modified_at=pulumi.get(__response__, 'modified_at'),
         pattern=pulumi.get(__response__, 'pattern'),
         pattern_id=pulumi.get(__response__, 'pattern_id'),
         pattern_type=pulumi.get(__response__, 'pattern_type')))

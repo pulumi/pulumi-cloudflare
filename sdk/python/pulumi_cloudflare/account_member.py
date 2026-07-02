@@ -21,31 +21,42 @@ __all__ = ['AccountMemberArgs', 'AccountMember']
 @pulumi.input_type
 class AccountMemberArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  email: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  policies: pulumi.Input[Optional[Sequence[pulumi.Input['AccountMemberPolicyArgs']]]] = None,
                  roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountMember resource.
 
-        :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
+        :param pulumi.Input[_builtins.str] email: The contact email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input['AccountMemberPolicyArgs']]] policies: Array of policies associated with this member.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Set of roles associated with this member.
         :param pulumi.Input[_builtins.str] status: Status of the member invitation. If not provided during creation, defaults to 'pending'.
                Changing from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.
                Available values: "accepted", "pending".
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "email", email)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
         if roles is not None:
             pulumi.set(__self__, "roles", roles)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Account identifier tag.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -58,18 +69,6 @@ class AccountMemberArgs:
     @email.setter
     def email(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "email", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Account identifier tag.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -330,6 +329,8 @@ class AccountMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccountMemberArgs.__new__(AccountMemberArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if email is None and not opts.urn:
                 raise TypeError("Missing required property 'email'")
@@ -384,7 +385,7 @@ class AccountMember(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Account identifier tag.
         """

@@ -4,9 +4,11 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetWorkflowsResultInstances;
+import com.pulumi.cloudflare.outputs.GetWorkflowsResultSchedule;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -17,6 +19,7 @@ public final class GetWorkflowsResult {
     private GetWorkflowsResultInstances instances;
     private String modifiedOn;
     private String name;
+    private List<GetWorkflowsResultSchedule> schedules;
     private String scriptName;
     private String triggeredOn;
 
@@ -38,6 +41,9 @@ public final class GetWorkflowsResult {
     }
     public String name() {
         return this.name;
+    }
+    public List<GetWorkflowsResultSchedule> schedules() {
+        return this.schedules;
     }
     public String scriptName() {
         return this.scriptName;
@@ -61,6 +67,7 @@ public final class GetWorkflowsResult {
         private GetWorkflowsResultInstances instances;
         private String modifiedOn;
         private String name;
+        private List<GetWorkflowsResultSchedule> schedules;
         private String scriptName;
         private String triggeredOn;
         public Builder() {}
@@ -72,6 +79,7 @@ public final class GetWorkflowsResult {
     	      this.instances = defaults.instances;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.name = defaults.name;
+    	      this.schedules = defaults.schedules;
     	      this.scriptName = defaults.scriptName;
     	      this.triggeredOn = defaults.triggeredOn;
         }
@@ -125,6 +133,17 @@ public final class GetWorkflowsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder schedules(List<GetWorkflowsResultSchedule> schedules) {
+            if (schedules == null) {
+              throw new MissingRequiredPropertyException("GetWorkflowsResult", "schedules");
+            }
+            this.schedules = schedules;
+            return this;
+        }
+        public Builder schedules(GetWorkflowsResultSchedule... schedules) {
+            return schedules(List.of(schedules));
+        }
+        @CustomType.Setter
         public Builder scriptName(String scriptName) {
             if (scriptName == null) {
               throw new MissingRequiredPropertyException("GetWorkflowsResult", "scriptName");
@@ -148,6 +167,7 @@ public final class GetWorkflowsResult {
             _resultValue.instances = instances;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.name = name;
+            _resultValue.schedules = schedules;
             _resultValue.scriptName = scriptName;
             _resultValue.triggeredOn = triggeredOn;
             return _resultValue;

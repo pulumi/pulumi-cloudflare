@@ -19,14 +19,20 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
+        /// <summary>
+        /// Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+        /// </summary>
         [Input("isRecent")]
         public Input<bool>? IsRecent { get; set; }
 
+        /// <summary>
+        /// Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+        /// </summary>
         [Input("isSimilarity")]
         public Input<bool>? IsSimilarity { get; set; }
 
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "pattern", "CreatedAt".
         /// </summary>
         [Input("order")]
@@ -36,10 +42,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Pattern { get; set; }
 
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }

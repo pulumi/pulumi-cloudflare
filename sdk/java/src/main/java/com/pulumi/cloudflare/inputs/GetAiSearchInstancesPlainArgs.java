@@ -37,15 +37,23 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.maxItems);
     }
 
+    /**
+     * Filter by namespace.
+     * 
+     */
     @Import(name="namespace")
     private @Nullable String namespace;
 
+    /**
+     * @return Filter by namespace.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
 
     /**
-     * Order By Column Name
+     * Field to order results by.
      * Available values: &#34;createdAt&#34;.
      * 
      */
@@ -53,7 +61,7 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
     private @Nullable String orderBy;
 
     /**
-     * @return Order By Column Name
+     * @return Field to order results by.
      * Available values: &#34;createdAt&#34;.
      * 
      */
@@ -62,7 +70,7 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Order By Direction
+     * Order direction.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -70,7 +78,7 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
     private @Nullable String orderByDirection;
 
     /**
-     * @return Order By Direction
+     * @return Order direction.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -79,14 +87,14 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Search by id
+     * Filter instances whose id contains this string (case-insensitive).
      * 
      */
     @Import(name="search")
     private @Nullable String search;
 
     /**
-     * @return Search by id
+     * @return Filter instances whose id contains this string (case-insensitive).
      * 
      */
     public Optional<String> search() {
@@ -138,13 +146,19 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
+        /**
+         * @param namespace Filter by namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(@Nullable String namespace) {
             $.namespace = namespace;
             return this;
         }
 
         /**
-         * @param orderBy Order By Column Name
+         * @param orderBy Field to order results by.
          * Available values: &#34;createdAt&#34;.
          * 
          * @return builder
@@ -156,7 +170,7 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param orderByDirection Order By Direction
+         * @param orderByDirection Order direction.
          * Available values: &#34;asc&#34;, &#34;desc&#34;.
          * 
          * @return builder
@@ -168,7 +182,7 @@ public final class GetAiSearchInstancesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param search Search by id
+         * @param search Filter instances whose id contains this string (case-insensitive).
          * 
          * @return builder
          * 

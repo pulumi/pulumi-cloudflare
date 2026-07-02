@@ -57,7 +57,9 @@ type LookupPipelineSinksArgs struct {
 	// Specifies the public ID of the account.
 	AccountId *string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
-	MaxItems   *int    `pulumi:"maxItems"`
+	MaxItems *int `pulumi:"maxItems"`
+	// Filters sinks by name (case-insensitive substring).
+	Name       *string `pulumi:"name"`
 	PipelineId *string `pulumi:"pipelineId"`
 }
 
@@ -68,7 +70,9 @@ type LookupPipelineSinksResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
-	MaxItems   *int    `pulumi:"maxItems"`
+	MaxItems *int `pulumi:"maxItems"`
+	// Filters sinks by name (case-insensitive substring).
+	Name       *string `pulumi:"name"`
 	PipelineId *string `pulumi:"pipelineId"`
 	// The items returned by the data source
 	Results []GetPipelineSinksResult `pulumi:"results"`
@@ -88,7 +92,9 @@ type LookupPipelineSinksOutputArgs struct {
 	// Specifies the public ID of the account.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
-	MaxItems   pulumi.IntPtrInput    `pulumi:"maxItems"`
+	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Filters sinks by name (case-insensitive substring).
+	Name       pulumi.StringPtrInput `pulumi:"name"`
 	PipelineId pulumi.StringPtrInput `pulumi:"pipelineId"`
 }
 
@@ -124,6 +130,11 @@ func (o LookupPipelineSinksResultOutput) Id() pulumi.StringOutput {
 // Max items to fetch, default: 1000
 func (o LookupPipelineSinksResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupPipelineSinksResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+// Filters sinks by name (case-insensitive substring).
+func (o LookupPipelineSinksResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPipelineSinksResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupPipelineSinksResultOutput) PipelineId() pulumi.StringPtrOutput {

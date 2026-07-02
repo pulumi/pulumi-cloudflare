@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class MagicTransitSiteLanStaticAddressingDhcpServerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MagicTransitSiteLanStaticAddressingDhcpServerArgs Empty = new MagicTransitSiteLanStaticAddressingDhcpServerArgs();
+
+    /**
+     * Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.
+     * 
+     */
+    @Import(name="dhcpOptions")
+    private @Nullable Output<List<MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs>> dhcpOptions;
+
+    /**
+     * @return Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.
+     * 
+     */
+    public Optional<Output<List<MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs>>> dhcpOptions() {
+        return Optional.ofNullable(this.dhcpOptions);
+    }
 
     /**
      * A valid IPv4 address.
@@ -87,6 +103,7 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServerArgs extends com
     private MagicTransitSiteLanStaticAddressingDhcpServerArgs() {}
 
     private MagicTransitSiteLanStaticAddressingDhcpServerArgs(MagicTransitSiteLanStaticAddressingDhcpServerArgs $) {
+        this.dhcpOptions = $.dhcpOptions;
         this.dhcpPoolEnd = $.dhcpPoolEnd;
         this.dhcpPoolStart = $.dhcpPoolStart;
         this.dnsServer = $.dnsServer;
@@ -110,6 +127,37 @@ public final class MagicTransitSiteLanStaticAddressingDhcpServerArgs extends com
 
         public Builder(MagicTransitSiteLanStaticAddressingDhcpServerArgs defaults) {
             $ = new MagicTransitSiteLanStaticAddressingDhcpServerArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param dhcpOptions Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dhcpOptions(@Nullable Output<List<MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs>> dhcpOptions) {
+            $.dhcpOptions = dhcpOptions;
+            return this;
+        }
+
+        /**
+         * @param dhcpOptions Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dhcpOptions(List<MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs> dhcpOptions) {
+            return dhcpOptions(Output.of(dhcpOptions));
+        }
+
+        /**
+         * @param dhcpOptions Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dhcpOptions(MagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionArgs... dhcpOptions) {
+            return dhcpOptions(List.of(dhcpOptions));
         }
 
         /**

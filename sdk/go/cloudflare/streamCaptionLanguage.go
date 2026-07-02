@@ -52,7 +52,7 @@ type StreamCaptionLanguage struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The WebVTT file containing the caption or subtitle content.
 	File pulumi.StringPtrOutput `pulumi:"file"`
 	// Whether the caption was generated via AI.
@@ -75,6 +75,9 @@ func NewStreamCaptionLanguage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
@@ -145,7 +148,7 @@ func (StreamCaptionLanguageState) ElementType() reflect.Type {
 
 type streamCaptionLanguageArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The WebVTT file containing the caption or subtitle content.
 	File *string `pulumi:"file"`
 	// A Cloudflare-generated unique identifier for a media item.
@@ -157,7 +160,7 @@ type streamCaptionLanguageArgs struct {
 // The set of arguments for constructing a StreamCaptionLanguage resource.
 type StreamCaptionLanguageArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// The WebVTT file containing the caption or subtitle content.
 	File pulumi.StringPtrInput
 	// A Cloudflare-generated unique identifier for a media item.
@@ -254,8 +257,8 @@ func (o StreamCaptionLanguageOutput) ToStreamCaptionLanguageOutputWithContext(ct
 }
 
 // Identifier.
-func (o StreamCaptionLanguageOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StreamCaptionLanguage) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o StreamCaptionLanguageOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StreamCaptionLanguage) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The WebVTT file containing the caption or subtitle content.

@@ -16,7 +16,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSele
      */
     private String path;
     /**
-     * @return CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.
+     * @return CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
      * 
      */
     private String selector;
@@ -30,7 +30,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSele
         return this.path;
     }
     /**
-     * @return CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.
+     * @return CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
      * 
      */
     public String selector() {

@@ -8,7 +8,6 @@ import com.pulumi.cloudflare.outputs.GetCustomHostnamesResult;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -68,7 +67,7 @@ public final class GetCustomHostnamesInvokeResult {
      * Available values: 0, 1.
      * 
      */
-    private @Nullable Double ssl;
+    private Integer ssl;
     /**
      * @return Filter by SSL certificate status.
      * Available values: &#34;initializing&#34;, &#34;pending*validation&#34;, &#34;deleted&#34;, &#34;pending*issuance&#34;, &#34;pending*deployment&#34;, &#34;pending*deletion&#34;, &#34;pending*expiration&#34;, &#34;expired&#34;, &#34;active&#34;, &#34;initializing*timed*out&#34;, &#34;validation*timed*out&#34;, &#34;issuance*timed*out&#34;, &#34;deployment*timed*out&#34;, &#34;deletion*timed*out&#34;, &#34;pending*cleanup&#34;, &#34;staging*deployment&#34;, &#34;staging*active&#34;, &#34;deactivating&#34;, &#34;inactive&#34;, &#34;backup*issued&#34;, &#34;holding*deployment&#34;.
@@ -155,8 +154,8 @@ public final class GetCustomHostnamesInvokeResult {
      * Available values: 0, 1.
      * 
      */
-    public Optional<Double> ssl() {
-        return Optional.ofNullable(this.ssl);
+    public Integer ssl() {
+        return this.ssl;
     }
     /**
      * @return Filter by SSL certificate status.
@@ -199,7 +198,7 @@ public final class GetCustomHostnamesInvokeResult {
         private @Nullable Integer maxItems;
         private String order;
         private List<GetCustomHostnamesResult> results;
-        private @Nullable Double ssl;
+        private Integer ssl;
         private @Nullable String sslStatus;
         private @Nullable Boolean wildcard;
         private @Nullable String zoneId;
@@ -283,8 +282,10 @@ public final class GetCustomHostnamesInvokeResult {
             return results(List.of(results));
         }
         @CustomType.Setter
-        public Builder ssl(@Nullable Double ssl) {
-
+        public Builder ssl(Integer ssl) {
+            if (ssl == null) {
+              throw new MissingRequiredPropertyException("GetCustomHostnamesInvokeResult", "ssl");
+            }
             this.ssl = ssl;
             return this;
         }

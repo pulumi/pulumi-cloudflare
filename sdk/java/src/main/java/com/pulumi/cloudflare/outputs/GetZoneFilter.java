@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.GetZoneFilterAccount;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -51,6 +52,11 @@ public final class GetZoneFilter {
      * 
      */
     private @Nullable String status;
+    /**
+     * @return Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type &#34;internal&#34; are excluded from the results.
+     * 
+     */
+    private @Nullable List<String> types;
 
     private GetZoneFilter() {}
     public Optional<GetZoneFilterAccount> account() {
@@ -103,6 +109,13 @@ public final class GetZoneFilter {
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type &#34;internal&#34; are excluded from the results.
+     * 
+     */
+    public List<String> types() {
+        return this.types == null ? List.of() : this.types;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -119,6 +132,7 @@ public final class GetZoneFilter {
         private @Nullable String name;
         private @Nullable String order;
         private @Nullable String status;
+        private @Nullable List<String> types;
         public Builder() {}
         public Builder(GetZoneFilter defaults) {
     	      Objects.requireNonNull(defaults);
@@ -128,6 +142,7 @@ public final class GetZoneFilter {
     	      this.name = defaults.name;
     	      this.order = defaults.order;
     	      this.status = defaults.status;
+    	      this.types = defaults.types;
         }
 
         @CustomType.Setter
@@ -168,6 +183,15 @@ public final class GetZoneFilter {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
+        public Builder types(@Nullable List<String> types) {
+
+            this.types = types;
+            return this;
+        }
+        public Builder types(String... types) {
+            return types(List.of(types));
+        }
         public GetZoneFilter build() {
             final var _resultValue = new GetZoneFilter();
             _resultValue.account = account;
@@ -176,6 +200,7 @@ public final class GetZoneFilter {
             _resultValue.name = name;
             _resultValue.order = order;
             _resultValue.status = status;
+            _resultValue.types = types;
             return _resultValue;
         }
     }

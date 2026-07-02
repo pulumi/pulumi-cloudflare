@@ -39,7 +39,7 @@ export interface GetStreamCaptionLanguageArgs {
     /**
      * Identifier.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
@@ -57,7 +57,7 @@ export interface GetStreamCaptionLanguageResult {
     /**
      * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Whether the caption was generated via AI.
      */
@@ -119,7 +119,7 @@ export interface GetStreamCaptionLanguageOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */

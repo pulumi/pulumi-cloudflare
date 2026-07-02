@@ -64,7 +64,7 @@ export class WorkersScriptSubdomain extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Whether the Worker should be available on the workers.dev subdomain.
      */
@@ -97,6 +97,9 @@ export class WorkersScriptSubdomain extends pulumi.CustomResource {
             resourceInputs["scriptName"] = state?.scriptName;
         } else {
             const args = argsOrState as WorkersScriptSubdomainArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
@@ -142,7 +145,7 @@ export interface WorkersScriptSubdomainArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Whether the Worker should be available on the workers.dev subdomain.
      */

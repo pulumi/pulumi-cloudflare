@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.AccessPolicyIncludeAuthContextArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeAuthMethodArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeAzureAdArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeCertificateArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyIncludeCloudflareAccountMemberArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeCommonNameArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeDevicePostureArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeEmailArgs;
@@ -80,6 +81,13 @@ public final class AccessPolicyIncludeArgs extends com.pulumi.resources.Resource
 
     public Optional<Output<AccessPolicyIncludeCertificateArgs>> certificate() {
         return Optional.ofNullable(this.certificate);
+    }
+
+    @Import(name="cloudflareAccountMember")
+    private @Nullable Output<AccessPolicyIncludeCloudflareAccountMemberArgs> cloudflareAccountMember;
+
+    public Optional<Output<AccessPolicyIncludeCloudflareAccountMemberArgs>> cloudflareAccountMember() {
+        return Optional.ofNullable(this.cloudflareAccountMember);
     }
 
     @Import(name="commonName")
@@ -238,6 +246,7 @@ public final class AccessPolicyIncludeArgs extends com.pulumi.resources.Resource
         this.authMethod = $.authMethod;
         this.azureAd = $.azureAd;
         this.certificate = $.certificate;
+        this.cloudflareAccountMember = $.cloudflareAccountMember;
         this.commonName = $.commonName;
         this.devicePosture = $.devicePosture;
         this.email = $.email;
@@ -333,6 +342,15 @@ public final class AccessPolicyIncludeArgs extends com.pulumi.resources.Resource
 
         public Builder certificate(AccessPolicyIncludeCertificateArgs certificate) {
             return certificate(Output.of(certificate));
+        }
+
+        public Builder cloudflareAccountMember(@Nullable Output<AccessPolicyIncludeCloudflareAccountMemberArgs> cloudflareAccountMember) {
+            $.cloudflareAccountMember = cloudflareAccountMember;
+            return this;
+        }
+
+        public Builder cloudflareAccountMember(AccessPolicyIncludeCloudflareAccountMemberArgs cloudflareAccountMember) {
+            return cloudflareAccountMember(Output.of(cloudflareAccountMember));
         }
 
         public Builder commonName(@Nullable Output<AccessPolicyIncludeCommonNameArgs> commonName) {

@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string ProfileId;
         public readonly bool Secret;
         /// <summary>
-        /// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "WordList".
+        /// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "WordList".
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
@@ -37,6 +37,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         /// </summary>
         public readonly string UploadStatus;
+        /// <summary>
+        /// A Predefined AI prompt classification topic entry.
+        /// </summary>
         public readonly Outputs.GetZeroTrustDlpCustomEntriesResultVariantResult Variant;
         public readonly string WordList;
 

@@ -19,24 +19,35 @@ __all__ = ['StreamCaptionLanguageArgs', 'StreamCaptionLanguage']
 @pulumi.input_type
 class StreamCaptionLanguageArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  identifier: pulumi.Input[_builtins.str],
                  language: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  file: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamCaptionLanguage resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[_builtins.str] language: The language tag in BCP 47 format.
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] file: The WebVTT file containing the caption or subtitle content.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "language", language)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if file is not None:
             pulumi.set(__self__, "file", file)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -61,18 +72,6 @@ class StreamCaptionLanguageArgs:
     @language.setter
     def language(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "language", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -308,6 +307,8 @@ class StreamCaptionLanguage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StreamCaptionLanguageArgs.__new__(StreamCaptionLanguageArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["file"] = file
             if identifier is None and not opts.urn:
@@ -367,7 +368,7 @@ class StreamCaptionLanguage(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

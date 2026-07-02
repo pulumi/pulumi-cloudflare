@@ -58,7 +58,7 @@ type Image struct {
 	pulumi.CustomResourceState
 
 	// Account identifier tag.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Can set the creator field with an internal user ID.
 	Creator pulumi.StringPtrOutput `pulumi:"creator"`
 	// An image binary data. Only needed when type is uploading a file.
@@ -88,6 +88,9 @@ func NewImage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.ImageId == nil {
 		return nil, errors.New("invalid value for required argument 'ImageId'")
 	}
@@ -169,7 +172,7 @@ func (ImageState) ElementType() reflect.Type {
 
 type imageArgs struct {
 	// Account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Can set the creator field with an internal user ID.
 	Creator *string `pulumi:"creator"`
 	// An image binary data. Only needed when type is uploading a file.
@@ -187,7 +190,7 @@ type imageArgs struct {
 // The set of arguments for constructing a Image resource.
 type ImageArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Can set the creator field with an internal user ID.
 	Creator pulumi.StringPtrInput
 	// An image binary data. Only needed when type is uploading a file.
@@ -290,8 +293,8 @@ func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 }
 
 // Account identifier tag.
-func (o ImageOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ImageOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Can set the creator field with an internal user ID.

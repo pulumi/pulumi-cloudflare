@@ -66,7 +66,7 @@ export class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
     /**
      * Account identifier
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Date and time at which the target was created
      */
@@ -107,6 +107,9 @@ export class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
             resourceInputs["modifiedAt"] = state?.modifiedAt;
         } else {
             const args = argsOrState as ZeroTrustAccessInfrastructureTargetArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
             }
@@ -160,7 +163,7 @@ export interface ZeroTrustAccessInfrastructureTargetArgs {
     /**
      * Account identifier
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * A non-unique field that refers to a target. Case insensitive, maximum
      * length of 255 characters, supports the use of special characters dash

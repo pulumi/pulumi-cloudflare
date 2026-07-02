@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// The account identifier tag.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The date and time the webhook was last modified.
@@ -73,7 +73,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public StreamWebhook(string name, StreamWebhookArgs? args = null, CustomResourceOptions? options = null)
+        public StreamWebhook(string name, StreamWebhookArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/streamWebhook:StreamWebhook", name, args ?? new StreamWebhookArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -118,8 +118,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account identifier tag.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// The URL where webhooks will be sent.

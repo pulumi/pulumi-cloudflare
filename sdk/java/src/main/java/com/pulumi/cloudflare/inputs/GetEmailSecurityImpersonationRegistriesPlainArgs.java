@@ -16,14 +16,14 @@ public final class GetEmailSecurityImpersonationRegistriesPlainArgs extends com.
     public static final GetEmailSecurityImpersonationRegistriesPlainArgs Empty = new GetEmailSecurityImpersonationRegistriesPlainArgs();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> accountId() {
@@ -63,7 +63,7 @@ public final class GetEmailSecurityImpersonationRegistriesPlainArgs extends com.
     }
 
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -71,7 +71,7 @@ public final class GetEmailSecurityImpersonationRegistriesPlainArgs extends com.
     private @Nullable String order;
 
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -95,20 +95,14 @@ public final class GetEmailSecurityImpersonationRegistriesPlainArgs extends com.
     }
 
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      * 
      */
     @Import(name="search")
     private @Nullable String search;
 
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<String> search() {
@@ -145,7 +139,7 @@ public final class GetEmailSecurityImpersonationRegistriesPlainArgs extends com.
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -179,7 +173,7 @@ public final class GetEmailSecurityImpersonationRegistriesPlainArgs extends com.
         }
 
         /**
-         * @param order The field to sort by.
+         * @param order Field to sort by.
          * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
@@ -202,10 +196,7 @@ public final class GetEmailSecurityImpersonationRegistriesPlainArgs extends com.
         }
 
         /**
-         * @param search Allows searching in multiple properties of a record simultaneously.
-         * This parameter is intended for human users, not automation. Its exact
-         * behavior is intentionally left unspecified and is subject to change
-         * in the future.
+         * @param search Search term for filtering records. Behavior may change.
          * 
          * @return builder
          * 

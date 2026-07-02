@@ -13,8 +13,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicTransitSiteLanResult {
@@ -22,7 +20,7 @@ public final class GetMagicTransitSiteLanResult {
      * @return Identifier
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     private Integer bondId;
     /**
      * @return mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
@@ -74,8 +72,8 @@ public final class GetMagicTransitSiteLanResult {
      * @return Identifier
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     public Integer bondId() {
         return this.bondId;
@@ -158,7 +156,7 @@ public final class GetMagicTransitSiteLanResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private Integer bondId;
         private Boolean haLink;
         private String id;
@@ -192,8 +190,10 @@ public final class GetMagicTransitSiteLanResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteLanResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

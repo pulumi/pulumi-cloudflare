@@ -16,13 +16,19 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Comments;
         public readonly string CreatedAt;
         /// <summary>
-        /// The unique identifier for the allow policy.
+        /// Blocked sender pattern identifier
         /// </summary>
-        public readonly int Id;
+        public readonly string Id;
         public readonly bool IsRegex;
+        /// <summary>
+        /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
+        /// </summary>
         public readonly string LastModified;
+        public readonly string ModifiedAt;
         public readonly string Pattern;
         /// <summary>
+        /// Type of pattern matching.
+        /// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         public readonly string PatternType;
@@ -33,11 +39,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             string createdAt,
 
-            int id,
+            string id,
 
             bool isRegex,
 
             string lastModified,
+
+            string modifiedAt,
 
             string pattern,
 
@@ -48,6 +56,7 @@ namespace Pulumi.Cloudflare.Outputs
             Id = id;
             IsRegex = isRegex;
             LastModified = lastModified;
+            ModifiedAt = modifiedAt;
             Pattern = pattern;
             PatternType = patternType;
         }

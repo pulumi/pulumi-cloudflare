@@ -56,7 +56,7 @@ import (
 type ZeroTrustDeviceManagedNetworks struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The configuration object containing information for the WARP client to detect the managed network.
 	Config ZeroTrustDeviceManagedNetworksConfigOutput `pulumi:"config"`
 	// The name of the device managed network. This name must be unique.
@@ -75,6 +75,9 @@ func NewZeroTrustDeviceManagedNetworks(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Config == nil {
 		return nil, errors.New("invalid value for required argument 'Config'")
 	}
@@ -143,7 +146,7 @@ func (ZeroTrustDeviceManagedNetworksState) ElementType() reflect.Type {
 }
 
 type zeroTrustDeviceManagedNetworksArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The configuration object containing information for the WARP client to detect the managed network.
 	Config ZeroTrustDeviceManagedNetworksConfig `pulumi:"config"`
 	// The name of the device managed network. This name must be unique.
@@ -155,7 +158,7 @@ type zeroTrustDeviceManagedNetworksArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDeviceManagedNetworks resource.
 type ZeroTrustDeviceManagedNetworksArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// The configuration object containing information for the WARP client to detect the managed network.
 	Config ZeroTrustDeviceManagedNetworksConfigInput
 	// The name of the device managed network. This name must be unique.
@@ -252,8 +255,8 @@ func (o ZeroTrustDeviceManagedNetworksOutput) ToZeroTrustDeviceManagedNetworksOu
 	return o
 }
 
-func (o ZeroTrustDeviceManagedNetworksOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceManagedNetworks) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDeviceManagedNetworksOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceManagedNetworks) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The configuration object containing information for the WARP client to detect the managed network.

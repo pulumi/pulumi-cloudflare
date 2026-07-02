@@ -55,7 +55,7 @@ import (
 type ZeroTrustGatewayPacfile struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Actual contents of the PAC file
 	Contents  pulumi.StringOutput `pulumi:"contents"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -77,6 +77,9 @@ func NewZeroTrustGatewayPacfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Contents == nil {
 		return nil, errors.New("invalid value for required argument 'Contents'")
 	}
@@ -142,7 +145,7 @@ func (ZeroTrustGatewayPacfileState) ElementType() reflect.Type {
 }
 
 type zeroTrustGatewayPacfileArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Actual contents of the PAC file
 	Contents string `pulumi:"contents"`
 	// Detailed description of the PAC file.
@@ -155,7 +158,7 @@ type zeroTrustGatewayPacfileArgs struct {
 
 // The set of arguments for constructing a ZeroTrustGatewayPacfile resource.
 type ZeroTrustGatewayPacfileArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Actual contents of the PAC file
 	Contents pulumi.StringInput
 	// Detailed description of the PAC file.
@@ -253,8 +256,8 @@ func (o ZeroTrustGatewayPacfileOutput) ToZeroTrustGatewayPacfileOutputWithContex
 	return o
 }
 
-func (o ZeroTrustGatewayPacfileOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPacfile) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustGatewayPacfileOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPacfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Actual contents of the PAC file

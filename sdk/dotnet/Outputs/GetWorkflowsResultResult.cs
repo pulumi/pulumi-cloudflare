@@ -19,6 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetWorkflowsResultInstancesResult Instances;
         public readonly string ModifiedOn;
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetWorkflowsResultScheduleResult> Schedules;
         public readonly string ScriptName;
         public readonly string TriggeredOn;
 
@@ -36,6 +37,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string name,
 
+            ImmutableArray<Outputs.GetWorkflowsResultScheduleResult> schedules,
+
             string scriptName,
 
             string triggeredOn)
@@ -46,6 +49,7 @@ namespace Pulumi.Cloudflare.Outputs
             Instances = instances;
             ModifiedOn = modifiedOn;
             Name = name;
+            Schedules = schedules;
             ScriptName = scriptName;
             TriggeredOn = triggeredOn;
         }

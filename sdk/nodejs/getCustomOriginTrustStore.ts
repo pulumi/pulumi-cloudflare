@@ -54,7 +54,7 @@ export interface GetCustomOriginTrustStoreArgs {
  */
 export interface GetCustomOriginTrustStoreResult {
     /**
-     * The zone's SSL certificate or certificate and the intermediate(s).
+     * The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      */
     readonly certificate: string;
     /**

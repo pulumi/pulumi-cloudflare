@@ -91,7 +91,7 @@ import (
 type ZeroTrustDnsLocation struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolOutput   `pulumi:"clientDefault"`
 	CreatedAt     pulumi.StringOutput `pulumi:"createdAt"`
@@ -125,6 +125,9 @@ func NewZeroTrustDnsLocation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -217,7 +220,7 @@ func (ZeroTrustDnsLocationState) ElementType() reflect.Type {
 }
 
 type zeroTrustDnsLocationArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Indicate whether this location is the default location.
 	ClientDefault *bool `pulumi:"clientDefault"`
 	// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
@@ -234,7 +237,7 @@ type zeroTrustDnsLocationArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDnsLocation resource.
 type ZeroTrustDnsLocationArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Indicate whether this location is the default location.
 	ClientDefault pulumi.BoolPtrInput
 	// Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
@@ -336,8 +339,8 @@ func (o ZeroTrustDnsLocationOutput) ToZeroTrustDnsLocationOutputWithContext(ctx 
 	return o
 }
 
-func (o ZeroTrustDnsLocationOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDnsLocationOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDnsLocation) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Indicate whether this location is the default location.

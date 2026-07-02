@@ -150,7 +150,7 @@ class GetKeylessCertificateResult:
     @pulumi.getter
     def tunnel(self) -> 'outputs.GetKeylessCertificateTunnelResult':
         """
-        Configuration for using Keyless SSL through a Cloudflare Tunnel
+        Configuration for using Keyless SSL through a Cloudflare Tunnel.
         """
         return pulumi.get(self, "tunnel")
 

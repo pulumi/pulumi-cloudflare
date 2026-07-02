@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkerVersion(ctx, &cloudflare.LookupWorkerVersionArgs{
-//				AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				WorkerId:  "worker_id",
 //				VersionId: "version_id",
 //				Include:   pulumi.StringRef("modules"),
@@ -58,7 +58,7 @@ func LookupWorkerVersion(ctx *pulumi.Context, args *LookupWorkerVersionArgs, opt
 // A collection of arguments for invoking getWorkerVersion.
 type LookupWorkerVersionArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
 	// Available values: "modules".
 	Include *string `pulumi:"include"`
@@ -71,7 +71,7 @@ type LookupWorkerVersionArgs struct {
 // A collection of values returned by getWorkerVersion.
 type LookupWorkerVersionResult struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Metadata about the version.
 	Annotations GetWorkerVersionAnnotations `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
@@ -116,7 +116,7 @@ func LookupWorkerVersionOutput(ctx *pulumi.Context, args LookupWorkerVersionOutp
 // A collection of arguments for invoking getWorkerVersion.
 type LookupWorkerVersionOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
 	// Available values: "modules".
 	Include pulumi.StringPtrInput `pulumi:"include"`
@@ -146,8 +146,8 @@ func (o LookupWorkerVersionResultOutput) ToLookupWorkerVersionResultOutputWithCo
 }
 
 // Identifier.
-func (o LookupWorkerVersionResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkerVersionResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupWorkerVersionResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Metadata about the version.

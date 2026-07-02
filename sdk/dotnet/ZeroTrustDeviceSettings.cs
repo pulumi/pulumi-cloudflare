@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDeviceSettings : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
@@ -113,7 +113,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ZeroTrustDeviceSettings(string name, ZeroTrustDeviceSettingsArgs? args = null, CustomResourceOptions? options = null)
+        public ZeroTrustDeviceSettings(string name, ZeroTrustDeviceSettingsArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings", name, args ?? new ZeroTrustDeviceSettingsArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -151,8 +151,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDeviceSettingsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Sets the time limit, in seconds, that a user can use an override code to bypass WARP.

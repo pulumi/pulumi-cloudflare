@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class CustomOriginTrustStoreArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,14 +15,14 @@ public final class CustomOriginTrustStoreArgs extends com.pulumi.resources.Resou
     public static final CustomOriginTrustStoreArgs Empty = new CustomOriginTrustStoreArgs();
 
     /**
-     * The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      * 
      */
     @Import(name="certificate", required=true)
     private Output<String> certificate;
 
     /**
-     * @return The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * @return The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      * 
      */
     public Output<String> certificate() {
@@ -35,15 +33,15 @@ public final class CustomOriginTrustStoreArgs extends com.pulumi.resources.Resou
      * Identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private CustomOriginTrustStoreArgs() {}
@@ -72,7 +70,7 @@ public final class CustomOriginTrustStoreArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param certificate The zone&#39;s SSL certificate or certificate and the intermediate(s).
+         * @param certificate The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
          * 
          * @return builder
          * 
@@ -83,7 +81,7 @@ public final class CustomOriginTrustStoreArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param certificate The zone&#39;s SSL certificate or certificate and the intermediate(s).
+         * @param certificate The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
          * 
          * @return builder
          * 
@@ -98,7 +96,7 @@ public final class CustomOriginTrustStoreArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -116,6 +114,9 @@ public final class CustomOriginTrustStoreArgs extends com.pulumi.resources.Resou
         public CustomOriginTrustStoreArgs build() {
             if ($.certificate == null) {
                 throw new MissingRequiredPropertyException("CustomOriginTrustStoreArgs", "certificate");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("CustomOriginTrustStoreArgs", "zoneId");
             }
             return $;
         }

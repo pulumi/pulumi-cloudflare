@@ -71,7 +71,7 @@ export class MagicTransitSite extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Magic Connector identifier tag.
      */
@@ -116,6 +116,9 @@ export class MagicTransitSite extends pulumi.CustomResource {
             resourceInputs["secondaryConnectorId"] = state?.secondaryConnectorId;
         } else {
             const args = argsOrState as MagicTransitSiteArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -170,7 +173,7 @@ export interface MagicTransitSiteArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Magic Connector identifier tag.
      */

@@ -21,8 +21,8 @@ __all__ = ['WorkerArgs', 'Worker']
 @pulumi.input_type
 class WorkerArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
                  observability: pulumi.Input[Optional['WorkerObservabilityArgs']] = None,
                  subdomain: pulumi.Input[Optional['WorkerSubdomainArgs']] = None,
@@ -31,17 +31,16 @@ class WorkerArgs:
         """
         The set of arguments for constructing a Worker resource.
 
-        :param pulumi.Input[_builtins.str] name: Name of the Worker.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] name: Name of the Worker.
         :param pulumi.Input[_builtins.bool] logpush: Whether logpush is enabled for the Worker.
         :param pulumi.Input['WorkerObservabilityArgs'] observability: Observability settings for the Worker.
         :param pulumi.Input['WorkerSubdomainArgs'] subdomain: Subdomain settings for the Worker.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerTailConsumerArgs']]] tail_consumers: Other Workers that should consume logs from the Worker.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if logpush is not None:
             pulumi.set(__self__, "logpush", logpush)
         if observability is not None:
@@ -54,6 +53,18 @@ class WorkerArgs:
             pulumi.set(__self__, "tail_consumers", tail_consumers)
 
     @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
@@ -64,18 +75,6 @@ class WorkerArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -492,6 +491,8 @@ class Worker(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkerArgs.__new__(WorkerArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["logpush"] = logpush
             if name is None and not opts.urn:
@@ -564,7 +565,7 @@ class Worker(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

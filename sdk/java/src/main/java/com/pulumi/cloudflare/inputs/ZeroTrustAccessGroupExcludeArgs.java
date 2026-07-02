@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeAuthContextArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeAuthMethodArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeAzureAdArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeCertificateArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeCommonNameArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeDevicePostureArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessGroupExcludeEmailArgs;
@@ -80,6 +81,13 @@ public final class ZeroTrustAccessGroupExcludeArgs extends com.pulumi.resources.
 
     public Optional<Output<ZeroTrustAccessGroupExcludeCertificateArgs>> certificate() {
         return Optional.ofNullable(this.certificate);
+    }
+
+    @Import(name="cloudflareAccountMember")
+    private @Nullable Output<ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs> cloudflareAccountMember;
+
+    public Optional<Output<ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs>> cloudflareAccountMember() {
+        return Optional.ofNullable(this.cloudflareAccountMember);
     }
 
     @Import(name="commonName")
@@ -238,6 +246,7 @@ public final class ZeroTrustAccessGroupExcludeArgs extends com.pulumi.resources.
         this.authMethod = $.authMethod;
         this.azureAd = $.azureAd;
         this.certificate = $.certificate;
+        this.cloudflareAccountMember = $.cloudflareAccountMember;
         this.commonName = $.commonName;
         this.devicePosture = $.devicePosture;
         this.email = $.email;
@@ -333,6 +342,15 @@ public final class ZeroTrustAccessGroupExcludeArgs extends com.pulumi.resources.
 
         public Builder certificate(ZeroTrustAccessGroupExcludeCertificateArgs certificate) {
             return certificate(Output.of(certificate));
+        }
+
+        public Builder cloudflareAccountMember(@Nullable Output<ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs> cloudflareAccountMember) {
+            $.cloudflareAccountMember = cloudflareAccountMember;
+            return this;
+        }
+
+        public Builder cloudflareAccountMember(ZeroTrustAccessGroupExcludeCloudflareAccountMemberArgs cloudflareAccountMember) {
+            return cloudflareAccountMember(Output.of(cloudflareAccountMember));
         }
 
         public Builder commonName(@Nullable Output<ZeroTrustAccessGroupExcludeCommonNameArgs> commonName) {

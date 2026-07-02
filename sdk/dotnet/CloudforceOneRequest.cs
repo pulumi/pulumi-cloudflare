@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("completed")]
         public Output<string> Completed { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public CloudforceOneRequest(string name, CloudforceOneRequestArgs? args = null, CustomResourceOptions? options = null)
+        public CloudforceOneRequest(string name, CloudforceOneRequestArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/cloudforceOneRequest:CloudforceOneRequest", name, args ?? new CloudforceOneRequestArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -173,8 +173,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Request content.

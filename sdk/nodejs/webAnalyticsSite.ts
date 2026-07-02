@@ -63,7 +63,7 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      */
@@ -110,7 +110,7 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: WebAnalyticsSiteArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: WebAnalyticsSiteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WebAnalyticsSiteArgs | WebAnalyticsSiteState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -130,6 +130,9 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
             resourceInputs["zoneTag"] = state?.zoneTag;
         } else {
             const args = argsOrState as WebAnalyticsSiteArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["autoInstall"] = args?.autoInstall;
             resourceInputs["enabled"] = args?.enabled;
@@ -203,7 +206,7 @@ export interface WebAnalyticsSiteArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      */

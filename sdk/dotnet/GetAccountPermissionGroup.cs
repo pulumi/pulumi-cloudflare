@@ -183,8 +183,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
         /// Permission Group identifier tag.
@@ -203,8 +203,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Permission Group identifier tag.
@@ -225,7 +225,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Account identifier tag.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// Identifier of the permission group.
         /// </summary>
@@ -245,7 +245,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetAccountPermissionGroupResult(
-            string? accountId,
+            string accountId,
 
             string id,
 

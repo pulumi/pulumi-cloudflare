@@ -67,7 +67,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDlpCustomProfile : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("aiContextEnabled")]
         public Output<bool> AiContextEnabled { get; private set; } = null!;
@@ -204,8 +204,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDlpCustomProfileArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("aiContextEnabled")]
         public Input<bool>? AiContextEnabled { get; set; }

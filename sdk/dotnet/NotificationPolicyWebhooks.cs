@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         /// The account id
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp of when the webhook destination was created.
@@ -150,8 +150,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The account id
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// The name of the webhook destination. This will be included in the request body when you receive a webhook notification.

@@ -12,6 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accepted Permissions
+//
+// - `MCP Portals Read`
+// - `MCP Portals Write`
+//
 // ## Example Usage
 //
 // ```go
@@ -75,7 +80,7 @@ import (
 type ZeroTrustAccessAiControlsMcpPortal struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Allow remote code execution in Dynamic Workers (beta)
 	AllowCodeMode pulumi.BoolOutput      `pulumi:"allowCodeMode"`
 	CreatedAt     pulumi.StringOutput    `pulumi:"createdAt"`
@@ -99,6 +104,9 @@ func NewZeroTrustAccessAiControlsMcpPortal(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Hostname == nil {
 		return nil, errors.New("invalid value for required argument 'Hostname'")
 	}
@@ -171,7 +179,7 @@ func (ZeroTrustAccessAiControlsMcpPortalState) ElementType() reflect.Type {
 }
 
 type zeroTrustAccessAiControlsMcpPortalArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Allow remote code execution in Dynamic Workers (beta)
 	AllowCodeMode *bool   `pulumi:"allowCodeMode"`
 	Description   *string `pulumi:"description"`
@@ -186,7 +194,7 @@ type zeroTrustAccessAiControlsMcpPortalArgs struct {
 
 // The set of arguments for constructing a ZeroTrustAccessAiControlsMcpPortal resource.
 type ZeroTrustAccessAiControlsMcpPortalArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Allow remote code execution in Dynamic Workers (beta)
 	AllowCodeMode pulumi.BoolPtrInput
 	Description   pulumi.StringPtrInput
@@ -286,8 +294,8 @@ func (o ZeroTrustAccessAiControlsMcpPortalOutput) ToZeroTrustAccessAiControlsMcp
 	return o
 }
 
-func (o ZeroTrustAccessAiControlsMcpPortalOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessAiControlsMcpPortalOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessAiControlsMcpPortal) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Allow remote code execution in Dynamic Workers (beta)

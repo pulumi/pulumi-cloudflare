@@ -97,7 +97,7 @@ class GetClientCertificateResult:
     @pulumi.getter
     def certificate(self) -> _builtins.str:
         """
-        The Client Certificate PEM
+        The Client Certificate PEM.
         """
         return pulumi.get(self, "certificate")
 
@@ -105,7 +105,7 @@ class GetClientCertificateResult:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> 'outputs.GetClientCertificateCertificateAuthorityResult':
         """
-        Certificate Authority used to issue the Client Certificate
+        Certificate Authority used to issue the Client Certificate.
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -121,7 +121,7 @@ class GetClientCertificateResult:
     @pulumi.getter(name="commonName")
     def common_name(self) -> _builtins.str:
         """
-        Common Name of the Client Certificate
+        Common Name of the Client Certificate.
         """
         return pulumi.get(self, "common_name")
 
@@ -129,7 +129,7 @@ class GetClientCertificateResult:
     @pulumi.getter
     def country(self) -> _builtins.str:
         """
-        Country, provided by the CSR
+        Country, provided by the CSR.
         """
         return pulumi.get(self, "country")
 
@@ -145,7 +145,7 @@ class GetClientCertificateResult:
     @pulumi.getter(name="expiresOn")
     def expires_on(self) -> _builtins.str:
         """
-        Date that the Client Certificate expires
+        Date that the Client Certificate expires.
         """
         return pulumi.get(self, "expires_on")
 
@@ -158,7 +158,7 @@ class GetClientCertificateResult:
     @pulumi.getter(name="fingerprintSha256")
     def fingerprint_sha256(self) -> _builtins.str:
         """
-        Unique identifier of the Client Certificate
+        Unique identifier of the Client Certificate.
         """
         return pulumi.get(self, "fingerprint_sha256")
 
@@ -174,7 +174,7 @@ class GetClientCertificateResult:
     @pulumi.getter(name="issuedOn")
     def issued_on(self) -> _builtins.str:
         """
-        Date that the Client Certificate was issued by the Certificate Authority
+        Date that the Client Certificate was issued by the Certificate Authority.
         """
         return pulumi.get(self, "issued_on")
 
@@ -182,7 +182,7 @@ class GetClientCertificateResult:
     @pulumi.getter
     def location(self) -> _builtins.str:
         """
-        Location, provided by the CSR
+        Location, provided by the CSR.
         """
         return pulumi.get(self, "location")
 
@@ -190,7 +190,7 @@ class GetClientCertificateResult:
     @pulumi.getter
     def organization(self) -> _builtins.str:
         """
-        Organization, provided by the CSR
+        Organization, provided by the CSR.
         """
         return pulumi.get(self, "organization")
 
@@ -198,7 +198,7 @@ class GetClientCertificateResult:
     @pulumi.getter(name="organizationalUnit")
     def organizational_unit(self) -> _builtins.str:
         """
-        Organizational Unit, provided by the CSR
+        Organizational Unit, provided by the CSR.
         """
         return pulumi.get(self, "organizational_unit")
 
@@ -222,7 +222,7 @@ class GetClientCertificateResult:
     @pulumi.getter
     def ski(self) -> _builtins.str:
         """
-        Subject Key Identifier
+        Subject Key Identifier.
         """
         return pulumi.get(self, "ski")
 
@@ -230,7 +230,7 @@ class GetClientCertificateResult:
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        State, provided by the CSR
+        State, provided by the CSR.
         """
         return pulumi.get(self, "state")
 
@@ -238,7 +238,7 @@ class GetClientCertificateResult:
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+        Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
         Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
         """
         return pulumi.get(self, "status")
@@ -247,7 +247,7 @@ class GetClientCertificateResult:
     @pulumi.getter(name="validityDays")
     def validity_days(self) -> _builtins.int:
         """
-        The number of days the Client Certificate will be valid after the issued_on date
+        The number of days the Client Certificate will be valid after the issued_on date.
         """
         return pulumi.get(self, "validity_days")
 

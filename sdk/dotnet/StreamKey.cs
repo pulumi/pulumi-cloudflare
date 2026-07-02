@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The date and time a signing key was created.
@@ -80,7 +80,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public StreamKey(string name, StreamKeyArgs? args = null, CustomResourceOptions? options = null)
+        public StreamKey(string name, StreamKeyArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/streamKey:StreamKey", name, args ?? new StreamKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -126,8 +126,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         public StreamKeyArgs()
         {

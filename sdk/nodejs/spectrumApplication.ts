@@ -137,9 +137,13 @@ export class SpectrumApplication extends pulumi.CustomResource {
      */
     declare public readonly trafficType: pulumi.Output<string>;
     /**
+     * Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     */
+    declare public readonly virtualNetworkId: pulumi.Output<string | undefined>;
+    /**
      * Zone identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a SpectrumApplication resource with the given unique name, arguments, and options.
@@ -167,6 +171,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
             resourceInputs["proxyProtocol"] = state?.proxyProtocol;
             resourceInputs["tls"] = state?.tls;
             resourceInputs["trafficType"] = state?.trafficType;
+            resourceInputs["virtualNetworkId"] = state?.virtualNetworkId;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as SpectrumApplicationArgs | undefined;
@@ -175,6 +180,9 @@ export class SpectrumApplication extends pulumi.CustomResource {
             }
             if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["argoSmartRouting"] = args?.argoSmartRouting;
             resourceInputs["dns"] = args?.dns;
@@ -187,6 +195,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
             resourceInputs["proxyProtocol"] = args?.proxyProtocol;
             resourceInputs["tls"] = args?.tls;
             resourceInputs["trafficType"] = args?.trafficType;
+            resourceInputs["virtualNetworkId"] = args?.virtualNetworkId;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
@@ -259,6 +268,10 @@ export interface SpectrumApplicationState {
      */
     trafficType?: pulumi.Input<string | undefined>;
     /**
+     * Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     */
+    virtualNetworkId?: pulumi.Input<string | undefined>;
+    /**
      * Zone identifier.
      */
     zoneId?: pulumi.Input<string | undefined>;
@@ -319,7 +332,11 @@ export interface SpectrumApplicationArgs {
      */
     trafficType?: pulumi.Input<string | undefined>;
     /**
+     * Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     */
+    virtualNetworkId?: pulumi.Input<string | undefined>;
+    /**
      * Zone identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

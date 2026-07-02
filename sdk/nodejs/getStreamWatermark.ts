@@ -37,7 +37,7 @@ export interface GetStreamWatermarkArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * The unique identifier for a watermark profile.
      */
@@ -51,7 +51,7 @@ export interface GetStreamWatermarkResult {
     /**
      * The account identifier tag.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * The date and a time a watermark profile was created.
      */
@@ -138,7 +138,7 @@ export interface GetStreamWatermarkOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The unique identifier for a watermark profile.
      */

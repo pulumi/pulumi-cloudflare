@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -63,7 +64,7 @@ type AccountSubscription struct {
 	pulumi.CustomResourceState
 
 	// Identifier
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The monetary unit in which pricing information is displayed.
 	Currency pulumi.StringOutput `pulumi:"currency"`
 	// The end of the current period and also when the next billing is due.
@@ -86,9 +87,12 @@ type AccountSubscription struct {
 func NewAccountSubscription(ctx *pulumi.Context,
 	name string, args *AccountSubscriptionArgs, opts ...pulumi.ResourceOption) (*AccountSubscription, error) {
 	if args == nil {
-		args = &AccountSubscriptionArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccountSubscription
 	err := ctx.RegisterResource("cloudflare:index/accountSubscription:AccountSubscription", name, args, &resource, opts...)
@@ -159,7 +163,7 @@ func (AccountSubscriptionState) ElementType() reflect.Type {
 
 type accountSubscriptionArgs struct {
 	// Identifier
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency *string `pulumi:"frequency"`
@@ -170,7 +174,7 @@ type accountSubscriptionArgs struct {
 // The set of arguments for constructing a AccountSubscription resource.
 type AccountSubscriptionArgs struct {
 	// Identifier
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency pulumi.StringPtrInput
@@ -266,8 +270,8 @@ func (o AccountSubscriptionOutput) ToAccountSubscriptionOutputWithContext(ctx co
 }
 
 // Identifier
-func (o AccountSubscriptionOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccountSubscription) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o AccountSubscriptionOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountSubscription) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The monetary unit in which pricing information is displayed.

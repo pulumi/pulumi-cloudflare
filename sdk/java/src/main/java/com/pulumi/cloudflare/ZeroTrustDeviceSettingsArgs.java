@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -17,11 +18,11 @@ public final class ZeroTrustDeviceSettingsArgs extends com.pulumi.resources.Reso
 
     public static final ZeroTrustDeviceSettingsArgs Empty = new ZeroTrustDeviceSettingsArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -192,7 +193,7 @@ public final class ZeroTrustDeviceSettingsArgs extends com.pulumi.resources.Reso
             $ = new ZeroTrustDeviceSettingsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -391,6 +392,9 @@ public final class ZeroTrustDeviceSettingsArgs extends com.pulumi.resources.Reso
         }
 
         public ZeroTrustDeviceSettingsArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDeviceSettingsArgs", "accountId");
+            }
             return $;
         }
     }

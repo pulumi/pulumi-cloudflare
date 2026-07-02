@@ -4,9 +4,11 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessIdentityProvidersResultConfig;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessIdentityProvidersResultSamlCertificateSet;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessIdentityProvidersResultScimConfig;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -28,13 +30,31 @@ public final class GetZeroTrustAccessIdentityProvidersResult {
      */
     private String name;
     /**
+     * @return Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+     * 
+     */
+    private Boolean readOnly;
+    /**
+     * @return The SAML encryption certificate set details, including current and previous certificates.
+     * Only present for SAML identity providers with a certificate set assigned.
+     * 
+     */
+    private GetZeroTrustAccessIdentityProvidersResultSamlCertificateSet samlCertificateSet;
+    /**
+     * @return The UID of the SAML encryption certificate set assigned to this Identity Provider.
+     * Only present for SAML identity providers with encryption configured.
+     * Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+     * 
+     */
+    private String samlCertificateSetId;
+    /**
      * @return The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      * 
      */
     private GetZeroTrustAccessIdentityProvidersResultScimConfig scimConfig;
     /**
      * @return The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;.
      * 
      */
     private String type;
@@ -62,6 +82,30 @@ public final class GetZeroTrustAccessIdentityProvidersResult {
         return this.name;
     }
     /**
+     * @return Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+     * 
+     */
+    public Boolean readOnly() {
+        return this.readOnly;
+    }
+    /**
+     * @return The SAML encryption certificate set details, including current and previous certificates.
+     * Only present for SAML identity providers with a certificate set assigned.
+     * 
+     */
+    public GetZeroTrustAccessIdentityProvidersResultSamlCertificateSet samlCertificateSet() {
+        return this.samlCertificateSet;
+    }
+    /**
+     * @return The UID of the SAML encryption certificate set assigned to this Identity Provider.
+     * Only present for SAML identity providers with encryption configured.
+     * Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+     * 
+     */
+    public String samlCertificateSetId() {
+        return this.samlCertificateSetId;
+    }
+    /**
      * @return The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      * 
      */
@@ -70,7 +114,7 @@ public final class GetZeroTrustAccessIdentityProvidersResult {
     }
     /**
      * @return The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;, &#34;cloudflare&#34;.
      * 
      */
     public String type() {
@@ -89,6 +133,9 @@ public final class GetZeroTrustAccessIdentityProvidersResult {
         private GetZeroTrustAccessIdentityProvidersResultConfig config;
         private String id;
         private String name;
+        private Boolean readOnly;
+        private GetZeroTrustAccessIdentityProvidersResultSamlCertificateSet samlCertificateSet;
+        private String samlCertificateSetId;
         private GetZeroTrustAccessIdentityProvidersResultScimConfig scimConfig;
         private String type;
         public Builder() {}
@@ -97,6 +144,9 @@ public final class GetZeroTrustAccessIdentityProvidersResult {
     	      this.config = defaults.config;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.readOnly = defaults.readOnly;
+    	      this.samlCertificateSet = defaults.samlCertificateSet;
+    	      this.samlCertificateSetId = defaults.samlCertificateSetId;
     	      this.scimConfig = defaults.scimConfig;
     	      this.type = defaults.type;
         }
@@ -126,6 +176,30 @@ public final class GetZeroTrustAccessIdentityProvidersResult {
             return this;
         }
         @CustomType.Setter
+        public Builder readOnly(Boolean readOnly) {
+            if (readOnly == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProvidersResult", "readOnly");
+            }
+            this.readOnly = readOnly;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder samlCertificateSet(GetZeroTrustAccessIdentityProvidersResultSamlCertificateSet samlCertificateSet) {
+            if (samlCertificateSet == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProvidersResult", "samlCertificateSet");
+            }
+            this.samlCertificateSet = samlCertificateSet;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder samlCertificateSetId(String samlCertificateSetId) {
+            if (samlCertificateSetId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProvidersResult", "samlCertificateSetId");
+            }
+            this.samlCertificateSetId = samlCertificateSetId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scimConfig(GetZeroTrustAccessIdentityProvidersResultScimConfig scimConfig) {
             if (scimConfig == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProvidersResult", "scimConfig");
@@ -146,6 +220,9 @@ public final class GetZeroTrustAccessIdentityProvidersResult {
             _resultValue.config = config;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.readOnly = readOnly;
+            _resultValue.samlCertificateSet = samlCertificateSet;
+            _resultValue.samlCertificateSetId = samlCertificateSetId;
             _resultValue.scimConfig = scimConfig;
             _resultValue.type = type;
             return _resultValue;

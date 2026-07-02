@@ -19,24 +19,35 @@ __all__ = ['WorkersScriptSubdomainArgs', 'WorkersScriptSubdomain']
 @pulumi.input_type
 class WorkersScriptSubdomainArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  enabled: pulumi.Input[_builtins.bool],
                  script_name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  previews_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a WorkersScriptSubdomain resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] enabled: Whether the Worker should be available on the workers.dev subdomain.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] previews_enabled: Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "script_name", script_name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if previews_enabled is not None:
             pulumi.set(__self__, "previews_enabled", previews_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -61,18 +72,6 @@ class WorkersScriptSubdomainArgs:
     @script_name.setter
     def script_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "script_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="previewsEnabled")
@@ -270,6 +269,8 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkersScriptSubdomainArgs.__new__(WorkersScriptSubdomainArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
@@ -316,7 +317,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

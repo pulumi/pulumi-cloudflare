@@ -66,7 +66,7 @@ export interface GetZeroTrustDlpPredefinedEntryResult {
     readonly profiles: outputs.GetZeroTrustDlpPredefinedEntryProfile[];
     readonly secret: boolean;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     readonly type: string;
     readonly updatedAt: string;
@@ -74,6 +74,9 @@ export interface GetZeroTrustDlpPredefinedEntryResult {
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     readonly uploadStatus: string;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     readonly variant: outputs.GetZeroTrustDlpPredefinedEntryVariant;
     readonly wordList: string;
 }

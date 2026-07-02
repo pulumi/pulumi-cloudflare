@@ -41,7 +41,7 @@ export interface GetR2CustomDomainArgs {
     /**
      * Account ID.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * Name of the bucket.
      */
@@ -59,7 +59,7 @@ export interface GetR2CustomDomainResult {
     /**
      * Account ID.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Name of the bucket.
      */
@@ -130,7 +130,7 @@ export interface GetR2CustomDomainOutputArgs {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Name of the bucket.
      */

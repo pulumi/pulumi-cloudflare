@@ -59,22 +59,31 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
     }
 
     /**
-     * Account Identifier
+     * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
-    declare public /*out*/ readonly comments: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly comments: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    declare public /*out*/ readonly directoryId: pulumi.Output<number>;
-    declare public /*out*/ readonly directoryNodeId: pulumi.Output<number>;
+    declare public readonly directoryId: pulumi.Output<number | undefined>;
+    declare public readonly directoryNodeId: pulumi.Output<number | undefined>;
     declare public readonly email: pulumi.Output<string>;
     /**
      * @deprecated This attribute is deprecated.
      */
-    declare public /*out*/ readonly externalDirectoryNodeId: pulumi.Output<string>;
+    declare public readonly externalDirectoryNodeId: pulumi.Output<string | undefined>;
     declare public readonly isEmailRegex: pulumi.Output<boolean>;
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     declare public /*out*/ readonly lastModified: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     declare public readonly name: pulumi.Output<string>;
-    declare public /*out*/ readonly provenance: pulumi.Output<string>;
+    /**
+     * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+     */
+    declare public readonly provenance: pulumi.Output<string | undefined>;
 
     /**
      * Create a EmailSecurityImpersonationRegistry resource with the given unique name, arguments, and options.
@@ -98,10 +107,14 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
             resourceInputs["externalDirectoryNodeId"] = state?.externalDirectoryNodeId;
             resourceInputs["isEmailRegex"] = state?.isEmailRegex;
             resourceInputs["lastModified"] = state?.lastModified;
+            resourceInputs["modifiedAt"] = state?.modifiedAt;
             resourceInputs["name"] = state?.name;
             resourceInputs["provenance"] = state?.provenance;
         } else {
             const args = argsOrState as EmailSecurityImpersonationRegistryArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
@@ -112,16 +125,17 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["comments"] = args?.comments;
+            resourceInputs["directoryId"] = args?.directoryId;
+            resourceInputs["directoryNodeId"] = args?.directoryNodeId;
             resourceInputs["email"] = args?.email;
+            resourceInputs["externalDirectoryNodeId"] = args?.externalDirectoryNodeId;
             resourceInputs["isEmailRegex"] = args?.isEmailRegex;
             resourceInputs["name"] = args?.name;
-            resourceInputs["comments"] = undefined /*out*/;
+            resourceInputs["provenance"] = args?.provenance;
             resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["directoryId"] = undefined /*out*/;
-            resourceInputs["directoryNodeId"] = undefined /*out*/;
-            resourceInputs["externalDirectoryNodeId"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;
-            resourceInputs["provenance"] = undefined /*out*/;
+            resourceInputs["modifiedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EmailSecurityImpersonationRegistry.__pulumiType, name, resourceInputs, opts);
@@ -133,7 +147,7 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
  */
 export interface EmailSecurityImpersonationRegistryState {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
     comments?: pulumi.Input<string | undefined>;
@@ -146,8 +160,17 @@ export interface EmailSecurityImpersonationRegistryState {
      */
     externalDirectoryNodeId?: pulumi.Input<string | undefined>;
     isEmailRegex?: pulumi.Input<boolean | undefined>;
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     lastModified?: pulumi.Input<string | undefined>;
+    modifiedAt?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+     */
     provenance?: pulumi.Input<string | undefined>;
 }
 
@@ -156,10 +179,21 @@ export interface EmailSecurityImpersonationRegistryState {
  */
 export interface EmailSecurityImpersonationRegistryArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
+    comments?: pulumi.Input<string | undefined>;
+    directoryId?: pulumi.Input<number | undefined>;
+    directoryNodeId?: pulumi.Input<number | undefined>;
     email: pulumi.Input<string>;
+    /**
+     * @deprecated This attribute is deprecated.
+     */
+    externalDirectoryNodeId?: pulumi.Input<string | undefined>;
     isEmailRegex: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
+    /**
+     * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+     */
+    provenance?: pulumi.Input<string | undefined>;
 }

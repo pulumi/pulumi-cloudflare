@@ -93,7 +93,7 @@ export class PipelineStream extends pulumi.CustomResource {
     /**
      * Specifies the public ID of the account.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Indicates the endpoint URL of this stream.
@@ -138,6 +138,9 @@ export class PipelineStream extends pulumi.CustomResource {
             resourceInputs["workerBinding"] = state?.workerBinding;
         } else {
             const args = argsOrState as PipelineStreamArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -192,7 +195,7 @@ export interface PipelineStreamArgs {
     /**
      * Specifies the public ID of the account.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     format?: pulumi.Input<inputs.PipelineStreamFormat | undefined>;
     http?: pulumi.Input<inputs.PipelineStreamHttp | undefined>;
     /**

@@ -3,12 +3,10 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.EmailSecurityTrustedDomainsBodyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,25 +17,18 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
     public static final EmailSecurityTrustedDomainsState Empty = new EmailSecurityTrustedDomainsState();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-
-    @Import(name="bodies")
-    private @Nullable Output<List<EmailSecurityTrustedDomainsBodyArgs>> bodies;
-
-    public Optional<Output<List<EmailSecurityTrustedDomainsBodyArgs>>> bodies() {
-        return Optional.ofNullable(this.bodies);
     }
 
     @Import(name="comments")
@@ -55,16 +46,14 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
     }
 
     /**
-     * Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
+     * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      * 
      */
     @Import(name="isRecent")
     private @Nullable Output<Boolean> isRecent;
 
     /**
-     * @return Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
+     * @return Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      * 
      */
     public Optional<Output<Boolean>> isRecent() {
@@ -79,29 +68,48 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
     }
 
     /**
-     * Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
+     * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      * 
      */
     @Import(name="isSimilarity")
     private @Nullable Output<Boolean> isSimilarity;
 
     /**
-     * @return Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
+     * @return Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      * 
      */
     public Optional<Output<Boolean>> isSimilarity() {
         return Optional.ofNullable(this.isSimilarity);
     }
 
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="lastModified")
     private @Nullable Output<String> lastModified;
 
+    /**
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<String>> lastModified() {
         return Optional.ofNullable(this.lastModified);
+    }
+
+    @Import(name="modifiedAt")
+    private @Nullable Output<String> modifiedAt;
+
+    public Optional<Output<String>> modifiedAt() {
+        return Optional.ofNullable(this.modifiedAt);
     }
 
     @Import(name="pattern")
@@ -115,13 +123,13 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
 
     private EmailSecurityTrustedDomainsState(EmailSecurityTrustedDomainsState $) {
         this.accountId = $.accountId;
-        this.bodies = $.bodies;
         this.comments = $.comments;
         this.createdAt = $.createdAt;
         this.isRecent = $.isRecent;
         this.isRegex = $.isRegex;
         this.isSimilarity = $.isSimilarity;
         this.lastModified = $.lastModified;
+        this.modifiedAt = $.modifiedAt;
         this.pattern = $.pattern;
     }
 
@@ -144,7 +152,7 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -155,26 +163,13 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
-        }
-
-        public Builder bodies(@Nullable Output<List<EmailSecurityTrustedDomainsBodyArgs>> bodies) {
-            $.bodies = bodies;
-            return this;
-        }
-
-        public Builder bodies(List<EmailSecurityTrustedDomainsBodyArgs> bodies) {
-            return bodies(Output.of(bodies));
-        }
-
-        public Builder bodies(EmailSecurityTrustedDomainsBodyArgs... bodies) {
-            return bodies(List.of(bodies));
         }
 
         public Builder comments(@Nullable Output<String> comments) {
@@ -196,8 +191,7 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
         }
 
         /**
-         * @param isRecent Select to prevent recently registered domains from triggering a
-         * Suspicious or Malicious disposition.
+         * @param isRecent Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
          * 
          * @return builder
          * 
@@ -208,8 +202,7 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
         }
 
         /**
-         * @param isRecent Select to prevent recently registered domains from triggering a
-         * Suspicious or Malicious disposition.
+         * @param isRecent Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
          * 
          * @return builder
          * 
@@ -228,9 +221,7 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
         }
 
         /**
-         * @param isSimilarity Select for partner or other approved domains that have similar
-         * spelling to your connected domains. Prevents listed domains from
-         * triggering a Spoof disposition.
+         * @param isSimilarity Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
          * 
          * @return builder
          * 
@@ -241,9 +232,7 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
         }
 
         /**
-         * @param isSimilarity Select for partner or other approved domains that have similar
-         * spelling to your connected domains. Prevents listed domains from
-         * triggering a Spoof disposition.
+         * @param isSimilarity Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
          * 
          * @return builder
          * 
@@ -252,13 +241,42 @@ public final class EmailSecurityTrustedDomainsState extends com.pulumi.resources
             return isSimilarity(Output.of(isSimilarity));
         }
 
+        /**
+         * @param lastModified Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder lastModified(@Nullable Output<String> lastModified) {
             $.lastModified = lastModified;
             return this;
         }
 
+        /**
+         * @param lastModified Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder lastModified(String lastModified) {
             return lastModified(Output.of(lastModified));
+        }
+
+        public Builder modifiedAt(@Nullable Output<String> modifiedAt) {
+            $.modifiedAt = modifiedAt;
+            return this;
+        }
+
+        public Builder modifiedAt(String modifiedAt) {
+            return modifiedAt(Output.of(modifiedAt));
         }
 
         public Builder pattern(@Nullable Output<String> pattern) {

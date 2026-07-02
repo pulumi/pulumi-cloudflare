@@ -49,7 +49,7 @@ export class StreamLiveInput extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The date and time the live input was created.
      */
@@ -123,7 +123,7 @@ export class StreamLiveInput extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: StreamLiveInputArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: StreamLiveInputArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StreamLiveInputArgs | StreamLiveInputState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -148,6 +148,9 @@ export class StreamLiveInput extends pulumi.CustomResource {
             resourceInputs["webRtcPlayback"] = state?.webRtcPlayback;
         } else {
             const args = argsOrState as StreamLiveInputArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["defaultCreator"] = args?.defaultCreator;
             resourceInputs["deleteRecordingAfterDays"] = args?.deleteRecordingAfterDays;
@@ -253,7 +256,7 @@ export interface StreamLiveInputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Sets the creator ID asssociated with this live input.
      */

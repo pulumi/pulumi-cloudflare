@@ -64,7 +64,7 @@ type LookupSnippetArgs struct {
 type LookupSnippetResult struct {
 	// Indicates when the snippet was created.
 	CreatedOn string `pulumi:"createdOn"`
-	// The provider-assigned unique ID for this managed resource.
+	// Identify the snippet.
 	Id string `pulumi:"id"`
 	// Indicates when the snippet was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -115,7 +115,7 @@ func (o LookupSnippetResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Identify the snippet.
 func (o LookupSnippetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetResult) string { return v.Id }).(pulumi.StringOutput)
 }

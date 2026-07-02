@@ -67,7 +67,7 @@ import (
 type ZeroTrustDevicePostureRule struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The description of the device posture rule.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
@@ -92,6 +92,9 @@ func NewZeroTrustDevicePostureRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
@@ -166,7 +169,7 @@ func (ZeroTrustDevicePostureRuleState) ElementType() reflect.Type {
 }
 
 type zeroTrustDevicePostureRuleArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The description of the device posture rule.
 	Description *string `pulumi:"description"`
 	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
@@ -186,7 +189,7 @@ type zeroTrustDevicePostureRuleArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDevicePostureRule resource.
 type ZeroTrustDevicePostureRuleArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// The description of the device posture rule.
 	Description pulumi.StringPtrInput
 	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
@@ -291,8 +294,8 @@ func (o ZeroTrustDevicePostureRuleOutput) ToZeroTrustDevicePostureRuleOutputWith
 	return o
 }
 
-func (o ZeroTrustDevicePostureRuleOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDevicePostureRuleOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The description of the device posture rule.

@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDevicePostureRule : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The description of the device posture rule.
@@ -157,8 +157,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDevicePostureRuleArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// The description of the device posture rule.
