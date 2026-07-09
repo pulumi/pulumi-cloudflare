@@ -29,6 +29,7 @@ from .address_map import *
 from .ai_gateway import *
 from .ai_gateway_dynamic_routing import *
 from .ai_search_instance import *
+from .ai_search_namespace import *
 from .ai_search_token import *
 from .api_shield import *
 from .api_shield_discovery_operation import *
@@ -58,6 +59,7 @@ from .cloudforce_one_request_priority import *
 from .connectivity_directory_service import *
 from .content_scanning import *
 from .content_scanning_expression import *
+from .custom_csr import *
 from .custom_hostname import *
 from .custom_hostname_fallback_origin import *
 from .custom_origin_trust_store import *
@@ -70,6 +72,7 @@ from .device_posture_integration import *
 from .device_posture_rule import *
 from .dlp_custom_profile import *
 from .dlp_predefined_profile import *
+from .dls_prefix_binding import *
 from .dns_firewall import *
 from .dns_record import *
 from .dns_zone_transfers_acl import *
@@ -87,6 +90,8 @@ from .email_security_impersonation_registry import *
 from .email_security_trusted_domains import *
 from .filter import *
 from .firewall_rule import *
+from .flagship_app import *
+from .flagship_flag import *
 from .get_access_rule import *
 from .get_access_rules import *
 from .get_account import *
@@ -112,6 +117,8 @@ from .get_ai_gateway_dynamic_routing import *
 from .get_ai_gateways import *
 from .get_ai_search_instance import *
 from .get_ai_search_instances import *
+from .get_ai_search_namespace import *
+from .get_ai_search_namespaces import *
 from .get_ai_search_token import *
 from .get_ai_search_tokens import *
 from .get_api_shield import *
@@ -156,6 +163,8 @@ from .get_connectivity_directory_service import *
 from .get_connectivity_directory_services import *
 from .get_content_scanning import *
 from .get_content_scanning_expressions import *
+from .get_custom_csr import *
+from .get_custom_csrs import *
 from .get_custom_hostname import *
 from .get_custom_hostname_fallback_origin import *
 from .get_custom_hostnames import *
@@ -170,6 +179,8 @@ from .get_custom_ssls import *
 from .get_d1_database import *
 from .get_d1_databases import *
 from .get_dcv_delegation import *
+from .get_dls_prefix_binding import *
+from .get_dls_prefix_bindings import *
 from .get_dns_firewall import *
 from .get_dns_firewalls import *
 from .get_dns_record import *
@@ -199,6 +210,11 @@ from .get_filter import *
 from .get_filters import *
 from .get_firewall_rule import *
 from .get_firewall_rules import *
+from .get_flagship_app import *
+from .get_flagship_apps import *
+from .get_flagship_flag import *
+from .get_flagship_flags import *
+from .get_google_tag_gateway import *
 from .get_healthcheck import *
 from .get_healthchecks import *
 from .get_hostname_tls_setting import *
@@ -219,6 +235,8 @@ from .get_list_items import *
 from .get_lists import *
 from .get_load_balancer import *
 from .get_load_balancer_monitor import *
+from .get_load_balancer_monitor_group import *
+from .get_load_balancer_monitor_groups import *
 from .get_load_balancer_monitors import *
 from .get_load_balancer_pool import *
 from .get_load_balancer_pools import *
@@ -252,12 +270,17 @@ from .get_notification_policies import *
 from .get_notification_policy import *
 from .get_notification_policy_webhooks import *
 from .get_notification_policy_webhooks_list import *
+from .get_oauth_client import *
+from .get_oauth_clients import *
+from .get_oauth_scopes import *
 from .get_observatory_scheduled_test import *
 from .get_organization import *
 from .get_organization_profile import *
 from .get_organizations import *
 from .get_origin_ca_certificate import *
 from .get_origin_ca_certificates import *
+from .get_origin_cloud_region import *
+from .get_origin_cloud_regions import *
 from .get_page_rule import *
 from .get_page_shield_connections import *
 from .get_page_shield_connections_list import *
@@ -304,6 +327,16 @@ from .get_schema_validation_operation_settings_list import *
 from .get_schema_validation_schemas import *
 from .get_schema_validation_schemas_list import *
 from .get_schema_validation_settings import *
+from .get_secrets_store import *
+from .get_secrets_store_secret import *
+from .get_secrets_store_secrets import *
+from .get_secrets_stores import *
+from .get_share import *
+from .get_share_recipient import *
+from .get_share_recipients import *
+from .get_share_resource import *
+from .get_share_resources import *
+from .get_shares import *
 from .get_snippet import *
 from .get_snippet_list import *
 from .get_snippet_rules_list import *
@@ -407,6 +440,8 @@ from .get_zero_trust_device_custom_profiles import *
 from .get_zero_trust_device_default_profile import *
 from .get_zero_trust_device_default_profile_certificates import *
 from .get_zero_trust_device_default_profile_local_domain_fallback import *
+from .get_zero_trust_device_deployment_groups import *
+from .get_zero_trust_device_deployment_groups_list import *
 from .get_zero_trust_device_ip_profile import *
 from .get_zero_trust_device_ip_profiles import *
 from .get_zero_trust_device_managed_networks import *
@@ -424,6 +459,12 @@ from .get_zero_trust_dex_tests import *
 from .get_zero_trust_dlp_custom_entries import *
 from .get_zero_trust_dlp_custom_entry import *
 from .get_zero_trust_dlp_custom_profile import *
+from .get_zero_trust_dlp_data_class import *
+from .get_zero_trust_dlp_data_classes import *
+from .get_zero_trust_dlp_data_tag import *
+from .get_zero_trust_dlp_data_tag_categories import *
+from .get_zero_trust_dlp_data_tag_category import *
+from .get_zero_trust_dlp_data_tags import *
 from .get_zero_trust_dlp_dataset import *
 from .get_zero_trust_dlp_datasets import *
 from .get_zero_trust_dlp_entries import *
@@ -433,6 +474,11 @@ from .get_zero_trust_dlp_integration_entry import *
 from .get_zero_trust_dlp_predefined_entries import *
 from .get_zero_trust_dlp_predefined_entry import *
 from .get_zero_trust_dlp_predefined_profile import *
+from .get_zero_trust_dlp_sensitivity_group import *
+from .get_zero_trust_dlp_sensitivity_groups import *
+from .get_zero_trust_dlp_sensitivity_level import *
+from .get_zero_trust_dlp_sensitivity_level_order import *
+from .get_zero_trust_dlp_sensitivity_levels import *
 from .get_zero_trust_dlp_settings import *
 from .get_zero_trust_dns_location import *
 from .get_zero_trust_dns_locations import *
@@ -453,6 +499,10 @@ from .get_zero_trust_lists import *
 from .get_zero_trust_network_hostname_route import *
 from .get_zero_trust_network_hostname_routes import *
 from .get_zero_trust_organization import *
+from .get_zero_trust_resource_library_application import *
+from .get_zero_trust_resource_library_applications import *
+from .get_zero_trust_resource_library_categories import *
+from .get_zero_trust_resource_library_category import *
 from .get_zero_trust_risk_behavior import *
 from .get_zero_trust_risk_scoring_integration import *
 from .get_zero_trust_risk_scoring_integrations import *
@@ -465,6 +515,7 @@ from .get_zero_trust_tunnel_cloudflared_virtual_network import *
 from .get_zero_trust_tunnel_cloudflared_virtual_networks import *
 from .get_zero_trust_tunnel_cloudflareds import *
 from .get_zero_trust_tunnel_warp_connector import *
+from .get_zero_trust_tunnel_warp_connector_config import *
 from .get_zero_trust_tunnel_warp_connector_token import *
 from .get_zero_trust_tunnel_warp_connectors import *
 from .get_zone import *
@@ -478,6 +529,7 @@ from .get_zone_lockdowns import *
 from .get_zone_setting import *
 from .get_zone_subscription import *
 from .get_zones import *
+from .google_tag_gateway import *
 from .healthcheck import *
 from .hostname_tls_setting import *
 from .hyperdrive_config import *
@@ -490,6 +542,7 @@ from .list import *
 from .list_item import *
 from .load_balancer import *
 from .load_balancer_monitor import *
+from .load_balancer_monitor_group import *
 from .load_balancer_pool import *
 from .logpull_retention import *
 from .logpush_job import *
@@ -509,10 +562,12 @@ from .managed_transforms import *
 from .mtls_certificate import *
 from .notification_policy import *
 from .notification_policy_webhooks import *
+from .oauth_client import *
 from .observatory_scheduled_test import *
 from .organization import *
 from .organization_profile import *
 from .origin_ca_certificate import *
+from .origin_cloud_region import *
 from .page_rule import *
 from .page_shield_policy import *
 from .pages_domain import *
@@ -542,6 +597,11 @@ from .ruleset import *
 from .schema_validation_operation_settings import *
 from .schema_validation_schemas import *
 from .schema_validation_settings import *
+from .secrets_store import *
+from .secrets_store_secret import *
+from .share import *
+from .share_recipient import *
+from .share_resource import *
 from .snippet import *
 from .snippet_rules import *
 from .snippets import *
@@ -621,6 +681,7 @@ from .zero_trust_device_custom_profile_local_domain_fallback import *
 from .zero_trust_device_default_profile import *
 from .zero_trust_device_default_profile_certificates import *
 from .zero_trust_device_default_profile_local_domain_fallback import *
+from .zero_trust_device_deployment_groups import *
 from .zero_trust_device_ip_profile import *
 from .zero_trust_device_managed_networks import *
 from .zero_trust_device_posture_integration import *
@@ -631,11 +692,17 @@ from .zero_trust_dex_rule import *
 from .zero_trust_dex_test import *
 from .zero_trust_dlp_custom_entry import *
 from .zero_trust_dlp_custom_profile import *
+from .zero_trust_dlp_data_class import *
+from .zero_trust_dlp_data_tag import *
+from .zero_trust_dlp_data_tag_category import *
 from .zero_trust_dlp_dataset import *
 from .zero_trust_dlp_entry import *
 from .zero_trust_dlp_integration_entry import *
 from .zero_trust_dlp_predefined_entry import *
 from .zero_trust_dlp_predefined_profile import *
+from .zero_trust_dlp_sensitivity_group import *
+from .zero_trust_dlp_sensitivity_level import *
+from .zero_trust_dlp_sensitivity_level_order import *
 from .zero_trust_dlp_settings import *
 from .zero_trust_dns_location import *
 from .zero_trust_gateway_certificate import *
@@ -655,6 +722,7 @@ from .zero_trust_tunnel_cloudflared_config import *
 from .zero_trust_tunnel_cloudflared_route import *
 from .zero_trust_tunnel_cloudflared_virtual_network import *
 from .zero_trust_tunnel_warp_connector import *
+from .zero_trust_tunnel_warp_connector_config import *
 from .zone import *
 from .zone_cache_reserve import *
 from .zone_cache_variants import *
@@ -859,6 +927,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/aiSearchInstance:AiSearchInstance": "AiSearchInstance"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/aiSearchNamespace",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/aiSearchNamespace:AiSearchNamespace": "AiSearchNamespace"
   }
  },
  {
@@ -1095,6 +1171,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/customCsr",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/customCsr:CustomCsr": "CustomCsr"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/customHostname",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1187,6 +1271,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile": "DlpPredefinedProfile"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/dlsPrefixBinding",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/dlsPrefixBinding:DlsPrefixBinding": "DlsPrefixBinding"
   }
  },
  {
@@ -1327,6 +1419,30 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/flagshipApp",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/flagshipApp:FlagshipApp": "FlagshipApp"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/flagshipFlag",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/flagshipFlag:FlagshipFlag": "FlagshipFlag"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/googleTagGateway",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/googleTagGateway:GoogleTagGateway": "GoogleTagGateway"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/healthcheck",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1419,6 +1535,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor": "LoadBalancerMonitor"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/loadBalancerMonitorGroup",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup": "LoadBalancerMonitorGroup"
   }
  },
  {
@@ -1575,6 +1699,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/oauthClient",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/oauthClient:OauthClient": "OauthClient"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/observatoryScheduledTest",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1603,6 +1735,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/originCaCertificate:OriginCaCertificate": "OriginCaCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/originCloudRegion",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/originCloudRegion:OriginCloudRegion": "OriginCloudRegion"
   }
  },
  {
@@ -1827,6 +1967,46 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/schemaValidationSettings:SchemaValidationSettings": "SchemaValidationSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/secretsStore",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/secretsStore:SecretsStore": "SecretsStore"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/secretsStoreSecret",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/secretsStoreSecret:SecretsStoreSecret": "SecretsStoreSecret"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/share",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/share:Share": "Share"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/shareRecipient",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/shareRecipient:ShareRecipient": "ShareRecipient"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/shareResource",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/shareResource:ShareResource": "ShareResource"
   }
  },
  {
@@ -2463,6 +2643,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/zeroTrustDeviceDeploymentGroups",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups": "ZeroTrustDeviceDeploymentGroups"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/zeroTrustDeviceIpProfile",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -2543,6 +2731,30 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/zeroTrustDlpDataClass",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass": "ZeroTrustDlpDataClass"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDlpDataTag",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag": "ZeroTrustDlpDataTag"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDlpDataTagCategory",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory": "ZeroTrustDlpDataTagCategory"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/zeroTrustDlpDataset",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -2579,6 +2791,30 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile": "ZeroTrustDlpPredefinedProfile"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDlpSensitivityGroup",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup": "ZeroTrustDlpSensitivityGroup"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDlpSensitivityLevel",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel": "ZeroTrustDlpSensitivityLevel"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDlpSensitivityLevelOrder",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder": "ZeroTrustDlpSensitivityLevelOrder"
   }
  },
  {
@@ -2731,6 +2967,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector": "ZeroTrustTunnelWarpConnector"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustTunnelWarpConnectorConfig",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig": "ZeroTrustTunnelWarpConnectorConfig"
   }
  },
  {

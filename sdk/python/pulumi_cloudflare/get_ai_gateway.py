@@ -28,7 +28,7 @@ class GetAiGatewayResult:
     """
     A collection of values returned by getAiGateway.
     """
-    def __init__(__self__, account_id=None, authentication=None, cache_invalidate_on_update=None, cache_ttl=None, collect_logs=None, created_at=None, dlp=None, filter=None, id=None, is_default=None, log_management=None, log_management_strategy=None, logpush=None, logpush_public_key=None, modified_at=None, otels=None, rate_limiting_interval=None, rate_limiting_limit=None, rate_limiting_technique=None, retry_backoff=None, retry_delay=None, retry_max_attempts=None, store_id=None, stripe=None, workers_ai_billing_mode=None, zdr=None):
+    def __init__(__self__, account_id=None, authentication=None, cache_invalidate_on_update=None, cache_ttl=None, collect_logs=None, created_at=None, dlp=None, filter=None, guardrails=None, id=None, is_default=None, log_management=None, log_management_strategy=None, logpush=None, logpush_public_key=None, modified_at=None, otels=None, rate_limiting_interval=None, rate_limiting_limit=None, rate_limiting_technique=None, retry_backoff=None, retry_delay=None, retry_max_attempts=None, spend_limits=None, store_id=None, stripe=None, workers_ai_billing_mode=None, zdr=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -53,6 +53,9 @@ class GetAiGatewayResult:
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
+        if guardrails and not isinstance(guardrails, dict):
+            raise TypeError("Expected argument 'guardrails' to be a dict")
+        pulumi.set(__self__, "guardrails", guardrails)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -95,6 +98,9 @@ class GetAiGatewayResult:
         if retry_max_attempts and not isinstance(retry_max_attempts, int):
             raise TypeError("Expected argument 'retry_max_attempts' to be a int")
         pulumi.set(__self__, "retry_max_attempts", retry_max_attempts)
+        if spend_limits and not isinstance(spend_limits, dict):
+            raise TypeError("Expected argument 'spend_limits' to be a dict")
+        pulumi.set(__self__, "spend_limits", spend_limits)
         if store_id and not isinstance(store_id, str):
             raise TypeError("Expected argument 'store_id' to be a str")
         pulumi.set(__self__, "store_id", store_id)
@@ -147,6 +153,11 @@ class GetAiGatewayResult:
     @pulumi.getter
     def filter(self) -> Optional['outputs.GetAiGatewayFilterResult']:
         return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter
+    def guardrails(self) -> 'outputs.GetAiGatewayGuardrailsResult':
+        return pulumi.get(self, "guardrails")
 
     @_builtins.property
     @pulumi.getter
@@ -238,6 +249,11 @@ class GetAiGatewayResult:
         return pulumi.get(self, "retry_max_attempts")
 
     @_builtins.property
+    @pulumi.getter(name="spendLimits")
+    def spend_limits(self) -> 'outputs.GetAiGatewaySpendLimitsResult':
+        return pulumi.get(self, "spend_limits")
+
+    @_builtins.property
     @pulumi.getter(name="storeId")
     def store_id(self) -> _builtins.str:
         return pulumi.get(self, "store_id")
@@ -276,6 +292,7 @@ class AwaitableGetAiGatewayResult(GetAiGatewayResult):
             created_at=self.created_at,
             dlp=self.dlp,
             filter=self.filter,
+            guardrails=self.guardrails,
             id=self.id,
             is_default=self.is_default,
             log_management=self.log_management,
@@ -290,6 +307,7 @@ class AwaitableGetAiGatewayResult(GetAiGatewayResult):
             retry_backoff=self.retry_backoff,
             retry_delay=self.retry_delay,
             retry_max_attempts=self.retry_max_attempts,
+            spend_limits=self.spend_limits,
             store_id=self.store_id,
             stripe=self.stripe,
             workers_ai_billing_mode=self.workers_ai_billing_mode,
@@ -335,6 +353,7 @@ def get_ai_gateway(account_id: Optional[_builtins.str] = None,
         created_at=pulumi.get(__ret__, 'created_at'),
         dlp=pulumi.get(__ret__, 'dlp'),
         filter=pulumi.get(__ret__, 'filter'),
+        guardrails=pulumi.get(__ret__, 'guardrails'),
         id=pulumi.get(__ret__, 'id'),
         is_default=pulumi.get(__ret__, 'is_default'),
         log_management=pulumi.get(__ret__, 'log_management'),
@@ -349,6 +368,7 @@ def get_ai_gateway(account_id: Optional[_builtins.str] = None,
         retry_backoff=pulumi.get(__ret__, 'retry_backoff'),
         retry_delay=pulumi.get(__ret__, 'retry_delay'),
         retry_max_attempts=pulumi.get(__ret__, 'retry_max_attempts'),
+        spend_limits=pulumi.get(__ret__, 'spend_limits'),
         store_id=pulumi.get(__ret__, 'store_id'),
         stripe=pulumi.get(__ret__, 'stripe'),
         workers_ai_billing_mode=pulumi.get(__ret__, 'workers_ai_billing_mode'),
@@ -391,6 +411,7 @@ def get_ai_gateway_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
         created_at=pulumi.get(__response__, 'created_at'),
         dlp=pulumi.get(__response__, 'dlp'),
         filter=pulumi.get(__response__, 'filter'),
+        guardrails=pulumi.get(__response__, 'guardrails'),
         id=pulumi.get(__response__, 'id'),
         is_default=pulumi.get(__response__, 'is_default'),
         log_management=pulumi.get(__response__, 'log_management'),
@@ -405,6 +426,7 @@ def get_ai_gateway_output(account_id: pulumi.Input[Optional[Optional[_builtins.s
         retry_backoff=pulumi.get(__response__, 'retry_backoff'),
         retry_delay=pulumi.get(__response__, 'retry_delay'),
         retry_max_attempts=pulumi.get(__response__, 'retry_max_attempts'),
+        spend_limits=pulumi.get(__response__, 'spend_limits'),
         store_id=pulumi.get(__response__, 'store_id'),
         stripe=pulumi.get(__response__, 'stripe'),
         workers_ai_billing_mode=pulumi.get(__response__, 'workers_ai_billing_mode'),

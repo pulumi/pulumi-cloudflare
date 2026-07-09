@@ -167,7 +167,7 @@ export class KeylessCertificate extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel.
      */
     declare public readonly tunnel: pulumi.Output<outputs.KeylessCertificateTunnel | undefined>;
     /**
@@ -275,7 +275,7 @@ export interface KeylessCertificateState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel.
      */
     tunnel?: pulumi.Input<inputs.KeylessCertificateTunnel | undefined>;
     /**
@@ -316,7 +316,7 @@ export interface KeylessCertificateArgs {
      */
     port?: pulumi.Input<number | undefined>;
     /**
-     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel.
      */
     tunnel?: pulumi.Input<inputs.KeylessCertificateTunnel | undefined>;
     /**

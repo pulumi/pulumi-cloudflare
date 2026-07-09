@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -55,30 +56,33 @@ import (
 type EmailSecurityTrustedDomains struct {
 	pulumi.CustomResourceState
 
-	// Account Identifier
-	AccountId pulumi.StringPtrOutput                     `pulumi:"accountId"`
-	Bodies    EmailSecurityTrustedDomainsBodyArrayOutput `pulumi:"bodies"`
-	Comments  pulumi.StringPtrOutput                     `pulumi:"comments"`
-	CreatedAt pulumi.StringOutput                        `pulumi:"createdAt"`
-	// Select to prevent recently registered domains from triggering a
-	// Suspicious or Malicious disposition.
+	// Identifier.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	Comments  pulumi.StringPtrOutput `pulumi:"comments"`
+	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
+	// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 	IsRecent pulumi.BoolPtrOutput `pulumi:"isRecent"`
 	IsRegex  pulumi.BoolPtrOutput `pulumi:"isRegex"`
-	// Select for partner or other approved domains that have similar
-	// spelling to your connected domains. Prevents listed domains from
-	// triggering a Spoof disposition.
-	IsSimilarity pulumi.BoolPtrOutput   `pulumi:"isSimilarity"`
-	LastModified pulumi.StringOutput    `pulumi:"lastModified"`
-	Pattern      pulumi.StringPtrOutput `pulumi:"pattern"`
+	// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
+	IsSimilarity pulumi.BoolPtrOutput `pulumi:"isSimilarity"`
+	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+	//
+	// Deprecated: This attribute is deprecated.
+	LastModified pulumi.StringOutput `pulumi:"lastModified"`
+	ModifiedAt   pulumi.StringOutput `pulumi:"modifiedAt"`
+	Pattern      pulumi.StringOutput `pulumi:"pattern"`
 }
 
 // NewEmailSecurityTrustedDomains registers a new resource with the given unique name, arguments, and options.
 func NewEmailSecurityTrustedDomains(ctx *pulumi.Context,
 	name string, args *EmailSecurityTrustedDomainsArgs, opts ...pulumi.ResourceOption) (*EmailSecurityTrustedDomains, error) {
 	if args == nil {
-		args = &EmailSecurityTrustedDomainsArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Pattern == nil {
+		return nil, errors.New("invalid value for required argument 'Pattern'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EmailSecurityTrustedDomains
 	err := ctx.RegisterResource("cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains", name, args, &resource, opts...)
@@ -102,38 +106,38 @@ func GetEmailSecurityTrustedDomains(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EmailSecurityTrustedDomains resources.
 type emailSecurityTrustedDomainsState struct {
-	// Account Identifier
-	AccountId *string                           `pulumi:"accountId"`
-	Bodies    []EmailSecurityTrustedDomainsBody `pulumi:"bodies"`
-	Comments  *string                           `pulumi:"comments"`
-	CreatedAt *string                           `pulumi:"createdAt"`
-	// Select to prevent recently registered domains from triggering a
-	// Suspicious or Malicious disposition.
+	// Identifier.
+	AccountId *string `pulumi:"accountId"`
+	Comments  *string `pulumi:"comments"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 	IsRecent *bool `pulumi:"isRecent"`
 	IsRegex  *bool `pulumi:"isRegex"`
-	// Select for partner or other approved domains that have similar
-	// spelling to your connected domains. Prevents listed domains from
-	// triggering a Spoof disposition.
-	IsSimilarity *bool   `pulumi:"isSimilarity"`
+	// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
+	IsSimilarity *bool `pulumi:"isSimilarity"`
+	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+	//
+	// Deprecated: This attribute is deprecated.
 	LastModified *string `pulumi:"lastModified"`
+	ModifiedAt   *string `pulumi:"modifiedAt"`
 	Pattern      *string `pulumi:"pattern"`
 }
 
 type EmailSecurityTrustedDomainsState struct {
-	// Account Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
-	Bodies    EmailSecurityTrustedDomainsBodyArrayInput
 	Comments  pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
-	// Select to prevent recently registered domains from triggering a
-	// Suspicious or Malicious disposition.
+	// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 	IsRecent pulumi.BoolPtrInput
 	IsRegex  pulumi.BoolPtrInput
-	// Select for partner or other approved domains that have similar
-	// spelling to your connected domains. Prevents listed domains from
-	// triggering a Spoof disposition.
+	// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
 	IsSimilarity pulumi.BoolPtrInput
+	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+	//
+	// Deprecated: This attribute is deprecated.
 	LastModified pulumi.StringPtrInput
+	ModifiedAt   pulumi.StringPtrInput
 	Pattern      pulumi.StringPtrInput
 }
 
@@ -142,36 +146,28 @@ func (EmailSecurityTrustedDomainsState) ElementType() reflect.Type {
 }
 
 type emailSecurityTrustedDomainsArgs struct {
-	// Account Identifier
-	AccountId *string                           `pulumi:"accountId"`
-	Bodies    []EmailSecurityTrustedDomainsBody `pulumi:"bodies"`
-	Comments  *string                           `pulumi:"comments"`
-	// Select to prevent recently registered domains from triggering a
-	// Suspicious or Malicious disposition.
+	// Identifier.
+	AccountId *string `pulumi:"accountId"`
+	Comments  *string `pulumi:"comments"`
+	// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 	IsRecent *bool `pulumi:"isRecent"`
 	IsRegex  *bool `pulumi:"isRegex"`
-	// Select for partner or other approved domains that have similar
-	// spelling to your connected domains. Prevents listed domains from
-	// triggering a Spoof disposition.
-	IsSimilarity *bool   `pulumi:"isSimilarity"`
-	Pattern      *string `pulumi:"pattern"`
+	// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
+	IsSimilarity *bool  `pulumi:"isSimilarity"`
+	Pattern      string `pulumi:"pattern"`
 }
 
 // The set of arguments for constructing a EmailSecurityTrustedDomains resource.
 type EmailSecurityTrustedDomainsArgs struct {
-	// Account Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
-	Bodies    EmailSecurityTrustedDomainsBodyArrayInput
 	Comments  pulumi.StringPtrInput
-	// Select to prevent recently registered domains from triggering a
-	// Suspicious or Malicious disposition.
+	// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 	IsRecent pulumi.BoolPtrInput
 	IsRegex  pulumi.BoolPtrInput
-	// Select for partner or other approved domains that have similar
-	// spelling to your connected domains. Prevents listed domains from
-	// triggering a Spoof disposition.
+	// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
 	IsSimilarity pulumi.BoolPtrInput
-	Pattern      pulumi.StringPtrInput
+	Pattern      pulumi.StringInput
 }
 
 func (EmailSecurityTrustedDomainsArgs) ElementType() reflect.Type {
@@ -261,13 +257,9 @@ func (o EmailSecurityTrustedDomainsOutput) ToEmailSecurityTrustedDomainsOutputWi
 	return o
 }
 
-// Account Identifier
+// Identifier.
 func (o EmailSecurityTrustedDomainsOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-func (o EmailSecurityTrustedDomainsOutput) Bodies() EmailSecurityTrustedDomainsBodyArrayOutput {
-	return o.ApplyT(func(v *EmailSecurityTrustedDomains) EmailSecurityTrustedDomainsBodyArrayOutput { return v.Bodies }).(EmailSecurityTrustedDomainsBodyArrayOutput)
 }
 
 func (o EmailSecurityTrustedDomainsOutput) Comments() pulumi.StringPtrOutput {
@@ -278,8 +270,7 @@ func (o EmailSecurityTrustedDomainsOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Select to prevent recently registered domains from triggering a
-// Suspicious or Malicious disposition.
+// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
 func (o EmailSecurityTrustedDomainsOutput) IsRecent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.BoolPtrOutput { return v.IsRecent }).(pulumi.BoolPtrOutput)
 }
@@ -288,19 +279,24 @@ func (o EmailSecurityTrustedDomainsOutput) IsRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.BoolPtrOutput { return v.IsRegex }).(pulumi.BoolPtrOutput)
 }
 
-// Select for partner or other approved domains that have similar
-// spelling to your connected domains. Prevents listed domains from
-// triggering a Spoof disposition.
+// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
 func (o EmailSecurityTrustedDomainsOutput) IsSimilarity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.BoolPtrOutput { return v.IsSimilarity }).(pulumi.BoolPtrOutput)
 }
 
+// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+//
+// Deprecated: This attribute is deprecated.
 func (o EmailSecurityTrustedDomainsOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.StringOutput { return v.LastModified }).(pulumi.StringOutput)
 }
 
-func (o EmailSecurityTrustedDomainsOutput) Pattern() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.StringPtrOutput { return v.Pattern }).(pulumi.StringPtrOutput)
+func (o EmailSecurityTrustedDomainsOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.StringOutput { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+func (o EmailSecurityTrustedDomainsOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailSecurityTrustedDomains) pulumi.StringOutput { return v.Pattern }).(pulumi.StringOutput)
 }
 
 type EmailSecurityTrustedDomainsArrayOutput struct{ *pulumi.OutputState }

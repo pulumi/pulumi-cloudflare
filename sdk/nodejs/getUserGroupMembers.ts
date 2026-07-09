@@ -81,6 +81,9 @@ export interface GetUserGroupMembersResult {
      * User Group identifier tag.
      */
     readonly id: string;
+    /**
+     * List of members in the user group.
+     */
     readonly members: outputs.GetUserGroupMembersMember[];
     /**
      * User Group identifier tag.

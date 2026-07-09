@@ -27,6 +27,9 @@ import * as utilities from "./utilities";
  *     limits: {
  *         steps: 1,
  *     },
+ *     schedules: [{
+ *         cron: "x",
+ *     }],
  * });
  * ```
  *
@@ -72,6 +75,7 @@ export class Workflow extends pulumi.CustomResource {
     declare public readonly limits: pulumi.Output<outputs.WorkflowLimits | undefined>;
     declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     declare public /*out*/ readonly name: pulumi.Output<string>;
+    declare public readonly schedules: pulumi.Output<outputs.WorkflowSchedule[] | undefined>;
     declare public readonly scriptName: pulumi.Output<string>;
     declare public /*out*/ readonly terminatorRunning: pulumi.Output<number>;
     declare public /*out*/ readonly triggeredOn: pulumi.Output<string>;
@@ -99,6 +103,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["limits"] = state?.limits;
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["name"] = state?.name;
+            resourceInputs["schedules"] = state?.schedules;
             resourceInputs["scriptName"] = state?.scriptName;
             resourceInputs["terminatorRunning"] = state?.terminatorRunning;
             resourceInputs["triggeredOn"] = state?.triggeredOn;
@@ -118,6 +123,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["className"] = args?.className;
             resourceInputs["limits"] = args?.limits;
+            resourceInputs["schedules"] = args?.schedules;
             resourceInputs["scriptName"] = args?.scriptName;
             resourceInputs["workflowName"] = args?.workflowName;
             resourceInputs["createdOn"] = undefined /*out*/;
@@ -146,6 +152,7 @@ export interface WorkflowState {
     limits?: pulumi.Input<inputs.WorkflowLimits | undefined>;
     modifiedOn?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
+    schedules?: pulumi.Input<pulumi.Input<inputs.WorkflowSchedule>[] | undefined>;
     scriptName?: pulumi.Input<string | undefined>;
     terminatorRunning?: pulumi.Input<number | undefined>;
     triggeredOn?: pulumi.Input<string | undefined>;
@@ -160,6 +167,7 @@ export interface WorkflowArgs {
     accountId?: pulumi.Input<string | undefined>;
     className: pulumi.Input<string>;
     limits?: pulumi.Input<inputs.WorkflowLimits | undefined>;
+    schedules?: pulumi.Input<pulumi.Input<inputs.WorkflowSchedule>[] | undefined>;
     scriptName: pulumi.Input<string>;
     workflowName: pulumi.Input<string>;
 }

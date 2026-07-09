@@ -4,7 +4,9 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.AiGatewayDlpArgs;
+import com.pulumi.cloudflare.inputs.AiGatewayGuardrailsArgs;
 import com.pulumi.cloudflare.inputs.AiGatewayOtelArgs;
+import com.pulumi.cloudflare.inputs.AiGatewaySpendLimitsArgs;
 import com.pulumi.cloudflare.inputs.AiGatewayStripeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -77,6 +79,13 @@ public final class AiGatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<AiGatewayDlpArgs>> dlp() {
         return Optional.ofNullable(this.dlp);
+    }
+
+    @Import(name="guardrails")
+    private @Nullable Output<AiGatewayGuardrailsArgs> guardrails;
+
+    public Optional<Output<AiGatewayGuardrailsArgs>> guardrails() {
+        return Optional.ofNullable(this.guardrails);
     }
 
     @Import(name="logManagement")
@@ -198,6 +207,13 @@ public final class AiGatewayArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.retryMaxAttempts);
     }
 
+    @Import(name="spendLimits")
+    private @Nullable Output<AiGatewaySpendLimitsArgs> spendLimits;
+
+    public Optional<Output<AiGatewaySpendLimitsArgs>> spendLimits() {
+        return Optional.ofNullable(this.spendLimits);
+    }
+
     @Import(name="storeId")
     private @Nullable Output<String> storeId;
 
@@ -246,6 +262,7 @@ public final class AiGatewayArgs extends com.pulumi.resources.ResourceArgs {
         this.cacheTtl = $.cacheTtl;
         this.collectLogs = $.collectLogs;
         this.dlp = $.dlp;
+        this.guardrails = $.guardrails;
         this.logManagement = $.logManagement;
         this.logManagementStrategy = $.logManagementStrategy;
         this.logpush = $.logpush;
@@ -257,6 +274,7 @@ public final class AiGatewayArgs extends com.pulumi.resources.ResourceArgs {
         this.retryBackoff = $.retryBackoff;
         this.retryDelay = $.retryDelay;
         this.retryMaxAttempts = $.retryMaxAttempts;
+        this.spendLimits = $.spendLimits;
         this.storeId = $.storeId;
         this.stripe = $.stripe;
         this.workersAiBillingMode = $.workersAiBillingMode;
@@ -354,6 +372,15 @@ public final class AiGatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder dlp(AiGatewayDlpArgs dlp) {
             return dlp(Output.of(dlp));
+        }
+
+        public Builder guardrails(@Nullable Output<AiGatewayGuardrailsArgs> guardrails) {
+            $.guardrails = guardrails;
+            return this;
+        }
+
+        public Builder guardrails(AiGatewayGuardrailsArgs guardrails) {
+            return guardrails(Output.of(guardrails));
         }
 
         public Builder logManagement(@Nullable Output<Integer> logManagement) {
@@ -519,6 +546,15 @@ public final class AiGatewayArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder retryMaxAttempts(Integer retryMaxAttempts) {
             return retryMaxAttempts(Output.of(retryMaxAttempts));
+        }
+
+        public Builder spendLimits(@Nullable Output<AiGatewaySpendLimitsArgs> spendLimits) {
+            $.spendLimits = spendLimits;
+            return this;
+        }
+
+        public Builder spendLimits(AiGatewaySpendLimitsArgs spendLimits) {
+            return spendLimits(Output.of(spendLimits));
         }
 
         public Builder storeId(@Nullable Output<String> storeId) {

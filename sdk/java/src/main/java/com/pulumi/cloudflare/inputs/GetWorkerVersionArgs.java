@@ -20,15 +20,15 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
      * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -111,7 +111,7 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -192,6 +192,9 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetWorkerVersionArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetWorkerVersionArgs", "accountId");
+            }
             if ($.versionId == null) {
                 throw new MissingRequiredPropertyException("GetWorkerVersionArgs", "versionId");
             }

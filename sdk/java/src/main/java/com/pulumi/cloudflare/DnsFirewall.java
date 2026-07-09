@@ -13,6 +13,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -61,6 +62,7 @@ import javax.annotation.Nullable;
  *                 .onlyWhenUpstreamUnhealthy(false)
  *                 .build())
  *             .deprecateAnyRequests(true)
+ *             .dnsFirewallIpCount(2)
  *             .ecsFallback(false)
  *             .maximumCacheTtl(900.0)
  *             .minimumCacheTtl(60.0)
@@ -124,6 +126,20 @@ public class DnsFirewall extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> deprecateAnyRequests() {
         return Codegen.optional(this.deprecateAnyRequests);
+    }
+    /**
+     * Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+     * 
+     */
+    @Export(name="dnsFirewallIpCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> dnsFirewallIpCount;
+
+    /**
+     * @return Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+     * 
+     */
+    public Output<Integer> dnsFirewallIpCount() {
+        return this.dnsFirewallIpCount;
     }
     @Export(name="dnsFirewallIps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dnsFirewallIps;
@@ -256,14 +272,14 @@ public class DnsFirewall extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.negativeCacheTtl);
     }
     /**
-     * Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+     * Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
      * 
      */
     @Export(name="ratelimit", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> ratelimit;
 
     /**
-     * @return Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+     * @return Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
      * 
      */
     public Output<Optional<Double>> ratelimit() {

@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.GetCustomHostnamesHostname;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -144,14 +143,14 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
      * 
      */
     @Import(name="ssl")
-    private @Nullable Double ssl;
+    private @Nullable Integer ssl;
 
     /**
      * @return Whether to filter hostnames based on if they have SSL enabled.
      * Available values: 0, 1.
      * 
      */
-    public Optional<Double> ssl() {
+    public Optional<Integer> ssl() {
         return Optional.ofNullable(this.ssl);
     }
 
@@ -330,7 +329,7 @@ public final class GetCustomHostnamesPlainArgs extends com.pulumi.resources.Invo
          * @return builder
          * 
          */
-        public Builder ssl(@Nullable Double ssl) {
+        public Builder ssl(@Nullable Integer ssl) {
             $.ssl = ssl;
             return this;
         }

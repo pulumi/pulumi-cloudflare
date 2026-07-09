@@ -137,6 +137,10 @@ export class SpectrumApplication extends pulumi.CustomResource {
      */
     declare public readonly trafficType: pulumi.Output<string>;
     /**
+     * Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     */
+    declare public readonly virtualNetworkId: pulumi.Output<string | undefined>;
+    /**
      * Zone identifier.
      */
     declare public readonly zoneId: pulumi.Output<string | undefined>;
@@ -167,6 +171,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
             resourceInputs["proxyProtocol"] = state?.proxyProtocol;
             resourceInputs["tls"] = state?.tls;
             resourceInputs["trafficType"] = state?.trafficType;
+            resourceInputs["virtualNetworkId"] = state?.virtualNetworkId;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as SpectrumApplicationArgs | undefined;
@@ -187,6 +192,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
             resourceInputs["proxyProtocol"] = args?.proxyProtocol;
             resourceInputs["tls"] = args?.tls;
             resourceInputs["trafficType"] = args?.trafficType;
+            resourceInputs["virtualNetworkId"] = args?.virtualNetworkId;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
@@ -259,6 +265,10 @@ export interface SpectrumApplicationState {
      */
     trafficType?: pulumi.Input<string | undefined>;
     /**
+     * Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     */
+    virtualNetworkId?: pulumi.Input<string | undefined>;
+    /**
      * Zone identifier.
      */
     zoneId?: pulumi.Input<string | undefined>;
@@ -318,6 +328,10 @@ export interface SpectrumApplicationArgs {
      * Available values: "direct", "http", "https".
      */
     trafficType?: pulumi.Input<string | undefined>;
+    /**
+     * Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     */
+    virtualNetworkId?: pulumi.Input<string | undefined>;
     /**
      * Zone identifier.
      */

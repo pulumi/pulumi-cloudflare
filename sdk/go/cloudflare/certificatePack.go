@@ -70,7 +70,7 @@ import (
 type CertificatePack struct {
 	pulumi.CustomResourceState
 
-	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
 	// Array of certificates in this pack.
@@ -145,7 +145,7 @@ func GetCertificatePack(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CertificatePack resources.
 type certificatePackState struct {
-	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// Array of certificates in this pack.
@@ -179,7 +179,7 @@ type certificatePackState struct {
 }
 
 type CertificatePackState struct {
-	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority pulumi.StringPtrInput
 	// Array of certificates in this pack.
@@ -217,7 +217,7 @@ func (CertificatePackState) ElementType() reflect.Type {
 }
 
 type certificatePackArgs struct {
-	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority string `pulumi:"certificateAuthority"`
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
@@ -239,7 +239,7 @@ type certificatePackArgs struct {
 
 // The set of arguments for constructing a CertificatePack resource.
 type CertificatePackArgs struct {
-	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+	// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
 	// Available values: "google", "lets*encrypt", "ssl*com".
 	CertificateAuthority pulumi.StringInput
 	// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
@@ -346,7 +346,7 @@ func (o CertificatePackOutput) ToCertificatePackOutputWithContext(ctx context.Co
 	return o
 }
 
-// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
 // Available values: "google", "lets*encrypt", "ssl*com".
 func (o CertificatePackOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.CertificateAuthority }).(pulumi.StringOutput)

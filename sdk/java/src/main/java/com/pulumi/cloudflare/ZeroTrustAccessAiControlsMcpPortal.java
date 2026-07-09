@@ -18,6 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `MCP Portals Read`
+ * - `MCP Portals Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

@@ -82,7 +82,7 @@ export class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
     declare public /*out*/ readonly profiles: pulumi.Output<outputs.ZeroTrustDlpIntegrationEntryProfile[]>;
     declare public /*out*/ readonly secret: pulumi.Output<boolean>;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
@@ -90,6 +90,9 @@ export class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     declare public /*out*/ readonly uploadStatus: pulumi.Output<string>;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     declare public /*out*/ readonly variant: pulumi.Output<outputs.ZeroTrustDlpIntegrationEntryVariant>;
     declare public /*out*/ readonly wordList: pulumi.Output<string>;
 
@@ -180,7 +183,7 @@ export interface ZeroTrustDlpIntegrationEntryState {
     profiles?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpIntegrationEntryProfile>[] | undefined>;
     secret?: pulumi.Input<boolean | undefined>;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     type?: pulumi.Input<string | undefined>;
     updatedAt?: pulumi.Input<string | undefined>;
@@ -188,6 +191,9 @@ export interface ZeroTrustDlpIntegrationEntryState {
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     uploadStatus?: pulumi.Input<string | undefined>;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     variant?: pulumi.Input<inputs.ZeroTrustDlpIntegrationEntryVariant | undefined>;
     wordList?: pulumi.Input<string | undefined>;
 }

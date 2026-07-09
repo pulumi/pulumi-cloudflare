@@ -47,7 +47,7 @@ namespace Pulumi.Cloudflare
     public partial class EmailSecurityBlockSender : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -61,13 +61,21 @@ namespace Pulumi.Cloudflare
         [Output("isRegex")]
         public Output<bool> IsRegex { get; private set; } = null!;
 
+        /// <summary>
+        /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
+        /// </summary>
         [Output("lastModified")]
         public Output<string> LastModified { get; private set; } = null!;
+
+        [Output("modifiedAt")]
+        public Output<string> ModifiedAt { get; private set; } = null!;
 
         [Output("pattern")]
         public Output<string> Pattern { get; private set; } = null!;
 
         /// <summary>
+        /// Type of pattern matching.
+        /// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         [Output("patternType")]
@@ -120,7 +128,7 @@ namespace Pulumi.Cloudflare
     public sealed class EmailSecurityBlockSenderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -135,6 +143,8 @@ namespace Pulumi.Cloudflare
         public Input<string> Pattern { get; set; } = null!;
 
         /// <summary>
+        /// Type of pattern matching.
+        /// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         [Input("patternType", required: true)]
@@ -149,7 +159,7 @@ namespace Pulumi.Cloudflare
     public sealed class EmailSecurityBlockSenderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -163,13 +173,21 @@ namespace Pulumi.Cloudflare
         [Input("isRegex")]
         public Input<bool>? IsRegex { get; set; }
 
+        /// <summary>
+        /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
+        /// </summary>
         [Input("lastModified")]
         public Input<string>? LastModified { get; set; }
+
+        [Input("modifiedAt")]
+        public Input<string>? ModifiedAt { get; set; }
 
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
         /// <summary>
+        /// Type of pattern matching.
+        /// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         [Input("patternType")]

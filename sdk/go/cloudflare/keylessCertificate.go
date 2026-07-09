@@ -142,7 +142,7 @@ type KeylessCertificate struct {
 	// Status of the Keyless SSL.
 	// Available values: "active", "deleted".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Configuration for using Keyless SSL through a Cloudflare Tunnel
+	// Configuration for using Keyless SSL through a Cloudflare Tunnel.
 	Tunnel KeylessCertificateTunnelPtrOutput `pulumi:"tunnel"`
 	// Identifier.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
@@ -208,7 +208,7 @@ type keylessCertificateState struct {
 	// Status of the Keyless SSL.
 	// Available values: "active", "deleted".
 	Status *string `pulumi:"status"`
-	// Configuration for using Keyless SSL through a Cloudflare Tunnel
+	// Configuration for using Keyless SSL through a Cloudflare Tunnel.
 	Tunnel *KeylessCertificateTunnel `pulumi:"tunnel"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
@@ -239,7 +239,7 @@ type KeylessCertificateState struct {
 	// Status of the Keyless SSL.
 	// Available values: "active", "deleted".
 	Status pulumi.StringPtrInput
-	// Configuration for using Keyless SSL through a Cloudflare Tunnel
+	// Configuration for using Keyless SSL through a Cloudflare Tunnel.
 	Tunnel KeylessCertificateTunnelPtrInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
@@ -265,7 +265,7 @@ type keylessCertificateArgs struct {
 	Name *string `pulumi:"name"`
 	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	Port *float64 `pulumi:"port"`
-	// Configuration for using Keyless SSL through a Cloudflare Tunnel
+	// Configuration for using Keyless SSL through a Cloudflare Tunnel.
 	Tunnel *KeylessCertificateTunnel `pulumi:"tunnel"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
@@ -288,7 +288,7 @@ type KeylessCertificateArgs struct {
 	Name pulumi.StringPtrInput
 	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
 	Port pulumi.Float64PtrInput
-	// Configuration for using Keyless SSL through a Cloudflare Tunnel
+	// Configuration for using Keyless SSL through a Cloudflare Tunnel.
 	Tunnel KeylessCertificateTunnelPtrInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
@@ -435,7 +435,7 @@ func (o KeylessCertificateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeylessCertificate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Configuration for using Keyless SSL through a Cloudflare Tunnel
+// Configuration for using Keyless SSL through a Cloudflare Tunnel.
 func (o KeylessCertificateOutput) Tunnel() KeylessCertificateTunnelPtrOutput {
 	return o.ApplyT(func(v *KeylessCertificate) KeylessCertificateTunnelPtrOutput { return v.Tunnel }).(KeylessCertificateTunnelPtrOutput)
 }

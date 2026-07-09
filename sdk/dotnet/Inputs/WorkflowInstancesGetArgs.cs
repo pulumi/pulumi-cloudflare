@@ -24,6 +24,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("queued")]
         public Input<double>? Queued { get; set; }
 
+        [Input("rollingBack")]
+        public Input<double>? RollingBack { get; set; }
+
         [Input("running")]
         public Input<double>? Running { get; set; }
 

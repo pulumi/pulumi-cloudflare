@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Configuration for using Keyless SSL through a Cloudflare Tunnel
+        /// Configuration for using Keyless SSL through a Cloudflare Tunnel.
         /// </summary>
         public readonly Outputs.GetCustomSslKeylessServerTunnelResult Tunnel;
 

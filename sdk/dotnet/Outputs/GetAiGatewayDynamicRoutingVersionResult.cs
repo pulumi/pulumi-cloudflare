@@ -19,6 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Active;
         public readonly string CreatedAt;
         public readonly string Data;
+        public readonly bool IsValid;
         public readonly string VersionId;
 
         [OutputConstructor]
@@ -29,11 +30,14 @@ namespace Pulumi.Cloudflare.Outputs
 
             string data,
 
+            bool isValid,
+
             string versionId)
         {
             Active = active;
             CreatedAt = createdAt;
             Data = data;
+            IsValid = isValid;
             VersionId = versionId;
         }
     }

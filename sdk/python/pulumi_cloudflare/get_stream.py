@@ -118,7 +118,7 @@ class GetStreamResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         The account identifier tag.
         """
@@ -436,7 +436,7 @@ def get_stream(account_id: Optional[_builtins.str] = None,
         upload_expiry=pulumi.get(__ret__, 'upload_expiry'),
         uploaded=pulumi.get(__ret__, 'uploaded'),
         watermark=pulumi.get(__ret__, 'watermark'))
-def get_stream_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_stream_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                       identifier: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamResult]:
     """

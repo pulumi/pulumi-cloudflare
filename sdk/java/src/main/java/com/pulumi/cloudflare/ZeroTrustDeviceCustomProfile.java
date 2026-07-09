@@ -6,11 +6,13 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustDeviceCustomProfileArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileState;
+import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileDnsSearchSuffix;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileExclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileFallbackDomain;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileInclude;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileServiceModeV2;
 import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileTargetTest;
+import com.pulumi.cloudflare.outputs.ZeroTrustDeviceCustomProfileVirtualNetworks;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -221,6 +223,20 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
      */
     public Output<Boolean> disableAutoFallback() {
         return this.disableAutoFallback;
+    }
+    /**
+     * List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     * 
+     */
+    @Export(name="dnsSearchSuffixes", refs={List.class,ZeroTrustDeviceCustomProfileDnsSearchSuffix.class}, tree="[0,1]")
+    private Output<List<ZeroTrustDeviceCustomProfileDnsSearchSuffix>> dnsSearchSuffixes;
+
+    /**
+     * @return List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     * 
+     */
+    public Output<List<ZeroTrustDeviceCustomProfileDnsSearchSuffix>> dnsSearchSuffixes() {
+        return this.dnsSearchSuffixes;
     }
     /**
      * Whether the policy will be applied to matching devices.
@@ -447,6 +463,20 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
      */
     public Output<String> tunnelProtocol() {
         return this.tunnelProtocol;
+    }
+    /**
+     * Virtual network access settings for the device.
+     * 
+     */
+    @Export(name="virtualNetworks", refs={ZeroTrustDeviceCustomProfileVirtualNetworks.class}, tree="[0]")
+    private Output</* @Nullable */ ZeroTrustDeviceCustomProfileVirtualNetworks> virtualNetworks;
+
+    /**
+     * @return Virtual network access settings for the device.
+     * 
+     */
+    public Output<Optional<ZeroTrustDeviceCustomProfileVirtualNetworks>> virtualNetworks() {
+        return Codegen.optional(this.virtualNetworks);
     }
 
     /**

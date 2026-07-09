@@ -639,6 +639,11 @@ class BotManagement(pulumi.CustomResource):
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        Accepted Permissions
+
+        - `Bot Management Read`
+        - `Bot Management Write`
+
         ## Example Usage
 
         ```python
@@ -698,6 +703,11 @@ class BotManagement(pulumi.CustomResource):
                  args: BotManagementArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accepted Permissions
+
+        - `Bot Management Read`
+        - `Bot Management Write`
+
         ## Example Usage
 
         ```python

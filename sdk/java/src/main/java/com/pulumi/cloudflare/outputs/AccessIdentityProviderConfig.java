@@ -85,6 +85,12 @@ public final class AccessIdentityProviderConfig {
      */
     private @Nullable String emailClaimName;
     /**
+     * @return Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+     * SAML assertions using the certificate from the assigned certificate set.
+     * 
+     */
+    private @Nullable Boolean enableEncryption;
+    /**
      * @return Add a list of attribute names that will be returned in the response header from the Access callback.
      * 
      */
@@ -120,12 +126,17 @@ public final class AccessIdentityProviderConfig {
      */
     private @Nullable Boolean pkceEnabled;
     /**
-     * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
      * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
      * 
      */
     private @Nullable String prompt;
     private @Nullable String redirectUrl;
+    /**
+     * @return When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+     * 
+     */
+    private @Nullable Boolean restrictToAccountMembers;
     /**
      * @return OAuth scopes
      * 
@@ -252,6 +263,14 @@ public final class AccessIdentityProviderConfig {
         return Optional.ofNullable(this.emailClaimName);
     }
     /**
+     * @return Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+     * SAML assertions using the certificate from the assigned certificate set.
+     * 
+     */
+    public Optional<Boolean> enableEncryption() {
+        return Optional.ofNullable(this.enableEncryption);
+    }
+    /**
      * @return Add a list of attribute names that will be returned in the response header from the Access callback.
      * 
      */
@@ -301,7 +320,7 @@ public final class AccessIdentityProviderConfig {
         return Optional.ofNullable(this.pkceEnabled);
     }
     /**
-     * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
      * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
      * 
      */
@@ -310,6 +329,13 @@ public final class AccessIdentityProviderConfig {
     }
     public Optional<String> redirectUrl() {
         return Optional.ofNullable(this.redirectUrl);
+    }
+    /**
+     * @return When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+     * 
+     */
+    public Optional<Boolean> restrictToAccountMembers() {
+        return Optional.ofNullable(this.restrictToAccountMembers);
     }
     /**
      * @return OAuth scopes
@@ -370,6 +396,7 @@ public final class AccessIdentityProviderConfig {
         private @Nullable String directoryId;
         private @Nullable String emailAttributeName;
         private @Nullable String emailClaimName;
+        private @Nullable Boolean enableEncryption;
         private @Nullable List<AccessIdentityProviderConfigHeaderAttribute> headerAttributes;
         private @Nullable List<String> idpPublicCerts;
         private @Nullable String issuerUrl;
@@ -379,6 +406,7 @@ public final class AccessIdentityProviderConfig {
         private @Nullable Boolean pkceEnabled;
         private @Nullable String prompt;
         private @Nullable String redirectUrl;
+        private @Nullable Boolean restrictToAccountMembers;
         private @Nullable List<String> scopes;
         private @Nullable Boolean signRequest;
         private @Nullable String ssoTargetUrl;
@@ -401,6 +429,7 @@ public final class AccessIdentityProviderConfig {
     	      this.directoryId = defaults.directoryId;
     	      this.emailAttributeName = defaults.emailAttributeName;
     	      this.emailClaimName = defaults.emailClaimName;
+    	      this.enableEncryption = defaults.enableEncryption;
     	      this.headerAttributes = defaults.headerAttributes;
     	      this.idpPublicCerts = defaults.idpPublicCerts;
     	      this.issuerUrl = defaults.issuerUrl;
@@ -410,6 +439,7 @@ public final class AccessIdentityProviderConfig {
     	      this.pkceEnabled = defaults.pkceEnabled;
     	      this.prompt = defaults.prompt;
     	      this.redirectUrl = defaults.redirectUrl;
+    	      this.restrictToAccountMembers = defaults.restrictToAccountMembers;
     	      this.scopes = defaults.scopes;
     	      this.signRequest = defaults.signRequest;
     	      this.ssoTargetUrl = defaults.ssoTargetUrl;
@@ -508,6 +538,12 @@ public final class AccessIdentityProviderConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder enableEncryption(@Nullable Boolean enableEncryption) {
+
+            this.enableEncryption = enableEncryption;
+            return this;
+        }
+        @CustomType.Setter
         public Builder headerAttributes(@Nullable List<AccessIdentityProviderConfigHeaderAttribute> headerAttributes) {
 
             this.headerAttributes = headerAttributes;
@@ -568,6 +604,12 @@ public final class AccessIdentityProviderConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder restrictToAccountMembers(@Nullable Boolean restrictToAccountMembers) {
+
+            this.restrictToAccountMembers = restrictToAccountMembers;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scopes(@Nullable List<String> scopes) {
 
             this.scopes = scopes;
@@ -616,6 +658,7 @@ public final class AccessIdentityProviderConfig {
             _resultValue.directoryId = directoryId;
             _resultValue.emailAttributeName = emailAttributeName;
             _resultValue.emailClaimName = emailClaimName;
+            _resultValue.enableEncryption = enableEncryption;
             _resultValue.headerAttributes = headerAttributes;
             _resultValue.idpPublicCerts = idpPublicCerts;
             _resultValue.issuerUrl = issuerUrl;
@@ -625,6 +668,7 @@ public final class AccessIdentityProviderConfig {
             _resultValue.pkceEnabled = pkceEnabled;
             _resultValue.prompt = prompt;
             _resultValue.redirectUrl = redirectUrl;
+            _resultValue.restrictToAccountMembers = restrictToAccountMembers;
             _resultValue.scopes = scopes;
             _resultValue.signRequest = signRequest;
             _resultValue.ssoTargetUrl = ssoTargetUrl;

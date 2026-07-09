@@ -24,6 +24,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("data")]
         public Input<string>? Data { get; set; }
 
+        [Input("isValid")]
+        public Input<bool>? IsValid { get; set; }
+
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
 

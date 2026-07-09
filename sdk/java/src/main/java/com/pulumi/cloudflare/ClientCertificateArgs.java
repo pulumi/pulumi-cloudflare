@@ -41,14 +41,14 @@ public final class ClientCertificateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The number of days the Client Certificate will be valid after the issuedOn date
+     * The number of days the Client Certificate will be valid after the issuedOn date.
      * 
      */
     @Import(name="validityDays", required=true)
     private Output<Integer> validityDays;
 
     /**
-     * @return The number of days the Client Certificate will be valid after the issuedOn date
+     * @return The number of days the Client Certificate will be valid after the issuedOn date.
      * 
      */
     public Output<Integer> validityDays() {
@@ -128,7 +128,7 @@ public final class ClientCertificateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param validityDays The number of days the Client Certificate will be valid after the issuedOn date
+         * @param validityDays The number of days the Client Certificate will be valid after the issuedOn date.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class ClientCertificateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param validityDays The number of days the Client Certificate will be valid after the issuedOn date
+         * @param validityDays The number of days the Client Certificate will be valid after the issuedOn date.
          * 
          * @return builder
          * 

@@ -54,6 +54,11 @@ export class AiSearchInstance extends pulumi.CustomResource {
      * Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
      */
     declare public readonly cacheThreshold: pulumi.Output<string>;
+    /**
+     * Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     */
+    declare public readonly cacheTtl: pulumi.Output<number>;
     declare public readonly chunk: pulumi.Output<boolean>;
     declare public readonly chunkOverlap: pulumi.Output<number>;
     declare public readonly chunkSize: pulumi.Output<number>;
@@ -144,6 +149,7 @@ export class AiSearchInstance extends pulumi.CustomResource {
             resourceInputs["aisearchModel"] = state?.aisearchModel;
             resourceInputs["cache"] = state?.cache;
             resourceInputs["cacheThreshold"] = state?.cacheThreshold;
+            resourceInputs["cacheTtl"] = state?.cacheTtl;
             resourceInputs["chunk"] = state?.chunk;
             resourceInputs["chunkOverlap"] = state?.chunkOverlap;
             resourceInputs["chunkSize"] = state?.chunkSize;
@@ -198,6 +204,7 @@ export class AiSearchInstance extends pulumi.CustomResource {
             resourceInputs["aisearchModel"] = args?.aisearchModel;
             resourceInputs["cache"] = args?.cache;
             resourceInputs["cacheThreshold"] = args?.cacheThreshold;
+            resourceInputs["cacheTtl"] = args?.cacheTtl;
             resourceInputs["chunk"] = args?.chunk;
             resourceInputs["chunkOverlap"] = args?.chunkOverlap;
             resourceInputs["chunkSize"] = args?.chunkSize;
@@ -263,6 +270,11 @@ export interface AiSearchInstanceState {
      * Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
      */
     cacheThreshold?: pulumi.Input<string | undefined>;
+    /**
+     * Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     */
+    cacheTtl?: pulumi.Input<number | undefined>;
     chunk?: pulumi.Input<boolean | undefined>;
     chunkOverlap?: pulumi.Input<number | undefined>;
     chunkSize?: pulumi.Input<number | undefined>;
@@ -354,6 +366,11 @@ export interface AiSearchInstanceArgs {
      * Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
      */
     cacheThreshold?: pulumi.Input<string | undefined>;
+    /**
+     * Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     */
+    cacheTtl?: pulumi.Input<number | undefined>;
     chunk?: pulumi.Input<boolean | undefined>;
     chunkOverlap?: pulumi.Input<number | undefined>;
     chunkSize?: pulumi.Input<number | undefined>;

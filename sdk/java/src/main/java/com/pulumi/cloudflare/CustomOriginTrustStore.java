@@ -69,14 +69,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/customOriginTrustStore:CustomOriginTrustStore")
 public class CustomOriginTrustStore extends com.pulumi.resources.CustomResource {
     /**
-     * The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      * 
      */
     @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output<String> certificate;
 
     /**
-     * @return The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * @return The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      * 
      */
     public Output<String> certificate() {

@@ -72,7 +72,7 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
      * Available values: "low", "mid", "high".
@@ -117,6 +117,9 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
             resourceInputs["vlanTag"] = state?.vlanTag;
         } else {
             const args = argsOrState as MagicTransitSiteWanArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.physport === undefined && !opts.urn) {
                 throw new Error("Missing required property 'physport'");
             }
@@ -174,7 +177,7 @@ export interface MagicTransitSiteWanArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     name?: pulumi.Input<string | undefined>;
     physport: pulumi.Input<number>;
     priority?: pulumi.Input<number | undefined>;

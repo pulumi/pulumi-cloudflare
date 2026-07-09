@@ -28,7 +28,7 @@ class GetZeroTrustAccessIdentityProviderResult:
     """
     A collection of values returned by getZeroTrustAccessIdentityProvider.
     """
-    def __init__(__self__, account_id=None, config=None, filter=None, id=None, identity_provider_id=None, name=None, scim_config=None, type=None, zone_id=None):
+    def __init__(__self__, account_id=None, config=None, filter=None, id=None, identity_provider_id=None, name=None, read_only=None, saml_certificate_set=None, saml_certificate_set_id=None, scim_config=None, type=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -47,6 +47,15 @@ class GetZeroTrustAccessIdentityProviderResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if read_only and not isinstance(read_only, bool):
+            raise TypeError("Expected argument 'read_only' to be a bool")
+        pulumi.set(__self__, "read_only", read_only)
+        if saml_certificate_set and not isinstance(saml_certificate_set, dict):
+            raise TypeError("Expected argument 'saml_certificate_set' to be a dict")
+        pulumi.set(__self__, "saml_certificate_set", saml_certificate_set)
+        if saml_certificate_set_id and not isinstance(saml_certificate_set_id, str):
+            raise TypeError("Expected argument 'saml_certificate_set_id' to be a str")
+        pulumi.set(__self__, "saml_certificate_set_id", saml_certificate_set_id)
         if scim_config and not isinstance(scim_config, dict):
             raise TypeError("Expected argument 'scim_config' to be a dict")
         pulumi.set(__self__, "scim_config", scim_config)
@@ -103,6 +112,33 @@ class GetZeroTrustAccessIdentityProviderResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> _builtins.bool:
+        """
+        Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+        """
+        return pulumi.get(self, "read_only")
+
+    @_builtins.property
+    @pulumi.getter(name="samlCertificateSet")
+    def saml_certificate_set(self) -> 'outputs.GetZeroTrustAccessIdentityProviderSamlCertificateSetResult':
+        """
+        The SAML encryption certificate set details, including current and previous certificates.
+        Only present for SAML identity providers with a certificate set assigned.
+        """
+        return pulumi.get(self, "saml_certificate_set")
+
+    @_builtins.property
+    @pulumi.getter(name="samlCertificateSetId")
+    def saml_certificate_set_id(self) -> _builtins.str:
+        """
+        The UID of the SAML encryption certificate set assigned to this Identity Provider.
+        Only present for SAML identity providers with encryption configured.
+        Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+        """
+        return pulumi.get(self, "saml_certificate_set_id")
+
+    @_builtins.property
     @pulumi.getter(name="scimConfig")
     def scim_config(self) -> 'outputs.GetZeroTrustAccessIdentityProviderScimConfigResult':
         """
@@ -115,7 +151,7 @@ class GetZeroTrustAccessIdentityProviderResult:
     def type(self) -> _builtins.str:
         """
         The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-        Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+        Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
         """
         return pulumi.get(self, "type")
 
@@ -140,6 +176,9 @@ class AwaitableGetZeroTrustAccessIdentityProviderResult(GetZeroTrustAccessIdenti
             id=self.id,
             identity_provider_id=self.identity_provider_id,
             name=self.name,
+            read_only=self.read_only,
+            saml_certificate_set=self.saml_certificate_set,
+            saml_certificate_set_id=self.saml_certificate_set_id,
             scim_config=self.scim_config,
             type=self.type,
             zone_id=self.zone_id)
@@ -187,6 +226,9 @@ def get_zero_trust_access_identity_provider(account_id: Optional[_builtins.str] 
         id=pulumi.get(__ret__, 'id'),
         identity_provider_id=pulumi.get(__ret__, 'identity_provider_id'),
         name=pulumi.get(__ret__, 'name'),
+        read_only=pulumi.get(__ret__, 'read_only'),
+        saml_certificate_set=pulumi.get(__ret__, 'saml_certificate_set'),
+        saml_certificate_set_id=pulumi.get(__ret__, 'saml_certificate_set_id'),
         scim_config=pulumi.get(__ret__, 'scim_config'),
         type=pulumi.get(__ret__, 'type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
@@ -231,6 +273,9 @@ def get_zero_trust_access_identity_provider_output(account_id: pulumi.Input[Opti
         id=pulumi.get(__response__, 'id'),
         identity_provider_id=pulumi.get(__response__, 'identity_provider_id'),
         name=pulumi.get(__response__, 'name'),
+        read_only=pulumi.get(__response__, 'read_only'),
+        saml_certificate_set=pulumi.get(__response__, 'saml_certificate_set'),
+        saml_certificate_set_id=pulumi.get(__response__, 'saml_certificate_set_id'),
         scim_config=pulumi.get(__response__, 'scim_config'),
         type=pulumi.get(__response__, 'type'),
         zone_id=pulumi.get(__response__, 'zone_id')))

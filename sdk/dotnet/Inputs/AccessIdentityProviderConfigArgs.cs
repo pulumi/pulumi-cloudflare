@@ -118,6 +118,13 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("emailClaimName")]
         public Input<string>? EmailClaimName { get; set; }
 
+        /// <summary>
+        /// Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+        /// SAML assertions using the certificate from the assigned certificate set.
+        /// </summary>
+        [Input("enableEncryption")]
+        public Input<bool>? EnableEncryption { get; set; }
+
         [Input("headerAttributes")]
         private InputList<Inputs.AccessIdentityProviderConfigHeaderAttributeArgs>? _headerAttributes;
 
@@ -173,7 +180,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? PkceEnabled { get; set; }
 
         /// <summary>
-        /// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+        /// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an InteractionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
         /// Available values: "login", "SelectAccount", "none".
         /// </summary>
         [Input("prompt")]
@@ -181,6 +188,12 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("redirectUrl")]
         public Input<string>? RedirectUrl { get; set; }
+
+        /// <summary>
+        /// When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+        /// </summary>
+        [Input("restrictToAccountMembers")]
+        public Input<bool>? RestrictToAccountMembers { get; set; }
 
         [Input("scopes")]
         private InputList<string>? _scopes;

@@ -25,7 +25,8 @@ class WorkflowArgs:
                  script_name: pulumi.Input[_builtins.str],
                  workflow_name: pulumi.Input[_builtins.str],
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 limits: pulumi.Input[Optional['WorkflowLimitsArgs']] = None):
+                 limits: pulumi.Input[Optional['WorkflowLimitsArgs']] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowScheduleArgs']]]] = None):
         """
         The set of arguments for constructing a Workflow resource.
         """
@@ -36,6 +37,8 @@ class WorkflowArgs:
             pulumi.set(__self__, "account_id", account_id)
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
+        if schedules is not None:
+            pulumi.set(__self__, "schedules", schedules)
 
     @_builtins.property
     @pulumi.getter(name="className")
@@ -82,6 +85,15 @@ class WorkflowArgs:
     def limits(self, value: pulumi.Input[Optional['WorkflowLimitsArgs']]):
         pulumi.set(self, "limits", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def schedules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowScheduleArgs']]]]:
+        return pulumi.get(self, "schedules")
+
+    @schedules.setter
+    def schedules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowScheduleArgs']]]]):
+        pulumi.set(self, "schedules", value)
+
 
 @pulumi.input_type
 class _WorkflowState:
@@ -94,6 +106,7 @@ class _WorkflowState:
                  limits: pulumi.Input[Optional['WorkflowLimitsArgs']] = None,
                  modified_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowScheduleArgs']]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  terminator_running: pulumi.Input[Optional[_builtins.float]] = None,
                  triggered_on: pulumi.Input[Optional[_builtins.str]] = None,
@@ -118,6 +131,8 @@ class _WorkflowState:
             pulumi.set(__self__, "modified_on", modified_on)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if schedules is not None:
+            pulumi.set(__self__, "schedules", schedules)
         if script_name is not None:
             pulumi.set(__self__, "script_name", script_name)
         if terminator_running is not None:
@@ -202,6 +217,15 @@ class _WorkflowState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def schedules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowScheduleArgs']]]]:
+        return pulumi.get(self, "schedules")
+
+    @schedules.setter
+    def schedules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowScheduleArgs']]]]):
+        pulumi.set(self, "schedules", value)
+
+    @_builtins.property
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "script_name")
@@ -256,6 +280,7 @@ class Workflow(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  class_name: pulumi.Input[Optional[_builtins.str]] = None,
                  limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict']]]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  workflow_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -279,7 +304,10 @@ class Workflow(pulumi.CustomResource):
             script_name="x",
             limits={
                 "steps": 1,
-            })
+            },
+            schedules=[{
+                "cron": "x",
+            }])
         ```
 
         ## Import
@@ -318,7 +346,10 @@ class Workflow(pulumi.CustomResource):
             script_name="x",
             limits={
                 "steps": 1,
-            })
+            },
+            schedules=[{
+                "cron": "x",
+            }])
         ```
 
         ## Import
@@ -346,6 +377,7 @@ class Workflow(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  class_name: pulumi.Input[Optional[_builtins.str]] = None,
                  limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict']]]]] = None,
                  script_name: pulumi.Input[Optional[_builtins.str]] = None,
                  workflow_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -362,6 +394,7 @@ class Workflow(pulumi.CustomResource):
                 raise TypeError("Missing required property 'class_name'")
             __props__.__dict__["class_name"] = class_name
             __props__.__dict__["limits"] = limits
+            __props__.__dict__["schedules"] = schedules
             if script_name is None and not opts.urn:
                 raise TypeError("Missing required property 'script_name'")
             __props__.__dict__["script_name"] = script_name
@@ -394,6 +427,7 @@ class Workflow(pulumi.CustomResource):
             limits: pulumi.Input[Optional[Union['WorkflowLimitsArgs', 'WorkflowLimitsArgsDict']]] = None,
             modified_on: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowScheduleArgs', 'WorkflowScheduleArgsDict']]]]] = None,
             script_name: pulumi.Input[Optional[_builtins.str]] = None,
             terminator_running: pulumi.Input[Optional[_builtins.float]] = None,
             triggered_on: pulumi.Input[Optional[_builtins.str]] = None,
@@ -419,6 +453,7 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["limits"] = limits
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
+        __props__.__dict__["schedules"] = schedules
         __props__.__dict__["script_name"] = script_name
         __props__.__dict__["terminator_running"] = terminator_running
         __props__.__dict__["triggered_on"] = triggered_on
@@ -465,6 +500,11 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def schedules(self) -> pulumi.Output[Optional[Sequence['outputs.WorkflowSchedule']]]:
+        return pulumi.get(self, "schedules")
 
     @_builtins.property
     @pulumi.getter(name="scriptName")

@@ -12,8 +12,8 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AiGatewayOtelGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("authorization", required: true)]
-        public Input<string> Authorization { get; set; } = null!;
+        [Input("authorization")]
+        public Input<string>? Authorization { get; set; }
 
         /// <summary>
         /// Available values: "json", "protobuf".

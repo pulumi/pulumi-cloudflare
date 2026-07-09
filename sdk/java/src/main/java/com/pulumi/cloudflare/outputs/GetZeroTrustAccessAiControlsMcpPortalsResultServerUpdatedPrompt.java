@@ -11,16 +11,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedPrompt {
-    private String description;
     private Boolean enabled;
     private String name;
     private String portalAlias;
+    private String portalDescription;
     private String serverAlias;
+    private String serverDescription;
 
     private GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedPrompt() {}
-    public String description() {
-        return this.description;
-    }
     public Boolean enabled() {
         return this.enabled;
     }
@@ -30,8 +28,14 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedProm
     public String portalAlias() {
         return this.portalAlias;
     }
+    public String portalDescription() {
+        return this.portalDescription;
+    }
     public String serverAlias() {
         return this.serverAlias;
+    }
+    public String serverDescription() {
+        return this.serverDescription;
     }
 
     public static Builder builder() {
@@ -43,29 +47,23 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedProm
     }
     @CustomType.Builder
     public static final class Builder {
-        private String description;
         private Boolean enabled;
         private String name;
         private String portalAlias;
+        private String portalDescription;
         private String serverAlias;
+        private String serverDescription;
         public Builder() {}
         public Builder(GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedPrompt defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.name = defaults.name;
     	      this.portalAlias = defaults.portalAlias;
+    	      this.portalDescription = defaults.portalDescription;
     	      this.serverAlias = defaults.serverAlias;
+    	      this.serverDescription = defaults.serverDescription;
         }
 
-        @CustomType.Setter
-        public Builder description(String description) {
-            if (description == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedPrompt", "description");
-            }
-            this.description = description;
-            return this;
-        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
@@ -91,6 +89,14 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedProm
             return this;
         }
         @CustomType.Setter
+        public Builder portalDescription(String portalDescription) {
+            if (portalDescription == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedPrompt", "portalDescription");
+            }
+            this.portalDescription = portalDescription;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serverAlias(String serverAlias) {
             if (serverAlias == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedPrompt", "serverAlias");
@@ -98,13 +104,22 @@ public final class GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedProm
             this.serverAlias = serverAlias;
             return this;
         }
+        @CustomType.Setter
+        public Builder serverDescription(String serverDescription) {
+            if (serverDescription == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedPrompt", "serverDescription");
+            }
+            this.serverDescription = serverDescription;
+            return this;
+        }
         public GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedPrompt build() {
             final var _resultValue = new GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedPrompt();
-            _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.name = name;
             _resultValue.portalAlias = portalAlias;
+            _resultValue.portalDescription = portalDescription;
             _resultValue.serverAlias = serverAlias;
+            _resultValue.serverDescription = serverDescription;
             return _resultValue;
         }
     }

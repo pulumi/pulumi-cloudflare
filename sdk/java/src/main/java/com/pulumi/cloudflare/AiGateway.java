@@ -7,7 +7,9 @@ import com.pulumi.cloudflare.AiGatewayArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AiGatewayState;
 import com.pulumi.cloudflare.outputs.AiGatewayDlp;
+import com.pulumi.cloudflare.outputs.AiGatewayGuardrails;
 import com.pulumi.cloudflare.outputs.AiGatewayOtel;
+import com.pulumi.cloudflare.outputs.AiGatewaySpendLimits;
 import com.pulumi.cloudflare.outputs.AiGatewayStripe;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -141,6 +143,12 @@ public class AiGateway extends com.pulumi.resources.CustomResource {
     public Output<Optional<AiGatewayDlp>> dlp() {
         return Codegen.optional(this.dlp);
     }
+    @Export(name="guardrails", refs={AiGatewayGuardrails.class}, tree="[0]")
+    private Output</* @Nullable */ AiGatewayGuardrails> guardrails;
+
+    public Output<Optional<AiGatewayGuardrails>> guardrails() {
+        return Codegen.optional(this.guardrails);
+    }
     @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isDefault;
 
@@ -260,6 +268,12 @@ public class AiGateway extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> retryMaxAttempts() {
         return Codegen.optional(this.retryMaxAttempts);
+    }
+    @Export(name="spendLimits", refs={AiGatewaySpendLimits.class}, tree="[0]")
+    private Output<AiGatewaySpendLimits> spendLimits;
+
+    public Output<AiGatewaySpendLimits> spendLimits() {
+        return this.spendLimits;
     }
     @Export(name="storeId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storeId;

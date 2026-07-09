@@ -97,6 +97,7 @@ class _ZeroTrustNetworkHostnameRouteState:
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 tun_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -107,6 +108,8 @@ class _ZeroTrustNetworkHostnameRouteState:
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.
         :param pulumi.Input[_builtins.str] deleted_at: Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
         :param pulumi.Input[_builtins.str] hostname: The hostname of the route.
+        :param pulumi.Input[_builtins.str] tun_type: The type of tunnel.
+               Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
         :param pulumi.Input[_builtins.str] tunnel_name: A user-friendly name for a tunnel.
         """
@@ -120,6 +123,8 @@ class _ZeroTrustNetworkHostnameRouteState:
             pulumi.set(__self__, "deleted_at", deleted_at)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if tun_type is not None:
+            pulumi.set(__self__, "tun_type", tun_type)
         if tunnel_id is not None:
             pulumi.set(__self__, "tunnel_id", tunnel_id)
         if tunnel_name is not None:
@@ -184,6 +189,19 @@ class _ZeroTrustNetworkHostnameRouteState:
     @hostname.setter
     def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tunType")
+    def tun_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of tunnel.
+        Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
+        """
+        return pulumi.get(self, "tun_type")
+
+    @tun_type.setter
+    def tun_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tun_type", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelId")
@@ -324,6 +342,7 @@ class ZeroTrustNetworkHostnameRoute(pulumi.CustomResource):
             __props__.__dict__["tunnel_id"] = tunnel_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["deleted_at"] = None
+            __props__.__dict__["tun_type"] = None
             __props__.__dict__["tunnel_name"] = None
         super(ZeroTrustNetworkHostnameRoute, __self__).__init__(
             'cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute',
@@ -340,6 +359,7 @@ class ZeroTrustNetworkHostnameRoute(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
             hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            tun_type: pulumi.Input[Optional[_builtins.str]] = None,
             tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
             tunnel_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZeroTrustNetworkHostnameRoute':
         """
@@ -354,6 +374,8 @@ class ZeroTrustNetworkHostnameRoute(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: Timestamp of when the resource was created.
         :param pulumi.Input[_builtins.str] deleted_at: Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
         :param pulumi.Input[_builtins.str] hostname: The hostname of the route.
+        :param pulumi.Input[_builtins.str] tun_type: The type of tunnel.
+               Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
         :param pulumi.Input[_builtins.str] tunnel_id: UUID of the tunnel.
         :param pulumi.Input[_builtins.str] tunnel_name: A user-friendly name for a tunnel.
         """
@@ -366,6 +388,7 @@ class ZeroTrustNetworkHostnameRoute(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["deleted_at"] = deleted_at
         __props__.__dict__["hostname"] = hostname
+        __props__.__dict__["tun_type"] = tun_type
         __props__.__dict__["tunnel_id"] = tunnel_id
         __props__.__dict__["tunnel_name"] = tunnel_name
         return ZeroTrustNetworkHostnameRoute(resource_name, opts=opts, __props__=__props__)
@@ -409,6 +432,15 @@ class ZeroTrustNetworkHostnameRoute(pulumi.CustomResource):
         The hostname of the route.
         """
         return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter(name="tunType")
+    def tun_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of tunnel.
+        Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
+        """
+        return pulumi.get(self, "tun_type")
 
     @_builtins.property
     @pulumi.getter(name="tunnelId")

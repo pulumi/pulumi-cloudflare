@@ -38,7 +38,7 @@ export interface GetZeroTrustTunnelCloudflaredTokenArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: string;
+    accountId: string;
     /**
      * UUID of the tunnel.
      */
@@ -52,7 +52,7 @@ export interface GetZeroTrustTunnelCloudflaredTokenResult {
     /**
      * Cloudflare account ID
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -100,7 +100,7 @@ export interface GetZeroTrustTunnelCloudflaredTokenOutputArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * UUID of the tunnel.
      */

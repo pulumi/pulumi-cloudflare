@@ -39,7 +39,7 @@ export interface GetCloudforceOneRequestAssetArgs {
     /**
      * Identifier.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * UUID.
      */
@@ -57,7 +57,7 @@ export interface GetCloudforceOneRequestAssetResult {
     /**
      * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * UUID.
      */
@@ -122,7 +122,7 @@ export interface GetCloudforceOneRequestAssetOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * UUID.
      */

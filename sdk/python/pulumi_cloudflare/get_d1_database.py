@@ -28,7 +28,7 @@ class GetD1DatabaseResult:
     """
     A collection of values returned by getD1Database.
     """
-    def __init__(__self__, account_id=None, created_at=None, database_id=None, file_size=None, filter=None, id=None, jurisdiction=None, name=None, num_tables=None, read_replication=None, uuid=None, version=None):
+    def __init__(__self__, account_id=None, created_at=None, database_id=None, fields=None, file_size=None, filter=None, id=None, jurisdiction=None, name=None, num_tables=None, read_replication=None, uuid=None, version=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -38,6 +38,9 @@ class GetD1DatabaseResult:
         if database_id and not isinstance(database_id, str):
             raise TypeError("Expected argument 'database_id' to be a str")
         pulumi.set(__self__, "database_id", database_id)
+        if fields and not isinstance(fields, list):
+            raise TypeError("Expected argument 'fields' to be a list")
+        pulumi.set(__self__, "fields", fields)
         if file_size and not isinstance(file_size, float):
             raise TypeError("Expected argument 'file_size' to be a float")
         pulumi.set(__self__, "file_size", file_size)
@@ -89,6 +92,15 @@ class GetD1DatabaseResult:
         D1 database identifier (UUID).
         """
         return pulumi.get(self, "database_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Comma-separated list of fields to include in the response. When omitted,
+        all fields are returned.
+        """
+        return pulumi.get(self, "fields")
 
     @_builtins.property
     @pulumi.getter(name="fileSize")
@@ -164,6 +176,7 @@ class AwaitableGetD1DatabaseResult(GetD1DatabaseResult):
             account_id=self.account_id,
             created_at=self.created_at,
             database_id=self.database_id,
+            fields=self.fields,
             file_size=self.file_size,
             filter=self.filter,
             id=self.id,
@@ -177,6 +190,7 @@ class AwaitableGetD1DatabaseResult(GetD1DatabaseResult):
 
 def get_d1_database(account_id: Optional[_builtins.str] = None,
                     database_id: Optional[_builtins.str] = None,
+                    fields: Optional[Sequence[_builtins.str]] = None,
                     filter: Optional[Union['GetD1DatabaseFilterArgs', 'GetD1DatabaseFilterArgsDict']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetD1DatabaseResult:
     """
@@ -192,16 +206,20 @@ def get_d1_database(account_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_d1_database = cloudflare.get_d1_database(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        database_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+        database_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        fields=["uuid"])
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str database_id: D1 database identifier (UUID).
+    :param Sequence[_builtins.str] fields: Comma-separated list of fields to include in the response. When omitted,
+           all fields are returned.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['databaseId'] = database_id
+    __args__['fields'] = fields
     __args__['filter'] = filter
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getD1Database:getD1Database', __args__, opts=opts, typ=GetD1DatabaseResult).value
@@ -210,6 +228,7 @@ def get_d1_database(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         created_at=pulumi.get(__ret__, 'created_at'),
         database_id=pulumi.get(__ret__, 'database_id'),
+        fields=pulumi.get(__ret__, 'fields'),
         file_size=pulumi.get(__ret__, 'file_size'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
@@ -221,6 +240,7 @@ def get_d1_database(account_id: Optional[_builtins.str] = None,
         version=pulumi.get(__ret__, 'version'))
 def get_d1_database_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            database_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           fields: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                            filter: pulumi.Input[Optional[Optional[Union['GetD1DatabaseFilterArgs', 'GetD1DatabaseFilterArgsDict']]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetD1DatabaseResult]:
     """
@@ -236,16 +256,20 @@ def get_d1_database_output(account_id: pulumi.Input[Optional[Optional[_builtins.
     import pulumi_cloudflare as cloudflare
 
     example_d1_database = cloudflare.get_d1_database(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        database_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+        database_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        fields=["uuid"])
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
     :param _builtins.str database_id: D1 database identifier (UUID).
+    :param Sequence[_builtins.str] fields: Comma-separated list of fields to include in the response. When omitted,
+           all fields are returned.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['databaseId'] = database_id
+    __args__['fields'] = fields
     __args__['filter'] = filter
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getD1Database:getD1Database', __args__, opts=opts, typ=GetD1DatabaseResult)
@@ -253,6 +277,7 @@ def get_d1_database_output(account_id: pulumi.Input[Optional[Optional[_builtins.
         account_id=pulumi.get(__response__, 'account_id'),
         created_at=pulumi.get(__response__, 'created_at'),
         database_id=pulumi.get(__response__, 'database_id'),
+        fields=pulumi.get(__response__, 'fields'),
         file_size=pulumi.get(__response__, 'file_size'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),

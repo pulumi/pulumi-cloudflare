@@ -39,7 +39,7 @@ class KeylessCertificateArgs:
         :param pulumi.Input[_builtins.bool] enabled: Whether or not the Keyless SSL is on or off.
         :param pulumi.Input[_builtins.str] name: The keyless SSL name.
         :param pulumi.Input[_builtins.float] port: The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
-        :param pulumi.Input['KeylessCertificateTunnelArgs'] tunnel: Configuration for using Keyless SSL through a Cloudflare Tunnel
+        :param pulumi.Input['KeylessCertificateTunnelArgs'] tunnel: Configuration for using Keyless SSL through a Cloudflare Tunnel.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "certificate", certificate)
@@ -138,7 +138,7 @@ class KeylessCertificateArgs:
     @pulumi.getter
     def tunnel(self) -> pulumi.Input[Optional['KeylessCertificateTunnelArgs']]:
         """
-        Configuration for using Keyless SSL through a Cloudflare Tunnel
+        Configuration for using Keyless SSL through a Cloudflare Tunnel.
         """
         return pulumi.get(self, "tunnel")
 
@@ -189,7 +189,7 @@ class _KeylessCertificateState:
         :param pulumi.Input[_builtins.float] port: The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
         :param pulumi.Input[_builtins.str] status: Status of the Keyless SSL.
                Available values: "active", "deleted".
-        :param pulumi.Input['KeylessCertificateTunnelArgs'] tunnel: Configuration for using Keyless SSL through a Cloudflare Tunnel
+        :param pulumi.Input['KeylessCertificateTunnelArgs'] tunnel: Configuration for using Keyless SSL through a Cloudflare Tunnel.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         if bundle_method is not None:
@@ -347,7 +347,7 @@ class _KeylessCertificateState:
     @pulumi.getter
     def tunnel(self) -> pulumi.Input[Optional['KeylessCertificateTunnelArgs']]:
         """
-        Configuration for using Keyless SSL through a Cloudflare Tunnel
+        Configuration for using Keyless SSL through a Cloudflare Tunnel.
         """
         return pulumi.get(self, "tunnel")
 
@@ -480,7 +480,7 @@ class KeylessCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] host: The keyless SSL name.
         :param pulumi.Input[_builtins.str] name: The keyless SSL name.
         :param pulumi.Input[_builtins.float] port: The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
-        :param pulumi.Input[Union['KeylessCertificateTunnelArgs', 'KeylessCertificateTunnelArgsDict']] tunnel: Configuration for using Keyless SSL through a Cloudflare Tunnel
+        :param pulumi.Input[Union['KeylessCertificateTunnelArgs', 'KeylessCertificateTunnelArgsDict']] tunnel: Configuration for using Keyless SSL through a Cloudflare Tunnel.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -666,7 +666,7 @@ class KeylessCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] port: The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
         :param pulumi.Input[_builtins.str] status: Status of the Keyless SSL.
                Available values: "active", "deleted".
-        :param pulumi.Input[Union['KeylessCertificateTunnelArgs', 'KeylessCertificateTunnelArgsDict']] tunnel: Configuration for using Keyless SSL through a Cloudflare Tunnel
+        :param pulumi.Input[Union['KeylessCertificateTunnelArgs', 'KeylessCertificateTunnelArgsDict']] tunnel: Configuration for using Keyless SSL through a Cloudflare Tunnel.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -774,7 +774,7 @@ class KeylessCertificate(pulumi.CustomResource):
     @pulumi.getter
     def tunnel(self) -> pulumi.Output[Optional['outputs.KeylessCertificateTunnel']]:
         """
-        Configuration for using Keyless SSL through a Cloudflare Tunnel
+        Configuration for using Keyless SSL through a Cloudflare Tunnel.
         """
         return pulumi.get(self, "tunnel")
 

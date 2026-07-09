@@ -32,7 +32,7 @@ export interface GetRegistrarDomainArgs {
     /**
      * Identifier
      */
-    accountId?: string;
+    accountId: string;
     /**
      * Fully qualified domain name (FQDN) including the extension
      * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
@@ -49,7 +49,7 @@ export interface GetRegistrarDomainResult {
     /**
      * Identifier
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Fully qualified domain name (FQDN) including the extension
      * (e.g., `example.com`, `mybrand.app`). The domain name uniquely
@@ -90,7 +90,7 @@ export interface GetRegistrarDomainOutputArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Fully qualified domain name (FQDN) including the extension
      * (e.g., `example.com`, `mybrand.app`). The domain name uniquely

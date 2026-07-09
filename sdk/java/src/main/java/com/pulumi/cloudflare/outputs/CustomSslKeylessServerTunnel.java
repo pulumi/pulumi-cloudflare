@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CustomSslKeylessServerTunnel {
     /**
-     * @return Private IP of the Key Server Host
+     * @return Private IP of the Key Server Host.
      * 
      */
     private @Nullable String privateIp;
     /**
-     * @return Cloudflare Tunnel Virtual Network ID
+     * @return Cloudflare Tunnel Virtual Network ID.
      * 
      */
     private @Nullable String vnetId;
 
     private CustomSslKeylessServerTunnel() {}
     /**
-     * @return Private IP of the Key Server Host
+     * @return Private IP of the Key Server Host.
      * 
      */
     public Optional<String> privateIp() {
         return Optional.ofNullable(this.privateIp);
     }
     /**
-     * @return Cloudflare Tunnel Virtual Network ID
+     * @return Cloudflare Tunnel Virtual Network ID.
      * 
      */
     public Optional<String> vnetId() {

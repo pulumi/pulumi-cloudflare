@@ -30,6 +30,7 @@ class AiGatewayArgs:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  authentication: pulumi.Input[Optional[_builtins.bool]] = None,
                  dlp: pulumi.Input[Optional['AiGatewayDlpArgs']] = None,
+                 guardrails: pulumi.Input[Optional['AiGatewayGuardrailsArgs']] = None,
                  log_management: pulumi.Input[Optional[_builtins.int]] = None,
                  log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -39,6 +40,7 @@ class AiGatewayArgs:
                  retry_backoff: pulumi.Input[Optional[_builtins.str]] = None,
                  retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
                  retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 spend_limits: pulumi.Input[Optional['AiGatewaySpendLimitsArgs']] = None,
                  store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stripe: pulumi.Input[Optional['AiGatewayStripeArgs']] = None,
                  workers_ai_billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -68,6 +70,8 @@ class AiGatewayArgs:
             pulumi.set(__self__, "authentication", authentication)
         if dlp is not None:
             pulumi.set(__self__, "dlp", dlp)
+        if guardrails is not None:
+            pulumi.set(__self__, "guardrails", guardrails)
         if log_management is not None:
             pulumi.set(__self__, "log_management", log_management)
         if log_management_strategy is not None:
@@ -86,6 +90,8 @@ class AiGatewayArgs:
             pulumi.set(__self__, "retry_delay", retry_delay)
         if retry_max_attempts is not None:
             pulumi.set(__self__, "retry_max_attempts", retry_max_attempts)
+        if spend_limits is not None:
+            pulumi.set(__self__, "spend_limits", spend_limits)
         if store_id is not None:
             pulumi.set(__self__, "store_id", store_id)
         if stripe is not None:
@@ -178,6 +184,15 @@ class AiGatewayArgs:
     @dlp.setter
     def dlp(self, value: pulumi.Input[Optional['AiGatewayDlpArgs']]):
         pulumi.set(self, "dlp", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def guardrails(self) -> pulumi.Input[Optional['AiGatewayGuardrailsArgs']]:
+        return pulumi.get(self, "guardrails")
+
+    @guardrails.setter
+    def guardrails(self, value: pulumi.Input[Optional['AiGatewayGuardrailsArgs']]):
+        pulumi.set(self, "guardrails", value)
 
     @_builtins.property
     @pulumi.getter(name="logManagement")
@@ -277,6 +292,15 @@ class AiGatewayArgs:
         pulumi.set(self, "retry_max_attempts", value)
 
     @_builtins.property
+    @pulumi.getter(name="spendLimits")
+    def spend_limits(self) -> pulumi.Input[Optional['AiGatewaySpendLimitsArgs']]:
+        return pulumi.get(self, "spend_limits")
+
+    @spend_limits.setter
+    def spend_limits(self, value: pulumi.Input[Optional['AiGatewaySpendLimitsArgs']]):
+        pulumi.set(self, "spend_limits", value)
+
+    @_builtins.property
     @pulumi.getter(name="storeId")
     def store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "store_id")
@@ -328,6 +352,7 @@ class _AiGatewayState:
                  collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  dlp: pulumi.Input[Optional['AiGatewayDlpArgs']] = None,
+                 guardrails: pulumi.Input[Optional['AiGatewayGuardrailsArgs']] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
                  log_management: pulumi.Input[Optional[_builtins.int]] = None,
                  log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -341,6 +366,7 @@ class _AiGatewayState:
                  retry_backoff: pulumi.Input[Optional[_builtins.str]] = None,
                  retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
                  retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 spend_limits: pulumi.Input[Optional['AiGatewaySpendLimitsArgs']] = None,
                  store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stripe: pulumi.Input[Optional['AiGatewayStripeArgs']] = None,
                  workers_ai_billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -374,6 +400,8 @@ class _AiGatewayState:
             pulumi.set(__self__, "created_at", created_at)
         if dlp is not None:
             pulumi.set(__self__, "dlp", dlp)
+        if guardrails is not None:
+            pulumi.set(__self__, "guardrails", guardrails)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
         if log_management is not None:
@@ -400,6 +428,8 @@ class _AiGatewayState:
             pulumi.set(__self__, "retry_delay", retry_delay)
         if retry_max_attempts is not None:
             pulumi.set(__self__, "retry_max_attempts", retry_max_attempts)
+        if spend_limits is not None:
+            pulumi.set(__self__, "spend_limits", spend_limits)
         if store_id is not None:
             pulumi.set(__self__, "store_id", store_id)
         if stripe is not None:
@@ -483,6 +513,15 @@ class _AiGatewayState:
     @dlp.setter
     def dlp(self, value: pulumi.Input[Optional['AiGatewayDlpArgs']]):
         pulumi.set(self, "dlp", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def guardrails(self) -> pulumi.Input[Optional['AiGatewayGuardrailsArgs']]:
+        return pulumi.get(self, "guardrails")
+
+    @guardrails.setter
+    def guardrails(self, value: pulumi.Input[Optional['AiGatewayGuardrailsArgs']]):
+        pulumi.set(self, "guardrails", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
@@ -618,6 +657,15 @@ class _AiGatewayState:
         pulumi.set(self, "retry_max_attempts", value)
 
     @_builtins.property
+    @pulumi.getter(name="spendLimits")
+    def spend_limits(self) -> pulumi.Input[Optional['AiGatewaySpendLimitsArgs']]:
+        return pulumi.get(self, "spend_limits")
+
+    @spend_limits.setter
+    def spend_limits(self, value: pulumi.Input[Optional['AiGatewaySpendLimitsArgs']]):
+        pulumi.set(self, "spend_limits", value)
+
+    @_builtins.property
     @pulumi.getter(name="storeId")
     def store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "store_id")
@@ -671,6 +719,7 @@ class AiGateway(pulumi.CustomResource):
                  cache_ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
                  dlp: pulumi.Input[Optional[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict']]] = None,
+                 guardrails: pulumi.Input[Optional[Union['AiGatewayGuardrailsArgs', 'AiGatewayGuardrailsArgsDict']]] = None,
                  log_management: pulumi.Input[Optional[_builtins.int]] = None,
                  log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -682,6 +731,7 @@ class AiGateway(pulumi.CustomResource):
                  retry_backoff: pulumi.Input[Optional[_builtins.str]] = None,
                  retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
                  retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 spend_limits: pulumi.Input[Optional[Union['AiGatewaySpendLimitsArgs', 'AiGatewaySpendLimitsArgsDict']]] = None,
                  store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stripe: pulumi.Input[Optional[Union['AiGatewayStripeArgs', 'AiGatewayStripeArgsDict']]] = None,
                  workers_ai_billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -807,6 +857,7 @@ class AiGateway(pulumi.CustomResource):
                  cache_ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
                  dlp: pulumi.Input[Optional[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict']]] = None,
+                 guardrails: pulumi.Input[Optional[Union['AiGatewayGuardrailsArgs', 'AiGatewayGuardrailsArgsDict']]] = None,
                  log_management: pulumi.Input[Optional[_builtins.int]] = None,
                  log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  logpush: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -818,6 +869,7 @@ class AiGateway(pulumi.CustomResource):
                  retry_backoff: pulumi.Input[Optional[_builtins.str]] = None,
                  retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
                  retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 spend_limits: pulumi.Input[Optional[Union['AiGatewaySpendLimitsArgs', 'AiGatewaySpendLimitsArgsDict']]] = None,
                  store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stripe: pulumi.Input[Optional[Union['AiGatewayStripeArgs', 'AiGatewayStripeArgsDict']]] = None,
                  workers_ai_billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -846,6 +898,7 @@ class AiGateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'collect_logs'")
             __props__.__dict__["collect_logs"] = collect_logs
             __props__.__dict__["dlp"] = dlp
+            __props__.__dict__["guardrails"] = guardrails
             __props__.__dict__["log_management"] = log_management
             __props__.__dict__["log_management_strategy"] = log_management_strategy
             __props__.__dict__["logpush"] = logpush
@@ -861,6 +914,7 @@ class AiGateway(pulumi.CustomResource):
             __props__.__dict__["retry_backoff"] = retry_backoff
             __props__.__dict__["retry_delay"] = retry_delay
             __props__.__dict__["retry_max_attempts"] = retry_max_attempts
+            __props__.__dict__["spend_limits"] = spend_limits
             __props__.__dict__["store_id"] = store_id
             __props__.__dict__["stripe"] = stripe
             __props__.__dict__["workers_ai_billing_mode"] = workers_ai_billing_mode
@@ -886,6 +940,7 @@ class AiGateway(pulumi.CustomResource):
             collect_logs: pulumi.Input[Optional[_builtins.bool]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             dlp: pulumi.Input[Optional[Union['AiGatewayDlpArgs', 'AiGatewayDlpArgsDict']]] = None,
+            guardrails: pulumi.Input[Optional[Union['AiGatewayGuardrailsArgs', 'AiGatewayGuardrailsArgsDict']]] = None,
             is_default: pulumi.Input[Optional[_builtins.bool]] = None,
             log_management: pulumi.Input[Optional[_builtins.int]] = None,
             log_management_strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -899,6 +954,7 @@ class AiGateway(pulumi.CustomResource):
             retry_backoff: pulumi.Input[Optional[_builtins.str]] = None,
             retry_delay: pulumi.Input[Optional[_builtins.int]] = None,
             retry_max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+            spend_limits: pulumi.Input[Optional[Union['AiGatewaySpendLimitsArgs', 'AiGatewaySpendLimitsArgsDict']]] = None,
             store_id: pulumi.Input[Optional[_builtins.str]] = None,
             stripe: pulumi.Input[Optional[Union['AiGatewayStripeArgs', 'AiGatewayStripeArgsDict']]] = None,
             workers_ai_billing_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -932,6 +988,7 @@ class AiGateway(pulumi.CustomResource):
         __props__.__dict__["collect_logs"] = collect_logs
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["dlp"] = dlp
+        __props__.__dict__["guardrails"] = guardrails
         __props__.__dict__["is_default"] = is_default
         __props__.__dict__["log_management"] = log_management
         __props__.__dict__["log_management_strategy"] = log_management_strategy
@@ -945,6 +1002,7 @@ class AiGateway(pulumi.CustomResource):
         __props__.__dict__["retry_backoff"] = retry_backoff
         __props__.__dict__["retry_delay"] = retry_delay
         __props__.__dict__["retry_max_attempts"] = retry_max_attempts
+        __props__.__dict__["spend_limits"] = spend_limits
         __props__.__dict__["store_id"] = store_id
         __props__.__dict__["stripe"] = stripe
         __props__.__dict__["workers_ai_billing_mode"] = workers_ai_billing_mode
@@ -993,6 +1051,11 @@ class AiGateway(pulumi.CustomResource):
     @pulumi.getter
     def dlp(self) -> pulumi.Output[Optional['outputs.AiGatewayDlp']]:
         return pulumi.get(self, "dlp")
+
+    @_builtins.property
+    @pulumi.getter
+    def guardrails(self) -> pulumi.Output[Optional['outputs.AiGatewayGuardrails']]:
+        return pulumi.get(self, "guardrails")
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
@@ -1074,6 +1137,11 @@ class AiGateway(pulumi.CustomResource):
         Maximum number of retry attempts for failed requests (1-5)
         """
         return pulumi.get(self, "retry_max_attempts")
+
+    @_builtins.property
+    @pulumi.getter(name="spendLimits")
+    def spend_limits(self) -> pulumi.Output['outputs.AiGatewaySpendLimits']:
+        return pulumi.get(self, "spend_limits")
 
     @_builtins.property
     @pulumi.getter(name="storeId")

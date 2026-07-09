@@ -18,20 +18,25 @@ public final class GetEmailSecurityTrustedDomainsFilter {
      * 
      */
     private @Nullable String direction;
+    /**
+     * @return Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     * 
+     */
     private @Nullable Boolean isRecent;
+    /**
+     * @return Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     * 
+     */
     private @Nullable Boolean isSimilarity;
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
     private @Nullable String order;
     private @Nullable String pattern;
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     private @Nullable String search;
@@ -45,14 +50,22 @@ public final class GetEmailSecurityTrustedDomainsFilter {
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
     }
+    /**
+     * @return Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     * 
+     */
     public Optional<Boolean> isRecent() {
         return Optional.ofNullable(this.isRecent);
     }
+    /**
+     * @return Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     * 
+     */
     public Optional<Boolean> isSimilarity() {
         return Optional.ofNullable(this.isSimilarity);
     }
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -63,10 +76,7 @@ public final class GetEmailSecurityTrustedDomainsFilter {
         return Optional.ofNullable(this.pattern);
     }
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<String> search() {

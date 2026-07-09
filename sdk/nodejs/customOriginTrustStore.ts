@@ -61,7 +61,7 @@ export class CustomOriginTrustStore extends pulumi.CustomResource {
     }
 
     /**
-     * The zone's SSL certificate or certificate and the intermediate(s).
+     * The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      */
     declare public readonly certificate: pulumi.Output<string>;
     /**
@@ -139,7 +139,7 @@ export class CustomOriginTrustStore extends pulumi.CustomResource {
  */
 export interface CustomOriginTrustStoreState {
     /**
-     * The zone's SSL certificate or certificate and the intermediate(s).
+     * The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      */
     certificate?: pulumi.Input<string | undefined>;
     /**
@@ -178,7 +178,7 @@ export interface CustomOriginTrustStoreState {
  */
 export interface CustomOriginTrustStoreArgs {
     /**
-     * The zone's SSL certificate or certificate and the intermediate(s).
+     * The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      */
     certificate: pulumi.Input<string>;
     /**

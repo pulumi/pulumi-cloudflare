@@ -43,7 +43,7 @@ export interface GetOriginCaCertificatesArgs {
      */
     maxItems?: number;
     /**
-     * Offset the results
+     * Offset the results.
      */
     offset?: number;
     /**
@@ -69,7 +69,7 @@ export interface GetOriginCaCertificatesResult {
      */
     readonly maxItems?: number;
     /**
-     * Offset the results
+     * Offset the results.
      */
     readonly offset?: number;
     /**
@@ -118,7 +118,7 @@ export interface GetOriginCaCertificatesOutputArgs {
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * Offset the results
+     * Offset the results.
      */
     offset?: pulumi.Input<number | undefined>;
     /**

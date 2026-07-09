@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     ///             OnlyWhenUpstreamUnhealthy = false,
     ///         },
     ///         DeprecateAnyRequests = true,
+    ///         DnsFirewallIpCount = 2,
     ///         EcsFallback = false,
     ///         MaximumCacheTtl = 900,
     ///         MinimumCacheTtl = 60,
@@ -78,6 +79,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("deprecateAnyRequests")]
         public Output<bool?> DeprecateAnyRequests { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+        /// </summary>
+        [Output("dnsFirewallIpCount")]
+        public Output<int> DnsFirewallIpCount { get; private set; } = null!;
 
         [Output("dnsFirewallIps")]
         public Output<ImmutableArray<string>> DnsFirewallIps { get; private set; } = null!;
@@ -139,7 +146,7 @@ namespace Pulumi.Cloudflare
         public Output<double?> NegativeCacheTtl { get; private set; } = null!;
 
         /// <summary>
-        /// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+        /// Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
         /// </summary>
         [Output("ratelimit")]
         public Output<double?> Ratelimit { get; private set; } = null!;
@@ -218,6 +225,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? DeprecateAnyRequests { get; set; }
 
         /// <summary>
+        /// Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+        /// </summary>
+        [Input("dnsFirewallIpCount")]
+        public Input<int>? DnsFirewallIpCount { get; set; }
+
+        /// <summary>
         /// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
         /// </summary>
         [Input("ecsFallback")]
@@ -268,7 +281,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? NegativeCacheTtl { get; set; }
 
         /// <summary>
-        /// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+        /// Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
         /// </summary>
         [Input("ratelimit")]
         public Input<double>? Ratelimit { get; set; }
@@ -312,6 +325,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("deprecateAnyRequests")]
         public Input<bool>? DeprecateAnyRequests { get; set; }
+
+        /// <summary>
+        /// Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+        /// </summary>
+        [Input("dnsFirewallIpCount")]
+        public Input<int>? DnsFirewallIpCount { get; set; }
 
         [Input("dnsFirewallIps")]
         private InputList<string>? _dnsFirewallIps;
@@ -378,7 +397,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? NegativeCacheTtl { get; set; }
 
         /// <summary>
-        /// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+        /// Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
         /// </summary>
         [Input("ratelimit")]
         public Input<double>? Ratelimit { get; set; }

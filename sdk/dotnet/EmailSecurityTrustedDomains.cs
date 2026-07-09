@@ -48,13 +48,10 @@ namespace Pulumi.Cloudflare
     public partial class EmailSecurityTrustedDomains : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
-
-        [Output("bodies")]
-        public Output<ImmutableArray<Outputs.EmailSecurityTrustedDomainsBody>> Bodies { get; private set; } = null!;
 
         [Output("comments")]
         public Output<string?> Comments { get; private set; } = null!;
@@ -63,8 +60,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Select to prevent recently registered domains from triggering a
-        /// Suspicious or Malicious disposition.
+        /// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         /// </summary>
         [Output("isRecent")]
         public Output<bool?> IsRecent { get; private set; } = null!;
@@ -73,18 +69,22 @@ namespace Pulumi.Cloudflare
         public Output<bool?> IsRegex { get; private set; } = null!;
 
         /// <summary>
-        /// Select for partner or other approved domains that have similar
-        /// spelling to your connected domains. Prevents listed domains from
-        /// triggering a Spoof disposition.
+        /// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         /// </summary>
         [Output("isSimilarity")]
         public Output<bool?> IsSimilarity { get; private set; } = null!;
 
+        /// <summary>
+        /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
+        /// </summary>
         [Output("lastModified")]
         public Output<string> LastModified { get; private set; } = null!;
 
+        [Output("modifiedAt")]
+        public Output<string> ModifiedAt { get; private set; } = null!;
+
         [Output("pattern")]
-        public Output<string?> Pattern { get; private set; } = null!;
+        public Output<string> Pattern { get; private set; } = null!;
 
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public EmailSecurityTrustedDomains(string name, EmailSecurityTrustedDomainsArgs? args = null, CustomResourceOptions? options = null)
+        public EmailSecurityTrustedDomains(string name, EmailSecurityTrustedDomainsArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains", name, args ?? new EmailSecurityTrustedDomainsArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -133,25 +133,16 @@ namespace Pulumi.Cloudflare
     public sealed class EmailSecurityTrustedDomainsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
-
-        [Input("bodies")]
-        private InputList<Inputs.EmailSecurityTrustedDomainsBodyArgs>? _bodies;
-        public InputList<Inputs.EmailSecurityTrustedDomainsBodyArgs> Bodies
-        {
-            get => _bodies ?? (_bodies = new InputList<Inputs.EmailSecurityTrustedDomainsBodyArgs>());
-            set => _bodies = value;
-        }
 
         [Input("comments")]
         public Input<string>? Comments { get; set; }
 
         /// <summary>
-        /// Select to prevent recently registered domains from triggering a
-        /// Suspicious or Malicious disposition.
+        /// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         /// </summary>
         [Input("isRecent")]
         public Input<bool>? IsRecent { get; set; }
@@ -160,15 +151,13 @@ namespace Pulumi.Cloudflare
         public Input<bool>? IsRegex { get; set; }
 
         /// <summary>
-        /// Select for partner or other approved domains that have similar
-        /// spelling to your connected domains. Prevents listed domains from
-        /// triggering a Spoof disposition.
+        /// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         /// </summary>
         [Input("isSimilarity")]
         public Input<bool>? IsSimilarity { get; set; }
 
-        [Input("pattern")]
-        public Input<string>? Pattern { get; set; }
+        [Input("pattern", required: true)]
+        public Input<string> Pattern { get; set; } = null!;
 
         public EmailSecurityTrustedDomainsArgs()
         {
@@ -179,18 +168,10 @@ namespace Pulumi.Cloudflare
     public sealed class EmailSecurityTrustedDomainsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
-
-        [Input("bodies")]
-        private InputList<Inputs.EmailSecurityTrustedDomainsBodyGetArgs>? _bodies;
-        public InputList<Inputs.EmailSecurityTrustedDomainsBodyGetArgs> Bodies
-        {
-            get => _bodies ?? (_bodies = new InputList<Inputs.EmailSecurityTrustedDomainsBodyGetArgs>());
-            set => _bodies = value;
-        }
 
         [Input("comments")]
         public Input<string>? Comments { get; set; }
@@ -199,8 +180,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Select to prevent recently registered domains from triggering a
-        /// Suspicious or Malicious disposition.
+        /// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         /// </summary>
         [Input("isRecent")]
         public Input<bool>? IsRecent { get; set; }
@@ -209,15 +189,19 @@ namespace Pulumi.Cloudflare
         public Input<bool>? IsRegex { get; set; }
 
         /// <summary>
-        /// Select for partner or other approved domains that have similar
-        /// spelling to your connected domains. Prevents listed domains from
-        /// triggering a Spoof disposition.
+        /// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         /// </summary>
         [Input("isSimilarity")]
         public Input<bool>? IsSimilarity { get; set; }
 
+        /// <summary>
+        /// Deprecated, use `ModifiedAt` instead. End of life: November 1, 2026.
+        /// </summary>
         [Input("lastModified")]
         public Input<string>? LastModified { get; set; }
+
+        [Input("modifiedAt")]
+        public Input<string>? ModifiedAt { get; set; }
 
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }

@@ -3,12 +3,11 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.inputs.EmailSecurityTrustedDomainsBodyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,25 +18,18 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
     public static final EmailSecurityTrustedDomainsArgs Empty = new EmailSecurityTrustedDomainsArgs();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-
-    @Import(name="bodies")
-    private @Nullable Output<List<EmailSecurityTrustedDomainsBodyArgs>> bodies;
-
-    public Optional<Output<List<EmailSecurityTrustedDomainsBodyArgs>>> bodies() {
-        return Optional.ofNullable(this.bodies);
     }
 
     @Import(name="comments")
@@ -48,16 +40,14 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
     }
 
     /**
-     * Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
+     * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      * 
      */
     @Import(name="isRecent")
     private @Nullable Output<Boolean> isRecent;
 
     /**
-     * @return Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
+     * @return Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      * 
      */
     public Optional<Output<Boolean>> isRecent() {
@@ -72,36 +62,31 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
     }
 
     /**
-     * Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
+     * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      * 
      */
     @Import(name="isSimilarity")
     private @Nullable Output<Boolean> isSimilarity;
 
     /**
-     * @return Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
+     * @return Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      * 
      */
     public Optional<Output<Boolean>> isSimilarity() {
         return Optional.ofNullable(this.isSimilarity);
     }
 
-    @Import(name="pattern")
-    private @Nullable Output<String> pattern;
+    @Import(name="pattern", required=true)
+    private Output<String> pattern;
 
-    public Optional<Output<String>> pattern() {
-        return Optional.ofNullable(this.pattern);
+    public Output<String> pattern() {
+        return this.pattern;
     }
 
     private EmailSecurityTrustedDomainsArgs() {}
 
     private EmailSecurityTrustedDomainsArgs(EmailSecurityTrustedDomainsArgs $) {
         this.accountId = $.accountId;
-        this.bodies = $.bodies;
         this.comments = $.comments;
         this.isRecent = $.isRecent;
         this.isRegex = $.isRegex;
@@ -128,7 +113,7 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -139,26 +124,13 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
-        }
-
-        public Builder bodies(@Nullable Output<List<EmailSecurityTrustedDomainsBodyArgs>> bodies) {
-            $.bodies = bodies;
-            return this;
-        }
-
-        public Builder bodies(List<EmailSecurityTrustedDomainsBodyArgs> bodies) {
-            return bodies(Output.of(bodies));
-        }
-
-        public Builder bodies(EmailSecurityTrustedDomainsBodyArgs... bodies) {
-            return bodies(List.of(bodies));
         }
 
         public Builder comments(@Nullable Output<String> comments) {
@@ -171,8 +143,7 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param isRecent Select to prevent recently registered domains from triggering a
-         * Suspicious or Malicious disposition.
+         * @param isRecent Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
          * 
          * @return builder
          * 
@@ -183,8 +154,7 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param isRecent Select to prevent recently registered domains from triggering a
-         * Suspicious or Malicious disposition.
+         * @param isRecent Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
          * 
          * @return builder
          * 
@@ -203,9 +173,7 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param isSimilarity Select for partner or other approved domains that have similar
-         * spelling to your connected domains. Prevents listed domains from
-         * triggering a Spoof disposition.
+         * @param isSimilarity Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
          * 
          * @return builder
          * 
@@ -216,9 +184,7 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param isSimilarity Select for partner or other approved domains that have similar
-         * spelling to your connected domains. Prevents listed domains from
-         * triggering a Spoof disposition.
+         * @param isSimilarity Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
          * 
          * @return builder
          * 
@@ -227,7 +193,7 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
             return isSimilarity(Output.of(isSimilarity));
         }
 
-        public Builder pattern(@Nullable Output<String> pattern) {
+        public Builder pattern(Output<String> pattern) {
             $.pattern = pattern;
             return this;
         }
@@ -237,6 +203,9 @@ public final class EmailSecurityTrustedDomainsArgs extends com.pulumi.resources.
         }
 
         public EmailSecurityTrustedDomainsArgs build() {
+            if ($.pattern == null) {
+                throw new MissingRequiredPropertyException("EmailSecurityTrustedDomainsArgs", "pattern");
+            }
             return $;
         }
     }

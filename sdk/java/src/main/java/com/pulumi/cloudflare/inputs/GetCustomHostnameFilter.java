@@ -7,7 +7,7 @@ import com.pulumi.cloudflare.inputs.GetCustomHostnameFilterHostname;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -128,16 +128,16 @@ public final class GetCustomHostnameFilter extends com.pulumi.resources.InvokeAr
      * Available values: 0, 1.
      * 
      */
-    @Import(name="ssl")
-    private @Nullable Double ssl;
+    @Import(name="ssl", required=true)
+    private Integer ssl;
 
     /**
      * @return Whether to filter hostnames based on if they have SSL enabled.
      * Available values: 0, 1.
      * 
      */
-    public Optional<Double> ssl() {
-        return Optional.ofNullable(this.ssl);
+    public Integer ssl() {
+        return this.ssl;
     }
 
     /**
@@ -287,7 +287,7 @@ public final class GetCustomHostnameFilter extends com.pulumi.resources.InvokeAr
          * @return builder
          * 
          */
-        public Builder ssl(@Nullable Double ssl) {
+        public Builder ssl(Integer ssl) {
             $.ssl = ssl;
             return this;
         }
@@ -318,6 +318,9 @@ public final class GetCustomHostnameFilter extends com.pulumi.resources.InvokeAr
         public GetCustomHostnameFilter build() {
             if ($.order == null) {
                 throw new MissingRequiredPropertyException("GetCustomHostnameFilter", "order");
+            }
+            if ($.ssl == null) {
+                throw new MissingRequiredPropertyException("GetCustomHostnameFilter", "ssl");
             }
             return $;
         }

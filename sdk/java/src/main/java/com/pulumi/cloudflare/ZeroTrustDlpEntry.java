@@ -189,9 +189,17 @@ public class ZeroTrustDlpEntry extends com.pulumi.resources.CustomResource {
     public Output<String> uploadStatus() {
         return this.uploadStatus;
     }
+    /**
+     * A Predefined AI prompt classification topic entry.
+     * 
+     */
     @Export(name="variant", refs={ZeroTrustDlpEntryVariant.class}, tree="[0]")
     private Output<ZeroTrustDlpEntryVariant> variant;
 
+    /**
+     * @return A Predefined AI prompt classification topic entry.
+     * 
+     */
     public Output<ZeroTrustDlpEntryVariant> variant() {
         return this.variant;
     }

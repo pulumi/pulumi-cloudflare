@@ -49,7 +49,7 @@ export interface GetCustomOriginTrustStoresArgs {
      */
     maxItems?: number;
     /**
-     * Offset the results
+     * Offset the results.
      */
     offset?: number;
     /**
@@ -75,7 +75,7 @@ export interface GetCustomOriginTrustStoresResult {
      */
     readonly maxItems?: number;
     /**
-     * Offset the results
+     * Offset the results.
      */
     readonly offset?: number;
     /**
@@ -130,7 +130,7 @@ export interface GetCustomOriginTrustStoresOutputArgs {
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * Offset the results
+     * Offset the results.
      */
     offset?: pulumi.Input<number | undefined>;
     /**

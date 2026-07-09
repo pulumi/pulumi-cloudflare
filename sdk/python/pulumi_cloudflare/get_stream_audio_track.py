@@ -43,7 +43,7 @@ class GetStreamAudioTrackResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         The account identifier tag.
         """
@@ -120,7 +120,7 @@ def get_stream_audio_track(account_id: Optional[_builtins.str] = None,
         audios=pulumi.get(__ret__, 'audios'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'))
-def get_stream_audio_track_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_stream_audio_track_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                   identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamAudioTrackResult]:
     """

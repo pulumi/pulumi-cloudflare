@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCustomOriginTrustStoreResult {
     /**
-     * @return The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * @return The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      * 
      */
     private String certificate;
@@ -68,7 +68,7 @@ public final class GetCustomOriginTrustStoreResult {
 
     private GetCustomOriginTrustStoreResult() {}
     /**
-     * @return The zone&#39;s SSL certificate or certificate and the intermediate(s).
+     * @return The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      * 
      */
     public String certificate() {

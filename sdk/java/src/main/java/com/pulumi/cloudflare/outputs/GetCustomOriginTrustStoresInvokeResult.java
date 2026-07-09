@@ -31,7 +31,7 @@ public final class GetCustomOriginTrustStoresInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
-     * @return Offset the results
+     * @return Offset the results.
      * 
      */
     private @Nullable Integer offset;
@@ -69,7 +69,7 @@ public final class GetCustomOriginTrustStoresInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
-     * @return Offset the results
+     * @return Offset the results.
      * 
      */
     public Optional<Integer> offset() {

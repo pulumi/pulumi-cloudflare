@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.AccessPolicyIncludeAuthContext;
 import com.pulumi.cloudflare.outputs.AccessPolicyIncludeAuthMethod;
 import com.pulumi.cloudflare.outputs.AccessPolicyIncludeAzureAd;
 import com.pulumi.cloudflare.outputs.AccessPolicyIncludeCertificate;
+import com.pulumi.cloudflare.outputs.AccessPolicyIncludeCloudflareAccountMember;
 import com.pulumi.cloudflare.outputs.AccessPolicyIncludeCommonName;
 import com.pulumi.cloudflare.outputs.AccessPolicyIncludeDevicePosture;
 import com.pulumi.cloudflare.outputs.AccessPolicyIncludeEmail;
@@ -44,6 +45,7 @@ public final class AccessPolicyInclude {
     private @Nullable AccessPolicyIncludeAuthMethod authMethod;
     private @Nullable AccessPolicyIncludeAzureAd azureAd;
     private @Nullable AccessPolicyIncludeCertificate certificate;
+    private @Nullable AccessPolicyIncludeCloudflareAccountMember cloudflareAccountMember;
     private @Nullable AccessPolicyIncludeCommonName commonName;
     private @Nullable AccessPolicyIncludeDevicePosture devicePosture;
     private @Nullable AccessPolicyIncludeEmail email;
@@ -88,6 +90,9 @@ public final class AccessPolicyInclude {
     }
     public Optional<AccessPolicyIncludeCertificate> certificate() {
         return Optional.ofNullable(this.certificate);
+    }
+    public Optional<AccessPolicyIncludeCloudflareAccountMember> cloudflareAccountMember() {
+        return Optional.ofNullable(this.cloudflareAccountMember);
     }
     public Optional<AccessPolicyIncludeCommonName> commonName() {
         return Optional.ofNullable(this.commonName);
@@ -168,6 +173,7 @@ public final class AccessPolicyInclude {
         private @Nullable AccessPolicyIncludeAuthMethod authMethod;
         private @Nullable AccessPolicyIncludeAzureAd azureAd;
         private @Nullable AccessPolicyIncludeCertificate certificate;
+        private @Nullable AccessPolicyIncludeCloudflareAccountMember cloudflareAccountMember;
         private @Nullable AccessPolicyIncludeCommonName commonName;
         private @Nullable AccessPolicyIncludeDevicePosture devicePosture;
         private @Nullable AccessPolicyIncludeEmail email;
@@ -196,6 +202,7 @@ public final class AccessPolicyInclude {
     	      this.authMethod = defaults.authMethod;
     	      this.azureAd = defaults.azureAd;
     	      this.certificate = defaults.certificate;
+    	      this.cloudflareAccountMember = defaults.cloudflareAccountMember;
     	      this.commonName = defaults.commonName;
     	      this.devicePosture = defaults.devicePosture;
     	      this.email = defaults.email;
@@ -246,6 +253,12 @@ public final class AccessPolicyInclude {
         public Builder certificate(@Nullable AccessPolicyIncludeCertificate certificate) {
 
             this.certificate = certificate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloudflareAccountMember(@Nullable AccessPolicyIncludeCloudflareAccountMember cloudflareAccountMember) {
+
+            this.cloudflareAccountMember = cloudflareAccountMember;
             return this;
         }
         @CustomType.Setter
@@ -375,6 +388,7 @@ public final class AccessPolicyInclude {
             _resultValue.authMethod = authMethod;
             _resultValue.azureAd = azureAd;
             _resultValue.certificate = certificate;
+            _resultValue.cloudflareAccountMember = cloudflareAccountMember;
             _resultValue.commonName = commonName;
             _resultValue.devicePosture = devicePosture;
             _resultValue.email = email;

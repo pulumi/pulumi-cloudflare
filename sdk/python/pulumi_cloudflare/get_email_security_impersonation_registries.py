@@ -57,7 +57,7 @@ class GetEmailSecurityImpersonationRegistriesResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        Account Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -90,7 +90,7 @@ class GetEmailSecurityImpersonationRegistriesResult:
     @pulumi.getter
     def order(self) -> Optional[_builtins.str]:
         """
-        The field to sort by.
+        Field to sort by.
         Available values: "name", "email", "created_at".
         """
         return pulumi.get(self, "order")
@@ -115,10 +115,7 @@ class GetEmailSecurityImpersonationRegistriesResult:
     @pulumi.getter
     def search(self) -> Optional[_builtins.str]:
         """
-        Allows searching in multiple properties of a record simultaneously.
-        This parameter is intended for human users, not automation. Its exact
-        behavior is intentionally left unspecified and is subject to change
-        in the future.
+        Search term for filtering records. Behavior may change.
         """
         return pulumi.get(self, "search")
 
@@ -166,17 +163,14 @@ def get_email_security_impersonation_registries(account_id: Optional[_builtins.s
     ```
 
 
-    :param _builtins.str account_id: Account Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.str direction: The sorting direction.
            Available values: "asc", "desc".
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: The field to sort by.
+    :param _builtins.str order: Field to sort by.
            Available values: "name", "email", "created_at".
     :param _builtins.str provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
-    :param _builtins.str search: Allows searching in multiple properties of a record simultaneously.
-           This parameter is intended for human users, not automation. Its exact
-           behavior is intentionally left unspecified and is subject to change
-           in the future.
+    :param _builtins.str search: Search term for filtering records. Behavior may change.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -224,17 +218,14 @@ def get_email_security_impersonation_registries_output(account_id: pulumi.Input[
     ```
 
 
-    :param _builtins.str account_id: Account Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.str direction: The sorting direction.
            Available values: "asc", "desc".
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: The field to sort by.
+    :param _builtins.str order: Field to sort by.
            Available values: "name", "email", "created_at".
     :param _builtins.str provenance: Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
-    :param _builtins.str search: Allows searching in multiple properties of a record simultaneously.
-           This parameter is intended for human users, not automation. Its exact
-           behavior is intentionally left unspecified and is subject to change
-           in the future.
+    :param _builtins.str search: Search term for filtering records. Behavior may change.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

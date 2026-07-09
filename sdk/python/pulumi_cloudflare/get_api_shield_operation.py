@@ -28,7 +28,7 @@ class GetApiShieldOperationResult:
     """
     A collection of values returned by getApiShieldOperation.
     """
-    def __init__(__self__, endpoint=None, feature=None, features=None, filter=None, host=None, id=None, last_updated=None, method=None, operation_id=None, zone_id=None):
+    def __init__(__self__, endpoint=None, feature=None, features=None, filter=None, host=None, id=None, last_updated=None, method=None, operation_id=None, schemas=None, with_schemas=None, zone_id=None):
         if endpoint and not isinstance(endpoint, str):
             raise TypeError("Expected argument 'endpoint' to be a str")
         pulumi.set(__self__, "endpoint", endpoint)
@@ -56,6 +56,12 @@ class GetApiShieldOperationResult:
         if operation_id and not isinstance(operation_id, str):
             raise TypeError("Expected argument 'operation_id' to be a str")
         pulumi.set(__self__, "operation_id", operation_id)
+        if schemas and not isinstance(schemas, dict):
+            raise TypeError("Expected argument 'schemas' to be a dict")
+        pulumi.set(__self__, "schemas", schemas)
+        if with_schemas and not isinstance(with_schemas, bool):
+            raise TypeError("Expected argument 'with_schemas' to be a bool")
+        pulumi.set(__self__, "with_schemas", with_schemas)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -125,6 +131,22 @@ class GetApiShieldOperationResult:
         return pulumi.get(self, "operation_id")
 
     @_builtins.property
+    @pulumi.getter
+    def schemas(self) -> 'outputs.GetApiShieldOperationSchemasResult':
+        """
+        OpenAPI JSON schemas for an operation, including both user-uploaded and Cloudflare-learned schemas.
+        """
+        return pulumi.get(self, "schemas")
+
+    @_builtins.property
+    @pulumi.getter(name="withSchemas")
+    def with_schemas(self) -> _builtins.bool:
+        """
+        When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
+        """
+        return pulumi.get(self, "with_schemas")
+
+    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
         """
@@ -148,12 +170,15 @@ class AwaitableGetApiShieldOperationResult(GetApiShieldOperationResult):
             last_updated=self.last_updated,
             method=self.method,
             operation_id=self.operation_id,
+            schemas=self.schemas,
+            with_schemas=self.with_schemas,
             zone_id=self.zone_id)
 
 
 def get_api_shield_operation(feature: Optional[Sequence[_builtins.str]] = None,
                              filter: Optional[Union['GetApiShieldOperationFilterArgs', 'GetApiShieldOperationFilterArgsDict']] = None,
                              operation_id: Optional[_builtins.str] = None,
+                             with_schemas: Optional[_builtins.bool] = None,
                              zone_id: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiShieldOperationResult:
     """
@@ -169,12 +194,14 @@ def get_api_shield_operation(feature: Optional[Sequence[_builtins.str]] = None,
 
     :param Sequence[_builtins.str] feature: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.
     :param _builtins.str operation_id: UUID.
+    :param _builtins.bool with_schemas: When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['feature'] = feature
     __args__['filter'] = filter
     __args__['operationId'] = operation_id
+    __args__['withSchemas'] = with_schemas
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getApiShieldOperation:getApiShieldOperation', __args__, opts=opts, typ=GetApiShieldOperationResult).value
@@ -189,10 +216,13 @@ def get_api_shield_operation(feature: Optional[Sequence[_builtins.str]] = None,
         last_updated=pulumi.get(__ret__, 'last_updated'),
         method=pulumi.get(__ret__, 'method'),
         operation_id=pulumi.get(__ret__, 'operation_id'),
+        schemas=pulumi.get(__ret__, 'schemas'),
+        with_schemas=pulumi.get(__ret__, 'with_schemas'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_api_shield_operation_output(feature: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                     filter: pulumi.Input[Optional[Optional[Union['GetApiShieldOperationFilterArgs', 'GetApiShieldOperationFilterArgsDict']]]] = None,
                                     operation_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    with_schemas: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                     zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiShieldOperationResult]:
     """
@@ -208,12 +238,14 @@ def get_api_shield_operation_output(feature: pulumi.Input[Optional[Optional[Sequ
 
     :param Sequence[_builtins.str] feature: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.
     :param _builtins.str operation_id: UUID.
+    :param _builtins.bool with_schemas: When true, includes OpenAPI schemas (both uploaded and learned) for the operation in the response. Due to the conversion overhead, this parameter is only supported on single-operation retrieval.
     :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['feature'] = feature
     __args__['filter'] = filter
     __args__['operationId'] = operation_id
+    __args__['withSchemas'] = with_schemas
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getApiShieldOperation:getApiShieldOperation', __args__, opts=opts, typ=GetApiShieldOperationResult)
@@ -227,4 +259,6 @@ def get_api_shield_operation_output(feature: pulumi.Input[Optional[Optional[Sequ
         last_updated=pulumi.get(__response__, 'last_updated'),
         method=pulumi.get(__response__, 'method'),
         operation_id=pulumi.get(__response__, 'operation_id'),
+        schemas=pulumi.get(__response__, 'schemas'),
+        with_schemas=pulumi.get(__response__, 'with_schemas'),
         zone_id=pulumi.get(__response__, 'zone_id')))

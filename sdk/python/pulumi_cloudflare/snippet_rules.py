@@ -111,6 +111,7 @@ class SnippetRules(pulumi.CustomResource):
         """
         Accepted Permissions
 
+        - `Snippets Read`
         - `Snippets Write`
 
         ## Example Usage
@@ -148,6 +149,7 @@ class SnippetRules(pulumi.CustomResource):
         """
         Accepted Permissions
 
+        - `Snippets Read`
         - `Snippets Write`
 
         ## Example Usage

@@ -44,6 +44,13 @@ namespace Pulumi.Cloudflare
         [Output("cacheThreshold")]
         public Output<string> CacheThreshold { get; private set; } = null!;
 
+        /// <summary>
+        /// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+        /// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+        /// </summary>
+        [Output("cacheTtl")]
+        public Output<double> CacheTtl { get; private set; } = null!;
+
         [Output("chunk")]
         public Output<bool> Chunk { get; private set; } = null!;
 
@@ -265,6 +272,13 @@ namespace Pulumi.Cloudflare
         [Input("cacheThreshold")]
         public Input<string>? CacheThreshold { get; set; }
 
+        /// <summary>
+        /// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+        /// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+        /// </summary>
+        [Input("cacheTtl")]
+        public Input<double>? CacheTtl { get; set; }
+
         [Input("chunk")]
         public Input<bool>? Chunk { get; set; }
 
@@ -419,6 +433,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("cacheThreshold")]
         public Input<string>? CacheThreshold { get; set; }
+
+        /// <summary>
+        /// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+        /// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+        /// </summary>
+        [Input("cacheTtl")]
+        public Input<double>? CacheTtl { get; set; }
 
         [Input("chunk")]
         public Input<bool>? Chunk { get; set; }

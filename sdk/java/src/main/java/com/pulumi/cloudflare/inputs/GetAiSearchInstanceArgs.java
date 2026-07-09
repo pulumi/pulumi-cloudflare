@@ -31,14 +31,14 @@ public final class GetAiSearchInstanceArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+     * The ID of this resource.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+     * @return The ID of this resource.
      * 
      */
     public Optional<Output<String>> id() {
@@ -90,7 +90,7 @@ public final class GetAiSearchInstanceArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param id AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+         * @param id The ID of this resource.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class GetAiSearchInstanceArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param id AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+         * @param id The ID of this resource.
          * 
          * @return builder
          * 

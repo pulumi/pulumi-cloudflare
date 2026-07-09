@@ -139,6 +139,7 @@ class _ZeroTrustDlpEntryState:
                Cannot be set to false if secret is true
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        :param pulumi.Input['ZeroTrustDlpEntryVariantArgs'] variant: A Predefined AI prompt classification topic entry.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -313,6 +314,9 @@ class _ZeroTrustDlpEntryState:
     @_builtins.property
     @pulumi.getter
     def variant(self) -> pulumi.Input[Optional['ZeroTrustDlpEntryVariantArgs']]:
+        """
+        A Predefined AI prompt classification topic entry.
+        """
         return pulumi.get(self, "variant")
 
     @variant.setter
@@ -506,6 +510,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
                Cannot be set to false if secret is true
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        :param pulumi.Input[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict']] variant: A Predefined AI prompt classification topic entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -613,6 +618,9 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def variant(self) -> pulumi.Output['outputs.ZeroTrustDlpEntryVariant']:
+        """
+        A Predefined AI prompt classification topic entry.
+        """
         return pulumi.get(self, "variant")
 
     @_builtins.property

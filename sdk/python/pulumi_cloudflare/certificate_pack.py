@@ -31,7 +31,7 @@ class CertificatePackArgs:
         """
         The set of arguments for constructing a CertificatePack resource.
 
-        :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
                Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[_builtins.str] type: Type of certificate pack.
                Available values: "advanced".
@@ -58,7 +58,7 @@ class CertificatePackArgs:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Input[_builtins.str]:
         """
-        Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
         Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
@@ -162,7 +162,7 @@ class _CertificatePackState:
         """
         Input properties used for looking up and filtering CertificatePack resources.
 
-        :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
                Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[Sequence[pulumi.Input['CertificatePackCertificateArgs']]] certificates: Array of certificates in this pack.
         :param pulumi.Input[_builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
@@ -212,7 +212,7 @@ class _CertificatePackState:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
         Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
@@ -428,7 +428,7 @@ class CertificatePack(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
                Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[_builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
@@ -570,7 +570,7 @@ class CertificatePack(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        :param pulumi.Input[_builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
                Available values: "google", "lets*encrypt", "ssl*com".
         :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackCertificateArgs', 'CertificatePackCertificateArgsDict']]]] certificates: Array of certificates in this pack.
         :param pulumi.Input[_builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
@@ -612,7 +612,7 @@ class CertificatePack(pulumi.CustomResource):
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Output[_builtins.str]:
         """
-        Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
         Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")

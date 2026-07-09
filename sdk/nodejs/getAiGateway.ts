@@ -58,6 +58,7 @@ export interface GetAiGatewayResult {
     readonly createdAt: string;
     readonly dlp: outputs.GetAiGatewayDlp;
     readonly filter?: outputs.GetAiGatewayFilter;
+    readonly guardrails: outputs.GetAiGatewayGuardrails;
     /**
      * gateway id
      */
@@ -91,6 +92,7 @@ export interface GetAiGatewayResult {
      * Maximum number of retry attempts for failed requests (1-5)
      */
     readonly retryMaxAttempts: number;
+    readonly spendLimits: outputs.GetAiGatewaySpendLimits;
     readonly storeId: string;
     readonly stripe: outputs.GetAiGatewayStripe;
     /**

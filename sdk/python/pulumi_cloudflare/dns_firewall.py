@@ -26,6 +26,7 @@ class DnsFirewallArgs:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  attack_mitigation: pulumi.Input[Optional['DnsFirewallAttackMitigationArgs']] = None,
                  deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_firewall_ip_count: pulumi.Input[Optional[_builtins.int]] = None,
                  ecs_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
                  maximum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  minimum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
@@ -39,6 +40,7 @@ class DnsFirewallArgs:
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['DnsFirewallAttackMitigationArgs'] attack_mitigation: Attack mitigation settings
         :param pulumi.Input[_builtins.bool] deprecate_any_requests: Whether to refuse to answer queries for the ANY type
+        :param pulumi.Input[_builtins.int] dns_firewall_ip_count: Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
         :param pulumi.Input[_builtins.bool] ecs_fallback: Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
         :param pulumi.Input[_builtins.float] maximum_cache_ttl: By default, Cloudflare attempts to cache responses for as long as
                indicated by the TTL received from upstream nameservers. This setting
@@ -63,7 +65,7 @@ class DnsFirewallArgs:
                This setting does not affect the TTL value in the DNS response
                Cloudflare returns to clients. Cloudflare will always forward the TTL
                value received from upstream nameservers.
-        :param pulumi.Input[_builtins.float] ratelimit: Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+        :param pulumi.Input[_builtins.float] ratelimit: Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
         :param pulumi.Input[_builtins.float] retries: Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
         """
         pulumi.set(__self__, "name", name)
@@ -74,6 +76,8 @@ class DnsFirewallArgs:
             pulumi.set(__self__, "attack_mitigation", attack_mitigation)
         if deprecate_any_requests is not None:
             pulumi.set(__self__, "deprecate_any_requests", deprecate_any_requests)
+        if dns_firewall_ip_count is not None:
+            pulumi.set(__self__, "dns_firewall_ip_count", dns_firewall_ip_count)
         if ecs_fallback is not None:
             pulumi.set(__self__, "ecs_fallback", ecs_fallback)
         if maximum_cache_ttl is not None:
@@ -143,6 +147,18 @@ class DnsFirewallArgs:
     @deprecate_any_requests.setter
     def deprecate_any_requests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deprecate_any_requests", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsFirewallIpCount")
+    def dns_firewall_ip_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+        """
+        return pulumi.get(self, "dns_firewall_ip_count")
+
+    @dns_firewall_ip_count.setter
+    def dns_firewall_ip_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "dns_firewall_ip_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsFallback")
@@ -216,7 +232,7 @@ class DnsFirewallArgs:
     @pulumi.getter
     def ratelimit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+        Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
         """
         return pulumi.get(self, "ratelimit")
 
@@ -243,6 +259,7 @@ class _DnsFirewallState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  attack_mitigation: pulumi.Input[Optional['DnsFirewallAttackMitigationArgs']] = None,
                  deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_firewall_ip_count: pulumi.Input[Optional[_builtins.int]] = None,
                  dns_firewall_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ecs_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
                  maximum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
@@ -259,6 +276,7 @@ class _DnsFirewallState:
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['DnsFirewallAttackMitigationArgs'] attack_mitigation: Attack mitigation settings
         :param pulumi.Input[_builtins.bool] deprecate_any_requests: Whether to refuse to answer queries for the ANY type
+        :param pulumi.Input[_builtins.int] dns_firewall_ip_count: Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
         :param pulumi.Input[_builtins.bool] ecs_fallback: Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
         :param pulumi.Input[_builtins.float] maximum_cache_ttl: By default, Cloudflare attempts to cache responses for as long as
                indicated by the TTL received from upstream nameservers. This setting
@@ -285,7 +303,7 @@ class _DnsFirewallState:
                This setting does not affect the TTL value in the DNS response
                Cloudflare returns to clients. Cloudflare will always forward the TTL
                value received from upstream nameservers.
-        :param pulumi.Input[_builtins.float] ratelimit: Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+        :param pulumi.Input[_builtins.float] ratelimit: Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
         :param pulumi.Input[_builtins.float] retries: Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
         """
         if account_id is not None:
@@ -294,6 +312,8 @@ class _DnsFirewallState:
             pulumi.set(__self__, "attack_mitigation", attack_mitigation)
         if deprecate_any_requests is not None:
             pulumi.set(__self__, "deprecate_any_requests", deprecate_any_requests)
+        if dns_firewall_ip_count is not None:
+            pulumi.set(__self__, "dns_firewall_ip_count", dns_firewall_ip_count)
         if dns_firewall_ips is not None:
             pulumi.set(__self__, "dns_firewall_ips", dns_firewall_ips)
         if ecs_fallback is not None:
@@ -350,6 +370,18 @@ class _DnsFirewallState:
     @deprecate_any_requests.setter
     def deprecate_any_requests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deprecate_any_requests", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsFirewallIpCount")
+    def dns_firewall_ip_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+        """
+        return pulumi.get(self, "dns_firewall_ip_count")
+
+    @dns_firewall_ip_count.setter
+    def dns_firewall_ip_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "dns_firewall_ip_count", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsFirewallIps")
@@ -456,7 +488,7 @@ class _DnsFirewallState:
     @pulumi.getter
     def ratelimit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+        Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
         """
         return pulumi.get(self, "ratelimit")
 
@@ -495,6 +527,7 @@ class DnsFirewall(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  attack_mitigation: pulumi.Input[Optional[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']]] = None,
                  deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_firewall_ip_count: pulumi.Input[Optional[_builtins.int]] = None,
                  ecs_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
                  maximum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  minimum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
@@ -529,6 +562,7 @@ class DnsFirewall(pulumi.CustomResource):
                 "only_when_upstream_unhealthy": False,
             },
             deprecate_any_requests=True,
+            dns_firewall_ip_count=2,
             ecs_fallback=False,
             maximum_cache_ttl=float(900),
             minimum_cache_ttl=float(60),
@@ -549,6 +583,7 @@ class DnsFirewall(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']] attack_mitigation: Attack mitigation settings
         :param pulumi.Input[_builtins.bool] deprecate_any_requests: Whether to refuse to answer queries for the ANY type
+        :param pulumi.Input[_builtins.int] dns_firewall_ip_count: Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
         :param pulumi.Input[_builtins.bool] ecs_fallback: Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
         :param pulumi.Input[_builtins.float] maximum_cache_ttl: By default, Cloudflare attempts to cache responses for as long as
                indicated by the TTL received from upstream nameservers. This setting
@@ -574,7 +609,7 @@ class DnsFirewall(pulumi.CustomResource):
                This setting does not affect the TTL value in the DNS response
                Cloudflare returns to clients. Cloudflare will always forward the TTL
                value received from upstream nameservers.
-        :param pulumi.Input[_builtins.float] ratelimit: Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+        :param pulumi.Input[_builtins.float] ratelimit: Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
         :param pulumi.Input[_builtins.float] retries: Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
         """
         ...
@@ -608,6 +643,7 @@ class DnsFirewall(pulumi.CustomResource):
                 "only_when_upstream_unhealthy": False,
             },
             deprecate_any_requests=True,
+            dns_firewall_ip_count=2,
             ecs_fallback=False,
             maximum_cache_ttl=float(900),
             minimum_cache_ttl=float(60),
@@ -641,6 +677,7 @@ class DnsFirewall(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  attack_mitigation: pulumi.Input[Optional[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']]] = None,
                  deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_firewall_ip_count: pulumi.Input[Optional[_builtins.int]] = None,
                  ecs_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
                  maximum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
                  minimum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
@@ -661,6 +698,7 @@ class DnsFirewall(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["attack_mitigation"] = attack_mitigation
             __props__.__dict__["deprecate_any_requests"] = deprecate_any_requests
+            __props__.__dict__["dns_firewall_ip_count"] = dns_firewall_ip_count
             __props__.__dict__["ecs_fallback"] = ecs_fallback
             __props__.__dict__["maximum_cache_ttl"] = maximum_cache_ttl
             __props__.__dict__["minimum_cache_ttl"] = minimum_cache_ttl
@@ -688,6 +726,7 @@ class DnsFirewall(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             attack_mitigation: pulumi.Input[Optional[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']]] = None,
             deprecate_any_requests: pulumi.Input[Optional[_builtins.bool]] = None,
+            dns_firewall_ip_count: pulumi.Input[Optional[_builtins.int]] = None,
             dns_firewall_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ecs_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
             maximum_cache_ttl: pulumi.Input[Optional[_builtins.float]] = None,
@@ -708,6 +747,7 @@ class DnsFirewall(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']] attack_mitigation: Attack mitigation settings
         :param pulumi.Input[_builtins.bool] deprecate_any_requests: Whether to refuse to answer queries for the ANY type
+        :param pulumi.Input[_builtins.int] dns_firewall_ip_count: Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
         :param pulumi.Input[_builtins.bool] ecs_fallback: Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
         :param pulumi.Input[_builtins.float] maximum_cache_ttl: By default, Cloudflare attempts to cache responses for as long as
                indicated by the TTL received from upstream nameservers. This setting
@@ -734,7 +774,7 @@ class DnsFirewall(pulumi.CustomResource):
                This setting does not affect the TTL value in the DNS response
                Cloudflare returns to clients. Cloudflare will always forward the TTL
                value received from upstream nameservers.
-        :param pulumi.Input[_builtins.float] ratelimit: Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+        :param pulumi.Input[_builtins.float] ratelimit: Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
         :param pulumi.Input[_builtins.float] retries: Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -744,6 +784,7 @@ class DnsFirewall(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["attack_mitigation"] = attack_mitigation
         __props__.__dict__["deprecate_any_requests"] = deprecate_any_requests
+        __props__.__dict__["dns_firewall_ip_count"] = dns_firewall_ip_count
         __props__.__dict__["dns_firewall_ips"] = dns_firewall_ips
         __props__.__dict__["ecs_fallback"] = ecs_fallback
         __props__.__dict__["maximum_cache_ttl"] = maximum_cache_ttl
@@ -779,6 +820,14 @@ class DnsFirewall(pulumi.CustomResource):
         Whether to refuse to answer queries for the ANY type
         """
         return pulumi.get(self, "deprecate_any_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsFirewallIpCount")
+    def dns_firewall_ip_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+        """
+        return pulumi.get(self, "dns_firewall_ip_count")
 
     @_builtins.property
     @pulumi.getter(name="dnsFirewallIps")
@@ -857,7 +906,7 @@ class DnsFirewall(pulumi.CustomResource):
     @pulumi.getter
     def ratelimit(self) -> pulumi.Output[Optional[_builtins.float]]:
         """
-        Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+        Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
         """
         return pulumi.get(self, "ratelimit")
 

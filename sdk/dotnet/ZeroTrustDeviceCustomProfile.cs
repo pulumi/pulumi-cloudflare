@@ -133,6 +133,12 @@ namespace Pulumi.Cloudflare
         public Output<bool> DisableAutoFallback { get; private set; } = null!;
 
         /// <summary>
+        /// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        /// </summary>
+        [Output("dnsSearchSuffixes")]
+        public Output<ImmutableArray<Outputs.ZeroTrustDeviceCustomProfileDnsSearchSuffix>> DnsSearchSuffixes { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the policy will be applied to matching devices.
         /// </summary>
         [Output("enabled")]
@@ -231,6 +237,12 @@ namespace Pulumi.Cloudflare
         [Output("tunnelProtocol")]
         public Output<string> TunnelProtocol { get; private set; } = null!;
 
+        /// <summary>
+        /// Virtual network access settings for the device.
+        /// </summary>
+        [Output("virtualNetworks")]
+        public Output<Outputs.ZeroTrustDeviceCustomProfileVirtualNetworks?> VirtualNetworks { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ZeroTrustDeviceCustomProfile resource with the given unique name, arguments, and options.
@@ -326,6 +338,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("disableAutoFallback")]
         public Input<bool>? DisableAutoFallback { get; set; }
+
+        [Input("dnsSearchSuffixes")]
+        private InputList<Inputs.ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs>? _dnsSearchSuffixes;
+
+        /// <summary>
+        /// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        /// </summary>
+        public InputList<Inputs.ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs> DnsSearchSuffixes
+        {
+            get => _dnsSearchSuffixes ?? (_dnsSearchSuffixes = new InputList<Inputs.ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs>());
+            set => _dnsSearchSuffixes = value;
+        }
 
         /// <summary>
         /// Whether the policy will be applied to matching devices.
@@ -426,6 +450,12 @@ namespace Pulumi.Cloudflare
         [Input("tunnelProtocol")]
         public Input<string>? TunnelProtocol { get; set; }
 
+        /// <summary>
+        /// Virtual network access settings for the device.
+        /// </summary>
+        [Input("virtualNetworks")]
+        public Input<Inputs.ZeroTrustDeviceCustomProfileVirtualNetworksArgs>? VirtualNetworks { get; set; }
+
         public ZeroTrustDeviceCustomProfileArgs()
         {
         }
@@ -484,6 +514,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("disableAutoFallback")]
         public Input<bool>? DisableAutoFallback { get; set; }
+
+        [Input("dnsSearchSuffixes")]
+        private InputList<Inputs.ZeroTrustDeviceCustomProfileDnsSearchSuffixGetArgs>? _dnsSearchSuffixes;
+
+        /// <summary>
+        /// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        /// </summary>
+        public InputList<Inputs.ZeroTrustDeviceCustomProfileDnsSearchSuffixGetArgs> DnsSearchSuffixes
+        {
+            get => _dnsSearchSuffixes ?? (_dnsSearchSuffixes = new InputList<Inputs.ZeroTrustDeviceCustomProfileDnsSearchSuffixGetArgs>());
+            set => _dnsSearchSuffixes = value;
+        }
 
         /// <summary>
         /// Whether the policy will be applied to matching devices.
@@ -605,6 +647,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("tunnelProtocol")]
         public Input<string>? TunnelProtocol { get; set; }
+
+        /// <summary>
+        /// Virtual network access settings for the device.
+        /// </summary>
+        [Input("virtualNetworks")]
+        public Input<Inputs.ZeroTrustDeviceCustomProfileVirtualNetworksGetArgs>? VirtualNetworks { get; set; }
 
         public ZeroTrustDeviceCustomProfileState()
         {

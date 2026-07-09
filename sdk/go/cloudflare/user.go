@@ -56,6 +56,8 @@ type User struct {
 	Betas pulumi.StringArrayOutput `pulumi:"betas"`
 	// The country in which the user lives.
 	Country pulumi.StringPtrOutput `pulumi:"country"`
+	// Current email address of the user.
+	Email pulumi.StringOutput `pulumi:"email"`
 	// User's first name
 	FirstName pulumi.StringPtrOutput `pulumi:"firstName"`
 	// Indicates whether user has any business zones
@@ -113,6 +115,8 @@ type userState struct {
 	Betas []string `pulumi:"betas"`
 	// The country in which the user lives.
 	Country *string `pulumi:"country"`
+	// Current email address of the user.
+	Email *string `pulumi:"email"`
 	// User's first name
 	FirstName *string `pulumi:"firstName"`
 	// Indicates whether user has any business zones
@@ -141,6 +145,8 @@ type UserState struct {
 	Betas pulumi.StringArrayInput
 	// The country in which the user lives.
 	Country pulumi.StringPtrInput
+	// Current email address of the user.
+	Email pulumi.StringPtrInput
 	// User's first name
 	FirstName pulumi.StringPtrInput
 	// Indicates whether user has any business zones
@@ -290,6 +296,11 @@ func (o UserOutput) Betas() pulumi.StringArrayOutput {
 // The country in which the user lives.
 func (o UserOutput) Country() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Country }).(pulumi.StringPtrOutput)
+}
+
+// Current email address of the user.
+func (o UserOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
 // User's first name

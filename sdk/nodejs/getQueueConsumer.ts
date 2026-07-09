@@ -31,7 +31,7 @@ export interface GetQueueConsumerArgs {
     /**
      * A Resource identifier.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * A Resource identifier.
      */
@@ -45,7 +45,7 @@ export interface GetQueueConsumerResult {
     /**
      * A Resource identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * A Resource identifier.
      */
@@ -99,7 +99,7 @@ export interface GetQueueConsumerOutputArgs {
     /**
      * A Resource identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * A Resource identifier.
      */

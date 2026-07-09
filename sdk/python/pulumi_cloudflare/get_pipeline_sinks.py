@@ -27,7 +27,7 @@ class GetPipelineSinksResult:
     """
     A collection of values returned by getPipelineSinks.
     """
-    def __init__(__self__, account_id=None, id=None, max_items=None, pipeline_id=None, results=None):
+    def __init__(__self__, account_id=None, id=None, max_items=None, name=None, pipeline_id=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,6 +37,9 @@ class GetPipelineSinksResult:
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
         if pipeline_id and not isinstance(pipeline_id, str):
             raise TypeError("Expected argument 'pipeline_id' to be a str")
         pulumi.set(__self__, "pipeline_id", pipeline_id)
@@ -69,6 +72,14 @@ class GetPipelineSinksResult:
         return pulumi.get(self, "max_items")
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Filters sinks by name (case-insensitive substring).
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
     @pulumi.getter(name="pipelineId")
     def pipeline_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "pipeline_id")
@@ -91,12 +102,14 @@ class AwaitableGetPipelineSinksResult(GetPipelineSinksResult):
             account_id=self.account_id,
             id=self.id,
             max_items=self.max_items,
+            name=self.name,
             pipeline_id=self.pipeline_id,
             results=self.results)
 
 
 def get_pipeline_sinks(account_id: Optional[_builtins.str] = None,
                        max_items: Optional[_builtins.int] = None,
+                       name: Optional[_builtins.str] = None,
                        pipeline_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPipelineSinksResult:
     """
@@ -118,10 +131,12 @@ def get_pipeline_sinks(account_id: Optional[_builtins.str] = None,
 
     :param _builtins.str account_id: Specifies the public ID of the account.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str name: Filters sinks by name (case-insensitive substring).
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
+    __args__['name'] = name
     __args__['pipelineId'] = pipeline_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getPipelineSinks:getPipelineSinks', __args__, opts=opts, typ=GetPipelineSinksResult).value
@@ -130,10 +145,12 @@ def get_pipeline_sinks(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
+        name=pulumi.get(__ret__, 'name'),
         pipeline_id=pulumi.get(__ret__, 'pipeline_id'),
         results=pulumi.get(__ret__, 'results'))
 def get_pipeline_sinks_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               pipeline_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineSinksResult]:
     """
@@ -155,10 +172,12 @@ def get_pipeline_sinks_output(account_id: pulumi.Input[Optional[Optional[_builti
 
     :param _builtins.str account_id: Specifies the public ID of the account.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str name: Filters sinks by name (case-insensitive substring).
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
+    __args__['name'] = name
     __args__['pipelineId'] = pipeline_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getPipelineSinks:getPipelineSinks', __args__, opts=opts, typ=GetPipelineSinksResult)
@@ -166,5 +185,6 @@ def get_pipeline_sinks_output(account_id: pulumi.Input[Optional[Optional[_builti
         account_id=pulumi.get(__response__, 'account_id'),
         id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
+        name=pulumi.get(__response__, 'name'),
         pipeline_id=pulumi.get(__response__, 'pipeline_id'),
         results=pulumi.get(__response__, 'results')))

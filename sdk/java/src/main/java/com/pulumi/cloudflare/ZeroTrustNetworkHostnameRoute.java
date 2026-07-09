@@ -138,6 +138,22 @@ public class ZeroTrustNetworkHostnameRoute extends com.pulumi.resources.CustomRe
         return Codegen.optional(this.hostname);
     }
     /**
+     * The type of tunnel.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * 
+     */
+    @Export(name="tunType", refs={String.class}, tree="[0]")
+    private Output<String> tunType;
+
+    /**
+     * @return The type of tunnel.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * 
+     */
+    public Output<String> tunType() {
+        return this.tunType;
+    }
+    /**
      * UUID of the tunnel.
      * 
      */

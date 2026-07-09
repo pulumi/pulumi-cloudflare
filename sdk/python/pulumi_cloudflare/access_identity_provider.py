@@ -25,6 +25,8 @@ class AccessIdentityProviderArgs:
                  name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 saml_certificate_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scim_config: pulumi.Input[Optional['AccessIdentityProviderScimConfigArgs']] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -33,8 +35,12 @@ class AccessIdentityProviderArgs:
         :param pulumi.Input['AccessIdentityProviderConfigArgs'] config: The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
         :param pulumi.Input[_builtins.str] name: The name of the identity provider, shown to users on the login page.
         :param pulumi.Input[_builtins.str] type: The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-               Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+               Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[_builtins.bool] read_only: Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+        :param pulumi.Input[_builtins.str] saml_certificate_set_id: The UID of the SAML encryption certificate set assigned to this Identity Provider.
+               Only present for SAML identity providers with encryption configured.
+               Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
         :param pulumi.Input['AccessIdentityProviderScimConfigArgs'] scim_config: The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
@@ -43,6 +49,10 @@ class AccessIdentityProviderArgs:
         pulumi.set(__self__, "type", type)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if saml_certificate_set_id is not None:
+            pulumi.set(__self__, "saml_certificate_set_id", saml_certificate_set_id)
         if scim_config is not None:
             pulumi.set(__self__, "scim_config", scim_config)
         if zone_id is not None:
@@ -77,7 +87,7 @@ class AccessIdentityProviderArgs:
     def type(self) -> pulumi.Input[_builtins.str]:
         """
         The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-        Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+        Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
         """
         return pulumi.get(self, "type")
 
@@ -96,6 +106,32 @@ class AccessIdentityProviderArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="samlCertificateSetId")
+    def saml_certificate_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The UID of the SAML encryption certificate set assigned to this Identity Provider.
+        Only present for SAML identity providers with encryption configured.
+        Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+        """
+        return pulumi.get(self, "saml_certificate_set_id")
+
+    @saml_certificate_set_id.setter
+    def saml_certificate_set_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "saml_certificate_set_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scimConfig")
@@ -128,6 +164,9 @@ class _AccessIdentityProviderState:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional['AccessIdentityProviderConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 saml_certificate_set: pulumi.Input[Optional['AccessIdentityProviderSamlCertificateSetArgs']] = None,
+                 saml_certificate_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scim_config: pulumi.Input[Optional['AccessIdentityProviderScimConfigArgs']] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
@@ -137,9 +176,15 @@ class _AccessIdentityProviderState:
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input['AccessIdentityProviderConfigArgs'] config: The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
         :param pulumi.Input[_builtins.str] name: The name of the identity provider, shown to users on the login page.
+        :param pulumi.Input[_builtins.bool] read_only: Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+        :param pulumi.Input['AccessIdentityProviderSamlCertificateSetArgs'] saml_certificate_set: The SAML encryption certificate set details, including current and previous certificates.
+               Only present for SAML identity providers with a certificate set assigned.
+        :param pulumi.Input[_builtins.str] saml_certificate_set_id: The UID of the SAML encryption certificate set assigned to this Identity Provider.
+               Only present for SAML identity providers with encryption configured.
+               Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
         :param pulumi.Input['AccessIdentityProviderScimConfigArgs'] scim_config: The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         :param pulumi.Input[_builtins.str] type: The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-               Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+               Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
@@ -148,6 +193,12 @@ class _AccessIdentityProviderState:
             pulumi.set(__self__, "config", config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if saml_certificate_set is not None:
+            pulumi.set(__self__, "saml_certificate_set", saml_certificate_set)
+        if saml_certificate_set_id is not None:
+            pulumi.set(__self__, "saml_certificate_set_id", saml_certificate_set_id)
         if scim_config is not None:
             pulumi.set(__self__, "scim_config", scim_config)
         if type is not None:
@@ -192,6 +243,45 @@ class _AccessIdentityProviderState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="samlCertificateSet")
+    def saml_certificate_set(self) -> pulumi.Input[Optional['AccessIdentityProviderSamlCertificateSetArgs']]:
+        """
+        The SAML encryption certificate set details, including current and previous certificates.
+        Only present for SAML identity providers with a certificate set assigned.
+        """
+        return pulumi.get(self, "saml_certificate_set")
+
+    @saml_certificate_set.setter
+    def saml_certificate_set(self, value: pulumi.Input[Optional['AccessIdentityProviderSamlCertificateSetArgs']]):
+        pulumi.set(self, "saml_certificate_set", value)
+
+    @_builtins.property
+    @pulumi.getter(name="samlCertificateSetId")
+    def saml_certificate_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The UID of the SAML encryption certificate set assigned to this Identity Provider.
+        Only present for SAML identity providers with encryption configured.
+        Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+        """
+        return pulumi.get(self, "saml_certificate_set_id")
+
+    @saml_certificate_set_id.setter
+    def saml_certificate_set_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "saml_certificate_set_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="scimConfig")
     def scim_config(self) -> pulumi.Input[Optional['AccessIdentityProviderScimConfigArgs']]:
         """
@@ -208,7 +298,7 @@ class _AccessIdentityProviderState:
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-        Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+        Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
         """
         return pulumi.get(self, "type")
 
@@ -243,6 +333,8 @@ class AccessIdentityProvider(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 saml_certificate_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scim_config: pulumi.Input[Optional[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -297,9 +389,13 @@ class AccessIdentityProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']] config: The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
         :param pulumi.Input[_builtins.str] name: The name of the identity provider, shown to users on the login page.
+        :param pulumi.Input[_builtins.bool] read_only: Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+        :param pulumi.Input[_builtins.str] saml_certificate_set_id: The UID of the SAML encryption certificate set assigned to this Identity Provider.
+               Only present for SAML identity providers with encryption configured.
+               Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
         :param pulumi.Input[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']] scim_config: The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         :param pulumi.Input[_builtins.str] type: The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-               Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+               Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
@@ -371,6 +467,8 @@ class AccessIdentityProvider(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 saml_certificate_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scim_config: pulumi.Input[Optional[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -391,11 +489,14 @@ class AccessIdentityProvider(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["read_only"] = read_only
+            __props__.__dict__["saml_certificate_set_id"] = saml_certificate_set_id
             __props__.__dict__["scim_config"] = scim_config
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["saml_certificate_set"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessIdentityProvider:AccessIdentityProvider")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessIdentityProvider, __self__).__init__(
@@ -411,6 +512,9 @@ class AccessIdentityProvider(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             config: pulumi.Input[Optional[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            saml_certificate_set: pulumi.Input[Optional[Union['AccessIdentityProviderSamlCertificateSetArgs', 'AccessIdentityProviderSamlCertificateSetArgsDict']]] = None,
+            saml_certificate_set_id: pulumi.Input[Optional[_builtins.str]] = None,
             scim_config: pulumi.Input[Optional[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessIdentityProvider':
@@ -424,9 +528,15 @@ class AccessIdentityProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[Union['AccessIdentityProviderConfigArgs', 'AccessIdentityProviderConfigArgsDict']] config: The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
         :param pulumi.Input[_builtins.str] name: The name of the identity provider, shown to users on the login page.
+        :param pulumi.Input[_builtins.bool] read_only: Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+        :param pulumi.Input[Union['AccessIdentityProviderSamlCertificateSetArgs', 'AccessIdentityProviderSamlCertificateSetArgsDict']] saml_certificate_set: The SAML encryption certificate set details, including current and previous certificates.
+               Only present for SAML identity providers with a certificate set assigned.
+        :param pulumi.Input[_builtins.str] saml_certificate_set_id: The UID of the SAML encryption certificate set assigned to this Identity Provider.
+               Only present for SAML identity providers with encryption configured.
+               Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
         :param pulumi.Input[Union['AccessIdentityProviderScimConfigArgs', 'AccessIdentityProviderScimConfigArgsDict']] scim_config: The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         :param pulumi.Input[_builtins.str] type: The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-               Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+               Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -436,6 +546,9 @@ class AccessIdentityProvider(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["config"] = config
         __props__.__dict__["name"] = name
+        __props__.__dict__["read_only"] = read_only
+        __props__.__dict__["saml_certificate_set"] = saml_certificate_set
+        __props__.__dict__["saml_certificate_set_id"] = saml_certificate_set_id
         __props__.__dict__["scim_config"] = scim_config
         __props__.__dict__["type"] = type
         __props__.__dict__["zone_id"] = zone_id
@@ -466,6 +579,33 @@ class AccessIdentityProvider(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+        """
+        return pulumi.get(self, "read_only")
+
+    @_builtins.property
+    @pulumi.getter(name="samlCertificateSet")
+    def saml_certificate_set(self) -> pulumi.Output['outputs.AccessIdentityProviderSamlCertificateSet']:
+        """
+        The SAML encryption certificate set details, including current and previous certificates.
+        Only present for SAML identity providers with a certificate set assigned.
+        """
+        return pulumi.get(self, "saml_certificate_set")
+
+    @_builtins.property
+    @pulumi.getter(name="samlCertificateSetId")
+    def saml_certificate_set_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The UID of the SAML encryption certificate set assigned to this Identity Provider.
+        Only present for SAML identity providers with encryption configured.
+        Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+        """
+        return pulumi.get(self, "saml_certificate_set_id")
+
+    @_builtins.property
     @pulumi.getter(name="scimConfig")
     def scim_config(self) -> pulumi.Output['outputs.AccessIdentityProviderScimConfig']:
         """
@@ -478,7 +618,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
     def type(self) -> pulumi.Output[_builtins.str]:
         """
         The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-        Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+        Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
         """
         return pulumi.get(self, "type")
 

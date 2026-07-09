@@ -104,6 +104,9 @@ namespace Pulumi.Cloudflare
         [Output("uploadStatus")]
         public Output<string> UploadStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// A Predefined AI prompt classification topic entry.
+        /// </summary>
         [Output("variant")]
         public Output<Outputs.ZeroTrustDlpEntryVariant> Variant { get; private set; } = null!;
 
@@ -246,6 +249,9 @@ namespace Pulumi.Cloudflare
         [Input("uploadStatus")]
         public Input<string>? UploadStatus { get; set; }
 
+        /// <summary>
+        /// A Predefined AI prompt classification topic entry.
+        /// </summary>
         [Input("variant")]
         public Input<Inputs.ZeroTrustDlpEntryVariantGetArgs>? Variant { get; set; }
 
