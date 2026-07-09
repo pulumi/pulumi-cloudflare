@@ -58,7 +58,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountPermissionGroup(ctx, &cloudflare.GetAccountPermissionGroupArgs{
-//				AccountId:         pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId:         "023e105f4ecef8ad9ca31a8372d0c353",
 //				PermissionGroupId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
@@ -82,7 +82,7 @@ func GetAccountPermissionGroup(ctx *pulumi.Context, args *GetAccountPermissionGr
 // A collection of arguments for invoking getAccountPermissionGroup.
 type GetAccountPermissionGroupArgs struct {
 	// Account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Permission Group identifier tag.
 	PermissionGroupId string `pulumi:"permissionGroupId"`
 }
@@ -90,7 +90,7 @@ type GetAccountPermissionGroupArgs struct {
 // A collection of values returned by getAccountPermissionGroup.
 type GetAccountPermissionGroupResult struct {
 	// Account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Identifier of the permission group.
 	Id string `pulumi:"id"`
 	// Attributes associated to the permission group.
@@ -113,7 +113,7 @@ func GetAccountPermissionGroupOutput(ctx *pulumi.Context, args GetAccountPermiss
 // A collection of arguments for invoking getAccountPermissionGroup.
 type GetAccountPermissionGroupOutputArgs struct {
 	// Account identifier tag.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Permission Group identifier tag.
 	PermissionGroupId pulumi.StringInput `pulumi:"permissionGroupId"`
 }
@@ -138,8 +138,8 @@ func (o GetAccountPermissionGroupResultOutput) ToGetAccountPermissionGroupResult
 }
 
 // Account identifier tag.
-func (o GetAccountPermissionGroupResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountPermissionGroupResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o GetAccountPermissionGroupResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountPermissionGroupResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Identifier of the permission group.

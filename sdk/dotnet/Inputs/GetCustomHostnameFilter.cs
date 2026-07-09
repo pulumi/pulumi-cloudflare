@@ -59,8 +59,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// Whether to filter hostnames based on if they have SSL enabled.
         /// Available values: 0, 1.
         /// </summary>
-        [Input("ssl")]
-        public double? Ssl { get; set; }
+        [Input("ssl", required: true)]
+        public int Ssl { get; set; }
 
         /// <summary>
         /// Filter by SSL certificate status.

@@ -4,10 +4,12 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
+import com.pulumi.cloudflare.inputs.WorkflowScheduleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,11 +19,11 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkflowArgs Empty = new WorkflowArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="className", required=true)
@@ -36,6 +38,13 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<WorkflowLimitsArgs>> limits() {
         return Optional.ofNullable(this.limits);
+    }
+
+    @Import(name="schedules")
+    private @Nullable Output<List<WorkflowScheduleArgs>> schedules;
+
+    public Optional<Output<List<WorkflowScheduleArgs>>> schedules() {
+        return Optional.ofNullable(this.schedules);
     }
 
     @Import(name="scriptName", required=true)
@@ -58,6 +67,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.className = $.className;
         this.limits = $.limits;
+        this.schedules = $.schedules;
         this.scriptName = $.scriptName;
         this.workflowName = $.workflowName;
     }
@@ -80,7 +90,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
             $ = new WorkflowArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -107,6 +117,19 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
             return limits(Output.of(limits));
         }
 
+        public Builder schedules(@Nullable Output<List<WorkflowScheduleArgs>> schedules) {
+            $.schedules = schedules;
+            return this;
+        }
+
+        public Builder schedules(List<WorkflowScheduleArgs> schedules) {
+            return schedules(Output.of(schedules));
+        }
+
+        public Builder schedules(WorkflowScheduleArgs... schedules) {
+            return schedules(List.of(schedules));
+        }
+
         public Builder scriptName(Output<String> scriptName) {
             $.scriptName = scriptName;
             return this;
@@ -126,6 +149,9 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WorkflowArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("WorkflowArgs", "accountId");
+            }
             if ($.className == null) {
                 throw new MissingRequiredPropertyException("WorkflowArgs", "className");
             }

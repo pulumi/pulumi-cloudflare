@@ -8,7 +8,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -129,16 +129,16 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
      * Available values: 0, 1.
      * 
      */
-    @Import(name="ssl")
-    private @Nullable Output<Double> ssl;
+    @Import(name="ssl", required=true)
+    private Output<Integer> ssl;
 
     /**
      * @return Whether to filter hostnames based on if they have SSL enabled.
      * Available values: 0, 1.
      * 
      */
-    public Optional<Output<Double>> ssl() {
-        return Optional.ofNullable(this.ssl);
+    public Output<Integer> ssl() {
+        return this.ssl;
     }
 
     /**
@@ -356,7 +356,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder ssl(@Nullable Output<Double> ssl) {
+        public Builder ssl(Output<Integer> ssl) {
             $.ssl = ssl;
             return this;
         }
@@ -368,7 +368,7 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder ssl(Double ssl) {
+        public Builder ssl(Integer ssl) {
             return ssl(Output.of(ssl));
         }
 
@@ -419,6 +419,9 @@ public final class GetCustomHostnameFilterArgs extends com.pulumi.resources.Reso
         public GetCustomHostnameFilterArgs build() {
             if ($.order == null) {
                 throw new MissingRequiredPropertyException("GetCustomHostnameFilterArgs", "order");
+            }
+            if ($.ssl == null) {
+                throw new MissingRequiredPropertyException("GetCustomHostnameFilterArgs", "ssl");
             }
             return $;
         }

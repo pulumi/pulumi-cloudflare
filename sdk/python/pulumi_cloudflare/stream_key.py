@@ -19,25 +19,24 @@ __all__ = ['StreamKeyArgs', 'StreamKey']
 @pulumi.input_type
 class StreamKeyArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 account_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a StreamKey resource.
 
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_id", account_id)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[_builtins.str]:
         """
         Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
 
 
@@ -168,7 +167,7 @@ class StreamKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[StreamKeyArgs] = None,
+                 args: StreamKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Accepted Permissions
@@ -217,6 +216,8 @@ class StreamKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StreamKeyArgs.__new__(StreamKeyArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["created"] = None
             __props__.__dict__["jwk"] = None
@@ -265,7 +266,7 @@ class StreamKey(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

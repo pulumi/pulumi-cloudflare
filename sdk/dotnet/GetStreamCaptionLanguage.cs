@@ -105,8 +105,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
@@ -131,8 +131,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// A Cloudflare-generated unique identifier for a media item.
@@ -159,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// Whether the caption was generated via AI.
         /// </summary>
@@ -188,7 +188,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetStreamCaptionLanguageResult(
-            string? accountId,
+            string accountId,
 
             bool generated,
 

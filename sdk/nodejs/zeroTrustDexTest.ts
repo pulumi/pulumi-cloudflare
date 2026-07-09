@@ -73,7 +73,7 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDexTest.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The configuration object which contains the details for the WARP client to conduct the test.
      */
@@ -128,6 +128,9 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
             resourceInputs["testId"] = state?.testId;
         } else {
             const args = argsOrState as ZeroTrustDexTestArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.data === undefined && !opts.urn) {
                 throw new Error("Missing required property 'data'");
             }
@@ -195,7 +198,7 @@ export interface ZeroTrustDexTestState {
  * The set of arguments for constructing a ZeroTrustDexTest resource.
  */
 export interface ZeroTrustDexTestArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The configuration object which contains the details for the WARP client to conduct the test.
      */

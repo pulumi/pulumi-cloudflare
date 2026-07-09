@@ -70,7 +70,7 @@ type HyperdriveConfig struct {
 	pulumi.CustomResourceState
 
 	// Define configurations using a unique string identifier.
-	AccountId pulumi.StringPtrOutput           `pulumi:"accountId"`
+	AccountId pulumi.StringOutput              `pulumi:"accountId"`
 	Caching   HyperdriveConfigCachingPtrOutput `pulumi:"caching"`
 	// Defines the creation time of the Hyperdrive configuration.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
@@ -92,6 +92,9 @@ func NewHyperdriveConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -160,7 +163,7 @@ func (HyperdriveConfigState) ElementType() reflect.Type {
 
 type hyperdriveConfigArgs struct {
 	// Define configurations using a unique string identifier.
-	AccountId *string                  `pulumi:"accountId"`
+	AccountId string                   `pulumi:"accountId"`
 	Caching   *HyperdriveConfigCaching `pulumi:"caching"`
 	// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
 	Mtls *HyperdriveConfigMtls `pulumi:"mtls"`
@@ -174,7 +177,7 @@ type hyperdriveConfigArgs struct {
 // The set of arguments for constructing a HyperdriveConfig resource.
 type HyperdriveConfigArgs struct {
 	// Define configurations using a unique string identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	Caching   HyperdriveConfigCachingPtrInput
 	// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
 	Mtls HyperdriveConfigMtlsPtrInput
@@ -273,8 +276,8 @@ func (o HyperdriveConfigOutput) ToHyperdriveConfigOutputWithContext(ctx context.
 }
 
 // Define configurations using a unique string identifier.
-func (o HyperdriveConfigOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o HyperdriveConfigOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o HyperdriveConfigOutput) Caching() HyperdriveConfigCachingPtrOutput {

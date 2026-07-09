@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDeviceManagedNetworks : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The configuration object containing information for the WARP client to detect the managed network.
@@ -126,8 +126,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDeviceManagedNetworksArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// The configuration object containing information for the WARP client to detect the managed network.

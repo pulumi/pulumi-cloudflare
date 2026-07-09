@@ -288,7 +288,7 @@ export class WaitingRoom extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a WaitingRoom resource with the given unique name, arguments, and options.
@@ -342,6 +342,9 @@ export class WaitingRoom extends pulumi.CustomResource {
             }
             if (args?.totalActiveUsers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'totalActiveUsers'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["additionalRoutes"] = args?.additionalRoutes;
             resourceInputs["cookieAttributes"] = args?.cookieAttributes;
@@ -784,5 +787,5 @@ export interface WaitingRoomArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

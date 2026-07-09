@@ -113,7 +113,7 @@ type AccessPolicy struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups AccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
@@ -150,6 +150,9 @@ func NewAccessPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Decision == nil {
 		return nil, errors.New("invalid value for required argument 'Decision'")
 	}
@@ -254,7 +257,7 @@ func (AccessPolicyState) ElementType() reflect.Type {
 
 type accessPolicyArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
@@ -287,7 +290,7 @@ type accessPolicyArgs struct {
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups AccessPolicyApprovalGroupArrayInput
 	// Requires the user to request access from an administrator at the start of each session.
@@ -405,8 +408,8 @@ func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context)
 }
 
 // Identifier.
-func (o AccessPolicyOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessPolicy) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o AccessPolicyOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Administrators who can approve a temporary authentication request.

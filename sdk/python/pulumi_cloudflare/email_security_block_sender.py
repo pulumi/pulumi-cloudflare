@@ -19,24 +19,37 @@ __all__ = ['EmailSecurityBlockSenderArgs', 'EmailSecurityBlockSender']
 @pulumi.input_type
 class EmailSecurityBlockSenderArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  is_regex: pulumi.Input[_builtins.bool],
                  pattern: pulumi.Input[_builtins.str],
                  pattern_type: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  comments: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailSecurityBlockSender resource.
 
-        :param pulumi.Input[_builtins.str] pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] pattern_type: Type of pattern matching.
+               Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+               Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "is_regex", is_regex)
         pulumi.set(__self__, "pattern", pattern)
         pulumi.set(__self__, "pattern_type", pattern_type)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isRegex")
@@ -60,6 +73,8 @@ class EmailSecurityBlockSenderArgs:
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> pulumi.Input[_builtins.str]:
         """
+        Type of pattern matching.
+        Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
         Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         return pulumi.get(self, "pattern_type")
@@ -67,18 +82,6 @@ class EmailSecurityBlockSenderArgs:
     @pattern_type.setter
     def pattern_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "pattern_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Account Identifier
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -98,13 +101,17 @@ class _EmailSecurityBlockSenderState:
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
                  last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None,
                  pattern: pulumi.Input[Optional[_builtins.str]] = None,
                  pattern_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailSecurityBlockSender resources.
 
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.str] pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        :param pulumi.Input[_builtins.str] pattern_type: Type of pattern matching.
+               Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+               Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -115,7 +122,12 @@ class _EmailSecurityBlockSenderState:
         if is_regex is not None:
             pulumi.set(__self__, "is_regex", is_regex)
         if last_modified is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""last_modified is deprecated: This attribute is deprecated.""")
+        if last_modified is not None:
             pulumi.set(__self__, "last_modified", last_modified)
+        if modified_at is not None:
+            pulumi.set(__self__, "modified_at", modified_at)
         if pattern is not None:
             pulumi.set(__self__, "pattern", pattern)
         if pattern_type is not None:
@@ -125,7 +137,7 @@ class _EmailSecurityBlockSenderState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Account Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -162,12 +174,25 @@ class _EmailSecurityBlockSenderState:
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def last_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        """
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
     def last_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "modified_at")
+
+    @modified_at.setter
+    def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "modified_at", value)
 
     @_builtins.property
     @pulumi.getter
@@ -182,6 +207,8 @@ class _EmailSecurityBlockSenderState:
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        Type of pattern matching.
+        Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
         Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         return pulumi.get(self, "pattern_type")
@@ -232,8 +259,10 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.str] pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] pattern_type: Type of pattern matching.
+               Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+               Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         ...
     @overload
@@ -297,6 +326,8 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EmailSecurityBlockSenderArgs.__new__(EmailSecurityBlockSenderArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["comments"] = comments
             if is_regex is None and not opts.urn:
@@ -310,6 +341,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
             __props__.__dict__["pattern_type"] = pattern_type
             __props__.__dict__["created_at"] = None
             __props__.__dict__["last_modified"] = None
+            __props__.__dict__["modified_at"] = None
         super(EmailSecurityBlockSender, __self__).__init__(
             'cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender',
             resource_name,
@@ -325,6 +357,7 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
             last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
             pattern: pulumi.Input[Optional[_builtins.str]] = None,
             pattern_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'EmailSecurityBlockSender':
         """
@@ -334,8 +367,11 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.str] pattern_type: Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        :param pulumi.Input[_builtins.str] pattern_type: Type of pattern matching.
+               Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+               Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -346,15 +382,16 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["is_regex"] = is_regex
         __props__.__dict__["last_modified"] = last_modified
+        __props__.__dict__["modified_at"] = modified_at
         __props__.__dict__["pattern"] = pattern
         __props__.__dict__["pattern_type"] = pattern_type
         return EmailSecurityBlockSender(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Account Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -375,8 +412,17 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def last_modified(self) -> pulumi.Output[_builtins.str]:
+        """
+        Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        """
         return pulumi.get(self, "last_modified")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "modified_at")
 
     @_builtins.property
     @pulumi.getter
@@ -387,6 +433,8 @@ class EmailSecurityBlockSender(pulumi.CustomResource):
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> pulumi.Output[_builtins.str]:
         """
+        Type of pattern matching.
+        Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
         Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         """
         return pulumi.get(self, "pattern_type")

@@ -74,7 +74,7 @@ export class AiGateway extends pulumi.CustomResource {
         return obj['__pulumiType'] === AiGateway.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * gateway id
      */
@@ -85,6 +85,7 @@ export class AiGateway extends pulumi.CustomResource {
     declare public readonly collectLogs: pulumi.Output<boolean>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public readonly dlp: pulumi.Output<outputs.AiGatewayDlp | undefined>;
+    declare public readonly guardrails: pulumi.Output<outputs.AiGatewayGuardrails | undefined>;
     declare public /*out*/ readonly isDefault: pulumi.Output<boolean>;
     declare public readonly logManagement: pulumi.Output<number | undefined>;
     /**
@@ -114,6 +115,7 @@ export class AiGateway extends pulumi.CustomResource {
      * Maximum number of retry attempts for failed requests (1-5)
      */
     declare public readonly retryMaxAttempts: pulumi.Output<number | undefined>;
+    declare public readonly spendLimits: pulumi.Output<outputs.AiGatewaySpendLimits>;
     declare public readonly storeId: pulumi.Output<string | undefined>;
     declare public readonly stripe: pulumi.Output<outputs.AiGatewayStripe | undefined>;
     /**
@@ -144,6 +146,7 @@ export class AiGateway extends pulumi.CustomResource {
             resourceInputs["collectLogs"] = state?.collectLogs;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["dlp"] = state?.dlp;
+            resourceInputs["guardrails"] = state?.guardrails;
             resourceInputs["isDefault"] = state?.isDefault;
             resourceInputs["logManagement"] = state?.logManagement;
             resourceInputs["logManagementStrategy"] = state?.logManagementStrategy;
@@ -157,12 +160,16 @@ export class AiGateway extends pulumi.CustomResource {
             resourceInputs["retryBackoff"] = state?.retryBackoff;
             resourceInputs["retryDelay"] = state?.retryDelay;
             resourceInputs["retryMaxAttempts"] = state?.retryMaxAttempts;
+            resourceInputs["spendLimits"] = state?.spendLimits;
             resourceInputs["storeId"] = state?.storeId;
             resourceInputs["stripe"] = state?.stripe;
             resourceInputs["workersAiBillingMode"] = state?.workersAiBillingMode;
             resourceInputs["zdr"] = state?.zdr;
         } else {
             const args = argsOrState as AiGatewayArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.aiGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aiGatewayId'");
             }
@@ -188,6 +195,7 @@ export class AiGateway extends pulumi.CustomResource {
             resourceInputs["cacheTtl"] = args?.cacheTtl;
             resourceInputs["collectLogs"] = args?.collectLogs;
             resourceInputs["dlp"] = args?.dlp;
+            resourceInputs["guardrails"] = args?.guardrails;
             resourceInputs["logManagement"] = args?.logManagement;
             resourceInputs["logManagementStrategy"] = args?.logManagementStrategy;
             resourceInputs["logpush"] = args?.logpush;
@@ -199,6 +207,7 @@ export class AiGateway extends pulumi.CustomResource {
             resourceInputs["retryBackoff"] = args?.retryBackoff;
             resourceInputs["retryDelay"] = args?.retryDelay;
             resourceInputs["retryMaxAttempts"] = args?.retryMaxAttempts;
+            resourceInputs["spendLimits"] = args?.spendLimits;
             resourceInputs["storeId"] = args?.storeId;
             resourceInputs["stripe"] = args?.stripe;
             resourceInputs["workersAiBillingMode"] = args?.workersAiBillingMode;
@@ -227,6 +236,7 @@ export interface AiGatewayState {
     collectLogs?: pulumi.Input<boolean | undefined>;
     createdAt?: pulumi.Input<string | undefined>;
     dlp?: pulumi.Input<inputs.AiGatewayDlp | undefined>;
+    guardrails?: pulumi.Input<inputs.AiGatewayGuardrails | undefined>;
     isDefault?: pulumi.Input<boolean | undefined>;
     logManagement?: pulumi.Input<number | undefined>;
     /**
@@ -256,6 +266,7 @@ export interface AiGatewayState {
      * Maximum number of retry attempts for failed requests (1-5)
      */
     retryMaxAttempts?: pulumi.Input<number | undefined>;
+    spendLimits?: pulumi.Input<inputs.AiGatewaySpendLimits | undefined>;
     storeId?: pulumi.Input<string | undefined>;
     stripe?: pulumi.Input<inputs.AiGatewayStripe | undefined>;
     /**
@@ -270,7 +281,7 @@ export interface AiGatewayState {
  * The set of arguments for constructing a AiGateway resource.
  */
 export interface AiGatewayArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * gateway id
      */
@@ -280,6 +291,7 @@ export interface AiGatewayArgs {
     cacheTtl: pulumi.Input<number>;
     collectLogs: pulumi.Input<boolean>;
     dlp?: pulumi.Input<inputs.AiGatewayDlp | undefined>;
+    guardrails?: pulumi.Input<inputs.AiGatewayGuardrails | undefined>;
     logManagement?: pulumi.Input<number | undefined>;
     /**
      * Available values: "STOP*INSERTING", "DELETE*OLDEST".
@@ -307,6 +319,7 @@ export interface AiGatewayArgs {
      * Maximum number of retry attempts for failed requests (1-5)
      */
     retryMaxAttempts?: pulumi.Input<number | undefined>;
+    spendLimits?: pulumi.Input<inputs.AiGatewaySpendLimits | undefined>;
     storeId?: pulumi.Input<string | undefined>;
     stripe?: pulumi.Input<inputs.AiGatewayStripe | undefined>;
     /**

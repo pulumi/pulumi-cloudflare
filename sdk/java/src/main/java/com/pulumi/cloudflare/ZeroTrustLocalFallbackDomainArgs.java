@@ -10,19 +10,17 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ZeroTrustLocalFallbackDomainArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZeroTrustLocalFallbackDomainArgs Empty = new ZeroTrustLocalFallbackDomainArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="domains", required=true)
@@ -65,7 +63,7 @@ public final class ZeroTrustLocalFallbackDomainArgs extends com.pulumi.resources
             $ = new ZeroTrustLocalFallbackDomainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -97,6 +95,9 @@ public final class ZeroTrustLocalFallbackDomainArgs extends com.pulumi.resources
         }
 
         public ZeroTrustLocalFallbackDomainArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustLocalFallbackDomainArgs", "accountId");
+            }
             if ($.domains == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustLocalFallbackDomainArgs", "domains");
             }

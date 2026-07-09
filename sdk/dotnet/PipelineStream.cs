@@ -92,7 +92,7 @@ namespace Pulumi.Cloudflare
         /// Specifies the public ID of the account.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -179,8 +179,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specifies the public ID of the account.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("format")]
         public Input<Inputs.PipelineStreamFormatArgs>? Format { get; set; }

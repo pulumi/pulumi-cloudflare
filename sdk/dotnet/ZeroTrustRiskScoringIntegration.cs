@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustRiskScoringIntegration : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The Cloudflare account tag.
@@ -137,8 +137,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustRiskScoringIntegrationArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.

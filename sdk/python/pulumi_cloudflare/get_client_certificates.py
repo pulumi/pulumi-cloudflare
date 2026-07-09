@@ -78,7 +78,7 @@ class GetClientCertificatesResult:
     @pulumi.getter
     def offset(self) -> Optional[_builtins.int]:
         """
-        Offset the results
+        Offset the results.
         """
         return pulumi.get(self, "offset")
 
@@ -150,7 +150,7 @@ def get_client_certificates(limit: Optional[_builtins.int] = None,
 
     :param _builtins.int limit: Limit to the number of records returned.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.int offset: Offset the results
+    :param _builtins.int offset: Offset the results.
     :param _builtins.str status: Client Certitifcate Status to filter results by.
            Available values: "all", "active", "pending*reactivation", "pending*revocation", "revoked".
     :param _builtins.str zone_id: Identifier.
@@ -199,7 +199,7 @@ def get_client_certificates_output(limit: pulumi.Input[Optional[Optional[_builti
 
     :param _builtins.int limit: Limit to the number of records returned.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.int offset: Offset the results
+    :param _builtins.int offset: Offset the results.
     :param _builtins.str status: Client Certitifcate Status to filter results by.
            Available values: "all", "active", "pending*reactivation", "pending*revocation", "revoked".
     :param _builtins.str zone_id: Identifier.

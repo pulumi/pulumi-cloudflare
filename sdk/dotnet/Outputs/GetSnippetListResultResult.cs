@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
+        /// Identify the snippet.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Indicates when the snippet was last modified.
         /// </summary>
         public readonly string ModifiedOn;
@@ -30,11 +34,14 @@ namespace Pulumi.Cloudflare.Outputs
         private GetSnippetListResultResult(
             string createdOn,
 
+            string id,
+
             string modifiedOn,
 
             string snippetName)
         {
             CreatedOn = createdOn;
+            Id = id;
             ModifiedOn = modifiedOn;
             SnippetName = snippetName;
         }

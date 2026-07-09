@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpPortalServerErrorDetails;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessAiControlsMcpPortalServerUpdatedTool;
 import com.pulumi.core.annotations.CustomType;
@@ -25,12 +26,18 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     private Boolean defaultDisabled;
     private String description;
     private String error;
+    private GetZeroTrustAccessAiControlsMcpPortalServerErrorDetails errorDetails;
     private String hostname;
     /**
      * @return server id
      * 
      */
     private String id;
+    /**
+     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * 
+     */
+    private Boolean isSharedOauthCallbackEnabled;
     private String lastSuccessfulSync;
     private String lastSynced;
     private String modifiedAt;
@@ -38,6 +45,11 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     private String name;
     private Boolean onBehalf;
     private List<Map<String,String>> prompts;
+    /**
+     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * 
+     */
+    private Boolean secureWebGateway;
     private String status;
     private List<Map<String,String>> tools;
     private List<GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt> updatedPrompts;
@@ -66,6 +78,9 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     public String error() {
         return this.error;
     }
+    public GetZeroTrustAccessAiControlsMcpPortalServerErrorDetails errorDetails() {
+        return this.errorDetails;
+    }
     public String hostname() {
         return this.hostname;
     }
@@ -75,6 +90,13 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker&#39;s per-env rollout mode KV key.
+     * 
+     */
+    public Boolean isSharedOauthCallbackEnabled() {
+        return this.isSharedOauthCallbackEnabled;
     }
     public String lastSuccessfulSync() {
         return this.lastSuccessfulSync;
@@ -96,6 +118,13 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     }
     public List<Map<String,String>> prompts() {
         return this.prompts;
+    }
+    /**
+     * @return Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     * 
+     */
+    public Boolean secureWebGateway() {
+        return this.secureWebGateway;
     }
     public String status() {
         return this.status;
@@ -125,8 +154,10 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
         private Boolean defaultDisabled;
         private String description;
         private String error;
+        private GetZeroTrustAccessAiControlsMcpPortalServerErrorDetails errorDetails;
         private String hostname;
         private String id;
+        private Boolean isSharedOauthCallbackEnabled;
         private String lastSuccessfulSync;
         private String lastSynced;
         private String modifiedAt;
@@ -134,6 +165,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
         private String name;
         private Boolean onBehalf;
         private List<Map<String,String>> prompts;
+        private Boolean secureWebGateway;
         private String status;
         private List<Map<String,String>> tools;
         private List<GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt> updatedPrompts;
@@ -147,8 +179,10 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     	      this.defaultDisabled = defaults.defaultDisabled;
     	      this.description = defaults.description;
     	      this.error = defaults.error;
+    	      this.errorDetails = defaults.errorDetails;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
+    	      this.isSharedOauthCallbackEnabled = defaults.isSharedOauthCallbackEnabled;
     	      this.lastSuccessfulSync = defaults.lastSuccessfulSync;
     	      this.lastSynced = defaults.lastSynced;
     	      this.modifiedAt = defaults.modifiedAt;
@@ -156,6 +190,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
     	      this.name = defaults.name;
     	      this.onBehalf = defaults.onBehalf;
     	      this.prompts = defaults.prompts;
+    	      this.secureWebGateway = defaults.secureWebGateway;
     	      this.status = defaults.status;
     	      this.tools = defaults.tools;
     	      this.updatedPrompts = defaults.updatedPrompts;
@@ -211,6 +246,14 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
             return this;
         }
         @CustomType.Setter
+        public Builder errorDetails(GetZeroTrustAccessAiControlsMcpPortalServerErrorDetails errorDetails) {
+            if (errorDetails == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalServer", "errorDetails");
+            }
+            this.errorDetails = errorDetails;
+            return this;
+        }
+        @CustomType.Setter
         public Builder hostname(String hostname) {
             if (hostname == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalServer", "hostname");
@@ -224,6 +267,14 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalServer", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isSharedOauthCallbackEnabled(Boolean isSharedOauthCallbackEnabled) {
+            if (isSharedOauthCallbackEnabled == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalServer", "isSharedOauthCallbackEnabled");
+            }
+            this.isSharedOauthCallbackEnabled = isSharedOauthCallbackEnabled;
             return this;
         }
         @CustomType.Setter
@@ -283,6 +334,14 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
             return this;
         }
         @CustomType.Setter
+        public Builder secureWebGateway(Boolean secureWebGateway) {
+            if (secureWebGateway == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalServer", "secureWebGateway");
+            }
+            this.secureWebGateway = secureWebGateway;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessAiControlsMcpPortalServer", "status");
@@ -328,8 +387,10 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
             _resultValue.defaultDisabled = defaultDisabled;
             _resultValue.description = description;
             _resultValue.error = error;
+            _resultValue.errorDetails = errorDetails;
             _resultValue.hostname = hostname;
             _resultValue.id = id;
+            _resultValue.isSharedOauthCallbackEnabled = isSharedOauthCallbackEnabled;
             _resultValue.lastSuccessfulSync = lastSuccessfulSync;
             _resultValue.lastSynced = lastSynced;
             _resultValue.modifiedAt = modifiedAt;
@@ -337,6 +398,7 @@ public final class GetZeroTrustAccessAiControlsMcpPortalServer {
             _resultValue.name = name;
             _resultValue.onBehalf = onBehalf;
             _resultValue.prompts = prompts;
+            _resultValue.secureWebGateway = secureWebGateway;
             _resultValue.status = status;
             _resultValue.tools = tools;
             _resultValue.updatedPrompts = updatedPrompts;

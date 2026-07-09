@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -73,7 +74,7 @@ type AccountDnsSettings struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
 	EnforceDnsOnly pulumi.BoolPtrOutput                    `pulumi:"enforceDnsOnly"`
 	ZoneDefaults   AccountDnsSettingsZoneDefaultsPtrOutput `pulumi:"zoneDefaults"`
@@ -83,9 +84,12 @@ type AccountDnsSettings struct {
 func NewAccountDnsSettings(ctx *pulumi.Context,
 	name string, args *AccountDnsSettingsArgs, opts ...pulumi.ResourceOption) (*AccountDnsSettings, error) {
 	if args == nil {
-		args = &AccountDnsSettingsArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccountDnsSettings
 	err := ctx.RegisterResource("cloudflare:index/accountDnsSettings:AccountDnsSettings", name, args, &resource, opts...)
@@ -130,7 +134,7 @@ func (AccountDnsSettingsState) ElementType() reflect.Type {
 
 type accountDnsSettingsArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
 	EnforceDnsOnly *bool                           `pulumi:"enforceDnsOnly"`
 	ZoneDefaults   *AccountDnsSettingsZoneDefaults `pulumi:"zoneDefaults"`
@@ -139,7 +143,7 @@ type accountDnsSettingsArgs struct {
 // The set of arguments for constructing a AccountDnsSettings resource.
 type AccountDnsSettingsArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
 	EnforceDnsOnly pulumi.BoolPtrInput
 	ZoneDefaults   AccountDnsSettingsZoneDefaultsPtrInput
@@ -233,8 +237,8 @@ func (o AccountDnsSettingsOutput) ToAccountDnsSettingsOutputWithContext(ctx cont
 }
 
 // Identifier.
-func (o AccountDnsSettingsOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccountDnsSettings) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o AccountDnsSettingsOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountDnsSettings) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).

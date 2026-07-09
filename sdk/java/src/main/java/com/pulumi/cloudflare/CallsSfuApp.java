@@ -67,14 +67,14 @@ public class CallsSfuApp extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return The account identifier tag.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * A Cloudflare-generated unique identifier for a item.
@@ -173,7 +173,7 @@ public class CallsSfuApp extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CallsSfuApp(java.lang.String name, @Nullable CallsSfuAppArgs args) {
+    public CallsSfuApp(java.lang.String name, CallsSfuAppArgs args) {
         this(name, args, null);
     }
     /**
@@ -182,7 +182,7 @@ public class CallsSfuApp extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CallsSfuApp(java.lang.String name, @Nullable CallsSfuAppArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public CallsSfuApp(java.lang.String name, CallsSfuAppArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/callsSfuApp:CallsSfuApp", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -190,7 +190,7 @@ public class CallsSfuApp extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/callsSfuApp:CallsSfuApp", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static CallsSfuAppArgs makeArgs(@Nullable CallsSfuAppArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static CallsSfuAppArgs makeArgs(CallsSfuAppArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

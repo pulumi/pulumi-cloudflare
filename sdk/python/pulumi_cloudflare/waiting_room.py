@@ -25,6 +25,7 @@ class WaitingRoomArgs:
                  name: pulumi.Input[_builtins.str],
                  new_users_per_minute: pulumi.Input[_builtins.int],
                  total_active_users: pulumi.Input[_builtins.int],
+                 zone_id: pulumi.Input[_builtins.str],
                  additional_routes: pulumi.Input[Optional[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]] = None,
                  cookie_attributes: pulumi.Input[Optional['WaitingRoomCookieAttributesArgs']] = None,
                  cookie_suffix: pulumi.Input[Optional[_builtins.str]] = None,
@@ -41,8 +42,7 @@ class WaitingRoomArgs:
                  session_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
                  turnstile_action: pulumi.Input[Optional[_builtins.str]] = None,
-                 turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 turnstile_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WaitingRoom resource.
 
@@ -50,6 +50,7 @@ class WaitingRoomArgs:
         :param pulumi.Input[_builtins.str] name: A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
         :param pulumi.Input[_builtins.int] new_users_per_minute: Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
         :param pulumi.Input[_builtins.int] total_active_users: Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]] additional_routes: Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
         :param pulumi.Input['WaitingRoomCookieAttributesArgs'] cookie_attributes: Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
         :param pulumi.Input[_builtins.str] cookie_suffix: Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
@@ -174,12 +175,12 @@ class WaitingRoomArgs:
                Turnstile integration entirely. Setting this to anything other than
                `off` or `invisible` requires Advanced Waiting Room.
                Available values: "off", "invisible", "visible_non_interactive", "visible_managed".
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "new_users_per_minute", new_users_per_minute)
         pulumi.set(__self__, "total_active_users", total_active_users)
+        pulumi.set(__self__, "zone_id", zone_id)
         if additional_routes is not None:
             pulumi.set(__self__, "additional_routes", additional_routes)
         if cookie_attributes is not None:
@@ -214,8 +215,6 @@ class WaitingRoomArgs:
             pulumi.set(__self__, "turnstile_action", turnstile_action)
         if turnstile_mode is not None:
             pulumi.set(__self__, "turnstile_mode", turnstile_mode)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -264,6 +263,18 @@ class WaitingRoomArgs:
     @total_active_users.setter
     def total_active_users(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "total_active_users", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalRoutes")
@@ -575,18 +586,6 @@ class WaitingRoomArgs:
     @turnstile_mode.setter
     def turnstile_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "turnstile_mode", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -1562,6 +1561,8 @@ class WaitingRoom(pulumi.CustomResource):
             __props__.__dict__["total_active_users"] = total_active_users
             __props__.__dict__["turnstile_action"] = turnstile_action
             __props__.__dict__["turnstile_mode"] = turnstile_mode
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_on"] = None
             __props__.__dict__["modified_on"] = None
@@ -2077,7 +2078,7 @@ class WaitingRoom(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

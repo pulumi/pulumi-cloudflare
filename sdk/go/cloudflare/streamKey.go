@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -51,7 +52,7 @@ type StreamKey struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The date and time a signing key was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The signing key in JWK format.
@@ -66,9 +67,12 @@ type StreamKey struct {
 func NewStreamKey(ctx *pulumi.Context,
 	name string, args *StreamKeyArgs, opts ...pulumi.ResourceOption) (*StreamKey, error) {
 	if args == nil {
-		args = &StreamKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"jwk",
 		"pem",
@@ -128,13 +132,13 @@ func (StreamKeyState) ElementType() reflect.Type {
 
 type streamKeyArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 }
 
 // The set of arguments for constructing a StreamKey resource.
 type StreamKeyArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 }
 
 func (StreamKeyArgs) ElementType() reflect.Type {
@@ -225,8 +229,8 @@ func (o StreamKeyOutput) ToStreamKeyOutputWithContext(ctx context.Context) Strea
 }
 
 // Identifier.
-func (o StreamKeyOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StreamKey) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o StreamKeyOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StreamKey) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The date and time a signing key was created.

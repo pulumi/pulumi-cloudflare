@@ -17,7 +17,6 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -72,10 +71,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry")
 public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * Only applies to custom word lists.
@@ -166,14 +165,14 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
         return this.secret;
     }
     /**
-     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
+     * Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;custom*prompt*topic&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     public Output<String> type() {
@@ -199,9 +198,17 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
     public Output<String> uploadStatus() {
         return this.uploadStatus;
     }
+    /**
+     * A Predefined AI prompt classification topic entry.
+     * 
+     */
     @Export(name="variant", refs={ZeroTrustDlpPredefinedEntryVariant.class}, tree="[0]")
     private Output<ZeroTrustDlpPredefinedEntryVariant> variant;
 
+    /**
+     * @return A Predefined AI prompt classification topic entry.
+     * 
+     */
     public Output<ZeroTrustDlpPredefinedEntryVariant> variant() {
         return this.variant;
     }

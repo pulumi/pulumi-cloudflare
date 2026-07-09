@@ -61,7 +61,7 @@ export class ZeroTrustDeviceIpProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDeviceIpProfile.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The RFC3339Nano timestamp when the Device IP profile was created.
      */
@@ -119,6 +119,9 @@ export class ZeroTrustDeviceIpProfile extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ZeroTrustDeviceIpProfileArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.match === undefined && !opts.urn) {
                 throw new Error("Missing required property 'match'");
             }
@@ -189,7 +192,7 @@ export interface ZeroTrustDeviceIpProfileState {
  * The set of arguments for constructing a ZeroTrustDeviceIpProfile resource.
  */
 export interface ZeroTrustDeviceIpProfileArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * An optional description of the Device IP profile.
      */

@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// Identifier of a Cloudflare account.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
@@ -196,8 +196,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier of a Cloudflare account.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Autonomous System Number (ASN) the prefix will be advertised under.

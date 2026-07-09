@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.GetD1DatabaseFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -46,6 +47,23 @@ public final class GetD1DatabaseArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.databaseId);
     }
 
+    /**
+     * Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     * 
+     */
+    @Import(name="fields")
+    private @Nullable Output<List<String>> fields;
+
+    /**
+     * @return Comma-separated list of fields to include in the response. When omitted,
+     * all fields are returned.
+     * 
+     */
+    public Optional<Output<List<String>>> fields() {
+        return Optional.ofNullable(this.fields);
+    }
+
     @Import(name="filter")
     private @Nullable Output<GetD1DatabaseFilterArgs> filter;
 
@@ -58,6 +76,7 @@ public final class GetD1DatabaseArgs extends com.pulumi.resources.InvokeArgs {
     private GetD1DatabaseArgs(GetD1DatabaseArgs $) {
         this.accountId = $.accountId;
         this.databaseId = $.databaseId;
+        this.fields = $.fields;
         this.filter = $.filter;
     }
 
@@ -119,6 +138,40 @@ public final class GetD1DatabaseArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder databaseId(String databaseId) {
             return databaseId(Output.of(databaseId));
+        }
+
+        /**
+         * @param fields Comma-separated list of fields to include in the response. When omitted,
+         * all fields are returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fields(@Nullable Output<List<String>> fields) {
+            $.fields = fields;
+            return this;
+        }
+
+        /**
+         * @param fields Comma-separated list of fields to include in the response. When omitted,
+         * all fields are returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fields(List<String> fields) {
+            return fields(Output.of(fields));
+        }
+
+        /**
+         * @param fields Comma-separated list of fields to include in the response. When omitted,
+         * all fields are returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fields(String... fields) {
+            return fields(List.of(fields));
         }
 
         public Builder filter(@Nullable Output<GetD1DatabaseFilterArgs> filter) {

@@ -31,6 +31,10 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DatabaseId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         Fields = new[]
+        ///         {
+        ///             "uuid",
+        ///         },
         ///     });
         /// 
         /// });
@@ -59,6 +63,10 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DatabaseId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         Fields = new[]
+        ///         {
+        ///             "uuid",
+        ///         },
         ///     });
         /// 
         /// });
@@ -87,6 +95,10 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DatabaseId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         Fields = new[]
+        ///         {
+        ///             "uuid",
+        ///         },
         ///     });
         /// 
         /// });
@@ -111,6 +123,19 @@ namespace Pulumi.Cloudflare
         [Input("databaseId")]
         public string? DatabaseId { get; set; }
 
+        [Input("fields")]
+        private List<string>? _fields;
+
+        /// <summary>
+        /// Comma-separated list of fields to include in the response. When omitted,
+        /// all fields are returned.
+        /// </summary>
+        public List<string> Fields
+        {
+            get => _fields ?? (_fields = new List<string>());
+            set => _fields = value;
+        }
+
         [Input("filter")]
         public Inputs.GetD1DatabaseFilterArgs? Filter { get; set; }
 
@@ -133,6 +158,19 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("databaseId")]
         public Input<string>? DatabaseId { get; set; }
+
+        [Input("fields")]
+        private InputList<string>? _fields;
+
+        /// <summary>
+        /// Comma-separated list of fields to include in the response. When omitted,
+        /// all fields are returned.
+        /// </summary>
+        public InputList<string> Fields
+        {
+            get => _fields ?? (_fields = new InputList<string>());
+            set => _fields = value;
+        }
 
         [Input("filter")]
         public Input<Inputs.GetD1DatabaseFilterInputArgs>? Filter { get; set; }
@@ -159,6 +197,11 @@ namespace Pulumi.Cloudflare
         /// D1 database identifier (UUID).
         /// </summary>
         public readonly string? DatabaseId;
+        /// <summary>
+        /// Comma-separated list of fields to include in the response. When omitted,
+        /// all fields are returned.
+        /// </summary>
+        public readonly ImmutableArray<string> Fields;
         /// <summary>
         /// The D1 database's size, in bytes.
         /// </summary>
@@ -196,6 +239,8 @@ namespace Pulumi.Cloudflare
 
             string? databaseId,
 
+            ImmutableArray<string> fields,
+
             double fileSize,
 
             Outputs.GetD1DatabaseFilterResult? filter,
@@ -217,6 +262,7 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             CreatedAt = createdAt;
             DatabaseId = databaseId;
+            Fields = fields;
             FileSize = fileSize;
             Filter = filter;
             Id = id;

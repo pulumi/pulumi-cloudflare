@@ -45,7 +45,7 @@ class GetMtlsCertificateAssociationsResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         Identifier.
         """
@@ -132,7 +132,7 @@ def get_mtls_certificate_associations(account_id: Optional[_builtins.str] = None
         mtls_certificate_id=pulumi.get(__ret__, 'mtls_certificate_id'),
         service=pulumi.get(__ret__, 'service'),
         status=pulumi.get(__ret__, 'status'))
-def get_mtls_certificate_associations_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_mtls_certificate_associations_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                              mtls_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMtlsCertificateAssociationsResult]:
     """

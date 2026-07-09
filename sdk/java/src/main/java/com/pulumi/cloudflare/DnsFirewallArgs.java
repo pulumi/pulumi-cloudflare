@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -24,15 +25,15 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
      * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -63,6 +64,21 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> deprecateAnyRequests() {
         return Optional.ofNullable(this.deprecateAnyRequests);
+    }
+
+    /**
+     * Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+     * 
+     */
+    @Import(name="dnsFirewallIpCount")
+    private @Nullable Output<Integer> dnsFirewallIpCount;
+
+    /**
+     * @return Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+     * 
+     */
+    public Optional<Output<Integer>> dnsFirewallIpCount() {
+        return Optional.ofNullable(this.dnsFirewallIpCount);
     }
 
     /**
@@ -181,14 +197,14 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+     * Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
      * 
      */
     @Import(name="ratelimit")
     private @Nullable Output<Double> ratelimit;
 
     /**
-     * @return Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+     * @return Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
      * 
      */
     public Optional<Output<Double>> ratelimit() {
@@ -223,6 +239,7 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.attackMitigation = $.attackMitigation;
         this.deprecateAnyRequests = $.deprecateAnyRequests;
+        this.dnsFirewallIpCount = $.dnsFirewallIpCount;
         this.ecsFallback = $.ecsFallback;
         this.maximumCacheTtl = $.maximumCacheTtl;
         this.minimumCacheTtl = $.minimumCacheTtl;
@@ -257,7 +274,7 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -312,6 +329,27 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deprecateAnyRequests(Boolean deprecateAnyRequests) {
             return deprecateAnyRequests(Output.of(deprecateAnyRequests));
+        }
+
+        /**
+         * @param dnsFirewallIpCount Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsFirewallIpCount(@Nullable Output<Integer> dnsFirewallIpCount) {
+            $.dnsFirewallIpCount = dnsFirewallIpCount;
+            return this;
+        }
+
+        /**
+         * @param dnsFirewallIpCount Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsFirewallIpCount(Integer dnsFirewallIpCount) {
+            return dnsFirewallIpCount(Output.of(dnsFirewallIpCount));
         }
 
         /**
@@ -460,7 +498,7 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ratelimit Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+         * @param ratelimit Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
          * 
          * @return builder
          * 
@@ -471,7 +509,7 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ratelimit Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+         * @param ratelimit Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
          * 
          * @return builder
          * 
@@ -515,6 +553,9 @@ public final class DnsFirewallArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DnsFirewallArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("DnsFirewallArgs", "accountId");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("DnsFirewallArgs", "name");
             }

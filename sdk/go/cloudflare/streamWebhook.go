@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -50,7 +51,7 @@ type StreamWebhook struct {
 	pulumi.CustomResourceState
 
 	// The account identifier tag.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The date and time the webhook was last modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
 	// The URL where webhooks will be sent.
@@ -63,9 +64,12 @@ type StreamWebhook struct {
 func NewStreamWebhook(ctx *pulumi.Context,
 	name string, args *StreamWebhookArgs, opts ...pulumi.ResourceOption) (*StreamWebhook, error) {
 	if args == nil {
-		args = &StreamWebhookArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"secret",
 	})
@@ -120,7 +124,7 @@ func (StreamWebhookState) ElementType() reflect.Type {
 
 type streamWebhookArgs struct {
 	// The account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The URL where webhooks will be sent.
 	NotificationUrl *string `pulumi:"notificationUrl"`
 }
@@ -128,7 +132,7 @@ type streamWebhookArgs struct {
 // The set of arguments for constructing a StreamWebhook resource.
 type StreamWebhookArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// The URL where webhooks will be sent.
 	NotificationUrl pulumi.StringPtrInput
 }
@@ -221,8 +225,8 @@ func (o StreamWebhookOutput) ToStreamWebhookOutputWithContext(ctx context.Contex
 }
 
 // The account identifier tag.
-func (o StreamWebhookOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StreamWebhook) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o StreamWebhookOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *StreamWebhook) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The date and time the webhook was last modified.

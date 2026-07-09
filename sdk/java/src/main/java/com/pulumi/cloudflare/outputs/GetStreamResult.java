@@ -16,8 +16,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStreamResult {
@@ -25,7 +23,7 @@ public final class GetStreamResult {
      * @return The account identifier tag.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
      * 
@@ -160,8 +158,8 @@ public final class GetStreamResult {
      * @return The account identifier tag.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
@@ -357,7 +355,7 @@ public final class GetStreamResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private List<String> allowedOrigins;
         private String clippedFrom;
         private String created;
@@ -421,8 +419,10 @@ public final class GetStreamResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetStreamResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDexTest : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The configuration object which contains the details for the WARP client to conduct the test.
@@ -157,8 +157,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDexTestArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// The configuration object which contains the details for the WARP client to conduct the test.

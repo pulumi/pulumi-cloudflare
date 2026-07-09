@@ -43,7 +43,7 @@ export interface GetZeroTrustTunnelCloudflaredConfigArgs {
     /**
      * Identifier.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * UUID of the tunnel.
      */
@@ -57,7 +57,7 @@ export interface GetZeroTrustTunnelCloudflaredConfigResult {
     /**
      * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * The tunnel configuration and ingress rules.
      */
@@ -118,7 +118,7 @@ export interface GetZeroTrustTunnelCloudflaredConfigOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * UUID of the tunnel.
      */

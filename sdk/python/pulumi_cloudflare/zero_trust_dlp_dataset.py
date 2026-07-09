@@ -21,8 +21,8 @@ __all__ = ['ZeroTrustDlpDatasetArgs', 'ZeroTrustDlpDataset']
 @pulumi.input_type
 class ZeroTrustDlpDatasetArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -41,9 +41,8 @@ class ZeroTrustDlpDatasetArgs:
                If true, the response will include a secret to use with the EDM encoder.
                If false, the response has no secret and the dataset is uploaded in plaintext.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if case_sensitive is not None:
             pulumi.set(__self__, "case_sensitive", case_sensitive)
         if dataset_id is not None:
@@ -56,6 +55,15 @@ class ZeroTrustDlpDatasetArgs:
             pulumi.set(__self__, "secret", secret)
 
     @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         return pulumi.get(self, "name")
@@ -63,15 +71,6 @@ class ZeroTrustDlpDatasetArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="caseSensitive")
@@ -494,6 +493,8 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustDlpDatasetArgs.__new__(ZeroTrustDlpDatasetArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["case_sensitive"] = case_sensitive
             __props__.__dict__["dataset_id"] = dataset_id
@@ -584,7 +585,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

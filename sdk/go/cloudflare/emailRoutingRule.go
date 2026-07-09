@@ -84,7 +84,7 @@ type EmailRoutingRule struct {
 	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringOutput `pulumi:"tag"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewEmailRoutingRule registers a new resource with the given unique name, arguments, and options.
@@ -99,6 +99,9 @@ func NewEmailRoutingRule(ctx *pulumi.Context,
 	}
 	if args.Matchers == nil {
 		return nil, errors.New("invalid value for required argument 'Matchers'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EmailRoutingRule
@@ -176,7 +179,7 @@ type emailRoutingRuleArgs struct {
 	// Priority of the routing rule.
 	Priority *float64 `pulumi:"priority"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a EmailRoutingRule resource.
@@ -192,7 +195,7 @@ type EmailRoutingRuleArgs struct {
 	// Priority of the routing rule.
 	Priority pulumi.Float64PtrInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (EmailRoutingRuleArgs) ElementType() reflect.Type {
@@ -315,8 +318,8 @@ func (o EmailRoutingRuleOutput) Tag() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o EmailRoutingRuleOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailRoutingRule) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o EmailRoutingRuleOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailRoutingRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type EmailRoutingRuleArrayOutput struct{ *pulumi.OutputState }

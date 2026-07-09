@@ -178,7 +178,7 @@ import (
 type ZeroTrustGatewayPolicy struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    pulumi.StringOutput `pulumi:"action"`
@@ -227,6 +227,9 @@ func NewZeroTrustGatewayPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Action == nil {
 		return nil, errors.New("invalid value for required argument 'Action'")
 	}
@@ -352,7 +355,7 @@ func (ZeroTrustGatewayPolicyState) ElementType() reflect.Type {
 }
 
 type zeroTrustGatewayPolicyArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action string `pulumi:"action"`
@@ -382,7 +385,7 @@ type zeroTrustGatewayPolicyArgs struct {
 
 // The set of arguments for constructing a ZeroTrustGatewayPolicy resource.
 type ZeroTrustGatewayPolicyArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action pulumi.StringInput
@@ -497,8 +500,8 @@ func (o ZeroTrustGatewayPolicyOutput) ToZeroTrustGatewayPolicyOutputWithContext(
 	return o
 }
 
-func (o ZeroTrustGatewayPolicyOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustGatewayPolicyOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.

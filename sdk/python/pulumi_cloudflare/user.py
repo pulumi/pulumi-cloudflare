@@ -112,6 +112,7 @@ class _UserState:
     def __init__(__self__, *,
                  betas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  country: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
                  first_name: pulumi.Input[Optional[_builtins.str]] = None,
                  has_business_zones: pulumi.Input[Optional[_builtins.bool]] = None,
                  has_enterprise_zones: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -128,6 +129,7 @@ class _UserState:
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] betas: Lists the betas that the user is participating in.
         :param pulumi.Input[_builtins.str] country: The country in which the user lives.
+        :param pulumi.Input[_builtins.str] email: Current email address of the user.
         :param pulumi.Input[_builtins.str] first_name: User's first name
         :param pulumi.Input[_builtins.bool] has_business_zones: Indicates whether user has any business zones
         :param pulumi.Input[_builtins.bool] has_enterprise_zones: Indicates whether user has any enterprise zones
@@ -143,6 +145,8 @@ class _UserState:
             pulumi.set(__self__, "betas", betas)
         if country is not None:
             pulumi.set(__self__, "country", country)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
         if first_name is not None:
             pulumi.set(__self__, "first_name", first_name)
         if has_business_zones is not None:
@@ -189,6 +193,18 @@ class _UserState:
     @country.setter
     def country(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "country", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Current email address of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="firstName")
@@ -431,6 +447,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["telephone"] = telephone
             __props__.__dict__["zipcode"] = zipcode
             __props__.__dict__["betas"] = None
+            __props__.__dict__["email"] = None
             __props__.__dict__["has_business_zones"] = None
             __props__.__dict__["has_enterprise_zones"] = None
             __props__.__dict__["has_pro_zones"] = None
@@ -450,6 +467,7 @@ class User(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             betas: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             country: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
             first_name: pulumi.Input[Optional[_builtins.str]] = None,
             has_business_zones: pulumi.Input[Optional[_builtins.bool]] = None,
             has_enterprise_zones: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -470,6 +488,7 @@ class User(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] betas: Lists the betas that the user is participating in.
         :param pulumi.Input[_builtins.str] country: The country in which the user lives.
+        :param pulumi.Input[_builtins.str] email: Current email address of the user.
         :param pulumi.Input[_builtins.str] first_name: User's first name
         :param pulumi.Input[_builtins.bool] has_business_zones: Indicates whether user has any business zones
         :param pulumi.Input[_builtins.bool] has_enterprise_zones: Indicates whether user has any enterprise zones
@@ -487,6 +506,7 @@ class User(pulumi.CustomResource):
 
         __props__.__dict__["betas"] = betas
         __props__.__dict__["country"] = country
+        __props__.__dict__["email"] = email
         __props__.__dict__["first_name"] = first_name
         __props__.__dict__["has_business_zones"] = has_business_zones
         __props__.__dict__["has_enterprise_zones"] = has_enterprise_zones
@@ -515,6 +535,14 @@ class User(pulumi.CustomResource):
         The country in which the user lives.
         """
         return pulumi.get(self, "country")
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> pulumi.Output[_builtins.str]:
+        """
+        Current email address of the user.
+        """
+        return pulumi.get(self, "email")
 
     @_builtins.property
     @pulumi.getter(name="firstName")

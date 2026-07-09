@@ -21,20 +21,31 @@ __all__ = ['PipelineArgs', 'Pipeline']
 @pulumi.input_type
 class PipelineArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 sql: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 sql: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Pipeline resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the Pipeline.
         :param pulumi.Input[_builtins.str] sql: Specifies SQL for the Pipeline processing flow.
-        :param pulumi.Input[_builtins.str] account_id: Specifies the public ID of the account.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "sql", sql)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specifies the public ID of the account.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -59,18 +70,6 @@ class PipelineArgs:
     @sql.setter
     def sql(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "sql", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Specifies the public ID of the account.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
@@ -301,6 +300,8 @@ class Pipeline(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PipelineArgs.__new__(PipelineArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -361,7 +362,7 @@ class Pipeline(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the public ID of the account.
         """

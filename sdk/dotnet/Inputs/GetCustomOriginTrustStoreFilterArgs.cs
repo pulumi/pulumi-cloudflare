@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<int>? Limit { get; set; }
 
         /// <summary>
-        /// Offset the results
+        /// Offset the results.
         /// </summary>
         [Input("offset")]
         public Input<int>? Offset { get; set; }

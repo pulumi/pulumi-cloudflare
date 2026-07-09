@@ -63,7 +63,7 @@ export class ZeroTrustNetworkHostnameRoute extends pulumi.CustomResource {
     /**
      * Cloudflare account ID
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * An optional description of the hostname route.
      */
@@ -81,6 +81,11 @@ export class ZeroTrustNetworkHostnameRoute extends pulumi.CustomResource {
      */
     declare public readonly hostname: pulumi.Output<string | undefined>;
     /**
+     * The type of tunnel.
+     * Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+     */
+    declare public /*out*/ readonly tunType: pulumi.Output<string>;
+    /**
      * UUID of the tunnel.
      */
     declare public readonly tunnelId: pulumi.Output<string | undefined>;
@@ -96,7 +101,7 @@ export class ZeroTrustNetworkHostnameRoute extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ZeroTrustNetworkHostnameRouteArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ZeroTrustNetworkHostnameRouteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZeroTrustNetworkHostnameRouteArgs | ZeroTrustNetworkHostnameRouteState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -107,16 +112,21 @@ export class ZeroTrustNetworkHostnameRoute extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["deletedAt"] = state?.deletedAt;
             resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["tunType"] = state?.tunType;
             resourceInputs["tunnelId"] = state?.tunnelId;
             resourceInputs["tunnelName"] = state?.tunnelName;
         } else {
             const args = argsOrState as ZeroTrustNetworkHostnameRouteArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["comment"] = args?.comment;
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["tunnelId"] = args?.tunnelId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["deletedAt"] = undefined /*out*/;
+            resourceInputs["tunType"] = undefined /*out*/;
             resourceInputs["tunnelName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -149,6 +159,11 @@ export interface ZeroTrustNetworkHostnameRouteState {
      */
     hostname?: pulumi.Input<string | undefined>;
     /**
+     * The type of tunnel.
+     * Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+     */
+    tunType?: pulumi.Input<string | undefined>;
+    /**
      * UUID of the tunnel.
      */
     tunnelId?: pulumi.Input<string | undefined>;
@@ -165,7 +180,7 @@ export interface ZeroTrustNetworkHostnameRouteArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * An optional description of the hostname route.
      */

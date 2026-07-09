@@ -19,11 +19,11 @@ public final class MagicNetworkMonitoringConfigurationArgs extends com.pulumi.re
 
     public static final MagicNetworkMonitoringConfigurationArgs Empty = new MagicNetworkMonitoringConfigurationArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -98,7 +98,7 @@ public final class MagicNetworkMonitoringConfigurationArgs extends com.pulumi.re
             $ = new MagicNetworkMonitoringConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -176,6 +176,9 @@ public final class MagicNetworkMonitoringConfigurationArgs extends com.pulumi.re
         }
 
         public MagicNetworkMonitoringConfigurationArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("MagicNetworkMonitoringConfigurationArgs", "accountId");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("MagicNetworkMonitoringConfigurationArgs", "name");
             }

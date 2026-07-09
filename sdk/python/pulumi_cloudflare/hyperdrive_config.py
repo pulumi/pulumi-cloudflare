@@ -21,30 +21,41 @@ __all__ = ['HyperdriveConfigArgs', 'HyperdriveConfig']
 @pulumi.input_type
 class HyperdriveConfigArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  origin: pulumi.Input['HyperdriveConfigOriginArgs'],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  caching: pulumi.Input[Optional['HyperdriveConfigCachingArgs']] = None,
                  mtls: pulumi.Input[Optional['HyperdriveConfigMtlsArgs']] = None,
                  origin_connection_limit: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a HyperdriveConfig resource.
 
-        :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
+        :param pulumi.Input[_builtins.str] name: The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
         :param pulumi.Input['HyperdriveConfigMtlsArgs'] mtls: mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
         :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "origin", origin)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if caching is not None:
             pulumi.set(__self__, "caching", caching)
         if mtls is not None:
             pulumi.set(__self__, "mtls", mtls)
         if origin_connection_limit is not None:
             pulumi.set(__self__, "origin_connection_limit", origin_connection_limit)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Define configurations using a unique string identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -66,18 +77,6 @@ class HyperdriveConfigArgs:
     @origin.setter
     def origin(self, value: pulumi.Input['HyperdriveConfigOriginArgs']):
         pulumi.set(self, "origin", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Define configurations using a unique string identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -380,6 +379,8 @@ class HyperdriveConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HyperdriveConfigArgs.__new__(HyperdriveConfigArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["caching"] = caching
             __props__.__dict__["mtls"] = mtls
@@ -440,7 +441,7 @@ class HyperdriveConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Define configurations using a unique string identifier.
         """

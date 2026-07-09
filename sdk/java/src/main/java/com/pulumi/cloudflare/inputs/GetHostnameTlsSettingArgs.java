@@ -17,14 +17,16 @@ public final class GetHostnameTlsSettingArgs extends com.pulumi.resources.Invoke
     public static final GetHostnameTlsSettingArgs Empty = new GetHostnameTlsSettingArgs();
 
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     @Import(name="settingId", required=true)
     private Output<String> settingId;
 
     /**
-     * @return The TLS Setting name. The value type depends on the setting:
+     * @return The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     public Output<String> settingId() {
@@ -72,7 +74,8 @@ public final class GetHostnameTlsSettingArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param settingId The TLS Setting name. The value type depends on the setting:
+         * @param settingId The TLS Setting name.
+         * The value type depends on the setting:
          * 
          * @return builder
          * 
@@ -83,7 +86,8 @@ public final class GetHostnameTlsSettingArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param settingId The TLS Setting name. The value type depends on the setting:
+         * @param settingId The TLS Setting name.
+         * The value type depends on the setting:
          * 
          * @return builder
          * 

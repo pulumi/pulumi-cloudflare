@@ -85,7 +85,7 @@ type FirewallRule struct {
 	// A short reference tag. Allows you to select related firewall rules.
 	Ref pulumi.StringOutput `pulumi:"ref"`
 	// Defines an identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewFirewallRule registers a new resource with the given unique name, arguments, and options.
@@ -100,6 +100,9 @@ func NewFirewallRule(ctx *pulumi.Context,
 	}
 	if args.Filter == nil {
 		return nil, errors.New("invalid value for required argument 'Filter'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FirewallRule
@@ -166,7 +169,7 @@ type firewallRuleArgs struct {
 	Action FirewallRuleAction `pulumi:"action"`
 	Filter FirewallRuleFilter `pulumi:"filter"`
 	// Defines an identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a FirewallRule resource.
@@ -175,7 +178,7 @@ type FirewallRuleArgs struct {
 	Action FirewallRuleActionInput
 	Filter FirewallRuleFilterInput
 	// Defines an identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (FirewallRuleArgs) ElementType() reflect.Type {
@@ -299,8 +302,8 @@ func (o FirewallRuleOutput) Ref() pulumi.StringOutput {
 }
 
 // Defines an identifier.
-func (o FirewallRuleOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FirewallRule) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o FirewallRuleOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type FirewallRuleArrayOutput struct{ *pulumi.OutputState }

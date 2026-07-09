@@ -78,7 +78,7 @@ export class HyperdriveConfig extends pulumi.CustomResource {
     /**
      * Define configurations using a unique string identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public readonly caching: pulumi.Output<outputs.HyperdriveConfigCaching | undefined>;
     /**
      * Defines the creation time of the Hyperdrive configuration.
@@ -125,6 +125,9 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             resourceInputs["originConnectionLimit"] = state?.originConnectionLimit;
         } else {
             const args = argsOrState as HyperdriveConfigArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -184,7 +187,7 @@ export interface HyperdriveConfigArgs {
     /**
      * Define configurations using a unique string identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     caching?: pulumi.Input<inputs.HyperdriveConfigCaching | undefined>;
     /**
      * mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.

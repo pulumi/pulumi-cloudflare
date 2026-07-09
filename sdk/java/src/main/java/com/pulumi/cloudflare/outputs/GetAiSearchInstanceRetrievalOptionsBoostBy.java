@@ -11,20 +11,20 @@ import java.util.Objects;
 @CustomType
 public final class GetAiSearchInstanceRetrievalOptionsBoostBy {
     /**
-     * @return Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional ��� defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
+     * @return Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional — defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
      * Available values: &#34;asc&#34;, &#34;desc&#34;, &#34;exists&#34;, &#34;not*exists&#34;.
      * 
      */
     private String direction;
     /**
-     * @return Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not*exists.
+     * @return Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
      * 
      */
     private String field;
 
     private GetAiSearchInstanceRetrievalOptionsBoostBy() {}
     /**
-     * @return Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional ��� defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
+     * @return Boost direction. &#39;desc&#39; = higher values rank higher (e.g. newer timestamps). &#39;asc&#39; = lower values rank higher. &#39;exists&#39; = boost chunks that have the field. &#39;not*exists&#39; = boost chunks that lack the field. Optional — defaults to &#39;asc&#39; for numeric/datetime fields, &#39;exists&#39; for text/boolean fields.
      * Available values: &#34;asc&#34;, &#34;desc&#34;, &#34;exists&#34;, &#34;not*exists&#34;.
      * 
      */
@@ -32,7 +32,7 @@ public final class GetAiSearchInstanceRetrievalOptionsBoostBy {
         return this.direction;
     }
     /**
-     * @return Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not*exists.
+     * @return Metadata field name to boost by. Use &#39;timestamp&#39; for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
      * 
      */
     public String field() {

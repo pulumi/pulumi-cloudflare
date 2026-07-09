@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -56,7 +57,7 @@ type ZeroTrustNetworkHostnameRoute struct {
 	pulumi.CustomResourceState
 
 	// Cloudflare account ID
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// An optional description of the hostname route.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Timestamp of when the resource was created.
@@ -65,6 +66,9 @@ type ZeroTrustNetworkHostnameRoute struct {
 	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
 	// The hostname of the route.
 	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
+	// The type of tunnel.
+	// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+	TunType pulumi.StringOutput `pulumi:"tunType"`
 	// UUID of the tunnel.
 	TunnelId pulumi.StringPtrOutput `pulumi:"tunnelId"`
 	// A user-friendly name for a tunnel.
@@ -75,9 +79,12 @@ type ZeroTrustNetworkHostnameRoute struct {
 func NewZeroTrustNetworkHostnameRoute(ctx *pulumi.Context,
 	name string, args *ZeroTrustNetworkHostnameRouteArgs, opts ...pulumi.ResourceOption) (*ZeroTrustNetworkHostnameRoute, error) {
 	if args == nil {
-		args = &ZeroTrustNetworkHostnameRouteArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustNetworkHostnameRoute
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute", name, args, &resource, opts...)
@@ -111,6 +118,9 @@ type zeroTrustNetworkHostnameRouteState struct {
 	DeletedAt *string `pulumi:"deletedAt"`
 	// The hostname of the route.
 	Hostname *string `pulumi:"hostname"`
+	// The type of tunnel.
+	// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+	TunType *string `pulumi:"tunType"`
 	// UUID of the tunnel.
 	TunnelId *string `pulumi:"tunnelId"`
 	// A user-friendly name for a tunnel.
@@ -128,6 +138,9 @@ type ZeroTrustNetworkHostnameRouteState struct {
 	DeletedAt pulumi.StringPtrInput
 	// The hostname of the route.
 	Hostname pulumi.StringPtrInput
+	// The type of tunnel.
+	// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+	TunType pulumi.StringPtrInput
 	// UUID of the tunnel.
 	TunnelId pulumi.StringPtrInput
 	// A user-friendly name for a tunnel.
@@ -140,7 +153,7 @@ func (ZeroTrustNetworkHostnameRouteState) ElementType() reflect.Type {
 
 type zeroTrustNetworkHostnameRouteArgs struct {
 	// Cloudflare account ID
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// An optional description of the hostname route.
 	Comment *string `pulumi:"comment"`
 	// The hostname of the route.
@@ -152,7 +165,7 @@ type zeroTrustNetworkHostnameRouteArgs struct {
 // The set of arguments for constructing a ZeroTrustNetworkHostnameRoute resource.
 type ZeroTrustNetworkHostnameRouteArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// An optional description of the hostname route.
 	Comment pulumi.StringPtrInput
 	// The hostname of the route.
@@ -249,8 +262,8 @@ func (o ZeroTrustNetworkHostnameRouteOutput) ToZeroTrustNetworkHostnameRouteOutp
 }
 
 // Cloudflare account ID
-func (o ZeroTrustNetworkHostnameRouteOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustNetworkHostnameRoute) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustNetworkHostnameRouteOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustNetworkHostnameRoute) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // An optional description of the hostname route.
@@ -271,6 +284,12 @@ func (o ZeroTrustNetworkHostnameRouteOutput) DeletedAt() pulumi.StringOutput {
 // The hostname of the route.
 func (o ZeroTrustNetworkHostnameRouteOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustNetworkHostnameRoute) pulumi.StringPtrOutput { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The type of tunnel.
+// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+func (o ZeroTrustNetworkHostnameRouteOutput) TunType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustNetworkHostnameRoute) pulumi.StringOutput { return v.TunType }).(pulumi.StringOutput)
 }
 
 // UUID of the tunnel.

@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
         /// Cloudflare account ID
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of the hostname route.
@@ -78,6 +78,13 @@ namespace Pulumi.Cloudflare
         public Output<string?> Hostname { get; private set; } = null!;
 
         /// <summary>
+        /// The type of tunnel.
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "IpSec", "gre", "cni".
+        /// </summary>
+        [Output("tunType")]
+        public Output<string> TunType { get; private set; } = null!;
+
+        /// <summary>
         /// UUID of the tunnel.
         /// </summary>
         [Output("tunnelId")]
@@ -97,7 +104,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ZeroTrustNetworkHostnameRoute(string name, ZeroTrustNetworkHostnameRouteArgs? args = null, CustomResourceOptions? options = null)
+        public ZeroTrustNetworkHostnameRoute(string name, ZeroTrustNetworkHostnameRouteArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute", name, args ?? new ZeroTrustNetworkHostnameRouteArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -138,8 +145,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Cloudflare account ID
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// An optional description of the hostname route.
@@ -196,6 +203,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// The type of tunnel.
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "IpSec", "gre", "cni".
+        /// </summary>
+        [Input("tunType")]
+        public Input<string>? TunType { get; set; }
 
         /// <summary>
         /// UUID of the tunnel.

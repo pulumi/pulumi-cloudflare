@@ -3,11 +3,13 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffix;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfilesResultExclude;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfilesResultFallbackDomain;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfilesResultInclude;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfilesResultServiceModeV2;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfilesResultTargetTest;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceCustomProfilesResultVirtualNetworks;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -58,6 +60,11 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
      * 
      */
     private Boolean disableAutoFallback;
+    /**
+     * @return List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     * 
+     */
+    private List<GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffix> dnsSearchSuffixes;
     /**
      * @return Whether the policy will be applied to matching devices.
      * 
@@ -134,6 +141,11 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
      * 
      */
     private String tunnelProtocol;
+    /**
+     * @return Virtual network access settings for the device.
+     * 
+     */
+    private GetZeroTrustDeviceCustomProfilesResultVirtualNetworks virtualNetworks;
 
     private GetZeroTrustDeviceCustomProfilesResult() {}
     /**
@@ -191,6 +203,13 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
      */
     public Boolean disableAutoFallback() {
         return this.disableAutoFallback;
+    }
+    /**
+     * @return List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     * 
+     */
+    public List<GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffix> dnsSearchSuffixes() {
+        return this.dnsSearchSuffixes;
     }
     /**
      * @return Whether the policy will be applied to matching devices.
@@ -308,6 +327,13 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
     public String tunnelProtocol() {
         return this.tunnelProtocol;
     }
+    /**
+     * @return Virtual network access settings for the device.
+     * 
+     */
+    public GetZeroTrustDeviceCustomProfilesResultVirtualNetworks virtualNetworks() {
+        return this.virtualNetworks;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -326,6 +352,7 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
         private Boolean default_;
         private String description;
         private Boolean disableAutoFallback;
+        private List<GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffix> dnsSearchSuffixes;
         private Boolean enabled;
         private Boolean excludeOfficeIps;
         private List<GetZeroTrustDeviceCustomProfilesResultExclude> excludes;
@@ -346,6 +373,7 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
         private Boolean switchLocked;
         private List<GetZeroTrustDeviceCustomProfilesResultTargetTest> targetTests;
         private String tunnelProtocol;
+        private GetZeroTrustDeviceCustomProfilesResultVirtualNetworks virtualNetworks;
         public Builder() {}
         public Builder(GetZeroTrustDeviceCustomProfilesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -357,6 +385,7 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
     	      this.default_ = defaults.default_;
     	      this.description = defaults.description;
     	      this.disableAutoFallback = defaults.disableAutoFallback;
+    	      this.dnsSearchSuffixes = defaults.dnsSearchSuffixes;
     	      this.enabled = defaults.enabled;
     	      this.excludeOfficeIps = defaults.excludeOfficeIps;
     	      this.excludes = defaults.excludes;
@@ -377,6 +406,7 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
     	      this.switchLocked = defaults.switchLocked;
     	      this.targetTests = defaults.targetTests;
     	      this.tunnelProtocol = defaults.tunnelProtocol;
+    	      this.virtualNetworks = defaults.virtualNetworks;
         }
 
         @CustomType.Setter
@@ -442,6 +472,17 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
             }
             this.disableAutoFallback = disableAutoFallback;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dnsSearchSuffixes(List<GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffix> dnsSearchSuffixes) {
+            if (dnsSearchSuffixes == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfilesResult", "dnsSearchSuffixes");
+            }
+            this.dnsSearchSuffixes = dnsSearchSuffixes;
+            return this;
+        }
+        public Builder dnsSearchSuffixes(GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffix... dnsSearchSuffixes) {
+            return dnsSearchSuffixes(List.of(dnsSearchSuffixes));
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
@@ -615,6 +656,14 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
             this.tunnelProtocol = tunnelProtocol;
             return this;
         }
+        @CustomType.Setter
+        public Builder virtualNetworks(GetZeroTrustDeviceCustomProfilesResultVirtualNetworks virtualNetworks) {
+            if (virtualNetworks == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfilesResult", "virtualNetworks");
+            }
+            this.virtualNetworks = virtualNetworks;
+            return this;
+        }
         public GetZeroTrustDeviceCustomProfilesResult build() {
             final var _resultValue = new GetZeroTrustDeviceCustomProfilesResult();
             _resultValue.allowModeSwitch = allowModeSwitch;
@@ -625,6 +674,7 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
             _resultValue.default_ = default_;
             _resultValue.description = description;
             _resultValue.disableAutoFallback = disableAutoFallback;
+            _resultValue.dnsSearchSuffixes = dnsSearchSuffixes;
             _resultValue.enabled = enabled;
             _resultValue.excludeOfficeIps = excludeOfficeIps;
             _resultValue.excludes = excludes;
@@ -645,6 +695,7 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
             _resultValue.switchLocked = switchLocked;
             _resultValue.targetTests = targetTests;
             _resultValue.tunnelProtocol = tunnelProtocol;
+            _resultValue.virtualNetworks = virtualNetworks;
             return _resultValue;
         }
     }

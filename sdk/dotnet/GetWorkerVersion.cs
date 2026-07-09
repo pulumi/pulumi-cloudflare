@@ -111,8 +111,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
         /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
@@ -144,8 +144,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
@@ -179,7 +179,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// Metadata about the version.
         /// </summary>
@@ -222,7 +222,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWorkerVersionResult(
-            string? accountId,
+            string accountId,
 
             Outputs.GetWorkerVersionAnnotationsResult annotations,
 

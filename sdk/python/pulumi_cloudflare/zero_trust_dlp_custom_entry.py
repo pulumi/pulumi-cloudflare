@@ -21,24 +21,32 @@ __all__ = ['ZeroTrustDlpCustomEntryArgs', 'ZeroTrustDlpCustomEntry']
 @pulumi.input_type
 class ZeroTrustDlpCustomEntryArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  enabled: pulumi.Input[_builtins.bool],
                  name: pulumi.Input[_builtins.str],
                  pattern: pulumi.Input['ZeroTrustDlpCustomEntryPatternArgs'],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpCustomEntry resource.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pattern", pattern)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if profile_id is not None:
             pulumi.set(__self__, "profile_id", profile_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -66,15 +74,6 @@ class ZeroTrustDlpCustomEntryArgs:
     @pattern.setter
     def pattern(self, value: pulumi.Input['ZeroTrustDlpCustomEntryPatternArgs']):
         pulumi.set(self, "pattern", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -120,8 +119,9 @@ class _ZeroTrustDlpCustomEntryState:
         :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
-        :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        :param pulumi.Input[_builtins.str] type: Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        :param pulumi.Input['ZeroTrustDlpCustomEntryVariantArgs'] variant: A Predefined AI prompt classification topic entry.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -264,7 +264,7 @@ class _ZeroTrustDlpCustomEntryState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         """
         return pulumi.get(self, "type")
 
@@ -296,6 +296,9 @@ class _ZeroTrustDlpCustomEntryState:
     @_builtins.property
     @pulumi.getter
     def variant(self) -> pulumi.Input[Optional['ZeroTrustDlpCustomEntryVariantArgs']]:
+        """
+        A Predefined AI prompt classification topic entry.
+        """
         return pulumi.get(self, "variant")
 
     @variant.setter
@@ -426,6 +429,8 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustDlpCustomEntryArgs.__new__(ZeroTrustDlpCustomEntryArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             if enabled is None and not opts.urn:
@@ -484,8 +489,9 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] case_sensitive: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
-        :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        :param pulumi.Input[_builtins.str] type: Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        :param pulumi.Input[Union['ZeroTrustDlpCustomEntryVariantArgs', 'ZeroTrustDlpCustomEntryVariantArgsDict']] variant: A Predefined AI prompt classification topic entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -511,7 +517,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -573,7 +579,7 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         """
         return pulumi.get(self, "type")
 
@@ -593,6 +599,9 @@ class ZeroTrustDlpCustomEntry(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def variant(self) -> pulumi.Output['outputs.ZeroTrustDlpCustomEntryVariant']:
+        """
+        A Predefined AI prompt classification topic entry.
+        """
         return pulumi.get(self, "variant")
 
     @_builtins.property

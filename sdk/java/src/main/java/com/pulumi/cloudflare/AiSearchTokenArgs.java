@@ -17,11 +17,11 @@ public final class AiSearchTokenArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiSearchTokenArgs Empty = new AiSearchTokenArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="cfApiId", required=true)
@@ -80,7 +80,7 @@ public final class AiSearchTokenArgs extends com.pulumi.resources.ResourceArgs {
             $ = new AiSearchTokenArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -126,6 +126,9 @@ public final class AiSearchTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AiSearchTokenArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("AiSearchTokenArgs", "accountId");
+            }
             if ($.cfApiId == null) {
                 throw new MissingRequiredPropertyException("AiSearchTokenArgs", "cfApiId");
             }

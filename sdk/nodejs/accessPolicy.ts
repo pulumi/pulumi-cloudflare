@@ -112,7 +112,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Administrators who can approve a temporary authentication request.
      */
@@ -199,6 +199,9 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["sessionDuration"] = state?.sessionDuration;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.decision === undefined && !opts.urn) {
                 throw new Error("Missing required property 'decision'");
             }
@@ -297,7 +300,7 @@ export interface AccessPolicyArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Administrators who can approve a temporary authentication request.
      */

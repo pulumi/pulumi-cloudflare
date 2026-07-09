@@ -23,12 +23,14 @@ public final class GetHostnameTlsSettingResult {
      */
     private String hostname;
     /**
-     * @return The TLS Setting name. The value type depends on the setting:
+     * @return The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     private String id;
     /**
-     * @return The TLS Setting name. The value type depends on the setting:
+     * @return The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     private String settingId;
@@ -43,7 +45,8 @@ public final class GetHostnameTlsSettingResult {
      */
     private String updatedAt;
     /**
-     * @return The TLS setting value. The type depends on the `settingId` used in the request path:
+     * @return The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      * 
      */
     private String value;
@@ -69,14 +72,16 @@ public final class GetHostnameTlsSettingResult {
         return this.hostname;
     }
     /**
-     * @return The TLS Setting name. The value type depends on the setting:
+     * @return The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The TLS Setting name. The value type depends on the setting:
+     * @return The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     public String settingId() {
@@ -97,7 +102,8 @@ public final class GetHostnameTlsSettingResult {
         return this.updatedAt;
     }
     /**
-     * @return The TLS setting value. The type depends on the `settingId` used in the request path:
+     * @return The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      * 
      */
     public String value() {

@@ -26,15 +26,19 @@ public final class GetAiSearchInstancesInvokeResult {
      * 
      */
     private @Nullable Integer maxItems;
+    /**
+     * @return Filter by namespace.
+     * 
+     */
     private @Nullable String namespace;
     /**
-     * @return Order By Column Name
+     * @return Field to order results by.
      * Available values: &#34;createdAt&#34;.
      * 
      */
     private String orderBy;
     /**
-     * @return Order By Direction
+     * @return Order direction.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -45,7 +49,7 @@ public final class GetAiSearchInstancesInvokeResult {
      */
     private List<GetAiSearchInstancesResult> results;
     /**
-     * @return Search by id
+     * @return Filter instances whose id contains this string (case-insensitive).
      * 
      */
     private @Nullable String search;
@@ -68,11 +72,15 @@ public final class GetAiSearchInstancesInvokeResult {
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
+    /**
+     * @return Filter by namespace.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
     /**
-     * @return Order By Column Name
+     * @return Field to order results by.
      * Available values: &#34;createdAt&#34;.
      * 
      */
@@ -80,7 +88,7 @@ public final class GetAiSearchInstancesInvokeResult {
         return this.orderBy;
     }
     /**
-     * @return Order By Direction
+     * @return Order direction.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -95,7 +103,7 @@ public final class GetAiSearchInstancesInvokeResult {
         return this.results;
     }
     /**
-     * @return Search by id
+     * @return Filter instances whose id contains this string (case-insensitive).
      * 
      */
     public Optional<String> search() {

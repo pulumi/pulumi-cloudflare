@@ -97,10 +97,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/dlpCustomProfile:DlpCustomProfile")
 public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     @Export(name="aiContextEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> aiContextEnabled;

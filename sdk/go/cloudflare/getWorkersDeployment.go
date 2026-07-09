@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersDeployment(ctx, &cloudflare.LookupWorkersDeploymentArgs{
-//				AccountId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				ScriptName:   "this-is_my_script-01",
 //				DeploymentId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 //			}, nil)
@@ -57,8 +57,8 @@ func LookupWorkersDeployment(ctx *pulumi.Context, args *LookupWorkersDeploymentA
 // A collection of arguments for invoking getWorkersDeployment.
 type LookupWorkersDeploymentArgs struct {
 	// Identifier.
-	AccountId    *string `pulumi:"accountId"`
-	DeploymentId string  `pulumi:"deploymentId"`
+	AccountId    string `pulumi:"accountId"`
+	DeploymentId string `pulumi:"deploymentId"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
 }
@@ -66,7 +66,7 @@ type LookupWorkersDeploymentArgs struct {
 // A collection of values returned by getWorkersDeployment.
 type LookupWorkersDeploymentResult struct {
 	// Identifier.
-	AccountId    *string                         `pulumi:"accountId"`
+	AccountId    string                          `pulumi:"accountId"`
 	Annotations  GetWorkersDeploymentAnnotations `pulumi:"annotations"`
 	AuthorEmail  string                          `pulumi:"authorEmail"`
 	CreatedOn    string                          `pulumi:"createdOn"`
@@ -93,8 +93,8 @@ func LookupWorkersDeploymentOutput(ctx *pulumi.Context, args LookupWorkersDeploy
 // A collection of arguments for invoking getWorkersDeployment.
 type LookupWorkersDeploymentOutputArgs struct {
 	// Identifier.
-	AccountId    pulumi.StringPtrInput `pulumi:"accountId"`
-	DeploymentId pulumi.StringInput    `pulumi:"deploymentId"`
+	AccountId    pulumi.StringInput `pulumi:"accountId"`
+	DeploymentId pulumi.StringInput `pulumi:"deploymentId"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
 }
@@ -119,8 +119,8 @@ func (o LookupWorkersDeploymentResultOutput) ToLookupWorkersDeploymentResultOutp
 }
 
 // Identifier.
-func (o LookupWorkersDeploymentResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkersDeploymentResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupWorkersDeploymentResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o LookupWorkersDeploymentResultOutput) Annotations() GetWorkersDeploymentAnnotationsOutput {

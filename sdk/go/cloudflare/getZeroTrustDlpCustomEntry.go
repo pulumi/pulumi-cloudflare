@@ -77,13 +77,14 @@ type LookupZeroTrustDlpCustomEntryResult struct {
 	ProfileId string                              `pulumi:"profileId"`
 	Profiles  []GetZeroTrustDlpCustomEntryProfile `pulumi:"profiles"`
 	Secret    bool                                `pulumi:"secret"`
-	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 	Type      string `pulumi:"type"`
 	UpdatedAt string `pulumi:"updatedAt"`
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
-	UploadStatus string                            `pulumi:"uploadStatus"`
-	Variant      GetZeroTrustDlpCustomEntryVariant `pulumi:"variant"`
-	WordList     string                            `pulumi:"wordList"`
+	UploadStatus string `pulumi:"uploadStatus"`
+	// A Predefined AI prompt classification topic entry.
+	Variant  GetZeroTrustDlpCustomEntryVariant `pulumi:"variant"`
+	WordList string                            `pulumi:"wordList"`
 }
 
 func LookupZeroTrustDlpCustomEntryOutput(ctx *pulumi.Context, args LookupZeroTrustDlpCustomEntryOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDlpCustomEntryResultOutput {
@@ -176,7 +177,7 @@ func (o LookupZeroTrustDlpCustomEntryResultOutput) Secret() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomEntryResult) bool { return v.Secret }).(pulumi.BoolOutput)
 }
 
-// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+// Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 func (o LookupZeroTrustDlpCustomEntryResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomEntryResult) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -190,6 +191,7 @@ func (o LookupZeroTrustDlpCustomEntryResultOutput) UploadStatus() pulumi.StringO
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomEntryResult) string { return v.UploadStatus }).(pulumi.StringOutput)
 }
 
+// A Predefined AI prompt classification topic entry.
 func (o LookupZeroTrustDlpCustomEntryResultOutput) Variant() GetZeroTrustDlpCustomEntryVariantOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomEntryResult) GetZeroTrustDlpCustomEntryVariant { return v.Variant }).(GetZeroTrustDlpCustomEntryVariantOutput)
 }

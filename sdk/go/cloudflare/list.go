@@ -33,7 +33,7 @@ type List struct {
 	pulumi.CustomResourceState
 
 	// The Account ID for this resource.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The RFC 3339 timestamp of when the list was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// An informative summary of the list.
@@ -60,6 +60,9 @@ func NewList(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
@@ -138,7 +141,7 @@ func (ListState) ElementType() reflect.Type {
 
 type listArgs struct {
 	// The Account ID for this resource.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// An informative summary of the list.
 	Description *string `pulumi:"description"`
 	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
@@ -153,7 +156,7 @@ type listArgs struct {
 // The set of arguments for constructing a List resource.
 type ListArgs struct {
 	// The Account ID for this resource.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// An informative summary of the list.
 	Description pulumi.StringPtrInput
 	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
@@ -253,8 +256,8 @@ func (o ListOutput) ToListOutputWithContext(ctx context.Context) ListOutput {
 }
 
 // The Account ID for this resource.
-func (o ListOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *List) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ListOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The RFC 3339 timestamp of when the list was created.

@@ -88,7 +88,7 @@ type MagicTransitSiteAcl struct {
 	pulumi.CustomResourceState
 
 	// Identifier
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Description for the ACL.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
@@ -111,6 +111,9 @@ func NewMagicTransitSiteAcl(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Lan1 == nil {
 		return nil, errors.New("invalid value for required argument 'Lan1'")
 	}
@@ -187,7 +190,7 @@ func (MagicTransitSiteAclState) ElementType() reflect.Type {
 
 type magicTransitSiteAclArgs struct {
 	// Identifier
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Description for the ACL.
 	Description *string `pulumi:"description"`
 	// The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
@@ -206,7 +209,7 @@ type magicTransitSiteAclArgs struct {
 // The set of arguments for constructing a MagicTransitSiteAcl resource.
 type MagicTransitSiteAclArgs struct {
 	// Identifier
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Description for the ACL.
 	Description pulumi.StringPtrInput
 	// The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
@@ -310,8 +313,8 @@ func (o MagicTransitSiteAclOutput) ToMagicTransitSiteAclOutputWithContext(ctx co
 }
 
 // Identifier
-func (o MagicTransitSiteAclOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicTransitSiteAcl) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o MagicTransitSiteAclOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicTransitSiteAcl) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Description for the ACL.

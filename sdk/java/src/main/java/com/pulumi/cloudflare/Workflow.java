@@ -8,12 +8,14 @@ import com.pulumi.cloudflare.WorkflowArgs;
 import com.pulumi.cloudflare.inputs.WorkflowState;
 import com.pulumi.cloudflare.outputs.WorkflowInstances;
 import com.pulumi.cloudflare.outputs.WorkflowLimits;
+import com.pulumi.cloudflare.outputs.WorkflowSchedule;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -36,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.Workflow;
  * import com.pulumi.cloudflare.WorkflowArgs;
  * import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkflowScheduleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -57,6 +60,9 @@ import javax.annotation.Nullable;
  *             .limits(WorkflowLimitsArgs.builder()
  *                 .steps(1)
  *                 .build())
+ *             .schedules(WorkflowScheduleArgs.builder()
+ *                 .cron("x")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -74,10 +80,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/workflow:Workflow")
 public class Workflow extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     @Export(name="className", refs={String.class}, tree="[0]")
     private Output<String> className;
@@ -120,6 +126,12 @@ public class Workflow extends com.pulumi.resources.CustomResource {
 
     public Output<String> name() {
         return this.name;
+    }
+    @Export(name="schedules", refs={List.class,WorkflowSchedule.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<WorkflowSchedule>> schedules;
+
+    public Output<Optional<List<WorkflowSchedule>>> schedules() {
+        return Codegen.optional(this.schedules);
     }
     @Export(name="scriptName", refs={String.class}, tree="[0]")
     private Output<String> scriptName;

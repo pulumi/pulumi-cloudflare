@@ -47,7 +47,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustGatewayPacfile : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Actual contents of the PAC file
@@ -131,8 +131,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustGatewayPacfileArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Actual contents of the PAC file

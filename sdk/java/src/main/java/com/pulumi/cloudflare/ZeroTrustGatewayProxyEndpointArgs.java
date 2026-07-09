@@ -17,11 +17,11 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
 
     public static final ZeroTrustGatewayProxyEndpointArgs Empty = new ZeroTrustGatewayProxyEndpointArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -98,7 +98,7 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
             $ = new ZeroTrustGatewayProxyEndpointArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -183,6 +183,9 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
         }
 
         public ZeroTrustGatewayProxyEndpointArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustGatewayProxyEndpointArgs", "accountId");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustGatewayProxyEndpointArgs", "name");
             }

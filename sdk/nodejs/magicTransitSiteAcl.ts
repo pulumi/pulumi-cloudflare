@@ -82,7 +82,7 @@ export class MagicTransitSiteAcl extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Description for the ACL.
      */
@@ -131,6 +131,9 @@ export class MagicTransitSiteAcl extends pulumi.CustomResource {
             resourceInputs["unidirectional"] = state?.unidirectional;
         } else {
             const args = argsOrState as MagicTransitSiteAclArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.lan1 === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lan1'");
             }
@@ -198,7 +201,7 @@ export interface MagicTransitSiteAclArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Description for the ACL.
      */

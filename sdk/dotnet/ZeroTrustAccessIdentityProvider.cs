@@ -86,6 +86,27 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+        /// </summary>
+        [Output("readOnly")]
+        public Output<bool?> ReadOnly { get; private set; } = null!;
+
+        /// <summary>
+        /// The SAML encryption certificate set details, including current and previous certificates.
+        /// Only present for SAML identity providers with a certificate set assigned.
+        /// </summary>
+        [Output("samlCertificateSet")]
+        public Output<Outputs.ZeroTrustAccessIdentityProviderSamlCertificateSet> SamlCertificateSet { get; private set; } = null!;
+
+        /// <summary>
+        /// The UID of the SAML encryption certificate set assigned to this Identity Provider.
+        /// Only present for SAML identity providers with encryption configured.
+        /// Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+        /// </summary>
+        [Output("samlCertificateSetId")]
+        public Output<string?> SamlCertificateSetId { get; private set; } = null!;
+
+        /// <summary>
         /// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         /// </summary>
         [Output("scimConfig")]
@@ -93,7 +114,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -173,6 +194,20 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+        /// </summary>
+        [Input("readOnly")]
+        public Input<bool>? ReadOnly { get; set; }
+
+        /// <summary>
+        /// The UID of the SAML encryption certificate set assigned to this Identity Provider.
+        /// Only present for SAML identity providers with encryption configured.
+        /// Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+        /// </summary>
+        [Input("samlCertificateSetId")]
+        public Input<string>? SamlCertificateSetId { get; set; }
+
+        /// <summary>
         /// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         /// </summary>
         [Input("scimConfig")]
@@ -180,7 +215,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -218,6 +253,27 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+        /// </summary>
+        [Input("readOnly")]
+        public Input<bool>? ReadOnly { get; set; }
+
+        /// <summary>
+        /// The SAML encryption certificate set details, including current and previous certificates.
+        /// Only present for SAML identity providers with a certificate set assigned.
+        /// </summary>
+        [Input("samlCertificateSet")]
+        public Input<Inputs.ZeroTrustAccessIdentityProviderSamlCertificateSetGetArgs>? SamlCertificateSet { get; set; }
+
+        /// <summary>
+        /// The UID of the SAML encryption certificate set assigned to this Identity Provider.
+        /// Only present for SAML identity providers with encryption configured.
+        /// Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+        /// </summary>
+        [Input("samlCertificateSetId")]
+        public Input<string>? SamlCertificateSetId { get; set; }
+
+        /// <summary>
         /// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         /// </summary>
         [Input("scimConfig")]
@@ -225,7 +281,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

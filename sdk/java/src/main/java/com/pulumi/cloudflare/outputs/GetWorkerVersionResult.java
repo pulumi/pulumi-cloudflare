@@ -26,7 +26,7 @@ public final class GetWorkerVersionResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return Metadata about the version.
      * 
@@ -83,8 +83,8 @@ public final class GetWorkerVersionResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return Metadata about the version.
@@ -192,7 +192,7 @@ public final class GetWorkerVersionResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private GetWorkerVersionAnnotations annotations;
         private GetWorkerVersionAssets assets;
         private List<GetWorkerVersionBinding> bindings;
@@ -246,8 +246,10 @@ public final class GetWorkerVersionResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetWorkerVersionResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

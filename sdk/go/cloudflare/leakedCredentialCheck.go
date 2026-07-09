@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -54,16 +55,19 @@ type LeakedCredentialCheck struct {
 	// Determines whether or not Leaked Credential Checks are enabled.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Defines an identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewLeakedCredentialCheck registers a new resource with the given unique name, arguments, and options.
 func NewLeakedCredentialCheck(ctx *pulumi.Context,
 	name string, args *LeakedCredentialCheckArgs, opts ...pulumi.ResourceOption) (*LeakedCredentialCheck, error) {
 	if args == nil {
-		args = &LeakedCredentialCheckArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LeakedCredentialCheck
 	err := ctx.RegisterResource("cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck", name, args, &resource, opts...)
@@ -108,7 +112,7 @@ type leakedCredentialCheckArgs struct {
 	// Determines whether or not Leaked Credential Checks are enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Defines an identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a LeakedCredentialCheck resource.
@@ -116,7 +120,7 @@ type LeakedCredentialCheckArgs struct {
 	// Determines whether or not Leaked Credential Checks are enabled.
 	Enabled pulumi.BoolPtrInput
 	// Defines an identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (LeakedCredentialCheckArgs) ElementType() reflect.Type {
@@ -212,8 +216,8 @@ func (o LeakedCredentialCheckOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // Defines an identifier.
-func (o LeakedCredentialCheckOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LeakedCredentialCheck) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o LeakedCredentialCheckOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LeakedCredentialCheck) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type LeakedCredentialCheckArrayOutput struct{ *pulumi.OutputState }

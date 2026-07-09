@@ -58,7 +58,7 @@ import (
 type DeviceManagedNetworks struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The configuration object containing information for the WARP client to detect the managed network.
 	Config DeviceManagedNetworksConfigOutput `pulumi:"config"`
 	// The name of the device managed network. This name must be unique.
@@ -77,6 +77,9 @@ func NewDeviceManagedNetworks(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Config == nil {
 		return nil, errors.New("invalid value for required argument 'Config'")
 	}
@@ -145,7 +148,7 @@ func (DeviceManagedNetworksState) ElementType() reflect.Type {
 }
 
 type deviceManagedNetworksArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// The configuration object containing information for the WARP client to detect the managed network.
 	Config DeviceManagedNetworksConfig `pulumi:"config"`
 	// The name of the device managed network. This name must be unique.
@@ -157,7 +160,7 @@ type deviceManagedNetworksArgs struct {
 
 // The set of arguments for constructing a DeviceManagedNetworks resource.
 type DeviceManagedNetworksArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// The configuration object containing information for the WARP client to detect the managed network.
 	Config DeviceManagedNetworksConfigInput
 	// The name of the device managed network. This name must be unique.
@@ -254,8 +257,8 @@ func (o DeviceManagedNetworksOutput) ToDeviceManagedNetworksOutputWithContext(ct
 	return o
 }
 
-func (o DeviceManagedNetworksOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceManagedNetworks) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o DeviceManagedNetworksOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeviceManagedNetworks) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The configuration object containing information for the WARP client to detect the managed network.

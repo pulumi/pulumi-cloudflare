@@ -18,7 +18,7 @@ public final class GetSnippetResult {
      */
     private String createdOn;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identify the snippet.
      * 
      */
     private String id;
@@ -47,7 +47,7 @@ public final class GetSnippetResult {
         return this.createdOn;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Identify the snippet.
      * 
      */
     public String id() {

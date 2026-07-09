@@ -66,7 +66,7 @@ export class MagicNetworkMonitoringRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === MagicNetworkMonitoringRule.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      */
@@ -136,6 +136,9 @@ export class MagicNetworkMonitoringRule extends pulumi.CustomResource {
             resourceInputs["zscoreTarget"] = state?.zscoreTarget;
         } else {
             const args = argsOrState as MagicNetworkMonitoringRuleArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.automaticAdvertisement === undefined && !opts.urn) {
                 throw new Error("Missing required property 'automaticAdvertisement'");
             }
@@ -218,7 +221,7 @@ export interface MagicNetworkMonitoringRuleState {
  * The set of arguments for constructing a MagicNetworkMonitoringRule resource.
  */
 export interface MagicNetworkMonitoringRuleArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      */

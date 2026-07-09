@@ -114,7 +114,7 @@ export class ZoneDnsSettings extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
     /**
      * Whether the zone mode is a regular or CDN/DNS only zone.
      * Available values: "standard", "cdn*only", "dns*only".
@@ -128,7 +128,7 @@ export class ZoneDnsSettings extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ZoneDnsSettingsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ZoneDnsSettingsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneDnsSettingsArgs | ZoneDnsSettingsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -146,6 +146,9 @@ export class ZoneDnsSettings extends pulumi.CustomResource {
             resourceInputs["zoneMode"] = state?.zoneMode;
         } else {
             const args = argsOrState as ZoneDnsSettingsArgs | undefined;
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             resourceInputs["flattenAllCnames"] = args?.flattenAllCnames;
             resourceInputs["foundationDns"] = args?.foundationDns;
             resourceInputs["internalDns"] = args?.internalDns;
@@ -248,7 +251,7 @@ export interface ZoneDnsSettingsArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
     /**
      * Whether the zone mode is a regular or CDN/DNS only zone.
      * Available values: "standard", "cdn*only", "dns*only".

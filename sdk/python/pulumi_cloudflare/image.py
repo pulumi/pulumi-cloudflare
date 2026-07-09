@@ -19,8 +19,8 @@ __all__ = ['ImageArgs', 'Image']
 @pulumi.input_type
 class ImageArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  image_id: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  creator: pulumi.Input[Optional[_builtins.str]] = None,
                  file: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional[_builtins.str]] = None,
@@ -29,17 +29,16 @@ class ImageArgs:
         """
         The set of arguments for constructing a Image resource.
 
-        :param pulumi.Input[_builtins.str] image_id: An optional custom unique identifier for your image.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
+        :param pulumi.Input[_builtins.str] image_id: An optional custom unique identifier for your image.
         :param pulumi.Input[_builtins.str] creator: Can set the creator field with an internal user ID.
         :param pulumi.Input[_builtins.str] file: An image binary data. Only needed when type is uploading a file.
         :param pulumi.Input[_builtins.str] metadata: User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
         :param pulumi.Input[_builtins.bool] require_signed_urls: Indicates whether the image requires a signature token for the access.
         :param pulumi.Input[_builtins.str] url: A URL to fetch an image from origin. Only needed when type is uploading from a URL.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "image_id", image_id)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
         if file is not None:
@@ -52,6 +51,18 @@ class ImageArgs:
             pulumi.set(__self__, "url", url)
 
     @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Account identifier tag.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Input[_builtins.str]:
         """
@@ -62,18 +73,6 @@ class ImageArgs:
     @image_id.setter
     def image_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "image_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Account identifier tag.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -440,6 +439,8 @@ class Image(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ImageArgs.__new__(ImageArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["creator"] = creator
             __props__.__dict__["file"] = file
@@ -512,7 +513,7 @@ class Image(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Account identifier tag.
         """

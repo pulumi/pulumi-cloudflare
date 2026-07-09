@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireAuth
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireAuthMethod;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireAzureAd;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireCertificate;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireCloudflareAccountMember;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireCommonName;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireDevicePosture;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessPoliciesResultRequireEmail;
@@ -43,6 +44,7 @@ public final class GetZeroTrustAccessPoliciesResultRequire {
     private GetZeroTrustAccessPoliciesResultRequireAuthMethod authMethod;
     private GetZeroTrustAccessPoliciesResultRequireAzureAd azureAd;
     private GetZeroTrustAccessPoliciesResultRequireCertificate certificate;
+    private GetZeroTrustAccessPoliciesResultRequireCloudflareAccountMember cloudflareAccountMember;
     private GetZeroTrustAccessPoliciesResultRequireCommonName commonName;
     private GetZeroTrustAccessPoliciesResultRequireDevicePosture devicePosture;
     private GetZeroTrustAccessPoliciesResultRequireEmail email;
@@ -87,6 +89,9 @@ public final class GetZeroTrustAccessPoliciesResultRequire {
     }
     public GetZeroTrustAccessPoliciesResultRequireCertificate certificate() {
         return this.certificate;
+    }
+    public GetZeroTrustAccessPoliciesResultRequireCloudflareAccountMember cloudflareAccountMember() {
+        return this.cloudflareAccountMember;
     }
     public GetZeroTrustAccessPoliciesResultRequireCommonName commonName() {
         return this.commonName;
@@ -167,6 +172,7 @@ public final class GetZeroTrustAccessPoliciesResultRequire {
         private GetZeroTrustAccessPoliciesResultRequireAuthMethod authMethod;
         private GetZeroTrustAccessPoliciesResultRequireAzureAd azureAd;
         private GetZeroTrustAccessPoliciesResultRequireCertificate certificate;
+        private GetZeroTrustAccessPoliciesResultRequireCloudflareAccountMember cloudflareAccountMember;
         private GetZeroTrustAccessPoliciesResultRequireCommonName commonName;
         private GetZeroTrustAccessPoliciesResultRequireDevicePosture devicePosture;
         private GetZeroTrustAccessPoliciesResultRequireEmail email;
@@ -195,6 +201,7 @@ public final class GetZeroTrustAccessPoliciesResultRequire {
     	      this.authMethod = defaults.authMethod;
     	      this.azureAd = defaults.azureAd;
     	      this.certificate = defaults.certificate;
+    	      this.cloudflareAccountMember = defaults.cloudflareAccountMember;
     	      this.commonName = defaults.commonName;
     	      this.devicePosture = defaults.devicePosture;
     	      this.email = defaults.email;
@@ -255,6 +262,14 @@ public final class GetZeroTrustAccessPoliciesResultRequire {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResultRequire", "certificate");
             }
             this.certificate = certificate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloudflareAccountMember(GetZeroTrustAccessPoliciesResultRequireCloudflareAccountMember cloudflareAccountMember) {
+            if (cloudflareAccountMember == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessPoliciesResultRequire", "cloudflareAccountMember");
+            }
+            this.cloudflareAccountMember = cloudflareAccountMember;
             return this;
         }
         @CustomType.Setter
@@ -424,6 +439,7 @@ public final class GetZeroTrustAccessPoliciesResultRequire {
             _resultValue.authMethod = authMethod;
             _resultValue.azureAd = azureAd;
             _resultValue.certificate = certificate;
+            _resultValue.cloudflareAccountMember = cloudflareAccountMember;
             _resultValue.commonName = commonName;
             _resultValue.devicePosture = devicePosture;
             _resultValue.email = email;

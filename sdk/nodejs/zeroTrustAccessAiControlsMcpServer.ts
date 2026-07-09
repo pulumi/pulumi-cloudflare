@@ -7,6 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accepted Permissions
+ *
+ * - `MCP Portals Read`
+ * - `MCP Portals Write`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -21,6 +26,8 @@ import * as utilities from "./utilities";
  *     name: "My MCP Server",
  *     authCredentials: "auth_credentials",
  *     description: "This is one remote mcp server",
+ *     isSharedOauthCallbackEnabled: true,
+ *     secureWebGateway: false,
  *     updatedPrompts: [{
  *         name: "name",
  *         alias: "my-custom-alias",
@@ -70,7 +77,7 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustAccessAiControlsMcpServer.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public readonly authCredentials: pulumi.Output<string | undefined>;
     /**
      * Available values: "oauth", "bearer", "unauthenticated".
@@ -80,13 +87,22 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly error: pulumi.Output<string>;
+    declare public /*out*/ readonly errorDetails: pulumi.Output<outputs.ZeroTrustAccessAiControlsMcpServerErrorDetails>;
     declare public readonly hostname: pulumi.Output<string>;
+    /**
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     */
+    declare public readonly isSharedOauthCallbackEnabled: pulumi.Output<boolean | undefined>;
     declare public /*out*/ readonly lastSuccessfulSync: pulumi.Output<string>;
     declare public /*out*/ readonly lastSynced: pulumi.Output<string>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     declare public /*out*/ readonly modifiedBy: pulumi.Output<string>;
     declare public readonly name: pulumi.Output<string>;
     declare public /*out*/ readonly prompts: pulumi.Output<{[key: string]: string}[]>;
+    /**
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     */
+    declare public readonly secureWebGateway: pulumi.Output<boolean>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public /*out*/ readonly tools: pulumi.Output<{[key: string]: string}[]>;
     declare public readonly updatedPrompts: pulumi.Output<outputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt[] | undefined>;
@@ -116,13 +132,16 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
             resourceInputs["createdBy"] = state?.createdBy;
             resourceInputs["description"] = state?.description;
             resourceInputs["error"] = state?.error;
+            resourceInputs["errorDetails"] = state?.errorDetails;
             resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["isSharedOauthCallbackEnabled"] = state?.isSharedOauthCallbackEnabled;
             resourceInputs["lastSuccessfulSync"] = state?.lastSuccessfulSync;
             resourceInputs["lastSynced"] = state?.lastSynced;
             resourceInputs["modifiedAt"] = state?.modifiedAt;
             resourceInputs["modifiedBy"] = state?.modifiedBy;
             resourceInputs["name"] = state?.name;
             resourceInputs["prompts"] = state?.prompts;
+            resourceInputs["secureWebGateway"] = state?.secureWebGateway;
             resourceInputs["status"] = state?.status;
             resourceInputs["tools"] = state?.tools;
             resourceInputs["updatedPrompts"] = state?.updatedPrompts;
@@ -130,6 +149,9 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
             resourceInputs["zeroTrustAccessAiControlsMcpServerId"] = state?.zeroTrustAccessAiControlsMcpServerId;
         } else {
             const args = argsOrState as ZeroTrustAccessAiControlsMcpServerArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.authType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authType'");
             }
@@ -147,13 +169,16 @@ export class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
             resourceInputs["authType"] = args?.authType;
             resourceInputs["description"] = args?.description;
             resourceInputs["hostname"] = args?.hostname;
+            resourceInputs["isSharedOauthCallbackEnabled"] = args?.isSharedOauthCallbackEnabled;
             resourceInputs["name"] = args?.name;
+            resourceInputs["secureWebGateway"] = args?.secureWebGateway;
             resourceInputs["updatedPrompts"] = args?.updatedPrompts;
             resourceInputs["updatedTools"] = args?.updatedTools;
             resourceInputs["zeroTrustAccessAiControlsMcpServerId"] = args?.zeroTrustAccessAiControlsMcpServerId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["errorDetails"] = undefined /*out*/;
             resourceInputs["lastSuccessfulSync"] = undefined /*out*/;
             resourceInputs["lastSynced"] = undefined /*out*/;
             resourceInputs["modifiedAt"] = undefined /*out*/;
@@ -183,13 +208,22 @@ export interface ZeroTrustAccessAiControlsMcpServerState {
     createdBy?: pulumi.Input<string | undefined>;
     description?: pulumi.Input<string | undefined>;
     error?: pulumi.Input<string | undefined>;
+    errorDetails?: pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerErrorDetails | undefined>;
     hostname?: pulumi.Input<string | undefined>;
+    /**
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     */
+    isSharedOauthCallbackEnabled?: pulumi.Input<boolean | undefined>;
     lastSuccessfulSync?: pulumi.Input<string | undefined>;
     lastSynced?: pulumi.Input<string | undefined>;
     modifiedAt?: pulumi.Input<string | undefined>;
     modifiedBy?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
     prompts?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
+    /**
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     */
+    secureWebGateway?: pulumi.Input<boolean | undefined>;
     status?: pulumi.Input<string | undefined>;
     tools?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     updatedPrompts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>[] | undefined>;
@@ -204,7 +238,7 @@ export interface ZeroTrustAccessAiControlsMcpServerState {
  * The set of arguments for constructing a ZeroTrustAccessAiControlsMcpServer resource.
  */
 export interface ZeroTrustAccessAiControlsMcpServerArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     authCredentials?: pulumi.Input<string | undefined>;
     /**
      * Available values: "oauth", "bearer", "unauthenticated".
@@ -212,7 +246,15 @@ export interface ZeroTrustAccessAiControlsMcpServerArgs {
     authType: pulumi.Input<string>;
     description?: pulumi.Input<string | undefined>;
     hostname: pulumi.Input<string>;
+    /**
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     */
+    isSharedOauthCallbackEnabled?: pulumi.Input<boolean | undefined>;
     name: pulumi.Input<string>;
+    /**
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     */
+    secureWebGateway?: pulumi.Input<boolean | undefined>;
     updatedPrompts?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPrompt>[] | undefined>;
     updatedTools?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessAiControlsMcpServerUpdatedTool>[] | undefined>;
     /**

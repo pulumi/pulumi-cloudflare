@@ -17,14 +17,14 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
     public static final GetEmailSecurityTrustedDomainsListPlainArgs Empty = new GetEmailSecurityTrustedDomainsListPlainArgs();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> accountId() {
@@ -48,16 +48,32 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
         return Optional.ofNullable(this.direction);
     }
 
+    /**
+     * Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     * 
+     */
     @Import(name="isRecent")
     private @Nullable Boolean isRecent;
 
+    /**
+     * @return Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     * 
+     */
     public Optional<Boolean> isRecent() {
         return Optional.ofNullable(this.isRecent);
     }
 
+    /**
+     * Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     * 
+     */
     @Import(name="isSimilarity")
     private @Nullable Boolean isSimilarity;
 
+    /**
+     * @return Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     * 
+     */
     public Optional<Boolean> isSimilarity() {
         return Optional.ofNullable(this.isSimilarity);
     }
@@ -78,7 +94,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
     }
 
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -86,7 +102,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
     private @Nullable String order;
 
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -102,20 +118,14 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
     }
 
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      * 
      */
     @Import(name="search")
     private @Nullable String search;
 
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<String> search() {
@@ -154,7 +164,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -176,11 +186,23 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
             return this;
         }
 
+        /**
+         * @param isRecent Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isRecent(@Nullable Boolean isRecent) {
             $.isRecent = isRecent;
             return this;
         }
 
+        /**
+         * @param isSimilarity Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isSimilarity(@Nullable Boolean isSimilarity) {
             $.isSimilarity = isSimilarity;
             return this;
@@ -198,7 +220,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
         }
 
         /**
-         * @param order The field to sort by.
+         * @param order Field to sort by.
          * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
@@ -215,10 +237,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
         }
 
         /**
-         * @param search Allows searching in multiple properties of a record simultaneously.
-         * This parameter is intended for human users, not automation. Its exact
-         * behavior is intentionally left unspecified and is subject to change
-         * in the future.
+         * @param search Search term for filtering records. Behavior may change.
          * 
          * @return builder
          * 

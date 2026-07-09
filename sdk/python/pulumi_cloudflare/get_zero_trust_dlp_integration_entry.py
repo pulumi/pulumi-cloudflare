@@ -160,7 +160,7 @@ class GetZeroTrustDlpIntegrationEntryResult:
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         """
         return pulumi.get(self, "type")
 
@@ -180,6 +180,9 @@ class GetZeroTrustDlpIntegrationEntryResult:
     @_builtins.property
     @pulumi.getter
     def variant(self) -> 'outputs.GetZeroTrustDlpIntegrationEntryVariantResult':
+        """
+        A Predefined AI prompt classification topic entry.
+        """
         return pulumi.get(self, "variant")
 
     @_builtins.property

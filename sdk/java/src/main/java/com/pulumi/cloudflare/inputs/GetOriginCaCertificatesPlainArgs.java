@@ -47,14 +47,14 @@ public final class GetOriginCaCertificatesPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * Offset the results
+     * Offset the results.
      * 
      */
     @Import(name="offset")
     private @Nullable Integer offset;
 
     /**
-     * @return Offset the results
+     * @return Offset the results.
      * 
      */
     public Optional<Integer> offset() {
@@ -126,7 +126,7 @@ public final class GetOriginCaCertificatesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param offset Offset the results
+         * @param offset Offset the results.
          * 
          * @return builder
          * 

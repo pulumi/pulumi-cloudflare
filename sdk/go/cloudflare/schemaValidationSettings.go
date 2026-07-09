@@ -68,7 +68,7 @@ type SchemaValidationSettings struct {
 	//     Available values: "none".
 	ValidationOverrideMitigationAction pulumi.StringPtrOutput `pulumi:"validationOverrideMitigationAction"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewSchemaValidationSettings registers a new resource with the given unique name, arguments, and options.
@@ -80,6 +80,9 @@ func NewSchemaValidationSettings(ctx *pulumi.Context,
 
 	if args.ValidationDefaultMitigationAction == nil {
 		return nil, errors.New("invalid value for required argument 'ValidationDefaultMitigationAction'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SchemaValidationSettings
@@ -161,7 +164,7 @@ type schemaValidationSettingsArgs struct {
 	//     Available values: "none".
 	ValidationOverrideMitigationAction *string `pulumi:"validationOverrideMitigationAction"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a SchemaValidationSettings resource.
@@ -181,7 +184,7 @@ type SchemaValidationSettingsArgs struct {
 	//     Available values: "none".
 	ValidationOverrideMitigationAction pulumi.StringPtrInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (SchemaValidationSettingsArgs) ElementType() reflect.Type {
@@ -292,8 +295,8 @@ func (o SchemaValidationSettingsOutput) ValidationOverrideMitigationAction() pul
 }
 
 // Identifier.
-func (o SchemaValidationSettingsOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SchemaValidationSettings) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o SchemaValidationSettingsOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SchemaValidationSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type SchemaValidationSettingsArrayOutput struct{ *pulumi.OutputState }

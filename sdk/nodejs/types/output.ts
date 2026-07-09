@@ -1280,6 +1280,7 @@ export interface AccessGroupExclude {
     authMethod?: outputs.AccessGroupExcludeAuthMethod;
     azureAd?: outputs.AccessGroupExcludeAzureAd;
     certificate?: outputs.AccessGroupExcludeCertificate;
+    cloudflareAccountMember?: outputs.AccessGroupExcludeCloudflareAccountMember;
     commonName?: outputs.AccessGroupExcludeCommonName;
     devicePosture?: outputs.AccessGroupExcludeDevicePosture;
     email?: outputs.AccessGroupExcludeEmail;
@@ -1342,6 +1343,13 @@ export interface AccessGroupExcludeAzureAd {
 }
 
 export interface AccessGroupExcludeCertificate {
+}
+
+export interface AccessGroupExcludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId?: string;
 }
 
 export interface AccessGroupExcludeCommonName {
@@ -1525,6 +1533,7 @@ export interface AccessGroupInclude {
     authMethod?: outputs.AccessGroupIncludeAuthMethod;
     azureAd?: outputs.AccessGroupIncludeAzureAd;
     certificate?: outputs.AccessGroupIncludeCertificate;
+    cloudflareAccountMember?: outputs.AccessGroupIncludeCloudflareAccountMember;
     commonName?: outputs.AccessGroupIncludeCommonName;
     devicePosture?: outputs.AccessGroupIncludeDevicePosture;
     email?: outputs.AccessGroupIncludeEmail;
@@ -1587,6 +1596,13 @@ export interface AccessGroupIncludeAzureAd {
 }
 
 export interface AccessGroupIncludeCertificate {
+}
+
+export interface AccessGroupIncludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId?: string;
 }
 
 export interface AccessGroupIncludeCommonName {
@@ -1770,6 +1786,7 @@ export interface AccessGroupRequire {
     authMethod?: outputs.AccessGroupRequireAuthMethod;
     azureAd?: outputs.AccessGroupRequireAzureAd;
     certificate?: outputs.AccessGroupRequireCertificate;
+    cloudflareAccountMember?: outputs.AccessGroupRequireCloudflareAccountMember;
     commonName?: outputs.AccessGroupRequireCommonName;
     devicePosture?: outputs.AccessGroupRequireDevicePosture;
     email?: outputs.AccessGroupRequireEmail;
@@ -1832,6 +1849,13 @@ export interface AccessGroupRequireAzureAd {
 }
 
 export interface AccessGroupRequireCertificate {
+}
+
+export interface AccessGroupRequireCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId?: string;
 }
 
 export interface AccessGroupRequireCommonName {
@@ -2064,6 +2088,11 @@ export interface AccessIdentityProviderConfig {
      */
     emailClaimName?: string;
     /**
+     * Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+     * SAML assertions using the certificate from the assigned certificate set.
+     */
+    enableEncryption: boolean;
+    /**
      * Add a list of attribute names that will be returned in the response header from the Access callback.
      */
     headerAttributes?: outputs.AccessIdentityProviderConfigHeaderAttribute[];
@@ -2092,11 +2121,15 @@ export interface AccessIdentityProviderConfig {
      */
     pkceEnabled?: boolean;
     /**
-     * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
      * Available values: "login", "selectAccount", "none".
      */
     prompt?: string;
     redirectUrl: string;
+    /**
+     * When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+     */
+    restrictToAccountMembers: boolean;
     /**
      * OAuth scopes
      */
@@ -2128,6 +2161,49 @@ export interface AccessIdentityProviderConfigHeaderAttribute {
      * header that will be added on the request to the origin
      */
     headerName?: string;
+}
+
+export interface AccessIdentityProviderSamlCertificateSet {
+    /**
+     * Timestamp when the certificate set was created
+     */
+    createdAt: string;
+    /**
+     * The currently active certificate used for encrypting SAML assertions
+     */
+    currentCertificate: outputs.AccessIdentityProviderSamlCertificateSetCurrentCertificate;
+    /**
+     * The previous certificate, maintained during rotation to ensure continuity. Null if no rotation has occurred. Mirrors the structure of `samlCertificate`.
+     */
+    previousCertificate: string;
+    /**
+     * Unique identifier for the certificate set
+     */
+    uid: string;
+    /**
+     * Timestamp when the certificate set was last updated (e.g., during rotation)
+     */
+    updatedAt: string;
+}
+
+export interface AccessIdentityProviderSamlCertificateSetCurrentCertificate {
+    /**
+     * Indicates whether this is the currently active certificate
+     */
+    isCurrent: boolean;
+    /**
+     * Certificate expiration date. Certificates are automatically rotated 30 days before expiration.
+     */
+    notAfter: string;
+    /**
+     * PEM-encoded X.509 certificate containing the public key.
+     * Configure this certificate in your external SAML Identity Provider to enable encryption.
+     */
+    publicCertificate: string;
+    /**
+     * Unique identifier for the certificate
+     */
+    uid: string;
 }
 
 export interface AccessIdentityProviderScimConfig {
@@ -2293,6 +2369,7 @@ export interface AccessPolicyExclude {
     authMethod?: outputs.AccessPolicyExcludeAuthMethod;
     azureAd?: outputs.AccessPolicyExcludeAzureAd;
     certificate?: outputs.AccessPolicyExcludeCertificate;
+    cloudflareAccountMember?: outputs.AccessPolicyExcludeCloudflareAccountMember;
     commonName?: outputs.AccessPolicyExcludeCommonName;
     devicePosture?: outputs.AccessPolicyExcludeDevicePosture;
     email?: outputs.AccessPolicyExcludeEmail;
@@ -2355,6 +2432,13 @@ export interface AccessPolicyExcludeAzureAd {
 }
 
 export interface AccessPolicyExcludeCertificate {
+}
+
+export interface AccessPolicyExcludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId?: string;
 }
 
 export interface AccessPolicyExcludeCommonName {
@@ -2538,6 +2622,7 @@ export interface AccessPolicyInclude {
     authMethod?: outputs.AccessPolicyIncludeAuthMethod;
     azureAd?: outputs.AccessPolicyIncludeAzureAd;
     certificate?: outputs.AccessPolicyIncludeCertificate;
+    cloudflareAccountMember?: outputs.AccessPolicyIncludeCloudflareAccountMember;
     commonName?: outputs.AccessPolicyIncludeCommonName;
     devicePosture?: outputs.AccessPolicyIncludeDevicePosture;
     email?: outputs.AccessPolicyIncludeEmail;
@@ -2600,6 +2685,13 @@ export interface AccessPolicyIncludeAzureAd {
 }
 
 export interface AccessPolicyIncludeCertificate {
+}
+
+export interface AccessPolicyIncludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId?: string;
 }
 
 export interface AccessPolicyIncludeCommonName {
@@ -2798,6 +2890,7 @@ export interface AccessPolicyRequire {
     authMethod?: outputs.AccessPolicyRequireAuthMethod;
     azureAd?: outputs.AccessPolicyRequireAzureAd;
     certificate?: outputs.AccessPolicyRequireCertificate;
+    cloudflareAccountMember?: outputs.AccessPolicyRequireCloudflareAccountMember;
     commonName?: outputs.AccessPolicyRequireCommonName;
     devicePosture?: outputs.AccessPolicyRequireDevicePosture;
     email?: outputs.AccessPolicyRequireEmail;
@@ -2860,6 +2953,13 @@ export interface AccessPolicyRequireAzureAd {
 }
 
 export interface AccessPolicyRequireCertificate {
+}
+
+export interface AccessPolicyRequireCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId?: string;
 }
 
 export interface AccessPolicyRequireCommonName {
@@ -3475,6 +3575,7 @@ export interface AiGatewayDynamicRoutingRouteVersion {
     active: string;
     createdAt: string;
     data: string;
+    isValid: boolean;
     versionId: string;
 }
 
@@ -3485,17 +3586,188 @@ export interface AiGatewayDynamicRoutingVersion {
     active: string;
     createdAt: string;
     data: string;
+    isValid: boolean;
     versionId: string;
 }
 
+export interface AiGatewayGuardrails {
+    prompt: outputs.AiGatewayGuardrailsPrompt;
+    response: outputs.AiGatewayGuardrailsResponse;
+}
+
+export interface AiGatewayGuardrailsPrompt {
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    p1?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s1?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s10?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s11?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s12?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s13?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s2?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s3?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s4?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s5?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s6?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s7?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s8?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s9?: string;
+}
+
+export interface AiGatewayGuardrailsResponse {
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    p1?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s1?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s10?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s11?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s12?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s13?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s2?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s3?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s4?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s5?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s6?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s7?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s8?: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s9?: string;
+}
+
 export interface AiGatewayOtel {
-    authorization: string;
+    authorization?: string;
     /**
      * Available values: "json", "protobuf".
      */
     contentType: string;
     headers: {[key: string]: string};
     url: string;
+}
+
+export interface AiGatewaySpendLimits {
+    enabled: boolean;
+    rules: outputs.AiGatewaySpendLimitsRule[];
+}
+
+export interface AiGatewaySpendLimitsRule {
+    aiGatewayProvider?: outputs.AiGatewaySpendLimitsRuleAiGatewayProvider;
+    enabled: boolean;
+    id: string;
+    limit: number;
+    /**
+     * Available values: "cost".
+     */
+    limitType: string;
+    metadata?: {[key: string]: outputs.AiGatewaySpendLimitsRuleMetadata};
+    model?: outputs.AiGatewaySpendLimitsRuleModel;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique: string;
+    window: number;
+}
+
+export interface AiGatewaySpendLimitsRuleAiGatewayProvider {
+    /**
+     * Available values: "filter".
+     */
+    mode: string;
+    values: string[];
+}
+
+export interface AiGatewaySpendLimitsRuleMetadata {
+    /**
+     * Available values: "partition", "filter".
+     */
+    mode: string;
+    values?: string[];
+}
+
+export interface AiGatewaySpendLimitsRuleModel {
+    /**
+     * Available values: "filter".
+     */
+    mode: string;
+    values: string[];
 }
 
 export interface AiGatewayStripe {
@@ -3536,14 +3808,7 @@ export interface AiSearchInstanceIndexingOptions {
 
 export interface AiSearchInstanceMetadata {
     createdFromAisearchWizard?: boolean;
-    searchForAgents?: outputs.AiSearchInstanceMetadataSearchForAgents;
     workerDomain?: string;
-}
-
-export interface AiSearchInstanceMetadataSearchForAgents {
-    hostname: string;
-    zoneId: string;
-    zoneName: string;
 }
 
 export interface AiSearchInstancePublicEndpointParams {
@@ -3588,7 +3853,7 @@ export interface AiSearchInstancePublicEndpointParamsSearchEndpoint {
 
 export interface AiSearchInstanceRetrievalOptions {
     /**
-     * Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
+     * Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
      */
     boostBies?: outputs.AiSearchInstanceRetrievalOptionsBoostBy[];
     /**
@@ -3600,12 +3865,12 @@ export interface AiSearchInstanceRetrievalOptions {
 
 export interface AiSearchInstanceRetrievalOptionsBoostBy {
     /**
-     * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not*exists' = boost chunks that lack the field. Optional - defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.
+     * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not*exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.
      * Available values: "asc", "desc", "exists", "not*exists".
      */
     direction?: string;
     /**
-     * Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom*metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not*exists.
+     * Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
      */
     field: string;
 }
@@ -3647,9 +3912,12 @@ export interface AiSearchInstanceSourceParamsWebCrawlerCrawlOptions {
 
 export interface AiSearchInstanceSourceParamsWebCrawlerParseOptions {
     /**
-     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
      */
     contentSelectors?: outputs.AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector[];
+    /**
+     * Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+     */
     includeHeaders?: {[key: string]: string};
     includeImages: boolean;
     /**
@@ -3665,7 +3933,7 @@ export interface AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelect
      */
     path: string;
     /**
-     * CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.
+     * CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
      */
     selector: string;
 }
@@ -3856,6 +4124,39 @@ export interface ApiShieldOperationFeaturesThresholds {
      * The suggested threshold in requests done by the same auth*id or period*seconds.
      */
     suggestedThreshold: number;
+}
+
+export interface ApiShieldOperationSchemas {
+    /**
+     * An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension.
+     */
+    learned: outputs.ApiShieldOperationSchemasLearned;
+    /**
+     * An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension.
+     */
+    uploaded: outputs.ApiShieldOperationSchemasUploaded;
+}
+
+export interface ApiShieldOperationSchemasLearned {
+    /**
+     * OpenAPI parameter objects describing path, query, header, or cookie parameters.
+     */
+    parameters: {[key: string]: string}[];
+    /**
+     * OpenAPI request body object describing the expected request payload.
+     */
+    requestBody: {[key: string]: string};
+}
+
+export interface ApiShieldOperationSchemasUploaded {
+    /**
+     * OpenAPI parameter objects describing path, query, header, or cookie parameters.
+     */
+    parameters: {[key: string]: string}[];
+    /**
+     * OpenAPI request body object describing the expected request payload.
+     */
+    requestBody: {[key: string]: string};
 }
 
 export interface ApiShieldSchemaSchema {
@@ -4220,16 +4521,16 @@ export interface CustomHostnameSsl {
      */
     bundleMethod: string;
     /**
-     * The Certificate Authority that will issue the certificate
+     * The Certificate Authority that will issue the certificate.
      * Available values: "digicert", "google", "lets*encrypt", "ssl*com".
      */
     certificateAuthority: string;
     /**
-     * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+     * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      */
     cloudflareBranding?: boolean;
     /**
-     * Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     * Array of custom certificate and key pairs (1 or 2 pairs allowed).
      */
     customCertBundles?: outputs.CustomHostnameSslCustomCertBundle[];
     /**
@@ -4348,18 +4649,18 @@ export interface CustomSslKeylessServer {
      */
     status: string;
     /**
-     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel.
      */
     tunnel: outputs.CustomSslKeylessServerTunnel;
 }
 
 export interface CustomSslKeylessServerTunnel {
     /**
-     * Private IP of the Key Server Host
+     * Private IP of the Key Server Host.
      */
     privateIp: string;
     /**
-     * Cloudflare Tunnel Virtual Network ID
+     * Cloudflare Tunnel Virtual Network ID.
      */
     vnetId: string;
 }
@@ -5018,23 +5319,6 @@ export interface EmailRoutingRuleMatcher {
     value?: string;
 }
 
-export interface EmailSecurityTrustedDomainsBody {
-    comments?: string;
-    /**
-     * Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
-     */
-    isRecent: boolean;
-    isRegex: boolean;
-    /**
-     * Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
-     */
-    isSimilarity: boolean;
-    pattern: string;
-}
-
 export interface FilterBody {
     /**
      * An informative summary of the filter.
@@ -5108,6 +5392,135 @@ export interface FirewallRuleFilter {
      * A short reference tag. Allows you to select related filters.
      */
     ref?: string;
+}
+
+export interface FlagshipFlagRule {
+    /**
+     * Conditions the context must satisfy for this rule to match. An empty array matches all contexts.
+     */
+    conditions: outputs.FlagshipFlagRuleCondition[];
+    /**
+     * Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.
+     */
+    priority: number;
+    rollout?: outputs.FlagshipFlagRuleRollout;
+    /**
+     * Variation served when this rule matches. Must be a key in `variations`.
+     */
+    serveVariation: string;
+}
+
+export interface FlagshipFlagRuleCondition {
+    attribute?: string;
+    clauses?: outputs.FlagshipFlagRuleConditionClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator?: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator?: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value?: string;
+}
+
+export interface FlagshipFlagRuleConditionClause {
+    attribute?: string;
+    clauses?: outputs.FlagshipFlagRuleConditionClauseClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator?: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator?: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value?: string;
+}
+
+export interface FlagshipFlagRuleConditionClauseClause {
+    attribute?: string;
+    clauses?: outputs.FlagshipFlagRuleConditionClauseClauseClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator?: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator?: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value?: string;
+}
+
+export interface FlagshipFlagRuleConditionClauseClauseClause {
+    attribute?: string;
+    clauses?: outputs.FlagshipFlagRuleConditionClauseClauseClauseClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator?: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator?: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value?: string;
+}
+
+export interface FlagshipFlagRuleConditionClauseClauseClauseClause {
+    attribute?: string;
+    clauses?: outputs.FlagshipFlagRuleConditionClauseClauseClauseClauseClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator?: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator?: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value?: string;
+}
+
+export interface FlagshipFlagRuleConditionClauseClauseClauseClauseClause {
+    attribute?: string;
+    clauses?: string[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator?: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator?: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value?: string;
+}
+
+export interface FlagshipFlagRuleRollout {
+    /**
+     * Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.
+     */
+    attribute?: string;
+    /**
+     * Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+     */
+    percentage: number;
 }
 
 export interface GetAccessRuleConfiguration {
@@ -6514,6 +6927,7 @@ export interface GetAiGatewayDynamicRoutingVersion {
     active: string;
     createdAt: string;
     data: string;
+    isValid: boolean;
     versionId: string;
 }
 
@@ -6524,6 +6938,129 @@ export interface GetAiGatewayFilter {
     search?: string;
 }
 
+export interface GetAiGatewayGuardrails {
+    prompt: outputs.GetAiGatewayGuardrailsPrompt;
+    response: outputs.GetAiGatewayGuardrailsResponse;
+}
+
+export interface GetAiGatewayGuardrailsPrompt {
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    p1: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s1: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s10: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s11: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s12: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s13: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s2: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s3: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s4: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s5: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s6: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s7: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s8: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s9: string;
+}
+
+export interface GetAiGatewayGuardrailsResponse {
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    p1: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s1: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s10: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s11: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s12: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s13: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s2: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s3: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s4: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s5: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s6: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s7: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s8: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s9: string;
+}
+
 export interface GetAiGatewayOtel {
     authorization: string;
     /**
@@ -6532,6 +7069,53 @@ export interface GetAiGatewayOtel {
     contentType: string;
     headers: {[key: string]: string};
     url: string;
+}
+
+export interface GetAiGatewaySpendLimits {
+    enabled: boolean;
+    rules: outputs.GetAiGatewaySpendLimitsRule[];
+}
+
+export interface GetAiGatewaySpendLimitsRule {
+    aiGatewayProvider: outputs.GetAiGatewaySpendLimitsRuleAiGatewayProvider;
+    enabled: boolean;
+    id: string;
+    limit: number;
+    /**
+     * Available values: "cost".
+     */
+    limitType: string;
+    metadata: {[key: string]: outputs.GetAiGatewaySpendLimitsRuleMetadata};
+    model: outputs.GetAiGatewaySpendLimitsRuleModel;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique: string;
+    window: number;
+}
+
+export interface GetAiGatewaySpendLimitsRuleAiGatewayProvider {
+    /**
+     * Available values: "filter".
+     */
+    mode: string;
+    values: string[];
+}
+
+export interface GetAiGatewaySpendLimitsRuleMetadata {
+    /**
+     * Available values: "partition", "filter".
+     */
+    mode: string;
+    values: string[];
+}
+
+export interface GetAiGatewaySpendLimitsRuleModel {
+    /**
+     * Available values: "filter".
+     */
+    mode: string;
+    values: string[];
 }
 
 export interface GetAiGatewayStripe {
@@ -6550,6 +7134,7 @@ export interface GetAiGatewaysResult {
     collectLogs: boolean;
     createdAt: string;
     dlp: outputs.GetAiGatewaysResultDlp;
+    guardrails: outputs.GetAiGatewaysResultGuardrails;
     /**
      * gateway id
      */
@@ -6583,6 +7168,7 @@ export interface GetAiGatewaysResult {
      * Maximum number of retry attempts for failed requests (1-5)
      */
     retryMaxAttempts: number;
+    spendLimits: outputs.GetAiGatewaysResultSpendLimits;
     storeId: string;
     stripe: outputs.GetAiGatewaysResultStripe;
     /**
@@ -6614,6 +7200,129 @@ export interface GetAiGatewaysResultDlpPolicy {
     profiles: string[];
 }
 
+export interface GetAiGatewaysResultGuardrails {
+    prompt: outputs.GetAiGatewaysResultGuardrailsPrompt;
+    response: outputs.GetAiGatewaysResultGuardrailsResponse;
+}
+
+export interface GetAiGatewaysResultGuardrailsPrompt {
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    p1: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s1: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s10: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s11: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s12: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s13: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s2: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s3: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s4: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s5: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s6: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s7: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s8: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s9: string;
+}
+
+export interface GetAiGatewaysResultGuardrailsResponse {
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    p1: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s1: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s10: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s11: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s12: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s13: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s2: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s3: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s4: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s5: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s6: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s7: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s8: string;
+    /**
+     * Available values: "FLAG", "BLOCK".
+     */
+    s9: string;
+}
+
 export interface GetAiGatewaysResultOtel {
     authorization: string;
     /**
@@ -6622,6 +7331,53 @@ export interface GetAiGatewaysResultOtel {
     contentType: string;
     headers: {[key: string]: string};
     url: string;
+}
+
+export interface GetAiGatewaysResultSpendLimits {
+    enabled: boolean;
+    rules: outputs.GetAiGatewaysResultSpendLimitsRule[];
+}
+
+export interface GetAiGatewaysResultSpendLimitsRule {
+    aiGatewayProvider: outputs.GetAiGatewaysResultSpendLimitsRuleAiGatewayProvider;
+    enabled: boolean;
+    id: string;
+    limit: number;
+    /**
+     * Available values: "cost".
+     */
+    limitType: string;
+    metadata: {[key: string]: outputs.GetAiGatewaysResultSpendLimitsRuleMetadata};
+    model: outputs.GetAiGatewaysResultSpendLimitsRuleModel;
+    /**
+     * Available values: "fixed", "sliding".
+     */
+    technique: string;
+    window: number;
+}
+
+export interface GetAiGatewaysResultSpendLimitsRuleAiGatewayProvider {
+    /**
+     * Available values: "filter".
+     */
+    mode: string;
+    values: string[];
+}
+
+export interface GetAiGatewaysResultSpendLimitsRuleMetadata {
+    /**
+     * Available values: "partition", "filter".
+     */
+    mode: string;
+    values: string[];
+}
+
+export interface GetAiGatewaysResultSpendLimitsRuleModel {
+    /**
+     * Available values: "filter".
+     */
+    mode: string;
+    values: string[];
 }
 
 export interface GetAiGatewaysResultStripe {
@@ -6642,19 +7398,22 @@ export interface GetAiSearchInstanceCustomMetadata {
 }
 
 export interface GetAiSearchInstanceFilter {
+    /**
+     * Filter by namespace.
+     */
     namespace?: string;
     /**
-     * Order By Column Name
+     * Field to order results by.
      * Available values: "createdAt".
      */
     orderBy: string;
     /**
-     * Order By Direction
+     * Order direction.
      * Available values: "asc", "desc".
      */
     orderByDirection: string;
     /**
-     * Search by id
+     * Filter instances whose id contains this string (case-insensitive).
      */
     search?: string;
 }
@@ -6680,14 +7439,7 @@ export interface GetAiSearchInstanceIndexingOptions {
 
 export interface GetAiSearchInstanceMetadata {
     createdFromAisearchWizard: boolean;
-    searchForAgents: outputs.GetAiSearchInstanceMetadataSearchForAgents;
     workerDomain: string;
-}
-
-export interface GetAiSearchInstanceMetadataSearchForAgents {
-    hostname: string;
-    zoneId: string;
-    zoneName: string;
 }
 
 export interface GetAiSearchInstancePublicEndpointParams {
@@ -6732,7 +7484,7 @@ export interface GetAiSearchInstancePublicEndpointParamsSearchEndpoint {
 
 export interface GetAiSearchInstanceRetrievalOptions {
     /**
-     * Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
+     * Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
      */
     boostBies: outputs.GetAiSearchInstanceRetrievalOptionsBoostBy[];
     /**
@@ -6744,12 +7496,12 @@ export interface GetAiSearchInstanceRetrievalOptions {
 
 export interface GetAiSearchInstanceRetrievalOptionsBoostBy {
     /**
-     * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not*exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.
+     * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not*exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.
      * Available values: "asc", "desc", "exists", "not*exists".
      */
     direction: string;
     /**
-     * Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom*metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not*exists.
+     * Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
      */
     field: string;
 }
@@ -6791,9 +7543,12 @@ export interface GetAiSearchInstanceSourceParamsWebCrawlerCrawlOptions {
 
 export interface GetAiSearchInstanceSourceParamsWebCrawlerParseOptions {
     /**
-     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
      */
     contentSelectors: outputs.GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelector[];
+    /**
+     * Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+     */
     includeHeaders: {[key: string]: string};
     includeImages: boolean;
     /**
@@ -6809,7 +7564,7 @@ export interface GetAiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSel
      */
     path: string;
     /**
-     * CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.
+     * CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
      */
     selector: string;
 }
@@ -6834,6 +7589,11 @@ export interface GetAiSearchInstancesResult {
      * Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
      */
     cacheThreshold: string;
+    /**
+     * Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     */
+    cacheTtl: number;
     chunkOverlap: number;
     chunkSize: number;
     createdAt: string;
@@ -6929,14 +7689,7 @@ export interface GetAiSearchInstancesResultIndexingOptions {
 
 export interface GetAiSearchInstancesResultMetadata {
     createdFromAisearchWizard: boolean;
-    searchForAgents: outputs.GetAiSearchInstancesResultMetadataSearchForAgents;
     workerDomain: string;
-}
-
-export interface GetAiSearchInstancesResultMetadataSearchForAgents {
-    hostname: string;
-    zoneId: string;
-    zoneName: string;
 }
 
 export interface GetAiSearchInstancesResultPublicEndpointParams {
@@ -6981,7 +7734,7 @@ export interface GetAiSearchInstancesResultPublicEndpointParamsSearchEndpoint {
 
 export interface GetAiSearchInstancesResultRetrievalOptions {
     /**
-     * Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
+     * Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom*metadata field.
      */
     boostBies: outputs.GetAiSearchInstancesResultRetrievalOptionsBoostBy[];
     /**
@@ -6993,12 +7746,12 @@ export interface GetAiSearchInstancesResultRetrievalOptions {
 
 export interface GetAiSearchInstancesResultRetrievalOptionsBoostBy {
     /**
-     * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not*exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.
+     * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not*exists' = boost chunks that lack the field. Optional — defaults to 'asc' for numeric/datetime fields, 'exists' for text/boolean fields.
      * Available values: "asc", "desc", "exists", "not*exists".
      */
     direction: string;
     /**
-     * Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom*metadata field. Numeric and datetime fields support asc/desc directions; text/boolean fields support exists/not*exists.
+     * Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom*metadata field. Numeric and datetime fields support all four directions (asc, desc, exists, not*exists); text/boolean fields only support exists/not_exists.
      */
     field: string;
 }
@@ -7040,9 +7793,12 @@ export interface GetAiSearchInstancesResultSourceParamsWebCrawlerCrawlOptions {
 
 export interface GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptions {
     /**
-     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
      */
     contentSelectors: outputs.GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsContentSelector[];
+    /**
+     * Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+     */
     includeHeaders: {[key: string]: string};
     includeImages: boolean;
     /**
@@ -7058,7 +7814,7 @@ export interface GetAiSearchInstancesResultSourceParamsWebCrawlerParseOptionsCon
      */
     path: string;
     /**
-     * CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.
+     * CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used.
      */
     selector: string;
 }
@@ -7070,6 +7826,15 @@ export interface GetAiSearchInstancesResultSourceParamsWebCrawlerStoreOptions {
      * Available values: "r2".
      */
     storageType: string;
+}
+
+export interface GetAiSearchNamespacesResult {
+    createdAt: string;
+    /**
+     * Optional description for the namespace. Max 256 characters.
+     */
+    description: string;
+    name: string;
 }
 
 export interface GetAiSearchTokenFilter {
@@ -7347,6 +8112,39 @@ export interface GetApiShieldOperationFilter {
      * Available values: "method", "host", "endpoint", "thresholds.$key".
      */
     order?: string;
+}
+
+export interface GetApiShieldOperationSchemas {
+    /**
+     * An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension.
+     */
+    learned: outputs.GetApiShieldOperationSchemasLearned;
+    /**
+     * An OpenAPI operation object fragment containing schema information for an operation. May include parameter definitions, request body specifications, and a component schema extension.
+     */
+    uploaded: outputs.GetApiShieldOperationSchemasUploaded;
+}
+
+export interface GetApiShieldOperationSchemasLearned {
+    /**
+     * OpenAPI parameter objects describing path, query, header, or cookie parameters.
+     */
+    parameters: {[key: string]: string}[];
+    /**
+     * OpenAPI request body object describing the expected request payload.
+     */
+    requestBody: {[key: string]: string};
+}
+
+export interface GetApiShieldOperationSchemasUploaded {
+    /**
+     * OpenAPI parameter objects describing path, query, header, or cookie parameters.
+     */
+    parameters: {[key: string]: string}[];
+    /**
+     * OpenAPI request body object describing the expected request payload.
+     */
+    requestBody: {[key: string]: string};
 }
 
 export interface GetApiShieldOperationsResult {
@@ -8115,7 +8913,7 @@ export interface GetCertificatePackValidationRecord {
 
 export interface GetCertificatePacksResult {
     /**
-     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
      * Available values: "google", "lets*encrypt", "ssl*com".
      */
     certificateAuthority: string;
@@ -8319,7 +9117,7 @@ export interface GetClientCertificateFilter {
      */
     limit?: number;
     /**
-     * Offset the results
+     * Offset the results.
      */
     offset?: number;
     /**
@@ -8331,19 +9129,19 @@ export interface GetClientCertificateFilter {
 
 export interface GetClientCertificatesResult {
     /**
-     * The Client Certificate PEM
+     * The Client Certificate PEM.
      */
     certificate: string;
     /**
-     * Certificate Authority used to issue the Client Certificate
+     * Certificate Authority used to issue the Client Certificate.
      */
     certificateAuthority: outputs.GetClientCertificatesResultCertificateAuthority;
     /**
-     * Common Name of the Client Certificate
+     * Common Name of the Client Certificate.
      */
     commonName: string;
     /**
-     * Country, provided by the CSR
+     * Country, provided by the CSR.
      */
     country: string;
     /**
@@ -8351,11 +9149,11 @@ export interface GetClientCertificatesResult {
      */
     csr: string;
     /**
-     * Date that the Client Certificate expires
+     * Date that the Client Certificate expires.
      */
     expiresOn: string;
     /**
-     * Unique identifier of the Client Certificate
+     * Unique identifier of the Client Certificate.
      */
     fingerprintSha256: string;
     /**
@@ -8363,19 +9161,19 @@ export interface GetClientCertificatesResult {
      */
     id: string;
     /**
-     * Date that the Client Certificate was issued by the Certificate Authority
+     * Date that the Client Certificate was issued by the Certificate Authority.
      */
     issuedOn: string;
     /**
-     * Location, provided by the CSR
+     * Location, provided by the CSR.
      */
     location: string;
     /**
-     * Organization, provided by the CSR
+     * Organization, provided by the CSR.
      */
     organization: string;
     /**
-     * Organizational Unit, provided by the CSR
+     * Organizational Unit, provided by the CSR.
      */
     organizationalUnit: string;
     /**
@@ -8387,20 +9185,20 @@ export interface GetClientCertificatesResult {
      */
     signature: string;
     /**
-     * Subject Key Identifier
+     * Subject Key Identifier.
      */
     ski: string;
     /**
-     * State, provided by the CSR
+     * State, provided by the CSR.
      */
     state: string;
     /**
-     * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+     * Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
      * Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
      */
     status: string;
     /**
-     * The number of days the Client Certificate will be valid after the issuedOn date
+     * The number of days the Client Certificate will be valid after the issuedOn date.
      */
     validityDays: number;
 }
@@ -8620,6 +9418,66 @@ export interface GetContentScanningExpressionsResult {
     payload: string;
 }
 
+export interface GetCustomCsrsResult {
+    /**
+     * Account identifier associated with this CSR.
+     */
+    accountTag: string;
+    /**
+     * The common name (domain) for the CSR.
+     */
+    commonName: string;
+    /**
+     * Two-letter ISO 3166-1 alpha-2 country code.
+     */
+    country: string;
+    /**
+     * When the CSR was created.
+     */
+    createdAt: string;
+    /**
+     * The PEM-encoded Certificate Signing Request.
+     */
+    csr: string;
+    /**
+     * Optional description for the CSR.
+     */
+    description: string;
+    /**
+     * Custom CSR identifier tag.
+     */
+    id: string;
+    /**
+     * The key algorithm used to generate the CSR.
+     * Available values: "rsa2048", "p256v1".
+     */
+    keyType: string;
+    /**
+     * City or locality name.
+     */
+    locality: string;
+    /**
+     * Human-readable name for the CSR.
+     */
+    name: string;
+    /**
+     * Organization name.
+     */
+    organization: string;
+    /**
+     * Organizational unit name.
+     */
+    organizationalUnit: string;
+    /**
+     * Subject Alternative Names included in the CSR.
+     */
+    sans: string[];
+    /**
+     * State or province name.
+     */
+    state: string;
+}
+
 export interface GetCustomHostnameFilter {
     /**
      * Filter by the certificate authority that issued the SSL certificate.
@@ -8654,7 +9512,7 @@ export interface GetCustomHostnameFilter {
      * Whether to filter hostnames based on if they have SSL enabled.
      * Available values: 0, 1.
      */
-    ssl?: number;
+    ssl: number;
     /**
      * Filter by SSL certificate status.
      * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
@@ -8707,7 +9565,7 @@ export interface GetCustomHostnameSsl {
      */
     bundleMethod: string;
     /**
-     * The Certificate Authority that will issue the certificate
+     * The Certificate Authority that will issue the certificate.
      * Available values: "digicert", "google", "lets*encrypt", "ssl*com".
      */
     certificateAuthority: string;
@@ -8972,7 +9830,7 @@ export interface GetCustomHostnamesResultSsl {
      */
     bundleMethod: string;
     /**
-     * The Certificate Authority that will issue the certificate
+     * The Certificate Authority that will issue the certificate.
      * Available values: "digicert", "google", "lets*encrypt", "ssl*com".
      */
     certificateAuthority: string;
@@ -9157,14 +10015,14 @@ export interface GetCustomOriginTrustStoreFilter {
      */
     limit?: number;
     /**
-     * Offset the results
+     * Offset the results.
      */
     offset?: number;
 }
 
 export interface GetCustomOriginTrustStoresResult {
     /**
-     * The zone's SSL certificate or certificate and the intermediate(s).
+     * The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
      */
     certificate: string;
     /**
@@ -9299,18 +10157,18 @@ export interface GetCustomSslKeylessServer {
      */
     status: string;
     /**
-     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel.
      */
     tunnel: outputs.GetCustomSslKeylessServerTunnel;
 }
 
 export interface GetCustomSslKeylessServerTunnel {
     /**
-     * Private IP of the Key Server Host
+     * Private IP of the Key Server Host.
      */
     privateIp: string;
     /**
-     * Cloudflare Tunnel Virtual Network ID
+     * Cloudflare Tunnel Virtual Network ID.
      */
     vnetId: string;
 }
@@ -9422,18 +10280,18 @@ export interface GetCustomSslsResultKeylessServer {
      */
     status: string;
     /**
-     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel.
      */
     tunnel: outputs.GetCustomSslsResultKeylessServerTunnel;
 }
 
 export interface GetCustomSslsResultKeylessServerTunnel {
     /**
-     * Private IP of the Key Server Host
+     * Private IP of the Key Server Host.
      */
     privateIp: string;
     /**
-     * Cloudflare Tunnel Virtual Network ID
+     * Cloudflare Tunnel Virtual Network ID.
      */
     vnetId: string;
 }
@@ -9447,7 +10305,7 @@ export interface GetD1DatabaseFilter {
 
 export interface GetD1DatabaseReadReplication {
     /**
-     * The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+     * The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used.
      * Available values: "auto", "disabled".
      */
     mode: string;
@@ -9476,6 +10334,25 @@ export interface GetD1DatabasesResult {
      */
     uuid: string;
     version: string;
+}
+
+export interface GetDlsPrefixBindingsResult {
+    /**
+     * The CIDR that is bound.
+     */
+    cidr: string;
+    /**
+     * The ID of the binding.
+     */
+    id: string;
+    /**
+     * The ID of the parent prefix.
+     */
+    prefixId: string;
+    /**
+     * The region key used for the binding.
+     */
+    regionKey: string;
 }
 
 export interface GetDnsFirewallAttackMitigation {
@@ -9548,7 +10425,7 @@ export interface GetDnsFirewallsResult {
      */
     negativeCacheTtl: number;
     /**
-     * Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+     * Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
      */
     ratelimit: number;
     /**
@@ -10533,20 +11410,21 @@ export interface GetEmailSecurityBlockSenderFilter {
      */
     direction?: string;
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: "pattern", "createdAt".
      */
     order?: string;
+    /**
+     * Filter by pattern value.
+     */
     pattern?: string;
     /**
+     * Filter by pattern type.
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     patternType?: string;
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      */
     search?: string;
 }
@@ -10555,13 +11433,21 @@ export interface GetEmailSecurityBlockSendersResult {
     comments: string;
     createdAt: string;
     /**
-     * The unique identifier for the allow policy.
+     * Blocked sender pattern identifier
      */
-    id: number;
+    id: string;
     isRegex: boolean;
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     lastModified: string;
+    modifiedAt: string;
     pattern: string;
     /**
+     * Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     patternType: string;
@@ -10577,10 +11463,22 @@ export interface GetEmailSecurityImpersonationRegistriesResult {
      * @deprecated This attribute is deprecated.
      */
     externalDirectoryNodeId: string;
-    id: number;
+    /**
+     * Impersonation registry entry identifier
+     */
+    id: string;
     isEmailRegex: boolean;
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     lastModified: string;
+    modifiedAt: string;
     name: string;
+    /**
+     * Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+     */
     provenance: string;
 }
 
@@ -10591,7 +11489,7 @@ export interface GetEmailSecurityImpersonationRegistryFilter {
      */
     direction?: string;
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: "name", "email", "createdAt".
      */
     order?: string;
@@ -10600,10 +11498,7 @@ export interface GetEmailSecurityImpersonationRegistryFilter {
      */
     provenance?: string;
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      */
     search?: string;
 }
@@ -10614,19 +11509,22 @@ export interface GetEmailSecurityTrustedDomainsFilter {
      * Available values: "asc", "desc".
      */
     direction?: string;
+    /**
+     * Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     */
     isRecent?: boolean;
+    /**
+     * Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     */
     isSimilarity?: boolean;
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: "pattern", "createdAt".
      */
     order?: string;
     pattern?: string;
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      */
     search?: string;
 }
@@ -10635,22 +11533,25 @@ export interface GetEmailSecurityTrustedDomainsListResult {
     comments: string;
     createdAt: string;
     /**
-     * The unique identifier for the trusted domain.
+     * Trusted domain identifier
      */
-    id: number;
+    id: string;
     /**
-     * Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
+     * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      */
     isRecent: boolean;
     isRegex: boolean;
     /**
-     * Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
+     * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      */
     isSimilarity: boolean;
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     lastModified: string;
+    modifiedAt: string;
     pattern: string;
 }
 
@@ -10755,6 +11656,306 @@ export interface GetFirewallRulesResultFilter {
      * A short reference tag. Allows you to select related filters.
      */
     ref: string;
+}
+
+export interface GetFlagshipAppsResult {
+    createdAt: string;
+    id: string;
+    name: string;
+    updatedAt: string;
+    /**
+     * Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.
+     */
+    updatedBy: string;
+}
+
+export interface GetFlagshipFlagRule {
+    /**
+     * Conditions the context must satisfy for this rule to match. An empty array matches all contexts.
+     */
+    conditions: outputs.GetFlagshipFlagRuleCondition[];
+    /**
+     * Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.
+     */
+    priority: number;
+    rollout: outputs.GetFlagshipFlagRuleRollout;
+    /**
+     * Variation served when this rule matches. Must be a key in `variations`.
+     */
+    serveVariation: string;
+}
+
+export interface GetFlagshipFlagRuleCondition {
+    attribute: string;
+    clauses: outputs.GetFlagshipFlagRuleConditionClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value: string;
+}
+
+export interface GetFlagshipFlagRuleConditionClause {
+    attribute: string;
+    clauses: outputs.GetFlagshipFlagRuleConditionClauseClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value: string;
+}
+
+export interface GetFlagshipFlagRuleConditionClauseClause {
+    attribute: string;
+    clauses: outputs.GetFlagshipFlagRuleConditionClauseClauseClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value: string;
+}
+
+export interface GetFlagshipFlagRuleConditionClauseClauseClause {
+    attribute: string;
+    clauses: outputs.GetFlagshipFlagRuleConditionClauseClauseClauseClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value: string;
+}
+
+export interface GetFlagshipFlagRuleConditionClauseClauseClauseClause {
+    attribute: string;
+    clauses: outputs.GetFlagshipFlagRuleConditionClauseClauseClauseClauseClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value: string;
+}
+
+export interface GetFlagshipFlagRuleConditionClauseClauseClauseClauseClause {
+    attribute: string;
+    clauses: string[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value: string;
+}
+
+export interface GetFlagshipFlagRuleRollout {
+    /**
+     * Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.
+     */
+    attribute: string;
+    /**
+     * Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+     */
+    percentage: number;
+}
+
+export interface GetFlagshipFlagsResult {
+    /**
+     * Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
+     */
+    defaultVariation: string;
+    description: string;
+    /**
+     * When false, the flag bypasses all rules and always serves `defaultVariation`.
+     */
+    enabled: boolean;
+    /**
+     * Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
+     */
+    key: string;
+    /**
+     * Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
+     */
+    rules: outputs.GetFlagshipFlagsResultRule[];
+    /**
+     * Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
+     * Available values: "boolean", "string", "number", "json".
+     */
+    type: string;
+    updatedAt: string;
+    updatedBy: string;
+    /**
+     * Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.
+     */
+    variations: {[key: string]: string};
+}
+
+export interface GetFlagshipFlagsResultRule {
+    /**
+     * Conditions the context must satisfy for this rule to match. An empty array matches all contexts.
+     */
+    conditions: outputs.GetFlagshipFlagsResultRuleCondition[];
+    /**
+     * Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.
+     */
+    priority: number;
+    rollout: outputs.GetFlagshipFlagsResultRuleRollout;
+    /**
+     * Variation served when this rule matches. Must be a key in `variations`.
+     */
+    serveVariation: string;
+}
+
+export interface GetFlagshipFlagsResultRuleCondition {
+    attribute: string;
+    clauses: outputs.GetFlagshipFlagsResultRuleConditionClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value: string;
+}
+
+export interface GetFlagshipFlagsResultRuleConditionClause {
+    attribute: string;
+    clauses: outputs.GetFlagshipFlagsResultRuleConditionClauseClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value: string;
+}
+
+export interface GetFlagshipFlagsResultRuleConditionClauseClause {
+    attribute: string;
+    clauses: outputs.GetFlagshipFlagsResultRuleConditionClauseClauseClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value: string;
+}
+
+export interface GetFlagshipFlagsResultRuleConditionClauseClauseClause {
+    attribute: string;
+    clauses: outputs.GetFlagshipFlagsResultRuleConditionClauseClauseClauseClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value: string;
+}
+
+export interface GetFlagshipFlagsResultRuleConditionClauseClauseClauseClause {
+    attribute: string;
+    clauses: outputs.GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value: string;
+}
+
+export interface GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause {
+    attribute: string;
+    clauses: string[];
+    /**
+     * Available values: "AND", "OR".
+     */
+    logicalOperator: string;
+    /**
+     * Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+     */
+    operator: string;
+    /**
+     * Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
+     */
+    value: string;
+}
+
+export interface GetFlagshipFlagsResultRuleRollout {
+    /**
+     * Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.
+     */
+    attribute: string;
+    /**
+     * Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).
+     */
+    percentage: number;
 }
 
 export interface GetHealthcheckHttpConfig {
@@ -11162,11 +12363,11 @@ export interface GetImagesResultImage {
 
 export interface GetKeylessCertificateTunnel {
     /**
-     * Private IP of the Key Server Host
+     * Private IP of the Key Server Host.
      */
     privateIp: string;
     /**
-     * Cloudflare Tunnel Virtual Network ID
+     * Cloudflare Tunnel Virtual Network ID.
      */
     vnetId: string;
 }
@@ -11210,18 +12411,18 @@ export interface GetKeylessCertificatesResult {
      */
     status: string;
     /**
-     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel.
      */
     tunnel: outputs.GetKeylessCertificatesResultTunnel;
 }
 
 export interface GetKeylessCertificatesResultTunnel {
     /**
-     * Private IP of the Key Server Host
+     * Private IP of the Key Server Host.
      */
     privateIp: string;
     /**
-     * Cloudflare Tunnel Virtual Network ID
+     * Cloudflare Tunnel Virtual Network ID.
      */
     vnetId: string;
 }
@@ -11393,6 +12594,83 @@ export interface GetLoadBalancerLocationStrategy {
      * Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
      */
     preferEcs: string;
+}
+
+export interface GetLoadBalancerMonitorGroupMember {
+    /**
+     * The timestamp of when the monitor was added to the group
+     */
+    createdAt: string;
+    /**
+     * Whether this monitor is enabled in the group
+     */
+    enabled: boolean;
+    /**
+     * The ID of the Monitor to use for checking the health of origins within this pool.
+     */
+    monitorId: string;
+    /**
+     * Whether this monitor is used for monitoring only (does not affect pool health)
+     */
+    monitoringOnly: boolean;
+    /**
+     * Whether this monitor must be healthy for the pool to be considered healthy
+     */
+    mustBeHealthy: boolean;
+    /**
+     * The timestamp of when the monitor group member was last updated
+     */
+    updatedAt: string;
+}
+
+export interface GetLoadBalancerMonitorGroupsResult {
+    /**
+     * The timestamp of when the monitor group was created
+     */
+    createdOn: string;
+    /**
+     * A short description of the monitor group
+     */
+    description: string;
+    /**
+     * The ID of the Monitor Group to use for checking the health of origins within this pool.
+     */
+    id: string;
+    /**
+     * List of monitors in this group
+     */
+    members: outputs.GetLoadBalancerMonitorGroupsResultMember[];
+    /**
+     * The timestamp of when the monitor group was last updated
+     */
+    modifiedOn: string;
+}
+
+export interface GetLoadBalancerMonitorGroupsResultMember {
+    /**
+     * The timestamp of when the monitor was added to the group
+     */
+    createdAt: string;
+    /**
+     * Whether this monitor is enabled in the group
+     */
+    enabled: boolean;
+    /**
+     * The ID of the Monitor to use for checking the health of origins within this pool.
+     */
+    monitorId: string;
+    /**
+     * Whether this monitor is used for monitoring only (does not affect pool health)
+     */
+    monitoringOnly: boolean;
+    /**
+     * Whether this monitor must be healthy for the pool to be considered healthy
+     */
+    mustBeHealthy: boolean;
+    /**
+     * The timestamp of when the monitor group member was last updated
+     */
+    updatedAt: string;
 }
 
 export interface GetLoadBalancerMonitorsResult {
@@ -12388,7 +13666,7 @@ export interface GetLogpushJobOutputOptions {
 export interface GetLogpushJobsResult {
     /**
      * Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-     * Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "warp*config*changes", "warp*toggle*changes", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+     * Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
      */
     dataset: string;
     /**
@@ -12576,9 +13854,69 @@ export interface GetMagicNetworkMonitoringRulesResult {
     zscoreTarget: string;
 }
 
+export interface GetMagicTransitCf1SiteLocation {
+    /**
+     * Latitude of the CF1 Site.
+     */
+    lat: number;
+    /**
+     * Longitude of the CF1 Site.
+     */
+    long: number;
+    /**
+     * Name of nearest town, city, or village.
+     */
+    name: string;
+}
+
+export interface GetMagicTransitCf1SitesResult {
+    createdOn: string;
+    /**
+     * A human-provided description of the CF1 Site.
+     */
+    description: string;
+    /**
+     * Identifier
+     */
+    id: string;
+    location: outputs.GetMagicTransitCf1SitesResultLocation;
+    modifiedOn: string;
+    /**
+     * A human-provided name describing the CF1 Site that should be unique within the account.
+     */
+    name: string;
+}
+
+export interface GetMagicTransitCf1SitesResultLocation {
+    /**
+     * Latitude of the CF1 Site.
+     */
+    lat: number;
+    /**
+     * Longitude of the CF1 Site.
+     */
+    long: number;
+    /**
+     * Name of nearest town, city, or village.
+     */
+    name: string;
+}
+
 export interface GetMagicTransitConnectorDevice {
     id: string;
     serialNumber: string;
+    /**
+     * Available values: "MANAGED", "LICENSED".
+     */
+    type: string;
+}
+
+export interface GetMagicTransitConnectorFilter {
+    /**
+     * Filter connectors by device type.
+     * Available values: "MANAGED", "LICENSED".
+     */
+    deviceType?: string;
 }
 
 export interface GetMagicTransitConnectorsResult {
@@ -12606,6 +13944,10 @@ export interface GetMagicTransitConnectorsResult {
 export interface GetMagicTransitConnectorsResultDevice {
     id: string;
     serialNumber: string;
+    /**
+     * Available values: "MANAGED", "LICENSED".
+     */
+    type: string;
 }
 
 export interface GetMagicTransitSiteAclLan1 {
@@ -12785,6 +14127,10 @@ export interface GetMagicTransitSiteLanStaticAddressingDhcpRelay {
 
 export interface GetMagicTransitSiteLanStaticAddressingDhcpServer {
     /**
+     * Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.
+     */
+    dhcpOptions: outputs.GetMagicTransitSiteLanStaticAddressingDhcpServerDhcpOption[];
+    /**
      * A valid IPv4 address.
      */
     dhcpPoolEnd: string;
@@ -12801,6 +14147,22 @@ export interface GetMagicTransitSiteLanStaticAddressingDhcpServer {
      * Mapping of MAC addresses to IP addresses
      */
     reservations: {[key: string]: string};
+}
+
+export interface GetMagicTransitSiteLanStaticAddressingDhcpServerDhcpOption {
+    /**
+     * DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration.
+     */
+    code: number;
+    /**
+     * The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes).
+     * Available values: "text", "hex", "ip", "byte", "short", "integer".
+     */
+    type: string;
+    /**
+     * The option value, interpreted according to the type field.
+     */
+    value: string;
 }
 
 export interface GetMagicTransitSiteLansResult {
@@ -12891,6 +14253,10 @@ export interface GetMagicTransitSiteLansResultStaticAddressingDhcpRelay {
 
 export interface GetMagicTransitSiteLansResultStaticAddressingDhcpServer {
     /**
+     * Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.
+     */
+    dhcpOptions: outputs.GetMagicTransitSiteLansResultStaticAddressingDhcpServerDhcpOption[];
+    /**
      * A valid IPv4 address.
      */
     dhcpPoolEnd: string;
@@ -12907,6 +14273,22 @@ export interface GetMagicTransitSiteLansResultStaticAddressingDhcpServer {
      * Mapping of MAC addresses to IP addresses
      */
     reservations: {[key: string]: string};
+}
+
+export interface GetMagicTransitSiteLansResultStaticAddressingDhcpServerDhcpOption {
+    /**
+     * DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration.
+     */
+    code: number;
+    /**
+     * The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes).
+     * Available values: "text", "hex", "ip", "byte", "short", "integer".
+     */
+    type: string;
+    /**
+     * The option value, interpreted according to the type field.
+     */
+    value: string;
 }
 
 export interface GetMagicTransitSiteLocation {
@@ -13021,7 +14403,7 @@ export interface GetMagicTransitSitesResultLocation {
 
 export interface GetMagicWanGreTunnelGreTunnel {
     /**
-     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `couplerIntegration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
      */
     automaticReturnRouting: boolean;
     bgp: outputs.GetMagicWanGreTunnelGreTunnelBgp;
@@ -13145,7 +14527,7 @@ export interface GetMagicWanIpsecTunnelIpsecTunnel {
      */
     allowNullCipher: boolean;
     /**
-     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `couplerIntegration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
      */
     automaticReturnRouting: boolean;
     bgp: outputs.GetMagicWanIpsecTunnelIpsecTunnelBgp;
@@ -13868,6 +15250,130 @@ export interface GetNotificationPolicyWebhooksListResult {
     url: string;
 }
 
+export interface GetOauthClientClientUriVerification {
+    /**
+     * Current verification status for the client URI host.
+     * Available values: "pending", "inProgress", "verified", "failed".
+     */
+    status: string;
+    /**
+     * Exact TXT record value that must be added to DNS to prove ownership of the client URI host.
+     */
+    text: string;
+}
+
+export interface GetOauthClientsResult {
+    /**
+     * Array of allowed CORS origins.
+     */
+    allowedCorsOrigins: string[];
+    /**
+     * The unique identifier for an OAuth client.
+     */
+    clientId: string;
+    /**
+     * Human-readable name of the OAuth client.
+     */
+    clientName: string;
+    /**
+     * URL of the home page of the client.
+     */
+    clientUri: string;
+    /**
+     * Client URI domain control verification state.
+     */
+    clientUriVerification: outputs.GetOauthClientsResultClientUriVerification;
+    /**
+     * Timestamp when the OAuth client was created.
+     */
+    createdAt: string;
+    /**
+     * Array of OAuth grant types the client is allowed to use. `authorizationCode` is required; `refreshToken` may be included optionally.
+     */
+    grantTypes: string[];
+    /**
+     * Indicates whether the client has a rotated secret that has not yet been deleted.
+     */
+    hasRotatedSecret: boolean;
+    /**
+     * URL of the client's logo.
+     */
+    logoUri: string;
+    /**
+     * URL that points to a privacy policy document.
+     */
+    policyUri: string;
+    /**
+     * Array of allowed post-logout redirect URIs.
+     */
+    postLogoutRedirectUris: string[];
+    /**
+     * Timestamp when the OAuth client was promoted to public visibility.
+     */
+    promotedAt: string;
+    /**
+     * Array of allowed redirect URIs for the client.
+     */
+    redirectUris: string[];
+    /**
+     * Array of OAuth response types the client is allowed to use.
+     */
+    responseTypes: string[];
+    /**
+     * Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offlineAccess` and `openid` are added or removed automatically based on `grantTypes` and `responseTypes`.
+     */
+    scopes: string[];
+    /**
+     * The authentication method the client uses at the token endpoint.
+     * Available values: "none", "client*secret*basic", "client*secret*post".
+     */
+    tokenEndpointAuthMethod: string;
+    /**
+     * URL that points to a terms of service document.
+     */
+    tosUri: string;
+    /**
+     * Timestamp when the OAuth client was last updated.
+     */
+    updatedAt: string;
+    /**
+     * Visibility of the OAuth client.
+     * Available values: "public", "private".
+     */
+    visibility: string;
+}
+
+export interface GetOauthClientsResultClientUriVerification {
+    /**
+     * Current verification status for the client URI host.
+     * Available values: "pending", "inProgress", "verified", "failed".
+     */
+    status: string;
+    /**
+     * Exact TXT record value that must be added to DNS to prove ownership of the client URI host.
+     */
+    text: string;
+}
+
+export interface GetOauthScopesResult {
+    /**
+     * Category for grouping scopes in the UI.
+     */
+    category: string;
+    /**
+     * The scope label to use in the scopes array when creating or updating an OAuth client.
+     */
+    id: string;
+    /**
+     * Human-readable name of the OAuth scope.
+     */
+    name: string;
+    /**
+     * The underlying resource scopes (Bach scopes) that define which resources this OAuth scope can act upon.
+     */
+    scopes: string[];
+}
+
 export interface GetOrganizationFilter {
     containing?: outputs.GetOrganizationFilterContaining;
     /**
@@ -13937,6 +15443,15 @@ export interface GetOrganizationMeta {
      * Enable features for Organizations.
      */
     flags: outputs.GetOrganizationMetaFlags;
+    /**
+     * Ordered chain of organization tags from the root organization down to
+     * (and including) this organization itself. Root organizations return a
+     * single-element array containing their own tag; sub-organizations return
+     * `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+     * constructing authorization scopes that need to cover every ancestor
+     * in the hierarchy.
+     */
+    hierarchyTags: string[];
     managedBy: string;
 }
 
@@ -14019,6 +15534,15 @@ export interface GetOrganizationsResultMeta {
      * Enable features for Organizations.
      */
     flags: outputs.GetOrganizationsResultMetaFlags;
+    /**
+     * Ordered chain of organization tags from the root organization down to
+     * (and including) this organization itself. Root organizations return a
+     * single-element array containing their own tag; sub-organizations return
+     * `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+     * constructing authorization scopes that need to cover every ancestor
+     * in the hierarchy.
+     */
+    hierarchyTags: string[];
     managedBy: string;
 }
 
@@ -14049,7 +15573,7 @@ export interface GetOriginCaCertificateFilter {
      */
     limit?: number;
     /**
-     * Offset the results
+     * Offset the results.
      */
     offset?: number;
     /**
@@ -14090,6 +15614,30 @@ export interface GetOriginCaCertificatesResult {
      * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      */
     requestedValidity: number;
+}
+
+export interface GetOriginCloudRegionsResult {
+    /**
+     * The origin IP address (IPv4 or IPv6). Normalized to canonical form (RFC 5952 for IPv6).
+     */
+    id: string;
+    /**
+     * Time this mapping was last modified.
+     */
+    modifiedOn: string;
+    /**
+     * The origin IP address (IPv4 or IPv6). Normalized to canonical form (RFC 5952 for IPv6).
+     */
+    originIp: string;
+    /**
+     * Cloud vendor region identifier.
+     */
+    region: string;
+    /**
+     * Cloud vendor hosting the origin.
+     * Available values: "aws", "azure", "gcp", "oci".
+     */
+    vendor: string;
 }
 
 export interface GetPageShieldConnectionsListResult {
@@ -16481,6 +18029,10 @@ export interface GetPipelineSinkConfigRollingPolicy {
 }
 
 export interface GetPipelineSinkFilter {
+    /**
+     * Filters sinks by name (case-insensitive substring).
+     */
+    name?: string;
     pipelineId?: string;
 }
 
@@ -16712,6 +18264,10 @@ export interface GetPipelineSinksResultSchemaFormat {
 }
 
 export interface GetPipelineStreamFilter {
+    /**
+     * Filters streams by name (case-insensitive substring).
+     */
+    name?: string;
     /**
      * Specifies the public ID of the pipeline.
      */
@@ -19047,11 +20603,405 @@ export interface GetSchemaValidationSchemasListResult {
     validationEnabled: boolean;
 }
 
+export interface GetSecretsStoreFilter {
+    /**
+     * Direction to sort objects
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Order secrets by values in the given field
+     * Available values: "name", "comment", "created", "modified", "status".
+     */
+    order: string;
+}
+
+export interface GetSecretsStoreSecretFilter {
+    /**
+     * Direction to sort objects
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Order secrets by values in the given field
+     * Available values: "name", "comment", "created", "modified", "status".
+     */
+    order: string;
+    /**
+     * Only secrets with the given scopes will be returned
+     */
+    scopes?: string[][];
+    /**
+     * Search secrets using a filter string, filtering across name and comment
+     */
+    search?: string;
+}
+
+export interface GetSecretsStoreSecretsResult {
+    /**
+     * Freeform text describing the secret
+     */
+    comment: string;
+    /**
+     * Whenthe secret was created.
+     */
+    created: string;
+    /**
+     * Secret identifier tag.
+     */
+    id: string;
+    /**
+     * When the secret was modified.
+     */
+    modified: string;
+    /**
+     * The name of the secret
+     */
+    name: string;
+    /**
+     * The list of services that can use this secret.
+     */
+    scopes: string[];
+    /**
+     * Available values: "pending", "active", "deleted".
+     */
+    status: string;
+    /**
+     * Store Identifier
+     */
+    storeId: string;
+}
+
+export interface GetSecretsStoresResult {
+    /**
+     * Account Identifier
+     */
+    accountId: string;
+    /**
+     * Whenthe secret was created.
+     */
+    created: string;
+    /**
+     * Store Identifier
+     */
+    id: string;
+    /**
+     * When the secret was modified.
+     */
+    modified: string;
+    /**
+     * The name of the store
+     */
+    name: string;
+}
+
+export interface GetShareFilter {
+    /**
+     * Direction to sort objects.
+     * Available values: "asc", "desc".
+     */
+    direction: string;
+    /**
+     * Filter shares by kind.
+     * Available values: "sent", "received".
+     */
+    kind?: string;
+    /**
+     * Order shares by values in the given field.
+     * Available values: "name", "created".
+     */
+    order: string;
+    /**
+     * Filter share resources by resource_types.
+     */
+    resourceTypes?: string[];
+    /**
+     * Filter shares by status.
+     * Available values: "active", "deleting", "deleted".
+     */
+    status?: string;
+    /**
+     * Filter shares by tag. Each value is either `key=value` (matches shares whose tags contain that key/value pair) or `key` alone (matches shares that have any value for that key). May be repeated; multiple `tag` parameters are ANDed together. Maximum 20 `tag` parameters per request.
+     */
+    tags?: string[];
+    /**
+     * Filter shares by target_type.
+     * Available values: "account", "organization".
+     */
+    targetType?: string;
+}
+
+export interface GetShareRecipientResource {
+    /**
+     * Share Recipient error message.
+     */
+    error: string;
+    /**
+     * Share Resource identifier.
+     */
+    resourceId: string;
+    /**
+     * Resource Version.
+     */
+    resourceVersion: number;
+    /**
+     * Whether the error is terminal or will be continually retried.
+     */
+    terminal: boolean;
+}
+
+export interface GetShareRecipientsResult {
+    /**
+     * Account identifier.
+     */
+    accountId: string;
+    /**
+     * Share Recipient association status.
+     * Available values: "associating", "associated", "disassociating", "disassociated".
+     */
+    associationStatus: string;
+    /**
+     * When the share was created.
+     */
+    created: string;
+    /**
+     * Share Recipient identifier tag.
+     */
+    id: string;
+    /**
+     * When the share was modified.
+     */
+    modified: string;
+    resources: outputs.GetShareRecipientsResultResource[];
+}
+
+export interface GetShareRecipientsResultResource {
+    /**
+     * Share Recipient error message.
+     */
+    error: string;
+    /**
+     * Share Resource identifier.
+     */
+    resourceId: string;
+    /**
+     * Resource Version.
+     */
+    resourceVersion: number;
+    /**
+     * Whether the error is terminal or will be continually retried.
+     */
+    terminal: boolean;
+}
+
+export interface GetShareResource {
+    /**
+     * When the share was created.
+     */
+    created: string;
+    /**
+     * Share Resource identifier.
+     */
+    id: string;
+    /**
+     * Resource Metadata.
+     */
+    meta: string;
+    /**
+     * When the share was modified.
+     */
+    modified: string;
+    /**
+     * Account identifier.
+     */
+    resourceAccountId: string;
+    /**
+     * Share Resource identifier.
+     */
+    resourceId: string;
+    /**
+     * Resource Type.
+     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+     */
+    resourceType: string;
+    /**
+     * Resource Version.
+     */
+    resourceVersion: number;
+    /**
+     * Resource Status.
+     * Available values: "active", "deleting", "deleted".
+     */
+    status: string;
+}
+
+export interface GetShareResourceFilter {
+    /**
+     * Filter share resources by resource_type.
+     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+     */
+    resourceType?: string;
+    /**
+     * Filter share resources by status.
+     * Available values: "active", "deleting", "deleted".
+     */
+    status?: string;
+}
+
+export interface GetShareResourcesResult {
+    /**
+     * When the share was created.
+     */
+    created: string;
+    /**
+     * Share Resource identifier.
+     */
+    id: string;
+    /**
+     * Resource Metadata.
+     */
+    meta: string;
+    /**
+     * When the share was modified.
+     */
+    modified: string;
+    /**
+     * Account identifier.
+     */
+    resourceAccountId: string;
+    /**
+     * Share Resource identifier.
+     */
+    resourceId: string;
+    /**
+     * Resource Type.
+     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+     */
+    resourceType: string;
+    /**
+     * Resource Version.
+     */
+    resourceVersion: number;
+    /**
+     * Resource Status.
+     * Available values: "active", "deleting", "deleted".
+     */
+    status: string;
+}
+
+export interface GetSharesResult {
+    /**
+     * Account identifier.
+     */
+    accountId: string;
+    /**
+     * The display name of an account.
+     */
+    accountName: string;
+    /**
+     * The number of recipients in the 'associated' state. This field is only included when requested via the 'include*recipient*counts' parameter.
+     */
+    associatedRecipientCount: number;
+    /**
+     * The number of recipients in the 'associating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
+     */
+    associatingRecipientCount: number;
+    /**
+     * When the share was created.
+     */
+    created: string;
+    /**
+     * The number of recipients in the 'disassociated' state. This field is only included when requested via the 'include*recipient*counts' parameter.
+     */
+    disassociatedRecipientCount: number;
+    /**
+     * The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
+     */
+    disassociatingRecipientCount: number;
+    /**
+     * Share identifier tag.
+     */
+    id: string;
+    /**
+     * Available values: "sent", "received".
+     */
+    kind: string;
+    /**
+     * When the share was modified.
+     */
+    modified: string;
+    /**
+     * The name of the share.
+     */
+    name: string;
+    /**
+     * Organization identifier.
+     */
+    organizationId: string;
+    /**
+     * A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter.
+     */
+    resources: outputs.GetSharesResultResource[];
+    /**
+     * Available values: "active", "deleting", "deleted".
+     */
+    status: string;
+    /**
+     * Available values: "account", "organization".
+     */
+    targetType: string;
+}
+
+export interface GetSharesResultResource {
+    /**
+     * When the share was created.
+     */
+    created: string;
+    /**
+     * Share Resource identifier.
+     */
+    id: string;
+    /**
+     * Resource Metadata.
+     */
+    meta: string;
+    /**
+     * When the share was modified.
+     */
+    modified: string;
+    /**
+     * Account identifier.
+     */
+    resourceAccountId: string;
+    /**
+     * Share Resource identifier.
+     */
+    resourceId: string;
+    /**
+     * Resource Type.
+     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+     */
+    resourceType: string;
+    /**
+     * Resource Version.
+     */
+    resourceVersion: number;
+    /**
+     * Resource Status.
+     * Available values: "active", "deleting", "deleted".
+     */
+    status: string;
+}
+
 export interface GetSnippetListResult {
     /**
      * Indicates when the snippet was created.
      */
     createdOn: string;
+    /**
+     * Identify the snippet.
+     */
+    id: string;
     /**
      * Indicates when the snippet was last modified.
      */
@@ -20142,7 +22092,7 @@ export interface GetUserGroupMembersMember {
      */
     email: string;
     /**
-     * User Group identifier tag.
+     * Account member identifier.
      */
     id: string;
     /**
@@ -20983,6 +22933,11 @@ export interface GetWorkerObservabilityTraces {
      * Whether trace persistence is enabled for the Worker.
      */
     persist: boolean;
+    /**
+     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Available values: "authenticated", "accept".
+     */
+    propagationPolicy: string;
 }
 
 export interface GetWorkerReferences {
@@ -21368,6 +23323,10 @@ export interface GetWorkerVersionBindingSimple {
      * The limit (requests per period).
      */
     limit: number;
+    /**
+     * Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+     */
+    mitigationTimeout: number;
     /**
      * The period in seconds.
      */
@@ -21873,6 +23832,10 @@ export interface GetWorkerVersionsResultBindingSimple {
      */
     limit: number;
     /**
+     * Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+     */
+    mitigationTimeout: number;
+    /**
      * The period in seconds.
      */
     period: number;
@@ -22277,6 +24240,11 @@ export interface GetWorkersResultObservabilityTraces {
      * Whether trace persistence is enabled for the Worker.
      */
     persist: boolean;
+    /**
+     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Available values: "authenticated", "accept".
+     */
+    propagationPolicy: string;
 }
 
 export interface GetWorkersResultReferences {
@@ -22595,6 +24563,11 @@ export interface GetWorkersScriptsResultObservabilityTraces {
      * Whether trace persistence is enabled for the Worker.
      */
     persist: boolean;
+    /**
+     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Available values: "authenticated", "accept".
+     */
+    propagationPolicy: string;
 }
 
 export interface GetWorkersScriptsResultPlacement {
@@ -22687,10 +24660,16 @@ export interface GetWorkflowInstances {
     errored: number;
     paused: number;
     queued: number;
+    rollingBack: number;
     running: number;
     terminated: number;
     waiting: number;
     waitingForPause: number;
+}
+
+export interface GetWorkflowSchedule {
+    cron: string;
+    nextInstance: string;
 }
 
 export interface GetWorkflowsResult {
@@ -22700,6 +24679,7 @@ export interface GetWorkflowsResult {
     instances: outputs.GetWorkflowsResultInstances;
     modifiedOn: string;
     name: string;
+    schedules: outputs.GetWorkflowsResultSchedule[];
     scriptName: string;
     triggeredOn: string;
 }
@@ -22709,10 +24689,16 @@ export interface GetWorkflowsResultInstances {
     errored: number;
     paused: number;
     queued: number;
+    rollingBack: number;
     running: number;
     terminated: number;
     waiting: number;
     waitingForPause: number;
+}
+
+export interface GetWorkflowsResultSchedule {
+    cron: string;
+    nextInstance: string;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpPortalFilter {
@@ -22732,11 +24718,16 @@ export interface GetZeroTrustAccessAiControlsMcpPortalServer {
     defaultDisabled: boolean;
     description: string;
     error: string;
+    errorDetails: outputs.GetZeroTrustAccessAiControlsMcpPortalServerErrorDetails;
     hostname: string;
     /**
      * server id
      */
     id: string;
+    /**
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     */
+    isSharedOauthCallbackEnabled: boolean;
     lastSuccessfulSync: string;
     lastSynced: string;
     modifiedAt: string;
@@ -22744,26 +24735,55 @@ export interface GetZeroTrustAccessAiControlsMcpPortalServer {
     name: string;
     onBehalf: boolean;
     prompts: {[key: string]: string}[];
+    /**
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     */
+    secureWebGateway: boolean;
     status: string;
     tools: {[key: string]: string}[];
     updatedPrompts: outputs.GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt[];
     updatedTools: outputs.GetZeroTrustAccessAiControlsMcpPortalServerUpdatedTool[];
 }
 
+export interface GetZeroTrustAccessAiControlsMcpPortalServerErrorDetails {
+    /**
+     * Underlying error message
+     */
+    cause: string;
+    /**
+     * True = MCP server returned an error. False = couldn't reach the server
+     */
+    isUpstream: boolean;
+    /**
+     * MCP protocol error code
+     */
+    mcpCode: number;
+    /**
+     * Whether the error is transient and worth retrying
+     */
+    retryable: boolean;
+    /**
+     * HTTP status code from the server
+     */
+    statusCode: number;
+}
+
 export interface GetZeroTrustAccessAiControlsMcpPortalServerUpdatedPrompt {
-    description: string;
     enabled: boolean;
     name: string;
     portalAlias: string;
+    portalDescription: string;
     serverAlias: string;
+    serverDescription: string;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpPortalServerUpdatedTool {
-    description: string;
     enabled: boolean;
     name: string;
     portalAlias: string;
+    portalDescription: string;
     serverAlias: string;
+    serverDescription: string;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpPortalsResult {
@@ -22799,11 +24819,16 @@ export interface GetZeroTrustAccessAiControlsMcpPortalsResultServer {
     defaultDisabled: boolean;
     description: string;
     error: string;
+    errorDetails: outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServerErrorDetails;
     hostname: string;
     /**
      * server id
      */
     id: string;
+    /**
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     */
+    isSharedOauthCallbackEnabled: boolean;
     lastSuccessfulSync: string;
     lastSynced: string;
     modifiedAt: string;
@@ -22811,26 +24836,78 @@ export interface GetZeroTrustAccessAiControlsMcpPortalsResultServer {
     name: string;
     onBehalf: boolean;
     prompts: {[key: string]: string}[];
+    /**
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     */
+    secureWebGateway: boolean;
     status: string;
     tools: {[key: string]: string}[];
     updatedPrompts: outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedPrompt[];
     updatedTools: outputs.GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedTool[];
 }
 
+export interface GetZeroTrustAccessAiControlsMcpPortalsResultServerErrorDetails {
+    /**
+     * Underlying error message
+     */
+    cause: string;
+    /**
+     * True = MCP server returned an error. False = couldn't reach the server
+     */
+    isUpstream: boolean;
+    /**
+     * MCP protocol error code
+     */
+    mcpCode: number;
+    /**
+     * Whether the error is transient and worth retrying
+     */
+    retryable: boolean;
+    /**
+     * HTTP status code from the server
+     */
+    statusCode: number;
+}
+
 export interface GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedPrompt {
-    description: string;
     enabled: boolean;
     name: string;
     portalAlias: string;
+    portalDescription: string;
     serverAlias: string;
+    serverDescription: string;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpPortalsResultServerUpdatedTool {
-    description: string;
     enabled: boolean;
     name: string;
     portalAlias: string;
+    portalDescription: string;
     serverAlias: string;
+    serverDescription: string;
+}
+
+export interface GetZeroTrustAccessAiControlsMcpServerErrorDetails {
+    /**
+     * Underlying error message
+     */
+    cause: string;
+    /**
+     * True = MCP server returned an error. False = couldn't reach the server
+     */
+    isUpstream: boolean;
+    /**
+     * MCP protocol error code
+     */
+    mcpCode: number;
+    /**
+     * Whether the error is transient and worth retrying
+     */
+    retryable: boolean;
+    /**
+     * HTTP status code from the server
+     */
+    statusCode: number;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpServerFilter {
@@ -22863,21 +24940,53 @@ export interface GetZeroTrustAccessAiControlsMcpServersResult {
     createdBy: string;
     description: string;
     error: string;
+    errorDetails: outputs.GetZeroTrustAccessAiControlsMcpServersResultErrorDetails;
     hostname: string;
     /**
      * server id
      */
     id: string;
+    /**
+     * When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirectUri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+     */
+    isSharedOauthCallbackEnabled: boolean;
     lastSuccessfulSync: string;
     lastSynced: string;
     modifiedAt: string;
     modifiedBy: string;
     name: string;
     prompts: {[key: string]: string}[];
+    /**
+     * Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway
+     */
+    secureWebGateway: boolean;
     status: string;
     tools: {[key: string]: string}[];
     updatedPrompts: outputs.GetZeroTrustAccessAiControlsMcpServersResultUpdatedPrompt[];
     updatedTools: outputs.GetZeroTrustAccessAiControlsMcpServersResultUpdatedTool[];
+}
+
+export interface GetZeroTrustAccessAiControlsMcpServersResultErrorDetails {
+    /**
+     * Underlying error message
+     */
+    cause: string;
+    /**
+     * True = MCP server returned an error. False = couldn't reach the server
+     */
+    isUpstream: boolean;
+    /**
+     * MCP protocol error code
+     */
+    mcpCode: number;
+    /**
+     * Whether the error is transient and worth retrying
+     */
+    retryable: boolean;
+    /**
+     * HTTP status code from the server
+     */
+    statusCode: number;
 }
 
 export interface GetZeroTrustAccessAiControlsMcpServersResultUpdatedPrompt {
@@ -25596,6 +27705,7 @@ export interface GetZeroTrustAccessGroupExclude {
     authMethod: outputs.GetZeroTrustAccessGroupExcludeAuthMethod;
     azureAd: outputs.GetZeroTrustAccessGroupExcludeAzureAd;
     certificate: outputs.GetZeroTrustAccessGroupExcludeCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessGroupExcludeCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessGroupExcludeCommonName;
     devicePosture: outputs.GetZeroTrustAccessGroupExcludeDevicePosture;
     email: outputs.GetZeroTrustAccessGroupExcludeEmail;
@@ -25658,6 +27768,13 @@ export interface GetZeroTrustAccessGroupExcludeAzureAd {
 }
 
 export interface GetZeroTrustAccessGroupExcludeCertificate {
+}
+
+export interface GetZeroTrustAccessGroupExcludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessGroupExcludeCommonName {
@@ -25852,6 +27969,7 @@ export interface GetZeroTrustAccessGroupInclude {
     authMethod: outputs.GetZeroTrustAccessGroupIncludeAuthMethod;
     azureAd: outputs.GetZeroTrustAccessGroupIncludeAzureAd;
     certificate: outputs.GetZeroTrustAccessGroupIncludeCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessGroupIncludeCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessGroupIncludeCommonName;
     devicePosture: outputs.GetZeroTrustAccessGroupIncludeDevicePosture;
     email: outputs.GetZeroTrustAccessGroupIncludeEmail;
@@ -25914,6 +28032,13 @@ export interface GetZeroTrustAccessGroupIncludeAzureAd {
 }
 
 export interface GetZeroTrustAccessGroupIncludeCertificate {
+}
+
+export interface GetZeroTrustAccessGroupIncludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessGroupIncludeCommonName {
@@ -26097,6 +28222,7 @@ export interface GetZeroTrustAccessGroupIsDefault {
     authMethod: outputs.GetZeroTrustAccessGroupIsDefaultAuthMethod;
     azureAd: outputs.GetZeroTrustAccessGroupIsDefaultAzureAd;
     certificate: outputs.GetZeroTrustAccessGroupIsDefaultCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessGroupIsDefaultCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessGroupIsDefaultCommonName;
     devicePosture: outputs.GetZeroTrustAccessGroupIsDefaultDevicePosture;
     email: outputs.GetZeroTrustAccessGroupIsDefaultEmail;
@@ -26159,6 +28285,13 @@ export interface GetZeroTrustAccessGroupIsDefaultAzureAd {
 }
 
 export interface GetZeroTrustAccessGroupIsDefaultCertificate {
+}
+
+export interface GetZeroTrustAccessGroupIsDefaultCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessGroupIsDefaultCommonName {
@@ -26342,6 +28475,7 @@ export interface GetZeroTrustAccessGroupRequire {
     authMethod: outputs.GetZeroTrustAccessGroupRequireAuthMethod;
     azureAd: outputs.GetZeroTrustAccessGroupRequireAzureAd;
     certificate: outputs.GetZeroTrustAccessGroupRequireCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessGroupRequireCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessGroupRequireCommonName;
     devicePosture: outputs.GetZeroTrustAccessGroupRequireDevicePosture;
     email: outputs.GetZeroTrustAccessGroupRequireEmail;
@@ -26404,6 +28538,13 @@ export interface GetZeroTrustAccessGroupRequireAzureAd {
 }
 
 export interface GetZeroTrustAccessGroupRequireCertificate {
+}
+
+export interface GetZeroTrustAccessGroupRequireCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessGroupRequireCommonName {
@@ -26614,6 +28755,7 @@ export interface GetZeroTrustAccessGroupsResultExclude {
     authMethod: outputs.GetZeroTrustAccessGroupsResultExcludeAuthMethod;
     azureAd: outputs.GetZeroTrustAccessGroupsResultExcludeAzureAd;
     certificate: outputs.GetZeroTrustAccessGroupsResultExcludeCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessGroupsResultExcludeCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessGroupsResultExcludeCommonName;
     devicePosture: outputs.GetZeroTrustAccessGroupsResultExcludeDevicePosture;
     email: outputs.GetZeroTrustAccessGroupsResultExcludeEmail;
@@ -26676,6 +28818,13 @@ export interface GetZeroTrustAccessGroupsResultExcludeAzureAd {
 }
 
 export interface GetZeroTrustAccessGroupsResultExcludeCertificate {
+}
+
+export interface GetZeroTrustAccessGroupsResultExcludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessGroupsResultExcludeCommonName {
@@ -26859,6 +29008,7 @@ export interface GetZeroTrustAccessGroupsResultInclude {
     authMethod: outputs.GetZeroTrustAccessGroupsResultIncludeAuthMethod;
     azureAd: outputs.GetZeroTrustAccessGroupsResultIncludeAzureAd;
     certificate: outputs.GetZeroTrustAccessGroupsResultIncludeCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessGroupsResultIncludeCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessGroupsResultIncludeCommonName;
     devicePosture: outputs.GetZeroTrustAccessGroupsResultIncludeDevicePosture;
     email: outputs.GetZeroTrustAccessGroupsResultIncludeEmail;
@@ -26921,6 +29071,13 @@ export interface GetZeroTrustAccessGroupsResultIncludeAzureAd {
 }
 
 export interface GetZeroTrustAccessGroupsResultIncludeCertificate {
+}
+
+export interface GetZeroTrustAccessGroupsResultIncludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessGroupsResultIncludeCommonName {
@@ -27104,6 +29261,7 @@ export interface GetZeroTrustAccessGroupsResultIsDefault {
     authMethod: outputs.GetZeroTrustAccessGroupsResultIsDefaultAuthMethod;
     azureAd: outputs.GetZeroTrustAccessGroupsResultIsDefaultAzureAd;
     certificate: outputs.GetZeroTrustAccessGroupsResultIsDefaultCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessGroupsResultIsDefaultCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessGroupsResultIsDefaultCommonName;
     devicePosture: outputs.GetZeroTrustAccessGroupsResultIsDefaultDevicePosture;
     email: outputs.GetZeroTrustAccessGroupsResultIsDefaultEmail;
@@ -27166,6 +29324,13 @@ export interface GetZeroTrustAccessGroupsResultIsDefaultAzureAd {
 }
 
 export interface GetZeroTrustAccessGroupsResultIsDefaultCertificate {
+}
+
+export interface GetZeroTrustAccessGroupsResultIsDefaultCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessGroupsResultIsDefaultCommonName {
@@ -27349,6 +29514,7 @@ export interface GetZeroTrustAccessGroupsResultRequire {
     authMethod: outputs.GetZeroTrustAccessGroupsResultRequireAuthMethod;
     azureAd: outputs.GetZeroTrustAccessGroupsResultRequireAzureAd;
     certificate: outputs.GetZeroTrustAccessGroupsResultRequireCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessGroupsResultRequireCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessGroupsResultRequireCommonName;
     devicePosture: outputs.GetZeroTrustAccessGroupsResultRequireDevicePosture;
     email: outputs.GetZeroTrustAccessGroupsResultRequireEmail;
@@ -27411,6 +29577,13 @@ export interface GetZeroTrustAccessGroupsResultRequireAzureAd {
 }
 
 export interface GetZeroTrustAccessGroupsResultRequireCertificate {
+}
+
+export interface GetZeroTrustAccessGroupsResultRequireCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessGroupsResultRequireCommonName {
@@ -27643,6 +29816,11 @@ export interface GetZeroTrustAccessIdentityProviderConfig {
      */
     emailClaimName: string;
     /**
+     * Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+     * SAML assertions using the certificate from the assigned certificate set.
+     */
+    enableEncryption: boolean;
+    /**
      * Add a list of attribute names that will be returned in the response header from the Access callback.
      */
     headerAttributes: outputs.GetZeroTrustAccessIdentityProviderConfigHeaderAttribute[];
@@ -27671,11 +29849,15 @@ export interface GetZeroTrustAccessIdentityProviderConfig {
      */
     pkceEnabled: boolean;
     /**
-     * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
      * Available values: "login", "selectAccount", "none".
      */
     prompt: string;
     redirectUrl: string;
+    /**
+     * When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+     */
+    restrictToAccountMembers: boolean;
     /**
      * OAuth scopes
      */
@@ -27714,6 +29896,49 @@ export interface GetZeroTrustAccessIdentityProviderFilter {
      * Indicates to Access to only retrieve identity providers that have the System for Cross-Domain Identity Management (SCIM) enabled.
      */
     scimEnabled?: string;
+}
+
+export interface GetZeroTrustAccessIdentityProviderSamlCertificateSet {
+    /**
+     * Timestamp when the certificate set was created
+     */
+    createdAt: string;
+    /**
+     * The currently active certificate used for encrypting SAML assertions
+     */
+    currentCertificate: outputs.GetZeroTrustAccessIdentityProviderSamlCertificateSetCurrentCertificate;
+    /**
+     * The previous certificate, maintained during rotation to ensure continuity. Null if no rotation has occurred. Mirrors the structure of `samlCertificate`.
+     */
+    previousCertificate: string;
+    /**
+     * Unique identifier for the certificate set
+     */
+    uid: string;
+    /**
+     * Timestamp when the certificate set was last updated (e.g., during rotation)
+     */
+    updatedAt: string;
+}
+
+export interface GetZeroTrustAccessIdentityProviderSamlCertificateSetCurrentCertificate {
+    /**
+     * Indicates whether this is the currently active certificate
+     */
+    isCurrent: boolean;
+    /**
+     * Certificate expiration date. Certificates are automatically rotated 30 days before expiration.
+     */
+    notAfter: string;
+    /**
+     * PEM-encoded X.509 certificate containing the public key.
+     * Configure this certificate in your external SAML Identity Provider to enable encryption.
+     */
+    publicCertificate: string;
+    /**
+     * Unique identifier for the certificate
+     */
+    uid: string;
 }
 
 export interface GetZeroTrustAccessIdentityProviderScimConfig {
@@ -27758,12 +29983,27 @@ export interface GetZeroTrustAccessIdentityProvidersResult {
      */
     name: string;
     /**
+     * Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+     */
+    readOnly: boolean;
+    /**
+     * The SAML encryption certificate set details, including current and previous certificates.
+     * Only present for SAML identity providers with a certificate set assigned.
+     */
+    samlCertificateSet: outputs.GetZeroTrustAccessIdentityProvidersResultSamlCertificateSet;
+    /**
+     * The UID of the SAML encryption certificate set assigned to this Identity Provider.
+     * Only present for SAML identity providers with encryption configured.
+     * Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+     */
+    samlCertificateSetId: string;
+    /**
      * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      */
     scimConfig: outputs.GetZeroTrustAccessIdentityProvidersResultScimConfig;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+     * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
      */
     type: string;
 }
@@ -27826,6 +30066,11 @@ export interface GetZeroTrustAccessIdentityProvidersResultConfig {
      */
     emailClaimName: string;
     /**
+     * Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+     * SAML assertions using the certificate from the assigned certificate set.
+     */
+    enableEncryption: boolean;
+    /**
      * Add a list of attribute names that will be returned in the response header from the Access callback.
      */
     headerAttributes: outputs.GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute[];
@@ -27854,10 +30099,15 @@ export interface GetZeroTrustAccessIdentityProvidersResultConfig {
      */
     pkceEnabled: boolean;
     /**
-     * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
      * Available values: "login", "selectAccount", "none".
      */
     prompt: string;
+    redirectUrl: string;
+    /**
+     * When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+     */
+    restrictToAccountMembers: boolean;
     /**
      * OAuth scopes
      */
@@ -27889,6 +30139,49 @@ export interface GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute 
      * header that will be added on the request to the origin
      */
     headerName: string;
+}
+
+export interface GetZeroTrustAccessIdentityProvidersResultSamlCertificateSet {
+    /**
+     * Timestamp when the certificate set was created
+     */
+    createdAt: string;
+    /**
+     * The currently active certificate used for encrypting SAML assertions
+     */
+    currentCertificate: outputs.GetZeroTrustAccessIdentityProvidersResultSamlCertificateSetCurrentCertificate;
+    /**
+     * The previous certificate, maintained during rotation to ensure continuity. Null if no rotation has occurred. Mirrors the structure of `samlCertificate`.
+     */
+    previousCertificate: string;
+    /**
+     * Unique identifier for the certificate set
+     */
+    uid: string;
+    /**
+     * Timestamp when the certificate set was last updated (e.g., during rotation)
+     */
+    updatedAt: string;
+}
+
+export interface GetZeroTrustAccessIdentityProvidersResultSamlCertificateSetCurrentCertificate {
+    /**
+     * Indicates whether this is the currently active certificate
+     */
+    isCurrent: boolean;
+    /**
+     * Certificate expiration date. Certificates are automatically rotated 30 days before expiration.
+     */
+    notAfter: string;
+    /**
+     * PEM-encoded X.509 certificate containing the public key.
+     * Configure this certificate in your external SAML Identity Provider to enable encryption.
+     */
+    publicCertificate: string;
+    /**
+     * Unique identifier for the certificate
+     */
+    uid: string;
 }
 
 export interface GetZeroTrustAccessIdentityProvidersResultScimConfig {
@@ -28222,6 +30515,7 @@ export interface GetZeroTrustAccessPoliciesResultExclude {
     authMethod: outputs.GetZeroTrustAccessPoliciesResultExcludeAuthMethod;
     azureAd: outputs.GetZeroTrustAccessPoliciesResultExcludeAzureAd;
     certificate: outputs.GetZeroTrustAccessPoliciesResultExcludeCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessPoliciesResultExcludeCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessPoliciesResultExcludeCommonName;
     devicePosture: outputs.GetZeroTrustAccessPoliciesResultExcludeDevicePosture;
     email: outputs.GetZeroTrustAccessPoliciesResultExcludeEmail;
@@ -28284,6 +30578,13 @@ export interface GetZeroTrustAccessPoliciesResultExcludeAzureAd {
 }
 
 export interface GetZeroTrustAccessPoliciesResultExcludeCertificate {
+}
+
+export interface GetZeroTrustAccessPoliciesResultExcludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessPoliciesResultExcludeCommonName {
@@ -28467,6 +30768,7 @@ export interface GetZeroTrustAccessPoliciesResultInclude {
     authMethod: outputs.GetZeroTrustAccessPoliciesResultIncludeAuthMethod;
     azureAd: outputs.GetZeroTrustAccessPoliciesResultIncludeAzureAd;
     certificate: outputs.GetZeroTrustAccessPoliciesResultIncludeCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessPoliciesResultIncludeCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessPoliciesResultIncludeCommonName;
     devicePosture: outputs.GetZeroTrustAccessPoliciesResultIncludeDevicePosture;
     email: outputs.GetZeroTrustAccessPoliciesResultIncludeEmail;
@@ -28529,6 +30831,13 @@ export interface GetZeroTrustAccessPoliciesResultIncludeAzureAd {
 }
 
 export interface GetZeroTrustAccessPoliciesResultIncludeCertificate {
+}
+
+export interface GetZeroTrustAccessPoliciesResultIncludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessPoliciesResultIncludeCommonName {
@@ -28727,6 +31036,7 @@ export interface GetZeroTrustAccessPoliciesResultRequire {
     authMethod: outputs.GetZeroTrustAccessPoliciesResultRequireAuthMethod;
     azureAd: outputs.GetZeroTrustAccessPoliciesResultRequireAzureAd;
     certificate: outputs.GetZeroTrustAccessPoliciesResultRequireCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessPoliciesResultRequireCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessPoliciesResultRequireCommonName;
     devicePosture: outputs.GetZeroTrustAccessPoliciesResultRequireDevicePosture;
     email: outputs.GetZeroTrustAccessPoliciesResultRequireEmail;
@@ -28789,6 +31099,13 @@ export interface GetZeroTrustAccessPoliciesResultRequireAzureAd {
 }
 
 export interface GetZeroTrustAccessPoliciesResultRequireCertificate {
+}
+
+export interface GetZeroTrustAccessPoliciesResultRequireCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessPoliciesResultRequireCommonName {
@@ -29005,6 +31322,7 @@ export interface GetZeroTrustAccessPolicyExclude {
     authMethod: outputs.GetZeroTrustAccessPolicyExcludeAuthMethod;
     azureAd: outputs.GetZeroTrustAccessPolicyExcludeAzureAd;
     certificate: outputs.GetZeroTrustAccessPolicyExcludeCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessPolicyExcludeCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessPolicyExcludeCommonName;
     devicePosture: outputs.GetZeroTrustAccessPolicyExcludeDevicePosture;
     email: outputs.GetZeroTrustAccessPolicyExcludeEmail;
@@ -29067,6 +31385,13 @@ export interface GetZeroTrustAccessPolicyExcludeAzureAd {
 }
 
 export interface GetZeroTrustAccessPolicyExcludeCertificate {
+}
+
+export interface GetZeroTrustAccessPolicyExcludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessPolicyExcludeCommonName {
@@ -29250,6 +31575,7 @@ export interface GetZeroTrustAccessPolicyInclude {
     authMethod: outputs.GetZeroTrustAccessPolicyIncludeAuthMethod;
     azureAd: outputs.GetZeroTrustAccessPolicyIncludeAzureAd;
     certificate: outputs.GetZeroTrustAccessPolicyIncludeCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessPolicyIncludeCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessPolicyIncludeCommonName;
     devicePosture: outputs.GetZeroTrustAccessPolicyIncludeDevicePosture;
     email: outputs.GetZeroTrustAccessPolicyIncludeEmail;
@@ -29312,6 +31638,13 @@ export interface GetZeroTrustAccessPolicyIncludeAzureAd {
 }
 
 export interface GetZeroTrustAccessPolicyIncludeCertificate {
+}
+
+export interface GetZeroTrustAccessPolicyIncludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessPolicyIncludeCommonName {
@@ -29510,6 +31843,7 @@ export interface GetZeroTrustAccessPolicyRequire {
     authMethod: outputs.GetZeroTrustAccessPolicyRequireAuthMethod;
     azureAd: outputs.GetZeroTrustAccessPolicyRequireAzureAd;
     certificate: outputs.GetZeroTrustAccessPolicyRequireCertificate;
+    cloudflareAccountMember: outputs.GetZeroTrustAccessPolicyRequireCloudflareAccountMember;
     commonName: outputs.GetZeroTrustAccessPolicyRequireCommonName;
     devicePosture: outputs.GetZeroTrustAccessPolicyRequireDevicePosture;
     email: outputs.GetZeroTrustAccessPolicyRequireEmail;
@@ -29572,6 +31906,13 @@ export interface GetZeroTrustAccessPolicyRequireAzureAd {
 }
 
 export interface GetZeroTrustAccessPolicyRequireCertificate {
+}
+
+export interface GetZeroTrustAccessPolicyRequireCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId: string;
 }
 
 export interface GetZeroTrustAccessPolicyRequireCommonName {
@@ -29803,6 +32144,17 @@ export interface GetZeroTrustAccessTagsResult {
     name: string;
 }
 
+export interface GetZeroTrustDeviceCustomProfileDnsSearchSuffix {
+    /**
+     * A description of the DNS search suffix.
+     */
+    description: string;
+    /**
+     * The DNS search suffix to append when resolving short hostnames.
+     */
+    suffix: string;
+}
+
 export interface GetZeroTrustDeviceCustomProfileExclude {
     /**
      * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
@@ -29870,6 +32222,17 @@ export interface GetZeroTrustDeviceCustomProfileTargetTest {
     name: string;
 }
 
+export interface GetZeroTrustDeviceCustomProfileVirtualNetworks {
+    /**
+     * List of virtual network IDs the device is allowed to access. When virtualNetworks is set, at least one entry is required.
+     */
+    alloweds: string[];
+    /**
+     * The default virtual network ID. Must be included in the `allowed` list.
+     */
+    default: string;
+}
+
 export interface GetZeroTrustDeviceCustomProfilesResult {
     /**
      * Whether to allow the user to switch WARP between modes.
@@ -29903,6 +32266,10 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
      * If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      */
     disableAutoFallback: boolean;
+    /**
+     * List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     */
+    dnsSearchSuffixes: outputs.GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffix[];
     /**
      * Whether the policy will be applied to matching devices.
      */
@@ -29965,6 +32332,21 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
      * Determines which tunnel protocol to use.
      */
     tunnelProtocol: string;
+    /**
+     * Virtual network access settings for the device.
+     */
+    virtualNetworks: outputs.GetZeroTrustDeviceCustomProfilesResultVirtualNetworks;
+}
+
+export interface GetZeroTrustDeviceCustomProfilesResultDnsSearchSuffix {
+    /**
+     * A description of the DNS search suffix.
+     */
+    description: string;
+    /**
+     * The DNS search suffix to append when resolving short hostnames.
+     */
+    suffix: string;
 }
 
 export interface GetZeroTrustDeviceCustomProfilesResultExclude {
@@ -30034,6 +32416,28 @@ export interface GetZeroTrustDeviceCustomProfilesResultTargetTest {
     name: string;
 }
 
+export interface GetZeroTrustDeviceCustomProfilesResultVirtualNetworks {
+    /**
+     * List of virtual network IDs the device is allowed to access. When virtualNetworks is set, at least one entry is required.
+     */
+    alloweds: string[];
+    /**
+     * The default virtual network ID. Must be included in the `allowed` list.
+     */
+    default: string;
+}
+
+export interface GetZeroTrustDeviceDefaultProfileDnsSearchSuffix {
+    /**
+     * A description of the DNS search suffix.
+     */
+    description: string;
+    /**
+     * The DNS search suffix to append when resolving short hostnames.
+     */
+    suffix: string;
+}
+
 export interface GetZeroTrustDeviceDefaultProfileExclude {
     /**
      * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
@@ -30088,6 +32492,66 @@ export interface GetZeroTrustDeviceDefaultProfileServiceModeV2 {
      * The port number when used with proxy mode.
      */
     port: number;
+}
+
+export interface GetZeroTrustDeviceDefaultProfileVirtualNetworks {
+    /**
+     * List of virtual network IDs the device is allowed to access. When virtualNetworks is set, at least one entry is required.
+     */
+    alloweds: string[];
+    /**
+     * The default virtual network ID. Must be included in the `allowed` list.
+     */
+    default: string;
+}
+
+export interface GetZeroTrustDeviceDeploymentGroupsListResult {
+    /**
+     * The RFC3339Nano timestamp when the deployment group was created.
+     */
+    createdAt: string;
+    /**
+     * The ID of the deployment group.
+     */
+    id: string;
+    /**
+     * A user-friendly name for the deployment group.
+     */
+    name: string;
+    /**
+     * Contains a list of policy IDs assigned to this deployment group.
+     */
+    policyIds: string[];
+    /**
+     * The RFC3339Nano timestamp when the deployment group was last updated.
+     */
+    updatedAt: string;
+    /**
+     * Contains version configurations for different target environments.
+     */
+    versionConfigs: outputs.GetZeroTrustDeviceDeploymentGroupsListResultVersionConfig[];
+}
+
+export interface GetZeroTrustDeviceDeploymentGroupsListResultVersionConfig {
+    /**
+     * The target environment for the client version (e.g., windows, macos).
+     */
+    targetEnvironment: string;
+    /**
+     * The specific client version to deploy.
+     */
+    version: string;
+}
+
+export interface GetZeroTrustDeviceDeploymentGroupsVersionConfig {
+    /**
+     * The target environment for the client version (e.g., windows, macos).
+     */
+    targetEnvironment: string;
+    /**
+     * The specific client version to deploy.
+     */
+    version: string;
 }
 
 export interface GetZeroTrustDeviceIpProfileFilter {
@@ -30872,7 +33336,7 @@ export interface GetZeroTrustDlpCustomEntriesResult {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
@@ -30880,6 +33344,9 @@ export interface GetZeroTrustDlpCustomEntriesResult {
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     uploadStatus: string;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     variant: outputs.GetZeroTrustDlpCustomEntriesResultVariant;
     wordList: string;
 }
@@ -30906,13 +33373,16 @@ export interface GetZeroTrustDlpCustomEntriesResultPattern {
 }
 
 export interface GetZeroTrustDlpCustomEntriesResultVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
 }
@@ -30944,13 +33414,16 @@ export interface GetZeroTrustDlpCustomEntryProfile {
 }
 
 export interface GetZeroTrustDlpCustomEntryVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
 }
@@ -30990,10 +33463,13 @@ export interface GetZeroTrustDlpCustomProfileEntry {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     variant: outputs.GetZeroTrustDlpCustomProfileEntryVariant;
     wordList: string;
 }
@@ -31020,13 +33496,16 @@ export interface GetZeroTrustDlpCustomProfileEntryPattern {
 }
 
 export interface GetZeroTrustDlpCustomProfileEntryVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
 }
@@ -31053,10 +33532,13 @@ export interface GetZeroTrustDlpCustomProfileSharedEntry {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     variant: outputs.GetZeroTrustDlpCustomProfileSharedEntryVariant;
     wordList: string;
 }
@@ -31083,15 +33565,73 @@ export interface GetZeroTrustDlpCustomProfileSharedEntryPattern {
 }
 
 export interface GetZeroTrustDlpCustomProfileSharedEntryVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
+}
+
+export interface GetZeroTrustDlpDataClassSensitivityLevel {
+    groupId: string;
+    levelId: string;
+}
+
+export interface GetZeroTrustDlpDataClassesResult {
+    createdAt: string;
+    dataTags: string[];
+    description: string;
+    expression: string;
+    id: string;
+    name: string;
+    sensitivityLevels: outputs.GetZeroTrustDlpDataClassesResultSensitivityLevel[];
+    updatedAt: string;
+}
+
+export interface GetZeroTrustDlpDataClassesResultSensitivityLevel {
+    groupId: string;
+    levelId: string;
+}
+
+export interface GetZeroTrustDlpDataTagCategoriesResult {
+    createdAt: string;
+    description: string;
+    id: string;
+    name: string;
+    tags: outputs.GetZeroTrustDlpDataTagCategoriesResultTag[];
+    templateId: string;
+    updatedAt: string;
+}
+
+export interface GetZeroTrustDlpDataTagCategoriesResultTag {
+    createdAt: string;
+    description: string;
+    id: string;
+    name: string;
+    updatedAt: string;
+}
+
+export interface GetZeroTrustDlpDataTagCategoryTag {
+    createdAt: string;
+    description: string;
+    id: string;
+    name: string;
+    updatedAt: string;
+}
+
+export interface GetZeroTrustDlpDataTagsResult {
+    createdAt: string;
+    description: string;
+    id: string;
+    name: string;
+    updatedAt: string;
 }
 
 export interface GetZeroTrustDlpDatasetColumn {
@@ -31173,7 +33713,7 @@ export interface GetZeroTrustDlpEntriesResult {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
@@ -31181,6 +33721,9 @@ export interface GetZeroTrustDlpEntriesResult {
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     uploadStatus: string;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     variant: outputs.GetZeroTrustDlpEntriesResultVariant;
     wordList: string;
 }
@@ -31207,13 +33750,16 @@ export interface GetZeroTrustDlpEntriesResultPattern {
 }
 
 export interface GetZeroTrustDlpEntriesResultVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
 }
@@ -31245,13 +33791,16 @@ export interface GetZeroTrustDlpEntryProfile {
 }
 
 export interface GetZeroTrustDlpEntryVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
 }
@@ -31273,7 +33822,7 @@ export interface GetZeroTrustDlpIntegrationEntriesResult {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
@@ -31281,6 +33830,9 @@ export interface GetZeroTrustDlpIntegrationEntriesResult {
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     uploadStatus: string;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     variant: outputs.GetZeroTrustDlpIntegrationEntriesResultVariant;
     wordList: string;
 }
@@ -31307,13 +33859,16 @@ export interface GetZeroTrustDlpIntegrationEntriesResultPattern {
 }
 
 export interface GetZeroTrustDlpIntegrationEntriesResultVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
 }
@@ -31345,13 +33900,16 @@ export interface GetZeroTrustDlpIntegrationEntryProfile {
 }
 
 export interface GetZeroTrustDlpIntegrationEntryVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
 }
@@ -31373,7 +33931,7 @@ export interface GetZeroTrustDlpPredefinedEntriesResult {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
@@ -31381,6 +33939,9 @@ export interface GetZeroTrustDlpPredefinedEntriesResult {
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     uploadStatus: string;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     variant: outputs.GetZeroTrustDlpPredefinedEntriesResultVariant;
     wordList: string;
 }
@@ -31407,13 +33968,16 @@ export interface GetZeroTrustDlpPredefinedEntriesResultPattern {
 }
 
 export interface GetZeroTrustDlpPredefinedEntriesResultVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
 }
@@ -31445,13 +34009,16 @@ export interface GetZeroTrustDlpPredefinedEntryProfile {
 }
 
 export interface GetZeroTrustDlpPredefinedEntryVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
 }
@@ -31473,10 +34040,13 @@ export interface GetZeroTrustDlpPredefinedProfileEntry {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     type: string;
     updatedAt: string;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     variant: outputs.GetZeroTrustDlpPredefinedProfileEntryVariant;
     wordList: string;
 }
@@ -31503,15 +34073,52 @@ export interface GetZeroTrustDlpPredefinedProfileEntryPattern {
 }
 
 export interface GetZeroTrustDlpPredefinedProfileEntryVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
+}
+
+export interface GetZeroTrustDlpSensitivityGroupLevel {
+    createdAt: string;
+    description: string;
+    id: string;
+    name: string;
+    updatedAt: string;
+}
+
+export interface GetZeroTrustDlpSensitivityGroupsResult {
+    createdAt: string;
+    description: string;
+    id: string;
+    levels: outputs.GetZeroTrustDlpSensitivityGroupsResultLevel[];
+    name: string;
+    templateId: string;
+    updatedAt: string;
+}
+
+export interface GetZeroTrustDlpSensitivityGroupsResultLevel {
+    createdAt: string;
+    description: string;
+    id: string;
+    name: string;
+    updatedAt: string;
+}
+
+export interface GetZeroTrustDlpSensitivityLevelsResult {
+    createdAt: string;
+    description: string;
+    id: string;
+    name: string;
+    updatedAt: string;
 }
 
 export interface GetZeroTrustDlpSettingsPayloadLogging {
@@ -33196,6 +35803,11 @@ export interface GetZeroTrustNetworkHostnameRoutesResult {
      */
     id: string;
     /**
+     * The type of tunnel.
+     * Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+     */
+    tunType: string;
+    /**
      * UUID of the tunnel.
      */
     tunnelId: string;
@@ -33281,6 +35893,100 @@ export interface GetZeroTrustOrganizationMfaSshPivKeyRequirements {
      * Available values: "never", "always", "cached".
      */
     touchPolicy: string;
+}
+
+export interface GetZeroTrustResourceLibraryApplicationsResult {
+    /**
+     * Confidence score for the application. Returns -1 when no score is available.
+     */
+    applicationConfidenceScore: number;
+    /**
+     * Returns the score composition breakdown for the application.
+     */
+    applicationScoreComposition: string;
+    /**
+     * Returns the application source.
+     */
+    applicationSource: string;
+    /**
+     * Returns the application type.
+     */
+    applicationType: string;
+    /**
+     * Returns the application type description.
+     */
+    applicationTypeDescription: string;
+    /**
+     * Returns the application creation time.
+     */
+    createdAt: string;
+    /**
+     * GenAI score for the application. Returns -1 when no score is available.
+     */
+    genAiScore: number;
+    /**
+     * Returns the list of hostnames for the application.
+     */
+    hostnames: string[];
+    /**
+     * Returns the human readable ID.
+     */
+    humanId: string;
+    /**
+     * Returns the application ID.
+     */
+    id: string;
+    /**
+     * Returns the Intel API ID for the application.
+     */
+    intelId: number;
+    /**
+     * Returns the list of IP subnets for the application.
+     */
+    ipSubnets: string[];
+    /**
+     * Returns the application name.
+     */
+    name: string;
+    /**
+     * Returns the list of port protocols for the application.
+     */
+    portProtocols: string[];
+    /**
+     * Returns the list of support domains for the application.
+     */
+    supportDomains: string[];
+    /**
+     * Cloudflare products that support this application.
+     */
+    supporteds: string[];
+    /**
+     * Returns the application update time.
+     */
+    updatedAt: string;
+    /**
+     * Returns the application version.
+     */
+    version: string;
+}
+
+export interface GetZeroTrustResourceLibraryCategoriesResult {
+    /**
+     * Returns the category creation time.
+     */
+    createdAt: string;
+    /**
+     * Returns the category description.
+     */
+    description: string;
+    /**
+     * Returns the category ID.
+     */
+    id: string;
+    /**
+     * Returns the category name.
+     */
+    name: string;
 }
 
 export interface GetZeroTrustRiskBehaviorBehaviors {
@@ -33799,6 +36505,35 @@ export interface GetZeroTrustTunnelCloudflaredsResultConnection {
     uuid: string;
 }
 
+export interface GetZeroTrustTunnelWarpConnectorConfigConfig {
+    /**
+     * Floating Network Resource ID — the secondary ENI that is moved between nodes on failover.
+     */
+    fnrId: string;
+    /**
+     * VIPs to assign on the CloudflareWARP interface.
+     */
+    vips: outputs.GetZeroTrustTunnelWarpConnectorConfigConfigVip[];
+    /**
+     * VIPs to clean up on demotion or version drift.
+     */
+    vipsPreviouses: outputs.GetZeroTrustTunnelWarpConnectorConfigConfigVipsPreviouse[];
+}
+
+export interface GetZeroTrustTunnelWarpConnectorConfigConfigVip {
+    /**
+     * Virtual IP address (IPv4 or IPv6).
+     */
+    address: string;
+}
+
+export interface GetZeroTrustTunnelWarpConnectorConfigConfigVipsPreviouse {
+    /**
+     * Virtual IP address (IPv4 or IPv6).
+     */
+    address: string;
+}
+
 export interface GetZeroTrustTunnelWarpConnectorConnection {
     /**
      * UUID of the Cloudflare Tunnel connector.
@@ -34090,6 +36825,10 @@ export interface GetZoneFilter {
      * Available values: "initializing", "pending", "active", "moved".
      */
     status?: string;
+    /**
+     * Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type "internal" are excluded from the results.
+     */
+    types?: string[];
 }
 
 export interface GetZoneFilterAccount {
@@ -34760,11 +37499,11 @@ export interface ImageVariantVariantOptions {
 
 export interface KeylessCertificateTunnel {
     /**
-     * Private IP of the Key Server Host
+     * Private IP of the Key Server Host.
      */
     privateIp: string;
     /**
-     * Cloudflare Tunnel Virtual Network ID
+     * Cloudflare Tunnel Virtual Network ID.
      */
     vnetId: string;
 }
@@ -34829,6 +37568,33 @@ export interface LoadBalancerLocationStrategy {
      * Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
      */
     preferEcs: string;
+}
+
+export interface LoadBalancerMonitorGroupMember {
+    /**
+     * The timestamp of when the monitor was added to the group
+     */
+    createdAt: string;
+    /**
+     * Whether this monitor is enabled in the group
+     */
+    enabled: boolean;
+    /**
+     * The ID of the Monitor to use for checking the health of origins within this pool.
+     */
+    monitorId: string;
+    /**
+     * Whether this monitor is used for monitoring only (does not affect pool health)
+     */
+    monitoringOnly: boolean;
+    /**
+     * Whether this monitor must be healthy for the pool to be considered healthy
+     */
+    mustBeHealthy: boolean;
+    /**
+     * The timestamp of when the monitor group member was last updated
+     */
+    updatedAt: string;
 }
 
 export interface LoadBalancerPoolLoadShedding {
@@ -35216,6 +37982,54 @@ export interface MagicNetworkMonitoringConfigurationWarpDevice {
     routerIp: string;
 }
 
+export interface MagicTransitCf1SiteBody {
+    createdOn: string;
+    /**
+     * A human-provided description of the CF1 Site.
+     */
+    description?: string;
+    /**
+     * Identifier
+     */
+    id: string;
+    location?: outputs.MagicTransitCf1SiteBodyLocation;
+    modifiedOn: string;
+    /**
+     * A human-provided name describing the CF1 Site that should be unique within the account.
+     */
+    name: string;
+}
+
+export interface MagicTransitCf1SiteBodyLocation {
+    /**
+     * Latitude of the CF1 Site.
+     */
+    lat?: number;
+    /**
+     * Longitude of the CF1 Site.
+     */
+    long?: number;
+    /**
+     * Name of nearest town, city, or village.
+     */
+    name?: string;
+}
+
+export interface MagicTransitCf1SiteLocation {
+    /**
+     * Latitude of the CF1 Site.
+     */
+    lat?: number;
+    /**
+     * Longitude of the CF1 Site.
+     */
+    long?: number;
+    /**
+     * Name of nearest town, city, or village.
+     */
+    name?: string;
+}
+
 export interface MagicTransitConnectorDevice {
     id: string;
     /**
@@ -35323,6 +38137,10 @@ export interface MagicTransitSiteLanStaticAddressingDhcpRelay {
 
 export interface MagicTransitSiteLanStaticAddressingDhcpServer {
     /**
+     * Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.
+     */
+    dhcpOptions?: outputs.MagicTransitSiteLanStaticAddressingDhcpServerDhcpOption[];
+    /**
      * A valid IPv4 address.
      */
     dhcpPoolEnd?: string;
@@ -35339,6 +38157,22 @@ export interface MagicTransitSiteLanStaticAddressingDhcpServer {
      * Mapping of MAC addresses to IP addresses
      */
     reservations?: {[key: string]: string};
+}
+
+export interface MagicTransitSiteLanStaticAddressingDhcpServerDhcpOption {
+    /**
+     * DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration.
+     */
+    code: number;
+    /**
+     * The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes).
+     * Available values: "text", "hex", "ip", "byte", "short", "integer".
+     */
+    type: string;
+    /**
+     * The option value, interpreted according to the type field.
+     */
+    value: string;
 }
 
 export interface MagicTransitSiteLocation {
@@ -35771,6 +38605,18 @@ export interface NotificationPolicyMechanismsWebhook {
     id?: string;
 }
 
+export interface OauthClientClientUriVerification {
+    /**
+     * Current verification status for the client URI host.
+     * Available values: "pending", "inProgress", "verified", "failed".
+     */
+    status: string;
+    /**
+     * Exact TXT record value that must be added to DNS to prove ownership of the client URI host.
+     */
+    text: string;
+}
+
 export interface ObservatoryScheduledTestSchedule {
     /**
      * The frequency of the test.
@@ -35963,6 +38809,15 @@ export interface OrganizationMeta {
      * Enable features for Organizations.
      */
     flags: outputs.OrganizationMetaFlags;
+    /**
+     * Ordered chain of organization tags from the root organization down to
+     * (and including) this organization itself. Root organizations return a
+     * single-element array containing their own tag; sub-organizations return
+     * `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+     * constructing authorization scopes that need to cover every ancestor
+     * in the hierarchy.
+     */
+    hierarchyTags: string[];
     managedBy: string;
 }
 
@@ -39030,6 +41885,56 @@ export interface RulesetRuleRatelimit {
     scoreResponseHeaderName?: string;
 }
 
+export interface ShareRecipient {
+    /**
+     * Organization identifier.
+     */
+    organizationId?: string;
+    /**
+     * The account that will receive the share.
+     */
+    recipientAccountId?: string;
+}
+
+export interface ShareRecipientResource {
+    /**
+     * Share Recipient error message.
+     */
+    error: string;
+    /**
+     * Share Resource identifier.
+     */
+    resourceId: string;
+    /**
+     * Resource Version.
+     */
+    resourceVersion: number;
+    /**
+     * Whether the error is terminal or will be continually retried.
+     */
+    terminal: boolean;
+}
+
+export interface ShareResource {
+    /**
+     * Resource Metadata.
+     */
+    meta: string;
+    /**
+     * Account identifier.
+     */
+    resourceAccountId: string;
+    /**
+     * Share Resource identifier.
+     */
+    resourceId: string;
+    /**
+     * Resource Type.
+     * Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+     */
+    resourceType: string;
+}
+
 export interface SnippetFile {
     content: string;
     name: string;
@@ -39774,7 +42679,7 @@ export interface TeamsRuleRuleSettings {
     /**
      * Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
      */
-    allowChildBypass: boolean;
+    allowChildBypass?: boolean;
     /**
      * Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
      */
@@ -39790,11 +42695,11 @@ export interface TeamsRuleRuleSettings {
     /**
      * Enable the custom block page. Settable only for `dns` rules with action `block`.
      */
-    blockPageEnabled: boolean;
+    blockPageEnabled?: boolean;
     /**
      * Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
      */
-    blockReason: string;
+    blockReason?: string;
     /**
      * Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.
      */
@@ -39822,15 +42727,15 @@ export interface TeamsRuleRuleSettings {
     /**
      * Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
      */
-    insecureDisableDnssecValidation: boolean;
+    insecureDisableDnssecValidation?: boolean;
     /**
      * Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
      */
-    ipCategories: boolean;
+    ipCategories?: boolean;
     /**
      * Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
      */
-    ipIndicatorFeeds: boolean;
+    ipIndicatorFeeds?: boolean;
     /**
      * Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
      */
@@ -39842,11 +42747,11 @@ export interface TeamsRuleRuleSettings {
     /**
      * Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
      */
-    overrideHost: string;
+    overrideHost?: string;
     /**
      * Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
      */
-    overrideIps: string[];
+    overrideIps?: string[];
     /**
      * Configure DLP payload logging. Settable only for `http` rules.
      */
@@ -39866,7 +42771,7 @@ export interface TeamsRuleRuleSettings {
     /**
      * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
-    resolveDnsThroughCloudflare: boolean;
+    resolveDnsThroughCloudflare?: boolean;
     /**
      * Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      */
@@ -40674,6 +43579,11 @@ export interface WorkerObservabilityTraces {
      * Whether trace persistence is enabled for the Worker.
      */
     persist: boolean;
+    /**
+     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Available values: "authenticated", "accept".
+     */
+    propagationPolicy: string;
 }
 
 export interface WorkerReferences {
@@ -41053,6 +43963,10 @@ export interface WorkerScriptBindingSimple {
      */
     limit: number;
     /**
+     * Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+     */
+    mitigationTimeout?: number;
+    /**
      * The rate limit period in seconds.
      */
     period: number;
@@ -41219,6 +44133,11 @@ export interface WorkerScriptObservabilityTraces {
      * Whether trace persistence is enabled for the Worker.
      */
     persist: boolean;
+    /**
+     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Available values: "authenticated", "accept".
+     */
+    propagationPolicy: string;
 }
 
 export interface WorkerScriptPlacement {
@@ -41565,6 +44484,10 @@ export interface WorkerVersionBindingSimple {
      * The limit (requests per period).
      */
     limit: number;
+    /**
+     * Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+     */
+    mitigationTimeout?: number;
     /**
      * The period in seconds.
      */
@@ -42020,6 +44943,10 @@ export interface WorkersScriptBindingSimple {
      */
     limit: number;
     /**
+     * Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+     */
+    mitigationTimeout?: number;
+    /**
      * The rate limit period in seconds.
      */
     period: number;
@@ -42186,6 +45113,11 @@ export interface WorkersScriptObservabilityTraces {
      * Whether trace persistence is enabled for the Worker.
      */
     persist: boolean;
+    /**
+     * Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+     * Available values: "authenticated", "accept".
+     */
+    propagationPolicy: string;
 }
 
 export interface WorkersScriptPlacement {
@@ -42256,6 +45188,7 @@ export interface WorkflowInstances {
     errored: number;
     paused: number;
     queued: number;
+    rollingBack: number;
     running: number;
     terminated: number;
     waiting: number;
@@ -42264,6 +45197,10 @@ export interface WorkflowInstances {
 
 export interface WorkflowLimits {
     steps?: number;
+}
+
+export interface WorkflowSchedule {
+    cron: string;
 }
 
 export interface ZeroTrustAccessAiControlsMcpPortalServer {
@@ -42289,6 +45226,29 @@ export interface ZeroTrustAccessAiControlsMcpPortalServerUpdatedTool {
     description?: string;
     enabled?: boolean;
     name: string;
+}
+
+export interface ZeroTrustAccessAiControlsMcpServerErrorDetails {
+    /**
+     * Underlying error message
+     */
+    cause: string;
+    /**
+     * True = MCP server returned an error. False = couldn't reach the server
+     */
+    isUpstream: boolean;
+    /**
+     * MCP protocol error code
+     */
+    mcpCode: number;
+    /**
+     * Whether the error is transient and worth retrying
+     */
+    retryable: boolean;
+    /**
+     * HTTP status code from the server
+     */
+    statusCode: number;
 }
 
 export interface ZeroTrustAccessAiControlsMcpServerUpdatedPrompt {
@@ -43580,6 +46540,7 @@ export interface ZeroTrustAccessGroupExclude {
     authMethod?: outputs.ZeroTrustAccessGroupExcludeAuthMethod;
     azureAd?: outputs.ZeroTrustAccessGroupExcludeAzureAd;
     certificate?: outputs.ZeroTrustAccessGroupExcludeCertificate;
+    cloudflareAccountMember?: outputs.ZeroTrustAccessGroupExcludeCloudflareAccountMember;
     commonName?: outputs.ZeroTrustAccessGroupExcludeCommonName;
     devicePosture?: outputs.ZeroTrustAccessGroupExcludeDevicePosture;
     email?: outputs.ZeroTrustAccessGroupExcludeEmail;
@@ -43642,6 +46603,13 @@ export interface ZeroTrustAccessGroupExcludeAzureAd {
 }
 
 export interface ZeroTrustAccessGroupExcludeCertificate {
+}
+
+export interface ZeroTrustAccessGroupExcludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId?: string;
 }
 
 export interface ZeroTrustAccessGroupExcludeCommonName {
@@ -43825,6 +46793,7 @@ export interface ZeroTrustAccessGroupInclude {
     authMethod?: outputs.ZeroTrustAccessGroupIncludeAuthMethod;
     azureAd?: outputs.ZeroTrustAccessGroupIncludeAzureAd;
     certificate?: outputs.ZeroTrustAccessGroupIncludeCertificate;
+    cloudflareAccountMember?: outputs.ZeroTrustAccessGroupIncludeCloudflareAccountMember;
     commonName?: outputs.ZeroTrustAccessGroupIncludeCommonName;
     devicePosture?: outputs.ZeroTrustAccessGroupIncludeDevicePosture;
     email?: outputs.ZeroTrustAccessGroupIncludeEmail;
@@ -43887,6 +46856,13 @@ export interface ZeroTrustAccessGroupIncludeAzureAd {
 }
 
 export interface ZeroTrustAccessGroupIncludeCertificate {
+}
+
+export interface ZeroTrustAccessGroupIncludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId?: string;
 }
 
 export interface ZeroTrustAccessGroupIncludeCommonName {
@@ -44070,6 +47046,7 @@ export interface ZeroTrustAccessGroupRequire {
     authMethod?: outputs.ZeroTrustAccessGroupRequireAuthMethod;
     azureAd?: outputs.ZeroTrustAccessGroupRequireAzureAd;
     certificate?: outputs.ZeroTrustAccessGroupRequireCertificate;
+    cloudflareAccountMember?: outputs.ZeroTrustAccessGroupRequireCloudflareAccountMember;
     commonName?: outputs.ZeroTrustAccessGroupRequireCommonName;
     devicePosture?: outputs.ZeroTrustAccessGroupRequireDevicePosture;
     email?: outputs.ZeroTrustAccessGroupRequireEmail;
@@ -44132,6 +47109,13 @@ export interface ZeroTrustAccessGroupRequireAzureAd {
 }
 
 export interface ZeroTrustAccessGroupRequireCertificate {
+}
+
+export interface ZeroTrustAccessGroupRequireCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId?: string;
 }
 
 export interface ZeroTrustAccessGroupRequireCommonName {
@@ -44364,6 +47348,11 @@ export interface ZeroTrustAccessIdentityProviderConfig {
      */
     emailClaimName?: string;
     /**
+     * Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+     * SAML assertions using the certificate from the assigned certificate set.
+     */
+    enableEncryption: boolean;
+    /**
      * Add a list of attribute names that will be returned in the response header from the Access callback.
      */
     headerAttributes?: outputs.ZeroTrustAccessIdentityProviderConfigHeaderAttribute[];
@@ -44392,11 +47381,15 @@ export interface ZeroTrustAccessIdentityProviderConfig {
      */
     pkceEnabled?: boolean;
     /**
-     * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interactionRequired error. prompt=select_account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
      * Available values: "login", "selectAccount", "none".
      */
     prompt?: string;
     redirectUrl: string;
+    /**
+     * When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your Access policies.
+     */
+    restrictToAccountMembers: boolean;
     /**
      * OAuth scopes
      */
@@ -44428,6 +47421,49 @@ export interface ZeroTrustAccessIdentityProviderConfigHeaderAttribute {
      * header that will be added on the request to the origin
      */
     headerName?: string;
+}
+
+export interface ZeroTrustAccessIdentityProviderSamlCertificateSet {
+    /**
+     * Timestamp when the certificate set was created
+     */
+    createdAt: string;
+    /**
+     * The currently active certificate used for encrypting SAML assertions
+     */
+    currentCertificate: outputs.ZeroTrustAccessIdentityProviderSamlCertificateSetCurrentCertificate;
+    /**
+     * The previous certificate, maintained during rotation to ensure continuity. Null if no rotation has occurred. Mirrors the structure of `samlCertificate`.
+     */
+    previousCertificate: string;
+    /**
+     * Unique identifier for the certificate set
+     */
+    uid: string;
+    /**
+     * Timestamp when the certificate set was last updated (e.g., during rotation)
+     */
+    updatedAt: string;
+}
+
+export interface ZeroTrustAccessIdentityProviderSamlCertificateSetCurrentCertificate {
+    /**
+     * Indicates whether this is the currently active certificate
+     */
+    isCurrent: boolean;
+    /**
+     * Certificate expiration date. Certificates are automatically rotated 30 days before expiration.
+     */
+    notAfter: string;
+    /**
+     * PEM-encoded X.509 certificate containing the public key.
+     * Configure this certificate in your external SAML Identity Provider to enable encryption.
+     */
+    publicCertificate: string;
+    /**
+     * Unique identifier for the certificate
+     */
+    uid: string;
 }
 
 export interface ZeroTrustAccessIdentityProviderScimConfig {
@@ -44548,6 +47584,7 @@ export interface ZeroTrustAccessPolicyExclude {
     authMethod?: outputs.ZeroTrustAccessPolicyExcludeAuthMethod;
     azureAd?: outputs.ZeroTrustAccessPolicyExcludeAzureAd;
     certificate?: outputs.ZeroTrustAccessPolicyExcludeCertificate;
+    cloudflareAccountMember?: outputs.ZeroTrustAccessPolicyExcludeCloudflareAccountMember;
     commonName?: outputs.ZeroTrustAccessPolicyExcludeCommonName;
     devicePosture?: outputs.ZeroTrustAccessPolicyExcludeDevicePosture;
     email?: outputs.ZeroTrustAccessPolicyExcludeEmail;
@@ -44610,6 +47647,13 @@ export interface ZeroTrustAccessPolicyExcludeAzureAd {
 }
 
 export interface ZeroTrustAccessPolicyExcludeCertificate {
+}
+
+export interface ZeroTrustAccessPolicyExcludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId?: string;
 }
 
 export interface ZeroTrustAccessPolicyExcludeCommonName {
@@ -44793,6 +47837,7 @@ export interface ZeroTrustAccessPolicyInclude {
     authMethod?: outputs.ZeroTrustAccessPolicyIncludeAuthMethod;
     azureAd?: outputs.ZeroTrustAccessPolicyIncludeAzureAd;
     certificate?: outputs.ZeroTrustAccessPolicyIncludeCertificate;
+    cloudflareAccountMember?: outputs.ZeroTrustAccessPolicyIncludeCloudflareAccountMember;
     commonName?: outputs.ZeroTrustAccessPolicyIncludeCommonName;
     devicePosture?: outputs.ZeroTrustAccessPolicyIncludeDevicePosture;
     email?: outputs.ZeroTrustAccessPolicyIncludeEmail;
@@ -44855,6 +47900,13 @@ export interface ZeroTrustAccessPolicyIncludeAzureAd {
 }
 
 export interface ZeroTrustAccessPolicyIncludeCertificate {
+}
+
+export interface ZeroTrustAccessPolicyIncludeCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId?: string;
 }
 
 export interface ZeroTrustAccessPolicyIncludeCommonName {
@@ -45053,6 +48105,7 @@ export interface ZeroTrustAccessPolicyRequire {
     authMethod?: outputs.ZeroTrustAccessPolicyRequireAuthMethod;
     azureAd?: outputs.ZeroTrustAccessPolicyRequireAzureAd;
     certificate?: outputs.ZeroTrustAccessPolicyRequireCertificate;
+    cloudflareAccountMember?: outputs.ZeroTrustAccessPolicyRequireCloudflareAccountMember;
     commonName?: outputs.ZeroTrustAccessPolicyRequireCommonName;
     devicePosture?: outputs.ZeroTrustAccessPolicyRequireDevicePosture;
     email?: outputs.ZeroTrustAccessPolicyRequireEmail;
@@ -45115,6 +48168,13 @@ export interface ZeroTrustAccessPolicyRequireAzureAd {
 }
 
 export interface ZeroTrustAccessPolicyRequireCertificate {
+}
+
+export interface ZeroTrustAccessPolicyRequireCloudflareAccountMember {
+    /**
+     * Identifier.
+     */
+    accountId?: string;
 }
 
 export interface ZeroTrustAccessPolicyRequireCommonName {
@@ -45289,6 +48349,17 @@ export interface ZeroTrustAccessPolicyRequireUserRiskScore {
     userRiskScores: string[];
 }
 
+export interface ZeroTrustDeviceCustomProfileDnsSearchSuffix {
+    /**
+     * A description of the DNS search suffix.
+     */
+    description: string;
+    /**
+     * The DNS search suffix to append when resolving short hostnames.
+     */
+    suffix: string;
+}
+
 export interface ZeroTrustDeviceCustomProfileExclude {
     /**
      * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
@@ -45371,6 +48442,28 @@ export interface ZeroTrustDeviceCustomProfileTargetTest {
     name: string;
 }
 
+export interface ZeroTrustDeviceCustomProfileVirtualNetworks {
+    /**
+     * List of virtual network IDs the device is allowed to access. When virtualNetworks is set, at least one entry is required.
+     */
+    alloweds: string[];
+    /**
+     * The default virtual network ID. Must be included in the `allowed` list.
+     */
+    default: string;
+}
+
+export interface ZeroTrustDeviceDefaultProfileDnsSearchSuffix {
+    /**
+     * A description of the DNS search suffix.
+     */
+    description: string;
+    /**
+     * The DNS search suffix to append when resolving short hostnames.
+     */
+    suffix: string;
+}
+
 export interface ZeroTrustDeviceDefaultProfileExclude {
     /**
      * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
@@ -45440,6 +48533,28 @@ export interface ZeroTrustDeviceDefaultProfileServiceModeV2 {
      * The port number when used with proxy mode.
      */
     port?: number;
+}
+
+export interface ZeroTrustDeviceDefaultProfileVirtualNetworks {
+    /**
+     * List of virtual network IDs the device is allowed to access. When virtualNetworks is set, at least one entry is required.
+     */
+    alloweds: string[];
+    /**
+     * The default virtual network ID. Must be included in the `allowed` list.
+     */
+    default: string;
+}
+
+export interface ZeroTrustDeviceDeploymentGroupsVersionConfig {
+    /**
+     * The target environment for the client version (e.g., windows, macos).
+     */
+    targetEnvironment: string;
+    /**
+     * The specific client version to deploy.
+     */
+    version: string;
 }
 
 export interface ZeroTrustDeviceManagedNetworksConfig {
@@ -45772,13 +48887,16 @@ export interface ZeroTrustDlpCustomEntryProfile {
 }
 
 export interface ZeroTrustDlpCustomEntryVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
 }
@@ -45831,6 +48949,19 @@ export interface ZeroTrustDlpCustomProfileSharedEntry {
      * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint".
      */
     entryType: string;
+}
+
+export interface ZeroTrustDlpDataClassSensitivityLevel {
+    groupId: string;
+    levelId: string;
+}
+
+export interface ZeroTrustDlpDataTagCategoryTag {
+    createdAt: string;
+    description: string;
+    id: string;
+    name: string;
+    updatedAt: string;
 }
 
 export interface ZeroTrustDlpDatasetColumn {
@@ -45922,13 +49053,16 @@ export interface ZeroTrustDlpEntryProfile {
 }
 
 export interface ZeroTrustDlpEntryVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
 }
@@ -45960,13 +49094,16 @@ export interface ZeroTrustDlpIntegrationEntryProfile {
 }
 
 export interface ZeroTrustDlpIntegrationEntryVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
 }
@@ -45998,13 +49135,16 @@ export interface ZeroTrustDlpPredefinedEntryProfile {
 }
 
 export interface ZeroTrustDlpPredefinedEntryVariant {
+    /**
+     * A customer-facing explanation of what this predefined AI prompt topic represents.
+     */
     description: string;
     /**
      * Available values: "Intent", "Content".
      */
     topicType: string;
     /**
-     * Available values: "PromptTopic".
+     * Available values: "PromptTopic", "General".
      */
     type: string;
 }
@@ -46012,6 +49152,14 @@ export interface ZeroTrustDlpPredefinedEntryVariant {
 export interface ZeroTrustDlpPredefinedProfileEntry {
     enabled: boolean;
     id: string;
+}
+
+export interface ZeroTrustDlpSensitivityGroupLevel {
+    createdAt: string;
+    description: string;
+    id: string;
+    name: string;
+    updatedAt: string;
 }
 
 export interface ZeroTrustDlpSettingsPayloadLogging {
@@ -46185,7 +49333,7 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
      */
-    allowChildBypass: boolean;
+    allowChildBypass?: boolean;
     /**
      * Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
      */
@@ -46201,11 +49349,11 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Enable the custom block page. Settable only for `dns` rules with action `block`.
      */
-    blockPageEnabled: boolean;
+    blockPageEnabled?: boolean;
     /**
      * Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
      */
-    blockReason: string;
+    blockReason?: string;
     /**
      * Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.
      */
@@ -46233,15 +49381,15 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
      */
-    insecureDisableDnssecValidation: boolean;
+    insecureDisableDnssecValidation?: boolean;
     /**
      * Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
      */
-    ipCategories: boolean;
+    ipCategories?: boolean;
     /**
      * Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
      */
-    ipIndicatorFeeds: boolean;
+    ipIndicatorFeeds?: boolean;
     /**
      * Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
      */
@@ -46253,11 +49401,11 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
      */
-    overrideHost: string;
+    overrideHost?: string;
     /**
      * Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
      */
-    overrideIps: string[];
+    overrideIps?: string[];
     /**
      * Configure DLP payload logging. Settable only for `http` rules.
      */
@@ -46277,7 +49425,7 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
-    resolveDnsThroughCloudflare: boolean;
+    resolveDnsThroughCloudflare?: boolean;
     /**
      * Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      */
@@ -47158,6 +50306,35 @@ export interface ZeroTrustTunnelCloudflaredConnection {
      * UUID of the Cloudflare Tunnel connection.
      */
     uuid: string;
+}
+
+export interface ZeroTrustTunnelWarpConnectorConfigConfig {
+    /**
+     * Floating Network Resource ID — the secondary ENI that is moved between nodes on failover.
+     */
+    fnrId?: string;
+    /**
+     * VIPs to assign on the CloudflareWARP interface.
+     */
+    vips?: outputs.ZeroTrustTunnelWarpConnectorConfigConfigVip[];
+    /**
+     * VIPs to clean up on demotion or version drift.
+     */
+    vipsPreviouses?: outputs.ZeroTrustTunnelWarpConnectorConfigConfigVipsPreviouse[];
+}
+
+export interface ZeroTrustTunnelWarpConnectorConfigConfigVip {
+    /**
+     * Virtual IP address (IPv4 or IPv6).
+     */
+    address: string;
+}
+
+export interface ZeroTrustTunnelWarpConnectorConfigConfigVipsPreviouse {
+    /**
+     * Virtual IP address (IPv4 or IPv6).
+     */
+    address: string;
 }
 
 export interface ZeroTrustTunnelWarpConnectorConnection {

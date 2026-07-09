@@ -91,6 +91,23 @@ public final class ZeroTrustNetworkHostnameRouteState extends com.pulumi.resourc
     }
 
     /**
+     * The type of tunnel.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * 
+     */
+    @Import(name="tunType")
+    private @Nullable Output<String> tunType;
+
+    /**
+     * @return The type of tunnel.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * 
+     */
+    public Optional<Output<String>> tunType() {
+        return Optional.ofNullable(this.tunType);
+    }
+
+    /**
      * UUID of the tunnel.
      * 
      */
@@ -128,6 +145,7 @@ public final class ZeroTrustNetworkHostnameRouteState extends com.pulumi.resourc
         this.createdAt = $.createdAt;
         this.deletedAt = $.deletedAt;
         this.hostname = $.hostname;
+        this.tunType = $.tunType;
         this.tunnelId = $.tunnelId;
         this.tunnelName = $.tunnelName;
     }
@@ -253,6 +271,29 @@ public final class ZeroTrustNetworkHostnameRouteState extends com.pulumi.resourc
          */
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
+        }
+
+        /**
+         * @param tunType The type of tunnel.
+         * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunType(@Nullable Output<String> tunType) {
+            $.tunType = tunType;
+            return this;
+        }
+
+        /**
+         * @param tunType The type of tunnel.
+         * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunType(String tunType) {
+            return tunType(Output.of(tunType));
         }
 
         /**

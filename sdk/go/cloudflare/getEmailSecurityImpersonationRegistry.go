@@ -17,31 +17,6 @@ import (
 // - `Cloud Email Security: Write`
 //
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetEmailSecurityImpersonationRegistry(ctx, &cloudflare.LookupEmailSecurityImpersonationRegistryArgs{
-//				AccountId:     pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-//				DisplayNameId: pulumi.IntRef(2403),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupEmailSecurityImpersonationRegistry(ctx *pulumi.Context, args *LookupEmailSecurityImpersonationRegistryArgs, opts ...pulumi.InvokeOption) (*LookupEmailSecurityImpersonationRegistryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEmailSecurityImpersonationRegistryResult
@@ -54,31 +29,38 @@ func LookupEmailSecurityImpersonationRegistry(ctx *pulumi.Context, args *LookupE
 
 // A collection of arguments for invoking getEmailSecurityImpersonationRegistry.
 type LookupEmailSecurityImpersonationRegistryArgs struct {
-	// Account Identifier
-	AccountId     *string                                      `pulumi:"accountId"`
-	DisplayNameId *int                                         `pulumi:"displayNameId"`
-	Filter        *GetEmailSecurityImpersonationRegistryFilter `pulumi:"filter"`
+	// Identifier.
+	AccountId *string                                      `pulumi:"accountId"`
+	Filter    *GetEmailSecurityImpersonationRegistryFilter `pulumi:"filter"`
+	// Impersonation registry entry identifier
+	ImpersonationRegistryId *string `pulumi:"impersonationRegistryId"`
 }
 
 // A collection of values returned by getEmailSecurityImpersonationRegistry.
 type LookupEmailSecurityImpersonationRegistryResult struct {
-	// Account Identifier
+	// Identifier.
 	AccountId       *string `pulumi:"accountId"`
 	Comments        string  `pulumi:"comments"`
 	CreatedAt       string  `pulumi:"createdAt"`
 	DirectoryId     int     `pulumi:"directoryId"`
 	DirectoryNodeId int     `pulumi:"directoryNodeId"`
-	DisplayNameId   *int    `pulumi:"displayNameId"`
 	Email           string  `pulumi:"email"`
 	// Deprecated: This attribute is deprecated.
 	ExternalDirectoryNodeId string                                       `pulumi:"externalDirectoryNodeId"`
 	Filter                  *GetEmailSecurityImpersonationRegistryFilter `pulumi:"filter"`
-	// The ID of this resource.
-	Id           int    `pulumi:"id"`
-	IsEmailRegex bool   `pulumi:"isEmailRegex"`
+	// Impersonation registry entry identifier
+	Id string `pulumi:"id"`
+	// Impersonation registry entry identifier
+	ImpersonationRegistryId *string `pulumi:"impersonationRegistryId"`
+	IsEmailRegex            bool    `pulumi:"isEmailRegex"`
+	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+	//
+	// Deprecated: This attribute is deprecated.
 	LastModified string `pulumi:"lastModified"`
+	ModifiedAt   string `pulumi:"modifiedAt"`
 	Name         string `pulumi:"name"`
-	Provenance   string `pulumi:"provenance"`
+	// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+	Provenance string `pulumi:"provenance"`
 }
 
 func LookupEmailSecurityImpersonationRegistryOutput(ctx *pulumi.Context, args LookupEmailSecurityImpersonationRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupEmailSecurityImpersonationRegistryResultOutput {
@@ -92,10 +74,11 @@ func LookupEmailSecurityImpersonationRegistryOutput(ctx *pulumi.Context, args Lo
 
 // A collection of arguments for invoking getEmailSecurityImpersonationRegistry.
 type LookupEmailSecurityImpersonationRegistryOutputArgs struct {
-	// Account Identifier
-	AccountId     pulumi.StringPtrInput                               `pulumi:"accountId"`
-	DisplayNameId pulumi.IntPtrInput                                  `pulumi:"displayNameId"`
-	Filter        GetEmailSecurityImpersonationRegistryFilterPtrInput `pulumi:"filter"`
+	// Identifier.
+	AccountId pulumi.StringPtrInput                               `pulumi:"accountId"`
+	Filter    GetEmailSecurityImpersonationRegistryFilterPtrInput `pulumi:"filter"`
+	// Impersonation registry entry identifier
+	ImpersonationRegistryId pulumi.StringPtrInput `pulumi:"impersonationRegistryId"`
 }
 
 func (LookupEmailSecurityImpersonationRegistryOutputArgs) ElementType() reflect.Type {
@@ -117,7 +100,7 @@ func (o LookupEmailSecurityImpersonationRegistryResultOutput) ToLookupEmailSecur
 	return o
 }
 
-// Account Identifier
+// Identifier.
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -138,10 +121,6 @@ func (o LookupEmailSecurityImpersonationRegistryResultOutput) DirectoryNodeId() 
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) int { return v.DirectoryNodeId }).(pulumi.IntOutput)
 }
 
-func (o LookupEmailSecurityImpersonationRegistryResultOutput) DisplayNameId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) *int { return v.DisplayNameId }).(pulumi.IntPtrOutput)
-}
-
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -157,23 +136,36 @@ func (o LookupEmailSecurityImpersonationRegistryResultOutput) Filter() GetEmailS
 	}).(GetEmailSecurityImpersonationRegistryFilterPtrOutput)
 }
 
-// The ID of this resource.
-func (o LookupEmailSecurityImpersonationRegistryResultOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) int { return v.Id }).(pulumi.IntOutput)
+// Impersonation registry entry identifier
+func (o LookupEmailSecurityImpersonationRegistryResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Impersonation registry entry identifier
+func (o LookupEmailSecurityImpersonationRegistryResultOutput) ImpersonationRegistryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) *string { return v.ImpersonationRegistryId }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) IsEmailRegex() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) bool { return v.IsEmailRegex }).(pulumi.BoolOutput)
 }
 
+// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.LastModified }).(pulumi.StringOutput)
+}
+
+func (o LookupEmailSecurityImpersonationRegistryResultOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
 }
 
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) Provenance() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.Provenance }).(pulumi.StringOutput)
 }

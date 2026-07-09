@@ -25,7 +25,7 @@ class RateLimitArgs:
                  match: pulumi.Input['RateLimitMatchArgs'],
                  period: pulumi.Input[_builtins.float],
                  threshold: pulumi.Input[_builtins.float],
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a RateLimit resource.
 
@@ -39,8 +39,7 @@ class RateLimitArgs:
         pulumi.set(__self__, "match", match)
         pulumi.set(__self__, "period", period)
         pulumi.set(__self__, "threshold", threshold)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -92,14 +91,14 @@ class RateLimitArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
         """
         Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -427,6 +426,8 @@ class RateLimit(pulumi.CustomResource):
             if threshold is None and not opts.urn:
                 raise TypeError("Missing required property 'threshold'")
             __props__.__dict__["threshold"] = threshold
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["bypasses"] = None
             __props__.__dict__["description"] = None
@@ -537,7 +538,7 @@ class RateLimit(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Defines an identifier.
         """

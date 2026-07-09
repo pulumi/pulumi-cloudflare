@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetMagicTransitSiteLanStaticAddressingDhcpServerResult
     {
         /// <summary>
+        /// Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetMagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionResult> DhcpOptions;
+        /// <summary>
         /// A valid IPv4 address.
         /// </summary>
         public readonly string DhcpPoolEnd;
@@ -33,6 +37,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetMagicTransitSiteLanStaticAddressingDhcpServerResult(
+            ImmutableArray<Outputs.GetMagicTransitSiteLanStaticAddressingDhcpServerDhcpOptionResult> dhcpOptions,
+
             string dhcpPoolEnd,
 
             string dhcpPoolStart,
@@ -43,6 +49,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableDictionary<string, string> reservations)
         {
+            DhcpOptions = dhcpOptions;
             DhcpPoolEnd = dhcpPoolEnd;
             DhcpPoolStart = dhcpPoolStart;
             DnsServer = dnsServer;

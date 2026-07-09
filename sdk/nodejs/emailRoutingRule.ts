@@ -98,7 +98,7 @@ export class EmailRoutingRule extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a EmailRoutingRule resource with the given unique name, arguments, and options.
@@ -127,6 +127,9 @@ export class EmailRoutingRule extends pulumi.CustomResource {
             }
             if (args?.matchers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'matchers'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["actions"] = args?.actions;
             resourceInputs["enabled"] = args?.enabled;
@@ -204,5 +207,5 @@ export interface EmailRoutingRuleArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

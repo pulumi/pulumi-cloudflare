@@ -58,7 +58,7 @@ type ZeroTrustAccessInfrastructureTarget struct {
 	pulumi.CustomResourceState
 
 	// Account identifier
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Date and time at which the target was created
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// A non-unique field that refers to a target. Case insensitive, maximum
@@ -79,6 +79,9 @@ func NewZeroTrustAccessInfrastructureTarget(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Hostname == nil {
 		return nil, errors.New("invalid value for required argument 'Hostname'")
 	}
@@ -145,7 +148,7 @@ func (ZeroTrustAccessInfrastructureTargetState) ElementType() reflect.Type {
 
 type zeroTrustAccessInfrastructureTargetArgs struct {
 	// Account identifier
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A non-unique field that refers to a target. Case insensitive, maximum
 	// length of 255 characters, supports the use of special characters dash
 	// and period, does not support spaces, and must start and end with an
@@ -158,7 +161,7 @@ type zeroTrustAccessInfrastructureTargetArgs struct {
 // The set of arguments for constructing a ZeroTrustAccessInfrastructureTarget resource.
 type ZeroTrustAccessInfrastructureTargetArgs struct {
 	// Account identifier
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// A non-unique field that refers to a target. Case insensitive, maximum
 	// length of 255 characters, supports the use of special characters dash
 	// and period, does not support spaces, and must start and end with an
@@ -256,8 +259,8 @@ func (o ZeroTrustAccessInfrastructureTargetOutput) ToZeroTrustAccessInfrastructu
 }
 
 // Account identifier
-func (o ZeroTrustAccessInfrastructureTargetOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessInfrastructureTarget) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessInfrastructureTargetOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessInfrastructureTarget) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Date and time at which the target was created

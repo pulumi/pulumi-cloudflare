@@ -67,13 +67,14 @@ type LookupWorkflowResult struct {
 	CreatedOn string             `pulumi:"createdOn"`
 	Filter    *GetWorkflowFilter `pulumi:"filter"`
 	// The ID of this resource.
-	Id           string               `pulumi:"id"`
-	Instances    GetWorkflowInstances `pulumi:"instances"`
-	ModifiedOn   string               `pulumi:"modifiedOn"`
-	Name         string               `pulumi:"name"`
-	ScriptName   string               `pulumi:"scriptName"`
-	TriggeredOn  string               `pulumi:"triggeredOn"`
-	WorkflowName *string              `pulumi:"workflowName"`
+	Id           string                `pulumi:"id"`
+	Instances    GetWorkflowInstances  `pulumi:"instances"`
+	ModifiedOn   string                `pulumi:"modifiedOn"`
+	Name         string                `pulumi:"name"`
+	Schedules    []GetWorkflowSchedule `pulumi:"schedules"`
+	ScriptName   string                `pulumi:"scriptName"`
+	TriggeredOn  string                `pulumi:"triggeredOn"`
+	WorkflowName *string               `pulumi:"workflowName"`
 }
 
 func LookupWorkflowOutput(ctx *pulumi.Context, args LookupWorkflowOutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowResultOutput {
@@ -142,6 +143,10 @@ func (o LookupWorkflowResultOutput) ModifiedOn() pulumi.StringOutput {
 
 func (o LookupWorkflowResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkflowResultOutput) Schedules() GetWorkflowScheduleArrayOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) []GetWorkflowSchedule { return v.Schedules }).(GetWorkflowScheduleArrayOutput)
 }
 
 func (o LookupWorkflowResultOutput) ScriptName() pulumi.StringOutput {
