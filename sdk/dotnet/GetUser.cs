@@ -97,6 +97,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Country;
         /// <summary>
+        /// Current email address of the user.
+        /// </summary>
+        public readonly string Email;
+        /// <summary>
         /// User's first name
         /// </summary>
         public readonly string FirstName;
@@ -148,6 +152,8 @@ namespace Pulumi.Cloudflare
 
             string country,
 
+            string email,
+
             string firstName,
 
             bool hasBusinessZones,
@@ -174,6 +180,7 @@ namespace Pulumi.Cloudflare
         {
             Betas = betas;
             Country = country;
+            Email = email;
             FirstName = firstName;
             HasBusinessZones = hasBusinessZones;
             HasEnterpriseZones = hasEnterpriseZones;

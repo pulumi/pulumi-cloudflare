@@ -67,6 +67,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiGatewayDynamicRouting{}
 	case "cloudflare:index/aiSearchInstance:AiSearchInstance":
 		r = &AiSearchInstance{}
+	case "cloudflare:index/aiSearchNamespace:AiSearchNamespace":
+		r = &AiSearchNamespace{}
 	case "cloudflare:index/aiSearchToken:AiSearchToken":
 		r = &AiSearchToken{}
 	case "cloudflare:index/apiShield:ApiShield":
@@ -125,6 +127,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ContentScanning{}
 	case "cloudflare:index/contentScanningExpression:ContentScanningExpression":
 		r = &ContentScanningExpression{}
+	case "cloudflare:index/customCsr:CustomCsr":
+		r = &CustomCsr{}
 	case "cloudflare:index/customHostname:CustomHostname":
 		r = &CustomHostname{}
 	case "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin":
@@ -149,6 +153,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DlpCustomProfile{}
 	case "cloudflare:index/dlpPredefinedProfile:DlpPredefinedProfile":
 		r = &DlpPredefinedProfile{}
+	case "cloudflare:index/dlsPrefixBinding:DlsPrefixBinding":
+		r = &DlsPrefixBinding{}
 	case "cloudflare:index/dnsFirewall:DnsFirewall":
 		r = &DnsFirewall{}
 	case "cloudflare:index/dnsRecord:DnsRecord":
@@ -183,6 +189,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Filter{}
 	case "cloudflare:index/firewallRule:FirewallRule":
 		r = &FirewallRule{}
+	case "cloudflare:index/flagshipApp:FlagshipApp":
+		r = &FlagshipApp{}
+	case "cloudflare:index/flagshipFlag:FlagshipFlag":
+		r = &FlagshipFlag{}
+	case "cloudflare:index/googleTagGateway:GoogleTagGateway":
+		r = &GoogleTagGateway{}
 	case "cloudflare:index/healthcheck:Healthcheck":
 		r = &Healthcheck{}
 	case "cloudflare:index/hostnameTlsSetting:HostnameTlsSetting":
@@ -207,6 +219,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LoadBalancer{}
 	case "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor":
 		r = &LoadBalancerMonitor{}
+	case "cloudflare:index/loadBalancerMonitorGroup:LoadBalancerMonitorGroup":
+		r = &LoadBalancerMonitorGroup{}
 	case "cloudflare:index/loadBalancerPool:LoadBalancerPool":
 		r = &LoadBalancerPool{}
 	case "cloudflare:index/logpullRetention:LogpullRetention":
@@ -219,6 +233,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MagicNetworkMonitoringConfiguration{}
 	case "cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule":
 		r = &MagicNetworkMonitoringRule{}
+	case "cloudflare:index/magicTransitCf1Site:MagicTransitCf1Site":
+		r = &MagicTransitCf1Site{}
 	case "cloudflare:index/magicTransitConnector:MagicTransitConnector":
 		r = &MagicTransitConnector{}
 	case "cloudflare:index/magicTransitSite:MagicTransitSite":
@@ -245,6 +261,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NotificationPolicy{}
 	case "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks":
 		r = &NotificationPolicyWebhooks{}
+	case "cloudflare:index/oauthClient:OauthClient":
+		r = &OauthClient{}
 	case "cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest":
 		r = &ObservatoryScheduledTest{}
 	case "cloudflare:index/organization:Organization":
@@ -253,6 +271,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationProfile{}
 	case "cloudflare:index/originCaCertificate:OriginCaCertificate":
 		r = &OriginCaCertificate{}
+	case "cloudflare:index/originCloudRegion:OriginCloudRegion":
+		r = &OriginCloudRegion{}
+	case "cloudflare:index/originTlsComplianceModes:OriginTlsComplianceModes":
+		r = &OriginTlsComplianceModes{}
 	case "cloudflare:index/pageRule:PageRule":
 		r = &PageRule{}
 	case "cloudflare:index/pageShieldPolicy:PageShieldPolicy":
@@ -309,6 +331,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SchemaValidationSchemas{}
 	case "cloudflare:index/schemaValidationSettings:SchemaValidationSettings":
 		r = &SchemaValidationSettings{}
+	case "cloudflare:index/secretsStore:SecretsStore":
+		r = &SecretsStore{}
+	case "cloudflare:index/secretsStoreSecret:SecretsStoreSecret":
+		r = &SecretsStoreSecret{}
+	case "cloudflare:index/share:Share":
+		r = &Share{}
+	case "cloudflare:index/shareRecipient:ShareRecipient":
+		r = &ShareRecipient{}
+	case "cloudflare:index/shareResource:ShareResource":
+		r = &ShareResource{}
 	case "cloudflare:index/snippet:Snippet":
 		r = &Snippet{}
 	case "cloudflare:index/snippetRules:SnippetRules":
@@ -467,6 +499,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDeviceDefaultProfileCertificates{}
 	case "cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback":
 		r = &ZeroTrustDeviceDefaultProfileLocalDomainFallback{}
+	case "cloudflare:index/zeroTrustDeviceDeploymentGroups:ZeroTrustDeviceDeploymentGroups":
+		r = &ZeroTrustDeviceDeploymentGroups{}
 	case "cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile":
 		r = &ZeroTrustDeviceIpProfile{}
 	case "cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks":
@@ -487,6 +521,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDlpCustomEntry{}
 	case "cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile":
 		r = &ZeroTrustDlpCustomProfile{}
+	case "cloudflare:index/zeroTrustDlpDataClass:ZeroTrustDlpDataClass":
+		r = &ZeroTrustDlpDataClass{}
+	case "cloudflare:index/zeroTrustDlpDataTag:ZeroTrustDlpDataTag":
+		r = &ZeroTrustDlpDataTag{}
+	case "cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory":
+		r = &ZeroTrustDlpDataTagCategory{}
 	case "cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset":
 		r = &ZeroTrustDlpDataset{}
 	case "cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry":
@@ -497,6 +537,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDlpPredefinedEntry{}
 	case "cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile":
 		r = &ZeroTrustDlpPredefinedProfile{}
+	case "cloudflare:index/zeroTrustDlpSensitivityGroup:ZeroTrustDlpSensitivityGroup":
+		r = &ZeroTrustDlpSensitivityGroup{}
+	case "cloudflare:index/zeroTrustDlpSensitivityLevel:ZeroTrustDlpSensitivityLevel":
+		r = &ZeroTrustDlpSensitivityLevel{}
+	case "cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder":
+		r = &ZeroTrustDlpSensitivityLevelOrder{}
 	case "cloudflare:index/zeroTrustDlpSettings:ZeroTrustDlpSettings":
 		r = &ZeroTrustDlpSettings{}
 	case "cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation":
@@ -535,8 +581,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustTunnelCloudflaredVirtualNetwork{}
 	case "cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector":
 		r = &ZeroTrustTunnelWarpConnector{}
+	case "cloudflare:index/zeroTrustTunnelWarpConnectorConfig:ZeroTrustTunnelWarpConnectorConfig":
+		r = &ZeroTrustTunnelWarpConnectorConfig{}
 	case "cloudflare:index/zone:Zone":
 		r = &Zone{}
+	case "cloudflare:index/zoneAutoOriginTlsKex:ZoneAutoOriginTlsKex":
+		r = &ZoneAutoOriginTlsKex{}
 	case "cloudflare:index/zoneCacheReserve:ZoneCacheReserve":
 		r = &ZoneCacheReserve{}
 	case "cloudflare:index/zoneCacheVariants:ZoneCacheVariants":
@@ -701,6 +751,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/aiSearchNamespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/aiSearchToken",
 		&module{version},
 	)
@@ -846,6 +901,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/customCsr",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/customHostname",
 		&module{version},
 	)
@@ -902,6 +962,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/dlpPredefinedProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/dlsPrefixBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -991,6 +1056,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/flagshipApp",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/flagshipFlag",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/googleTagGateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/healthcheck",
 		&module{version},
 	)
@@ -1051,6 +1131,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/loadBalancerMonitorGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/loadBalancerPool",
 		&module{version},
 	)
@@ -1077,6 +1162,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/magicNetworkMonitoringRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/magicTransitCf1Site",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1146,6 +1236,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/oauthClient",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/observatoryScheduledTest",
 		&module{version},
 	)
@@ -1162,6 +1257,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/originCaCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/originCloudRegion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/originTlsComplianceModes",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1302,6 +1407,31 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/schemaValidationSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/secretsStore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/secretsStoreSecret",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/share",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/shareRecipient",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/shareResource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1701,6 +1831,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/zeroTrustDeviceDeploymentGroups",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/zeroTrustDeviceIpProfile",
 		&module{version},
 	)
@@ -1751,6 +1886,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/zeroTrustDlpDataClass",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDlpDataTag",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDlpDataTagCategory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/zeroTrustDlpDataset",
 		&module{version},
 	)
@@ -1772,6 +1922,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustDlpPredefinedProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDlpSensitivityGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDlpSensitivityLevel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDlpSensitivityLevelOrder",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1871,7 +2036,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/zeroTrustTunnelWarpConnectorConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/zone",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zoneAutoOriginTlsKex",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

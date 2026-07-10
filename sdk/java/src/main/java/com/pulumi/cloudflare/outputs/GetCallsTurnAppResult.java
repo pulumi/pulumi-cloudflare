@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCallsTurnAppResult {
@@ -16,7 +14,7 @@ public final class GetCallsTurnAppResult {
      * @return The account identifier tag.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return The date and time the item was created.
      * 
@@ -53,8 +51,8 @@ public final class GetCallsTurnAppResult {
      * @return The account identifier tag.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return The date and time the item was created.
@@ -108,7 +106,7 @@ public final class GetCallsTurnAppResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private String created;
         private String id;
         private String keyId;
@@ -128,8 +126,10 @@ public final class GetCallsTurnAppResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetCallsTurnAppResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

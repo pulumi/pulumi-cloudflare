@@ -68,7 +68,7 @@ export class ContentScanning extends pulumi.CustomResource {
     /**
      * Defines an identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ContentScanning resource with the given unique name, arguments, and options.
@@ -90,6 +90,9 @@ export class ContentScanning extends pulumi.CustomResource {
             const args = argsOrState as ContentScanningArgs | undefined;
             if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["value"] = args?.value;
             resourceInputs["zoneId"] = args?.zoneId;
@@ -131,5 +134,5 @@ export interface ContentScanningArgs {
     /**
      * Defines an identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

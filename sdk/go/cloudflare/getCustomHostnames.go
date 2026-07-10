@@ -40,7 +40,7 @@ import (
 //					Contain: pulumi.StringRef("example.com"),
 //				},
 //				HostnameStatus: pulumi.StringRef("provisioned"),
-//				Ssl:            pulumi.Float64Ref(0),
+//				Ssl:            pulumi.IntRef(0),
 //				SslStatus:      pulumi.StringRef("active"),
 //				Wildcard:       pulumi.BoolRef(false),
 //			}, nil)
@@ -85,7 +85,7 @@ type LookupCustomHostnamesArgs struct {
 	Order *string `pulumi:"order"`
 	// Whether to filter hostnames based on if they have SSL enabled.
 	// Available values: 0, 1.
-	Ssl *float64 `pulumi:"ssl"`
+	Ssl *int `pulumi:"ssl"`
 	// Filter by SSL certificate status.
 	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
 	SslStatus *string `pulumi:"sslStatus"`
@@ -120,7 +120,7 @@ type LookupCustomHostnamesResult struct {
 	Results []GetCustomHostnamesResult `pulumi:"results"`
 	// Whether to filter hostnames based on if they have SSL enabled.
 	// Available values: 0, 1.
-	Ssl *float64 `pulumi:"ssl"`
+	Ssl int `pulumi:"ssl"`
 	// Filter by SSL certificate status.
 	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
 	SslStatus *string `pulumi:"sslStatus"`
@@ -162,7 +162,7 @@ type LookupCustomHostnamesOutputArgs struct {
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// Whether to filter hostnames based on if they have SSL enabled.
 	// Available values: 0, 1.
-	Ssl pulumi.Float64PtrInput `pulumi:"ssl"`
+	Ssl pulumi.IntPtrInput `pulumi:"ssl"`
 	// Filter by SSL certificate status.
 	// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
 	SslStatus pulumi.StringPtrInput `pulumi:"sslStatus"`
@@ -241,8 +241,8 @@ func (o LookupCustomHostnamesResultOutput) Results() GetCustomHostnamesResultArr
 
 // Whether to filter hostnames based on if they have SSL enabled.
 // Available values: 0, 1.
-func (o LookupCustomHostnamesResultOutput) Ssl() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LookupCustomHostnamesResult) *float64 { return v.Ssl }).(pulumi.Float64PtrOutput)
+func (o LookupCustomHostnamesResultOutput) Ssl() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCustomHostnamesResult) int { return v.Ssl }).(pulumi.IntOutput)
 }
 
 // Filter by SSL certificate status.

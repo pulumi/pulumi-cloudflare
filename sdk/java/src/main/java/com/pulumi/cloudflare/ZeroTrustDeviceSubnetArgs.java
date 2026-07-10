@@ -21,15 +21,15 @@ public final class ZeroTrustDeviceSubnetArgs extends com.pulumi.resources.Resour
      * Cloudflare account ID
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Cloudflare account ID
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -126,7 +126,7 @@ public final class ZeroTrustDeviceSubnetArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -226,6 +226,9 @@ public final class ZeroTrustDeviceSubnetArgs extends com.pulumi.resources.Resour
         }
 
         public ZeroTrustDeviceSubnetArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDeviceSubnetArgs", "accountId");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDeviceSubnetArgs", "name");
             }

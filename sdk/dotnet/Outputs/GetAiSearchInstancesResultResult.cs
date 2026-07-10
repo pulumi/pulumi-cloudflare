@@ -23,6 +23,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "super*strict*match", "close*enough", "flexible*friend", "AnythingGoes".
         /// </summary>
         public readonly string CacheThreshold;
+        /// <summary>
+        /// Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+        /// Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+        /// </summary>
+        public readonly double CacheTtl;
         public readonly int ChunkOverlap;
         public readonly int ChunkSize;
         public readonly string CreatedAt;
@@ -96,6 +101,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string cacheThreshold,
 
+            double cacheTtl,
+
             int chunkOverlap,
 
             int chunkSize,
@@ -168,6 +175,7 @@ namespace Pulumi.Cloudflare.Outputs
             AisearchModel = aisearchModel;
             Cache = cache;
             CacheThreshold = cacheThreshold;
+            CacheTtl = cacheTtl;
             ChunkOverlap = chunkOverlap;
             ChunkSize = chunkSize;
             CreatedAt = createdAt;

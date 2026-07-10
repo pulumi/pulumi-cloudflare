@@ -67,7 +67,7 @@ export class ByoIpPrefix extends pulumi.CustomResource {
     /**
      * Identifier of a Cloudflare account.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
      *
@@ -167,6 +167,9 @@ export class ByoIpPrefix extends pulumi.CustomResource {
             resourceInputs["rpkiValidationState"] = state?.rpkiValidationState;
         } else {
             const args = argsOrState as ByoIpPrefixArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.asn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'asn'");
             }
@@ -279,7 +282,7 @@ export interface ByoIpPrefixArgs {
     /**
      * Identifier of a Cloudflare account.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Autonomous System Number (ASN) the prefix will be advertised under.
      */

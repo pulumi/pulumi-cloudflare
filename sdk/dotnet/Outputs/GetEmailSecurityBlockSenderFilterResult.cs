@@ -19,20 +19,21 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "pattern", "CreatedAt".
         /// </summary>
         public readonly string? Order;
+        /// <summary>
+        /// Filter by pattern value.
+        /// </summary>
         public readonly string? Pattern;
         /// <summary>
+        /// Filter by pattern type.
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
         public readonly string? PatternType;
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         public readonly string? Search;
 

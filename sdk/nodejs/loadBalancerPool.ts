@@ -100,7 +100,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * A list of regions from which to run health checks. Null means every Cloudflare data center.
      */
@@ -202,6 +202,9 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             resourceInputs["origins"] = state?.origins;
         } else {
             const args = argsOrState as LoadBalancerPoolArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -316,7 +319,7 @@ export interface LoadBalancerPoolArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * A list of regions from which to run health checks. Null means every Cloudflare data center.
      */

@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetWorkersDeploymentArgs extends com.pulumi.resources.InvokeArgs {
@@ -20,15 +18,15 @@ public final class GetWorkersDeploymentArgs extends com.pulumi.resources.InvokeA
      * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="deploymentId", required=true)
@@ -85,7 +83,7 @@ public final class GetWorkersDeploymentArgs extends com.pulumi.resources.InvokeA
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -131,6 +129,9 @@ public final class GetWorkersDeploymentArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetWorkersDeploymentArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetWorkersDeploymentArgs", "accountId");
+            }
             if ($.deploymentId == null) {
                 throw new MissingRequiredPropertyException("GetWorkersDeploymentArgs", "deploymentId");
             }

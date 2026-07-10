@@ -96,6 +96,20 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.country);
     }
     /**
+     * Current email address of the user.
+     * 
+     */
+    @Export(name="email", refs={String.class}, tree="[0]")
+    private Output<String> email;
+
+    /**
+     * @return Current email address of the user.
+     * 
+     */
+    public Output<String> email() {
+        return this.email;
+    }
+    /**
      * User&#39;s first name
      * 
      */

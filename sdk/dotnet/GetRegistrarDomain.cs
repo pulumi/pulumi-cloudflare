@@ -87,8 +87,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
         /// Fully qualified domain name (FQDN) including the extension
@@ -110,8 +110,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Fully qualified domain name (FQDN) including the extension
@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// Fully qualified domain name (FQDN) including the extension
         /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetRegistrarDomainResult(
-            string? accountId,
+            string accountId,
 
             string domainName,
 

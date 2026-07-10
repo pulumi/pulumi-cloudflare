@@ -193,6 +193,9 @@ namespace Pulumi.Cloudflare
         /// User Group identifier tag.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// List of members in the user group.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetUserGroupMembersMemberResult> Members;
         /// <summary>
         /// User Group identifier tag.

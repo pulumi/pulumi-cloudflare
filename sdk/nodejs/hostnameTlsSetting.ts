@@ -70,7 +70,8 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
      */
     declare public readonly hostname: pulumi.Output<string>;
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      */
     declare public readonly settingId: pulumi.Output<string>;
     /**
@@ -82,13 +83,14 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * The TLS setting value. The type depends on the `settingId` used in the request path:
+     * The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      */
     declare public readonly value: pulumi.Output<any>;
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a HostnameTlsSetting resource with the given unique name, arguments, and options.
@@ -121,6 +123,9 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
             if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["settingId"] = args?.settingId;
             resourceInputs["value"] = args?.value;
@@ -147,7 +152,8 @@ export interface HostnameTlsSettingState {
      */
     hostname?: pulumi.Input<string | undefined>;
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      */
     settingId?: pulumi.Input<string | undefined>;
     /**
@@ -159,7 +165,8 @@ export interface HostnameTlsSettingState {
      */
     updatedAt?: pulumi.Input<string | undefined>;
     /**
-     * The TLS setting value. The type depends on the `settingId` used in the request path:
+     * The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      */
     value?: any | undefined;
     /**
@@ -177,15 +184,17 @@ export interface HostnameTlsSettingArgs {
      */
     hostname: pulumi.Input<string>;
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      */
     settingId: pulumi.Input<string>;
     /**
-     * The TLS setting value. The type depends on the `settingId` used in the request path:
+     * The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      */
     value: any;
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

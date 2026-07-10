@@ -24,15 +24,15 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
      * Define configurations using a unique string identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Define configurations using a unique string identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="caching")
@@ -129,7 +129,7 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -226,6 +226,9 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         public HyperdriveConfigArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("HyperdriveConfigArgs", "accountId");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("HyperdriveConfigArgs", "name");
             }

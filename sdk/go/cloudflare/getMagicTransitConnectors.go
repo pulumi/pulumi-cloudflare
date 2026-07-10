@@ -55,6 +55,9 @@ func LookupMagicTransitConnectors(ctx *pulumi.Context, args *LookupMagicTransitC
 type LookupMagicTransitConnectorsArgs struct {
 	// Account identifier
 	AccountId *string `pulumi:"accountId"`
+	// Filter connectors by device type.
+	// Available values: "MANAGED", "LICENSED".
+	DeviceType *string `pulumi:"deviceType"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -63,6 +66,9 @@ type LookupMagicTransitConnectorsArgs struct {
 type LookupMagicTransitConnectorsResult struct {
 	// Account identifier
 	AccountId *string `pulumi:"accountId"`
+	// Filter connectors by device type.
+	// Available values: "MANAGED", "LICENSED".
+	DeviceType *string `pulumi:"deviceType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -84,6 +90,9 @@ func LookupMagicTransitConnectorsOutput(ctx *pulumi.Context, args LookupMagicTra
 type LookupMagicTransitConnectorsOutputArgs struct {
 	// Account identifier
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Filter connectors by device type.
+	// Available values: "MANAGED", "LICENSED".
+	DeviceType pulumi.StringPtrInput `pulumi:"deviceType"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -110,6 +119,12 @@ func (o LookupMagicTransitConnectorsResultOutput) ToLookupMagicTransitConnectors
 // Account identifier
 func (o LookupMagicTransitConnectorsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMagicTransitConnectorsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Filter connectors by device type.
+// Available values: "MANAGED", "LICENSED".
+func (o LookupMagicTransitConnectorsResultOutput) DeviceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMagicTransitConnectorsResult) *string { return v.DeviceType }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

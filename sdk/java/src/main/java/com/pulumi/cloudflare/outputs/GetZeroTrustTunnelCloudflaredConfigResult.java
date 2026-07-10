@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZeroTrustTunnelCloudflaredConfigResult {
@@ -18,7 +16,7 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
      * @return Identifier.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return The tunnel configuration and ingress rules.
      * 
@@ -52,8 +50,8 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
      * @return Identifier.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return The tunnel configuration and ingress rules.
@@ -104,7 +102,7 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private GetZeroTrustTunnelCloudflaredConfigConfig config;
         private String createdAt;
         private String id;
@@ -124,8 +122,10 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredConfigResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

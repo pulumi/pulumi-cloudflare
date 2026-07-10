@@ -123,7 +123,7 @@ type WorkerVersion struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Metadata about the version.
 	Annotations WorkerVersionAnnotationsOutput `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
@@ -181,6 +181,9 @@ func NewWorkerVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.WorkerId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerId'")
 	}
@@ -318,7 +321,7 @@ func (WorkerVersionState) ElementType() reflect.Type {
 
 type workerVersionArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Metadata about the version.
 	Annotations *WorkerVersionAnnotations `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
@@ -358,7 +361,7 @@ type workerVersionArgs struct {
 // The set of arguments for constructing a WorkerVersion resource.
 type WorkerVersionArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Metadata about the version.
 	Annotations WorkerVersionAnnotationsPtrInput
 	// Configuration for assets within a Worker.
@@ -483,8 +486,8 @@ func (o WorkerVersionOutput) ToWorkerVersionOutputWithContext(ctx context.Contex
 }
 
 // Identifier.
-func (o WorkerVersionOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerVersion) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o WorkerVersionOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Metadata about the version.

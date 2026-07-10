@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -44,6 +45,13 @@ public final class AiGatewayDynamicRoutingRouteVersionArgs extends com.pulumi.re
         return Optional.ofNullable(this.data);
     }
 
+    @Import(name="isValid")
+    private @Nullable Output<Boolean> isValid;
+
+    public Optional<Output<Boolean>> isValid() {
+        return Optional.ofNullable(this.isValid);
+    }
+
     @Import(name="versionId")
     private @Nullable Output<String> versionId;
 
@@ -57,6 +65,7 @@ public final class AiGatewayDynamicRoutingRouteVersionArgs extends com.pulumi.re
         this.active = $.active;
         this.createdAt = $.createdAt;
         this.data = $.data;
+        this.isValid = $.isValid;
         this.versionId = $.versionId;
     }
 
@@ -115,6 +124,15 @@ public final class AiGatewayDynamicRoutingRouteVersionArgs extends com.pulumi.re
 
         public Builder data(String data) {
             return data(Output.of(data));
+        }
+
+        public Builder isValid(@Nullable Output<Boolean> isValid) {
+            $.isValid = isValid;
+            return this;
+        }
+
+        public Builder isValid(Boolean isValid) {
+            return isValid(Output.of(isValid));
         }
 
         public Builder versionId(@Nullable Output<String> versionId) {

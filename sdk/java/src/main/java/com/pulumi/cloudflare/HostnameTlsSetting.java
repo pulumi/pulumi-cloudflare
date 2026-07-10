@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Object;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -97,14 +96,16 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
         return this.hostname;
     }
     /**
-     * The TLS Setting name. The value type depends on the setting:
+     * The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     @Export(name="settingId", refs={String.class}, tree="[0]")
     private Output<String> settingId;
 
     /**
-     * @return The TLS Setting name. The value type depends on the setting:
+     * @return The TLS Setting name.
+     * The value type depends on the setting:
      * 
      */
     public Output<String> settingId() {
@@ -139,14 +140,16 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
         return this.updatedAt;
     }
     /**
-     * The TLS setting value. The type depends on the `settingId` used in the request path:
+     * The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      * 
      */
     @Export(name="value", refs={Object.class}, tree="[0]")
     private Output<Object> value;
 
     /**
-     * @return The TLS setting value. The type depends on the `settingId` used in the request path:
+     * @return The TLS setting value.
+     * The type depends on the `settingId` used in the request path:
      * 
      */
     public Output<Object> value() {
@@ -157,14 +160,14 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**

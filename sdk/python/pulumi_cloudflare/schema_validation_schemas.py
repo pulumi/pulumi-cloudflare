@@ -23,7 +23,7 @@ class SchemaValidationSchemasArgs:
                  name: pulumi.Input[_builtins.str],
                  source: pulumi.Input[_builtins.str],
                  validation_enabled: pulumi.Input[_builtins.bool],
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SchemaValidationSchemas resource.
 
@@ -38,8 +38,7 @@ class SchemaValidationSchemasArgs:
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "validation_enabled", validation_enabled)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -92,14 +91,14 @@ class SchemaValidationSchemasArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
         """
         Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -348,6 +347,8 @@ class SchemaValidationSchemas(pulumi.CustomResource):
             if validation_enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'validation_enabled'")
             __props__.__dict__["validation_enabled"] = validation_enabled
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["schema_id"] = None
@@ -444,7 +445,7 @@ class SchemaValidationSchemas(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

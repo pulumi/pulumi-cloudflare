@@ -184,12 +184,27 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Indicates that the identity provider is immutable and cannot be updated or deleted via the API.
+        /// </summary>
+        public readonly bool ReadOnly;
+        /// <summary>
+        /// The SAML encryption certificate set details, including current and previous certificates.
+        /// Only present for SAML identity providers with a certificate set assigned.
+        /// </summary>
+        public readonly Outputs.GetZeroTrustAccessIdentityProviderSamlCertificateSetResult SamlCertificateSet;
+        /// <summary>
+        /// The UID of the SAML encryption certificate set assigned to this Identity Provider.
+        /// Only present for SAML identity providers with encryption configured.
+        /// Create a certificate set via POST to `/identity_providers/{id}/saml_certificate`.
+        /// </summary>
+        public readonly string SamlCertificateSetId;
+        /// <summary>
         /// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
         /// </summary>
         public readonly Outputs.GetZeroTrustAccessIdentityProviderScimConfigResult ScimConfig;
         /// <summary>
         /// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
+        /// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex", "cloudflare".
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -211,6 +226,12 @@ namespace Pulumi.Cloudflare
 
             string name,
 
+            bool readOnly,
+
+            Outputs.GetZeroTrustAccessIdentityProviderSamlCertificateSetResult samlCertificateSet,
+
+            string samlCertificateSetId,
+
             Outputs.GetZeroTrustAccessIdentityProviderScimConfigResult scimConfig,
 
             string type,
@@ -223,6 +244,9 @@ namespace Pulumi.Cloudflare
             Id = id;
             IdentityProviderId = identityProviderId;
             Name = name;
+            ReadOnly = readOnly;
+            SamlCertificateSet = samlCertificateSet;
+            SamlCertificateSetId = samlCertificateSetId;
             ScimConfig = scimConfig;
             Type = type;
             ZoneId = zoneId;

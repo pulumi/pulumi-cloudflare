@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     public partial class MagicNetworkMonitoringConfiguration : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
@@ -86,8 +86,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class MagicNetworkMonitoringConfigurationArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.

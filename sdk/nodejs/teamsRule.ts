@@ -177,7 +177,7 @@ export class TeamsRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsRule.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -293,6 +293,9 @@ export class TeamsRule extends pulumi.CustomResource {
             resourceInputs["warningStatus"] = state?.warningStatus;
         } else {
             const args = argsOrState as TeamsRuleArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
@@ -414,7 +417,7 @@ export interface TeamsRuleState {
  * The set of arguments for constructing a TeamsRule resource.
  */
 export interface TeamsRuleArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".

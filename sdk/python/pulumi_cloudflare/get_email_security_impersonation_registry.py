@@ -28,7 +28,7 @@ class GetEmailSecurityImpersonationRegistryResult:
     """
     A collection of values returned by getEmailSecurityImpersonationRegistry.
     """
-    def __init__(__self__, account_id=None, comments=None, created_at=None, directory_id=None, directory_node_id=None, display_name_id=None, email=None, external_directory_node_id=None, filter=None, id=None, is_email_regex=None, last_modified=None, name=None, provenance=None):
+    def __init__(__self__, account_id=None, comments=None, created_at=None, directory_id=None, directory_node_id=None, email=None, external_directory_node_id=None, filter=None, id=None, impersonation_registry_id=None, is_email_regex=None, last_modified=None, modified_at=None, name=None, provenance=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -44,9 +44,6 @@ class GetEmailSecurityImpersonationRegistryResult:
         if directory_node_id and not isinstance(directory_node_id, int):
             raise TypeError("Expected argument 'directory_node_id' to be a int")
         pulumi.set(__self__, "directory_node_id", directory_node_id)
-        if display_name_id and not isinstance(display_name_id, int):
-            raise TypeError("Expected argument 'display_name_id' to be a int")
-        pulumi.set(__self__, "display_name_id", display_name_id)
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         pulumi.set(__self__, "email", email)
@@ -56,15 +53,21 @@ class GetEmailSecurityImpersonationRegistryResult:
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
-        if id and not isinstance(id, int):
-            raise TypeError("Expected argument 'id' to be a int")
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if impersonation_registry_id and not isinstance(impersonation_registry_id, str):
+            raise TypeError("Expected argument 'impersonation_registry_id' to be a str")
+        pulumi.set(__self__, "impersonation_registry_id", impersonation_registry_id)
         if is_email_regex and not isinstance(is_email_regex, bool):
             raise TypeError("Expected argument 'is_email_regex' to be a bool")
         pulumi.set(__self__, "is_email_regex", is_email_regex)
         if last_modified and not isinstance(last_modified, str):
             raise TypeError("Expected argument 'last_modified' to be a str")
         pulumi.set(__self__, "last_modified", last_modified)
+        if modified_at and not isinstance(modified_at, str):
+            raise TypeError("Expected argument 'modified_at' to be a str")
+        pulumi.set(__self__, "modified_at", modified_at)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -76,7 +79,7 @@ class GetEmailSecurityImpersonationRegistryResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        Account Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -101,11 +104,6 @@ class GetEmailSecurityImpersonationRegistryResult:
         return pulumi.get(self, "directory_node_id")
 
     @_builtins.property
-    @pulumi.getter(name="displayNameId")
-    def display_name_id(self) -> Optional[_builtins.int]:
-        return pulumi.get(self, "display_name_id")
-
-    @_builtins.property
     @pulumi.getter
     def email(self) -> _builtins.str:
         return pulumi.get(self, "email")
@@ -123,11 +121,19 @@ class GetEmailSecurityImpersonationRegistryResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.int:
+    def id(self) -> _builtins.str:
         """
-        The ID of this resource.
+        Impersonation registry entry identifier
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="impersonationRegistryId")
+    def impersonation_registry_id(self) -> Optional[_builtins.str]:
+        """
+        Impersonation registry entry identifier
+        """
+        return pulumi.get(self, "impersonation_registry_id")
 
     @_builtins.property
     @pulumi.getter(name="isEmailRegex")
@@ -136,8 +142,17 @@ class GetEmailSecurityImpersonationRegistryResult:
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def last_modified(self) -> _builtins.str:
+        """
+        Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        """
         return pulumi.get(self, "last_modified")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> _builtins.str:
+        return pulumi.get(self, "modified_at")
 
     @_builtins.property
     @pulumi.getter
@@ -147,6 +162,9 @@ class GetEmailSecurityImpersonationRegistryResult:
     @_builtins.property
     @pulumi.getter
     def provenance(self) -> _builtins.str:
+        """
+        Available values: "A1S*INTERNAL", "SNOOPY-CASB*OFFICE*365", "SNOOPY-OFFICE*365", "SNOOPY-GOOGLE_DIRECTORY".
+        """
         return pulumi.get(self, "provenance")
 
 
@@ -161,20 +179,21 @@ class AwaitableGetEmailSecurityImpersonationRegistryResult(GetEmailSecurityImper
             created_at=self.created_at,
             directory_id=self.directory_id,
             directory_node_id=self.directory_node_id,
-            display_name_id=self.display_name_id,
             email=self.email,
             external_directory_node_id=self.external_directory_node_id,
             filter=self.filter,
             id=self.id,
+            impersonation_registry_id=self.impersonation_registry_id,
             is_email_regex=self.is_email_regex,
             last_modified=self.last_modified,
+            modified_at=self.modified_at,
             name=self.name,
             provenance=self.provenance)
 
 
 def get_email_security_impersonation_registry(account_id: Optional[_builtins.str] = None,
-                                              display_name_id: Optional[_builtins.int] = None,
                                               filter: Optional[Union['GetEmailSecurityImpersonationRegistryFilterArgs', 'GetEmailSecurityImpersonationRegistryFilterArgsDict']] = None,
+                                              impersonation_registry_id: Optional[_builtins.str] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailSecurityImpersonationRegistryResult:
     """
     Accepted Permissions
@@ -184,21 +203,14 @@ def get_email_security_impersonation_registry(account_id: Optional[_builtins.str
 
     ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
 
-    example_email_security_impersonation_registry = cloudflare.get_email_security_impersonation_registry(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        display_name_id=2403)
-    ```
-
-
-    :param _builtins.str account_id: Account Identifier
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str impersonation_registry_id: Impersonation registry entry identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    __args__['displayNameId'] = display_name_id
     __args__['filter'] = filter
+    __args__['impersonationRegistryId'] = impersonation_registry_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry', __args__, opts=opts, typ=GetEmailSecurityImpersonationRegistryResult).value
 
@@ -208,18 +220,19 @@ def get_email_security_impersonation_registry(account_id: Optional[_builtins.str
         created_at=pulumi.get(__ret__, 'created_at'),
         directory_id=pulumi.get(__ret__, 'directory_id'),
         directory_node_id=pulumi.get(__ret__, 'directory_node_id'),
-        display_name_id=pulumi.get(__ret__, 'display_name_id'),
         email=pulumi.get(__ret__, 'email'),
         external_directory_node_id=pulumi.get(__ret__, 'external_directory_node_id'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        impersonation_registry_id=pulumi.get(__ret__, 'impersonation_registry_id'),
         is_email_regex=pulumi.get(__ret__, 'is_email_regex'),
         last_modified=pulumi.get(__ret__, 'last_modified'),
+        modified_at=pulumi.get(__ret__, 'modified_at'),
         name=pulumi.get(__ret__, 'name'),
         provenance=pulumi.get(__ret__, 'provenance'))
 def get_email_security_impersonation_registry_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                                     display_name_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                      filter: pulumi.Input[Optional[Optional[Union['GetEmailSecurityImpersonationRegistryFilterArgs', 'GetEmailSecurityImpersonationRegistryFilterArgsDict']]]] = None,
+                                                     impersonation_registry_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityImpersonationRegistryResult]:
     """
     Accepted Permissions
@@ -229,21 +242,14 @@ def get_email_security_impersonation_registry_output(account_id: pulumi.Input[Op
 
     ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
 
-    example_email_security_impersonation_registry = cloudflare.get_email_security_impersonation_registry(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        display_name_id=2403)
-    ```
-
-
-    :param _builtins.str account_id: Account Identifier
+    :param _builtins.str account_id: Identifier.
+    :param _builtins.str impersonation_registry_id: Impersonation registry entry identifier
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    __args__['displayNameId'] = display_name_id
     __args__['filter'] = filter
+    __args__['impersonationRegistryId'] = impersonation_registry_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getEmailSecurityImpersonationRegistry:getEmailSecurityImpersonationRegistry', __args__, opts=opts, typ=GetEmailSecurityImpersonationRegistryResult)
     return __ret__.apply(lambda __response__: GetEmailSecurityImpersonationRegistryResult(
@@ -252,12 +258,13 @@ def get_email_security_impersonation_registry_output(account_id: pulumi.Input[Op
         created_at=pulumi.get(__response__, 'created_at'),
         directory_id=pulumi.get(__response__, 'directory_id'),
         directory_node_id=pulumi.get(__response__, 'directory_node_id'),
-        display_name_id=pulumi.get(__response__, 'display_name_id'),
         email=pulumi.get(__response__, 'email'),
         external_directory_node_id=pulumi.get(__response__, 'external_directory_node_id'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        impersonation_registry_id=pulumi.get(__response__, 'impersonation_registry_id'),
         is_email_regex=pulumi.get(__response__, 'is_email_regex'),
         last_modified=pulumi.get(__response__, 'last_modified'),
+        modified_at=pulumi.get(__response__, 'modified_at'),
         name=pulumi.get(__response__, 'name'),
         provenance=pulumi.get(__response__, 'provenance')))

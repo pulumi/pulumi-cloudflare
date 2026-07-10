@@ -42,6 +42,13 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("persist")]
         public Input<bool>? Persist { get; set; }
 
+        /// <summary>
+        /// Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" (default) honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.
+        /// Available values: "authenticated", "accept".
+        /// </summary>
+        [Input("propagationPolicy")]
+        public Input<string>? PropagationPolicy { get; set; }
+
         public WorkersScriptObservabilityTracesGetArgs()
         {
         }

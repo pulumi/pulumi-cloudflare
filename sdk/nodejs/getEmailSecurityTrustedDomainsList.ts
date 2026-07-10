@@ -49,7 +49,7 @@ export function getEmailSecurityTrustedDomainsList(args?: GetEmailSecurityTruste
  */
 export interface GetEmailSecurityTrustedDomainsListArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: string;
     /**
@@ -57,23 +57,26 @@ export interface GetEmailSecurityTrustedDomainsListArgs {
      * Available values: "asc", "desc".
      */
     direction?: string;
+    /**
+     * Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     */
     isRecent?: boolean;
+    /**
+     * Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     */
     isSimilarity?: boolean;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: "pattern", "createdAt".
      */
     order?: string;
     pattern?: string;
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      */
     search?: string;
 }
@@ -83,7 +86,7 @@ export interface GetEmailSecurityTrustedDomainsListArgs {
  */
 export interface GetEmailSecurityTrustedDomainsListResult {
     /**
-     * Account Identifier
+     * Identifier.
      */
     readonly accountId?: string;
     /**
@@ -95,14 +98,20 @@ export interface GetEmailSecurityTrustedDomainsListResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     */
     readonly isRecent?: boolean;
+    /**
+     * Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     */
     readonly isSimilarity?: boolean;
     /**
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: "pattern", "createdAt".
      */
     readonly order?: string;
@@ -112,10 +121,7 @@ export interface GetEmailSecurityTrustedDomainsListResult {
      */
     readonly results: outputs.GetEmailSecurityTrustedDomainsListResult[];
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      */
     readonly search?: string;
 }
@@ -162,7 +168,7 @@ export function getEmailSecurityTrustedDomainsListOutput(args?: GetEmailSecurity
  */
 export interface GetEmailSecurityTrustedDomainsListOutputArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
@@ -170,23 +176,26 @@ export interface GetEmailSecurityTrustedDomainsListOutputArgs {
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string | undefined>;
+    /**
+     * Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+     */
     isRecent?: pulumi.Input<boolean | undefined>;
+    /**
+     * Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+     */
     isSimilarity?: pulumi.Input<boolean | undefined>;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number | undefined>;
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: "pattern", "createdAt".
      */
     order?: pulumi.Input<string | undefined>;
     pattern?: pulumi.Input<string | undefined>;
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      */
     search?: pulumi.Input<string | undefined>;
 }

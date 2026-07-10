@@ -31,6 +31,23 @@ public final class GetMagicTransitConnectorsPlainArgs extends com.pulumi.resourc
     }
 
     /**
+     * Filter connectors by device type.
+     * Available values: &#34;MANAGED&#34;, &#34;LICENSED&#34;.
+     * 
+     */
+    @Import(name="deviceType")
+    private @Nullable String deviceType;
+
+    /**
+     * @return Filter connectors by device type.
+     * Available values: &#34;MANAGED&#34;, &#34;LICENSED&#34;.
+     * 
+     */
+    public Optional<String> deviceType() {
+        return Optional.ofNullable(this.deviceType);
+    }
+
+    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -49,6 +66,7 @@ public final class GetMagicTransitConnectorsPlainArgs extends com.pulumi.resourc
 
     private GetMagicTransitConnectorsPlainArgs(GetMagicTransitConnectorsPlainArgs $) {
         this.accountId = $.accountId;
+        this.deviceType = $.deviceType;
         this.maxItems = $.maxItems;
     }
 
@@ -78,6 +96,18 @@ public final class GetMagicTransitConnectorsPlainArgs extends com.pulumi.resourc
          */
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param deviceType Filter connectors by device type.
+         * Available values: &#34;MANAGED&#34;, &#34;LICENSED&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deviceType(@Nullable String deviceType) {
+            $.deviceType = deviceType;
             return this;
         }
 

@@ -59,8 +59,8 @@ type CloudforceOneRequestPriority struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	Completed pulumi.StringOutput    `pulumi:"completed"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	Completed pulumi.StringOutput `pulumi:"completed"`
 	// Request content.
 	Content pulumi.StringOutput `pulumi:"content"`
 	Created pulumi.StringOutput `pulumi:"created"`
@@ -96,6 +96,9 @@ func NewCloudforceOneRequestPriority(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Labels == nil {
 		return nil, errors.New("invalid value for required argument 'Labels'")
 	}
@@ -200,7 +203,7 @@ func (CloudforceOneRequestPriorityState) ElementType() reflect.Type {
 
 type cloudforceOneRequestPriorityArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// List of labels.
 	Labels []string `pulumi:"labels"`
 	// Priority.
@@ -215,7 +218,7 @@ type cloudforceOneRequestPriorityArgs struct {
 // The set of arguments for constructing a CloudforceOneRequestPriority resource.
 type CloudforceOneRequestPriorityArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// List of labels.
 	Labels pulumi.StringArrayInput
 	// Priority.
@@ -315,8 +318,8 @@ func (o CloudforceOneRequestPriorityOutput) ToCloudforceOneRequestPriorityOutput
 }
 
 // Identifier.
-func (o CloudforceOneRequestPriorityOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudforceOneRequestPriority) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o CloudforceOneRequestPriorityOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudforceOneRequestPriority) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o CloudforceOneRequestPriorityOutput) Completed() pulumi.StringOutput {

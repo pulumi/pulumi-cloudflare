@@ -89,7 +89,7 @@ export class TokenValidationConfig extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a TokenValidationConfig resource with the given unique name, arguments, and options.
@@ -128,6 +128,9 @@ export class TokenValidationConfig extends pulumi.CustomResource {
             }
             if (args?.tokenType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tokenType'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["credentials"] = args?.credentials;
             resourceInputs["description"] = args?.description;
@@ -178,5 +181,5 @@ export interface TokenValidationConfigArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

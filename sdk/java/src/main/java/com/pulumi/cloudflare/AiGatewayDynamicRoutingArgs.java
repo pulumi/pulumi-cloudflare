@@ -10,19 +10,17 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class AiGatewayDynamicRoutingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiGatewayDynamicRoutingArgs Empty = new AiGatewayDynamicRoutingArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="elements", required=true)
@@ -73,7 +71,7 @@ public final class AiGatewayDynamicRoutingArgs extends com.pulumi.resources.Reso
             $ = new AiGatewayDynamicRoutingArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -114,6 +112,9 @@ public final class AiGatewayDynamicRoutingArgs extends com.pulumi.resources.Reso
         }
 
         public AiGatewayDynamicRoutingArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("AiGatewayDynamicRoutingArgs", "accountId");
+            }
             if ($.elements == null) {
                 throw new MissingRequiredPropertyException("AiGatewayDynamicRoutingArgs", "elements");
             }

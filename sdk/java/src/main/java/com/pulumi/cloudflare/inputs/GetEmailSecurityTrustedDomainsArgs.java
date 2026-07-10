@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.GetEmailSecurityTrustedDomainsFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,14 +17,14 @@ public final class GetEmailSecurityTrustedDomainsArgs extends com.pulumi.resourc
     public static final GetEmailSecurityTrustedDomainsArgs Empty = new GetEmailSecurityTrustedDomainsArgs();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -40,17 +39,17 @@ public final class GetEmailSecurityTrustedDomainsArgs extends com.pulumi.resourc
     }
 
     /**
-     * The unique identifier for the trusted domain.
+     * Trusted domain identifier
      * 
      */
     @Import(name="trustedDomainId")
-    private @Nullable Output<Integer> trustedDomainId;
+    private @Nullable Output<String> trustedDomainId;
 
     /**
-     * @return The unique identifier for the trusted domain.
+     * @return Trusted domain identifier
      * 
      */
-    public Optional<Output<Integer>> trustedDomainId() {
+    public Optional<Output<String>> trustedDomainId() {
         return Optional.ofNullable(this.trustedDomainId);
     }
 
@@ -81,7 +80,7 @@ public final class GetEmailSecurityTrustedDomainsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -92,7 +91,7 @@ public final class GetEmailSecurityTrustedDomainsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -111,23 +110,23 @@ public final class GetEmailSecurityTrustedDomainsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param trustedDomainId The unique identifier for the trusted domain.
+         * @param trustedDomainId Trusted domain identifier
          * 
          * @return builder
          * 
          */
-        public Builder trustedDomainId(@Nullable Output<Integer> trustedDomainId) {
+        public Builder trustedDomainId(@Nullable Output<String> trustedDomainId) {
             $.trustedDomainId = trustedDomainId;
             return this;
         }
 
         /**
-         * @param trustedDomainId The unique identifier for the trusted domain.
+         * @param trustedDomainId Trusted domain identifier
          * 
          * @return builder
          * 
          */
-        public Builder trustedDomainId(Integer trustedDomainId) {
+        public Builder trustedDomainId(String trustedDomainId) {
             return trustedDomainId(Output.of(trustedDomainId));
         }
 

@@ -55,7 +55,7 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Annotations for the version created by this upload.
      */
@@ -243,6 +243,9 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["usageModel"] = state?.usageModel;
         } else {
             const args = argsOrState as WorkerScriptArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.scriptName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scriptName'");
             }
@@ -439,7 +442,7 @@ export interface WorkerScriptArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Annotations for the version created by this upload.
      */

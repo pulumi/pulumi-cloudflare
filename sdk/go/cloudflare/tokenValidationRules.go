@@ -96,7 +96,7 @@ type TokenValidationRules struct {
 	// A human-readable name for the rule.
 	Title pulumi.StringOutput `pulumi:"title"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewTokenValidationRules registers a new resource with the given unique name, arguments, and options.
@@ -123,6 +123,9 @@ func NewTokenValidationRules(ctx *pulumi.Context,
 	}
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TokenValidationRules
@@ -217,7 +220,7 @@ type tokenValidationRulesArgs struct {
 	// A human-readable name for the rule.
 	Title string `pulumi:"title"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a TokenValidationRules resource.
@@ -240,7 +243,7 @@ type TokenValidationRulesArgs struct {
 	// A human-readable name for the rule.
 	Title pulumi.StringInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (TokenValidationRulesArgs) ElementType() reflect.Type {
@@ -377,8 +380,8 @@ func (o TokenValidationRulesOutput) Title() pulumi.StringOutput {
 }
 
 // Identifier.
-func (o TokenValidationRulesOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TokenValidationRules) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o TokenValidationRulesOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TokenValidationRules) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type TokenValidationRulesArrayOutput struct{ *pulumi.OutputState }

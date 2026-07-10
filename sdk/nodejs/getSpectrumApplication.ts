@@ -121,6 +121,10 @@ export interface GetSpectrumApplicationResult {
      */
     readonly trafficType: string;
     /**
+     * Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+     */
+    readonly virtualNetworkId: string;
+    /**
      * Zone identifier.
      */
     readonly zoneId?: string;

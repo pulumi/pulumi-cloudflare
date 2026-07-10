@@ -3,9 +3,11 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileExcludeArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileIncludeArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileServiceModeV2Args;
+import com.pulumi.cloudflare.inputs.ZeroTrustDeviceCustomProfileVirtualNetworksArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -22,11 +24,11 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
 
     public static final ZeroTrustDeviceCustomProfileArgs Empty = new ZeroTrustDeviceCustomProfileArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -132,6 +134,21 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
      */
     public Optional<Output<Boolean>> disableAutoFallback() {
         return Optional.ofNullable(this.disableAutoFallback);
+    }
+
+    /**
+     * List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     * 
+     */
+    @Import(name="dnsSearchSuffixes")
+    private @Nullable Output<List<ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs>> dnsSearchSuffixes;
+
+    /**
+     * @return List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+     * 
+     */
+    public Optional<Output<List<ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs>>> dnsSearchSuffixes() {
+        return Optional.ofNullable(this.dnsSearchSuffixes);
     }
 
     /**
@@ -351,6 +368,21 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         return Optional.ofNullable(this.tunnelProtocol);
     }
 
+    /**
+     * Virtual network access settings for the device.
+     * 
+     */
+    @Import(name="virtualNetworks")
+    private @Nullable Output<ZeroTrustDeviceCustomProfileVirtualNetworksArgs> virtualNetworks;
+
+    /**
+     * @return Virtual network access settings for the device.
+     * 
+     */
+    public Optional<Output<ZeroTrustDeviceCustomProfileVirtualNetworksArgs>> virtualNetworks() {
+        return Optional.ofNullable(this.virtualNetworks);
+    }
+
     private ZeroTrustDeviceCustomProfileArgs() {}
 
     private ZeroTrustDeviceCustomProfileArgs(ZeroTrustDeviceCustomProfileArgs $) {
@@ -362,6 +394,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         this.captivePortal = $.captivePortal;
         this.description = $.description;
         this.disableAutoFallback = $.disableAutoFallback;
+        this.dnsSearchSuffixes = $.dnsSearchSuffixes;
         this.enabled = $.enabled;
         this.excludeOfficeIps = $.excludeOfficeIps;
         this.excludes = $.excludes;
@@ -377,6 +410,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         this.supportUrl = $.supportUrl;
         this.switchLocked = $.switchLocked;
         this.tunnelProtocol = $.tunnelProtocol;
+        this.virtualNetworks = $.virtualNetworks;
     }
 
     public static Builder builder() {
@@ -397,7 +431,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
             $ = new ZeroTrustDeviceCustomProfileArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -551,6 +585,37 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
          */
         public Builder disableAutoFallback(Boolean disableAutoFallback) {
             return disableAutoFallback(Output.of(disableAutoFallback));
+        }
+
+        /**
+         * @param dnsSearchSuffixes List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsSearchSuffixes(@Nullable Output<List<ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs>> dnsSearchSuffixes) {
+            $.dnsSearchSuffixes = dnsSearchSuffixes;
+            return this;
+        }
+
+        /**
+         * @param dnsSearchSuffixes List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsSearchSuffixes(List<ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs> dnsSearchSuffixes) {
+            return dnsSearchSuffixes(Output.of(dnsSearchSuffixes));
+        }
+
+        /**
+         * @param dnsSearchSuffixes List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsSearchSuffixes(ZeroTrustDeviceCustomProfileDnsSearchSuffixArgs... dnsSearchSuffixes) {
+            return dnsSearchSuffixes(List.of(dnsSearchSuffixes));
         }
 
         /**
@@ -876,7 +941,31 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
             return tunnelProtocol(Output.of(tunnelProtocol));
         }
 
+        /**
+         * @param virtualNetworks Virtual network access settings for the device.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualNetworks(@Nullable Output<ZeroTrustDeviceCustomProfileVirtualNetworksArgs> virtualNetworks) {
+            $.virtualNetworks = virtualNetworks;
+            return this;
+        }
+
+        /**
+         * @param virtualNetworks Virtual network access settings for the device.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualNetworks(ZeroTrustDeviceCustomProfileVirtualNetworksArgs virtualNetworks) {
+            return virtualNetworks(Output.of(virtualNetworks));
+        }
+
         public ZeroTrustDeviceCustomProfileArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileArgs", "accountId");
+            }
             if ($.match == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileArgs", "match");
             }

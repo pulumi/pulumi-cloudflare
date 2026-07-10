@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
         /// Specifies the public ID of the account.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Defines the configuration of the R2 Sink.
@@ -187,8 +187,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Specifies the public ID of the account.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Defines the configuration of the R2 Sink.

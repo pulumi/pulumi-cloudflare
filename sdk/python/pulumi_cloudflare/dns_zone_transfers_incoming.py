@@ -21,8 +21,8 @@ class DnsZoneTransfersIncomingArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  peers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 auto_refresh_seconds: pulumi.Input[Optional[_builtins.float]] = None,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 zone_id: pulumi.Input[_builtins.str],
+                 auto_refresh_seconds: pulumi.Input[Optional[_builtins.float]] = None):
         """
         The set of arguments for constructing a DnsZoneTransfersIncoming resource.
 
@@ -33,10 +33,9 @@ class DnsZoneTransfersIncomingArgs:
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "peers", peers)
+        pulumi.set(__self__, "zone_id", zone_id)
         if auto_refresh_seconds is not None:
             pulumi.set(__self__, "auto_refresh_seconds", auto_refresh_seconds)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -63,6 +62,15 @@ class DnsZoneTransfersIncomingArgs:
         pulumi.set(self, "peers", value)
 
     @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="autoRefreshSeconds")
     def auto_refresh_seconds(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
@@ -74,15 +82,6 @@ class DnsZoneTransfersIncomingArgs:
     @auto_refresh_seconds.setter
     def auto_refresh_seconds(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "auto_refresh_seconds", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -343,6 +342,8 @@ class DnsZoneTransfersIncoming(pulumi.CustomResource):
             if peers is None and not opts.urn:
                 raise TypeError("Missing required property 'peers'")
             __props__.__dict__["peers"] = peers
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["checked_time"] = None
             __props__.__dict__["created_time"] = None
@@ -455,6 +456,6 @@ class DnsZoneTransfersIncoming(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "zone_id")
 

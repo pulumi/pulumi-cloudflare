@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetEmailSecurityImpersonationRegistryResult {
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String accountId;
@@ -24,7 +24,6 @@ public final class GetEmailSecurityImpersonationRegistryResult {
     private String createdAt;
     private Integer directoryId;
     private Integer directoryNodeId;
-    private @Nullable Integer displayNameId;
     private String email;
     /**
      * @deprecated
@@ -35,18 +34,36 @@ public final class GetEmailSecurityImpersonationRegistryResult {
     private String externalDirectoryNodeId;
     private @Nullable GetEmailSecurityImpersonationRegistryFilter filter;
     /**
-     * @return The ID of this resource.
+     * @return Impersonation registry entry identifier
      * 
      */
-    private Integer id;
+    private String id;
+    /**
+     * @return Impersonation registry entry identifier
+     * 
+     */
+    private @Nullable String impersonationRegistryId;
     private Boolean isEmailRegex;
+    /**
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     private String lastModified;
+    private String modifiedAt;
     private String name;
+    /**
+     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
     private String provenance;
 
     private GetEmailSecurityImpersonationRegistryResult() {}
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> accountId() {
@@ -64,9 +81,6 @@ public final class GetEmailSecurityImpersonationRegistryResult {
     public Integer directoryNodeId() {
         return this.directoryNodeId;
     }
-    public Optional<Integer> displayNameId() {
-        return Optional.ofNullable(this.displayNameId);
-    }
     public String email() {
         return this.email;
     }
@@ -83,21 +97,43 @@ public final class GetEmailSecurityImpersonationRegistryResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return The ID of this resource.
+     * @return Impersonation registry entry identifier
      * 
      */
-    public Integer id() {
+    public String id() {
         return this.id;
+    }
+    /**
+     * @return Impersonation registry entry identifier
+     * 
+     */
+    public Optional<String> impersonationRegistryId() {
+        return Optional.ofNullable(this.impersonationRegistryId);
     }
     public Boolean isEmailRegex() {
         return this.isEmailRegex;
     }
+    /**
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public String lastModified() {
         return this.lastModified;
+    }
+    public String modifiedAt() {
+        return this.modifiedAt;
     }
     public String name() {
         return this.name;
     }
+    /**
+     * @return Available values: &#34;A1S*INTERNAL&#34;, &#34;SNOOPY-CASB*OFFICE*365&#34;, &#34;SNOOPY-OFFICE*365&#34;, &#34;SNOOPY-GOOGLE_DIRECTORY&#34;.
+     * 
+     */
     public String provenance() {
         return this.provenance;
     }
@@ -116,13 +152,14 @@ public final class GetEmailSecurityImpersonationRegistryResult {
         private String createdAt;
         private Integer directoryId;
         private Integer directoryNodeId;
-        private @Nullable Integer displayNameId;
         private String email;
         private String externalDirectoryNodeId;
         private @Nullable GetEmailSecurityImpersonationRegistryFilter filter;
-        private Integer id;
+        private String id;
+        private @Nullable String impersonationRegistryId;
         private Boolean isEmailRegex;
         private String lastModified;
+        private String modifiedAt;
         private String name;
         private String provenance;
         public Builder() {}
@@ -133,13 +170,14 @@ public final class GetEmailSecurityImpersonationRegistryResult {
     	      this.createdAt = defaults.createdAt;
     	      this.directoryId = defaults.directoryId;
     	      this.directoryNodeId = defaults.directoryNodeId;
-    	      this.displayNameId = defaults.displayNameId;
     	      this.email = defaults.email;
     	      this.externalDirectoryNodeId = defaults.externalDirectoryNodeId;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.impersonationRegistryId = defaults.impersonationRegistryId;
     	      this.isEmailRegex = defaults.isEmailRegex;
     	      this.lastModified = defaults.lastModified;
+    	      this.modifiedAt = defaults.modifiedAt;
     	      this.name = defaults.name;
     	      this.provenance = defaults.provenance;
         }
@@ -183,12 +221,6 @@ public final class GetEmailSecurityImpersonationRegistryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder displayNameId(@Nullable Integer displayNameId) {
-
-            this.displayNameId = displayNameId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder email(String email) {
             if (email == null) {
               throw new MissingRequiredPropertyException("GetEmailSecurityImpersonationRegistryResult", "email");
@@ -211,11 +243,17 @@ public final class GetEmailSecurityImpersonationRegistryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(Integer id) {
+        public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetEmailSecurityImpersonationRegistryResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder impersonationRegistryId(@Nullable String impersonationRegistryId) {
+
+            this.impersonationRegistryId = impersonationRegistryId;
             return this;
         }
         @CustomType.Setter
@@ -232,6 +270,14 @@ public final class GetEmailSecurityImpersonationRegistryResult {
               throw new MissingRequiredPropertyException("GetEmailSecurityImpersonationRegistryResult", "lastModified");
             }
             this.lastModified = lastModified;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder modifiedAt(String modifiedAt) {
+            if (modifiedAt == null) {
+              throw new MissingRequiredPropertyException("GetEmailSecurityImpersonationRegistryResult", "modifiedAt");
+            }
+            this.modifiedAt = modifiedAt;
             return this;
         }
         @CustomType.Setter
@@ -257,13 +303,14 @@ public final class GetEmailSecurityImpersonationRegistryResult {
             _resultValue.createdAt = createdAt;
             _resultValue.directoryId = directoryId;
             _resultValue.directoryNodeId = directoryNodeId;
-            _resultValue.displayNameId = displayNameId;
             _resultValue.email = email;
             _resultValue.externalDirectoryNodeId = externalDirectoryNodeId;
             _resultValue.filter = filter;
             _resultValue.id = id;
+            _resultValue.impersonationRegistryId = impersonationRegistryId;
             _resultValue.isEmailRegex = isEmailRegex;
             _resultValue.lastModified = lastModified;
+            _resultValue.modifiedAt = modifiedAt;
             _resultValue.name = name;
             _resultValue.provenance = provenance;
             return _resultValue;

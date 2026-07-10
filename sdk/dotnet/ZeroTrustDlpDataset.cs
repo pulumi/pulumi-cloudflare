@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDlpDataset : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Only applies to custom word lists.
@@ -167,8 +167,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDlpDatasetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Only applies to custom word lists.

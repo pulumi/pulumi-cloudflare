@@ -64,7 +64,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * Account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Can set the creator field with an internal user ID.
      */
@@ -132,6 +132,9 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["variants"] = state?.variants;
         } else {
             const args = argsOrState as ImageArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
@@ -209,7 +212,7 @@ export interface ImageArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Can set the creator field with an internal user ID.
      */

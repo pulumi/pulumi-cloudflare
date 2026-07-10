@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// Identifier
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// The monetary unit in which pricing information is displayed.
@@ -114,7 +114,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AccountSubscription(string name, AccountSubscriptionArgs? args = null, CustomResourceOptions? options = null)
+        public AccountSubscription(string name, AccountSubscriptionArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/accountSubscription:AccountSubscription", name, args ?? new AccountSubscriptionArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -155,8 +155,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Identifier
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// How often the subscription is renewed automatically.

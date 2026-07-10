@@ -73,8 +73,8 @@ import (
 type ZeroTrustDlpCustomProfile struct {
 	pulumi.CustomResourceState
 
-	AccountId        pulumi.StringPtrOutput `pulumi:"accountId"`
-	AiContextEnabled pulumi.BoolOutput      `pulumi:"aiContextEnabled"`
+	AccountId        pulumi.StringOutput `pulumi:"accountId"`
+	AiContextEnabled pulumi.BoolOutput   `pulumi:"aiContextEnabled"`
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   pulumi.IntOutput    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold pulumi.StringOutput `pulumi:"confidenceThreshold"`
@@ -116,6 +116,9 @@ func NewZeroTrustDlpCustomProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -226,8 +229,8 @@ func (ZeroTrustDlpCustomProfileState) ElementType() reflect.Type {
 }
 
 type zeroTrustDlpCustomProfileArgs struct {
-	AccountId        *string `pulumi:"accountId"`
-	AiContextEnabled *bool   `pulumi:"aiContextEnabled"`
+	AccountId        string `pulumi:"accountId"`
+	AiContextEnabled *bool  `pulumi:"aiContextEnabled"`
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
@@ -256,7 +259,7 @@ type zeroTrustDlpCustomProfileArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDlpCustomProfile resource.
 type ZeroTrustDlpCustomProfileArgs struct {
-	AccountId        pulumi.StringPtrInput
+	AccountId        pulumi.StringInput
 	AiContextEnabled pulumi.BoolPtrInput
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount   pulumi.IntPtrInput
@@ -371,8 +374,8 @@ func (o ZeroTrustDlpCustomProfileOutput) ToZeroTrustDlpCustomProfileOutputWithCo
 	return o
 }
 
-func (o ZeroTrustDlpCustomProfileOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDlpCustomProfileOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustDlpCustomProfileOutput) AiContextEnabled() pulumi.BoolOutput {

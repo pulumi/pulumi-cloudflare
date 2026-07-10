@@ -17,14 +17,14 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
     public static final GetEmailSecurityImpersonationRegistriesArgs Empty = new GetEmailSecurityImpersonationRegistriesArgs();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -64,7 +64,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
     }
 
     /**
-     * The field to sort by.
+     * Field to sort by.
      * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -72,7 +72,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
     private @Nullable Output<String> order;
 
     /**
-     * @return The field to sort by.
+     * @return Field to sort by.
      * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
@@ -96,20 +96,14 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
     }
 
     /**
-     * Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * Search term for filtering records. Behavior may change.
      * 
      */
     @Import(name="search")
     private @Nullable Output<String> search;
 
     /**
-     * @return Allows searching in multiple properties of a record simultaneously.
-     * This parameter is intended for human users, not automation. Its exact
-     * behavior is intentionally left unspecified and is subject to change
-     * in the future.
+     * @return Search term for filtering records. Behavior may change.
      * 
      */
     public Optional<Output<String>> search() {
@@ -146,7 +140,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -157,7 +151,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -211,7 +205,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
         }
 
         /**
-         * @param order The field to sort by.
+         * @param order Field to sort by.
          * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
@@ -223,7 +217,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
         }
 
         /**
-         * @param order The field to sort by.
+         * @param order Field to sort by.
          * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
@@ -255,10 +249,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
         }
 
         /**
-         * @param search Allows searching in multiple properties of a record simultaneously.
-         * This parameter is intended for human users, not automation. Its exact
-         * behavior is intentionally left unspecified and is subject to change
-         * in the future.
+         * @param search Search term for filtering records. Behavior may change.
          * 
          * @return builder
          * 
@@ -269,10 +260,7 @@ public final class GetEmailSecurityImpersonationRegistriesArgs extends com.pulum
         }
 
         /**
-         * @param search Allows searching in multiple properties of a record simultaneously.
-         * This parameter is intended for human users, not automation. Its exact
-         * behavior is intentionally left unspecified and is subject to change
-         * in the future.
+         * @param search Search term for filtering records. Behavior may change.
          * 
          * @return builder
          * 

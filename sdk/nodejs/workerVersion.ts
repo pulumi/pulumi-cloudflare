@@ -113,7 +113,7 @@ export class WorkerVersion extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Metadata about the version.
      */
@@ -239,6 +239,9 @@ export class WorkerVersion extends pulumi.CustomResource {
             resourceInputs["workerId"] = state?.workerId;
         } else {
             const args = argsOrState as WorkerVersionArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.workerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workerId'");
             }
@@ -374,7 +377,7 @@ export interface WorkerVersionArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Metadata about the version.
      */

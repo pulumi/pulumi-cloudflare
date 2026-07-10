@@ -92,6 +92,23 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.cacheThreshold);
     }
 
+    /**
+     * Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     * 
+     */
+    @Import(name="cacheTtl")
+    private @Nullable Output<Double> cacheTtl;
+
+    /**
+     * @return Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     * 
+     */
+    public Optional<Output<Double>> cacheTtl() {
+        return Optional.ofNullable(this.cacheTtl);
+    }
+
     @Import(name="chunk")
     private @Nullable Output<Boolean> chunk;
 
@@ -463,6 +480,7 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
         this.aisearchModel = $.aisearchModel;
         this.cache = $.cache;
         this.cacheThreshold = $.cacheThreshold;
+        this.cacheTtl = $.cacheTtl;
         this.chunk = $.chunk;
         this.chunkOverlap = $.chunkOverlap;
         this.chunkSize = $.chunkSize;
@@ -611,6 +629,29 @@ public final class AiSearchInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder cacheThreshold(String cacheThreshold) {
             return cacheThreshold(Output.of(cacheThreshold));
+        }
+
+        /**
+         * @param cacheTtl Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+         * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheTtl(@Nullable Output<Double> cacheTtl) {
+            $.cacheTtl = cacheTtl;
+            return this;
+        }
+
+        /**
+         * @param cacheTtl Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+         * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheTtl(Double cacheTtl) {
+            return cacheTtl(Output.of(cacheTtl));
         }
 
         public Builder chunk(@Nullable Output<Boolean> chunk) {

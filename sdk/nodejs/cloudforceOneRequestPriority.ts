@@ -65,7 +65,7 @@ export class CloudforceOneRequestPriority extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly completed: pulumi.Output<string>;
     /**
      * Request content.
@@ -146,6 +146,9 @@ export class CloudforceOneRequestPriority extends pulumi.CustomResource {
             resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as CloudforceOneRequestPriorityArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.labels === undefined && !opts.urn) {
                 throw new Error("Missing required property 'labels'");
             }
@@ -245,7 +248,7 @@ export interface CloudforceOneRequestPriorityArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * List of labels.
      */

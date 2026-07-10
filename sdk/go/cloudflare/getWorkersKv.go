@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetWorkersKv(ctx, &cloudflare.LookupWorkersKvArgs{
-//				AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 //				NamespaceId: "0f2ac74b498b48028cb68387c421e279",
 //				KeyName:     "My-Key",
 //			}, nil)
@@ -56,7 +56,7 @@ func LookupWorkersKv(ctx *pulumi.Context, args *LookupWorkersKvArgs, opts ...pul
 // A collection of arguments for invoking getWorkersKv.
 type LookupWorkersKvArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName string `pulumi:"keyName"`
 	// Namespace identifier tag.
@@ -66,7 +66,7 @@ type LookupWorkersKvArgs struct {
 // A collection of values returned by getWorkersKv.
 type LookupWorkersKvResult struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	Id string `pulumi:"id"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
@@ -88,7 +88,7 @@ func LookupWorkersKvOutput(ctx *pulumi.Context, args LookupWorkersKvOutputArgs, 
 // A collection of arguments for invoking getWorkersKv.
 type LookupWorkersKvOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName pulumi.StringInput `pulumi:"keyName"`
 	// Namespace identifier tag.
@@ -115,8 +115,8 @@ func (o LookupWorkersKvResultOutput) ToLookupWorkersKvResultOutputWithContext(ct
 }
 
 // Identifier.
-func (o LookupWorkersKvResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkersKvResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupWorkersKvResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersKvResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.

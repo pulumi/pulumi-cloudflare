@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetMagicTransitConnectorDevice;
+import com.pulumi.cloudflare.outputs.GetMagicTransitConnectorFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -22,8 +23,9 @@ public final class GetMagicTransitConnectorResult {
      */
     private @Nullable String accountId;
     private Boolean activated;
-    private String connectorId;
+    private @Nullable String connectorId;
     private GetMagicTransitConnectorDevice device;
+    private @Nullable GetMagicTransitConnectorFilter filter;
     /**
      * @return The ID of this resource.
      * 
@@ -59,11 +61,14 @@ public final class GetMagicTransitConnectorResult {
     public Boolean activated() {
         return this.activated;
     }
-    public String connectorId() {
-        return this.connectorId;
+    public Optional<String> connectorId() {
+        return Optional.ofNullable(this.connectorId);
     }
     public GetMagicTransitConnectorDevice device() {
         return this.device;
+    }
+    public Optional<GetMagicTransitConnectorFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
     /**
      * @return The ID of this resource.
@@ -122,8 +127,9 @@ public final class GetMagicTransitConnectorResult {
     public static final class Builder {
         private @Nullable String accountId;
         private Boolean activated;
-        private String connectorId;
+        private @Nullable String connectorId;
         private GetMagicTransitConnectorDevice device;
+        private @Nullable GetMagicTransitConnectorFilter filter;
         private String id;
         private List<String> interruptWindowDaysOfWeeks;
         private Double interruptWindowDurationHours;
@@ -142,6 +148,7 @@ public final class GetMagicTransitConnectorResult {
     	      this.activated = defaults.activated;
     	      this.connectorId = defaults.connectorId;
     	      this.device = defaults.device;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.interruptWindowDaysOfWeeks = defaults.interruptWindowDaysOfWeeks;
     	      this.interruptWindowDurationHours = defaults.interruptWindowDurationHours;
@@ -170,10 +177,8 @@ public final class GetMagicTransitConnectorResult {
             return this;
         }
         @CustomType.Setter
-        public Builder connectorId(String connectorId) {
-            if (connectorId == null) {
-              throw new MissingRequiredPropertyException("GetMagicTransitConnectorResult", "connectorId");
-            }
+        public Builder connectorId(@Nullable String connectorId) {
+
             this.connectorId = connectorId;
             return this;
         }
@@ -183,6 +188,12 @@ public final class GetMagicTransitConnectorResult {
               throw new MissingRequiredPropertyException("GetMagicTransitConnectorResult", "device");
             }
             this.device = device;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable GetMagicTransitConnectorFilter filter) {
+
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -285,6 +296,7 @@ public final class GetMagicTransitConnectorResult {
             _resultValue.activated = activated;
             _resultValue.connectorId = connectorId;
             _resultValue.device = device;
+            _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.interruptWindowDaysOfWeeks = interruptWindowDaysOfWeeks;
             _resultValue.interruptWindowDurationHours = interruptWindowDurationHours;

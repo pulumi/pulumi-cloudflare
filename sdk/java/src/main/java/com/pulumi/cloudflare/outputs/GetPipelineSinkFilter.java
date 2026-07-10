@@ -11,9 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPipelineSinkFilter {
+    /**
+     * @return Filters sinks by name (case-insensitive substring).
+     * 
+     */
+    private @Nullable String name;
     private @Nullable String pipelineId;
 
     private GetPipelineSinkFilter() {}
+    /**
+     * @return Filters sinks by name (case-insensitive substring).
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
     public Optional<String> pipelineId() {
         return Optional.ofNullable(this.pipelineId);
     }
@@ -27,13 +39,21 @@ public final class GetPipelineSinkFilter {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String name;
         private @Nullable String pipelineId;
         public Builder() {}
         public Builder(GetPipelineSinkFilter defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.name = defaults.name;
     	      this.pipelineId = defaults.pipelineId;
         }
 
+        @CustomType.Setter
+        public Builder name(@Nullable String name) {
+
+            this.name = name;
+            return this;
+        }
         @CustomType.Setter
         public Builder pipelineId(@Nullable String pipelineId) {
 
@@ -42,6 +62,7 @@ public final class GetPipelineSinkFilter {
         }
         public GetPipelineSinkFilter build() {
             final var _resultValue = new GetPipelineSinkFilter();
+            _resultValue.name = name;
             _resultValue.pipelineId = pipelineId;
             return _resultValue;
         }

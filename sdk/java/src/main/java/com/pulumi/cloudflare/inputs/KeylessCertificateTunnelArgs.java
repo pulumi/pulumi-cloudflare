@@ -15,14 +15,14 @@ public final class KeylessCertificateTunnelArgs extends com.pulumi.resources.Res
     public static final KeylessCertificateTunnelArgs Empty = new KeylessCertificateTunnelArgs();
 
     /**
-     * Private IP of the Key Server Host
+     * Private IP of the Key Server Host.
      * 
      */
     @Import(name="privateIp", required=true)
     private Output<String> privateIp;
 
     /**
-     * @return Private IP of the Key Server Host
+     * @return Private IP of the Key Server Host.
      * 
      */
     public Output<String> privateIp() {
@@ -30,14 +30,14 @@ public final class KeylessCertificateTunnelArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Cloudflare Tunnel Virtual Network ID
+     * Cloudflare Tunnel Virtual Network ID.
      * 
      */
     @Import(name="vnetId", required=true)
     private Output<String> vnetId;
 
     /**
-     * @return Cloudflare Tunnel Virtual Network ID
+     * @return Cloudflare Tunnel Virtual Network ID.
      * 
      */
     public Output<String> vnetId() {
@@ -70,7 +70,7 @@ public final class KeylessCertificateTunnelArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param privateIp Private IP of the Key Server Host
+         * @param privateIp Private IP of the Key Server Host.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class KeylessCertificateTunnelArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param privateIp Private IP of the Key Server Host
+         * @param privateIp Private IP of the Key Server Host.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class KeylessCertificateTunnelArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param vnetId Cloudflare Tunnel Virtual Network ID
+         * @param vnetId Cloudflare Tunnel Virtual Network ID.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class KeylessCertificateTunnelArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param vnetId Cloudflare Tunnel Virtual Network ID
+         * @param vnetId Cloudflare Tunnel Virtual Network ID.
          * 
          * @return builder
          * 

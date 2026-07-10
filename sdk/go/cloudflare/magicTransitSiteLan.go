@@ -96,8 +96,8 @@ type MagicTransitSiteLan struct {
 	pulumi.CustomResourceState
 
 	// Identifier
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	BondId    pulumi.IntPtrOutput    `pulumi:"bondId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	BondId    pulumi.IntPtrOutput `pulumi:"bondId"`
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 	HaLink pulumi.BoolPtrOutput `pulumi:"haLink"`
 	// mark true to use this LAN for source-based breakout traffic
@@ -123,6 +123,9 @@ func NewMagicTransitSiteLan(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.SiteId == nil {
 		return nil, errors.New("invalid value for required argument 'SiteId'")
 	}
@@ -198,8 +201,8 @@ func (MagicTransitSiteLanState) ElementType() reflect.Type {
 
 type magicTransitSiteLanArgs struct {
 	// Identifier
-	AccountId *string `pulumi:"accountId"`
-	BondId    *int    `pulumi:"bondId"`
+	AccountId string `pulumi:"accountId"`
+	BondId    *int   `pulumi:"bondId"`
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 	HaLink *bool `pulumi:"haLink"`
 	// mark true to use this LAN for source-based breakout traffic
@@ -221,7 +224,7 @@ type magicTransitSiteLanArgs struct {
 // The set of arguments for constructing a MagicTransitSiteLan resource.
 type MagicTransitSiteLanArgs struct {
 	// Identifier
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	BondId    pulumi.IntPtrInput
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 	HaLink pulumi.BoolPtrInput
@@ -329,8 +332,8 @@ func (o MagicTransitSiteLanOutput) ToMagicTransitSiteLanOutputWithContext(ctx co
 }
 
 // Identifier
-func (o MagicTransitSiteLanOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o MagicTransitSiteLanOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o MagicTransitSiteLanOutput) BondId() pulumi.IntPtrOutput {

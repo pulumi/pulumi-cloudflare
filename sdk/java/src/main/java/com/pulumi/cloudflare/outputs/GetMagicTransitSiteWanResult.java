@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicTransitSiteWanResult {
@@ -18,7 +16,7 @@ public final class GetMagicTransitSiteWanResult {
      * @return Identifier
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
      * Available values: &#34;low&#34;, &#34;mid&#34;, &#34;high&#34;.
@@ -63,8 +61,8 @@ public final class GetMagicTransitSiteWanResult {
      * @return Identifier
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
@@ -132,7 +130,7 @@ public final class GetMagicTransitSiteWanResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private String healthCheckRate;
         private String id;
         private String name;
@@ -158,8 +156,10 @@ public final class GetMagicTransitSiteWanResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetMagicTransitSiteWanResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }

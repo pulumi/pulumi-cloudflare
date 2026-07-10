@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Email;
         /// <summary>
-        /// User Group identifier tag.
+        /// Account member identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -63,7 +63,7 @@ class GetEmailSecurityTrustedDomainsListResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        Account Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -87,11 +87,17 @@ class GetEmailSecurityTrustedDomainsListResult:
     @_builtins.property
     @pulumi.getter(name="isRecent")
     def is_recent(self) -> Optional[_builtins.bool]:
+        """
+        Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+        """
         return pulumi.get(self, "is_recent")
 
     @_builtins.property
     @pulumi.getter(name="isSimilarity")
     def is_similarity(self) -> Optional[_builtins.bool]:
+        """
+        Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+        """
         return pulumi.get(self, "is_similarity")
 
     @_builtins.property
@@ -106,7 +112,7 @@ class GetEmailSecurityTrustedDomainsListResult:
     @pulumi.getter
     def order(self) -> Optional[_builtins.str]:
         """
-        The field to sort by.
+        Field to sort by.
         Available values: "pattern", "created_at".
         """
         return pulumi.get(self, "order")
@@ -128,10 +134,7 @@ class GetEmailSecurityTrustedDomainsListResult:
     @pulumi.getter
     def search(self) -> Optional[_builtins.str]:
         """
-        Allows searching in multiple properties of a record simultaneously.
-        This parameter is intended for human users, not automation. Its exact
-        behavior is intentionally left unspecified and is subject to change
-        in the future.
+        Search term for filtering records. Behavior may change.
         """
         return pulumi.get(self, "search")
 
@@ -185,16 +188,15 @@ def get_email_security_trusted_domains_list(account_id: Optional[_builtins.str] 
     ```
 
 
-    :param _builtins.str account_id: Account Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.str direction: The sorting direction.
            Available values: "asc", "desc".
+    :param _builtins.bool is_recent: Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+    :param _builtins.bool is_similarity: Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: The field to sort by.
+    :param _builtins.str order: Field to sort by.
            Available values: "pattern", "created_at".
-    :param _builtins.str search: Allows searching in multiple properties of a record simultaneously.
-           This parameter is intended for human users, not automation. Its exact
-           behavior is intentionally left unspecified and is subject to change
-           in the future.
+    :param _builtins.str search: Search term for filtering records. Behavior may change.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -250,16 +252,15 @@ def get_email_security_trusted_domains_list_output(account_id: pulumi.Input[Opti
     ```
 
 
-    :param _builtins.str account_id: Account Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.str direction: The sorting direction.
            Available values: "asc", "desc".
+    :param _builtins.bool is_recent: Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+    :param _builtins.bool is_similarity: Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order: The field to sort by.
+    :param _builtins.str order: Field to sort by.
            Available values: "pattern", "created_at".
-    :param _builtins.str search: Allows searching in multiple properties of a record simultaneously.
-           This parameter is intended for human users, not automation. Its exact
-           behavior is intentionally left unspecified and is subject to change
-           in the future.
+    :param _builtins.str search: Search term for filtering records. Behavior may change.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

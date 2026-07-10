@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetMagicWanGreTunnelGreTunnelResult
     {
         /// <summary>
-        /// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+        /// True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `CouplerIntegration` account flag to be enabled; requests setting this to `True` without that flag will be rejected.
         /// </summary>
         public readonly bool AutomaticReturnRouting;
         public readonly Outputs.GetMagicWanGreTunnelGreTunnelBgpResult Bgp;

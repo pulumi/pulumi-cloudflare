@@ -46,6 +46,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "initializing", "pending", "active", "moved".
         /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type "internal" are excluded from the results.
+        /// </summary>
+        public readonly ImmutableArray<string> Types;
 
         [OutputConstructor]
         private GetZoneFilterResult(
@@ -59,7 +63,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? order,
 
-            string? status)
+            string? status,
+
+            ImmutableArray<string> types)
         {
             Account = account;
             Direction = direction;
@@ -67,6 +73,7 @@ namespace Pulumi.Cloudflare.Outputs
             Name = name;
             Order = order;
             Status = status;
+            Types = types;
         }
     }
 }

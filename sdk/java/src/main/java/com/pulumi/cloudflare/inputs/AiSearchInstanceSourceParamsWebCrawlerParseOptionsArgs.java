@@ -20,23 +20,31 @@ public final class AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs extend
     public static final AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs Empty = new AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs();
 
     /**
-     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+     * List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
      * 
      */
     @Import(name="contentSelectors")
     private @Nullable Output<List<AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs>> contentSelectors;
 
     /**
-     * @return List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+     * @return List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
      * 
      */
     public Optional<Output<List<AiSearchInstanceSourceParamsWebCrawlerParseOptionsContentSelectorArgs>>> contentSelectors() {
         return Optional.ofNullable(this.contentSelectors);
     }
 
+    /**
+     * Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+     * 
+     */
     @Import(name="includeHeaders")
     private @Nullable Output<Map<String,String>> includeHeaders;
 
+    /**
+     * @return Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+     * 
+     */
     public Optional<Output<Map<String,String>>> includeHeaders() {
         return Optional.ofNullable(this.includeHeaders);
     }
@@ -99,7 +107,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs extend
         }
 
         /**
-         * @param contentSelectors List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+         * @param contentSelectors List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
          * 
          * @return builder
          * 
@@ -110,7 +118,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs extend
         }
 
         /**
-         * @param contentSelectors List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+         * @param contentSelectors List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
          * 
          * @return builder
          * 
@@ -120,7 +128,7 @@ public final class AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs extend
         }
 
         /**
-         * @param contentSelectors List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.
+         * @param contentSelectors List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection — empty arrays are rejected.
          * 
          * @return builder
          * 
@@ -129,11 +137,23 @@ public final class AiSearchInstanceSourceParamsWebCrawlerParseOptionsArgs extend
             return contentSelectors(List.of(contentSelectors));
         }
 
+        /**
+         * @param includeHeaders Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeHeaders(@Nullable Output<Map<String,String>> includeHeaders) {
             $.includeHeaders = includeHeaders;
             return this;
         }
 
+        /**
+         * @param includeHeaders Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF).
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeHeaders(Map<String,String> includeHeaders) {
             return includeHeaders(Output.of(includeHeaders));
         }

@@ -155,7 +155,7 @@ export interface GetCustomHostnamesResult {
      * Whether to filter hostnames based on if they have SSL enabled.
      * Available values: 0, 1.
      */
-    readonly ssl?: number;
+    readonly ssl: number;
     /**
      * Filter by SSL certificate status.
      * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".

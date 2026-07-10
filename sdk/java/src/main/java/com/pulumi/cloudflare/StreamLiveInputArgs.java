@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.StreamLiveInputRecordingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -22,15 +23,15 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
      * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -159,7 +160,7 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -301,6 +302,9 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public StreamLiveInputArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("StreamLiveInputArgs", "accountId");
+            }
             return $;
         }
     }

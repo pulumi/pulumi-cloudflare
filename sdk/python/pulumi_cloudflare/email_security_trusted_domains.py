@@ -13,35 +13,27 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
-from . import outputs
-from ._inputs import *
 
 __all__ = ['EmailSecurityTrustedDomainsArgs', 'EmailSecurityTrustedDomains']
 
 @pulumi.input_type
 class EmailSecurityTrustedDomainsArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]] = None,
+                 account_id: pulumi.Input[_builtins.str],
+                 pattern: pulumi.Input[_builtins.str],
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
                  is_recent: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
-                 is_similarity: pulumi.Input[Optional[_builtins.bool]] = None,
-                 pattern: pulumi.Input[Optional[_builtins.str]] = None):
+                 is_similarity: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EmailSecurityTrustedDomains resource.
 
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a
-               Suspicious or Malicious disposition.
-        :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar
-               spelling to your connected domains. Prevents listed domains from
-               triggering a Spoof disposition.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
+        :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
-        if bodies is not None:
-            pulumi.set(__self__, "bodies", bodies)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "pattern", pattern)
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
         if is_recent is not None:
@@ -50,29 +42,27 @@ class EmailSecurityTrustedDomainsArgs:
             pulumi.set(__self__, "is_regex", is_regex)
         if is_similarity is not None:
             pulumi.set(__self__, "is_similarity", is_similarity)
-        if pattern is not None:
-            pulumi.set(__self__, "pattern", pattern)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Account Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def bodies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]]:
-        return pulumi.get(self, "bodies")
+    def pattern(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "pattern")
 
-    @bodies.setter
-    def bodies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]]):
-        pulumi.set(self, "bodies", value)
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "pattern", value)
 
     @_builtins.property
     @pulumi.getter
@@ -87,8 +77,7 @@ class EmailSecurityTrustedDomainsArgs:
     @pulumi.getter(name="isRecent")
     def is_recent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Select to prevent recently registered domains from triggering a
-        Suspicious or Malicious disposition.
+        Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         """
         return pulumi.get(self, "is_recent")
 
@@ -109,9 +98,7 @@ class EmailSecurityTrustedDomainsArgs:
     @pulumi.getter(name="isSimilarity")
     def is_similarity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Select for partner or other approved domains that have similar
-        spelling to your connected domains. Prevents listed domains from
-        triggering a Spoof disposition.
+        Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         """
         return pulumi.get(self, "is_similarity")
 
@@ -119,42 +106,29 @@ class EmailSecurityTrustedDomainsArgs:
     def is_similarity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_similarity", value)
 
-    @_builtins.property
-    @pulumi.getter
-    def pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "pattern")
-
-    @pattern.setter
-    def pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "pattern", value)
-
 
 @pulumi.input_type
 class _EmailSecurityTrustedDomainsState:
     def __init__(__self__, *,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]] = None,
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  is_recent: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_similarity: pulumi.Input[Optional[_builtins.bool]] = None,
                  last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 modified_at: pulumi.Input[Optional[_builtins.str]] = None,
                  pattern: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailSecurityTrustedDomains resources.
 
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a
-               Suspicious or Malicious disposition.
-        :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar
-               spelling to your connected domains. Prevents listed domains from
-               triggering a Spoof disposition.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
+        :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
+        :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if bodies is not None:
-            pulumi.set(__self__, "bodies", bodies)
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
         if created_at is not None:
@@ -166,7 +140,12 @@ class _EmailSecurityTrustedDomainsState:
         if is_similarity is not None:
             pulumi.set(__self__, "is_similarity", is_similarity)
         if last_modified is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""last_modified is deprecated: This attribute is deprecated.""")
+        if last_modified is not None:
             pulumi.set(__self__, "last_modified", last_modified)
+        if modified_at is not None:
+            pulumi.set(__self__, "modified_at", modified_at)
         if pattern is not None:
             pulumi.set(__self__, "pattern", pattern)
 
@@ -174,22 +153,13 @@ class _EmailSecurityTrustedDomainsState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Account Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
     def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def bodies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]]:
-        return pulumi.get(self, "bodies")
-
-    @bodies.setter
-    def bodies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EmailSecurityTrustedDomainsBodyArgs']]]]):
-        pulumi.set(self, "bodies", value)
 
     @_builtins.property
     @pulumi.getter
@@ -213,8 +183,7 @@ class _EmailSecurityTrustedDomainsState:
     @pulumi.getter(name="isRecent")
     def is_recent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Select to prevent recently registered domains from triggering a
-        Suspicious or Malicious disposition.
+        Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         """
         return pulumi.get(self, "is_recent")
 
@@ -235,9 +204,7 @@ class _EmailSecurityTrustedDomainsState:
     @pulumi.getter(name="isSimilarity")
     def is_similarity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Select for partner or other approved domains that have similar
-        spelling to your connected domains. Prevents listed domains from
-        triggering a Spoof disposition.
+        Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         """
         return pulumi.get(self, "is_similarity")
 
@@ -247,12 +214,25 @@ class _EmailSecurityTrustedDomainsState:
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def last_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        """
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
     def last_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "modified_at")
+
+    @modified_at.setter
+    def modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "modified_at", value)
 
     @_builtins.property
     @pulumi.getter
@@ -271,7 +251,6 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailSecurityTrustedDomainsBodyArgs', 'EmailSecurityTrustedDomainsBodyArgsDict']]]]] = None,
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
                  is_recent: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -308,18 +287,15 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a
-               Suspicious or Malicious disposition.
-        :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar
-               spelling to your connected domains. Prevents listed domains from
-               triggering a Spoof disposition.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
+        :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[EmailSecurityTrustedDomainsArgs] = None,
+                 args: EmailSecurityTrustedDomainsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Accepted Permissions
@@ -365,7 +341,6 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailSecurityTrustedDomainsBodyArgs', 'EmailSecurityTrustedDomainsBodyArgsDict']]]]] = None,
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
                  is_recent: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -380,15 +355,19 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EmailSecurityTrustedDomainsArgs.__new__(EmailSecurityTrustedDomainsArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            __props__.__dict__["bodies"] = bodies
             __props__.__dict__["comments"] = comments
             __props__.__dict__["is_recent"] = is_recent
             __props__.__dict__["is_regex"] = is_regex
             __props__.__dict__["is_similarity"] = is_similarity
+            if pattern is None and not opts.urn:
+                raise TypeError("Missing required property 'pattern'")
             __props__.__dict__["pattern"] = pattern
             __props__.__dict__["created_at"] = None
             __props__.__dict__["last_modified"] = None
+            __props__.__dict__["modified_at"] = None
         super(EmailSecurityTrustedDomains, __self__).__init__(
             'cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains',
             resource_name,
@@ -400,13 +379,13 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            bodies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EmailSecurityTrustedDomainsBodyArgs', 'EmailSecurityTrustedDomainsBodyArgsDict']]]]] = None,
             comments: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             is_recent: pulumi.Input[Optional[_builtins.bool]] = None,
             is_regex: pulumi.Input[Optional[_builtins.bool]] = None,
             is_similarity: pulumi.Input[Optional[_builtins.bool]] = None,
             last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            modified_at: pulumi.Input[Optional[_builtins.str]] = None,
             pattern: pulumi.Input[Optional[_builtins.str]] = None) -> 'EmailSecurityTrustedDomains':
         """
         Get an existing EmailSecurityTrustedDomains resource's state with the given name, id, and optional extra
@@ -415,40 +394,33 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Account Identifier
-        :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a
-               Suspicious or Malicious disposition.
-        :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar
-               spelling to your connected domains. Prevents listed domains from
-               triggering a Spoof disposition.
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
+        :param pulumi.Input[_builtins.bool] is_recent: Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
+        :param pulumi.Input[_builtins.bool] is_similarity: Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
+        :param pulumi.Input[_builtins.str] last_modified: Deprecated, use `modified_at` instead. End of life: November 1, 2026.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _EmailSecurityTrustedDomainsState.__new__(_EmailSecurityTrustedDomainsState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["bodies"] = bodies
         __props__.__dict__["comments"] = comments
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["is_recent"] = is_recent
         __props__.__dict__["is_regex"] = is_regex
         __props__.__dict__["is_similarity"] = is_similarity
         __props__.__dict__["last_modified"] = last_modified
+        __props__.__dict__["modified_at"] = modified_at
         __props__.__dict__["pattern"] = pattern
         return EmailSecurityTrustedDomains(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Account Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def bodies(self) -> pulumi.Output[Optional[Sequence['outputs.EmailSecurityTrustedDomainsBody']]]:
-        return pulumi.get(self, "bodies")
 
     @_builtins.property
     @pulumi.getter
@@ -464,8 +436,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
     @pulumi.getter(name="isRecent")
     def is_recent(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Select to prevent recently registered domains from triggering a
-        Suspicious or Malicious disposition.
+        Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
         """
         return pulumi.get(self, "is_recent")
 
@@ -478,19 +449,26 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
     @pulumi.getter(name="isSimilarity")
     def is_similarity(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Select for partner or other approved domains that have similar
-        spelling to your connected domains. Prevents listed domains from
-        triggering a Spoof disposition.
+        Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
         """
         return pulumi.get(self, "is_similarity")
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def last_modified(self) -> pulumi.Output[_builtins.str]:
+        """
+        Deprecated, use `modified_at` instead. End of life: November 1, 2026.
+        """
         return pulumi.get(self, "last_modified")
 
     @_builtins.property
+    @pulumi.getter(name="modifiedAt")
+    def modified_at(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "modified_at")
+
+    @_builtins.property
     @pulumi.getter
-    def pattern(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def pattern(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "pattern")
 

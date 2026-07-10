@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustGatewayCertificate : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `BindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ZeroTrustGatewayCertificate(string name, ZeroTrustGatewayCertificateArgs? args = null, CustomResourceOptions? options = null)
+        public ZeroTrustGatewayCertificate(string name, ZeroTrustGatewayCertificateArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate", name, args ?? new ZeroTrustGatewayCertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -155,8 +155,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustGatewayCertificateArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `BindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic

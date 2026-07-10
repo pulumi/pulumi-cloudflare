@@ -30,7 +30,7 @@ class ZoneHoldArgs:
                then automatically re-enabled by the system at the time specified
                in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
                no effect on an existing, enabled hold. Providing an empty string will set its value
-               to the current time.
+               to the current time. Providing `null` will disable the hold indefinitely.
         :param pulumi.Input[_builtins.bool] include_subdomains: If `true`, the zone hold will extend to block any subdomain of the given zone, as well
                as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
                'example.com' and include_subdomains=true will block 'example.com',
@@ -62,7 +62,7 @@ class ZoneHoldArgs:
         then automatically re-enabled by the system at the time specified
         in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
         no effect on an existing, enabled hold. Providing an empty string will set its value
-        to the current time.
+        to the current time. Providing `null` will disable the hold indefinitely.
         """
         return pulumi.get(self, "hold_after")
 
@@ -100,7 +100,7 @@ class _ZoneHoldState:
                then automatically re-enabled by the system at the time specified
                in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
                no effect on an existing, enabled hold. Providing an empty string will set its value
-               to the current time.
+               to the current time. Providing `null` will disable the hold indefinitely.
         :param pulumi.Input[_builtins.bool] include_subdomains: If `true`, the zone hold will extend to block any subdomain of the given zone, as well
                as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
                'example.com' and include_subdomains=true will block 'example.com',
@@ -133,7 +133,7 @@ class _ZoneHoldState:
         then automatically re-enabled by the system at the time specified
         in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
         no effect on an existing, enabled hold. Providing an empty string will set its value
-        to the current time.
+        to the current time. Providing `null` will disable the hold indefinitely.
         """
         return pulumi.get(self, "hold_after")
 
@@ -241,7 +241,7 @@ class ZoneHold(pulumi.CustomResource):
                then automatically re-enabled by the system at the time specified
                in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
                no effect on an existing, enabled hold. Providing an empty string will set its value
-               to the current time.
+               to the current time. Providing `null` will disable the hold indefinitely.
         :param pulumi.Input[_builtins.bool] include_subdomains: If `true`, the zone hold will extend to block any subdomain of the given zone, as well
                as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
                'example.com' and include_subdomains=true will block 'example.com',
@@ -368,7 +368,7 @@ class ZoneHold(pulumi.CustomResource):
                then automatically re-enabled by the system at the time specified
                in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
                no effect on an existing, enabled hold. Providing an empty string will set its value
-               to the current time.
+               to the current time. Providing `null` will disable the hold indefinitely.
         :param pulumi.Input[_builtins.bool] include_subdomains: If `true`, the zone hold will extend to block any subdomain of the given zone, as well
                as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
                'example.com' and include_subdomains=true will block 'example.com',
@@ -398,7 +398,7 @@ class ZoneHold(pulumi.CustomResource):
         then automatically re-enabled by the system at the time specified
         in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
         no effect on an existing, enabled hold. Providing an empty string will set its value
-        to the current time.
+        to the current time. Providing `null` will disable the hold indefinitely.
         """
         return pulumi.get(self, "hold_after")
 

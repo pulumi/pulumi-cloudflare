@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// The field to sort by.
+        /// Field to sort by.
         /// Available values: "name", "email", "CreatedAt".
         /// </summary>
         public readonly string? Order;
@@ -28,10 +28,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Provenance;
         /// <summary>
-        /// Allows searching in multiple properties of a record simultaneously.
-        /// This parameter is intended for human users, not automation. Its exact
-        /// behavior is intentionally left unspecified and is subject to change
-        /// in the future.
+        /// Search term for filtering records. Behavior may change.
         /// </summary>
         public readonly string? Search;
 

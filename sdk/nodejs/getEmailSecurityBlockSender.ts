@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *
  * const exampleEmailSecurityBlockSender = cloudflare.getEmailSecurityBlockSender({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     patternId: 2402,
+ *     patternId: "2402",
  * });
  * ```
  */
@@ -39,14 +39,14 @@ export function getEmailSecurityBlockSender(args?: GetEmailSecurityBlockSenderAr
  */
 export interface GetEmailSecurityBlockSenderArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: string;
     filter?: inputs.GetEmailSecurityBlockSenderFilter;
     /**
-     * The unique identifier for the allow policy.
+     * Blocked sender pattern identifier
      */
-    patternId?: number;
+    patternId?: string;
 }
 
 /**
@@ -54,24 +54,32 @@ export interface GetEmailSecurityBlockSenderArgs {
  */
 export interface GetEmailSecurityBlockSenderResult {
     /**
-     * Account Identifier
+     * Identifier.
      */
     readonly accountId?: string;
     readonly comments: string;
     readonly createdAt: string;
     readonly filter?: outputs.GetEmailSecurityBlockSenderFilter;
     /**
-     * The unique identifier for the allow policy.
+     * Blocked sender pattern identifier
      */
-    readonly id: number;
+    readonly id: string;
     readonly isRegex: boolean;
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     readonly lastModified: string;
+    readonly modifiedAt: string;
     readonly pattern: string;
     /**
-     * The unique identifier for the allow policy.
+     * Blocked sender pattern identifier
      */
-    readonly patternId?: number;
+    readonly patternId?: string;
     /**
+     * Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
     readonly patternType: string;
@@ -90,7 +98,7 @@ export interface GetEmailSecurityBlockSenderResult {
  *
  * const exampleEmailSecurityBlockSender = cloudflare.getEmailSecurityBlockSender({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     patternId: 2402,
+ *     patternId: "2402",
  * });
  * ```
  */
@@ -109,12 +117,12 @@ export function getEmailSecurityBlockSenderOutput(args?: GetEmailSecurityBlockSe
  */
 export interface GetEmailSecurityBlockSenderOutputArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetEmailSecurityBlockSenderFilterArgs | undefined>;
     /**
-     * The unique identifier for the allow policy.
+     * Blocked sender pattern identifier
      */
-    patternId?: pulumi.Input<number | undefined>;
+    patternId?: pulumi.Input<string | undefined>;
 }

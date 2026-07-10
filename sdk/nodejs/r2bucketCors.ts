@@ -64,7 +64,7 @@ export class R2BucketCors extends pulumi.CustomResource {
     /**
      * Account ID.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Name of the bucket.
      */
@@ -94,6 +94,9 @@ export class R2BucketCors extends pulumi.CustomResource {
             resourceInputs["rules"] = state?.rules;
         } else {
             const args = argsOrState as R2BucketCorsArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
@@ -133,7 +136,7 @@ export interface R2BucketCorsArgs {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Name of the bucket.
      */

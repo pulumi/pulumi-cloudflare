@@ -31,7 +31,7 @@ public final class GetClientCertificatesInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
-     * @return Offset the results
+     * @return Offset the results.
      * 
      */
     private @Nullable Integer offset;
@@ -75,7 +75,7 @@ public final class GetClientCertificatesInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
-     * @return Offset the results
+     * @return Offset the results.
      * 
      */
     public Optional<Integer> offset() {

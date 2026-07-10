@@ -56,7 +56,7 @@ type ZeroTrustTunnelWarpConnector struct {
 	pulumi.CustomResourceState
 
 	// Cloudflare account ID
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Cloudflare account ID
 	AccountTag pulumi.StringOutput `pulumi:"accountTag"`
 	// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
@@ -94,6 +94,9 @@ func NewZeroTrustTunnelWarpConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -198,7 +201,7 @@ func (ZeroTrustTunnelWarpConnectorState) ElementType() reflect.Type {
 
 type zeroTrustTunnelWarpConnectorArgs struct {
 	// Cloudflare account ID
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
 	Ha *bool `pulumi:"ha"`
 	// A user-friendly name for a tunnel.
@@ -210,7 +213,7 @@ type zeroTrustTunnelWarpConnectorArgs struct {
 // The set of arguments for constructing a ZeroTrustTunnelWarpConnector resource.
 type ZeroTrustTunnelWarpConnectorArgs struct {
 	// Cloudflare account ID
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
 	Ha pulumi.BoolPtrInput
 	// A user-friendly name for a tunnel.
@@ -307,8 +310,8 @@ func (o ZeroTrustTunnelWarpConnectorOutput) ToZeroTrustTunnelWarpConnectorOutput
 }
 
 // Cloudflare account ID
-func (o ZeroTrustTunnelWarpConnectorOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustTunnelWarpConnector) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustTunnelWarpConnectorOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelWarpConnector) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Cloudflare account ID

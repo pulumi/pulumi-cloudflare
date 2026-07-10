@@ -9,8 +9,6 @@ import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStreamWatermarkResult {
@@ -18,7 +16,7 @@ public final class GetStreamWatermarkResult {
      * @return The account identifier tag.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return The date and a time a watermark profile was created.
      * 
@@ -90,8 +88,8 @@ public final class GetStreamWatermarkResult {
      * @return The account identifier tag.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return The date and a time a watermark profile was created.
@@ -194,7 +192,7 @@ public final class GetStreamWatermarkResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
         private String created;
         private String downloadedFrom;
         private Integer height;
@@ -228,8 +226,10 @@ public final class GetStreamWatermarkResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetStreamWatermarkResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }
