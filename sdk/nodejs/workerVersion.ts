@@ -166,8 +166,8 @@ export class WorkerVersion extends pulumi.CustomResource {
      * Code, sourcemaps, and other content used at runtime.
      *
      * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
      * included as modules named `_headers` and `_redirects` with content type `text/plain`.
      */
     declare public readonly modules: pulumi.Output<outputs.WorkerVersionModule[] | undefined>;
@@ -329,8 +329,8 @@ export interface WorkerVersionState {
      * Code, sourcemaps, and other content used at runtime.
      *
      * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
      * included as modules named `_headers` and `_redirects` with content type `text/plain`.
      */
     modules?: pulumi.Input<pulumi.Input<inputs.WorkerVersionModule>[] | undefined>;
@@ -415,8 +415,8 @@ export interface WorkerVersionArgs {
      * Code, sourcemaps, and other content used at runtime.
      *
      * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
      * included as modules named `_headers` and `_redirects` with content type `text/plain`.
      */
     modules?: pulumi.Input<pulumi.Input<inputs.WorkerVersionModule>[] | undefined>;

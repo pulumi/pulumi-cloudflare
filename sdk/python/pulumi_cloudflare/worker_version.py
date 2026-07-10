@@ -52,8 +52,8 @@ class WorkerVersionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]] modules: Code, sourcemaps, and other content used at runtime.
                
                This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param pulumi.Input['WorkerVersionPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
@@ -229,8 +229,8 @@ class WorkerVersionArgs:
         Code, sourcemaps, and other content used at runtime.
 
         This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-        [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-        [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+        [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
         included as modules named `_headers` and `_redirects` with content type `text/plain`.
         """
         return pulumi.get(self, "modules")
@@ -309,8 +309,8 @@ class _WorkerVersionState:
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]] modules: Code, sourcemaps, and other content used at runtime.
                
                This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param pulumi.Input[_builtins.int] number: The integer version number, starting from one.
         :param pulumi.Input['WorkerVersionPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
@@ -530,8 +530,8 @@ class _WorkerVersionState:
         Code, sourcemaps, and other content used at runtime.
 
         This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-        [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-        [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+        [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
         included as modules named `_headers` and `_redirects` with content type `text/plain`.
         """
         return pulumi.get(self, "modules")
@@ -739,8 +739,8 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]] modules: Code, sourcemaps, and other content used at runtime.
                
                This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
@@ -944,8 +944,8 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]] modules: Code, sourcemaps, and other content used at runtime.
                
                This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param pulumi.Input[_builtins.int] number: The integer version number, starting from one.
         :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
@@ -1094,8 +1094,8 @@ class WorkerVersion(pulumi.CustomResource):
         Code, sourcemaps, and other content used at runtime.
 
         This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-        [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-        [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+        [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
         included as modules named `_headers` and `_redirects` with content type `text/plain`.
         """
         return pulumi.get(self, "modules")

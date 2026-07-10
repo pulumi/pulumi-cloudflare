@@ -63,7 +63,7 @@ export class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
      * Mark state of operation in API Discovery
      *   * `review` - Mark operation as for review
      *   * `ignored` - Mark operation as ignored
-     * Available values: "review", "ignored".
+     *     Available values: "review", "ignored".
      */
     declare public readonly state: pulumi.Output<string | undefined>;
     /**
@@ -113,7 +113,7 @@ export interface ApiShieldDiscoveryOperationState {
      * Mark state of operation in API Discovery
      *   * `review` - Mark operation as for review
      *   * `ignored` - Mark operation as ignored
-     * Available values: "review", "ignored".
+     *     Available values: "review", "ignored".
      */
     state?: pulumi.Input<string | undefined>;
     /**
@@ -134,7 +134,7 @@ export interface ApiShieldDiscoveryOperationArgs {
      * Mark state of operation in API Discovery
      *   * `review` - Mark operation as for review
      *   * `ignored` - Mark operation as ignored
-     * Available values: "review", "ignored".
+     *     Available values: "review", "ignored".
      */
     state?: pulumi.Input<string | undefined>;
     /**

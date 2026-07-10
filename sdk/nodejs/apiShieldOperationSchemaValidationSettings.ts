@@ -69,7 +69,7 @@ export class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomRes
      *   - `block` deny access to the site when request does not conform to schema for this operation
      *   - `none` will skip mitigation for this operation
      *   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
-     * Available values: "log", "block", "none".
+     *     Available values: "log", "block", "none".
      */
     declare public readonly mitigationAction: pulumi.Output<string | undefined>;
     /**
@@ -122,7 +122,7 @@ export interface ApiShieldOperationSchemaValidationSettingsState {
      *   - `block` deny access to the site when request does not conform to schema for this operation
      *   - `none` will skip mitigation for this operation
      *   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
-     * Available values: "log", "block", "none".
+     *     Available values: "log", "block", "none".
      */
     mitigationAction?: pulumi.Input<string | undefined>;
     /**
@@ -146,7 +146,7 @@ export interface ApiShieldOperationSchemaValidationSettingsArgs {
      *   - `block` deny access to the site when request does not conform to schema for this operation
      *   - `none` will skip mitigation for this operation
      *   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
-     * Available values: "log", "block", "none".
+     *     Available values: "log", "block", "none".
      */
     mitigationAction?: pulumi.Input<string | undefined>;
     /**

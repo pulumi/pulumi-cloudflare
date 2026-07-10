@@ -64,7 +64,7 @@ export class SchemaValidationSettings extends pulumi.CustomResource {
      *   - `"log"` - log request when request does not conform to schema
      *   - `"block"` - deny access to the site when request does not conform to schema
      *   - `"none"` - skip running schema validation
-     * Available values: "none", "log", "block".
+     *     Available values: "none", "log", "block".
      */
     declare public readonly validationDefaultMitigationAction: pulumi.Output<string>;
     /**
@@ -72,7 +72,7 @@ export class SchemaValidationSettings extends pulumi.CustomResource {
      *
      *   - `"none"` - skip running schema validation entirely for the request
      *   - `null` - clears any existing override
-     * Available values: "none".
+     *     Available values: "none".
      */
     declare public readonly validationOverrideMitigationAction: pulumi.Output<string | undefined>;
     /**
@@ -121,7 +121,7 @@ export interface SchemaValidationSettingsState {
      *   - `"log"` - log request when request does not conform to schema
      *   - `"block"` - deny access to the site when request does not conform to schema
      *   - `"none"` - skip running schema validation
-     * Available values: "none", "log", "block".
+     *     Available values: "none", "log", "block".
      */
     validationDefaultMitigationAction?: pulumi.Input<string | undefined>;
     /**
@@ -129,7 +129,7 @@ export interface SchemaValidationSettingsState {
      *
      *   - `"none"` - skip running schema validation entirely for the request
      *   - `null` - clears any existing override
-     * Available values: "none".
+     *     Available values: "none".
      */
     validationOverrideMitigationAction?: pulumi.Input<string | undefined>;
     /**
@@ -149,7 +149,7 @@ export interface SchemaValidationSettingsArgs {
      *   - `"log"` - log request when request does not conform to schema
      *   - `"block"` - deny access to the site when request does not conform to schema
      *   - `"none"` - skip running schema validation
-     * Available values: "none", "log", "block".
+     *     Available values: "none", "log", "block".
      */
     validationDefaultMitigationAction: pulumi.Input<string>;
     /**
@@ -157,7 +157,7 @@ export interface SchemaValidationSettingsArgs {
      *
      *   - `"none"` - skip running schema validation entirely for the request
      *   - `null` - clears any existing override
-     * Available values: "none".
+     *     Available values: "none".
      */
     validationOverrideMitigationAction?: pulumi.Input<string | undefined>;
     /**

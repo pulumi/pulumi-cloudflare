@@ -68075,7 +68075,7 @@ class ZeroTrustDlpSettingsPayloadLogging(dict):
                - `partial`: Only partial payload content is masked.
                - `clear`: No masking is applied to the payload content.
                - `default`: DLP uses its default masking behavior.
-               Available values: "full", "partial", "clear", "default".
+                 Available values: "full", "partial", "clear", "default".
         :param _builtins.str public_key: Base64-encoded public key for encrypting payload logs.
                
                - Set to a non-empty base64 string to enable payload logging with the given key.
@@ -68097,7 +68097,7 @@ class ZeroTrustDlpSettingsPayloadLogging(dict):
         - `partial`: Only partial payload content is masked.
         - `clear`: No masking is applied to the payload content.
         - `default`: DLP uses its default masking behavior.
-        Available values: "full", "partial", "clear", "default".
+          Available values: "full", "partial", "clear", "default".
         """
         return pulumi.get(self, "masking_level")
 
@@ -79777,7 +79777,7 @@ class GetApiShieldDiscoveryOperationsResultResult(dict):
                  * `review` - Operation is not saved into API Shield Endpoint Management
                  * `saved` - Operation is saved into API Shield Endpoint Management
                  * `ignored` - Operation is marked as ignored
-               Available values: "review", "saved", "ignored".
+                   Available values: "review", "saved", "ignored".
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "features", features)
@@ -79847,7 +79847,7 @@ class GetApiShieldDiscoveryOperationsResultResult(dict):
           * `review` - Operation is not saved into API Shield Endpoint Management
           * `saved` - Operation is saved into API Shield Endpoint Management
           * `ignored` - Operation is marked as ignored
-        Available values: "review", "saved", "ignored".
+            Available values: "review", "saved", "ignored".
         """
         return pulumi.get(self, "state")
 
@@ -113234,7 +113234,7 @@ class GetSchemaValidationOperationSettingsListResultResult(dict):
                  - `"log"` - log request when request does not conform to schema for this operation
                  - `"block"` - deny access to the site when request does not conform to schema for this operation
                  - `"none"` - will skip mitigation for this operation
-               Available values: "log", "block", "none".
+                   Available values: "log", "block", "none".
         :param _builtins.str operation_id: UUID.
         """
         pulumi.set(__self__, "mitigation_action", mitigation_action)
@@ -113249,7 +113249,7 @@ class GetSchemaValidationOperationSettingsListResultResult(dict):
           - `"log"` - log request when request does not conform to schema for this operation
           - `"block"` - deny access to the site when request does not conform to schema for this operation
           - `"none"` - will skip mitigation for this operation
-        Available values: "log", "block", "none".
+            Available values: "log", "block", "none".
         """
         return pulumi.get(self, "mitigation_action")
 
@@ -117537,68 +117537,68 @@ class GetWaitingRoomsResultResult(dict):
                
                An example cURL to a waiting room could be:
                
-               	curl -X GET "https://example.com/waitingroom" \\
-               		-H "Accept: application/json"
+                   curl -X GET "https://example.com/waitingroom" \\
+                       -H "Accept: application/json"
                
                If `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **fifo** and no event is active could be:
                
-               	{
-               		"cfWaitingRoom": {
-               			"inWaitingRoom": true,
-               			"waitTimeKnown": true,
-               			"waitTime": 10,
-               			"waitTime25Percentile": 0,
-               			"waitTime50Percentile": 0,
-               			"waitTime75Percentile": 0,
-               			"waitTimeFormatted": "10 minutes",
-               			"queueIsFull": false,
-               			"queueAll": false,
-               			"lastUpdated": "2020-08-03T23:46:00.000Z",
-               			"refreshIntervalSeconds": 20,
-               			"queueingMethod": "fifo",
-               			"isFIFOQueue": true,
-               			"isRandomQueue": false,
-               			"isPassthroughQueue": false,
-               			"isRejectQueue": false,
-               			"isEventActive": false,
-               			"isEventPrequeueing": false,
-               			"timeUntilEventStart": 0,
-               			"timeUntilEventStartFormatted": "unavailable",
-               			"timeUntilEventEnd": 0,
-               			"timeUntilEventEndFormatted": "unavailable",
-               			"shuffleAtEventStart": false
-               		}
-               	}
+                   {
+                       "cfWaitingRoom": {
+                           "inWaitingRoom": true,
+                           "waitTimeKnown": true,
+                           "waitTime": 10,
+                           "waitTime25Percentile": 0,
+                           "waitTime50Percentile": 0,
+                           "waitTime75Percentile": 0,
+                           "waitTimeFormatted": "10 minutes",
+                           "queueIsFull": false,
+                           "queueAll": false,
+                           "lastUpdated": "2020-08-03T23:46:00.000Z",
+                           "refreshIntervalSeconds": 20,
+                           "queueingMethod": "fifo",
+                           "isFIFOQueue": true,
+                           "isRandomQueue": false,
+                           "isPassthroughQueue": false,
+                           "isRejectQueue": false,
+                           "isEventActive": false,
+                           "isEventPrequeueing": false,
+                           "timeUntilEventStart": 0,
+                           "timeUntilEventStartFormatted": "unavailable",
+                           "timeUntilEventEnd": 0,
+                           "timeUntilEventEndFormatted": "unavailable",
+                           "shuffleAtEventStart": false
+                       }
+                   }
                
                If `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active could be:
                
-               	{
-               		"cfWaitingRoom": {
-               			"inWaitingRoom": true,
-               			"waitTimeKnown": true,
-               			"waitTime": 10,
-               			"waitTime25Percentile": 5,
-               			"waitTime50Percentile": 10,
-               			"waitTime75Percentile": 15,
-               			"waitTimeFormatted": "5 minutes to 15 minutes",
-               			"queueIsFull": false,
-               			"queueAll": false,
-               			"lastUpdated": "2020-08-03T23:46:00.000Z",
-               			"refreshIntervalSeconds": 20,
-               			"queueingMethod": "random",
-               			"isFIFOQueue": false,
-               			"isRandomQueue": true,
-               			"isPassthroughQueue": false,
-               			"isRejectQueue": false,
-               			"isEventActive": true,
-               			"isEventPrequeueing": false,
-               			"timeUntilEventStart": 0,
-               			"timeUntilEventStartFormatted": "unavailable",
-               			"timeUntilEventEnd": 15,
-               			"timeUntilEventEndFormatted": "15 minutes",
-               			"shuffleAtEventStart": true
-               		}
-               	}
+                   {
+                       "cfWaitingRoom": {
+                           "inWaitingRoom": true,
+                           "waitTimeKnown": true,
+                           "waitTime": 10,
+                           "waitTime25Percentile": 5,
+                           "waitTime50Percentile": 10,
+                           "waitTime75Percentile": 15,
+                           "waitTimeFormatted": "5 minutes to 15 minutes",
+                           "queueIsFull": false,
+                           "queueAll": false,
+                           "lastUpdated": "2020-08-03T23:46:00.000Z",
+                           "refreshIntervalSeconds": 20,
+                           "queueingMethod": "random",
+                           "isFIFOQueue": false,
+                           "isRandomQueue": true,
+                           "isPassthroughQueue": false,
+                           "isRejectQueue": false,
+                           "isEventActive": true,
+                           "isEventPrequeueing": false,
+                           "timeUntilEventStart": 0,
+                           "timeUntilEventStartFormatted": "unavailable",
+                           "timeUntilEventEnd": 15,
+                           "timeUntilEventEndFormatted": "15 minutes",
+                           "shuffleAtEventStart": true
+                       }
+                   }
         :param _builtins.str name: A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
         :param _builtins.int new_users_per_minute: Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
         :param _builtins.str next_event_prequeue_start_time: An ISO 8601 timestamp that marks when the next event will begin queueing.
@@ -117610,7 +117610,7 @@ class GetWaitingRoomsResultResult(dict):
                2. `random`: Random queue where customers gain access randomly, regardless of arrival time.
                3. `passthrough`: Users will pass directly through the waiting room and into the origin website. As a result, any configured limits will not be respected while this is enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a waiting room event, or vice versa.
                4. `reject`: Users will be immediately rejected from the waiting room. As a result, no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`, `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is prequeueing, the waiting room page **will not refresh automatically**.
-               Available values: "fifo", "random", "passthrough", "reject".
+                  Available values: "fifo", "random", "passthrough", "reject".
         :param _builtins.int queueing_status_code: HTTP status code returned to a user while in the queue.
                Available values: 200, 202, 429.
         :param _builtins.int session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.
@@ -117772,68 +117772,68 @@ class GetWaitingRoomsResultResult(dict):
 
         An example cURL to a waiting room could be:
 
-        	curl -X GET "https://example.com/waitingroom" \\
-        		-H "Accept: application/json"
+            curl -X GET "https://example.com/waitingroom" \\
+                -H "Accept: application/json"
 
         If `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **fifo** and no event is active could be:
 
-        	{
-        		"cfWaitingRoom": {
-        			"inWaitingRoom": true,
-        			"waitTimeKnown": true,
-        			"waitTime": 10,
-        			"waitTime25Percentile": 0,
-        			"waitTime50Percentile": 0,
-        			"waitTime75Percentile": 0,
-        			"waitTimeFormatted": "10 minutes",
-        			"queueIsFull": false,
-        			"queueAll": false,
-        			"lastUpdated": "2020-08-03T23:46:00.000Z",
-        			"refreshIntervalSeconds": 20,
-        			"queueingMethod": "fifo",
-        			"isFIFOQueue": true,
-        			"isRandomQueue": false,
-        			"isPassthroughQueue": false,
-        			"isRejectQueue": false,
-        			"isEventActive": false,
-        			"isEventPrequeueing": false,
-        			"timeUntilEventStart": 0,
-        			"timeUntilEventStartFormatted": "unavailable",
-        			"timeUntilEventEnd": 0,
-        			"timeUntilEventEndFormatted": "unavailable",
-        			"shuffleAtEventStart": false
-        		}
-        	}
+            {
+                "cfWaitingRoom": {
+                    "inWaitingRoom": true,
+                    "waitTimeKnown": true,
+                    "waitTime": 10,
+                    "waitTime25Percentile": 0,
+                    "waitTime50Percentile": 0,
+                    "waitTime75Percentile": 0,
+                    "waitTimeFormatted": "10 minutes",
+                    "queueIsFull": false,
+                    "queueAll": false,
+                    "lastUpdated": "2020-08-03T23:46:00.000Z",
+                    "refreshIntervalSeconds": 20,
+                    "queueingMethod": "fifo",
+                    "isFIFOQueue": true,
+                    "isRandomQueue": false,
+                    "isPassthroughQueue": false,
+                    "isRejectQueue": false,
+                    "isEventActive": false,
+                    "isEventPrequeueing": false,
+                    "timeUntilEventStart": 0,
+                    "timeUntilEventStartFormatted": "unavailable",
+                    "timeUntilEventEnd": 0,
+                    "timeUntilEventEndFormatted": "unavailable",
+                    "shuffleAtEventStart": false
+                }
+            }
 
         If `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active could be:
 
-        	{
-        		"cfWaitingRoom": {
-        			"inWaitingRoom": true,
-        			"waitTimeKnown": true,
-        			"waitTime": 10,
-        			"waitTime25Percentile": 5,
-        			"waitTime50Percentile": 10,
-        			"waitTime75Percentile": 15,
-        			"waitTimeFormatted": "5 minutes to 15 minutes",
-        			"queueIsFull": false,
-        			"queueAll": false,
-        			"lastUpdated": "2020-08-03T23:46:00.000Z",
-        			"refreshIntervalSeconds": 20,
-        			"queueingMethod": "random",
-        			"isFIFOQueue": false,
-        			"isRandomQueue": true,
-        			"isPassthroughQueue": false,
-        			"isRejectQueue": false,
-        			"isEventActive": true,
-        			"isEventPrequeueing": false,
-        			"timeUntilEventStart": 0,
-        			"timeUntilEventStartFormatted": "unavailable",
-        			"timeUntilEventEnd": 15,
-        			"timeUntilEventEndFormatted": "15 minutes",
-        			"shuffleAtEventStart": true
-        		}
-        	}
+            {
+                "cfWaitingRoom": {
+                    "inWaitingRoom": true,
+                    "waitTimeKnown": true,
+                    "waitTime": 10,
+                    "waitTime25Percentile": 5,
+                    "waitTime50Percentile": 10,
+                    "waitTime75Percentile": 15,
+                    "waitTimeFormatted": "5 minutes to 15 minutes",
+                    "queueIsFull": false,
+                    "queueAll": false,
+                    "lastUpdated": "2020-08-03T23:46:00.000Z",
+                    "refreshIntervalSeconds": 20,
+                    "queueingMethod": "random",
+                    "isFIFOQueue": false,
+                    "isRandomQueue": true,
+                    "isPassthroughQueue": false,
+                    "isRejectQueue": false,
+                    "isEventActive": true,
+                    "isEventPrequeueing": false,
+                    "timeUntilEventStart": 0,
+                    "timeUntilEventStartFormatted": "unavailable",
+                    "timeUntilEventEnd": 15,
+                    "timeUntilEventEndFormatted": "15 minutes",
+                    "shuffleAtEventStart": true
+                }
+            }
         """
         return pulumi.get(self, "json_response_enabled")
 
@@ -117899,7 +117899,7 @@ class GetWaitingRoomsResultResult(dict):
         2. `random`: Random queue where customers gain access randomly, regardless of arrival time.
         3. `passthrough`: Users will pass directly through the waiting room and into the origin website. As a result, any configured limits will not be respected while this is enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a waiting room event, or vice versa.
         4. `reject`: Users will be immediately rejected from the waiting room. As a result, no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`, `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is prequeueing, the waiting room page **will not refresh automatically**.
-        Available values: "fifo", "random", "passthrough", "reject".
+           Available values: "fifo", "random", "passthrough", "reject".
         """
         return pulumi.get(self, "queueing_method")
 
@@ -120191,8 +120191,8 @@ class GetWorkerVersionsResultResult(dict):
         :param Sequence['GetWorkerVersionsResultModuleArgs'] modules: Code, sourcemaps, and other content used at runtime.
                
                This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
                included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param _builtins.int number: The integer version number, starting from one.
         :param 'GetWorkerVersionsResultPlacementArgs' placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.
@@ -120334,8 +120334,8 @@ class GetWorkerVersionsResultResult(dict):
         Code, sourcemaps, and other content used at runtime.
 
         This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-        [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-        [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+        [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
         included as modules named `_headers` and `_redirects` with content type `text/plain`.
         """
         return pulumi.get(self, "modules")
