@@ -123,7 +123,7 @@ type Healthcheck struct {
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Identifier
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewHealthcheck registers a new resource with the given unique name, arguments, and options.
@@ -138,6 +138,9 @@ func NewHealthcheck(ctx *pulumi.Context,
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Healthcheck
@@ -269,7 +272,7 @@ type healthcheckArgs struct {
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
 	Type *string `pulumi:"type"`
 	// Identifier
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Healthcheck resource.
@@ -301,7 +304,7 @@ type HealthcheckArgs struct {
 	// The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
 	Type pulumi.StringPtrInput
 	// Identifier
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (HealthcheckArgs) ElementType() reflect.Type {
@@ -476,8 +479,8 @@ func (o HealthcheckOutput) Type() pulumi.StringOutput {
 }
 
 // Identifier
-func (o HealthcheckOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o HealthcheckOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type HealthcheckArrayOutput struct{ *pulumi.OutputState }

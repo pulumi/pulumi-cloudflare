@@ -19,27 +19,38 @@ __all__ = ['CloudforceOneRequestPriorityArgs', 'CloudforceOneRequestPriority']
 @pulumi.input_type
 class CloudforceOneRequestPriorityArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  labels: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  priority: pulumi.Input[_builtins.int],
                  requirement: pulumi.Input[_builtins.str],
-                 tlp: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 tlp: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a CloudforceOneRequestPriority resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: List of labels.
         :param pulumi.Input[_builtins.int] priority: Priority.
         :param pulumi.Input[_builtins.str] requirement: Requirement.
         :param pulumi.Input[_builtins.str] tlp: The CISA defined Traffic Light Protocol (TLP).
                Available values: "clear", "amber", "amber-strict", "green", "red".
-        :param pulumi.Input[_builtins.str] account_id: Identifier.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "requirement", requirement)
         pulumi.set(__self__, "tlp", tlp)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -89,18 +100,6 @@ class CloudforceOneRequestPriorityArgs:
     @tlp.setter
     def tlp(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "tlp", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
@@ -460,6 +459,8 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudforceOneRequestPriorityArgs.__new__(CloudforceOneRequestPriorityArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if labels is None and not opts.urn:
                 raise TypeError("Missing required property 'labels'")
@@ -553,7 +554,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

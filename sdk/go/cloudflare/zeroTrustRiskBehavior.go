@@ -55,7 +55,7 @@ import (
 type ZeroTrustRiskBehavior struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput                  `pulumi:"accountId"`
+	AccountId pulumi.StringOutput                     `pulumi:"accountId"`
 	Behaviors ZeroTrustRiskBehaviorBehaviorsMapOutput `pulumi:"behaviors"`
 }
 
@@ -66,6 +66,9 @@ func NewZeroTrustRiskBehavior(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Behaviors == nil {
 		return nil, errors.New("invalid value for required argument 'Behaviors'")
 	}
@@ -112,13 +115,13 @@ func (ZeroTrustRiskBehaviorState) ElementType() reflect.Type {
 }
 
 type zeroTrustRiskBehaviorArgs struct {
-	AccountId *string                                   `pulumi:"accountId"`
+	AccountId string                                    `pulumi:"accountId"`
 	Behaviors map[string]ZeroTrustRiskBehaviorBehaviors `pulumi:"behaviors"`
 }
 
 // The set of arguments for constructing a ZeroTrustRiskBehavior resource.
 type ZeroTrustRiskBehaviorArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	Behaviors ZeroTrustRiskBehaviorBehaviorsMapInput
 }
 
@@ -209,8 +212,8 @@ func (o ZeroTrustRiskBehaviorOutput) ToZeroTrustRiskBehaviorOutputWithContext(ct
 	return o
 }
 
-func (o ZeroTrustRiskBehaviorOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustRiskBehavior) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustRiskBehaviorOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustRiskBehavior) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustRiskBehaviorOutput) Behaviors() ZeroTrustRiskBehaviorBehaviorsMapOutput {

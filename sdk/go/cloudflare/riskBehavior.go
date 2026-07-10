@@ -57,7 +57,7 @@ import (
 type RiskBehavior struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput         `pulumi:"accountId"`
+	AccountId pulumi.StringOutput            `pulumi:"accountId"`
 	Behaviors RiskBehaviorBehaviorsMapOutput `pulumi:"behaviors"`
 }
 
@@ -68,6 +68,9 @@ func NewRiskBehavior(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Behaviors == nil {
 		return nil, errors.New("invalid value for required argument 'Behaviors'")
 	}
@@ -114,13 +117,13 @@ func (RiskBehaviorState) ElementType() reflect.Type {
 }
 
 type riskBehaviorArgs struct {
-	AccountId *string                          `pulumi:"accountId"`
+	AccountId string                           `pulumi:"accountId"`
 	Behaviors map[string]RiskBehaviorBehaviors `pulumi:"behaviors"`
 }
 
 // The set of arguments for constructing a RiskBehavior resource.
 type RiskBehaviorArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	Behaviors RiskBehaviorBehaviorsMapInput
 }
 
@@ -211,8 +214,8 @@ func (o RiskBehaviorOutput) ToRiskBehaviorOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o RiskBehaviorOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RiskBehavior) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o RiskBehaviorOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RiskBehavior) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o RiskBehaviorOutput) Behaviors() RiskBehaviorBehaviorsMapOutput {

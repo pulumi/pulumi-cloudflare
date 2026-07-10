@@ -17,11 +17,11 @@ public final class AiGatewayOtelArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiGatewayOtelArgs Empty = new AiGatewayOtelArgs();
 
-    @Import(name="authorization", required=true)
-    private Output<String> authorization;
+    @Import(name="authorization")
+    private @Nullable Output<String> authorization;
 
-    public Output<String> authorization() {
-        return this.authorization;
+    public Optional<Output<String>> authorization() {
+        return Optional.ofNullable(this.authorization);
     }
 
     /**
@@ -80,7 +80,7 @@ public final class AiGatewayOtelArgs extends com.pulumi.resources.ResourceArgs {
             $ = new AiGatewayOtelArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder authorization(Output<String> authorization) {
+        public Builder authorization(@Nullable Output<String> authorization) {
             $.authorization = authorization;
             return this;
         }
@@ -129,9 +129,6 @@ public final class AiGatewayOtelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AiGatewayOtelArgs build() {
-            if ($.authorization == null) {
-                throw new MissingRequiredPropertyException("AiGatewayOtelArgs", "authorization");
-            }
             if ($.headers == null) {
                 throw new MissingRequiredPropertyException("AiGatewayOtelArgs", "headers");
             }

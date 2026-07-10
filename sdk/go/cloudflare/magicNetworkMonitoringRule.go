@@ -64,7 +64,7 @@ import (
 type MagicNetworkMonitoringRule struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
 	AutomaticAdvertisement pulumi.BoolOutput `pulumi:"automaticAdvertisement"`
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
@@ -98,6 +98,9 @@ func NewMagicNetworkMonitoringRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.AutomaticAdvertisement == nil {
 		return nil, errors.New("invalid value for required argument 'AutomaticAdvertisement'")
 	}
@@ -193,7 +196,7 @@ func (MagicNetworkMonitoringRuleState) ElementType() reflect.Type {
 }
 
 type magicNetworkMonitoringRuleArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
 	AutomaticAdvertisement bool `pulumi:"automaticAdvertisement"`
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
@@ -222,7 +225,7 @@ type magicNetworkMonitoringRuleArgs struct {
 
 // The set of arguments for constructing a MagicNetworkMonitoringRule resource.
 type MagicNetworkMonitoringRuleArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
 	AutomaticAdvertisement pulumi.BoolInput
 	// The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
@@ -336,8 +339,8 @@ func (o MagicNetworkMonitoringRuleOutput) ToMagicNetworkMonitoringRuleOutputWith
 	return o
 }
 
-func (o MagicNetworkMonitoringRuleOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o MagicNetworkMonitoringRuleOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicNetworkMonitoringRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.

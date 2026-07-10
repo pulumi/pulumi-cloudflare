@@ -20,11 +20,11 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
 
     public static final ZeroTrustDnsLocationArgs Empty = new ZeroTrustDnsLocationArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -147,7 +147,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
             $ = new ZeroTrustDnsLocationArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -293,6 +293,9 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         public ZeroTrustDnsLocationArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDnsLocationArgs", "accountId");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDnsLocationArgs", "name");
             }

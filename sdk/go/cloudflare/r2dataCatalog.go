@@ -53,7 +53,7 @@ type R2DataCatalog struct {
 	pulumi.CustomResourceState
 
 	// Use this to identify the account.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Specifies the associated R2 bucket name.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// Specifies the R2 bucket name.
@@ -77,6 +77,9 @@ func NewR2DataCatalog(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.BucketName == nil {
 		return nil, errors.New("invalid value for required argument 'BucketName'")
 	}
@@ -146,7 +149,7 @@ func (R2DataCatalogState) ElementType() reflect.Type {
 
 type r2dataCatalogArgs struct {
 	// Use this to identify the account.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Specifies the R2 bucket name.
 	BucketName string `pulumi:"bucketName"`
 }
@@ -154,7 +157,7 @@ type r2dataCatalogArgs struct {
 // The set of arguments for constructing a R2DataCatalog resource.
 type R2DataCatalogArgs struct {
 	// Use this to identify the account.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Specifies the R2 bucket name.
 	BucketName pulumi.StringInput
 }
@@ -247,8 +250,8 @@ func (o R2DataCatalogOutput) ToR2DataCatalogOutputWithContext(ctx context.Contex
 }
 
 // Use this to identify the account.
-func (o R2DataCatalogOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2DataCatalog) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o R2DataCatalogOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2DataCatalog) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Specifies the associated R2 bucket name.

@@ -144,7 +144,7 @@ export class Record extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Record resource with the given unique name, arguments, and options.
@@ -190,6 +190,9 @@ export class Record extends pulumi.CustomResource {
             }
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["comment"] = args?.comment;
             resourceInputs["content"] = args?.content;
@@ -348,5 +351,5 @@ export interface RecordArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

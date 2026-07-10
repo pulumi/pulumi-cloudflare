@@ -58,7 +58,7 @@ type WorkersScriptSubdomain struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
@@ -74,6 +74,9 @@ func NewWorkersScriptSubdomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Enabled == nil {
 		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
@@ -130,7 +133,7 @@ func (WorkersScriptSubdomainState) ElementType() reflect.Type {
 
 type workersScriptSubdomainArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled bool `pulumi:"enabled"`
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
@@ -142,7 +145,7 @@ type workersScriptSubdomainArgs struct {
 // The set of arguments for constructing a WorkersScriptSubdomain resource.
 type WorkersScriptSubdomainArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled pulumi.BoolInput
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
@@ -239,8 +242,8 @@ func (o WorkersScriptSubdomainOutput) ToWorkersScriptSubdomainOutputWithContext(
 }
 
 // Identifier.
-func (o WorkersScriptSubdomainOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkersScriptSubdomain) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o WorkersScriptSubdomainOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersScriptSubdomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Whether the Worker should be available on the workers.dev subdomain.

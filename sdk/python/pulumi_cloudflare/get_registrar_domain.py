@@ -39,7 +39,7 @@ class GetRegistrarDomainResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         Identifier
         """
@@ -107,7 +107,7 @@ def get_registrar_domain(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         domain_name=pulumi.get(__ret__, 'domain_name'),
         id=pulumi.get(__ret__, 'id'))
-def get_registrar_domain_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_registrar_domain_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistrarDomainResult]:
     """

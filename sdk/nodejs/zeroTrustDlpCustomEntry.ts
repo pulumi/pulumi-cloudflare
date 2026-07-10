@@ -65,7 +65,7 @@ export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDlpCustomEntry.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
@@ -82,7 +82,7 @@ export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
     declare public /*out*/ readonly profiles: pulumi.Output<outputs.ZeroTrustDlpCustomEntryProfile[]>;
     declare public /*out*/ readonly secret: pulumi.Output<boolean>;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
@@ -90,6 +90,9 @@ export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     declare public /*out*/ readonly uploadStatus: pulumi.Output<string>;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     declare public /*out*/ readonly variant: pulumi.Output<outputs.ZeroTrustDlpCustomEntryVariant>;
     declare public /*out*/ readonly wordList: pulumi.Output<string>;
 
@@ -124,6 +127,9 @@ export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
             resourceInputs["wordList"] = state?.wordList;
         } else {
             const args = argsOrState as ZeroTrustDlpCustomEntryArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
@@ -176,7 +182,7 @@ export interface ZeroTrustDlpCustomEntryState {
     profiles?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomEntryProfile>[] | undefined>;
     secret?: pulumi.Input<boolean | undefined>;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     * Available values: "custom", "custom*prompt*topic", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     type?: pulumi.Input<string | undefined>;
     updatedAt?: pulumi.Input<string | undefined>;
@@ -184,6 +190,9 @@ export interface ZeroTrustDlpCustomEntryState {
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     uploadStatus?: pulumi.Input<string | undefined>;
+    /**
+     * A Predefined AI prompt classification topic entry.
+     */
     variant?: pulumi.Input<inputs.ZeroTrustDlpCustomEntryVariant | undefined>;
     wordList?: pulumi.Input<string | undefined>;
 }
@@ -192,7 +201,7 @@ export interface ZeroTrustDlpCustomEntryState {
  * The set of arguments for constructing a ZeroTrustDlpCustomEntry resource.
  */
 export interface ZeroTrustDlpCustomEntryArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     description?: pulumi.Input<string | undefined>;
     enabled: pulumi.Input<boolean>;
     name: pulumi.Input<string>;

@@ -126,7 +126,7 @@ export class PageRule extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a PageRule resource with the given unique name, arguments, and options.
@@ -155,6 +155,9 @@ export class PageRule extends pulumi.CustomResource {
             }
             if (args?.target === undefined && !opts.urn) {
                 throw new Error("Missing required property 'target'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["actions"] = args?.actions;
             resourceInputs["priority"] = args?.priority;
@@ -224,5 +227,5 @@ export interface PageRuleArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

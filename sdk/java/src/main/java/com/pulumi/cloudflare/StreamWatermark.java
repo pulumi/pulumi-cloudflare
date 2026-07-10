@@ -73,14 +73,14 @@ public class StreamWatermark extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return The account identifier tag.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * The date and a time a watermark profile was created.
@@ -277,7 +277,7 @@ public class StreamWatermark extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StreamWatermark(java.lang.String name, @Nullable StreamWatermarkArgs args) {
+    public StreamWatermark(java.lang.String name, StreamWatermarkArgs args) {
         this(name, args, null);
     }
     /**
@@ -286,7 +286,7 @@ public class StreamWatermark extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StreamWatermark(java.lang.String name, @Nullable StreamWatermarkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public StreamWatermark(java.lang.String name, StreamWatermarkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/streamWatermark:StreamWatermark", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -294,7 +294,7 @@ public class StreamWatermark extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/streamWatermark:StreamWatermark", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static StreamWatermarkArgs makeArgs(@Nullable StreamWatermarkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static StreamWatermarkArgs makeArgs(StreamWatermarkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

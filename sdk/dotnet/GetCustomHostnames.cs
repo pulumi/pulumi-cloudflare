@@ -186,7 +186,7 @@ namespace Pulumi.Cloudflare
         /// Available values: 0, 1.
         /// </summary>
         [Input("ssl")]
-        public double? Ssl { get; set; }
+        public int? Ssl { get; set; }
 
         /// <summary>
         /// Filter by SSL certificate status.
@@ -269,7 +269,7 @@ namespace Pulumi.Cloudflare
         /// Available values: 0, 1.
         /// </summary>
         [Input("ssl")]
-        public Input<double>? Ssl { get; set; }
+        public Input<int>? Ssl { get; set; }
 
         /// <summary>
         /// Filter by SSL certificate status.
@@ -341,7 +341,7 @@ namespace Pulumi.Cloudflare
         /// Whether to filter hostnames based on if they have SSL enabled.
         /// Available values: 0, 1.
         /// </summary>
-        public readonly double? Ssl;
+        public readonly int Ssl;
         /// <summary>
         /// Filter by SSL certificate status.
         /// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
@@ -376,7 +376,7 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetCustomHostnamesResultResult> results,
 
-            double? ssl,
+            int ssl,
 
             string? sslStatus,
 

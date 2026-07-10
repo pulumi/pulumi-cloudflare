@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *
  * const exampleEmailSecurityTrustedDomains = cloudflare.getEmailSecurityTrustedDomains({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     trustedDomainId: 2401,
+ *     trustedDomainId: "2401",
  * });
  * ```
  */
@@ -39,14 +39,14 @@ export function getEmailSecurityTrustedDomains(args?: GetEmailSecurityTrustedDom
  */
 export interface GetEmailSecurityTrustedDomainsArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: string;
     filter?: inputs.GetEmailSecurityTrustedDomainsFilter;
     /**
-     * The unique identifier for the trusted domain.
+     * Trusted domain identifier
      */
-    trustedDomainId?: number;
+    trustedDomainId?: string;
 }
 
 /**
@@ -54,34 +54,37 @@ export interface GetEmailSecurityTrustedDomainsArgs {
  */
 export interface GetEmailSecurityTrustedDomainsResult {
     /**
-     * Account Identifier
+     * Identifier.
      */
     readonly accountId?: string;
     readonly comments: string;
     readonly createdAt: string;
     readonly filter?: outputs.GetEmailSecurityTrustedDomainsFilter;
     /**
-     * The unique identifier for the trusted domain.
+     * Trusted domain identifier
      */
-    readonly id: number;
+    readonly id: string;
     /**
-     * Select to prevent recently registered domains from triggering a
-     * Suspicious or Malicious disposition.
+     * Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
      */
     readonly isRecent: boolean;
     readonly isRegex: boolean;
     /**
-     * Select for partner or other approved domains that have similar
-     * spelling to your connected domains. Prevents listed domains from
-     * triggering a Spoof disposition.
+     * Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
      */
     readonly isSimilarity: boolean;
+    /**
+     * Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     readonly lastModified: string;
+    readonly modifiedAt: string;
     readonly pattern: string;
     /**
-     * The unique identifier for the trusted domain.
+     * Trusted domain identifier
      */
-    readonly trustedDomainId?: number;
+    readonly trustedDomainId?: string;
 }
 /**
  * Accepted Permissions
@@ -97,7 +100,7 @@ export interface GetEmailSecurityTrustedDomainsResult {
  *
  * const exampleEmailSecurityTrustedDomains = cloudflare.getEmailSecurityTrustedDomains({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     trustedDomainId: 2401,
+ *     trustedDomainId: "2401",
  * });
  * ```
  */
@@ -116,12 +119,12 @@ export function getEmailSecurityTrustedDomainsOutput(args?: GetEmailSecurityTrus
  */
 export interface GetEmailSecurityTrustedDomainsOutputArgs {
     /**
-     * Account Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetEmailSecurityTrustedDomainsFilterArgs | undefined>;
     /**
-     * The unique identifier for the trusted domain.
+     * Trusted domain identifier
      */
-    trustedDomainId?: pulumi.Input<number | undefined>;
+    trustedDomainId?: pulumi.Input<string | undefined>;
 }

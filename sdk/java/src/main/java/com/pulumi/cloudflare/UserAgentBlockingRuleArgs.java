@@ -76,15 +76,15 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
      * Defines an identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Defines an identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private UserAgentBlockingRuleArgs() {}
@@ -195,7 +195,7 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -216,6 +216,9 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
             }
             if ($.mode == null) {
                 throw new MissingRequiredPropertyException("UserAgentBlockingRuleArgs", "mode");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("UserAgentBlockingRuleArgs", "zoneId");
             }
             return $;
         }

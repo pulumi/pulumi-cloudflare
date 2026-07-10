@@ -9,19 +9,17 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ZeroTrustDevicePostureIntegrationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZeroTrustDevicePostureIntegrationArgs Empty = new ZeroTrustDevicePostureIntegrationArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -114,7 +112,7 @@ public final class ZeroTrustDevicePostureIntegrationArgs extends com.pulumi.reso
             $ = new ZeroTrustDevicePostureIntegrationArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -210,6 +208,9 @@ public final class ZeroTrustDevicePostureIntegrationArgs extends com.pulumi.reso
         }
 
         public ZeroTrustDevicePostureIntegrationArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDevicePostureIntegrationArgs", "accountId");
+            }
             if ($.config == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDevicePostureIntegrationArgs", "config");
             }

@@ -70,7 +70,7 @@ type ApiShieldOperationSchemaValidationSettings struct {
 	// UUID.
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
 	// Identifier.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewApiShieldOperationSchemaValidationSettings registers a new resource with the given unique name, arguments, and options.
@@ -82,6 +82,9 @@ func NewApiShieldOperationSchemaValidationSettings(ctx *pulumi.Context,
 
 	if args.OperationId == nil {
 		return nil, errors.New("invalid value for required argument 'OperationId'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApiShieldOperationSchemaValidationSettings
@@ -151,7 +154,7 @@ type apiShieldOperationSchemaValidationSettingsArgs struct {
 	// UUID.
 	OperationId string `pulumi:"operationId"`
 	// Identifier.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ApiShieldOperationSchemaValidationSettings resource.
@@ -167,7 +170,7 @@ type ApiShieldOperationSchemaValidationSettingsArgs struct {
 	// UUID.
 	OperationId pulumi.StringInput
 	// Identifier.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (ApiShieldOperationSchemaValidationSettingsArgs) ElementType() reflect.Type {
@@ -274,8 +277,8 @@ func (o ApiShieldOperationSchemaValidationSettingsOutput) OperationId() pulumi.S
 }
 
 // Identifier.
-func (o ApiShieldOperationSchemaValidationSettingsOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiShieldOperationSchemaValidationSettings) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o ApiShieldOperationSchemaValidationSettingsOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiShieldOperationSchemaValidationSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type ApiShieldOperationSchemaValidationSettingsArrayOutput struct{ *pulumi.OutputState }

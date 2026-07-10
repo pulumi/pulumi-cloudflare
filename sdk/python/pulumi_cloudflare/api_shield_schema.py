@@ -23,31 +23,30 @@ class ApiShieldSchemaArgs:
     def __init__(__self__, *,
                  file: pulumi.Input[_builtins.str],
                  kind: pulumi.Input[_builtins.str],
+                 zone_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  schema_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 validation_enabled: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 validation_enabled: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldSchema resource.
 
         :param pulumi.Input[_builtins.str] file: Schema file bytes
         :param pulumi.Input[_builtins.str] kind: Kind of schema
                Available values: "openapi_v3".
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] name: Name of the schema
         :param pulumi.Input[_builtins.str] validation_enabled: Flag whether schema is enabled for validation.
                Available values: "true", "false".
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "file", file)
         pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "zone_id", zone_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if schema_id is not None:
             pulumi.set(__self__, "schema_id", schema_id)
         if validation_enabled is not None:
             pulumi.set(__self__, "validation_enabled", validation_enabled)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -73,6 +72,18 @@ class ApiShieldSchemaArgs:
     @kind.setter
     def kind(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "kind", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -107,18 +118,6 @@ class ApiShieldSchemaArgs:
     @validation_enabled.setter
     def validation_enabled(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "validation_enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -398,6 +397,8 @@ class ApiShieldSchema(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["schema_id"] = schema_id
             __props__.__dict__["validation_enabled"] = validation_enabled
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["schema"] = None
@@ -519,7 +520,7 @@ class ApiShieldSchema(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

@@ -56,8 +56,8 @@ class GetCustomHostnamesResult:
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
-        if ssl and not isinstance(ssl, float):
-            raise TypeError("Expected argument 'ssl' to be a float")
+        if ssl and not isinstance(ssl, int):
+            raise TypeError("Expected argument 'ssl' to be a int")
         pulumi.set(__self__, "ssl", ssl)
         if ssl_status and not isinstance(ssl_status, str):
             raise TypeError("Expected argument 'ssl_status' to be a str")
@@ -144,7 +144,7 @@ class GetCustomHostnamesResult:
 
     @_builtins.property
     @pulumi.getter
-    def ssl(self) -> Optional[_builtins.float]:
+    def ssl(self) -> _builtins.int:
         """
         Whether to filter hostnames based on if they have SSL enabled.
         Available values: 0, 1.
@@ -206,7 +206,7 @@ def get_custom_hostnames(certificate_authority: Optional[_builtins.str] = None,
                          id: Optional[_builtins.str] = None,
                          max_items: Optional[_builtins.int] = None,
                          order: Optional[_builtins.str] = None,
-                         ssl: Optional[_builtins.float] = None,
+                         ssl: Optional[_builtins.int] = None,
                          ssl_status: Optional[_builtins.str] = None,
                          wildcard: Optional[_builtins.bool] = None,
                          zone_id: Optional[_builtins.str] = None,
@@ -232,7 +232,7 @@ def get_custom_hostnames(certificate_authority: Optional[_builtins.str] = None,
             "contain": "example.com",
         },
         hostname_status="provisioned",
-        ssl=float(0),
+        ssl=0,
         ssl_status="active",
         wildcard=False)
     ```
@@ -249,7 +249,7 @@ def get_custom_hostnames(certificate_authority: Optional[_builtins.str] = None,
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str order: Field to order hostnames by.
            Available values: "ssl", "ssl_status".
-    :param _builtins.float ssl: Whether to filter hostnames based on if they have SSL enabled.
+    :param _builtins.int ssl: Whether to filter hostnames based on if they have SSL enabled.
            Available values: 0, 1.
     :param _builtins.str ssl_status: Filter by SSL certificate status.
            Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
@@ -294,7 +294,7 @@ def get_custom_hostnames_output(certificate_authority: pulumi.Input[Optional[Opt
                                 id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 max_items: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                 order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                ssl: pulumi.Input[Optional[Optional[_builtins.float]]] = None,
+                                ssl: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                 ssl_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 wildcard: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                 zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -320,7 +320,7 @@ def get_custom_hostnames_output(certificate_authority: pulumi.Input[Optional[Opt
             "contain": "example.com",
         },
         hostname_status="provisioned",
-        ssl=float(0),
+        ssl=0,
         ssl_status="active",
         wildcard=False)
     ```
@@ -337,7 +337,7 @@ def get_custom_hostnames_output(certificate_authority: pulumi.Input[Optional[Opt
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str order: Field to order hostnames by.
            Available values: "ssl", "ssl_status".
-    :param _builtins.float ssl: Whether to filter hostnames based on if they have SSL enabled.
+    :param _builtins.int ssl: Whether to filter hostnames based on if they have SSL enabled.
            Available values: 0, 1.
     :param _builtins.str ssl_status: Filter by SSL certificate status.
            Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".

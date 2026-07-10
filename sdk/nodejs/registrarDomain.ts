@@ -55,7 +55,7 @@ export class RegistrarDomain extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Auto-renew controls whether subscription is automatically renewed upon domain expiration.
      */
@@ -96,6 +96,9 @@ export class RegistrarDomain extends pulumi.CustomResource {
             resourceInputs["privacy"] = state?.privacy;
         } else {
             const args = argsOrState as RegistrarDomainArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
@@ -146,7 +149,7 @@ export interface RegistrarDomainArgs {
     /**
      * Identifier
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Auto-renew controls whether subscription is automatically renewed upon domain expiration.
      */

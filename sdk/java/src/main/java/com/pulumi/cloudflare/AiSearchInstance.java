@@ -93,6 +93,22 @@ public class AiSearchInstance extends com.pulumi.resources.CustomResource {
     public Output<String> cacheThreshold() {
         return this.cacheThreshold;
     }
+    /**
+     * Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     * 
+     */
+    @Export(name="cacheTtl", refs={Double.class}, tree="[0]")
+    private Output<Double> cacheTtl;
+
+    /**
+     * @return Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     * 
+     */
+    public Output<Double> cacheTtl() {
+        return this.cacheTtl;
+    }
     @Export(name="chunk", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> chunk;
 

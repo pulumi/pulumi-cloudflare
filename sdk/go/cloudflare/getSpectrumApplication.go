@@ -100,6 +100,8 @@ type LookupSpectrumApplicationResult struct {
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	// Available values: "direct", "http", "https".
 	TrafficType string `pulumi:"trafficType"`
+	// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+	VirtualNetworkId string `pulumi:"virtualNetworkId"`
 	// Zone identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -224,6 +226,11 @@ func (o LookupSpectrumApplicationResultOutput) Tls() pulumi.StringOutput {
 // Available values: "direct", "http", "https".
 func (o LookupSpectrumApplicationResultOutput) TrafficType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpectrumApplicationResult) string { return v.TrafficType }).(pulumi.StringOutput)
+}
+
+// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
+func (o LookupSpectrumApplicationResultOutput) VirtualNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpectrumApplicationResult) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
 }
 
 // Zone identifier.

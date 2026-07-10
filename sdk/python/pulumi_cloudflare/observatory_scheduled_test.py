@@ -22,25 +22,24 @@ __all__ = ['ObservatoryScheduledTestArgs', 'ObservatoryScheduledTest']
 class ObservatoryScheduledTestArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[_builtins.str],
+                 zone_id: pulumi.Input[_builtins.str],
                  frequency: pulumi.Input[Optional[_builtins.str]] = None,
-                 region: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ObservatoryScheduledTest resource.
 
         :param pulumi.Input[_builtins.str] url: A URL.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] frequency: The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
         :param pulumi.Input[_builtins.str] region: A test region.
                Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "zone_id", zone_id)
         if frequency is not None:
             pulumi.set(__self__, "frequency", frequency)
         if region is not None:
             pulumi.set(__self__, "region", region)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -53,6 +52,18 @@ class ObservatoryScheduledTestArgs:
     @url.setter
     def url(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -78,18 +89,6 @@ class ObservatoryScheduledTestArgs:
     @region.setter
     def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -301,6 +300,8 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["schedule"] = None
             __props__.__dict__["test"] = None
@@ -386,7 +387,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

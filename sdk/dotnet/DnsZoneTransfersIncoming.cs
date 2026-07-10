@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
         public Output<double> SoaSerial { get; private set; } = null!;
 
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -169,8 +169,8 @@ namespace Pulumi.Cloudflare
             set => _peers = value;
         }
 
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public DnsZoneTransfersIncomingArgs()
         {

@@ -18,18 +18,18 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
     public static final EmailSecurityBlockSenderArgs Empty = new EmailSecurityBlockSenderArgs();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     @Import(name="comments")
@@ -54,6 +54,8 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
      * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
@@ -61,7 +63,9 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
     private Output<String> patternType;
 
     /**
-     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     public Output<String> patternType() {
@@ -97,18 +101,18 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -145,7 +149,9 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param patternType Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+         * @param patternType Type of pattern matching.
+         * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+         * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
          * 
          * @return builder
          * 
@@ -156,7 +162,9 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param patternType Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+         * @param patternType Type of pattern matching.
+         * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+         * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
          * 
          * @return builder
          * 
@@ -166,6 +174,9 @@ public final class EmailSecurityBlockSenderArgs extends com.pulumi.resources.Res
         }
 
         public EmailSecurityBlockSenderArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("EmailSecurityBlockSenderArgs", "accountId");
+            }
             if ($.isRegex == null) {
                 throw new MissingRequiredPropertyException("EmailSecurityBlockSenderArgs", "isRegex");
             }

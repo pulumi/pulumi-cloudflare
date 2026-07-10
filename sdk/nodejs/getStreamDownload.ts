@@ -37,7 +37,7 @@ export interface GetStreamDownloadArgs {
     /**
      * Identifier.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
@@ -51,7 +51,7 @@ export interface GetStreamDownloadResult {
     /**
      * Identifier.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -94,7 +94,7 @@ export interface GetStreamDownloadOutputArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */

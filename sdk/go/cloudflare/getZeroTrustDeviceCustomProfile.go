@@ -72,6 +72,8 @@ type LookupZeroTrustDeviceCustomProfileResult struct {
 	Description string `pulumi:"description"`
 	// If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
 	DisableAutoFallback bool `pulumi:"disableAutoFallback"`
+	// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+	DnsSearchSuffixes []GetZeroTrustDeviceCustomProfileDnsSearchSuffix `pulumi:"dnsSearchSuffixes"`
 	// Whether the policy will be applied to matching devices.
 	Enabled bool `pulumi:"enabled"`
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
@@ -107,6 +109,8 @@ type LookupZeroTrustDeviceCustomProfileResult struct {
 	TargetTests  []GetZeroTrustDeviceCustomProfileTargetTest `pulumi:"targetTests"`
 	// Determines which tunnel protocol to use.
 	TunnelProtocol string `pulumi:"tunnelProtocol"`
+	// Virtual network access settings for the device.
+	VirtualNetworks GetZeroTrustDeviceCustomProfileVirtualNetworks `pulumi:"virtualNetworks"`
 }
 
 func LookupZeroTrustDeviceCustomProfileOutput(ctx *pulumi.Context, args LookupZeroTrustDeviceCustomProfileOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDeviceCustomProfileResultOutput {
@@ -185,6 +189,13 @@ func (o LookupZeroTrustDeviceCustomProfileResultOutput) Description() pulumi.Str
 // If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
 func (o LookupZeroTrustDeviceCustomProfileResultOutput) DisableAutoFallback() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) bool { return v.DisableAutoFallback }).(pulumi.BoolOutput)
+}
+
+// List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+func (o LookupZeroTrustDeviceCustomProfileResultOutput) DnsSearchSuffixes() GetZeroTrustDeviceCustomProfileDnsSearchSuffixArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) []GetZeroTrustDeviceCustomProfileDnsSearchSuffix {
+		return v.DnsSearchSuffixes
+	}).(GetZeroTrustDeviceCustomProfileDnsSearchSuffixArrayOutput)
 }
 
 // Whether the policy will be applied to matching devices.
@@ -290,6 +301,13 @@ func (o LookupZeroTrustDeviceCustomProfileResultOutput) TargetTests() GetZeroTru
 // Determines which tunnel protocol to use.
 func (o LookupZeroTrustDeviceCustomProfileResultOutput) TunnelProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) string { return v.TunnelProtocol }).(pulumi.StringOutput)
+}
+
+// Virtual network access settings for the device.
+func (o LookupZeroTrustDeviceCustomProfileResultOutput) VirtualNetworks() GetZeroTrustDeviceCustomProfileVirtualNetworksOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) GetZeroTrustDeviceCustomProfileVirtualNetworks {
+		return v.VirtualNetworks
+	}).(GetZeroTrustDeviceCustomProfileVirtualNetworksOutput)
 }
 
 func init() {

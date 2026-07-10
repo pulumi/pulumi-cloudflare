@@ -23,7 +23,7 @@ export interface GetAiSearchInstanceArgs {
     accountId?: string;
     filter?: inputs.GetAiSearchInstanceFilter;
     /**
-     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+     * The ID of this resource.
      */
     id?: string;
 }
@@ -43,6 +43,11 @@ export interface GetAiSearchInstanceResult {
      * Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
      */
     readonly cacheThreshold: string;
+    /**
+     * Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+     * Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+     */
+    readonly cacheTtl: number;
     readonly chunkOverlap: number;
     readonly chunkSize: number;
     readonly createdAt: string;
@@ -66,7 +71,7 @@ export interface GetAiSearchInstanceResult {
      */
     readonly hybridSearchEnabled: boolean;
     /**
-     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+     * The ID of this resource.
      */
     readonly id: string;
     /**
@@ -126,7 +131,7 @@ export interface GetAiSearchInstanceOutputArgs {
     accountId?: pulumi.Input<string | undefined>;
     filter?: pulumi.Input<inputs.GetAiSearchInstanceFilterArgs | undefined>;
     /**
-     * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+     * The ID of this resource.
      */
     id?: pulumi.Input<string | undefined>;
 }

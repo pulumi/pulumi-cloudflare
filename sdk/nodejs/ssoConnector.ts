@@ -63,7 +63,7 @@ export class SsoConnector extends pulumi.CustomResource {
     /**
      * Account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Begin the verification process after creation
      */
@@ -113,6 +113,9 @@ export class SsoConnector extends pulumi.CustomResource {
             resourceInputs["verification"] = state?.verification;
         } else {
             const args = argsOrState as SsoConnectorArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.emailDomain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'emailDomain'");
             }
@@ -172,7 +175,7 @@ export interface SsoConnectorArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Begin the verification process after creation
      */

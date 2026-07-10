@@ -56,7 +56,7 @@ export class DnsZoneTransfersPeer extends pulumi.CustomResource {
         return obj['__pulumiType'] === DnsZoneTransfersPeer.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
      */
@@ -99,6 +99,9 @@ export class DnsZoneTransfersPeer extends pulumi.CustomResource {
             resourceInputs["tsigId"] = state?.tsigId;
         } else {
             const args = argsOrState as DnsZoneTransfersPeerArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -145,7 +148,7 @@ export interface DnsZoneTransfersPeerState {
  * The set of arguments for constructing a DnsZoneTransfersPeer resource.
  */
 export interface DnsZoneTransfersPeerArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
      */

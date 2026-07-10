@@ -59,7 +59,7 @@ export class StreamDownload extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The audio-only download. Only present if this download type has been created.
      */
@@ -92,6 +92,9 @@ export class StreamDownload extends pulumi.CustomResource {
             resourceInputs["identifier"] = state?.identifier;
         } else {
             const args = argsOrState as StreamDownloadArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
@@ -134,7 +137,7 @@ export interface StreamDownloadArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */

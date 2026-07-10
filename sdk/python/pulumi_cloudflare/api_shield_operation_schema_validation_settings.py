@@ -20,12 +20,13 @@ __all__ = ['ApiShieldOperationSchemaValidationSettingsArgs', 'ApiShieldOperation
 class ApiShieldOperationSchemaValidationSettingsArgs:
     def __init__(__self__, *,
                  operation_id: pulumi.Input[_builtins.str],
-                 mitigation_action: pulumi.Input[Optional[_builtins.str]] = None,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 zone_id: pulumi.Input[_builtins.str],
+                 mitigation_action: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldOperationSchemaValidationSettings resource.
 
         :param pulumi.Input[_builtins.str] operation_id: UUID.
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation
                
                  - `log` log request when request does not conform to schema for this operation
@@ -33,13 +34,11 @@ class ApiShieldOperationSchemaValidationSettingsArgs:
                  - `none` will skip mitigation for this operation
                  - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
                Available values: "log", "block", "none".
-        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "operation_id", operation_id)
+        pulumi.set(__self__, "zone_id", zone_id)
         if mitigation_action is not None:
             pulumi.set(__self__, "mitigation_action", mitigation_action)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter(name="operationId")
@@ -52,6 +51,18 @@ class ApiShieldOperationSchemaValidationSettingsArgs:
     @operation_id.setter
     def operation_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "operation_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mitigationAction")
@@ -70,18 +81,6 @@ class ApiShieldOperationSchemaValidationSettingsArgs:
     @mitigation_action.setter
     def mitigation_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mitigation_action", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -272,6 +271,8 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
             if operation_id is None and not opts.urn:
                 raise TypeError("Missing required property 'operation_id'")
             __props__.__dict__["operation_id"] = operation_id
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
         super(ApiShieldOperationSchemaValidationSettings, __self__).__init__(
             'cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings',
@@ -336,7 +337,7 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

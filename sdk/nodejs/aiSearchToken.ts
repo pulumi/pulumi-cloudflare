@@ -37,7 +37,7 @@ export class AiSearchToken extends pulumi.CustomResource {
         return obj['__pulumiType'] === AiSearchToken.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public readonly cfApiId: pulumi.Output<string>;
     declare public readonly cfApiKey: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
@@ -73,6 +73,9 @@ export class AiSearchToken extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as AiSearchTokenArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.cfApiId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cfApiId'");
             }
@@ -120,7 +123,7 @@ export interface AiSearchTokenState {
  * The set of arguments for constructing a AiSearchToken resource.
  */
 export interface AiSearchTokenArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     cfApiId: pulumi.Input<string>;
     cfApiKey: pulumi.Input<string>;
     legacy?: pulumi.Input<boolean | undefined>;

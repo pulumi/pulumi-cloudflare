@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetD1DatabaseReadReplication {
     /**
-     * @return The read replication mode for the database. Use &#39;auto&#39; to create replicas and allow D1 automatically place them around the world, or &#39;disabled&#39; to not use any database replicas (it can take a few hours for all replicas to be deleted).
+     * @return The read replication mode for the database. Mode &#39;auto&#39; denotes that D1 creates replicas and automatically places them around the world. Mode &#39;disabled&#39; denotes that no database replicas are used.
      * Available values: &#34;auto&#34;, &#34;disabled&#34;.
      * 
      */
@@ -19,7 +19,7 @@ public final class GetD1DatabaseReadReplication {
 
     private GetD1DatabaseReadReplication() {}
     /**
-     * @return The read replication mode for the database. Use &#39;auto&#39; to create replicas and allow D1 automatically place them around the world, or &#39;disabled&#39; to not use any database replicas (it can take a few hours for all replicas to be deleted).
+     * @return The read replication mode for the database. Mode &#39;auto&#39; denotes that D1 creates replicas and automatically places them around the world. Mode &#39;disabled&#39; denotes that no database replicas are used.
      * Available values: &#34;auto&#34;, &#34;disabled&#34;.
      * 
      */

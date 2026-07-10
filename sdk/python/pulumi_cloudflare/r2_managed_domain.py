@@ -19,24 +19,35 @@ __all__ = ['R2ManagedDomainArgs', 'R2ManagedDomain']
 @pulumi.input_type
 class R2ManagedDomainArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  bucket_name: pulumi.Input[_builtins.str],
                  enabled: pulumi.Input[_builtins.bool],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a R2ManagedDomain resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable public bucket access at the r2.dev domain.
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "enabled", enabled)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if jurisdiction is not None:
             pulumi.set(__self__, "jurisdiction", jurisdiction)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Account ID.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
@@ -61,18 +72,6 @@ class R2ManagedDomainArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[_builtins.bool]):
         pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Account ID.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -280,6 +279,8 @@ class R2ManagedDomain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = R2ManagedDomainArgs.__new__(R2ManagedDomainArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if bucket_name is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_name'")
@@ -334,7 +335,7 @@ class R2ManagedDomain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Account ID.
         """

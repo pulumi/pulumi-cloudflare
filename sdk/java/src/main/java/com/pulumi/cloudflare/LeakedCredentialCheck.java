@@ -83,14 +83,14 @@ public class LeakedCredentialCheck extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    private Output<String> zoneId;
 
     /**
      * @return Defines an identifier.
      * 
      */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**
@@ -105,7 +105,7 @@ public class LeakedCredentialCheck extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LeakedCredentialCheck(java.lang.String name, @Nullable LeakedCredentialCheckArgs args) {
+    public LeakedCredentialCheck(java.lang.String name, LeakedCredentialCheckArgs args) {
         this(name, args, null);
     }
     /**
@@ -114,7 +114,7 @@ public class LeakedCredentialCheck extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LeakedCredentialCheck(java.lang.String name, @Nullable LeakedCredentialCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public LeakedCredentialCheck(java.lang.String name, LeakedCredentialCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -122,7 +122,7 @@ public class LeakedCredentialCheck extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static LeakedCredentialCheckArgs makeArgs(@Nullable LeakedCredentialCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static LeakedCredentialCheckArgs makeArgs(LeakedCredentialCheckArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

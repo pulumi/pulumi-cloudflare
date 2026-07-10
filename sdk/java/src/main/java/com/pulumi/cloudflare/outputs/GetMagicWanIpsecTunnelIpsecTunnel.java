@@ -22,7 +22,7 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
      */
     private Boolean allowNullCipher;
     /**
-     * @return True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * @return True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `couplerIntegration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
      * 
      */
     private Boolean automaticReturnRouting;
@@ -95,7 +95,7 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
         return this.allowNullCipher;
     }
     /**
-     * @return True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * @return True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `couplerIntegration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
      * 
      */
     public Boolean automaticReturnRouting() {

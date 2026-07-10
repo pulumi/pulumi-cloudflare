@@ -74,14 +74,14 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
@@ -234,7 +234,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WebAnalyticsSite(java.lang.String name, @Nullable WebAnalyticsSiteArgs args) {
+    public WebAnalyticsSite(java.lang.String name, WebAnalyticsSiteArgs args) {
         this(name, args, null);
     }
     /**
@@ -243,7 +243,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WebAnalyticsSite(java.lang.String name, @Nullable WebAnalyticsSiteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public WebAnalyticsSite(java.lang.String name, WebAnalyticsSiteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/webAnalyticsSite:WebAnalyticsSite", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -251,7 +251,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
         super("cloudflare:index/webAnalyticsSite:WebAnalyticsSite", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static WebAnalyticsSiteArgs makeArgs(@Nullable WebAnalyticsSiteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static WebAnalyticsSiteArgs makeArgs(WebAnalyticsSiteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

@@ -93,7 +93,7 @@ export class DnsZoneTransfersIncoming extends pulumi.CustomResource {
      * The serial number of the SOA for the given zone.
      */
     declare public /*out*/ readonly soaSerial: pulumi.Output<number>;
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DnsZoneTransfersIncoming resource with the given unique name, arguments, and options.
@@ -123,6 +123,9 @@ export class DnsZoneTransfersIncoming extends pulumi.CustomResource {
             }
             if (args?.peers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peers'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["autoRefreshSeconds"] = args?.autoRefreshSeconds;
             resourceInputs["name"] = args?.name;
@@ -191,5 +194,5 @@ export interface DnsZoneTransfersIncomingArgs {
      * A list of peer tags.
      */
     peers: pulumi.Input<pulumi.Input<string>[]>;
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

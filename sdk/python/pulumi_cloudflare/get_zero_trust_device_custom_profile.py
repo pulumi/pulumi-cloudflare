@@ -27,7 +27,7 @@ class GetZeroTrustDeviceCustomProfileResult:
     """
     A collection of values returned by getZeroTrustDeviceCustomProfile.
     """
-    def __init__(__self__, account_id=None, allow_mode_switch=None, allow_updates=None, allowed_to_leave=None, auto_connect=None, captive_portal=None, default=None, description=None, disable_auto_fallback=None, enabled=None, exclude_office_ips=None, excludes=None, fallback_domains=None, gateway_unique_id=None, id=None, includes=None, lan_allow_minutes=None, lan_allow_subnet_size=None, match=None, name=None, policy_id=None, precedence=None, register_interface_ip_with_dns=None, sccm_vpn_boundary_support=None, service_mode_v2=None, support_url=None, switch_locked=None, target_tests=None, tunnel_protocol=None):
+    def __init__(__self__, account_id=None, allow_mode_switch=None, allow_updates=None, allowed_to_leave=None, auto_connect=None, captive_portal=None, default=None, description=None, disable_auto_fallback=None, dns_search_suffixes=None, enabled=None, exclude_office_ips=None, excludes=None, fallback_domains=None, gateway_unique_id=None, id=None, includes=None, lan_allow_minutes=None, lan_allow_subnet_size=None, match=None, name=None, policy_id=None, precedence=None, register_interface_ip_with_dns=None, sccm_vpn_boundary_support=None, service_mode_v2=None, support_url=None, switch_locked=None, target_tests=None, tunnel_protocol=None, virtual_networks=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -55,6 +55,9 @@ class GetZeroTrustDeviceCustomProfileResult:
         if disable_auto_fallback and not isinstance(disable_auto_fallback, bool):
             raise TypeError("Expected argument 'disable_auto_fallback' to be a bool")
         pulumi.set(__self__, "disable_auto_fallback", disable_auto_fallback)
+        if dns_search_suffixes and not isinstance(dns_search_suffixes, list):
+            raise TypeError("Expected argument 'dns_search_suffixes' to be a list")
+        pulumi.set(__self__, "dns_search_suffixes", dns_search_suffixes)
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
@@ -115,6 +118,9 @@ class GetZeroTrustDeviceCustomProfileResult:
         if tunnel_protocol and not isinstance(tunnel_protocol, str):
             raise TypeError("Expected argument 'tunnel_protocol' to be a str")
         pulumi.set(__self__, "tunnel_protocol", tunnel_protocol)
+        if virtual_networks and not isinstance(virtual_networks, dict):
+            raise TypeError("Expected argument 'virtual_networks' to be a dict")
+        pulumi.set(__self__, "virtual_networks", virtual_networks)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -184,6 +190,14 @@ class GetZeroTrustDeviceCustomProfileResult:
         If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         """
         return pulumi.get(self, "disable_auto_fallback")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsSearchSuffixes")
+    def dns_search_suffixes(self) -> Sequence['outputs.GetZeroTrustDeviceCustomProfileDnsSearchSuffixResult']:
+        """
+        List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.
+        """
+        return pulumi.get(self, "dns_search_suffixes")
 
     @_builtins.property
     @pulumi.getter
@@ -330,6 +344,14 @@ class GetZeroTrustDeviceCustomProfileResult:
         """
         return pulumi.get(self, "tunnel_protocol")
 
+    @_builtins.property
+    @pulumi.getter(name="virtualNetworks")
+    def virtual_networks(self) -> 'outputs.GetZeroTrustDeviceCustomProfileVirtualNetworksResult':
+        """
+        Virtual network access settings for the device.
+        """
+        return pulumi.get(self, "virtual_networks")
+
 
 class AwaitableGetZeroTrustDeviceCustomProfileResult(GetZeroTrustDeviceCustomProfileResult):
     # pylint: disable=using-constant-test
@@ -346,6 +368,7 @@ class AwaitableGetZeroTrustDeviceCustomProfileResult(GetZeroTrustDeviceCustomPro
             default=self.default,
             description=self.description,
             disable_auto_fallback=self.disable_auto_fallback,
+            dns_search_suffixes=self.dns_search_suffixes,
             enabled=self.enabled,
             exclude_office_ips=self.exclude_office_ips,
             excludes=self.excludes,
@@ -365,7 +388,8 @@ class AwaitableGetZeroTrustDeviceCustomProfileResult(GetZeroTrustDeviceCustomPro
             support_url=self.support_url,
             switch_locked=self.switch_locked,
             target_tests=self.target_tests,
-            tunnel_protocol=self.tunnel_protocol)
+            tunnel_protocol=self.tunnel_protocol,
+            virtual_networks=self.virtual_networks)
 
 
 def get_zero_trust_device_custom_profile(account_id: Optional[_builtins.str] = None,
@@ -398,6 +422,7 @@ def get_zero_trust_device_custom_profile(account_id: Optional[_builtins.str] = N
         default=pulumi.get(__ret__, 'default'),
         description=pulumi.get(__ret__, 'description'),
         disable_auto_fallback=pulumi.get(__ret__, 'disable_auto_fallback'),
+        dns_search_suffixes=pulumi.get(__ret__, 'dns_search_suffixes'),
         enabled=pulumi.get(__ret__, 'enabled'),
         exclude_office_ips=pulumi.get(__ret__, 'exclude_office_ips'),
         excludes=pulumi.get(__ret__, 'excludes'),
@@ -417,7 +442,8 @@ def get_zero_trust_device_custom_profile(account_id: Optional[_builtins.str] = N
         support_url=pulumi.get(__ret__, 'support_url'),
         switch_locked=pulumi.get(__ret__, 'switch_locked'),
         target_tests=pulumi.get(__ret__, 'target_tests'),
-        tunnel_protocol=pulumi.get(__ret__, 'tunnel_protocol'))
+        tunnel_protocol=pulumi.get(__ret__, 'tunnel_protocol'),
+        virtual_networks=pulumi.get(__ret__, 'virtual_networks'))
 def get_zero_trust_device_custom_profile_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustDeviceCustomProfileResult]:
@@ -447,6 +473,7 @@ def get_zero_trust_device_custom_profile_output(account_id: pulumi.Input[Optiona
         default=pulumi.get(__response__, 'default'),
         description=pulumi.get(__response__, 'description'),
         disable_auto_fallback=pulumi.get(__response__, 'disable_auto_fallback'),
+        dns_search_suffixes=pulumi.get(__response__, 'dns_search_suffixes'),
         enabled=pulumi.get(__response__, 'enabled'),
         exclude_office_ips=pulumi.get(__response__, 'exclude_office_ips'),
         excludes=pulumi.get(__response__, 'excludes'),
@@ -466,4 +493,5 @@ def get_zero_trust_device_custom_profile_output(account_id: pulumi.Input[Optiona
         support_url=pulumi.get(__response__, 'support_url'),
         switch_locked=pulumi.get(__response__, 'switch_locked'),
         target_tests=pulumi.get(__response__, 'target_tests'),
-        tunnel_protocol=pulumi.get(__response__, 'tunnel_protocol')))
+        tunnel_protocol=pulumi.get(__response__, 'tunnel_protocol'),
+        virtual_networks=pulumi.get(__response__, 'virtual_networks')))

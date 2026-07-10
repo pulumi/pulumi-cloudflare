@@ -90,7 +90,7 @@ type ZoneHold struct {
 	// then automatically re-enabled by the system at the time specified
 	// in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
 	// no effect on an existing, enabled hold. Providing an empty string will set its value
-	// to the current time.
+	// to the current time. Providing `null` will disable the hold indefinitely.
 	HoldAfter pulumi.StringOutput `pulumi:"holdAfter"`
 	// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
 	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
@@ -139,7 +139,7 @@ type zoneHoldState struct {
 	// then automatically re-enabled by the system at the time specified
 	// in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
 	// no effect on an existing, enabled hold. Providing an empty string will set its value
-	// to the current time.
+	// to the current time. Providing `null` will disable the hold indefinitely.
 	HoldAfter *string `pulumi:"holdAfter"`
 	// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
 	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
@@ -156,7 +156,7 @@ type ZoneHoldState struct {
 	// then automatically re-enabled by the system at the time specified
 	// in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
 	// no effect on an existing, enabled hold. Providing an empty string will set its value
-	// to the current time.
+	// to the current time. Providing `null` will disable the hold indefinitely.
 	HoldAfter pulumi.StringPtrInput
 	// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
 	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
@@ -176,7 +176,7 @@ type zoneHoldArgs struct {
 	// then automatically re-enabled by the system at the time specified
 	// in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
 	// no effect on an existing, enabled hold. Providing an empty string will set its value
-	// to the current time.
+	// to the current time. Providing `null` will disable the hold indefinitely.
 	HoldAfter *string `pulumi:"holdAfter"`
 	// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
 	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
@@ -193,7 +193,7 @@ type ZoneHoldArgs struct {
 	// then automatically re-enabled by the system at the time specified
 	// in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
 	// no effect on an existing, enabled hold. Providing an empty string will set its value
-	// to the current time.
+	// to the current time. Providing `null` will disable the hold indefinitely.
 	HoldAfter pulumi.StringPtrInput
 	// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
 	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
@@ -299,7 +299,7 @@ func (o ZoneHoldOutput) Hold() pulumi.BoolOutput {
 // then automatically re-enabled by the system at the time specified
 // in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
 // no effect on an existing, enabled hold. Providing an empty string will set its value
-// to the current time.
+// to the current time. Providing `null` will disable the hold indefinitely.
 func (o ZoneHoldOutput) HoldAfter() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneHold) pulumi.StringOutput { return v.HoldAfter }).(pulumi.StringOutput)
 }

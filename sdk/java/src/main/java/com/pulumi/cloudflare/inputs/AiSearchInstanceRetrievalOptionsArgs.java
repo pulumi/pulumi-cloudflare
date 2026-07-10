@@ -18,14 +18,14 @@ public final class AiSearchInstanceRetrievalOptionsArgs extends com.pulumi.resou
     public static final AiSearchInstanceRetrievalOptionsArgs Empty = new AiSearchInstanceRetrievalOptionsArgs();
 
     /**
-     * Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+     * Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric/datetime fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
      * 
      */
     @Import(name="boostBies")
     private @Nullable Output<List<AiSearchInstanceRetrievalOptionsBoostByArgs>> boostBies;
 
     /**
-     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+     * @return Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric/datetime fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
      * 
      */
     public Optional<Output<List<AiSearchInstanceRetrievalOptionsBoostByArgs>>> boostBies() {
@@ -75,7 +75,7 @@ public final class AiSearchInstanceRetrievalOptionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param boostBies Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+         * @param boostBies Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric/datetime fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class AiSearchInstanceRetrievalOptionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param boostBies Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+         * @param boostBies Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric/datetime fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class AiSearchInstanceRetrievalOptionsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param boostBies Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
+         * @param boostBies Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to &#39;asc&#39; for numeric/datetime fields and &#39;exists&#39; for text/boolean fields. Fields must match &#39;timestamp&#39; or a defined custom*metadata field.
          * 
          * @return builder
          * 

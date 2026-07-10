@@ -39,7 +39,7 @@ export interface GetStreamArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
@@ -53,7 +53,7 @@ export interface GetStreamResult {
     /**
      * The account identifier tag.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
      */
@@ -191,7 +191,7 @@ export interface GetStreamOutputArgs {
     /**
      * The account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */

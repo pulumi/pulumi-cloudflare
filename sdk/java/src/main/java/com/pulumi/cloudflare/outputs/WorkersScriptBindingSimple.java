@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkersScriptBindingSimple {
@@ -16,6 +18,11 @@ public final class WorkersScriptBindingSimple {
      * 
      */
     private Double limit;
+    /**
+     * @return Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+     * 
+     */
+    private @Nullable Integer mitigationTimeout;
     /**
      * @return The rate limit period in seconds.
      * 
@@ -29,6 +36,13 @@ public final class WorkersScriptBindingSimple {
      */
     public Double limit() {
         return this.limit;
+    }
+    /**
+     * @return Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero.
+     * 
+     */
+    public Optional<Integer> mitigationTimeout() {
+        return Optional.ofNullable(this.mitigationTimeout);
     }
     /**
      * @return The rate limit period in seconds.
@@ -48,11 +62,13 @@ public final class WorkersScriptBindingSimple {
     @CustomType.Builder
     public static final class Builder {
         private Double limit;
+        private @Nullable Integer mitigationTimeout;
         private Integer period;
         public Builder() {}
         public Builder(WorkersScriptBindingSimple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.limit = defaults.limit;
+    	      this.mitigationTimeout = defaults.mitigationTimeout;
     	      this.period = defaults.period;
         }
 
@@ -62,6 +78,12 @@ public final class WorkersScriptBindingSimple {
               throw new MissingRequiredPropertyException("WorkersScriptBindingSimple", "limit");
             }
             this.limit = limit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mitigationTimeout(@Nullable Integer mitigationTimeout) {
+
+            this.mitigationTimeout = mitigationTimeout;
             return this;
         }
         @CustomType.Setter
@@ -75,6 +97,7 @@ public final class WorkersScriptBindingSimple {
         public WorkersScriptBindingSimple build() {
             final var _resultValue = new WorkersScriptBindingSimple();
             _resultValue.limit = limit;
+            _resultValue.mitigationTimeout = mitigationTimeout;
             _resultValue.period = period;
             return _resultValue;
         }

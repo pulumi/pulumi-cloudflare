@@ -64,7 +64,7 @@ export class AccessCustomPage extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Custom page HTML.
      */
@@ -106,6 +106,9 @@ export class AccessCustomPage extends pulumi.CustomResource {
             resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as AccessCustomPageArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.customHtml === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customHtml'");
             }
@@ -162,7 +165,7 @@ export interface AccessCustomPageArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Custom page HTML.
      */

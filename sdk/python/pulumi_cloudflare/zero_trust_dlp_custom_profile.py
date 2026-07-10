@@ -21,8 +21,8 @@ __all__ = ['ZeroTrustDlpCustomProfileArgs', 'ZeroTrustDlpCustomProfile']
 @pulumi.input_type
 class ZeroTrustDlpCustomProfileArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ai_context_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_match_count: pulumi.Input[Optional[_builtins.int]] = None,
                  confidence_threshold: pulumi.Input[Optional[_builtins.str]] = None,
@@ -47,9 +47,8 @@ class ZeroTrustDlpCustomProfileArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpCustomProfileSensitivityLevelArgs']]] sensitivity_levels: Sensitivity levels to associate with the profile.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpCustomProfileSharedEntryArgs']]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if ai_context_enabled is not None:
             pulumi.set(__self__, "ai_context_enabled", ai_context_enabled)
         if allowed_match_count is not None:
@@ -80,6 +79,15 @@ class ZeroTrustDlpCustomProfileArgs:
             pulumi.set(__self__, "shared_entries", shared_entries)
 
     @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         return pulumi.get(self, "name")
@@ -87,15 +95,6 @@ class ZeroTrustDlpCustomProfileArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aiContextEnabled")
@@ -648,6 +647,8 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustDlpCustomProfileArgs.__new__(ZeroTrustDlpCustomProfileArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["ai_context_enabled"] = ai_context_enabled
             __props__.__dict__["allowed_match_count"] = allowed_match_count
@@ -742,7 +743,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

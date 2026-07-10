@@ -55,13 +55,19 @@ import (
 type EmailSecurityBlockSender struct {
 	pulumi.CustomResourceState
 
-	// Account Identifier
-	AccountId    pulumi.StringPtrOutput `pulumi:"accountId"`
-	Comments     pulumi.StringPtrOutput `pulumi:"comments"`
-	CreatedAt    pulumi.StringOutput    `pulumi:"createdAt"`
-	IsRegex      pulumi.BoolOutput      `pulumi:"isRegex"`
-	LastModified pulumi.StringOutput    `pulumi:"lastModified"`
-	Pattern      pulumi.StringOutput    `pulumi:"pattern"`
+	// Identifier.
+	AccountId pulumi.StringOutput    `pulumi:"accountId"`
+	Comments  pulumi.StringPtrOutput `pulumi:"comments"`
+	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
+	IsRegex   pulumi.BoolOutput      `pulumi:"isRegex"`
+	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+	//
+	// Deprecated: This attribute is deprecated.
+	LastModified pulumi.StringOutput `pulumi:"lastModified"`
+	ModifiedAt   pulumi.StringOutput `pulumi:"modifiedAt"`
+	Pattern      pulumi.StringOutput `pulumi:"pattern"`
+	// Type of pattern matching.
+	// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringOutput `pulumi:"patternType"`
 }
@@ -73,6 +79,9 @@ func NewEmailSecurityBlockSender(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.IsRegex == nil {
 		return nil, errors.New("invalid value for required argument 'IsRegex'")
 	}
@@ -105,25 +114,37 @@ func GetEmailSecurityBlockSender(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EmailSecurityBlockSender resources.
 type emailSecurityBlockSenderState struct {
-	// Account Identifier
-	AccountId    *string `pulumi:"accountId"`
-	Comments     *string `pulumi:"comments"`
-	CreatedAt    *string `pulumi:"createdAt"`
-	IsRegex      *bool   `pulumi:"isRegex"`
+	// Identifier.
+	AccountId *string `pulumi:"accountId"`
+	Comments  *string `pulumi:"comments"`
+	CreatedAt *string `pulumi:"createdAt"`
+	IsRegex   *bool   `pulumi:"isRegex"`
+	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+	//
+	// Deprecated: This attribute is deprecated.
 	LastModified *string `pulumi:"lastModified"`
+	ModifiedAt   *string `pulumi:"modifiedAt"`
 	Pattern      *string `pulumi:"pattern"`
+	// Type of pattern matching.
+	// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType *string `pulumi:"patternType"`
 }
 
 type EmailSecurityBlockSenderState struct {
-	// Account Identifier
-	AccountId    pulumi.StringPtrInput
-	Comments     pulumi.StringPtrInput
-	CreatedAt    pulumi.StringPtrInput
-	IsRegex      pulumi.BoolPtrInput
+	// Identifier.
+	AccountId pulumi.StringPtrInput
+	Comments  pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
+	IsRegex   pulumi.BoolPtrInput
+	// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+	//
+	// Deprecated: This attribute is deprecated.
 	LastModified pulumi.StringPtrInput
+	ModifiedAt   pulumi.StringPtrInput
 	Pattern      pulumi.StringPtrInput
+	// Type of pattern matching.
+	// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringPtrInput
 }
@@ -133,22 +154,26 @@ func (EmailSecurityBlockSenderState) ElementType() reflect.Type {
 }
 
 type emailSecurityBlockSenderArgs struct {
-	// Account Identifier
-	AccountId *string `pulumi:"accountId"`
+	// Identifier.
+	AccountId string  `pulumi:"accountId"`
 	Comments  *string `pulumi:"comments"`
 	IsRegex   bool    `pulumi:"isRegex"`
 	Pattern   string  `pulumi:"pattern"`
+	// Type of pattern matching.
+	// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType string `pulumi:"patternType"`
 }
 
 // The set of arguments for constructing a EmailSecurityBlockSender resource.
 type EmailSecurityBlockSenderArgs struct {
-	// Account Identifier
-	AccountId pulumi.StringPtrInput
+	// Identifier.
+	AccountId pulumi.StringInput
 	Comments  pulumi.StringPtrInput
 	IsRegex   pulumi.BoolInput
 	Pattern   pulumi.StringInput
+	// Type of pattern matching.
+	// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringInput
 }
@@ -240,9 +265,9 @@ func (o EmailSecurityBlockSenderOutput) ToEmailSecurityBlockSenderOutputWithCont
 	return o
 }
 
-// Account Identifier
-func (o EmailSecurityBlockSenderOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+// Identifier.
+func (o EmailSecurityBlockSenderOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o EmailSecurityBlockSenderOutput) Comments() pulumi.StringPtrOutput {
@@ -257,14 +282,23 @@ func (o EmailSecurityBlockSenderOutput) IsRegex() pulumi.BoolOutput {
 	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.BoolOutput { return v.IsRegex }).(pulumi.BoolOutput)
 }
 
+// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+//
+// Deprecated: This attribute is deprecated.
 func (o EmailSecurityBlockSenderOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.LastModified }).(pulumi.StringOutput)
+}
+
+func (o EmailSecurityBlockSenderOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.ModifiedAt }).(pulumi.StringOutput)
 }
 
 func (o EmailSecurityBlockSenderOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.Pattern }).(pulumi.StringOutput)
 }
 
+// Type of pattern matching.
+// Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
 // Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 func (o EmailSecurityBlockSenderOutput) PatternType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityBlockSender) pulumi.StringOutput { return v.PatternType }).(pulumi.StringOutput)

@@ -69,7 +69,7 @@ export class WaitingRoomRules extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a WaitingRoomRules resource with the given unique name, arguments, and options.
@@ -94,6 +94,9 @@ export class WaitingRoomRules extends pulumi.CustomResource {
             }
             if (args?.waitingRoomId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'waitingRoomId'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["rules"] = args?.rules;
             resourceInputs["waitingRoomId"] = args?.waitingRoomId;
@@ -125,5 +128,5 @@ export interface WaitingRoomRulesArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

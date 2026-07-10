@@ -28,7 +28,7 @@ class GetAiSearchInstanceResult:
     """
     A collection of values returned by getAiSearchInstance.
     """
-    def __init__(__self__, account_id=None, ai_gateway_id=None, aisearch_model=None, cache=None, cache_threshold=None, chunk_overlap=None, chunk_size=None, created_at=None, created_by=None, custom_metadatas=None, embedding_model=None, enable=None, engine_version=None, filter=None, fusion_method=None, hybrid_search_enabled=None, id=None, index_method=None, indexing_options=None, last_activity=None, max_num_results=None, metadata=None, modified_at=None, modified_by=None, namespace=None, paused=None, public_endpoint_id=None, public_endpoint_params=None, reranking=None, reranking_model=None, retrieval_options=None, rewrite_model=None, rewrite_query=None, score_threshold=None, source=None, source_params=None, status=None, sync_interval=None, token_id=None, type=None):
+    def __init__(__self__, account_id=None, ai_gateway_id=None, aisearch_model=None, cache=None, cache_threshold=None, cache_ttl=None, chunk_overlap=None, chunk_size=None, created_at=None, created_by=None, custom_metadatas=None, embedding_model=None, enable=None, engine_version=None, filter=None, fusion_method=None, hybrid_search_enabled=None, id=None, index_method=None, indexing_options=None, last_activity=None, max_num_results=None, metadata=None, modified_at=None, modified_by=None, namespace=None, paused=None, public_endpoint_id=None, public_endpoint_params=None, reranking=None, reranking_model=None, retrieval_options=None, rewrite_model=None, rewrite_query=None, score_threshold=None, source=None, source_params=None, status=None, sync_interval=None, token_id=None, type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -44,6 +44,9 @@ class GetAiSearchInstanceResult:
         if cache_threshold and not isinstance(cache_threshold, str):
             raise TypeError("Expected argument 'cache_threshold' to be a str")
         pulumi.set(__self__, "cache_threshold", cache_threshold)
+        if cache_ttl and not isinstance(cache_ttl, float):
+            raise TypeError("Expected argument 'cache_ttl' to be a float")
+        pulumi.set(__self__, "cache_ttl", cache_ttl)
         if chunk_overlap and not isinstance(chunk_overlap, int):
             raise TypeError("Expected argument 'chunk_overlap' to be a int")
         pulumi.set(__self__, "chunk_overlap", chunk_overlap)
@@ -182,6 +185,15 @@ class GetAiSearchInstanceResult:
         return pulumi.get(self, "cache_threshold")
 
     @_builtins.property
+    @pulumi.getter(name="cacheTtl")
+    def cache_ttl(self) -> _builtins.float:
+        """
+        Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
+        Available values: 600, 1800, 3600, 7200, 21600, 43200, 86400, 172800, 259200, 518400.
+        """
+        return pulumi.get(self, "cache_ttl")
+
+    @_builtins.property
     @pulumi.getter(name="chunkOverlap")
     def chunk_overlap(self) -> _builtins.int:
         return pulumi.get(self, "chunk_overlap")
@@ -250,7 +262,7 @@ class GetAiSearchInstanceResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 
@@ -397,6 +409,7 @@ class AwaitableGetAiSearchInstanceResult(GetAiSearchInstanceResult):
             aisearch_model=self.aisearch_model,
             cache=self.cache,
             cache_threshold=self.cache_threshold,
+            cache_ttl=self.cache_ttl,
             chunk_overlap=self.chunk_overlap,
             chunk_size=self.chunk_size,
             created_at=self.created_at,
@@ -441,7 +454,7 @@ def get_ai_search_instance(account_id: Optional[_builtins.str] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param _builtins.str id: AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+    :param _builtins.str id: The ID of this resource.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -456,6 +469,7 @@ def get_ai_search_instance(account_id: Optional[_builtins.str] = None,
         aisearch_model=pulumi.get(__ret__, 'aisearch_model'),
         cache=pulumi.get(__ret__, 'cache'),
         cache_threshold=pulumi.get(__ret__, 'cache_threshold'),
+        cache_ttl=pulumi.get(__ret__, 'cache_ttl'),
         chunk_overlap=pulumi.get(__ret__, 'chunk_overlap'),
         chunk_size=pulumi.get(__ret__, 'chunk_size'),
         created_at=pulumi.get(__ret__, 'created_at'),
@@ -498,7 +512,7 @@ def get_ai_search_instance_output(account_id: pulumi.Input[Optional[Optional[_bu
     """
     Use this data source to access information about an existing resource.
 
-    :param _builtins.str id: AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
+    :param _builtins.str id: The ID of this resource.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -512,6 +526,7 @@ def get_ai_search_instance_output(account_id: pulumi.Input[Optional[Optional[_bu
         aisearch_model=pulumi.get(__response__, 'aisearch_model'),
         cache=pulumi.get(__response__, 'cache'),
         cache_threshold=pulumi.get(__response__, 'cache_threshold'),
+        cache_ttl=pulumi.get(__response__, 'cache_ttl'),
         chunk_overlap=pulumi.get(__response__, 'chunk_overlap'),
         chunk_size=pulumi.get(__response__, 'chunk_size'),
         created_at=pulumi.get(__response__, 'created_at'),

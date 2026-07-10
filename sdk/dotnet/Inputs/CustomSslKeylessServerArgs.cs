@@ -74,7 +74,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Configuration for using Keyless SSL through a Cloudflare Tunnel
+        /// Configuration for using Keyless SSL through a Cloudflare Tunnel.
         /// </summary>
         [Input("tunnel")]
         public Input<Inputs.CustomSslKeylessServerTunnelArgs>? Tunnel { get; set; }

@@ -92,7 +92,7 @@ namespace Pulumi.Cloudflare
         /// Use this field to specify the unique ID of the zone.
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -167,8 +167,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this field to specify the unique ID of the zone.
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public SnippetArgs()
         {

@@ -22,11 +22,11 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
 
     public static final ZeroTrustGatewayPolicyArgs Empty = new ZeroTrustGatewayPolicyArgs();
 
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -247,7 +247,7 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
             $ = new ZeroTrustGatewayPolicyArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -521,6 +521,9 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         }
 
         public ZeroTrustGatewayPolicyArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustGatewayPolicyArgs", "accountId");
+            }
             if ($.action == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustGatewayPolicyArgs", "action");
             }

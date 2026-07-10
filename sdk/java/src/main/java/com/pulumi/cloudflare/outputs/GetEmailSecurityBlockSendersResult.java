@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -15,15 +14,26 @@ public final class GetEmailSecurityBlockSendersResult {
     private String comments;
     private String createdAt;
     /**
-     * @return The unique identifier for the allow policy.
+     * @return Blocked sender pattern identifier
      * 
      */
-    private Integer id;
+    private String id;
     private Boolean isRegex;
+    /**
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     private String lastModified;
+    private String modifiedAt;
     private String pattern;
     /**
-     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     private String patternType;
@@ -36,23 +46,36 @@ public final class GetEmailSecurityBlockSendersResult {
         return this.createdAt;
     }
     /**
-     * @return The unique identifier for the allow policy.
+     * @return Blocked sender pattern identifier
      * 
      */
-    public Integer id() {
+    public String id() {
         return this.id;
     }
     public Boolean isRegex() {
         return this.isRegex;
     }
+    /**
+     * @return Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public String lastModified() {
         return this.lastModified;
+    }
+    public String modifiedAt() {
+        return this.modifiedAt;
     }
     public String pattern() {
         return this.pattern;
     }
     /**
-     * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
+     * @return Type of pattern matching.
+     * Note: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.
+     * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
      */
     public String patternType() {
@@ -70,9 +93,10 @@ public final class GetEmailSecurityBlockSendersResult {
     public static final class Builder {
         private String comments;
         private String createdAt;
-        private Integer id;
+        private String id;
         private Boolean isRegex;
         private String lastModified;
+        private String modifiedAt;
         private String pattern;
         private String patternType;
         public Builder() {}
@@ -83,6 +107,7 @@ public final class GetEmailSecurityBlockSendersResult {
     	      this.id = defaults.id;
     	      this.isRegex = defaults.isRegex;
     	      this.lastModified = defaults.lastModified;
+    	      this.modifiedAt = defaults.modifiedAt;
     	      this.pattern = defaults.pattern;
     	      this.patternType = defaults.patternType;
         }
@@ -104,7 +129,7 @@ public final class GetEmailSecurityBlockSendersResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(Integer id) {
+        public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetEmailSecurityBlockSendersResult", "id");
             }
@@ -125,6 +150,14 @@ public final class GetEmailSecurityBlockSendersResult {
               throw new MissingRequiredPropertyException("GetEmailSecurityBlockSendersResult", "lastModified");
             }
             this.lastModified = lastModified;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder modifiedAt(String modifiedAt) {
+            if (modifiedAt == null) {
+              throw new MissingRequiredPropertyException("GetEmailSecurityBlockSendersResult", "modifiedAt");
+            }
+            this.modifiedAt = modifiedAt;
             return this;
         }
         @CustomType.Setter
@@ -150,6 +183,7 @@ public final class GetEmailSecurityBlockSendersResult {
             _resultValue.id = id;
             _resultValue.isRegex = isRegex;
             _resultValue.lastModified = lastModified;
+            _resultValue.modifiedAt = modifiedAt;
             _resultValue.pattern = pattern;
             _resultValue.patternType = patternType;
             return _resultValue;

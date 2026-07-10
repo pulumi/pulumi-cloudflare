@@ -21,27 +21,38 @@ __all__ = ['R2BucketEventNotificationArgs', 'R2BucketEventNotification']
 @pulumi.input_type
 class R2BucketEventNotificationArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  bucket_name: pulumi.Input[_builtins.str],
                  queue_id: pulumi.Input[_builtins.str],
                  rules: pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationRuleArgs']]],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  jurisdiction: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a R2BucketEventNotification resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[_builtins.str] queue_id: Queue ID.
         :param pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationRuleArgs']]] rules: Array of rules to drive notifications.
-        :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "queue_id", queue_id)
         pulumi.set(__self__, "rules", rules)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if jurisdiction is not None:
             pulumi.set(__self__, "jurisdiction", jurisdiction)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Account ID.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
@@ -78,18 +89,6 @@ class R2BucketEventNotificationArgs:
     @rules.setter
     def rules(self, value: pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationRuleArgs']]]):
         pulumi.set(self, "rules", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Account ID.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -328,6 +327,8 @@ class R2BucketEventNotification(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = R2BucketEventNotificationArgs.__new__(R2BucketEventNotificationArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if bucket_name is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_name'")
@@ -384,7 +385,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Account ID.
         """

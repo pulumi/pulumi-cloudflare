@@ -114,7 +114,7 @@ export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The tunnel configuration and ingress rules.
      */
@@ -155,6 +155,9 @@ export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
             resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as ZeroTrustTunnelCloudflaredConfigArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.tunnelId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tunnelId'");
             }
@@ -207,7 +210,7 @@ export interface ZeroTrustTunnelCloudflaredConfigArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The tunnel configuration and ingress rules.
      */

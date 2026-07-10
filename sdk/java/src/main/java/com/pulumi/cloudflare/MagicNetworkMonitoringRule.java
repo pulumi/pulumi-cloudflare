@@ -77,10 +77,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule")
 public class MagicNetworkMonitoringRule extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.

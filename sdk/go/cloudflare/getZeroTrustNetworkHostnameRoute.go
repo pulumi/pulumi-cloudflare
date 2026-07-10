@@ -80,6 +80,9 @@ type LookupZeroTrustNetworkHostnameRouteResult struct {
 	HostnameRouteId *string `pulumi:"hostnameRouteId"`
 	// The hostname route ID.
 	Id string `pulumi:"id"`
+	// The type of tunnel.
+	// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+	TunType string `pulumi:"tunType"`
 	// UUID of the tunnel.
 	TunnelId string `pulumi:"tunnelId"`
 	// A user-friendly name for a tunnel.
@@ -162,6 +165,12 @@ func (o LookupZeroTrustNetworkHostnameRouteResultOutput) HostnameRouteId() pulum
 // The hostname route ID.
 func (o LookupZeroTrustNetworkHostnameRouteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustNetworkHostnameRouteResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The type of tunnel.
+// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+func (o LookupZeroTrustNetworkHostnameRouteResultOutput) TunType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustNetworkHostnameRouteResult) string { return v.TunType }).(pulumi.StringOutput)
 }
 
 // UUID of the tunnel.

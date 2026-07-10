@@ -55,7 +55,7 @@ type Queue struct {
 	pulumi.CustomResourceState
 
 	// A Resource identifier.
-	AccountId           pulumi.StringPtrOutput       `pulumi:"accountId"`
+	AccountId           pulumi.StringOutput          `pulumi:"accountId"`
 	Consumers           QueueConsumerTypeArrayOutput `pulumi:"consumers"`
 	ConsumersTotalCount pulumi.Float64Output         `pulumi:"consumersTotalCount"`
 	CreatedOn           pulumi.StringOutput          `pulumi:"createdOn"`
@@ -74,6 +74,9 @@ func NewQueue(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.QueueName == nil {
 		return nil, errors.New("invalid value for required argument 'QueueName'")
 	}
@@ -133,7 +136,7 @@ func (QueueState) ElementType() reflect.Type {
 
 type queueArgs struct {
 	// A Resource identifier.
-	AccountId *string        `pulumi:"accountId"`
+	AccountId string         `pulumi:"accountId"`
 	QueueName string         `pulumi:"queueName"`
 	Settings  *QueueSettings `pulumi:"settings"`
 }
@@ -141,7 +144,7 @@ type queueArgs struct {
 // The set of arguments for constructing a Queue resource.
 type QueueArgs struct {
 	// A Resource identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	QueueName pulumi.StringInput
 	Settings  QueueSettingsPtrInput
 }
@@ -234,8 +237,8 @@ func (o QueueOutput) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 }
 
 // A Resource identifier.
-func (o QueueOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o QueueOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o QueueOutput) Consumers() QueueConsumerTypeArrayOutput {

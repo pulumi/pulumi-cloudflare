@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -50,7 +51,7 @@ type CallsTurnApp struct {
 	pulumi.CustomResourceState
 
 	// The account identifier tag.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The date and time the item was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// Bearer token
@@ -69,9 +70,12 @@ type CallsTurnApp struct {
 func NewCallsTurnApp(ctx *pulumi.Context,
 	name string, args *CallsTurnAppArgs, opts ...pulumi.ResourceOption) (*CallsTurnApp, error) {
 	if args == nil {
-		args = &CallsTurnAppArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"key",
 	})
@@ -138,7 +142,7 @@ func (CallsTurnAppState) ElementType() reflect.Type {
 
 type callsTurnAppArgs struct {
 	// The account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a item.
 	KeyId *string `pulumi:"keyId"`
 	// A short description of a TURN key, not shown to end users.
@@ -148,7 +152,7 @@ type callsTurnAppArgs struct {
 // The set of arguments for constructing a CallsTurnApp resource.
 type CallsTurnAppArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// A Cloudflare-generated unique identifier for a item.
 	KeyId pulumi.StringPtrInput
 	// A short description of a TURN key, not shown to end users.
@@ -243,8 +247,8 @@ func (o CallsTurnAppOutput) ToCallsTurnAppOutputWithContext(ctx context.Context)
 }
 
 // The account identifier tag.
-func (o CallsTurnAppOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CallsTurnApp) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o CallsTurnAppOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CallsTurnApp) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The date and time the item was created.

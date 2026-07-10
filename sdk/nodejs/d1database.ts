@@ -66,7 +66,7 @@ export class D1Database extends pulumi.CustomResource {
     /**
      * Account identifier tag.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Specifies the timestamp the resource was created as an ISO8601 string.
      */
@@ -125,6 +125,9 @@ export class D1Database extends pulumi.CustomResource {
             resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as D1DatabaseArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -193,7 +196,7 @@ export interface D1DatabaseArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
      * Available values: "eu", "fedramp".

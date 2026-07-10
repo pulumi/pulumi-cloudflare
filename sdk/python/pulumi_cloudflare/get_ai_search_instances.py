@@ -77,13 +77,16 @@ class GetAiSearchInstancesResult:
     @_builtins.property
     @pulumi.getter
     def namespace(self) -> Optional[_builtins.str]:
+        """
+        Filter by namespace.
+        """
         return pulumi.get(self, "namespace")
 
     @_builtins.property
     @pulumi.getter(name="orderBy")
     def order_by(self) -> _builtins.str:
         """
-        Order By Column Name
+        Field to order results by.
         Available values: "created_at".
         """
         return pulumi.get(self, "order_by")
@@ -92,7 +95,7 @@ class GetAiSearchInstancesResult:
     @pulumi.getter(name="orderByDirection")
     def order_by_direction(self) -> _builtins.str:
         """
-        Order By Direction
+        Order direction.
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "order_by_direction")
@@ -109,7 +112,7 @@ class GetAiSearchInstancesResult:
     @pulumi.getter
     def search(self) -> Optional[_builtins.str]:
         """
-        Search by id
+        Filter instances whose id contains this string (case-insensitive).
         """
         return pulumi.get(self, "search")
 
@@ -141,11 +144,12 @@ def get_ai_search_instances(account_id: Optional[_builtins.str] = None,
     Use this data source to access information about an existing resource.
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order_by: Order By Column Name
+    :param _builtins.str namespace: Filter by namespace.
+    :param _builtins.str order_by: Field to order results by.
            Available values: "created_at".
-    :param _builtins.str order_by_direction: Order By Direction
+    :param _builtins.str order_by_direction: Order direction.
            Available values: "asc", "desc".
-    :param _builtins.str search: Search by id
+    :param _builtins.str search: Filter instances whose id contains this string (case-insensitive).
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -177,11 +181,12 @@ def get_ai_search_instances_output(account_id: pulumi.Input[Optional[Optional[_b
     Use this data source to access information about an existing resource.
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str order_by: Order By Column Name
+    :param _builtins.str namespace: Filter by namespace.
+    :param _builtins.str order_by: Field to order results by.
            Available values: "created_at".
-    :param _builtins.str order_by_direction: Order By Direction
+    :param _builtins.str order_by_direction: Order direction.
            Available values: "asc", "desc".
-    :param _builtins.str search: Search by id
+    :param _builtins.str search: Filter instances whose id contains this string (case-insensitive).
     """
     __args__ = dict()
     __args__['accountId'] = account_id

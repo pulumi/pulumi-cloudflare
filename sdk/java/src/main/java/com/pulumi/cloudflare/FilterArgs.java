@@ -90,15 +90,15 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
      * Defines an identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Defines an identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private FilterArgs() {}
@@ -233,7 +233,7 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -251,6 +251,9 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
         public FilterArgs build() {
             if ($.bodies == null) {
                 throw new MissingRequiredPropertyException("FilterArgs", "bodies");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("FilterArgs", "zoneId");
             }
             return $;
         }

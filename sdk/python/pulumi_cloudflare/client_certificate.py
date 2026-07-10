@@ -23,21 +23,20 @@ class ClientCertificateArgs:
     def __init__(__self__, *,
                  csr: pulumi.Input[_builtins.str],
                  validity_days: pulumi.Input[_builtins.int],
-                 reactivate: pulumi.Input[Optional[_builtins.bool]] = None,
-                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 zone_id: pulumi.Input[_builtins.str],
+                 reactivate: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ClientCertificate resource.
 
         :param pulumi.Input[_builtins.str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.
-        :param pulumi.Input[_builtins.int] validity_days: The number of days the Client Certificate will be valid after the issued_on date
+        :param pulumi.Input[_builtins.int] validity_days: The number of days the Client Certificate will be valid after the issued_on date.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "csr", csr)
         pulumi.set(__self__, "validity_days", validity_days)
+        pulumi.set(__self__, "zone_id", zone_id)
         if reactivate is not None:
             pulumi.set(__self__, "reactivate", reactivate)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
@@ -55,13 +54,25 @@ class ClientCertificateArgs:
     @pulumi.getter(name="validityDays")
     def validity_days(self) -> pulumi.Input[_builtins.int]:
         """
-        The number of days the Client Certificate will be valid after the issued_on date
+        The number of days the Client Certificate will be valid after the issued_on date.
         """
         return pulumi.get(self, "validity_days")
 
     @validity_days.setter
     def validity_days(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "validity_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -71,18 +82,6 @@ class ClientCertificateArgs:
     @reactivate.setter
     def reactivate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reactivate", value)
-
-    @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -110,24 +109,24 @@ class _ClientCertificateState:
         """
         Input properties used for looking up and filtering ClientCertificate resources.
 
-        :param pulumi.Input[_builtins.str] certificate: The Client Certificate PEM
-        :param pulumi.Input['ClientCertificateCertificateAuthorityArgs'] certificate_authority: Certificate Authority used to issue the Client Certificate
-        :param pulumi.Input[_builtins.str] common_name: Common Name of the Client Certificate
-        :param pulumi.Input[_builtins.str] country: Country, provided by the CSR
+        :param pulumi.Input[_builtins.str] certificate: The Client Certificate PEM.
+        :param pulumi.Input['ClientCertificateCertificateAuthorityArgs'] certificate_authority: Certificate Authority used to issue the Client Certificate.
+        :param pulumi.Input[_builtins.str] common_name: Common Name of the Client Certificate.
+        :param pulumi.Input[_builtins.str] country: Country, provided by the CSR.
         :param pulumi.Input[_builtins.str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.
-        :param pulumi.Input[_builtins.str] expires_on: Date that the Client Certificate expires
-        :param pulumi.Input[_builtins.str] fingerprint_sha256: Unique identifier of the Client Certificate
-        :param pulumi.Input[_builtins.str] issued_on: Date that the Client Certificate was issued by the Certificate Authority
-        :param pulumi.Input[_builtins.str] location: Location, provided by the CSR
-        :param pulumi.Input[_builtins.str] organization: Organization, provided by the CSR
-        :param pulumi.Input[_builtins.str] organizational_unit: Organizational Unit, provided by the CSR
+        :param pulumi.Input[_builtins.str] expires_on: Date that the Client Certificate expires.
+        :param pulumi.Input[_builtins.str] fingerprint_sha256: Unique identifier of the Client Certificate.
+        :param pulumi.Input[_builtins.str] issued_on: Date that the Client Certificate was issued by the Certificate Authority.
+        :param pulumi.Input[_builtins.str] location: Location, provided by the CSR.
+        :param pulumi.Input[_builtins.str] organization: Organization, provided by the CSR.
+        :param pulumi.Input[_builtins.str] organizational_unit: Organizational Unit, provided by the CSR.
         :param pulumi.Input[_builtins.str] serial_number: The serial number on the created Client Certificate.
         :param pulumi.Input[_builtins.str] signature: The type of hash used for the Client Certificate..
-        :param pulumi.Input[_builtins.str] ski: Subject Key Identifier
-        :param pulumi.Input[_builtins.str] state: State, provided by the CSR
-        :param pulumi.Input[_builtins.str] status: Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+        :param pulumi.Input[_builtins.str] ski: Subject Key Identifier.
+        :param pulumi.Input[_builtins.str] state: State, provided by the CSR.
+        :param pulumi.Input[_builtins.str] status: Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
                Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
-        :param pulumi.Input[_builtins.int] validity_days: The number of days the Client Certificate will be valid after the issued_on date
+        :param pulumi.Input[_builtins.int] validity_days: The number of days the Client Certificate will be valid after the issued_on date.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         if certificate is not None:
@@ -173,7 +172,7 @@ class _ClientCertificateState:
     @pulumi.getter
     def certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Client Certificate PEM
+        The Client Certificate PEM.
         """
         return pulumi.get(self, "certificate")
 
@@ -185,7 +184,7 @@ class _ClientCertificateState:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Input[Optional['ClientCertificateCertificateAuthorityArgs']]:
         """
-        Certificate Authority used to issue the Client Certificate
+        Certificate Authority used to issue the Client Certificate.
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -197,7 +196,7 @@ class _ClientCertificateState:
     @pulumi.getter(name="commonName")
     def common_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Common Name of the Client Certificate
+        Common Name of the Client Certificate.
         """
         return pulumi.get(self, "common_name")
 
@@ -209,7 +208,7 @@ class _ClientCertificateState:
     @pulumi.getter
     def country(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Country, provided by the CSR
+        Country, provided by the CSR.
         """
         return pulumi.get(self, "country")
 
@@ -233,7 +232,7 @@ class _ClientCertificateState:
     @pulumi.getter(name="expiresOn")
     def expires_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Date that the Client Certificate expires
+        Date that the Client Certificate expires.
         """
         return pulumi.get(self, "expires_on")
 
@@ -245,7 +244,7 @@ class _ClientCertificateState:
     @pulumi.getter(name="fingerprintSha256")
     def fingerprint_sha256(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Unique identifier of the Client Certificate
+        Unique identifier of the Client Certificate.
         """
         return pulumi.get(self, "fingerprint_sha256")
 
@@ -257,7 +256,7 @@ class _ClientCertificateState:
     @pulumi.getter(name="issuedOn")
     def issued_on(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Date that the Client Certificate was issued by the Certificate Authority
+        Date that the Client Certificate was issued by the Certificate Authority.
         """
         return pulumi.get(self, "issued_on")
 
@@ -269,7 +268,7 @@ class _ClientCertificateState:
     @pulumi.getter
     def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Location, provided by the CSR
+        Location, provided by the CSR.
         """
         return pulumi.get(self, "location")
 
@@ -281,7 +280,7 @@ class _ClientCertificateState:
     @pulumi.getter
     def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Organization, provided by the CSR
+        Organization, provided by the CSR.
         """
         return pulumi.get(self, "organization")
 
@@ -293,7 +292,7 @@ class _ClientCertificateState:
     @pulumi.getter(name="organizationalUnit")
     def organizational_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Organizational Unit, provided by the CSR
+        Organizational Unit, provided by the CSR.
         """
         return pulumi.get(self, "organizational_unit")
 
@@ -338,7 +337,7 @@ class _ClientCertificateState:
     @pulumi.getter
     def ski(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Subject Key Identifier
+        Subject Key Identifier.
         """
         return pulumi.get(self, "ski")
 
@@ -350,7 +349,7 @@ class _ClientCertificateState:
     @pulumi.getter
     def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        State, provided by the CSR
+        State, provided by the CSR.
         """
         return pulumi.get(self, "state")
 
@@ -362,7 +361,7 @@ class _ClientCertificateState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+        Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
         Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
         """
         return pulumi.get(self, "status")
@@ -375,7 +374,7 @@ class _ClientCertificateState:
     @pulumi.getter(name="validityDays")
     def validity_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The number of days the Client Certificate will be valid after the issued_on date
+        The number of days the Client Certificate will be valid after the issued_on date.
         """
         return pulumi.get(self, "validity_days")
 
@@ -438,7 +437,7 @@ class ClientCertificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.
-        :param pulumi.Input[_builtins.int] validity_days: The number of days the Client Certificate will be valid after the issued_on date
+        :param pulumi.Input[_builtins.int] validity_days: The number of days the Client Certificate will be valid after the issued_on date.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -510,6 +509,8 @@ class ClientCertificate(pulumi.CustomResource):
             if validity_days is None and not opts.urn:
                 raise TypeError("Missing required property 'validity_days'")
             __props__.__dict__["validity_days"] = validity_days
+            if zone_id is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["certificate"] = None
             __props__.__dict__["certificate_authority"] = None
@@ -562,24 +563,24 @@ class ClientCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] certificate: The Client Certificate PEM
-        :param pulumi.Input[Union['ClientCertificateCertificateAuthorityArgs', 'ClientCertificateCertificateAuthorityArgsDict']] certificate_authority: Certificate Authority used to issue the Client Certificate
-        :param pulumi.Input[_builtins.str] common_name: Common Name of the Client Certificate
-        :param pulumi.Input[_builtins.str] country: Country, provided by the CSR
+        :param pulumi.Input[_builtins.str] certificate: The Client Certificate PEM.
+        :param pulumi.Input[Union['ClientCertificateCertificateAuthorityArgs', 'ClientCertificateCertificateAuthorityArgsDict']] certificate_authority: Certificate Authority used to issue the Client Certificate.
+        :param pulumi.Input[_builtins.str] common_name: Common Name of the Client Certificate.
+        :param pulumi.Input[_builtins.str] country: Country, provided by the CSR.
         :param pulumi.Input[_builtins.str] csr: The Certificate Signing Request (CSR). Must be newline-encoded.
-        :param pulumi.Input[_builtins.str] expires_on: Date that the Client Certificate expires
-        :param pulumi.Input[_builtins.str] fingerprint_sha256: Unique identifier of the Client Certificate
-        :param pulumi.Input[_builtins.str] issued_on: Date that the Client Certificate was issued by the Certificate Authority
-        :param pulumi.Input[_builtins.str] location: Location, provided by the CSR
-        :param pulumi.Input[_builtins.str] organization: Organization, provided by the CSR
-        :param pulumi.Input[_builtins.str] organizational_unit: Organizational Unit, provided by the CSR
+        :param pulumi.Input[_builtins.str] expires_on: Date that the Client Certificate expires.
+        :param pulumi.Input[_builtins.str] fingerprint_sha256: Unique identifier of the Client Certificate.
+        :param pulumi.Input[_builtins.str] issued_on: Date that the Client Certificate was issued by the Certificate Authority.
+        :param pulumi.Input[_builtins.str] location: Location, provided by the CSR.
+        :param pulumi.Input[_builtins.str] organization: Organization, provided by the CSR.
+        :param pulumi.Input[_builtins.str] organizational_unit: Organizational Unit, provided by the CSR.
         :param pulumi.Input[_builtins.str] serial_number: The serial number on the created Client Certificate.
         :param pulumi.Input[_builtins.str] signature: The type of hash used for the Client Certificate..
-        :param pulumi.Input[_builtins.str] ski: Subject Key Identifier
-        :param pulumi.Input[_builtins.str] state: State, provided by the CSR
-        :param pulumi.Input[_builtins.str] status: Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+        :param pulumi.Input[_builtins.str] ski: Subject Key Identifier.
+        :param pulumi.Input[_builtins.str] state: State, provided by the CSR.
+        :param pulumi.Input[_builtins.str] status: Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
                Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
-        :param pulumi.Input[_builtins.int] validity_days: The number of days the Client Certificate will be valid after the issued_on date
+        :param pulumi.Input[_builtins.int] validity_days: The number of days the Client Certificate will be valid after the issued_on date.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -611,7 +612,7 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter
     def certificate(self) -> pulumi.Output[_builtins.str]:
         """
-        The Client Certificate PEM
+        The Client Certificate PEM.
         """
         return pulumi.get(self, "certificate")
 
@@ -619,7 +620,7 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Output['outputs.ClientCertificateCertificateAuthority']:
         """
-        Certificate Authority used to issue the Client Certificate
+        Certificate Authority used to issue the Client Certificate.
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -627,7 +628,7 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter(name="commonName")
     def common_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Common Name of the Client Certificate
+        Common Name of the Client Certificate.
         """
         return pulumi.get(self, "common_name")
 
@@ -635,7 +636,7 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter
     def country(self) -> pulumi.Output[_builtins.str]:
         """
-        Country, provided by the CSR
+        Country, provided by the CSR.
         """
         return pulumi.get(self, "country")
 
@@ -651,7 +652,7 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter(name="expiresOn")
     def expires_on(self) -> pulumi.Output[_builtins.str]:
         """
-        Date that the Client Certificate expires
+        Date that the Client Certificate expires.
         """
         return pulumi.get(self, "expires_on")
 
@@ -659,7 +660,7 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter(name="fingerprintSha256")
     def fingerprint_sha256(self) -> pulumi.Output[_builtins.str]:
         """
-        Unique identifier of the Client Certificate
+        Unique identifier of the Client Certificate.
         """
         return pulumi.get(self, "fingerprint_sha256")
 
@@ -667,7 +668,7 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter(name="issuedOn")
     def issued_on(self) -> pulumi.Output[_builtins.str]:
         """
-        Date that the Client Certificate was issued by the Certificate Authority
+        Date that the Client Certificate was issued by the Certificate Authority.
         """
         return pulumi.get(self, "issued_on")
 
@@ -675,7 +676,7 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[_builtins.str]:
         """
-        Location, provided by the CSR
+        Location, provided by the CSR.
         """
         return pulumi.get(self, "location")
 
@@ -683,7 +684,7 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter
     def organization(self) -> pulumi.Output[_builtins.str]:
         """
-        Organization, provided by the CSR
+        Organization, provided by the CSR.
         """
         return pulumi.get(self, "organization")
 
@@ -691,7 +692,7 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter(name="organizationalUnit")
     def organizational_unit(self) -> pulumi.Output[_builtins.str]:
         """
-        Organizational Unit, provided by the CSR
+        Organizational Unit, provided by the CSR.
         """
         return pulumi.get(self, "organizational_unit")
 
@@ -720,7 +721,7 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter
     def ski(self) -> pulumi.Output[_builtins.str]:
         """
-        Subject Key Identifier
+        Subject Key Identifier.
         """
         return pulumi.get(self, "ski")
 
@@ -728,7 +729,7 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        State, provided by the CSR
+        State, provided by the CSR.
         """
         return pulumi.get(self, "state")
 
@@ -736,7 +737,7 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions
+        Client Certificates may be active or revoked, and the pending*reactivation or pending*revocation represent in-progress asynchronous transitions.
         Available values: "active", "pending*reactivation", "pending*revocation", "revoked".
         """
         return pulumi.get(self, "status")
@@ -745,13 +746,13 @@ class ClientCertificate(pulumi.CustomResource):
     @pulumi.getter(name="validityDays")
     def validity_days(self) -> pulumi.Output[_builtins.int]:
         """
-        The number of days the Client Certificate will be valid after the issued_on date
+        The number of days the Client Certificate will be valid after the issued_on date.
         """
         return pulumi.get(self, "validity_days")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier.
         """

@@ -59,7 +59,7 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The date and time the destination address has been created.
      */
@@ -104,6 +104,9 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
             resourceInputs["verified"] = state?.verified;
         } else {
             const args = argsOrState as EmailRoutingAddressArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
@@ -158,7 +161,7 @@ export interface EmailRoutingAddressArgs {
     /**
      * Identifier.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The contact email address of the user.
      */

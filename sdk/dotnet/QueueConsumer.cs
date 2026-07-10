@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// A Resource identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// A Resource identifier.
@@ -145,8 +145,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         [Input("deadLetterQueue")]
         public Input<string>? DeadLetterQueue { get; set; }

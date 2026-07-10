@@ -20,7 +20,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
     public static final CertificatePackArgs Empty = new CertificatePackArgs();
 
     /**
-     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
      * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -28,7 +28,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
     private Output<String> certificateAuthority;
 
     /**
-     * @return Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+     * @return Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
      * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
@@ -121,15 +121,15 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
      * Identifier.
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Identifier.
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private CertificatePackArgs() {}
@@ -163,7 +163,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificateAuthority Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+         * @param certificateAuthority Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
          * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
@@ -175,7 +175,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificateAuthority Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+         * @param certificateAuthority Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).
          * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
@@ -312,7 +312,7 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
+        public Builder zoneId(Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -339,6 +339,9 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
             }
             if ($.validityDays == null) {
                 throw new MissingRequiredPropertyException("CertificatePackArgs", "validityDays");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("CertificatePackArgs", "zoneId");
             }
             return $;
         }

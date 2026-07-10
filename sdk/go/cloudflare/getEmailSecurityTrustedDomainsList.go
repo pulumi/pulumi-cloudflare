@@ -59,49 +59,47 @@ func LookupEmailSecurityTrustedDomainsList(ctx *pulumi.Context, args *LookupEmai
 
 // A collection of arguments for invoking getEmailSecurityTrustedDomainsList.
 type LookupEmailSecurityTrustedDomainsListArgs struct {
-	// Account Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
-	Direction    *string `pulumi:"direction"`
-	IsRecent     *bool   `pulumi:"isRecent"`
-	IsSimilarity *bool   `pulumi:"isSimilarity"`
+	Direction *string `pulumi:"direction"`
+	// Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+	IsRecent *bool `pulumi:"isRecent"`
+	// Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+	IsSimilarity *bool `pulumi:"isSimilarity"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// The field to sort by.
+	// Field to sort by.
 	// Available values: "pattern", "createdAt".
 	Order   *string `pulumi:"order"`
 	Pattern *string `pulumi:"pattern"`
-	// Allows searching in multiple properties of a record simultaneously.
-	// This parameter is intended for human users, not automation. Its exact
-	// behavior is intentionally left unspecified and is subject to change
-	// in the future.
+	// Search term for filtering records. Behavior may change.
 	Search *string `pulumi:"search"`
 }
 
 // A collection of values returned by getEmailSecurityTrustedDomainsList.
 type LookupEmailSecurityTrustedDomainsListResult struct {
-	// Account Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
 	Direction *string `pulumi:"direction"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string `pulumi:"id"`
-	IsRecent     *bool  `pulumi:"isRecent"`
-	IsSimilarity *bool  `pulumi:"isSimilarity"`
+	Id string `pulumi:"id"`
+	// Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+	IsRecent *bool `pulumi:"isRecent"`
+	// Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+	IsSimilarity *bool `pulumi:"isSimilarity"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// The field to sort by.
+	// Field to sort by.
 	// Available values: "pattern", "createdAt".
 	Order   *string `pulumi:"order"`
 	Pattern *string `pulumi:"pattern"`
 	// The items returned by the data source
 	Results []GetEmailSecurityTrustedDomainsListResult `pulumi:"results"`
-	// Allows searching in multiple properties of a record simultaneously.
-	// This parameter is intended for human users, not automation. Its exact
-	// behavior is intentionally left unspecified and is subject to change
-	// in the future.
+	// Search term for filtering records. Behavior may change.
 	Search *string `pulumi:"search"`
 }
 
@@ -116,23 +114,22 @@ func LookupEmailSecurityTrustedDomainsListOutput(ctx *pulumi.Context, args Looku
 
 // A collection of arguments for invoking getEmailSecurityTrustedDomainsList.
 type LookupEmailSecurityTrustedDomainsListOutputArgs struct {
-	// Account Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The sorting direction.
 	// Available values: "asc", "desc".
-	Direction    pulumi.StringPtrInput `pulumi:"direction"`
-	IsRecent     pulumi.BoolPtrInput   `pulumi:"isRecent"`
-	IsSimilarity pulumi.BoolPtrInput   `pulumi:"isSimilarity"`
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
+	IsRecent pulumi.BoolPtrInput `pulumi:"isRecent"`
+	// Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
+	IsSimilarity pulumi.BoolPtrInput `pulumi:"isSimilarity"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// The field to sort by.
+	// Field to sort by.
 	// Available values: "pattern", "createdAt".
 	Order   pulumi.StringPtrInput `pulumi:"order"`
 	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
-	// Allows searching in multiple properties of a record simultaneously.
-	// This parameter is intended for human users, not automation. Its exact
-	// behavior is intentionally left unspecified and is subject to change
-	// in the future.
+	// Search term for filtering records. Behavior may change.
 	Search pulumi.StringPtrInput `pulumi:"search"`
 }
 
@@ -155,7 +152,7 @@ func (o LookupEmailSecurityTrustedDomainsListResultOutput) ToLookupEmailSecurity
 	return o
 }
 
-// Account Identifier
+// Identifier.
 func (o LookupEmailSecurityTrustedDomainsListResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -171,10 +168,12 @@ func (o LookupEmailSecurityTrustedDomainsListResultOutput) Id() pulumi.StringOut
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Filter to show only recently registered domains that are trusted to prevent triggering Suspicious or Malicious dispositions.
 func (o LookupEmailSecurityTrustedDomainsListResultOutput) IsRecent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) *bool { return v.IsRecent }).(pulumi.BoolPtrOutput)
 }
 
+// Filter to show only proximity domains (partner or approved domains with similar spelling to connected domains) that prevent Spoof dispositions.
 func (o LookupEmailSecurityTrustedDomainsListResultOutput) IsSimilarity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) *bool { return v.IsSimilarity }).(pulumi.BoolPtrOutput)
 }
@@ -184,7 +183,7 @@ func (o LookupEmailSecurityTrustedDomainsListResultOutput) MaxItems() pulumi.Int
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// The field to sort by.
+// Field to sort by.
 // Available values: "pattern", "createdAt".
 func (o LookupEmailSecurityTrustedDomainsListResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) *string { return v.Order }).(pulumi.StringPtrOutput)
@@ -201,10 +200,7 @@ func (o LookupEmailSecurityTrustedDomainsListResultOutput) Results() GetEmailSec
 	}).(GetEmailSecurityTrustedDomainsListResultArrayOutput)
 }
 
-// Allows searching in multiple properties of a record simultaneously.
-// This parameter is intended for human users, not automation. Its exact
-// behavior is intentionally left unspecified and is subject to change
-// in the future.
+// Search term for filtering records. Behavior may change.
 func (o LookupEmailSecurityTrustedDomainsListResultOutput) Search() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) *string { return v.Search }).(pulumi.StringPtrOutput)
 }

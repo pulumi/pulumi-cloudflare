@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.GetEmailSecurityImpersonationRegistryFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,25 +17,18 @@ public final class GetEmailSecurityImpersonationRegistryArgs extends com.pulumi.
     public static final GetEmailSecurityImpersonationRegistryArgs Empty = new GetEmailSecurityImpersonationRegistryArgs();
 
     /**
-     * Account Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-
-    @Import(name="displayNameId")
-    private @Nullable Output<Integer> displayNameId;
-
-    public Optional<Output<Integer>> displayNameId() {
-        return Optional.ofNullable(this.displayNameId);
     }
 
     @Import(name="filter")
@@ -46,12 +38,27 @@ public final class GetEmailSecurityImpersonationRegistryArgs extends com.pulumi.
         return Optional.ofNullable(this.filter);
     }
 
+    /**
+     * Impersonation registry entry identifier
+     * 
+     */
+    @Import(name="impersonationRegistryId")
+    private @Nullable Output<String> impersonationRegistryId;
+
+    /**
+     * @return Impersonation registry entry identifier
+     * 
+     */
+    public Optional<Output<String>> impersonationRegistryId() {
+        return Optional.ofNullable(this.impersonationRegistryId);
+    }
+
     private GetEmailSecurityImpersonationRegistryArgs() {}
 
     private GetEmailSecurityImpersonationRegistryArgs(GetEmailSecurityImpersonationRegistryArgs $) {
         this.accountId = $.accountId;
-        this.displayNameId = $.displayNameId;
         this.filter = $.filter;
+        this.impersonationRegistryId = $.impersonationRegistryId;
     }
 
     public static Builder builder() {
@@ -73,7 +80,7 @@ public final class GetEmailSecurityImpersonationRegistryArgs extends com.pulumi.
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -84,22 +91,13 @@ public final class GetEmailSecurityImpersonationRegistryArgs extends com.pulumi.
         }
 
         /**
-         * @param accountId Account Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
-        }
-
-        public Builder displayNameId(@Nullable Output<Integer> displayNameId) {
-            $.displayNameId = displayNameId;
-            return this;
-        }
-
-        public Builder displayNameId(Integer displayNameId) {
-            return displayNameId(Output.of(displayNameId));
         }
 
         public Builder filter(@Nullable Output<GetEmailSecurityImpersonationRegistryFilterArgs> filter) {
@@ -109,6 +107,27 @@ public final class GetEmailSecurityImpersonationRegistryArgs extends com.pulumi.
 
         public Builder filter(GetEmailSecurityImpersonationRegistryFilterArgs filter) {
             return filter(Output.of(filter));
+        }
+
+        /**
+         * @param impersonationRegistryId Impersonation registry entry identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder impersonationRegistryId(@Nullable Output<String> impersonationRegistryId) {
+            $.impersonationRegistryId = impersonationRegistryId;
+            return this;
+        }
+
+        /**
+         * @param impersonationRegistryId Impersonation registry entry identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder impersonationRegistryId(String impersonationRegistryId) {
+            return impersonationRegistryId(Output.of(impersonationRegistryId));
         }
 
         public GetEmailSecurityImpersonationRegistryArgs build() {

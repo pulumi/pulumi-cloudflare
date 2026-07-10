@@ -64,7 +64,7 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
     /**
      * The account id
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Timestamp of when the webhook destination was created.
      */
@@ -118,6 +118,9 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
             resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as NotificationPolicyWebhooksArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -186,7 +189,7 @@ export interface NotificationPolicyWebhooksArgs {
     /**
      * The account id
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
      */

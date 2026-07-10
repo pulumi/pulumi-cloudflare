@@ -16,6 +16,11 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Accepted Permissions
+ * 
+ * - `Bot Management Read`
+ * - `Bot Management Write`
+ * 
  * ## Example Usage
  * 
  * <pre>

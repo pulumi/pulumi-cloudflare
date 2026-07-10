@@ -60,7 +60,7 @@ import (
 type ZeroTrustDeviceCustomProfileLocalDomainFallback struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput                                           `pulumi:"accountId"`
+	AccountId pulumi.StringOutput                                              `pulumi:"accountId"`
 	Domains   ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArrayOutput `pulumi:"domains"`
 	PolicyId  pulumi.StringOutput                                              `pulumi:"policyId"`
 }
@@ -72,6 +72,9 @@ func NewZeroTrustDeviceCustomProfileLocalDomainFallback(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Domains == nil {
 		return nil, errors.New("invalid value for required argument 'Domains'")
 	}
@@ -123,14 +126,14 @@ func (ZeroTrustDeviceCustomProfileLocalDomainFallbackState) ElementType() reflec
 }
 
 type zeroTrustDeviceCustomProfileLocalDomainFallbackArgs struct {
-	AccountId *string                                                 `pulumi:"accountId"`
+	AccountId string                                                  `pulumi:"accountId"`
 	Domains   []ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain `pulumi:"domains"`
 	PolicyId  string                                                  `pulumi:"policyId"`
 }
 
 // The set of arguments for constructing a ZeroTrustDeviceCustomProfileLocalDomainFallback resource.
 type ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	Domains   ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArrayInput
 	PolicyId  pulumi.StringInput
 }
@@ -222,8 +225,8 @@ func (o ZeroTrustDeviceCustomProfileLocalDomainFallbackOutput) ToZeroTrustDevice
 	return o
 }
 
-func (o ZeroTrustDeviceCustomProfileLocalDomainFallbackOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfileLocalDomainFallback) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDeviceCustomProfileLocalDomainFallbackOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfileLocalDomainFallback) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustDeviceCustomProfileLocalDomainFallbackOutput) Domains() ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArrayOutput {

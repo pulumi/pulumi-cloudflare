@@ -21,9 +21,9 @@ __all__ = ['ZeroTrustGatewayPolicyArgs', 'ZeroTrustGatewayPolicy']
 @pulumi.input_type
 class ZeroTrustGatewayPolicyArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  action: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  device_posture: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -51,10 +51,9 @@ class ZeroTrustGatewayPolicyArgs:
         :param pulumi.Input['ZeroTrustGatewayPolicyScheduleArgs'] schedule: Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
         :param pulumi.Input[_builtins.str] traffic: Specify the wirefilter expression used for traffic matching. The API automatically formats and sanitizes expressions before storing them. To prevent Terraform state drift, use the formatted expression returned in the API response.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if device_posture is not None:
@@ -75,6 +74,15 @@ class ZeroTrustGatewayPolicyArgs:
             pulumi.set(__self__, "schedule", schedule)
         if traffic is not None:
             pulumi.set(__self__, "traffic", traffic)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -100,15 +108,6 @@ class ZeroTrustGatewayPolicyArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -925,6 +924,8 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustGatewayPolicyArgs.__new__(ZeroTrustGatewayPolicyArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
@@ -1039,7 +1040,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

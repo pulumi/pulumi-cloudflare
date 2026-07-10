@@ -62,7 +62,7 @@ type R2BucketSippy struct {
 	pulumi.CustomResourceState
 
 	// Account ID.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// R2 bucket to copy objects to.
@@ -82,6 +82,9 @@ func NewR2BucketSippy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.BucketName == nil {
 		return nil, errors.New("invalid value for required argument 'BucketName'")
 	}
@@ -143,7 +146,7 @@ func (R2BucketSippyState) ElementType() reflect.Type {
 
 type r2bucketSippyArgs struct {
 	// Account ID.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// R2 bucket to copy objects to.
@@ -157,7 +160,7 @@ type r2bucketSippyArgs struct {
 // The set of arguments for constructing a R2BucketSippy resource.
 type R2BucketSippyArgs struct {
 	// Account ID.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Name of the bucket.
 	BucketName pulumi.StringInput
 	// R2 bucket to copy objects to.
@@ -256,8 +259,8 @@ func (o R2BucketSippyOutput) ToR2BucketSippyOutputWithContext(ctx context.Contex
 }
 
 // Account ID.
-func (o R2BucketSippyOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketSippy) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o R2BucketSippyOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2BucketSippy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Name of the bucket.

@@ -34,7 +34,7 @@ export interface GetR2BucketSippyArgs {
     /**
      * Account ID.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * Name of the bucket.
      */
@@ -48,7 +48,7 @@ export interface GetR2BucketSippyResult {
     /**
      * Account ID.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Name of the bucket.
      */
@@ -98,7 +98,7 @@ export interface GetR2BucketSippyOutputArgs {
     /**
      * Account ID.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Name of the bucket.
      */

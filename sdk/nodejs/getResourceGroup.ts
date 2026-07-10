@@ -40,7 +40,7 @@ export interface GetResourceGroupArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: string;
+    accountId: string;
     /**
      * Resource Group identifier tag.
      */
@@ -54,7 +54,7 @@ export interface GetResourceGroupResult {
     /**
      * Account identifier tag.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * Identifier of the resource group.
      */
@@ -110,7 +110,7 @@ export interface GetResourceGroupOutputArgs {
     /**
      * Account identifier tag.
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Resource Group identifier tag.
      */

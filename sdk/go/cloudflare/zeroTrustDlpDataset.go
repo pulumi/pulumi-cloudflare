@@ -54,7 +54,7 @@ import (
 type ZeroTrustDlpDataset struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if `secret` is true or undefined
@@ -93,6 +93,9 @@ func NewZeroTrustDlpDataset(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -189,7 +192,7 @@ func (ZeroTrustDlpDatasetState) ElementType() reflect.Type {
 }
 
 type zeroTrustDlpDatasetArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if `secret` is true or undefined
@@ -209,7 +212,7 @@ type zeroTrustDlpDatasetArgs struct {
 
 // The set of arguments for constructing a ZeroTrustDlpDataset resource.
 type ZeroTrustDlpDatasetArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Only applies to custom word lists.
 	// Determines if the words should be matched in a case-sensitive manner
 	// Cannot be set to false if `secret` is true or undefined
@@ -314,8 +317,8 @@ func (o ZeroTrustDlpDatasetOutput) ToZeroTrustDlpDatasetOutputWithContext(ctx co
 	return o
 }
 
-func (o ZeroTrustDlpDatasetOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDlpDatasetOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Only applies to custom word lists.

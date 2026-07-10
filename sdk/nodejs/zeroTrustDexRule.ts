@@ -62,7 +62,7 @@ export class ZeroTrustDexRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDexRule.__pulumiType;
     }
 
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -98,6 +98,9 @@ export class ZeroTrustDexRule extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ZeroTrustDexRuleArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.match === undefined && !opts.urn) {
                 throw new Error("Missing required property 'match'");
             }
@@ -140,7 +143,7 @@ export interface ZeroTrustDexRuleState {
  * The set of arguments for constructing a ZeroTrustDexRule resource.
  */
 export interface ZeroTrustDexRuleArgs {
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     description?: pulumi.Input<string | undefined>;
     /**
      * The wirefilter expression to match.

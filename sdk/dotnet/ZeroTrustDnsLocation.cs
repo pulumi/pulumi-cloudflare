@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustDnsLocation : global::Pulumi.CustomResource
     {
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Indicate whether this location is the default location.
@@ -220,8 +220,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZeroTrustDnsLocationArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Indicate whether this location is the default location.

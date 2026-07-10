@@ -73,6 +73,7 @@ import (
 // | `replaceInsecureJs` | `"on"` / `"off"` | Automatically replace insecure JavaScript libraries with safer and faster alt... |
 // | `responseBuffering` | `"on"` / `"off"` | Enables or disables buffering of responses from the proxied server. Cloudflar... |
 // | `rocketLoader` | `"on"` / `"off"` | Rocket Loader is a general-purpose asynchronous JavaScript optimisation that ... |
+// | `searchForAgents` | `"on"` / `"off"` | When enabled, Cloudflare provisions an AI Search instance for the zone and ex... |
 // | `securityHeader` | Object | Cloudflare security header for a zone. |
 // | `securityLevel` | `"off"`, `"essentiallyOff"`, `"low"`, `"medium"`, `"high"`, `"underAttack"` | Choose the appropriate security profile for your website, which will automati... |
 // | `serverSideExclude` | `"on"` / `"off"` | If there is sensitive content on your website that you want visible to real v... |
@@ -471,7 +472,7 @@ type ZoneSetting struct {
 	// Current value of the zone setting.
 	Value pulumi.AnyOutput `pulumi:"value"`
 	// Identifier
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewZoneSetting registers a new resource with the given unique name, arguments, and options.
@@ -486,6 +487,9 @@ func NewZoneSetting(ctx *pulumi.Context,
 	}
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZoneSetting
@@ -557,7 +561,7 @@ type zoneSettingArgs struct {
 	// Current value of the zone setting.
 	Value interface{} `pulumi:"value"`
 	// Identifier
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZoneSetting resource.
@@ -569,7 +573,7 @@ type ZoneSettingArgs struct {
 	// Current value of the zone setting.
 	Value pulumi.Input
 	// Identifier
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (ZoneSettingArgs) ElementType() reflect.Type {
@@ -691,8 +695,8 @@ func (o ZoneSettingOutput) Value() pulumi.AnyOutput {
 }
 
 // Identifier
-func (o ZoneSettingOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSetting) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o ZoneSettingOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneSetting) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type ZoneSettingArrayOutput struct{ *pulumi.OutputState }

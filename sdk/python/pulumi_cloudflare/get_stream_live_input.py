@@ -82,7 +82,7 @@ class GetStreamLiveInputResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         Identifier.
         """
@@ -290,7 +290,7 @@ def get_stream_live_input(account_id: Optional[_builtins.str] = None,
         uid=pulumi.get(__ret__, 'uid'),
         web_rtc=pulumi.get(__ret__, 'web_rtc'),
         web_rtc_playback=pulumi.get(__ret__, 'web_rtc_playback'))
-def get_stream_live_input_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+def get_stream_live_input_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  live_input_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamLiveInputResult]:
     """

@@ -44,6 +44,7 @@ import (
 //					OnlyWhenUpstreamUnhealthy: pulumi.Bool(false),
 //				},
 //				DeprecateAnyRequests: pulumi.Bool(true),
+//				DnsFirewallIpCount:   pulumi.Int(2),
 //				EcsFallback:          pulumi.Bool(false),
 //				MaximumCacheTtl:      pulumi.Float64(900),
 //				MinimumCacheTtl:      pulumi.Float64(60),
@@ -69,12 +70,14 @@ type DnsFirewall struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Attack mitigation settings
 	AttackMitigation DnsFirewallAttackMitigationOutput `pulumi:"attackMitigation"`
 	// Whether to refuse to answer queries for the ANY type
-	DeprecateAnyRequests pulumi.BoolPtrOutput     `pulumi:"deprecateAnyRequests"`
-	DnsFirewallIps       pulumi.StringArrayOutput `pulumi:"dnsFirewallIps"`
+	DeprecateAnyRequests pulumi.BoolPtrOutput `pulumi:"deprecateAnyRequests"`
+	// Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+	DnsFirewallIpCount pulumi.IntOutput         `pulumi:"dnsFirewallIpCount"`
+	DnsFirewallIps     pulumi.StringArrayOutput `pulumi:"dnsFirewallIps"`
 	// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	EcsFallback pulumi.BoolPtrOutput `pulumi:"ecsFallback"`
 	// By default, Cloudflare attempts to cache responses for as long as
@@ -107,7 +110,7 @@ type DnsFirewall struct {
 	// Cloudflare returns to clients. Cloudflare will always forward the TTL
 	// value received from upstream nameservers.
 	NegativeCacheTtl pulumi.Float64PtrOutput `pulumi:"negativeCacheTtl"`
-	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+	// Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
 	Ratelimit pulumi.Float64PtrOutput `pulumi:"ratelimit"`
 	// Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
 	Retries     pulumi.Float64Output     `pulumi:"retries"`
@@ -121,6 +124,9 @@ func NewDnsFirewall(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -155,8 +161,10 @@ type dnsFirewallState struct {
 	// Attack mitigation settings
 	AttackMitigation *DnsFirewallAttackMitigation `pulumi:"attackMitigation"`
 	// Whether to refuse to answer queries for the ANY type
-	DeprecateAnyRequests *bool    `pulumi:"deprecateAnyRequests"`
-	DnsFirewallIps       []string `pulumi:"dnsFirewallIps"`
+	DeprecateAnyRequests *bool `pulumi:"deprecateAnyRequests"`
+	// Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+	DnsFirewallIpCount *int     `pulumi:"dnsFirewallIpCount"`
+	DnsFirewallIps     []string `pulumi:"dnsFirewallIps"`
 	// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	EcsFallback *bool `pulumi:"ecsFallback"`
 	// By default, Cloudflare attempts to cache responses for as long as
@@ -189,7 +197,7 @@ type dnsFirewallState struct {
 	// Cloudflare returns to clients. Cloudflare will always forward the TTL
 	// value received from upstream nameservers.
 	NegativeCacheTtl *float64 `pulumi:"negativeCacheTtl"`
-	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+	// Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
 	Ratelimit *float64 `pulumi:"ratelimit"`
 	// Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
 	Retries     *float64 `pulumi:"retries"`
@@ -203,7 +211,9 @@ type DnsFirewallState struct {
 	AttackMitigation DnsFirewallAttackMitigationPtrInput
 	// Whether to refuse to answer queries for the ANY type
 	DeprecateAnyRequests pulumi.BoolPtrInput
-	DnsFirewallIps       pulumi.StringArrayInput
+	// Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+	DnsFirewallIpCount pulumi.IntPtrInput
+	DnsFirewallIps     pulumi.StringArrayInput
 	// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	EcsFallback pulumi.BoolPtrInput
 	// By default, Cloudflare attempts to cache responses for as long as
@@ -236,7 +246,7 @@ type DnsFirewallState struct {
 	// Cloudflare returns to clients. Cloudflare will always forward the TTL
 	// value received from upstream nameservers.
 	NegativeCacheTtl pulumi.Float64PtrInput
-	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+	// Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
 	Ratelimit pulumi.Float64PtrInput
 	// Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
 	Retries     pulumi.Float64PtrInput
@@ -249,11 +259,13 @@ func (DnsFirewallState) ElementType() reflect.Type {
 
 type dnsFirewallArgs struct {
 	// Identifier.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Attack mitigation settings
 	AttackMitigation *DnsFirewallAttackMitigation `pulumi:"attackMitigation"`
 	// Whether to refuse to answer queries for the ANY type
 	DeprecateAnyRequests *bool `pulumi:"deprecateAnyRequests"`
+	// Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+	DnsFirewallIpCount *int `pulumi:"dnsFirewallIpCount"`
 	// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	EcsFallback *bool `pulumi:"ecsFallback"`
 	// By default, Cloudflare attempts to cache responses for as long as
@@ -284,7 +296,7 @@ type dnsFirewallArgs struct {
 	// Cloudflare returns to clients. Cloudflare will always forward the TTL
 	// value received from upstream nameservers.
 	NegativeCacheTtl *float64 `pulumi:"negativeCacheTtl"`
-	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+	// Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
 	Ratelimit *float64 `pulumi:"ratelimit"`
 	// Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
 	Retries     *float64 `pulumi:"retries"`
@@ -294,11 +306,13 @@ type dnsFirewallArgs struct {
 // The set of arguments for constructing a DnsFirewall resource.
 type DnsFirewallArgs struct {
 	// Identifier.
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// Attack mitigation settings
 	AttackMitigation DnsFirewallAttackMitigationPtrInput
 	// Whether to refuse to answer queries for the ANY type
 	DeprecateAnyRequests pulumi.BoolPtrInput
+	// Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+	DnsFirewallIpCount pulumi.IntPtrInput
 	// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	EcsFallback pulumi.BoolPtrInput
 	// By default, Cloudflare attempts to cache responses for as long as
@@ -329,7 +343,7 @@ type DnsFirewallArgs struct {
 	// Cloudflare returns to clients. Cloudflare will always forward the TTL
 	// value received from upstream nameservers.
 	NegativeCacheTtl pulumi.Float64PtrInput
-	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+	// Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
 	Ratelimit pulumi.Float64PtrInput
 	// Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
 	Retries     pulumi.Float64PtrInput
@@ -424,8 +438,8 @@ func (o DnsFirewallOutput) ToDnsFirewallOutputWithContext(ctx context.Context) D
 }
 
 // Identifier.
-func (o DnsFirewallOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DnsFirewall) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o DnsFirewallOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsFirewall) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Attack mitigation settings
@@ -436,6 +450,11 @@ func (o DnsFirewallOutput) AttackMitigation() DnsFirewallAttackMitigationOutput 
 // Whether to refuse to answer queries for the ANY type
 func (o DnsFirewallOutput) DeprecateAnyRequests() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DnsFirewall) pulumi.BoolPtrOutput { return v.DeprecateAnyRequests }).(pulumi.BoolPtrOutput)
+}
+
+// Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later.
+func (o DnsFirewallOutput) DnsFirewallIpCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DnsFirewall) pulumi.IntOutput { return v.DnsFirewallIpCount }).(pulumi.IntOutput)
 }
 
 func (o DnsFirewallOutput) DnsFirewallIps() pulumi.StringArrayOutput {
@@ -492,7 +511,7 @@ func (o DnsFirewallOutput) NegativeCacheTtl() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *DnsFirewall) pulumi.Float64PtrOutput { return v.NegativeCacheTtl }).(pulumi.Float64PtrOutput)
 }
 
-// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
+// Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting.
 func (o DnsFirewallOutput) Ratelimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *DnsFirewall) pulumi.Float64PtrOutput { return v.Ratelimit }).(pulumi.Float64PtrOutput)
 }

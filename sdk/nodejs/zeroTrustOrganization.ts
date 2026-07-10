@@ -141,7 +141,7 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
      */
     declare public readonly mfaConfigurationAllowed: pulumi.Output<boolean>;
     /**
-     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
      */
     declare public readonly mfaRequiredForAllApps: pulumi.Output<boolean>;
     /**
@@ -277,7 +277,7 @@ export interface ZeroTrustOrganizationState {
      */
     mfaConfigurationAllowed?: pulumi.Input<boolean | undefined>;
     /**
-     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
      */
     mfaRequiredForAllApps?: pulumi.Input<boolean | undefined>;
     /**
@@ -353,7 +353,7 @@ export interface ZeroTrustOrganizationArgs {
      */
     mfaConfigurationAllowed?: pulumi.Input<boolean | undefined>;
     /**
-     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.
+     * Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot only contain 'ssh*piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
      */
     mfaRequiredForAllApps?: pulumi.Input<boolean | undefined>;
     /**

@@ -19,6 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool CollectLogs;
         public readonly string CreatedAt;
         public readonly Outputs.GetAiGatewaysResultDlpResult Dlp;
+        public readonly Outputs.GetAiGatewaysResultGuardrailsResult Guardrails;
         /// <summary>
         /// gateway id
         /// </summary>
@@ -52,6 +53,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// Maximum number of retry attempts for failed requests (1-5)
         /// </summary>
         public readonly int RetryMaxAttempts;
+        public readonly Outputs.GetAiGatewaysResultSpendLimitsResult SpendLimits;
         public readonly string StoreId;
         public readonly Outputs.GetAiGatewaysResultStripeResult Stripe;
         /// <summary>
@@ -74,6 +76,8 @@ namespace Pulumi.Cloudflare.Outputs
             string createdAt,
 
             Outputs.GetAiGatewaysResultDlpResult dlp,
+
+            Outputs.GetAiGatewaysResultGuardrailsResult guardrails,
 
             string id,
 
@@ -103,6 +107,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             int retryMaxAttempts,
 
+            Outputs.GetAiGatewaysResultSpendLimitsResult spendLimits,
+
             string storeId,
 
             Outputs.GetAiGatewaysResultStripeResult stripe,
@@ -117,6 +123,7 @@ namespace Pulumi.Cloudflare.Outputs
             CollectLogs = collectLogs;
             CreatedAt = createdAt;
             Dlp = dlp;
+            Guardrails = guardrails;
             Id = id;
             IsDefault = isDefault;
             LogManagement = logManagement;
@@ -131,6 +138,7 @@ namespace Pulumi.Cloudflare.Outputs
             RetryBackoff = retryBackoff;
             RetryDelay = retryDelay;
             RetryMaxAttempts = retryMaxAttempts;
+            SpendLimits = spendLimits;
             StoreId = storeId;
             Stripe = stripe;
             WorkersAiBillingMode = workersAiBillingMode;

@@ -196,7 +196,7 @@ export class CustomSsl extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    declare public readonly zoneId: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a CustomSsl resource with the given unique name, arguments, and options.
@@ -237,6 +237,9 @@ export class CustomSsl extends pulumi.CustomResource {
             }
             if (args?.privateKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
+            }
+            if (args?.zoneId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["bundleMethod"] = args?.bundleMethod;
             resourceInputs["certificate"] = args?.certificate;
@@ -391,5 +394,5 @@ export interface CustomSslArgs {
     /**
      * Identifier.
      */
-    zoneId?: pulumi.Input<string | undefined>;
+    zoneId: pulumi.Input<string>;
 }

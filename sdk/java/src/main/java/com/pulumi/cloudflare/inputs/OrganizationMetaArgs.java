@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.OrganizationMetaFlagsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,6 +32,31 @@ public final class OrganizationMetaArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.flags);
     }
 
+    /**
+     * Ordered chain of organization tags from the root organization down to
+     * (and including) this organization itself. Root organizations return a
+     * single-element array containing their own tag; sub-organizations return
+     * `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+     * constructing authorization scopes that need to cover every ancestor
+     * in the hierarchy.
+     * 
+     */
+    @Import(name="hierarchyTags")
+    private @Nullable Output<List<String>> hierarchyTags;
+
+    /**
+     * @return Ordered chain of organization tags from the root organization down to
+     * (and including) this organization itself. Root organizations return a
+     * single-element array containing their own tag; sub-organizations return
+     * `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+     * constructing authorization scopes that need to cover every ancestor
+     * in the hierarchy.
+     * 
+     */
+    public Optional<Output<List<String>>> hierarchyTags() {
+        return Optional.ofNullable(this.hierarchyTags);
+    }
+
     @Import(name="managedBy")
     private @Nullable Output<String> managedBy;
 
@@ -42,6 +68,7 @@ public final class OrganizationMetaArgs extends com.pulumi.resources.ResourceArg
 
     private OrganizationMetaArgs(OrganizationMetaArgs $) {
         this.flags = $.flags;
+        this.hierarchyTags = $.hierarchyTags;
         this.managedBy = $.managedBy;
     }
 
@@ -82,6 +109,52 @@ public final class OrganizationMetaArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder flags(OrganizationMetaFlagsArgs flags) {
             return flags(Output.of(flags));
+        }
+
+        /**
+         * @param hierarchyTags Ordered chain of organization tags from the root organization down to
+         * (and including) this organization itself. Root organizations return a
+         * single-element array containing their own tag; sub-organizations return
+         * `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+         * constructing authorization scopes that need to cover every ancestor
+         * in the hierarchy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hierarchyTags(@Nullable Output<List<String>> hierarchyTags) {
+            $.hierarchyTags = hierarchyTags;
+            return this;
+        }
+
+        /**
+         * @param hierarchyTags Ordered chain of organization tags from the root organization down to
+         * (and including) this organization itself. Root organizations return a
+         * single-element array containing their own tag; sub-organizations return
+         * `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+         * constructing authorization scopes that need to cover every ancestor
+         * in the hierarchy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hierarchyTags(List<String> hierarchyTags) {
+            return hierarchyTags(Output.of(hierarchyTags));
+        }
+
+        /**
+         * @param hierarchyTags Ordered chain of organization tags from the root organization down to
+         * (and including) this organization itself. Root organizations return a
+         * single-element array containing their own tag; sub-organizations return
+         * `[rootTag, ...intermediateTags, parentTag, selfTag]`. Useful for
+         * constructing authorization scopes that need to cover every ancestor
+         * in the hierarchy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hierarchyTags(String... hierarchyTags) {
+            return hierarchyTags(List.of(hierarchyTags));
         }
 
         public Builder managedBy(@Nullable Output<String> managedBy) {

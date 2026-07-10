@@ -21,10 +21,10 @@ __all__ = ['ZeroTrustDlpEntryArgs', 'ZeroTrustDlpEntry']
 @pulumi.input_type
 class ZeroTrustDlpEntryArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  enabled: pulumi.Input[_builtins.bool],
                  name: pulumi.Input[_builtins.str],
                  pattern: pulumi.Input['ZeroTrustDlpEntryPatternArgs'],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None):
@@ -33,17 +33,25 @@ class ZeroTrustDlpEntryArgs:
 
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pattern", pattern)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if profile_id is not None:
             pulumi.set(__self__, "profile_id", profile_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -71,15 +79,6 @@ class ZeroTrustDlpEntryArgs:
     @pattern.setter
     def pattern(self, value: pulumi.Input['ZeroTrustDlpEntryPatternArgs']):
         pulumi.set(self, "pattern", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -139,6 +138,7 @@ class _ZeroTrustDlpEntryState:
                Cannot be set to false if secret is true
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        :param pulumi.Input['ZeroTrustDlpEntryVariantArgs'] variant: A Predefined AI prompt classification topic entry.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -313,6 +313,9 @@ class _ZeroTrustDlpEntryState:
     @_builtins.property
     @pulumi.getter
     def variant(self) -> pulumi.Input[Optional['ZeroTrustDlpEntryVariantArgs']]:
+        """
+        A Predefined AI prompt classification topic entry.
+        """
         return pulumi.get(self, "variant")
 
     @variant.setter
@@ -446,6 +449,8 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZeroTrustDlpEntryArgs.__new__(ZeroTrustDlpEntryArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             if enabled is None and not opts.urn:
@@ -506,6 +511,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
                Cannot be set to false if secret is true
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
         :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
+        :param pulumi.Input[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict']] variant: A Predefined AI prompt classification topic entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -531,7 +537,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -613,6 +619,9 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def variant(self) -> pulumi.Output['outputs.ZeroTrustDlpEntryVariant']:
+        """
+        A Predefined AI prompt classification topic entry.
+        """
         return pulumi.get(self, "variant")
 
     @_builtins.property

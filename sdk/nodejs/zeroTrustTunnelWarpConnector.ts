@@ -64,7 +64,7 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
     /**
      * Cloudflare account ID
      */
-    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Cloudflare account ID
      */
@@ -146,6 +146,9 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
             resourceInputs["tunnelSecret"] = state?.tunnelSecret;
         } else {
             const args = argsOrState as ZeroTrustTunnelWarpConnectorArgs | undefined;
+            if (args?.accountId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -239,7 +242,7 @@ export interface ZeroTrustTunnelWarpConnectorArgs {
     /**
      * Cloudflare account ID
      */
-    accountId?: pulumi.Input<string | undefined>;
+    accountId: pulumi.Input<string>;
     /**
      * Indicates that the tunnel will be created to be highly available. If omitted, defaults to false.
      */

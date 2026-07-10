@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultRequireAuthCo
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultRequireAuthMethod;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultRequireAzureAd;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultRequireCertificate;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultRequireCloudflareAccountMember;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultRequireCommonName;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultRequireDevicePosture;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupsResultRequireEmail;
@@ -43,6 +44,7 @@ public final class GetZeroTrustAccessGroupsResultRequire {
     private GetZeroTrustAccessGroupsResultRequireAuthMethod authMethod;
     private GetZeroTrustAccessGroupsResultRequireAzureAd azureAd;
     private GetZeroTrustAccessGroupsResultRequireCertificate certificate;
+    private GetZeroTrustAccessGroupsResultRequireCloudflareAccountMember cloudflareAccountMember;
     private GetZeroTrustAccessGroupsResultRequireCommonName commonName;
     private GetZeroTrustAccessGroupsResultRequireDevicePosture devicePosture;
     private GetZeroTrustAccessGroupsResultRequireEmail email;
@@ -87,6 +89,9 @@ public final class GetZeroTrustAccessGroupsResultRequire {
     }
     public GetZeroTrustAccessGroupsResultRequireCertificate certificate() {
         return this.certificate;
+    }
+    public GetZeroTrustAccessGroupsResultRequireCloudflareAccountMember cloudflareAccountMember() {
+        return this.cloudflareAccountMember;
     }
     public GetZeroTrustAccessGroupsResultRequireCommonName commonName() {
         return this.commonName;
@@ -167,6 +172,7 @@ public final class GetZeroTrustAccessGroupsResultRequire {
         private GetZeroTrustAccessGroupsResultRequireAuthMethod authMethod;
         private GetZeroTrustAccessGroupsResultRequireAzureAd azureAd;
         private GetZeroTrustAccessGroupsResultRequireCertificate certificate;
+        private GetZeroTrustAccessGroupsResultRequireCloudflareAccountMember cloudflareAccountMember;
         private GetZeroTrustAccessGroupsResultRequireCommonName commonName;
         private GetZeroTrustAccessGroupsResultRequireDevicePosture devicePosture;
         private GetZeroTrustAccessGroupsResultRequireEmail email;
@@ -195,6 +201,7 @@ public final class GetZeroTrustAccessGroupsResultRequire {
     	      this.authMethod = defaults.authMethod;
     	      this.azureAd = defaults.azureAd;
     	      this.certificate = defaults.certificate;
+    	      this.cloudflareAccountMember = defaults.cloudflareAccountMember;
     	      this.commonName = defaults.commonName;
     	      this.devicePosture = defaults.devicePosture;
     	      this.email = defaults.email;
@@ -255,6 +262,14 @@ public final class GetZeroTrustAccessGroupsResultRequire {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupsResultRequire", "certificate");
             }
             this.certificate = certificate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloudflareAccountMember(GetZeroTrustAccessGroupsResultRequireCloudflareAccountMember cloudflareAccountMember) {
+            if (cloudflareAccountMember == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupsResultRequire", "cloudflareAccountMember");
+            }
+            this.cloudflareAccountMember = cloudflareAccountMember;
             return this;
         }
         @CustomType.Setter
@@ -424,6 +439,7 @@ public final class GetZeroTrustAccessGroupsResultRequire {
             _resultValue.authMethod = authMethod;
             _resultValue.azureAd = azureAd;
             _resultValue.certificate = certificate;
+            _resultValue.cloudflareAccountMember = cloudflareAccountMember;
             _resultValue.commonName = commonName;
             _resultValue.devicePosture = devicePosture;
             _resultValue.email = email;

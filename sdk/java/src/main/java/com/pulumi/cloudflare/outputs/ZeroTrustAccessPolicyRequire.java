@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyRequireAuthContext;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyRequireAuthMethod;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyRequireAzureAd;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyRequireCertificate;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyRequireCloudflareAccountMember;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyRequireCommonName;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyRequireDevicePosture;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyRequireEmail;
@@ -44,6 +45,7 @@ public final class ZeroTrustAccessPolicyRequire {
     private @Nullable ZeroTrustAccessPolicyRequireAuthMethod authMethod;
     private @Nullable ZeroTrustAccessPolicyRequireAzureAd azureAd;
     private @Nullable ZeroTrustAccessPolicyRequireCertificate certificate;
+    private @Nullable ZeroTrustAccessPolicyRequireCloudflareAccountMember cloudflareAccountMember;
     private @Nullable ZeroTrustAccessPolicyRequireCommonName commonName;
     private @Nullable ZeroTrustAccessPolicyRequireDevicePosture devicePosture;
     private @Nullable ZeroTrustAccessPolicyRequireEmail email;
@@ -88,6 +90,9 @@ public final class ZeroTrustAccessPolicyRequire {
     }
     public Optional<ZeroTrustAccessPolicyRequireCertificate> certificate() {
         return Optional.ofNullable(this.certificate);
+    }
+    public Optional<ZeroTrustAccessPolicyRequireCloudflareAccountMember> cloudflareAccountMember() {
+        return Optional.ofNullable(this.cloudflareAccountMember);
     }
     public Optional<ZeroTrustAccessPolicyRequireCommonName> commonName() {
         return Optional.ofNullable(this.commonName);
@@ -168,6 +173,7 @@ public final class ZeroTrustAccessPolicyRequire {
         private @Nullable ZeroTrustAccessPolicyRequireAuthMethod authMethod;
         private @Nullable ZeroTrustAccessPolicyRequireAzureAd azureAd;
         private @Nullable ZeroTrustAccessPolicyRequireCertificate certificate;
+        private @Nullable ZeroTrustAccessPolicyRequireCloudflareAccountMember cloudflareAccountMember;
         private @Nullable ZeroTrustAccessPolicyRequireCommonName commonName;
         private @Nullable ZeroTrustAccessPolicyRequireDevicePosture devicePosture;
         private @Nullable ZeroTrustAccessPolicyRequireEmail email;
@@ -196,6 +202,7 @@ public final class ZeroTrustAccessPolicyRequire {
     	      this.authMethod = defaults.authMethod;
     	      this.azureAd = defaults.azureAd;
     	      this.certificate = defaults.certificate;
+    	      this.cloudflareAccountMember = defaults.cloudflareAccountMember;
     	      this.commonName = defaults.commonName;
     	      this.devicePosture = defaults.devicePosture;
     	      this.email = defaults.email;
@@ -246,6 +253,12 @@ public final class ZeroTrustAccessPolicyRequire {
         public Builder certificate(@Nullable ZeroTrustAccessPolicyRequireCertificate certificate) {
 
             this.certificate = certificate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloudflareAccountMember(@Nullable ZeroTrustAccessPolicyRequireCloudflareAccountMember cloudflareAccountMember) {
+
+            this.cloudflareAccountMember = cloudflareAccountMember;
             return this;
         }
         @CustomType.Setter
@@ -375,6 +388,7 @@ public final class ZeroTrustAccessPolicyRequire {
             _resultValue.authMethod = authMethod;
             _resultValue.azureAd = azureAd;
             _resultValue.certificate = certificate;
+            _resultValue.cloudflareAccountMember = cloudflareAccountMember;
             _resultValue.commonName = commonName;
             _resultValue.devicePosture = devicePosture;
             _resultValue.email = email;

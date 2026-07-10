@@ -19,10 +19,10 @@ __all__ = ['TurnstileWidgetArgs', 'TurnstileWidget']
 @pulumi.input_type
 class TurnstileWidgetArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[_builtins.str],
                  domains: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  mode: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bot_fight_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  clearance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  ephemeral_id: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -31,12 +31,12 @@ class TurnstileWidgetArgs:
         """
         The set of arguments for constructing a TurnstileWidget resource.
 
+        :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.str] mode: Widget Mode
                Available values: "non-interactive", "invisible", "managed".
         :param pulumi.Input[_builtins.str] name: Human readable widget name. Not unique. Cloudflare suggests that you
                set this to a meaningful string to make it easier to identify your
                widget, and where it is used.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
         :param pulumi.Input[_builtins.bool] bot_fight_mode: If bot*fight*mode is set to `true`, Cloudflare issues computationally
                expensive challenges in response to malicious bots (ENT only).
         :param pulumi.Input[_builtins.str] clearance_level: If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
@@ -47,11 +47,10 @@ class TurnstileWidgetArgs:
         :param pulumi.Input[_builtins.str] region: Region where this widget can be used. This cannot be changed after creation.
                Available values: "world", "china".
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "domains", domains)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if bot_fight_mode is not None:
             pulumi.set(__self__, "bot_fight_mode", bot_fight_mode)
         if clearance_level is not None:
@@ -62,6 +61,18 @@ class TurnstileWidgetArgs:
             pulumi.set(__self__, "offlabel", offlabel)
         if region is not None:
             pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -98,18 +109,6 @@ class TurnstileWidgetArgs:
     @name.setter
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="botFightMode")
@@ -550,6 +549,8 @@ class TurnstileWidget(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TurnstileWidgetArgs.__new__(TurnstileWidgetArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["bot_fight_mode"] = bot_fight_mode
             __props__.__dict__["clearance_level"] = clearance_level
@@ -642,7 +643,7 @@ class TurnstileWidget(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         """
         Identifier
         """

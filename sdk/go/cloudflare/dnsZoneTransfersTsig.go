@@ -54,7 +54,7 @@ import (
 type DnsZoneTransfersTsig struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// TSIG algorithm.
 	Algo pulumi.StringOutput `pulumi:"algo"`
 	// TSIG key name.
@@ -70,6 +70,9 @@ func NewDnsZoneTransfersTsig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Algo == nil {
 		return nil, errors.New("invalid value for required argument 'Algo'")
 	}
@@ -133,7 +136,7 @@ func (DnsZoneTransfersTsigState) ElementType() reflect.Type {
 }
 
 type dnsZoneTransfersTsigArgs struct {
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// TSIG algorithm.
 	Algo string `pulumi:"algo"`
 	// TSIG key name.
@@ -144,7 +147,7 @@ type dnsZoneTransfersTsigArgs struct {
 
 // The set of arguments for constructing a DnsZoneTransfersTsig resource.
 type DnsZoneTransfersTsigArgs struct {
-	AccountId pulumi.StringPtrInput
+	AccountId pulumi.StringInput
 	// TSIG algorithm.
 	Algo pulumi.StringInput
 	// TSIG key name.
@@ -240,8 +243,8 @@ func (o DnsZoneTransfersTsigOutput) ToDnsZoneTransfersTsigOutputWithContext(ctx 
 	return o
 }
 
-func (o DnsZoneTransfersTsigOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DnsZoneTransfersTsig) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o DnsZoneTransfersTsigOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsZoneTransfersTsig) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // TSIG algorithm.

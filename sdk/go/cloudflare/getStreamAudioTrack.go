@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetStreamAudioTrack(ctx, &cloudflare.LookupStreamAudioTrackArgs{
-//				AccountId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				Identifier: "ea95132c15732412d22c1476fa83f27a",
 //			}, nil)
 //			if err != nil {
@@ -55,7 +55,7 @@ func LookupStreamAudioTrack(ctx *pulumi.Context, args *LookupStreamAudioTrackArg
 // A collection of arguments for invoking getStreamAudioTrack.
 type LookupStreamAudioTrackArgs struct {
 	// The account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
 }
@@ -63,7 +63,7 @@ type LookupStreamAudioTrackArgs struct {
 // A collection of values returned by getStreamAudioTrack.
 type LookupStreamAudioTrackResult struct {
 	// The account identifier tag.
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// Array of audio tracks for the video.
 	Audios []GetStreamAudioTrackAudio `pulumi:"audios"`
 	// The provider-assigned unique ID for this managed resource.
@@ -84,7 +84,7 @@ func LookupStreamAudioTrackOutput(ctx *pulumi.Context, args LookupStreamAudioTra
 // A collection of arguments for invoking getStreamAudioTrack.
 type LookupStreamAudioTrackOutputArgs struct {
 	// The account identifier tag.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 }
@@ -109,8 +109,8 @@ func (o LookupStreamAudioTrackResultOutput) ToLookupStreamAudioTrackResultOutput
 }
 
 // The account identifier tag.
-func (o LookupStreamAudioTrackResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupStreamAudioTrackResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupStreamAudioTrackResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamAudioTrackResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Array of audio tracks for the video.

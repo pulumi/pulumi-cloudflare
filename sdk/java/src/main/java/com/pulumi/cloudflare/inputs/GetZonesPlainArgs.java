@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.GetZonesAccount;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -65,6 +66,13 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.status);
     }
 
+    @Import(name="types")
+    private @Nullable List<String> types;
+
+    public Optional<List<String>> types() {
+        return Optional.ofNullable(this.types);
+    }
+
     private GetZonesPlainArgs() {}
 
     private GetZonesPlainArgs(GetZonesPlainArgs $) {
@@ -75,6 +83,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.name = $.name;
         this.order = $.order;
         this.status = $.status;
+        this.types = $.types;
     }
 
     public static Builder builder() {
@@ -128,6 +137,15 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         public Builder status(@Nullable String status) {
             $.status = status;
             return this;
+        }
+
+        public Builder types(@Nullable List<String> types) {
+            $.types = types;
+            return this;
+        }
+
+        public Builder types(String... types) {
+            return types(List.of(types));
         }
 
         public GetZonesPlainArgs build() {
