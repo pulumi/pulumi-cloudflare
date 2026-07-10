@@ -152,68 +152,68 @@ export class WaitingRoom extends pulumi.CustomResource {
      *
      * An example cURL to a waiting room could be:
      *
-     * 	curl -X GET "https://example.com/waitingroom" \
-     * 		-H "Accept: application/json"
+     *     curl -X GET "https://example.com/waitingroom" \
+     *         -H "Accept: application/json"
      *
      * If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **fifo** and no event is active could be:
      *
-     * 	{
-     * 		"cfWaitingRoom": {
-     * 			"inWaitingRoom": true,
-     * 			"waitTimeKnown": true,
-     * 			"waitTime": 10,
-     * 			"waitTime25Percentile": 0,
-     * 			"waitTime50Percentile": 0,
-     * 			"waitTime75Percentile": 0,
-     * 			"waitTimeFormatted": "10 minutes",
-     * 			"queueIsFull": false,
-     * 			"queueAll": false,
-     * 			"lastUpdated": "2020-08-03T23:46:00.000Z",
-     * 			"refreshIntervalSeconds": 20,
-     * 			"queueingMethod": "fifo",
-     * 			"isFIFOQueue": true,
-     * 			"isRandomQueue": false,
-     * 			"isPassthroughQueue": false,
-     * 			"isRejectQueue": false,
-     * 			"isEventActive": false,
-     * 			"isEventPrequeueing": false,
-     * 			"timeUntilEventStart": 0,
-     * 			"timeUntilEventStartFormatted": "unavailable",
-     * 			"timeUntilEventEnd": 0,
-     * 			"timeUntilEventEndFormatted": "unavailable",
-     * 			"shuffleAtEventStart": false
-     * 		}
-     * 	}
+     *     {
+     *         "cfWaitingRoom": {
+     *             "inWaitingRoom": true,
+     *             "waitTimeKnown": true,
+     *             "waitTime": 10,
+     *             "waitTime25Percentile": 0,
+     *             "waitTime50Percentile": 0,
+     *             "waitTime75Percentile": 0,
+     *             "waitTimeFormatted": "10 minutes",
+     *             "queueIsFull": false,
+     *             "queueAll": false,
+     *             "lastUpdated": "2020-08-03T23:46:00.000Z",
+     *             "refreshIntervalSeconds": 20,
+     *             "queueingMethod": "fifo",
+     *             "isFIFOQueue": true,
+     *             "isRandomQueue": false,
+     *             "isPassthroughQueue": false,
+     *             "isRejectQueue": false,
+     *             "isEventActive": false,
+     *             "isEventPrequeueing": false,
+     *             "timeUntilEventStart": 0,
+     *             "timeUntilEventStartFormatted": "unavailable",
+     *             "timeUntilEventEnd": 0,
+     *             "timeUntilEventEndFormatted": "unavailable",
+     *             "shuffleAtEventStart": false
+     *         }
+     *     }
      *
      * If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active could be:
      *
-     * 	{
-     * 		"cfWaitingRoom": {
-     * 			"inWaitingRoom": true,
-     * 			"waitTimeKnown": true,
-     * 			"waitTime": 10,
-     * 			"waitTime25Percentile": 5,
-     * 			"waitTime50Percentile": 10,
-     * 			"waitTime75Percentile": 15,
-     * 			"waitTimeFormatted": "5 minutes to 15 minutes",
-     * 			"queueIsFull": false,
-     * 			"queueAll": false,
-     * 			"lastUpdated": "2020-08-03T23:46:00.000Z",
-     * 			"refreshIntervalSeconds": 20,
-     * 			"queueingMethod": "random",
-     * 			"isFIFOQueue": false,
-     * 			"isRandomQueue": true,
-     * 			"isPassthroughQueue": false,
-     * 			"isRejectQueue": false,
-     * 			"isEventActive": true,
-     * 			"isEventPrequeueing": false,
-     * 			"timeUntilEventStart": 0,
-     * 			"timeUntilEventStartFormatted": "unavailable",
-     * 			"timeUntilEventEnd": 15,
-     * 			"timeUntilEventEndFormatted": "15 minutes",
-     * 			"shuffleAtEventStart": true
-     * 		}
-     * 	}
+     *     {
+     *         "cfWaitingRoom": {
+     *             "inWaitingRoom": true,
+     *             "waitTimeKnown": true,
+     *             "waitTime": 10,
+     *             "waitTime25Percentile": 5,
+     *             "waitTime50Percentile": 10,
+     *             "waitTime75Percentile": 15,
+     *             "waitTimeFormatted": "5 minutes to 15 minutes",
+     *             "queueIsFull": false,
+     *             "queueAll": false,
+     *             "lastUpdated": "2020-08-03T23:46:00.000Z",
+     *             "refreshIntervalSeconds": 20,
+     *             "queueingMethod": "random",
+     *             "isFIFOQueue": false,
+     *             "isRandomQueue": true,
+     *             "isPassthroughQueue": false,
+     *             "isRejectQueue": false,
+     *             "isEventActive": true,
+     *             "isEventPrequeueing": false,
+     *             "timeUntilEventStart": 0,
+     *             "timeUntilEventStartFormatted": "unavailable",
+     *             "timeUntilEventEnd": 15,
+     *             "timeUntilEventEndFormatted": "15 minutes",
+     *             "shuffleAtEventStart": true
+     *         }
+     *     }
      */
     declare public readonly jsonResponseEnabled: pulumi.Output<boolean>;
     declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
@@ -247,7 +247,7 @@ export class WaitingRoom extends pulumi.CustomResource {
      * 2. `random`: Random queue where customers gain access randomly, regardless of arrival time.
      * 3. `passthrough`: Users will pass directly through the waiting room and into the origin website. As a result, any configured limits will not be respected while this is enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a waiting room event, or vice versa.
      * 4. `reject`: Users will be immediately rejected from the waiting room. As a result, no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`, `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is prequeueing, the waiting room page **will not refresh automatically**.
-     * Available values: "fifo", "random", "passthrough", "reject".
+     *    Available values: "fifo", "random", "passthrough", "reject".
      */
     declare public readonly queueingMethod: pulumi.Output<string>;
     /**
@@ -447,68 +447,68 @@ export interface WaitingRoomState {
      *
      * An example cURL to a waiting room could be:
      *
-     * 	curl -X GET "https://example.com/waitingroom" \
-     * 		-H "Accept: application/json"
+     *     curl -X GET "https://example.com/waitingroom" \
+     *         -H "Accept: application/json"
      *
      * If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **fifo** and no event is active could be:
      *
-     * 	{
-     * 		"cfWaitingRoom": {
-     * 			"inWaitingRoom": true,
-     * 			"waitTimeKnown": true,
-     * 			"waitTime": 10,
-     * 			"waitTime25Percentile": 0,
-     * 			"waitTime50Percentile": 0,
-     * 			"waitTime75Percentile": 0,
-     * 			"waitTimeFormatted": "10 minutes",
-     * 			"queueIsFull": false,
-     * 			"queueAll": false,
-     * 			"lastUpdated": "2020-08-03T23:46:00.000Z",
-     * 			"refreshIntervalSeconds": 20,
-     * 			"queueingMethod": "fifo",
-     * 			"isFIFOQueue": true,
-     * 			"isRandomQueue": false,
-     * 			"isPassthroughQueue": false,
-     * 			"isRejectQueue": false,
-     * 			"isEventActive": false,
-     * 			"isEventPrequeueing": false,
-     * 			"timeUntilEventStart": 0,
-     * 			"timeUntilEventStartFormatted": "unavailable",
-     * 			"timeUntilEventEnd": 0,
-     * 			"timeUntilEventEndFormatted": "unavailable",
-     * 			"shuffleAtEventStart": false
-     * 		}
-     * 	}
+     *     {
+     *         "cfWaitingRoom": {
+     *             "inWaitingRoom": true,
+     *             "waitTimeKnown": true,
+     *             "waitTime": 10,
+     *             "waitTime25Percentile": 0,
+     *             "waitTime50Percentile": 0,
+     *             "waitTime75Percentile": 0,
+     *             "waitTimeFormatted": "10 minutes",
+     *             "queueIsFull": false,
+     *             "queueAll": false,
+     *             "lastUpdated": "2020-08-03T23:46:00.000Z",
+     *             "refreshIntervalSeconds": 20,
+     *             "queueingMethod": "fifo",
+     *             "isFIFOQueue": true,
+     *             "isRandomQueue": false,
+     *             "isPassthroughQueue": false,
+     *             "isRejectQueue": false,
+     *             "isEventActive": false,
+     *             "isEventPrequeueing": false,
+     *             "timeUntilEventStart": 0,
+     *             "timeUntilEventStartFormatted": "unavailable",
+     *             "timeUntilEventEnd": 0,
+     *             "timeUntilEventEndFormatted": "unavailable",
+     *             "shuffleAtEventStart": false
+     *         }
+     *     }
      *
      * If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active could be:
      *
-     * 	{
-     * 		"cfWaitingRoom": {
-     * 			"inWaitingRoom": true,
-     * 			"waitTimeKnown": true,
-     * 			"waitTime": 10,
-     * 			"waitTime25Percentile": 5,
-     * 			"waitTime50Percentile": 10,
-     * 			"waitTime75Percentile": 15,
-     * 			"waitTimeFormatted": "5 minutes to 15 minutes",
-     * 			"queueIsFull": false,
-     * 			"queueAll": false,
-     * 			"lastUpdated": "2020-08-03T23:46:00.000Z",
-     * 			"refreshIntervalSeconds": 20,
-     * 			"queueingMethod": "random",
-     * 			"isFIFOQueue": false,
-     * 			"isRandomQueue": true,
-     * 			"isPassthroughQueue": false,
-     * 			"isRejectQueue": false,
-     * 			"isEventActive": true,
-     * 			"isEventPrequeueing": false,
-     * 			"timeUntilEventStart": 0,
-     * 			"timeUntilEventStartFormatted": "unavailable",
-     * 			"timeUntilEventEnd": 15,
-     * 			"timeUntilEventEndFormatted": "15 minutes",
-     * 			"shuffleAtEventStart": true
-     * 		}
-     * 	}
+     *     {
+     *         "cfWaitingRoom": {
+     *             "inWaitingRoom": true,
+     *             "waitTimeKnown": true,
+     *             "waitTime": 10,
+     *             "waitTime25Percentile": 5,
+     *             "waitTime50Percentile": 10,
+     *             "waitTime75Percentile": 15,
+     *             "waitTimeFormatted": "5 minutes to 15 minutes",
+     *             "queueIsFull": false,
+     *             "queueAll": false,
+     *             "lastUpdated": "2020-08-03T23:46:00.000Z",
+     *             "refreshIntervalSeconds": 20,
+     *             "queueingMethod": "random",
+     *             "isFIFOQueue": false,
+     *             "isRandomQueue": true,
+     *             "isPassthroughQueue": false,
+     *             "isRejectQueue": false,
+     *             "isEventActive": true,
+     *             "isEventPrequeueing": false,
+     *             "timeUntilEventStart": 0,
+     *             "timeUntilEventStartFormatted": "unavailable",
+     *             "timeUntilEventEnd": 15,
+     *             "timeUntilEventEndFormatted": "15 minutes",
+     *             "shuffleAtEventStart": true
+     *         }
+     *     }
      */
     jsonResponseEnabled?: pulumi.Input<boolean | undefined>;
     modifiedOn?: pulumi.Input<string | undefined>;
@@ -542,7 +542,7 @@ export interface WaitingRoomState {
      * 2. `random`: Random queue where customers gain access randomly, regardless of arrival time.
      * 3. `passthrough`: Users will pass directly through the waiting room and into the origin website. As a result, any configured limits will not be respected while this is enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a waiting room event, or vice versa.
      * 4. `reject`: Users will be immediately rejected from the waiting room. As a result, no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`, `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is prequeueing, the waiting room page **will not refresh automatically**.
-     * Available values: "fifo", "random", "passthrough", "reject".
+     *    Available values: "fifo", "random", "passthrough", "reject".
      */
     queueingMethod?: pulumi.Input<string | undefined>;
     /**
@@ -657,68 +657,68 @@ export interface WaitingRoomArgs {
      *
      * An example cURL to a waiting room could be:
      *
-     * 	curl -X GET "https://example.com/waitingroom" \
-     * 		-H "Accept: application/json"
+     *     curl -X GET "https://example.com/waitingroom" \
+     *         -H "Accept: application/json"
      *
      * If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **fifo** and no event is active could be:
      *
-     * 	{
-     * 		"cfWaitingRoom": {
-     * 			"inWaitingRoom": true,
-     * 			"waitTimeKnown": true,
-     * 			"waitTime": 10,
-     * 			"waitTime25Percentile": 0,
-     * 			"waitTime50Percentile": 0,
-     * 			"waitTime75Percentile": 0,
-     * 			"waitTimeFormatted": "10 minutes",
-     * 			"queueIsFull": false,
-     * 			"queueAll": false,
-     * 			"lastUpdated": "2020-08-03T23:46:00.000Z",
-     * 			"refreshIntervalSeconds": 20,
-     * 			"queueingMethod": "fifo",
-     * 			"isFIFOQueue": true,
-     * 			"isRandomQueue": false,
-     * 			"isPassthroughQueue": false,
-     * 			"isRejectQueue": false,
-     * 			"isEventActive": false,
-     * 			"isEventPrequeueing": false,
-     * 			"timeUntilEventStart": 0,
-     * 			"timeUntilEventStartFormatted": "unavailable",
-     * 			"timeUntilEventEnd": 0,
-     * 			"timeUntilEventEndFormatted": "unavailable",
-     * 			"shuffleAtEventStart": false
-     * 		}
-     * 	}
+     *     {
+     *         "cfWaitingRoom": {
+     *             "inWaitingRoom": true,
+     *             "waitTimeKnown": true,
+     *             "waitTime": 10,
+     *             "waitTime25Percentile": 0,
+     *             "waitTime50Percentile": 0,
+     *             "waitTime75Percentile": 0,
+     *             "waitTimeFormatted": "10 minutes",
+     *             "queueIsFull": false,
+     *             "queueAll": false,
+     *             "lastUpdated": "2020-08-03T23:46:00.000Z",
+     *             "refreshIntervalSeconds": 20,
+     *             "queueingMethod": "fifo",
+     *             "isFIFOQueue": true,
+     *             "isRandomQueue": false,
+     *             "isPassthroughQueue": false,
+     *             "isRejectQueue": false,
+     *             "isEventActive": false,
+     *             "isEventPrequeueing": false,
+     *             "timeUntilEventStart": 0,
+     *             "timeUntilEventStartFormatted": "unavailable",
+     *             "timeUntilEventEnd": 0,
+     *             "timeUntilEventEndFormatted": "unavailable",
+     *             "shuffleAtEventStart": false
+     *         }
+     *     }
      *
      * If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active could be:
      *
-     * 	{
-     * 		"cfWaitingRoom": {
-     * 			"inWaitingRoom": true,
-     * 			"waitTimeKnown": true,
-     * 			"waitTime": 10,
-     * 			"waitTime25Percentile": 5,
-     * 			"waitTime50Percentile": 10,
-     * 			"waitTime75Percentile": 15,
-     * 			"waitTimeFormatted": "5 minutes to 15 minutes",
-     * 			"queueIsFull": false,
-     * 			"queueAll": false,
-     * 			"lastUpdated": "2020-08-03T23:46:00.000Z",
-     * 			"refreshIntervalSeconds": 20,
-     * 			"queueingMethod": "random",
-     * 			"isFIFOQueue": false,
-     * 			"isRandomQueue": true,
-     * 			"isPassthroughQueue": false,
-     * 			"isRejectQueue": false,
-     * 			"isEventActive": true,
-     * 			"isEventPrequeueing": false,
-     * 			"timeUntilEventStart": 0,
-     * 			"timeUntilEventStartFormatted": "unavailable",
-     * 			"timeUntilEventEnd": 15,
-     * 			"timeUntilEventEndFormatted": "15 minutes",
-     * 			"shuffleAtEventStart": true
-     * 		}
-     * 	}
+     *     {
+     *         "cfWaitingRoom": {
+     *             "inWaitingRoom": true,
+     *             "waitTimeKnown": true,
+     *             "waitTime": 10,
+     *             "waitTime25Percentile": 5,
+     *             "waitTime50Percentile": 10,
+     *             "waitTime75Percentile": 15,
+     *             "waitTimeFormatted": "5 minutes to 15 minutes",
+     *             "queueIsFull": false,
+     *             "queueAll": false,
+     *             "lastUpdated": "2020-08-03T23:46:00.000Z",
+     *             "refreshIntervalSeconds": 20,
+     *             "queueingMethod": "random",
+     *             "isFIFOQueue": false,
+     *             "isRandomQueue": true,
+     *             "isPassthroughQueue": false,
+     *             "isRejectQueue": false,
+     *             "isEventActive": true,
+     *             "isEventPrequeueing": false,
+     *             "timeUntilEventStart": 0,
+     *             "timeUntilEventStartFormatted": "unavailable",
+     *             "timeUntilEventEnd": 15,
+     *             "timeUntilEventEndFormatted": "15 minutes",
+     *             "shuffleAtEventStart": true
+     *         }
+     *     }
      */
     jsonResponseEnabled?: pulumi.Input<boolean | undefined>;
     /**
@@ -743,7 +743,7 @@ export interface WaitingRoomArgs {
      * 2. `random`: Random queue where customers gain access randomly, regardless of arrival time.
      * 3. `passthrough`: Users will pass directly through the waiting room and into the origin website. As a result, any configured limits will not be respected while this is enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a waiting room event, or vice versa.
      * 4. `reject`: Users will be immediately rejected from the waiting room. As a result, no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`, `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is prequeueing, the waiting room page **will not refresh automatically**.
-     * Available values: "fifo", "random", "passthrough", "reject".
+     *    Available values: "fifo", "random", "passthrough", "reject".
      */
     queueingMethod?: pulumi.Input<string | undefined>;
     /**

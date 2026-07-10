@@ -7132,7 +7132,7 @@ export interface GetApiShieldDiscoveryOperationsResult {
      *   * `review` - Operation is not saved into API Shield Endpoint Management
      *   * `saved` - Operation is saved into API Shield Endpoint Management
      *   * `ignored` - Operation is marked as ignored
-     * Available values: "review", "saved", "ignored".
+     *     Available values: "review", "saved", "ignored".
      */
     state: string;
 }
@@ -19002,7 +19002,7 @@ export interface GetSchemaValidationOperationSettingsListResult {
      *   - `"log"` - log request when request does not conform to schema for this operation
      *   - `"block"` - deny access to the site when request does not conform to schema for this operation
      *   - `"none"` - will skip mitigation for this operation
-     * Available values: "log", "block", "none".
+     *     Available values: "log", "block", "none".
      */
     mitigationAction: string;
     /**
@@ -20602,68 +20602,68 @@ export interface GetWaitingRoomsResult {
      *
      * An example cURL to a waiting room could be:
      *
-     * 	curl -X GET "https://example.com/waitingroom" \
-     * 		-H "Accept: application/json"
+     *     curl -X GET "https://example.com/waitingroom" \
+     *         -H "Accept: application/json"
      *
      * If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **fifo** and no event is active could be:
      *
-     * 	{
-     * 		"cfWaitingRoom": {
-     * 			"inWaitingRoom": true,
-     * 			"waitTimeKnown": true,
-     * 			"waitTime": 10,
-     * 			"waitTime25Percentile": 0,
-     * 			"waitTime50Percentile": 0,
-     * 			"waitTime75Percentile": 0,
-     * 			"waitTimeFormatted": "10 minutes",
-     * 			"queueIsFull": false,
-     * 			"queueAll": false,
-     * 			"lastUpdated": "2020-08-03T23:46:00.000Z",
-     * 			"refreshIntervalSeconds": 20,
-     * 			"queueingMethod": "fifo",
-     * 			"isFIFOQueue": true,
-     * 			"isRandomQueue": false,
-     * 			"isPassthroughQueue": false,
-     * 			"isRejectQueue": false,
-     * 			"isEventActive": false,
-     * 			"isEventPrequeueing": false,
-     * 			"timeUntilEventStart": 0,
-     * 			"timeUntilEventStartFormatted": "unavailable",
-     * 			"timeUntilEventEnd": 0,
-     * 			"timeUntilEventEndFormatted": "unavailable",
-     * 			"shuffleAtEventStart": false
-     * 		}
-     * 	}
+     *     {
+     *         "cfWaitingRoom": {
+     *             "inWaitingRoom": true,
+     *             "waitTimeKnown": true,
+     *             "waitTime": 10,
+     *             "waitTime25Percentile": 0,
+     *             "waitTime50Percentile": 0,
+     *             "waitTime75Percentile": 0,
+     *             "waitTimeFormatted": "10 minutes",
+     *             "queueIsFull": false,
+     *             "queueAll": false,
+     *             "lastUpdated": "2020-08-03T23:46:00.000Z",
+     *             "refreshIntervalSeconds": 20,
+     *             "queueingMethod": "fifo",
+     *             "isFIFOQueue": true,
+     *             "isRandomQueue": false,
+     *             "isPassthroughQueue": false,
+     *             "isRejectQueue": false,
+     *             "isEventActive": false,
+     *             "isEventPrequeueing": false,
+     *             "timeUntilEventStart": 0,
+     *             "timeUntilEventStartFormatted": "unavailable",
+     *             "timeUntilEventEnd": 0,
+     *             "timeUntilEventEndFormatted": "unavailable",
+     *             "shuffleAtEventStart": false
+     *         }
+     *     }
      *
      * If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active could be:
      *
-     * 	{
-     * 		"cfWaitingRoom": {
-     * 			"inWaitingRoom": true,
-     * 			"waitTimeKnown": true,
-     * 			"waitTime": 10,
-     * 			"waitTime25Percentile": 5,
-     * 			"waitTime50Percentile": 10,
-     * 			"waitTime75Percentile": 15,
-     * 			"waitTimeFormatted": "5 minutes to 15 minutes",
-     * 			"queueIsFull": false,
-     * 			"queueAll": false,
-     * 			"lastUpdated": "2020-08-03T23:46:00.000Z",
-     * 			"refreshIntervalSeconds": 20,
-     * 			"queueingMethod": "random",
-     * 			"isFIFOQueue": false,
-     * 			"isRandomQueue": true,
-     * 			"isPassthroughQueue": false,
-     * 			"isRejectQueue": false,
-     * 			"isEventActive": true,
-     * 			"isEventPrequeueing": false,
-     * 			"timeUntilEventStart": 0,
-     * 			"timeUntilEventStartFormatted": "unavailable",
-     * 			"timeUntilEventEnd": 15,
-     * 			"timeUntilEventEndFormatted": "15 minutes",
-     * 			"shuffleAtEventStart": true
-     * 		}
-     * 	}
+     *     {
+     *         "cfWaitingRoom": {
+     *             "inWaitingRoom": true,
+     *             "waitTimeKnown": true,
+     *             "waitTime": 10,
+     *             "waitTime25Percentile": 5,
+     *             "waitTime50Percentile": 10,
+     *             "waitTime75Percentile": 15,
+     *             "waitTimeFormatted": "5 minutes to 15 minutes",
+     *             "queueIsFull": false,
+     *             "queueAll": false,
+     *             "lastUpdated": "2020-08-03T23:46:00.000Z",
+     *             "refreshIntervalSeconds": 20,
+     *             "queueingMethod": "random",
+     *             "isFIFOQueue": false,
+     *             "isRandomQueue": true,
+     *             "isPassthroughQueue": false,
+     *             "isRejectQueue": false,
+     *             "isEventActive": true,
+     *             "isEventPrequeueing": false,
+     *             "timeUntilEventStart": 0,
+     *             "timeUntilEventStartFormatted": "unavailable",
+     *             "timeUntilEventEnd": 15,
+     *             "timeUntilEventEndFormatted": "15 minutes",
+     *             "shuffleAtEventStart": true
+     *         }
+     *     }
      */
     jsonResponseEnabled: boolean;
     modifiedOn: string;
@@ -20697,7 +20697,7 @@ export interface GetWaitingRoomsResult {
      * 2. `random`: Random queue where customers gain access randomly, regardless of arrival time.
      * 3. `passthrough`: Users will pass directly through the waiting room and into the origin website. As a result, any configured limits will not be respected while this is enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a waiting room event, or vice versa.
      * 4. `reject`: Users will be immediately rejected from the waiting room. As a result, no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`, `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is prequeueing, the waiting room page **will not refresh automatically**.
-     * Available values: "fifo", "random", "passthrough", "reject".
+     *    Available values: "fifo", "random", "passthrough", "reject".
      */
     queueingMethod: string;
     /**
@@ -21583,8 +21583,8 @@ export interface GetWorkerVersionsResult {
      * Code, sourcemaps, and other content used at runtime.
      *
      * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
-     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
-     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
      * included as modules named `_headers` and `_redirects` with content type `text/plain`.
      */
     modules: outputs.GetWorkerVersionsResultModule[];
@@ -46022,7 +46022,7 @@ export interface ZeroTrustDlpSettingsPayloadLogging {
      * - `partial`: Only partial payload content is masked.
      * - `clear`: No masking is applied to the payload content.
      * - `default`: DLP uses its default masking behavior.
-     * Available values: "full", "partial", "clear", "default".
+     *   Available values: "full", "partial", "clear", "default".
      */
     maskingLevel: string;
     /**

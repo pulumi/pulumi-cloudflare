@@ -64,7 +64,7 @@ export class SchemaValidationOperationSettings extends pulumi.CustomResource {
      *   - `"block"` - deny access to the site when request does not conform to schema for this operation
      *   - `"none"` - will skip mitigation for this operation
      *   - `null` - clears any mitigation action
-     * Available values: "log", "block", "none".
+     *     Available values: "log", "block", "none".
      */
     declare public readonly mitigationAction: pulumi.Output<string>;
     /**
@@ -120,7 +120,7 @@ export interface SchemaValidationOperationSettingsState {
      *   - `"block"` - deny access to the site when request does not conform to schema for this operation
      *   - `"none"` - will skip mitigation for this operation
      *   - `null` - clears any mitigation action
-     * Available values: "log", "block", "none".
+     *     Available values: "log", "block", "none".
      */
     mitigationAction?: pulumi.Input<string | undefined>;
     /**
@@ -144,7 +144,7 @@ export interface SchemaValidationOperationSettingsArgs {
      *   - `"block"` - deny access to the site when request does not conform to schema for this operation
      *   - `"none"` - will skip mitigation for this operation
      *   - `null` - clears any mitigation action
-     * Available values: "log", "block", "none".
+     *     Available values: "log", "block", "none".
      */
     mitigationAction: pulumi.Input<string>;
     /**

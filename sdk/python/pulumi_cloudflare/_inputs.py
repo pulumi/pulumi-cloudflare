@@ -83768,7 +83768,7 @@ class ZeroTrustDlpSettingsPayloadLoggingArgsDict(TypedDict):
     - `partial`: Only partial payload content is masked.
     - `clear`: No masking is applied to the payload content.
     - `default`: DLP uses its default masking behavior.
-    Available values: "full", "partial", "clear", "default".
+      Available values: "full", "partial", "clear", "default".
     """
     public_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -83791,7 +83791,7 @@ class ZeroTrustDlpSettingsPayloadLoggingArgs:
                - `partial`: Only partial payload content is masked.
                - `clear`: No masking is applied to the payload content.
                - `default`: DLP uses its default masking behavior.
-               Available values: "full", "partial", "clear", "default".
+                 Available values: "full", "partial", "clear", "default".
         :param pulumi.Input[_builtins.str] public_key: Base64-encoded public key for encrypting payload logs.
                
                - Set to a non-empty base64 string to enable payload logging with the given key.
@@ -83813,7 +83813,7 @@ class ZeroTrustDlpSettingsPayloadLoggingArgs:
         - `partial`: Only partial payload content is masked.
         - `clear`: No masking is applied to the payload content.
         - `default`: DLP uses its default masking behavior.
-        Available values: "full", "partial", "clear", "default".
+          Available values: "full", "partial", "clear", "default".
         """
         return pulumi.get(self, "masking_level")
 

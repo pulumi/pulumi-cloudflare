@@ -19554,7 +19554,7 @@ export interface ZeroTrustDlpSettingsPayloadLogging {
      * - `partial`: Only partial payload content is masked.
      * - `clear`: No masking is applied to the payload content.
      * - `default`: DLP uses its default masking behavior.
-     * Available values: "full", "partial", "clear", "default".
+     *   Available values: "full", "partial", "clear", "default".
      */
     maskingLevel?: pulumi.Input<string | undefined>;
     /**

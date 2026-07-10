@@ -31,7 +31,7 @@ class SchemaValidationOperationSettingsArgs:
                  - `"block"` - deny access to the site when request does not conform to schema for this operation
                  - `"none"` - will skip mitigation for this operation
                  - `null` - clears any mitigation action
-               Available values: "log", "block", "none".
+                   Available values: "log", "block", "none".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -50,7 +50,7 @@ class SchemaValidationOperationSettingsArgs:
           - `"block"` - deny access to the site when request does not conform to schema for this operation
           - `"none"` - will skip mitigation for this operation
           - `null` - clears any mitigation action
-        Available values: "log", "block", "none".
+            Available values: "log", "block", "none".
         """
         return pulumi.get(self, "mitigation_action")
 
@@ -98,7 +98,7 @@ class _SchemaValidationOperationSettingsState:
                  - `"block"` - deny access to the site when request does not conform to schema for this operation
                  - `"none"` - will skip mitigation for this operation
                  - `null` - clears any mitigation action
-               Available values: "log", "block", "none".
+                   Available values: "log", "block", "none".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -119,7 +119,7 @@ class _SchemaValidationOperationSettingsState:
           - `"block"` - deny access to the site when request does not conform to schema for this operation
           - `"none"` - will skip mitigation for this operation
           - `null` - clears any mitigation action
-        Available values: "log", "block", "none".
+            Available values: "log", "block", "none".
         """
         return pulumi.get(self, "mitigation_action")
 
@@ -195,7 +195,7 @@ class SchemaValidationOperationSettings(pulumi.CustomResource):
                  - `"block"` - deny access to the site when request does not conform to schema for this operation
                  - `"none"` - will skip mitigation for this operation
                  - `null` - clears any mitigation action
-               Available values: "log", "block", "none".
+                   Available values: "log", "block", "none".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -290,7 +290,7 @@ class SchemaValidationOperationSettings(pulumi.CustomResource):
                  - `"block"` - deny access to the site when request does not conform to schema for this operation
                  - `"none"` - will skip mitigation for this operation
                  - `null` - clears any mitigation action
-               Available values: "log", "block", "none".
+                   Available values: "log", "block", "none".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -313,7 +313,7 @@ class SchemaValidationOperationSettings(pulumi.CustomResource):
           - `"block"` - deny access to the site when request does not conform to schema for this operation
           - `"none"` - will skip mitigation for this operation
           - `null` - clears any mitigation action
-        Available values: "log", "block", "none".
+            Available values: "log", "block", "none".
         """
         return pulumi.get(self, "mitigation_action")
 
